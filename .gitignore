@@ -26,3 +26,6 @@
 
 # Ignore node_modules
 /node_modules
+
+# Ignore Rspec persisted failure list
+/spec/examples.txt
