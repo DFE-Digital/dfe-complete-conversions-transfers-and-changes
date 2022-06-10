@@ -19,6 +19,7 @@
     <meta property="og:image" content="<%= image_url("govuk-frontend/govuk/assets/images/govuk-opengraph-image.png") %>">
 
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "govuk-frontend/govuk/all" %>
   </head>
 
   <body class="govuk-template__body ">
@@ -38,4 +39,5 @@
 
     <%= render partial: "shared/footer" %>
   </body>
+  <%= javascript_include_tag "application" %>
 </html>

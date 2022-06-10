@@ -1,6 +1,8 @@
 //= link_tree ../images
 //= link_directory ../stylesheets .css
+//= link_tree ../javascript .js
 //
+//= link govuk-frontend/govuk/all.js
 //= link govuk-frontend/govuk/assets/images/favicon.ico
 //= link govuk-frontend/govuk/assets/images/govuk-apple-touch-icon-180x180.png
 //= link govuk-frontend/govuk/assets/images/govuk-mask-icon.svg
