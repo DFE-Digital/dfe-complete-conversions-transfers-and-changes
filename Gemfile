@@ -35,6 +35,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails"
   gem "brakeman"
+  gem "bullet"
 end
 
 group :test do
