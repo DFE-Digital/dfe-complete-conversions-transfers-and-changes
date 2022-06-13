@@ -29,3 +29,7 @@
 
 # Ignore Rspec persisted failure list
 /spec/examples.txt
+
+# Ignore .env files
+.env.local
+.env.*.local
