@@ -24,8 +24,11 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore node_modules
-/node_modules
+# Dependencies
+/Brewfile.lock.json
+/.bundle/
+/node_modules/
+/vendor/bundle/
 
 # Ignore Rspec persisted failure list
 /spec/examples.txt
