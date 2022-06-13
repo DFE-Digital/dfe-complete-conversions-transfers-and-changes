@@ -37,6 +37,7 @@ group :development, :test do
   gem "brakeman"
   gem "bullet"
   gem "standard"
+  gem "dotenv-rails"
 end
 
 group :test do
