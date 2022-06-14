@@ -1,24 +1,24 @@
-# README
+# DfE: Complete conversions, transfers and changes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Continuous integration](https://github.com/dxw/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/dxw/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration.yml)
 
-Things you may want to cover:
+## Getting started
 
-- Ruby version
+This repository follows the [Scripts To Rule Them All](https://github.com/dxw/tech-team-rfcs/blob/main/rfc-023-use-scripts-to-rule-them-all.md) pattern. To get started with development (or to restore your environment to a clean state):
 
-- System dependencies
+1. Make sure you have [Homebrew](https://brew.sh/) installed
+1. Run `script/setup`.
 
-- Configuration
+This will handle installing various dependencies, and run application setup tasks.
 
-- Database creation
+## Running a server
 
-- Database initialization
+To start a local server, run `script/server`. Once started the application is available at [`http://localhost:3000/`](http://localhost:3000/).
 
-- How to run the test suite
+## Testing
 
-- Services (job queues, cache servers, search engines, etc.)
+To run the test suite, run `script/test`.
 
-- Deployment instructions
+## ADRs
 
-- ...
+You can find the [ADRs](https://adr.github.io/) for this project in the [`doc/decisions`](https://github.com/dxw/dfe-complete-conversions-transfers-and-changes/tree/develop/doc/decisions) folder.
