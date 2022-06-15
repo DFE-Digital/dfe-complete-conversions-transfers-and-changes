@@ -1,6 +1,6 @@
 # DfE: Complete conversions, transfers and changes
 
-[![Continuous integration](https://github.com/dxw/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/dxw/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration.yml)
+[![Continuous integration](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration.yml)
 
 ## Getting started
 
@@ -21,4 +21,4 @@ To run the test suite, run `script/test`.
 
 ## ADRs
 
-You can find the [ADRs](https://adr.github.io/) for this project in the [`doc/decisions`](https://github.com/dxw/dfe-complete-conversions-transfers-and-changes/tree/develop/doc/decisions) folder.
+You can find the [ADRs](https://adr.github.io/) for this project in the [`doc/decisions`](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/tree/develop/doc/decisions) folder.
