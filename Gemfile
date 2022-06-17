@@ -59,3 +59,7 @@ group :development do
 end
 
 gem "govuk_design_system_formbuilder", "~> 3.0"
+
+gem "sequel", "~> 5.57"
+
+gem "sqlite3", "~> 1.4"
