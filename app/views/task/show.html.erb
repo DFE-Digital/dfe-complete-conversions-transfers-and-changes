@@ -1,0 +1,23 @@
+<% content_for :breadcrumbs do %>
+
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <%= link_to "Home", root_path, class: 'breadcrumbs__link' %>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <%= link_to "Project ##{@project.id}", project_path(id: @project.id), class: 'breadcrumbs__link' %>
+    </li>
+  </ol>
+</div>
+
+<% end %>
+
+<h1 class="govuk-heading-l"><%= @task.title %></h1>
+
+<p class="govuk-body-l">Part of "<%= @task.section.title %>" in Project #<%= @project.id %>.</p>
+
+<%= form_with model: @task, url: [@project, @task] do |form| %>
+  <%= form.govuk_collection_radio_buttons :completed, [OpenStruct.new(id: true, name: 'Yes'), OpenStruct.new(id: false, name: 'No')], :id, :name, legend: { text: 'Has this task been completed?' }, inline: true %>
+  <%= form.govuk_submit %>
+<% end %>

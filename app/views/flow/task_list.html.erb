@@ -1,0 +1,46 @@
+<h1 class="govuk-heading-l"><%= @title %></h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <% if @description %>
+      <%= @description.html_safe %>
+    <% end %>
+
+    <ol class="app-task-list">
+
+    <% @sections.each_with_index do |section, index| %>
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number"><%= index+1 %>. </span> <%= section['title'] %>
+        </h2>
+
+        <ul class="app-task-list__items">
+
+        <% for task in section['tasks'] %>
+
+          <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <% if task['parts'] %>
+                <a href="/task/<%= task['slug'] %>" aria-describedby="<%= task['slug'] %>-status">
+                  <%= task['title'] %>
+                </a>
+                <% else %>
+                  <%= task['title'] %>
+                <% end %>
+              </span>
+              <!--<strong class="govuk-tag app-task-list__tag" id="<%= task['slug'] %>-status">Completed</strong>-->
+          </li>
+
+        <% end %>
+          
+        </ul>
+      </li>
+
+    <% end %>
+
+    </ol>
+
+  </div>
+</div>

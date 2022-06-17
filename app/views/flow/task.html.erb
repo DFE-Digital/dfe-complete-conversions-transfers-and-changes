@@ -1,0 +1,30 @@
+<% content_for :breadcrumbs do %>
+<%= link_to "Back", root_path, class: 'govuk-back-link' %>
+<% end %>
+
+<h1 class="govuk-heading-l"><%= @title %></h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <% if @description %>
+      <%= @description.html_safe %>
+    <% end %>
+
+    <% for part in @parts %>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body"><%= part['description'] %></p>
+      <% if part['guidance'] %>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Guidance
+            </span>
+          </summary>
+          <div class="govuk-details__text"><%= part['guidance'] %></div>
+        </details>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>

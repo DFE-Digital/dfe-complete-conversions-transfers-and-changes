@@ -1,0 +1,46 @@
+<% content_for :breadcrumbs do %>
+
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <%= link_to "Home", root_path, class: 'breadcrumbs__link' %>
+    </li>
+  </ol>
+</div>
+
+<% end %>
+
+<h1 class="govuk-heading-l">Project #<%= @project.id %></h1>
+
+<ol class="app-task-list">
+
+<% @project.sections.each do |section| %>
+
+    <li>
+    <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number"><%= section.order %>. </span> <%= section.title %>
+    </h2>
+
+    <ul class="app-task-list__items">
+
+    <% for task in section.tasks %>
+
+        <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+                <%= link_to task.title, project_task_path(project_id: @project.id, id: task.id) %>
+            </span>
+            <% if task.completed %>
+                <strong class="govuk-tag govuk-tag app-task-list__tag" id="<%= task.id %>-status">Completed</strong>
+            <% else %>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="<%= task.id %>-status">Not Started</strong>
+            <% end %>
+        </li>
+
+    <% end %>
+        
+    </ul>
+    </li>
+
+<% end %>
+
+</ol>
