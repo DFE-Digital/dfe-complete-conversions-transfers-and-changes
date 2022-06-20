@@ -61,4 +61,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # cleanup Omniauth after each example
+  config.after(:each) do |example|
+    OmniAuth.config.mock_auth[:microsoft_graph] = nil
+  end
 end
