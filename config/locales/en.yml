@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  tasks:
+    users:
+      create:
+        error: You must provide a users email address e.g. bin/rails users:create EMAIL_ADDRESS=name@example.com
