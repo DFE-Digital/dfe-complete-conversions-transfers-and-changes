@@ -5,6 +5,6 @@ namespace :users do
 
     abort I18n.t("tasks.users.create.error") if email_address.nil?
 
-    User.create!(email: email_address)
+    User.create!(email: email_address.downcase)
   end
 end
