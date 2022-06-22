@@ -43,6 +43,7 @@ end
 
 group :test do
   gem "capybara"
+  gem "climate_control"
 end
 
 group :development do
