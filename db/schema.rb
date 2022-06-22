@@ -15,6 +15,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_20_083237) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
+  create_table "projects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "order", null: false
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_sections_on_project_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "order", null: false
+    t.boolean "completed", default: false, null: false
+    t.bigint "section_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_tasks_on_section_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -22,4 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_20_083237) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "sections", "projects"
+  add_foreign_key "tasks", "sections"
 end
