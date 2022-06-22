@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Academy Task List",
+  "description": "A defined series of tasks making up an Academy workflow",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "required": true },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slug": { "type": "string" },
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+                "parts": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": { "type": "string" },
+                      "guidance": { "type": "string" }
+                    },
+                    "additionalProperties": false,
+                    "required": ["description"]
+                  },
+                  "minItems": 1
+                }
+              },
+              "additionalProperties": false,
+              "required": ["title"],
+              "dependentRequired": {
+                "parts": ["slug"]
+              }
+            },
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": ["title"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["title", "sections"]
+}

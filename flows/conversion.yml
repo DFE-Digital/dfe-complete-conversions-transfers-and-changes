@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=schemas/task_list.json
+
+title: Academy Conversion
+description: |
+  Convert a school to a new academy.
+
+sections:
+  - title: Starting the project
+    tasks:
+      - title: Understand history and complete handover from Pre-AB
+      - title: Note concerns or issues from handover
+      - title: Confirm LA information template (LA proforma) has been received
+      - title: Introduction and communications
+      - title: Confirm support grant has been processed
+      - title: Agree deadlines and ways of working
+      - title: Send checklist via email
+
+  - title: Clear legal documents
+    tasks:
+      - title: Clear land questionnaire
+      - title: Clear articles of association
+      - title: Clear supplementary funding agreement
+      - title: Clear church supplementary agreement
+      - title: Clear master funding agreement
+
+  - title: Internal actions
+    tasks:
+      - title: Confirm single worksheet has been completed
+      - title: Confirm project has been added to the baseline
+      - title: Confirm support grant certificate has been sent to the Trust
+
+  - title: Confirmations, signing and sealing
+    tasks:
+      - title: Arrange all documents for signing and sealing
+      - title: Confirm leases are agreed and signed
+      - title: Confirm signing of transfer agreement
+      - title: Ensure all documents are redacted, sent or saved
+      - title: Complete final pre-opening checklist
+
+  - title: After the conversion
+    tasks:
+      - title: Confirm URN has been created
+      - title: Email documents to the Trust
