@@ -14,6 +14,10 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require "simplecov"
+SimpleCov.minimum_coverage 100
+SimpleCov.start "rails"
+
 # Add Capybara
 require "capybara/rspec"
 
