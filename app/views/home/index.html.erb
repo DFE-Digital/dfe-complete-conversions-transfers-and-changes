@@ -1,2 +1,7 @@
-<h1 class="govuk-heading-l">Home</h1>
-<p>Welcome to the complete conversions transfers and changes service!</p>
+<h1 class="govuk-heading-l"><%= t("service_name") %></h1>
+
+<p><%= link_to "See the prototype task list",
+  tasks_path,
+  class: 'govuk-button govuk-button--secondary',
+  data: {module: "govuk-button"}
+%></p>

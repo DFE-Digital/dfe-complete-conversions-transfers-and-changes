@@ -30,7 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  service_name: Complete conversions, transfers and changes
+  phase_banner:
+    phase: pre-alpha
+    text: This is a service so new you can't even give us feedback yet.
   tasks:
     users:
       create:

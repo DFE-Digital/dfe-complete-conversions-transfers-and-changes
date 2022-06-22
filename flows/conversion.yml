@@ -5,39 +5,34 @@ description: |
   Convert a school to a new academy.
 
 sections:
-  - title: Starting the project
+  - title: Project kick-off
     tasks:
-      - title: Understand history and complete handover from Pre-AB
-      - title: Note concerns or issues from handover
-      - title: Confirm LA information template (LA proforma) has been received
-      - title: Introduction and communications
-      - title: Confirm support grant has been processed
-      - title: Agree deadlines and ways of working
-      - title: Send checklist via email
+      - title: Handover with Regional Delivery Officer
+      - title: Check and update information in KIM
+      - title: Kick-off meeting with stakeholders
+      - title: Process the conversion grant
+      - title: Complete the Local Authority information template
 
   - title: Clear legal documents
     tasks:
-      - title: Clear land questionnaire
-      - title: Clear articles of association
+      - title: Clear land questionnaire and land registry title
       - title: Clear supplementary funding agreement
       - title: Clear church supplementary agreement
+      - title: Clear deed of novation and variation
+      - title: Clear memorandum and articles of association
       - title: Clear master funding agreement
 
-  - title: Internal actions
+  - title: Get ready for opening
     tasks:
-      - title: Confirm single worksheet has been completed
-      - title: Confirm project has been added to the baseline
-      - title: Confirm support grant certificate has been sent to the Trust
+      - title: Perform baseline checks
+      - title: Perform stakeholder checks
+      - title: Get sign-off on single worksheet
+      - title: GAG funding
+      - title: Confirm all conditions have been met
 
-  - title: Confirmations, signing and sealing
+  - title: After opening
     tasks:
-      - title: Arrange all documents for signing and sealing
-      - title: Confirm leases are agreed and signed
-      - title: Confirm signing of transfer agreement
-      - title: Ensure all documents are redacted, sent or saved
-      - title: Complete final pre-opening checklist
-
-  - title: After the conversion
-    tasks:
-      - title: Confirm URN has been created
-      - title: Email documents to the Trust
+      - title: Sign, seal and redact grant funding agreement
+      - title: Save, send and redact documents
+      - title: Complete processing of grant funding
+      - title: Final handover
