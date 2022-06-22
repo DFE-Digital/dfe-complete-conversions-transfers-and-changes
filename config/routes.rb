@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/tasks", to: "flow#task_list"
   get "/task/:slug", to: "flow#task"
 
-  resources :project, only: [:new, :show] do
+  resources :project, only: [:new, :create, :show] do
     resources :task, only: [:show, :update]
   end
 

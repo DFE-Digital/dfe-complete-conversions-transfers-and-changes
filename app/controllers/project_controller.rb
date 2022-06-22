@@ -1,10 +1,16 @@
 class ProjectController < ApplicationController
 
+  default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
+
   def show
     @project = Project.find(params[:id])
   end
 
   def new
+    @project = Project.new
+  end
+
+  def create
     project = Project.create()
 
     # Load the current flow definition
