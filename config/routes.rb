@@ -3,4 +3,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  # Sign in
+  get "/sign-in", to: "sessions#new"
+  # Sign out
+  get "/sign-out", to: "sessions#delete"
+  # Sign in fails
+  get "auth/failure", to: "sessions#failure"
+
+  # Omniauth callbacks
+  get "auth/:provider/callback", to: "sessions#create"
 end

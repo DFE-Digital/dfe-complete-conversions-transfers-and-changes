@@ -30,7 +30,16 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  sign_in:
+    button: Sign in with your DfE Microsoft account
+    message:
+      unauthenticated: You must sign in to use this service.
+      failure: Authentication failed.
+  sign_out:
+    message:
+      success: You have signed out. You may still be signed in to your Microsoft account.
+  unknown_user:
+    message: The email address %{email_address} is not registered to use this service.
   tasks:
     users:
       create:
