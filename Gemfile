@@ -44,6 +44,7 @@ end
 group :test do
   gem "capybara"
   gem "climate_control"
+  gem "simplecov", "~> 0.21.2"
 end
 
 group :development do
