@@ -1,3 +1,5 @@
-Dotenv.require_keys(
-  "DATABASE_URL"
-) if defined?(Dotenv)
+if defined?(Dotenv)
+  Dotenv.require_keys(
+    "DATABASE_URL"
+  )
+end

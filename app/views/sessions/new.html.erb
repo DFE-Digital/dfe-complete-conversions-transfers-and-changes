@@ -1,0 +1,7 @@
+<h1 class="govuk-heading-xl">
+  Sign in
+</h1>
+
+<%= form_tag("/auth/microsoft_graph", method: "post") do %>
+  <%= button_tag(t("sign_in.button", type: :submit), class: "govuk-button") %>
+<% end %>
