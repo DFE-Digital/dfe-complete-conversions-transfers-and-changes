@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  service_name: Complete conversions, transfers and changes
   sign_in:
     button: Sign in with your DfE Microsoft account
     message:
@@ -44,3 +45,6 @@ en:
     users:
       create:
         error: You must provide a users email address e.g. bin/rails users:create EMAIL_ADDRESS=name@example.com
+  project_list:
+    title:
+      all: All projects
