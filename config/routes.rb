@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get "auth/:provider/callback", to: "sessions#create"
 
   # Projects
-  resources :project, only: [:index, :new, :create]
+  resources :project, only: [:index, :show, :new, :create]
 end

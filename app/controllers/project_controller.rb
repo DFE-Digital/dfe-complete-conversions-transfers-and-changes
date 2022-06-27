@@ -5,6 +5,10 @@ class ProjectController < ApplicationController
     @projects = Project.all
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
   def new
     @project = Project.new
   end
@@ -15,7 +19,7 @@ class ProjectController < ApplicationController
     if @project.valid?
       @project.save
       flash[:notice] = I18n.t("project.create.success")
-      redirect_to root_path
+      redirect_to project_path(@project)
     else
       render :new
     end
