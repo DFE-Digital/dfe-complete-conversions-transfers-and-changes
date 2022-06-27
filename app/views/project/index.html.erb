@@ -6,7 +6,7 @@
   <div class="govuk-grid-column-full">
   
     <h1 class="govuk-heading-l">
-      <%= t("project_list.title.all") %> (<%= @projects.count %>)
+      <%= t("project.index.title.all") %> (<%= @projects.count %>)
     </h1>
 
     <% @projects.each do |project| %>
@@ -20,5 +20,12 @@
         </div>
       </dl>
     <% end %>
+
+    <p><%= link_to "Add a new project",
+      new_project_path,
+      class: 'govuk-button',
+      data: {module: "govuk-button"}
+    %></p>
+
   </div>
 </div>
