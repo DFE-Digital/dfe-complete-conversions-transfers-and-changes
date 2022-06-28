@@ -33,7 +33,7 @@ gem "sass-rails"
 # Use Omniauth for authentication
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
-gem "omniauth-microsoft_graph"
+gem "omniauth-azure-activedirectory-v2"
 
 gem "govuk_design_system_formbuilder", "~> 3.0"
 

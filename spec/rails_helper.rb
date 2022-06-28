@@ -68,6 +68,6 @@ RSpec.configure do |config|
 
   # cleanup Omniauth after each example
   config.after(:each) do |example|
-    OmniAuth.config.mock_auth[:microsoft_graph] = nil
+    OmniAuth.config.mock_auth[:azure_activedirectory_v2] = nil
   end
 end
