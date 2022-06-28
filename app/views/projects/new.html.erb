@@ -2,7 +2,7 @@
 <%= link_to "Back", root_path, class: "govuk-back-link" %>
 <% end %>
 
-<%= form_with model: @project, url: project_index_path do |form| %>
+<%= form_with model: @project do |form| %>
 
   <%= form.govuk_error_summary %>
 
