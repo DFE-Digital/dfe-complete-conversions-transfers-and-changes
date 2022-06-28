@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  service_name: Complete conversions, transfers and changes
   sign_in:
     button: Sign in with your DfE Microsoft account
     message:
@@ -44,3 +45,18 @@ en:
     users:
       create:
         error: You must provide a users email address e.g. bin/rails users:create EMAIL_ADDRESS=name@example.com
+  project:
+    index:
+      title:
+        all: All projects
+    new:
+      title: Add a new project
+    create:
+      success: Project has been created successfully
+  helpers:
+    label:
+      project:
+        urn: School URN
+    hint:
+      project:
+        urn: This is the URN of the existing school which is converting to an academy.

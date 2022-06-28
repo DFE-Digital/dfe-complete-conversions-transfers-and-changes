@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "home#index"
+  root "projects#index"
 
   # Sign in
   get "/sign-in", to: "sessions#new"
@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   # Omniauth callbacks
   get "auth/:provider/callback", to: "sessions#create"
+
+  # Projects
+  resources :projects, only: [:index, :show, :new, :create]
 end

@@ -1,0 +1,15 @@
+<% content_for :pre_content_nav do %>
+<%= link_to "Back", root_path, class: "govuk-back-link" %>
+<% end %>
+
+<%= form_with model: @project do |form| %>
+
+  <%= form.govuk_error_summary %>
+
+  <h1 class="govuk-heading-l"><%= t("project.new.title") %></h1>
+
+  <%= form.govuk_text_field :urn,
+    label: { tag: 'h3', size: 'm' }
+  %>
+  <%= form.govuk_submit %>
+<% end %>
