@@ -164,9 +164,8 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-microsoft_graph (1.1.0)
-      omniauth (~> 2.0)
-      omniauth-oauth2 (~> 1.7.1)
+    omniauth-azure-activedirectory-v2 (1.0.0)
+      omniauth-oauth2 (~> 1.7)
     omniauth-oauth2 (1.7.2)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
@@ -317,7 +316,7 @@ DEPENDENCIES
   dotenv-rails
   govuk_design_system_formbuilder (~> 3.0)
   omniauth
-  omniauth-microsoft_graph
+  omniauth-azure-activedirectory-v2
   omniauth-rails_csrf_protection
   pg (~> 1.4)
   pry-rails

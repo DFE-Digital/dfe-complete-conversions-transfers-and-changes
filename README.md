@@ -33,6 +33,10 @@ available at [`http://localhost:3000/`](http://localhost:3000/).
 
 To run the test suite, run `script/test`.
 
+## Environment variables
+
+See .env.example
+
 ## ADRs
 
 You can find the [ADRs](https://adr.github.io/) for this project in the

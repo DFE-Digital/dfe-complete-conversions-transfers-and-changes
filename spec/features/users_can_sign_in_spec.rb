@@ -26,7 +26,7 @@ RSpec.feature "Users can sign in to the application" do
 
   context "when the authentication fails" do
     before do
-      OmniAuth.config.mock_auth[:microsoft_graph] = :invalid_credentials
+      OmniAuth.config.mock_auth[:azure_activedirectory_v2] = :invalid_credentials
       OmniAuth.config.test_mode = true
     end
 

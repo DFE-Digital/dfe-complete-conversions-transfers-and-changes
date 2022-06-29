@@ -30,7 +30,7 @@ RSpec.describe "Sign in" do
 
     before do
       User.create!(email: "another.user@education.gov.uk")
-      OmniAuth.config.mock_auth[:microsoft_graph] = OmniAuth::AuthHash.new({
+      OmniAuth.config.mock_auth[:azure_activedirectory_v2] = OmniAuth::AuthHash.new({
         info: {
           email: user_email_address
         }
@@ -39,7 +39,7 @@ RSpec.describe "Sign in" do
     end
 
     it "redirects to the sign in page and shows a helpful message" do
-      get "/auth/microsoft_graph/callback"
+      get "/auth/azure_activedirectory_v2/callback"
 
       expect(request).to redirect_to(sign_in_path)
       expect(flash.to_h.values).to include I18n.t("unknown_user.message", email_address: user_email_address)
