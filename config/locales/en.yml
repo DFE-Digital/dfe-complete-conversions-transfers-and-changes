@@ -53,6 +53,10 @@ en:
       title: Add a new project
     create:
       success: Project has been created successfully
+    summary:
+      delivery_officer:
+        title: Delivery officer
+        unassigned: Not yet assigned
   helpers:
     label:
       project:
