@@ -1,10 +1,31 @@
 class AcademiesApi::Client
   ACADEMIES_API_TIMEOUT = 0.6
 
+  class Error < StandardError; end
+
+  class NotFoundError < StandardError; end
+
   attr_reader :connection
 
   def initialize(connection: nil)
     @connection = connection || default_connection
+  end
+
+  def get_establishment(urn)
+    begin
+      response = @connection.get("/establishment/urn/#{urn}")
+    rescue Faraday::Error => error
+      raise Error.new(error)
+    end
+
+    case response.status
+    when 200
+      Result.new(AcademiesApi::Establishment.new(response.body), nil)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishment.errors.not_found", urn: urn)))
+    else
+      Result.new(nil, Error.new(I18n.t("academies_api.get_establishment.errors.other", urn: urn)))
+    end
   end
 
   private def default_connection
@@ -18,5 +39,14 @@ class AcademiesApi::Client
         ApiKey: ENV["ACADEMIES_API_KEY"]
       }
     )
+  end
+
+  class Result
+    attr_reader :object, :error
+
+    def initialize(object, error)
+      @object = object
+      @error = error
+    end
   end
 end
