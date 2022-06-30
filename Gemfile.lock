@@ -314,6 +314,7 @@ DEPENDENCIES
   climate_control
   debug
   dotenv-rails
+  faraday
   govuk_design_system_formbuilder (~> 3.1)
   omniauth
   omniauth-azure-activedirectory-v2
