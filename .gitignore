@@ -101,3 +101,9 @@ tmp/
 
 # Ignore Rspec persisted failure list
 /spec/examples.txt
+
+## IntelliJ
+.idea
+
+## MacOS
+.DS_Store
