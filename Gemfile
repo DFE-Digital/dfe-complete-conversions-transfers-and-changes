@@ -54,6 +54,7 @@ group :test do
   gem "capybara"
   gem "climate_control"
   gem "simplecov", "~> 0.21.2"
+  gem "shoulda-matchers", "~> 5.1"
 end
 
 group :development do
