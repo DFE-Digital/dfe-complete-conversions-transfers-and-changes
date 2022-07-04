@@ -18,7 +18,7 @@ RSpec.feature "Users can view a single project" do
     single_project = Project.create!(urn: 19283746)
 
     visit root_path
-    click_on single_project.urn
+    click_on single_project.urn.to_s
     expect(page).to have_content(single_project.urn.to_s)
   end
 end
