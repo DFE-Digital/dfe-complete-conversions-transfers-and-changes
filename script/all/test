@@ -42,7 +42,7 @@ else
   fi
 
   echo "==> Validating workflows..."
-  yarn run ajv -s workflows/schemas/task-list.json -d workflows/conversion.yml --spec=draft2020
+  yarn run ajv -s workflows/schemas/task-list.json -d workflows/*.yml --spec=draft2020
 
   echo "==> Running the tests..."
   bundle exec rspec
