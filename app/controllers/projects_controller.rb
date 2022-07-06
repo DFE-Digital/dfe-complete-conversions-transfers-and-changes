@@ -25,9 +25,23 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @project = Project.find(params[:id])
+    @users = User.all
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.assign_attributes(project_params)
+
+    @project.save
+    flash[:notice] = I18n.t("project.update.success")
+    redirect_to project_path(@project)
+  end
+
   private
 
   def project_params
-    params.require(:project).permit(:urn)
+    params.require(:project).permit(:urn, :delivery_officer_id)
   end
 end
