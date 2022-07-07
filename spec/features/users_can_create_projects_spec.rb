@@ -4,7 +4,7 @@ RSpec.feature "Users can create a new project" do
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
 
   before(:each) do
-    sign_in_with_user("user@education.gov.uk")
+    sign_in_with_user(create(:user))
     visit new_project_path
 
     allow(YAML).to receive(:load_file).with("workflows/conversion.yml").and_return(

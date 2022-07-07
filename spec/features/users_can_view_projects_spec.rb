@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can view a list of projects" do
   scenario "on the home page" do
-    sign_in_with_user("user@education.gov.uk")
+    sign_in_with_user(create(:user))
 
     single_project = Project.create!(urn: 19283746)
 
@@ -13,7 +13,7 @@ end
 
 RSpec.feature "Users can view a single project" do
   scenario "by following a link from the home page" do
-    sign_in_with_user("user@education.gov.uk")
+    sign_in_with_user(create(:user))
 
     single_project = Project.create!(urn: 19283746)
 
@@ -24,7 +24,7 @@ RSpec.feature "Users can view a single project" do
 
   context "when a project does not have an assigned delivery officer" do
     scenario "the project list shows an unassigned delivery officer" do
-      sign_in_with_user("user@education.gov.uk")
+      sign_in_with_user(create(:user))
       Project.create!(urn: 19283746)
 
       visit projects_path
@@ -32,7 +32,7 @@ RSpec.feature "Users can view a single project" do
     end
 
     scenario "the project page shows an unassigned delivery officer" do
-      sign_in_with_user("user@education.gov.uk")
+      sign_in_with_user(create(:user))
       single_project = Project.create!(urn: 19283746)
 
       visit project_path(single_project)
@@ -44,7 +44,7 @@ RSpec.feature "Users can view a single project" do
     let(:user_email_address) { "user@education.gov.uk" }
 
     scenario "the project list shows an assigned delivery officer" do
-      sign_in_with_user(user_email_address)
+      sign_in_with_user(create(:user, email: user_email_address))
       user = User.find_by(email: user_email_address)
       Project.create!(urn: 19283746, delivery_officer: user)
 
@@ -53,7 +53,7 @@ RSpec.feature "Users can view a single project" do
     end
 
     scenario "the project page shows an assigned delivery officer" do
-      sign_in_with_user(user_email_address)
+      sign_in_with_user(create(:user, email: user_email_address))
       user = User.find_by(email: user_email_address)
       single_project = Project.create!(urn: 19283746, delivery_officer: user)
 
