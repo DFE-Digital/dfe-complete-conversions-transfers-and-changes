@@ -41,6 +41,8 @@ en:
       success: You have signed out. You may still be signed in to your Microsoft account.
   unknown_user:
     message: The email address %{email_address} is not registered to use this service.
+  unauthorised_action:
+    message: You are not authorised to perform this action.
   tasks:
     users:
       create:
@@ -49,6 +51,8 @@ en:
     index:
       title:
         all: All projects
+      new_button:
+        text: Add a new project
     show:
       title: Project task list
       edit_button:

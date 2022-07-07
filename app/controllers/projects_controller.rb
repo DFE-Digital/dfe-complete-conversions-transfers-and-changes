@@ -1,20 +1,25 @@
 class ProjectsController < ApplicationController
   include Authentication
+  after_action :verify_authorized
 
   def index
+    authorize Project
     @projects = Project.all
   end
 
   def show
     @project = Project.includes(sections: [:tasks]).find(params[:id])
+    authorize @project
   end
 
   def new
+    authorize Project
     @project = Project.new
   end
 
   def create
     @project = Project.new(project_params)
+    authorize @project
 
     if @project.valid?
       @project.save
@@ -29,11 +34,15 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    authorize @project
+
     @users = User.all
   end
 
   def update
     @project = Project.find(params[:id])
+    authorize @project
+
     @project.assign_attributes(project_params)
 
     @project.save
