@@ -18,6 +18,14 @@
             </h2>
           </dt>
         </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <%= t('project.summary.delivery_officer.title') %>
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <%= project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') %>
+          </dd>
+        </div>
       </dl>
     <% end %>
 

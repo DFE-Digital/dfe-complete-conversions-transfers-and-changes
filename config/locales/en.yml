@@ -49,14 +49,27 @@ en:
     index:
       title:
         all: All projects
+    show:
+      edit_button:
+        text: Edit
     new:
       title: Add a new project
     create:
       success: Project has been created successfully
+    edit:
+      title: Edit a project
+    update:
+      success: Project has been updated successfully
+    summary:
+      delivery_officer:
+        title: Delivery officer
+        unassigned: Not yet assigned
   helpers:
     label:
       project:
         urn: School URN
+        delivery_officer_id: Delivery officer
     hint:
       project:
         urn: This is the URN of the existing school which is converting to an academy.
+        delivery_officer_id: The delivery officer responsible for this project
