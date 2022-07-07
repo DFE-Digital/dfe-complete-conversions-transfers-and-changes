@@ -35,6 +35,9 @@ gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-azure-activedirectory-v2"
 
+# Use pundit for authorisation management
+gem "pundit", "~> 2.2"
+
 gem "govuk_design_system_formbuilder", "~> 3.1"
 
 gem "faraday"
