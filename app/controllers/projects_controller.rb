@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   include Authentication
   after_action :verify_authorized
+  after_action :verify_policy_scoped, only: :index
 
   def index
     authorize Project
-    @projects = Project.all
+    @projects = policy_scope(Project).includes([:delivery_officer])
   end
 
   def show
