@@ -23,7 +23,7 @@ class ProjectPolicy
   end
 
   def edit?
-    true
+    user.team_leader?
   end
 
   def update?
