@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-<%= link_to "Back", root_path, class: "govuk-back-link" %>
+  <%= link_to "Back", root_path, class: "govuk-back-link" %>
 <% end %>
 
 <div class="govuk-grid-row">
@@ -15,3 +15,7 @@
     </p>
   </div>
 </div>
+
+<h1 class="govuk-heading-l"><%= t('project.show.title') %></h1>
+
+<%= render "shared/task_list" %>

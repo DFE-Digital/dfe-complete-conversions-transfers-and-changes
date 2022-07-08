@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(sections: [:tasks]).find(params[:id])
   end
 
   def new
@@ -19,6 +19,8 @@ class ProjectsController < ApplicationController
     if @project.valid?
       @project.save
       flash[:notice] = I18n.t("project.create.success")
+      TaskListCreator.new.call(@project)
+
       redirect_to project_path(@project)
     else
       render :new

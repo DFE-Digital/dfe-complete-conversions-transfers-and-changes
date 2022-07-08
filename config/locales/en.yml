@@ -50,6 +50,7 @@ en:
       title:
         all: All projects
     show:
+      title: Project task list
       edit_button:
         text: Edit
     new:

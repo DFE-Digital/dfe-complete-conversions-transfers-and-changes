@@ -65,6 +65,7 @@ RSpec.configure do |config|
   # Include helpers for tests
   config.include SignInHelpers
   config.include FeatureHelpers, type: :feature
+  config.include FactoryBot::Syntax::Methods
 
   # cleanup Omniauth after each example
   config.after(:each) do |example|
