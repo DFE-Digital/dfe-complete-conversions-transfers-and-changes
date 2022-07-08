@@ -85,6 +85,7 @@ COPY script ${APP_HOME}/script
 COPY public ${APP_HOME}/public
 COPY vendor ${APP_HOME}/vendor
 COPY bin ${APP_HOME}/bin
+COPY workflows ${APP_HOME}/workflows
 COPY config ${APP_HOME}/config
 COPY lib ${APP_HOME}/lib
 COPY db ${APP_HOME}/db

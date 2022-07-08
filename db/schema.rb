@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_28_160548) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_04_100256) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -24,6 +24,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_160548) do
     t.index ["urn"], name: "index_projects_on_urn"
   end
 
+  create_table "sections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "order", null: false
+    t.uuid "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_sections_on_project_id"
+  end
+
+  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "order", null: false
+    t.boolean "completed", default: false, null: false
+    t.uuid "section_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_tasks_on_section_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -32,5 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_160548) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "sections", "projects"
+  add_foreign_key "tasks", "sections"
   add_foreign_key "projects", "users", column: "delivery_officer_id"
 end
