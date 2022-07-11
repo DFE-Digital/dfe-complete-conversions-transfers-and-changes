@@ -10,9 +10,11 @@
         <span class="govuk-!-font-weight-bold"><%= t('project.summary.delivery_officer.title') %>:</span>
         <%= @project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') %></p>
     </div>
-    <p class="govuk-body">
-      <%= link_to t('project.show.edit_button.text'), edit_project_path(@project), class: "govuk-link" %>
-    </p>
+    <% if policy(@project).edit? %>
+      <p class="govuk-body">
+        <%= link_to t('project.show.edit_button.text'), edit_project_path(@project), class: "govuk-link" %>
+      </p>
+    <% end %>
   </div>
 </div>
 

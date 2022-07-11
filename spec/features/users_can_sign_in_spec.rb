@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can sign in to the application" do
   context "when the authentication is successful" do
-    let(:user) { User.create!(email: "user@education.gov.uk") }
+    let(:user) { create(:user) }
 
     before do
       mock_successful_authentication(user.email)

@@ -1,19 +1,48 @@
 require "rails_helper"
 
 RSpec.feature "Users can view a list of projects" do
-  scenario "on the home page" do
-    sign_in_with_user("user@education.gov.uk")
+  let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
+  let(:user_1) { create(:user, email: "user1@education.gov.uk") }
+  let(:user_2) { create(:user, email: "user2@education.gov.uk") }
 
-    single_project = Project.create!(urn: 19283746)
+  before(:each) do
+    @unassigned_project = Project.create!(urn: 1001)
+    @user1_project = Project.create!(urn: 1002, delivery_officer: user_1)
+    @user2_project = Project.create!(urn: 1003, delivery_officer: user_2)
+  end
 
-    visit root_path
-    expect(page).to have_content(single_project.urn.to_s)
+  context "the user is a team leader" do
+    before(:each) do
+      sign_in_with_user(team_leader)
+    end
+
+    scenario "can see all projects on the project list regardless of assignment" do
+      visit projects_path
+
+      expect(page).to have_content(@unassigned_project.urn.to_s)
+      expect(page).to have_content(@user1_project.urn.to_s)
+      expect(page).to have_content(@user2_project.urn.to_s)
+    end
+  end
+
+  context "the user is not a team leader" do
+    before(:each) do
+      sign_in_with_user(user_1)
+    end
+
+    scenario "can only see assigned projects on the projects list" do
+      visit projects_path
+
+      expect(page).to_not have_content(@unassigned_project.urn.to_s)
+      expect(page).to have_content(@user1_project.urn.to_s)
+      expect(page).to_not have_content(@user2_project.urn.to_s)
+    end
   end
 end
 
 RSpec.feature "Users can view a single project" do
   scenario "by following a link from the home page" do
-    sign_in_with_user("user@education.gov.uk")
+    sign_in_with_user(create(:user, :team_leader))
 
     single_project = Project.create!(urn: 19283746)
 
@@ -24,7 +53,7 @@ RSpec.feature "Users can view a single project" do
 
   context "when a project does not have an assigned delivery officer" do
     scenario "the project list shows an unassigned delivery officer" do
-      sign_in_with_user("user@education.gov.uk")
+      sign_in_with_user(create(:user, :team_leader))
       Project.create!(urn: 19283746)
 
       visit projects_path
@@ -32,7 +61,7 @@ RSpec.feature "Users can view a single project" do
     end
 
     scenario "the project page shows an unassigned delivery officer" do
-      sign_in_with_user("user@education.gov.uk")
+      sign_in_with_user(create(:user, :team_leader))
       single_project = Project.create!(urn: 19283746)
 
       visit project_path(single_project)
@@ -44,7 +73,7 @@ RSpec.feature "Users can view a single project" do
     let(:user_email_address) { "user@education.gov.uk" }
 
     scenario "the project list shows an assigned delivery officer" do
-      sign_in_with_user(user_email_address)
+      sign_in_with_user(create(:user, :team_leader, email: user_email_address))
       user = User.find_by(email: user_email_address)
       Project.create!(urn: 19283746, delivery_officer: user)
 
@@ -53,7 +82,7 @@ RSpec.feature "Users can view a single project" do
     end
 
     scenario "the project page shows an assigned delivery officer" do
-      sign_in_with_user(user_email_address)
+      sign_in_with_user(create(:user, :team_leader, email: user_email_address))
       user = User.find_by(email: user_email_address)
       single_project = Project.create!(urn: 19283746, delivery_officer: user)
 
