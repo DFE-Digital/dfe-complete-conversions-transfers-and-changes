@@ -2,6 +2,8 @@
 
 # Run the test suite for the application. Optionally pass in a path to an
 # individual test file to run a single test.
+#
+# Do not set AUTOMATICALLY_FIX_LINTING if you want to disable linter fixing
 
 set -e
 
