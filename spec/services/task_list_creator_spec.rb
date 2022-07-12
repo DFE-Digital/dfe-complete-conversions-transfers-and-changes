@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe TaskListCreator, type: :model do
+RSpec.describe TaskListCreator do
   let(:task_list_creator) { TaskListCreator.new }
 
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
