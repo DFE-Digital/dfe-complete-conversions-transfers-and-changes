@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Task, type: :model do
+RSpec.describe Action do
   describe "Columns" do
     it { is_expected.to have_db_column(:title).of_type :string }
     it { is_expected.to have_db_column(:order).of_type :integer }
@@ -8,7 +8,6 @@ RSpec.describe Task, type: :model do
   end
 
   describe "Relationships" do
-    it { is_expected.to belong_to(:section) }
-    it { is_expected.to have_many(:actions) }
+    it { is_expected.to belong_to(:task) }
   end
 end
