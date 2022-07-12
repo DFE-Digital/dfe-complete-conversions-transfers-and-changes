@@ -1,85 +1,203 @@
 # yaml-language-server: $schema=schemas/task_list.json
 
 sections:
-  - title: Starting the project
+  - title: Project kick off
     tasks:
-      - title: Understand history and complete handover from Pre-AB
+      - title: Handover with Regional Delivery Officer
         actions:
-          - title: Action one
-          - title: Action two
-      - title: Note concerns or issues from handover
+          - title:
+              Recieve email with handover proforma and check it's saved in
+              SharePoint
+          - title:
+              "Check the 'application to convert', 'academy order' and any other
+              required documents are in SharePoint"
+          - title: Assign project roles (project lead and team lead) in KIM
+          - title:
+              Check that KIM is up to date with information from the application
+              and the handover proforma
+          - title:
+              Do additional research about the school / project (if required)
+          - title:
+              Identify issues or questions to discuss with the regional delivery
+              officer in handover meeting
+          - title: Have handover meeting with the regional delivery officer
+
+      - title: Local authority questionnaire
         actions:
-          - title: Action three
-      - title: Confirm LA information template (LA proforma) has been received
+          - title: Local Authority questionnaire recieved
+          - title: Save Local Authority questionnaire in SharePoint
+      - title: External stakeholder kick off
         actions:
-          - title: Action four
-      - title: Introduction and communications
+          - title: Decide what documents are need from external stakeholders
+          - title: Send kick off email to external stakeholders
+          - title: Confirm kick off meetings with external stakeholders
+          - title: Conduct kick of meetings with external stakeholders
+          - title: Confirm conversion date with stakeholders
+          - title: Requested the required documents from external stakeholders
+          - title:
+              Confirmed with external stakeholders when documents need to be
+              completed and returned by
+          - title: Agreed ways of working with external stakeholders
+          - title: Confirmed number of high need places
+          - title:
+              Confirmed if school / trust is opt in or out for RPA insurance
+          - title:
+              Requested that the school submits its bank details for GAG via the
+              online form
+
+      - title: Process conversion grant
         actions:
-          - title: Action five
-      - title: Confirm support grant has been processed
-        actions:
-          - title: Action six
-      - title: Agree deadlines and ways of working
-        actions:
-          - title: Action seven
-      - title: Send checklist via email
-        actions:
-          - title: Action eight
+          - title:
+              Check if the trust has a vendor account in the "standing data
+              spreadsheet"
+          - title:
+              Request that the trust provides bank details to be added to vendor
+              account (if not already on it)
+          - title:
+              Receive completed "grant claim/payment form" from the school /
+              trust
+          - title:
+              "Send the: application to convert, academy order and grant claim /
+              payment form to the ESFA team at
+              grantpayments.rdd@education.gov.uk."
 
   - title: Clear legal documents
     tasks:
-      - title: Clear land questionnaire
+      - title: Land questionnaire & land registry title plans
         actions:
-          - title: Action nine
-      - title: Clear articles of association
-        actions:
-          - title: Action ten
-      - title: Clear supplementary funding agreement
-        actions:
-          - title: Action eleven
-      - title: Clear church supplementary agreement
-        actions:
-          - title: Action twelve
-      - title: Clear master funding agreement
-        actions:
-          - title: Action thirteen
+          - title: Land questionnaire recieved
+          - title: Land registry title plans recieved
+          - title: Check and clear land questionnaire
+          - title: Check and clear land registry title plans
+          - title: Trust Modification Order recieved (if applicable)
+          - title: Direction to Transfer recieved (if applicable)
+          - title: Save documents in SharePoint
 
-  - title: Internal actions
+      - title: Articles of associations
+        actions:
+          - title: Recieved
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Supplementary Funding Agreement (SFA)
+        actions:
+          - title: Recieved
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Church Supplementary Agreement  (CSA)
+        actions:
+          - title: Recieved
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Deed of Novation & Variation (DoNV)
+        actions:
+          - title: Recieved
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Master Funding Agreement (MFA)
+        actions:
+          - title: Recieved
+          - title: Cleared
+          - title: Saved in SharePoint
+
+  - title: Get ready for opening
     tasks:
-      - title: Confirm single worksheet has been completed
+      - title: Get documents signed by school / trust
         actions:
-          - title: Action fourteen
+          - title:
+              Notify solictors that required documents have been cleared and are
+              ready for signing by school / trust
+          - title: Recive required signed documents from the solicitor
+          - title: Save documents to SharePoint
 
-      - title: Confirm project has been added to the baseline
+      - title: Baseline checks
         actions:
-          - title: Action fifteen
-      - title: Confirm support grant certificate has been sent to the Trust
-        actions:
-          - title: Action sixteen
+          - title: Check school is on the openers list
+          - title: Confirm if the school is currently on track to open
 
-  - title: Confirmations, signing and sealing
+      - title: Single worksheet
+        actions:
+          - title:
+              Download single worksheet template and save single worksheet for
+              this project in SharePoint
+          - title: Begin entering information into the single worksheet
+          - title: Finish single worksheet
+          - title: Send single worksheet to Line Manager for approval
+          - title:
+              Email approved single worksheet to Academy Operations Team (with
+              the Direction to Transfer and Trust Modification Order if
+              applicable)
+
+      - title: Comeplete final checklist with external stakeholders
+        actions:
+          - title: Email final checklist to external stakeholders
+          - title:
+              Recieve email of responses to final checklist from external
+              stakeholders
+          - title:
+              Save final checklist email response from external stakeholders in
+              SharePoint
+
+      - title: Confirm all conditions met
+        actions:
+          - title: CTA agreed and signed (commercial transfer agreement)
+          - title: Leases agreed and signed
+          - title: RPA (risk protection arrangements) confirmed
+          - title: New bank account sent via online form
+          - title:
+              Final re-opening actions (checklist sent to academy to complete)
+          - title: Confirm have signed documents from the Trust
+          - title:
+              Email the operational academy team to confrim that all conditions
+              are met and the school is ready for opening
+
+      - title: Sign & seal all model documents
+        actions:
+          - title:
+              Extract pages required for signature by the secretary of state
+              (these are delegated to the Team Lead)
+          - title: Send extracted pages to the Team Lead for signing
+          - title: Insert signed pages back into required documents
+
+      - title: Notify school / trust
+        actions:
+          - title:
+              Confirm the school can convert to the trust on the agreed date
+              (1st of the folloiwng month)
+          - title: Confirm the new URN number
+          - title:
+              Send signed and sealed documents back to Trust and solicitor team
+          - title: Send blank grant expenditure certificate to complete
+
+  - title: Project close
     tasks:
-      - title: Arrange all documents for signing and sealing
+      - title: Redact, save and share documents
         actions:
-          - title: Action seventeen
-      - title: Confirm leases are agreed and signed
-        actions:
-          - title: Action eighteen
-      - title: Confirm signing of transfer agreement
-        actions:
-          - title: Action nineteen
-      - title: Ensure all documents are redacted, sent or saved
-        actions:
-          - title: Action tewnty
-      - title: Complete final pre-opening checklist
-        actions:
-          - title: Action twenty one
+          - title: Redact required documents and save in SharePoint
+          - title:
+              Send redacted documents to "Funding Agreements converter" mail box
+          - title:
+              Ensure all documents and key information are saved in SharePoint
 
-  - title: After the conversion
-    tasks:
-      - title: Confirm URN has been created
+      - title: ESFA final checks and handover
         actions:
-          - title: Action twenty two
-      - title: Email documents to the Trust
+          - title: Ensure all ESFA fields are up to date in KIM
+          - title: Add any ESFA handover comments in KIM
+          - title: Ensure single worksheet is up to date
+
+      - title: Handback with Regional Delivery Offficer
         actions:
-          - title: Action twenty three
+          - title: Complete handback proforma
+          - title: Save handback proforma in SharePoint
+          - title: Send completed handback proforma to Regional Delivery Officer
+
+      - title: Complete processing of conversion grant
+        actions:
+          - title: Receive completed grant certificate from trust
+          - title: Save completed grant certificate to SharePoint
+          - title:
+              Update the "support grant certificate assurance report
+              spreadsheet"
