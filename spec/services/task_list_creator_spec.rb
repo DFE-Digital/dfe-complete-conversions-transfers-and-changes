@@ -31,5 +31,13 @@ RSpec.describe TaskListCreator, type: :model do
       expect(Task.count).to be 3
       expect(Task.where(title: "Understand history and complete handover from Pre-AB", order: 0, section: section)).to exist
     end
+
+    it "creates actions from the workflow" do
+      section = Section.find_by(title: "Clear legal documents")
+      task = section.tasks.find_by(title: "Clear land questionnaire")
+
+      expect(Action.count).to eql 6
+      expect(Action.where(title: "Action one", order: 0, task: task)).to exist
+    end
   end
 end

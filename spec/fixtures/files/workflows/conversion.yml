@@ -8,8 +8,17 @@ sections:
   - title: Starting the project
     tasks:
       - title: Understand history and complete handover from Pre-AB
+        actions:
+          - title: Action one
+          - title: Action two
       - title: Note concerns or issues from handover
+        actions:
+          - title: Action one
+          - title: Action two
 
   - title: Clear legal documents
     tasks:
       - title: Clear land questionnaire
+        actions:
+          - title: Action one
+          - title: Action two
