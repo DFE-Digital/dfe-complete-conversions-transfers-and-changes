@@ -43,7 +43,7 @@ RSpec.feature "Team leaders can create a new project" do
     sign_in_with_user(team_leader)
     visit new_project_path
 
-    allow(YAML).to receive(:load_file).with("workflows/conversion.yml").and_return(
+    allow(YAML).to receive(:load_file).with(Rails.root.join("app", "workflows", "conversion.yml")).and_return(
       YAML.load_file(mock_workflow)
     )
   end

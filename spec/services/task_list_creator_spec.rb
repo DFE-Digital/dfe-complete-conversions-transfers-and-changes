@@ -4,9 +4,9 @@ RSpec.describe TaskListCreator do
   let(:task_list_creator) { TaskListCreator.new }
 
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
-
+  let(:workflow_path) { Rails.root.join("app", "workflows", "conversion.yml") }
   before do
-    allow(YAML).to receive(:load_file).with("workflows/conversion.yml").and_return(
+    allow(YAML).to receive(:load_file).with(workflow_path).and_return(
       YAML.load_file(mock_workflow)
     )
   end
@@ -17,7 +17,7 @@ RSpec.describe TaskListCreator do
     subject! { task_list_creator.call(project) }
 
     it "loads the YAML workflow" do
-      expect(YAML).to have_received(:load_file).with("workflows/conversion.yml").once
+      expect(YAML).to have_received(:load_file).with(workflow_path).once
     end
 
     it "creates sections from the workflow" do
