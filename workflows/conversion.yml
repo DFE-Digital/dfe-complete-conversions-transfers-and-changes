@@ -4,36 +4,82 @@ sections:
   - title: Starting the project
     tasks:
       - title: Understand history and complete handover from Pre-AB
+        actions:
+          - title: Action one
+          - title: Action two
       - title: Note concerns or issues from handover
+        actions:
+          - title: Action three
       - title: Confirm LA information template (LA proforma) has been received
+        actions:
+          - title: Action four
       - title: Introduction and communications
+        actions:
+          - title: Action five
       - title: Confirm support grant has been processed
+        actions:
+          - title: Action six
       - title: Agree deadlines and ways of working
+        actions:
+          - title: Action seven
       - title: Send checklist via email
+        actions:
+          - title: Action eight
 
   - title: Clear legal documents
     tasks:
       - title: Clear land questionnaire
+        actions:
+          - title: Action nine
       - title: Clear articles of association
+        actions:
+          - title: Action ten
       - title: Clear supplementary funding agreement
+        actions:
+          - title: Action eleven
       - title: Clear church supplementary agreement
+        actions:
+          - title: Action twelve
       - title: Clear master funding agreement
+        actions:
+          - title: Action thirteen
 
   - title: Internal actions
     tasks:
       - title: Confirm single worksheet has been completed
+        actions:
+          - title: Action fourteen
+
       - title: Confirm project has been added to the baseline
+        actions:
+          - title: Action fifteen
       - title: Confirm support grant certificate has been sent to the Trust
+        actions:
+          - title: Action sixteen
 
   - title: Confirmations, signing and sealing
     tasks:
       - title: Arrange all documents for signing and sealing
+        actions:
+          - title: Action seventeen
       - title: Confirm leases are agreed and signed
+        actions:
+          - title: Action eighteen
       - title: Confirm signing of transfer agreement
+        actions:
+          - title: Action nineteen
       - title: Ensure all documents are redacted, sent or saved
+        actions:
+          - title: Action tewnty
       - title: Complete final pre-opening checklist
+        actions:
+          - title: Action twenty one
 
   - title: After the conversion
     tasks:
       - title: Confirm URN has been created
+        actions:
+          - title: Action twenty two
       - title: Email documents to the Trust
+        actions:
+          - title: Action twenty three
