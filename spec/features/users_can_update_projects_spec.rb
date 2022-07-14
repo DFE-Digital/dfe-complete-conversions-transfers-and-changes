@@ -3,6 +3,13 @@ require "rails_helper"
 RSpec.feature "Users can reach the edit project page" do
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:delivery_officer) { create(:user, email: "user1@education.gov.uk") }
+  let(:establishment) { build(:academies_api_establishment) }
+  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
+
+  before do
+    allow_any_instance_of(AcademiesApi::Client).to \
+      receive(:get_establishment) { establishment_result }
+  end
 
   context "the user is a team leader" do
     before(:each) do
@@ -46,6 +53,13 @@ RSpec.feature "Users can update a project" do
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:delivery_officer) { create(:user, email: "user1@education.gov.uk") }
   let(:delivery_officer_2) { create(:user, email: "user2@education.gov.uk") }
+  let(:establishment) { build(:academies_api_establishment) }
+  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
+
+  before do
+    allow_any_instance_of(AcademiesApi::Client).to \
+      receive(:get_establishment) { establishment_result }
+  end
 
   context "the user is a team leader" do
     before(:each) do

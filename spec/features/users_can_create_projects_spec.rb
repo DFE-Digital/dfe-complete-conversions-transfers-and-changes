@@ -1,6 +1,13 @@
 require "rails_helper"
 
 RSpec.feature "Users can view the new project form" do
+  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
+
+  before do
+    allow_any_instance_of(AcademiesApi::Client).to \
+      receive(:get_establishment) { establishment_result }
+  end
+
   context "the user is a team leader" do
     before(:each) do
       sign_in_with_user(create(:user, :team_leader))
@@ -36,16 +43,20 @@ end
 
 RSpec.feature "Team leaders can create a new project" do
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
-
   let(:team_leader) { create(:user, :team_leader) }
+  let(:establishment) { build(:academies_api_establishment) }
+  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
 
-  before(:each) do
+  before do
     sign_in_with_user(team_leader)
     visit new_project_path
 
     allow(YAML).to receive(:load_file).with("workflows/conversion.yml").and_return(
       YAML.load_file(mock_workflow)
     )
+
+    allow_any_instance_of(AcademiesApi::Client).to \
+      receive(:get_establishment) { establishment_result }
   end
 
   context "the URN is valid" do

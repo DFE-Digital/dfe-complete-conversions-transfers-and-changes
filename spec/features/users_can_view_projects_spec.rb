@@ -4,11 +4,15 @@ RSpec.feature "Users can view a list of projects" do
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:user_1) { create(:user, email: "user1@education.gov.uk") }
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
+  let(:establishment) { build(:academies_api_establishment) }
+  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
 
-  before(:each) do
+  before do
     @unassigned_project = Project.create!(urn: 1001)
     @user1_project = Project.create!(urn: 1002, delivery_officer: user_1)
     @user2_project = Project.create!(urn: 1003, delivery_officer: user_2)
+    allow_any_instance_of(AcademiesApi::Client).to \
+      receive(:get_establishment) { establishment_result }
   end
 
   context "the user is a team leader" do
@@ -41,13 +45,21 @@ RSpec.feature "Users can view a list of projects" do
 end
 
 RSpec.feature "Users can view a single project" do
+  let(:establishment) { build(:academies_api_establishment) }
+  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
+
+  before do
+    allow_any_instance_of(AcademiesApi::Client).to \
+      receive(:get_establishment) { establishment_result }
+  end
+
   scenario "by following a link from the home page" do
     sign_in_with_user(create(:user, :team_leader))
 
     single_project = Project.create!(urn: 19283746)
 
     visit root_path
-    click_on single_project.urn.to_s
+    click_on establishment.name
     expect(page).to have_content(single_project.urn.to_s)
   end
 

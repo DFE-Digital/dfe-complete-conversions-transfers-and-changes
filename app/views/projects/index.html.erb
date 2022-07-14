@@ -4,20 +4,17 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-  
+
     <h1 class="govuk-heading-l">
       <%= t("project.index.title.all") %> (<%= @projects.count %>)
     </h1>
 
     <% @projects.each do |project| %>
+      <h2 class="govuk-heading-m govuk-heading-m--school-name">
+        <%= link_to project.establishment.name, project_path(project) %>
+        <span class="govuk-caption-l inline"><%= "- #{project.urn}" %></span>
+      </h2>
       <dl class="govuk-summary-list govuk-summary-list--school-details govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <h2 class="govuk-heading-m govuk-heading-m--school-name">
-              <span><%= link_to "URN #{project.urn}", project_path(project) %></span>
-            </h2>
-          </dt>
-        </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             <%= t('project.summary.delivery_officer.title') %>
@@ -33,7 +30,7 @@
       <p><%= link_to t('project.index.new_button.text'),
         new_project_path,
         class: 'govuk-button',
-        data: {module: "govuk-button"}
+        data: { module: "govuk-button" }
       %></p>
     <% end %>
 
