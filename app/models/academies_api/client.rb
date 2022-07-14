@@ -20,7 +20,7 @@ class AcademiesApi::Client
 
     case response.status
     when 200
-      Result.new(AcademiesApi::Establishment.new(response.body), nil)
+      Result.new(AcademiesApi::Establishment.new.from_json(response.body), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishment.errors.not_found", urn: urn)))
     else
