@@ -66,6 +66,7 @@ RSpec.configure do |config|
 
   # Include helpers for tests
   config.include SignInHelpers
+  config.include AcademiesApiHelpers
   config.include FeatureHelpers, type: :feature
 
   # cleanup Omniauth after each example

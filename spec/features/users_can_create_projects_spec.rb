@@ -1,13 +1,6 @@
 require "rails_helper"
 
 RSpec.feature "Users can view the new project form" do
-  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
-
-  before do
-    allow_any_instance_of(AcademiesApi::Client).to \
-      receive(:get_establishment) { establishment_result }
-  end
-
   context "the user is a team leader" do
     before(:each) do
       sign_in_with_user(create(:user, :team_leader))
@@ -44,8 +37,6 @@ end
 RSpec.feature "Team leaders can create a new project" do
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
   let(:team_leader) { create(:user, :team_leader) }
-  let(:establishment) { build(:academies_api_establishment) }
-  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
 
   before do
     sign_in_with_user(team_leader)
@@ -54,14 +45,15 @@ RSpec.feature "Team leaders can create a new project" do
     allow(YAML).to receive(:load_file).with("workflows/conversion.yml").and_return(
       YAML.load_file(mock_workflow)
     )
-
-    allow_any_instance_of(AcademiesApi::Client).to \
-      receive(:get_establishment) { establishment_result }
   end
 
   context "the URN is valid" do
+    let(:urn) { 19283746 }
+
+    before { mock_successful_api_establishment_response(urn: urn) }
+
     scenario "a new project is created" do
-      fill_in "project-urn-field", with: "19283746"
+      fill_in "project-urn-field", with: urn
       click_button("Continue")
       expect(page).to have_content("Project task list")
       expect(page).to have_content("Starting the project")

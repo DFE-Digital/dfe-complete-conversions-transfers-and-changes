@@ -4,15 +4,14 @@ RSpec.feature "Users can view a list of projects" do
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:user_1) { create(:user, email: "user1@education.gov.uk") }
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
-  let(:establishment) { build(:academies_api_establishment) }
-  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
 
   before do
     @unassigned_project = Project.create!(urn: 1001)
     @user1_project = Project.create!(urn: 1002, delivery_officer: user_1)
     @user2_project = Project.create!(urn: 1003, delivery_officer: user_2)
-    allow_any_instance_of(AcademiesApi::Client).to \
-      receive(:get_establishment) { establishment_result }
+    mock_successful_api_establishment_response(urn: 1001)
+    mock_successful_api_establishment_response(urn: 1002)
+    mock_successful_api_establishment_response(urn: 1003)
   end
 
   context "the user is a team leader" do
@@ -45,18 +44,15 @@ RSpec.feature "Users can view a list of projects" do
 end
 
 RSpec.feature "Users can view a single project" do
+  let(:urn) { 19283746 }
   let(:establishment) { build(:academies_api_establishment) }
-  let(:establishment_result) { AcademiesApi::Client::Result.new(establishment, nil) }
 
-  before do
-    allow_any_instance_of(AcademiesApi::Client).to \
-      receive(:get_establishment) { establishment_result }
-  end
+  before { mock_successful_api_establishment_response(urn: urn, establishment: establishment) }
 
   scenario "by following a link from the home page" do
     sign_in_with_user(create(:user, :team_leader))
 
-    single_project = Project.create!(urn: 19283746)
+    single_project = Project.create!(urn: urn)
 
     visit root_path
     click_on establishment.name
@@ -74,7 +70,7 @@ RSpec.feature "Users can view a single project" do
 
     scenario "the project page shows an unassigned delivery officer" do
       sign_in_with_user(create(:user, :team_leader))
-      single_project = Project.create!(urn: 19283746)
+      single_project = Project.create!(urn: urn)
 
       visit project_path(single_project)
       expect(page).to have_content(I18n.t("project.summary.delivery_officer.unassigned"))
@@ -96,7 +92,7 @@ RSpec.feature "Users can view a single project" do
     scenario "the project page shows an assigned delivery officer" do
       sign_in_with_user(create(:user, :team_leader, email: user_email_address))
       user = User.find_by(email: user_email_address)
-      single_project = Project.create!(urn: 19283746, delivery_officer: user)
+      single_project = Project.create!(urn: urn, delivery_officer: user)
 
       visit project_path(single_project.id)
       expect(page).to have_content(user_email_address)
