@@ -15,15 +15,20 @@
             "items": {
               "type": "object",
               "properties": {
-                "slug": { "type": "string" },
                 "title": { "type": "string" },
-                "description": { "type": "string" }
+                "actions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "title": { "type": "string" }
+                    },
+                    "required": ["title"]
+                  }
+                }
               },
               "additionalProperties": false,
-              "required": ["title"],
-              "dependentRequired": {
-                "parts": ["slug"]
-              }
+              "required": ["title", "actions"]
             },
             "minItems": 1
           }

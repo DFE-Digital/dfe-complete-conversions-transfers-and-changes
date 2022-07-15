@@ -1,12 +1,12 @@
 require "rails_helper"
 
-RSpec.describe TaskListCreator, type: :model do
+RSpec.describe TaskListCreator do
   let(:task_list_creator) { TaskListCreator.new }
 
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
-
+  let(:workflow_path) { Rails.root.join("app", "workflows", "conversion.yml") }
   before do
-    allow(YAML).to receive(:load_file).with("workflows/conversion.yml").and_return(
+    allow(YAML).to receive(:load_file).with(workflow_path).and_return(
       YAML.load_file(mock_workflow)
     )
   end
@@ -17,7 +17,7 @@ RSpec.describe TaskListCreator, type: :model do
     subject! { task_list_creator.call(project) }
 
     it "loads the YAML workflow" do
-      expect(YAML).to have_received(:load_file).with("workflows/conversion.yml").once
+      expect(YAML).to have_received(:load_file).with(workflow_path).once
     end
 
     it "creates sections from the workflow" do
@@ -30,6 +30,14 @@ RSpec.describe TaskListCreator, type: :model do
 
       expect(Task.count).to be 3
       expect(Task.where(title: "Understand history and complete handover from Pre-AB", order: 0, section: section)).to exist
+    end
+
+    it "creates actions from the workflow" do
+      section = Section.find_by(title: "Clear legal documents")
+      task = section.tasks.find_by(title: "Clear land questionnaire")
+
+      expect(Action.count).to eql 6
+      expect(Action.where(title: "Action one", order: 0, task: task)).to exist
     end
   end
 end

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_04_100256) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_12_092157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "actions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "order", null: false
+    t.boolean "completed", default: false, null: false
+    t.uuid "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_actions_on_task_id"
+  end
 
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "urn", null: false
@@ -51,7 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_100256) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "actions", "tasks"
+  add_foreign_key "projects", "users", column: "delivery_officer_id"
   add_foreign_key "sections", "projects"
   add_foreign_key "tasks", "sections"
-  add_foreign_key "projects", "users", column: "delivery_officer_id"
 end
