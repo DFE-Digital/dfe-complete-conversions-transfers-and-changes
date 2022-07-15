@@ -62,6 +62,8 @@ RSpec.feature "Team leaders can create a new project" do
   end
 
   context "the URN is empty" do
+    before { mock_successful_api_establishment_response(urn: any_args) }
+
     scenario "the user is shown an error message" do
       click_button("Continue")
       expect(page).to have_content("can't be blank")
@@ -69,6 +71,8 @@ RSpec.feature "Team leaders can create a new project" do
   end
 
   context "the URN is invalid" do
+    before { mock_successful_api_establishment_response(urn: any_args) }
+
     scenario "the user is shown an error message" do
       fill_in "project-urn-field", with: "three"
       click_button("Continue")

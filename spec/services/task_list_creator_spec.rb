@@ -2,17 +2,20 @@ require "rails_helper"
 
 RSpec.describe TaskListCreator do
   let(:task_list_creator) { TaskListCreator.new }
-
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
   let(:workflow_path) { Rails.root.join("app", "workflows", "conversion.yml") }
+  let(:urn) { 12345 }
+
   before do
     allow(YAML).to receive(:load_file).with(workflow_path).and_return(
       YAML.load_file(mock_workflow)
     )
+
+    mock_successful_api_establishment_response(urn: urn)
   end
 
   describe "#call" do
-    let(:project) { Project.create(urn: 12345) }
+    let(:project) { Project.create(urn: urn) }
 
     subject! { task_list_creator.call(project) }
 
