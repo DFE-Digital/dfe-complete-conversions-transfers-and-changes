@@ -1,13 +1,16 @@
 require "rails_helper"
 
 RSpec.feature "Users can reach the edit project page" do
+  let(:urn) { 12345 }
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:delivery_officer) { create(:user, email: "user1@education.gov.uk") }
 
+  before { mock_successful_api_establishment_response(urn: urn) }
+
   context "the user is a team leader" do
-    before(:each) do
+    before do
       sign_in_with_user(team_leader)
-      @unassigned_project = Project.create!(urn: 1001)
+      @unassigned_project = Project.create!(urn: urn)
     end
 
     scenario "by following a link from the show project page" do
@@ -25,9 +28,9 @@ RSpec.feature "Users can reach the edit project page" do
   end
 
   context "the user is not a team leader" do
-    before(:each) do
+    before do
       sign_in_with_user(delivery_officer)
-      @user1_project = Project.create!(urn: 1002, delivery_officer: delivery_officer)
+      @user1_project = Project.create!(urn: urn, delivery_officer: delivery_officer)
     end
 
     scenario "there is no edit link on the show project page" do
@@ -43,18 +46,20 @@ RSpec.feature "Users can reach the edit project page" do
 end
 
 RSpec.feature "Users can update a project" do
+  let(:urn) { 12345 }
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:delivery_officer) { create(:user, email: "user1@education.gov.uk") }
   let(:delivery_officer_2) { create(:user, email: "user2@education.gov.uk") }
 
   context "the user is a team leader" do
-    before(:each) do
+    before do
       sign_in_with_user(team_leader)
+      mock_successful_api_establishment_response(urn: urn)
     end
 
     context "when the project has no delivery officer" do
-      before(:each) do
-        @unassigned_project = Project.create!(urn: 1001)
+      before do
+        @unassigned_project = Project.create!(urn: urn)
         @delivery_officer = delivery_officer
       end
 
@@ -68,7 +73,7 @@ RSpec.feature "Users can update a project" do
 
     context "when the project already has a delivery officer" do
       before(:each) do
-        @assigned_project = Project.create!(urn: 1002, delivery_officer: delivery_officer)
+        @assigned_project = Project.create!(urn: urn, delivery_officer: delivery_officer)
       end
 
       scenario "the delivery officer can be changed" do

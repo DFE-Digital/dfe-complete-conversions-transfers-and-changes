@@ -36,10 +36,9 @@ end
 
 RSpec.feature "Team leaders can create a new project" do
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
-
   let(:team_leader) { create(:user, :team_leader) }
 
-  before(:each) do
+  before do
     sign_in_with_user(team_leader)
     visit new_project_path
 
@@ -49,8 +48,12 @@ RSpec.feature "Team leaders can create a new project" do
   end
 
   context "the URN is valid" do
+    let(:urn) { 19283746 }
+
+    before { mock_successful_api_establishment_response(urn: urn) }
+
     scenario "a new project is created" do
-      fill_in "project-urn-field", with: "19283746"
+      fill_in "project-urn-field", with: urn
       click_button("Continue")
       expect(page).to have_content("Project task list")
       expect(page).to have_content("Starting the project")

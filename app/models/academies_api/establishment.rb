@@ -1,9 +1,9 @@
-class AcademiesApi::Establishment
-  def initialize(body)
-    @raw = JSON.parse(body)
-  end
+class AcademiesApi::Establishment < AcademiesApi::BaseApiModel
+  attr_accessor :name
 
-  def name
-    @raw.fetch("establishmentName")
+  def self.attribute_map
+    {
+      name: "establishmentName"
+    }
   end
 end
