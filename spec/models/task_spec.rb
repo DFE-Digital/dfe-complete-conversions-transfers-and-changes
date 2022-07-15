@@ -9,6 +9,6 @@ RSpec.describe Task, type: :model do
 
   describe "Relationships" do
     it { is_expected.to belong_to(:section) }
-    it { is_expected.to have_many(:actions) }
+    it { is_expected.to have_many(:actions).dependent(:destroy) }
   end
 end

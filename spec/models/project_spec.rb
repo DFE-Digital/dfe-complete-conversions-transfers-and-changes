@@ -13,7 +13,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "Relationships" do
-    it { is_expected.to have_many(:sections) }
+    it { is_expected.to have_many(:sections).dependent(:destroy) }
   end
 
   describe "#establishment" do

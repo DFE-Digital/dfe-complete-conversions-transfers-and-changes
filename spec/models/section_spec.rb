@@ -7,7 +7,7 @@ RSpec.describe Section, type: :model do
   end
 
   describe "Relationships" do
-    it { is_expected.to have_many(:tasks) }
+    it { is_expected.to have_many(:tasks).dependent(:destroy) }
     it { is_expected.to belong_to(:project) }
   end
 end
