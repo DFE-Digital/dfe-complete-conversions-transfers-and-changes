@@ -76,4 +76,47 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "#conversion_project" do
+    let(:urn) { 12345 }
+    let(:conversion_project) { build(:academies_api_conversion_project) }
+
+    subject { described_class.new(urn: urn) }
+
+    context "when the API returns a successful response" do
+      before { mock_successful_api_conversion_project_response(urn: urn, conversion_project:) }
+
+      it "retreives conversion_project data from the Academies API" do
+        expect(subject.conversion_project).to eq conversion_project
+      end
+    end
+
+    context "when the Academies API client returns a #{AcademiesApi::Client::NotFoundError}" do
+      let(:error_message) { "Could not find conversion project with URN: 12345" }
+      let(:error) { AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new(error_message)) }
+
+      before do
+        allow_any_instance_of(AcademiesApi::Client).to \
+          receive(:get_conversion_project).with(urn) { error }
+      end
+
+      it "raises the error" do
+        expect { subject.conversion_project }.to raise_error(AcademiesApi::Client::NotFoundError, error_message)
+      end
+    end
+
+    context "when the Academies API client returns a #{AcademiesApi::Client::Error}" do
+      let(:error_message) { "There was an error connecting to the Academies API, could not fetch conversion project for URN: 12345" }
+      let(:error) { AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::Error.new(error_message)) }
+
+      before do
+        allow_any_instance_of(AcademiesApi::Client).to \
+          receive(:get_conversion_project).with(urn) { error }
+      end
+
+      it "raises the error" do
+        expect { subject.conversion_project }.to raise_error(AcademiesApi::Client::Error, error_message)
+      end
+    end
+  end
 end
