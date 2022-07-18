@@ -6,9 +6,27 @@ RSpec.describe Project, type: :model do
   end
 
   describe "Validations" do
-    it "urn" do
-      is_expected.to validate_presence_of(:urn)
-      is_expected.to validate_numericality_of(:urn).only_integer
+    before { mock_successful_api_establishment_response(urn: any_args) }
+
+    describe "#urn" do
+      it { is_expected.to validate_presence_of(:urn) }
+      it { is_expected.to validate_numericality_of(:urn).only_integer }
+
+      context "when no establishment with that URN exists in the API" do
+        let(:establishment_result) do
+          AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new("Could not find establishment with URN: 12345"))
+        end
+
+        before do
+          allow_any_instance_of(AcademiesApi::Client).to \
+            receive(:get_establishment) { establishment_result }
+        end
+
+        it "is invalid" do
+          expect(subject).to_not be_valid
+          subject.errors[:urn].include?("No establishment exists with that URN. Enter a valid URN.")
+        end
+      end
     end
   end
 

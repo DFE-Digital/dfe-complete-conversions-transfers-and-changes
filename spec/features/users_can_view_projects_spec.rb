@@ -6,12 +6,12 @@ RSpec.feature "Users can view a list of projects" do
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
 
   before do
-    @unassigned_project = Project.create!(urn: 1001)
-    @user1_project = Project.create!(urn: 1002, delivery_officer: user_1)
-    @user2_project = Project.create!(urn: 1003, delivery_officer: user_2)
     mock_successful_api_establishment_response(urn: 1001)
     mock_successful_api_establishment_response(urn: 1002)
     mock_successful_api_establishment_response(urn: 1003)
+    @unassigned_project = Project.create!(urn: 1001)
+    @user1_project = Project.create!(urn: 1002, delivery_officer: user_1)
+    @user2_project = Project.create!(urn: 1003, delivery_officer: user_2)
   end
 
   context "the user is a team leader" do

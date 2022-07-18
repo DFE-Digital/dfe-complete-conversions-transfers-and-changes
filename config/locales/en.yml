@@ -78,3 +78,9 @@ en:
       project:
         urn: This is the URN of the existing school which is converting to an academy.
         delivery_officer_id: The delivery officer responsible for this project
+
+  activerecord:
+    errors:
+      models:
+        project:
+          no_establishment_found: No establishment found with that URN. Enter a valid URN.
