@@ -3,6 +3,6 @@ FactoryBot.define do
     title { "Clear land questionnaire" }
     completed { false }
     order { 0 }
-    section { create(:section) }
+    section
   end
 end
