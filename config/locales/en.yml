@@ -86,3 +86,5 @@ en:
       models:
         project:
           no_establishment_found: No establishment found with that URN. Enter a valid URN.
+          no_conversion_project_found: No existing conversion project found with that URN. Check that the URN has a matching conversion project.
+          multiple_conversion_projects_found: Multiple conversion projects have been found for that URN. Unable to continue.

@@ -6,7 +6,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "Validations" do
-    before { mock_successful_api_establishment_response(urn: any_args) }
+    before { mock_successful_api_responses(urn: any_args) }
 
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
@@ -18,13 +18,48 @@ RSpec.describe Project, type: :model do
         end
 
         before do
+          mock_successful_api_conversion_project_response(urn: 12345)
           allow_any_instance_of(AcademiesApi::Client).to \
             receive(:get_establishment) { establishment_result }
         end
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          subject.errors[:urn].include?("No establishment exists with that URN. Enter a valid URN.")
+          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.no_establishment_found"))
+        end
+      end
+
+      context "when no conversion project with that URN exists in the API" do
+        let(:conversion_project_result) do
+          AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new(I18n.t("academies_api.get_conversion_project.errors.not_found", urn: 12345)))
+        end
+
+        before do
+          mock_successful_api_establishment_response(urn: 12345)
+          allow_any_instance_of(AcademiesApi::Client).to \
+            receive(:get_conversion_project) { conversion_project_result }
+        end
+
+        it "is invalid" do
+          expect(subject).to_not be_valid
+          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.no_conversion_project_found"))
+        end
+      end
+
+      context "when multiple conversion projects with that URN exist in the API" do
+        let(:conversion_project_result) do
+          AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::MultipleResultsError.new(I18n.t("academies_api.get_conversion_project.errors.multiple_results", urn: 12345, record_count: 2)))
+        end
+
+        before do
+          mock_successful_api_establishment_response(urn: 12345)
+          allow_any_instance_of(AcademiesApi::Client).to \
+            receive(:get_conversion_project) { conversion_project_result }
+        end
+
+        it "is invalid" do
+          expect(subject).to_not be_valid
+          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.multiple_conversion_projects_found"))
         end
       end
     end
@@ -41,7 +76,10 @@ RSpec.describe Project, type: :model do
     subject { described_class.new(urn: urn) }
 
     context "when the API returns a successful response" do
-      before { mock_successful_api_establishment_response(urn: urn, establishment:) }
+      before do
+        mock_successful_api_establishment_response(urn: urn, establishment:)
+        mock_successful_api_conversion_project_response(urn: urn)
+      end
 
       it "retreives establishment data from the Academies API" do
         expect(subject.establishment).to eq establishment
