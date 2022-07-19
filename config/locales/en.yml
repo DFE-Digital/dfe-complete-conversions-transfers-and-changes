@@ -69,6 +69,8 @@ en:
       delivery_officer:
         title: Delivery officer
         unassigned: Not yet assigned
+      incoming_trust:
+        title: Incoming trust
   helpers:
     label:
       project:

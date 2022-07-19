@@ -10,6 +10,10 @@ class Project < ApplicationRecord
     @establishment || retrieve_establishment
   end
 
+  def conversion_project
+    @conversion_project ||= retrieve_conversion_project
+  end
+
   private def establishment_exists
     retrieve_establishment
   rescue AcademiesApi::Client::NotFoundError
@@ -21,5 +25,12 @@ class Project < ApplicationRecord
     raise result.error if result.error.present?
 
     @establishment = result.object
+  end
+
+  private def retrieve_conversion_project
+    result = AcademiesApi::Client.new.get_conversion_project(urn)
+    raise result.error if result.error.present?
+
+    result.object
   end
 end

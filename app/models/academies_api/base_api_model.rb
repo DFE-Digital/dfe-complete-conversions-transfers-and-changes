@@ -3,6 +3,11 @@ class AcademiesApi::BaseApiModel
 
   class AttributeMapMissingError < RuntimeError; end
 
+  def from_hash(hash)
+    self.attributes = hash.stringify_keys
+    self
+  end
+
   def attributes=(hash)
     hash.each do |key, value|
       next unless self.class.attribute_map.value?(key)
