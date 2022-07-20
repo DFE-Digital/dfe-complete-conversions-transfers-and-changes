@@ -5,7 +5,12 @@
 <h1><%= @task.title %></h1>
 
 <%= form_for :task, url: project_task_path, method: :put do |form| %>
-  <%= form.govuk_collection_check_boxes :actions, @task.actions, :completed?, :title %>
+  <%= form.govuk_check_boxes_fieldset :actions, legend: { text: "Actions", size: "m" } do %>
+    <% @task.actions.each do |action| %>
+      <%= form.govuk_check_box :action_titles, action.title, label: { text: action.title }, link_errors: true, checked: action.completed? %>
+    <% end %>
+  <% end %>
 
   <%= form.govuk_submit %>
 <% end %>
+
