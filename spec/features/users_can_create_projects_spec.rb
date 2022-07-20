@@ -50,7 +50,7 @@ RSpec.feature "Team leaders can create a new project" do
   context "the URN is valid" do
     let(:urn) { 19283746 }
 
-    before { mock_successful_api_establishment_response(urn: urn) }
+    before { mock_successful_api_responses(urn: urn) }
 
     scenario "a new project is created" do
       fill_in "project-urn-field", with: urn
@@ -62,7 +62,7 @@ RSpec.feature "Team leaders can create a new project" do
   end
 
   context "the URN is empty" do
-    before { mock_successful_api_establishment_response(urn: any_args) }
+    before { mock_successful_api_responses(urn: any_args) }
 
     scenario "the user is shown an error message" do
       click_button("Continue")
@@ -71,7 +71,7 @@ RSpec.feature "Team leaders can create a new project" do
   end
 
   context "the URN is invalid" do
-    before { mock_successful_api_establishment_response(urn: any_args) }
+    before { mock_successful_api_responses(urn: any_args) }
 
     scenario "the user is shown an error message" do
       fill_in "project-urn-field", with: "three"

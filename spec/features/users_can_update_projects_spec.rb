@@ -5,7 +5,7 @@ RSpec.feature "Users can reach the edit project page" do
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:delivery_officer) { create(:user, email: "user1@education.gov.uk") }
 
-  before { mock_successful_api_establishment_response(urn: urn) }
+  before { mock_successful_api_responses(urn: urn) }
 
   context "the user is a team leader" do
     before do
@@ -54,7 +54,7 @@ RSpec.feature "Users can update a project" do
   context "the user is a team leader" do
     before do
       sign_in_with_user(team_leader)
-      mock_successful_api_establishment_response(urn: urn)
+      mock_successful_api_responses(urn: urn)
     end
 
     context "when the project has no delivery officer" do

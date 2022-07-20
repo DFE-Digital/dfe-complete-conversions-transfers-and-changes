@@ -11,7 +11,7 @@ RSpec.describe TaskListCreator do
       YAML.load_file(mock_workflow)
     )
 
-    mock_successful_api_establishment_response(urn: urn)
+    mock_successful_api_responses(urn: urn)
   end
 
   describe "#call" do

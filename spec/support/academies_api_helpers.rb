@@ -1,4 +1,9 @@
 module AcademiesApiHelpers
+  def mock_successful_api_responses(urn:)
+    mock_successful_api_establishment_response(urn:)
+    mock_successful_api_conversion_project_response(urn:)
+  end
+
   def mock_successful_api_establishment_response(urn:, establishment: nil)
     establishment = build(:academies_api_establishment) if establishment.nil?
 
