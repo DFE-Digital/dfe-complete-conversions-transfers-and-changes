@@ -58,9 +58,10 @@ RSpec.describe TasksController, type: :request do
       it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
     end
 
-    it "updates the Actions completed attribute" do
+    it "updates the actions and redirects to the project show page" do
       perform_request
 
+      expect(response).to redirect_to(project_path(project_id))
       expect(incomplete_action.reload.completed?).to be true
       expect(completed_action.reload.completed?).to be false
     end

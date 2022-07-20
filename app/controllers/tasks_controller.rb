@@ -9,6 +9,8 @@ class TasksController < ApplicationController
 
     @task.actions.update_all(completed: false)
     @task.actions.where(title: titles).update_all(completed: true)
+
+    redirect_to(project_path(params[:project_id]))
   end
 
   def action_params

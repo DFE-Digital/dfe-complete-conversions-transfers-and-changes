@@ -17,12 +17,14 @@ RSpec.feature "Users can update the Actions for a Task" do
   scenario "User updates a completed action and an incomplete action" do
     visit project_task_path(project_id, task_id)
 
-    page.uncheck("Action 1")
-    page.check("Action 2")
+    uncheck("Action 1")
+    check("Action 2")
 
     click_button("Continue")
 
     expect(incomplete_action.reload.completed?).to be true
     expect(completed_action.reload.completed?).to be false
+
+    expect(page).to have_current_path(project_path(project_id))
   end
 end
