@@ -29,7 +29,7 @@
 
     <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
-    <%= render partial: "shared/header" %>
+    <%= govuk_header(service_name: t("service_name"))  %>
 
     <div class="govuk-width-container ">
       <%= yield :pre_content_nav %>
@@ -40,7 +40,8 @@
       </main>
     </div>
 
-    <%= render partial: "shared/footer" %>
+    <%= govuk_footer %>
+    
   </body>
   <%= javascript_include_tag "application" %>
 </html>

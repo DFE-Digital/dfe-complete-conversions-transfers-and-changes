@@ -38,6 +38,8 @@ gem "omniauth-azure-activedirectory-v2"
 # Use pundit for authorisation management
 gem "pundit", "~> 2.2"
 
+# Use DfE's design component libraries
+gem "govuk-components", "~> 3.1"
 gem "govuk_design_system_formbuilder", "~> 3.1"
 
 gem "faraday"

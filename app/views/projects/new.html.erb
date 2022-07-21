@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-<%= link_to "Back", root_path, class: "govuk-back-link" %>
+  <%= govuk_back_link(href: root_path) %>
 <% end %>
 
 <%= form_with model: @project do |form| %>

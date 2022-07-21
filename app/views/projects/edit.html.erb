@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-<%= link_to "Back", project_path(@project), class: "govuk-back-link" %>
+  <%= govuk_back_link(href: project_path(@project)) %>
 <% end %>
 
 <div class="govuk-grid-row">
