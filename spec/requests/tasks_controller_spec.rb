@@ -13,12 +13,6 @@ RSpec.describe TasksController, type: :request do
 
     before { mock_successful_api_responses(urn: 12345) }
 
-    context "when the Task does not belong to the project" do
-      let(:project_id) { SecureRandom.uuid }
-
-      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
-    end
-
     context "when the Task is not found" do
       let(:task_id) { SecureRandom.uuid }
 
@@ -45,12 +39,6 @@ RSpec.describe TasksController, type: :request do
     end
 
     before { mock_successful_api_responses(urn: 12345) }
-
-    context "when the Task does not belong to the project" do
-      let(:project_id) { SecureRandom.uuid }
-
-      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
-    end
 
     context "when the Task is not found" do
       let(:task_id) { SecureRandom.uuid }

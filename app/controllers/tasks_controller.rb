@@ -10,7 +10,7 @@ class TasksController < ApplicationController
     @task.actions.update_all(completed: false)
     @task.actions.where(title: titles).update_all(completed: true)
 
-    redirect_to(project_path(params[:project_id]))
+    redirect_to(project_path(@task.project))
   end
 
   def action_params
@@ -18,6 +18,6 @@ class TasksController < ApplicationController
   end
 
   private def find_task
-    @task = Task.joins(:section).where(section: {project: params[:project_id]}).find(params[:id])
+    @task = Task.find(params[:id])
   end
 end
