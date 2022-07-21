@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # Omniauth callbacks
   get "auth/:provider/callback", to: "sessions#create"
 
-  # Projects
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
 end

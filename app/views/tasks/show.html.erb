@@ -1,0 +1,11 @@
+<% content_for :pre_content_nav do %>
+  <%= govuk_back_link(href: project_path(@task.project)) %>
+<% end %>
+
+<h1><%= @task.title %></h1>
+
+<%= form_for :task, url: project_task_path, method: :put do |form| %>
+  <%= form.govuk_collection_check_boxes :actions, @task.actions, :completed?, :title %>
+
+  <%= form.govuk_submit %>
+<% end %>
