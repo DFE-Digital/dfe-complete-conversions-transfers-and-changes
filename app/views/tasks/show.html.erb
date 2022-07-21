@@ -2,7 +2,7 @@
   <%= govuk_back_link(href: project_path(@task.project)) %>
 <% end %>
 
-<h1><%= @task.title %></h1>
+<h1 class="govuk-heading-l"><%= @task.title %></h1>
 
 <%= form_for :task, url: project_task_path, method: :put do |form| %>
   <%= form.govuk_check_boxes_fieldset :actions, legend: { text: "Actions", size: "m" } do %>
