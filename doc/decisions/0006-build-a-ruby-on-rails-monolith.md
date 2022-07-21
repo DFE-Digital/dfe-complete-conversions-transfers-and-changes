@@ -13,9 +13,9 @@ We decided to build a Rails monolith rather than a multi-tier application with a
 deliver at pace, accepting the possible challenges with long-term sustainability
 and interoperability with other RDD applications.
 
-Most applications being built in RDD are multi-tier with a front-end on
-GPaaS and a back-end API on Azure. Both the front-end and back-end are written
-in .NET.
+Most applications being built in RDD are multi-tier with a front-end on GPaaS
+and a back-end API on Azure. Both the front-end and back-end are written in
+.NET.
 
 The Completions team has been building a Ruby on Rails monolith to date and
 would like to continue with this.
@@ -36,10 +36,11 @@ overall system complexity which Martin Fowler describes as the
 ‘[microservice premium](https://www.martinfowler.com/bliki/MicroservicePremium.html):
 
 > “Microservices are a useful architecture, but even their advocates say that
-> using them incurs a significant Microservice Premium, which means they are only
-> useful with more complex systems.  This premium, essentially the cost of
+> using them incurs a significant Microservice Premium, which means they are
+> only useful with more complex systems. This premium, essentially the cost of
 > managing a suite of services, will slow down a team, favoring a monolith for
-> simpler applications.” [ref](https://www.martinfowler.com/bliki/MicroservicePremium.html)
+> simpler applications.”
+> [ref](https://www.martinfowler.com/bliki/MicroservicePremium.html)
 
 His advice is therefore to take a
 ‘[monolith first](https://www.martinfowler.com/bliki/MonolithFirst.html)’
