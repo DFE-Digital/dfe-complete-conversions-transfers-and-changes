@@ -1,5 +1,5 @@
 class AcademiesApi::Client
-  ACADEMIES_API_TIMEOUT = 0.6
+  ACADEMIES_API_TIMEOUT = ENV.fetch("ACADEMIES_API_TIMEOUT", 0.6).to_f
 
   class Error < StandardError; end
 
