@@ -14,16 +14,14 @@
         <%= link_to project.establishment.name, project_path(project) %>
         <span class="govuk-caption-l inline"><%= "- #{project.urn}" %></span>
       </h2>
-      <dl class="govuk-summary-list govuk-summary-list--school-details govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <%= t('project.summary.delivery_officer.title') %>
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <%= project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') %>
-          </dd>
-        </div>
-      </dl>
+
+      <%= govuk_summary_list(actions: false) do |summary_list|
+        summary_list.row do |row|
+          row.key { t('project.summary.delivery_officer.title') }
+          row.value { project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') }
+        end
+      end %>
+      
     <% end %>
 
     <% if policy(:project).new? %>
