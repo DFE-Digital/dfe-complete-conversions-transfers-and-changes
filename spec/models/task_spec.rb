@@ -11,4 +11,17 @@ RSpec.describe Task, type: :model do
     it { is_expected.to belong_to(:section) }
     it { is_expected.to have_many(:actions).dependent(:destroy) }
   end
+
+  describe "Scopes" do
+    before { mock_successful_api_responses(urn: any_args) }
+
+    describe "default_scope" do
+      let!(:task_1) { create(:task, order: 1) }
+      let!(:task_2) { create(:task, order: 0) }
+
+      it "orders ascending by the 'order' attribute" do
+        expect(Task.all).to eq [task_2, task_1]
+      end
+    end
+  end
 end
