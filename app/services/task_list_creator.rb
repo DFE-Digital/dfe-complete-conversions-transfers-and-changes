@@ -23,11 +23,8 @@ class TaskListCreator
   end
 
   private def create_actions(workflow_task, task)
-    all_actions = []
     workflow_task.fetch("actions").each_with_index do |workflow_action, index|
-      all_actions << workflow_action.merge({order: index, task_id: task.id})
+      Action.create(workflow_action.merge({order: index, task_id: task.id}))
     end
-
-    Action.insert_all(all_actions) unless all_actions.empty?
   end
 end
