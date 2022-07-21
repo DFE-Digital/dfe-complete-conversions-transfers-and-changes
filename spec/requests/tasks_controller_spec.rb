@@ -31,7 +31,7 @@ RSpec.describe TasksController, type: :request do
     let(:task) { create(:task, actions: [completed_action, incomplete_action]) }
     let(:project_id) { task.section.project.id }
     let(:task_id) { task.id }
-    let(:params) { {task: {action_titles: [incomplete_action.title]}} }
+    let(:params) { {task: {completed_action_ids: [incomplete_action.id]}} }
 
     subject(:perform_request) do
       put project_task_path(project_id, task_id), params: params

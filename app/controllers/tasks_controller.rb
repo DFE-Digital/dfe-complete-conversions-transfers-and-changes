@@ -5,16 +5,16 @@ class TasksController < ApplicationController
   end
 
   def update
-    titles = action_params[:action_titles]
-
-    @task.actions.update_all(completed: false)
-    @task.actions.where(title: titles).update_all(completed: true)
+    @task.actions.each do |action|
+      action_completed = action.id.in?(action_params[:completed_action_ids] || [])
+      Action.update(action.id, completed: action_completed)
+    end
 
     redirect_to(project_path(@task.project))
   end
 
   def action_params
-    params.require(:task).permit(action_titles: [])
+    params.require(:task).permit(completed_action_ids: [])
   end
 
   private def find_task
