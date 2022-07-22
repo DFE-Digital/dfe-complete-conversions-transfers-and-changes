@@ -1,0 +1,2 @@
+# check no instance is running and only call if not
+docker-compose -f docker-compose.database.local.yml up -d
