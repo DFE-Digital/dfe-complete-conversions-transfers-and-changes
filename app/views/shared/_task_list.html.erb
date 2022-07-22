@@ -12,7 +12,7 @@
                   <%= link_to(task.title, project_task_path(@project.id, task.id), class: "govuk-link") %>
                 </a>
               </span>
-              <%= govuk_tag(text: 'Completed', classes: "app-task-list__tag", html_attributes: {id: task_status_id(task)}) %>
+              <%= task_status_tag(task) %>
           </li>
         <% end %>
       </ul>
