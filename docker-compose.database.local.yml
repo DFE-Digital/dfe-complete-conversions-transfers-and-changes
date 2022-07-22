@@ -1,0 +1,7 @@
+version: "2.8"
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    env_file: .env.database
+    ports:
+      - 1433:1433
