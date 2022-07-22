@@ -1,6 +1,13 @@
 require "rails_helper"
 
 RSpec.describe TasksController, type: :request do
+  let(:user) { User.create!(email: "user@education.gov.uk") }
+
+  before do
+    mock_successful_authentication(user.email)
+    allow_any_instance_of(TasksController).to receive(:user_id).and_return(user.id)
+  end
+
   describe "#show" do
     let(:task) { create(:task) }
     let(:project_id) { task.section.project.id }
