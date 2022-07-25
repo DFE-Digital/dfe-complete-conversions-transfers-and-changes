@@ -5,4 +5,8 @@ class Task < ApplicationRecord
   default_scope { order(order: "asc") }
 
   delegate :project, to: :section
+
+  def status
+    :unknown
+  end
 end

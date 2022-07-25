@@ -13,7 +13,7 @@ RSpec.describe TaskListHelper, type: :helper do
     let(:task) { Task.new(title: "Clear land questionnaire") }
 
     it "returns a tag representing the task status" do
-      expect(helper.task_status_tag(task)).to eq '<strong class="govuk-tag app-task-list__tag" id="clear-land-questionnaire-status">Completed</strong>'
+      expect(helper.task_status_tag(task)).to eq '<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="clear-land-questionnaire-status">Unknown</strong>'
     end
   end
 end

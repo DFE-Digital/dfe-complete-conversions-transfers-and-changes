@@ -24,4 +24,16 @@ RSpec.describe Task, type: :model do
       end
     end
   end
+
+  describe "#actions_count" do
+    let(:task) { create(:task) }
+
+    describe "status" do
+      let!(:task) { create(:task) }
+
+      it "returns an unknown state" do
+        expect(task.status).to eq :unknown
+      end
+    end
+  end
 end
