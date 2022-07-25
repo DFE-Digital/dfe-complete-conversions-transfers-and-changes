@@ -1,0 +1,3 @@
+<li class="govuk-tabs__list-item <%= "govuk-tabs__list-item--selected" if current_page?(path) %>">
+  <%= link_to_unless_current name, path, class: "govuk-tabs__tab" %>
+</li>

@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  include Authentication
   before_action :find_task
 
   def show
