@@ -4,7 +4,20 @@ module TaskListHelper
   end
 
   def task_status_tag(task)
+    # Colours as per https://govuk-components.netlify.app/components/tag/
     tags_for_states = {
+      not_started: {
+        text: "Not started",
+        colour: "blue"
+      },
+      in_progress: {
+        text: "In progress",
+        colour: "orange"
+      },
+      completed: {
+        text: "Complete",
+        colour: "turquoise"
+      },
       unknown: {
         text: "Unknown",
         colour: "grey"
