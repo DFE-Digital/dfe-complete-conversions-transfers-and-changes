@@ -18,5 +18,5 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  resources :project_information, path: "/projects/information"
+  get "/projects/:id/information", to: "project_information#show", as: :project_information
 end
