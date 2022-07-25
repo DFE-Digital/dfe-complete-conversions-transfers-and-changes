@@ -71,6 +71,9 @@ en:
         unassigned: Not yet assigned
       incoming_trust:
         title: Incoming trust
+  subnavigation:
+    project_task_list: Project task list
+    project_information: Project information
   helpers:
     label:
       project:
