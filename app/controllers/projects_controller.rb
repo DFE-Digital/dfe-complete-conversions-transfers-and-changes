@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
 
     @project.save
     flash[:notice] = I18n.t("project.update.success")
-    redirect_to project_path(@project)
+    redirect_to project_information_path(@project)
   end
 
   private
