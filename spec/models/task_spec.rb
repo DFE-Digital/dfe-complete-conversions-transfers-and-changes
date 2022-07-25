@@ -24,4 +24,69 @@ RSpec.describe Task, type: :model do
       end
     end
   end
+
+  describe "#actions_count" do
+    let(:task) { create(:task) }
+
+    before do
+      mock_successful_api_responses(urn: any_args)
+      FactoryBot.create_list(:action, 3, task:)
+    end
+
+    it "returns the number of actions associated with the task" do
+      expect(task.actions_count).to eq 3
+    end
+  end
+
+  describe "#completed_actions_count" do
+    let(:task) { create(:task) }
+
+    before do
+      mock_successful_api_responses(urn: any_args)
+      FactoryBot.create_list(:action, 1, task:)
+      FactoryBot.create_list(:action, 2, task:, completed: true)
+    end
+
+    it "returns the number of completed actions associated with the task" do
+      expect(task.completed_actions_count).to eq 2
+    end
+  end
+
+  describe "#status" do
+    let(:task) { create(:task) }
+
+    context "there are no completed actions" do
+      before do
+        mock_successful_api_responses(urn: any_args)
+        FactoryBot.create_list(:action, 3, task:)
+      end
+
+      it "returns a not_started state" do
+        expect(task.status).to eq :not_started
+      end
+    end
+
+    context "the number of completed actions is equal to the total number of actions" do
+      before do
+        mock_successful_api_responses(urn: any_args)
+        FactoryBot.create_list(:action, 3, task:, completed: true)
+      end
+
+      it "returns a completed state" do
+        expect(task.status).to eq :completed
+      end
+    end
+
+    context "there are fewer completed actions than the total number of actions" do
+      before do
+        mock_successful_api_responses(urn: any_args)
+        FactoryBot.create_list(:action, 1, task:)
+        FactoryBot.create_list(:action, 2, task:, completed: true)
+      end
+
+      it "returns an in_progress state" do
+        expect(task.status).to eq :in_progress
+      end
+    end
+  end
 end
