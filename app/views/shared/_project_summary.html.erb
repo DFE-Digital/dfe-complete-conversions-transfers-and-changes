@@ -4,12 +4,12 @@
     <span class="govuk-caption-l">URN <%= @project.urn %></span>
     <h1 class="govuk-heading-l"><%= @project.establishment.name %></h1>
 
-    <%= govuk_inset_text do %>
-      <p class="govuk-body govuk-!-margin-0">
-        <span class="govuk-!-font-weight-bold"><%= t('project.summary.delivery_officer.title') %>:</span>
-        <%= @project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') %>
-      </p>
-    <% end %>
+    <%= govuk_summary_list(actions: false) do |summary_list|
+        summary_list.row do |row|
+          row.key { t('project.summary.delivery_officer.title') }
+          row.value { @project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') }
+        end
+      end %>
 
     <% if policy(@project).edit? %>
       <p class="govuk-body">
