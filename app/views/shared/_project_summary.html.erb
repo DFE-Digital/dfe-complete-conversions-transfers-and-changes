@@ -6,8 +6,16 @@
 
     <%= govuk_summary_list(actions: false) do |summary_list|
         summary_list.row do |row|
-          row.key { t('project.summary.delivery_officer.title') }
-          row.value { @project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') }
+          row.key { t('project.summary.proposed_opening_date.title') }
+          row.value { Date.parse(@project.conversion_project.proposed_opening_date).strftime("%-d %B %Y") }
+        end
+        summary_list.row do |row|
+          row.key { t('project.summary.incoming_trust.title') }
+          row.value { @project.conversion_project.name_of_trust }
+        end
+        summary_list.row do |row|
+          row.key { t('project.summary.local_authority.title') }
+          row.value { @project.establishment.local_authority }
         end
       end %>
 
