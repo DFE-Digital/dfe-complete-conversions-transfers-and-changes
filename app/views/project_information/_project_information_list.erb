@@ -1,0 +1,19 @@
+<h2 class="govuk-heading-l" id="projectDetails"><%= t('project_information.show.project_details.title') %></h2>
+<%= govuk_summary_list do |summary_list|
+  summary_list.row do |row|
+    row.key { t('project_information.show.project_details.rows.delivery_officer') }
+    row.value { 'The aardvark is vaguely pig-like in appearance' }
+  end
+end %>
+
+<h2 class="govuk-heading-l" id="schoolDetails"><%= t('project_information.show.school_details.title') %></h2>
+<%= govuk_summary_list do |summary_list|
+  summary_list.row do |row|
+    row.key { t('project_information.show.school_details.rows.original_school_name') }
+    row.value { 'The aardvark is vaguely pig-like in appearance' }
+  end
+  summary_list.row do |row|
+    row.key { t('project_information.show.school_details.rows.old_urn') }
+    row.value { 'The aardvark is vaguely pig-like in appearance' }
+  end
+end %>
