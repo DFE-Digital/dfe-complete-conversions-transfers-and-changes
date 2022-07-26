@@ -71,6 +71,19 @@ en:
         unassigned: Not yet assigned
       incoming_trust:
         title: Incoming trust
+  project_information:
+    show:
+      side_navigation:
+        title: Jump to section
+      project_details:
+        title: Project details
+        rows:
+          delivery_officer: Delivery officer
+      school_details:
+        title: School details
+        rows:
+          original_school_name: Original school name
+          old_urn: Old Unique Reference Number
   subnavigation:
     project_task_list: Project task list
     project_information: Project information
