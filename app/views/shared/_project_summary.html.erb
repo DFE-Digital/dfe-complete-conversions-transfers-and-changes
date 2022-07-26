@@ -7,7 +7,7 @@
     <%= govuk_summary_list(actions: false) do |summary_list|
         summary_list.row do |row|
           row.key { t('project.summary.proposed_opening_date.title') }
-          row.value { Date.parse(@project.conversion_project.proposed_opening_date).strftime("%-d %B %Y") }
+          row.value { @project.conversion_project.proposed_opening_date.to_formatted_s(:govuk) }
         end
         summary_list.row do |row|
           row.key { t('project.summary.incoming_trust.title') }
