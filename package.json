@@ -9,11 +9,12 @@
   },
   "devDependencies": {
     "ajv-cli": "^5.0.0",
-    "eslint": "^8.18.0",
+    "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "govuk-frontend": "^4.2.0",
-    "prettier": "^2.7.1",
-    "eslint": "^8.20.0",
-    "eslint-config-prettier": "^8.5.0"
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "@ministryofjustice/frontend": "^1.4.2"
   }
 }
