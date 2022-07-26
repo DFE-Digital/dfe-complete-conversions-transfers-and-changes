@@ -21,6 +21,9 @@ else
   echo "==> Updating..."
   script/no-docker/update
 
+  echo "==> Starting SQL Server container..."
+  script/no-docker/database
+
   echo "==> Starting a local Rails console..."
   bundle exec rails console
 fi
