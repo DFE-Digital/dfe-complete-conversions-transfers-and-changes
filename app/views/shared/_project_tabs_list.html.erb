@@ -1,9 +1,0 @@
-<div class="govuk-tabs">
-  <h2 class="govuk-tabs__title">
-    Project subnavigation
-  </h2>
-  <ul class="govuk-tabs__list">
-    <%= render partial: "shared/tab", locals: { name: t("subnavigation.project_task_list"), path: project_path(@project) } %>
-    <%= render partial: "shared/tab", locals: { name: t("subnavigation.project_information"), path: project_information_path(@project) } %>
-  </ul>
-</div>
