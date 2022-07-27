@@ -75,7 +75,7 @@ RSpec.feature "Users can view a single project" do
       sign_in_with_user(create(:user, :team_leader))
       single_project = Project.create!(urn: urn)
 
-      visit project_path(single_project)
+      visit project_information_path(single_project)
       expect(page).to have_content(I18n.t("project.summary.delivery_officer.unassigned"))
     end
   end
@@ -97,7 +97,7 @@ RSpec.feature "Users can view a single project" do
       user = User.find_by(email: user_email_address)
       single_project = Project.create!(urn: urn, delivery_officer: user)
 
-      visit project_path(single_project.id)
+      visit project_information_path(single_project.id)
       expect(page).to have_content(user_email_address)
     end
   end

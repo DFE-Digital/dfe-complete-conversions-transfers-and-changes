@@ -71,6 +71,10 @@ en:
         unassigned: Not yet assigned
       incoming_trust:
         title: Incoming trust
+      local_authority:
+        title: Local authority
+      proposed_opening_date:
+        title: Target conversion date
   project_information:
     show:
       side_navigation:
