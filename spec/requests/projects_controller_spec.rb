@@ -10,7 +10,7 @@ RSpec.describe ProjectsController, type: :request do
 
   describe "#create" do
     subject(:perform_request) do
-      post projects_path, params: { project: { urn: 12345 } }
+      post projects_path, params: {project: {urn: 12345}}
       response
     end
 
@@ -19,7 +19,7 @@ RSpec.describe ProjectsController, type: :request do
 
       before do
         mock_successful_api_responses(urn: 12345)
-        allow(Project).to receive(:new).with(any_args).and_return(project)
+        allow(Project).to receive(:new).and_return(project)
       end
 
       it "assigns the team leader, calls the TaskListCreator, and redirects to the project path" do
