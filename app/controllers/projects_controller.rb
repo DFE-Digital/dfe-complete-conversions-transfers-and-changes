@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     authorize @project
+    assign_team_leader
 
     if @project.valid?
       @project.save
@@ -51,9 +52,11 @@ class ProjectsController < ApplicationController
     redirect_to project_information_path(@project)
   end
 
-  private
-
-  def project_params
+  private def project_params
     params.require(:project).permit(:urn, :delivery_officer_id)
+  end
+
+  private def assign_team_leader
+    @project.team_leader_id = user_id
   end
 end

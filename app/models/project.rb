@@ -2,9 +2,11 @@ class Project < ApplicationRecord
   has_many :sections, dependent: :destroy
 
   validates :urn, presence: true, numericality: {only_integer: true}
+  validates :team_leader, presence: true
   validate :establishment_exists, :conversion_project_exists, on: :create
 
   belongs_to :delivery_officer, class_name: "User", optional: true
+  belongs_to :team_leader, class_name: "User", optional: false
 
   def establishment
     @establishment || retrieve_establishment
