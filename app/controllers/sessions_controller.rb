@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :redirect_unauthenticated_user, only: [:new, :create, :delete, :failure]
+
   def new
   end
 

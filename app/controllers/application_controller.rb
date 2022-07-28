@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Authentication
   include Pundit::Authorization
 
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
