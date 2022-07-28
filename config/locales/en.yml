@@ -88,6 +88,10 @@ en:
         rows:
           original_school_name: Original school name
           old_urn: Old Unique Reference Number
+      local_authority_details:
+        title: Local authority details
+        rows:
+          local_authority: Local authority
   subnavigation:
     project_task_list: Project task list
     project_information: Project information
