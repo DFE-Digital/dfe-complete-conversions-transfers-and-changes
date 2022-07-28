@@ -37,6 +37,11 @@ To run the test suite, run `script/test`.
 
 See .env.example
 
+## Release process
+
+Use the [release process template in Trello](https://trello.com/c/8enGdMyy) to
+start a new release.
+
 ## ADRs
 
 You can find the [ADRs](https://adr.github.io/) for this project in the
