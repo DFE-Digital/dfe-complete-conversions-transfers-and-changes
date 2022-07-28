@@ -17,3 +17,11 @@ end %>
     row.value { @project.urn.to_s }
   end
 end %>
+
+<h2 class="govuk-heading-l" id="localAuthorityDetails"><%= t('project_information.show.local_authority_details.title') %></h2>
+<%= govuk_summary_list do |summary_list|
+  summary_list.row do |row|
+    row.key { t('project_information.show.local_authority_details.rows.local_authority') }
+    row.value { @project.establishment.local_authority }
+  end
+end %>

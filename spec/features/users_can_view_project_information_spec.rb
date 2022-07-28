@@ -14,16 +14,25 @@ RSpec.feature "Users can view project information" do
     visit project_information_path(project_id)
 
     expect(page).to have_content("Project details")
-
-    delivery_officer_label = page.find("dt", text: "Delivery officer")
-    delivery_officer_label.ancestor(".govuk-summary-list__row").find("dd", text: "user@education.gov.uk")
+    page_has_project_information_list_row(label: "Delivery officer", information: "user@education.gov.uk")
 
     expect(page).to have_content("School details")
+    page_has_project_information_list_row(label: "Original school name", information: "Caludon Castle School")
+    page_has_project_information_list_row(label: "Old Unique Reference Number", information: "12345")
 
-    original_school_name_label = page.find("dt", text: "Original school name")
-    original_school_name_label.ancestor(".govuk-summary-list__row").find("dd", text: "Caludon Castle School")
+    expect(page).to have_content("Local authority details")
+    page_has_project_information_list_row(label: "Local authority", information: "West Placefield Council")
+  end
 
-    old_urn_label = page.find("dt", text: "Old Unique Reference Number")
-    old_urn_label.ancestor(".govuk-summary-list__row").find("dd", text: "12345")
+  private def page_has_project_information_list_row(label:, information:)
+    project_information_list = page.find("#projectInformationList")
+
+    within project_information_list do
+      label = find("dt", text: label)
+      information = label.ancestor(".govuk-summary-list__row").find("dd", text: information)
+
+      assert label
+      assert information
+    end
   end
 end
