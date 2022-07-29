@@ -20,6 +20,14 @@ end %>
     row.key { t('project_information.show.school_details.rows.school_type') }
     row.value { @project.establishment.type }
   end
+  summary_list.row do |row|
+    row.key { t('project_information.show.school_details.rows.age_range') }
+    row.value { age_range(@project.establishment) }
+  end
+  summary_list.row do |row|
+    row.key { t('project_information.show.school_details.rows.school_phase') }
+    row.value { @project.establishment.phase }
+  end
 end %>
 
 <h2 class="govuk-heading-l" id="localAuthorityDetails"><%= t('project_information.show.local_authority_details.title') %></h2>

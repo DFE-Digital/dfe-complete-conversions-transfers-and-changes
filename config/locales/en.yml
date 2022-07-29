@@ -89,6 +89,8 @@ en:
           original_school_name: Original school name
           old_urn: Old Unique Reference Number
           school_type: School type
+          age_range: Age range
+          school_phase: School phase
       local_authority_details:
         title: Local authority details
         rows:
