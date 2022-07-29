@@ -88,6 +88,7 @@ en:
         rows:
           original_school_name: Original school name
           old_urn: Old Unique Reference Number
+          school_type: School type
       local_authority_details:
         title: Local authority details
         rows:

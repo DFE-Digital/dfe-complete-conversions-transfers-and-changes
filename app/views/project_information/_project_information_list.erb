@@ -16,6 +16,10 @@ end %>
     row.key { t('project_information.show.school_details.rows.old_urn') }
     row.value { @project.urn.to_s }
   end
+  summary_list.row do |row|
+    row.key { t('project_information.show.school_details.rows.school_type') }
+    row.value { @project.establishment.type }
+  end
 end %>
 
 <h2 class="govuk-heading-l" id="localAuthorityDetails"><%= t('project_information.show.local_authority_details.title') %></h2>
