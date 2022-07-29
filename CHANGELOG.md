@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [Release 1][release-1]
+
 ### Added
 
 - Users can sign in to the application using a DfE Microsoft account
@@ -21,4 +23,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-1...HEAD
+[release-1]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/releases/tag/release-1
