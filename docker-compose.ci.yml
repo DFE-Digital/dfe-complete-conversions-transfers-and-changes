@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  test:
+    build:
+      context: .
+      target: test
+      args:
+        RAILS_ENV: "test"
+      cache_from:
+        - app_test:latest
+    image: app_test
+    command: bundle exec rake
+    ports:
+      - "3000:3000"
+    depends_on:
+      - test-db
+    env_file:
+       - .env.test
+    environment:
+      DATABASE_URL: postgres://postgres:password@test-db:5432/dfe-academies-test
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
+      SECRET_KEY_BASE: secret
+      CI: "true"
+    networks:
+      - test-ci
+
+  test-db:
+    image: postgres
+    environment:
+      POSTGRES_DB: app-academies-test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    networks:
+      - test-ci
+
+networks:
+  test-ci:

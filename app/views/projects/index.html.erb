@@ -1,0 +1,36 @@
+<h1 class="govuk-heading-l"><%= t("service_name") %></h1>
+
+<p>You are signed in with the email address <%= current_user.email %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.index.title.all") %> (<%= @projects.count %>)
+    </h1>
+
+    <% @projects.each do |project| %>
+      <h2 class="govuk-heading-m govuk-heading-m--school-name">
+        <%= link_to project.establishment.name, project_path(project) %>
+        <span class="govuk-caption-l inline"><%= "- #{project.urn}" %></span>
+      </h2>
+
+      <%= govuk_summary_list(actions: false) do |summary_list|
+        summary_list.row do |row|
+          row.key { t('project.summary.delivery_officer.title') }
+          row.value { project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') }
+        end
+      end %>
+      
+    <% end %>
+
+    <% if policy(:project).new? %>
+      <p><%= link_to t('project.index.new_button.text'),
+        new_project_path,
+        class: 'govuk-button',
+        data: { module: "govuk-button" }
+      %></p>
+    <% end %>
+
+  </div>
+</div>

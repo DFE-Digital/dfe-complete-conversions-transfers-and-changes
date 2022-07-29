@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=schemas/task_list.json
+
+title: Academy Conversion
+description: |
+  Convert a school to a new academy.
+
+sections:
+  - title: Starting the project
+    tasks:
+      - title: Understand history and complete handover from Pre-AB
+        actions:
+          - title: Action one
+          - title: Action two
+      - title: Note concerns or issues from handover
+        actions:
+          - title: Action one
+          - title: Action two
+
+  - title: Clear legal documents
+    tasks:
+      - title: Clear land questionnaire
+        actions:
+          - title: Action one
+          - title: Action two

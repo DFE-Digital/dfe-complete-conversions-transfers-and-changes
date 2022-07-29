@@ -1,0 +1,17 @@
+<% content_for :pre_content_nav do %>
+  <%= govuk_back_link(href: root_path) %>
+<% end %>
+
+<%= render partial: "shared/project_summary" %>
+
+<%= render partial: "shared/project_sub_navigation" %>
+
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "side_navigation" %>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds" id="projectInformationList">
+    <%= render partial: "project_information_list" %>
+  </div>
+</div>

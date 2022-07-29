@@ -1,0 +1,38 @@
+require "rails_helper"
+
+RSpec.feature "Users can view project information" do
+  let(:user) { create(:user, email: "user@education.gov.uk") }
+  let(:project) { create(:project, delivery_officer: user) }
+  let(:project_id) { project.id }
+
+  before do
+    mock_successful_api_responses(urn: 12345)
+    sign_in_with_user(user)
+  end
+
+  scenario "User views project information" do
+    visit project_information_path(project_id)
+
+    expect(page).to have_content("Project details")
+    page_has_project_information_list_row(label: "Delivery officer", information: "user@education.gov.uk")
+
+    expect(page).to have_content("School details")
+    page_has_project_information_list_row(label: "Original school name", information: "Caludon Castle School")
+    page_has_project_information_list_row(label: "Old Unique Reference Number", information: "12345")
+
+    expect(page).to have_content("Local authority details")
+    page_has_project_information_list_row(label: "Local authority", information: "West Placefield Council")
+  end
+
+  private def page_has_project_information_list_row(label:, information:)
+    project_information_list = page.find("#projectInformationList")
+
+    within project_information_list do
+      label = find("dt", text: label)
+      information = label.ancestor(".govuk-summary-list__row").find("dd", text: information)
+
+      assert label
+      assert information
+    end
+  end
+end

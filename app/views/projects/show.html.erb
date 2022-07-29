@@ -1,0 +1,10 @@
+<% content_for :pre_content_nav do %>
+  <%= govuk_back_link(href: root_path) %>
+<% end %>
+
+<%= render partial: "shared/project_summary" %>
+
+<%= render partial: "shared/project_sub_navigation" %>
+
+<h2 class="govuk-heading-l"><%= t('project.show.title') %></h2>
+<%= render "task_list" %>

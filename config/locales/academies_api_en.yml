@@ -1,0 +1,11 @@
+en:
+  academies_api:
+    get_establishment:
+      errors:
+        not_found: Could not find establishment with URN %{urn}
+        other: There was an error connecting to the Academies API, could not fetch establishment for URN %{urn}
+    get_conversion_project:
+      errors:
+        not_found: Could not find conversion project for establishment with URN %{urn}
+        multiple_results: Found multiple conversion projects (%{record_count} total) for establishment with URN %{urn}
+        other: There was an error connecting to the Academies API, could not fetch conversion project for establishment with URN %{urn}

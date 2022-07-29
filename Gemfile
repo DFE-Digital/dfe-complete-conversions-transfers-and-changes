@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.3"
 gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -22,17 +22,46 @@ gem "puma", "~> 5.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sass-rails"
+
+# Use Omniauth for authentication
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-azure-activedirectory-v2"
+
+# Use pundit for authorisation management
+gem "pundit", "~> 2.2"
+
+# Use DfE's design component libraries
+gem "govuk-components", "~> 3.1"
+gem "govuk_design_system_formbuilder", "~> 3.1"
+
+gem "faraday"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "pry-rails"
+  gem "rspec-rails"
+  gem "brakeman"
+  gem "bullet"
+  gem "standard"
+  gem "dotenv-rails"
+  gem "factory_bot_rails"
+end
+
+group :test do
+  gem "capybara"
+  gem "climate_control"
+  gem "simplecov", "~> 0.21.2"
+  gem "shoulda-matchers", "~> 5.1"
+  gem "webmock", "~> 3.14"
 end
 
 group :development do
@@ -45,4 +74,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-

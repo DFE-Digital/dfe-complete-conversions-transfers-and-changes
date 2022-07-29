@@ -1,0 +1,7 @@
+<h1 class="govuk-heading-xl">
+  Sign in
+</h1>
+
+<%= form_tag("/auth/azure_activedirectory_v2", method: "post") do %>
+  <%= button_tag(t("sign_in.button", type: :submit), class: "govuk-button") %>
+<% end %>

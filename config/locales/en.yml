@@ -30,4 +30,85 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  service_name: Complete conversions, transfers and changes
+  sign_in:
+    button: Sign in with your DfE Microsoft account
+    message:
+      unauthenticated: You must sign in to use this service.
+      failure: Authentication failed.
+  sign_out:
+    message:
+      success: You have signed out. You may still be signed in to your Microsoft account.
+  unknown_user:
+    message: The email address %{email_address} is not registered to use this service.
+  unauthorised_action:
+    message: You are not authorised to perform this action.
+  tasks:
+    users:
+      create:
+        error: You must provide a users email address e.g. bin/rails users:create EMAIL_ADDRESS=name@example.com
+  project:
+    index:
+      title:
+        all: All projects
+      new_button:
+        text: Add a new project
+    show:
+      title: Project task list
+      edit_button:
+        text: Edit
+    new:
+      title: Add a new project
+    create:
+      success: Project has been created successfully
+    edit:
+      title: Edit a project
+    update:
+      success: Project has been updated successfully
+    summary:
+      delivery_officer:
+        title: Delivery officer
+        unassigned: Not yet assigned
+      incoming_trust:
+        title: Incoming trust
+      local_authority:
+        title: Local authority
+      proposed_opening_date:
+        title: Target conversion date
+  project_information:
+    show:
+      side_navigation:
+        title: Jump to section
+      project_details:
+        title: Project details
+        rows:
+          delivery_officer: Delivery officer
+      school_details:
+        title: School details
+        rows:
+          original_school_name: Original school name
+          old_urn: Old Unique Reference Number
+      local_authority_details:
+        title: Local authority details
+        rows:
+          local_authority: Local authority
+  subnavigation:
+    project_task_list: Project task list
+    project_information: Project information
+  helpers:
+    label:
+      project:
+        urn: School URN
+        delivery_officer_id: Delivery officer
+    hint:
+      project:
+        urn: This is the URN of the existing school which is converting to an academy.
+        delivery_officer_id: The delivery officer responsible for this project
+
+  activerecord:
+    errors:
+      models:
+        project:
+          no_establishment_found: No establishment found with that URN. Enter a valid URN.
+          no_conversion_project_found: No existing conversion project found with that URN. Check that the URN has a matching conversion project.
+          multiple_conversion_projects_found: Multiple conversion projects have been found for that URN. Unable to continue.
