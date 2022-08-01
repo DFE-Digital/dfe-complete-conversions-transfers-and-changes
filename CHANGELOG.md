@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- The project information view displays the school type, phase of education,
+  and age range.
+
 ## [Release 1][release-1]
 
 ### Added
