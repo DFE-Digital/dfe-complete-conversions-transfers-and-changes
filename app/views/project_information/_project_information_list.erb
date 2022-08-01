@@ -4,6 +4,10 @@
     row.key { t('project_information.show.project_details.rows.delivery_officer') }
     row.value { @project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') }
   end
+  summary_list.row do |row|
+    row.key { t('project_information.show.project_details.rows.team_lead') }
+    row.value { @project.team_leader.email }
+  end
 end %>
 
 <h2 class="govuk-heading-l" id="schoolDetails"><%= t('project_information.show.school_details.title') %></h2>

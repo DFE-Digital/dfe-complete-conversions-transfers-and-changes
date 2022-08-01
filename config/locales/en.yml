@@ -83,6 +83,7 @@ en:
         title: Project details
         rows:
           delivery_officer: Delivery officer
+          team_lead: Team lead
       school_details:
         title: School details
         rows:
