@@ -1,5 +1,5 @@
 <h2 class="govuk-heading-l" id="projectDetails"><%= t('project_information.show.project_details.title') %></h2>
-<%= govuk_summary_list do |summary_list|
+<%= govuk_summary_list(actions: false) do |summary_list|
   summary_list.row do |row|
     row.key { t('project_information.show.project_details.rows.delivery_officer') }
     row.value { @project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') }
@@ -11,7 +11,7 @@
 end %>
 
 <h2 class="govuk-heading-l" id="schoolDetails"><%= t('project_information.show.school_details.title') %></h2>
-<%= govuk_summary_list do |summary_list|
+<%= govuk_summary_list(actions: false) do |summary_list|
   summary_list.row do |row|
     row.key { t('project_information.show.school_details.rows.original_school_name') }
     row.value { @project.establishment.name }
@@ -35,7 +35,7 @@ end %>
 end %>
 
 <h2 class="govuk-heading-l" id="localAuthorityDetails"><%= t('project_information.show.local_authority_details.title') %></h2>
-<%= govuk_summary_list do |summary_list|
+<%= govuk_summary_list(actions: false) do |summary_list|
   summary_list.row do |row|
     row.key { t('project_information.show.local_authority_details.rows.local_authority') }
     row.value { @project.establishment.local_authority }
