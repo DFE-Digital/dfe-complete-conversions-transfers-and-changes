@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.feature "Users can view a list of projects" do
   before do
-    mock_successful_api_responses(urn: 1001)
-    mock_successful_api_responses(urn: 1002)
-    mock_successful_api_responses(urn: 1003)
+    mock_successful_api_responses(urn: 1001, ukprn: 10061021)
+    mock_successful_api_responses(urn: 1002, ukprn: 10061021)
+    mock_successful_api_responses(urn: 1003, ukprn: 10061021)
   end
 
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
@@ -49,7 +49,7 @@ RSpec.feature "Users can view a single project" do
 
   before do
     mock_successful_api_establishment_response(urn: urn, establishment: establishment)
-    mock_successful_api_responses(urn: urn)
+    mock_successful_api_responses(urn: urn, ukprn: 10061021)
   end
 
   scenario "by following a link from the home page" do

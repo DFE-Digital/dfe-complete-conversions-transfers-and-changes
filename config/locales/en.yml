@@ -73,8 +73,6 @@ en:
         title: Incoming trust
       local_authority:
         title: Local authority
-      proposed_opening_date:
-        title: Target conversion date
   project_information:
     show:
       side_navigation:
@@ -103,6 +101,7 @@ en:
     label:
       project:
         urn: School URN
+        trust_ukprn: Incoming trust UK Provider Reference Number (UKPRN)
         delivery_officer_id: Delivery officer
     hint:
       project:
@@ -114,5 +113,4 @@ en:
       models:
         project:
           no_establishment_found: No establishment found with that URN. Enter a valid URN.
-          no_conversion_project_found: No existing conversion project found with that URN. Check that the URN has a matching conversion project.
-          multiple_conversion_projects_found: Multiple conversion projects have been found for that URN. Unable to continue.
+          no_trust_found: No trust found with that UKPRN. Enter a valid UKPRN.

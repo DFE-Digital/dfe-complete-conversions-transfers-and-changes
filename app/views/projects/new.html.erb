@@ -8,8 +8,8 @@
 
   <h1 class="govuk-heading-l"><%= t("project.new.title") %></h1>
 
-  <%= form.govuk_text_field :urn,
-    label: { tag: 'h3', size: 'm' }
-  %>
+  <%= form.govuk_text_field :urn, label: { tag: 'h3', size: 'm' } %>
+  <%= form.govuk_text_field :trust_ukprn, label: { tag: 'h3', size: 'm' } %>
+
   <%= form.govuk_submit %>
 <% end %>

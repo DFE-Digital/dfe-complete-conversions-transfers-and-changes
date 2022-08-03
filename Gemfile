@@ -55,6 +55,7 @@ group :development, :test do
   gem "standard"
   gem "dotenv-rails"
   gem "factory_bot_rails"
+  gem "rails-controller-testing"
 end
 
 group :test do

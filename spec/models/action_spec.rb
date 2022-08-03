@@ -12,7 +12,7 @@ RSpec.describe Action do
   end
 
   describe "Scopes" do
-    before { mock_successful_api_responses(urn: any_args) }
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     describe "default_scope" do
       let!(:action_1) { create(:action, order: 1) }

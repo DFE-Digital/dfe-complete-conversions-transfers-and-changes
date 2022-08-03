@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The project information view displays the school type, phase of education,
   and age range.
 - The project information view displays the team lead.
+- Users must provide the UKPRN of the incoming trust when creating a project.
 
 ## [Release 1][release-1]
 

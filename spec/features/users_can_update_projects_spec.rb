@@ -6,7 +6,7 @@ RSpec.feature "Users can reach the edit project page" do
   let(:delivery_officer) { create(:user, email: "user1@education.gov.uk") }
   let(:unassigned_project) { create(:project, urn: urn) }
 
-  before { mock_successful_api_responses(urn: urn) }
+  before { mock_successful_api_responses(urn: urn, ukprn: 10061021) }
 
   context "the user is a team leader" do
     before do
@@ -47,7 +47,6 @@ RSpec.feature "Users can reach the edit project page" do
 end
 
 RSpec.feature "Users can update a project" do
-  let(:urn) { 12345 }
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let!(:delivery_officer) { create(:user, email: "user1@education.gov.uk") }
   let!(:delivery_officer_2) { create(:user, email: "user2@education.gov.uk") }
@@ -55,11 +54,11 @@ RSpec.feature "Users can update a project" do
   context "the user is a team leader" do
     before do
       sign_in_with_user(team_leader)
-      mock_successful_api_responses(urn: urn)
+      mock_successful_api_responses(urn: 12345, ukprn: 10061021)
     end
 
     context "when the project has no delivery officer" do
-      let(:unassigned_project) { create(:project, urn: urn) }
+      let(:unassigned_project) { create(:project) }
 
       scenario "the delivery officer can be set" do
         visit edit_project_path(unassigned_project)
@@ -70,7 +69,7 @@ RSpec.feature "Users can update a project" do
     end
 
     context "when the project already has a delivery officer" do
-      let(:assigned_project) { create(:project, urn: urn, delivery_officer: delivery_officer) }
+      let(:assigned_project) { create(:project, delivery_officer: delivery_officer) }
 
       scenario "the delivery officer can be changed" do
         delivery_officer_2

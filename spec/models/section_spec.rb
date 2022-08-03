@@ -12,7 +12,7 @@ RSpec.describe Section, type: :model do
   end
 
   describe "Scopes" do
-    before { mock_successful_api_responses(urn: any_args) }
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     describe "default_scope" do
       let!(:section_1) { create(:section, order: 1) }

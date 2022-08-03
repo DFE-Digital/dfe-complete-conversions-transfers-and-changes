@@ -2,9 +2,9 @@ class Project < ApplicationRecord
   has_many :sections, dependent: :destroy
 
   validates :urn, presence: true, numericality: {only_integer: true}
-  validates :trust_ukprn, presence: true
+  validates :trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :team_leader, presence: true
-  validate :establishment_exists, :conversion_project_exists, on: :create
+  validate :establishment_exists, :trust_exists, on: :create
 
   belongs_to :delivery_officer, class_name: "User", optional: true
   belongs_to :team_leader, class_name: "User", optional: false
@@ -13,14 +13,20 @@ class Project < ApplicationRecord
     @establishment || retrieve_establishment
   end
 
-  def conversion_project
-    @conversion_project || retrieve_conversion_project
+  def trust
+    @trust || retrieve_trust
   end
 
   private def establishment_exists
     retrieve_establishment
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:urn, :no_establishment_found)
+  end
+
+  private def trust_exists
+    retrieve_trust
+  rescue AcademiesApi::Client::NotFoundError
+    errors.add(:trust_ukprn, :no_trust_found)
   end
 
   private def retrieve_establishment
@@ -30,18 +36,10 @@ class Project < ApplicationRecord
     @establishment = result.object
   end
 
-  private def conversion_project_exists
-    retrieve_conversion_project
-  rescue AcademiesApi::Client::NotFoundError
-    errors.add(:urn, :no_conversion_project_found)
-  rescue AcademiesApi::Client::MultipleResultsError
-    errors.add(:urn, :multiple_conversion_projects_found)
-  end
-
-  private def retrieve_conversion_project
-    result = AcademiesApi::Client.new.get_conversion_project(urn)
+  private def retrieve_trust
+    result = AcademiesApi::Client.new.get_trust(trust_ukprn)
     raise result.error if result.error.present?
 
-    @conversion_project = result.object
+    @trust = result.object
   end
 end
