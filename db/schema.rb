@@ -11,11 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_07_26_143808) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
-  enable_extension "plpgsql"
-
-  create_table "actions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
     t.boolean "completed", default: false, null: false
@@ -25,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_143808) do
     t.index ["task_id"], name: "index_actions_on_task_id"
   end
 
-  create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "projects", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.integer "urn", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_143808) do
     t.index ["urn"], name: "index_projects_on_urn"
   end
 
-  create_table "sections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "sections", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
     t.uuid "project_id"
@@ -45,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_143808) do
     t.index ["project_id"], name: "index_sections_on_project_id"
   end
 
-  create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "tasks", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
     t.boolean "completed", default: false, null: false
@@ -55,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_143808) do
     t.index ["section_id"], name: "index_tasks_on_section_id"
   end
 
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
