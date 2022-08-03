@@ -90,6 +90,12 @@ en:
           school_type: School type
           age_range: Age range
           school_phase: School phase
+      trust_details:
+        title: Trust details
+        rows:
+          incoming_trust_name: Incoming trust name
+          ukprn: UK Provider Reference Number
+          companies_house_number: Companies House number
       local_authority_details:
         title: Local authority details
         rows:
