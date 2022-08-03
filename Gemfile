@@ -61,7 +61,7 @@ group :test do
   gem "climate_control"
   gem "simplecov", "~> 0.21.2"
   gem "shoulda-matchers", "~> 5.1"
-  gem "webmock", "~> 3.15"
+  gem "webmock", "~> 3.16"
 end
 
 group :development do
