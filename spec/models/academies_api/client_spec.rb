@@ -173,4 +173,24 @@ RSpec.describe AcademiesApi::Client do
       end
     end
   end
+
+  def fake_successful_trust_connection(ukprn, response)
+    Faraday.new do |builder|
+      builder.adapter :test do |stub|
+        stub.get("/v2/trust/#{ukprn}") do |env|
+          response
+        end
+      end
+    end
+  end
+
+  def fake_failed_trust_connection(ukprn)
+    Faraday.new do |builder|
+      builder.adapter :test do |stub|
+        stub.get("/v2/trust/#{ukprn}") do |env|
+          raise Faraday::Error
+        end
+      end
+    end
+  end
 end

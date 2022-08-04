@@ -55,6 +55,23 @@ class AcademiesApi::Client
     end
   end
 
+  def get_trust(ukprn)
+    begin
+      response = @connection.get("/v2/trust/#{ukprn}")
+    rescue Faraday::Error => error
+      raise Error.new(error)
+    end
+
+    case response.status
+    when 200
+      Result.new(AcademiesApi::Trust.new.from_json(response.body), nil)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
+    else
+      Result.new(nil, Error.new(I18n.t("academies_api.get_trust.errors.other", ukprn: ukprn)))
+    end
+  end
+
   private def default_connection
     Faraday.new(
       url: ENV["ACADEMIES_API_HOST"],
