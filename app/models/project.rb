@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   has_many :sections, dependent: :destroy
 
   validates :urn, presence: true, numericality: {only_integer: true}
+  validates :trust_ukprn, presence: true
   validates :team_leader, presence: true
   validate :establishment_exists, :conversion_project_exists, on: :create
 

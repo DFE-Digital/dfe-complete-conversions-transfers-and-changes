@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     authorize @project
     assign_team_leader
+    @project.trust_ukprn = 10061021
 
     if @project.valid?
       @project.save

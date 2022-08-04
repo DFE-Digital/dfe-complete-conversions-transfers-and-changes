@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Project, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:urn).of_type :integer }
+    it { is_expected.to have_db_column(:trust_ukprn).of_type :integer }
     it { is_expected.to have_db_column(:delivery_officer_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
   end
@@ -72,6 +73,10 @@ RSpec.describe Project, type: :model do
           expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.multiple_conversion_projects_found"))
         end
       end
+    end
+
+    describe "#trust_ukprn" do
+      it { is_expected.to validate_presence_of(:trust_ukprn) }
     end
 
     describe "#team_leader" do
