@@ -56,7 +56,11 @@ RSpec.feature "Team leaders can create a new project" do
     scenario "a new project is created" do
       fill_in "School URN", with: urn
       fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
+      fill_in "Month", with: 12
+      fill_in "Year", with: 2025
+
       click_button("Continue")
+
       expect(page).to have_content("Project task list")
       expect(page).to have_content("Starting the project")
       expect(page).to have_content("Understand history and complete handover from Pre-AB")

@@ -4,6 +4,7 @@ RSpec.describe Project, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:urn).of_type :integer }
     it { is_expected.to have_db_column(:trust_ukprn).of_type :integer }
+    it { is_expected.to have_db_column(:target_completion_date).of_type :date }
     it { is_expected.to have_db_column(:delivery_officer_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
   end
@@ -57,6 +58,19 @@ RSpec.describe Project, type: :model do
         it "is invalid" do
           expect(subject).to_not be_valid
           expect(subject.errors[:trust_ukprn]).to include(I18n.t("activerecord.errors.models.project.no_trust_found"))
+        end
+      end
+    end
+
+    describe "#target_completion_date" do
+      it { is_expected.to validate_presence_of(:target_completion_date) }
+
+      context "when the date is not on the first of the month" do
+        subject { build(:project, target_completion_date: Date.new(2025, 12, 2)) }
+
+        it "is invalid" do
+          expect(subject).to_not be_valid
+          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.must_be_first_of_the_month"))
         end
       end
     end

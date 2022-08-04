@@ -73,6 +73,8 @@ en:
         title: Incoming trust
       local_authority:
         title: Local authority
+      target_completion_date:
+        title: Target conversion date
   project_information:
     show:
       side_navigation:
@@ -109,10 +111,14 @@ en:
         urn: School URN
         trust_ukprn: Incoming trust UK Provider Reference Number (UKPRN)
         delivery_officer_id: Delivery officer
+    legend:
+      project:
+        target_completion_date: Target conversion date
     hint:
       project:
         urn: This is the URN of the existing school which is converting to an academy.
         delivery_officer_id: The delivery officer responsible for this project
+        target_completion_date: The target conversion date is always the 1st of the month.
 
   activerecord:
     errors:
@@ -120,3 +126,4 @@ en:
         project:
           no_establishment_found: No establishment found with that URN. Enter a valid URN.
           no_trust_found: No trust found with that UKPRN. Enter a valid UKPRN.
+          must_be_first_of_the_month: Target completion date must be on the first day of the month.

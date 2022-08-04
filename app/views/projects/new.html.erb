@@ -10,6 +10,7 @@
 
   <%= form.govuk_text_field :urn, label: { tag: 'h3', size: 'm' } %>
   <%= form.govuk_text_field :trust_ukprn, label: { tag: 'h3', size: 'm' } %>
+  <%= form.govuk_date_field :target_completion_date, omit_day: true %>
 
   <%= form.govuk_submit %>
 <% end %>

@@ -10,6 +10,10 @@
           row.value { @project.trust.name }
         end
         summary_list.row do |row|
+          row.key { t('project.summary.target_completion_date.title') }
+          row.value { @project.target_completion_date.to_formatted_s(:govuk) }
+        end
+        summary_list.row do |row|
           row.key { t('project.summary.local_authority.title') }
           row.value { @project.establishment.local_authority }
         end
