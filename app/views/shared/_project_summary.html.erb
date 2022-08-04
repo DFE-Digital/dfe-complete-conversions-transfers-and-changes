@@ -6,12 +6,12 @@
 
     <%= govuk_summary_list(actions: false) do |summary_list|
         summary_list.row do |row|
-          row.key { t('project.summary.proposed_opening_date.title') }
-          row.value { @project.conversion_project.proposed_opening_date.to_formatted_s(:govuk) }
+          row.key { t('project.summary.incoming_trust.title') }
+          row.value { @project.trust.name }
         end
         summary_list.row do |row|
-          row.key { t('project.summary.incoming_trust.title') }
-          row.value { @project.conversion_project.name_of_trust }
+          row.key { t('project.summary.target_completion_date.title') }
+          row.value { @project.target_completion_date.to_formatted_s(:govuk) }
         end
         summary_list.row do |row|
           row.key { t('project.summary.local_authority.title') }

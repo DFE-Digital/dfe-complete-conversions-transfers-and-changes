@@ -30,28 +30,20 @@ class AcademiesApi::Client
     end
   end
 
-  def get_conversion_project(urn)
+  def get_trust(ukprn)
     begin
-      response = @connection.get("/v2/conversion-projects", {urn: urn})
+      response = @connection.get("/v2/trust/#{ukprn}")
     rescue Faraday::Error => error
       raise Error.new(error)
     end
 
     case response.status
     when 200
-      data = JSON.parse(response.body)
-
-      record_count = data["paging"]["recordCount"]
-
-      if record_count == 0
-        Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_conversion_project.errors.not_found", urn: urn)))
-      elsif record_count > 1
-        Result.new(nil, MultipleResultsError.new(I18n.t("academies_api.get_conversion_project.errors.multiple_results", urn: urn, record_count: record_count)))
-      else
-        Result.new(AcademiesApi::ConversionProject.new.from_hash(data["data"][0]), nil)
-      end
+      Result.new(AcademiesApi::Trust.new.from_json(response.body), nil)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     else
-      Result.new(nil, Error.new(I18n.t("academies_api.get_conversion_project.errors.other", urn: urn)))
+      Result.new(nil, Error.new(I18n.t("academies_api.get_trust.errors.other", ukprn: ukprn)))
     end
   end
 

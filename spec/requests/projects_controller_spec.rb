@@ -14,11 +14,24 @@ RSpec.describe ProjectsController, type: :request do
       response
     end
 
+    context "when the project is not valid" do
+      let(:project) { build(:project, team_leader: nil) }
+
+      before do
+        allow(Project).to receive(:new).and_return(project)
+        allow(project).to receive(:valid?).and_return false
+      end
+
+      it "re-renders the new template" do
+        expect(perform_request).to render_template :new
+      end
+    end
+
     context "when the project is valid" do
       let(:project) { build(:project, team_leader: nil) }
 
       before do
-        mock_successful_api_responses(urn: 12345)
+        mock_successful_api_responses(urn: 12345, ukprn: 10061021)
         allow(Project).to receive(:new).and_return(project)
       end
 

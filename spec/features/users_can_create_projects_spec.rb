@@ -47,36 +47,23 @@ RSpec.feature "Team leaders can create a new project" do
     )
   end
 
-  context "the URN is valid" do
+  context "when the URN and UKPRN are valid" do
     let(:urn) { 19283746 }
+    let(:ukprn) { 10061021 }
 
-    before { mock_successful_api_responses(urn: urn) }
+    before { mock_successful_api_responses(urn: urn, ukprn: ukprn) }
 
     scenario "a new project is created" do
-      fill_in "project-urn-field", with: urn
+      fill_in "School URN", with: urn
+      fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
+      fill_in "Month", with: 12
+      fill_in "Year", with: 2025
+
       click_button("Continue")
+
       expect(page).to have_content("Project task list")
       expect(page).to have_content("Starting the project")
       expect(page).to have_content("Understand history and complete handover from Pre-AB")
-    end
-  end
-
-  context "the URN is empty" do
-    before { mock_successful_api_responses(urn: any_args) }
-
-    scenario "the user is shown an error message" do
-      click_button("Continue")
-      expect(page).to have_content("can't be blank")
-    end
-  end
-
-  context "the URN is invalid" do
-    before { mock_successful_api_responses(urn: any_args) }
-
-    scenario "the user is shown an error message" do
-      fill_in "project-urn-field", with: "three"
-      click_button("Continue")
-      expect(page).to have_content("is not a number")
     end
   end
 end
