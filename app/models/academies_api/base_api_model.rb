@@ -9,10 +9,11 @@ class AcademiesApi::BaseApiModel
   end
 
   def attributes=(hash)
-    hash.each do |key, value|
-      next unless self.class.attribute_map.value?(key)
+    self.class.attribute_map.each do |attribute_name, access_path|
+      split_access_path = access_path.split(".")
+      value = hash.with_indifferent_access.dig(*split_access_path)
+      next if value.nil?
 
-      attribute_name = self.class.attribute_map.key(key)
       send("#{attribute_name}=", value)
     end
   end

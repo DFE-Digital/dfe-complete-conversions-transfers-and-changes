@@ -72,4 +72,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # SQL server table config
+  #
+  # In production all out tables exist in a 'schema' called `complete` so we
+  # tell Rails to look for it's internal tables there.
+  config.active_record.schema_migrations_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.schema_migrations"
+  config.active_record.internal_metadata_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.ar_internal_metadata"
 end

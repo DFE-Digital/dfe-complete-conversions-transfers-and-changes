@@ -10,6 +10,13 @@ RUN \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
   tee /etc/apt/sources.list.d/yarn.list
 
+RUN curl http://www.freetds.org/files/stable/freetds-1.1.24.tar.gz --output freetds-1.1.24.tar.gz
+RUN tar -xzf freetds-1.1.24.tar.gz
+WORKDIR freetds-1.1.24
+RUN ./configure --prefix=/usr/local --with-tdsver=7.3
+RUN make
+RUN make install
+
 RUN \
   apt-get update && \
   apt-get install -y --fix-missing --no-install-recommends \

@@ -9,8 +9,9 @@ gem "rails", "~> 7.0.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use postgresql as the database for Active Record
-gem "pg", "~> 1.4"
+# Use MS SQL Server  as the database for Active Record
+# https://github.com/rails-sqlserver/activerecord-sqlserver-adapter
+gem "activerecord-sqlserver-adapter"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -61,7 +62,7 @@ group :test do
   gem "climate_control"
   gem "simplecov", "~> 0.21.2"
   gem "shoulda-matchers", "~> 5.1"
-  gem "webmock", "~> 3.14"
+  gem "webmock", "~> 3.16"
 end
 
 group :development do

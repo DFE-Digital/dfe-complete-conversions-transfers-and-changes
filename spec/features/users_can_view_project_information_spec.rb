@@ -15,10 +15,14 @@ RSpec.feature "Users can view project information" do
 
     expect(page).to have_content("Project details")
     page_has_project_information_list_row(label: "Delivery officer", information: "user@education.gov.uk")
+    page_has_project_information_list_row(label: "Team lead", information: project.team_leader.email)
 
     expect(page).to have_content("School details")
     page_has_project_information_list_row(label: "Original school name", information: "Caludon Castle School")
     page_has_project_information_list_row(label: "Old Unique Reference Number", information: "12345")
+    page_has_project_information_list_row(label: "School type", information: "Academy converter")
+    page_has_project_information_list_row(label: "Age range", information: "11 to 18")
+    page_has_project_information_list_row(label: "School phase", information: "Secondary")
 
     expect(page).to have_content("Local authority details")
     page_has_project_information_list_row(label: "Local authority", information: "West Placefield Council")
