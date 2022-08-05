@@ -28,4 +28,43 @@ RSpec.describe NotesController, type: :request do
       expect(subject).to have_http_status :success
     end
   end
+
+  describe "#create" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:mock_note) { build(:note) }
+    let(:new_note_body) { "Just had an interesting chat about building regulations." }
+
+    subject(:perform_request) do
+      post project_notes_path(project_id), params: {note: {body: new_note_body}}
+      response
+    end
+
+    context "when the Project is not found" do
+      let(:project_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    context "when the note is invalid" do
+      before do
+        allow(Note).to receive(:new).and_return(mock_note)
+        allow(mock_note).to receive(:valid?).and_return false
+      end
+
+      it "re-renders the index view" do
+        expect(perform_request).to render_template :index
+      end
+    end
+
+    context "when the note is valid" do
+      it "saves the note and redirects to the index view with a success message" do
+        expect(subject).to redirect_to(project_notes_path(project.id))
+        expect(request.flash[:notice]).to eq(I18n.t("note.create.success"))
+
+        expect(Note.count).to be 1
+        expect(Note.last.body).to eq(new_note_body)
+      end
+    end
+  end
 end

@@ -102,6 +102,11 @@ en:
         title: Local authority details
         rows:
           local_authority: Local authority
+  note:
+    index:
+      add_note_button: Add note
+    create:
+      success: Note has been created successfully
   subnavigation:
     project_task_list: Project task list
     project_information: Project information
@@ -112,6 +117,8 @@ en:
         urn: School URN
         trust_ukprn: Incoming trust UK Provider Reference Number (UKPRN)
         delivery_officer_id: Delivery officer
+      note:
+        body: Notes
     legend:
       project:
         target_completion_date: Target conversion date
@@ -120,6 +127,8 @@ en:
         urn: This is the URN of the existing school which is converting to an academy.
         delivery_officer_id: The delivery officer responsible for this project
         target_completion_date: The target conversion date is always the 1st of the month.
+      note:
+        body: Do not include personal or financial information.
 
   activerecord:
     errors:

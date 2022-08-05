@@ -1,0 +1,7 @@
+<%= form_for @note, url: project_notes_path, method: :post do |form| %>
+  <%= form.govuk_error_summary %>
+
+  <%= form.govuk_text_area :body, label: { tag: "h2", size: "l" } %>
+
+  <%= form.govuk_submit t("note.index.add_note_button") %>
+<% end %>
