@@ -16,4 +16,20 @@ RSpec.describe Note, type: :model do
       it { is_expected.to_not allow_values("", nil).for(:body) }
     end
   end
+
+  describe "Scopes" do
+    describe "default_scope" do
+      before do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+
+        freeze_time
+        travel_to(Date.yesterday) { create(:note, body: "Yesterday's note.") }
+        create(:note, body: "Today's note.")
+      end
+
+      it "orders ascending by the 'order' attribute" do
+        expect(Note.first.body).to eq "Today's note."
+      end
+    end
+  end
 end

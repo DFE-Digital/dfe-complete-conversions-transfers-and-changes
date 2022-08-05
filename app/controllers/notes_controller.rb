@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :find_project
+  before_action :find_notes
 
   def index
     @note = Note.new(project: @project, user_id:)
@@ -19,6 +20,10 @@ class NotesController < ApplicationController
 
   private def find_project
     @project = Project.find(params[:project_id])
+  end
+
+  private def find_notes
+    @notes = Note.includes([:user]).where(project: @project)
   end
 
   private def note_params

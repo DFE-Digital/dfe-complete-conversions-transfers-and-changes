@@ -105,6 +105,7 @@ en:
   note:
     index:
       add_note_button: Add note
+      no_notes_yet: No notes yet
     create:
       success: Note has been created successfully
   subnavigation:
