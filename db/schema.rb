@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_093743) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_04_103138) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_093743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_actions_on_task_id"
+  end
+
+  create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.text "body"
+    t.uuid "project_id"
+    t.uuid "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_notes_on_project_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "projects", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -62,6 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_093743) do
   end
 
   add_foreign_key "actions", "tasks"
+  add_foreign_key "notes", "projects"
+  add_foreign_key "notes", "users"
   add_foreign_key "projects", "users", column: "delivery_officer_id"
   add_foreign_key "projects", "users", column: "team_leader_id"
   add_foreign_key "sections", "projects"

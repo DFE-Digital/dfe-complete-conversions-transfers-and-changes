@@ -5,5 +5,7 @@
 
     <%= render partial: "shared/sub_navigation_item", locals: { name: t("subnavigation.project_information"), path: project_information_path(@project) } %>
 
+    <%= render partial: "shared/sub_navigation_item", locals: { name: t("subnavigation.notes"), path: project_notes_path(@project) } %>
+
   </ul>
 </nav>

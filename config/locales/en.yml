@@ -105,6 +105,7 @@ en:
   subnavigation:
     project_task_list: Project task list
     project_information: Project information
+    notes: Notes
   helpers:
     label:
       project:

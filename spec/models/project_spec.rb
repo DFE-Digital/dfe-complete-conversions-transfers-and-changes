@@ -13,6 +13,7 @@ RSpec.describe Project, type: :model do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     it { is_expected.to have_many(:sections).dependent(:destroy) }
+    it { is_expected.to have_many(:notes) }
     it { is_expected.to belong_to(:delivery_officer).required(false) }
     it { is_expected.to belong_to(:team_leader).required(true) }
   end
