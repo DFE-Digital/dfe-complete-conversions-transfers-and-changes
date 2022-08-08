@@ -1,0 +1,15 @@
+<% content_for :pre_content_nav do %>
+  <%= govuk_back_link(href: root_path) %>
+<% end %>
+
+<%= render partial: "shared/project_summary" %>
+
+<%= render partial: "shared/project_sub_navigation" %>
+
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+   <%= render "submission_form" %>
+
+   <%= render "notes/notes" %>
+  </div>
+</div>

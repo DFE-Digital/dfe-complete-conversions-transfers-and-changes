@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   has_many :sections, dependent: :destroy
+  has_many :notes
 
   validates :urn, presence: true, numericality: {only_integer: true}
   validates :trust_ukprn, presence: true, numericality: {only_integer: true}
