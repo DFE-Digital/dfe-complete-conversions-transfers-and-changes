@@ -13,7 +13,7 @@ RSpec.describe Task, type: :model do
   end
 
   describe "Scopes" do
-    before { mock_successful_api_responses(urn: any_args) }
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     describe "default_scope" do
       let!(:task_1) { create(:task, order: 1) }
@@ -29,7 +29,7 @@ RSpec.describe Task, type: :model do
     let(:task) { create(:task) }
 
     before do
-      mock_successful_api_responses(urn: any_args)
+      mock_successful_api_responses(urn: any_args, ukprn: any_args)
       FactoryBot.create_list(:action, 3, task:)
     end
 
@@ -42,7 +42,7 @@ RSpec.describe Task, type: :model do
     let(:task) { create(:task) }
 
     before do
-      mock_successful_api_responses(urn: any_args)
+      mock_successful_api_responses(urn: any_args, ukprn: any_args)
       FactoryBot.create_list(:action, 1, task:)
       FactoryBot.create_list(:action, 2, task:, completed: true)
     end
@@ -57,7 +57,7 @@ RSpec.describe Task, type: :model do
 
     context "there are no completed actions" do
       before do
-        mock_successful_api_responses(urn: any_args)
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
         FactoryBot.create_list(:action, 3, task:)
       end
 
@@ -68,7 +68,7 @@ RSpec.describe Task, type: :model do
 
     context "the number of completed actions is equal to the total number of actions" do
       before do
-        mock_successful_api_responses(urn: any_args)
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
         FactoryBot.create_list(:action, 3, task:, completed: true)
       end
 
@@ -79,7 +79,7 @@ RSpec.describe Task, type: :model do
 
     context "there are fewer completed actions than the total number of actions" do
       before do
-        mock_successful_api_responses(urn: any_args)
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
         FactoryBot.create_list(:action, 1, task:)
         FactoryBot.create_list(:action, 2, task:, completed: true)
       end

@@ -6,7 +6,7 @@ RSpec.feature "Users can view project information" do
   let(:project_id) { project.id }
 
   before do
-    mock_successful_api_responses(urn: 12345)
+    mock_successful_api_responses(urn: 12345, ukprn: 10061021)
     sign_in_with_user(user)
   end
 
@@ -23,6 +23,11 @@ RSpec.feature "Users can view project information" do
     page_has_project_information_list_row(label: "School type", information: "Academy converter")
     page_has_project_information_list_row(label: "Age range", information: "11 to 18")
     page_has_project_information_list_row(label: "School phase", information: "Secondary")
+
+    expect(page).to have_content("Trust details")
+    page_has_project_information_list_row(label: "Incoming trust name", information: "THE ROMERO CATHOLIC ACADEMY")
+    page_has_project_information_list_row(label: "UK Provider Reference Number", information: "10061021")
+    page_has_project_information_list_row(label: "Companies House number", information: "09702162")
 
     expect(page).to have_content("Local authority details")
     page_has_project_information_list_row(label: "Local authority", information: "West Placefield Council")

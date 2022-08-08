@@ -34,6 +34,22 @@ end %>
   end
 end %>
 
+<h2 class="govuk-heading-l" id="trustDetails"><%= t('project_information.show.trust_details.title') %></h2>
+<%= govuk_summary_list(actions: false) do |summary_list|
+  summary_list.row do |row|
+    row.key { t('project_information.show.trust_details.rows.incoming_trust_name') }
+    row.value { @project.trust.name }
+  end
+  summary_list.row do |row|
+    row.key { t('project_information.show.trust_details.rows.ukprn') }
+    row.value { @project.trust_ukprn.to_s }
+  end
+  summary_list.row do |row|
+    row.key { t('project_information.show.trust_details.rows.companies_house_number') }
+    row.value { @project.trust.companies_house_number }
+  end
+end %>
+
 <h2 class="govuk-heading-l" id="localAuthorityDetails"><%= t('project_information.show.local_authority_details.title') %></h2>
 <%= govuk_summary_list(actions: false) do |summary_list|
   summary_list.row do |row|

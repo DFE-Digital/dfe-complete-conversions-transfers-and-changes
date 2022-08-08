@@ -9,7 +9,7 @@ RSpec.feature "Users can update the Actions for a Task" do
   let(:task_id) { task.id }
 
   before do
-    mock_successful_api_responses(urn: 12345)
+    mock_successful_api_responses(urn: 12345, ukprn: 10061021)
 
     sign_in_with_user(user)
   end
