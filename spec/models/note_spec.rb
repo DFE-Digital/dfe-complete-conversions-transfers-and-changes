@@ -27,7 +27,7 @@ RSpec.describe Note, type: :model do
         create(:note, body: "Today's note.")
       end
 
-      it "orders ascending by the 'order' attribute" do
+      it "orders descending by the 'created_at' attribute" do
         expect(Note.first.body).to eq "Today's note."
       end
     end
