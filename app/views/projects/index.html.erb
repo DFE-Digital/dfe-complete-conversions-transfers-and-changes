@@ -10,9 +10,9 @@
     </h1>
 
     <% @projects.each do |project| %>
+      <span class="govuk-caption-m">URN <%= project.urn %></span>
       <h2 class="govuk-heading-m govuk-heading-m--school-name">
         <%= link_to project.establishment.name, project_path(project) %>
-        <span class="govuk-caption-l inline"><%= "- #{project.urn}" %></span>
       </h2>
 
       <%= govuk_summary_list(actions: false) do |summary_list|
