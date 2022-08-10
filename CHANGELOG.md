@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   incoming trust name, UKPRN, and Companies House number.
 - Users must provide the target completion date when creating a project.
 - Users can add notes to a project, and view previous project notes.
+- Show the school type, target completion date, trust name, and local
+  authority name for each project on the projects index page.
+
+### Removed
+- No longer show the assigned delivery officer on the projects index page.
 
 ## [Release 1][release-1]
 

@@ -9,20 +9,18 @@
       <%= t("project.index.title.all") %> (<%= @projects.count %>)
     </h1>
 
-    <% @projects.each do |project| %>
-      <span class="govuk-caption-m">URN <%= project.urn %></span>
-      <h2 class="govuk-heading-m govuk-heading-m--school-name">
-        <%= link_to project.establishment.name, project_path(project) %>
-      </h2>
+    <ul class="list-style-none govuk-!-padding-0">
+      <% @projects.each do |project| %>
+        <li>
+          <span class="govuk-caption-m">URN <%= project.urn %></span>
+          <h2 class="govuk-heading-m govuk-heading-m--school-name">
+            <%= link_to project.establishment.name, project_path(project) %>
+          </h2>
 
-      <%= govuk_summary_list(actions: false) do |summary_list|
-        summary_list.row do |row|
-          row.key { t('project.summary.delivery_officer.title') }
-          row.value { project.delivery_officer&.email or t('project.summary.delivery_officer.unassigned') }
-        end
-      end %>
-      
-    <% end %>
+          <%= render partial: "projects/index/project_summary", locals: { project: project } %>
+        </li>
+      <% end %>
+    </ul>
 
     <% if policy(:project).new? %>
       <p><%= link_to t('project.index.new_button.text'),

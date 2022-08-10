@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     authorize Project
-    @projects = policy_scope(Project).includes([:delivery_officer])
+    @projects = policy_scope(Project)
   end
 
   def show
