@@ -50,7 +50,7 @@ en:
   project:
     index:
       title:
-        all: All projects
+        all: Projects
       new_button:
         text: Add a new project
     show:

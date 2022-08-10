@@ -22,9 +22,9 @@ RSpec.feature "Users can view a list of projects" do
     scenario "can see all projects on the project list regardless of assignment" do
       visit projects_path
 
-      expect(page).to have_content(unassigned_project.urn.to_s)
-      expect(page).to have_content(user_1_project.urn.to_s)
-      expect(page).to have_content(user_2_project.urn.to_s)
+      page_has_project(unassigned_project)
+      page_has_project(user_1_project)
+      page_has_project(user_2_project)
     end
   end
 
@@ -39,6 +39,17 @@ RSpec.feature "Users can view a list of projects" do
       expect(page).to_not have_content(unassigned_project.urn.to_s)
       expect(page).to have_content(user_1_project.urn.to_s)
       expect(page).to_not have_content(user_2_project.urn.to_s)
+    end
+  end
+
+  private def page_has_project(project)
+    urn = find("span", text: project.urn.to_s)
+
+    within urn.ancestor("li") do
+      expect(page).to have_content("School type: #{project.establishment.type}")
+      expect(page).to have_content("Target conversion date: #{project.target_completion_date.to_formatted_s(:govuk)}")
+      expect(page).to have_content("Incoming trust: #{project.trust.name}")
+      expect(page).to have_content("Local authority: #{project.establishment.local_authority}")
     end
   end
 end
@@ -63,14 +74,6 @@ RSpec.feature "Users can view a single project" do
   end
 
   context "when a project does not have an assigned delivery officer" do
-    scenario "the project list shows an unassigned delivery officer" do
-      sign_in_with_user(create(:user, :team_leader))
-      create(:project, urn: 19283746)
-
-      visit projects_path
-      expect(page).to have_content(I18n.t("project.summary.delivery_officer.unassigned"))
-    end
-
     scenario "the project page shows an unassigned delivery officer" do
       sign_in_with_user(create(:user, :team_leader))
       single_project = create(:project, urn: urn)
