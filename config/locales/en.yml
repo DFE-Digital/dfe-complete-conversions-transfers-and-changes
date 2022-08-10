@@ -106,7 +106,7 @@ en:
     index:
       notes: Notes
       add_note_button: Add note
-      no_notes_yet: No notes yet
+      no_notes_yet: There aren't any notes for this project yet.
     create:
       success: Note has been added successfully
     new:
