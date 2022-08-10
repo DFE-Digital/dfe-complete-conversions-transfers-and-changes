@@ -25,10 +25,15 @@ RSpec.feature "Users can create and view notes" do
       user: user.email, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
     )
 
-    fill_in "Notes", with: new_note_body
+    click_link "Add note" # Link styled as button
 
-    click_button("Add note")
+    expect(page).to have_current_path(new_project_note_path(project))
 
+    fill_in "Enter note", with: new_note_body
+
+    click_button("Save note")
+
+    expect(page).to have_current_path(project_notes_path(project_id))
     expect_page_to_have_note(user: user.email, date: Date.today.to_formatted_s(:govuk), body: new_note_body)
   end
 

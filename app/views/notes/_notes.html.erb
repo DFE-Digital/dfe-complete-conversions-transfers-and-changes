@@ -1,15 +1,10 @@
-<% if @notes.present? && @notes.any? %>
-  <% @notes.each do |note| %>
+<% @notes.each_with_index do |note, index| %>
+  <% unless index == 0 %>
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-    <span class="govuk-caption-m"><%= note.created_at.to_date.to_formatted_s(:govuk) %></span>
-
-    <h3 class="govuk-heading-m"><%= note.user.email %></h3>
-
-    <p class="govuk-body"><%= note.body %></p>
   <% end %>
-<% else %>
-  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-  <h3 class="govuk-heading-m"><%= t("note.index.no_notes_yet") %></h3>
+  <span class="govuk-caption-m"><%= note.created_at.to_date.to_formatted_s(:govuk) %></span>
+  <h3 class="govuk-heading-m"><%= note.user.email %></h3>
+
+  <p class="govuk-body"><%= note.body %></p>
 <% end %>

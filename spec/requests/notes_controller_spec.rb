@@ -29,6 +29,26 @@ RSpec.describe NotesController, type: :request do
     end
   end
 
+  describe "#new" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+
+    subject(:perform_request) do
+      get new_project_note_path(project_id)
+      response
+    end
+
+    context "when the Project is not found" do
+      let(:project_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    it "returns a successful response" do
+      expect(subject).to have_http_status :success
+    end
+  end
+
   describe "#create" do
     let(:project) { create(:project) }
     let(:project_id) { project.id }
@@ -52,8 +72,8 @@ RSpec.describe NotesController, type: :request do
         allow(mock_note).to receive(:valid?).and_return false
       end
 
-      it "re-renders the index view" do
-        expect(perform_request).to render_template :index
+      it "renders the new template" do
+        expect(perform_request).to render_template :new
       end
     end
 

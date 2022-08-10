@@ -104,10 +104,13 @@ en:
           local_authority: Local authority
   note:
     index:
+      notes: Notes
       add_note_button: Add note
-      no_notes_yet: No notes yet
+      no_notes_yet: There aren't any notes for this project yet.
     create:
       success: Note has been added successfully
+    new:
+      save_note_button: Save note
   subnavigation:
     project_task_list: Project task list
     project_information: Project information
@@ -119,7 +122,7 @@ en:
         trust_ukprn: Incoming trust UK Provider Reference Number (UKPRN)
         delivery_officer_id: Delivery officer
       note:
-        body: Notes
+        body: Enter note
     legend:
       project:
         target_completion_date: Target conversion date
