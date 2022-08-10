@@ -1,0 +1,17 @@
+<% content_for :pre_content_nav do %>
+  <%= govuk_back_link(href: project_notes_path(@project)) %>
+<% end %>
+
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @note, url: project_notes_path, method: :post do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_text_area :body, label: { tag: "h1", size: "l" } %>
+
+      <%= form.govuk_submit t("note.new.save_note_button") do %>
+        <%= govuk_link_to "Cancel", project_notes_path(@project) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

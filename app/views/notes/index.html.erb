@@ -8,7 +8,11 @@
 
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-   <%= render "submission_form" %>
+    <h2 class="govuk-heading-l"><%= t("note.index.notes") %></h2>
+
+    <div class="govuk-!-margin-bottom-5">
+      <%= govuk_button_link_to t("note.index.add_note_button"), new_project_note_path(@project) %>
+    </div>
 
    <%= render "notes/notes" %>
   </div>
