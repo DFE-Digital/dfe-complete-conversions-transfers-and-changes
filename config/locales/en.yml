@@ -121,10 +121,16 @@ en:
       save_contact_button: Save contact
     create:
       success: Contact has been added successfully
+    edit:
+      title: Edit contact
+      save_contact_button: Save contact
+    update:
+      success: Contact has been updated successfully
     details:
       long:
         email: Email address
         phone: Telephone number
+      edit_link: Edit %{contact_name}
   subnavigation:
     project_task_list: Project task list
     project_information: Project information

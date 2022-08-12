@@ -88,4 +88,80 @@ RSpec.describe ContactsController, type: :request do
       end
     end
   end
+
+  describe "#edit" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:contact) { create(:contact) }
+    let(:contact_id) { contact.id }
+
+    subject(:perform_request) do
+      get edit_project_contact_path(project_id, contact_id)
+      response
+    end
+
+    context "when the Project is not found" do
+      let(:project_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    context "when the Contact is not found" do
+      let(:contact_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    it "returns a successful response" do
+      expect(subject).to have_http_status :success
+    end
+  end
+
+  describe "#update" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:contact) { create(:contact) }
+    let(:contact_id) { contact.id }
+    let(:new_contact_name) { "Josephine Bloggs" }
+    let(:new_contact_title) { "Headteacher" }
+
+    subject(:perform_request) do
+      put project_contact_path(project_id, contact_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
+      response
+    end
+
+    context "when the Project is not found" do
+      let(:project_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    context "when the Contact is not found" do
+      let(:contact_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    context "when the contact is invalid" do
+      before do
+        allow(Contact).to receive(:find).and_return(contact)
+        allow(contact).to receive(:valid?).and_return false
+      end
+
+      it "renders the edit template" do
+        expect(perform_request).to render_template :edit
+      end
+    end
+
+    context "when the contact is valid" do
+      it "saves the contact and redirects to the index view with a success message" do
+        expect(subject).to redirect_to(project_contacts_path(project.id))
+        expect(request.flash[:notice]).to eq(I18n.t("contact.update.success"))
+
+        expect(Contact.count).to be 1
+        expect(Contact.last.name).to eq(new_contact_name)
+        expect(Contact.last.title).to eq(new_contact_title)
+      end
+    end
+  end
 end

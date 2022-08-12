@@ -20,4 +20,6 @@
       end
     end
   end %>
+
+  <p class="govuk-body"><%= link_to t('contact.details.edit_link', contact_name: contact.name), edit_project_contact_path(@project, contact), class: "govuk-link" %></p>
 <% end %>
