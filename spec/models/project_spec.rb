@@ -37,7 +37,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.no_establishment_found"))
+          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.attributes.urn.no_establishment_found"))
         end
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:trust_ukprn]).to include(I18n.t("activerecord.errors.models.project.no_trust_found"))
+          expect(subject.errors[:trust_ukprn]).to include(I18n.t("activerecord.errors.models.project.attributes.trust_ukprn.no_trust_found"))
         end
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.must_be_first_of_the_month"))
+          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_first_of_the_month"))
         end
       end
     end
