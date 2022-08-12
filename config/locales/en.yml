@@ -111,10 +111,19 @@ en:
       success: Note has been added successfully
     new:
       save_note_button: Save note
+  contact:
+    index:
+      contacts: Contacts
+      no_contacts_yet: There aren't any contacts for this project yet.
+    details:
+      long:
+        email: Email address
+        phone: Telephone number
   subnavigation:
     project_task_list: Project task list
     project_information: Project information
     notes: Notes
+    contacts: Contacts
   helpers:
     label:
       project:

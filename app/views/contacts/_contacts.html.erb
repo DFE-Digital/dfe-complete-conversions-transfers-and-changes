@@ -1,0 +1,23 @@
+<% @contacts.each_with_index do |contact, index| %>
+  <% unless index == 0 %>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  <% end %>
+
+  <span class="govuk-caption-m"><%= contact.title %></span>
+  <h3 class="govuk-heading-m"><%= contact.name %></h3>
+
+  <%= govuk_summary_list(actions: false) do |summary_list|
+    if contact.email.present?
+      summary_list.row do |row|
+        row.key { t('contact.details.long.email') }
+        row.value { contact.email }
+      end
+    end
+    if contact.phone.present?
+      summary_list.row do |row|
+        row.key { t('contact.details.long.phone') }
+        row.value { contact.phone }
+      end
+    end
+  end %>
+<% end %>
