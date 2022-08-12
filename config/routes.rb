@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks
     resources :notes
-    resources :contacts, only: :index
+    resources :contacts
   end
 
   get "/projects/:id/information", to: "project_information#show", as: :project_information

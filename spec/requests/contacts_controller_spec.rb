@@ -28,4 +28,64 @@ RSpec.describe ContactsController, type: :request do
       expect(subject).to have_http_status :success
     end
   end
+
+  describe "#new" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+
+    subject(:perform_request) do
+      get new_project_contact_path(project_id)
+      response
+    end
+
+    context "when the Project is not found" do
+      let(:project_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    it "returns a successful response" do
+      expect(subject).to have_http_status :success
+    end
+  end
+
+  describe "#create" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:mock_contact) { build(:contact) }
+    let(:new_contact_name) { "Josephine Bloggs" }
+    let(:new_contact_title) { "Headteacher" }
+
+    subject(:perform_request) do
+      post project_contacts_path(project_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
+      response
+    end
+
+    context "when the Project is not found" do
+      let(:project_id) { SecureRandom.uuid }
+
+      it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
+    end
+
+    context "when the contact is invalid" do
+      before do
+        allow(Contact).to receive(:new).and_return(mock_contact)
+        allow(mock_contact).to receive(:valid?).and_return false
+      end
+
+      it "renders the new template" do
+        expect(perform_request).to render_template :new
+      end
+    end
+
+    context "when the contact is valid" do
+      it "saves the contact and redirects to the index view with a success message" do
+        expect(subject).to redirect_to(project_contacts_path(project.id))
+        expect(request.flash[:notice]).to eq(I18n.t("contact.create.success"))
+
+        expect(Contact.count).to be 1
+        expect(Contact.last.name).to eq(new_contact_name)
+      end
+    end
+  end
 end
