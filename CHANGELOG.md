@@ -27,6 +27,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Improvements to the text inputs and hints on the new project form to make
   clearer what is expected from users.
+- Improvements to the existing error messages on the new project form and new
+  notes form.
+
 ## [Release 1][release-1]
 
 ### Added

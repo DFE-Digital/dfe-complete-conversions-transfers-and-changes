@@ -139,6 +139,19 @@ en:
     errors:
       models:
         project:
-          no_establishment_found: No establishment found with that URN. Enter a valid URN.
-          no_trust_found: No trust found with that UKPRN. Enter a valid UKPRN.
-          must_be_first_of_the_month: Target completion date must be on the first day of the month.
+          attributes:
+            urn:
+              blank: Enter a school URN
+              no_establishment_found: There’s no school with that URN. Check the number you entered is correct.
+              not_a_number: School URN can only contain numbers. No letters or special characters.
+            trust_ukprn:
+              blank: Enter a UKPRN
+              no_trust_found: There’s no trust with that UKPRN. Check the number you entered is correct.
+              not_a_number: UKPRN can only contain numbers. No letters or special characters.
+            target_completion_date:
+              blank: Enter a target conversion month and year
+              must_be_first_of_the_month: Target completion date must be on the first day of the month
+        note:
+          attributes:
+            body:
+              blank: Enter a note
