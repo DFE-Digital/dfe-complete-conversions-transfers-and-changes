@@ -84,6 +84,7 @@ en:
         rows:
           delivery_officer: Delivery officer
           team_lead: Team lead
+          regional_delivery_officer: Regional delivery officer
       school_details:
         title: School details
         rows:
