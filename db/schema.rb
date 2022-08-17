@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_103138) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_08_132231) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -19,6 +19,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_103138) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_actions_on_task_id"
+  end
+
+  create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.uuid "project_id"
+    t.string "name", null: false
+    t.string "title", null: false
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_contacts_on_project_id"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -72,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_103138) do
   end
 
   add_foreign_key "actions", "tasks"
+  add_foreign_key "contacts", "projects"
   add_foreign_key "notes", "projects"
   add_foreign_key "notes", "users"
   add_foreign_key "projects", "users", column: "delivery_officer_id"

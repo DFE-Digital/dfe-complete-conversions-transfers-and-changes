@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Users can add notes to a project, and view previous project notes.
 - Show the school type, target completion date, trust name, and local authority
   name for each project on the projects index page.
+- Project contacts can be added and edited
 
 ### Removed
 

@@ -1,0 +1,25 @@
+<% content_for :pre_content_nav do %>
+  <%= govuk_back_link(href: root_path) %>
+<% end %>
+
+<%= render partial: "shared/project_summary" %>
+
+<%= render partial: "shared/project_sub_navigation" %>
+
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l"><%= t("contact.index.contacts") %></h2>
+
+    <% unless has_contacts?(@contacts) %>
+      <%= govuk_inset_text(text: t("contact.index.no_contacts_yet")) %>
+    <% end %>
+
+    <div class="govuk-!-margin-bottom-5">
+      <%= govuk_button_link_to t("contact.index.add_contact_button"), new_project_contact_path(@project) %>
+    </div>
+
+    <% if has_contacts?(@contacts) %>
+      <%= render "contacts/contacts" %>
+    <% end %>
+  </div>
+</div>

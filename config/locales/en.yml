@@ -111,10 +111,31 @@ en:
       success: Note has been added successfully
     new:
       save_note_button: Save note
+  contact:
+    index:
+      contacts: Contacts
+      add_contact_button: Add contact
+      no_contacts_yet: There aren't any contacts for this project yet.
+    new:
+      title: Add a new contact
+      save_contact_button: Save contact
+    create:
+      success: Contact has been added successfully
+    edit:
+      title: Edit contact
+      save_contact_button: Save contact
+    update:
+      success: Contact has been updated successfully
+    details:
+      long:
+        email: Email address
+        phone: Telephone number
+      edit_link: Edit %{contact_name}
   subnavigation:
     project_task_list: Project task list
     project_information: Project information
     notes: Notes
+    contacts: Contacts
   helpers:
     label:
       project:
@@ -123,6 +144,9 @@ en:
         delivery_officer_id: Delivery officer
       note:
         body: Enter note
+      contact:
+        email: Email address
+        phone: Telephone number
     legend:
       project:
         target_completion_date: Target conversion date
@@ -155,3 +179,11 @@ en:
           attributes:
             body:
               blank: Enter a note
+        contact:
+          attributes:
+            name:
+              blank: Enter a name
+            email:
+              invalid: Enter an email address in the correct format, like name@example.com
+            title:
+              blank: Enter a title
