@@ -179,3 +179,11 @@ en:
           attributes:
             body:
               blank: Enter a note
+        contact:
+          attributes:
+            name:
+              blank: Enter a name
+            email:
+              invalid: Enter an email address in the correct format, like name@example.com
+            title:
+              blank: Enter a title
