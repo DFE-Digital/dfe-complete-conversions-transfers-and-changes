@@ -33,11 +33,12 @@ RSpec.describe ProjectsController, type: :request do
       before do
         mock_successful_api_responses(urn: 12345, ukprn: 10061021)
         allow(Project).to receive(:new).and_return(project)
+        allow(project).to receive(:valid?).and_return(true)
       end
 
       it "assigns the team leader, calls the TaskListCreator, and redirects to the project path" do
         expect_any_instance_of(TaskListCreator).to receive(:call).with(project)
-        expect(subject).to redirect_to(project_path(project.id))
+        expect(perform_request).to redirect_to(project_path(project.id))
         expect(project.team_leader_id).to eq team_leader.id
       end
     end
