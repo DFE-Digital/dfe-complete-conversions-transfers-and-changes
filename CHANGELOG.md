@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   clearer what is expected from users.
 - Improvements to the existing error messages on the new project form and new
   notes form.
+- Update the conversion workflow, Clear legal documents task list
 
 ## [Release 1][release-1]
 
