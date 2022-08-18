@@ -39,6 +39,8 @@ class ProjectPolicy
     def resolve
       if user.team_leader?
         scope.all
+      elsif user.regional_delivery_officer?
+        scope.where(regional_delivery_officer: user)
       else
         scope.where(delivery_officer: user)
       end

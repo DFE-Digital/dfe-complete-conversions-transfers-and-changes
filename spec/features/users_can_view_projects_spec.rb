@@ -8,13 +8,14 @@ RSpec.feature "Users can view a list of projects" do
   end
 
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
+  let(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: "regionaldeliveryofficer@education.gov.uk") }
   let(:user_1) { create(:user, email: "user1@education.gov.uk") }
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
   let!(:unassigned_project) { create(:project, urn: 1001) }
   let!(:user_1_project) { create(:project, urn: 1002, delivery_officer: user_1) }
-  let!(:user_2_project) { create(:project, urn: 1003, delivery_officer: user_2) }
+  let!(:user_2_project) { create(:project, urn: 1003, delivery_officer: user_2, regional_delivery_officer: regional_delivery_officer) }
 
-  context "the user is a team leader" do
+  context "when the user is a team leader" do
     before do
       sign_in_with_user(team_leader)
     end
@@ -28,7 +29,21 @@ RSpec.feature "Users can view a list of projects" do
     end
   end
 
-  context "the user is not a team leader" do
+  context "when the user is a regional delivery officer" do
+    before do
+      sign_in_with_user(regional_delivery_officer)
+    end
+
+    scenario "can only see assigned projects on the projects list" do
+      visit projects_path
+
+      expect(page).to_not have_content(unassigned_project.urn.to_s)
+      expect(page).not_to have_content(user_1_project.urn.to_s)
+      page_has_project(user_2_project)
+    end
+  end
+
+  context "when the user does not have an assigned role" do
     before(:each) do
       sign_in_with_user(user_1)
     end
