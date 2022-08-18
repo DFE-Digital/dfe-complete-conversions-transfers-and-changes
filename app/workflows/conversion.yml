@@ -6,7 +6,7 @@ sections:
       - title: Handover with Regional Delivery Officer
         actions:
           - title:
-              Recieve email with handover proforma and check it's saved in
+              Receive email with handover proforma and check it's saved in
               SharePoint
           - title:
               "Check the 'application to convert', 'academy order' and any other
@@ -24,7 +24,7 @@ sections:
 
       - title: Local authority questionnaire
         actions:
-          - title: Local Authority questionnaire recieved
+          - title: Local Authority questionnaire received
           - title: Save Local Authority questionnaire in SharePoint
       - title: External stakeholder kick off
         actions:
@@ -65,41 +65,53 @@ sections:
     tasks:
       - title: Land questionnaire & land registry title plans
         actions:
-          - title: Land questionnaire recieved
-          - title: Land registry title plans recieved
+          - title: Land questionnaire received
+            hint: Select if you have received the land questionnaire
+            guidance_summary: Additional guidance
+            guidance_text: |
+              # A h1 title header
+
+              ## Lists
+
+              This is a list:
+
+              * of multiple
+              * things
+              * and such
+          - title: Land registry title plans received
           - title: Check and clear land questionnaire
           - title: Check and clear land registry title plans
-          - title: Trust Modification Order recieved (if applicable)
-          - title: Direction to Transfer recieved (if applicable)
+          - title: Trust Modification Order received (if applicable)
+          - title: Direction to Transfer received (if applicable)
           - title: Save documents in SharePoint
 
       - title: Articles of associations
         actions:
-          - title: Recieved
+          - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Supplementary Funding Agreement (SFA)
         actions:
-          - title: Recieved
+          - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Church Supplementary Agreement  (CSA)
         actions:
-          - title: Recieved
+          - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Deed of Novation & Variation (DoNV)
         actions:
-          - title: Recieved
+          - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Master Funding Agreement (MFA)
         actions:
-          - title: Recieved
+          - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
@@ -135,7 +147,7 @@ sections:
         actions:
           - title: Email final checklist to external stakeholders
           - title:
-              Recieve email of responses to final checklist from external
+              Receive email of responses to final checklist from external
               stakeholders
           - title:
               Save final checklist email response from external stakeholders in

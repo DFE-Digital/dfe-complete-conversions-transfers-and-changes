@@ -5,6 +5,9 @@ RSpec.describe Action do
     it { is_expected.to have_db_column(:title).of_type :string }
     it { is_expected.to have_db_column(:order).of_type :integer }
     it { is_expected.to have_db_column(:completed).of_type :boolean }
+    it { is_expected.to have_db_column(:hint).of_type :text }
+    it { is_expected.to have_db_column(:guidance_summary).of_type :string }
+    it { is_expected.to have_db_column(:guidance_text).of_type :text }
   end
 
   describe "Relationships" do

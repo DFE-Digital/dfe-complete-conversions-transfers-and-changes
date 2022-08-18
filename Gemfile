@@ -43,6 +43,9 @@ gem "pundit", "~> 2.2"
 gem "govuk-components", "~> 3.1"
 gem "govuk_design_system_formbuilder", "~> 3.1"
 
+# Use govuk_markdown to transform Markdown into GOV.UK Frontend-compliant HTML
+gem "govuk_markdown"
+
 gem "faraday"
 
 group :development, :test do

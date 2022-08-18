@@ -35,11 +35,20 @@ RSpec.describe TaskListCreator do
     end
 
     it "creates actions from the workflow" do
-      section = Section.find_by(title: "Clear legal documents")
-      task = section.tasks.find_by(title: "Clear land questionnaire")
+      section = Section.find_by(title: "Starting the project")
+      task = section.tasks.find_by(title: "Understand history and complete handover from Pre-AB")
 
       expect(Action.count).to eql 6
-      expect(Action.where(title: "Action one", order: 0, task: task)).to exist
+      expect(
+        Action.where(
+          title: "Action one",
+          order: 0,
+          hint: "Action one hint",
+          guidance_summary: "Guidance summary",
+          guidance_text: "Guidance text",
+          task: task
+        )
+      ).to exist
     end
   end
 end
