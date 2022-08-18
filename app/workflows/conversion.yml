@@ -63,53 +63,61 @@ sections:
 
   - title: Clear legal documents
     tasks:
-      - title: Land questionnaire & land registry title plans
-        actions:
-          - title: Land questionnaire received
-            hint: Select if you have received the land questionnaire
-            guidance_summary: Additional guidance
-            guidance_text: |
-              # A h1 title header
-
-              ## Lists
-
-              This is a list:
-
-              * of multiple
-              * things
-              * and such
-          - title: Land registry title plans received
-          - title: Check and clear land questionnaire
-          - title: Check and clear land registry title plans
-          - title: Trust Modification Order received (if applicable)
-          - title: Direction to Transfer received (if applicable)
-          - title: Save documents in SharePoint
-
-      - title: Articles of associations
+      - title: Land questionnaire
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
-      - title: Supplementary Funding Agreement (SFA)
+      - title: Land registry title plans
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
-      - title: Church Supplementary Agreement  (CSA)
+      - title: Supplementary funding agreement
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
-      - title: Deed of Novation & Variation (DoNV)
+      - title: Church supplementary agreement
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
-      - title: Master Funding Agreement (MFA)
+      - title: Master funding agreement
+        actions:
+          - title: Received
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Articles of association
+        actions:
+          - title: Received
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Deed of variation
+        actions:
+          - title: Received
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Trust modification order
+        actions:
+          - title: Received
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Trust modification order
+        actions:
+          - title: Received
+          - title: Cleared
+          - title: Saved in SharePoint
+
+      - title: Direction to transfer
         actions:
           - title: Received
           - title: Cleared
