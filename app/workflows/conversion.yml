@@ -66,6 +66,18 @@ sections:
       - title: Land questionnaire & land registry title plans
         actions:
           - title: Land questionnaire received
+            hint: Select if you have received the land questionnaire
+            guidance_summary: Additional guidance
+            guidance_text: |
+              # A h1 title header
+
+              ## Lists
+
+              This is a list:
+
+              * of multiple
+              * things
+              * and such
           - title: Land registry title plans received
           - title: Check and clear land questionnaire
           - title: Check and clear land registry title plans

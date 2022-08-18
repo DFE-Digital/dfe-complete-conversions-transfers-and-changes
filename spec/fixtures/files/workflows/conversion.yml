@@ -10,6 +10,9 @@ sections:
       - title: Understand history and complete handover from Pre-AB
         actions:
           - title: Action one
+            hint: Action one hint
+            guidance_summary: Guidance summary
+            guidance_text: Guidance text
           - title: Action two
       - title: Note concerns or issues from handover
         actions:

@@ -21,7 +21,10 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "title": { "type": "string" }
+                      "title": { "type": "string" },
+                      "hint": { "type": "string" },
+                      "guidance_summary": { "type": "string" },
+                      "guidance_text": { "type": "string" }
                     },
                     "required": ["title"]
                   }
