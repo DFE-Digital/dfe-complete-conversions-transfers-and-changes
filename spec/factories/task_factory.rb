@@ -14,5 +14,10 @@ FactoryBot.define do
     order { 0 }
 
     section
+    optional { false }
+
+    trait :optional do
+      optional { true }
+    end
   end
 end
