@@ -13,9 +13,33 @@ RSpec.describe Project, type: :model do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     it { is_expected.to have_many(:sections).dependent(:destroy) }
-    it { is_expected.to have_many(:notes) }
+    it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:delivery_officer).required(false) }
     it { is_expected.to belong_to(:team_leader).required(true) }
+
+    describe "delete related entities" do
+      context "when the project is deleted" do
+        it "destroys all the related notes, contacts, sections leaving nothing orphaned" do
+          project = create(:project)
+
+          create_list(:note, 3, project: project)
+          create_list(:contact, 3, project: project)
+          create_list(:section, 3, project: project)
+
+          populated_section = project.sections.first
+          task = create(:task, section: populated_section)
+          create_list(:action, 5, task: task)
+
+          project.destroy
+
+          expect(Note.count).to eql 0
+          expect(Contact.count).to eql 0
+          expect(Section.count).to eql 0
+          expect(Task.count).to eql 0
+          expect(Action.count).to eql 0
+        end
+      end
+    end
   end
 
   describe "Validations" do
