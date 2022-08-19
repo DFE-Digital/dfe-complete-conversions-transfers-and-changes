@@ -15,9 +15,15 @@ FactoryBot.define do
 
     section
     optional { false }
+    not_applicable { false }
 
     trait :optional do
       optional { true }
+    end
+
+    trait :not_applicable do
+      optional { true }
+      not_applicable { true }
     end
   end
 end
