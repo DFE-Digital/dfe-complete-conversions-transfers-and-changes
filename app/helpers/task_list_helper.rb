@@ -18,6 +18,10 @@ module TaskListHelper
         text: "Complete",
         colour: "turquoise"
       },
+      not_applicable: {
+        text: "Not applicable",
+        colour: "grey"
+      },
       unknown: {
         text: "Unknown",
         colour: "grey"

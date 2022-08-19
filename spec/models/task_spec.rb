@@ -90,5 +90,17 @@ RSpec.describe Task, type: :model do
         expect(task.status).to eq :in_progress
       end
     end
+
+    context "when the task is not applicable" do
+      let(:task) { create(:task, not_applicable: true, optional: true) }
+
+      before do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+      end
+
+      it "returns an not_applicable state" do
+        expect(task.status).to eq :not_applicable
+      end
+    end
   end
 end
