@@ -4,6 +4,16 @@
 
 <h1 class="govuk-heading-l"><%= @task.title %></h1>
 
+<% if @task.hint? %>
+  <p class="govuk-body"><%= sanitize GovukMarkdown.render(@task.hint) %></p>
+<% end %>
+
+<% if @task.guidance_summary? %>
+  <%= govuk_details(summary_text: @task.guidance_summary) do %>
+    <%= sanitize GovukMarkdown.render(@task.guidance_text) %>
+  <% end %>
+<% end %>
+
 <%= form_for :task, url: project_task_path, method: :put do |form| %>
   <%= form.govuk_check_boxes_fieldset :actions, legend: { text: "Actions", size: "m" } do %>
     <% @task.actions.each do |action| %>
