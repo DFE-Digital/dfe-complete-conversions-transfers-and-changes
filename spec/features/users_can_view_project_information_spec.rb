@@ -16,6 +16,7 @@ RSpec.feature "Users can view project information" do
     expect(page).to have_content("Project details")
     page_has_project_information_list_row(label: "Delivery officer", information: "user@education.gov.uk")
     page_has_project_information_list_row(label: "Team lead", information: project.team_leader.email)
+    page_has_project_information_list_row(label: "Regional delivery officer", information: project.regional_delivery_officer.email)
 
     expect(page).to have_content("School details")
     page_has_project_information_list_row(label: "Original school name", information: "Caludon Castle School")

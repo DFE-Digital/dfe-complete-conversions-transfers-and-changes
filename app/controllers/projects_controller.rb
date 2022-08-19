@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :find_regional_delivery_officers, only: %i[new create]
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
 
@@ -51,8 +52,18 @@ class ProjectsController < ApplicationController
     redirect_to project_information_path(@project)
   end
 
+  private def find_regional_delivery_officers
+    @regional_delivery_officers = User.where(regional_delivery_officer: true)
+  end
+
   private def project_params
-    params.require(:project).permit(:urn, :trust_ukprn, :target_completion_date, :delivery_officer_id)
+    params.require(:project).permit(
+      :urn,
+      :trust_ukprn,
+      :target_completion_date,
+      :delivery_officer_id,
+      :regional_delivery_officer_id
+    )
   end
 
   private def assign_team_leader

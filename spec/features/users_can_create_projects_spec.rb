@@ -37,6 +37,8 @@ end
 RSpec.feature "Team leaders can create a new project" do
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
   let(:team_leader) { create(:user, :team_leader) }
+  let(:regional_delivery_officer_email) { "regional-deliver-officer@education.gov.uk" }
+  let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: regional_delivery_officer_email) }
 
   before do
     sign_in_with_user(team_leader)
@@ -58,6 +60,7 @@ RSpec.feature "Team leaders can create a new project" do
       fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
       fill_in "Month", with: 12
       fill_in "Year", with: 2025
+      select regional_delivery_officer_email, from: "Regional delivery officer"
 
       click_button("Continue")
 

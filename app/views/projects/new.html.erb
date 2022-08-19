@@ -8,9 +8,15 @@
 
   <h1 class="govuk-heading-l"><%= t("project.new.title") %></h1>
 
-  <%= form.govuk_text_field :urn, label: { tag: 'h3', size: 'm' }, width: 10 %>
-  <%= form.govuk_text_field :trust_ukprn, label: { tag: 'h3', size: 'm' }, width: 10 %>
+  <%= form.govuk_text_field :urn, label: { size: 'm' }, width: 10 %>
+  <%= form.govuk_text_field :trust_ukprn, label: { size: 'm' }, width: 10 %>
   <%= form.govuk_date_field :target_completion_date, omit_day: true %>
+  <%= form.govuk_collection_select :regional_delivery_officer_id,
+                                   @regional_delivery_officers,
+                                   :id,
+                                   :email,
+                                   label: { size: 'm' },
+                                   options: { include_blank: true } %>
 
   <%= form.govuk_submit %>
 <% end %>
