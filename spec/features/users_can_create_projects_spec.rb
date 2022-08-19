@@ -64,7 +64,7 @@ RSpec.feature "Team leaders can create a new project" do
 
       click_button("Continue")
 
-      expect(page).to have_content("Project task list")
+      expect(page).to have_content(I18n.t("project.show.title"))
       expect(page).to have_content("Starting the project")
       expect(page).to have_content("Understand history and complete handover from Pre-AB")
     end
