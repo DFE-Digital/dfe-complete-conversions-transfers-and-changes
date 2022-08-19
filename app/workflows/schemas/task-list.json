@@ -19,6 +19,7 @@
                 "hint": { "type": "string" },
                 "guidance_summary": { "type": "string" },
                 "guidance_text": { "type": "string" },
+                "optional": { "type": "boolean" },
                 "actions": {
                   "type": "array",
                   "items": {
