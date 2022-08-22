@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Optional tasks can be marked 'Not applicable' to the project
 - Added content to Articles of association task
 - Added content to Church supplementary agreement
+- Added content to Deed of variation
 
 ### Removed
 

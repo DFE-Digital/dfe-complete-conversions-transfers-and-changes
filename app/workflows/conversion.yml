@@ -120,6 +120,14 @@ sections:
           - title: Saved in SharePoint
 
       - title: Deed of variation
+        hint: |
+          You'll need to complete and clear a Deed of variation if there are changes to the funding agreements.
+        
+          You can [find the right Deed of variation to use (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx) on SharePoint. 
+        guidance_summary: Help checking for changes
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change. 
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
         optional: true
         actions:
           - title: Received
