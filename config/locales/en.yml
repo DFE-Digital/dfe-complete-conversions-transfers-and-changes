@@ -180,6 +180,7 @@ en:
             target_completion_date:
               blank: Enter a target conversion month and year
               must_be_first_of_the_month: Target completion date must be on the first day of the month
+              must_be_in_the_future: Target conversion date must be in the future.
             regional_delivery_officer_id:
               blank: Choose a regional delivery officer
         note:

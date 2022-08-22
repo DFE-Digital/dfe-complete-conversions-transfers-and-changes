@@ -8,8 +8,10 @@ class Project < ApplicationRecord
   validates :target_completion_date, presence: true
   validates :team_leader, presence: true
   validates :regional_delivery_officer_id, presence: true, allow_blank: false
-  validate :establishment_exists, :trust_exists, on: :create
+
   validate :first_day_of_month, :trust_ukprn_is_correct_format
+  validate :target_completion_date_is_in_the_future, on: :create
+  validate :establishment_exists, :trust_exists, on: :create
 
   belongs_to :caseworker, class_name: "User", optional: true
   belongs_to :team_leader, class_name: "User", optional: false
@@ -66,6 +68,14 @@ class Project < ApplicationRecord
 
     if number_of_digits != 8 || first_digit != 1
       errors.add(:trust_ukprn, :must_be_correct_format)
+    end
+  end
+
+  private def target_completion_date_is_in_the_future
+    return if target_completion_date.nil?
+
+    unless target_completion_date.future?
+      errors.add(:target_completion_date, :must_be_in_the_future)
     end
   end
 end
