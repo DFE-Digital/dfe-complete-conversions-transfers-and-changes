@@ -54,7 +54,7 @@ en:
       new_button:
         text: Add a new project
     show:
-      title: Project task list
+      title: Task list
       edit_button:
         text: Edit
     new:
@@ -133,7 +133,7 @@ en:
         phone: Telephone number
       edit_link: Edit %{contact_name}
   subnavigation:
-    project_task_list: Project task list
+    project_task_list: Task list
     project_information: Project information
     notes: Notes
     contacts: Contacts
