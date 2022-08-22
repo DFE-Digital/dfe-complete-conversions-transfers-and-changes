@@ -16,6 +16,9 @@
               "type": "object",
               "properties": {
                 "title": { "type": "string" },
+                "hint": { "type": "string" },
+                "guidance_summary": { "type": "string" },
+                "guidance_text": { "type": "string" },
                 "actions": {
                   "type": "array",
                   "items": {
