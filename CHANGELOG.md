@@ -28,7 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added content to Articles of association task
 - Added content to Church supplementary agreement
 - Added content to Deed of variation
-- Added content to Directino to transfer
+- Added content to Direction to transfer
+- Added content to Land questionnaire
 
 ### Removed
 

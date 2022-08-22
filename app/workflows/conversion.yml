@@ -64,6 +64,10 @@ sections:
   - title: Clear legal documents
     tasks:
       - title: Land questionnaire
+        hint: |
+          Make sure that any proposals for the land meet legal requirements and Ministerial preferences.
+          
+          You can [use the land transfer advice and guidance to check for common problems (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
         actions:
           - title: Received
           - title: Cleared
