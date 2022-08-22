@@ -44,6 +44,7 @@ en:
   unauthorised_action:
     message: You are not authorised to perform this action.
   tasks:
+    not_applicable: Not applicable
     users:
       create:
         error: You must provide a users email address e.g. bin/rails users:create EMAIL_ADDRESS=name@example.com
