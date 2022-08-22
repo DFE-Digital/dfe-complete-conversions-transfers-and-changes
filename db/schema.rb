@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_19_121534) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_22_104025) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -49,12 +49,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_121534) do
     t.integer "urn", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "delivery_officer_id"
     t.uuid "team_leader_id", null: false
     t.integer "trust_ukprn", null: false
     t.date "target_completion_date", null: false
     t.uuid "regional_delivery_officer_id", null: false
-    t.index ["delivery_officer_id"], name: "index_projects_on_delivery_officer_id"
+    t.uuid "caseworker_id"
+    t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
     t.index ["urn"], name: "index_projects_on_urn"
@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_121534) do
   add_foreign_key "contacts", "projects"
   add_foreign_key "notes", "projects"
   add_foreign_key "notes", "users"
-  add_foreign_key "projects", "users", column: "delivery_officer_id"
+  add_foreign_key "projects", "users", column: "caseworker_id"
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
   add_foreign_key "projects", "users", column: "team_leader_id"
   add_foreign_key "sections", "projects"

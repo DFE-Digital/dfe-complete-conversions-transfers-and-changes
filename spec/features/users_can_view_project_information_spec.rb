@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can view project information" do
   let(:user) { create(:user, email: "user@education.gov.uk") }
-  let(:project) { create(:project, delivery_officer: user) }
+  let(:project) { create(:project, caseworker: user) }
   let(:project_id) { project.id }
 
   before do
@@ -14,7 +14,7 @@ RSpec.feature "Users can view project information" do
     visit project_information_path(project_id)
 
     expect(page).to have_content("Project details")
-    page_has_project_information_list_row(label: "Delivery officer", information: "user@education.gov.uk")
+    page_has_project_information_list_row(label: "Caseworker", information: "user@education.gov.uk")
     page_has_project_information_list_row(label: "Team lead", information: project.team_leader.email)
     page_has_project_information_list_row(label: "Regional delivery officer", information: project.regional_delivery_officer.email)
 

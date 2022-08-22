@@ -42,7 +42,7 @@ class ProjectPolicy
       elsif user.regional_delivery_officer?
         scope.where(regional_delivery_officer: user)
       else
-        scope.where(delivery_officer: user)
+        scope.where(caseworker: user)
       end
     end
 

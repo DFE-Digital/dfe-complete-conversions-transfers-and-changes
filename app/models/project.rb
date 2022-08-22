@@ -11,7 +11,7 @@ class Project < ApplicationRecord
   validate :establishment_exists, :trust_exists, on: :create
   validate :target_completion_date, :first_day_of_month
 
-  belongs_to :delivery_officer, class_name: "User", optional: true
+  belongs_to :caseworker, class_name: "User", optional: true
   belongs_to :team_leader, class_name: "User", optional: false
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
