@@ -171,6 +171,7 @@ en:
               blank: Enter a school URN
               no_establishment_found: There’s no school with that URN. Check the number you entered is correct.
               not_a_number: School URN can only contain numbers. No letters or special characters.
+              wrong_length: URN must be 6 digits long. For example, 123456.
             trust_ukprn:
               blank: Enter a UKPRN
               no_trust_found: There’s no trust with that UKPRN. Check the number you entered is correct.

@@ -54,6 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The task list is now referred to as "Task list" not "Project task list"
 - Rename any references of "Delivery officer" to "Caseworker". Projects will
   lose any currently assigned delivery officers.
+- Add validation that checks URN is 6 digits long.
 
 ## [Release 1][release-1]
 

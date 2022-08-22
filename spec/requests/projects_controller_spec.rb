@@ -10,7 +10,7 @@ RSpec.describe ProjectsController, type: :request do
 
   describe "#create" do
     subject(:perform_request) do
-      post projects_path, params: {project: {urn: 12345}}
+      post projects_path, params: {project: {urn: 123456}}
       response
     end
 
@@ -31,7 +31,7 @@ RSpec.describe ProjectsController, type: :request do
       let(:project) { build(:project, team_leader: nil) }
 
       before do
-        mock_successful_api_responses(urn: 12345, ukprn: 10061021)
+        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
         allow(Project).to receive(:new).and_return(project)
         allow(project).to receive(:valid?).and_return(true)
       end

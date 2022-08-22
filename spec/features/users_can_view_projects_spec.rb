@@ -2,18 +2,18 @@ require "rails_helper"
 
 RSpec.feature "Users can view a list of projects" do
   before do
-    mock_successful_api_responses(urn: 1001, ukprn: 10061021)
-    mock_successful_api_responses(urn: 1002, ukprn: 10061021)
-    mock_successful_api_responses(urn: 1003, ukprn: 10061021)
+    mock_successful_api_responses(urn: 100001, ukprn: 10061021)
+    mock_successful_api_responses(urn: 100002, ukprn: 10061021)
+    mock_successful_api_responses(urn: 100003, ukprn: 10061021)
   end
 
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: "regionaldeliveryofficer@education.gov.uk") }
   let(:user_1) { create(:user, email: "user1@education.gov.uk") }
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
-  let!(:unassigned_project) { create(:project, urn: 1001) }
-  let!(:user_1_project) { create(:project, urn: 1002, caseworker: user_1) }
-  let!(:user_2_project) { create(:project, urn: 1003, caseworker: user_2, regional_delivery_officer: regional_delivery_officer) }
+  let!(:unassigned_project) { create(:project, urn: 100001) }
+  let!(:user_1_project) { create(:project, urn: 100002, caseworker: user_1) }
+  let!(:user_2_project) { create(:project, urn: 100003, caseworker: user_2, regional_delivery_officer: regional_delivery_officer) }
 
   context "when the user is a team leader" do
     before do
@@ -70,7 +70,7 @@ RSpec.feature "Users can view a list of projects" do
 end
 
 RSpec.feature "Users can view a single project" do
-  let(:urn) { 19283746 }
+  let(:urn) { 123456 }
   let(:establishment) { build(:academies_api_establishment) }
 
   before do
@@ -104,7 +104,7 @@ RSpec.feature "Users can view a single project" do
     scenario "the project list shows an assigned caseworker" do
       sign_in_with_user(create(:user, :team_leader, email: user_email_address))
       user = User.find_by(email: user_email_address)
-      create(:project, urn: 19283746, caseworker: user)
+      create(:project, urn: 123456, caseworker: user)
 
       visit projects_path
       expect(page).to have_content(user_email_address)

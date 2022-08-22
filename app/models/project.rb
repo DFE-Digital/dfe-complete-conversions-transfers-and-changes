@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
-  validates :urn, presence: true, numericality: {only_integer: true}
+  validates :urn, presence: true, numericality: {only_integer: true}, length: {is: 6}
   validates :trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
   validates :team_leader, presence: true

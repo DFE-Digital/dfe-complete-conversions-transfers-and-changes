@@ -6,7 +6,7 @@ RSpec.feature "Users can view contacts" do
   let(:project_id) { project.id }
 
   before do
-    mock_successful_api_responses(urn: 12345, ukprn: 10061021)
+    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
 
     create(:contact, project: project)

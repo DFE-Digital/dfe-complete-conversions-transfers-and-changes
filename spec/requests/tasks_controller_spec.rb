@@ -18,7 +18,7 @@ RSpec.describe TasksController, type: :request do
       response
     end
 
-    before { mock_successful_api_responses(urn: 12345, ukprn: 10061021) }
+    before { mock_successful_api_responses(urn: 123456, ukprn: 10061021) }
 
     context "when the Task is not found" do
       let(:task_id) { SecureRandom.uuid }
@@ -45,7 +45,7 @@ RSpec.describe TasksController, type: :request do
       response
     end
 
-    before { mock_successful_api_responses(urn: 12345, ukprn: 10061021) }
+    before { mock_successful_api_responses(urn: 123456, ukprn: 10061021) }
 
     context "when the Task is not found" do
       let(:task_id) { SecureRandom.uuid }

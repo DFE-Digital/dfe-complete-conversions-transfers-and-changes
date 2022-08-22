@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Users can reach the edit project page" do
-  let(:urn) { 12345 }
+  let(:urn) { 123456 }
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:caseworker) { create(:user, email: "user1@education.gov.uk") }
   let(:unassigned_project) { create(:project, urn: urn) }
@@ -54,7 +54,7 @@ RSpec.feature "Users can update a project" do
   context "the user is a team leader" do
     before do
       sign_in_with_user(team_leader)
-      mock_successful_api_responses(urn: 12345, ukprn: 10061021)
+      mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     end
 
     context "when the project has no caseworker" do

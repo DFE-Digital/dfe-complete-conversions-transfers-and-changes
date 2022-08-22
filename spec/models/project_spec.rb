@@ -48,6 +48,8 @@ RSpec.describe Project, type: :model do
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
       it { is_expected.to validate_numericality_of(:urn).only_integer }
+      it { is_expected.to allow_value(123456).for(:urn) }
+      it { is_expected.not_to allow_values(12345, 1234567).for(:urn) }
 
       context "when no establishment with that URN exists in the API" do
         let(:no_establishment_found_result) do
@@ -106,7 +108,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#establishment" do
-    let(:urn) { 12345 }
+    let(:urn) { 123456 }
     let(:establishment) { build(:academies_api_establishment) }
 
     subject { described_class.new(urn: urn) }
@@ -123,7 +125,7 @@ RSpec.describe Project, type: :model do
     end
 
     context "when the Academies API client returns a #{AcademiesApi::Client::NotFoundError}" do
-      let(:error_message) { "Could not find establishment with URN: 12345" }
+      let(:error_message) { "Could not find establishment with URN: 123456" }
       let(:error) { AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new(error_message)) }
 
       before do
@@ -137,7 +139,7 @@ RSpec.describe Project, type: :model do
     end
 
     context "when the Academies API client returns a #{AcademiesApi::Client::Error}" do
-      let(:error_message) { "There was an error connecting to the Academies API, could not fetch establishment for URN: 12345" }
+      let(:error_message) { "There was an error connecting to the Academies API, could not fetch establishment for URN: 123456" }
       let(:error) { AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::Error.new(error_message)) }
 
       before do

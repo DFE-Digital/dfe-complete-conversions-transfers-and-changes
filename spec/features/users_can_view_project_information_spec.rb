@@ -6,7 +6,7 @@ RSpec.feature "Users can view project information" do
   let(:project_id) { project.id }
 
   before do
-    mock_successful_api_responses(urn: 12345, ukprn: 10061021)
+    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
   end
 
@@ -20,7 +20,7 @@ RSpec.feature "Users can view project information" do
 
     expect(page).to have_content("School details")
     page_has_project_information_list_row(label: "Original school name", information: "Caludon Castle School")
-    page_has_project_information_list_row(label: "Old Unique Reference Number", information: "12345")
+    page_has_project_information_list_row(label: "Old Unique Reference Number", information: "123456")
     page_has_project_information_list_row(label: "School type", information: "Academy converter")
     page_has_project_information_list_row(label: "Age range", information: "11 to 18")
     page_has_project_information_list_row(label: "School phase", information: "Secondary")
