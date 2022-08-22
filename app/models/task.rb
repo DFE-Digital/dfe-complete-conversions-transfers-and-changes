@@ -15,6 +15,8 @@ class Task < ApplicationRecord
   end
 
   def status
+    return :not_applicable if not_applicable? && optional?
+
     if completed_actions_count == 0
       :not_started
     elsif completed_actions_count == actions_count

@@ -82,42 +82,49 @@ sections:
           - title: Saved in SharePoint
 
       - title: Church supplementary agreement
+        optional: true
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Master funding agreement
+        optional: true
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Articles of association
+        optional: true
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Deed of variation
+        optional: true
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Trust modification order
+        optional: true
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Trust modification order
+        optional: true
         actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
       - title: Direction to transfer
+        optional: true
         actions:
           - title: Received
           - title: Cleared

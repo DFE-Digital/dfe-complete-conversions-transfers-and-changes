@@ -60,5 +60,16 @@ RSpec.describe TasksController, type: :request do
       expect(incomplete_action.reload.completed?).to be true
       expect(completed_action.reload.completed?).to be false
     end
+
+    context "when the task is not applicable" do
+      let(:task) { create(:task, :not_applicable, actions: [completed_action, completed_action]) }
+
+      it "sets all the tasks actions completed state to false" do
+        perform_request
+
+        expect(task.reload.actions.first.completed?).to be false
+        expect(task.reload.actions.last.completed?).to be false
+      end
+    end
   end
 end

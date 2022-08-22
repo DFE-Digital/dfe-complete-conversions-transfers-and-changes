@@ -29,9 +29,15 @@
           <%= sanitize GovukMarkdown.render(action.guidance_text) %>
         <% end %>
       <% end %>
+    <% end %>
 
+    <% if @task.optional? %>
+      <%= form.govuk_check_box_divider %>
+      <%= form.govuk_check_box :not_applicable,
+                                true,
+                                label: { text: t("tasks.not_applicable") },
+                                checked: @task.not_applicable? %>
     <% end %>
   <% end %>
-
   <%= form.govuk_submit %>
 <% end %>

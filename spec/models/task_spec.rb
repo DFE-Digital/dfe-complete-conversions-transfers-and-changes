@@ -5,6 +5,8 @@ RSpec.describe Task, type: :model do
     it { is_expected.to have_db_column(:title).of_type :string }
     it { is_expected.to have_db_column(:order).of_type :integer }
     it { is_expected.to have_db_column(:completed).of_type :boolean }
+    it { is_expected.to have_db_column(:optional).of_type :boolean }
+    it { is_expected.to have_db_column(:not_applicable).of_type :boolean }
   end
 
   describe "Relationships" do
@@ -86,6 +88,18 @@ RSpec.describe Task, type: :model do
 
       it "returns an in_progress state" do
         expect(task.status).to eq :in_progress
+      end
+    end
+
+    context "when the task is not applicable" do
+      let(:task) { create(:task, not_applicable: true, optional: true) }
+
+      before do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+      end
+
+      it "returns an not_applicable state" do
+        expect(task.status).to eq :not_applicable
       end
     end
   end

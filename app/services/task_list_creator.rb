@@ -21,7 +21,8 @@ class TaskListCreator
           guidance_summary: workflow_task.fetch("guidance_summary", nil),
           guidance_text: workflow_task.fetch("guidance_text", nil),
           order: index,
-          section: section
+          section: section,
+          optional: workflow_task.fetch("optional", false)
         )
 
         create_actions(workflow_task, task)

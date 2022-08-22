@@ -43,6 +43,10 @@ RSpec.describe TaskListCreator do
       ).to exist
     end
 
+    it "creates optional tasks" do
+      expect(Task.where(title: "Optional note concerns or issues from handover", optional: true)).to exist
+    end
+
     it "creates actions from the workflow" do
       section = Section.find_by(title: "Starting the project")
       task = section.tasks.find_by(title: "Understand history and complete handover from Pre-AB")
