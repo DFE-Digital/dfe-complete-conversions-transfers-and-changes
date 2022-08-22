@@ -82,6 +82,16 @@ sections:
           - title: Saved in SharePoint
 
       - title: Church supplementary agreement
+        hint: |
+          This document is only required for Church of England and Catholic schools.
+
+          If needed, check the Articles of association for changes from the model documents.
+
+          You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes. 
+        guidance_summary: Help checking for changes
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change. 
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
         optional: true
         actions:
           - title: Received
@@ -95,7 +105,7 @@ sections:
           - title: Cleared
           - title: Saved in SharePoint
 
-      - title: Clear the Articles of association
+      - title: Articles of association
         hint: |
           Check the Articles of association for changes from the model documents. 
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes.

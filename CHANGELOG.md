@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add hint text and guidance text to tasks.
 - Optional tasks can be marked 'Not applicable' to the project
 - Added content to Articles of association task
+- Added content to Church supplementary agreement
 
 ### Removed
 
