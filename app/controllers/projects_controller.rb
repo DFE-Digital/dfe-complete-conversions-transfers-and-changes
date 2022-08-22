@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
       :urn,
       :trust_ukprn,
       :target_completion_date,
-      :delivery_officer_id,
+      :caseworker_id,
       :regional_delivery_officer_id
     )
   end

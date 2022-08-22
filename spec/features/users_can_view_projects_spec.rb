@@ -12,8 +12,8 @@ RSpec.feature "Users can view a list of projects" do
   let(:user_1) { create(:user, email: "user1@education.gov.uk") }
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
   let!(:unassigned_project) { create(:project, urn: 1001) }
-  let!(:user_1_project) { create(:project, urn: 1002, delivery_officer: user_1) }
-  let!(:user_2_project) { create(:project, urn: 1003, delivery_officer: user_2, regional_delivery_officer: regional_delivery_officer) }
+  let!(:user_1_project) { create(:project, urn: 1002, caseworker: user_1) }
+  let!(:user_2_project) { create(:project, urn: 1003, caseworker: user_2, regional_delivery_officer: regional_delivery_officer) }
 
   context "when the user is a team leader" do
     before do
@@ -88,32 +88,32 @@ RSpec.feature "Users can view a single project" do
     expect(page).to have_content(single_project.urn.to_s)
   end
 
-  context "when a project does not have an assigned delivery officer" do
-    scenario "the project page shows an unassigned delivery officer" do
+  context "when a project does not have an assigned caseworker" do
+    scenario "the project page shows an unassigned caseworker" do
       sign_in_with_user(create(:user, :team_leader))
       single_project = create(:project, urn: urn)
 
       visit project_information_path(single_project)
-      expect(page).to have_content(I18n.t("project.summary.delivery_officer.unassigned"))
+      expect(page).to have_content(I18n.t("project.summary.caseworker.unassigned"))
     end
   end
 
-  context "when a project has an assigned delivery officer" do
+  context "when a project has an assigned caseworker" do
     let(:user_email_address) { "user@education.gov.uk" }
 
-    scenario "the project list shows an assigned delivery officer" do
+    scenario "the project list shows an assigned caseworker" do
       sign_in_with_user(create(:user, :team_leader, email: user_email_address))
       user = User.find_by(email: user_email_address)
-      create(:project, urn: 19283746, delivery_officer: user)
+      create(:project, urn: 19283746, caseworker: user)
 
       visit projects_path
       expect(page).to have_content(user_email_address)
     end
 
-    scenario "the project page shows an assigned delivery officer" do
+    scenario "the project page shows an assigned caseworker" do
       sign_in_with_user(create(:user, :team_leader, email: user_email_address))
       user = User.find_by(email: user_email_address)
-      single_project = create(:project, urn: urn, delivery_officer: user)
+      single_project = create(:project, urn: urn, caseworker: user)
 
       visit project_information_path(single_project.id)
       expect(page).to have_content(user_email_address)
