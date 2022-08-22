@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   validates :team_leader, presence: true
   validates :regional_delivery_officer_id, presence: true, allow_blank: false
   validate :establishment_exists, :trust_exists, on: :create
-  validate :target_completion_date, :first_day_of_month
+  validate :first_day_of_month, :trust_ukprn_is_correct_format
 
   belongs_to :caseworker, class_name: "User", optional: true
   belongs_to :team_leader, class_name: "User", optional: false
@@ -55,6 +55,17 @@ class Project < ApplicationRecord
     # Target completion date is always the 1st of the month.
     if target_completion_date.day != 1
       errors.add(:target_completion_date, :must_be_first_of_the_month)
+    end
+  end
+
+  private def trust_ukprn_is_correct_format
+    return if trust_ukprn.nil?
+
+    number_of_digits = trust_ukprn.digits.count
+    first_digit = trust_ukprn.to_s.first.to_i
+
+    if number_of_digits != 8 || first_digit != 1
+      errors.add(:trust_ukprn, :must_be_correct_format)
     end
   end
 end
