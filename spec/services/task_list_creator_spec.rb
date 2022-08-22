@@ -31,7 +31,16 @@ RSpec.describe TaskListCreator do
       section = Section.find_by(title: "Starting the project")
 
       expect(Task.count).to be 3
-      expect(Task.where(title: "Understand history and complete handover from Pre-AB", order: 0, section: section)).to exist
+      expect(
+        Task.where(
+          title: "Understand history and complete handover from Pre-AB",
+          order: 0,
+          hint: "Understand history hint",
+          guidance_summary: "Understand history guidance summary",
+          guidance_text: "Understand history guidance text",
+          section: section
+        )
+      ).to exist
     end
 
     it "creates actions from the workflow" do
@@ -44,11 +53,45 @@ RSpec.describe TaskListCreator do
           title: "Action one",
           order: 0,
           hint: "Action one hint",
-          guidance_summary: "Guidance summary",
-          guidance_text: "Guidance text",
+          guidance_summary: "Action one guidance summary",
+          guidance_text: "Action one guidance text",
           task: task
         )
       ).to exist
+    end
+
+    context "when the workflow's optional fields are empty" do
+      it "creates tasks from the workflow" do
+        section = Section.find_by(title: "Clear legal documents")
+
+        expect(Task.count).to be 3
+        expect(
+          Task.where(
+            title: "Clear land questionnaire",
+            order: 0,
+            hint: nil,
+            guidance_summary: nil,
+            guidance_text: nil,
+            section: section
+          )
+        ).to exist
+      end
+
+      it "creates actions from the workflow" do
+        section = Section.find_by(title: "Clear legal documents")
+        task = section.tasks.find_by(title: "Clear land questionnaire")
+
+        expect(
+          Action.where(
+            title: "Action one",
+            order: 0,
+            hint: nil,
+            guidance_summary: nil,
+            guidance_text: nil,
+            task: task
+          )
+        ).to exist
+      end
     end
   end
 end

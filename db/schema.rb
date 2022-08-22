@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_15_100605) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_18_142154) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -76,6 +76,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_15_100605) do
     t.uuid "section_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "hint"
+    t.string "guidance_summary"
+    t.text "guidance_text"
     t.index ["section_id"], name: "index_tasks_on_section_id"
   end
 

@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - A regional delivery officer must be selected at the time of project creation.
   A regional delivery officer can only see project they are assigned to on the
   projects index page.
+- Add hint text and guidance text to tasks.
 
 ### Removed
 

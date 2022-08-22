@@ -28,7 +28,7 @@ RSpec.describe TasksController, type: :request do
 
     it "returns a successful response" do
       expect(subject).to have_http_status :success
-      expect(subject.body).to include("Clear land questionnaire")
+      expect(subject.body).to include("Have you cleared the Supplementary funding agreement?")
     end
   end
 
