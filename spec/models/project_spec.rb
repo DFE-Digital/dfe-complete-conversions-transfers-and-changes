@@ -15,7 +15,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:sections).dependent(:destroy) }
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
-    it { is_expected.to belong_to(:team_leader).required(true) }
+    it { is_expected.to belong_to(:team_leader).required(false) }
 
     describe "delete related entities" do
       context "when the project is deleted" do
@@ -120,10 +120,6 @@ RSpec.describe Project, type: :model do
           expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_in_the_future"))
         end
       end
-    end
-
-    describe "#team_leader" do
-      it { is_expected.to validate_presence_of(:team_leader) }
     end
   end
 

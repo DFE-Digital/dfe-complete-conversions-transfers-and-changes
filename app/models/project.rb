@@ -6,15 +6,13 @@ class Project < ApplicationRecord
   validates :urn, presence: true, numericality: {only_integer: true}, length: {is: 6}
   validates :trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
-  validates :team_leader, presence: true
-  validates :regional_delivery_officer_id, presence: true, allow_blank: false
 
   validate :first_day_of_month, :trust_ukprn_is_correct_format
   validate :target_completion_date_is_in_the_future, on: :create
   validate :establishment_exists, :trust_exists, on: :create
 
   belongs_to :caseworker, class_name: "User", optional: true
-  belongs_to :team_leader, class_name: "User", optional: false
+  belongs_to :team_leader, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
   def establishment
