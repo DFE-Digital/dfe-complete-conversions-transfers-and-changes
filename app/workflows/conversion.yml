@@ -83,7 +83,9 @@ sections:
           - title: Saved in SharePoint
 
       - title: Land registry title plans
-        hint: Check an official copy of the Title plans for boundary issues and buildings that have not been excluded.
+        hint:
+          Check an official copy of the Title plans for boundary issues and
+          buildings that have not been excluded.
         guidance_summary: Help checking the Land registry title plans
         guidance_text: |
           Check you have an official copy of the title plans. An official copy will state that it's from the Land Registry, include a title plan and title number.
@@ -103,7 +105,7 @@ sections:
           Check the Supplemental funding agreement for changes from the model documents.
 
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
-        guidance_summary:  Help checking the Supplemental funding agreement
+        guidance_summary: Help checking the Supplemental funding agreement
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
 
@@ -124,7 +126,8 @@ sections:
           If needed, check the Articles of association for changes from the model documents.
 
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes.
-        guidance_summary: Help checking the Church supplemental funding agreement
+        guidance_summary:
+          Help checking the Church supplemental funding agreement
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
 
@@ -140,7 +143,8 @@ sections:
           Master funding agreements from before 2018 should be updated to the newer versions.
 
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
-        guidance_summary: Help checking and updating the Master funding agreement
+        guidance_summary:
+          Help checking and updating the Master funding agreement
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
 
