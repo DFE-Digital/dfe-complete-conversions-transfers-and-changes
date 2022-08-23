@@ -99,20 +99,20 @@ sections:
           - title: Saved in SharePoint
 
       - title: Supplemental funding agreement
-      hint: |
-        Check the Supplemental funding agreement for changes from the model documents.
+        hint: |
+          Check the Supplemental funding agreement for changes from the model documents.
         
-        You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
-      guidance_summary:  Help checking the Supplemental funding agreement
-      guidance_text: |
-        Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+          You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
+        guidance_summary:  Help checking the Supplemental funding agreement
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
         
-        You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
         
-        We only accept new Supplemental funding agreements that use the 2020 edition of the model documents.
+          We only accept new Supplemental funding agreements that use the 2020 edition of the model documents.
         
-        Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible. 
-      actions:
+          Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible. 
+        actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
@@ -204,16 +204,9 @@ sections:
           
           A Trust modification order is likely to be needed if the school is a:
 
-          - voluntary-controlled school
-          - voluntary-aided school
-          - foundation school  
-        optional: true
-        actions:
-          - title: Received
-          - title: Cleared
-          - title: Saved in SharePoint
-
-      - title: Trust modification order
+          * voluntary-controlled school
+          * voluntary-aided school
+          * foundation school  
         optional: true
         actions:
           - title: Received

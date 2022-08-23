@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added content to Supplementary funding agreement
 - Changed content mentioning Supplementary funding agreement to Supplemental funding agreement so it is accurate
 - Added content to Trust modification order
+- Removed duplicate Trust modification order
 
 ### Removed
 
