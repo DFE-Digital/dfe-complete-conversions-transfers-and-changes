@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added content to Deed of variation
 - Added content to Direction to transfer
 - Added content to Land questionnaire
+- Added further guidance to Land questionnaire after more info from UR
 
 ### Removed
 
