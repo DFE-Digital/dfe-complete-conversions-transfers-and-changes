@@ -66,17 +66,17 @@ sections:
       - title: Land questionnaire
         hint: |
           Make sure that any proposals for the land meet legal requirements and Ministerial preferences.
-          
+
           You can [use the land transfer advice and guidance to check for common problems (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
         guidance_summary: Help to clear a Land questionnaire
         guidance_text: |
           You must [check the school is using the right Land questionnaire (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-questionnaires). There are four different types.
-          
+
           You need to clear the land questionnaire before the Master funding agreement and the Supplemental funding agreement.
-          
+
           The Land questionnaire is critical. It is the basis for all land decisions.
-          
-          The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed. 
+
+          The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.
         actions:
           - title: Received
           - title: Cleared
@@ -101,17 +101,17 @@ sections:
       - title: Supplemental funding agreement
         hint: |
           Check the Supplemental funding agreement for changes from the model documents.
-        
+
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
         guidance_summary:  Help checking the Supplemental funding agreement
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
-        
+
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
-        
+
           We only accept new Supplemental funding agreements that use the 2020 edition of the model documents.
-        
-          Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible. 
+
+          Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible.
         actions:
           - title: Received
           - title: Cleared
@@ -123,11 +123,11 @@ sections:
 
           If needed, check the Articles of association for changes from the model documents.
 
-          You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes. 
+          You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes.
         guidance_summary: Help checking the Church supplemental funding agreement
         guidance_text: |
-          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change. 
-          
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
         optional: true
         actions:
@@ -138,20 +138,20 @@ sections:
       - title: Master funding agreement
         hint: |
           Master funding agreements from before 2018 should be updated to the newer versions.
-        
+
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
-        guidance_summary: Help checking and updating the Master funding agreement  
+        guidance_summary: Help checking and updating the Master funding agreement
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
-        
+
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
 
           If the trust uses a pre-2018 Master funding agreement, they have two options.
-          
+
           They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplemental funding agreements in the trust too.
-          
+
           Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplemental funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.
-          
+
           You will need to clear any new and updated documents. These may need a Deed of variation.
         optional: true
         actions:
@@ -161,13 +161,13 @@ sections:
 
       - title: Articles of association
         hint: |
-          Check the Articles of association for changes from the model documents. 
-          
+          Check the Articles of association for changes from the model documents.
+
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes.
         guidance_summary: Help checking for changes
         guidance_text: |
-          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change. 
-          
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
         optional: true
         actions:
@@ -178,12 +178,12 @@ sections:
       - title: Deed of variation
         hint: |
           You'll need to complete and clear a Deed of variation if there are changes to the funding agreements.
-        
-          You can [find the right Deed of variation to use (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx) on SharePoint. 
+
+          You can [find the right Deed of variation to use (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx) on SharePoint.
         guidance_summary: Help checking for changes
         guidance_text: |
-          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change. 
-          
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
         optional: true
         actions:
@@ -194,19 +194,19 @@ sections:
       - title: Trust modification order
         hint: |
           Check the Land questionnaire to see if a Trust modification order is needed.
-        
+
           If one is needed, send the Trust modification order and a copy of the original deed to the Operations team at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk). They will organise how it's signed and cleared.
-        
+
           It can take several weeks to hear back from the Operations team.
         guidance_summary: When to use a Trust modification order
         guidance_text: |
           A Trust modification order is used when a voluntary or foundation school's land is held by a trust or foundation that is not a diocese.
-          
+
           A Trust modification order is likely to be needed if the school is a:
 
           * voluntary-controlled school
           * voluntary-aided school
-          * foundation school  
+          * foundation school
         optional: true
         actions:
           - title: Received
@@ -215,20 +215,20 @@ sections:
 
       - title: Direction to transfer
         hint: |
-          Only foundation schools need a Direction to transfer. 
+          Only foundation schools need a Direction to transfer.
 
           You can [search Get Information About Schools (opens in new tab)](https://www.get-information-schools.service.gov.uk/Search) to check if it's needed for this school.
         guidance_summary: How to clear a Direction to transfer
-        guidance text: |
+        guidance_text: |
           You should check that information in the Direction to transfer is correct.
-          
+
           You'll also need to [compare the Direction to transfer against the model documents (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
 
           Send the Direction to transfer to the Operations team for signing and clearing.
-          
+
           You can [email the Operations team at academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
-          
-          It can take several weeks to hear back from the Operations team. 
+
+          It can take several weeks to hear back from the Operations team.
         optional: true
         actions:
           - title: Received
