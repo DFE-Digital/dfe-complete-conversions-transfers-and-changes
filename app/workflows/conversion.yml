@@ -99,7 +99,20 @@ sections:
           - title: Saved in SharePoint
 
       - title: Supplementary funding agreement
-        actions:
+      hint: |
+        Check the Supplementary funding agreement for changes from the model documents.
+        
+        You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
+      guidance_summary:  Help checking the Supplementary funding agreement
+      guidance_text: |
+        Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+        
+        You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+        
+        We only accept new Supplementary funding agreements that use the 2020 edition of the model documents.
+        
+        Supplementary funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible. 
+      actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
@@ -111,7 +124,7 @@ sections:
           If needed, check the Articles of association for changes from the model documents.
 
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes. 
-        guidance_summary: Help checking for changes
+        guidance_summary: Help checking the Church supplementary funding agreement
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change. 
           

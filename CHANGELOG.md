@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added further guidance to Direction to transfer after more infor from UR
 - Added content to Land registry title plans
 - Added content to Master funding agreement
+- Added content to Supplementary funding agreement
 
 ### Removed
 
