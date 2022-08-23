@@ -26,6 +26,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add hint text and guidance text to tasks.
 - Optional tasks can be marked 'Not applicable' to the project
 - Added content to Articles of association task
+- Added content to Church supplementary agreement
+- Added content to Deed of variation
+- Added content to Direction to transfer
+- Added content to Land questionnaire
+- Added further guidance to Land questionnaire after more info from UR
+- Added further guidance to Direction to transfer after more infor from UR
+- Added content to Land registry title plans
+- Added content to Master funding agreement
+- Added content to Supplementary funding agreement
+- Changed content mentioning Supplementary funding agreement to Supplemental
+  funding agreement so it is accurate
+- Added content to Trust modification order
+- Removed duplicate Trust modification order
 
 ### Removed
 
