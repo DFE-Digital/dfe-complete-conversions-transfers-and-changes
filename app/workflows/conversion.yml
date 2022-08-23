@@ -72,7 +72,7 @@ sections:
         guidance_text: |
           You must [check the school is using the right Land questionnaire (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-questionnaires). There are four different types.
           
-          You need to clear the land questionnaire before the Master funding agreement and the Supplementary funding agreement.
+          You need to clear the land questionnaire before the Master funding agreement and the Supplemental funding agreement.
           
           The Land questionnaire is critical. It is the basis for all land decisions.
           
@@ -98,33 +98,33 @@ sections:
           - title: Cleared
           - title: Saved in SharePoint
 
-      - title: Supplementary funding agreement
+      - title: Supplemental funding agreement
       hint: |
-        Check the Supplementary funding agreement for changes from the model documents.
+        Check the Supplemental funding agreement for changes from the model documents.
         
         You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
-      guidance_summary:  Help checking the Supplementary funding agreement
+      guidance_summary:  Help checking the Supplemental funding agreement
       guidance_text: |
         Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
         
         You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
         
-        We only accept new Supplementary funding agreements that use the 2020 edition of the model documents.
+        We only accept new Supplemental funding agreements that use the 2020 edition of the model documents.
         
-        Supplementary funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible. 
+        Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible. 
       actions:
           - title: Received
           - title: Cleared
           - title: Saved in SharePoint
 
-      - title: Church supplementary agreement
+      - title: Church supplemental agreement
         hint: |
           This document is only required for Church of England and Catholic schools.
 
           If needed, check the Articles of association for changes from the model documents.
 
           You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes. 
-        guidance_summary: Help checking the Church supplementary funding agreement
+        guidance_summary: Help checking the Church supplemental funding agreement
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change. 
           
@@ -148,9 +148,9 @@ sections:
 
           If the trust uses a pre-2018 Master funding agreement, they have two options.
           
-          They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplementary funding agreements in the trust too.
+          They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplemental funding agreements in the trust too.
           
-          Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplementary funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.
+          Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplemental funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.
           
           You will need to clear any new and updated documents. These may need a Deed of variation.
         optional: true
