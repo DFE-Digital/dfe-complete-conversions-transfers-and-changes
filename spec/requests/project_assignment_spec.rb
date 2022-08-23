@@ -33,8 +33,8 @@ RSpec.describe "Project assignment" do
       end
     end
 
-    context "when a user is not a team lead or regional delivery officer" do
-      let(:user) { create(:user) }
+    context "when a user is a caseworker" do
+      let(:user) { create(:user, :caseworker) }
 
       it "does not show the new project button" do
         get project_path(project)
@@ -66,12 +66,5 @@ RSpec.describe "Project assignment" do
         expect(flash.alert).to eq I18n.t("unauthorised_action.message")
       end
     end
-  end
-
-  def create_unassigned_project(urn: 123456, trust_ukprn: 12345678)
-    project = build(:project, urn: urn, trust_ukprn: trust_ukprn, team_leader: nil)
-    mock_successful_api_responses(urn: project.urn, ukprn: project.trust_ukprn)
-    project.save!
-    project
   end
 end

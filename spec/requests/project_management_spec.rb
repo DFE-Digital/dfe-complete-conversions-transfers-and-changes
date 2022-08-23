@@ -21,8 +21,8 @@ RSpec.describe "Project management" do
       end
     end
 
-    context "when a user is not a team lead or regional delivery officer" do
-      let(:user) { create(:user) }
+    context "when a user is a caseworker" do
+      let(:user) { create(:user, :caseworker) }
 
       it "redirects to the root path and displays a not authorized message" do
         get new_project_path
