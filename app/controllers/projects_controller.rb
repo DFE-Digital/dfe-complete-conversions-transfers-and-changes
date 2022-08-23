@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     authorize @project
-    assign_team_leader
+    assign_regional_delivery_officer
 
     if @project.valid?
       @project.save
@@ -68,5 +68,9 @@ class ProjectsController < ApplicationController
 
   private def assign_team_leader
     @project.team_leader_id = user_id
+  end
+
+  private def assign_regional_delivery_officer
+    @project.regional_delivery_officer_id = user_id
   end
 end

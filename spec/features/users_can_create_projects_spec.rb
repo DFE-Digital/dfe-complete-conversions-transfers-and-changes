@@ -1,13 +1,11 @@
 require "rails_helper"
 
-RSpec.feature "Team leaders can create a new project" do
+RSpec.feature "Users can create new projects" do
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
-  let(:team_leader) { create(:user, :team_leader) }
-  let(:regional_delivery_officer_email) { "regional-deliver-officer@education.gov.uk" }
-  let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: regional_delivery_officer_email) }
+  let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
   before do
-    sign_in_with_user(team_leader)
+    sign_in_with_user(regional_delivery_officer)
     visit new_project_path
 
     allow(YAML).to receive(:load_file).with(Rails.root.join("app", "workflows", "conversion.yml")).and_return(
@@ -26,7 +24,6 @@ RSpec.feature "Team leaders can create a new project" do
       fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
       fill_in "Month", with: 12
       fill_in "Year", with: 2025
-      select regional_delivery_officer_email, from: "Regional delivery officer"
 
       click_button("Continue")
 

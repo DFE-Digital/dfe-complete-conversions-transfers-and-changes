@@ -7,9 +7,8 @@ RSpec.describe "Project management" do
   end
 
   describe "creating a new project" do
-    context "when the user is a team lead" do
-      let(:user) { create(:user, :team_leader) }
-
+    context "when the user is a regional delivery officer" do
+      let(:user) { create(:user, :regional_delivery_officer) }
       it "allows the action and renders the new template" do
         get new_project_path
         expect(response).to have_http_status(:success)
@@ -39,8 +38,8 @@ RSpec.describe "Project management" do
       end
     end
 
-    context "when the user is a regional delivery officer" do
-      let(:user) { create(:user, :regional_delivery_officer) }
+    context "when the user is a team lead" do
+      let(:user) { create(:user, :team_leader) }
 
       it "redirects to the root path and displays a not authorized message" do
         get new_project_path
