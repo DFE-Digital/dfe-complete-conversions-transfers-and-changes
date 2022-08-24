@@ -48,6 +48,8 @@ RSpec.describe Project, type: :model do
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
       it { is_expected.to validate_numericality_of(:urn).only_integer }
+      it { is_expected.to allow_value(123456).for(:urn) }
+      it { is_expected.not_to allow_values(12345, 1234567).for(:urn) }
 
       context "when no establishment with that URN exists in the API" do
         let(:no_establishment_found_result) do
@@ -69,6 +71,8 @@ RSpec.describe Project, type: :model do
     describe "#trust_ukprn" do
       it { is_expected.to validate_presence_of(:trust_ukprn) }
       it { is_expected.to validate_numericality_of(:trust_ukprn).only_integer }
+      it { is_expected.to allow_value(12345678).for(:trust_ukprn) }
+      it { is_expected.not_to allow_values(1234567, 123456789, 23456789).for(:trust_ukprn) }
 
       context "when no trust with that UKPRN exists in the API" do
         let(:no_trust_found_result) do
@@ -98,6 +102,24 @@ RSpec.describe Project, type: :model do
           expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_first_of_the_month"))
         end
       end
+
+      context "when date is today" do
+        subject { build(:project, target_completion_date: Date.today) }
+
+        it "is invalid" do
+          expect(subject).to_not be_valid
+          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_in_the_future"))
+        end
+      end
+
+      context "when date is in the past" do
+        subject { build(:project, target_completion_date: Date.yesterday) }
+
+        it "is invalid" do
+          expect(subject).to_not be_valid
+          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_in_the_future"))
+        end
+      end
     end
 
     describe "#team_leader" do
@@ -106,7 +128,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#establishment" do
-    let(:urn) { 12345 }
+    let(:urn) { 123456 }
     let(:establishment) { build(:academies_api_establishment) }
 
     subject { described_class.new(urn: urn) }
@@ -123,7 +145,7 @@ RSpec.describe Project, type: :model do
     end
 
     context "when the Academies API client returns a #{AcademiesApi::Client::NotFoundError}" do
-      let(:error_message) { "Could not find establishment with URN: 12345" }
+      let(:error_message) { "Could not find establishment with URN: 123456" }
       let(:error) { AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new(error_message)) }
 
       before do
@@ -137,7 +159,7 @@ RSpec.describe Project, type: :model do
     end
 
     context "when the Academies API client returns a #{AcademiesApi::Client::Error}" do
-      let(:error_message) { "There was an error connecting to the Academies API, could not fetch establishment for URN: 12345" }
+      let(:error_message) { "There was an error connecting to the Academies API, could not fetch establishment for URN: 123456" }
       let(:error) { AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::Error.new(error_message)) }
 
       before do

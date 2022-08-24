@@ -5,7 +5,7 @@ RSpec.describe ContactsController, type: :request do
 
   before do
     mock_successful_authentication(user.email)
-    mock_successful_api_responses(urn: 12345, ukprn: 10061021)
+    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     allow_any_instance_of(ContactsController).to receive(:user_id).and_return(user.id)
   end
 

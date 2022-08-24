@@ -50,7 +50,7 @@ RSpec.feature "Team leaders can create a new project" do
   end
 
   context "when the URN and UKPRN are valid" do
-    let(:urn) { 19283746 }
+    let(:urn) { 123456 }
     let(:ukprn) { 10061021 }
 
     before { mock_successful_api_responses(urn: urn, ukprn: ukprn) }
