@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
 
-    @users = User.all
+    @users = User.caseworkers
   end
 
   def update
