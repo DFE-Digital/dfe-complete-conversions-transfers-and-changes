@@ -48,3 +48,9 @@ guidance_text: |
 
 You can find the [ADRs](https://adr.github.io/) for this project in the
 [`doc/decisions`](/doc/decisions) folder.
+
+## Errors and monitoring
+
+We use
+[sentry.io](https://sentry.io/organizations/sdd-n7/projects/complete-conversions-transfers-and-changes/?project=6684508)
+to monitor errors and the performance of the application.
