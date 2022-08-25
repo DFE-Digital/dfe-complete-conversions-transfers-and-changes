@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_22_104025) do
     t.uuid "team_leader_id", null: false
     t.integer "trust_ukprn", null: false
     t.date "target_completion_date", null: false
-    t.uuid "regional_delivery_officer_id", null: false
+    t.uuid "regional_delivery_officer_id"
     t.uuid "caseworker_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
