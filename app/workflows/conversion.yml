@@ -3,9 +3,9 @@
 sections:
   - title: Project kick-off
     tasks:
-      - title: Handover with Regional delivery officer
+      - title: Handover with regional delivery officer
         hint: |
-          How to make sure the handover with the Regional delivery officer
+          How to make sure the handover with the regional delivery officer
           is completed, and you can begin work on the project.
         actions:
           - title: Review the project information, check the documents and carry out research
@@ -25,12 +25,12 @@ sections:
 
               *Academy order
               *Application to convert
-          - title: Make notes and write questions to as the Regional delivery officer
+          - title: Make notes and write questions to as the regional delivery officer
             hint: |
-              Note down things you want to ask and talk about with the Regional delivery officer at the handover meeting.
+              Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.
 
               This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.
-          - title: Attend handover meeting with Regional delivery officer
+          - title: Attend handover meeting with regional delivery officer
             hint: |
               You should have made a note of things you like to ask and talk about with the Regional deliver officer at the handover meeting.
 
@@ -39,12 +39,12 @@ sections:
               This will prepare you to begin the project.
 
       - title: External stakeholder kick-off
-        hint: You should complete these actions after you've had the handover with the Regional delivery officer. 
+        hint: You should complete these actions after you've had the handover with the regional delivery officer.
         actions:
           - title: Send introductory emails
             hint: |
               Introduce yourself to the school, trust and their solicitors and organise a kick-off meeting.
-              
+
               You should also contact the local authority separately.
             guidance_summary: What to include in introductory emails
             guidance_text: |
@@ -65,29 +65,29 @@ sections:
             hint: Make sure the local authority has completed and returned their proforma, then save it in SharePoint.
             guidance_summary: Help with the Local authority proforma
             guidance_text: |
-              The Regional Delivery Officer should have sent the Local authority proforma to the local authority to complete.
-              
-              If you haven't received it yet, check that the Regional delivery officer sent it and then ask the local authority if they have completed and shared it. 
+              The regional delivery officer should have sent the Local authority proforma to the local authority to complete.
+
+              If you haven't received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.
 
           - title: Confirm the target conversion date with the local authority
-            hint: Check that the local authority has capacity to convert the school by the target date. 
+            hint: Check that the local authority has capacity to convert the school by the target date.
             guidance_summary: What to do if the local authority does not have capacity
             guidance_text: |
-             The school and trust will have given a target date they want to convert on. 
+             The school and trust will have given a target date they want to convert on.
 
-             Tell them if the local authority cannot complete the conversion by the target date. 
+             Tell them if the local authority cannot complete the conversion by the target date.
 
-             You'll need to work with the school, trust and local authority to agree a new conversion date. 
+             You'll need to work with the school, trust and local authority to agree a new conversion date.
 
           - title: Send invites to the kick-off meeting or call
-            hint: Check who the school and trust would like to attend the kick-off meeting and send out invites. 
+            hint: Check who the school and trust would like to attend the kick-off meeting and send out invites.
             guidance_summary: Advice for arranging the kcik-off meeting
             guidance_text: |
               Your introductory email should have included some possible dates for a kick-off meeting.
-          
+
               Once the school have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It’s likely to be a video call over Microsoft Teams.
-          
-              Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders. 
+
+              Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders.
 
           - title: Host the kick-off meeting or call
             hint: Make sure all attendees understand what they need to do, and when they need to do it by, to complete the conversion on time.
@@ -398,11 +398,11 @@ sections:
           - title: Add any ESFA handover comments in KIM
           - title: Ensure single worksheet is up to date
 
-      - title: Handback with Regional Delivery Offficer
+      - title: Handback with regional delivery officer
         actions:
           - title: Complete handback proforma
           - title: Save handback proforma in SharePoint
-          - title: Send completed handback proforma to Regional Delivery Officer
+          - title: Send completed handback proforma to regional delivery officer
 
       - title: Complete processing of conversion grant
         actions:

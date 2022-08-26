@@ -44,7 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added content for local authority actions for proforma and conversion date
   in external kick-off section
 - Added content for arranging kick-off meeting action
-- Added content for hosting kick-off meeting action  
+- Added content for hosting kick-off meeting action
+- Correcting Regional Delivery officer to lowercase  
 
 ### Removed
 
