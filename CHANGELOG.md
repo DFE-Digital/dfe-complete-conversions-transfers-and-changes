@@ -50,6 +50,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Deleteing previous versions of external stakeholder tasks
 - Added content for Process conversion grant actions - check vendor account
 - Added content for grant eligibility action
+- Added link to conversion checklist
+- Added content for receive and save Grant payment form action
 
 ### Removed
 
