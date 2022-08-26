@@ -102,45 +102,6 @@ sections:
             guidance_summary: Who to share the checklist with
             guidance_text: You should share the updated checklist with everyone invited to the kick-off meeting or call.
 
-      - title: Local authority questionnaire
-        actions:
-          - title: Local Authority questionnaire received
-          - title: Save Local Authority questionnaire in SharePoint
-      - title: External stakeholder kick off
-        actions:
-          - title: Decide what documents are need from external stakeholders
-          - title: Send kick off email to external stakeholders
-          - title: Confirm kick off meetings with external stakeholders
-          - title: Conduct kick of meetings with external stakeholders
-          - title: Confirm conversion date with stakeholders
-          - title: Requested the required documents from external stakeholders
-          - title:
-              Confirmed with external stakeholders when documents need to be
-              completed and returned by
-          - title: Agreed ways of working with external stakeholders
-          - title: Confirmed number of high need places
-          - title:
-              Confirmed if school / trust is opt in or out for RPA insurance
-          - title:
-              Requested that the school submits its bank details for GAG via the
-              online form
-
-      - title: Process conversion grant
-        actions:
-          - title:
-              Check if the trust has a vendor account in the "standing data
-              spreadsheet"
-          - title:
-              Request that the trust provides bank details to be added to vendor
-              account (if not already on it)
-          - title:
-              Receive completed "grant claim/payment form" from the school /
-              trust
-          - title:
-              "Send the: application to convert, academy order and grant claim /
-              payment form to the ESFA team at
-              grantpayments.rdd@education.gov.uk."
-
   - title: Clear legal documents
     tasks:
       - title: Land questionnaire
