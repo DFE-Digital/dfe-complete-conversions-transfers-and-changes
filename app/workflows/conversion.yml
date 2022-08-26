@@ -37,6 +37,31 @@ sections:
               Go through those talking points with them at the meeting.
 
               This will prepare you to begin the project.
+              
+      - title: External stakeholder kick-off
+        hint: |
+          You should complete these actions after you've had the handover with the Regional delivery officer. 
+        actions:
+          - title: Send introductory emails
+            hint: |
+              Introduce yourself to the school, trust and their solicitors and organise a kick-off meeting.
+              
+              You should also contact the local authority separately.
+            guidance_summary: What to include in introductory emails
+            guidance_text: |
+              You can [choose an email template (opens in new tab)](https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC) to help you write your introductory emails. There are templates for the school or trust, and for their solicitors.
+
+              This will help you to:
+
+              *organise kick-off meetings
+              *clarify roles and expectations
+              *establish dates and deadlines
+              *provide links to documents that need to be completed
+              *agree ways of working
+
+              You should aim to do this in the first week of picking up the project.
+              Ideally the kick-off meeting should take place within the first couple of weeks.
+
 
       - title: Local authority questionnaire
         actions:
