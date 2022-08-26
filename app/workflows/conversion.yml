@@ -142,7 +142,38 @@ sections:
 
          Once they have, check the Grant payment form is complete. Make sure there's no missing information.
 
-         Save the completed form in the SharePoint folder for that school. 
+         Save the completed form in the SharePoint folder for that school.
+
+      - title: Send the grant information to the payments team
+        hint: |
+         You need to send the following documents and information to the Grant payments team:
+
+         *Application to convert
+         *Academy order
+         *Grant claim form
+
+         You'll find the Academy order, Application to convert and Grant claim form in the school's SharePoint folder.
+        guidance_summary: How to contact the Grant payments team
+        guidance_text: |
+          You should send the documents to the Grant payments team by email.
+
+          The subject line of the email must include the: 
+
+          *region the school is in 
+          *grant type (converter grant) 
+          *school's name
+
+          The content of the email must include the:
+
+          *type of grant needed 
+          *amount of money the school is eligible for 
+          *school's name 
+          *trust it's joining 
+          *target conversion date
+
+          It's helpful to include the school or trust's vendor account number too. The Grant payments team will need this to be able to send the money to whoever will receive it.    
+
+          Send the email to [GrantPayments.RDD@education.gov.uk](GrantPayments.RDD@education.gov.uk).
 
   - title: Clear legal documents
     tasks:

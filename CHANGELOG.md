@@ -52,6 +52,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added content for grant eligibility action
 - Added link to conversion checklist
 - Added content for receive and save Grant payment form action
+- Added content for sending documents to grant payment team action
 
 ### Removed
 
