@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :find_project
-  before_action :find_contacts, only: :index
+  before_action :find_grouped_contacts, only: :index
 
   def index
   end
@@ -44,8 +44,8 @@ class ContactsController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
-  private def find_contacts
-    @contacts = Contact.where(project: @project)
+  private def find_grouped_contacts
+    @contacts = Contact.where(project: @project).group_by(&:category)
   end
 
   private def contact_params

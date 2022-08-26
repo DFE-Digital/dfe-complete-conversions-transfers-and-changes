@@ -130,10 +130,11 @@ en:
     update:
       success: Contact has been updated successfully
     details:
-      long:
-        email: Email address
-        phone: Telephone number
-      edit_link: Edit %{contact_name}
+      name: Name
+      title: Role
+      email: Email
+      phone: Phone
+      edit_link: Change
   subnavigation:
     project_task_list: Task list
     project_information: Project information
