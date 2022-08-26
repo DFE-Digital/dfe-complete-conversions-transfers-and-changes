@@ -8,7 +8,9 @@ sections:
           How to make sure the handover with the regional delivery officer
           is completed, and you can begin work on the project.
         actions:
-          - title: Review the project information, check the documents and carry out research
+          - title:
+              Review the project information, check the documents and carry out
+              research
             hint: |
               Check that no information is missing from the existing project documents and there are no errors.
 
@@ -25,7 +27,8 @@ sections:
 
               * Academy order
               * Application to convert
-          - title: Make notes and write questions to as the regional delivery officer
+          - title:
+              Make notes and write questions to as the regional delivery officer
             hint: |
               Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.
 
@@ -39,7 +42,9 @@ sections:
               This will prepare you to begin the project.
 
       - title: External stakeholder kick-off
-        hint: You should complete these actions after you've had the handover with the regional delivery officer.
+        hint:
+          You should complete these actions after you've had the handover with
+          the regional delivery officer.
         actions:
           - title: Send introductory emails
             hint: |
@@ -62,7 +67,9 @@ sections:
               Ideally the kick-off meeting should take place within the first couple of weeks.
 
           - title: Check you have the Local authority proforma
-            hint: Make sure the local authority has completed and returned their proforma, then save it in SharePoint.
+            hint:
+              Make sure the local authority has completed and returned their
+              proforma, then save it in SharePoint.
             guidance_summary: Help with the Local authority proforma
             guidance_text: |
               The regional delivery officer should have sent the Local authority proforma to the local authority to complete.
@@ -70,8 +77,11 @@ sections:
               If you haven't received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.
 
           - title: Confirm the target conversion date with the local authority
-            hint: Check that the local authority has capacity to convert the school by the target date.
-            guidance_summary: What to do if the local authority does not have capacity
+            hint:
+              Check that the local authority has capacity to convert the school
+              by the target date.
+            guidance_summary:
+              What to do if the local authority does not have capacity
             guidance_text: |
               The school and trust will have given a target date they want to convert on.
 
@@ -80,7 +90,9 @@ sections:
               You'll need to work with the school, trust and local authority to agree a new conversion date.
 
           - title: Send invites to the kick-off meeting or call
-            hint: Check who the school and trust would like to attend the kick-off meeting and send out invites.
+            hint:
+              Check who the school and trust would like to attend the kick-off
+              meeting and send out invites.
             guidance_summary: Advice for arranging the kick-off meeting
             guidance_text: |
               Your introductory email should have included some possible dates for a kick-off meeting.
@@ -90,7 +102,9 @@ sections:
               Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders.
 
           - title: Host the kick-off meeting or call
-            hint: Make sure all attendees understand what they need to do, and when they need to do it by, to complete the conversion on time.
+            hint:
+              Make sure all attendees understand what they need to do, and when
+              they need to do it by, to complete the conversion on time.
             guidance_summary: What to talk about in the kick-off meeting
             guidance_text: |
               You should discuss and record issues that might complicate or delay the project.
@@ -98,9 +112,13 @@ sections:
               You can [use the conversion checklist to guide the conversation](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EZx-RuHD_JxEuaCF68ZXpe8BvSQ3ITlysjfNJ28t0_xzfQ?e=hxRZxt) and make sure you talk about everything you need to.
 
           - title: Update and share the conversion checklist
-            hint: Update the conversion checklist with any agreed actions, dates and comments from the kick-off meeting or call.
+            hint:
+              Update the conversion checklist with any agreed actions, dates and
+              comments from the kick-off meeting or call.
             guidance_summary: Who to share the checklist with
-            guidance_text: You should share the updated checklist with everyone invited to the kick-off meeting or call.
+            guidance_text:
+              You should share the updated checklist with everyone invited to
+              the kick-off meeting or call.
 
       - title: Process conversion grant
         hint: |
@@ -176,10 +194,15 @@ sections:
               Send the email to [GrantPayments.RDD@education.gov.uk](GrantPayments.RDD@education.gov.uk).
 
           - title: Give the school and trust the grant payment date
-            hint: When the Grant payments team have confirmed the date they'll transfer the funds, let the school and trust know when the grant will be paid.
+            hint:
+              When the Grant payments team have confirmed the date they'll
+              transfer the funds, let the school and trust know when the grant
+              will be paid.
 
           - title: Check the school or trust have received the grant
-            hint: Check in with the school or trust, whichever was going to receive the payment, to make sure they have the money.
+            hint:
+              Check in with the school or trust, whichever was going to receive
+              the payment, to make sure they have the money.
             guidance_summary: When to check the funds have been received
             guidance_text: |
               It can take several weeks to process the grant payment once you've submitted the request.
