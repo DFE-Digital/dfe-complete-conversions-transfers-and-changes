@@ -37,10 +37,9 @@ sections:
               Go through those talking points with them at the meeting.
 
               This will prepare you to begin the project.
-              
+
       - title: External stakeholder kick-off
-        hint: |
-          You should complete these actions after you've had the handover with the Regional delivery officer. 
+        hint: You should complete these actions after you've had the handover with the Regional delivery officer. 
         actions:
           - title: Send introductory emails
             hint: |
@@ -49,7 +48,7 @@ sections:
               You should also contact the local authority separately.
             guidance_summary: What to include in introductory emails
             guidance_text: |
-              You can [choose an email template (opens in new tab)](https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC) to help you write your introductory emails. There are templates for the school or trust, and for their solicitors.
+              You can [choose an email template (opens in new tab)](https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC) to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.
 
               This will help you to:
 
@@ -62,6 +61,23 @@ sections:
               You should aim to do this in the first week of picking up the project.
               Ideally the kick-off meeting should take place within the first couple of weeks.
 
+          - title: Check you have the Local authority proforma
+            hint: Make sure the local authority has completed and returned their proforma, then save it in SharePoint.
+            guidance_summary: Help with the Local authority proforma
+            guidance_text: |
+              The Regional Delivery Officer should have sent the Local authority proforma to the local authority to complete.
+              
+              If you haven't received it yet, check that the Regional delivery officer sent it and then ask the local authority if they have completed and shared it. 
+
+      - title: Confirm the target conversion date with the local authority
+        hint: Check that the local authority has capacity to convert the school by the target date. 
+        guidance_summary: What to do if the local authority does not have capacity
+        guidance_text: |
+          The school and trust will have given a target date they want to convert on. 
+
+          Tell them if the local authority cannot complete the conversion by the target date. 
+
+          You'll need to work with the school, trust and local authority to agree a new conversion date. 
 
       - title: Local authority questionnaire
         actions:
