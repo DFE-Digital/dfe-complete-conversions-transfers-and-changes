@@ -117,6 +117,7 @@ en:
   contact:
     index:
       contacts: Contacts
+      category_heading: "%{category_name} contacts"
       add_contact_button: Add contact
       no_contacts_yet: There aren't any contacts for this project yet.
     new:
