@@ -175,6 +175,9 @@ sections:
 
           Send the email to [GrantPayments.RDD@education.gov.uk](GrantPayments.RDD@education.gov.uk).
 
+      - title: Give the school and trust the grant payment date
+        hint: When the Grant payments team have confirmed the date they'll transfer the funds, let the school and trust know when the grant will be paid.   
+
   - title: Clear legal documents
     tasks:
       - title: Land questionnaire
