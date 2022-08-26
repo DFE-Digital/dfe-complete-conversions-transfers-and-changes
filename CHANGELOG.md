@@ -35,12 +35,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added content to Land registry title plans
 - Added content to Master funding agreement
 - Added content to Supplementary funding agreement
-- Changed content mentioning Supplementary funding agreement to Supplemental
-  funding agreement so it is accurate
-- Added content to Trust modification order
-- Removed duplicate Trust modification order
-- Removed word funding from Church supplemental agreement hint text link to make
-  sure naming is consistent and accurate
+- Added content for Handover with Regional delivery officer task
+- Added content for intro emails in External kick-off task
+- Added content for local authority actions for proforma and conversion date in
+  external kick-off section
+- Added content for arranging kick-off meeting action
+- Added content for hosting kick-off meeting action
+- Adding content for share conversion checklist action
+- Added content for Process conversion grant actions - check vendor account
+- Added content for grant eligibility action
+- Added link to conversion checklist
+- Added content for receive and save Grant payment form action
+- Added content for sending documents to grant payment team action
+- Added content for confirm grant payment date with schoo action
+- Added content for checking school has received grant action
 
 ### Removed
 
@@ -62,6 +70,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   new project is created.
 - a Team lead can no longer create a new project, it is the responsibility of
   the Regional delivery officer to do so.
+- Removed word funding from Church supplemental agreement hint text link to make
+  sure naming is consistent and accurate
+- Deleteing previous versions of external stakeholder tasks
+- Changed content mentioning Supplementary funding agreement to Supplemental
+  funding agreement so it is accurate
+- Added content to Trust modification order
+- Removed duplicate Trust modification order
+- Correcting Regional Delivery officer to lowercase
 
 ## [Release 1][release-1]
 
