@@ -1,47 +1,11 @@
 require "rails_helper"
 
-RSpec.feature "Users can view the new project form" do
-  context "the user is a team leader" do
-    before(:each) do
-      sign_in_with_user(create(:user, :team_leader))
-    end
-
-    scenario "can see the new project button" do
-      visit projects_path
-      expect(page).to have_content(I18n.t("project.index.new_button.text"))
-    end
-
-    scenario "can see the new project form" do
-      visit new_project_path
-      expect(page).to have_content(I18n.t("project.new.title"))
-    end
-  end
-
-  context "the user is not a team leader" do
-    before(:each) do
-      sign_in_with_user(create(:user))
-    end
-
-    scenario "cannot see the new project button" do
-      visit projects_path
-      expect(page).to_not have_content(I18n.t("project.index.new_button.text"))
-    end
-
-    scenario "cannot see the new project form" do
-      visit new_project_path
-      expect(page).to have_content(I18n.t("unauthorised_action.message"))
-    end
-  end
-end
-
-RSpec.feature "Team leaders can create a new project" do
+RSpec.feature "Users can create new projects" do
   let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
-  let(:team_leader) { create(:user, :team_leader) }
-  let(:regional_delivery_officer_email) { "regional-deliver-officer@education.gov.uk" }
-  let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: regional_delivery_officer_email) }
+  let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
   before do
-    sign_in_with_user(team_leader)
+    sign_in_with_user(regional_delivery_officer)
     visit new_project_path
 
     allow(YAML).to receive(:load_file).with(Rails.root.join("app", "workflows", "conversion.yml")).and_return(
@@ -60,7 +24,6 @@ RSpec.feature "Team leaders can create a new project" do
       fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
       fill_in "Month", with: 12
       fill_in "Year", with: 2025
-      select regional_delivery_officer_email, from: "Regional delivery officer"
 
       click_button("Continue")
 

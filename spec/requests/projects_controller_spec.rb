@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe ProjectsController, type: :request do
-  let(:team_leader) { create(:user, :team_leader) }
+  let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
   before do
-    mock_successful_authentication(team_leader.email)
-    allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(team_leader.id)
+    mock_successful_authentication(regional_delivery_officer.email)
+    allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(regional_delivery_officer.id)
   end
 
   describe "#create" do
@@ -39,7 +39,7 @@ RSpec.describe ProjectsController, type: :request do
       it "assigns the team leader, calls the TaskListCreator, and redirects to the project path" do
         expect_any_instance_of(TaskListCreator).to receive(:call).with(project)
         expect(perform_request).to redirect_to(project_path(project.id))
-        expect(project.team_leader_id).to eq team_leader.id
+        expect(project.regional_delivery_officer).to eq regional_delivery_officer
       end
     end
   end

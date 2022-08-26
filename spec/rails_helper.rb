@@ -69,6 +69,7 @@ RSpec.configure do |config|
   config.include SignInHelpers
   config.include AcademiesApiHelpers
   config.include FeatureHelpers, type: :feature
+  config.include ProjectHelpers
 
   # cleanup Omniauth after each example
   config.after(:each) do |example|

@@ -21,14 +21,13 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     authorize @project
-    assign_team_leader
+    assign_regional_delivery_officer
 
     if @project.valid?
       @project.save
-      flash[:notice] = I18n.t("project.create.success")
       TaskListCreator.new.call(@project)
 
-      redirect_to project_path(@project)
+      redirect_to project_path(@project), notice: I18n.t("project.create.success")
     else
       render :new
     end
@@ -38,18 +37,18 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
 
-    @users = User.all
+    @users = User.caseworkers
   end
 
   def update
     @project = Project.find(params[:id])
     authorize @project
 
-    @project.assign_attributes(project_params)
+    @project.assign_attributes(case_worker_id)
+    assign_team_leader
 
     @project.save
-    flash[:notice] = I18n.t("project.update.success")
-    redirect_to project_information_path(@project)
+    redirect_to project_information_path(@project), notice: I18n.t("project.update.success")
   end
 
   private def find_regional_delivery_officers
@@ -61,12 +60,19 @@ class ProjectsController < ApplicationController
       :urn,
       :trust_ukprn,
       :target_completion_date,
-      :caseworker_id,
       :regional_delivery_officer_id
     )
   end
 
+  private def case_worker_id
+    params.require(:project).permit(:caseworker_id)
+  end
+
   private def assign_team_leader
     @project.team_leader_id = user_id
+  end
+
+  private def assign_regional_delivery_officer
+    @project.regional_delivery_officer_id = user_id
   end
 end

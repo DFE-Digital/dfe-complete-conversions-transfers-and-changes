@@ -60,6 +60,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add validation that checks UKPRN is 8 digits long and starts with a 1.
 - Add validation that checks the target completion date is in the future when a
   new project is created.
+- a Team lead can no longer create a new project, it is the responsibility of
+  the Regional delivery officer to do so.
 
 ## [Release 1][release-1]
 
