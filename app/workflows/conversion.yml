@@ -178,6 +178,14 @@ sections:
       - title: Give the school and trust the grant payment date
         hint: When the Grant payments team have confirmed the date they'll transfer the funds, let the school and trust know when the grant will be paid.   
 
+      - title: Check the school or trust have received the grant
+        hint: Check in with the school or trust, whichever was going to receive the payment, to make sure they have the money.
+        guidance_summary: When to check the funds have been received
+        guidance_text: |
+          It can take several weeks to process the grant payment once you've submitted the request.
+          
+          Get in touch with the school or trust the month after you contact the Grant payments team. 
+
   - title: Clear legal documents
     tasks:
       - title: Land questionnaire

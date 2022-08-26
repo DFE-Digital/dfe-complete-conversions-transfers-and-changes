@@ -54,6 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added content for receive and save Grant payment form action
 - Added content for sending documents to grant payment team action
 - Added content for confirm grant payment date with schoo action
+- Added content for checking school has received grant action
 
 ### Removed
 
