@@ -120,7 +120,24 @@ sections:
           Share the link with them so they can register if needed.
           
           It can take 15 to 20 days for an account to be created.
+
+      - title: Check and confirm the school's grant eligibility
+        hint: |
+          You need to confirm the amount of money the school can receive.
           
+          This information must be included in your email to the Grant payments team later.
+        guidance_summary: How check grant eligibility
+        guidance_text: |
+          Usually, a converting school will be eligible for a £25,000 grant to help with the costs of becoming an academy.
+          
+          However, if the school has applied to become an academy in the past but not completed the process, they may have received some of the money then.
+          
+          Check in the school SharePoint folder to see if a Grant claim form has been submitted already.
+          
+          You can also email the Grant payments team at [CFUGrantPayments.REGIONSGROUP@education.gov.uk](mailto:CFUGrantPayments.REGIONSGROUP@education.gov.uk) to check if the school has previously received any money, and how much they’re still eligible for. 
+
+
+
   - title: Clear legal documents
     tasks:
       - title: Land questionnaire

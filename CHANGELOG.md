@@ -49,6 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Adding content for share conversion checklist action
 - Deleteing previous versions of external stakeholder tasks
 - Added content for Process conversion grant actions - check vendor account
+- Added content for grant eligibility action
 
 ### Removed
 
