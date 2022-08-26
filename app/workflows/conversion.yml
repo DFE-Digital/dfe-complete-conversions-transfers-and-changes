@@ -1,26 +1,42 @@
 # yaml-language-server: $schema=schemas/task_list.json
 
 sections:
-  - title: Project kick off
+  - title: Project kick-off
     tasks:
-      - title: Handover with Regional Delivery Officer
+      - title: Handover with Regional delivery officer
+        hint: |
+          How to make sure the handover with the Regional delivery officer
+          is completed, and you can begin work on the project.
         actions:
-          - title:
-              Receive email with handover proforma and check it's saved in
-              SharePoint
-          - title:
-              "Check the 'application to convert', 'academy order' and any other
-              required documents are in SharePoint"
-          - title: Assign project roles (project lead and team lead) in KIM
-          - title:
-              Check that KIM is up to date with information from the application
-              and the handover proforma
-          - title:
-              Do additional research about the school / project (if required)
-          - title:
-              Identify issues or questions to discuss with the regional delivery
-              officer in handover meeting
-          - title: Have handover meeting with the regional delivery officer
+          - title: Review the project information, check the documents and carry out research
+            hint: |
+              Check that no information is missing from the existing project documents and there are no errors.
+
+              You should also research the background of the project before you meet with the regional delivery officer.
+            guidance_summary: What to review, research and check
+            guidance_text: |
+              Things to check during your background research include:
+
+              *Project information, such as advisory board conditions
+              *School or trust website for more information about the school
+              *Google maps for potential land issues
+
+              You should also check existing project documents, including:
+
+              *Academy order
+              *Application to convert
+          - title: Make notes and write questions to as the Regional delivery officer
+            hint: |
+              Note down things you want to ask and talk about with the Regional delivery officer at the handover meeting.
+
+              This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.
+          - title: Attend handover meeting with Regional delivery officer
+              hint: |
+              You should have made a note of things you like to ask and talk about with the Regional deliver officer at the handover meeting.
+
+              Go through those talking points with them at the meeting.
+
+              This will prepare you to begin the project.
 
       - title: Local authority questionnaire
         actions:

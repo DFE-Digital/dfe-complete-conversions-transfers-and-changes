@@ -39,8 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   funding agreement so it is accurate
 - Added content to Trust modification order
 - Removed duplicate Trust modification order
-- Removed word funding from Church supplemental agreement hint text link to make
-  sure naming is consistent and accurate
+- Added content for Handover with Regional delivery officer task
 
 ### Removed
 
@@ -62,6 +61,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   new project is created.
 - a Team lead can no longer create a new project, it is the responsibility of
   the Regional delivery officer to do so.
+- Removed word funding from Church supplemental agreement hint text link to make
+  sure naming is consistent and accurate
 
 ## [Release 1][release-1]
 
