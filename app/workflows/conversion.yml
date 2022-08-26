@@ -102,6 +102,25 @@ sections:
             guidance_summary: Who to share the checklist with
             guidance_text: You should share the updated checklist with everyone invited to the kick-off meeting or call.
 
+  - title: Process conversion grant
+    hint: |
+      Check the grant payment form is ready, the school or trust has a vendor account and send the correct information to the Grant payments team.
+      
+      Start this as soon as possible. Schools and trusts can start incurring solicitor and local authority fees early in the process.
+    actions: 
+      - title: Check the school or trust have a vendor account 
+        hint: |
+          The school or trust receiving the conversion grant must have a vendor account.
+
+          You can [check if the school or trust has a vendor account (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00083/SitePages/Set-up-and-mainta.aspx) on SharePoint.    
+        guidance_summary: How to set up a vendor account
+        guidance_text: |
+          Schools and trusts can [set up a vendor account (opens in new tab)](https://www.gov.uk/guidance/provide-information-about-your-banking-and-payments-to-dfe) when they provide information about their banking and payments to DfE.  
+
+          Share the link with them so they can register if needed.
+          
+          It can take 15 to 20 days for an account to be created.
+          
   - title: Clear legal documents
     tasks:
       - title: Land questionnaire
