@@ -31,7 +31,7 @@ sections:
 
               This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.
           - title: Attend handover meeting with Regional delivery officer
-              hint: |
+            hint: |
               You should have made a note of things you like to ask and talk about with the Regional deliver officer at the handover meeting.
 
               Go through those talking points with them at the meeting.
@@ -69,15 +69,25 @@ sections:
               
               If you haven't received it yet, check that the Regional delivery officer sent it and then ask the local authority if they have completed and shared it. 
 
-      - title: Confirm the target conversion date with the local authority
-        hint: Check that the local authority has capacity to convert the school by the target date. 
-        guidance_summary: What to do if the local authority does not have capacity
-        guidance_text: |
-          The school and trust will have given a target date they want to convert on. 
+          - title: Confirm the target conversion date with the local authority
+            hint: Check that the local authority has capacity to convert the school by the target date. 
+            guidance_summary: What to do if the local authority does not have capacity
+            guidance_text: |
+             The school and trust will have given a target date they want to convert on. 
 
-          Tell them if the local authority cannot complete the conversion by the target date. 
+             Tell them if the local authority cannot complete the conversion by the target date. 
 
-          You'll need to work with the school, trust and local authority to agree a new conversion date. 
+             You'll need to work with the school, trust and local authority to agree a new conversion date. 
+
+          - title: Send invites to the kick-off meeting or call
+            hint: Check who the school and trust would like to attend the kick-off meeting and send out invites. 
+            guidance_summary: Advice for arranging the kcik-off meeting
+            guidance_text: |
+              Your introductory email should have included some possible dates for a kick-off meeting.
+          
+              Once the school have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It’s likely to be a video call over Microsoft Teams.
+          
+              Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders. 
 
       - title: Local authority questionnaire
         actions:
