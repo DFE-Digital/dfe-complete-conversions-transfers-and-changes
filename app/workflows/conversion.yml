@@ -89,6 +89,14 @@ sections:
           
               Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders. 
 
+          - title: Host the kick-off meeting or call
+            hint: Make sure all attendees understand what they need to do, and when they need to do it by, to complete the conversion on time.
+            guidance_summary: What to talk about in the kick-off meeting
+            guidance_text: |
+            You should discuss and record issues that might complicate or delay the project.
+
+            You can use the conversion checklist to guide the conversation and make sure you talk about everything you need to.
+
       - title: Local authority questionnaire
         actions:
           - title: Local Authority questionnaire received
