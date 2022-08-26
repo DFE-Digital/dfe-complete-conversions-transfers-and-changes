@@ -97,6 +97,11 @@ sections:
 
             You can use the conversion checklist to guide the conversation and make sure you talk about everything you need to.
 
+          - title: Update and share the conversion checklist
+            hint: Update the conversion checklist with any agreed actions, dates and comments from the kick-off meeting or call.
+            guidance_summary: Who to share the checklist with
+            guidance_text: You should share the updated checklist with everyone invited to the kick-off meeting or call.
+
       - title: Local authority questionnaire
         actions:
           - title: Local Authority questionnaire received
