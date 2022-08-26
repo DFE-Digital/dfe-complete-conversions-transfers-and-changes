@@ -11,6 +11,7 @@ services:
       - "3000:3000"
     depends_on:
       - test-db
+      - test-redis
     env_file:
        - .env.test
     environment:
@@ -18,6 +19,7 @@ services:
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
       AUTOMATICALLY_FIX_LINTING: "true"
       SENTRY_ENV: test
+      REDIS_URL: redis://127.0.0.1:6379
     volumes:
       - .:/srv/app
     tty: true
@@ -37,7 +39,17 @@ services:
     networks:
       - test
 
+  test-redis:
+    image: redis:6
+    ports:
+      - 6379:6379
+    volumes:
+      - dfe-academies-redis-data:/data
+    networks:
+      - test
+
 networks:
   test:
 volumes:
   dfe-academies-db-data:
+  dfe-academies-redis-data:
