@@ -17,6 +17,7 @@ services:
       DATABASE_URL: postgres://postgres:password@test-db:5432/dfe-academies-test
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
       AUTOMATICALLY_FIX_LINTING: "true"
+      SENTRY_ENV: test
     volumes:
       - .:/srv/app
     tty: true

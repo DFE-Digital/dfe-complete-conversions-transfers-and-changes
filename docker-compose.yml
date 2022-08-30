@@ -16,6 +16,7 @@ services:
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/dfe-academies-development
       AUTOMATICALLY_FIX_LINTING: "true"
+      SENTRY_ENV: development
     volumes:
       - .:/srv/app
     tty: true
