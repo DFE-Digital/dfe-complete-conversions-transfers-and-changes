@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :user do
     email { "user@education.gov.uk" }
+    first_name { "John" }
+    last_name { "Doe" }
     team_leader { false }
     regional_delivery_officer { false }
 

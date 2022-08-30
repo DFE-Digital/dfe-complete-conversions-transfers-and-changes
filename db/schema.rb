@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_26_124914) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_145914) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -92,6 +92,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_124914) do
     t.datetime "updated_at", null: false
     t.boolean "team_leader", default: false
     t.boolean "regional_delivery_officer", default: false, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
