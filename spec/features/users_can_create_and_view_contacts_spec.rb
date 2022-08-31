@@ -15,6 +15,8 @@ RSpec.feature "Users can view contacts" do
   scenario "User views contacts" do
     visit project_contacts_path(project_id)
 
+    expect(page).to have_content("Other contacts")
+
     expect_page_to_have_contact(
       name: "Jo Example",
       title: "CEO of Learning",
@@ -26,6 +28,7 @@ RSpec.feature "Users can view contacts" do
 
     expect(page).to have_current_path(new_project_contact_path(project))
 
+    select "Trust", from: "Category"
     fill_in "Name", with: "Some One"
     fill_in "Title", with: "Chief of Knowledge"
     fill_in "Email address", with: "some@example.com"
@@ -34,6 +37,9 @@ RSpec.feature "Users can view contacts" do
     click_button("Save contact")
 
     expect(page).to have_current_path(project_contacts_path(project_id))
+
+    expect(page).to have_content("Trust contacts")
+
     expect_page_to_have_contact(
       name: "Some One",
       title: "Chief of Knowledge",

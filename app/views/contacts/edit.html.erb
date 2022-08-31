@@ -9,6 +9,11 @@
     <%= form_for @contact, url: project_contact_path(@project, @contact) do |form| %>
       <%= form.govuk_error_summary %>
 
+      <%= form.govuk_collection_select :category,
+        Contact.categories.map { |k, v| OpenStruct.new(id: k, name: format_category_name(k)) },
+        :id, :name,
+        label: { tag: 'h3', size: 'm' } %>
+
       <%= form.govuk_text_field :name, label: { tag: 'h3', size: 'm' } %>
       <%= form.govuk_text_field :title, label: { tag: 'h3', size: 'm' } %>
 
