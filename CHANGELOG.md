@@ -53,6 +53,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Removed
 
 - No longer show the assigned delivery officer on the projects index page.
+- Task list sections are no longer numbered.
 
 ### Changed
 

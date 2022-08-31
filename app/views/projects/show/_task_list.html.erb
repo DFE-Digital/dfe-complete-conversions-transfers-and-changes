@@ -1,9 +1,9 @@
 <ol class="app-task-list">
   <% @project.sections.each do |section| %>
     <li>
-      <h2 class="app-task-list__section">
-        <span class="app-task-list__section-number"><%= section.order + 1 %>. </span> <%= section.title %>
-      </h2>
+      <h3 class="app-task-list__section">
+        <%= section.title %>
+      </h3>
       <ul class="app-task-list__items">
         <% section.tasks.each do |task| %>
           <li class="app-task-list__item">
