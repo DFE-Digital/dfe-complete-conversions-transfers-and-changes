@@ -28,13 +28,13 @@ RSpec.feature "Users can view contacts" do
 
     expect(page).to have_current_path(new_project_contact_path(project))
 
-    select "Trust", from: "Category"
+    select "Trust", from: "Contact for"
     fill_in "Name", with: "Some One"
-    fill_in "Title", with: "Chief of Knowledge"
-    fill_in "Email address", with: "some@example.com"
-    fill_in "Telephone number", with: "01632 960456"
+    fill_in "Role", with: "Chief of Knowledge"
+    fill_in "Email", with: "some@example.com"
+    fill_in "Phone", with: "01632 960456"
 
-    click_button("Save contact")
+    click_button("Add contact")
 
     expect(page).to have_current_path(project_contacts_path(project_id))
 

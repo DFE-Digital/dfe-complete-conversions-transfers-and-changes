@@ -8,7 +8,7 @@ class Contact < ApplicationRecord
 
   enum category: {
     other: 0,
-    establishment: 1,
+    school: 1,
     trust: 2,
     local_authority: 3,
     diocese: 4
