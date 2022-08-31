@@ -117,11 +117,12 @@ en:
   contact:
     index:
       contacts: Contacts
+      category_heading: "%{category_name} contacts"
       add_contact_button: Add contact
       no_contacts_yet: There aren't any contacts for this project yet.
     new:
-      title: Add a new contact
-      save_contact_button: Save contact
+      title: Add contact
+      save_contact_button: Add contact
     create:
       success: Contact has been added successfully
     edit:
@@ -130,10 +131,11 @@ en:
     update:
       success: Contact has been updated successfully
     details:
-      long:
-        email: Email address
-        phone: Telephone number
-      edit_link: Edit %{contact_name}
+      name: Name
+      title: Role
+      email: Email
+      phone: Phone
+      edit_link: Change
   subnavigation:
     project_task_list: Task list
     project_information: Project information
@@ -149,8 +151,11 @@ en:
       note:
         body: Enter note
       contact:
-        email: Email address
-        phone: Telephone number
+        category: Contact for
+        title: Role
+        name: Name
+        email: Email
+        phone: Phone
     legend:
       project:
         target_completion_date: Target conversion date

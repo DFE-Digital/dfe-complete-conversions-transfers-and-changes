@@ -6,16 +6,18 @@
 
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for @contact, url: project_contact_path(@project, @contact) do |form| %>
+    <%= form_for [@project, @contact] do |form| %>
       <%= form.govuk_error_summary %>
 
-      <%= form.govuk_text_field :name, label: { tag: 'h3', size: 'm' } %>
-      <%= form.govuk_text_field :title, label: { tag: 'h3', size: 'm' } %>
+      <%= form.govuk_collection_select :category,
+        Contact.categories.keys,
+        :to_s,
+        ->(category_name) {format_category_name(category_name) } %>
 
-      <%= form.govuk_fieldset legend: { text: 'Contact details' } do %>
-        <%= form.govuk_email_field :email, label: { tag: 'h4', size: 's' } %>
-        <%= form.govuk_phone_field :phone, label: { tag: 'h4', size: 's' } %>
-      <% end %>
+      <%= form.govuk_text_field :title, width: 20 %>
+      <%= form.govuk_text_field :name %>
+      <%= form.govuk_email_field :email %>
+      <%= form.govuk_phone_field :phone, width: 10 %>
 
       <%= form.govuk_submit t("contact.edit.save_contact_button") do %>
         <%= govuk_link_to "Cancel", project_contacts_path(@project) %>
