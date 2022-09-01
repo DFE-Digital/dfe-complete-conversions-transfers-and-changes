@@ -68,11 +68,13 @@ terraform.rc*
 *.tfstate*
 *.tfvars*
 .terraform/
+backend.vars
 ### XML data
 *.xml*
 
 ## Dependencies
 /Brewfile.lock.json
+/terraform/Brewfile.lock.json
 /node_modules/
 /vendor/bundle/
 
