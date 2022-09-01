@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [Release 2][release-2]
+
 ### Added
 
 - The project information view displays the school type, phase of education, and
@@ -99,6 +101,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-1...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-2...HEAD
+[release-2]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-1...release-2
 [release-1]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/releases/tag/release-1
+
