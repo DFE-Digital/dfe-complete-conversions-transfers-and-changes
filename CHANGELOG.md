@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- Show the full name alongside email address for users in the Project Details
+  section of the Project Information. Users without a full name will continue to
+  show email only.
+
 ### Fixed
 
 - Tasks that have actions without hint text can now be rendered.

@@ -3,4 +3,8 @@ class User < ApplicationRecord
   has_many :notes
 
   scope :caseworkers, -> { where(team_leader: false).and(where(regional_delivery_officer: false)) }
+
+  def full_name
+    "#{first_name} #{last_name}" if first_name.present? && last_name.present?
+  end
 end

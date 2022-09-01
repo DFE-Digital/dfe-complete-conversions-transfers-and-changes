@@ -11,11 +11,15 @@ FactoryBot.define do
     end
 
     trait :team_leader do
+      first_name { "Team" }
+      last_name { "Leader" }
       team_leader { true }
       email { "team.lead@education.gov.uk" }
     end
 
     trait :regional_delivery_officer do
+      first_name { "Regional" }
+      last_name { "Delivery-Officer" }
       regional_delivery_officer { true }
       email { "regional.delivery.officer@education.gov.uk" }
     end

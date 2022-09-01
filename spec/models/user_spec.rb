@@ -24,4 +24,32 @@ RSpec.describe User do
       end
     end
   end
+
+  describe "#full_name" do
+    subject { user.full_name }
+
+    context "when first name is nil" do
+      let(:user) { build(:user, first_name: nil) }
+
+      it "returns nil" do
+        expect(subject).to be_nil
+      end
+    end
+
+    context "when last name is nil" do
+      let(:user) { build(:user, last_name: nil) }
+
+      it "returns nil" do
+        expect(subject).to be_nil
+      end
+    end
+
+    context "when first name and last name are present" do
+      let(:user) { build(:user) }
+
+      it "returns full name" do
+        expect(subject).to eq "John Doe"
+      end
+    end
+  end
 end
