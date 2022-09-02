@@ -67,6 +67,7 @@
 terraform.rc*
 *.tfstate*
 *.tfvars*
+!terraform.tfvars.example
 .terraform/
 backend.vars
 ### XML data
