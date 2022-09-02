@@ -1,0 +1,3 @@
+environment    = "test"
+project_name   = "my-project"
+resource_group = "resource-group-name"

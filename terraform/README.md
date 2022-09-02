@@ -88,10 +88,9 @@ to use the settings you specified in the previous step.
 
 ##### Create a Terraform variables file
 
-Copy the `terraform.tfvars.example` to `terraform.tfvars` and modify the contents as required
+Each environment will need it's own `tfvars` file.
 
-If you do not wish to create the file, Terraform will ask you to provide the variables
-when you run it.
+Copy the `terraform.tfvars.example` to `environment-name.tfvars` and modify the contents as required
 
 ##### Create the infrastructure
 
@@ -109,12 +108,12 @@ Switch to the new or existing workspace:
 
 Plan the changes:
 
-`$ terraform plan`
+`$ terraform plan -var-file=staging.tfvars`
 
 Terraform will ask you to provide any variables not specified in an `*.auto.tfvars` file.
 Now you can run:
 
-`$ terraform apply`
+`$ terraform apply -var-file=staging.tfvars`
 
 If everything looks good, answer `yes` and wait for the new infrastructure to be created.
 
@@ -130,15 +129,24 @@ If everything looks good, answer `yes` and wait for the new infrastructure to be
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.20.0 |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [azurerm_container_registry.acr](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_registry) | resource |
+| [azurerm_resource_group.default](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment name. Will be used along with `project_name` as a prefix for all resources. | `string` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | Project name. Will be used along with `environment` as a prefix for all resources. | `string` | n/a | yes |
+| <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | Resource group name in which to launch resources. | `string` | n/a | yes |
 
 ## Outputs
 
