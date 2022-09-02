@@ -54,3 +54,10 @@ You can find the [ADRs](https://adr.github.io/) for this project in the
 We use
 [sentry.io](https://sentry.io/organizations/sdd-n7/projects/complete-conversions-transfers-and-changes/?project=6684508)
 to monitor errors and the performance of the application.
+
+## Infrastructure
+
+We use infrastructure as code ([Terraform](https://www.terraform.io/)) to deploy and manage resources hosting the app.
+This is stored in the `terraform` directory.
+
+Documentation: [terraform/README.md](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/blob/main/terraform/README.md)
