@@ -1,9 +1,9 @@
-name: tfsec
+name: Continuous integration
 on:
   pull_request:
 jobs:
-  tfsec:
-    name: PR commenter
+  tfsec-pr-commenter:
+    name: tfsec PR commenter
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo

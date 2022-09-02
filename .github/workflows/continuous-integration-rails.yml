@@ -8,7 +8,8 @@ on:
       - develop
 
 jobs:
-  test:
+  rails-test:
+    name: Rails test
     runs-on: ubuntu-latest
 
     env:
