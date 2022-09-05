@@ -15,11 +15,13 @@ RSpec.describe UserImporter do
 
   describe "#call" do
     let(:existing_user_email) { "jane.doe@education.gov.uk" }
-    let!(:existing_user) { create(:user, email: existing_user_email) }
+    let!(:existing_user) { create(:user, email: existing_user_email, first_name: "Jane") }
 
-    subject! { user_importer.call(csv_path) }
+    subject(:call_user_importer) { user_importer.call(csv_path) }
 
     it "upserts users from the provided CSV" do
+      call_user_importer
+
       expect(User.count).to be 2
 
       expect(
@@ -41,6 +43,32 @@ RSpec.describe UserImporter do
           regional_delivery_officer: true
         )
       ).to exist
+    end
+
+    context "when an error occurs" do
+      let(:users_csv) do
+        <<~CSV
+          email,first_name,last_name,team_leader,regional_delivery_officer
+          #{existing_user_email},Josephine,Doe,0,1
+          ,Malformed,Record,,
+        CSV
+      end
+
+      it "rolls back the transaction" do
+        expect { call_user_importer }.to raise_error(ActiveRecord::NotNullViolation)
+
+        expect(User.count).to be 1
+
+        expect(
+          User.where(
+            email: existing_user_email,
+            first_name: "Jane",
+            last_name: "Doe",
+            team_leader: false,
+            regional_delivery_officer: false
+          )
+        ).to exist
+      end
     end
   end
 end
