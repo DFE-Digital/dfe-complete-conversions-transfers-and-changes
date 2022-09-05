@@ -22,7 +22,7 @@ RSpec.feature "Users can create and view notes" do
     visit project_notes_path(project_id)
 
     expect_page_to_have_note(
-      user: user.email, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
+      user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
     )
 
     click_link "Add note" # Link styled as button
@@ -34,7 +34,7 @@ RSpec.feature "Users can create and view notes" do
     click_button("Save note")
 
     expect(page).to have_current_path(project_notes_path(project_id))
-    expect_page_to_have_note(user: user.email, date: Date.today.to_formatted_s(:govuk), body: new_note_body)
+    expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body)
   end
 
   private def expect_page_to_have_note(user:, date:, body:)
