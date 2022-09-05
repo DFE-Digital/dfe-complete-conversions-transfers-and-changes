@@ -26,4 +26,34 @@ RSpec.describe ProjectInformationHelper, type: :helper do
       end
     end
   end
+
+  describe "#display_name" do
+    subject { helper.display_name(user) }
+
+    context "when user is nil" do
+      let(:user) { nil }
+
+      it "returns a 'Not yet assigned' message" do
+        expect(subject).to eq t("project_information.show.project_details.rows.unassigned")
+      end
+    end
+
+    context "when full name is nil" do
+      let(:user) { build(:user, first_name: nil, last_name: nil) }
+
+      it "returns email address as a link" do
+        expect(subject.html_safe?).to be true
+        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:user@education.gov.uk\">user@education.gov.uk</a>"
+      end
+    end
+
+    context "when full name is present" do
+      let(:user) { build(:user) }
+
+      it "returns the full name with a email link" do
+        expect(subject.html_safe?).to be true
+        expect(subject).to eq "John Doe (<a class=\"govuk-link\" href=\"mailto:user@education.gov.uk\">user@education.gov.uk</a>)"
+      end
+    end
+  end
 end

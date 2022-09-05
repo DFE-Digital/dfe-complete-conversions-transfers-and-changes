@@ -75,6 +75,10 @@ RSpec.configure do |config|
   config.after(:each) do |example|
     OmniAuth.config.mock_auth[:azure_activedirectory_v2] = nil
   end
+
+  config.before(:suite) do
+    Rails.application.load_tasks
+  end
 end
 
 Shoulda::Matchers.configure do |config|

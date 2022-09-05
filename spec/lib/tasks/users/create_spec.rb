@@ -1,5 +1,4 @@
 require "rails_helper"
-Rails.application.load_tasks
 
 RSpec.describe "rake users:create", type: :task do
   it "creates a user in the service" do

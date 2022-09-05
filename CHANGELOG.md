@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Add a bulk user import Rake task.
+- Collect Azure Active Directory User ID on sign in.
+
+### Changed
+
+- Show the full name alongside email address for users in the Project Details
+  section of the Project Information. Users without a full name will continue to
+  show email only.
+- Show the full name of the note author if available. If it is not available,
+  fall back to showing the email address.
+
 ### Fixed
 
 - Tasks that have actions without hint text can now be rendered.

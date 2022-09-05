@@ -48,6 +48,9 @@ en:
     users:
       create:
         error: You must provide a users email address e.g. bin/rails users:create EMAIL_ADDRESS=name@example.com
+    user_importer:
+      import:
+        error: You must provide a path
   project:
     index:
       title:

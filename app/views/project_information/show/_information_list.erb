@@ -2,15 +2,15 @@
 <%= govuk_summary_list(actions: false) do |summary_list|
   summary_list.row do |row|
     row.key { t('project_information.show.project_details.rows.caseworker') }
-    row.value { @project.caseworker&.email or t('project_information.show.project_details.rows.unassigned') }
+    row.value { display_name(@project.caseworker) }
   end
   summary_list.row do |row|
     row.key { t('project_information.show.project_details.rows.team_lead') }
-    row.value { @project.team_leader&.email or t('project_information.show.project_details.rows.unassigned') }
+    row.value { display_name(@project.team_leader) }
   end
   summary_list.row do |row|
     row.key { t('project_information.show.project_details.rows.regional_delivery_officer') }
-    row.value { @project.regional_delivery_officer.email }
+    row.value { display_name(@project.regional_delivery_officer) }
   end
 end %>
 

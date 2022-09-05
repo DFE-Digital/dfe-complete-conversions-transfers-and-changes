@@ -14,9 +14,9 @@ RSpec.feature "Users can view project information" do
     visit project_information_path(project_id)
 
     expect(page).to have_content("Project details")
-    page_has_project_information_list_row(label: "Caseworker", information: "user@education.gov.uk")
-    page_has_project_information_list_row(label: "Team lead", information: project.team_leader.email)
-    page_has_project_information_list_row(label: "Regional delivery officer", information: project.regional_delivery_officer.email)
+    page_has_project_information_list_row(label: "Caseworker", information: "John Doe", link: "user@education.gov.uk")
+    page_has_project_information_list_row(label: "Team lead", information: "Team Leader", link: project.team_leader.email)
+    page_has_project_information_list_row(label: "Regional delivery officer", information: "Regional Delivery-Officer", link: project.regional_delivery_officer.email)
 
     expect(page).to have_content("School details")
     page_has_project_information_list_row(label: "Original school name", information: "Caludon Castle School")
@@ -34,15 +34,15 @@ RSpec.feature "Users can view project information" do
     page_has_project_information_list_row(label: "Local authority", information: "West Placefield Council")
   end
 
-  private def page_has_project_information_list_row(label:, information:)
+  private def page_has_project_information_list_row(label:, information:, link: nil)
     project_information_list = page.find("#projectInformationList")
 
     within project_information_list do
       label = find("dt", text: label)
-      information = label.ancestor(".govuk-summary-list__row").find("dd", text: information)
+      row_value = label.ancestor(".govuk-summary-list__row").find("dd")
 
-      assert label
-      assert information
+      expect(row_value).to have_content(information)
+      expect(row_value).to have_link(link) if link.present?
     end
   end
 end
