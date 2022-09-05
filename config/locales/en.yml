@@ -63,6 +63,7 @@ en:
         text: Edit
     new:
       title: Add a new project
+      handover_comments_label: Handover comments
     create:
       success: Project has been created successfully
     edit:
