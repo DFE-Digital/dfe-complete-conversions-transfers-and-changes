@@ -6,5 +6,6 @@ FactoryBot.define do
     age_range_lower { 11 }
     age_range_upper { 18 }
     phase { "Secondary" }
+    diocese_name { "Diocese of West Placefield" }
   end
 end

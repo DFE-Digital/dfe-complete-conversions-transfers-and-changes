@@ -61,3 +61,11 @@ end %>
     row.value { @project.establishment.local_authority }
   end
 end %>
+
+<h2 class="govuk-heading-l" id="dioceseDetails"><%= t('project_information.show.diocese_details.title') %></h2>
+<%= govuk_summary_list(actions: false) do |summary_list|
+  summary_list.row do |row|
+    row.key { t('project_information.show.diocese_details.rows.diocese') }
+    row.value { @project.establishment.diocese_name }
+  end
+end %>

@@ -108,6 +108,10 @@ en:
         title: Local authority details
         rows:
           local_authority: Local authority
+      diocese_details:
+        title: Diocese details
+        rows:
+          diocese: Diocese
   note:
     index:
       notes: Notes
