@@ -14,6 +14,7 @@ RSpec.feature "Users can sign in to the application" do
 
       expect(page).not_to have_button(I18n.t("sign_in.button"))
       expect(page).to have_content(user.email)
+      expect(user.reload.active_directory_user_id).to eq "b5095c3e-0141-4478-81ad-99d0fbd087ed"
     end
 
     scenario "from any page, they are redirected to the sign in page" do
