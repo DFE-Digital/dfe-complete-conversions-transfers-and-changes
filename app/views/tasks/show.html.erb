@@ -20,7 +20,9 @@
       <%= form.govuk_check_box :completed_action_ids,
                                action.id,
                                label: { text: action.title },
-                               hint: -> { sanitize GovukMarkdown.render(action.hint).gsub!('govuk-body-m', 'govuk-hint') },
+                               hint: -> {
+                                 sanitize GovukMarkdown.render(action.hint).gsub!('govuk-body-m', 'govuk-hint') unless action.hint.nil?
+                               },
                                link_errors: true,
                                checked: action.completed? %>
 

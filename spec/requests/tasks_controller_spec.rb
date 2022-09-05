@@ -30,6 +30,13 @@ RSpec.describe TasksController, type: :request do
       expect(subject).to have_http_status :success
       expect(subject.body).to include("Have you cleared the Supplementary funding agreement?")
     end
+
+    it "can render actions with and without hint text" do
+      _action_with_hint = create(:action, hint: "A hint.", task: task)
+      _action_without_hint = create(:action, hint: nil, task: task)
+
+      expect { perform_request }.not_to raise_error
+    end
   end
 
   describe "#update" do

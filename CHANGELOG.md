@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Tasks that have actions without hint text can now be rendered.
+
 ## [Release 2][release-2]
 
 ### Added
@@ -106,4 +110,3 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-1...release-2
 [release-1]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/releases/tag/release-1
-
