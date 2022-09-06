@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   show email only.
 - Show the full name of the note author if available. If it is not available,
   fall back to showing the email address.
+- Add an optional "Handover comments" input to the new project form. This will
+  create the first project note.
 
 ### Fixed
 

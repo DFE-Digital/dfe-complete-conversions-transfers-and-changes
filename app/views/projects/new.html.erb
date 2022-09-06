@@ -11,5 +11,10 @@
   <%= form.govuk_text_field :urn, label: { size: 'm' }, width: 10 %>
   <%= form.govuk_text_field :trust_ukprn, label: { size: 'm' }, width: 10 %>
   <%= form.govuk_date_field :target_completion_date, omit_day: true %>
+
+  <%= form.fields_for :note, @note do |note_form| %>
+    <%= note_form.govuk_text_area :body, label: {text: t("project.new.handover_comments_label"), size: 'm'} %>
+  <% end %>
+
   <%= form.govuk_submit %>
 <% end %>

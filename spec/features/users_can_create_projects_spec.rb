@@ -24,6 +24,7 @@ RSpec.feature "Users can create new projects" do
       fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
       fill_in "Month", with: 12
       fill_in "Year", with: 2025
+      fill_in "Handover comments", with: "A new handover comment"
 
       click_button("Continue")
 

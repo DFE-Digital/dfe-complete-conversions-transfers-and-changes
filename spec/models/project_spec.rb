@@ -17,6 +17,31 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:team_leader).required(false) }
 
+    describe "accept nested attributes for note" do
+      let(:user) { create(:user) }
+      let(:note_attributes) { attributes_for(:note, body: note_body, project: nil, user: user) }
+      let(:project_attributes) { attributes_for(:project) }
+
+      before { Project.create!(**project_attributes, notes_attributes: [note_attributes]) }
+
+      context "when the note body is blank" do
+        let(:note_body) { nil }
+
+        it "does not save the note" do
+          expect(Note.count).to be 0
+        end
+      end
+
+      context "when the note body is not blank" do
+        let(:note_body) { "A new note" }
+
+        it "saves the note" do
+          expect(Note.count).to be 1
+          expect(Note.last.body).to eq note_body
+        end
+      end
+    end
+
     describe "delete related entities" do
       context "when the project is deleted" do
         it "destroys all the related notes, contacts, sections leaving nothing orphaned" do

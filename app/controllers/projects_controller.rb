@@ -19,9 +19,10 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @note = Note.new(**note_params, user_id: user_id)
+    @project = Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
+
     authorize @project
-    assign_regional_delivery_officer
 
     if @project.valid?
       @project.save
@@ -59,9 +60,12 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(
       :urn,
       :trust_ukprn,
-      :target_completion_date,
-      :regional_delivery_officer_id
+      :target_completion_date
     )
+  end
+
+  private def note_params
+    params.require(:project).require(:note).permit(:body)
   end
 
   private def case_worker_id
@@ -70,9 +74,5 @@ class ProjectsController < ApplicationController
 
   private def assign_team_leader
     @project.team_leader_id = user_id
-  end
-
-  private def assign_regional_delivery_officer
-    @project.regional_delivery_officer_id = user_id
   end
 end
