@@ -32,6 +32,12 @@ RSpec.feature "Users can view project information" do
 
     expect(page).to have_content("Local authority details")
     page_has_project_information_list_row(label: "Local authority", information: "West Placefield Council")
+
+    expect(page).to have_content(I18n.t("project_information.show.diocese_details.title"))
+    page_has_project_information_list_row(
+      label: I18n.t("project_information.show.diocese_details.rows.diocese"),
+      information: project.establishment.diocese_name
+    )
   end
 
   private def page_has_project_information_list_row(label:, information:, link: nil)

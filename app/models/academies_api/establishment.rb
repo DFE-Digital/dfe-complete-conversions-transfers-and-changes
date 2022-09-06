@@ -5,7 +5,8 @@ class AcademiesApi::Establishment < AcademiesApi::BaseApiModel
     :type,
     :age_range_lower,
     :age_range_upper,
-    :phase
+    :phase,
+    :diocese_name
   )
 
   def self.attribute_map
@@ -15,7 +16,8 @@ class AcademiesApi::Establishment < AcademiesApi::BaseApiModel
       type: "establishmentType.name",
       age_range_lower: "statutoryLowAge",
       age_range_upper: "statutoryHighAge",
-      phase: "phaseOfEducation.name"
+      phase: "phaseOfEducation.name",
+      diocese_name: "diocese.name"
     }
   end
 end
