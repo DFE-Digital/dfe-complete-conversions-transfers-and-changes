@@ -12,6 +12,9 @@ RSpec.describe "Project assignment" do
 
     context "when the user is a team lead" do
       let(:user) { create(:user, :team_leader) }
+      let(:caseworker) { create(:user, email: "case.worker@education.gov.uk") }
+
+      before { freeze_time }
 
       it "shows the edit project button" do
         get project_path(project)
@@ -26,10 +29,30 @@ RSpec.describe "Project assignment" do
       end
 
       it "assigns the current user as the team lead" do
-        case_worker = create(:user, email: "case.worker@education.gov.uk")
-        patch project_path(project, params: {project: {case_worker_id: case_worker.id}})
+        patch project_path(project, params: {project: {caseworker_id: caseworker.id}})
 
         expect(project.reload.team_leader).to eq user
+      end
+
+      it "assigns the caseworker and caseworker_assigned_at timestamp" do
+        patch project_path(project, params: {project: {caseworker_id: caseworker.id}})
+
+        expect(project.reload.caseworker).to eq caseworker
+        expect(project.reload.caseworker_assigned_at).to eq DateTime.now
+      end
+
+      context "when a caseworker has been assigned previously" do
+        let(:caseworker_assigned_at) { DateTime.yesterday.at_midday }
+        let(:new_caseworker) { create(:user, :caseworker) }
+
+        before { project.update(caseworker: caseworker, caseworker_assigned_at: caseworker_assigned_at) }
+
+        it "does not update the caseworker_assigned_at timestamp" do
+          patch project_path(project, params: {project: {caseworker_id: new_caseworker.id}})
+
+          expect(project.reload.caseworker).to eq new_caseworker
+          expect(project.reload.caseworker_assigned_at).to eq caseworker_assigned_at
+        end
       end
     end
 
