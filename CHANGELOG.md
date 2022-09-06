@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add a bulk user import Rake task.
 - Collect Azure Active Directory User ID on sign in.
 - The school diocese name is shown on project details or not applicable.
+- Selecting a caseworker will now offer to autocomplete if the user has Javascript enabled
 
 ### Changed
 

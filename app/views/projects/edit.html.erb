@@ -23,3 +23,12 @@
 
   </div>
 </div>
+
+<% content_for :footer_post_js do %>
+  <%= javascript_include_tag "accessible-autocomplete/dist/accessible-autocomplete.min" %>
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#project-caseworker-id-field')
+    })
+  </script>
+<% end %>
