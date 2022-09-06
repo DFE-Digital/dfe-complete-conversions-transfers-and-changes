@@ -4,7 +4,7 @@ RSpec.feature "Users can create and view notes" do
   let(:user) { create(:user, email: "user@education.gov.uk") }
   let(:project) { create(:project) }
   let(:project_id) { project.id }
-  let(:new_note_body) { "Just shared some important documents with the solictor." }
+  let(:new_note_body) { "Just shared some *important* documents with the solictor." }
   let(:existing_note_created_at) {}
 
   before do
@@ -34,7 +34,8 @@ RSpec.feature "Users can create and view notes" do
     click_button("Save note")
 
     expect(page).to have_current_path(project_notes_path(project_id))
-    expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body)
+    expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body.delete("*"))
+    expect(page.html).to include("<em>important</em>")
   end
 
   private def expect_page_to_have_note(user:, date:, body:)
