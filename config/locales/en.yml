@@ -138,6 +138,8 @@ en:
       save_contact_button: Save contact
     update:
       success: Contact has been updated successfully
+    destroy:
+      success: Contact has been deleted successfully
     details:
       name: Name
       title: Role
