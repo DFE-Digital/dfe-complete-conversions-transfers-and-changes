@@ -48,8 +48,8 @@ end
 
 RSpec.feature "Users can update a project" do
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
-  let!(:caseworker) { create(:user, email: "user1@education.gov.uk") }
-  let!(:caseworker_2) { create(:user, email: "user2@education.gov.uk") }
+  let!(:caseworker) { create(:user, :caseworker, email: "user1@education.gov.uk") }
+  let!(:caseworker_2) { create(:user, :caseworker, email: "user2@education.gov.uk") }
 
   context "the user is a team leader" do
     before do

@@ -5,9 +5,11 @@ FactoryBot.define do
     last_name { "Doe" }
     team_leader { false }
     regional_delivery_officer { false }
+    caseworker { false }
 
     trait :caseworker do
       email { "caseworker@education.gov.uk" }
+      caseworker { true }
     end
 
     trait :team_leader do
