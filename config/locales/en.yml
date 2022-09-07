@@ -140,6 +140,10 @@ en:
       success: Contact has been updated successfully
     destroy:
       success: Contact has been deleted successfully
+    confirm_destroy:
+      title:
+        Are you sure you want to delete %{contact_name}?
+      guidance: This will remove the contact for %{contact_title} called %{contact_name} from the contacts list.
     details:
       name: Name
       title: Role
