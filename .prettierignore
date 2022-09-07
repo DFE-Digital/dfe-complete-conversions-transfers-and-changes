@@ -27,3 +27,4 @@
 *.gz
 /public/assets/*
 /coverage
+/terraform
