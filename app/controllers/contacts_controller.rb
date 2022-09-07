@@ -40,6 +40,17 @@ class ContactsController < ApplicationController
     end
   end
 
+  def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+
+    redirect_to project_contacts_path(@project), notice: I18n.t("contact.destroy.success")
+  end
+
+  def confirm_destroy
+    @contact = Contact.find(params[:contact_id])
+  end
+
   private def find_project
     @project = Project.find(params[:project_id])
   end

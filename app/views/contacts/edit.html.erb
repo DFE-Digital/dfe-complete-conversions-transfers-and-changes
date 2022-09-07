@@ -20,6 +20,7 @@
       <%= form.govuk_phone_field :phone, width: 10 %>
 
       <%= form.govuk_submit t("contact.edit.save_contact_button") do %>
+        <%= govuk_button_link_to "Delete", project_contact_delete_path(@project, @contact), warning: true %>
         <%= govuk_link_to "Cancel", project_contacts_path(@project) %>
       <% end %>
     <% end %>

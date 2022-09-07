@@ -164,4 +164,39 @@ RSpec.describe ContactsController, type: :request do
       end
     end
   end
+
+  describe "#destroy" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:contact) { create(:contact) }
+    let(:contact_id) { contact.id }
+
+    subject(:perform_request) do
+      delete project_contact_path(project_id, contact_id)
+      response
+    end
+
+    it "deletes the contact and redirects to the index view with a success message" do
+      expect(perform_request).to redirect_to(project_contacts_path(project.id))
+      expect(request.flash[:notice]).to eq(I18n.t("contact.destroy.success"))
+
+      expect(Contact.where(id: contact_id)).to_not exist
+    end
+  end
+
+  describe "#confirm_destroy" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:contact) { create(:contact) }
+    let(:contact_id) { contact.id }
+
+    subject(:perform_request) do
+      get project_contact_delete_path(project_id, contact_id)
+      response
+    end
+
+    it "returns a successful response" do
+      expect(subject).to have_http_status :success
+    end
+  end
 end
