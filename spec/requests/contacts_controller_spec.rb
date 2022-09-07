@@ -183,4 +183,20 @@ RSpec.describe ContactsController, type: :request do
       expect(Contact.where(id: contact_id)).to_not exist
     end
   end
+
+  describe "#confirm_destroy" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:contact) { create(:contact) }
+    let(:contact_id) { contact.id }
+
+    subject(:perform_request) do
+      get project_contact_delete_path(project_id, contact_id)
+      response
+    end
+
+    it "returns a successful response" do
+      expect(subject).to have_http_status :success
+    end
+  end
 end
