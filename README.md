@@ -76,7 +76,8 @@ to monitor errors and the performance of the application.
 
 ## Infrastructure
 
-We use infrastructure as code ([Terraform](https://www.terraform.io/)) to deploy and manage resources hosting the app.
-This is stored in the `terraform` directory.
+We use infrastructure as code ([Terraform](https://www.terraform.io/)) to deploy
+and manage resources hosting the app. This is stored in the `terraform`
+directory.
 
 Documentation: [terraform/README.md](/terraform/README.md)
