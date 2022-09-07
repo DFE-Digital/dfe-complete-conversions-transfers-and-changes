@@ -21,4 +21,5 @@ test:
 
 production:
   <<: *default
+  azure: true
   database: sip
