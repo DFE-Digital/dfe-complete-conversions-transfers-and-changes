@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The school diocese name is shown on project details or not applicable.
 - Selecting a caseworker will now offer to autocomplete if the user has
   Javascript enabled
+- The date and time that a caseworker is first assigned to a project is
+  recorded. Any subsequent assignments will not be recorded.
 
 ### Changed
 

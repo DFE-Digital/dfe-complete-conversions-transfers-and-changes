@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
 
-    @project.assign_attributes(case_worker_id)
+    assign_caseworker(caseworker_id)
     assign_team_leader
 
     @project.save
@@ -68,11 +68,16 @@ class ProjectsController < ApplicationController
     params.require(:project).require(:note).permit(:body)
   end
 
-  private def case_worker_id
+  private def caseworker_id
     params.require(:project).permit(:caseworker_id)
   end
 
   private def assign_team_leader
     @project.team_leader_id = user_id
+  end
+
+  private def assign_caseworker(caseworker_id)
+    @project.assign_attributes(caseworker_id)
+    @project.assign_attributes(caseworker_assigned_at: DateTime.now) if @project.caseworker_assigned_at.nil?
   end
 end
