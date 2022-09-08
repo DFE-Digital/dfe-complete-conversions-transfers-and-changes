@@ -19,7 +19,7 @@
     </div>
 
     <%= form_for :task, url: project_task_path, method: :put do |form| %>
-      <%= form.govuk_check_boxes_fieldset :actions, legend: { hidden: true } do %>
+      <%= form.govuk_check_boxes_fieldset :actions, legend: { hidden: true }, classes: "task-checkboxes" do %>
         <% @task.actions.each do |action| %>
           <%= form.govuk_check_box :completed_action_ids,
                                    action.id,
