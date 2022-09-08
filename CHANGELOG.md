@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   fall back to showing the email address.
 - Add an optional "Handover comments" input to the new project form. This will
   create the first project note.
+- The caseworker role is no longer implied from the lack of any other roles.
+  Instead, users must be explicitly given the caseworker role.
 
 ### Fixed
 

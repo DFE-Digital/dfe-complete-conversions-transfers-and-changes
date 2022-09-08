@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_094506) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_151837) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_094506) do
     t.string "first_name"
     t.string "last_name"
     t.string "active_directory_user_id"
+    t.boolean "caseworker", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

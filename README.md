@@ -58,10 +58,11 @@ The headers of the CSV must be consistent with the attributes on the `user`
 model. Boolean values can be indicated by `0` and `1`, all values should be
 provided to avoid not-null constraint errors. For example:
 
-| email                     | first_name | last_name | team_leader | regional_delivery_officer |
-| ------------------------- | ---------- | --------- | ----------- | ------------------------- |
-| john.doe@education.gov.uk | John       | Doe       | 1           | 0                         |
-| jane.doe@education.gov.uk | Jane       | Doe       | 0           | 1                         |
+| email                       | first_name | last_name | team_leader | regional_delivery_officer | caseworker |
+| --------------------------- | ---------- | --------- | ----------- | ------------------------- | ---------- |
+| john.doe@education.gov.uk   | John       | Doe       | 1           | 0                         | 0          |
+| jane.doe@education.gov.uk   | Jane       | Doe       | 0           | 1                         | 0          |
+| joseph.doe@education.gov.uk | Joseph     | Doe       | 0           | 0                         | 1          |
 
 ## ADRs
 
