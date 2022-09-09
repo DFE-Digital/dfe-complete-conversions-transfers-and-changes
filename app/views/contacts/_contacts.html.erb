@@ -1,6 +1,6 @@
 <% @contacts.each do |category, contacts| %>
 
-  <h3 class="govuk-heading-m"><%= t('contact.index.category_heading', category_name: format_category_name(category)) %></h3>
+  <h3 class="govuk-heading-m"><%= t("contact.index.category_heading", category_name: format_category_name(category)) %></h3>
 
   <% contacts.each_with_index do |contact, index| %>
 
@@ -9,32 +9,32 @@
   <% end %>
 
   <%= govuk_summary_list do |summary_list|
-    summary_list.row do |row|
-      row.key { t('contact.details.title') }
-      row.value { contact.title }
-      row.action(
-        text: t('contact.details.edit_link'),
-        href: edit_project_contact_path(@project, contact),
-        visually_hidden_text: contact.name
-      )
-    end
-    summary_list.row do |row|
-      row.key { t('contact.details.name') }
-      row.value { contact.name }
-    end
-    if contact.email.present?
-      summary_list.row do |row|
-        row.key { t('contact.details.email') }
-        row.value { contact.email }
-      end
-    end
-    if contact.phone.present?
-      summary_list.row do |row|
-        row.key { t('contact.details.phone') }
-        row.value { contact.phone }
-      end
-    end
-  end %>
+        summary_list.row do |row|
+          row.key { t("contact.details.title") }
+          row.value { contact.title }
+          row.action(
+            text: t("contact.details.edit_link"),
+            href: edit_project_contact_path(@project, contact),
+            visually_hidden_text: contact.name
+          )
+        end
+        summary_list.row do |row|
+          row.key { t("contact.details.name") }
+          row.value { contact.name }
+        end
+        if contact.email.present?
+          summary_list.row do |row|
+            row.key { t("contact.details.email") }
+            row.value { contact.email }
+          end
+        end
+        if contact.phone.present?
+          summary_list.row do |row|
+            row.key { t("contact.details.phone") }
+            row.value { contact.phone }
+          end
+        end
+      end %>
 
   <% end %>
 <% end %>
