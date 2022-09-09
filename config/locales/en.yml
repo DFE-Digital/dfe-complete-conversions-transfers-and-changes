@@ -64,6 +64,7 @@ en:
     new:
       title: Add a new project
       handover_comments_label: Handover comments
+      handover_comments_hint: Please provide a brief overview of how the project has progressed so far, including any issues that have arisen or areas of concern.
     create:
       success: Project has been created successfully
     edit:
