@@ -16,7 +16,7 @@ RSpec.feature "Users can view the Actions for a Task" do
     visit project_task_path(project_id, task_id)
 
     # Task
-    expect(page).to have_css(".govuk-heading-l", text: "Have you cleared the Supplementary funding agreement?")
+    expect(page).to have_css(".govuk-heading-xl", text: "Have you cleared the Supplementary funding agreement?")
 
     # Task hint
     expect(page).to have_link("View the model documents (opens in new tab)", href: "https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools")

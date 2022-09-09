@@ -5,7 +5,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <div class="govuk-!-margin-bottom-9">
-      <h1 class="govuk-heading-l"><%= @task.title %></h1>
+      <span class="govuk-caption-l"><%= @task.project.establishment.name %></span>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= @task.title %></h1>
 
       <% if @task.hint? %>
         <p class="govuk-body"><%= sanitize GovukMarkdown.render(@task.hint) %></p>
