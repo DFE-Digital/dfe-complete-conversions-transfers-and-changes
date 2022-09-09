@@ -29,7 +29,7 @@
 
     <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
-    <%= govuk_header(service_name: t("service_name"))  %>
+    <%= govuk_header(service_name: t("service_name")) %>
 
     <div class="govuk-width-container ">
       <%= yield :pre_content_nav %>
@@ -41,7 +41,7 @@
     </div>
 
     <%= govuk_footer %>
-    
+
   </body>
   <%= javascript_include_tag "application" %>
   <%= yield :footer_post_js %>

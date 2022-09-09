@@ -28,6 +28,13 @@ else
   done
 
   if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+    echo "==> Linting ERB in fix mode..."
+    bundle exec erblint --lint-all --fix
+  else
+    echo "==> Linting ERB..."
+    bundle exec erblint --lint-all
+  fi
+  if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
     echo "==> Linting Ruby in fix mode..."
     bundle exec standardrb --fix
   else

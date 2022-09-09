@@ -10,9 +10,9 @@
       <%= form.govuk_error_summary %>
 
       <%= form.govuk_collection_select :category,
-        Contact.categories.keys,
-        :to_s,
-        ->(category_name) {format_category_name(category_name) } %>
+            Contact.categories.keys,
+            :to_s,
+            ->(category_name) { format_category_name(category_name) } %>
 
       <%= form.govuk_text_field :title, width: 20 %>
       <%= form.govuk_text_field :name %>

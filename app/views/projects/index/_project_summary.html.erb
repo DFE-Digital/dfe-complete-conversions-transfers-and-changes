@@ -1,10 +1,10 @@
 <div class="govuk-!-margin-bottom-9">
   <div class="govuk-grid-row govuk-!-margin-top-2">
     <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2">
-      <span class="govuk-!-font-weight-bold"><%= t('project_information.show.school_details.rows.school_type') %>: </span><%= project.establishment.type %>
+      <span class="govuk-!-font-weight-bold"><%= t("project_information.show.school_details.rows.school_type") %>: </span><%= project.establishment.type %>
     </p>
     <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2 govuk-!-text-align-right">
-      <span class="govuk-!-font-weight-bold"><%= t('project.summary.target_completion_date.title') %>: </span><%= project.target_completion_date.to_formatted_s(:govuk) %>
+      <span class="govuk-!-font-weight-bold"><%= t("project.summary.target_completion_date.title") %>: </span><%= project.target_completion_date.to_formatted_s(:govuk) %>
     </p>
   </div>
 
@@ -12,10 +12,10 @@
 
   <div class="govuk-grid-row govuk-!-margin-top-2">
     <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2">
-      <span class="govuk-!-font-weight-bold"><%= t('project.summary.incoming_trust.title') %>: </span><%= project.trust.name %>
+      <span class="govuk-!-font-weight-bold"><%= t("project.summary.incoming_trust.title") %>: </span><%= project.trust.name %>
     </p>
     <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2 govuk-!-text-align-right">
-      <span class="govuk-!-font-weight-bold"><%= t('project.summary.local_authority.title') %>: </span><%= project.establishment.local_authority %>
+      <span class="govuk-!-font-weight-bold"><%= t("project.summary.local_authority.title") %>: </span><%= project.establishment.local_authority %>
     </p>
   </div>
 

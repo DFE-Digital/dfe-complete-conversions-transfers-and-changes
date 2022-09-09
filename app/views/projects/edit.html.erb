@@ -13,9 +13,8 @@
       <p class="govuk-body"><span class="govuk-caption-l">URN <%= @project.urn %></span></p>
 
       <%= form.govuk_collection_select :caseworker_id, @users, :id, :email,
-        label: { tag: 'h3', size: 'm' },
-        options: { include_blank: true, selected: @project.caseworker&.id }
-      %>
+            label: {tag: "h3", size: "m"},
+            options: {include_blank: true, selected: @project.caseworker&.id} %>
       <%= form.govuk_submit do %>
         <%= link_to "Cancel", project_path(@project), class: "govuk-link" %>
       <% end %>

@@ -17,17 +17,16 @@
             <%= link_to project.establishment.name, project_path(project) %>
           </h2>
 
-          <%= render partial: "projects/index/project_summary", locals: { project: project } %>
+          <%= render partial: "projects/index/project_summary", locals: {project: project} %>
         </li>
       <% end %>
     </ul>
 
     <% if policy(:project).new? %>
-      <p><%= link_to t('project.index.new_button.text'),
-        new_project_path,
-        class: 'govuk-button',
-        data: { module: "govuk-button" }
-      %></p>
+      <p><%= link_to t("project.index.new_button.text"),
+               new_project_path,
+               class: "govuk-button",
+               data: {module: "govuk-button"} %></p>
     <% end %>
 
   </div>

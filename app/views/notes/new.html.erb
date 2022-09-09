@@ -7,7 +7,7 @@
     <%= form_for @note, url: project_notes_path, method: :post do |form| %>
       <%= form.govuk_error_summary %>
 
-      <%= form.govuk_text_area :body, label: { tag: "h1", size: "l" } %>
+      <%= form.govuk_text_area :body, label: {tag: "h1", size: "l"} %>
 
       <%= form.govuk_submit t("note.new.save_note_button") do %>
         <%= govuk_link_to "Cancel", project_notes_path(@project) %>
