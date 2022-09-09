@@ -2,44 +2,48 @@
   <%= govuk_back_link(href: project_path(@task.project)) %>
 <% end %>
 
-<h1 class="govuk-heading-l"><%= @task.title %></h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= @task.title %></h1>
 
-<% if @task.hint? %>
-  <p class="govuk-body"><%= sanitize GovukMarkdown.render(@task.hint) %></p>
-<% end %>
+    <% if @task.hint? %>
+      <p class="govuk-body"><%= sanitize GovukMarkdown.render(@task.hint) %></p>
+    <% end %>
 
-<% if @task.guidance_summary? %>
-  <%= govuk_details(summary_text: @task.guidance_summary) do %>
-    <%= sanitize GovukMarkdown.render(@task.guidance_text) %>
-  <% end %>
-<% end %>
-
-<%= form_for :task, url: project_task_path, method: :put do |form| %>
-  <%= form.govuk_check_boxes_fieldset :actions, legend: {text: "Actions", size: "m"} do %>
-    <% @task.actions.each do |action| %>
-      <%= form.govuk_check_box :completed_action_ids,
-            action.id,
-            label: {text: action.title},
-            hint: -> {
-              sanitize GovukMarkdown.render(action.hint).gsub!("govuk-body-m", "govuk-hint") unless action.hint.nil?
-            },
-            link_errors: true,
-            checked: action.completed? %>
-
-      <% if action.guidance_summary? %>
-        <%= govuk_details(summary_text: action.guidance_summary) do %>
-          <%= sanitize GovukMarkdown.render(action.guidance_text) %>
-        <% end %>
+    <% if @task.guidance_summary? %>
+      <%= govuk_details(summary_text: @task.guidance_summary) do %>
+        <%= sanitize GovukMarkdown.render(@task.guidance_text) %>
       <% end %>
     <% end %>
 
-    <% if @task.optional? %>
-      <%= form.govuk_check_box_divider %>
-      <%= form.govuk_check_box :not_applicable,
-            true,
-            label: {text: t("tasks.not_applicable")},
-            checked: @task.not_applicable? %>
+    <%= form_for :task, url: project_task_path, method: :put do |form| %>
+      <%= form.govuk_check_boxes_fieldset :actions, legend: { text: "Actions", size: "m" } do %>
+        <% @task.actions.each do |action| %>
+          <%= form.govuk_check_box :completed_action_ids,
+                                   action.id,
+                                   label: { text: action.title },
+                                   hint: -> {
+                                     sanitize GovukMarkdown.render(action.hint).gsub!('govuk-body-m', 'govuk-hint') unless action.hint.nil?
+                                   },
+                                   link_errors: true,
+                                   checked: action.completed? %>
+
+          <% if action.guidance_summary? %>
+            <%= govuk_details(summary_text: action.guidance_summary) do %>
+              <%= sanitize GovukMarkdown.render(action.guidance_text) %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% if @task.optional? %>
+          <%= form.govuk_check_box_divider %>
+          <%= form.govuk_check_box :not_applicable,
+                                   true,
+                                   label: { text: t("tasks.not_applicable") },
+                                   checked: @task.not_applicable? %>
+        <% end %>
+      <% end %>
+      <%= form.govuk_submit %>
     <% end %>
-  <% end %>
-  <%= form.govuk_submit %>
-<% end %>
+  </div>
+</div>
