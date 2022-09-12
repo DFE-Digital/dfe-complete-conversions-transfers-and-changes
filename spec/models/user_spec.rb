@@ -11,11 +11,25 @@ RSpec.describe User do
   end
 
   describe "scopes" do
-    describe "caseworkers" do
-      let!(:caseworker) { create(:user, :caseworker) }
-      let!(:team_lead) { create(:user, :team_leader) }
-      let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
+    let!(:caseworker) { create(:user, :caseworker) }
+    let!(:team_leader) { create(:user, :team_leader) }
+    let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
+    describe "team_leaders" do
+      it "only includes users that have the team leader role" do
+        expect(User.team_leaders.count).to be 1
+        expect(User.team_leaders).to include team_leader
+      end
+    end
+
+    describe "regional_delivery_officers" do
+      it "only includes users that have the regional delivery officer role" do
+        expect(User.regional_delivery_officers.count).to be 1
+        expect(User.regional_delivery_officers).to include regional_delivery_officer
+      end
+    end
+
+    describe "caseworkers" do
       it "only includes users that have the caseworker role" do
         expect(User.caseworkers.count).to be 1
         expect(User.caseworkers).to include caseworker
