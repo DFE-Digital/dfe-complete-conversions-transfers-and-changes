@@ -7,4 +7,8 @@
   <h3 class="govuk-heading-m"><%= note.user.full_name || note.user.email %></h3>
 
   <%= render_markdown(note.body) %>
+
+  <% if policy(note).edit? %>
+    <p class="govuk-body govuk-!-font-size-16"><%= govuk_link_to "Edit", edit_project_note_path(@project, note) %></p>
+  <% end %>
 <% end %>

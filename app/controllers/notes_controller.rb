@@ -25,6 +25,25 @@ class NotesController < ApplicationController
     end
   end
 
+  def edit
+    @note = Note.find(params[:id])
+    authorize @note
+  end
+
+  def update
+    @note = Note.find(params[:id])
+    authorize @note
+
+    @note.assign_attributes(note_params)
+
+    if @note.valid?
+      @note.save
+      redirect_to project_notes_path(@project), notice: I18n.t("note.update.success")
+    else
+      render :edit
+    end
+  end
+
   private def find_project
     @project = Project.find(params[:project_id])
   end

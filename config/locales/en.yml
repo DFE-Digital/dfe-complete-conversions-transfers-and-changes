@@ -125,7 +125,11 @@ en:
     create:
       success: Note has been added successfully
     new:
+      save_note_button: Add note
+    edit:
       save_note_button: Save note
+    update:
+      success: Note has been edited successfully
   contact:
     index:
       contacts: Contacts
