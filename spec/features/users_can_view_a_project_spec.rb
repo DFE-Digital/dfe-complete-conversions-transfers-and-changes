@@ -1,0 +1,23 @@
+require "rails_helper"
+
+RSpec.feature "Users can view a project" do
+  let(:user) { create(:user, :caseworker) }
+  let(:project) { create(:project, caseworker: user) }
+
+  before do
+    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    sign_in_with_user(user)
+  end
+
+  scenario "they can view a summary of the project details" do
+    visit project_path(project)
+
+    within("#project-summary") do
+      expect(page).to have_content(project.trust.name)
+      expect(page).to have_content(project.target_completion_date.to_formatted_s(:govuk))
+      expect(page).to have_content(project.establishment.local_authority)
+      expect(page).to have_content(project.trust.name)
+      expect(page).to have_content(project.establishment.region_name)
+    end
+  end
+end

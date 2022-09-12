@@ -81,6 +81,8 @@ en:
         title: Local authority
       target_completion_date:
         title: Target conversion date
+      region:
+        title: Region
   project_information:
     show:
       side_navigation:
@@ -100,6 +102,7 @@ en:
           school_type: School type
           age_range: Age range
           school_phase: School phase
+          region: Region
       trust_details:
         title: Trust details
         rows:
