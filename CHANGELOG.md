@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The date and time that a caseworker is first assigned to a project is
   recorded. Any subsequent assignments will not be recorded.
 - Contacts can be deleted via a button on the edit contact page.
-- Show the region on the project summary.
+- Show the region on the project summary and school details.
 
 ### Changed
 

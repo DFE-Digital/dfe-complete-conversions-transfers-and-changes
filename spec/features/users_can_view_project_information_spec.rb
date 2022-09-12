@@ -28,6 +28,11 @@ RSpec.feature "Users can view project information" do
       page_has_project_information_list_row(section: section, label: "School type", information: "Academy converter")
       page_has_project_information_list_row(section: section, label: "Age range", information: "11 to 18")
       page_has_project_information_list_row(section: section, label: "School phase", information: "Secondary")
+      page_has_project_information_list_row(
+        section: section,
+        label: I18n.t("project_information.show.school_details.rows.region"),
+        information: project.establishment.region_name
+      )
     end
   end
 
