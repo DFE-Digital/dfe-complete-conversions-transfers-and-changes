@@ -28,8 +28,8 @@ else
   done
 
   if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
-    echo "==> Linting ERB in fix mode..."
-    bundle exec erblint --lint-all --fix
+    echo "==> Linting ERB in autocorrect mode..."
+    bundle exec erblint --lint-all --autocorrect
   else
     echo "==> Linting ERB..."
     bundle exec erblint --lint-all
