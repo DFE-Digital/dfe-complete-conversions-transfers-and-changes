@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tasks
-    resources :notes
+    resources :notes do
+      get "/delete", action: :confirm_destroy
+    end
     resources :contacts do
       get "/delete", action: :confirm_destroy
     end

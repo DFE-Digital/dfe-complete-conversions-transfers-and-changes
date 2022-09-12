@@ -58,6 +58,30 @@ RSpec.feature "Users can create and view notes" do
     expect(page).to_not have_content("Just had a very interesting phone call with the headteacher about land law")
   end
 
+  scenario "User deletes a note" do
+    visit project_notes_path(project_id)
+    expect(page).to have_content(I18n.t("note.index.notes"))
+
+    expect_page_to_have_note(
+      user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
+    )
+
+    click_link "Edit"
+
+    expect(page).to have_current_path(edit_project_note_path(project, Note.first))
+
+    click_link("Delete") # Link styled as button
+
+    expect(page).to have_current_path(project_note_delete_path(project, Note.first))
+    expect(page).to have_content(I18n.t("note.confirm_destroy.title"))
+    expect(page).to have_content(I18n.t("note.confirm_destroy.guidance"))
+
+    click_button("Delete")
+
+    expect(page).to have_current_path(project_notes_path(project_id))
+    expect(page).to have_content(I18n.t("note.index.no_notes_yet"))
+  end
+
   private def expect_page_to_have_note(user:, date:, body:)
     expect(page).to have_content(user)
     expect(page).to have_content(date)

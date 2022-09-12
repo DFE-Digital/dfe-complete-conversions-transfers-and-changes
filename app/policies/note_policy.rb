@@ -25,4 +25,12 @@ class NotePolicy
   def update?
     edit?
   end
+
+  def destroy?
+    edit?
+  end
+
+  def confirm_destroy?
+    edit?
+  end
 end

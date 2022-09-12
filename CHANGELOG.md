@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Contacts can be deleted via a button on the edit contact page.
 - Show the region on the project summary and school details.
 - Notes can be edited by the user who created them
+- Notes can be deleted by the user who created them
 
 ### Changed
 

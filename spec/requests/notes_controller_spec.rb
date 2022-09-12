@@ -185,4 +185,63 @@ RSpec.describe NotesController, type: :request do
       end
     end
   end
+
+  describe "#destroy" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:note) { create(:note, user: user) }
+    let(:note_id) { note.id }
+
+    subject(:perform_request) do
+      delete project_note_path(project_id, note_id)
+      response
+    end
+
+    context "when the user did not create the note" do
+      let(:note) { create(:note) }
+
+      it "redirects to the home page with a permissions error message" do
+        perform_request
+        expect(response).not_to render_template(:edit)
+        expect(response).to redirect_to(root_path)
+        follow_redirect!
+        expect(flash.alert).to eq I18n.t("unauthorised_action.message")
+      end
+    end
+
+    it "deletes the note and redirects to the index view with a success message" do
+      expect(perform_request).to redirect_to(project_notes_path(project.id))
+      expect(request.flash[:notice]).to eq(I18n.t("note.destroy.success"))
+
+      expect(Note.where(id: note_id)).to_not exist
+    end
+  end
+
+  describe "#confirm_destroy" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+    let(:note) { create(:note, user: user) }
+    let(:note_id) { note.id }
+
+    subject(:perform_request) do
+      get project_note_delete_path(project_id, note_id)
+      response
+    end
+
+    context "when the user did not create the note" do
+      let(:note) { create(:note) }
+
+      it "redirects to the home page with a permissions error message" do
+        perform_request
+        expect(response).not_to render_template(:edit)
+        expect(response).to redirect_to(root_path)
+        follow_redirect!
+        expect(flash.alert).to eq I18n.t("unauthorised_action.message")
+      end
+    end
+
+    it "returns a successful response" do
+      expect(subject).to have_http_status :success
+    end
+  end
 end

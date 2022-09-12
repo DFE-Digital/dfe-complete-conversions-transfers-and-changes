@@ -44,6 +44,20 @@ class NotesController < ApplicationController
     end
   end
 
+  def destroy
+    @note = Note.find(params[:id])
+    authorize @note
+
+    @note.destroy
+
+    redirect_to project_notes_path(@project), notice: I18n.t("note.destroy.success")
+  end
+
+  def confirm_destroy
+    @note = Note.find(params[:note_id])
+    authorize @note
+  end
+
   private def find_project
     @project = Project.find(params[:project_id])
   end

@@ -130,6 +130,11 @@ en:
       save_note_button: Save note
     update:
       success: Note has been edited successfully
+    destroy:
+      success: Note has been deleted successfully
+    confirm_destroy:
+      title: Are you sure you want to delete this note?
+      guidance: This will remove the note from the project. If this note contains outdated information, it may be better to leave a new note with an update instead.
   contact:
     index:
       contacts: Contacts
