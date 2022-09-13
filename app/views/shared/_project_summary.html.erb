@@ -4,7 +4,7 @@
     <span class="govuk-caption-l">URN <%= @project.urn %></span>
     <h1 class="govuk-heading-l"><%= @project.establishment.name %></h1>
 
-    <%= govuk_summary_list(actions: false) do |summary_list|
+    <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary"}) do |summary_list|
           summary_list.row do |row|
             row.key { t("project.summary.incoming_trust.title") }
             row.value { @project.trust.name }
@@ -16,6 +16,10 @@
           summary_list.row do |row|
             row.key { t("project.summary.local_authority.title") }
             row.value { @project.establishment.local_authority }
+          end
+          summary_list.row do |row|
+            row.key { t("project.summary.region.title") }
+            row.value { @project.establishment.region_name }
           end
         end %>
 
