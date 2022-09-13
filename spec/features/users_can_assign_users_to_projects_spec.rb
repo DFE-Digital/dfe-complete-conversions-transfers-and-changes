@@ -19,6 +19,8 @@ RSpec.feature "Users can assign users to projects" do
       click_on "Project information"
 
       expect(page).to have_content caseworker_user.email
+      expect(page).to have_content caseworker_user.first_name
+      expect(page).to have_content caseworker_user.last_name
     end
   end
 end
