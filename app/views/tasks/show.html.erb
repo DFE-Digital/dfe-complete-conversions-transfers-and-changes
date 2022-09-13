@@ -9,18 +9,18 @@
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= @task.title %></h1>
 
       <% if @task.hint? %>
-        <p class="govuk-body"><%= sanitize GovukMarkdown.render(@task.hint) %></p>
+        <p class="govuk-body"><%= render_markdown(@task.hint) %></p>
       <% end %>
 
       <% if @task.guidance_summary? %>
         <%= govuk_details(summary_text: @task.guidance_summary) do %>
-          <%= sanitize GovukMarkdown.render(@task.guidance_text) %>
+          <%= render_markdown(@task.guidance_text) %>
         <% end %>
       <% end %>
     </div>
 
     <%= form_for :task, url: project_task_path, method: :put do |form| %>
-      <%= form.govuk_check_boxes_fieldset :actions, legend: { hidden: true }, classes: "task-checkboxes" do %>
+      <%= form.govuk_check_boxes_fieldset :actions, legend: {hidden: true}, classes: "task-checkboxes" do %>
         <% @task.actions.each do |action| %>
           <%= form.govuk_check_box :completed_action_ids,
                                    action.id,
@@ -29,11 +29,11 @@
                                    checked: action.completed?,
                                    hint: -> do %>
 
-            <%= sanitize GovukMarkdown.render(action.hint).gsub!('govuk-body-m', 'govuk-hint') unless action.hint.nil? %>
+            <%= render_markdown(action.hint, hint: true) unless action.hint.nil? %>
 
             <% if action.guidance_summary? %>
               <%= govuk_details(summary_text: action.guidance_summary) do %>
-                <%= sanitize GovukMarkdown.render(action.guidance_text) %>
+                <%= render_markdown(action.guidance_text) %>
               <% end %>
             <% end %>
 
@@ -43,9 +43,9 @@
         <% if @task.optional? %>
           <%= form.govuk_check_box_divider %>
           <%= form.govuk_check_box :not_applicable,
-                                   true,
-                                   label: { text: t("tasks.not_applicable") },
-                                   checked: @task.not_applicable? %>
+                true,
+                label: {text: t("tasks.not_applicable")},
+                checked: @task.not_applicable? %>
         <% end %>
       <% end %>
       <%= form.govuk_submit %>

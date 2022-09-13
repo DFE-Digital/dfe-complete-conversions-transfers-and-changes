@@ -35,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - Tasks that have actions without hint text can now be rendered.
+- Links on the task list now open in a new tab.
 
 ## [Release 2][release-2]
 
