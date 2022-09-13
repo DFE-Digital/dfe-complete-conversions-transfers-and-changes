@@ -12,3 +12,16 @@ $govuk-global-styles: true;
 .list-style-none {
   list-style: none;
 }
+
+.task-checkboxes {
+  .govuk-checkboxes__item,
+  .govuk-checkboxes__divider {
+    margin-bottom: govuk-spacing(9);
+  }
+
+  .govuk-checkboxes__item {
+    label {
+      @extend .govuk-\!-font-weight-bold;
+    }
+  }
+}

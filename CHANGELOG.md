@@ -29,10 +29,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The caseworker role is no longer implied from the lack of any other roles.
   Instead, users must be explicitly given the caseworker role.
 - Improved the layout of the new project page.
+- Improve the layout of the task page.
+- Update the content for the "Project kick-off" section of the task list.
 
 ### Fixed
 
 - Tasks that have actions without hint text can now be rendered.
+- Links on the task list now open in a new tab.
 
 ## [Release 2][release-2]
 
