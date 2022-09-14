@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Users can view project information" do
-  let(:user) { create(:user, email: "user@education.gov.uk") }
+  let(:user) { create(:user, :caseworker) }
   let(:project) { create(:project, caseworker: user) }
   let(:project_id) { project.id }
 
@@ -11,63 +11,46 @@ RSpec.feature "Users can view project information" do
     visit project_information_path(project_id)
   end
 
-  describe "the project details" do
-    scenario "have the appropriate values" do
-      section = find("#projectDetails")
-      page_has_project_information_list_row(section: section, label: "Caseworker", information: "user@education.gov.uk")
-      page_has_project_information_list_row(section: section, label: "Team lead", information: project.team_leader.email)
-      page_has_project_information_list_row(section: section, label: "Regional delivery officer", information: project.regional_delivery_officer.email)
+  scenario "they can view the users names and email addresses assigned to the project" do
+    within("#projectDetails") do
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_link(user.email)
+
+      expect(page).to have_content(project.team_leader.full_name)
+      expect(page).to have_link(project.team_leader.email)
+
+      expect(page).to have_content(project.regional_delivery_officer.full_name)
+      expect(page).to have_link(project.regional_delivery_officer.email)
     end
   end
 
-  describe "the school details" do
-    scenario "have the appropriate values" do
-      section = find("#schoolDetails")
-      page_has_project_information_list_row(section: section, label: "Original school name", information: "Caludon Castle School")
-      page_has_project_information_list_row(section: section, label: "Old Unique Reference Number", information: "123456")
-      page_has_project_information_list_row(section: section, label: "School type", information: "Academy converter")
-      page_has_project_information_list_row(section: section, label: "Age range", information: "11 to 18")
-      page_has_project_information_list_row(section: section, label: "School phase", information: "Secondary")
-      page_has_project_information_list_row(
-        section: section,
-        label: I18n.t("project_information.show.school_details.rows.region"),
-        information: project.establishment.region_name
-      )
+  scenario "they can view the school details" do
+    within("#schoolDetails") do
+      expect(page).to have_content(project.establishment.name)
+      expect(page).to have_content(project.urn)
+      expect(page).to have_content(project.establishment.type)
+      expect(page).to have_content(project.establishment.phase)
+      expect(page).to have_content(project.establishment.region_name)
     end
   end
 
-  describe "the trust details" do
-    scenario "have the appropriate values" do
-      section = find("#trustDetails")
-      page_has_project_information_list_row(section: section, label: "Incoming trust name", information: "THE ROMERO CATHOLIC ACADEMY")
-      page_has_project_information_list_row(section: section, label: "UK Provider Reference Number", information: "10061021")
-      page_has_project_information_list_row(section: section, label: "Companies House number", information: "09702162")
+  scenario "they can view the trust details" do
+    within("#trustDetails") do
+      expect(page).to have_content(project.trust.name)
+      expect(page).to have_content(project.trust_ukprn)
+      expect(page).to have_content(project.trust.companies_house_number)
     end
   end
 
-  describe "the local authority details" do
-    scenario "have the appropriate values" do
-      section = find("#localAuthorityDetails")
-      page_has_project_information_list_row(section: section, label: "Local authority", information: "West Placefield Council")
+  scenario "the local authority details" do
+    within("#localAuthorityDetails") do
+      expect(page).to have_content(project.establishment.local_authority)
     end
   end
 
-  describe "the diocese details" do
-    scenario "have the appropriate values" do
-      section = find("#dioceseDetails")
-      page_has_project_information_list_row(
-        section: section,
-        label: I18n.t("project_information.show.diocese_details.rows.diocese"),
-        information: project.establishment.diocese_name
-      )
+  scenario "the diocese details" do
+    within("#dioceseDetails") do
+      expect(page).to have_content(project.establishment.diocese_name)
     end
-  end
-
-  private def page_has_project_information_list_row(section:, label:, information:)
-    label = section.find("dt", text: label)
-    information = section.find("dd", text: information)
-
-    assert label
-    assert information
   end
 end
