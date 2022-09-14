@@ -40,6 +40,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Tasks that have actions without hint text can now be rendered.
 - Links on the task list now open in a new tab.
+- The name and email address of assigned users is shown on the project
+  information tab.
 
 ## [Release 2][release-2]
 
