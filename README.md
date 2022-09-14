@@ -26,25 +26,6 @@ Use the [release process template in Trello](https://trello.com/c/8enGdMyy) to
 start a new release.
 
 
-## Importing users in bulk
-
-We can import users in bulk from a CSV file.
-
-To use the `users:import` task, run:
-
-```bash
-bin/rails users:import CSV_PATH="<path relative to the project root>"
-```
-
-The headers of the CSV must be consistent with the attributes on the `user`
-model. Boolean values can be indicated by `0` and `1`, all values should be
-provided to avoid not-null constraint errors. For example:
-
-| email                       | first_name | last_name | team_leader | regional_delivery_officer | caseworker |
-| --------------------------- | ---------- | --------- | ----------- | ------------------------- | ---------- |
-| john.doe@education.gov.uk   | John       | Doe       | 1           | 0                         | 0          |
-| jane.doe@education.gov.uk   | Jane       | Doe       | 0           | 1                         | 0          |
-| joseph.doe@education.gov.uk | Joseph     | Doe       | 0           | 0                         | 1          |
 
 ## ADRs
 
@@ -68,3 +49,4 @@ Documentation: [terraform/README.md](/terraform/README.md)
 ## Documentation
 
 - [The workflow files](doc/workflow.md)
+- [User accounts](doc/user-accounts.md)
