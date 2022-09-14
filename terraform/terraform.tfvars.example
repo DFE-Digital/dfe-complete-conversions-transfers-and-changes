@@ -1,3 +1,12 @@
-environment    = "test"
-project_name   = "my-project"
-resource_group = "resource-group-name"
+environment                 = "development"
+project_name                = "myproject"
+azure_location              = "uksouth"
+enable_container_registry   = true
+image_name                  = "myimage"
+enable_mssql_database       = true
+mssql_server_admin_password = "S3crEt"
+mssql_database_name         = "mydatabase"
+container_command           = ["/bin/bash", "-c", "echo hello && sleep 86400"]
+container_environment_variables = {
+  "RAILS_ENV"                       = "production"
+}

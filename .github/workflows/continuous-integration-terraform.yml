@@ -16,10 +16,10 @@ jobs:
       - name: Check for terraform version mismatch
         run: |
           DOTFILE_VERSION=$(cat terraform/.terraform-version)
-          TERRAFORM_IMAGE_REFERENCES=$(grep "uses: docker://hashicorp/terraform" .github/workflows/terraform-ci.yml | grep -v TERRAFORM_IMAGE_REFERENCES | wc -l | tr -d ' ')
-          if [ "$(grep "docker://hashicorp/terraform:${DOTFILE_VERSION}" .github/workflows/terraform-ci.yml | wc -l | tr -d ' ')" != "$TERRAFORM_IMAGE_REFERENCES" ]
+          TERRAFORM_IMAGE_REFERENCES=$(grep "uses: docker://hashicorp/terraform" .github/workflows/continuous-integration-terraform.yml | grep -v TERRAFORM_IMAGE_REFERENCES | wc -l | tr -d ' ')
+          if [ "$(grep "docker://hashicorp/terraform:${DOTFILE_VERSION}" .github/workflows/continuous-integration-terraform.yml | wc -l | tr -d ' ')" != "$TERRAFORM_IMAGE_REFERENCES" ]
           then
-            echo -e "\033[1;31mError: terraform version in .terraform-version file does not match docker://hashicorp/terraform versions in .github/workflows/main.yml"
+            echo -e "\033[1;31mError: terraform version in .terraform-version file does not match docker://hashicorp/terraform versions in .github/workflows/continuous-integration-terraform.yml"
             exit 1
           fi
 
@@ -27,19 +27,19 @@ jobs:
         run: rm ./terraform/backend.tf
 
       - name: Run a Terraform init
-        uses: docker://hashicorp/terraform:1.2.8
+        uses: docker://hashicorp/terraform:1.2.9
         with:
           entrypoint: terraform
           args: -chdir=terraform init
 
       - name: Run a Terraform validate
-        uses: docker://hashicorp/terraform:1.2.8
+        uses: docker://hashicorp/terraform:1.2.9
         with:
           entrypoint: terraform
           args: -chdir=terraform validate
 
       - name: Run a Terraform format check
-        uses: docker://hashicorp/terraform:1.2.8
+        uses: docker://hashicorp/terraform:1.2.9
         with:
           entrypoint: terraform
           args: -chdir=terraform fmt -check=true -diff=true
