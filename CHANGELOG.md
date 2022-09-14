@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   recorded. Any subsequent assignments will not be recorded.
 - Contacts can be deleted via a button on the edit contact page.
 - Show the region on the project summary and school details.
+- Notes can be edited by the user who created them
+- Notes can be deleted by the user who created them
 
 ### Changed
 
@@ -32,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Improved the layout of the new project page.
 - Improve the layout of the task page.
 - Update the content for the "Project kick-off" section of the task list.
+- Note bodies are parsed via Markdown to allow rich formatting.
 
 ### Fixed
 

@@ -1,0 +1,12 @@
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for [@project, @note], path: project_note_path(@project, @note), method: :delete do |form| %>
+      <h1 class="govuk-heading-l"><%= t("note.confirm_destroy.title") %></h1>
+      <p><%= t("note.confirm_destroy.guidance") %></p>
+
+      <%= form.govuk_submit "Delete", warning: true do %>
+        <%= govuk_link_to "Cancel", edit_project_note_path(@project, @note) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -6,5 +6,9 @@
   <span class="govuk-caption-m"><%= note.created_at.to_date.to_formatted_s(:govuk) %></span>
   <h3 class="govuk-heading-m"><%= note.user.full_name || note.user.email %></h3>
 
-  <p class="govuk-body"><%= note.body %></p>
+  <%= render_markdown(note.body) %>
+
+  <% if policy(note).edit? %>
+    <p class="govuk-body govuk-!-font-size-16"><%= govuk_link_to "Edit", edit_project_note_path(@project, note) %></p>
+  <% end %>
 <% end %>
