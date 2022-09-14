@@ -25,24 +25,6 @@ See .env.example
 Use the [release process template in Trello](https://trello.com/c/8enGdMyy) to
 start a new release.
 
-## Including Markdown in the workflow
-
-We define task list workflows in YAML. To include Markdown while preserving
-newlines and whitespace we can use the _literal style_. This is indicated by a
-pipe (`|`) character followed by indented content. For example:
-
-```yaml
-guidance_text: |
-  # A h1 title header
-
-  ## Lists
-
-  This is a list:
-
-  * of multiple
-  * things
-  * and such
-```
 
 ## Importing users in bulk
 
@@ -82,3 +64,7 @@ and manage resources hosting the app. This is stored in the `terraform`
 directory.
 
 Documentation: [terraform/README.md](/terraform/README.md)
+
+## Documentation
+
+- [The workflow files](doc/workflow.md)
