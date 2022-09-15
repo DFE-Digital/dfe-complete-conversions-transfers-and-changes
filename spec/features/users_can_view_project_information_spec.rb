@@ -1,8 +1,10 @@
 require "rails_helper"
 
 RSpec.feature "Users can view project information" do
+  include ActionView::Helpers::TextHelper
+
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:project, caseworker: user) }
+  let(:project) { create(:project, :with_conditions, caseworker: user) }
   let(:project_id) { project.id }
 
   before do
@@ -21,6 +23,13 @@ RSpec.feature "Users can view project information" do
 
       expect(page).to have_content(project.regional_delivery_officer.full_name)
       expect(page).to have_link(project.regional_delivery_officer.email)
+    end
+  end
+
+  scenario "they can view the advisory board details" do
+    within("#projectDetails") do
+      expect(page).to have_content(project.advisory_board_date.to_formatted_s(:govuk))
+      expect(page.html).to include(simple_format(project.advisory_board_conditions, class: "govuk-body"))
     end
   end
 

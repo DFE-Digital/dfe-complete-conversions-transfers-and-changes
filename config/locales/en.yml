@@ -94,6 +94,8 @@ en:
           team_lead: Team lead
           regional_delivery_officer: Regional delivery officer
           unassigned: Not yet assigned
+          advisory_board_date: Date of advisory board
+          advisory_board_conditions: Conditions from advisory board
       school_details:
         title: School details
         rows:
