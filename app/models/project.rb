@@ -8,8 +8,9 @@ class Project < ApplicationRecord
   validates :urn, presence: true, numericality: {only_integer: true}, length: {is: 6}
   validates :incoming_trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
+  validates :incoming_trust_ukprn, ukprn: true
 
-  validate :first_day_of_month, :trust_ukprn_is_correct_format
+  validate :first_day_of_month
   validate :target_completion_date_is_in_the_future, on: :create
   validate :establishment_exists, :trust_exists, on: :create
 
@@ -57,17 +58,6 @@ class Project < ApplicationRecord
     # Target completion date is always the 1st of the month.
     if target_completion_date.day != 1
       errors.add(:target_completion_date, :must_be_first_of_the_month)
-    end
-  end
-
-  private def trust_ukprn_is_correct_format
-    return if incoming_trust_ukprn.nil?
-
-    number_of_digits = incoming_trust_ukprn.digits.count
-    first_digit = incoming_trust_ukprn.to_s.first.to_i
-
-    if number_of_digits != 8 || first_digit != 1
-      errors.add(:incoming_trust_ukprn, :must_be_correct_format)
     end
   end
 

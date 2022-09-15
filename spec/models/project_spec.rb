@@ -95,11 +95,6 @@ RSpec.describe Project, type: :model do
     end
 
     describe "#incoming_trust_ukprn" do
-      it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }
-      it { is_expected.to validate_numericality_of(:incoming_trust_ukprn).only_integer }
-      it { is_expected.to allow_value(12345678).for(:incoming_trust_ukprn) }
-      it { is_expected.not_to allow_values(1234567, 123456789, 23456789).for(:incoming_trust_ukprn) }
-
       context "when no trust with that UKPRN exists in the API" do
         let(:no_trust_found_result) do
           AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
