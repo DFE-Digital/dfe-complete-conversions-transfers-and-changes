@@ -51,7 +51,7 @@
   <%= govuk_summary_list(actions: false) do |summary_list|
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.incoming_trust_name') }
-      row.value { @project.trust.name }
+      row.value { @project.incoming_trust.name }
     end
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.ukprn') }
@@ -59,8 +59,7 @@
     end
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.companies_house_number') }
-      row.value { @project.trust.companies_house_number }
-    end
+      row.value { @project.incoming_trust.companies_house_number } end
   end %>
 </div>
 

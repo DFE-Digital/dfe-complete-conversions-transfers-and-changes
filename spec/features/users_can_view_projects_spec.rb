@@ -63,7 +63,7 @@ RSpec.feature "Users can view a list of projects" do
     within urn.ancestor("li") do
       expect(page).to have_content("School type: #{project.establishment.type}")
       expect(page).to have_content("Target conversion date: #{project.target_completion_date.to_formatted_s(:govuk)}")
-      expect(page).to have_content("Incoming trust: #{project.trust.name}")
+      expect(page).to have_content("Incoming trust: #{project.incoming_trust.name}")
       expect(page).to have_content("Local authority: #{project.establishment.local_authority}")
     end
   end

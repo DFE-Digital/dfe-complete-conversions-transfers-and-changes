@@ -7,7 +7,7 @@
     <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary"}) do |summary_list|
           summary_list.row do |row|
             row.key { t("project.summary.incoming_trust.title") }
-            row.value { @project.trust.name }
+            row.value { @project.incoming_trust.name }
           end
           summary_list.row do |row|
             row.key { t("project.summary.target_completion_date.title") }

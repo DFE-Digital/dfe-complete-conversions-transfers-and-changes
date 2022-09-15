@@ -21,8 +21,19 @@ class Project < ApplicationRecord
     @establishment || retrieve_establishment
   end
 
-  def trust
-    @trust || retrieve_trust
+  def incoming_trust
+    @incoming_rust ||= fetch_trust(incoming_trust_ukprn)
+  end
+
+      result.object
+    end
+  end
+
+  private def fetch_trust(ukprn)
+    result = AcademiesApi::Client.new.get_trust(ukprn)
+    raise result.error if result.error.present?
+
+    result.object
   end
 
   private def establishment_exists
@@ -32,7 +43,7 @@ class Project < ApplicationRecord
   end
 
   private def trust_exists
-    retrieve_trust
+    incoming_trust
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:incoming_trust_ukprn, :no_trust_found)
   end
@@ -42,13 +53,6 @@ class Project < ApplicationRecord
     raise result.error if result.error.present?
 
     @establishment = result.object
-  end
-
-  private def retrieve_trust
-    result = AcademiesApi::Client.new.get_trust(incoming_trust_ukprn)
-    raise result.error if result.error.present?
-
-    @trust = result.object
   end
 
   private def first_day_of_month

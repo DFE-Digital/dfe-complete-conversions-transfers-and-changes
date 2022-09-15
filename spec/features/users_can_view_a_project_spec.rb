@@ -13,10 +13,10 @@ RSpec.feature "Users can view a project" do
     visit project_path(project)
 
     within("#project-summary") do
-      expect(page).to have_content(project.trust.name)
+      expect(page).to have_content(project.incoming_trust.name)
       expect(page).to have_content(project.target_completion_date.to_formatted_s(:govuk))
       expect(page).to have_content(project.establishment.local_authority)
-      expect(page).to have_content(project.trust.name)
+      expect(page).to have_content(project.incoming_trust.name)
       expect(page).to have_content(project.establishment.region_name)
     end
   end

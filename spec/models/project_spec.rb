@@ -195,7 +195,8 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#trust" do
+  describe "#incoming_trust" do
+    let(:urn) { 1234567 }
     let(:ukprn) { 10061021 }
     let(:trust) { build(:academies_api_trust) }
 
@@ -205,7 +206,18 @@ RSpec.describe Project, type: :model do
       before { mock_successful_api_trust_response(ukprn: ukprn, trust: trust) }
 
       it "retreives conversion_project data from the Academies API" do
-        expect(subject.trust).to eq trust
+        expect(subject.incoming_trust).to eq trust
+      end
+
+      it "caches the response" do
+        academies_api_client = double(AcademiesApi::Client, get_trust: AcademiesApi::Client::Result.new(double, nil))
+        allow(AcademiesApi::Client).to receive(:new).and_return(academies_api_client)
+        project = described_class.new(urn: urn, incoming_trust_ukprn: ukprn)
+
+        project.incoming_trust
+        project.incoming_trust
+
+        expect(academies_api_client).to have_received(:get_trust).with(ukprn).once
       end
     end
 
@@ -219,7 +231,7 @@ RSpec.describe Project, type: :model do
       end
 
       it "raises the error" do
-        expect { subject.trust }.to raise_error(AcademiesApi::Client::NotFoundError, error_message)
+        expect { subject.incoming_trust }.to raise_error(AcademiesApi::Client::NotFoundError, error_message)
       end
     end
 
@@ -233,7 +245,7 @@ RSpec.describe Project, type: :model do
       end
 
       it "raises the error" do
-        expect { subject.trust }.to raise_error(AcademiesApi::Client::Error, error_message)
+        expect { subject.incoming_trust }.to raise_error(AcademiesApi::Client::Error, error_message)
       end
     end
   end

@@ -36,9 +36,9 @@ RSpec.feature "Users can view project information" do
 
   scenario "they can view the trust details" do
     within("#trustDetails") do
-      expect(page).to have_content(project.trust.name)
+      expect(page).to have_content(project.incoming_trust.name)
       expect(page).to have_content(project.incoming_trust_ukprn)
-      expect(page).to have_content(project.trust.companies_house_number)
+      expect(page).to have_content(project.incoming_trust.companies_house_number)
     end
   end
 
