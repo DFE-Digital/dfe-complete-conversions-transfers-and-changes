@@ -1,11 +1,28 @@
+[![Continuous integration](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration-rails.yml/badge.svg)](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration-rails.yml)
+
 # DfE: Complete conversions, transfers and changes
 
-[![Continuous integration](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration-rails.yml/badge.svg)](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration-rails.yml)
+As a digital service being developed in DfE we aim to follow the
+[DfE Technical Guidance](https://technical-guidance.education.gov.uk/).
+
+## Shared components and patterns
+
+- [DfE GOV.UK Components](https://govuk-components.netlify.app/)
+- [DfE GOV.UK Form Builder](https://govuk-form-builder.netlify.app/)
+- [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend)
+- [GOV.UK Accessible autocomplete](https://github.com/alphagov/accessible-autocomplete)
+- [MOJ Frontend](https://github.com/ministryofjustice/moj-frontend)
 
 ## Getting started
 
 If this is your first time running the application, see the
 [`getting started documentation`](/doc/getting-started.md) for instructions.
+
+## Additional documentation
+
+- [The workflow files](doc/workflow.md)
+- [User accounts](doc/user-accounts.md)
+- [Microsoft SQL Server](microsoft-sql-server.md)
 
 ## Running a server
 
@@ -18,51 +35,15 @@ To run the test suite, run `script/test`.
 
 ## Environment variables
 
-See .env.example
+See [.env.example](./.env.example)
+
+For production environments,
+[additional variables are required](./doc/environment-variables.md)
 
 ## Release process
 
 Use the [release process template in Trello](https://trello.com/c/8enGdMyy) to
 start a new release.
-
-## Including Markdown in the workflow
-
-We define task list workflows in YAML. To include Markdown while preserving
-newlines and whitespace we can use the _literal style_. This is indicated by a
-pipe (`|`) character followed by indented content. For example:
-
-```yaml
-guidance_text: |
-  # A h1 title header
-
-  ## Lists
-
-  This is a list:
-
-  * of multiple
-  * things
-  * and such
-```
-
-## Importing users in bulk
-
-We can import users in bulk from a CSV file.
-
-To use the `users:import` task, run:
-
-```bash
-bin/rails users:import CSV_PATH="<path relative to the project root>"
-```
-
-The headers of the CSV must be consistent with the attributes on the `user`
-model. Boolean values can be indicated by `0` and `1`, all values should be
-provided to avoid not-null constraint errors. For example:
-
-| email                       | first_name | last_name | team_leader | regional_delivery_officer | caseworker |
-| --------------------------- | ---------- | --------- | ----------- | ------------------------- | ---------- |
-| john.doe@education.gov.uk   | John       | Doe       | 1           | 0                         | 0          |
-| jane.doe@education.gov.uk   | Jane       | Doe       | 0           | 1                         | 0          |
-| joseph.doe@education.gov.uk | Joseph     | Doe       | 0           | 0                         | 1          |
 
 ## ADRs
 
