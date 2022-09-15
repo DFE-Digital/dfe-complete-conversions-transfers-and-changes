@@ -6,7 +6,7 @@ RSpec.describe "Project assignment" do
 
     before do
       mock_successful_authentication(user.email)
-      mock_successful_api_responses(urn: project.urn, ukprn: project.trust_ukprn)
+      mock_successful_api_responses(urn: project.urn, ukprn: project.incoming_trust_ukprn)
       allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(user.id)
     end
 

@@ -6,7 +6,7 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :notes, reject_if: proc { |attributes| attributes[:body].blank? }
 
   validates :urn, presence: true, numericality: {only_integer: true}, length: {is: 6}
-  validates :trust_ukprn, presence: true, numericality: {only_integer: true}
+  validates :incoming_trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
 
   validate :first_day_of_month, :trust_ukprn_is_correct_format
@@ -34,7 +34,7 @@ class Project < ApplicationRecord
   private def trust_exists
     retrieve_trust
   rescue AcademiesApi::Client::NotFoundError
-    errors.add(:trust_ukprn, :no_trust_found)
+    errors.add(:incoming_trust_ukprn, :no_trust_found)
   end
 
   private def retrieve_establishment
@@ -45,7 +45,7 @@ class Project < ApplicationRecord
   end
 
   private def retrieve_trust
-    result = AcademiesApi::Client.new.get_trust(trust_ukprn)
+    result = AcademiesApi::Client.new.get_trust(incoming_trust_ukprn)
     raise result.error if result.error.present?
 
     @trust = result.object
@@ -61,13 +61,13 @@ class Project < ApplicationRecord
   end
 
   private def trust_ukprn_is_correct_format
-    return if trust_ukprn.nil?
+    return if incoming_trust_ukprn.nil?
 
-    number_of_digits = trust_ukprn.digits.count
-    first_digit = trust_ukprn.to_s.first.to_i
+    number_of_digits = incoming_trust_ukprn.digits.count
+    first_digit = incoming_trust_ukprn.to_s.first.to_i
 
     if number_of_digits != 8 || first_digit != 1
-      errors.add(:trust_ukprn, :must_be_correct_format)
+      errors.add(:incoming_trust_ukprn, :must_be_correct_format)
     end
   end
 

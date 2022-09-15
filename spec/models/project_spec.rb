@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Project, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:urn).of_type :integer }
-    it { is_expected.to have_db_column(:trust_ukprn).of_type :integer }
+    it { is_expected.to have_db_column(:incoming_trust_ukprn).of_type :integer }
     it { is_expected.to have_db_column(:target_completion_date).of_type :date }
     it { is_expected.to have_db_column(:caseworker_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
@@ -94,11 +94,11 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "#trust_ukprn" do
-      it { is_expected.to validate_presence_of(:trust_ukprn) }
-      it { is_expected.to validate_numericality_of(:trust_ukprn).only_integer }
-      it { is_expected.to allow_value(12345678).for(:trust_ukprn) }
-      it { is_expected.not_to allow_values(1234567, 123456789, 23456789).for(:trust_ukprn) }
+    describe "#incoming_trust_ukprn" do
+      it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }
+      it { is_expected.to validate_numericality_of(:incoming_trust_ukprn).only_integer }
+      it { is_expected.to allow_value(12345678).for(:incoming_trust_ukprn) }
+      it { is_expected.not_to allow_values(1234567, 123456789, 23456789).for(:incoming_trust_ukprn) }
 
       context "when no trust with that UKPRN exists in the API" do
         let(:no_trust_found_result) do
@@ -112,7 +112,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:trust_ukprn]).to include(I18n.t("activerecord.errors.models.project.attributes.trust_ukprn.no_trust_found"))
+          expect(subject.errors[:incoming_trust_ukprn]).to include(I18n.t("activerecord.errors.models.project.attributes.incoming_trust_ukprn.no_trust_found"))
         end
       end
     end
@@ -199,7 +199,7 @@ RSpec.describe Project, type: :model do
     let(:ukprn) { 10061021 }
     let(:trust) { build(:academies_api_trust) }
 
-    subject { described_class.new(trust_ukprn: ukprn) }
+    subject { described_class.new(incoming_trust_ukprn: ukprn) }
 
     context "when the API returns a successful response" do
       before { mock_successful_api_trust_response(ukprn: ukprn, trust: trust) }

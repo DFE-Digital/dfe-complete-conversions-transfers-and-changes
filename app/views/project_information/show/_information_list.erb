@@ -55,7 +55,7 @@
     end
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.ukprn') }
-      row.value { @project.trust_ukprn.to_s }
+      row.value { @project.incoming_trust_ukprn.to_s }
     end
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.companies_house_number') }

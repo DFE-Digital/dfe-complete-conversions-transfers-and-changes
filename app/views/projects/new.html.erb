@@ -10,7 +10,7 @@
       <h1 class="govuk-heading-l"><%= t("project.new.title") %></h1>
 
       <%= form.govuk_text_field :urn, label: {size: "m"}, width: 10 %>
-      <%= form.govuk_text_field :trust_ukprn, label: {size: "m"}, width: 10 %>
+      <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m"}, width: 10 %>
       <%= form.govuk_date_field :target_completion_date, omit_day: true %>
 
       <%= form.fields_for :note, @note do |note_form| %>
