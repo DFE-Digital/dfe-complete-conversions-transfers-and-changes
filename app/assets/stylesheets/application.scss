@@ -9,6 +9,12 @@ $govuk-global-styles: true;
 
 @import "components/task-list";
 
+// The accessible autocomplete component does not use
+// GOV.UK fonts by default for suggestions.
+.autocomplete__wrapper * {
+  @include govuk-typography-common();
+}
+
 .list-style-none {
   list-style: none;
 }
