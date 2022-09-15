@@ -164,6 +164,17 @@ RSpec.describe Project, type: :model do
       it "retreives establishment data from the Academies API" do
         expect(subject.establishment).to eq establishment
       end
+
+      it "caches the response" do
+        academies_api_client = double(AcademiesApi::Client, get_establishment: AcademiesApi::Client::Result.new(double, nil))
+        allow(AcademiesApi::Client).to receive(:new).and_return(academies_api_client)
+        project = described_class.new(urn: urn)
+
+        project.establishment
+        project.establishment
+
+        expect(academies_api_client).to have_received(:get_establishment).with(urn).once
+      end
     end
 
     context "when the Academies API client returns a #{AcademiesApi::Client::NotFoundError}" do

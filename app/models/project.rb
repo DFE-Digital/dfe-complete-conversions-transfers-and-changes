@@ -18,15 +18,18 @@ class Project < ApplicationRecord
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
   def establishment
-    @establishment || retrieve_establishment
+    @establishment ||= fetch_establishment(urn)
   end
 
   def incoming_trust
     @incoming_rust ||= fetch_trust(incoming_trust_ukprn)
   end
 
-      result.object
-    end
+  private def fetch_establishment(urn)
+    result = AcademiesApi::Client.new.get_establishment(urn)
+    raise result.error if result.error.present?
+
+    result.object
   end
 
   private def fetch_trust(ukprn)
@@ -37,7 +40,7 @@ class Project < ApplicationRecord
   end
 
   private def establishment_exists
-    retrieve_establishment
+    establishment
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:urn, :no_establishment_found)
   end
@@ -46,13 +49,6 @@ class Project < ApplicationRecord
     incoming_trust
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:incoming_trust_ukprn, :no_trust_found)
-  end
-
-  private def retrieve_establishment
-    result = AcademiesApi::Client.new.get_establishment(urn)
-    raise result.error if result.error.present?
-
-    @establishment = result.object
   end
 
   private def first_day_of_month
