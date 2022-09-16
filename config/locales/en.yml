@@ -221,6 +221,9 @@ en:
               must_be_in_the_future: Target conversion date must be in the future.
             regional_delivery_officer_id:
               blank: Choose a regional delivery officer
+            advisory_board_date:
+              blank: Enter the advisory board date
+              must_be_in_the_past: The advisory board date must be in the past
         note:
           attributes:
             body:
