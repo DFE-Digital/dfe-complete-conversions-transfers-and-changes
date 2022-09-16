@@ -20,9 +20,9 @@ If this is your first time running the application, see the
 
 ## Additional documentation
 
-- [The workflow files](doc/workflow.md)
-- [User accounts](doc/user-accounts.md)
-- [Microsoft SQL Server](microsoft-sql-server.md)
+- [The workflow files](/doc/workflow.md)
+- [User accounts](/doc/user-accounts.md)
+- [Microsoft SQL Server](/doc/microsoft-sql-server.md)
 
 ## Running a server
 
