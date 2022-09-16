@@ -10,6 +10,7 @@ class Project < ApplicationRecord
   validates :target_completion_date, presence: true
   validates :incoming_trust_ukprn, ukprn: true
   validates :advisory_board_date, presence: true, on: :create
+  validates :advisory_board_date, past_date: true
 
   validate :first_day_of_month
   validate :target_completion_date_is_in_the_future, on: :create
