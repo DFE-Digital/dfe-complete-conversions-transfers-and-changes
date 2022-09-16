@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
 
+  DEFAULT_WORKFLOW_ROOT = Rails.root.join("app", "workflows", "lists", "conversion").freeze
+
   def index
     authorize Project
     @projects = policy_scope(Project)
@@ -26,7 +28,7 @@ class ProjectsController < ApplicationController
 
     if @project.valid?
       @project.save
-      TaskListCreator.new.call(@project)
+      TaskListCreator.new.call(@project, workflow_root: DEFAULT_WORKFLOW_ROOT)
 
       redirect_to project_path(@project), notice: I18n.t("project.create.success")
     else

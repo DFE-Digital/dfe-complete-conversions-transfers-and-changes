@@ -1,16 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "Users can create new projects" do
-  let(:mock_workflow) { file_fixture("workflows/conversion.yml") }
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
   before do
     sign_in_with_user(regional_delivery_officer)
     visit new_project_path
-
-    allow(YAML).to receive(:load_file).with(Rails.root.join("app", "workflows", "conversion.yml")).and_return(
-      YAML.load_file(mock_workflow)
-    )
   end
 
   context "when the URN and UKPRN are valid" do
@@ -29,8 +24,8 @@ RSpec.feature "Users can create new projects" do
       click_button("Continue")
 
       expect(page).to have_content(I18n.t("project.show.title"))
-      expect(page).to have_content("Starting the project")
-      expect(page).to have_content("Understand history and complete handover from Pre-AB")
+      expect(page).to have_content("Project kick-off")
+      expect(page).to have_content("Handover with regional delivery officer")
     end
   end
 end

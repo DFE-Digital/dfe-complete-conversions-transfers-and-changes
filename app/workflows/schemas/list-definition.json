@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Academy Task List",
-  "description": "A defined series of tasks making up an Academy workflow",
+  "title": "Task list definition",
+  "description": "A defined series of tasks making up a workflow",
   "type": "object",
   "properties": {
     "sections": {
