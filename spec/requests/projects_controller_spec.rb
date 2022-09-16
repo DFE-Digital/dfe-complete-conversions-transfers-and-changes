@@ -45,7 +45,7 @@ RSpec.describe ProjectsController, type: :request do
         new_project_record = Project.last
 
         expect(response).to redirect_to(project_path(Project.first.id))
-        expect(task_list_creator).to have_received(:call).with(new_project_record)
+        expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: ProjectsController::DEFAULT_WORKFLOW_ROOT)
         expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
       end
 

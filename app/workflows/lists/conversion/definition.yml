@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=schemas/task_list.json
+# yaml-language-server: $schema=../../schemas/list-definition.json
 
 sections:
   - title: Project kick-off

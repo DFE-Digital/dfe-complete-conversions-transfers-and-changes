@@ -5,7 +5,7 @@
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
-    "workflows:validate": "ajv -s app/workflows/schemas/task-list.json -d app/workflows/*.yml --spec=draft2020"
+    "workflows:validate": "ajv -s app/workflows/schemas/list-definition.json -d app/workflows/lists/**/definition.yml --spec=draft2020"
   },
   "devDependencies": {
     "ajv-cli": "^5.0.0",

@@ -1,13 +1,11 @@
 class TaskListCreator
-  WORKFLOW_NAME = "conversion".freeze
-
-  def call(project)
-    workflow = load_workflow
+  def call(project, workflow_root:)
+    workflow = load_workflow_definition(workflow_root)
     create_task_list_from_workflow(project, workflow)
   end
 
-  private def load_workflow
-    YAML.load_file(Rails.root.join("app", "workflows", "#{WORKFLOW_NAME}.yml"))
+  private def load_workflow_definition(workflow_root)
+    YAML.load_file(File.join(workflow_root, "definition.yml"))
   end
 
   private def create_task_list_from_workflow(project, workflow)
