@@ -15,6 +15,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+### Removed
+
+- There is no longer an edit project page. Instead, roles will be assigned on
+  specific assignment pages.
+
 ## [Release 3][release-3]
 
 ### Added

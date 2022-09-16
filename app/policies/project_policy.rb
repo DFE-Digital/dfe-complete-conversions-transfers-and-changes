@@ -22,14 +22,6 @@ class ProjectPolicy
     create?
   end
 
-  def edit?
-    user.team_leader?
-  end
-
-  def update?
-    edit?
-  end
-
   class Scope
     def initialize(user, scope)
       @user = user
