@@ -28,8 +28,4 @@ class AssignmentPolicy
   def update_caseworker?
     assign_caseworker?
   end
-
-  def can_assign_any_roles?
-    [assign_team_leader?, assign_regional_delivery_officer?, assign_caseworker?].any?
-  end
 end

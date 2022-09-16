@@ -41,19 +41,25 @@ RSpec.describe ProjectInformationHelper, type: :helper do
     context "when full name is nil" do
       let(:user) { build(:user, first_name: nil, last_name: nil) }
 
-      it "returns email address as a link" do
-        expect(subject.html_safe?).to be true
-        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:user@education.gov.uk\">user@education.gov.uk</a>"
+      it "returns the email address" do
+        expect(subject).to eq "user@education.gov.uk"
       end
     end
 
     context "when full name is present" do
       let(:user) { build(:user) }
 
-      it "returns the full name with a email link" do
-        expect(subject.html_safe?).to be true
-        expect(subject).to eq "John Doe (<a class=\"govuk-link\" href=\"mailto:user@education.gov.uk\">user@education.gov.uk</a>)"
+      it "returns the full name" do
+        expect(subject).to eq "John Doe"
       end
+    end
+  end
+
+  describe "#mail_to_path" do
+    subject { helper.mail_to_path("john.doe@education.gov.uk") }
+
+    it "returns a `mailto` path (not wrapped in a link)" do
+      expect(subject).to eq "mailto:john.doe@education.gov.uk"
     end
   end
 end

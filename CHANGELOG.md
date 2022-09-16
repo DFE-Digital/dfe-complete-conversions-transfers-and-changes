@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Lists of users are now sorted by first name.
+- Display an "Email" link for users in the actions of the project details
+  section. The user's display name is now their name only (email address
+  removed).
+- Change the project information page to a one-quarter three-quarter layout to
+  allow more room for the project information.
 
 ### Fixed
 

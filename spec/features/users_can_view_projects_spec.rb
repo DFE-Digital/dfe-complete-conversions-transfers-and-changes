@@ -97,26 +97,4 @@ RSpec.feature "Users can view a single project" do
       expect(page).to have_content(I18n.t("project.summary.caseworker.unassigned"))
     end
   end
-
-  context "when a project has an assigned caseworker" do
-    let(:user_email_address) { "user@education.gov.uk" }
-
-    scenario "the project list shows an assigned caseworker" do
-      sign_in_with_user(create(:user, :team_leader, email: user_email_address))
-      user = User.find_by(email: user_email_address)
-      create(:project, urn: 123456, caseworker: user)
-
-      visit projects_path
-      expect(page).to have_content(user_email_address)
-    end
-
-    scenario "the project page shows an assigned caseworker" do
-      sign_in_with_user(create(:user, :team_leader, email: user_email_address))
-      user = User.find_by(email: user_email_address)
-      single_project = create(:project, urn: urn, caseworker: user)
-
-      visit project_information_path(single_project.id)
-      expect(page).to have_content(user_email_address)
-    end
-  end
 end
