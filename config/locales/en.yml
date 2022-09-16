@@ -83,6 +83,9 @@ en:
         title: Target conversion date
       region:
         title: Region
+    assign:
+      team_leader:
+        success: Team leader has been assigned successfully
   project_information:
     show:
       side_navigation:
@@ -165,6 +168,10 @@ en:
       email: Email
       phone: Phone
       edit_link: Change
+  assignment:
+    assign_team_leader:
+      title: Change team lead for %{school_name}
+
   subnavigation:
     project_task_list: Task list
     project_information: Project information

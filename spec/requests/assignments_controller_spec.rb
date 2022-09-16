@@ -1,0 +1,43 @@
+require "rails_helper"
+
+RSpec.describe AssignmentsController, type: :request do
+  let(:user) { create(:user) }
+
+  before do
+    mock_successful_authentication(user.email)
+    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    allow_any_instance_of(AssignmentsController).to receive(:user_id).and_return(user.id)
+  end
+
+  describe "#assign_team_leader" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+
+    subject(:perform_request) do
+      get project_assign_team_lead_path(project_id)
+      response
+    end
+
+    it "returns a successful response" do
+      expect(perform_request).to have_http_status :success
+    end
+  end
+
+  describe "#update_team_leader" do
+    let(:project) { create(:project, team_leader: nil) }
+    let(:project_id) { project.id }
+    let(:team_leader) { create(:user, :team_leader) }
+
+    subject(:perform_request) do
+      post project_assign_team_lead_path(project_id), params: {project: {team_leader_id: team_leader.id}}
+      response
+    end
+
+    it "assigns the project team lead and redirefcts with a message" do
+      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(request.flash[:notice]).to eq(I18n.t("project.assign.team_leader.success"))
+
+      expect(project.reload.team_leader).to eq team_leader
+    end
+  end
+end

@@ -1,6 +1,6 @@
 <div id="projectDetails">
   <h2 class="govuk-heading-l"><%= t('project_information.show.project_details.title') %></h2>
-  <%= govuk_summary_list(actions: false) do |summary_list|
+  <%= govuk_summary_list do |summary_list|
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.caseworker') }
       row.value { display_name(@project.caseworker) }
@@ -8,6 +8,7 @@
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.team_lead') }
       row.value { display_name(@project.team_leader) }
+      row.action(text: "Change", href: project_assign_team_lead_path(@project), visually_hidden_text: "team leader")
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.regional_delivery_officer') }
