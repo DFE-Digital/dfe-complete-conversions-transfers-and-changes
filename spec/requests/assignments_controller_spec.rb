@@ -40,4 +40,36 @@ RSpec.describe AssignmentsController, type: :request do
       expect(project.reload.team_leader).to eq team_leader
     end
   end
+
+  describe "#assign_regional_delivery_officer" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+
+    subject(:perform_request) do
+      get project_assign_regional_delivery_officer_path(project_id)
+      response
+    end
+
+    it "returns a successful response" do
+      expect(perform_request).to have_http_status :success
+    end
+  end
+
+  describe "#update_regional_delivery_officer" do
+    let(:project) { create(:project, regional_delivery_officer: nil) }
+    let(:project_id) { project.id }
+    let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
+
+    subject(:perform_request) do
+      post project_assign_regional_delivery_officer_path(project_id), params: {project: {regional_delivery_officer_id: regional_delivery_officer.id}}
+      response
+    end
+
+    it "assigns the project regional delivery officer and redirefcts with a message" do
+      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(request.flash[:notice]).to eq(I18n.t("project.assign.regional_delivery_officer.success"))
+
+      expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
+    end
+  end
 end

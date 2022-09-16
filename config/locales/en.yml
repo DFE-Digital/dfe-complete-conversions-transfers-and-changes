@@ -86,6 +86,8 @@ en:
     assign:
       team_leader:
         success: Team leader has been assigned successfully
+      regional_delivery_officer:
+        success: Regional delivery officer has been assigned successfully
   project_information:
     show:
       side_navigation:
@@ -171,6 +173,8 @@ en:
   assignment:
     assign_team_leader:
       title: Change team lead for %{school_name}
+    assign_regional_delivery_officer:
+      title: Change regional delivery officer for %{school_name}
 
   subnavigation:
     project_task_list: Task list

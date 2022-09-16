@@ -13,6 +13,7 @@
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.regional_delivery_officer') }
       row.value { display_name(@project.regional_delivery_officer) }
+      row.action(text: "Change", href: project_assign_regional_delivery_officer_path(@project), visually_hidden_text: "regional delivery officer")
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.advisory_board_date') }
