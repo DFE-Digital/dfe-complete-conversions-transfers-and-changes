@@ -14,15 +14,15 @@ Rails.application.routes.draw do
   # Omniauth callbacks
   get "auth/:provider/callback", to: "sessions#create"
 
-  resources :projects do
-    resources :tasks
-    resources :notes do
-      get "/delete", action: :confirm_destroy
-    end
-    resources :contacts do
-      get "/delete", action: :confirm_destroy
-    end
+  concern :has_destroy_confirmation do
+    get "/delete", action: :confirm_destroy
   end
 
-  get "/projects/:id/information", to: "project_information#show", as: :project_information
+  resources :projects do
+    get "information", to: "project_information#show"
+
+    resources :tasks, only: %i[show update]
+    resources :notes, except: %i[show], concerns: :has_destroy_confirmation
+    resources :contacts, except: %i[show], concerns: :has_destroy_confirmation
+  end
 end
