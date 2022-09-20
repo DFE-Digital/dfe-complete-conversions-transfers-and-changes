@@ -1,5 +1,3 @@
-# yaml-language-server: $schema=../../schemas/list-definition.json
-
 sections:
   - kickoff
   - clear-legal-docs

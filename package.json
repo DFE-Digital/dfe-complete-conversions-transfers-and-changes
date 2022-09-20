@@ -5,8 +5,8 @@
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
-    "workflows:validate:tasklists": "ajv -s app/workflows/schemas/list-definition.json -d app/workflows/lists/**/definition.yml --spec=draft2020",
-    "workflows:validate:sections": "ajv -s app/workflows/schemas/section.json -d 'app/workflows/sections/**/sections/*.yml' --spec=draft2020"
+    "workflows:validate:tasklists": "ajv -s app/workflows/schemas/list-definition.schema.json -d app/workflows/lists/**/definition.yml --spec=draft2020",
+    "workflows:validate:sections": "ajv -s app/workflows/schemas/section.schema.json -d 'app/workflows/sections/**/sections/*.yml' --spec=draft2020"
   },
   "devDependencies": {
     "ajv-cli": "^5.0.0",
