@@ -4,6 +4,7 @@
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.caseworker') }
       row.value { display_name(@project.caseworker) }
+      row.action(text: "Change", href: project_assign_caseworker_path(@project), visually_hidden_text: "caseworker")
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.team_lead') }

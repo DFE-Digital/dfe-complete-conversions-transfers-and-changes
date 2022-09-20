@@ -72,4 +72,56 @@ RSpec.describe AssignmentsController, type: :request do
       expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
     end
   end
+
+  describe "#assign_caseworker" do
+    let(:project) { create(:project) }
+    let(:project_id) { project.id }
+
+    subject(:perform_request) do
+      get project_assign_caseworker_path(project_id)
+      response
+    end
+
+    it "returns a successful response" do
+      expect(perform_request).to have_http_status :success
+    end
+  end
+
+  describe "#update_caseworker" do
+    let(:project) { create(:project, caseworker: nil) }
+    let(:project_id) { project.id }
+    let(:caseworker) { create(:user, :caseworker) }
+
+    around do |spec|
+      freeze_time
+      spec.run
+    end
+
+    subject(:perform_request) do
+      post project_assign_caseworker_path(project_id), params: {project: {caseworker_id: caseworker.id}}
+      response
+    end
+
+    context "when the project has been assigned a caseworker previously" do
+      let(:caseworker_assigned_at) { DateTime.yesterday.at_midday }
+      let(:existing_caseworker) { create(:user, :caseworker, email: "#{SecureRandom.uuid}@education.gov.uk") }
+
+      before { project.update(caseworker: existing_caseworker, caseworker_assigned_at: caseworker_assigned_at) }
+
+      it "does not update the caseworker_assigned_at timestamp" do
+        perform_request
+
+        expect(project.reload.caseworker).to eq caseworker
+        expect(project.reload.caseworker_assigned_at).to eq caseworker_assigned_at
+      end
+    end
+
+    it "assigns the project caseworker and redirefcts with a message" do
+      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(request.flash[:notice]).to eq(I18n.t("project.assign.caseworker.success"))
+
+      expect(project.reload.caseworker).to eq caseworker
+      expect(project.reload.caseworker_assigned_at).to eq DateTime.now
+    end
+  end
 end

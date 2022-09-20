@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       post "team-lead", action: :update_team_leader
       get "regional-delivery-officer", action: :assign_regional_delivery_officer
       post "regional-delivery-officer", action: :update_regional_delivery_officer
+      get "caseworker", action: :assign_caseworker
+      post "caseworker", action: :update_caseworker
     end
   end
 end
