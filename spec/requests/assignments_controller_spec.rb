@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe AssignmentsController, type: :request do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, team_leader: true) }
 
   before do
     mock_successful_authentication(user.email)
@@ -9,7 +9,20 @@ RSpec.describe AssignmentsController, type: :request do
     allow_any_instance_of(AssignmentsController).to receive(:user_id).and_return(user.id)
   end
 
+  shared_examples_for "an action which redirects unauthorized users" do
+    let(:user) { create(:user) }
+
+    it "redirects to the home page with a permissions error message" do
+      perform_request
+      expect(response).to redirect_to(root_path)
+      follow_redirect!
+      expect(flash.alert).to eq I18n.t("unauthorised_action.message")
+    end
+  end
+
   describe "#assign_team_leader" do
+    it_behaves_like "an action which redirects unauthorized users"
+
     let(:project) { create(:project) }
     let(:project_id) { project.id }
 
@@ -24,6 +37,8 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#update_team_leader" do
+    it_behaves_like "an action which redirects unauthorized users"
+
     let(:project) { create(:project, team_leader: nil) }
     let(:project_id) { project.id }
     let(:team_leader) { create(:user, :team_leader) }
@@ -42,6 +57,8 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#assign_regional_delivery_officer" do
+    it_behaves_like "an action which redirects unauthorized users"
+
     let(:project) { create(:project) }
     let(:project_id) { project.id }
 
@@ -56,6 +73,8 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#update_regional_delivery_officer" do
+    it_behaves_like "an action which redirects unauthorized users"
+
     let(:project) { create(:project, regional_delivery_officer: nil) }
     let(:project_id) { project.id }
     let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
@@ -74,6 +93,8 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#assign_caseworker" do
+    it_behaves_like "an action which redirects unauthorized users"
+
     let(:project) { create(:project) }
     let(:project_id) { project.id }
 
@@ -88,6 +109,8 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#update_caseworker" do
+    it_behaves_like "an action which redirects unauthorized users"
+
     let(:project) { create(:project, caseworker: nil) }
     let(:project_id) { project.id }
     let(:caseworker) { create(:user, :caseworker) }

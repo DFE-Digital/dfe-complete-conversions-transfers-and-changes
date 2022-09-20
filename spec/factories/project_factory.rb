@@ -10,5 +10,11 @@ FactoryBot.define do
     trait :with_conditions do
       advisory_board_conditions { "The following must be met:\n 1. Must be red\n2. Must be blue\n" }
     end
+
+    trait :without_any_assigned_roles do
+      team_leader { nil }
+      regional_delivery_officer { nil }
+      caseworker { nil }
+    end
   end
 end

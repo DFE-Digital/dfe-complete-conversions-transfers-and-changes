@@ -1,5 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :find_project
+  before_action :authorize_user
+  after_action :verify_authorized
 
   def assign_team_leader
     @team_leaders = User.team_leaders
@@ -30,6 +32,10 @@ class AssignmentsController < ApplicationController
     @project.update(caseworker_params)
 
     redirect_to project_information_path(@project), notice: t("project.assign.caseworker.success")
+  end
+
+  private def authorize_user
+    authorize :assignment
   end
 
   private def team_leader_params

@@ -1,20 +1,26 @@
 <div id="projectDetails">
   <h2 class="govuk-heading-l"><%= t('project_information.show.project_details.title') %></h2>
-  <%= govuk_summary_list do |summary_list|
+  <%= govuk_summary_list(actions: policy(:assignment).can_assign_any_roles?) do |summary_list|
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.caseworker') }
       row.value { display_name(@project.caseworker) }
-      row.action(text: "Change", href: project_assign_caseworker_path(@project), visually_hidden_text: "caseworker")
+      if policy(:assignment).assign_caseworker?
+        row.action(text: "Change", href: project_assign_caseworker_path(@project), visually_hidden_text: "caseworker")
+      end
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.team_lead') }
       row.value { display_name(@project.team_leader) }
-      row.action(text: "Change", href: project_assign_team_lead_path(@project), visually_hidden_text: "team leader")
+      if policy(:assignment).assign_team_leader?
+        row.action(text: "Change", href: project_assign_team_lead_path(@project), visually_hidden_text: "team leader")
+      end
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.regional_delivery_officer') }
       row.value { display_name(@project.regional_delivery_officer) }
-      row.action(text: "Change", href: project_assign_regional_delivery_officer_path(@project), visually_hidden_text: "regional delivery officer")
+      if policy(:assignment).assign_regional_delivery_officer?
+        row.action(text: "Change", href: project_assign_regional_delivery_officer_path(@project), visually_hidden_text: "regional delivery officer")
+      end
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.advisory_board_date') }
