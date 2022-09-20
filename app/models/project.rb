@@ -6,10 +6,11 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :notes, reject_if: proc { |attributes| attributes[:body].blank? }
 
   validates :urn, presence: true, numericality: {only_integer: true}, length: {is: 6}
-  validates :trust_ukprn, presence: true, numericality: {only_integer: true}
+  validates :incoming_trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
+  validates :incoming_trust_ukprn, ukprn: true
 
-  validate :first_day_of_month, :trust_ukprn_is_correct_format
+  validate :first_day_of_month
   validate :target_completion_date_is_in_the_future, on: :create
   validate :establishment_exists, :trust_exists, on: :create
 
@@ -18,37 +19,37 @@ class Project < ApplicationRecord
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
   def establishment
-    @establishment || retrieve_establishment
+    @establishment ||= fetch_establishment(urn)
   end
 
-  def trust
-    @trust || retrieve_trust
+  def incoming_trust
+    @incoming_rust ||= fetch_trust(incoming_trust_ukprn)
+  end
+
+  private def fetch_establishment(urn)
+    result = AcademiesApi::Client.new.get_establishment(urn)
+    raise result.error if result.error.present?
+
+    result.object
+  end
+
+  private def fetch_trust(ukprn)
+    result = AcademiesApi::Client.new.get_trust(ukprn)
+    raise result.error if result.error.present?
+
+    result.object
   end
 
   private def establishment_exists
-    retrieve_establishment
+    establishment
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:urn, :no_establishment_found)
   end
 
   private def trust_exists
-    retrieve_trust
+    incoming_trust
   rescue AcademiesApi::Client::NotFoundError
-    errors.add(:trust_ukprn, :no_trust_found)
-  end
-
-  private def retrieve_establishment
-    result = AcademiesApi::Client.new.get_establishment(urn)
-    raise result.error if result.error.present?
-
-    @establishment = result.object
-  end
-
-  private def retrieve_trust
-    result = AcademiesApi::Client.new.get_trust(trust_ukprn)
-    raise result.error if result.error.present?
-
-    @trust = result.object
+    errors.add(:incoming_trust_ukprn, :no_trust_found)
   end
 
   private def first_day_of_month
@@ -57,17 +58,6 @@ class Project < ApplicationRecord
     # Target completion date is always the 1st of the month.
     if target_completion_date.day != 1
       errors.add(:target_completion_date, :must_be_first_of_the_month)
-    end
-  end
-
-  private def trust_ukprn_is_correct_format
-    return if trust_ukprn.nil?
-
-    number_of_digits = trust_ukprn.digits.count
-    first_digit = trust_ukprn.to_s.first.to_i
-
-    if number_of_digits != 8 || first_digit != 1
-      errors.add(:trust_ukprn, :must_be_correct_format)
     end
   end
 

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can assign users to projects" do
   before do
-    mock_successful_api_responses(urn: project.urn, ukprn: project.trust_ukprn)
+    mock_successful_api_responses(urn: project.urn, ukprn: project.incoming_trust_ukprn)
     sign_in_with_user(user)
   end
 
