@@ -22,7 +22,7 @@ We offset these against known disadvantages:
 - may not support additional complexity
 
 Whilst the applicaiton and data it models remains relatively straight forward,
-we are happy to continue to suppor the concpet of workflow files.
+we are happy to continue to support the concept of workflow files.
 
 ## Location
 
@@ -46,3 +46,9 @@ guidance_text: |
   * things
   * and such
 ```
+
+## Detailed documentation
+
+Full documentation of the file structures can be found in
+[doc/workflows/README.md](/doc/workflows/README.md), based on the schemas in
+`app/workflows/schemas`.

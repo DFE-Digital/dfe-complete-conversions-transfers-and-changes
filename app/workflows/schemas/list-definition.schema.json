@@ -12,10 +12,7 @@
       "items": {
         "type": "string",
         "pattern": "^[a-z0-9-]+$",
-        "examples": [
-          "kickoff",
-          "clear-legal-docs"
-        ]
+        "examples": ["kickoff", "clear-legal-docs"]
       },
       "minItems": 1
     }
