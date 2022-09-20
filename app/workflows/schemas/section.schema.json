@@ -1,13 +1,18 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "uk.gov.education/rsd/cctc/section",
   "title": "Section",
-  "description": "A single section within a task list",
+  "description": "A single section within a task list.",
   "type": "object",
   "properties": {
     "title": { "type": "string" },
     "tasks": {
+      "title": "Tasks",
+      "description": "A list of tasks within a section.",
       "type": "array",
       "items": {
+        "title": "Task",
+        "description": "A task on the task list, which contains one or more actions.",
         "type": "object",
         "properties": {
           "title": { "type": "string" },
@@ -16,8 +21,12 @@
           "guidance_text": { "type": "string" },
           "optional": { "type": "boolean" },
           "actions": {
+            "title": "Actions",
+            "description": "A list of actions which collectively make up a task.",
             "type": "array",
             "items": {
+              "title": "Action",
+              "description": "A single action which can be taken within a task.",
               "type": "object",
               "properties": {
                 "title": { "type": "string" },
@@ -25,6 +34,14 @@
                 "guidance_summary": { "type": "string" },
                 "guidance_text": { "type": "string" }
               },
+              "examples": [
+                {
+                  "title": "Check document validity",
+                  "hint": "Check that sections A, B and C are completed.",
+                  "guidance_summary": "What to check?",
+                  "guidance_text": "You can find [a list of what to check online](https://example.com)."
+                }
+              ],
               "required": ["title"]
             }
           }
