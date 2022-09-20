@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Lists of users are now sorted by first name.
+
 ### Fixed
 
 - The accessible autocomplete component now uses the GDS Transport font to match
