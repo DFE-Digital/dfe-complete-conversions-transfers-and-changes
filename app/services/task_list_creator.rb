@@ -24,7 +24,7 @@ class TaskListCreator
   end
 
   private def load_workflow_definition(workflow_root)
-    YAML.load_file(File.join(workflow_root, "definition.yml"))
+    YAML.load_file(File.join(workflow_root, "tasklist.yml"))
   end
 
   private def load_workflow_section(workflow_root, section)
