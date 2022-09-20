@@ -1,47 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Task list definition",
-  "description": "A defined series of tasks making up a workflow",
+  "title": "Task list",
+  "description": "A top-level definition of a task list",
   "type": "object",
   "properties": {
     "sections": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "title": { "type": "string" },
-          "tasks": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "title": { "type": "string" },
-                "hint": { "type": "string" },
-                "guidance_summary": { "type": "string" },
-                "guidance_text": { "type": "string" },
-                "optional": { "type": "boolean" },
-                "actions": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "title": { "type": "string" },
-                      "hint": { "type": "string" },
-                      "guidance_summary": { "type": "string" },
-                      "guidance_text": { "type": "string" }
-                    },
-                    "required": ["title"]
-                  }
-                }
-              },
-              "additionalProperties": false,
-              "required": ["title", "actions"]
-            },
-            "minItems": 1
-          }
-        },
-        "additionalProperties": false,
-        "required": ["title"]
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
       },
       "minItems": 1
     }

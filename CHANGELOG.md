@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Improve the layout of the task page.
 - Update the content for the "Project kick-off" section of the task list.
 - Note bodies are parsed via Markdown to allow rich formatting.
+- Workflow definition files are now split by section, rather than being monolithic.
 
 ### Fixed
 

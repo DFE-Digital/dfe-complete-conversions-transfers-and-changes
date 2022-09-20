@@ -1,18 +1,13 @@
 class TaskListCreator
   def call(project, workflow_root:)
     workflow = load_workflow_definition(workflow_root)
-    create_task_list_from_workflow(project, workflow)
-  end
 
-  private def load_workflow_definition(workflow_root)
-    YAML.load_file(File.join(workflow_root, "definition.yml"))
-  end
+    workflow.fetch("sections").each_with_index do |section_name, index|
+      section_data = load_workflow_section(workflow_root, section_name)
 
-  private def create_task_list_from_workflow(project, workflow)
-    workflow.fetch("sections").each_with_index do |workflow_section, index|
-      section = Section.create(title: workflow_section.fetch("title"), order: index, project: project)
+      section = Section.create(title: section_data.fetch("title"), order: index, project: project)
 
-      workflow_section.fetch("tasks").each_with_index do |workflow_task, index|
+      section_data.fetch("tasks").each_with_index do |workflow_task, index|
         task = Task.create(
           title: workflow_task.fetch("title"),
           hint: workflow_task.fetch("hint", nil),
@@ -26,6 +21,14 @@ class TaskListCreator
         create_actions(workflow_task, task)
       end
     end
+  end
+
+  private def load_workflow_definition(workflow_root)
+    YAML.load_file(File.join(workflow_root, "definition.yml"))
+  end
+
+  private def load_workflow_section(workflow_root, section)
+    YAML.load_file(Rails.root.join(workflow_root, "sections", "#{section}.yml"))
   end
 
   private def create_actions(workflow_task, task)

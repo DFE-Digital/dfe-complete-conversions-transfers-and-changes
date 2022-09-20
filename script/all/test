@@ -51,7 +51,8 @@ else
   fi
 
   echo "==> Validating workflows..."
-  yarn run workflows:validate
+  yarn run workflows:validate:tasklists
+  yarn run workflows:validate:sections
 
   echo "==> Running the tests..."
   bundle exec rspec

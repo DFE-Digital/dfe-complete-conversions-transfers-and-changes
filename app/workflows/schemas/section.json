@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Section",
+  "description": "A single section within a task list",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "hint": { "type": "string" },
+          "guidance_summary": { "type": "string" },
+          "guidance_text": { "type": "string" },
+          "optional": { "type": "boolean" },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "hint": { "type": "string" },
+                "guidance_summary": { "type": "string" },
+                "guidance_text": { "type": "string" }
+              },
+              "required": ["title"]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": ["title", "actions"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["title"]
+}
