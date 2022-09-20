@@ -20,8 +20,9 @@ RSpec.feature "Users can create new projects" do
       fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
 
       within("#target-completion-date") do
-        fill_in "Month", with: 12
-        fill_in "Year", with: 2025
+        completion_date = Date.today + 1.year
+        fill_in "Month", with: completion_date.month
+        fill_in "Year", with: completion_date.year
       end
 
       within("#advisory-board-date") do
