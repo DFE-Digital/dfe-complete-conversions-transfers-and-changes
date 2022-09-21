@@ -101,8 +101,54 @@ tasks:
 
       - title: Save the responses to the checklist in SharePoint
   - title: Confirm all conditions have been met
+    hint: |
+      The deadline to confirm all conditions have been met will be in the
+      Baseline email you received. The school will not be able to open on the
+      target conversion date unless all conditions have been met.
     actions:
-      - title: action
+      - title:
+          Email Academies Operational Practice Unit to confirm all conditions
+          have been met
+        guidance_summary: How to confirm if conditions have been met
+        guidance_text: |
+
+          You must email the Academies Operational Practice Unit at
+          [academiesdelivery.operations@education.gov.uk](academiesdelivery.operations@education.gov.uk)
+          to confirm if all conditions are met for this school and it will open
+          as an academy on the target conversion date.
+
+          The email only needs to confirm if all conditions have been met, or
+          not. You do not need to go into detail.
+
+          Things you'll need to check to confirm if all conditions have been met
+          include:
+
+          * commercial transfer agreement signed
+          * leases agreed and signed
+          * risk protection arrangement in place and insurer confirmed
+          * relevant documents signed and sealed
+
+          ### What to do if conditions are not met
+
+          All conditions must be met before a school can open as an academy.
+
+          If there are outstanding conditions, you must:
+
+          * inform the school of the outstanding tasks
+          * agree a new target conversion date
+          * tell the Academies Operational Practice Unit by email
+          at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
+          * remove the school from the Baseline
+          * change the date in KIM
+          * inform the regional delivery officer who started on this project
+
+          Usually, the date will be moved to the first day of the next month.
+          Sometimes you may find that the school and trust need more time. You
+          can move the opening to a later date if needed.
+
+          If the opening date changes, any documents that reference the opening
+          date will need to be updated and re-signed.
+
   - title: Confirm opening date with the school
     hint: |
       Once you've confirmed that all conditions have been met, contact the
