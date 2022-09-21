@@ -14,6 +14,10 @@ class Task < ApplicationRecord
     @completed_actions_count ||= actions.where(completed: true).count
   end
 
+  def clear_legal_documents_type?
+    section.title == "Clear legal documents"
+  end
+
   def status
     return :not_applicable if not_applicable? && optional?
 
