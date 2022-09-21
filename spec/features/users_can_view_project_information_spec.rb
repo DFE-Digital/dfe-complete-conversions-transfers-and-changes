@@ -16,13 +16,13 @@ RSpec.feature "Users can view project information" do
   scenario "they can view the users names and email addresses assigned to the project" do
     within("#projectDetails") do
       expect(page).to have_content(user.full_name)
-      expect(page).to have_link(user.email)
+      expect(page).to have_link("Email caseworker", href: "mailto:#{user.email}")
 
       expect(page).to have_content(project.team_leader.full_name)
-      expect(page).to have_link(project.team_leader.email)
+      expect(page).to have_link("Email team leader", href: "mailto:#{project.team_leader.email}")
 
       expect(page).to have_content(project.regional_delivery_officer.full_name)
-      expect(page).to have_link(project.regional_delivery_officer.email)
+      expect(page).to have_link("Email regional delivery officer", href: "mailto:#{project.regional_delivery_officer.email}")
     end
   end
 

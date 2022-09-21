@@ -8,8 +8,12 @@ module ProjectInformationHelper
   def display_name(user)
     return t("project_information.show.project_details.rows.unassigned") if user.nil?
 
-    return govuk_mail_to(user.email, user.email) if user.full_name.blank?
+    return user.email if user.full_name.blank?
 
-    sanitize "#{user.full_name} (#{govuk_mail_to(user.email, user.email)})"
+    user.full_name
+  end
+
+  def mail_to_path(email)
+    "mailto:#{email}"
   end
 end
