@@ -104,5 +104,24 @@ tasks:
     actions:
       - title: action
   - title: Confirm opening date with the school
+    hint: |
+      Once you've confirmed that all conditions have been met, contact the
+      school and trust to tell them they can convert on the target conversion
+      date.
     actions:
-      - title: action
+      - title: Email the school and share documents
+        guidance_summary: What to tell the school
+        guidance_text: |
+          Email your main contact at the school or trust.
+
+          Your email should include:
+
+          * confirmation the school will convert on the target date
+          * the school's new URN (unique reference number)
+          * all signed and sealed legal documents
+
+          You also need give them a Grant expenditure certificate and tell them to complete it.
+
+          It can be helpful to mention that they'll soon get some welcome
+          emails from other teams in government. These will contain more
+          information about funding and opening as an academy.
