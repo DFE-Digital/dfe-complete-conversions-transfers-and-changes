@@ -1,0 +1,3 @@
+<% if task.hint? %>
+  <p class="govuk-body"><%= render_markdown(task.hint, hint: true) %></p>
+<% end %>

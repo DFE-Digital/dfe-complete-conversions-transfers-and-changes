@@ -5,37 +5,21 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <div class="govuk-!-margin-bottom-9">
-      <span class="govuk-caption-l"><%= @task.project.establishment.name %></span>
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= @task.title %></h1>
+      <%= render partial: "tasks/shared/task_title", locals: {task: @task} %>
 
-      <% if @task.hint? %>
-        <p class="govuk-body"><%= render_markdown(@task.hint, hint: true) %></p>
-      <% end %>
+      <%= render partial: "tasks/shared/task_hint", locals: {task: @task} %>
 
-      <% if @task.guidance_summary? %>
-        <%= govuk_details(summary_text: @task.guidance_summary) do %>
-          <%= render_markdown(@task.guidance_text) %>
-        <% end %>
-      <% end %>
+      <%= render partial: "tasks/shared/task_guidance_summary", locals: {task: @task} %>
     </div>
 
     <%= form_for :task, url: project_task_path, method: :put do |form| %>
       <%= form.govuk_check_boxes_fieldset :actions, legend: {hidden: true}, classes: "task-checkboxes" do %>
         <% @task.actions.each do |action| %>
-          <%= form.govuk_check_box :completed_action_ids,
-                                   action.id,
-                                   label: { text: action.title },
-                                   link_errors: true,
-                                   checked: action.completed?,
-                                   hint: -> do %>
+          <%= render layout: "tasks/shared/action_checkbox", locals: {action: action, form: form} do %>
 
-            <%= render_markdown(action.hint, hint: true) unless action.hint.nil? %>
+            <%= render partial: "tasks/shared/action_hint", locals: {action: action} %>
 
-            <% if action.guidance_summary? %>
-              <%= govuk_details(summary_text: action.guidance_summary) do %>
-                <%= render_markdown(action.guidance_text) %>
-              <% end %>
-            <% end %>
+            <%= render partial: "tasks/shared/action_guidance_summary", locals: {action: action} %>
 
           <% end %>
         <% end %>
