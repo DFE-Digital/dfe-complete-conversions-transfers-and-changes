@@ -73,8 +73,33 @@ tasks:
           email.
 
   - title: Complete the final checklist with external stakeholders
+    hint: |
+      Confirm with the school and trust that they have completed all the tasks
+      on the checklist and save their responses in SharePoint.
     actions:
-      - title: action
+      - title: Send the final checklist email to the school or trust
+        guidance_summary: How to structure your email
+        guidance_text: |
+          You should ask them to check and confirm they've completed all tasks.
+
+          You can [use the email template (opens in a new tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BA4E75C24-7E01-4732-9065-EEC840AFE132%7D&file=RSCApprovaltoAcademyOpeningDeskInstructions20200922.docx&action=default&mobileredirect=true) on pages 19 and 20 in your
+          desk instructions to help structure your email.
+
+      - title: Confirm the school has completed the tasks on the checklist
+        guidance_summary: What to do if the school has not completed the tasks
+        guidance_text: |
+          Depending on the scale of the outstanding tasks, you may need to move the target conversion date to the next month, or later.
+
+          If the conversion date needs to be moved, you must:
+
+          1. inform the school of the outstanding tasks
+          2. agree a new target conversion date
+          3. tell the Academies Operational Practice Unit by email
+          4. remove the school from the baseline
+          5. change the date in KIM
+          6. inform the regional delivery officer who started on this project
+
+      - title: Save the responses to the checklist in SharePoint
   - title: Confirm all conditions have been met
     actions:
       - title: action
