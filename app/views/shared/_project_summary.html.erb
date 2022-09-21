@@ -23,11 +23,5 @@
           end
         end %>
 
-    <% if policy(@project).edit? %>
-      <p class="govuk-body">
-        <%= link_to t("project.show.edit_button.text"), edit_project_path(@project), class: "govuk-link" %>
-      </p>
-    <% end %>
-
   </div>
 </div>

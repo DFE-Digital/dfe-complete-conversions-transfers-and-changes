@@ -24,5 +24,14 @@ Rails.application.routes.draw do
     resources :tasks, only: %i[show update]
     resources :notes, except: %i[show], concerns: :has_destroy_confirmation
     resources :contacts, except: %i[show], concerns: :has_destroy_confirmation
+
+    namespace :assign, controller: "/assignments" do
+      get "team-lead", action: :assign_team_leader
+      post "team-lead", action: :update_team_leader
+      get "regional-delivery-officer", action: :assign_regional_delivery_officer
+      post "regional-delivery-officer", action: :update_regional_delivery_officer
+      get "caseworker", action: :assign_caseworker
+      post "caseworker", action: :update_caseworker
+    end
   end
 end

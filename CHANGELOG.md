@@ -10,10 +10,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The Handover/new project form collects the advisory board date and any
   conditions.
+- Users can be assigned to projects roles via 'change' links on the project
+  information page. Only users with the team lead role can assign users.
 
 ### Changed
 
+- Lists of users are now sorted by first name.
+
 ### Fixed
+
+- The accessible autocomplete component now uses the GDS Transport font to match
+  the rest of the service.
+
+### Removed
+
+- There is no longer an edit project page. Instead, roles will be assigned on
+  specific assignment pages.
 
 ## [Release 3][release-3]
 
