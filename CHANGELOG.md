@@ -67,6 +67,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Note bodies are parsed via Markdown to allow rich formatting.
 - Workflow definition files are now split by section, rather than being
   monolithic.
+- Trust names are now displayed in title case, rather than all caps.
 
 ### Fixed
 

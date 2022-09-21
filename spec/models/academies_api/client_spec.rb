@@ -89,8 +89,14 @@ RSpec.describe AcademiesApi::Client do
       it "returns a Result with the establishment and no error" do
         result = client.get_trust(10061021)
 
-        expect(result.object.name).to eql("THE ROMERO CATHOLIC ACADEMY")
+        expect(result.object.original_name).to eql("THE ROMERO CATHOLIC ACADEMY")
         expect(result.error).to be_nil
+      end
+
+      it "correctly titleises the trust name" do
+        result = client.get_trust(10061021)
+
+        expect(result.object.name).to eql("The Romero Catholic Academy")
       end
     end
 
