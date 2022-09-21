@@ -4,16 +4,14 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <div class="govuk-!-margin-bottom-9">
-      <%= render partial: "tasks/shared/task_title", locals: {task: @task} %>
+    <%= render partial: "tasks/shared/task_title", locals: {task: @task} %>
 
-      <%= render partial: "tasks/shared/task_hint", locals: {task: @task} %>
-
-      <%= render partial: "tasks/shared/task_guidance_summary", locals: {task: @task} %>
-    </div>
+    <%= render partial: "tasks/shared/task_hint", locals: {task: @task} %>
 
     <%= form_for :task, url: project_task_path, method: :put do |form| %>
-      <%= form.govuk_check_boxes_fieldset :actions, legend: {hidden: true}, classes: "task-checkboxes" do %>
+      <%= form.govuk_check_boxes_fieldset :actions, legend: {hidden: true}, classes: "clear-legal-documents-task-checkboxes" do %>
+        <%= render partial: "tasks/shared/not_applicable_checkbox", locals: {task: @task, form: form} %>
+
         <% @task.actions.each do |action| %>
           <%= render layout: "tasks/shared/action_checkbox", locals: {action: action, form: form} do %>
 
