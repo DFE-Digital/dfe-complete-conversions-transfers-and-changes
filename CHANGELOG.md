@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   removed).
 - Change the project information page to a one-quarter three-quarter layout to
   allow more room for the project information.
+- Updated content for the tasks in the 'Get ready for opening' section.
 
 ### Fixed
 
