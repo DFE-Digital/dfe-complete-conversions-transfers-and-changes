@@ -25,7 +25,7 @@ class Project < ApplicationRecord
   end
 
   def incoming_trust
-    @incoming_rust ||= fetch_trust(incoming_trust_ukprn)
+    @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
   private def fetch_establishment(urn)
