@@ -9,7 +9,7 @@
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= @task.title %></h1>
 
       <% if @task.hint? %>
-        <p class="govuk-body"><%= render_markdown(@task.hint) %></p>
+        <p class="govuk-body"><%= render_markdown(@task.hint, hint: true) %></p>
       <% end %>
 
       <% if @task.guidance_summary? %>
