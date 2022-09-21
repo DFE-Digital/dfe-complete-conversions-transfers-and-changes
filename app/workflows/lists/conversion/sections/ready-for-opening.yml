@@ -1,65 +1,173 @@
 title: Get ready for opening
 tasks:
-  - title: Get documents signed by school / trust
+  - title: Check the Baseline
+    hint: |
+      You must confirm the conversion date within 3 working days of
+      receiving the Baseline email. Indicate on the Baseline that the school is
+      on track to open.
     actions:
-      - title:
-          Notify solictors that required documents have been cleared and are
-          ready for signing by school / trust
-      - title: Recive required signed documents from the solicitor
-      - title: Save documents to SharePoint
+      - title: Confirm the school is on track to open on the target date
+        guidance_summary: How to check the Baseline
+        guidance_text: |
+          The Academies Operational Practice Unit will usually email the Baseline
+          spreadsheet to you in the first week of each month.
 
-  - title: Baseline checks
-    actions:
-      - title: Check school is on the openers list
-      - title: Confirm if the school is currently on track to open
+          The Baseline spreadsheet contains a list of all the schools expected to open as
+          academies the following month. The school should appear on that list.
 
-  - title: Single worksheet
-    actions:
-      - title:
-          Download single worksheet template and save single worksheet for this
-          project in SharePoint
-      - title: Begin entering information into the single worksheet
-      - title: Finish single worksheet
-      - title: Send single worksheet to Line Manager for approval
-      - title:
-          Email approved single worksheet to Academy Operations Team (with the
-          Direction to Transfer and Trust Modification Order if applicable)
+          The Academies Operational Practice Unit may refer to the Baseline as the
+          Openers list.
 
-  - title: Comeplete final checklist with external stakeholders
-    actions:
-      - title: Email final checklist to external stakeholders
-      - title:
-          Receive email of responses to final checklist from external
-          stakeholders
-      - title:
-          Save final checklist email response from external stakeholders in
-          SharePoint
+          ### What to do if your school is not on the Baseline
 
-  - title: Confirm all conditions met
-    actions:
-      - title: CTA agreed and signed (commercial transfer agreement)
-      - title: Leases agreed and signed
-      - title: RPA (risk protection arrangements) confirmed
-      - title: New bank account sent via online form
-      - title: Final re-opening actions (checklist sent to academy to complete)
-      - title: Confirm have signed documents from the Trust
-      - title:
-          Email the operational academy team to confrim that all conditions are
-          met and the school is ready for opening
+          There is a Baseline spreadsheet for each region. If the school does not appear
+          in the right Baseline check the other Baselines to see if the school has been
+          added to the wrong one.
 
-  - title: Sign & seal all model documents
-    actions:
-      - title:
-          Extract pages required for signature by the secretary of state (these
-          are delegated to the Team Lead)
-      - title: Send extracted pages to the Team Lead for signing
-      - title: Insert signed pages back into required documents
+          If the school is in the wrong region, remove it from that Baseline and place
+          the information in the correct region.
 
-  - title: Notify school / trust
+          If it doesn't appear at all, enter the school's information in the correct
+          Baseline spreadsheet.
+
+          Email the Academy operations team to tell them if you have had to move or add
+          the school to the correct Baseline.
+
+      - title: Use the Baseline to update missing information in KIM
+        guidance_summary: What to update in KIM
+        guidance_text: |
+          Make sure you have updated:
+
+          * new academy name
+          * trust name
+          * contact details
+
+      - title: Confirm Baseline approval with G6
+        hint: Add the G6 name and date to the Baseline
+  - title: Complete and approve Single worksheet
+    hint: |
+      You need to [download a single worksheet template (opens in new
+      tab)](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/ETLq7xT0OM9GrpbiuIIVPQIBWoqonm-YTSuEfSPXEM6TAQ?e=Fo4v3n)
+      and save it in the school's SharePoint folder.
+    actions:
+      - title: Complete the Single worksheet
+        hint:
+          Fill out the Single worksheet and confirm the information in it is
+          correct.
+      - title: Email the Single worksheet to your line manager for approval
+        hint:
+          Your line manager will reply by email to tell you if they've approved
+          the worksheet.
+      - title:
+          Send the approved Single worksheet to Academies Operational Practice
+          Unit
+        hint: |
+          Send the Single worksheet and, if needed, the Direction to transfer and Trust modification order to [academiesdelivery.operations@education.gov.uk.](mailto:academiesdelivery.operations@education.gov.uk)
+        guidance_summary: When you must complete this
+        guidance_text: |
+          The deadline for this work is normally 5 working days after the
+          Baseline is confirmed.
+
+          The Academies Operational Practice Unit sent an email linking to the
+          baseline. The deadline for the Single worksheet will be in that
+          email.
+
+  - title: Complete the final checklist with external stakeholders
+    hint: |
+      Confirm with the school and trust that they have completed all the tasks
+      on the checklist and save their responses in SharePoint.
+    actions:
+      - title: Send the final checklist email to the school or trust
+        guidance_summary: How to structure your email
+        guidance_text: |
+          You should ask them to check and confirm they've completed all tasks.
+
+          You can [use the email template (opens in a new tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BA4E75C24-7E01-4732-9065-EEC840AFE132%7D&file=RSCApprovaltoAcademyOpeningDeskInstructions20200922.docx&action=default&mobileredirect=true) on pages 19 and 20 in your
+          desk instructions to help structure your email.
+
+      - title: Confirm the school has completed the tasks on the checklist
+        guidance_summary: What to do if the school has not completed the tasks
+        guidance_text: |
+          Depending on the scale of the outstanding tasks, you may need to move the target conversion date to the next month, or later.
+
+          If the conversion date needs to be moved, you must:
+
+          1. inform the school of the outstanding tasks
+          2. agree a new target conversion date
+          3. tell the Academies Operational Practice Unit by email
+          4. remove the school from the baseline
+          5. change the date in KIM
+          6. inform the regional delivery officer who started on this project
+
+      - title: Save the responses to the checklist in SharePoint
+  - title: Confirm all conditions have been met
+    hint: |
+      The deadline to confirm all conditions have been met will be in the
+      Baseline email you received. The school will not be able to open on the
+      target conversion date unless all conditions have been met.
     actions:
       - title:
-          Confirm the school can convert to the trust on the agreed date (1st of
-          the folloiwng month)
-      - title: Confirm the new URN number
-      - title: Send signed and sealed documents back to Trust and solicitor team
-      - title: Send blank grant expenditure certificate to complete
+          Email Academies Operational Practice Unit to confirm all conditions
+          have been met
+        guidance_summary: How to confirm if conditions have been met
+        guidance_text: |
+
+          You must email the Academies Operational Practice Unit at
+          [academiesdelivery.operations@education.gov.uk](academiesdelivery.operations@education.gov.uk)
+          to confirm if all conditions are met for this school and it will open
+          as an academy on the target conversion date.
+
+          The email only needs to confirm if all conditions have been met, or
+          not. You do not need to go into detail.
+
+          Things you'll need to check to confirm if all conditions have been met
+          include:
+
+          * commercial transfer agreement signed
+          * leases agreed and signed
+          * risk protection arrangement in place and insurer confirmed
+          * relevant documents signed and sealed
+
+          ### What to do if conditions are not met
+
+          All conditions must be met before a school can open as an academy.
+
+          If there are outstanding conditions, you must:
+
+          * inform the school of the outstanding tasks
+          * agree a new target conversion date
+          * tell the Academies Operational Practice Unit by email
+          at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
+          * remove the school from the Baseline
+          * change the date in KIM
+          * inform the regional delivery officer who started on this project
+
+          Usually, the date will be moved to the first day of the next month.
+          Sometimes you may find that the school and trust need more time. You
+          can move the opening to a later date if needed.
+
+          If the opening date changes, any documents that reference the opening
+          date will need to be updated and re-signed.
+
+  - title: Confirm opening date with the school
+    hint: |
+      Once you've confirmed that all conditions have been met, contact the
+      school and trust to tell them they can convert on the target conversion
+      date.
+    actions:
+      - title: Email the school and share documents
+        guidance_summary: What to tell the school
+        guidance_text: |
+          Email your main contact at the school or trust.
+
+          Your email should include:
+
+          * confirmation the school will convert on the target date
+          * the school's new URN (unique reference number)
+          * all signed and sealed legal documents
+
+          You also need give them a Grant expenditure certificate and tell them to complete it.
+
+          It can be helpful to mention that they'll soon get some welcome
+          emails from other teams in government. These will contain more
+          information about funding and opening as an academy.
