@@ -5,5 +5,10 @@ FactoryBot.define do
     target_completion_date { (Date.today + 2.years).at_beginning_of_month }
     team_leader { association :user, :team_leader, email: "team-leader-#{SecureRandom.uuid}@education.gov.uk" }
     regional_delivery_officer { association :user, :regional_delivery_officer, email: "regional-delivery-officer-#{SecureRandom.uuid}@education.gov.uk" }
+    advisory_board_date { (Date.today - 2.weeks) }
+
+    trait :with_conditions do
+      advisory_board_conditions { "The following must be met:\n 1. Must be red\n2. Must be blue\n" }
+    end
   end
 end

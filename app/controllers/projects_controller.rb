@@ -62,7 +62,9 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(
       :urn,
       :incoming_trust_ukprn,
-      :target_completion_date
+      :target_completion_date,
+      :advisory_board_date,
+      :advisory_board_conditions
     )
   end
 
