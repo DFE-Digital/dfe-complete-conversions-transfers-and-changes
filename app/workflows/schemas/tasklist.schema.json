@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "uk.gov.education/rsd/cctc/tasklist",
+  "title": "Task list",
+  "description": "A top-level definition of a task list.",
+  "type": "object",
+  "properties": {
+    "sections": {
+      "title": "List of sections",
+      "description": "A list of names of section definition files, in the order they should appear.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$",
+        "examples": ["kickoff", "clear-legal-docs"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

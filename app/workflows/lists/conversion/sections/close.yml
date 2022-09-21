@@ -1,0 +1,27 @@
+title: Project close
+tasks:
+  - title: Redact, save and share documents
+    actions:
+      - title: Redact required documents and save in SharePoint
+      - title:
+          Send redacted documents to "Funding Agreements converter" mail box
+      - title: Ensure all documents and key information are saved in SharePoint
+
+  - title: ESFA final checks and handover
+    actions:
+      - title: Ensure all ESFA fields are up to date in KIM
+      - title: Add any ESFA handover comments in KIM
+      - title: Ensure single worksheet is up to date
+
+  - title: Handback with regional delivery officer
+    actions:
+      - title: Complete handback proforma
+      - title: Save handback proforma in SharePoint
+      - title: Send completed handback proforma to regional delivery officer
+
+  - title: Complete processing of conversion grant
+    actions:
+      - title: Receive completed grant certificate from trust
+      - title: Save completed grant certificate to SharePoint
+      - title:
+          Update the "support grant certificate assurance report spreadsheet"

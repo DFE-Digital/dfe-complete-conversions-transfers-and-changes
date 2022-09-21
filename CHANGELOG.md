@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Show the region on the project summary and school details.
 - Notes can be edited by the user who created them
 - Notes can be deleted by the user who created them
+- Added richer documentation for the workflow schemas
 
 ### Changed
 
@@ -46,6 +47,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Improve the layout of the task page.
 - Update the content for the "Project kick-off" section of the task list.
 - Note bodies are parsed via Markdown to allow rich formatting.
+- Workflow definition files are now split by section, rather than being
+  monolithic.
 
 ### Fixed
 
