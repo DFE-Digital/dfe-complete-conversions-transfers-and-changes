@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
-  resources :projects do
+  resources :projects, only: %i[index show new create] do
     get "information", to: "project_information#show"
 
     resources :tasks, only: %i[show update]
