@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :find_task
 
   def show
+    render "tasks/clear_legal_documents/show" if @task.clear_legal_documents_type?
   end
 
   def update

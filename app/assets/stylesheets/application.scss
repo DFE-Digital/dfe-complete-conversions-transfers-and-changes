@@ -20,11 +20,13 @@ $govuk-global-styles: true;
 }
 
 .task-checkboxes {
-  .govuk-checkboxes__item,
-  .govuk-checkboxes__divider {
+  .govuk-checkboxes__item {
     margin-bottom: govuk-spacing(9);
   }
+}
 
+.task-checkboxes,
+.clear-legal-documents-task-checkboxes {
   .govuk-checkboxes__item {
     label {
       @extend .govuk-\!-font-weight-bold;

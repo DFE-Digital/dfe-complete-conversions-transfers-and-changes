@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :section, class: "Section" do
-    title { "Clear legal documents" }
+    title { "Project kick-off" }
     order { 0 }
     project
   end

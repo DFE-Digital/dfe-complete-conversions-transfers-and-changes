@@ -9,7 +9,8 @@ RSpec.describe TasksController, type: :request do
   end
 
   describe "#show" do
-    let(:task) { create(:task) }
+    let(:section) { create(:section, title: "Project kick-off") }
+    let(:task) { create(:task, section: section) }
     let(:project_id) { task.section.project.id }
     let(:task_id) { task.id }
 
@@ -26,9 +27,19 @@ RSpec.describe TasksController, type: :request do
       it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
     end
 
-    it "returns a successful response" do
+    it "returns a successful response and renders the default template" do
       expect(subject).to have_http_status :success
       expect(subject.body).to include("Have you cleared the Supplementary funding agreement?")
+      expect(subject).to render_template :show
+    end
+
+    context "when the task is not in the 'Clear legal documents' section" do
+      let(:section) { create(:section, title: "Clear legal documents") }
+
+      it "returns a successful response and renders the clear_legal_documents_show template" do
+        expect(subject).to have_http_status :success
+        expect(subject).to render_template "clear_legal_documents/show"
+      end
     end
 
     it "can render actions with and without hint text" do
