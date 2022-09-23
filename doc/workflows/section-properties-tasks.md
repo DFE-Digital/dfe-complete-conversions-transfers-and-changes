@@ -1,7 +1,7 @@
 # Tasks Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks
+/schemas/section#/properties/tasks
 ```
 
 A list of tasks within a section.

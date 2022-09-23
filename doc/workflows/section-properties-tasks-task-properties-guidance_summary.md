@@ -1,7 +1,7 @@
 # Untitled string in Section Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_summary
+/schemas/section#/properties/tasks/items/properties/guidance_summary
 ```
 
 

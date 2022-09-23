@@ -1,7 +1,7 @@
 # Untitled string in Task list Schema
 
 ```txt
-uk.gov.education/rsd/cctc/tasklist#/properties/sections/items
+/schemas/tasklist#/properties/sections/items
 ```
 
 

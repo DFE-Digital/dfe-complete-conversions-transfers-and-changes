@@ -1,7 +1,7 @@
 # List of sections Schema
 
 ```txt
-uk.gov.education/rsd/cctc/tasklist#/properties/sections
+/schemas/tasklist#/properties/sections
 ```
 
 A list of names of section definition files, in the order they should appear.

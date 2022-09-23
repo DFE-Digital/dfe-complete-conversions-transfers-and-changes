@@ -1,7 +1,7 @@
 # Section Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section
+/schemas/section
 ```
 
 A single section within a task list.
@@ -16,10 +16,10 @@ A single section within a task list.
 
 # Section Properties
 
-| Property        | Type     | Required | Nullable       | Defined by                                                                                   |
-| :-------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------- |
-| [title](#title) | `string` | Required | cannot be null | [Section](section-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/title") |
-| [tasks](#tasks) | `array`  | Optional | cannot be null | [Section](section-properties-tasks.md "uk.gov.education/rsd/cctc/section#/properties/tasks") |
+| Property        | Type     | Required | Nullable       | Defined by                                                                  |
+| :-------------- | :------- | :------- | :------------- | :-------------------------------------------------------------------------- |
+| [title](#title) | `string` | Required | cannot be null | [Section](section-properties-title.md "/schemas/section#/properties/title") |
+| [tasks](#tasks) | `array`  | Optional | cannot be null | [Section](section-properties-tasks.md "/schemas/section#/properties/tasks") |
 
 ## title
 
@@ -33,7 +33,7 @@ A single section within a task list.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/title")
+*   defined in: [Section](section-properties-title.md "/schemas/section#/properties/title")
 
 ### title Type
 
@@ -51,7 +51,7 @@ A list of tasks within a section.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks.md "uk.gov.education/rsd/cctc/section#/properties/tasks")
+*   defined in: [Section](section-properties-tasks.md "/schemas/section#/properties/tasks")
 
 ### tasks Type
 

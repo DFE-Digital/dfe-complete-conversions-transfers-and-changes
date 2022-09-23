@@ -1,5 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "/schemas/actions/single-checkbox",
+  "title": "Single-checkbox action",
+  "description": "An action represented by a single checkbox. Considered complete when the box is checked.",
   "type": "object"
 }

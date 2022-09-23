@@ -1,7 +1,7 @@
 # Task Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items
+/schemas/section#/properties/tasks/items
 ```
 
 A task on the task list, which contains one or more actions.
@@ -16,14 +16,14 @@ A task on the task list, which contains one or more actions.
 
 # items Properties
 
-| Property                               | Type      | Required | Nullable       | Defined by                                                                                                                                                      |
-| :------------------------------------- | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [title](#title)                        | `string`  | Required | cannot be null | [Section](section-properties-tasks-task-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/title")                       |
-| [hint](#hint)                          | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-hint.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/hint")                         |
-| [guidance\_summary](#guidance_summary) | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-guidance_summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_summary") |
-| [guidance\_text](#guidance_text)       | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-guidance_text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_text")       |
-| [optional](#optional)                  | `boolean` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-optional.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional")                 |
-| [actions](#actions)                    | `array`   | Required | cannot be null | [Section](section-properties-tasks-task-properties-actions.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions")                   |
+| Property                               | Type      | Required | Nullable       | Defined by                                                                                                                                     |
+| :------------------------------------- | :-------- | :------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| [title](#title)                        | `string`  | Required | cannot be null | [Section](section-properties-tasks-task-properties-title.md "/schemas/section#/properties/tasks/items/properties/title")                       |
+| [hint](#hint)                          | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-hint.md "/schemas/section#/properties/tasks/items/properties/hint")                         |
+| [guidance\_summary](#guidance_summary) | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-guidance_summary.md "/schemas/section#/properties/tasks/items/properties/guidance_summary") |
+| [guidance\_text](#guidance_text)       | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-guidance_text.md "/schemas/section#/properties/tasks/items/properties/guidance_text")       |
+| [optional](#optional)                  | `boolean` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-optional.md "/schemas/section#/properties/tasks/items/properties/optional")                 |
+| [actions](#actions)                    | `array`   | Required | cannot be null | [Section](section-properties-tasks-task-properties-actions.md "/schemas/section#/properties/tasks/items/properties/actions")                   |
 
 ## title
 
@@ -37,7 +37,7 @@ A task on the task list, which contains one or more actions.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/title")
+*   defined in: [Section](section-properties-tasks-task-properties-title.md "/schemas/section#/properties/tasks/items/properties/title")
 
 ### title Type
 
@@ -55,7 +55,7 @@ A task on the task list, which contains one or more actions.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-hint.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/hint")
+*   defined in: [Section](section-properties-tasks-task-properties-hint.md "/schemas/section#/properties/tasks/items/properties/hint")
 
 ### hint Type
 
@@ -73,7 +73,7 @@ A task on the task list, which contains one or more actions.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-guidance_summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_summary")
+*   defined in: [Section](section-properties-tasks-task-properties-guidance_summary.md "/schemas/section#/properties/tasks/items/properties/guidance_summary")
 
 ### guidance\_summary Type
 
@@ -91,7 +91,7 @@ A task on the task list, which contains one or more actions.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-guidance_text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_text")
+*   defined in: [Section](section-properties-tasks-task-properties-guidance_text.md "/schemas/section#/properties/tasks/items/properties/guidance_text")
 
 ### guidance\_text Type
 
@@ -109,7 +109,7 @@ A task on the task list, which contains one or more actions.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-optional.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional")
+*   defined in: [Section](section-properties-tasks-task-properties-optional.md "/schemas/section#/properties/tasks/items/properties/optional")
 
 ### optional Type
 
@@ -127,7 +127,7 @@ A list of actions which collectively make up a task.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions")
+*   defined in: [Section](section-properties-tasks-task-properties-actions.md "/schemas/section#/properties/tasks/items/properties/actions")
 
 ### actions Type
 
