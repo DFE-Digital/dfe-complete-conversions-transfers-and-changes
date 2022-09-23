@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "uk.gov.education/rsd/cctc/section",
+  "$id": "/schemas/section",
   "title": "Section",
   "description": "A single section within a task list.",
   "type": "object",

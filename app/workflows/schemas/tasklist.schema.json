@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "uk.gov.education/rsd/cctc/tasklist",
+  "$id": "/schemas/tasklist",
   "title": "Task list",
   "description": "A top-level definition of a task list.",
   "type": "object",
