@@ -5,10 +5,10 @@
 
       <span class="govuk-caption-m">URN <%= @project.urn %></span>
       <%= form.govuk_collection_select :regional_delivery_officer_id, @regional_delivery_officers, :id, :full_name,
-                                       label: { text: t("assignment.assign_regional_delivery_officer.title", school_name: @project.establishment.name),
-                                                tag: "h1",
-                                                size: "l" },
-                                       options: { include_blank: true, selected: @project.regional_delivery_officer&.id } %>
+            label: {text: t("assignment.assign_regional_delivery_officer.title", school_name: @project.establishment.name),
+                    tag: "h1",
+                    size: "l"},
+            options: {include_blank: true, selected: @project.regional_delivery_officer&.id} %>
 
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", project_information_path(@project) %>
