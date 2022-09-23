@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated content for the tasks in the 'Get ready for opening' section.
 - The "Not applicable" checkbox now sits at the top of the Task view, underneath
   the Task-level hint.
+- User assignment drop-downs and autocomplete components show the user's full
+  name and email address.
 
 ### Fixed
 
