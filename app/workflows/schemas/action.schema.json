@@ -5,15 +5,30 @@
   "description": "A single action which can be taken within a task.",
   "type": "object",
   "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["single-checkbox"],
+      "default": "single-checkbox"
+    },
     "title": { "type": "string" },
     "hint": { "type": "string" },
     "guidance_summary": { "type": "string" },
     "guidance_text": { "type": "string" }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "single-checkbox" } }
+      },
+      "then": {
+        "$ref": "/schemas/actions/single-checkbox"
+      }
+    }
+  ],
   "examples": [
     {
-      "title": "Check document validity",
-      "hint": "Check that sections A, B and C are completed.",
+      "title": "Check new URN has been issued",
+      "hint": "Check that the URN for the new school has been issued.",
       "guidance_summary": "What to check?",
       "guidance_text": "You can find [a list of what to check online](https://example.com)."
     }
