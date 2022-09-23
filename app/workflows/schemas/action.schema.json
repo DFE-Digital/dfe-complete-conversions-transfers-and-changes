@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/action",
+  "title": "Action",
+  "description": "A single action which can be taken within a task.",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "hint": { "type": "string" },
+    "guidance_summary": { "type": "string" },
+    "guidance_text": { "type": "string" }
+  },
+  "examples": [
+    {
+      "title": "Check document validity",
+      "hint": "Check that sections A, B and C are completed.",
+      "guidance_summary": "What to check?",
+      "guidance_text": "You can find [a list of what to check online](https://example.com)."
+    }
+  ],
+  "required": ["title"],
+  "additionalProperties": false
+}
