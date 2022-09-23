@@ -1,7 +1,7 @@
 # Untitled boolean in Section Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional
+/schemas/section#/properties/tasks/items/properties/optional
 ```
 
 

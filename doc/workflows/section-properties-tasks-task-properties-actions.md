@@ -1,7 +1,7 @@
 # Actions Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions
+/schemas/section#/properties/tasks/items/properties/actions
 ```
 
 A list of actions which collectively make up a task.
