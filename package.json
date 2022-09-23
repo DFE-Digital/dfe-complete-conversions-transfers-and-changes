@@ -6,7 +6,7 @@
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
     "workflows:validate:tasklists": "ajv -s app/workflows/schemas/tasklist.schema.json -d app/workflows/lists/**/tasklist.yml --spec=draft2020",
-    "workflows:validate:sections": "ajv -s app/workflows/schemas/section.schema.json -d 'app/workflows/sections/**/sections/*.yml' --spec=draft2020",
+    "workflows:validate:sections": "ajv -s app/workflows/schemas/section.schema.json -d 'app/workflows/lists/**/sections/*.yml' --spec=draft2020",
     "workflows:docs:generate": "jsonschema2md -d app/workflows/schemas/ -o doc/workflows -f yaml -x -"
   },
   "devDependencies": {
