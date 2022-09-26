@@ -4,7 +4,10 @@
       <%= form.govuk_error_summary %>
 
       <span class="govuk-caption-m">URN <%= @project.urn %></span>
-      <%= form.govuk_collection_select :caseworker_id, @caseworkers, :id, :full_name,
+      <%= form.govuk_collection_select :caseworker_id,
+            @caseworkers,
+            :id,
+            ->(user) { full_name_and_email(user) },
             label: {text: t("assignment.assign_caseworker.title", school_name: @project.establishment.name),
                     tag: "h1",
                     size: "l"},

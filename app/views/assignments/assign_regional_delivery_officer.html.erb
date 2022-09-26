@@ -4,7 +4,10 @@
       <%= form.govuk_error_summary %>
 
       <span class="govuk-caption-m">URN <%= @project.urn %></span>
-      <%= form.govuk_collection_select :regional_delivery_officer_id, @regional_delivery_officers, :id, :full_name,
+      <%= form.govuk_collection_select :regional_delivery_officer_id,
+            @regional_delivery_officers,
+            :id,
+            ->(user) { full_name_and_email(user) },
             label: {text: t("assignment.assign_regional_delivery_officer.title", school_name: @project.establishment.name),
                     tag: "h1",
                     size: "l"},
