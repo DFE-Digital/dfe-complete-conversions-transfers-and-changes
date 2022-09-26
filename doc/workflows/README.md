@@ -4,6 +4,8 @@
 
 *   [Action](./action.md "A single action which can be taken within a task") – `/schemas/action`
 
+*   [Multi-checkbox action](./multi-checkbox.md "An action represented by multiple checkboxes") – `/schemas/actions/multi-checkbox`
+
 *   [Section](./section.md "A single section within a task list") – `/schemas/section`
 
 *   [Single-checkbox action](./single-checkbox.md "An action represented by a single checkbox") – `/schemas/actions/single-checkbox`
@@ -21,6 +23,10 @@
 *   [Actions](./section-properties-tasks-task-properties-actions.md "A list of actions which collectively make up a task") – `/schemas/section#/properties/tasks/items/properties/actions`
 
 *   [List of sections](./tasklist-properties-list-of-sections.md "A list of names of section definition files, in the order they should appear") – `/schemas/tasklist#/properties/sections`
+
+*   [Sub-actions](./multi-checkbox-properties-sub-actions.md "A list of the individual items to appear as checkboxes within the action") – `/schemas/actions/multi-checkbox#/properties/sub-actions`
+
+*   [Sub-actions](./multi-checkbox-properties-sub-actions.md "A list of the individual items to appear as checkboxes within the action") – `/schemas/actions/multi-checkbox#/properties/sub-actions`
 
 *   [Tasks](./section-properties-tasks.md "A list of tasks within a section") – `/schemas/section#/properties/tasks`
 

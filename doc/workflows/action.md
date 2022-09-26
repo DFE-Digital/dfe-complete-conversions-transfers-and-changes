@@ -18,6 +18,8 @@ all of
 
 *   [Untitled undefined type in Action](action-allof-0.md "check type definition")
 
+*   [Untitled undefined type in Action](action-allof-1.md "check type definition")
+
 ## Action Examples
 
 ```yaml
