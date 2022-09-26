@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "/schemas/actions/multi-checkbox",
+  "title": "Multi-checkbox action",
+  "description": "An action represented by multiple checkboxes. Considered complete when all boxes in the action are checked.",
+  "type": "object",
+  "properties": {
+    "sub-actions": {
+      "title": "Sub-actions",
+      "description": "A list of the individual items to appear as checkboxes within the action.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2
+    }
+  },
+  "examples": [
+    {
+      "title": "Check the document has been signed and sealed",
+      "sub-actions": ["Document has been signed", "Document has been sealed"]
+    }
+  ],
+  "required": ["sub-actions"]
+}

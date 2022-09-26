@@ -23,6 +23,15 @@
       "then": {
         "$ref": "/schemas/actions/single-checkbox"
       }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "multi-checkbox" } },
+        "required": ["type"]
+      },
+      "then": {
+        "$ref": "/schemas/actions/multi-checkbox"
+      }
     }
   ],
   "examples": [
