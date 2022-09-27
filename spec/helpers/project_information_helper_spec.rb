@@ -38,14 +38,6 @@ RSpec.describe ProjectInformationHelper, type: :helper do
       end
     end
 
-    context "when full name is nil" do
-      let(:user) { build(:user, first_name: nil, last_name: nil) }
-
-      it "returns the email address" do
-        expect(subject).to eq "user@education.gov.uk"
-      end
-    end
-
     context "when full name is present" do
       let(:user) { build(:user) }
 
