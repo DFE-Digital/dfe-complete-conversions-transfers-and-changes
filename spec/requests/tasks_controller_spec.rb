@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe TasksController, type: :request do
-  let(:user) { User.create!(email: "user@education.gov.uk") }
+  let(:user) { create(:user) }
 
   before do
     mock_successful_authentication(user.email)

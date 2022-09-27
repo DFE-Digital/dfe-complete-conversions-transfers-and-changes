@@ -51,6 +51,16 @@ RSpec.describe User do
     end
   end
 
+  describe "Validations" do
+    describe "#first_name" do
+      it { is_expected.to validate_presence_of(:first_name) }
+    end
+
+    describe "#last_name" do
+      it { is_expected.to validate_presence_of(:first_name) }
+    end
+  end
+
   describe "#full_name" do
     subject { user.full_name }
 

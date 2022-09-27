@@ -7,6 +7,9 @@ class User < ApplicationRecord
   scope :regional_delivery_officers, -> { where(regional_delivery_officer: true).order_by_first_name }
   scope :caseworkers, -> { where(caseworker: true).order_by_first_name }
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def full_name
     "#{first_name} #{last_name}" if first_name.present? && last_name.present?
   end
