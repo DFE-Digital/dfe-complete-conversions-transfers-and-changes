@@ -53,9 +53,4 @@ tasks.
 
 ## Add yourself as a user
 
-The service will need to recognise you as a user, use the `users:create` task to
-add your DfE email address.
-
-```bash
-bin/rails users:create EMAIL_ADDRESS=you@education.gov.uk
-```
+[See 'Creating a new user'](/doc/users-accounts.md#creating-a-new-user)
