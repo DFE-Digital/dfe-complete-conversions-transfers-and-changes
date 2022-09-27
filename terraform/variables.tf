@@ -28,9 +28,10 @@ variable "container_command" {
   type        = list(any)
 }
 
-variable "container_environment_variables" {
-  description = "Container environment variables"
+variable "container_secret_environment_variables" {
+  description = "Container secret environment variables"
   type        = map(string)
+  sensitive   = true
 }
 
 variable "enable_mssql_database" {
