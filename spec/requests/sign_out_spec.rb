@@ -5,7 +5,7 @@ RSpec.describe "Sign out" do
     let(:user_email_address) { "user@education.gov.uk" }
 
     before do
-      User.create!(email: user_email_address)
+      create(:user)
       OmniAuth.config.mock_auth[:azure_activedirectory_v2] = OmniAuth::AuthHash.new({
         info: {
           email: user_email_address

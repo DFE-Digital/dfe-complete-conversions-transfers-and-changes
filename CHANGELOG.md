@@ -26,6 +26,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the Task-level hint.
 - User assignment drop-downs and autocomplete components show the user's full
   name and email address.
+- Users first name and last name are now required. Any fallbacks, which show the
+  user's email address when first name and last name are absent, have been
+  removed.
 
 ### Fixed
 

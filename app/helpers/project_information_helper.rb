@@ -8,8 +8,6 @@ module ProjectInformationHelper
   def display_name(user)
     return t("project_information.show.project_details.rows.unassigned") if user.nil?
 
-    return user.email if user.full_name.blank?
-
     user.full_name
   end
 

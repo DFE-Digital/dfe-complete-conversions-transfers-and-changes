@@ -7,7 +7,7 @@ RSpec.feature "Users can create and view and delete contacts" do
   end
 
   let!(:contact) { create(:contact, project: project) }
-  let(:user) { User.create!(email: "user@education.gov.uk") }
+  let(:user) { create(:user) }
   let(:project) { create(:project) }
   let(:project_id) { project.id }
 

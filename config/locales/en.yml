@@ -47,7 +47,7 @@ en:
     not_applicable: Not applicable
     users:
       create:
-        error: You must provide a users email address e.g. bin/rails users:create EMAIL_ADDRESS=name@example.com
+        error: You must provide all arguments
     user_importer:
       import:
         error: You must provide a path

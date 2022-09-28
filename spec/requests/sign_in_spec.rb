@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Sign in" do
-  let(:user) { User.create!(email: "user@education.gov.uk") }
+  let(:user) { create(:user) }
 
   context "when the user is signed out" do
     it "redirects them to the sign in page and shows a helpful message" do
@@ -27,10 +27,7 @@ RSpec.describe "Sign in" do
   end
 
   context "when the users is not known by the application" do
-    before do
-      User.create!(email: "another.user@education.gov.uk")
-      mock_successful_authentication("user@education.gov.uk")
-    end
+    before { mock_successful_authentication("user@education.gov.uk") }
 
     it "redirects to the sign in page and shows a helpful message" do
       get "/auth/azure_activedirectory_v2/callback"

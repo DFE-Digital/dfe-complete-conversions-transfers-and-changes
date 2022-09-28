@@ -46,11 +46,18 @@ Caseworkers can:
 
 ## Creating a new user
 
-A basic user with no authorisation can be created:
+The service will need to recognise you as a user, use the `users:create` task to
+add your DfE email address. This will create a basic user with no assigned
+roles.
+
+You must pass your email address, first name, and last name as comma separated
+arguments. For example:
 
 ```bash
-bin/rails users:create EMAIL_ADDRESS=user.name@education.gov.uk
+bin/rails users:create["john.doe@education.gov.uk","John","Doe"]
 ```
+
+> **NOTE:** In some shells, such as Zsh, square brackets must be escaped.
 
 At least the `caseworker` role will need to be assigned to the new user on the
 Rails console:
@@ -58,7 +65,7 @@ Rails console:
 ```bash
 bin/rails console
 
-User.find_by(email: "user.name@education.gov.uk").update(caseworker: true)
+User.find_by(email: "john.doe@education.gov.uk").update(caseworker: true)
 ```
 
 ## Importing users in bulk
