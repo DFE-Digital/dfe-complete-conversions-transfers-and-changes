@@ -8,4 +8,11 @@ module ApplicationHelper
 
     sanitize(rendered_markdown, attributes: default_attributes.merge(additional_attributes))
   end
+
+  def safe_link_to(body, url)
+    allowed_attributes = %w[href target]
+
+    link = link_to(body, url, target: :_blank)
+    sanitize(link, attributes: allowed_attributes)
+  end
 end

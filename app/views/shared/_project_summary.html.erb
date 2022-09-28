@@ -22,8 +22,8 @@
             row.value { @project.establishment.region_name }
           end
           summary_list.row do |row|
-            row.key { t("project.summary.sharepoint_link.title") }
-            row.value { link_to(@project.establishment_sharepoint_link, @project.establishment_sharepoint_link, target: :_blank) }
+            row.key { t("project.summary.establishment_sharepoint_link.title") }
+            row.value { safe_link_to(@project.establishment_sharepoint_link, @project.establishment_sharepoint_link) }
           end
         end %>
 

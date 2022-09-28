@@ -37,7 +37,7 @@
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.establishment_sharepoint_link') }
-      row.value { link_to(@project.establishment_sharepoint_link, @project.establishment_sharepoint_link, target: :_blank) }
+      row.value { safe_link_to(@project.establishment_sharepoint_link, @project.establishment_sharepoint_link) }
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.advisory_board_conditions') }
