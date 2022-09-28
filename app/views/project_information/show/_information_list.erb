@@ -36,6 +36,10 @@
       row.value { @project.advisory_board_date }
     end
     summary_list.row do |row|
+      row.key { t('project_information.show.project_details.rows.establishment_sharepoint_link') }
+      row.value { link_to(@project.establishment_sharepoint_link, @project.establishment_sharepoint_link, target: :_blank) }
+    end
+    summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.advisory_board_conditions') }
       row.value { simple_format(@project.advisory_board_conditions, class: "govuk-body") }
     end
