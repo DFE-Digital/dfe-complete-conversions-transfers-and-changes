@@ -45,7 +45,8 @@
               "required": ["title"],
               "dependentRequired": {
                 "guidance_summary": ["guidance_text"]
-              }
+              },
+              "additionalProperties": false
             },
             "minItems": 1
           }
