@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The Handover/new project form collects an establishment SharePoint link.
 - The Project Details section of the Project Information shows the establishment
   SharePoint link.
+- The Project Summary shows the establishment SharePoint link.
 
 ### Changed
 

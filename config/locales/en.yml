@@ -83,6 +83,8 @@ en:
         title: Target conversion date
       region:
         title: Region
+      establishment_sharepoint_link:
+        title: School SharePoint link
     assign:
       team_leader:
         success: Team leader has been assigned successfully

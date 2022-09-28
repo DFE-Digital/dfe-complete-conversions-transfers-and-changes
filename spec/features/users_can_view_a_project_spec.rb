@@ -18,6 +18,7 @@ RSpec.feature "Users can view a project" do
       expect(page).to have_content(project.establishment.local_authority)
       expect(page).to have_content(project.incoming_trust.name)
       expect(page).to have_content(project.establishment.region_name)
+      expect(page).to have_link(project.establishment_sharepoint_link, href: project.establishment_sharepoint_link)
     end
   end
 end
