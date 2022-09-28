@@ -46,7 +46,8 @@
               "dependentRequired": {
                 "guidance_summary": ["guidance_text"]
               }
-            }
+            },
+            "minItems": 1
           }
         },
         "additionalProperties": false,
