@@ -193,6 +193,7 @@ en:
         caseworker_id: Caseworker
         regional_delivery_officer_id: Regional delivery officer
         advisory_board_conditions: Advisory board conditions
+        establishment_sharepoint_link: School SharePoint link
       note:
         body: Enter note
       contact:
@@ -212,6 +213,7 @@ en:
         caseworker_id: The caseworker responsible for this project
         target_completion_date: The target conversion date is always the 1st of the month.
         advisory_board_conditions: If there are conditions to be met as a result of the advisory board.
+        establishment_sharepoint_link: Provide a link to the SharePoint folder for this project. This is where you save all the relevant documents.
       note:
         body: Do not include personal or financial information.
 
@@ -239,6 +241,8 @@ en:
             advisory_board_date:
               blank: Enter a date of advisory board
               must_be_in_the_past: The advisory board date must be in the past
+            establishment_sharepoint_link:
+              blank: Enter a SharePoint link
         note:
           attributes:
             body:

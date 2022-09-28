@@ -41,7 +41,8 @@ class ProjectsController < ApplicationController
       :incoming_trust_ukprn,
       :target_completion_date,
       :advisory_board_date,
-      :advisory_board_conditions
+      :advisory_board_conditions,
+      :establishment_sharepoint_link
     )
   end
 
