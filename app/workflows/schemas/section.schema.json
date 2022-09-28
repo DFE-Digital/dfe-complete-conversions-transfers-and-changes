@@ -42,7 +42,10 @@
                   "guidance_text": "You can find [a list of what to check online](https://example.com)."
                 }
               ],
-              "required": ["title"]
+              "required": ["title"],
+              "dependentRequired": {
+                "guidance_summary": ["guidance_text"]
+              }
             }
           }
         },
