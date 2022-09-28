@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_21_141636) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_28_143711) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_141636) do
     t.text "hint"
     t.string "guidance_summary"
     t.text "guidance_text"
+    t.string "action_type"
     t.index ["task_id"], name: "index_actions_on_task_id"
   end
 

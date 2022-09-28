@@ -29,6 +29,11 @@
               "description": "A single action which can be taken within a task.",
               "type": "object",
               "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["single-checkbox"],
+                  "default": "single-checkbox"
+                },
                 "title": { "type": "string" },
                 "hint": { "type": "string" },
                 "guidance_summary": { "type": "string" },

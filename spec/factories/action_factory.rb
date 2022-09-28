@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :action, class: "Action" do
+    action_type { "single-checkbox" }
     title { "Have you received the land questionnaire?" }
     order { 0 }
     hint { "Select if you have received the land questionnaire" }

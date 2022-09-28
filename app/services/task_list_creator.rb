@@ -1,4 +1,6 @@
 class TaskListCreator
+  DEFAULT_ACTION_TYPE = "single-checkbox".freeze
+
   def call(project, workflow_root:)
     workflow = load_workflow_tasklist_from_root(workflow_root)
 
@@ -35,6 +37,7 @@ class TaskListCreator
 
   private def create_actions_in_task(task_data, task)
     task_data.fetch("actions").each_with_index do |action_data, index|
+      action_data["action_type"] = action_data.delete("type") { |t| DEFAULT_ACTION_TYPE }
       Action.create(action_data.merge({order: index, task_id: task.id}))
     end
   end
