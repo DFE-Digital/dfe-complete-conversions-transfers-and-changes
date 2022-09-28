@@ -23,7 +23,7 @@
           end
           summary_list.row do |row|
             row.key { t("project.summary.establishment_sharepoint_link.title") }
-            row.value { safe_link_to(@project.establishment_sharepoint_link, @project.establishment_sharepoint_link) }
+            row.value { safe_link_to(t("project.summary.establishment_sharepoint_link.value"), @project.establishment_sharepoint_link) }
           end
         end %>
 
