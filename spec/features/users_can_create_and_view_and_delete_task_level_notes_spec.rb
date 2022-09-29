@@ -36,6 +36,8 @@ RSpec.feature "Users can create and view task level notes" do
     click_button("Add note")
 
     expect(page).to have_current_path(project_task_path(project_id, task_id))
+    expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body.delete("*"))
+    expect(page.html).to include("<em>important</em>")
   end
 
   private def expect_page_to_have_note(user:, date:, body:)

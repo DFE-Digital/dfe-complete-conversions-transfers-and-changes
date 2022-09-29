@@ -1,5 +1,20 @@
 <aside>
   <h2 class="govuk-heading-m"><%= t("note.show.task_notes.title") %></h2>
 
-  <%= govuk_button_link_to "Add note", new_project_note_path(task_id: @task.id), secondary: true %>
+  <%= govuk_button_link_to "Add note",
+        new_project_note_path(task_id: @task.id),
+        secondary: true,
+        class: "govuk-!-margin-bottom-3" %>
+
+  <ul class="list-style-none">
+    <% @notes.each do |note| %>
+      <li>
+        <p class="govuk-body govuk-!-margin-bottom-0"><%= note.created_at.to_date.to_formatted_s(:govuk) %></p>
+        <h3 class="govuk-heading-s govuk-!-padding-top-0"><%= note.user.full_name %></h3>
+        <p class="govuk-body"><%= render_markdown(note.body) %></p>
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      </li>
+    <% end %>
+  </ul>
 </aside>
