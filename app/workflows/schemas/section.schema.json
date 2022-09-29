@@ -31,7 +31,7 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "enum": ["single-checkbox"],
+                  "enum": ["single-checkbox", "subheading"],
                   "default": "single-checkbox"
                 },
                 "title": { "type": "string" },
