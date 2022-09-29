@@ -3,22 +3,30 @@ tasks:
   - title: Land questionnaire
     hint: |
       Make sure that any proposals for the land meet legal requirements and Ministerial preferences.
-
-      You can [use the land transfer advice and guidance to check for common problems (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
-    guidance_summary: Help to clear a Land questionnaire
-    guidance_text: |
-      You must [check the school is using the right Land questionnaire (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-questionnaires). There are four different types.
-
-      You need to clear the land questionnaire before the Master funding agreement and the Supplemental funding agreement.
-
-      The Land questionnaire is critical. It is the basis for all land decisions.
-
-      The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.
     actions:
-      - title: Received
-      - title: Cleared
-      - title: Saved in SharePoint
+      - type: subheading
+        title: Check and clear the Land questionnaire
+        hint:
+          You can [use the land transfer advice and guidance to check for common
+          problems (opens in new
+          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
+        guidance_summary: Help to clear a Land questionnaire
+        guidance_text: |
+          You must [check the school is using the right Land questionnaire (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-questionnaires). There are four different types.
 
+          You need to clear the land questionnaire before the Master funding agreement and the Supplemental funding agreement.
+
+          The Land questionnaire is critical. It is the basis for all land decisions.
+
+          The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Signed by school or trust
+      - type: single-checkbox
+        title: Saved in the school's SharePoint folder
   - title: Land registry title plans
     hint:
       Check an official copy of the Title plans for boundary issues and
