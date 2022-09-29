@@ -13,7 +13,7 @@
         <%= render partial: "tasks/shared/not_applicable_checkbox", locals: {task: @task, form: form} %>
 
         <% @task.actions.each do |action| %>
-          <%= render layout: "tasks/shared/action_checkbox", locals: {action: action, form: form} do %>
+          <%= render layout: "tasks/shared/action_#{action.action_type}", locals: {action: action, form: form} do %>
 
             <%= render partial: "tasks/shared/action_hint", locals: {action: action} %>
 
