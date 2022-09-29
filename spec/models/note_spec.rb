@@ -8,6 +8,7 @@ RSpec.describe Note, type: :model do
   describe "Relationships" do
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:task).required(false) }
   end
 
   describe "Validations" do

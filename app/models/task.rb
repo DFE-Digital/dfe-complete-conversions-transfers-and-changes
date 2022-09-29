@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :section
   has_many :actions, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   default_scope { order(order: "asc") }
 
