@@ -30,4 +30,23 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#safe_link_to" do
+    let(:body) { "Link" }
+    let(:url) { "https://example.com" }
+
+    subject { safe_link_to(body, url) }
+
+    context "when the url contains unsafe protocols" do
+      let(:url) { "javascript:alert('malicious')" }
+
+      it "removes unsafe protocols" do
+        expect(subject).to_not include("javascript")
+      end
+    end
+
+    it "adds the target blank attribute" do
+      expect(subject).to include("target=\"_blank\"")
+    end
+  end
 end

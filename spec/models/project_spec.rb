@@ -10,6 +10,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:caseworker_assigned_at).of_type :datetime }
     it { is_expected.to have_db_column(:advisory_board_date).of_type :date }
     it { is_expected.to have_db_column(:advisory_board_conditions).of_type :text }
+    it { is_expected.to have_db_column(:establishment_sharepoint_link).of_type :text }
   end
 
   describe "Relationships" do
@@ -145,6 +146,10 @@ RSpec.describe Project, type: :model do
           expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_in_the_future"))
         end
       end
+    end
+
+    describe "#establishment_sharepoint_link" do
+      it { is_expected.to validate_presence_of :establishment_sharepoint_link }
     end
   end
 
