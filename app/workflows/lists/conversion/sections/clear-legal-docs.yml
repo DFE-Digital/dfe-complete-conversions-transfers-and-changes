@@ -29,21 +29,29 @@ tasks:
         title: Saved in the school's SharePoint folder
   - title: Land registry title plans
     hint:
-      Check an official copy of the Title plans for boundary issues and
-      buildings that have not been excluded.
-    guidance_summary: Help checking the Land registry title plans
-    guidance_text: |
-      Check you have an official copy of the title plans. An official copy will state that it's from the Land Registry, include a title plan and title number.
-
-      It's a good idea to look at the site on Google maps and compare that to the title plan. This can help you find out if there's anything to question on the title plan.
-
-      The boundary should include all school or trust buildings. If the land has become unregistered you should check the title plan.
-
-      Talk to your line manager or the relevant solicitor if you have questions about anything on the title plan.
+      The Land registry title plans are an essential document in all
+      conversions.
     actions:
-      - title: Received
-      - title: Cleared
-      - title: Saved in SharePoint
+      - type: subheading
+        title: Check and clear the Land registry title plans
+        hint:
+          Check an official copy of the title plans for boundary issues and
+          buildings that have not been excluded.
+        guidance_summary: Help checking the Land registry title plans
+        guidance_text: |
+          Check you have an official copy of the title plans. An official copy will state that it's from the Land Registry, include a title plan and title number.
+
+          It's a good idea to look at the site on Google maps and compare that to the title plan. This can help you find out if there's anything to question on the title plan.
+
+          The boundary should include all school or trust buildings. If the land has become unregistered you should check the title plan.
+
+          Talk to your line manager or the relevant solicitor if you have questions about anything on the title plan.
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Saved in the school's SharePoint folder
 
   - title: Supplemental funding agreement
     hint: |
