@@ -56,21 +56,30 @@ tasks:
   - title: Supplemental funding agreement
     hint: |
       Check the Supplemental funding agreement for changes from the model documents.
-
-      You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
-    guidance_summary: Help checking the Supplemental funding agreement
-    guidance_text: |
-      Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
-
-      You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
-
-      We only accept new Supplemental funding agreements that use the 2020 edition of the model documents.
-
-      Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible.
     actions:
-      - title: Received
-      - title: Cleared
-      - title: Saved in SharePoint
+      - type: subheading
+        title: Check and clear the Supplemental funding agreement
+        hint:
+          You can [view the model documents (opens in new
+          tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements)
+          to check for changes.
+        guidance_summary: Help checking the Supplemental funding agreement
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+
+          We only accept new Supplemental funding agreements that use the 2020 edition of the model documents.
+
+          Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible.
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Signed by school or trust
+      - type: single-checkbox
+        title: Saved in the school's SharePoint folder
 
   - title: Church supplemental agreement
     hint: |
