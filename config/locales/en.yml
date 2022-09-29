@@ -246,6 +246,9 @@ en:
               must_be_in_the_past: The advisory board date must be in the past
             establishment_sharepoint_link:
               blank: Enter a SharePoint link
+              invalid: Enter a SharePoint link in the correct format
+              https_only: The SharePoint link must have the https scheme
+              host_not_allowed: Enter a SharePoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
         note:
           attributes:
             body:

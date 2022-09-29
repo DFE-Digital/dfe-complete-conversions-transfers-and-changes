@@ -6,7 +6,7 @@ RSpec.describe UrlValidator do
     Class.new do
       include ActiveModel::Model
       attr_accessor :link
-      validates :link, url: {hostname: "example"}
+      validates :link, url: {hostnames: %w[example another-example]}
     end
   end
 
@@ -40,8 +40,12 @@ RSpec.describe UrlValidator do
   end
 
   context "when the URL matches the hostname and scheme" do
-    it "is valid" do
-      expect(subject.valid?).to be true
+    %w[https://example.com https://another-example.com].each do |url|
+      let(:link) { url }
+
+      it "is valid" do
+        expect(subject.valid?).to be true
+      end
     end
   end
 end

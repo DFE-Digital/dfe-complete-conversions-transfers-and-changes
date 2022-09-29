@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
+
   has_many :sections, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
@@ -11,7 +13,7 @@ class Project < ApplicationRecord
   validates :incoming_trust_ukprn, ukprn: true
   validates :advisory_board_date, presence: true, on: :create
   validates :advisory_board_date, past_date: true
-  validates :establishment_sharepoint_link, presence: true, on: :create
+  validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
 
   validate :first_day_of_month
   validate :target_completion_date_is_in_the_future, on: :create
