@@ -132,3 +132,7 @@ A list of actions which collectively make up a task.
 ### actions Type
 
 `object[]` ([Action](section-properties-tasks-task-properties-actions-action.md))
+
+### actions Constraints
+
+**minimum number of items**: the minimum number of items for this array is: `1`
