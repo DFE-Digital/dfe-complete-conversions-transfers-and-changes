@@ -6,4 +6,8 @@ class Note < ApplicationRecord
   validates :body, presence: true, allow_blank: false
 
   default_scope { order(created_at: "desc") }
+
+  def task_level_note?
+    task.present?
+  end
 end

@@ -33,4 +33,22 @@ RSpec.describe Note, type: :model do
       end
     end
   end
+
+  describe "#task_level_note?" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    subject { note.task_level_note? }
+
+    context "when the Note is not associated with a Task" do
+      let(:note) { create(:note) }
+
+      it { expect(subject).to be false }
+    end
+
+    context "when the Note is associated with a Task" do
+      let(:note) { create(:note, :task_level_note) }
+
+      it { expect(subject).to be true }
+    end
+  end
 end
