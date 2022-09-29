@@ -7,11 +7,11 @@ class Task < ApplicationRecord
   delegate :project, to: :section
 
   def actions_count
-    @actions_count ||= actions.all.count
+    @actions_count ||= actions.where(action_type: "single-checkbox").count
   end
 
   def completed_actions_count
-    @completed_actions_count ||= actions.where(completed: true).count
+    @completed_actions_count ||= actions.where(action_type: "single-checkbox").where(completed: true).count
   end
 
   def clear_legal_documents_type?

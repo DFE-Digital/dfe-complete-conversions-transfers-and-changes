@@ -60,6 +60,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Notes can be edited by the user who created them
 - Notes can be deleted by the user who created them
 - Added richer documentation for the workflow schemas
+- Added new `subheading` action type to support breaking a task into smaller
+  logical sections.
 
 ### Changed
 
@@ -86,6 +88,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Links on the task list now open in a new tab.
 - The name and email address of assigned users is shown on the project
   information tab.
+- Workflow validity checks now correctly enforce limits on guidance text,
+  minimum number of actions and additional properties.
 
 ## [Release 2][release-2]
 

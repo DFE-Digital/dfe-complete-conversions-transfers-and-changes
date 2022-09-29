@@ -1,19 +1,15 @@
-# Actions Schema
+# Untitled undefined type in Section Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions
+uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/dependentRequired
 ```
 
-A list of actions which collectively make up a task.
+
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                                      |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [section.schema.json\*](../../app/workflows/schemas/section.schema.json "open original schema") |
 
-## actions Type
+## dependentRequired Type
 
-`object[]` ([Action](section-properties-tasks-task-properties-actions-action.md))
-
-## actions Constraints
-
-**minimum number of items**: the minimum number of items for this array is: `1`
+unknown
