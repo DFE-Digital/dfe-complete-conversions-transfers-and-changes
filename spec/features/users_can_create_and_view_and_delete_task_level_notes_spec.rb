@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.feature "Users can create and view task level notes" do
   let(:user) { create(:user, email: "user@education.gov.uk") }
-  let(:project) { create(:project) }
+  let(:task) { create(:task) }
+  let(:project) { task.project }
   let(:project_id) { project.id }
   let(:new_note_body) { "Just shared some *important* documents with the solictor." }
-  let(:task) { create(:task) }
   let(:task_id) { task.id }
 
   before do
@@ -38,6 +38,26 @@ RSpec.feature "Users can create and view task level notes" do
     expect(page).to have_current_path(project_task_path(project_id, task_id))
     expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body.delete("*"))
     expect(page.html).to include("<em>important</em>")
+  end
+
+  scenario "User edits a task level note" do
+    visit project_task_path(project_id, task_id)
+
+    expect_page_to_have_note(
+      user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
+    )
+
+    click_link "Change"
+
+    expect(page).to have_current_path(edit_project_note_path(project, Note.first))
+
+    fill_in "Enter note", with: new_note_body
+
+    click_button("Save note")
+
+    expect(page).to have_current_path(project_task_path(project_id, task_id))
+    expect_page_to_have_note(user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: new_note_body.delete("*"))
+    expect(page).to_not have_content("Just had a very interesting phone call with the headteacher about land law")
   end
 
   private def expect_page_to_have_note(user:, date:, body:)

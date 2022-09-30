@@ -13,6 +13,10 @@
         <h3 class="govuk-heading-s govuk-!-padding-top-0"><%= note.user.full_name %></h3>
         <p class="govuk-body"><%= render_markdown(note.body) %></p>
 
+        <% if policy(note).edit? %>
+          <%= govuk_link_to "Change", edit_project_note_path(@task.project, note) %>
+        <% end %>
+
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
       </li>
     <% end %>
