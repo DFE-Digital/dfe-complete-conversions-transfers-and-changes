@@ -9,7 +9,7 @@ class NotesController < ApplicationController
 
   def new
     authorize Note
-    @note = Note.new(project: @project, user_id:)
+    @note = Note.new(project: @project, user_id:, task_id: params[:task_id])
   end
 
   def create
@@ -67,6 +67,6 @@ class NotesController < ApplicationController
   end
 
   private def note_params
-    params.require(:note).permit(:body)
+    params.require(:note).permit(:body, :task_id)
   end
 end

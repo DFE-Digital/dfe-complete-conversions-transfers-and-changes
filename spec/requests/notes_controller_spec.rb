@@ -54,9 +54,10 @@ RSpec.describe NotesController, type: :request do
     let(:project_id) { project.id }
     let(:mock_note) { build(:note) }
     let(:new_note_body) { "Just had an interesting chat about building regulations." }
+    let(:params) { {note: {body: new_note_body}} }
 
     subject(:perform_request) do
-      post project_notes_path(project_id), params: {note: {body: new_note_body}}
+      post project_notes_path(project_id), params: params
       response
     end
 
@@ -84,6 +85,21 @@ RSpec.describe NotesController, type: :request do
 
         expect(Note.count).to be 1
         expect(Note.last.body).to eq(new_note_body)
+        expect(Note.last.task).to be_nil
+      end
+
+      context "when the note has a task_id" do
+        let(:task) { create(:task) }
+        let(:params) { {note: {body: new_note_body, task_id: task.id}} }
+
+        it "saves the note and redirects to the index view with a success message" do
+          expect(subject).to redirect_to(project_notes_path(project.id))
+          expect(request.flash[:notice]).to eq(I18n.t("note.create.success"))
+
+          expect(Note.count).to be 1
+          expect(Note.last.body).to eq(new_note_body)
+          expect(Note.last.task).to eq task
+        end
       end
     end
   end

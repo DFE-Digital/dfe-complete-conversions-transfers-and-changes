@@ -7,6 +7,8 @@
     <%= form_for [@project, @note] do |form| %>
       <%= form.govuk_error_summary %>
 
+      <%= form.hidden_field :task_id %>
+
       <%= form.govuk_text_area :body, label: {tag: "h1", size: "l"} %>
 
       <%= form.govuk_submit t("note.new.save_note_button") do %>

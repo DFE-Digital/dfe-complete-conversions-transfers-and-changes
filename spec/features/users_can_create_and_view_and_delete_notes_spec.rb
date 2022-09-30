@@ -5,7 +5,6 @@ RSpec.feature "Users can create and view notes" do
   let(:project) { create(:project) }
   let(:project_id) { project.id }
   let(:new_note_body) { "Just shared some *important* documents with the solictor." }
-  let(:existing_note_created_at) {}
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
