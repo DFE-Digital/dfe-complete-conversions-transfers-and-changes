@@ -4,22 +4,28 @@ on:
   push:
     branches:
       - main
+
+env:
+  TEST_RELEASE_VERSION: release-3
+
 jobs:
-  build-and-push-image:
-    name: Build and push image
+  build-and-push-image-test:
+    name: Build and push image test
 
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+          ref: "$TEST_RELEASE_VERSION"
 
       - name: Azure Container Registry login
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DEVELOPMENT_AZURE_ACR_CLIENTID }}
-          password: ${{ secrets.DEVELOPMENT_AZURE_ACR_SECRET }}
-          registry: ${{ secrets.DEVELOPMENT_ACR_URL }}
+          username: ${{ secrets.TEST_AZURE_ACR_CLIENTID }}
+          password: ${{ secrets.TEST_AZURE_ACR_SECRET }}
+          registry: ${{ secrets.TEST_ACR_URL }}
 
       - name: Prepare tags
         id: prepare-tags
@@ -29,7 +35,7 @@ jobs:
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           if [ "${{ github.event_name }}" = "push" ]; then
             VERSION=sha-${GITHUB_SHA}
-            TAGS="$TAGS,${DOCKER_IMAGE}:${VERSION}"
+            TAGS="$TAGS,${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${TEST_RELEASE_VERSION}"
           fi
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=deploy-version::${VERSION}
