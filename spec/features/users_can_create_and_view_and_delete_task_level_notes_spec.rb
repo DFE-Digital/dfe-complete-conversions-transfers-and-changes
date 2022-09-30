@@ -13,7 +13,7 @@ RSpec.feature "Users can create and view task level notes" do
     sign_in_with_user(user)
 
     travel_to Date.yesterday do
-      create(:note, user: user, project: project)
+      create(:note, user: user, project: project, task: task)
     end
 
     freeze_time
@@ -21,6 +21,10 @@ RSpec.feature "Users can create and view task level notes" do
 
   scenario "User creates and views task level notes" do
     visit project_task_path(project_id, task_id)
+
+    expect_page_to_have_note(
+      user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
+    )
 
     click_link "Add note" # Link styled as button
 
@@ -31,9 +35,7 @@ RSpec.feature "Users can create and view task level notes" do
 
     click_button("Add note")
 
-    expect(page).to have_current_path(project_notes_path(project_id))
-    expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body.delete("*"))
-    expect(page.html).to include("<em>important</em>")
+    expect(page).to have_current_path(project_task_path(project_id, task_id))
   end
 
   private def expect_page_to_have_note(user:, date:, body:)

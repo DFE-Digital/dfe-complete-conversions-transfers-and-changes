@@ -88,12 +88,12 @@ RSpec.describe NotesController, type: :request do
         expect(Note.last.task).to be_nil
       end
 
-      context "when the note has a task_id" do
+      context "when the note is a task level note" do
         let(:task) { create(:task) }
         let(:params) { {note: {body: new_note_body, task_id: task.id}} }
 
         it "saves the note and redirects to the index view with a success message" do
-          expect(subject).to redirect_to(project_notes_path(project.id))
+          expect(subject).to redirect_to(project_task_path(project.id, task.id))
           expect(request.flash[:notice]).to eq(I18n.t("note.create.success"))
 
           expect(Note.count).to be 1

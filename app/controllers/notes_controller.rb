@@ -19,7 +19,8 @@ class NotesController < ApplicationController
     if @note.valid?
       @note.save
 
-      redirect_to project_notes_path(@project), notice: I18n.t("note.create.success")
+      redirect_path = @note.task_level_note? ? project_task_path(@project, @note.task.id) : project_notes_path(@project)
+      redirect_to(redirect_path, notice: I18n.t("note.create.success"))
     else
       render :new
     end
