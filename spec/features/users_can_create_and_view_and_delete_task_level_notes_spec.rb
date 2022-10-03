@@ -60,6 +60,28 @@ RSpec.feature "Users can create and view task level notes" do
     expect(page).to_not have_content("Just had a very interesting phone call with the headteacher about land law")
   end
 
+  scenario "User deletes a task level note" do
+    visit project_task_path(project_id, task_id)
+
+    expect_page_to_have_note(
+      user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
+    )
+
+    click_link "Change"
+
+    expect(page).to have_current_path(edit_project_note_path(project, Note.first))
+
+    click_link("Delete") # Link styled as button
+
+    expect(page).to have_current_path(project_note_delete_path(project, Note.first))
+    expect(page).to have_content(I18n.t("note.confirm_destroy.title"))
+    expect(page).to have_content(I18n.t("note.confirm_destroy.guidance"))
+
+    click_button("Delete")
+
+    expect(page).to have_current_path(project_task_path(project_id, task_id))
+  end
+
   private def expect_page_to_have_note(user:, date:, body:)
     expect(page).to have_content(user)
     expect(page).to have_content(date)

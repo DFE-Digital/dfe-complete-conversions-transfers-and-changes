@@ -50,7 +50,7 @@ class NotesController < ApplicationController
 
     @note.destroy
 
-    redirect_to project_notes_path(@project), notice: I18n.t("note.destroy.success")
+    redirect_to redirect_path, notice: I18n.t("note.destroy.success")
   end
 
   def confirm_destroy

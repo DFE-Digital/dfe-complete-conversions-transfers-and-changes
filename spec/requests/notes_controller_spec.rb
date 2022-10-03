@@ -250,6 +250,17 @@ RSpec.describe NotesController, type: :request do
 
       expect(Note.where(id: note_id)).to_not exist
     end
+
+    context "when the note is a task level note" do
+      let(:note) { create(:note, :task_level_note, user: user) }
+
+      it "deletes the note and redirects to the index view with a success message" do
+        expect(subject).to redirect_to(project_task_path(project.id, note.task.id))
+        expect(request.flash[:notice]).to eq(I18n.t("note.destroy.success"))
+
+        expect(Note.where(id: note_id)).to_not exist
+      end
+    end
   end
 
   describe "#confirm_destroy" do
