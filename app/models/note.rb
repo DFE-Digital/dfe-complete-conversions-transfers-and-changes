@@ -7,6 +7,8 @@ class Note < ApplicationRecord
 
   default_scope { order(created_at: "desc") }
 
+  scope :project_level_notes, -> { where(task: nil) }
+
   def task_level_note?
     task.present?
   end

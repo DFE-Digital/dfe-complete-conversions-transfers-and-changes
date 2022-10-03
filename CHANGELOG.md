@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- Only project level notes are shown on the notes page.
+
 ## [Release 5][release-5]
 
 ### Changed

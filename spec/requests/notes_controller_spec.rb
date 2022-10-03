@@ -12,6 +12,8 @@ RSpec.describe NotesController, type: :request do
   describe "#index" do
     let(:project) { create(:project) }
     let(:project_id) { project.id }
+    let!(:project_level_note) { create(:note, project: project) }
+    let!(:task_level_note) { create(:note, :task_level_note, project: project) }
 
     subject(:perform_request) do
       get project_notes_path(project_id)
@@ -26,6 +28,8 @@ RSpec.describe NotesController, type: :request do
 
     it "returns a successful response" do
       expect(subject).to have_http_status :success
+      expect(response.body).to include project_level_note.body
+      expect(response.body).not_to include task_level_note.body
     end
   end
 

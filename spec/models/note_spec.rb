@@ -19,10 +19,10 @@ RSpec.describe Note, type: :model do
   end
 
   describe "Scopes" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
     describe "default_scope" do
       before do
-        mock_successful_api_responses(urn: any_args, ukprn: any_args)
-
         freeze_time
         travel_to(Date.yesterday) { create(:note, body: "Yesterday's note.") }
         create(:note, body: "Today's note.")
@@ -30,6 +30,18 @@ RSpec.describe Note, type: :model do
 
       it "orders descending by the 'created_at' attribute" do
         expect(Note.first.body).to eq "Today's note."
+      end
+    end
+
+    describe "project_level_notes" do
+      let!(:project_level_note) { create(:note) }
+      let!(:task_level_note) { create(:note, :task_level_note) }
+
+      subject { Note.project_level_notes }
+
+      it "returns only project level notes" do
+        expect(subject.count).to be 1
+        expect(subject.last).to eq project_level_note
       end
     end
   end

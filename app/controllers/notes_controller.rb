@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :find_project
-  before_action :find_notes, only: :index
+  before_action :find_project_level_notes, only: :index
   after_action :verify_authorized
 
   def index
@@ -63,8 +63,8 @@ class NotesController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
-  private def find_notes
-    @notes = Note.includes([:user]).where(project: @project)
+  private def find_project_level_notes
+    @notes = Note.includes([:user]).where(project: @project).project_level_notes
   end
 
   private def note_params

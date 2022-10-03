@@ -7,6 +7,7 @@ FactoryBot.define do
 
     trait :task_level_note do
       task
+      body { "I really enjoyed performing this task" }
     end
   end
 end
