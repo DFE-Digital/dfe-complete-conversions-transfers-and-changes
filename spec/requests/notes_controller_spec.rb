@@ -56,7 +56,7 @@ RSpec.describe NotesController, type: :request do
   describe "#create" do
     let(:project) { create(:project) }
     let(:project_id) { project.id }
-    let(:mock_note) { build(:note) }
+    let(:mock_note) { build(:note, project: project) }
     let(:new_note_body) { "Just had an interesting chat about building regulations." }
     let(:params) { {note: {body: new_note_body}} }
 

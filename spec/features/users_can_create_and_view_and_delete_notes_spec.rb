@@ -27,6 +27,7 @@ RSpec.feature "Users can create and view notes" do
     click_link "Add note" # Link styled as button
 
     expect(page).to have_current_path(new_project_note_path(project))
+    expect(page).to have_link("Back", href: project_notes_path(project_id))
 
     fill_in "Enter note", with: new_note_body
 
@@ -47,6 +48,7 @@ RSpec.feature "Users can create and view notes" do
     click_link "Edit"
 
     expect(page).to have_current_path(edit_project_note_path(project, Note.first))
+    expect(page).to have_link("Back", href: project_notes_path(project_id))
 
     fill_in "Enter note", with: new_note_body
 

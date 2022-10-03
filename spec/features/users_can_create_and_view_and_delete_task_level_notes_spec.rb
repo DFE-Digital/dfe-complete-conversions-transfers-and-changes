@@ -50,6 +50,7 @@ RSpec.feature "Users can create and view task level notes" do
     click_link "Change"
 
     expect(page).to have_current_path(edit_project_note_path(project, Note.first))
+    expect(page).to have_link("Back", href: project_task_path(project_id, task_id))
 
     fill_in "Enter note", with: new_note_body
 
@@ -70,6 +71,7 @@ RSpec.feature "Users can create and view task level notes" do
     click_link "Change"
 
     expect(page).to have_current_path(edit_project_note_path(project, Note.first))
+    expect(page).to have_link("Back", href: project_task_path(project_id, task_id))
 
     click_link("Delete") # Link styled as button
 

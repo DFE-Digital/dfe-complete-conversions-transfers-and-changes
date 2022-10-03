@@ -26,4 +26,22 @@ RSpec.describe NotesHelper, type: :helper do
       end
     end
   end
+
+  describe "#back_link_destination" do
+    before { mock_successful_api_responses(urn: 123456, ukprn: 10061021) }
+
+    subject { helper.back_link_destination(note) }
+
+    context "when the note is a project level note" do
+      let(:note) { create(:note) }
+
+      it { expect(subject).to eq project_notes_path(note.project) }
+    end
+
+    context "when the note is a task level note" do
+      let(:note) { create(:note, :task_level_note) }
+
+      it { expect(subject).to eq project_task_path(note.project, note.task) }
+    end
+  end
 end
