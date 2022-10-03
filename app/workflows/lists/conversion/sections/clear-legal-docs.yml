@@ -273,22 +273,48 @@ tasks:
 
   - title: Direction to transfer
     hint: |
-      Only foundation schools need a Direction to transfer.
+      A Direction to transfer is only needed when freehold land is owned by a foundation school, governing body or trustees and that land needs to be transferred to the trust or diocese.
 
       You can [search Get Information About Schools (opens in new tab)](https://www.get-information-schools.service.gov.uk/Search) to check if it's needed for this school.
-    guidance_summary: How to clear a Direction to transfer
-    guidance_text: |
-      You should check that information in the Direction to transfer is correct.
-
-      You'll also need to [compare the Direction to transfer against the model documents (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
-
-      Send the Direction to transfer to the Operations team for signing and clearing.
-
-      You can [email the Operations team at academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
-
-      It can take several weeks to hear back from the Operations team.
     optional: true
     actions:
-      - title: Received
-      - title: Cleared
-      - title: Saved in SharePoint
+      - type: subheading
+        title: Check and clear the Direction to transfer
+        hint: |
+          Make sure information in the Direction to transfer is correct and compare it against the model document.
+        guidance_summary: How to clear a Direction to transfer
+        guidance_text: |
+          You should check that information in the Direction to transfer is correct.
+
+          You'll also need to [compare the Direction to transfer against the model documents (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
+
+          Send the Direction to transfer to the Operations team for signing and clearing.
+
+          You can [email the Operations team at academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
+
+          It can take several weeks to hear back from the Operations team.
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Signed by caseworker
+      - type: single-checkbox
+        title: Saved in the school's SharePoint folder
+      - type: subheading
+        title: Signed by the Secretary of State
+        hint: |
+          Send the Direction to transfer to the Academies Operational Practice Unit.
+        guidance_summary: How to get the Direction to transfer signed
+        guidance_text: |
+          The Academies Operational Practice Unit will arrange for the Direction to transfer to be signed by the deputy director or a grade 6 team member, on behalf of the Secretary of State.
+
+          You can email the Academies Operational Practice Unit at
+          [mailto:academiesdelivery.operations@education.gov.uk](academiesdelivery.operations@education.gov.uk).
+
+          It can take several weeks to hear back from the Academies Operational
+          Practice Unit.
+      - type: single-checkbox
+        title: Sent to Academies Operational Practice Unit
+      - type: single-checkbox
+        title: Document signed on behalf of the Secretary of State
