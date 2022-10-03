@@ -3,6 +3,11 @@ variable "environment" {
   type        = string
 }
 
+variable "tfvars_filename" {
+  description = "tfvars filename. This file is uploaded and stored encrupted within Key Vault, to ensure that the latest tfvars are stored in a shared place."
+  type        = string
+}
+
 variable "project_name" {
   description = "Project name. Will be used along with `environment` as a prefix for all resources."
   type        = string
