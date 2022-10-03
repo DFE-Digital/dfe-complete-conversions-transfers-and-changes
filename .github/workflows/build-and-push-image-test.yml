@@ -5,12 +5,10 @@ on:
     branches:
       - main
 
-env:
-  TEST_RELEASE_VERSION: release-3
-
 jobs:
   set-test-release-version:
     name: Set Test Release Version
+    runs-on: ubuntu-latest
     outputs:
       version: echo ${{ steps.release-version.outputs.test }}
     steps:
