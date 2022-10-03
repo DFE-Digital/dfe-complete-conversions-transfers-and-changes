@@ -120,26 +120,49 @@ tasks:
   - title: Master funding agreement
     hint: |
       Master funding agreements from before 2018 should be updated to the newer versions.
-
-      You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
-    guidance_summary: Help checking and updating the Master funding agreement
-    guidance_text: |
-      Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
-
-      You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
-
-      If the trust uses a pre-2018 Master funding agreement, they have two options.
-
-      They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplemental funding agreements in the trust too.
-
-      Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplemental funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.
-
-      You will need to clear any new and updated documents. These may need a Deed of variation.
     optional: true
     actions:
-      - title: Received
-      - title: Cleared
-      - title: Saved in SharePoint
+      - type: subheading
+        title: Check and clear the Master funding agreement
+        hint: |
+          You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
+        guidance_summary:
+          Help checking and updating the Master funding agreement
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+
+          If the trust uses a pre-2018 Master funding agreement, they have two options.
+
+          They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplemental funding agreements in the trust too.
+
+          Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplemental funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.
+
+          You will need to clear any new and updated documents. These may need a Deed of variation.
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Signed by school or trust
+      - type: single-checkbox
+        title: Saved in the school's SharePoint folder
+      - type: subheading
+        title: Signed by the Secretary of State
+        guidance_summary: How to sign the Master funding agreement
+        guidance_text: |
+          The Secretary of State, or somebody with the authority to act on their behalf, must sign the Master funding agreement.
+
+          Usually this is your team leader or the deputy director.
+
+          You only need to send the exact pages that they need to sign. Do not send the full document.
+
+          Once you've received the signed page, put it back in the document. Then save the signed Master funding agreement as a PDF in the school's SharePoint folder.
+      - type: single-checkbox
+        title: Sent to team leader or deputy director
+      - type: single-checkbox
+        title: Document signed on behalf of the Secretary of State
 
   - title: Articles of association
     hint: |
