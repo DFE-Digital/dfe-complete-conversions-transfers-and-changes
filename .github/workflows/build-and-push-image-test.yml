@@ -10,7 +10,7 @@ jobs:
     name: Set Test Release Version
     runs-on: ubuntu-latest
     outputs:
-      version: echo ${{ steps.release-version.outputs.test }}
+      version: echo ${{ steps.release-version.outputs.version }}
     steps:
     - id: release-version
       run: echo "::set-output name=version::release-4"
