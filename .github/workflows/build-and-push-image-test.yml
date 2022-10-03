@@ -12,8 +12,8 @@ jobs:
     outputs:
       version: ${{steps.release-version.outputs.version}}
     steps:
-    - id: release-version
-      run: echo "::set-output name=version::release-4"
+      - id: release-version
+        run: echo "::set-output name=version::release-4"
 
   build-and-push-image-test:
     name: Build and push image test
