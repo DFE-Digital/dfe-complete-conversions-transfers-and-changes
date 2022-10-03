@@ -166,19 +166,27 @@ tasks:
 
   - title: Articles of association
     hint: |
-      Check the Articles of association for changes from the model documents.
-
-      You can [view the model documents (opens in new tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools) to check for changes.
-    guidance_summary: Help checking for changes
-    guidance_text: |
-      Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
-
-      You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
-    optional: true
+      The Articles of association must be updated if the trust currently uses a version from February 2016 or earlier.
     actions:
-      - title: Received
-      - title: Cleared
-      - title: Saved in SharePoint
+      - type: subheading
+        title: Check and clear the Articles of association
+        hint:
+          You can use the [land transfer advice and guidance to check for common
+          problems (opens in new
+          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
+        guidance_summary: Help checking for changes
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Signed by school or trust
+      - type: single-checkbox
+        title: Saved in the school's SharePoint folder
 
   - title: Deed of variation
     hint: |
