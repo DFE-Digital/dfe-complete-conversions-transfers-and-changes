@@ -13,7 +13,7 @@ jobs:
       version: echo ${{ steps.release-version.outputs.test }}
     steps:
     - id: release-version
-      run: echo "::set-output name=version::release-3"
+      run: echo "::set-output name=version::release-4"
 
   build-and-push-image-test:
     name: Build and push image test
