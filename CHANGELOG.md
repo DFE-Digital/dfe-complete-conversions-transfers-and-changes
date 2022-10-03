@@ -35,6 +35,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Users first name and last name are now required. Any fallbacks, which show the
   user's email address when first name and last name are absent, have been
   removed.
+- Tasks within Clear Legal Documents section now make use of subheadings to
+  better separate logical sections of work.
 
 ### Fixed
 
