@@ -1,10 +1,10 @@
-# Untitled string in Section Schema
+# Hint Schema
 
 ```txt
 uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/hint
 ```
 
-
+A short hint to explain to users how to complete the action.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                                      |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------------------------- |
@@ -12,4 +12,4 @@ uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/ite
 
 ## hint Type
 
-`string`
+`string` ([Hint](section-properties-tasks-task-properties-actions-action-properties-hint.md))

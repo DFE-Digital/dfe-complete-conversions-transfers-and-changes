@@ -24,33 +24,39 @@ guidance_text: You can find [a list of what to check online](https://example.com
 
 ```
 
+```yaml
+type: subheading
+title: Signing by the Secretary of State
+
+```
+
 # items Properties
 
 | Property                               | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                         |
 | :------------------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)                          | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-type.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")                         |
+| [type](#type)                          | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-action-type.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")                  |
 | [title](#title)                        | `string` | Required | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/title")                       |
 | [hint](#hint)                          | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-hint.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/hint")                         |
-| [guidance\_summary](#guidance_summary) | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance_summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary") |
-| [guidance\_text](#guidance_text)       | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance_text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")       |
+| [guidance\_summary](#guidance_summary) | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary") |
+| [guidance\_text](#guidance_text)       | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")       |
 
 ## type
 
-
+The type of action which the user will be shown.
 
 `type`
 
 *   is optional
 
-*   Type: `string`
+*   Type: `string` ([Action type](section-properties-tasks-task-properties-actions-action-properties-action-type.md))
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-type.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-action-type.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")
 
 ### type Type
 
-`string`
+`string` ([Action type](section-properties-tasks-task-properties-actions-action-properties-action-type.md))
 
 ### type Constraints
 
@@ -77,7 +83,7 @@ The default value is:
 
 *   is required
 
-*   Type: `string`
+*   Type: `string` ([Title](section-properties-tasks-task-properties-actions-action-properties-title.md))
 
 *   cannot be null
 
@@ -85,17 +91,17 @@ The default value is:
 
 ### title Type
 
-`string`
+`string` ([Title](section-properties-tasks-task-properties-actions-action-properties-title.md))
 
 ## hint
 
-
+A short hint to explain to users how to complete the action.
 
 `hint`
 
 *   is optional
 
-*   Type: `string`
+*   Type: `string` ([Hint](section-properties-tasks-task-properties-actions-action-properties-hint.md))
 
 *   cannot be null
 
@@ -103,40 +109,40 @@ The default value is:
 
 ### hint Type
 
-`string`
+`string` ([Hint](section-properties-tasks-task-properties-actions-action-properties-hint.md))
 
 ## guidance\_summary
 
-
+A summary of the guidance available when the user expands the guidance section.
 
 `guidance_summary`
 
 *   is optional
 
-*   Type: `string`
+*   Type: `string` ([Guidance summary](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md))
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance_summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary")
 
 ### guidance\_summary Type
 
-`string`
+`string` ([Guidance summary](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md))
 
 ## guidance\_text
 
-
+The text to include within the guidance drop-down section for this action.
 
 `guidance_text`
 
 *   is optional
 
-*   Type: `string`
+*   Type: `string` ([Guidance text](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md))
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance_text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")
 
 ### guidance\_text Type
 
-`string`
+`string` ([Guidance text](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md))

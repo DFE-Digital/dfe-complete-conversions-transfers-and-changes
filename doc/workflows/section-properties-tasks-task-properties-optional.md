@@ -1,10 +1,10 @@
-# Untitled boolean in Section Schema
+# Optional Schema
 
 ```txt
 uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional
 ```
 
-
+If the entire task can be considered optional (in which case a "not applicable" option will appear), or if it's mandatory.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                                      |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------------------------- |
@@ -12,4 +12,4 @@ uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional
 
 ## optional Type
 
-`boolean`
+`boolean` ([Optional](section-properties-tasks-task-properties-optional.md))

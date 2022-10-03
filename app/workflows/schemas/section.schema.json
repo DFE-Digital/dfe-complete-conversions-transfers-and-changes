@@ -5,7 +5,11 @@
   "description": "A single section within a task list.",
   "type": "object",
   "properties": {
-    "title": { "type": "string" },
+    "title": {
+      "title": "Title",
+      "description": "The title of the section within the workflow.",
+      "type": "string"
+    },
     "tasks": {
       "title": "Tasks",
       "description": "A list of tasks within a section.",
@@ -15,11 +19,27 @@
         "description": "A task on the task list, which contains one or more actions.",
         "type": "object",
         "properties": {
-          "title": { "type": "string" },
-          "hint": { "type": "string" },
-          "guidance_summary": { "type": "string" },
-          "guidance_text": { "type": "string" },
-          "optional": { "type": "boolean" },
+          "title": { "title": "Title", "type": "string" },
+          "hint": {
+            "title": "Hint",
+            "description": "A short hint to explain to users what this task achieves.",
+            "type": "string"
+          },
+          "guidance_summary": {
+            "title": "Guidance summary",
+            "description": "A summary of the guidance available when the user expands the guidance section.",
+            "type": "string"
+          },
+          "guidance_text": {
+            "title": "Guidance text",
+            "description": "The text to include within the guidance drop-down section for this task.",
+            "type": "string"
+          },
+          "optional": {
+            "title": "Optional",
+            "description": "If the entire task can be considered optional (in which case a \"not applicable\" option will appear), or if it's mandatory.",
+            "type": "boolean"
+          },
           "actions": {
             "title": "Actions",
             "description": "A list of actions which collectively make up a task.",
@@ -30,14 +50,31 @@
               "type": "object",
               "properties": {
                 "type": {
+                  "title": "Action type",
+                  "description": "The type of action which the user will be shown.",
                   "type": "string",
                   "enum": ["single-checkbox", "subheading"],
                   "default": "single-checkbox"
                 },
-                "title": { "type": "string" },
-                "hint": { "type": "string" },
-                "guidance_summary": { "type": "string" },
-                "guidance_text": { "type": "string" }
+                "title": {
+                  "title": "Title",
+                  "type": "string"
+                },
+                "hint": {
+                  "title": "Hint",
+                  "description": "A short hint to explain to users how to complete the action.",
+                  "type": "string"
+                },
+                "guidance_summary": {
+                  "title": "Guidance summary",
+                  "description": "A summary of the guidance available when the user expands the guidance section.",
+                  "type": "string"
+                },
+                "guidance_text": {
+                  "title": "Guidance text",
+                  "description": "The text to include within the guidance drop-down section for this action.",
+                  "type": "string"
+                }
               },
               "examples": [
                 {
@@ -45,6 +82,10 @@
                   "hint": "Check that sections A, B and C are completed.",
                   "guidance_summary": "What to check?",
                   "guidance_text": "You can find [a list of what to check online](https://example.com)."
+                },
+                {
+                  "type": "subheading",
+                  "title": "Signing by the Secretary of State"
                 }
               ],
               "required": ["title"],

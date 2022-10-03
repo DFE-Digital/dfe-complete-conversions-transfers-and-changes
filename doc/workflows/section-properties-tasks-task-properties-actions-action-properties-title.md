@@ -1,4 +1,4 @@
-# Untitled string in Section Schema
+# Title Schema
 
 ```txt
 uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/title
@@ -12,4 +12,4 @@ uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/ite
 
 ## title Type
 
-`string`
+`string` ([Title](section-properties-tasks-task-properties-actions-action-properties-title.md))
