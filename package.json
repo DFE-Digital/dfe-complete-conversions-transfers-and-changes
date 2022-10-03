@@ -18,7 +18,7 @@
     "@adobe/jsonschema2md": "^7.1.1"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "^1.5.0",
+    "@ministryofjustice/frontend": "^1.6.0",
     "accessible-autocomplete": "^2.0.4"
   }
 }
