@@ -10,7 +10,7 @@ jobs:
     name: Set Test Release Version
     runs-on: ubuntu-latest
     outputs:
-      version: echo ${{ steps.release-version.outputs.version }}
+      version: ${{steps.release-version.outputs.version}}
     steps:
     - id: release-version
       run: echo "::set-output name=version::release-4"
@@ -19,6 +19,7 @@ jobs:
     name: Build and push image test
 
     runs-on: ubuntu-latest
+    needs: set-test-release-version
 
     steps:
       - name: Check out code
