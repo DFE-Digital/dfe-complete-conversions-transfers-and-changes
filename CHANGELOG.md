@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [Release 4][release-4]
+
 ### Added
 
 - The Handover/new project form collects the advisory board date and any
@@ -186,7 +188,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-3...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-4...HEAD
+[release-4]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-3...release-4
 [release-3]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/commits/develop/compare/release-2...release-3
 [release-2]:
