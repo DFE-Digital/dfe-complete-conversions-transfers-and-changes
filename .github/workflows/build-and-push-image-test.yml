@@ -9,6 +9,14 @@ env:
   TEST_RELEASE_VERSION: release-3
 
 jobs:
+  set-test-release-version:
+    name: Set Test Release Version
+    outputs:
+      version: echo ${{ steps.release-version.outputs.test }}
+    steps:
+    - id: release-version
+      run: echo "::set-output name=version::release-3"
+
   build-and-push-image-test:
     name: Build and push image test
 
@@ -18,7 +26,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          ref: "$TEST_RELEASE_VERSION"
+          ref: ${{needs.set-test-release-version.outputs.version}}
 
       - name: Azure Container Registry login
         uses: docker/login-action@v2
@@ -35,7 +43,7 @@ jobs:
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           if [ "${{ github.event_name }}" = "push" ]; then
             VERSION=sha-${GITHUB_SHA}
-            TAGS="$TAGS,${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${TEST_RELEASE_VERSION}"
+            TAGS="$TAGS,${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${{needs.set-test-release-version.outputs.version}}"
           fi
           echo ::set-output name=tags::${TAGS}
           echo ::set-output name=deploy-version::${VERSION}
