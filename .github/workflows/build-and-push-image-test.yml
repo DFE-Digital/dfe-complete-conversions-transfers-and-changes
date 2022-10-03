@@ -37,7 +37,7 @@ jobs:
       - name: Prepare tags
         id: prepare-tags
         run: |
-          DOCKER_IMAGE=${{ secrets.DEVELOPMENT_ACR_URL }}/complete-app
+          DOCKER_IMAGE=${{ secrets.TEST_ACR_URL }}/complete-app
           VERSION=latest
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           if [ "${{ github.event_name }}" = "push" ]; then
