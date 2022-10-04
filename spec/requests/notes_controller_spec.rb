@@ -96,7 +96,7 @@ RSpec.describe NotesController, type: :request do
         let(:task) { create(:task) }
         let(:params) { {note: {body: new_note_body, task_id: task.id}} }
 
-        it "saves the note and redirects to the index view with a success message" do
+        it "saves the note and redirects to the task view with a success message" do
           expect(subject).to redirect_to(project_task_path(project.id, task.id))
           expect(request.flash[:notice]).to eq(I18n.t("note.create.success"))
 
@@ -209,7 +209,7 @@ RSpec.describe NotesController, type: :request do
         let(:task) { create(:task) }
         let(:params) { {note: {body: new_note_body, task_id: task.id}} }
 
-        it "saves the note and redirects to the index view with a success message" do
+        it "saves the note and redirects to the task view with a success message" do
           expect(subject).to redirect_to(project_task_path(project.id, task.id))
           expect(request.flash[:notice]).to eq(I18n.t("note.update.success"))
 
@@ -254,7 +254,7 @@ RSpec.describe NotesController, type: :request do
     context "when the note is a task level note" do
       let(:note) { create(:note, :task_level_note, user: user) }
 
-      it "deletes the note and redirects to the index view with a success message" do
+      it "deletes the note and redirects to the task view with a success message" do
         expect(subject).to redirect_to(project_task_path(project.id, note.task.id))
         expect(request.flash[:notice]).to eq(I18n.t("note.destroy.success"))
 
