@@ -37,11 +37,11 @@ RSpec.describe Note, type: :model do
       let!(:project_level_note) { create(:note) }
       let!(:task_level_note) { create(:note, :task_level_note) }
 
-      subject { Note.project_level_notes }
+      subject { Note.project_level_notes(project_level_note.project) }
 
       it "returns only project level notes" do
-        expect(subject.count).to be 1
-        expect(subject.last).to eq project_level_note
+        expect(subject).to include project_level_note
+        expect(subject).not_to include task_level_note
       end
     end
   end
