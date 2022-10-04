@@ -5,6 +5,12 @@
 As a digital service being developed in DfE we aim to follow the
 [DfE Technical Guidance](https://technical-guidance.education.gov.uk/).
 
+## Environments
+
+- [development](https://s184d01-comp-complete-app.salmonsky-fe4d6376.westeurope.azurecontainerapps.io/)
+- [test](https://s184t01-comp-complete-app.ashycoast-5a62f687.westeurope.azurecontainerapps.io)
+- production
+
 ## Shared components and patterns
 
 - [DfE GOV.UK Components](https://govuk-components.netlify.app/)
