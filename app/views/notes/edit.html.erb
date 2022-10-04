@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <%= govuk_back_link(href: project_notes_path(@project)) %>
+  <%= govuk_back_link(href: back_link_destination(@note)) %>
 <% end %>
 
 <div class="govuk-grid-row govuk-body">
@@ -13,7 +13,7 @@
         <% if policy(@note).destroy? %>
           <%= govuk_button_link_to "Delete", project_note_delete_path(@project, @note), warning: true %>
         <% end %>
-        <%= govuk_link_to "Cancel", project_notes_path(@project) %>
+        <%= govuk_link_to "Cancel", back_link_destination(@note) %>
       <% end %>
     <% end %>
   </div>

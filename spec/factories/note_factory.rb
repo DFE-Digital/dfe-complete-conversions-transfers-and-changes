@@ -4,5 +4,10 @@ FactoryBot.define do
 
     project
     user { association :user, email: "user-#{SecureRandom.uuid}@education.gov.uk" }
+
+    trait :task_level_note do
+      task
+      body { "I really enjoyed performing this task" }
+    end
   end
 end

@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :find_task
+  before_action :find_task_level_notes, only: :show
 
   def show
     render "tasks/clear_legal_documents/show" if @task.clear_legal_documents_type?
@@ -23,6 +24,10 @@ class TasksController < ApplicationController
 
   private def find_task
     @task = Task.find(params[:id])
+  end
+
+  private def find_task_level_notes
+    @notes = Note.includes([:user]).where(task: @task)
   end
 
   private def not_applicable
