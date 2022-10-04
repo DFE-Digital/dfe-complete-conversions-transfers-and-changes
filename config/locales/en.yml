@@ -253,15 +253,3 @@ en:
               invalid: Enter a SharePoint link in the correct format
               https_only: The SharePoint link must have the https scheme
               host_not_allowed: Enter a SharePoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
-        note:
-          attributes:
-            body:
-              blank: Enter a note
-        contact:
-          attributes:
-            name:
-              blank: Enter a name
-            email:
-              invalid: Enter an email address in the correct format, like name@example.com
-            title:
-              blank: Enter a title

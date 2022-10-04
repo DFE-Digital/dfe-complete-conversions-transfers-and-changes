@@ -26,14 +26,14 @@ RSpec.feature "Users can create and view task level notes" do
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
     )
 
-    click_link "Add note" # Link styled as button
+    click_link I18n.t("note.show.task_notes.add") # Link styled as button
 
     expect(page).to have_current_path(new_project_note_path(project, task_id: task_id))
     expect(page).to have_field("note[task_id]", type: :hidden, with: task_id)
 
     fill_in "Enter note", with: new_note_body
 
-    click_button("Add note")
+    click_button I18n.t("note.new.save_note_button")
 
     expect(page).to have_current_path(project_task_path(project_id, task_id))
     expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body.delete("*"))
@@ -47,7 +47,7 @@ RSpec.feature "Users can create and view task level notes" do
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
     )
 
-    click_link "Change"
+    click_link I18n.t("note.show.task_notes.edit")
 
     expect(page).to have_current_path(edit_project_note_path(project, Note.first))
     expect(page).to have_link("Back", href: project_task_path(project_id, task_id))
@@ -68,7 +68,7 @@ RSpec.feature "Users can create and view task level notes" do
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
     )
 
-    click_link "Change"
+    click_link I18n.t("note.show.task_notes.edit")
 
     expect(page).to have_current_path(edit_project_note_path(project, Note.first))
     expect(page).to have_link("Back", href: project_task_path(project_id, task_id))

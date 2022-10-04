@@ -1,0 +1,39 @@
+en:
+  note:
+    index:
+      notes: Notes
+      add_note_button: Add note
+      no_notes_yet: There aren't any notes for this project yet.
+    show:
+      task_notes:
+        title: Task notes
+        add: Add a new task note
+        edit: Edit note
+    create:
+      success: Note has been added successfully
+    new:
+      save_note_button: Add note
+    edit:
+      save_note_button: Save note
+    update:
+      success: Note has been edited successfully
+    destroy:
+      success: Note has been deleted successfully
+    confirm_destroy:
+      title: Are you sure you want to delete this note?
+      guidance: This will remove the note from the project. If this note contains outdated information, it may be better to leave a new note with an update instead.
+  activerecord:
+    errors:
+      models:
+        note:
+          attributes:
+            body:
+              blank: Enter a note
+        contact:
+          attributes:
+            name:
+              blank: Enter a name
+            email:
+              invalid: Enter an email address in the correct format, like name@example.com
+            title:
+              blank: Enter a title
