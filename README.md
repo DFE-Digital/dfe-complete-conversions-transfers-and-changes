@@ -46,10 +46,9 @@ See [.env.example](./.env.example)
 For production environments,
 [additional variables are required](./doc/environment-variables.md)
 
-## Release process
+## Releases and deployments
 
-Use the [release process template in Trello](https://trello.com/c/8enGdMyy) to
-start a new release.
+See [releases and deployments](./doc/releases-and-deploys.md)
 
 ## ADRs
 
