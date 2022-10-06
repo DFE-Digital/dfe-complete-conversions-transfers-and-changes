@@ -1,10 +1,10 @@
-# Untitled string in Section Schema
+# Title Schema
 
 ```txt
 uk.gov.education/rsd/cctc/section#/properties/title
 ```
 
-
+The title of the section within the workflow.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                                      |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------------------------- |
@@ -12,4 +12,4 @@ uk.gov.education/rsd/cctc/section#/properties/title
 
 ## title Type
 
-`string`
+`string` ([Title](section-properties-title.md))

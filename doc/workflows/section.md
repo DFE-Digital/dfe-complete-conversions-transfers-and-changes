@@ -23,13 +23,13 @@ A single section within a task list.
 
 ## title
 
-
+The title of the section within the workflow.
 
 `title`
 
 *   is required
 
-*   Type: `string`
+*   Type: `string` ([Title](section-properties-title.md))
 
 *   cannot be null
 
@@ -37,7 +37,7 @@ A single section within a task list.
 
 ### title Type
 
-`string`
+`string` ([Title](section-properties-title.md))
 
 ## tasks
 

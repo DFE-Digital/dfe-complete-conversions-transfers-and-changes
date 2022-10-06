@@ -1,10 +1,10 @@
-# Untitled string in Task list Schema
+# Section filename Schema
 
 ```txt
 uk.gov.education/rsd/cctc/tasklist#/properties/sections/items
 ```
 
-
+The name (without the .yml extension) of the file which defines the section.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                                        |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :------------------------------------------------------------------------------------------------ |
@@ -12,7 +12,7 @@ uk.gov.education/rsd/cctc/tasklist#/properties/sections/items
 
 ## items Type
 
-`string`
+`string` ([Section filename](tasklist-properties-list-of-sections-section-filename.md))
 
 ## items Constraints
 

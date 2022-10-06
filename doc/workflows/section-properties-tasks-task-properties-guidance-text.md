@@ -1,10 +1,10 @@
-# Untitled string in Section Schema
+# Guidance text Schema
 
 ```txt
 uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_text
 ```
 
-
+The text to include within the guidance drop-down section for this task.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                                      |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------------------------- |
@@ -12,4 +12,4 @@ uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_te
 
 ## guidance\_text Type
 
-`string`
+`string` ([Guidance text](section-properties-tasks-task-properties-guidance-text.md))

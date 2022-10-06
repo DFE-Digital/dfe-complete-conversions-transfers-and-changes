@@ -1,4 +1,4 @@
-# Worklow files
+# Workflow files
 
 ## Introduction
 
@@ -21,10 +21,10 @@ We offset these against known disadvantages:
   be an advantage!)
 - may not support additional complexity
 
-Whilst the applicaiton and data it models remains relatively straight forward,
-we are happy to continue to support the concept of workflow files.
+Whilst the application and the data it models remain relatively straight
+forward, we are happy to continue to support the concept of workflow files.
 
-## Location
+## Location
 
 Workflow files are stored in `app/workflows`.
 
@@ -49,6 +49,6 @@ guidance_text: |
 
 ## Detailed documentation
 
-Full documentation of the file structures can be found in
-[doc/workflows/README.md](/doc/workflows/README.md), based on the schemas in
-`app/workflows/schemas`.
+Full documentation of the structure of the yaml and available parameters can be
+found in [doc/workflows/README.md](/doc/workflows/README.md), based on the
+schemas in `app/workflows/schemas`.

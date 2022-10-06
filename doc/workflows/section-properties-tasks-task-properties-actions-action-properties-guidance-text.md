@@ -1,32 +1,15 @@
-# Untitled string in Section Schema
+# Guidance text Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type
+uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text
 ```
 
-
+The text to include within the guidance drop-down section for this action.
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                                                      |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :---------------------------------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [section.schema.json\*](../../app/workflows/schemas/section.schema.json "open original schema") |
 
-## type Type
+## guidance\_text Type
 
-`string`
-
-## type Constraints
-
-**enum**: the value of this property must be equal to one of the following values:
-
-| Value               | Explanation |
-| :------------------ | :---------- |
-| `"single-checkbox"` |             |
-| `"subheading"`      |             |
-
-## type Default Value
-
-The default value is:
-
-```json
-"single-checkbox"
-```
+`string` ([Guidance text](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md))

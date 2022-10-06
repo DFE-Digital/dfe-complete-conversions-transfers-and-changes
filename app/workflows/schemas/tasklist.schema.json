@@ -10,6 +10,8 @@
       "description": "A list of names of section definition files, in the order they should appear.",
       "type": "array",
       "items": {
+        "title": "Section filename",
+        "description": "The name (without the .yml extension) of the file which defines the section.",
         "type": "string",
         "pattern": "^[a-z0-9-]+$",
         "examples": ["kickoff", "clear-legal-docs"]

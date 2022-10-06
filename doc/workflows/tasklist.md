@@ -28,7 +28,7 @@ A list of names of section definition files, in the order they should appear.
 
 *   is optional
 
-*   Type: `string[]`
+*   Type: `string[]` ([Section filename](tasklist-properties-list-of-sections-section-filename.md))
 
 *   cannot be null
 
@@ -36,7 +36,7 @@ A list of names of section definition files, in the order they should appear.
 
 ### sections Type
 
-`string[]`
+`string[]` ([Section filename](tasklist-properties-list-of-sections-section-filename.md))
 
 ### sections Constraints
 
