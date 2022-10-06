@@ -15,7 +15,7 @@ module TaskListHelper
         colour: "orange"
       },
       completed: {
-        text: "Complete",
+        text: "Completed",
         colour: "turquoise"
       },
       not_applicable: {
