@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Fixed worklow for the test deployment
+- "Complete" tag now reads "Completed"
 
 ## [Release 4][release-4]
 

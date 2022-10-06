@@ -14,7 +14,7 @@ RSpec.describe TaskListHelper, type: :helper do
 
     it "returns a tag representing the task status when the status is known" do
       allow(task).to receive(:status).and_return(:completed)
-      expect(helper.task_status_tag(task)).to eq '<strong class="govuk-tag govuk-tag--turquoise app-task-list__tag" id="clear-land-questionnaire-status">Complete</strong>'
+      expect(helper.task_status_tag(task)).to eq '<strong class="govuk-tag govuk-tag--turquoise app-task-list__tag" id="clear-land-questionnaire-status">Completed</strong>'
     end
 
     it "returns a tag representing an unknown status where the status is not known" do
