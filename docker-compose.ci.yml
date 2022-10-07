@@ -13,8 +13,10 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - test-db
-      - test-redis
+      test-db:
+        condition: service_started
+      test-redis:
+        condition: service_started
     env_file:
        - .env.test
     environment:
