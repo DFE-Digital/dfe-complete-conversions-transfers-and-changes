@@ -1,11 +1,33 @@
 title: Project close
 tasks:
-  - title: Redact, save and share documents
+  - title: Redact and send funding agreement documents
+    hint: |
+      Funding agreement documents relating to the conversion will be added to
+      GOV.UK. These must be redacted to remove sensitive information.
+
     actions:
-      - title: Redact required documents and save in SharePoint
-      - title:
-          Send redacted documents to "Funding Agreements converter" mail box
-      - title: Ensure all documents and key information are saved in SharePoint
+      - title: Redact all relevant documents
+        guidance_summary: Help redacting the documents
+        guidance_text: |
+          You need to create a redacted version of each applicable document after they've been signed by the Secretary of State:
+
+          * Supplemental Funding Agreement
+          * Master Funding Agreement (if applicable)
+          * Church Supplemental Agreement (if applicable)
+          * Deed of Variation (if applicable)
+
+          You must remove or hide:
+
+          * names
+          * signatures
+          * home addresses
+          * any other personal information
+
+      - title: Save relevant documents in the school's SharePoint folder
+      - title: Send relevant documents to the funding team
+        guidance_summary: Help sending documents
+        guidance_text: |
+          Send the redacted funding agreement documents to the funding team at [FundingAgreements.CONVERTERS@education.gov.uk](mailto:FundingAgreements.CONVERTERS@education.gov.uk).
 
   - title: ESFA final checks and handover
     actions:
