@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Supplemental funding agreement now has sign and seal actions.
+- Clear legal documents becomes Clear and sign legal documents.
 - Only project level notes are shown on the notes page.
 - The back link destination is the task page for task level notes, or the notes
   page for project level notes.
