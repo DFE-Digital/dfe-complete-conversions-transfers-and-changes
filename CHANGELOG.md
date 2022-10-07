@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Copy changes to conversion grant task
+  - Change title from "complete processing of conversion grant" to "Receive
+    grant payment certificate"
+  - Update the content, hints and guidance
 - Supplemental funding agreement now has sign and seal actions.
 - Clear legal documents becomes Clear and sign legal documents.
 - Only project level notes are shown on the notes page.
