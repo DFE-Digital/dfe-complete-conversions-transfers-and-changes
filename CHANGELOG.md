@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Complete the final checklist with external stakeholder becomes Confirm the
+  school has completed all actions. Also update the copy.
 - Supplemental funding agreement now has sign and seal actions.
 - Clear legal documents becomes Clear and sign legal documents.
 - Only project level notes are shown on the notes page.
