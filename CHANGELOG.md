@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- ESFA final checks and handover becomes Update ESFA data in KIM, also change
+  copy.
 - Supplemental funding agreement now has sign and seal actions.
 - Clear legal documents becomes Clear and sign legal documents.
 - Only project level notes are shown on the notes page.
