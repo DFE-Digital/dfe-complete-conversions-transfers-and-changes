@@ -1,4 +1,4 @@
-title: Clear legal documents
+title: Clear and sign legal documents
 tasks:
   - title: Land questionnaire
     hint: |
@@ -80,6 +80,15 @@ tasks:
         title: Signed by school or trust
       - type: single-checkbox
         title: Saved in the school's SharePoint folder
+      - type: subheading
+        title: Signed by the Secretary of State
+        hint: |
+          The Secretary of State, or somebody with the authority to act on their behalf, must sign the Supplemental funding agreement.
+          Usually this is your team leader or the deputy director.
+      - type: single-checkbox
+        title: Sent to team leader or deputy director
+      - type: single-checkbox
+        title: Document signed on behalf of the Secretary of State
 
   - title: Church supplemental agreement
     hint: |
