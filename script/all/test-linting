@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Run linting, formatting and schema tests.
+#
+# Do not set AUTOMATICALLY_FIX_LINTING if you want to disable linter fixing
+
+set -e
+
+echo "==> Running linting/formatting tests..."
+
+if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+  echo "==> Formatting files..."
+  yarn run lint:format:fix
+else
+  echo "==> Checking formatting..."
+  yarn run lint:format
+fi
+
+echo "==> Running ShellCheck..."
+for file in $(git ls-files script/*)
+do
+  shellcheck -x "$file"
+done
+
+if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+  echo "==> Linting ERB in autocorrect mode..."
+  bundle exec erblint --lint-all --autocorrect
+else
+  echo "==> Linting ERB..."
+  bundle exec erblint --lint-all
+fi
+if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+  echo "==> Linting Ruby in fix mode..."
+  bundle exec standardrb --fix
+else
+  echo "==> Linting Ruby..."
+  bundle exec standardrb
+fi
+
+if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+  echo "==> Linting JS in fix mode..."
+  yarn run lint:js:fix
+else
+  echo "==> Linting JS..."
+  yarn run lint:js
+fi
+
+echo "==> Validating workflows..."
+yarn run workflows:validate:tasklists
+yarn run workflows:validate:sections
