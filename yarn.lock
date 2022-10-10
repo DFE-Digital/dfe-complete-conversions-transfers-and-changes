@@ -13,10 +13,10 @@
     phin "^3.6.0"
     polka "^0.5.2"
 
-"@adobe/jsonschema2md@^7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@adobe/jsonschema2md/-/jsonschema2md-7.1.1.tgz#9ee902d89214676446be30fe03b2676400dc353c"
-  integrity sha512-nrWVJB9+oS7JgZKSeuQ/TEkXV/n7px1iqgGqD49t635IlbpTbVn8pcO6b3QkxtHi1ey/47i3EPNWuTOc+/dmuQ==
+"@adobe/jsonschema2md@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@adobe/jsonschema2md/-/jsonschema2md-7.1.2.tgz#f2c5e5fd1ff43f5c051d220bdf2797f13513679a"
+  integrity sha512-ir636sYruKS0Ba072hYlOJxp/V2/KKOi4lWALkkosekvSLE2yAWnBoSOnJWdVWz2qza6KPeEVgigzVGtUPWScA==
   dependencies:
     "@adobe/helix-log" "6.0.0"
     "@types/json-schema" "^7.0.8"
@@ -34,8 +34,8 @@
     remark-parse "10.0.1"
     remark-stringify "10.0.2"
     unified "10.1.2"
-    unist-util-inspect "7.0.0"
-    yargs "17.5.0"
+    unist-util-inspect "7.0.1"
+    yargs "17.6.0"
 
 "@arr/every@^1.0.0":
   version "1.0.1"
@@ -276,13 +276,13 @@ character-entities@^2.0.0:
   resolved "https://registry.yarnpkg.com/character-entities/-/character-entities-2.0.2.tgz#2d09c2e72cd9523076ccb21157dff66ad43fcc22"
   integrity sha512-shx7oQ0Awen/BRIdkjkvz54PnEEI/EjwXDSIZp86/KKdbafHh1Df/RYGBhn4hbe2+uKC9FnT5UCEdyPz3ai9hQ==
 
-cliui@^7.0.2:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/cliui/-/cliui-7.0.4.tgz#a0265ee655476fc807aea9df3df8df7783808b4f"
-  integrity sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==
+cliui@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/cliui/-/cliui-8.0.1.tgz#0c04b075db02cbfe60dc8e6cf2f5486b1a3608aa"
+  integrity sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==
   dependencies:
     string-width "^4.2.0"
-    strip-ansi "^6.0.0"
+    strip-ansi "^6.0.1"
     wrap-ansi "^7.0.0"
 
 color-convert@^2.0.1:
@@ -1580,10 +1580,10 @@ unified@10.1.2, unified@^10.0.0:
     trough "^2.0.0"
     vfile "^5.0.0"
 
-unist-util-inspect@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/unist-util-inspect/-/unist-util-inspect-7.0.0.tgz#98426f0219e24d011a27e32539be0693d9eb973e"
-  integrity sha512-2Utgv78I7PUu461Y9cdo+IUiiKSKpDV5CE/XD6vTj849a3xlpDAScvSJ6cQmtFBGgAmCn2wR7jLuXhpg1XLlJw==
+unist-util-inspect@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/unist-util-inspect/-/unist-util-inspect-7.0.1.tgz#7e0db27bb2999bcc0f1b70c4b07be5c6620e843f"
+  integrity sha512-gEPeSrsYXus8012VJ00p9uZC8D0iogtLLiHlBgvS61hU22KNKduQhMKezJm83viHlLf3TYS2y9SDEFglWPDMKw==
   dependencies:
     "@types/unist" "^2.0.0"
 
@@ -1699,12 +1699,12 @@ yargs-parser@^21.0.0:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
   integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
 
-yargs@17.5.0:
-  version "17.5.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.5.0.tgz#2706c5431f8c119002a2b106fc9f58b9bb9097a3"
-  integrity sha512-3sLxVhbAB5OC8qvVRebCLWuouhwh/rswsiDYx3WGxajUk/l4G20SKfrKKFeNIHboUFt2JFgv2yfn+5cgOr/t5A==
+yargs@17.6.0:
+  version "17.6.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.6.0.tgz#e134900fc1f218bc230192bdec06a0a5f973e46c"
+  integrity sha512-8H/wTDqlSwoSnScvV2N/JHfLWOKuh5MVla9hqLjK3nsfyy6Y4kDSYSvkU5YCUEPOSnRXfIyx3Sq+B/IWudTo4g==
   dependencies:
-    cliui "^7.0.2"
+    cliui "^8.0.1"
     escalade "^3.1.1"
     get-caller-file "^2.0.5"
     require-directory "^2.1.1"
