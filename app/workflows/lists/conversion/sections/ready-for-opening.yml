@@ -44,10 +44,10 @@ tasks:
 
       - title: Confirm Baseline approval with G6
         hint: Add the G6 name and date to the Baseline
-  - title: Complete and approve Single worksheet
+  - title: Complete and send the Single worksheet
     hint: |
       You need to [download a single worksheet template (opens in new
-      tab)](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/ETLq7xT0OM9GrpbiuIIVPQIBWoqonm-YTSuEfSPXEM6TAQ?e=Fo4v3n)
+      tab)](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EacL3VXFYxlNmqkPI_oelqkBW2_hS4tZwLo52EIuL6rdyw?e=CsOUUl)
       and save it in the school's SharePoint folder.
     actions:
       - title: Complete the Single worksheet
@@ -66,11 +66,8 @@ tasks:
         guidance_summary: When you must complete this
         guidance_text: |
           The deadline for this work is normally 5 working days after the
-          Baseline is confirmed.
-
-          The Academies Operational Practice Unit sent an email linking to the
-          baseline. The deadline for the Single worksheet will be in that
-          email.
+          Baseline is confirmed. The exact deadline will be in the baseline
+          email sent by The Academies Operational Practice Unit.
 
   - title: Complete the final checklist with external stakeholders
     hint: |
