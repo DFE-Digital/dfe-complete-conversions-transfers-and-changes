@@ -33,15 +33,6 @@ RSpec.describe TasksController, type: :request do
       expect(subject).to render_template :show
     end
 
-    context "when the task is not in the 'Clear legal documents' section" do
-      let(:section) { create(:section, title: "Clear and sign legal documents") }
-
-      it "returns a successful response and renders the clear_legal_documents_show template" do
-        expect(subject).to have_http_status :success
-        expect(subject).to render_template "clear_legal_documents/show"
-      end
-    end
-
     it "can render actions with and without hint text" do
       _action_with_hint = create(:action, hint: "A hint.", task: task)
       _action_without_hint = create(:action, hint: nil, task: task)

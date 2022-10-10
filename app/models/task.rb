@@ -3,8 +3,6 @@ class Task < ApplicationRecord
   has_many :actions, dependent: :destroy
   has_many :notes, dependent: :destroy
 
-  LEGAL_DOCUMENT_SECTION_TITLE = "Clear and sign legal documents"
-
   default_scope { order(order: "asc") }
 
   delegate :project, to: :section
@@ -15,10 +13,6 @@ class Task < ApplicationRecord
 
   def completed_actions_count
     @completed_actions_count ||= actions.where(action_type: "single-checkbox").where(completed: true).count
-  end
-
-  def clear_legal_documents_type?
-    section.title == LEGAL_DOCUMENT_SECTION_TITLE
   end
 
   def status
