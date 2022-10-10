@@ -8,12 +8,32 @@ on:
       - develop
 
 jobs:
-  rails-test:
-    name: Rails test
+  linting-and-formatting:
+    name: Linting and formatting tests
     runs-on: ubuntu-latest
 
     env:
       RAILS_ENV: test
+      ONLY_LINTING: "true"
+      BUNDLE_ONLY: "linting"
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+      - uses: actions/setup-node@v3
+
+      - name: Test
+        run: script/no-docker/test
+
+  application:
+    name: Application tests
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+      ONLY_APP_TESTS: "true"
 
     steps:
       - name: Check out code

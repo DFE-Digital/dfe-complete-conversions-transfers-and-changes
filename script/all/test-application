@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Run the test suite for the application.
+
+set -e
+
+echo "==> Running application tests..."
+bundle exec rspec
+
+echo "==> Running Brakeman..."
+bundle exec brakeman -o /dev/stdout

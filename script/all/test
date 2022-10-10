@@ -3,7 +3,7 @@
 # Run the test suite for the application. Optionally pass in a path to an
 # individual test file to run a single test.
 #
-# Do not set AUTOMATICALLY_FIX_LINTING if you want to disable linter fixing
+# Do not set AUTO_FIX_FORMATTING if you want to disable linter fixing
 
 set -e
 
@@ -13,50 +13,12 @@ if [ -n "$TEST_FILES" ]; then
   echo "==> Running the tests matching '$TEST_FILES'..."
   bundle exec rspec "$TEST_FILES"
 else
-  if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
-    echo "==> Formatting files..."
-    yarn run lint:format:fix
+  if [ -n "$ONLY_LINTING" ]; then
+    script/all/test-linting
+  elif [ -n "$ONLY_APP_TESTS" ]; then
+    script/all/test-application
   else
-    echo "==> Checking formatting..."
-    yarn run lint:format
+    script/all/test-linting
+    script/all/test-application
   fi
-
-  echo "==> Running ShellCheck..."
-  for file in $(git ls-files script/*)
-  do
-    shellcheck -x "$file"
-  done
-
-  if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
-    echo "==> Linting ERB in autocorrect mode..."
-    bundle exec erblint --lint-all --autocorrect
-  else
-    echo "==> Linting ERB..."
-    bundle exec erblint --lint-all
-  fi
-  if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
-    echo "==> Linting Ruby in fix mode..."
-    bundle exec standardrb --fix
-  else
-    echo "==> Linting Ruby..."
-    bundle exec standardrb
-  fi
-
-  if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
-    echo "==> Linting JS in fix mode..."
-    yarn run lint:js:fix
-  else
-    echo "==> Linting JS..."
-    yarn run lint:js
-  fi
-
-  echo "==> Validating workflows..."
-  yarn run workflows:validate:tasklists
-  yarn run workflows:validate:sections
-
-  echo "==> Running the tests..."
-  bundle exec rspec
-
-  echo "==> Running Brakeman..."
-  bundle exec brakeman -o /dev/stdout
 fi

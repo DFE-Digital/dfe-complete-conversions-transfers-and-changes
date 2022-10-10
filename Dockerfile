@@ -46,7 +46,7 @@ COPY Gemfile ${DEPS_HOME}/Gemfile
 COPY Gemfile.lock ${DEPS_HOME}/Gemfile.lock
 
 RUN gem update --system 3.3.15
-RUN gem install bundler -v 2.3.7
+RUN gem install bundler -v 2.3.23
 RUN bundle config set frozen "true"
 RUN bundle config set no-cache "true"
 RUN bundle config set with "${BUNDLE_GEM_GROUPS}"
@@ -95,7 +95,6 @@ COPY bin ${APP_HOME}/bin
 COPY config ${APP_HOME}/config
 COPY lib ${APP_HOME}/lib
 COPY db ${APP_HOME}/db
-COPY doc ${APP_HOME}/doc
 COPY app ${APP_HOME}/app
 # End
 

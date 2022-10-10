@@ -39,6 +39,33 @@ available at [`http://localhost:3000/`](http://localhost:3000/).
 
 To run the test suite, run `script/test`.
 
+### Reducing test scope
+
+You can optionally use `ONLY_LINTING` and `ONLY_APP_TESTS` environment variables
+to selectively run either linting/formatting/schema tests or application tests
+respectively, for example
+
+```bash
+ONLY_LINTING=1 script/test
+```
+
+### Fixing formatting
+
+By default, linters will cause a test failure if there are formatting problems.
+However, you can automatically fix formatting in many cases by using the
+`AUTO_FIX_FORMATTING` environment variable:
+
+```bash
+AUTO_FIX_FORMATTING=1 script/test
+```
+
+This can also be combined with the reduced scopes for fast formatting fixes, for
+example:
+
+```bash
+AUTO_FIX_FORMATTING=1 ONLY_LINTING=1 script/test
+```
+
 ## Environment variables
 
 See [.env.example](./.env.example)

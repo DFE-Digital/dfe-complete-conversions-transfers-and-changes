@@ -63,11 +63,9 @@ group :development, :test do
   gem "rspec-rails"
   gem "brakeman"
   gem "bullet"
-  gem "standard"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "rails-controller-testing"
-  gem "erb_lint", require: false
 end
 
 group :test do
@@ -76,6 +74,11 @@ group :test do
   gem "simplecov", "~> 0.21.2"
   gem "shoulda-matchers", "~> 5.1"
   gem "webmock", "~> 3.17"
+end
+
+group :linting do
+  gem "standard"
+  gem "erb_lint", require: false
 end
 
 group :development do
