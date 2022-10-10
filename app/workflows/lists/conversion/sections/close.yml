@@ -19,9 +19,26 @@ tasks:
       - title: Save handback proforma in SharePoint
       - title: Send completed handback proforma to regional delivery officer
 
-  - title: Complete processing of conversion grant
+  - title: Receive grant payment certificate
+    hint: |
+      You should already have sent a copy of the [Grant payment certificate (opens in new tab)](https://www.gov.uk/government/publications/academy-support-grant)
+      when confirming the school's opening date.
     actions:
-      - title: Receive completed grant certificate from trust
-      - title: Save completed grant certificate to SharePoint
       - title:
-          Update the "support grant certificate assurance report spreadsheet"
+          Check and save the Grant payment certificate in the school's
+          SharePoint folder
+        hint: |
+          Make sure the right template has been used and there is no missing
+          information.
+        guidance_summary:
+          What to do if you have not received the Grant payment certificate
+        guidance_text: |
+          You should ask the school to send the certificate. You must record the
+          date each time you contact them in [the Support grant assurance report (opens in new tab)](https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true)
+      - title: Update KIM with date certificate is received
+        hint: |
+          Find this information in the ESFA handover section within KIM
+      - title: Update the Support grant assurance report spreadsheet
+        hint: |
+          You can [open the Support grant assurance report (opens in new tab)](https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true)
+          to update it.
