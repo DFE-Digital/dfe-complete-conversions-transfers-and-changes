@@ -11,14 +11,9 @@ set -e
 # Enable the running of this script from any subdirectory without moving to root
 cd "$(dirname "$0")/.."
 
-. script/all/process-script-args
-
 if [ "$CI" ]; then
   echo "==> Running as CI..."
   script/ci/console
-elif [ "$DOCKER" -eq 1 ]; then
-  echo "==> Running with Docker..."
-  script/docker/console
 else
   echo "==> Running natively (no docker)..."
   script/no-docker/console
