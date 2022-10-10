@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 
+- Content changes for all conditions met
 - Rename redact task to be Redact and send funding agreement documents and
   update content
 - ESFA final checks and handover becomes Update ESFA data in KIM, also change
