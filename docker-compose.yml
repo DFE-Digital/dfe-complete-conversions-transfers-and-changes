@@ -16,7 +16,7 @@ services:
        - .env.development.local
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/dfe-academies-development
-      AUTOMATICALLY_FIX_LINTING: "true"
+      AUTO_FIX_FORMATTING: "true"
       SENTRY_ENV: development
       REDIS_URL: redis://test-redis:6379
     volumes:

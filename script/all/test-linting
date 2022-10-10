@@ -2,13 +2,13 @@
 
 # Run linting, formatting and schema tests.
 #
-# Do not set AUTOMATICALLY_FIX_LINTING if you want to disable linter fixing
+# Do not set AUTO_FIX_FORMATTING if you want to disable linter fixing
 
 set -e
 
 echo "==> Running linting/formatting tests..."
 
-if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+if [ -n "$AUTO_FIX_FORMATTING" ]; then
   echo "==> Formatting files..."
   yarn run lint:format:fix
 else
@@ -22,14 +22,14 @@ do
   shellcheck -x "$file"
 done
 
-if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+if [ -n "$AUTO_FIX_FORMATTING" ]; then
   echo "==> Linting ERB in autocorrect mode..."
   bundle exec erblint --lint-all --autocorrect
 else
   echo "==> Linting ERB..."
   bundle exec erblint --lint-all
 fi
-if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+if [ -n "$AUTO_FIX_FORMATTING" ]; then
   echo "==> Linting Ruby in fix mode..."
   bundle exec standardrb --fix
 else
@@ -37,7 +37,7 @@ else
   bundle exec standardrb
 fi
 
-if [ -n "$AUTOMATICALLY_FIX_LINTING" ]; then
+if [ -n "$AUTO_FIX_FORMATTING" ]; then
   echo "==> Linting JS in fix mode..."
   yarn run lint:js:fix
 else
