@@ -394,6 +394,7 @@ DEPENDENCIES
   omniauth
   omniauth-azure-activedirectory-v2
   omniauth-rails_csrf_protection
+  pagy
   pry-rails
   puma (~> 5.0)
   pundit (~> 2.2)

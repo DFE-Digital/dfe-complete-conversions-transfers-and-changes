@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Users can add, edit, and delete task level notes. These are displayed on the
   task page.
 - Added a privacy notice and link to the notice in the footer
+- Pagination has been added to the projects index page. 10 projects are shown
+  per page.
 
 ### Changed
 

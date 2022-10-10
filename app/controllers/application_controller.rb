@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Authentication
   include Pundit::Authorization
+  include Pagy::Backend
 
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 

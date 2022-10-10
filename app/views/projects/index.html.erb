@@ -6,8 +6,15 @@
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">
-      <%= t("project.index.title.all") %> (<%= @projects.count %>)
+      <%= t("project.index.title.all") %> (<%= @pagy.count %>)
     </h1>
+
+    <% if policy(:project).new? %>
+      <p><%= link_to t("project.index.new_button.text"),
+                     new_project_path,
+                     class: "govuk-button",
+                     data: {module: "govuk-button"} %></p>
+    <% end %>
 
     <ul class="list-style-none govuk-!-padding-0">
       <% @projects.each do |project| %>
@@ -22,12 +29,7 @@
       <% end %>
     </ul>
 
-    <% if policy(:project).new? %>
-      <p><%= link_to t("project.index.new_button.text"),
-               new_project_path,
-               class: "govuk-button",
-               data: {module: "govuk-button"} %></p>
-    <% end %>
+    <%= govuk_pagination(pagy: @pagy) %>
 
   </div>
 </div>
