@@ -30,7 +30,7 @@ services:
       - test-ci
 
   test-db:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/azure-sql-edge:latest
     environment:
       ACCEPT_EULA: Y
       SA_PASSWORD: strongPassword&

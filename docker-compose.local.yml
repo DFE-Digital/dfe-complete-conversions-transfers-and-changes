@@ -2,7 +2,7 @@ version: "2.8"
 services:
   db:
     container_name: dfe-complete-sql-server
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/azure-sql-edge:latest
     env_file: .env.database
     ports:
       - 1433:1433
