@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Content updates to Confirm opening date with the school.
 - Copy changes to conversion grant task
   - Change title from "complete processing of conversion grant" to "Receive
     grant payment certificate"
