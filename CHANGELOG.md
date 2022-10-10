@@ -15,6 +15,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Content updates to Check the baseline
+- Content changes to Complete and send the single worksheet
+- Content changes for all conditions met
+- Rename redact task to be Redact and send funding agreement documents and
+  update content
+- ESFA final checks and handover becomes Update ESFA data in KIM, also change
+  copy.
+- Content updates to Confirm opening date with the school.
+- Copy changes to conversion grant task
+  - Change title from "complete processing of conversion grant" to "Receive
+    grant payment certificate"
+  - Update the content, hints and guidance
 - Supplemental funding agreement now has sign and seal actions.
 - Clear legal documents becomes Clear and sign legal documents.
 - Only project level notes are shown on the notes page.
