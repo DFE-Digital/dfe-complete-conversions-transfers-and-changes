@@ -39,6 +39,14 @@ available at [`http://localhost:3000/`](http://localhost:3000/).
 
 To run the test suite, run `script/test`.
 
+You can optionally use `ONLY_LINTING` and `ONLY_APP_TESTS` environment variables
+to selectively run either linting/formatting/schema tests or application tests
+respectively, for example
+
+```bash
+ONLY_LINTING=1 script/test
+```
+
 ## Environment variables
 
 See [.env.example](./.env.example)

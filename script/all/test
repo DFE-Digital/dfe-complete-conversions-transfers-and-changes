@@ -13,6 +13,12 @@ if [ -n "$TEST_FILES" ]; then
   echo "==> Running the tests matching '$TEST_FILES'..."
   bundle exec rspec "$TEST_FILES"
 else
-  script/all/test-linting
-  script/all/test-application
+  if [ -n "$ONLY_LINTING" ]; then
+    script/all/test-linting
+  elif [ -n "$ONLY_APP_TESTS" ]; then
+    script/all/test-application
+  else
+    script/all/test-linting
+    script/all/test-application
+  fi
 fi
