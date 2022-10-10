@@ -95,7 +95,6 @@ COPY bin ${APP_HOME}/bin
 COPY config ${APP_HOME}/config
 COPY lib ${APP_HOME}/lib
 COPY db ${APP_HOME}/db
-COPY doc ${APP_HOME}/doc
 COPY app ${APP_HOME}/app
 # End
 
