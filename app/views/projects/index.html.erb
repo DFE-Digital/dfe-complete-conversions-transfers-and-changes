@@ -6,7 +6,7 @@
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">
-      <%= t("project.index.title.all") %> (<%= @projects.count %>)
+      <%= t("project.index.title.all") %> (<%= @pagy.count %>)
     </h1>
 
     <% if policy(:project).new? %>
