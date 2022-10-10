@@ -18,7 +18,7 @@ instance.
 
    ```
    ACCEPT_EULA=Y
-   SA_PASSWORD=<database_password>
+   MSSQL_SA_PASSWORD=<database_password>
    ```
 
    Where `<database_password>` is at least 8 characters including uppercase,

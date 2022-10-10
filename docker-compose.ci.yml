@@ -33,7 +33,7 @@ services:
     image: mcr.microsoft.com/azure-sql-edge:latest
     environment:
       ACCEPT_EULA: Y
-      SA_PASSWORD: strongPassword&
+      MSSQL_SA_PASSWORD: strongPassword&
     networks:
       - test-ci
 
