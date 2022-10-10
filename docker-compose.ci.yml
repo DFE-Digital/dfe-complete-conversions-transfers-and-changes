@@ -13,8 +13,10 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - test-db
-      - test-redis
+      test-db-health:
+        condition: service_healthy
+      test-redis:
+        condition: service_started
     env_file:
        - .env.test
     environment:
@@ -32,6 +34,18 @@ services:
     environment:
       ACCEPT_EULA: Y
       SA_PASSWORD: strongPassword&
+    networks:
+      - test-ci
+
+  test-db-health:
+    image: mcr.microsoft.com/mssql-tools:latest
+    command: /bin/bash -c "touch /var/log/sqlcmd.log && tail -f /var/log/sqlcmd.log"
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S test-db -U sa -P 'strongPassword&' -o /var/log/sqlcmd.log
+      interval: "2s"
+      retries: 10
+    depends_on:
+      - test-db
     networks:
       - test-ci
 
