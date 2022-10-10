@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Content updates to Check the baseline
 - Content changes to Complete and send the single worksheet
 - Content changes for all conditions met
 - Rename redact task to be Redact and send funding agreement documents and

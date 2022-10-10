@@ -2,49 +2,47 @@ title: Get ready for opening
 tasks:
   - title: Check the Baseline
     hint: |
-      You must confirm the conversion date within 3 working days of
-      receiving the Baseline email. Indicate on the Baseline that the school is
-      on track to open.
+      You must confirm the conversion date within 3 working days of receiving
+      the Baseline email. Indicate on the Baseline that the school is on track
+      to open.
+
     actions:
       - title: Confirm the school is on track to open on the target date
         guidance_summary: How to check the Baseline
         guidance_text: |
-          The Academies Operational Practice Unit will usually email the Baseline
-          spreadsheet to you in the first week of each month.
+          The Academies Operational Practice Unit will usually email the
+          Baseline spreadsheet to you in the first week of each month.
 
-          The Baseline spreadsheet contains a list of all the schools expected to open as
-          academies the following month. The school should appear on that list.
+          Your projects should be on the Regional Casework Services Baseline
+          spreadsheet. This contains a list of all the schools expected to open
+          as academies the following month, across all regions.
 
-          The Academies Operational Practice Unit may refer to the Baseline as the
-          Openers list.
+          Check the Regional Casework Services Baseline spreadsheet to confirm:
 
-          ### What to do if your school is not on the Baseline
+          * your school is on it
+          * the information about the school is correct
 
-          There is a Baseline spreadsheet for each region. If the school does not appear
-          in the right Baseline check the other Baselines to see if the school has been
-          added to the wrong one.
+          Enter yes if the project is on track to convert, or no if it will not
+          open on the target date.
 
-          If the school is in the wrong region, remove it from that Baseline and place
-          the information in the correct region.
+          **What to do if your school is not on the Baseline**
 
-          If it doesn't appear at all, enter the school's information in the correct
-          Baseline spreadsheet.
+          There is one Baseline spreadsheet for each region. These are only used
+          by regional delivery officers.
 
-          Email the Academy operations team to tell them if you have had to move or add
-          the school to the correct Baseline.
+          Sometimes Regional Casework Services projects will show in the
+          regional Baseline spreadsheets by accident.
 
-      - title: Use the Baseline to update missing information in KIM
-        guidance_summary: What to update in KIM
-        guidance_text: |
-          Make sure you have updated:
+          If this happens, remove your school from the regional Baseline
+          spreadsheet and add it to the Regional Casework Services Baseline
+          spreadsheet.
 
-          * new academy name
-          * trust name
-          * contact details
+          If it doesn't appear at all, enter the school's information in the
+          correct Baseline spreadsheet.
 
-      - title: Confirm Baseline approval with G6
-        hint: Add the G6 name and date to the Baseline
-  - title: Complete and send the Single worksheet
+          Email the Academy Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to tell them if you have had to move or add the school to the correct Baseline.
+
+  - title: Complete and approve Single worksheet
     hint: |
       You need to [download a single worksheet template (opens in new
       tab)](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EacL3VXFYxlNmqkPI_oelqkBW2_hS4tZwLo52EIuL6rdyw?e=CsOUUl)
