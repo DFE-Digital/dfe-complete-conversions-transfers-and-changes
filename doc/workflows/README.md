@@ -2,6 +2,8 @@
 
 ## Top-level Schemas
 
+*   [Action](./action.md "A single action which can be taken within a task") – `/uk.gov.education/rsd/cctc/action`
+
 *   [Section](./section.md "A single section within a task list") – `/uk.gov.education/rsd/cctc/section`
 
 *   [Task list](./tasklist.md "A top-level definition of a task list") – `/uk.gov.education/rsd/cctc/tasklist`
@@ -9,8 +11,6 @@
 ## Other Schemas
 
 ### Objects
-
-*   [Action](./section-properties-tasks-task-properties-actions-action.md "A single action which can be taken within a task") – `/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items`
 
 *   [Task](./section-properties-tasks-task.md "A task on the task list, which contains one or more actions") – `/uk.gov.education/rsd/cctc/section#/properties/tasks/items`
 
