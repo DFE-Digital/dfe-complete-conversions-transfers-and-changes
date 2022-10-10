@@ -1,43 +1,13 @@
 version: "3.8"
 services:
-  web:
-    build:
-      context: .
-      target: web
-      args:
-        RAILS_ENV: "development"
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
-      - redis
-    env_file:
-       - .env.development.local
-    environment:
-      DATABASE_URL: postgres://postgres:password@db:5432/dfe-academies-development
-      AUTO_FIX_FORMATTING: "true"
-      SENTRY_ENV: development
-      REDIS_URL: redis://test-redis:6379
-    volumes:
-      - .:/srv/app
-    tty: true
-    stdin_open: true
-    networks:
-      - dev
-
   db:
-    image: postgres
+    container_name: dfe-complete-sql-server
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    env_file: .env.database
+    ports:
+      - 1433:1433
     volumes:
-      - db-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: dfe-academies-development
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_HOST_AUTH_METHOD: trust
-    networks:
-      - dev
-
+      - sql-server-data:/var/opt/mssql
   redis:
     image: redis:6
     ports:
@@ -51,5 +21,5 @@ networks:
   dev:
 
 volumes:
-  db-data:
+  sql-server-data:
   redis-data:
