@@ -1,23 +1,23 @@
-<div class="govuk-!-margin-bottom-9">
-  <div class="govuk-grid-row govuk-!-margin-top-2">
-    <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2">
-      <span class="govuk-!-font-weight-bold"><%= t("project_information.show.school_details.rows.school_type") %>: </span><%= project.establishment.type %>
-    </p>
-    <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2 govuk-!-text-align-right">
-      <span class="govuk-!-font-weight-bold"><%= t("project.summary.target_completion_date.title") %>: </span><%= project.target_completion_date.to_formatted_s(:govuk) %>
-    </p>
+<div class="project-summary govuk-!-margin-bottom-9">
+
+  <div class="row-container">
+    <%= render partial: "projects/index/project_summary_item",
+          locals: {label: t("project_information.show.school_details.rows.school_type"), content: project.establishment.type} %>
+
+    <%= render partial: "projects/index/project_summary_item",
+          locals: {label: t("project.summary.target_completion_date.title"), content: project.target_completion_date.to_formatted_s(:govuk)} %>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break govuk-section-break--visible">
+  <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
-  <div class="govuk-grid-row govuk-!-margin-top-2">
-    <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2">
-      <span class="govuk-!-font-weight-bold"><%= t("project.summary.incoming_trust.title") %>: </span><%= project.incoming_trust.name %>
-    </p>
-    <p class="govuk-grid-column-one-half govuk-body govuk-!-margin-bottom-2 govuk-!-text-align-right">
-      <span class="govuk-!-font-weight-bold"><%= t("project.summary.local_authority.title") %>: </span><%= project.establishment.local_authority %>
-    </p>
+  <div class="row-container">
+    <%= render partial: "projects/index/project_summary_item",
+          locals: {label: t("project.summary.incoming_trust.title"), content: project.incoming_trust.name} %>
+
+    <%= render partial: "projects/index/project_summary_item",
+          locals: {label: t("project.summary.local_authority.title"), content: project.establishment.local_authority} %>
   </div>
 
-  <hr class="govuk-section-break govuk-section-break govuk-section-break--visible">
+  <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
 </div>
