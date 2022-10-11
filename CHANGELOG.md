@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [Release 6][release-6]
+
 ### Added
 
 - Users can add, edit, and delete task level notes. These are displayed on the
@@ -230,6 +232,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 [unreleased]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-5...HEAD
+[release-6]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-5...release-6
 [release-5]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-4...release-5
 [release-4]:
