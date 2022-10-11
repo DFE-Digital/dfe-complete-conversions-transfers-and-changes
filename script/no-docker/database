@@ -3,5 +3,5 @@
 # Check if the SQL Server container is already running and if not, run it
 
 if ! docker-compose ps | grep -q "dfe-complete-sql-server\|Up"; then
-  docker-compose -f docker-compose.database.local.yml up -d
+  docker-compose -f docker-compose.database-only.yml up -d
 fi

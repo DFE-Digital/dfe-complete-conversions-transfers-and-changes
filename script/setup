@@ -8,17 +8,10 @@ set -e
 # Enable the running of this script from any subdirectory without moving to root
 cd "$(dirname "$0")/.."
 
-. script/all/process-script-args
-
 if [ ! -f .env.development.local ]; then
   echo "==> Copying default environment config..."
   cp .env.example .env.development.local
 fi
 
-if [ "$DOCKER" -eq 1 ]; then
-  echo "==> Setting up with Docker..."
-  script/docker/setup "$@"
-else
-  echo "==> Settting up natively (no docker)..."
-  script/no-docker/setup "$@"
-fi
+echo "==> Settting up natively (no docker)..."
+script/no-docker/setup "$@"

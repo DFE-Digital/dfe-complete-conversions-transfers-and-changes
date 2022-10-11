@@ -8,12 +8,5 @@ set -e
 # Enable the running of this script from any subdirectory without moving to root
 cd "$(dirname "$0")/.."
 
-. script/all/process-script-args
-
-if [ "$DOCKER" -eq 1 ]; then
-  echo "==> Running with Docker..."
-  script/docker/bootstrap "$@"
-else
-  echo "==> Running natively (no docker)..."
-  script/no-docker/bootstrap "$@"
-fi
+echo "==> Running natively (no docker)..."
+script/no-docker/bootstrap "$@"
