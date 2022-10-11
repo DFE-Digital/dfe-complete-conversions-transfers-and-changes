@@ -34,3 +34,29 @@ $govuk-global-styles: true;
     }
   }
 }
+
+.govuk-section-break--s {
+  @include govuk-responsive-margin(2, "top");
+  @include govuk-responsive-margin(2, "bottom");
+}
+
+.projects-list {
+  .project-summary {
+    p {
+      margin-block-end: 0;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      .row-container {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    @include govuk-media-query($until: desktop) {
+      .govuk-section-break:not(:last-child) {
+        display: none;
+      }
+    }
+  }
+}
