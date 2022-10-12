@@ -25,7 +25,7 @@ instance.
    lowercase letters, base-10 digits and/or non-alphanumeric symbols, see the
    [image docs](https://hub.docker.com/_/microsoft-mssql-server).
 
-   These are then used by the `docker-compose-database.local.yml` to launch and
+   These are then used by the `docker-compose.database-only.yml` to launch and
    instance of SQL Server.
 
 1. Create `.env.development.local` and `.env.test.local` and add:
