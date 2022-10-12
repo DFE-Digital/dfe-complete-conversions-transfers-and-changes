@@ -31,6 +31,10 @@
 
 en:
   service_name: Complete conversions, transfers and changes
+  phase_banner:
+    phase: Beta
+    phase_notice:
+      html: This is a new service – your <a href="https://forms.office.com/r/47n7Q6nynQ" class="govuk-link">feeback</a> will help us improve it.
   sign_in:
     button: Sign in with your DfE Microsoft account
     message:
