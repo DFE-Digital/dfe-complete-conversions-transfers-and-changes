@@ -19,6 +19,12 @@ en:
       title: Edit a project
     update:
       success: Project has been updated successfully
+    close:
+      heading: Close project
+      guidance: Check all the tasks have been completed or marked as not applicable.
+      submit_button: Mark project as closed
+    closed:
+      back_link: Return to project list
     summary:
       caseworker:
         title: Caseworker
