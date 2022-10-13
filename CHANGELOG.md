@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the phase banner and link to general feedback form
 
+### Changed
+
+- the service name has been removed from the Projects page
+
 ## [Release 6][release-6]
 
 ### Added
