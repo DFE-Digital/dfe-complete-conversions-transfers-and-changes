@@ -134,27 +134,6 @@ en:
         title: Diocese details
         rows:
           diocese: Diocese
-  note:
-    index:
-      notes: Notes
-      add_note_button: Add note
-      no_notes_yet: There aren't any notes for this project yet.
-    show:
-      task_notes:
-        title: Task notes
-    create:
-      success: Note has been added successfully
-    new:
-      save_note_button: Add note
-    edit:
-      save_note_button: Save note
-    update:
-      success: Note has been edited successfully
-    destroy:
-      success: Note has been deleted successfully
-    confirm_destroy:
-      title: Are you sure you want to delete this note?
-      guidance: This will remove the note from the project. If this note contains outdated information, it may be better to leave a new note with an update instead.
   contact:
     index:
       contacts: Contacts
@@ -205,8 +184,6 @@ en:
         regional_delivery_officer_id: Regional delivery officer
         advisory_board_conditions: Advisory board conditions
         establishment_sharepoint_link: School SharePoint link
-      note:
-        body: Enter note
       contact:
         category: Contact for
         title: Role
@@ -225,9 +202,6 @@ en:
         target_completion_date: The target conversion date is always the 1st of the month.
         advisory_board_conditions: If there are conditions to be met as a result of the advisory board.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this project. This is where you save all the relevant documents.
-      note:
-        body: Do not include personal or financial information.
-
   activerecord:
     errors:
       models:
