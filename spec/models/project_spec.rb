@@ -265,4 +265,20 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "#closed?" do
+    context "when the closed_at is nil, i.e. the project is active" do
+      it "returns false" do
+        project = build(:project, closed_at: nil)
+        expect(project.closed?).to eq false
+      end
+    end
+
+    context "when the closed_at is set, i.e. the project is closed" do
+      it "returns true" do
+        project = build(:project, closed_at: DateTime.now)
+        expect(project.closed?).to eq true
+      end
+    end
+  end
 end

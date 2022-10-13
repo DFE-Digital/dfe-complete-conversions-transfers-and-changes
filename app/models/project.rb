@@ -31,6 +31,10 @@ class Project < ApplicationRecord
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
+  def closed?
+    closed_at.present?
+  end
+
   private def fetch_establishment(urn)
     result = AcademiesApi::Client.new.get_establishment(urn)
     raise result.error if result.error.present?
