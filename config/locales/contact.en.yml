@@ -1,0 +1,37 @@
+en:
+  contact:
+    index:
+      contacts: Contacts
+      category_heading: "%{category_name} contacts"
+      add_contact_button: Add contact
+      no_contacts_yet: There aren't any contacts for this project yet.
+    details:
+      name: Name
+      title: Role
+      email: Email
+      phone: Phone
+      edit_link: Change
+    new:
+      title: Add contact
+      save_contact_button: Add contact
+    create:
+      success: Contact has been added successfully
+    edit:
+      title: Edit contact
+      save_contact_button: Save contact
+    update:
+      success: Contact has been updated successfully
+    destroy:
+      success: Contact has been deleted successfully
+    confirm_destroy:
+      title:
+        Are you sure you want to delete %{contact_name}?
+      guidance: This will remove the contact for %{contact_title} called %{contact_name} from the contacts list.
+  helpers:
+    label:
+      contact:
+        category: Contact for
+        title: Role
+        name: Name
+        email: Email
+        phone: Phone
