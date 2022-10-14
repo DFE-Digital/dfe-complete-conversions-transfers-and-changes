@@ -16,5 +16,10 @@ RSpec.feature "Users can close a project" do
 
     expect(page).to have_content("Project closed")
     expect(project.reload.closed_at).not_to be_nil
+
+    click_on I18n.t("project.closed.back_link")
+    click_on project.establishment.name
+
+    expect(page).to have_content(DateTime.now.to_formatted_s(:govuk_date_time_date_only))
   end
 end

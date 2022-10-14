@@ -40,6 +40,7 @@ en:
       establishment_sharepoint_link:
         title: School SharePoint link
         value: Open the School Sharepoint folder in a new tab
+      closed_at: Project closed
     assign:
       team_leader:
         success: Team leader has been assigned successfully
