@@ -3,6 +3,8 @@ class Task < ApplicationRecord
   has_many :actions, dependent: :destroy
   has_many :notes, dependent: :destroy
 
+  LEGAL_DOCUMENT_SECTION_TITLE = "Clear and sign legal documents"
+
   default_scope { order(order: "asc") }
 
   delegate :project, to: :section
@@ -16,7 +18,7 @@ class Task < ApplicationRecord
   end
 
   def clear_legal_documents_type?
-    section.title == "Clear legal documents"
+    section.title == LEGAL_DOCUMENT_SECTION_TITLE
   end
 
   def status

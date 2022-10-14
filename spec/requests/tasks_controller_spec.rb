@@ -34,7 +34,7 @@ RSpec.describe TasksController, type: :request do
     end
 
     context "when the task is not in the 'Clear legal documents' section" do
-      let(:section) { create(:section, title: "Clear legal documents") }
+      let(:section) { create(:section, title: "Clear and sign legal documents") }
 
       it "returns a successful response and renders the clear_legal_documents_show template" do
         expect(subject).to have_http_status :success
