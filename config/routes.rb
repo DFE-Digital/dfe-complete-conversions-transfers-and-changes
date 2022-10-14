@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :projects, only: %i[index show new create] do
     get "information", to: "project_information#show"
 
+    put "close", to: "projects_close#close"
+
     resources :tasks, only: %i[show update]
     resources :notes, except: %i[show], concerns: :has_destroy_confirmation
     resources :contacts, except: %i[show], concerns: :has_destroy_confirmation

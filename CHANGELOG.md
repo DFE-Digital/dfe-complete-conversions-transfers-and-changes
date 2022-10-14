@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - the phase banner and link to general feedback form
+- projects can be closed.
 
 ### Changed
 

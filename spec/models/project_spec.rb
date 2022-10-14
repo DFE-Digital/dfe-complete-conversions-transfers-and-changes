@@ -11,6 +11,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:advisory_board_date).of_type :date }
     it { is_expected.to have_db_column(:advisory_board_conditions).of_type :text }
     it { is_expected.to have_db_column(:establishment_sharepoint_link).of_type :text }
+    it { is_expected.to have_db_column(:closed_at).of_type :datetime }
   end
 
   describe "Relationships" do
@@ -261,6 +262,22 @@ RSpec.describe Project, type: :model do
 
       it "raises the error" do
         expect { subject.incoming_trust }.to raise_error(AcademiesApi::Client::Error, error_message)
+      end
+    end
+  end
+
+  describe "#closed?" do
+    context "when the closed_at is nil, i.e. the project is active" do
+      it "returns false" do
+        project = build(:project, closed_at: nil)
+        expect(project.closed?).to eq false
+      end
+    end
+
+    context "when the closed_at is set, i.e. the project is closed" do
+      it "returns true" do
+        project = build(:project, closed_at: DateTime.now)
+        expect(project.closed?).to eq true
       end
     end
   end
