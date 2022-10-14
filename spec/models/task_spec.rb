@@ -61,7 +61,7 @@ RSpec.describe Task, type: :model do
     subject { task.clear_legal_documents_type? }
 
     context "when section is 'Clear legal documents'" do
-      let(:section) { build(:section, title: "Clear legal documents") }
+      let(:section) { build(:section, title: "Clear and sign legal documents") }
 
       it { expect(subject).to be true }
     end

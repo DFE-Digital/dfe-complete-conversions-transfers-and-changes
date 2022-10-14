@@ -57,7 +57,7 @@ RSpec.describe TaskListCreator do
 
     context "when the workflow's optional fields are empty" do
       it "creates tasks from the workflow" do
-        section = Section.find_by(title: "Clear legal documents")
+        section = Section.find_by(title: "Clear and sign legal documents")
 
         expect(Task.count).to be 3
         expect(
@@ -73,7 +73,7 @@ RSpec.describe TaskListCreator do
       end
 
       it "creates actions from the workflow" do
-        section = Section.find_by(title: "Clear legal documents")
+        section = Section.find_by(title: "Clear and sign legal documents")
         task = section.tasks.find_by(title: "Clear land questionnaire")
 
         expect(
