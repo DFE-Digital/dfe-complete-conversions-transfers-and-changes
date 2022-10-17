@@ -59,4 +59,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.delivery_method = :notify
+  config.action_mailer.notify_settings = {
+    api_key: ENV["GOV_NOTIFY_API_KEY"]
+  }
 end
