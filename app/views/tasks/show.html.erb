@@ -17,15 +17,13 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for :task, url: project_task_path, method: :put do |form| %>
-      <%= form.govuk_check_boxes_fieldset :actions, legend: {hidden: true}, classes: "task-checkboxes" do %>
-        <% @task.actions.each do |action| %>
-          <%= render layout: "tasks/shared/action_#{action.action_type}", locals: {action: action, form: form} do %>
+      <% @task.actions.each do |action| %>
+        <%= render layout: "tasks/shared/action_#{action.action_type}", locals: {action: action, form: form} do %>
 
-            <%= render partial: "tasks/shared/action_hint", locals: {action: action} %>
+          <%= render partial: "tasks/shared/action_hint", locals: {action: action} %>
 
-            <%= render partial: "tasks/shared/action_guidance_summary", locals: {action: action} %>
+          <%= render partial: "tasks/shared/action_guidance_summary", locals: {action: action} %>
 
-          <% end %>
         <% end %>
       <% end %>
       <%= form.govuk_submit %>
