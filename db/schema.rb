@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_124723) do
     t.string "guidance_summary"
     t.text "guidance_text"
     t.string "action_type"
+    t.string "padding", default: "normal"
     t.index ["task_id"], name: "index_actions_on_task_id"
   end
 
