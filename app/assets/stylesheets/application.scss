@@ -22,11 +22,19 @@ $govuk-global-styles: true;
 
 .task-checkboxes {
   .govuk-checkboxes__item {
-    margin-bottom: govuk-spacing(9);
     label {
       @extend .govuk-\!-font-weight-bold;
     }
   }
+}
+
+.task-action__wrapper {
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+.task-action__wrapper {
+  margin-top: govuk-spacing(9);
 }
 
 .govuk-section-break--s {

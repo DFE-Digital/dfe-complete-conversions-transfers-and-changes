@@ -1,3 +1,7 @@
-<h2 class="govuk-heading-l"><%= action.title %></h2>
+<%= render layout: "tasks/shared/action_wrapper", locals: {action: action} do %>
 
-<%= yield %>
+  <h2 class="govuk-heading-l"><%= action.title %></h2>
+
+  <%= yield %>
+
+<% end %>

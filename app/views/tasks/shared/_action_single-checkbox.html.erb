@@ -1,16 +1,20 @@
-<%= form.govuk_check_boxes_fieldset "action-#{action.id}",
-      multiple: false,
-      legend: {text: action.title, hidden: true},
-      classes: "task-checkboxes" do %>
-  <%= form.govuk_check_box "action-#{action.id}",
-                          1,
-                          0,
-                          name: "task[actions][#{action.id}]",
-                          label: { text: action.title },
-                          multiple: false,
-                          link_errors: true,
-                          checked: action.completed?,
-                          hint: -> do %>
-    <%= yield %>
+<%= render layout: "tasks/shared/action_wrapper", locals: {action: action} do %>
+
+  <%= form.govuk_check_boxes_fieldset "action-#{action.id}",
+        multiple: false,
+        legend: {text: action.title, hidden: true},
+        classes: "task-checkboxes" do %>
+    <%= form.govuk_check_box "action-#{action.id}",
+                            1,
+                            0,
+                            name: "task[actions][#{action.id}]",
+                            label: { text: action.title },
+                            multiple: false,
+                            link_errors: true,
+                            checked: action.completed?,
+                            hint: -> do %>
+      <%= yield %>
+    <% end %>
   <% end %>
+
 <% end %>
