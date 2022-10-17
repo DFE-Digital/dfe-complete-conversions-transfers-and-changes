@@ -266,6 +266,22 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "by_target_completion_date scope" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    it "shows the project that complete earliest first" do
+      last_project = create(:project, target_completion_date: Date.today.beginning_of_month + 3.years)
+      middle_project = create(:project, target_completion_date: Date.today.beginning_of_month + 2.years)
+      first_project = create(:project, target_completion_date: Date.today.beginning_of_month + 1.year)
+
+      ordered_projects = Project.by_target_completion_date
+
+      expect(ordered_projects[0]).to eq first_project
+      expect(ordered_projects[1]).to eq middle_project
+      expect(ordered_projects[2]).to eq last_project
+    end
+  end
+
   describe "#closed?" do
     context "when the closed_at is nil, i.e. the project is active" do
       it "returns false" do
