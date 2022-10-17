@@ -11,9 +11,30 @@ RSpec.feature "Users can view a list of projects" do
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: "regionaldeliveryofficer@education.gov.uk") }
   let(:user_1) { create(:user, email: "user1@education.gov.uk") }
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
-  let!(:unassigned_project) { create(:project, urn: 100001) }
-  let!(:user_1_project) { create(:project, urn: 100002, caseworker: user_1) }
-  let!(:user_2_project) { create(:project, urn: 100003, caseworker: user_2, regional_delivery_officer: regional_delivery_officer) }
+  let!(:unassigned_project) {
+    create(
+      :project,
+      urn: 100001,
+      target_completion_date: Date.today.beginning_of_month + 3.years
+    )
+  }
+  let!(:user_1_project) {
+    create(
+      :project,
+      urn: 100002,
+      caseworker: user_1,
+      target_completion_date: Date.today.beginning_of_month + 2.year
+    )
+  }
+  let!(:user_2_project) {
+    create(
+      :project,
+      urn: 100003,
+      caseworker: user_2,
+      regional_delivery_officer: regional_delivery_officer,
+      target_completion_date: Date.today.beginning_of_month + 1.years
+    )
+  }
 
   context "when the user is a team leader" do
     before do
@@ -26,6 +47,14 @@ RSpec.feature "Users can view a list of projects" do
       page_has_project(unassigned_project)
       page_has_project(user_1_project)
       page_has_project(user_2_project)
+    end
+
+    scenario "the projects are sorted by target completion date" do
+      visit projects_path
+
+      expect(page.find("ul.projects-list > li:nth-of-type(1)")).to have_content("100003")
+      expect(page.find("ul.projects-list > li:nth-of-type(2)")).to have_content("100002")
+      expect(page.find("ul.projects-list > li:nth-of-type(3)")).to have_content("100001")
     end
   end
 
