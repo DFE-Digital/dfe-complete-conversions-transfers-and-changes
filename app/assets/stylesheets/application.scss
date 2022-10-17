@@ -33,8 +33,13 @@ $govuk-global-styles: true;
     margin-top: 0;
   }
 
-.task-action__wrapper {
-  margin-top: govuk-spacing(9);
+  &__padding-normal {
+    margin-top: govuk-spacing(9);
+  }
+
+  &__padding-reduced {
+    margin-top: govuk-spacing(0);
+  }
 }
 
 .govuk-section-break--s {
