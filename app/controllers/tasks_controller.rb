@@ -7,19 +7,19 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.actions.each do |action|
-      action_completed = action.id.in?(task_params[:completed_action_ids] || [])
-      Action.update(action.id, completed: action_completed)
+    # If the task is not applicable, just unset all the actions instead of updating them all.
+    if not_applicable
+      unset_all_actions
+    else
+      @task.actions.includes([:task]).each do |action|
+        action.update(completed: params.dig("task", "actions", action.id) || false)
+      end
     end
 
+    # The task's not applicable state should be updated regardless of the above logic
     @task.update(not_applicable: not_applicable)
-    unset_all_actions if @task.not_applicable?
 
     redirect_to(project_path(@task.project))
-  end
-
-  def task_params
-    params.require(:task).permit(:not_applicable, completed_action_ids: [])
   end
 
   private def find_task

@@ -56,7 +56,7 @@ RSpec.describe TasksController, type: :request do
     let(:task) { create(:task, actions: [completed_action, incomplete_action]) }
     let(:project_id) { task.section.project.id }
     let(:task_id) { task.id }
-    let(:params) { {task: {completed_action_ids: [incomplete_action.id]}} }
+    let(:params) { {task: {actions: {completed_action.id => 0, incomplete_action.id => 1}}} } # These are inverted since we're testing the change of an action's status
 
     subject(:perform_request) do
       put project_task_path(project_id, task_id), params: params
