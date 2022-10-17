@@ -35,8 +35,5 @@ module DfeCompleteConversionsTransfersAndChanges
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    # ActiveJob uses Sidekiq
-    config.active_job.queue_adapter = :sidekiq
   end
 end
