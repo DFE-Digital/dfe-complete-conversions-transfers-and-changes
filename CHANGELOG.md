@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Update content on Handover to regional delivery officer
 - Update content on external stakeholder kick-off
 - Update content on process conversion grant
+- Task becomes Complete and send Single worksheet
+- Check the baseline task guidance now refers to this project, not all projects
 - the service name has been removed from the Projects page
 - the Projects are listed in target completion date order, soonest first
 
