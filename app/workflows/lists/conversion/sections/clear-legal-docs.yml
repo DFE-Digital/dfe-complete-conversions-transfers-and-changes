@@ -101,7 +101,7 @@ tasks:
           You can [view the model documents (opens in new
           tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools)
           to check for changes.
-        guidance_summary: Help checking the Church supplemental agreement
+        guidance_summary: Help checking for changes
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
 
@@ -120,6 +120,7 @@ tasks:
         title: Signed by the Secretary of State
         hint: |
           The Secretary of State, or somebody with the authority to act on their behalf, must sign the Church supplemental agreement.
+
           Usually this is your team leader or the deputy director.
       - type: single-checkbox
         title: Sent to team leader or deputy director
