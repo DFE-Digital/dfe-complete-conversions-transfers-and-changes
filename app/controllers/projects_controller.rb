@@ -28,10 +28,17 @@ class ProjectsController < ApplicationController
     if @project.valid?
       @project.save
       TaskListCreator.new.call(@project, workflow_root: DEFAULT_WORKFLOW_ROOT)
+      notify_team_leaders
 
       redirect_to project_path(@project), notice: I18n.t("project.create.success")
     else
       render :new
+    end
+  end
+
+  private def notify_team_leaders
+    User.team_leaders.each do |team_leader|
+      TeamLeaderMailer.new_project_created(team_leader, @project).deliver_later
     end
   end
 

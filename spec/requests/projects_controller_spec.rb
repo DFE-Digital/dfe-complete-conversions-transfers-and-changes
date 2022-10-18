@@ -12,6 +12,7 @@ RSpec.describe ProjectsController, type: :request do
     let(:project) { build(:project) }
     let(:project_params) { attributes_for(:project, regional_delivery_officer: nil) }
     let(:note_params) { {body: "new note"} }
+    let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
       post projects_path, params: {project: {**project_params, note: note_params}}
@@ -31,6 +32,7 @@ RSpec.describe ProjectsController, type: :request do
 
     context "when the project is valid" do
       let(:task_list_creator) { TaskListCreator.new }
+      let(:new_project_record) { Project.last }
 
       before do
         mock_successful_api_responses(urn: 123456, ukprn: 10061021)
@@ -42,9 +44,7 @@ RSpec.describe ProjectsController, type: :request do
       end
 
       it "assigns the regional delivery officer, calls the TaskListCreator, and redirects to the project path" do
-        new_project_record = Project.last
-
-        expect(response).to redirect_to(project_path(Project.first.id))
+        expect(response).to redirect_to(project_path(new_project_record.id))
         expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: ProjectsController::DEFAULT_WORKFLOW_ROOT)
         expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
       end
@@ -53,6 +53,12 @@ RSpec.describe ProjectsController, type: :request do
         expect(Project.count).to be 1
         expect(Note.count).to be 1
         expect(Note.last.user).to eq regional_delivery_officer
+      end
+
+      it "sends a new project created email to team leaders" do
+        expect(ActionMailer::MailDeliveryJob)
+          .to(have_been_enqueued.on_queue("default")
+          .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, new_project_record]))
       end
 
       context "when the note body is empty" do
