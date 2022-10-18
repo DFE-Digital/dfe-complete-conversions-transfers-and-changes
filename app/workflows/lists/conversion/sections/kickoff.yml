@@ -23,6 +23,7 @@ tasks:
           * Project information, such as advisory board conditions
           * School or trust website for more information about the school
           * Google maps for potential land issues
+
       - title:
           Make notes and write questions to ask the regional delivery officer
         guidance_summary: What to make notes about
@@ -36,14 +37,12 @@ tasks:
 
   - title: External stakeholder kick-off
     hint:
-      You should complete these actions after you've had the handover with the
-      regional delivery officer.
+      You should start this work after you've had the handover with the regional delivery officer.
     actions:
       - title: Send introductory emails
         hint: |
-          Introduce yourself to the school, trust and their solicitors and organise a kick-off meeting.
+          Introduce yourself to the school, trust and their solicitors. You should also contact the local authority, but do this separately.
 
-          You should also contact the local authority separately.
         guidance_summary: What to include in introductory emails
         guidance_text: |
           You can [choose an email template (opens in new tab)](https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC) to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.
@@ -59,10 +58,7 @@ tasks:
           You should aim to do this in the first week of picking up the project.
           Ideally the kick-off meeting should take place within the first couple of weeks.
 
-      - title: Check you have the Local authority proforma
-        hint:
-          Make sure the local authority has completed and returned their
-          proforma, then save it in SharePoint.
+      - title: Check and save the Local authority proforma in the school's SharePoint folder
         guidance_summary: Help with the Local authority proforma
         guidance_text: |
           The regional delivery officer should have sent the Local authority proforma to the local authority to complete.
@@ -80,31 +76,31 @@ tasks:
 
           Tell them if the local authority cannot complete the conversion by the target date.
 
-          You'll need to work with the school, trust and local authority to agree a new conversion date.
+          If the local authority cannot complete the conversion by the target date, you'll need to work with the school, trust and local authority to agree a new date.
 
       - title: Send invites to the kick-off meeting or call
         hint:
           Check who the school and trust would like to attend the kick-off
-          meeting and send out invites.
-        guidance_summary: Advice for arranging the kick-off meeting
+          meeting.
+        guidance_summary: How to arrange the kick-off meeting
         guidance_text: |
           Your introductory email should have included some possible dates for a kick-off meeting.
 
-          Once the school have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It’s likely to be a video call over Microsoft Teams.
+          Once the school have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It's likely to be a video call over Microsoft Teams.
 
           Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders.
 
       - title: Host the kick-off meeting or call
         hint:
           Make sure all attendees understand what they need to do, and when they
-          need to do it by, to complete the conversion on time.
-        guidance_summary: What to talk about in the kick-off meeting
+          need to do it by.
+        guidance_summary: What to talk about in the meeting
         guidance_text: |
           You should discuss and record issues that might complicate or delay the project.
 
-          You can [use the conversion checklist to guide the conversation](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EZx-RuHD_JxEuaCF68ZXpe8BvSQ3ITlysjfNJ28t0_xzfQ?e=hxRZxt) and make sure you talk about everything you need to.
+          You can [use the conversion checklist (opens in a new tab)](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EZx-RuHD_JxEuaCF68ZXpe8BvSQ3ITlysjfNJ28t0_xzfQ?e=hxRZxt) to guide the conversation and make sure you talk about everything you need to.
 
-      - title: Update and share the conversion checklist
+      - title: Share the conversion checklist
         hint:
           Update the conversion checklist with any agreed actions, dates and
           comments from the kick-off meeting or call.
