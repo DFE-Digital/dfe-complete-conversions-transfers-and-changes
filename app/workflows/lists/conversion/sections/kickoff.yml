@@ -5,8 +5,9 @@ tasks:
       - title:
           Review the project information, check the documents and carry out
           research
-        hint: |
-          Check that no information is missing from the existing project documents and there are no errors.
+        hint:
+          Check that no information is missing from the existing project
+          documents and there are no errors.
         guidance_summary: What to check for
         guidance_text: |
           You should check existing project documents, including:
@@ -32,8 +33,7 @@ tasks:
 
           This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.
       - title: Attend handover meeting with regional delivery officer
-        hint: |
-          Discuss any questions you have about the project in the meeting.
+        hint: Discuss any questions you have about the project in the meeting.
 
   - title: External stakeholder kick-off
     hint:
@@ -149,8 +149,7 @@ tasks:
           You must include this information in your email to the Grant payments team later.
 
       - title: Receive, check and save the Grant payment form
-        hint: |
-          Make sure there's no missing information.
+        hint: Make sure there's no missing information.
         guidance_summary: How to check and save the form
         guidance_text: |
           The school or trust must send you the grant claim form.
