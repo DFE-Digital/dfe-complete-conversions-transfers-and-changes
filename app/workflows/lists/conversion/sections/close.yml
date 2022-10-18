@@ -1,5 +1,12 @@
-title: Project close
+title: After opening
 tasks:
+  - title: Tell the regional delivery officer that the academy has opened
+    hint: |
+      You should email the regional delivery officer. Send the school's name, date it opened as an academy and link to the project.
+
+    actions:
+      - title: Email the regional delivery officer
+
   - title: Redact and send funding agreement documents
     hint: |
       Funding agreement documents relating to the conversion will be added to
