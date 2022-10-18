@@ -18,12 +18,53 @@ A task on the task list, which contains one or more actions.
 
 | Property                               | Type      | Required | Nullable       | Defined by                                                                                                                                                      |
 | :------------------------------------- | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [slug](#slug)                          | `string`  | Required | cannot be null | [Section](section-properties-tasks-task-properties-slug.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/slug")                         |
 | [title](#title)                        | `string`  | Required | cannot be null | [Section](section-properties-tasks-task-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/title")                       |
 | [hint](#hint)                          | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-hint.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/hint")                         |
 | [guidance\_summary](#guidance_summary) | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-guidance-summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_summary") |
 | [guidance\_text](#guidance_text)       | `string`  | Optional | cannot be null | [Section](section-properties-tasks-task-properties-guidance-text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_text")       |
 | [optional](#optional)                  | `boolean` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-optional.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional")                 |
 | [actions](#actions)                    | `array`   | Required | cannot be null | [Section](section-properties-tasks-task-properties-actions.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions")                   |
+
+## slug
+
+A unique human-readable string which identifies this task.
+
+`slug`
+
+*   is required
+
+*   Type: `string` ([Slug](section-properties-tasks-task-properties-slug.md))
+
+*   cannot be null
+
+*   defined in: [Section](section-properties-tasks-task-properties-slug.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/slug")
+
+### slug Type
+
+`string` ([Slug](section-properties-tasks-task-properties-slug.md))
+
+### slug Constraints
+
+**pattern**: the string must match the following regular expression:&#x20;
+
+```regexp
+^[a-z0-9-]+$
+```
+
+[try pattern](https://regexr.com/?expression=%5E%5Ba-z0-9-%5D%2B%24 "try regular expression with regexr.com")
+
+### slug Examples
+
+```yaml
+handover-with-rdo
+
+```
+
+```yaml
+clear-and-sign-church-supplemental-agreement
+
+```
 
 ## title
 

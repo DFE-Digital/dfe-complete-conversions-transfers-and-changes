@@ -1,6 +1,7 @@
 title: Clear and sign legal documents
 tasks:
-  - title: Clear land questionnaire
+  - slug: clear-land-questionnaire
+    title: Clear land questionnaire
     actions:
       - title: Action one
       - title: Action two

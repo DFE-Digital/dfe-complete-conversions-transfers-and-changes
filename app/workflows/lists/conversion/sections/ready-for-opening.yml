@@ -1,6 +1,7 @@
 title: Get ready for opening
 tasks:
-  - title: Check the Baseline
+  - slug: check-baseline
+    title: Check the Baseline
     hint: |
       You must confirm the conversion date within 3 working days of receiving
       the Baseline email. Indicate on the Baseline that the school is on track
@@ -42,7 +43,8 @@ tasks:
 
           Email the Academy Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to tell them if you have had to move or add the school to the correct Baseline.
 
-  - title: Complete and send Single worksheet
+  - slug: complete-and-send-single-worksheet
+    title: Complete and send Single worksheet
     hint: |
       You need to [download a single worksheet template (opens in new
       tab)](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EacL3VXFYxlNmqkPI_oelqkBW2_hS4tZwLo52EIuL6rdyw?e=CsOUUl)
@@ -67,7 +69,8 @@ tasks:
           Baseline is confirmed. The exact deadline will be in the baseline
           email sent by The Academies Operational Practice Unit.
 
-  - title: Confirm the school has completed all actions
+  - slug: confirm-school-has-completed-all-actions
+    title: Confirm the school has completed all actions
     hint: |
       Check the school have completed all their tasks and save their responses in the school's SharePoint folder.
     actions:
@@ -93,7 +96,8 @@ tasks:
           4. change the date in KIM
           5. inform the regional delivery officer who started on this project
 
-  - title: Confirm all conditions have been met
+  - slug: confirm-all-conditions-met
+    title: Confirm all conditions have been met
     hint: |
       The deadline to confirm all conditions have been met will be in the
       Baseline email you received. The school will not be able to open on the
@@ -129,7 +133,8 @@ tasks:
           * risk protection arrangement in place and insurer confirmed
           * relevant documents signed and sealed
 
-  - title: Confirm opening date with the school
+  - slug: confirm-opening-date-with-school
+    title: Confirm opening date with the school
     hint: |
       Once you've confirmed that all conditions have been met, contact the
       school and trust to tell them they can convert on the target conversion

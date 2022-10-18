@@ -1,6 +1,7 @@
 title: Clear and sign legal documents
 tasks:
-  - title: Land questionnaire
+  - slug: clear-and-sign-land-questionnaire
+    title: Land questionnaire
     hint: |
       Make sure that any proposals for the land meet legal requirements and ministerial preferences.
     actions:
@@ -27,7 +28,8 @@ tasks:
         title: Signed by school or trust
       - type: single-checkbox
         title: Saved in the school's SharePoint folder
-  - title: Land registry title plans
+  - slug: clear-and-sign-land-registry-title-plans
+    title: Land registry title plans
     hint:
       The Land registry title plans are an essential document in all
       conversions.
@@ -53,7 +55,8 @@ tasks:
       - type: single-checkbox
         title: Saved in the school's SharePoint folder
 
-  - title: Supplemental funding agreement
+  - slug: clear-and-sign-supplemental-funding-agreement
+    title: Supplemental funding agreement
     hint: |
       Check the Supplemental funding agreement for changes from the model documents.
     actions:
@@ -90,7 +93,8 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
-  - title: Church supplemental agreement
+  - slug: clear-and-sign-church-supplemental-agreement
+    title: Church supplemental agreement
     hint: |
       This document is only required for Church of England and Catholic schools.
     optional: true
@@ -127,7 +131,8 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
-  - title: Master funding agreement
+  - slug: clear-and-sign-master-funding-agreement
+    title: Master funding agreement
     hint: |
       Master funding agreements from before 2018 should be updated to the newer versions.
     optional: true
@@ -174,7 +179,8 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
-  - title: Articles of association
+  - slug: clear-and-sign-articles-of-association
+    title: Articles of association
     hint: |
       The Articles of association must be updated if the trust currently uses a version from February 2016 or earlier.
     actions:
@@ -198,7 +204,8 @@ tasks:
       - type: single-checkbox
         title: Saved in the school's SharePoint folder
 
-  - title: Deed of variation
+  - slug: clear-and-sign-deed-of-variation
+    title: Deed of variation
     hint: |
       You'll only need to complete and clear a Deed of variation if there are changes to the funding agreements.
     optional: true
@@ -230,7 +237,8 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
-  - title: Trust modification order
+  - slug: clear-and-sign-trust-modification-order
+    title: Trust modification order
     hint: |
       The Trust modification order is only needed if there are restrictions on the land titles that need resolving.
 
@@ -281,7 +289,8 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
-  - title: Direction to transfer
+  - slug: clear-and-sign-direction-to-transfer
+    title: Direction to transfer
     hint: |
       A Direction to transfer is only needed when freehold land is owned by a foundation school, governing body or trustees and that land needs to be transferred to the trust or diocese.
 
