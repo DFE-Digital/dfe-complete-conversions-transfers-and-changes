@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the phase banner and link to general feedback form
 - projects can be closed.
+- An email is sent via GOV.UK Notify to all team leads when a project is
+  created.
 
 ### Changed
 

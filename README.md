@@ -18,6 +18,7 @@ As a digital service being developed in DfE we aim to follow the
 - [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend)
 - [GOV.UK Accessible autocomplete](https://github.com/alphagov/accessible-autocomplete)
 - [MOJ Frontend](https://github.com/ministryofjustice/moj-frontend)
+- [dxw Mail Notify](https://github.com/dxw/mail-notify)
 
 ## Getting started
 
