@@ -12,9 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - projects can be closed.
 - An email is sent via GOV.UK Notify to all team leads when a project is
   created.
+- Tell regional delivery that the academy has opened task to Project close
+  section
 
 ### Changed
 
+- Content changes to EFSA in KIM to combine 2 bullet points
+- Remove the Handback with regional delivery officer task
+- Project close section renamed After opening
 - content changes to Land questionnaire
 - content changes to Master funding agreement
 - content changes to Trust modification order
