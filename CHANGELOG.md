@@ -15,6 +15,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- content changes to Land questionnaire
+- content changes to Master funding agreement
+- content changes to Trust modification order
+- content changes to Direction to transfer
+- content changes to Church supplemental agreement
 - the service name has been removed from the Projects page
 - the Projects are listed in target completion date order, soonest first
 
