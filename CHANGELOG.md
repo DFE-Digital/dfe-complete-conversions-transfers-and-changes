@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - content changes to Trust modification order
 - content changes to Direction to transfer
 - content changes to Church supplemental agreement
+- Update content on Handover to regional delivery officer
+- Update content on external stakeholder kick-off
+- Update content on process conversion grant
 - the service name has been removed from the Projects page
 - the Projects are listed in target completion date order, soonest first
 
