@@ -291,17 +291,13 @@ tasks:
         title: Check and clear the Direction to transfer
         hint: |
           Make sure information in the Direction to transfer is correct and compare it against the model document.
-        guidance_summary: How to clear a Direction to transfer
+        guidance_summary: Help checking for changes
         guidance_text: |
-          You should check that information in the Direction to transfer is correct.
+          You need to [compare the Direction to transfer against the model documents (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
 
-          You'll also need to [compare the Direction to transfer against the model documents (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
 
-          Send the Direction to transfer to the Operations team for signing and clearing.
-
-          You can [email the Operations team at academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
-
-          It can take several weeks to hear back from the Operations team.
+          You'll need to [contact the policy team (opens in a new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about any changes to clause text.
       - type: single-checkbox
         title: Received
       - type: single-checkbox
@@ -319,7 +315,7 @@ tasks:
           The Academies Operational Practice Unit will arrange for the Direction to transfer to be signed by the deputy director or a grade 6 team member, on behalf of the Secretary of State.
 
           You can email the Academies Operational Practice Unit at
-          [mailto:academiesdelivery.operations@education.gov.uk](academiesdelivery.operations@education.gov.uk).
+          [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
 
           It can take several weeks to hear back from the Academies Operational
           Practice Unit.
