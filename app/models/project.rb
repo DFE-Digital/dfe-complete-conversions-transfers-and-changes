@@ -23,6 +23,8 @@ class Project < ApplicationRecord
   belongs_to :team_leader, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
+  scope :by_target_completion_date, -> { order(target_completion_date: :asc) }
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end

@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - the service name has been removed from the Projects page
+- the Projects are listed in target completion date order, soonest first
 
 ## [Release 6][release-6]
 
