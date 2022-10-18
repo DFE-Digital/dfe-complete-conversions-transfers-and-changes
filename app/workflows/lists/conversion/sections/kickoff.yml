@@ -37,7 +37,8 @@ tasks:
 
   - title: External stakeholder kick-off
     hint:
-      You should start this work after you've had the handover with the regional delivery officer.
+      You should start this work after you've had the handover with the regional
+      delivery officer.
     actions:
       - title: Send introductory emails
         hint: |
@@ -58,7 +59,9 @@ tasks:
           You should aim to do this in the first week of picking up the project.
           Ideally the kick-off meeting should take place within the first couple of weeks.
 
-      - title: Check and save the Local authority proforma in the school's SharePoint folder
+      - title:
+          Check and save the Local authority proforma in the school's SharePoint
+          folder
         guidance_summary: Help with the Local authority proforma
         guidance_text: |
           The regional delivery officer should have sent the Local authority proforma to the local authority to complete.
@@ -180,8 +183,7 @@ tasks:
           It's helpful to include the school or trust's vendor account number too. The Grant payments team will need this to be able to send the money to whoever will receive it.
 
       - title: Give the school and trust the grant payment date
-        hint:
-          The Grant payments team will confirm the date with you first.
+        hint: The Grant payments team will confirm the date with you first.
 
       - title: Check the school or trust have received the grant
         guidance_summary: When to check the funds have been received
