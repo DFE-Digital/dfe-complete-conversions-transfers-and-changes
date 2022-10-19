@@ -3,6 +3,11 @@ variable "environment" {
   type        = string
 }
 
+variable "key_vault_access_users" {
+  description = "List of users that require access to the Key Vault where tfvars are stored. This should be a list of User Principle Names (Found in Active Directory) that need to run terraform"
+  type        = list(string)
+}
+
 variable "tfvars_filename" {
   description = "tfvars filename. This file is uploaded and stored encrupted within Key Vault, to ensure that the latest tfvars are stored in a shared place."
   type        = string

@@ -10,3 +10,6 @@ container_command           = ["/bin/bash", "-c", "echo hello && sleep 86400"]
 container_environment_variables = {
   "RAILS_ENV"                       = "production"
 }
+key_vault_access_users = [
+  "someone_example.com#EXT#@tenantname.onmicrosoft.com",
+]
