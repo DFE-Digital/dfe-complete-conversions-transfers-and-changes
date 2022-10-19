@@ -22,6 +22,7 @@ class TaskListCreator
   private def create_tasks_in_section(section_data, section)
     section_data.fetch("tasks").each_with_index do |task_data, index|
       task = Task.create(
+        slug: task_data.fetch("slug"),
         title: task_data.fetch("title"),
         hint: task_data.fetch("hint", nil),
         guidance_summary: task_data.fetch("guidance_summary", nil),
