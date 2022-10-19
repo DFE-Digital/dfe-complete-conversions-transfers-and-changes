@@ -9,4 +9,5 @@ locals {
   container_command                      = var.container_command
   container_secret_environment_variables = var.container_secret_environment_variables
   enable_mssql_database                  = var.enable_mssql_database
+  tfvars_filename                        = var.tfvars_filename
 }
