@@ -19,6 +19,16 @@
         "description": "A task on the task list, which contains one or more actions.",
         "type": "object",
         "properties": {
+          "slug": {
+            "title": "Slug",
+            "description": "A unique human-readable string which identifies this task.",
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "examples": [
+              "handover-with-rdo",
+              "clear-and-sign-church-supplemental-agreement"
+            ]
+          },
           "title": { "title": "Title", "type": "string" },
           "hint": {
             "title": "Hint",
@@ -98,7 +108,7 @@
           }
         },
         "additionalProperties": false,
-        "required": ["title", "actions"]
+        "required": ["slug", "title", "actions"]
       },
       "minItems": 1
     }

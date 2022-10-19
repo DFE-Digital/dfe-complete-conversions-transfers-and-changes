@@ -1,6 +1,7 @@
 title: Project kick-off
 tasks:
-  - title: Handover with regional delivery officer
+  - slug: handover-with-rdo
+    title: Handover with regional delivery officer
     actions:
       - title:
           Review the project information, check the documents and carry out
@@ -35,7 +36,8 @@ tasks:
       - title: Attend handover meeting with regional delivery officer
         hint: Discuss any questions you have about the project in the meeting.
 
-  - title: External stakeholder kick-off
+  - slug: external-stakeholder-kick-off
+    title: External stakeholder kick-off
     hint:
       You should start this work after you've had the handover with the regional
       delivery officer.
@@ -112,7 +114,8 @@ tasks:
           You should share the updated checklist with everyone invited to the
           kick-off meeting or call.
 
-  - title: Process conversion grant
+  - slug: process-conversion-grant
+    title: Process conversion grant
     guidance_summary: How to process a conversion grant
     guidance_text: |
       Check the grant claim form is ready, the school or trust has a vendor account and send the correct information to the Grant payments team.

@@ -24,6 +24,7 @@ RSpec.describe TaskListCreator do
       expect(Task.count).to be 3
       expect(
         Task.where(
+          slug: "handover-from-pre-ab",
           title: "Understand history and complete handover from Pre-AB",
           order: 0,
           hint: "Understand history hint",
@@ -62,6 +63,7 @@ RSpec.describe TaskListCreator do
         expect(Task.count).to be 3
         expect(
           Task.where(
+            slug: "clear-land-questionnaire",
             title: "Clear land questionnaire",
             order: 0,
             hint: nil,

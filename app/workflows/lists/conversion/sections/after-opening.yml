@@ -1,6 +1,7 @@
 title: After opening
 tasks:
-  - title: Tell the regional delivery officer that the academy has opened
+  - slug: tell-rdo-that-academy-has-opened
+    title: Tell the regional delivery officer that the academy has opened
     hint:
       You should email the regional delivery officer. Send the school's name,
       date it opened as an academy and link to the project.
@@ -8,7 +9,8 @@ tasks:
     actions:
       - title: Email the regional delivery officer
 
-  - title: Redact and send funding agreement documents
+  - slug: redact-and-send-funding-agreement-documents
+    title: Redact and send funding agreement documents
     hint: |
       Funding agreement documents relating to the conversion will be added to
       GOV.UK. These must be redacted to remove sensitive information.
@@ -37,7 +39,8 @@ tasks:
         guidance_text: |
           Send the redacted funding agreement documents to the funding team at [FundingAgreements.CONVERTERS@education.gov.uk](mailto:FundingAgreements.CONVERTERS@education.gov.uk).
 
-  - title: Update ESFA data in KIM
+  - slug: update-esfa-data-in-kim
+    title: Update ESFA data in KIM
     hint:
       Carry out final checks and update project information if necessary so the
       ESFA (Education and Skills Funding Agency) can issue the funding when the
@@ -58,7 +61,8 @@ tasks:
           * audit trail for resolved disputes with the local authority or complex
           * schools joining a single academy trust to enable it to become a multi-academy trust
 
-  - title: Receive grant payment certificate
+  - slug: receive-grant-payment-certificate
+    title: Receive grant payment certificate
     hint: |
       You should already have sent a copy of the [Grant payment certificate (opens in new tab)](https://www.gov.uk/government/publications/academy-support-grant)
       when confirming the school's opening date.
