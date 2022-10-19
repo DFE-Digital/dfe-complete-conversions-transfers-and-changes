@@ -6,33 +6,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-### Added
+### Features
 
-- the phase banner and link to general feedback form
-- projects can be closed.
+#### Added
+
+- The phase banner and link to general feedback form
+- Projects can be closed.
 - An email is sent via GOV.UK Notify to all team leads when a project is
   created.
-- Tell regional delivery that the academy has opened task to Project close
-  section
 
-### Changed
+#### Changed
+
+- The service name has been removed from the Projects page
+- The Projects are listed in target completion date order, soonest first
+
+### Content
 
 - Content changes to EFSA in KIM to combine 2 bullet points
 - Remove the Handback with regional delivery officer task
+- Tell regional delivery that the academy has opened task to Project close
+  section
 - Project close section renamed After opening
-- content changes to Land questionnaire
-- content changes to Master funding agreement
-- content changes to Trust modification order
-- content changes to Direction to transfer
-- content changes to Church supplemental agreement
+- Content changes to Land questionnaire
+- Content changes to Master funding agreement
+- Content changes to Trust modification order
+- Content changes to Direction to transfer
+- Content changes to Church supplemental agreement
 - Update content on Handover to regional delivery officer
 - Update content on external stakeholder kick-off
 - Update content on process conversion grant
 - Complete and approve Single worksheet Task becomes Complete and send Single
   worksheet as a caseworker does not approve the document
 - Check the baseline task guidance now refers to this project, not all projects
-- the service name has been removed from the Projects page
-- the Projects are listed in target completion date order, soonest first
 
 ## [Release 6][release-6]
 
