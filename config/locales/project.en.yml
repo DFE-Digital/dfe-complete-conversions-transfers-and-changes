@@ -38,9 +38,10 @@ en:
       region:
         title: Region
       establishment_sharepoint_link:
-        title: School SharePoint link
+        title: School SharePoint folder
         value: Open the school Sharepoint folder in a new tab
       trust_sharepoint_link:
+        title: Trust SharePoint folder
         value: Open the trust Sharepoint folder in a new tab
       closed_at: Project closed
     assign:

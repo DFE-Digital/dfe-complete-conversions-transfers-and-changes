@@ -25,6 +25,10 @@
             row.key { t("project.summary.establishment_sharepoint_link.title") }
             row.value { safe_link_to(t("project.summary.establishment_sharepoint_link.value"), @project.establishment_sharepoint_link) }
           end
+          summary_list.row do |row|
+            row.key { t("project.summary.trust_sharepoint_link.title") }
+            row.value { safe_link_to(t("project.summary.trust_sharepoint_link.value"), @project.trust_sharepoint_link) }
+          end
           if @project.closed?
             summary_list.row do |row|
               row.key { t("project.summary.closed_at") }
