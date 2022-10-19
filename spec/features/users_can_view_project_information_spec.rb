@@ -39,6 +39,12 @@ RSpec.feature "Users can view project information" do
     end
   end
 
+  scenario "they can view the Trust SharePoint link" do
+    within("#projectDetails") do
+      expect(page).to have_link(I18n.t("project.summary.trust_sharepoint_link.value"), href: project.trust_sharepoint_link)
+    end
+  end
+
   scenario "they can view the school details" do
     within("#schoolDetails") do
       expect(page).to have_content(project.establishment.name)

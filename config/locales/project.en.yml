@@ -39,7 +39,9 @@ en:
         title: Region
       establishment_sharepoint_link:
         title: School SharePoint link
-        value: Open the School Sharepoint folder in a new tab
+        value: Open the school Sharepoint folder in a new tab
+      trust_sharepoint_link:
+        value: Open the trust Sharepoint folder in a new tab
       closed_at: Project closed
     assign:
       team_leader:
@@ -60,7 +62,8 @@ en:
           regional_delivery_officer: Regional delivery officer
           unassigned: Not yet assigned
           advisory_board_date: Date of advisory board
-          establishment_sharepoint_link: School SharePoint link
+          establishment_sharepoint_link: School SharePoint folder
+          trust_sharepoint_link: Trust SharePoint folder
           advisory_board_conditions: Conditions from advisory board
       school_details:
         title: School details
