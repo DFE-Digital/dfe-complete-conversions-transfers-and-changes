@@ -59,6 +59,7 @@ gem "pagy"
 gem "mail-notify"
 
 gem 'async-http'
+gem "thread-local"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -2,6 +2,7 @@ require 'async'
 require 'async/barrier'
 require 'async/semaphore'
 require 'async/http/internet'
+require 'async/http/internet/instance'
 
 class ProjectsController < ApplicationController
   after_action :verify_authorized
@@ -20,7 +21,7 @@ class ProjectsController < ApplicationController
 
   def fetch_establishments(projects)
     Async do
-      internet = Async::HTTP::Internet.new
+      internet = Async::HTTP::Internet.instance
       barrier = Async::Barrier.new
       semaphore = Async::Semaphore.new(2, parent: barrier)
       headers = {
@@ -33,12 +34,14 @@ class ProjectsController < ApplicationController
           establishment_response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/establishment/urn/#{project.urn}", headers)
 
           project.establishment = AcademiesApi::Establishment.new.from_json(establishment_response.read)
+          p "got establishment"
         end
 
         semaphore.async do
           trust_response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/v2/trust/#{project.incoming_trust_ukprn}", headers)
 
           project.incoming_trust = AcademiesApi::Trust.new.from_json(trust_response.read)
+          p "got trust"
         end
       end
 
