@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  attr_accessor :establishment, :incoming_trust
+
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
   has_many :sections, dependent: :destroy
@@ -25,13 +27,13 @@ class Project < ApplicationRecord
 
   scope :by_target_completion_date, -> { order(target_completion_date: :asc) }
 
-  def establishment
-    @establishment ||= fetch_establishment(urn)
-  end
+  # def establishment
+  #   # @establishment ||= fetch_establishment(urn)
+  # end
 
-  def incoming_trust
-    @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
-  end
+  # def incoming_trust
+  #   @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
+  # end
 
   def closed?
     closed_at.present?
@@ -45,10 +47,20 @@ class Project < ApplicationRecord
   end
 
   private def fetch_trust(ukprn)
-    result = AcademiesApi::Client.new.get_trust(ukprn)
-    # raise result.error if result.error.present?
+    Async do
+      internet = Async::HTTP::Internet.new
 
-    result.result.object
+      headers = {
+        "Content-Type": "application/json",
+        ApiKey: ENV["ACADEMIES_API_KEY"]
+      }
+
+      response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/v2/trust/#{ukprn}", headers)
+
+      AcademiesApi::Establishment.new.from_json(response.read)
+    ensure
+      internet.close
+    end
   end
 
   private def establishment_exists

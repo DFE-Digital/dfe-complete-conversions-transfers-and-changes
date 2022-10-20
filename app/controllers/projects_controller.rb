@@ -1,3 +1,8 @@
+require 'async'
+require 'async/barrier'
+require 'async/semaphore'
+require 'async/http/internet'
+
 class ProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
@@ -10,6 +15,37 @@ class ProjectsController < ApplicationController
     authorize Project
     @pagy, @projects = pagy(policy_scope(Project))
 
+    fetch_establishments(@projects)
+  end
+
+  def fetch_establishments(projects)
+    Async do
+      internet = Async::HTTP::Internet.new
+      barrier = Async::Barrier.new
+      semaphore = Async::Semaphore.new(2, parent: barrier)
+      headers = {
+        "Content-Type": "application/json",
+        ApiKey: ENV["ACADEMIES_API_KEY"]
+      }
+
+      projects.each do |project|
+        semaphore.async do
+          establishment_response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/establishment/urn/#{project.urn}", headers)
+
+          project.establishment = AcademiesApi::Establishment.new.from_json(establishment_response.read)
+        end
+
+        semaphore.async do
+          trust_response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/v2/trust/#{project.incoming_trust_ukprn}", headers)
+
+          project.incoming_trust = AcademiesApi::Trust.new.from_json(trust_response.read)
+        end
+      end
+
+      barrier.wait
+    ensure
+      internet&.close
+    end
   end
 
   def print_time
