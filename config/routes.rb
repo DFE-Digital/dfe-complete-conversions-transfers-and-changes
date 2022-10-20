@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "projects#index"
 
+  # Errors
+  match "/404" => "pages#page_not_found", :via => :all
+
   # Sign in
   get "/sign-in", to: "sessions#new"
   # Sign out

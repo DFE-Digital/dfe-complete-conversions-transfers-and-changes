@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The Projects are listed in target completion date order, soonest first
 - All tasks in the workflow definition files must now include a `slug`
   parameter.
+- 404 errors will show a GOV.UK style page in production.
 
 ### Content
 
