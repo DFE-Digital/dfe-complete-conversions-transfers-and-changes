@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # Errors
   match "/404" => "pages#page_not_found", :via => :all
+  match "/500" => "pages#internal_server_error", :via => :all
 
   # Sign in
   get "/sign-in", to: "sessions#new"
