@@ -39,16 +39,16 @@ class Project < ApplicationRecord
 
   private def fetch_establishment(urn)
     result = AcademiesApi::Client.new.get_establishment(urn)
-    raise result.error if result.error.present?
+    # raise result.error if result.error.present?
 
-    result.object
+    result.result.object
   end
 
   private def fetch_trust(ukprn)
     result = AcademiesApi::Client.new.get_trust(ukprn)
-    raise result.error if result.error.present?
+    # raise result.error if result.error.present?
 
-    result.object
+    result.result.object
   end
 
   private def establishment_exists

@@ -1,3 +1,7 @@
+require 'async'
+require 'async/http/internet'
+
+
 class AcademiesApi::Client
   ACADEMIES_API_TIMEOUT = ENV.fetch("ACADEMIES_API_TIMEOUT", 0.6).to_f
 
@@ -14,36 +18,36 @@ class AcademiesApi::Client
   end
 
   def get_establishment(urn)
-    begin
-      response = @connection.get("/establishment/urn/#{urn}")
-    rescue Faraday::Error => error
-      raise Error.new(error)
-    end
+    Async do
+      internet = Async::HTTP::Internet.new
 
-    case response.status
-    when 200
-      Result.new(AcademiesApi::Establishment.new.from_json(response.body), nil)
-    when 404
-      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishment.errors.not_found", urn: urn)))
-    else
-      Result.new(nil, Error.new(I18n.t("academies_api.get_establishment.errors.other", urn: urn)))
+      headers = {
+        "Content-Type": "application/json",
+        ApiKey: ENV["ACADEMIES_API_KEY"]
+      }
+
+      response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/establishment/urn/#{urn}", headers)
+
+      Result.new(AcademiesApi::Establishment.new.from_json(response.read), nil)
+    ensure
+      internet.close
     end
   end
 
   def get_trust(ukprn)
-    begin
-      response = @connection.get("/v2/trust/#{ukprn}")
-    rescue Faraday::Error => error
-      raise Error.new(error)
-    end
+    Async do
+      internet = Async::HTTP::Internet.new
 
-    case response.status
-    when 200
-      Result.new(AcademiesApi::Trust.new.from_json(response.body), nil)
-    when 404
-      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
-    else
-      Result.new(nil, Error.new(I18n.t("academies_api.get_trust.errors.other", ukprn: ukprn)))
+      headers = {
+        "Content-Type": "application/json",
+        ApiKey: ENV["ACADEMIES_API_KEY"]
+      }
+
+      response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/v2/trust/#{ukprn}", headers)
+
+      Result.new(AcademiesApi::Establishment.new.from_json(response.read), nil)
+    ensure
+      internet.close
     end
   end
 

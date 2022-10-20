@@ -1,12 +1,21 @@
 class ProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
+  after_action :print_time, only: :index
 
   DEFAULT_WORKFLOW_ROOT = Rails.root.join("app", "workflows", "lists", "conversion").freeze
 
   def index
+    @start_time = Time.now
     authorize Project
     @pagy, @projects = pagy(policy_scope(Project))
+
+  end
+
+  def print_time
+    end_time = Time.now
+
+    p "Seconds: #{end_time.to_i - @start_time.to_i}"
   end
 
   def show
