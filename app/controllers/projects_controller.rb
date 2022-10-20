@@ -23,29 +23,30 @@ class ProjectsController < ApplicationController
     Async do
       internet = Async::HTTP::Internet.instance
       barrier = Async::Barrier.new
-      semaphore = Async::Semaphore.new(2, parent: barrier)
+      barrier2 = Async::Barrier.new
       headers = {
         "Content-Type": "application/json",
         ApiKey: ENV["ACADEMIES_API_KEY"]
       }
 
       projects.each do |project|
-        semaphore.async do
+        barrier.async do
           establishment_response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/establishment/urn/#{project.urn}", headers)
 
-          project.establishment = AcademiesApi::Establishment.new.from_json(establishment_response.read)
           p "got establishment"
+          project.establishment = AcademiesApi::Establishment.new.from_json(establishment_response.read)
         end
 
-        semaphore.async do
+        barrier2.async do
           trust_response = internet.get("#{ENV["ACADEMIES_API_HOST"]}/v2/trust/#{project.incoming_trust_ukprn}", headers)
 
-          project.incoming_trust = AcademiesApi::Trust.new.from_json(trust_response.read)
           p "got trust"
+          project.incoming_trust = AcademiesApi::Trust.new.from_json(trust_response.read)
         end
       end
 
       barrier.wait
+      barrier2.wait
     ensure
       internet&.close
     end
