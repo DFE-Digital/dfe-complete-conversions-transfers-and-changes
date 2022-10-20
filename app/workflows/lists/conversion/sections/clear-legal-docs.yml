@@ -333,3 +333,16 @@ tasks:
         title: Sent to Academies Operational Practice Unit
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
+
+  - slug: commercial-transfer-agreement
+    title: Commercial transfer agreement
+    hint:
+      The Commercial transfer agreement is essential for all conversion
+      projects.
+    actions:
+      - title:
+          Email the school to confirm all relevant parties have signed the
+          Commercial Transfer agreement
+
+      - title:
+          Save a copy of the confirmation email in school's SharePoint folder

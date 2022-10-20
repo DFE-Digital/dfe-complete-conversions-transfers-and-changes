@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Added
 
+- Commercial transfer agreement added to legal docs
 - The phase banner and link to general feedback form
 - Projects can be closed.
 - An email is sent via GOV.UK Notify to all team leads when a project is
