@@ -24,8 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Content
 
-- Add subleases task to legal documents section
-- Add Tenancy at will task to the legal documents section
+- Added 125 year lease to clear legal docs section
 - Add subleases task to legal documents section
 - Add Tenancy at will task to the legal documents section
 - Content changes to EFSA in KIM to combine 2 bullet points

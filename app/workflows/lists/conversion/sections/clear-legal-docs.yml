@@ -334,6 +334,23 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
+  - slug: 125-year-lease
+    title: 125 year lease
+    hint:
+      The 125 year lease is the most common way for land to be transferred
+      between the Local authority and the trust.
+    optional: true
+    actions:
+      - type: subheading
+        title: Confirm the 125 year lease has been signed
+      - type: single-checkbox
+        title:
+          Email the school to confirm all relevant parties have signed the 125
+          year lease
+      - type: single-checkbox
+        title:
+          Save a copy of the confirmation email in school's SharePoint folder
+
   - slug: subleases
     title: Subleases
     hint:
