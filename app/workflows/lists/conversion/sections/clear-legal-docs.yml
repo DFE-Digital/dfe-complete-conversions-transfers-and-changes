@@ -338,8 +338,8 @@ tasks:
     title: Subleases
     hint:
       When schools convert, sometimes there are existing land arrangements that
-      are covered by subleases. You will need to clear the sublease if changes
-      need to be made.
+      are covered by subleases. You will need to clear any subleases that have
+      changed.
     optional: true
     actions:
       - type: subheading
