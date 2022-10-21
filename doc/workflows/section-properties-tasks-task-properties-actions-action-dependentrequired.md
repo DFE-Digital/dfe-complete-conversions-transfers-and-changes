@@ -1,7 +1,7 @@
 # Untitled undefined type in Section Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/dependentRequired
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/dependentRequired
 ```
 
 

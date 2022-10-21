@@ -1,7 +1,7 @@
 # Title Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/title
+/uk.gov.education/rsd/cctc/section#/properties/title
 ```
 
 The title of the section within the workflow.

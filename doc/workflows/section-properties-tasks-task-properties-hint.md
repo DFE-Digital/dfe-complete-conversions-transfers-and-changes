@@ -1,7 +1,7 @@
 # Hint Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/hint
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/hint
 ```
 
 A short hint to explain to users what this task achieves.

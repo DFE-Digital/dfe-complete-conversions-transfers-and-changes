@@ -1,7 +1,7 @@
 # Guidance text Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_text
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_text
 ```
 
 The text to include within the guidance drop-down section for this task.

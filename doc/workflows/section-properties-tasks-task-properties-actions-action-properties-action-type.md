@@ -1,7 +1,7 @@
 # Action type Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type
 ```
 
 The type of action which the user will be shown.

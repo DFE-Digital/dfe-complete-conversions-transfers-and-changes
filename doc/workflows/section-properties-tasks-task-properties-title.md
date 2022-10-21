@@ -1,7 +1,7 @@
 # Title Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/title
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/title
 ```
 
 

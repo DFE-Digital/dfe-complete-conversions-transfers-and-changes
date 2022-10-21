@@ -1,7 +1,7 @@
 # Section filename Schema
 
 ```txt
-uk.gov.education/rsd/cctc/tasklist#/properties/sections/items
+/uk.gov.education/rsd/cctc/tasklist#/properties/sections/items
 ```
 
 The name (without the .yml extension) of the file which defines the section.

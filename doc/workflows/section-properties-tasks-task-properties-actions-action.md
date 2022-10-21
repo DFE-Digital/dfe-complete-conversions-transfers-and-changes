@@ -1,7 +1,7 @@
 # Action Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items
 ```
 
 A single action which can be taken within a task.
@@ -32,13 +32,13 @@ title: Signing by the Secretary of State
 
 # items Properties
 
-| Property                               | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                         |
-| :------------------------------------- | :------- | :------- | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [type](#type)                          | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-action-type.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")                  |
-| [title](#title)                        | `string` | Required | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/title")                       |
-| [hint](#hint)                          | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-hint.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/hint")                         |
-| [guidance\_summary](#guidance_summary) | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary") |
-| [guidance\_text](#guidance_text)       | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")       |
+| Property                               | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                          |
+| :------------------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [type](#type)                          | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-action-type.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")                  |
+| [title](#title)                        | `string` | Required | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-title.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/title")                       |
+| [hint](#hint)                          | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-hint.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/hint")                         |
+| [guidance\_summary](#guidance_summary) | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary") |
+| [guidance\_text](#guidance_text)       | `string` | Optional | cannot be null | [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")       |
 
 ## type
 
@@ -52,7 +52,7 @@ The type of action which the user will be shown.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-action-type.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-action-type.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/type")
 
 ### type Type
 
@@ -87,7 +87,7 @@ The default value is:
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-title.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/title")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-title.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/title")
 
 ### title Type
 
@@ -105,7 +105,7 @@ A short hint to explain to users how to complete the action.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-hint.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/hint")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-hint.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/hint")
 
 ### hint Type
 
@@ -123,7 +123,7 @@ A summary of the guidance available when the user expands the guidance section.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-summary.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_summary")
 
 ### guidance\_summary Type
 
@@ -141,7 +141,7 @@ The text to include within the guidance drop-down section for this action.
 
 *   cannot be null
 
-*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md "uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")
+*   defined in: [Section](section-properties-tasks-task-properties-actions-action-properties-guidance-text.md "/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/actions/items/properties/guidance_text")
 
 ### guidance\_text Type
 
