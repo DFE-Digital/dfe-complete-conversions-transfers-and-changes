@@ -5,6 +5,7 @@ RSpec.feature "Users can view a list of projects" do
     mock_successful_api_responses(urn: 100001, ukprn: 10061021)
     mock_successful_api_responses(urn: 100002, ukprn: 10061021)
     mock_successful_api_responses(urn: 100003, ukprn: 10061021)
+    mock_successful_api_responses(urn: 100004, ukprn: 10061021)
   end
 
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
@@ -24,6 +25,16 @@ RSpec.feature "Users can view a list of projects" do
       urn: 100002,
       caseworker: user_1,
       target_completion_date: Date.today.beginning_of_month + 2.year
+    )
+  }
+  let!(:user_2_closed_project) {
+    create(
+      :project,
+      urn: 100004,
+      caseworker: user_2,
+      regional_delivery_officer: regional_delivery_officer,
+      target_completion_date: Date.today.beginning_of_month + 6.months,
+      closed_at: Date.today.beginning_of_month + 7.months
     )
   }
   let!(:user_2_project) {
@@ -47,14 +58,18 @@ RSpec.feature "Users can view a list of projects" do
       page_has_project(unassigned_project)
       page_has_project(user_1_project)
       page_has_project(user_2_project)
+      page_has_project(user_2_closed_project)
     end
 
-    scenario "the projects are sorted by target completion date" do
+    # If this is unexpectedly failing due to sorting closed projects first, see the by_closed_state scope in the
+    # projects model for an explanation of the likely culprit.
+    scenario "the projects are sorted by closed state, then by target completion date" do
       visit projects_path
 
       expect(page.find("ul.projects-list > li:nth-of-type(1)")).to have_content("100003")
       expect(page.find("ul.projects-list > li:nth-of-type(2)")).to have_content("100002")
       expect(page.find("ul.projects-list > li:nth-of-type(3)")).to have_content("100001")
+      expect(page.find("ul.projects-list > li:nth-of-type(4)")).to have_content("100004")
     end
   end
 
