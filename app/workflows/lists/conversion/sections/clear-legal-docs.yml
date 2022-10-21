@@ -334,7 +334,6 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
-
   - slug: 125-year-lease
     title: 125 year lease
     hint:
