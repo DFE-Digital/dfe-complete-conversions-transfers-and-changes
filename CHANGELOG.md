@@ -24,7 +24,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Content
 
+
 - Added 125 year lease to clear legal docs section
+- Add subleases task to legal documents section
+- Add Tenancy at will task to the legal documents section
 - Content changes to EFSA in KIM to combine 2 bullet points
 - Remove the Handback with regional delivery officer task
 - Tell regional delivery that the academy has opened task to Project close
