@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Content
 
+- Commercial transfer agreement added to legal docs
 - Added 125 year lease to clear legal docs section
 - Add subleases task to legal documents section
 - Add Tenancy at will task to the legal documents section
