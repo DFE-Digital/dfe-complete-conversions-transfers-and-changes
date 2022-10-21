@@ -82,4 +82,7 @@ Rails.application.configure do
   # tell Rails to look for it's internal tables there.
   config.active_record.schema_migrations_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.schema_migrations"
   config.active_record.internal_metadata_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.ar_internal_metadata"
+
+  # confugure the host name
+  config.hosts << ENV["HOSTNAME"]
 end
