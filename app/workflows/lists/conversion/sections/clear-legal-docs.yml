@@ -334,6 +334,35 @@ tasks:
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
 
+  - slug: subleases
+    title: Subleases
+    hint:
+      When schools convert, sometimes there are existing land arrangements that
+      are covered by subleases. You will need to clear any subleases that have
+      changed.
+    optional: true
+    actions:
+      - type: subheading
+        title: Clear any changed subleases
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Signed for school or trust
+      - type: single-checkbox
+        title: Saved in school's Sharepoint folder
+
+      - type: subheading
+        title: Confirm any subleases have been signed
+      - type: single-checkbox
+        title:
+          Email the school to confirm all relevant parties have signed any
+          subleases
+      - type: single-checkbox
+        title:
+          Save a copy of the confirmation email in school's SharePoint folder
+
   - slug: tenancy-at-will
     title: Tenancy at will
     hint:
