@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The Handover/new project form collects a trust SharePoint link.
 - The trust SharePoint link is shown on the project information.
 - The trust SharePoint link is shown on the project summary.
+- Closed projects display their closed date on the project list
 
 #### Changed
 
