@@ -333,3 +333,20 @@ tasks:
         title: Sent to Academies Operational Practice Unit
       - type: single-checkbox
         title: Document signed on behalf of the Secretary of State
+
+  - slug: tenancy-at-will
+    title: Tenancy at will
+    hint:
+      A Tenancy at will allows a tenant and landlord to agree that the tenant
+      can use the land owned by the landlord indefinitely.
+    optional: true
+    actions:
+      - type: subheading
+        title: Confirm the Tenancy at will has been signed
+      - type: single-checkbox
+        title:
+          Email the school to confirm all relevant parties have signed the
+          Tenancy at will
+      - type: single-checkbox
+        title:
+          Save a copy of the confirmation email in school's SharePoint folder
