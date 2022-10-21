@@ -342,7 +342,7 @@ tasks:
     actions:
       - title:
           Email the school to confirm all relevant parties have signed the
-          Commercial Transfer agreement
+          Commercial transfer agreement
 
       - title:
           Save a copy of the confirmation email in school's SharePoint folder
