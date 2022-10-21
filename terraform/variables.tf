@@ -58,3 +58,8 @@ variable "enable_mssql_database" {
   description = "Set to true to create an Azure SQL server/database, with aprivate endpoint within the virtual network"
   type        = bool
 }
+
+variable "enable_redis_cache" {
+  description = "Set to true to create a Redis Cache"
+  type        = bool
+}
