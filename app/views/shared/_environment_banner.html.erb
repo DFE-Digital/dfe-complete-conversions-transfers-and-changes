@@ -1,0 +1,13 @@
+<% unless ENV.fetch("SENTRY_ENV") == "production" %>
+    <% colour =
+    case ENV.fetch("SENTRY_ENV")
+    when "local_development"
+      "purple"
+    when "development"
+      "turquoise"
+    when "test"
+      "orange"
+    end
+    %>
+    <div class="govuk-tag--<%= colour %>"><%= ENV.fetch("SENTRY_ENV").tr("_", " ").upcase + " ENVIRONMENT" %></div>
+<% end %>

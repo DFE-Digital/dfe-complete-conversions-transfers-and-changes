@@ -15,6 +15,16 @@ $govuk-global-styles: true;
   @include govuk-typography-common();
 }
 
+.govuk-tag-- {
+  font-family: arial, sans-serif;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-left: 588px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
 .list-style-none {
   list-style: none;
   padding-left: 0;
