@@ -15,4 +15,8 @@ module ApplicationHelper
     link = link_to(body, url, target: :_blank)
     sanitize(link, attributes: allowed_attributes)
   end
+
+  def support_email(name)
+    govuk_mail_to(Rails.application.config.support_email, name)
+  end
 end

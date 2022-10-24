@@ -37,5 +37,7 @@ module DfeCompleteConversionsTransfersAndChanges
     config.generators.system_tests = nil
 
     config.exceptions_app = routes
+
+    config.support_email = "regionalservices.rg@education.gov.uk"
   end
 end
