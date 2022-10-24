@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "projects#index"
 
-  # Static pages
-  get "/privacy", to: "static_pages#privacy"
-
   # Sign in
   get "/sign-in", to: "sessions#new"
   # Sign out
