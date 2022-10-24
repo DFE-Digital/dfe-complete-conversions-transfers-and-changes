@@ -20,4 +20,11 @@
 
   <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
+  <% if project.closed? %>
+    <%= render partial: "projects/index/project_summary_item",
+          locals: {label: t("project.summary.closed_at"), content: project.closed_at.to_formatted_s(:govuk_date_time_date_only)} %>
+
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+  <% end %>
+
 </div>

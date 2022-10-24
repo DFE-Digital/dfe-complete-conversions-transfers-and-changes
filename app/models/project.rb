@@ -26,6 +26,12 @@ class Project < ApplicationRecord
 
   scope :by_target_completion_date, -> { order(target_completion_date: :asc) }
 
+  # This works under MSSQL because it puts NULL at the front, and we can't make it more robust because TinyTDS won't
+  # play nicely with things like IS NULL and NULLS LAST. If you're running this under a different database and the
+  # order is suddenly inverted, go check out https://michaeljherold.com/articles/null-based-ordering-in-activerecord/
+  # and see if you can use Arel to build a proper query.
+  scope :by_closed_state, -> { order(:closed_at) }
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end
