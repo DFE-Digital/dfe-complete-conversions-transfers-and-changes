@@ -11,6 +11,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:advisory_board_date).of_type :date }
     it { is_expected.to have_db_column(:advisory_board_conditions).of_type :text }
     it { is_expected.to have_db_column(:establishment_sharepoint_link).of_type :text }
+    it { is_expected.to have_db_column(:trust_sharepoint_link).of_type :text }
     it { is_expected.to have_db_column(:closed_at).of_type :datetime }
   end
 
@@ -151,6 +152,10 @@ RSpec.describe Project, type: :model do
 
     describe "#establishment_sharepoint_link" do
       it { is_expected.to validate_presence_of :establishment_sharepoint_link }
+    end
+
+    describe "#trust_sharepoint_link" do
+      it { is_expected.to validate_presence_of :trust_sharepoint_link }
     end
   end
 
