@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "projects#index"
 
-  # Static pages
-  get "/privacy", to: "static_pages#privacy"
+  # Errors
+  match "/404" => "pages#page_not_found", :via => :all
+  match "/500" => "pages#internal_server_error", :via => :all
 
   # Sign in
   get "/sign-in", to: "sessions#new"
@@ -39,4 +40,8 @@ Rails.application.routes.draw do
       post "caseworker", action: :update_caseworker
     end
   end
+
+  # High voltage configuration for static pages. Matches routes from the root of the domain. Uses
+  # HighVoltage::Constraints::RootRoute to validate that the view exists.
+  get "/*id" => "pages#show", :as => :page, :format => false, :constraints => HighVoltage::Constraints::RootRoute.new
 end
