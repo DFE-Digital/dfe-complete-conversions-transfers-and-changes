@@ -83,6 +83,16 @@ Rails.application.configure do
   config.active_record.schema_migrations_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.schema_migrations"
   config.active_record.internal_metadata_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.ar_internal_metadata"
 
-  # confugure the host name
+  # configure the host name
   config.hosts << ENV["HOSTNAME"]
+
+  # configure ActionMailer
+  # set the host so links in emails work
+  # https://guides.rubyonrails.org/action_mailer_basics.html#generating-urls-in-action-mailer-views
+  config.action_mailer.default_url_options = {host: ENV["HOSTNAME"]}
+
+  # Use GOV.UK Notify to send email
+  # https://github.com/dxw/mail-notify
+  config.action_mailer.delivery_method = :notify
+  config.action_mailer.notify_settings = {api_key: ENV["GOV_NOTIFY_API_KEY"]}
 end
