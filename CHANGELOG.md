@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Projects can be closed.
 - An email is sent via GOV.UK Notify to all team leads when a project is
   created.
+- The Handover/new project form collects a trust SharePoint link.
 
 #### Changed
 

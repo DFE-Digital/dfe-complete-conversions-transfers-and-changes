@@ -153,6 +153,10 @@ RSpec.describe Project, type: :model do
     describe "#establishment_sharepoint_link" do
       it { is_expected.to validate_presence_of :establishment_sharepoint_link }
     end
+
+    describe "#trust_sharepoint_link" do
+      it { is_expected.to validate_presence_of :trust_sharepoint_link }
+    end
   end
 
   describe "#establishment" do

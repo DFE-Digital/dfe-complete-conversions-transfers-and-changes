@@ -94,6 +94,7 @@ en:
         regional_delivery_officer_id: Regional delivery officer
         advisory_board_conditions: Advisory board conditions
         establishment_sharepoint_link: School SharePoint link
+        trust_sharepoint_link: Trust SharePoint link
     legend:
       project:
         target_completion_date: Target conversion date
@@ -105,7 +106,8 @@ en:
         caseworker_id: The caseworker responsible for this project
         target_completion_date: The target conversion date is always the 1st of the month.
         advisory_board_conditions: If there are conditions to be met as a result of the advisory board.
-        establishment_sharepoint_link: Provide a link to the SharePoint folder for this project. This is where you save all the relevant documents.
+        establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant documents.
+        trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant documents.
   activerecord:
     errors:
       models:
@@ -131,7 +133,12 @@ en:
               blank: Enter a date of advisory board
               must_be_in_the_past: The advisory board date must be in the past
             establishment_sharepoint_link:
-              blank: Enter a SharePoint link
-              invalid: Enter a SharePoint link in the correct format
-              https_only: The SharePoint link must have the https scheme
-              host_not_allowed: enter a sharepoint link in the correct format. sharepoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+              blank: Enter a school SharePoint link
+              invalid: Enter a school SharePoint link in the correct format
+              https_only: The school SharePoint link must have the https scheme
+              host_not_allowed: Enter a school sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+            trust_sharepoint_link:
+              blank: Enter a trust SharePoint link
+              invalid: Enter a trust SharePoint link in the correct format
+              https_only: The trust SharePoint link must have the https scheme
+              host_not_allowed: Enter a trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'

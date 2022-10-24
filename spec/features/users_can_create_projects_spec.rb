@@ -25,7 +25,8 @@ RSpec.feature "Users can create new projects" do
         fill_in "Year", with: completion_date.year
       end
 
-      fill_in "School SharePoint link", with: "https://educationgovuk-my.sharepoint.com/project/information"
+      fill_in "School SharePoint link", with: "https://educationgovuk-my.sharepoint.com/school-folder"
+      fill_in "Trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/trust-folder"
 
       within("#advisory-board-date") do
         fill_in "Day", with: two_weeks_ago.day
