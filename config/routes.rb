@@ -39,4 +39,8 @@ Rails.application.routes.draw do
       post "caseworker", action: :update_caseworker
     end
   end
+
+  # High voltage configuration for static pages. Matches routes from the root of the domain. Uses
+  # HighVoltage::Constraints::RootRoute to validate that the view exists.
+  get "/*id" => "pages#show", :as => :page, :format => false, :constraints => HighVoltage::Constraints::RootRoute.new
 end
