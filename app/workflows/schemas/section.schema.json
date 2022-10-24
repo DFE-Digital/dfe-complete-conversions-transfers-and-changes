@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "uk.gov.education/rsd/cctc/section",
+  "$id": "/uk.gov.education/rsd/cctc/section",
   "title": "Section",
   "description": "A single section within a task list.",
   "type": "object",
@@ -55,54 +55,7 @@
             "description": "A list of actions which collectively make up a task.",
             "type": "array",
             "items": {
-              "title": "Action",
-              "description": "A single action which can be taken within a task.",
-              "type": "object",
-              "properties": {
-                "type": {
-                  "title": "Action type",
-                  "description": "The type of action which the user will be shown.",
-                  "type": "string",
-                  "enum": ["single-checkbox", "subheading"],
-                  "default": "single-checkbox"
-                },
-                "title": {
-                  "title": "Title",
-                  "type": "string"
-                },
-                "hint": {
-                  "title": "Hint",
-                  "description": "A short hint to explain to users how to complete the action.",
-                  "type": "string"
-                },
-                "guidance_summary": {
-                  "title": "Guidance summary",
-                  "description": "A summary of the guidance available when the user expands the guidance section.",
-                  "type": "string"
-                },
-                "guidance_text": {
-                  "title": "Guidance text",
-                  "description": "The text to include within the guidance drop-down section for this action.",
-                  "type": "string"
-                }
-              },
-              "examples": [
-                {
-                  "title": "Check document validity",
-                  "hint": "Check that sections A, B and C are completed.",
-                  "guidance_summary": "What to check?",
-                  "guidance_text": "You can find [a list of what to check online](https://example.com)."
-                },
-                {
-                  "type": "subheading",
-                  "title": "Signing by the Secretary of State"
-                }
-              ],
-              "required": ["title"],
-              "dependentRequired": {
-                "guidance_summary": ["guidance_text"]
-              },
-              "additionalProperties": false
+              "$ref": "/uk.gov.education/rsd/cctc/action"
             },
             "minItems": 1
           }

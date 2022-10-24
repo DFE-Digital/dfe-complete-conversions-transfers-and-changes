@@ -1,7 +1,7 @@
 # Optional Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/optional
 ```
 
 If the entire task can be considered optional (in which case a "not applicable" option will appear), or if it's mandatory.

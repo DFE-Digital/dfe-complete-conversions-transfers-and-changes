@@ -1,7 +1,7 @@
 # Slug Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/slug
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/slug
 ```
 
 A unique human-readable string which identifies this task.

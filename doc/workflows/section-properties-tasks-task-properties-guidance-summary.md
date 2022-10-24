@@ -1,7 +1,7 @@
 # Guidance summary Schema
 
 ```txt
-uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_summary
+/uk.gov.education/rsd/cctc/section#/properties/tasks/items/properties/guidance_summary
 ```
 
 A summary of the guidance available when the user expands the guidance section.

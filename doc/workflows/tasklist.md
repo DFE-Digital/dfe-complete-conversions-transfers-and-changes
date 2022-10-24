@@ -1,7 +1,7 @@
 # Task list Schema
 
 ```txt
-uk.gov.education/rsd/cctc/tasklist
+/uk.gov.education/rsd/cctc/tasklist
 ```
 
 A top-level definition of a task list.
@@ -16,9 +16,9 @@ A top-level definition of a task list.
 
 # Task list Properties
 
-| Property              | Type    | Required | Nullable       | Defined by                                                                                                     |
-| :-------------------- | :------ | :------- | :------------- | :------------------------------------------------------------------------------------------------------------- |
-| [sections](#sections) | `array` | Optional | cannot be null | [Task list](tasklist-properties-list-of-sections.md "uk.gov.education/rsd/cctc/tasklist#/properties/sections") |
+| Property              | Type    | Required | Nullable       | Defined by                                                                                                      |
+| :-------------------- | :------ | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------- |
+| [sections](#sections) | `array` | Optional | cannot be null | [Task list](tasklist-properties-list-of-sections.md "/uk.gov.education/rsd/cctc/tasklist#/properties/sections") |
 
 ## sections
 
@@ -32,7 +32,7 @@ A list of names of section definition files, in the order they should appear.
 
 *   cannot be null
 
-*   defined in: [Task list](tasklist-properties-list-of-sections.md "uk.gov.education/rsd/cctc/tasklist#/properties/sections")
+*   defined in: [Task list](tasklist-properties-list-of-sections.md "/uk.gov.education/rsd/cctc/tasklist#/properties/sections")
 
 ### sections Type
 
