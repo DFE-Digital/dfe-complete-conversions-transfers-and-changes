@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [Release 7][release-7]
+
 ### Features
 
 #### Added
@@ -279,7 +281,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-5...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-7...HEAD
+[release-6]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-6...release-7
 [release-6]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-5...release-6
 [release-5]:
