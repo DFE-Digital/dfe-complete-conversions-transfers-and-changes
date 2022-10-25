@@ -30,6 +30,13 @@
       "title": "Guidance text",
       "description": "The text to include within the guidance drop-down section for this action.",
       "type": "string"
+    },
+    "padding": {
+      "title": "Padding",
+      "description": "Adjust the amount of padding (spacing above) applied to the action.",
+      "type": "string",
+      "enum": ["normal", "reduced"],
+      "default": "normal"
     }
   },
   "examples": [
@@ -42,6 +49,25 @@
     {
       "type": "subheading",
       "title": "Signing by the Secretary of State"
+    },
+    {
+      "actions": [
+        {
+          "type": "subheading",
+          "title": "Sign, seal, deliver"
+        },
+        {
+          "title": "Sign",
+          "padding": "reduced"
+        },
+        {
+          "title": "Seal",
+          "padding": "reduced"
+        },
+        {
+          "title": "Deliver"
+        }
+      ]
     }
   ],
   "required": ["title"],

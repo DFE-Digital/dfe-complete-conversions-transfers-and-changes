@@ -55,24 +55,6 @@ RSpec.describe Task, type: :model do
     end
   end
 
-  describe "#clear_legal_documents_type?" do
-    let(:task) { build(:task, section: section) }
-
-    subject { task.clear_legal_documents_type? }
-
-    context "when section is 'Clear legal documents'" do
-      let(:section) { build(:section, title: "Clear and sign legal documents") }
-
-      it { expect(subject).to be true }
-    end
-
-    context "when section is not 'Clear legal documents'" do
-      let(:section) { build(:section, title: "Project kick-off") }
-
-      it { expect(subject).to be false }
-    end
-  end
-
   describe "#status" do
     let(:task) { create(:task) }
 

@@ -21,12 +21,16 @@ tasks:
 
           The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Signed by school or trust
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
   - slug: clear-and-sign-land-registry-title-plans
     title: Land registry title plans
@@ -49,10 +53,13 @@ tasks:
 
           Talk to your line manager or the relevant solicitor if you have questions about anything on the title plan.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
 
   - slug: clear-and-sign-supplemental-funding-agreement
@@ -76,12 +83,16 @@ tasks:
 
           Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Signed by school or trust
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
       - type: subheading
         title: Signed by the Secretary of State
@@ -89,8 +100,10 @@ tasks:
           The Secretary of State, or somebody with the authority to act on their behalf, must sign the Supplemental funding agreement.
           Usually this is your team leader or the deputy director.
       - type: single-checkbox
+        padding: reduced
         title: Sent to team leader or deputy director
       - type: single-checkbox
+        padding: reduced
         title: Document signed on behalf of the Secretary of State
 
   - slug: clear-and-sign-church-supplemental-agreement
@@ -111,14 +124,19 @@ tasks:
 
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Signed by school or trust
       - type: single-checkbox
+        padding: reduced
         title: Signed by diocese
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
       - type: subheading
         title: Signed by the Secretary of State
@@ -127,8 +145,10 @@ tasks:
 
           Usually this is your team leader or the deputy director.
       - type: single-checkbox
+        padding: reduced
         title: Sent to team leader or deputy director
       - type: single-checkbox
+        padding: reduced
         title: Document signed on behalf of the Secretary of State
 
   - slug: clear-and-sign-master-funding-agreement
@@ -156,12 +176,16 @@ tasks:
 
           You will need to clear any new and updated documents. These may need a Deed of variation.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Signed by school or trust
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
       - type: subheading
         title: Signed by the Secretary of State
@@ -175,8 +199,10 @@ tasks:
 
           Once you've received the signed page, put it back in the document. Then save the signed Master funding agreement as a PDF in the school's SharePoint folder.
       - type: single-checkbox
+        padding: reduced
         title: Sent to team leader or deputy director
       - type: single-checkbox
+        padding: reduced
         title: Document signed on behalf of the Secretary of State
 
   - slug: clear-and-sign-articles-of-association
@@ -196,12 +222,16 @@ tasks:
 
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Signed by school or trust
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
 
   - slug: clear-and-sign-deed-of-variation
@@ -220,12 +250,16 @@ tasks:
 
           You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Signed by school or trust
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
       - type: subheading
         title: Signed by the Secretary of State
@@ -233,8 +267,10 @@ tasks:
           The Secretary of State, or somebody with the authority to act on their behalf, must sign the Deed of variation.
           Usually this is your team leader or the deputy director.
       - type: single-checkbox
+        padding: reduced
         title: Sent to team leader or deputy director
       - type: single-checkbox
+        padding: reduced
         title: Document signed on behalf of the Secretary of State
 
   - slug: clear-and-sign-trust-modification-order
@@ -261,12 +297,16 @@ tasks:
           * voluntary-aided school
           * foundation school
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Sent to Legal advisers office
       - type: single-checkbox
+        padding: reduced
         title: Cleared by Legal advisers office
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
       - type: subheading
         title: Signed by the Secretary of State
@@ -285,8 +325,10 @@ tasks:
           It can take several weeks to hear back from the Academies Operational
           Practice Unit.
       - type: single-checkbox
+        padding: reduced
         title: Sent to Academies Operational Practice Unit
       - type: single-checkbox
+        padding: reduced
         title: Document signed on behalf of the Secretary of State
 
   - slug: clear-and-sign-direction-to-transfer
@@ -309,12 +351,16 @@ tasks:
 
           You'll need to [contact the policy team (opens in a new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about any changes to clause text.
       - type: single-checkbox
+        padding: reduced
         title: Received
       - type: single-checkbox
+        padding: reduced
         title: Cleared
       - type: single-checkbox
+        padding: reduced
         title: Signed by caseworker
       - type: single-checkbox
+        padding: reduced
         title: Saved in the school's SharePoint folder
       - type: subheading
         title: Signed by the Secretary of State
@@ -330,8 +376,10 @@ tasks:
           It can take several weeks to hear back from the Academies Operational
           Practice Unit.
       - type: single-checkbox
+        padding: reduced
         title: Sent to Academies Operational Practice Unit
       - type: single-checkbox
+        padding: reduced
         title: Document signed on behalf of the Secretary of State
 
   - slug: commercial-transfer-agreement

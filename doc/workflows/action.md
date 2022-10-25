@@ -30,6 +30,18 @@ title: Signing by the Secretary of State
 
 ```
 
+```yaml
+actions:
+  - type: subheading
+    title: Sign, seal, deliver
+  - title: Sign
+    padding: reduced
+  - title: Seal
+    padding: reduced
+  - title: Deliver
+
+```
+
 # Action Properties
 
 | Property                               | Type     | Required | Nullable       | Defined by                                                                                                       |
@@ -39,6 +51,7 @@ title: Signing by the Secretary of State
 | [hint](#hint)                          | `string` | Optional | cannot be null | [Action](action-properties-hint.md "/uk.gov.education/rsd/cctc/action#/properties/hint")                         |
 | [guidance\_summary](#guidance_summary) | `string` | Optional | cannot be null | [Action](action-properties-guidance-summary.md "/uk.gov.education/rsd/cctc/action#/properties/guidance_summary") |
 | [guidance\_text](#guidance_text)       | `string` | Optional | cannot be null | [Action](action-properties-guidance-text.md "/uk.gov.education/rsd/cctc/action#/properties/guidance_text")       |
+| [padding](#padding)                    | `string` | Optional | cannot be null | [Action](action-properties-padding.md "/uk.gov.education/rsd/cctc/action#/properties/padding")                   |
 
 ## type
 
@@ -146,3 +159,38 @@ The text to include within the guidance drop-down section for this action.
 ### guidance\_text Type
 
 `string` ([Guidance text](action-properties-guidance-text.md))
+
+## padding
+
+Adjust the amount of padding (spacing above) applied to the action.
+
+`padding`
+
+*   is optional
+
+*   Type: `string` ([Padding](action-properties-padding.md))
+
+*   cannot be null
+
+*   defined in: [Action](action-properties-padding.md "/uk.gov.education/rsd/cctc/action#/properties/padding")
+
+### padding Type
+
+`string` ([Padding](action-properties-padding.md))
+
+### padding Constraints
+
+**enum**: the value of this property must be equal to one of the following values:
+
+| Value       | Explanation |
+| :---------- | :---------- |
+| `"normal"`  |             |
+| `"reduced"` |             |
+
+### padding Default Value
+
+The default value is:
+
+```json
+"normal"
+```

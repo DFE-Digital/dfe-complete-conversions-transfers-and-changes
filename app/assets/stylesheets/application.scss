@@ -22,16 +22,23 @@ $govuk-global-styles: true;
 
 .task-checkboxes {
   .govuk-checkboxes__item {
-    margin-bottom: govuk-spacing(9);
-  }
-}
-
-.task-checkboxes,
-.clear-legal-documents-task-checkboxes {
-  .govuk-checkboxes__item {
     label {
       @extend .govuk-\!-font-weight-bold;
     }
+  }
+}
+
+.task-action__wrapper {
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &__padding-normal {
+    margin-top: govuk-spacing(9);
+  }
+
+  &__padding-reduced {
+    margin-top: govuk-spacing(0);
   }
 }
 
