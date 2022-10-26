@@ -63,3 +63,13 @@ variable "enable_redis_cache" {
   description = "Set to true to create a Redis Cache"
   type        = bool
 }
+
+variable "enable_worker_container" {
+  description = "Conditionally launch a worker container. This container uses the same image and environment variables as a the default container app, but allows a different container commanmd to be ran. The worker container does not expose any ports."
+  type        = bool
+}
+
+variable "worker_container_command" {
+  description = "Container command for the Worker container. `enable_worker_container` must be set to true for this to have any effect."
+  type        = list(string)
+}
