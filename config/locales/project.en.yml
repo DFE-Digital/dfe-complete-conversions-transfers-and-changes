@@ -131,11 +131,13 @@ en:
               blank: Enter a target conversion month and year
               must_be_first_of_the_month: Target completion date must be on the first day of the month
               must_be_in_the_future: Target conversion date must be in the future.
+              invalid: Enter a valid target conversion date.
             regional_delivery_officer_id:
               blank: Choose a regional delivery officer
             advisory_board_date:
               blank: Enter a date of advisory board
               must_be_in_the_past: The advisory board date must be in the past
+              invalid: Enter a valid advisory board date
             establishment_sharepoint_link:
               blank: Enter a school SharePoint link
               invalid: Enter a school SharePoint link in the correct format

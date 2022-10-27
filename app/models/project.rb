@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
+  before_validation :add_invalid_date_errors
+
   has_many :sections, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
@@ -40,8 +42,33 @@ class Project < ApplicationRecord
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
+  # Rescue argument error raised when value
+  # cannot be parsed as a `Date`. For example,
+  # `-1, -1, -2` or `42, 0, 2022`
+  def advisory_board_date=(value)
+    @advisory_board_date_invalid = false
+    super
+  rescue ArgumentError
+    @advisory_board_date_invalid = true
+  end
+
+  # Rescue argument error raised when value
+  # cannot be parsed as a `Date`. For example,
+  # `-1, -1, -2` or `42, 0, 2022`
+  def target_completion_date=(value)
+    @target_completion_date_invalid = false
+    super
+  rescue ArgumentError
+    @target_completion_date_invalid = true
+  end
+
   def closed?
     closed_at.present?
+  end
+
+  private def add_invalid_date_errors
+    errors.add(:advisory_board_date, :invalid) if @advisory_board_date_invalid
+    errors.add(:target_completion_date, :invalid) if @target_completion_date_invalid
   end
 
   private def fetch_establishment(urn)
