@@ -47,7 +47,7 @@ tasks:
     title: Complete and send Single worksheet
     hint: |
       You need to [download a single worksheet template (opens in new
-      tab)](https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EacL3VXFYxlNmqkPI_oelqkBW2_hS4tZwLo52EIuL6rdyw?e=CsOUUl)
+      tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7B16F44F65-3D80-457D-9FB4-D22574FBE8EB%7D&file=Updated_Single_Worksheet.docx)
       and save it in the school's SharePoint folder.
     actions:
       - title: Complete the Single worksheet
