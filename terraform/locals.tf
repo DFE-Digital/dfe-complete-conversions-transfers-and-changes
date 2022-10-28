@@ -8,6 +8,8 @@ locals {
   image_name                             = var.image_name
   container_command                      = var.container_command
   container_secret_environment_variables = var.container_secret_environment_variables
+  enable_worker_container                = var.enable_worker_container
+  worker_container_command               = var.worker_container_command
   enable_mssql_database                  = var.enable_mssql_database
   enable_redis_cache                     = var.enable_redis_cache
   key_vault_access_users                 = toset(var.key_vault_access_users)
