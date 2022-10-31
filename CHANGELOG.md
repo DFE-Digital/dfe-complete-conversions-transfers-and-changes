@@ -43,6 +43,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   solicitor", updated from "Signed by school or trust".
 - The "Articles of association" task is now optional.
 - Change the guidance link in the "Articles of association" task.
+- The "Signed by secretary of state" section has been removed from the "Trust
+  modification order" task.
 
 ## [Release 7][release-7]
 
