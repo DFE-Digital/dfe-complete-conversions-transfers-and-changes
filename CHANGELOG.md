@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fine-tuned padding for actions in various type/state combinations to closer
   match the prototype.
 
+### Content
+
+- Swap out the link to the previous version of the single worksheet for a link
+  to an updated version.
+
 ## [Release 7][release-7]
 
 ### Features
