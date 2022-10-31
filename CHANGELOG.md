@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Features
 
+#### Added
+
+- Add environment banner for local development, development and test
+  environments.
+
 #### Changed
 
 - Fine-tuned padding for actions in various type/state combinations to closer
