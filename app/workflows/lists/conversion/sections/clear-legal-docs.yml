@@ -207,8 +207,10 @@ tasks:
 
   - slug: clear-and-sign-articles-of-association
     title: Articles of association
-    hint: |
-      The Articles of association must be updated if the trust currently uses a version from February 2016 or earlier.
+    hint:
+      The Articles of association must be updated if the trust currently uses a
+      version from February 2016 or earlier.
+    optional: true
     actions:
       - type: subheading
         title: Check and clear the Articles of association
