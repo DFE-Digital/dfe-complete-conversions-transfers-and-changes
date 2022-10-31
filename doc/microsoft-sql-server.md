@@ -8,13 +8,16 @@ As this setup is relatively unconventional, this documentation may be of use.
 
 ## Setup
 
-See the [Setup Microsoft SQL Server](../README.md#setup-microsoft-sql-server) in
-the readme for more information.
+See the
+[Setup Microsoft SQL Server](/doc/getting-started.md#setup-microsoft-sql-server)
+in the getting started documentation for more information.
 
 ## Running the server
 
 As SQL Server does not run natively on macOS we use the
-[official Docker image](https://hub.docker.com/_/microsoft-mssql-server).
+[Azure SQL Edge](https://hub.docker.com/_/microsoft-azure-sql-edge) image. See
+this [ADR](./decisions/0013-use-the-microsoft-azure-sql-edge-container-image.md)
+for the reasons behind this choice.
 
 If you use the scripts to rule them all pattern, the container will be started
 for you, but bear in mind, it may not be stopped for you.
@@ -22,13 +25,13 @@ for you, but bear in mind, it may not be stopped for you.
 To run the container manually:
 
 ```bash
-docker-compose -f docker-compose.database.local.yml up -d
+docker-compose -f docker-compose.database-only.yml up -d
 ```
 
 And to stop the container:
 
 ```bash
-docker-compose -f docker-compose.database.local.yml down
+docker-compose -f docker-compose.database-only.yml down
 ```
 
 ## Tooling
