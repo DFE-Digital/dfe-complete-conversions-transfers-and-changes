@@ -342,25 +342,6 @@ tasks:
       - type: single-checkbox
         padding: reduced
         title: Saved in the school's SharePoint folder
-      - type: subheading
-        title: Signed by the Secretary of State
-        hint: |
-          Send the Direction to transfer to the Academies Operational Practice Unit.
-        guidance_summary: How to get the Direction to transfer signed
-        guidance_text: |
-          The Academies Operational Practice Unit will arrange for the Direction to transfer to be signed by the deputy director or a grade 6 team member, on behalf of the Secretary of State.
-
-          You can email the Academies Operational Practice Unit at
-          [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
-
-          It can take several weeks to hear back from the Academies Operational
-          Practice Unit.
-      - type: single-checkbox
-        padding: reduced
-        title: Sent to Academies Operational Practice Unit
-      - type: single-checkbox
-        padding: reduced
-        title: Document signed on behalf of the Secretary of State
 
   - slug: commercial-transfer-agreement
     title: Commercial transfer agreement

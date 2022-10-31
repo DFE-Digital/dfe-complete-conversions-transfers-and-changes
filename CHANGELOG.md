@@ -45,6 +45,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Change the guidance link in the "Articles of association" task.
 - The "Signed by secretary of state" section has been removed from the "Trust
   modification order" task.
+- The "Signed by secretary of state" section has been removed from the
+  "Direction to transfer" task.
 
 ## [Release 7][release-7]
 
