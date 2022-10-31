@@ -28,7 +28,7 @@ tasks:
         title: Cleared
       - type: single-checkbox
         padding: reduced
-        title: Signed by school or trust
+        title: Signed by solicitor
       - type: single-checkbox
         padding: reduced
         title: Saved in the school's SharePoint folder

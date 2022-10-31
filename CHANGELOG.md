@@ -39,6 +39,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   school has been received.
 - Swap out the link to the previous version of the single worksheet for a link
   to an updated version.
+- The checkbox label in the "Land questionnaire" task says "Signed by
+  solicitor", updated from "Signed by school or trust".
 
 ## [Release 7][release-7]
 
