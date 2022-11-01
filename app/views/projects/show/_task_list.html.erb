@@ -8,9 +8,11 @@
         <% section.tasks.each do |task| %>
           <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="<%= task_status_id(task) %>">
-                  <%= link_to(task.title, project_task_path(@project.id, task.id), class: "govuk-link") %>
-                </a>
+                  <%= govuk_link_to(
+                        task.title,
+                        project_task_path(@project.id, task.id),
+                        aria: {describedby: task_status_id(task)}
+                      ) %>
               </span>
             <%= task_status_tag(task) %>
           </li>
