@@ -38,6 +38,6 @@ module DfeCompleteConversionsTransfersAndChanges
 
     config.exceptions_app = routes
 
-    config.support_email = "regionalservices.rg@education.gov.uk"
+    config.support_email = "complete.rsd@education.gov.uk"
   end
 end

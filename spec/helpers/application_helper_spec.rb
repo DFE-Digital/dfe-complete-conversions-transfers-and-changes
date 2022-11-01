@@ -51,12 +51,12 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#support_email" do
-    let(:name) { "contact the Regional Services support team" }
+    let(:name) { "contact the complete conversions, transfers and changes team" }
 
     subject { helper.support_email(name) }
 
     it "returns a mailto link to the support email" do
-      expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk\">#{name}</a>"
+      expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:complete.rsd@education.gov.uk\">#{name}</a>"
     end
   end
 end

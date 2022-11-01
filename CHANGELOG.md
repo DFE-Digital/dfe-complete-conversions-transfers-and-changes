@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Fine-tuned padding for actions in various type/state combinations to closer
   match the prototype.
+- The support email has been swapped out for a complete team shared inbox.
 
 #### Fixed
 
