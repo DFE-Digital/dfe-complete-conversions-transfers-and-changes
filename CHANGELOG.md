@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fine-tuned padding for actions in various type/state combinations to closer
   match the prototype.
 
+#### Fixed
+
+- Invalid dates such as 42/01/2022, no longer cause the app to throw an
+  exception. We now rescue from the invalid date and show a validation message.
+
 ### Content
 
 - Swap out the link to the previous version of the single worksheet for a link
