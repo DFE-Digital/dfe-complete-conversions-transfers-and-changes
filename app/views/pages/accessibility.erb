@@ -54,7 +54,7 @@
     <p class="govuk-body">We're always looking to improve the accessibility of
       this website. If you find any problems not listed on this page or think
       we're not meeting accessibility requirements, email the <%= t("service_name") %>
-      team at <%= support_email("rsd.complete@dfe.com") %>.
+      team at <%= support_email(Rails.application.config.support_email) %>.
       </p>
     <h2 class="govuk-heading-l">Enforcement procedure</h2>
     <p class="govuk-body">The Equality and Human Rights Commission is
