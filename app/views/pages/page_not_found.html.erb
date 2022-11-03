@@ -8,7 +8,8 @@
       If you pasted the web address, check you copied the entire address.
     </p>
     <p class="govuk-body">
-      If the web address is correct or you selected a link or button, <%= support_email("contact the #{t("service_name").downcase} team") %>.
+      If the web address is correct or you selected a link or button, email the
+      <%= t("service_name") %> team at <%= support_email(Rails.application.config.support_email) %>.
     </p>
   </div>
 </div>
