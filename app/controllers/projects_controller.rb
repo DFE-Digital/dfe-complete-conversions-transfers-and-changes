@@ -16,17 +16,15 @@ class ProjectsController < ApplicationController
 
   def new
     authorize Project
-    @project = Project.new
+    @project_form = ProjectForm.new
   end
 
   def create
-    @note = Note.new(**note_params, user_id: user_id)
-    @project = Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
+    authorize Project
+    @project_form = ProjectForm.new(**project_params, **note_params, regional_delivery_officer_id: user_id)
 
-    authorize @project
-
-    if @project.valid?
-      @project.save
+    @project = @project_form.create
+    if @project
       TaskListCreator.new.call(@project, workflow_root: DEFAULT_WORKFLOW_ROOT)
       notify_team_leaders
 
@@ -43,7 +41,7 @@ class ProjectsController < ApplicationController
   end
 
   private def project_params
-    params.require(:project).permit(
+    params.require(:project_form).permit(
       :urn,
       :incoming_trust_ukprn,
       :target_completion_date,
@@ -55,6 +53,6 @@ class ProjectsController < ApplicationController
   end
 
   private def note_params
-    params.require(:project).require(:note).permit(:body)
+    params.require(:project_form).require(:note).permit(:note_body)
   end
 end

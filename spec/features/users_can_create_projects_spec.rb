@@ -34,7 +34,7 @@ RSpec.feature "Users can create new projects" do
         fill_in "Year", with: two_weeks_ago.year
       end
 
-      fill_in "project-advisory-board-conditions-field", with: "This school must:\n1. Do this\n2. And that"
+      fill_in "Advisory board conditions", with: "This school must:\n1. Do this\n2. And that"
 
       fill_in "Handover comments", with: "A new handover comment"
 

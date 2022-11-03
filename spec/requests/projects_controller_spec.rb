@@ -9,20 +9,20 @@ RSpec.describe ProjectsController, type: :request do
   end
 
   describe "#create" do
-    let(:project) { build(:project) }
+    let(:project_form) { ProjectForm.new }
     let(:project_params) { attributes_for(:project, regional_delivery_officer: nil) }
-    let(:note_params) { {body: "new note"} }
+    let(:note_params) { {note_body: "new note"} }
     let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
-      post projects_path, params: {project: {**project_params, note: note_params}}
+      post projects_path, params: {project_form: {**project_params, note: note_params}}
       response
     end
 
     context "when the project is not valid" do
       before do
-        allow(Project).to receive(:new).and_return(project)
-        allow(project).to receive(:valid?).and_return false
+        allow(ProjectForm).to receive(:new).and_return(project_form)
+        allow(project_form).to receive(:valid?).and_return false
       end
 
       it "re-renders the new template" do

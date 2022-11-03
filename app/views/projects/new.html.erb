@@ -4,7 +4,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_with model: @project do |form| %>
+    <%= form_for @project_form, url: projects_path do |form| %>
       <%= form.govuk_error_summary %>
 
       <h1 class="govuk-heading-l"><%= t("project.new.title") %></h1>
@@ -18,7 +18,7 @@
       <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m"} %>
 
       <%= form.fields_for :note, @note do |note_form| %>
-        <%= note_form.govuk_text_area :body,
+        <%= note_form.govuk_text_area :note_body,
               label: {text: t("project.new.handover_comments_label"), size: "m"},
               hint: {text: t("project.new.handover_comments_hint")} %>
       <% end %>
