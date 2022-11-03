@@ -9,6 +9,14 @@ RSpec.feature "Users can view static pages" do
     expect(page).to have_content("When we collect personal information")
   end
 
+  scenario "can see the accessibility page" do
+    visit page_path(id: "accessibility")
+
+    expect(page).to have_current_path("/accessibility")
+    expect(page).to have_content("Accessibility statement") # This string appears all over the site in the footer, so also test:
+    expect(page).to have_content("This accessibility statement applies to Complete conversions, transfers and changes.")
+  end
+
   scenario "can see the `404 page not found` error page" do
     visit page_path(id: "page_not_found")
 
