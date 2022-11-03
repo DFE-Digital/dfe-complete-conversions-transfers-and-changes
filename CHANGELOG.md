@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Added
 
+- add in accessibility page
+- footer now have link to accessibility page
+- standardise the email the team link based on GOV.UK guidance
+- privacy policy page uses service name helper rather than explicit text
 - Add environment banner for local development, development and test
   environments.
 
