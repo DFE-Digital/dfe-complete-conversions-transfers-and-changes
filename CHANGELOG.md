@@ -33,6 +33,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Content
 
+- Commercial transfer agreement adds action to explicitly indicate that the
+  email from the school has been received.
 - Swap out the link to the previous version of the single worksheet for a link
   to an updated version.
 

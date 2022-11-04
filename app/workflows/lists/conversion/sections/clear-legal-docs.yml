@@ -392,6 +392,9 @@ tasks:
           Email the school to confirm all relevant parties have signed the
           Commercial transfer agreement
       - title:
+          Email received confirming the Commercial transfer agreement has been
+          agreed and signed
+      - title:
           Save a copy of the confirmation email in school's SharePoint folder
 
   - slug: 125-year-lease
