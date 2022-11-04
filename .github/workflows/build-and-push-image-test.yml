@@ -8,7 +8,6 @@ on:
 jobs:
   set-test-release-version:
     name: Set Test Release Version
-    environment: test
     runs-on: ubuntu-latest
     outputs:
       version: ${{steps.release-version.outputs.version}}
