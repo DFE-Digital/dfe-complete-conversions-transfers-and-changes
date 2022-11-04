@@ -69,5 +69,21 @@ RSpec.describe ProjectsController, type: :request do
         end
       end
     end
+
+    context "when the task list cannot be created" do
+      let(:task_list_creator) { TaskListCreator.new }
+
+      before do
+        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+
+        allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
+        allow(task_list_creator).to receive(:call).and_raise(RuntimeError)
+      end
+
+      it "does not create a project" do
+        expect { perform_request }.to raise_error(RuntimeError)
+        expect(Project.count).to be 0
+      end
+    end
   end
 end

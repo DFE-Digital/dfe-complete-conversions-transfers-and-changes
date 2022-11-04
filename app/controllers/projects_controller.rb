@@ -26,8 +26,11 @@ class ProjectsController < ApplicationController
     authorize @project
 
     if @project.valid?
-      @project.save
-      TaskListCreator.new.call(@project, workflow_root: DEFAULT_WORKFLOW_ROOT)
+      ActiveRecord::Base.transaction do
+        @project.save
+        TaskListCreator.new.call(@project, workflow_root: DEFAULT_WORKFLOW_ROOT)
+      end
+
       notify_team_leaders
 
       redirect_to project_path(@project), notice: I18n.t("project.create.success")
