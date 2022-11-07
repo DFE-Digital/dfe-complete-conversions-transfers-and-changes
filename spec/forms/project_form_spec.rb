@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe ProjectForm, type: :model do
+  let(:project_form_instance) { described_class.new }
+
   describe "Validations" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
@@ -106,6 +108,32 @@ RSpec.describe ProjectForm, type: :model do
 
     describe "#trust_sharepoint_link" do
       it { is_expected.to validate_presence_of :trust_sharepoint_link }
+    end
+  end
+
+  describe "#create" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    subject { project_form_instance.create }
+
+    context "when the underlying ActiveRecord model has a validaiton error" do
+      before { allow(Project).to receive(:create!).and_raise(ActiveRecord::RecordInvalid) }
+
+      it "raises the ActiveRecord error" do
+        expect { subject }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+
+    context "when valid" do
+      let(:project_attributes) { attributes_for(:project).except(:team_leader, :regional_delivery_officer) }
+
+      before { project_form_instance.assign_attributes(project_attributes) }
+
+      it "creates a project" do
+        subject
+
+        expect(Project.count).to be 1
+      end
     end
   end
 end

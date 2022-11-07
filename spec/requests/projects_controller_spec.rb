@@ -10,8 +10,8 @@ RSpec.describe ProjectsController, type: :request do
 
   describe "#create" do
     let(:project_form) { ProjectForm.new }
-    let(:project_params) { attributes_for(:project, regional_delivery_officer: nil) }
-    let(:note_params) { {note_body: "new note"} }
+    let(:project_params) { attributes_for(:project).except(:team_leader, :regional_delivery_officer) }
+    let(:note_params) { {body: "new note"} }
     let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
@@ -31,42 +31,19 @@ RSpec.describe ProjectsController, type: :request do
     end
 
     context "when the project is valid" do
-      let(:task_list_creator) { TaskListCreator.new }
-      let(:new_project_record) { Project.last }
+      let(:mock_project_creator) { ProjectCreator.new }
+      let(:project_form) { ProjectForm.new(**project_params, regional_delivery_officer_id: regional_delivery_officer.id) }
+      let(:note_form) { NoteForm.new(**note_params, user_id: regional_delivery_officer.id) }
 
       before do
-        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
-
-        allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
-        allow(task_list_creator).to receive(:call).and_return true
+        allow(ProjectCreator).to receive(:new).and_return(mock_project_creator)
+        allow(mock_project_creator).to receive(:call).and_return create(:project)
 
         perform_request
       end
 
-      it "assigns the regional delivery officer, calls the TaskListCreator, and redirects to the project path" do
-        expect(response).to redirect_to(project_path(new_project_record.id))
-        expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: ProjectsController::DEFAULT_WORKFLOW_ROOT)
-        expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
-      end
-
-      it "creates a new project and note" do
-        expect(Project.count).to be 1
-        expect(Note.count).to be 1
-        expect(Note.last.user).to eq regional_delivery_officer
-      end
-
-      it "sends a new project created email to team leaders" do
-        expect(ActionMailer::MailDeliveryJob)
-          .to(have_been_enqueued.on_queue("default")
-          .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, new_project_record]))
-      end
-
-      context "when the note body is empty" do
-        let(:note_params) { {body: ""} }
-
-        it "does not create a new note" do
-          expect(Note.count).to be 0
-        end
+      it "calls the TaskListCreator" do
+        expect(mock_project_creator).to have_received(:call).with(have_attributes(project_form.attributes), have_attributes(note_form.attributes))
       end
     end
   end

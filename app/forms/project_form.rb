@@ -1,8 +1,8 @@
 class ProjectForm
   include ActiveModel::Model
   include ActiveModel::Attributes
-  include ActiveRecord::AttributeAssignment
   include ActiveModel::Validations::Callbacks
+  include ActiveRecord::AttributeAssignment
 
   VALID_SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
@@ -16,21 +16,17 @@ class ProjectForm
   attribute :establishment_sharepoint_link
   attribute :trust_sharepoint_link
   attribute :regional_delivery_officer_id
-  attribute :note_body
 
   validates :urn, presence: true, numericality: {only_integer: true}, length: {is: 6}
   validates :incoming_trust_ukprn, presence: true, ukprn: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
-  validates :advisory_board_date, presence: true
-  validates :advisory_board_date, past_date: true
+  validates :advisory_board_date, presence: true, past_date: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: VALID_SHAREPOINT_URLS}
   validates :trust_sharepoint_link, presence: true, url: {hostnames: VALID_SHAREPOINT_URLS}
   validate :first_day_of_month, :target_completion_date_is_in_the_future, :establishment_exists, :trust_exists
 
   def create
-    return false if invalid?
-
-    project = Project.create!(
+    Project.create!(
       urn:,
       incoming_trust_ukprn:,
       target_completion_date:,
@@ -40,16 +36,6 @@ class ProjectForm
       trust_sharepoint_link:,
       regional_delivery_officer_id:
     )
-
-    unless note_body.blank?
-      Note.create!(
-        project:,
-        body: note_body,
-        user_id: regional_delivery_officer_id
-      )
-    end
-
-    project
   end
 
   # Rescue argument error raised when value cannot be parsed as
