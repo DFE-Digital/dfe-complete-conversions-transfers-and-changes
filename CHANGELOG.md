@@ -47,6 +47,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   modification order" task.
 - The "Signed by secretary of state" section has been removed from the
   "Direction to transfer" task.
+- The "Commercial transfer agreement" task has been moved to the bottom of the
+  "Clear and sign legal documents" section
 
 ## [Release 7][release-7]
 
