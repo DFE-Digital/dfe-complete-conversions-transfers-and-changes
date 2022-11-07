@@ -95,4 +95,7 @@ Rails.application.configure do
   # https://github.com/dxw/mail-notify
   config.action_mailer.delivery_method = :notify
   config.action_mailer.notify_settings = {api_key: ENV["GOV_NOTIFY_API_KEY"]}
+
+  # Use Sidekiq
+  config.active_job.queue_adapter = :sidekiq
 end
