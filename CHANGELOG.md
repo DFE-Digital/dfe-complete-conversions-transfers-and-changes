@@ -33,6 +33,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Content
 
+- Tenancy at will adds action to explicitly indicate that the email from the
+  school has been received.
 - Commercial transfer agreement adds action to explicitly indicate that the
   email from the school has been received.
 - 125 year lease adds action to explicitly indicate that the email from the
