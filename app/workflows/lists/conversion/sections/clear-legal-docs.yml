@@ -405,8 +405,11 @@ tasks:
         title: Confirm the 125 year lease has been signed
       - type: single-checkbox
         title:
-          Email the school to confirm all relevant parties have signed the 125
+          Email the school to check all relevant parties have signed the 125
           year lease
+      - title:
+          Receive email from the school confirming the 125 year lease is agreed
+          and signed
       - type: single-checkbox
         title:
           Save a copy of the confirmation email in school's SharePoint folder
