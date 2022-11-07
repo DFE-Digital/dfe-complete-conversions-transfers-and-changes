@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
   def index
     authorize Project
     @pagy, @projects = pagy(policy_scope(Project))
+
+    fetch_academies_data
   end
 
   def show
@@ -34,6 +36,26 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
+  end
+
+  private def fetch_academies_data
+    client = AcademiesApi::Client.new
+
+    @projects.each do |project|
+      client.get_establishment(project.urn) do |result|
+        raise result.error if result.error.present?
+
+        project.establishment = result.object
+      end
+
+      client.get_trust(project.incoming_trust_ukprn) do |result|
+        raise result.error if result.error.present?
+
+        project.incoming_trust = result.object
+      end
+    end
+
+    client.execute
   end
 
   private def notify_team_leaders

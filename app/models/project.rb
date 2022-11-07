@@ -3,6 +3,8 @@ class Project < ApplicationRecord
 
   before_validation :add_invalid_date_errors
 
+  attr_accessor :establishment, :incoming_trust
+
   has_many :sections, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
@@ -72,17 +74,19 @@ class Project < ApplicationRecord
   end
 
   private def fetch_establishment(urn)
-    result = AcademiesApi::Client.new.get_establishment(urn)
-    raise result.error if result.error.present?
+    AcademiesApi::Client.with_immediate_execution.get_establishment(urn) do |result|
+      raise result.error if result.error.present?
 
-    result.object
+      return result.object
+    end
   end
 
   private def fetch_trust(ukprn)
-    result = AcademiesApi::Client.new.get_trust(ukprn)
-    raise result.error if result.error.present?
+    AcademiesApi::Client.with_immediate_execution.get_trust(ukprn) do |result|
+      raise result.error if result.error.present?
 
-    result.object
+      return result.object
+    end
   end
 
   private def establishment_exists

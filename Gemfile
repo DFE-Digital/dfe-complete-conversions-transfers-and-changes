@@ -47,6 +47,7 @@ gem "govuk_design_system_formbuilder", "~> 3.1"
 gem "govuk_markdown"
 
 gem "faraday"
+gem "typhoeus"
 
 # sentry.io error reporting 
 gem "sentry-ruby"
