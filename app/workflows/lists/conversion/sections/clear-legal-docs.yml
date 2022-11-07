@@ -389,11 +389,9 @@ tasks:
       projects.
     actions:
       - title:
-          Email the school to confirm all relevant parties have signed the
-          Commercial transfer agreement
+          Email the school to ask if they have agreed and signed the Commercial transfer agreement
       - title:
-          Email received confirming the Commercial transfer agreement has been
-          agreed and signed
+          Receive email from the school confirming the Commercial transfer agreement has relevant signatures
       - title:
           Save a copy of the confirmation email in school's SharePoint folder
 
