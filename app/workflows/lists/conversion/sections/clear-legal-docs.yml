@@ -440,8 +440,12 @@ tasks:
         title: Confirm any subleases have been signed
       - type: single-checkbox
         title:
-          Email the school to confirm all relevant parties have signed any
+          Email the school to check all relevant parties have signed any
           subleases
+      - type: single-checkbox
+        title:
+          Receive email from the school confirming any subleases are agreed and
+          signed
       - type: single-checkbox
         title:
           Save a copy of the confirmation email in school's SharePoint folder
