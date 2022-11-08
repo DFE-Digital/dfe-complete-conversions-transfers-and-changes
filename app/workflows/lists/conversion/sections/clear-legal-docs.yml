@@ -461,8 +461,12 @@ tasks:
         title: Confirm the Tenancy at will has been signed
       - type: single-checkbox
         title:
-          Email the school to confirm all relevant parties have signed the
-          Tenancy at will
+          Email the school to ask if they have agreed and signed the Tenancy at
+          will
+      - type: single-checkbox
+        title:
+          Receive email from the school confirming the Tennancy at will has all
+          relevant signatures
       - type: single-checkbox
         title:
           Save a copy of the confirmation email in school's SharePoint folder
