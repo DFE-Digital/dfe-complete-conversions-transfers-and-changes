@@ -34,6 +34,10 @@ class Project < ApplicationRecord
   # and see if you can use Arel to build a proper query.
   scope :by_closed_state, -> { order(:closed_at) }
 
+  enum project_type: {
+    conversion: 0
+  }
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end
