@@ -76,20 +76,7 @@ RSpec.describe Project, type: :model do
   describe "Validations" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-    describe "#advisory_board_date" do
-      it { is_expected.to validate_presence_of(:advisory_board_date).on(:create) }
-
-      context "when the date is invalid" do
-        subject { create(:project) }
-
-        before { subject.advisory_board_date = {3 => -1, 2 => -1, 1 => -1} }
-
-        it "adds an error to the Project" do
-          expect(subject).to_not be_valid
-          expect(subject.errors[:advisory_board_date]).to include(I18n.t("activerecord.errors.models.project.attributes.advisory_board_date.invalid"))
-        end
-      end
-    end
+    it { is_expected.to validate_presence_of(:advisory_board_date).on(:create) }
 
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
@@ -134,17 +121,6 @@ RSpec.describe Project, type: :model do
 
     describe "#target_completion_date" do
       it { is_expected.to validate_presence_of(:target_completion_date) }
-
-      context "when the date is invalid" do
-        subject { create(:project) }
-
-        before { subject.target_completion_date = {3 => -1, 2 => -1, 1 => -1} }
-
-        it "adds an error to the Project" do
-          expect(subject).to_not be_valid
-          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.invalid"))
-        end
-      end
 
       context "when the date is not on the first of the month" do
         subject { build(:project, target_completion_date: Date.new(2025, 12, 2)) }
