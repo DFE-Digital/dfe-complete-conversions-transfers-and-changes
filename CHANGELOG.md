@@ -26,8 +26,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Fixed
 
-- Invalid dates such as 42/01/2022, no longer cause the app to throw an
-  exception. We now rescue from the invalid date and show a validation message.
 - Remove empty links from the task list. These were raised as an issue during an
   accessibility audit, because the assistive technology used was reading out all
   of the blank links.
