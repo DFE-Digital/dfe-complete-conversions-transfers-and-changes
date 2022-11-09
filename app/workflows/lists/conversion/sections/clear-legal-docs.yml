@@ -28,7 +28,7 @@ tasks:
         title: Cleared
       - type: single-checkbox
         padding: reduced
-        title: Signed by school or trust
+        title: Signed by solicitor
       - type: single-checkbox
         padding: reduced
         title: Saved in the school's SharePoint folder
@@ -207,15 +207,17 @@ tasks:
 
   - slug: clear-and-sign-articles-of-association
     title: Articles of association
-    hint: |
-      The Articles of association must be updated if the trust currently uses a version from February 2016 or earlier.
+    hint:
+      The Articles of association must be updated if the trust currently uses a
+      version from February 2016 or earlier.
+    optional: true
     actions:
       - type: subheading
         title: Check and clear the Articles of association
         hint:
           You can use the [land transfer advice and guidance to check for common
           problems (opens in new
-          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
+          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Governance-(includes-clearing-Articles-of-Association).aspx).
         guidance_summary: Help checking for changes
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
@@ -308,28 +310,6 @@ tasks:
       - type: single-checkbox
         padding: reduced
         title: Saved in the school's SharePoint folder
-      - type: subheading
-        title: Signed by the Secretary of State
-        hint: |
-          Send the Trust modification order to the Academies Operational
-          Practice Unit.
-        guidance_summary: How to get the Trust modification order signed
-        guidance_text: |
-          The Academies Operational Practice Unit will arrange for
-          the Trust modification order to be signed by the deputy director or a
-          grade 6 team member, on behalf of the Secretary of State.
-
-          You can email the Academies Operational Practice Unit at
-          [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
-
-          It can take several weeks to hear back from the Academies Operational
-          Practice Unit.
-      - type: single-checkbox
-        padding: reduced
-        title: Sent to Academies Operational Practice Unit
-      - type: single-checkbox
-        padding: reduced
-        title: Document signed on behalf of the Secretary of State
 
   - slug: clear-and-sign-direction-to-transfer
     title: Direction to transfer
@@ -362,40 +342,6 @@ tasks:
       - type: single-checkbox
         padding: reduced
         title: Saved in the school's SharePoint folder
-      - type: subheading
-        title: Signed by the Secretary of State
-        hint: |
-          Send the Direction to transfer to the Academies Operational Practice Unit.
-        guidance_summary: How to get the Direction to transfer signed
-        guidance_text: |
-          The Academies Operational Practice Unit will arrange for the Direction to transfer to be signed by the deputy director or a grade 6 team member, on behalf of the Secretary of State.
-
-          You can email the Academies Operational Practice Unit at
-          [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
-
-          It can take several weeks to hear back from the Academies Operational
-          Practice Unit.
-      - type: single-checkbox
-        padding: reduced
-        title: Sent to Academies Operational Practice Unit
-      - type: single-checkbox
-        padding: reduced
-        title: Document signed on behalf of the Secretary of State
-
-  - slug: commercial-transfer-agreement
-    title: Commercial transfer agreement
-    hint:
-      The Commercial transfer agreement is essential for all conversion
-      projects.
-    actions:
-      - title:
-          Email the school to ask if they have agreed and signed the Commercial
-          transfer agreement
-      - title:
-          Receive email from the school confirming the Commercial transfer
-          agreement has relevant signatures
-      - title:
-          Save a copy of the confirmation email in school's SharePoint folder
 
   - slug: 125-year-lease
     title: 125 year lease
@@ -469,4 +415,19 @@ tasks:
           relevant signatures
       - type: single-checkbox
         title:
+          Save a copy of the confirmation email in school's SharePoint folder
+
+  - slug: commercial-transfer-agreement
+    title: Commercial transfer agreement
+    hint:
+      The Commercial transfer agreement is essential for all conversion
+      projects.
+    actions:
+      - title:
+          Email the school to ask if they have agreed and signed the Commercial
+          transfer agreement
+      - title:
+          Receive email from the school confirming the Commercial transfer
+          agreement has relevant signatures
+      - title:
           Save a copy of the confirmation email in school's SharePoint folder

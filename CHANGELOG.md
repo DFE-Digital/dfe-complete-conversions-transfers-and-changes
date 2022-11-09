@@ -44,6 +44,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   school has been received.
 - Swap out the link to the previous version of the single worksheet for a link
   to an updated version.
+- The checkbox label in the "Land questionnaire" task says "Signed by
+  solicitor", updated from "Signed by school or trust".
+- The "Articles of association" task is now optional.
+- Change the guidance link in the "Articles of association" task.
+- The "Signed by secretary of state" section has been removed from the "Trust
+  modification order" task.
+- The "Signed by secretary of state" section has been removed from the
+  "Direction to transfer" task.
+- The "Commercial transfer agreement" task has been moved to the bottom of the
+  "Clear and sign legal documents" section
 
 ## [Release 7][release-7]
 
