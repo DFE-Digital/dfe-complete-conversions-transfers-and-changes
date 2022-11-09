@@ -1,9 +1,9 @@
-name: Continuous integration
+name: Continuous Integration / Terraform
 on:
   pull_request:
 jobs:
   tfsec-pr-commenter:
-    name: tfsec PR commenter
+    name: Security PR commenter
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo

@@ -1,4 +1,4 @@
-name: Continuous integration
+name: Continuous Integration / Terraform
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   terraform-validate:
-    name: Terraform Validate
+    name: Validate
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -44,7 +44,7 @@ jobs:
           entrypoint: terraform
           args: -chdir=terraform fmt -check=true -diff=true
   terraform-docs-validation:
-    name: Terraform Docs validation
+    name: Validate documentation
     needs: terraform-validate
     runs-on: ubuntu-latest
     steps:

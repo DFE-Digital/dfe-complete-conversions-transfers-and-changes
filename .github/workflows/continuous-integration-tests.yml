@@ -1,4 +1,4 @@
-name: Continuous integration
+name: Continuous Integration / Application
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   linting-and-formatting:
-    name: Linting and formatting tests
+    name: Linting and formatting
     runs-on: ubuntu-latest
 
     env:
@@ -28,7 +28,7 @@ jobs:
         run: script/no-docker/test
 
   application:
-    name: Application tests
+    name: Specs
     runs-on: ubuntu-latest
 
     env:

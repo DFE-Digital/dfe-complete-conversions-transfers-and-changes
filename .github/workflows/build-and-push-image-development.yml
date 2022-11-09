@@ -1,4 +1,4 @@
-name: Continuous delivery
+name: Continuous Delivery / Development
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 jobs:
   build-and-push-image-development:
     name: Build and push image development
-    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
