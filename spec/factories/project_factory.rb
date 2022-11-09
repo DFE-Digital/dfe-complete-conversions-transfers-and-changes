@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :project, class: "Project" do
+    project_type { 0 }
     urn { 123456 }
     incoming_trust_ukprn { 10061021 }
     target_completion_date { (Date.today + 2.years).at_beginning_of_month }

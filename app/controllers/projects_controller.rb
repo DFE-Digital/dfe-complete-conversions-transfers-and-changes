@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
 
   DEFAULT_WORKFLOW_ROOT = Rails.root.join("app", "workflows", "lists", "conversion").freeze
 
+  DEFAULT_PROJECT_TYPE = 0
+
   def index
     authorize Project
     @pagy, @projects = pagy(policy_scope(Project))
@@ -21,7 +23,12 @@ class ProjectsController < ApplicationController
 
   def create
     @note = Note.new(**note_params, user_id: user_id)
-    @project = Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
+    @project = Project.new(
+      **project_params,
+      project_type: DEFAULT_PROJECT_TYPE,
+      regional_delivery_officer_id: user_id,
+      notes_attributes: [@note.attributes]
+    )
 
     authorize @project
 
