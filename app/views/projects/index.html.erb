@@ -8,10 +8,7 @@
     </h1>
 
     <% if policy(:project).new? %>
-      <p><%= link_to t("project.index.new_button.text"),
-               new_project_path,
-               class: "govuk-button",
-               data: {module: "govuk-button"} %></p>
+      <p><%= govuk_button_link_to t("project.index.new_button.text"), new_project_path %></p>
     <% end %>
 
     <ul class="projects-list list-style-none govuk-!-padding-0">
