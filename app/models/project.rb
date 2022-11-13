@@ -12,13 +12,13 @@ class Project < ApplicationRecord
   validates :incoming_trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
   validates :target_completion_date, date_in_the_future: true
+  validates :target_completion_date, first_day_of_month: true
   validates :incoming_trust_ukprn, ukprn: true
   validates :advisory_board_date, presence: true, on: :create
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
 
-  validate :first_day_of_month
   validate :establishment_exists, :trust_exists, on: :create
 
   belongs_to :caseworker, class_name: "User", optional: true
@@ -69,13 +69,5 @@ class Project < ApplicationRecord
     incoming_trust
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:incoming_trust_ukprn, :no_trust_found)
-  end
-
-  private def first_day_of_month
-    return if target_completion_date.nil?
-
-    if target_completion_date.day != 1
-      errors.add(:target_completion_date, :must_be_first_of_the_month)
-    end
   end
 end
