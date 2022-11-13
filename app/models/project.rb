@@ -9,11 +9,11 @@ class Project < ApplicationRecord
 
   validates :urn, presence: true
   validates :urn, urn: true
-  validates :incoming_trust_ukprn, presence: true, numericality: {only_integer: true}
+  validates :incoming_trust_ukprn, presence: true
+  validates :incoming_trust_ukprn, ukprn: true
   validates :target_completion_date, presence: true
   validates :target_completion_date, date_in_the_future: true
   validates :target_completion_date, first_day_of_month: true
-  validates :incoming_trust_ukprn, ukprn: true
   validates :advisory_board_date, presence: true, on: :create
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
