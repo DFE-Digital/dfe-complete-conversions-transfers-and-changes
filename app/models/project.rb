@@ -7,7 +7,8 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :notes, reject_if: proc { |attributes| attributes[:body].blank? }
 
-  validates :urn, presence: true, numericality: {only_integer: true}, length: {is: 6}
+  validates :urn, presence: true
+  validates :urn, urn: true
   validates :incoming_trust_ukprn, presence: true, numericality: {only_integer: true}
   validates :target_completion_date, presence: true
   validates :target_completion_date, date_in_the_future: true
