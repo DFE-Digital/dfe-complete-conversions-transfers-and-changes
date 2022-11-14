@@ -34,6 +34,9 @@ class Project < ApplicationRecord
   # and see if you can use Arel to build a proper query.
   scope :by_closed_state, -> { order(:closed_at) }
 
+  scope :closed, -> { where.not(closed_at: nil) }
+  scope :open, -> { where(closed_at: nil) }
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end

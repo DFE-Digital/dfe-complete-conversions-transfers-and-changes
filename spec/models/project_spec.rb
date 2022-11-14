@@ -326,4 +326,34 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "closed scope" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    it "only returns closed projects" do
+      closed_project_1 = create(:project, closed_at: Date.today - 1.year)
+      closed_project_2 = create(:project, closed_at: Date.today - 1.year)
+      open_project = create(:project, closed_at: nil)
+
+      projects = Project.closed
+
+      expect(projects).to include(closed_project_1, closed_project_2)
+      expect(projects).to_not include(open_project)
+    end
+  end
+
+  describe "open scope" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    it "only returns open projects" do
+      closed_project = create(:project, closed_at: Date.today - 1.year)
+      open_project_1 = create(:project, closed_at: nil)
+      open_project_2 = create(:project, closed_at: nil)
+
+      projects = Project.open
+
+      expect(projects).to include(open_project_1, open_project_2)
+      expect(projects).to_not include(closed_project)
+    end
+  end
 end
