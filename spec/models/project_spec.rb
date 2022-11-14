@@ -301,4 +301,36 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "Scopes" do
+    describe "completed scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns completed projects" do
+        completed_project_1 = create(:project, completed_at: Date.today - 1.year)
+        completed_project_2 = create(:project, completed_at: Date.today - 1.year)
+        open_project = create(:project, completed_at: nil)
+
+        projects = Project.completed
+
+        expect(projects).to include(completed_project_1, completed_project_2)
+        expect(projects).to_not include(open_project)
+      end
+    end
+
+    describe "open scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns open projects" do
+        completed_project = create(:project, completed_at: Date.today - 1.year)
+        open_project_1 = create(:project, completed_at: nil)
+        open_project_2 = create(:project, completed_at: nil)
+
+        projects = Project.open
+
+        expect(projects).to include(open_project_1, open_project_2)
+        expect(projects).to_not include(completed_project)
+      end
+    end
+  end
 end
