@@ -31,7 +31,7 @@ class Project < ApplicationRecord
   # play nicely with things like IS NULL and NULLS LAST. If you're running this under a different database and the
   # order is suddenly inverted, go check out https://michaeljherold.com/articles/null-based-ordering-in-activerecord/
   # and see if you can use Arel to build a proper query.
-  scope :by_closed_state, -> { order(:closed_at) }
+  scope :by_completed_state, -> { order(:completed_at) }
 
   def establishment
     @establishment ||= fetch_establishment(urn)
@@ -41,8 +41,8 @@ class Project < ApplicationRecord
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
-  def closed?
-    closed_at.present?
+  def completed?
+    completed_at.present?
   end
 
   private def fetch_establishment(urn)

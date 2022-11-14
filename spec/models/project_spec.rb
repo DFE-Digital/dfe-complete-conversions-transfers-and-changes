@@ -12,7 +12,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:advisory_board_conditions).of_type :text }
     it { is_expected.to have_db_column(:establishment_sharepoint_link).of_type :text }
     it { is_expected.to have_db_column(:trust_sharepoint_link).of_type :text }
-    it { is_expected.to have_db_column(:closed_at).of_type :datetime }
+    it { is_expected.to have_db_column(:completed_at).of_type :datetime }
   end
 
   describe "Relationships" do
@@ -286,18 +286,18 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#closed?" do
-    context "when the closed_at is nil, i.e. the project is active" do
+  describe "#completed?" do
+    context "when the completed_at is nil, i.e. the project is active" do
       it "returns false" do
-        project = build(:project, closed_at: nil)
-        expect(project.closed?).to eq false
+        project = build(:project, completed_at: nil)
+        expect(project.completed?).to eq false
       end
     end
 
-    context "when the closed_at is set, i.e. the project is closed" do
+    context "when the completed_at is set, i.e. the project is completed" do
       it "returns true" do
-        project = build(:project, closed_at: DateTime.now)
-        expect(project.closed?).to eq true
+        project = build(:project, completed_at: DateTime.now)
+        expect(project.completed?).to eq true
       end
     end
   end

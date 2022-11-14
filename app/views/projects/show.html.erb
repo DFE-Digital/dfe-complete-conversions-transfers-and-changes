@@ -9,4 +9,4 @@
 <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
 <%= render "projects/show/task_list" %>
 
-<%= render "projects/show/close" unless @project.closed? %>
+<%= render "projects/show/complete" unless @project.completed? %>

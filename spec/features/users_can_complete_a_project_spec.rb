@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can close a project" do
+RSpec.feature "Users can complete a project" do
   let(:user) { create(:user, :caseworker) }
   let(:project) { create(:project, caseworker: user) }
 
@@ -12,12 +12,12 @@ RSpec.feature "Users can close a project" do
   scenario "successfully" do
     visit project_path(project)
 
-    click_on I18n.t("project.close.submit_button")
+    click_on I18n.t("project.complete.submit_button")
 
-    expect(page).to have_content("Project closed")
-    expect(project.reload.closed_at).not_to be_nil
+    expect(page).to have_content("Project completed")
+    expect(project.reload.completed_at).not_to be_nil
 
-    click_on I18n.t("project.closed.back_link")
+    click_on I18n.t("project.complete.back_link")
     click_on project.establishment.name
 
     expect(page).to have_content(DateTime.now.to_formatted_s(:govuk_date_time_date_only))

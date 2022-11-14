@@ -27,14 +27,14 @@ RSpec.feature "Users can view a list of projects" do
       target_completion_date: Date.today.beginning_of_month + 2.year
     )
   }
-  let!(:user_2_closed_project) {
+  let!(:user_2_completed_project) {
     create(
       :project,
       urn: 100004,
       caseworker: user_2,
       regional_delivery_officer: regional_delivery_officer,
       target_completion_date: Date.today.beginning_of_month + 6.months,
-      closed_at: Date.today.beginning_of_month + 7.months
+      completed_at: Date.today.beginning_of_month + 7.months
     )
   }
   let!(:user_2_project) {
@@ -58,12 +58,12 @@ RSpec.feature "Users can view a list of projects" do
       page_has_project(unassigned_project)
       page_has_project(user_1_project)
       page_has_project(user_2_project)
-      page_has_project(user_2_closed_project)
+      page_has_project(user_2_completed_project)
     end
 
-    # If this is unexpectedly failing due to sorting closed projects first, see the by_closed_state scope in the
+    # If this is unexpectedly failing due to sorting completed projects first, see the by_completed_state scope in the
     # projects model for an explanation of the likely culprit.
-    scenario "the projects are sorted by closed state, then by target completion date" do
+    scenario "the projects are sorted by completed state, then by target completion date" do
       visit projects_path
 
       expect(page.find("ul.projects-list > li:nth-of-type(1)")).to have_content("100003")
