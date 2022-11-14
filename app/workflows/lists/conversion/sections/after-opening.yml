@@ -11,7 +11,7 @@ tasks:
 
   - slug: redact-and-send-documents-to-be-published-on-gov-uk
     title: Redact and send documents to be published on GOV.UK
-    hint: |
+    hint:
       Documents relating to the conversion will be added to GOV.UK. These must
       be redacted to remove sensitive information.
     actions:

@@ -20,9 +20,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Changed
 
-- After opening => redact and send task and actions no longer explicitly mention
-  funding documents only as other documents may need to be sent and publised on
-  GOV.UK
 - Fine-tuned padding for actions in various type/state combinations to closer
   match the prototype.
 - The support email has been swapped out for a complete team shared inbox.
@@ -36,6 +33,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Content
 
+- After opening => redact and send task and actions no longer explicitly mention
+  funding documents only as other documents may need to be sent and publised on
+  GOV.UK
 - Tenancy at will adds action to explicitly indicate that the email from the
   school has been received.
 - Subleases adds action to explicitly indicate that the email from the school
