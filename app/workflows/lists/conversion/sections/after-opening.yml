@@ -9,12 +9,11 @@ tasks:
     actions:
       - title: Email the regional delivery officer
 
-  - slug: redact-and-send-funding-agreement-documents
-    title: Redact and send funding agreement documents
-    hint: |
-      Funding agreement documents relating to the conversion will be added to
-      GOV.UK. These must be redacted to remove sensitive information.
-
+  - slug: redact-and-send-documents-to-be-published-on-gov-uk
+    title: Redact and send documents to be published on GOV.UK
+    hint:
+      Documents relating to the conversion will be added to GOV.UK. These must
+      be redacted to remove sensitive information.
     actions:
       - title: Redact all relevant documents
         guidance_summary: Help redacting the documents
@@ -37,7 +36,7 @@ tasks:
       - title: Send relevant documents to the funding team
         guidance_summary: Help sending documents
         guidance_text: |
-          Send the redacted funding agreement documents to the funding team at [FundingAgreements.CONVERTERS@education.gov.uk](mailto:FundingAgreements.CONVERTERS@education.gov.uk).
+          Send the redacted documents to the funding team at [FundingAgreements.CONVERTERS@education.gov.uk](mailto:FundingAgreements.CONVERTERS@education.gov.uk).
 
   - slug: update-esfa-data-in-kim
     title: Update ESFA data in KIM
