@@ -76,6 +76,7 @@ group :test do
   gem "capybara"
   gem "climate_control"
   gem "simplecov", "~> 0.21.2"
+  gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 5.1"
   gem "webmock", "~> 3.17"
 end
