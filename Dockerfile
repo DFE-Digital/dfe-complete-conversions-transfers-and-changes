@@ -134,8 +134,17 @@ FROM web as test
 RUN \
   apt-get update && \
   apt-get install -y \
+  firefox-esr \
   shellcheck \
   yarn
+
+ARG gecko_driver_version=0.32.0
+
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v$gecko_driver_version/geckodriver-v$gecko_driver_version-linux64.tar.gz
+RUN tar -xvzf  geckodriver-v$gecko_driver_version-linux64.tar.gz
+RUN rm geckodriver-v$gecko_driver_version-linux64.tar.gz
+RUN chmod +x geckodriver
+RUN mv geckodriver* /usr/local/bin
 
 COPY .eslintignore ${APP_HOME}/.eslintignore
 COPY .eslintrc.json ${APP_HOME}/.eslintrc.json

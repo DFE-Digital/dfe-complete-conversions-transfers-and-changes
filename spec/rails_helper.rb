@@ -24,6 +24,13 @@ require "support/factory_bot"
 #
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 
+Capybara.register_driver :headless_firefox do |app|
+  options = Selenium::WebDriver::Firefox::Options.new
+  options.headless!
+
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
+end
+
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
