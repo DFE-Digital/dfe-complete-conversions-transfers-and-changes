@@ -80,7 +80,6 @@ RSpec.describe Project, type: :model do
 
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
-      it { is_expected.to validate_numericality_of(:urn).only_integer }
       it { is_expected.to allow_value(123456).for(:urn) }
       it { is_expected.not_to allow_values(12345, 1234567).for(:urn) }
 
@@ -123,7 +122,7 @@ RSpec.describe Project, type: :model do
       it { is_expected.to validate_presence_of(:target_completion_date) }
 
       context "when the date is not on the first of the month" do
-        subject { build(:project, target_completion_date: Date.new(2025, 12, 2)) }
+        subject { build(:project, target_completion_date: Date.today.months_since(6).at_end_of_month) }
 
         it "is invalid" do
           expect(subject).to_not be_valid

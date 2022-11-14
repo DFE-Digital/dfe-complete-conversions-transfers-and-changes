@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe PastDateValidator do
+RSpec.describe DateInThePastValidator do
   subject do
     Class.new {
       include ActiveModel::Validations
       attr_accessor :date
-      validates :date, past_date: true
+      validates :date, date_in_the_past: true
     }.new
   end
 
