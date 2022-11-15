@@ -66,8 +66,6 @@ RSpec.feature "Users can view a list of projects" do
       page_has_project(user_2_completed_project)
     end
 
-    # If this is unexpectedly failing due to sorting completed projects first, see the by_completed_state scope in the
-    # projects model for an explanation of the likely culprit.
     scenario "the open projects are sorted by target completion date" do
       visit projects_path
 
