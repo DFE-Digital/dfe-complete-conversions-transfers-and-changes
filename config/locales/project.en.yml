@@ -19,11 +19,10 @@ en:
       title: Edit a project
     update:
       success: Project has been updated successfully
-    close:
-      heading: Close project
+    complete:
+      heading: Complete project
       guidance: Check all the tasks have been completed or marked as not applicable.
-      submit_button: Mark project as closed
-    closed:
+      submit_button: Mark project as completed
       back_link: Return to project list
     summary:
       caseworker:
@@ -43,7 +42,7 @@ en:
       trust_sharepoint_link:
         title: Trust SharePoint folder
         value: Open the trust Sharepoint folder in a new tab
-      closed_at: Project closed
+      completed_at: Project completed
     assign:
       team_leader:
         success: Team leader has been assigned successfully

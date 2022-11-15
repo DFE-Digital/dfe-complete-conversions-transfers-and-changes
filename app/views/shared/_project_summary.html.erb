@@ -29,10 +29,10 @@
             row.key { t("project.summary.trust_sharepoint_link.title") }
             row.value { safe_link_to(t("project.summary.trust_sharepoint_link.value"), @project.trust_sharepoint_link) }
           end
-          if @project.closed?
+          if @project.completed?
             summary_list.row do |row|
-              row.key { t("project.summary.closed_at") }
-              row.value { @project.closed_at.to_formatted_s(:govuk_date_time_date_only) }
+              row.key { t("project.summary.completed_at") }
+              row.value { @project.completed_at.to_formatted_s(:govuk_date_time_date_only) }
             end
           end
         end %>
