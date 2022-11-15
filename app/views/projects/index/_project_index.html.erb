@@ -1,0 +1,35 @@
+<p>You are signed in with the email address <%= current_user.email %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.index.title.all") %>
+    </h1>
+
+    <% if policy(:project).new? %>
+      <p><%= link_to t("project.index.new_button.text"),
+               new_project_path,
+               class: "govuk-button",
+               data: {module: "govuk-button"} %></p>
+    <% end %>
+
+    <%= render partial: "shared/project_index_sub_navigation" %>
+
+    <ul class="projects-list list-style-none govuk-!-padding-0">
+      <% @projects.each do |project| %>
+        <li>
+          <span class="govuk-caption-m">URN <%= project.urn %></span>
+          <h2 class="govuk-heading-m govuk-heading-m--school-name">
+            <%= link_to project.establishment.name, project_path(project) %>
+          </h2>
+
+          <%= render partial: "projects/index/project_summary", locals: {project: project} %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= govuk_pagination(pagy: @pagy) %>
+
+  </div>
+</div>

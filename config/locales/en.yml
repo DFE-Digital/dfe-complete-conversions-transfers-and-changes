@@ -66,5 +66,7 @@ en:
   subnavigation:
     project_task_list: Task list
     project_information: Project information
+    completed_projects: Completed
+    in_progress_projects: In progress
     notes: Notes
     contacts: Contacts

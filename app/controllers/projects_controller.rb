@@ -6,7 +6,12 @@ class ProjectsController < ApplicationController
 
   def index
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project))
+    @pagy, @projects = pagy(policy_scope(Project.open))
+  end
+
+  def completed
+    authorize Project
+    @pagy, @projects = pagy(policy_scope(Project.completed))
   end
 
   def show

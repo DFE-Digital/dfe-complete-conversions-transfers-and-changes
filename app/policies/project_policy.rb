@@ -10,6 +10,10 @@ class ProjectPolicy
     true
   end
 
+  def completed?
+    true
+  end
+
   def show?
     true
   end
