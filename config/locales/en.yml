@@ -47,6 +47,9 @@ en:
     message: The email address %{email_address} is not registered to use this service.
   unauthorised_action:
     message: You are not authorised to perform this action.
+  project_list:
+    open_list_empty: There are no projects assigned to you.
+    completed_list_empty: You have not completed any projects yet.
   tasks:
     not_applicable: Not applicable
     users:

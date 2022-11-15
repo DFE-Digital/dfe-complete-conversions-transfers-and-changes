@@ -103,6 +103,25 @@ RSpec.feature "Users can view a list of projects" do
     end
   end
 
+  context "when there are no projects in a project list" do
+    before do
+      sign_in_with_user(user_1)
+      Project.destroy_all
+    end
+
+    scenario "there is a message indicating there are no open projects" do
+      visit projects_path
+
+      expect(page).to have_content(I18n.t("project_list.open_list_empty"))
+    end
+
+    scenario "there is a message indicating there are no completed projects" do
+      visit completed_projects_path
+
+      expect(page).to have_content(I18n.t("project_list.completed_list_empty"))
+    end
+  end
+
   private def page_has_project(project)
     urn = find("span", text: project.urn.to_s)
 
