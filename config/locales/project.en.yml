@@ -2,7 +2,7 @@ en:
   project:
     index:
       title:
-        all: Projects
+        all: Project list
       new_button:
         text: Add a new project
     show:
@@ -20,7 +20,7 @@ en:
     update:
       success: Project has been updated successfully
     complete:
-      heading: Complete project
+      heading: Completing a project
       guidance: Check all the tasks have been completed or marked as not applicable.
       submit_button: Mark project as completed
       back_link: Return to project list

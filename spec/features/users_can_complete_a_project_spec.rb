@@ -18,6 +18,11 @@ RSpec.feature "Users can complete a project" do
     expect(project.reload.completed_at).not_to be_nil
 
     click_on I18n.t("project.complete.back_link")
+    # The project listing is no longer on the index page (open projects only)
+    expect(page).to_not have_content(project.establishment.name)
+
+    # The project has moved to the Completed tab
+    click_on I18n.t("subnavigation.completed_projects")
     click_on project.establishment.name
 
     expect(page).to have_content(DateTime.now.to_formatted_s(:govuk_date_time_date_only))

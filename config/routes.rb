@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: %i[index show new create] do
+    collection do
+      get "completed"
+    end
     get "information", to: "project_information#show"
 
     put "complete", to: "projects_complete#complete"

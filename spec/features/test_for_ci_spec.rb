@@ -10,6 +10,6 @@ RSpec.feature "Test that selenium works in CI" do
   scenario "the test runs", driver: :headless_firefox do
     visit root_path
 
-    expect(page).to have_content("Projects (0)")
+    expect(page).to have_content("Project list")
   end
 end

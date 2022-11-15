@@ -52,24 +52,26 @@ RSpec.feature "Users can view a list of projects" do
       sign_in_with_user(team_leader)
     end
 
-    scenario "can see all projects on the project list regardless of assignment" do
+    scenario "can see all open projects on the project list regardless of assignment" do
       visit projects_path
 
       page_has_project(unassigned_project)
       page_has_project(user_1_project)
       page_has_project(user_2_project)
+    end
+
+    scenario "can see the completed project on a separate tab" do
+      visit completed_projects_path
+
       page_has_project(user_2_completed_project)
     end
 
-    # If this is unexpectedly failing due to sorting completed projects first, see the by_completed_state scope in the
-    # projects model for an explanation of the likely culprit.
-    scenario "the projects are sorted by completed state, then by target completion date" do
+    scenario "the open projects are sorted by target completion date" do
       visit projects_path
 
       expect(page.find("ul.projects-list > li:nth-of-type(1)")).to have_content("100003")
       expect(page.find("ul.projects-list > li:nth-of-type(2)")).to have_content("100002")
       expect(page.find("ul.projects-list > li:nth-of-type(3)")).to have_content("100001")
-      expect(page.find("ul.projects-list > li:nth-of-type(4)")).to have_content("100004")
     end
   end
 
@@ -98,6 +100,25 @@ RSpec.feature "Users can view a list of projects" do
       expect(page).to_not have_content(unassigned_project.urn.to_s)
       expect(page).to have_content(user_1_project.urn.to_s)
       expect(page).to_not have_content(user_2_project.urn.to_s)
+    end
+  end
+
+  context "when there are no projects in a project list" do
+    before do
+      sign_in_with_user(user_1)
+      Project.destroy_all
+    end
+
+    scenario "there is a message indicating there are no open projects" do
+      visit projects_path
+
+      expect(page).to have_content(I18n.t("project_list.open_list_empty"))
+    end
+
+    scenario "there is a message indicating there are no completed projects" do
+      visit completed_projects_path
+
+      expect(page).to have_content(I18n.t("project_list.completed_list_empty"))
     end
   end
 

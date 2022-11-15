@@ -10,6 +10,10 @@ class ProjectPolicy
     true
   end
 
+  def completed?
+    true
+  end
+
   def show?
     true
   end
@@ -30,11 +34,11 @@ class ProjectPolicy
 
     def resolve
       if user.team_leader?
-        scope.by_completed_state.by_target_completion_date
+        scope.by_target_completion_date
       elsif user.regional_delivery_officer?
-        scope.by_completed_state.by_target_completion_date.where(regional_delivery_officer: user)
+        scope.by_target_completion_date.where(regional_delivery_officer: user)
       else
-        scope.by_completed_state.by_target_completion_date.where(caseworker: user)
+        scope.by_target_completion_date.where(caseworker: user)
       end
     end
 
