@@ -72,6 +72,17 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    axe-core-api (4.5.0)
+      dumb_delegator
+      virtus
+    axe-core-rspec (4.5.0)
+      axe-core-api
+      dumb_delegator
+      virtus
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     better_html (2.0.1)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -99,6 +110,8 @@ GEM
     childprocess (4.1.0)
     climate_control (1.2.0)
     coderay (1.1.3)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crack (0.4.5)
@@ -107,12 +120,15 @@ GEM
     debug (1.6.3)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.0)
     docile (1.4.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    dumb_delegator (1.0.0)
     erb_lint (0.3.1)
       activesupport
       better_html (>= 2.0.1)
@@ -155,6 +171,7 @@ GEM
       activesupport (>= 6.1.4.4)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    ice_nine (0.11.2)
     io-console (0.5.11)
     irb (1.4.2)
       reline (>= 0.3.0)
@@ -358,6 +375,7 @@ GEM
       rubocop (= 1.38.0)
       rubocop-performance (= 1.15.0)
     thor (1.2.1)
+    thread_safe (0.3.6)
     tilt (2.0.11)
     timeout (0.3.0)
     tiny_tds (2.1.5)
@@ -370,6 +388,10 @@ GEM
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
+    virtus (2.0.0)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -395,6 +417,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-sqlserver-adapter
+  axe-core-rspec
   bootsnap
   brakeman
   bullet

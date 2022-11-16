@@ -26,6 +26,8 @@ require "webmock/rspec"
 WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
+  # Do not run specs tagged accessibility by default
+  config.filter_run_excluding accessibility: true
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
