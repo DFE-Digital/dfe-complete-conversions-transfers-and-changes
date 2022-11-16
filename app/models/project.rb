@@ -25,7 +25,7 @@ class Project < ApplicationRecord
   belongs_to :team_leader, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
-  scope :by_target_completion_date, -> { order(provisional_conversion_date: :asc) }
+  scope :by_provisional_conversion_date, -> { order(provisional_conversion_date: :asc) }
 
   scope :completed, -> { where.not(completed_at: nil) }
   scope :open, -> { where(completed_at: nil) }
