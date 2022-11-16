@@ -4,7 +4,7 @@ RSpec.describe Project, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:urn).of_type :integer }
     it { is_expected.to have_db_column(:incoming_trust_ukprn).of_type :integer }
-    it { is_expected.to have_db_column(:target_completion_date).of_type :date }
+    it { is_expected.to have_db_column(:provisional_conversion_date).of_type :date }
     it { is_expected.to have_db_column(:caseworker_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
     it { is_expected.to have_db_column(:caseworker_assigned_at).of_type :datetime }
@@ -118,33 +118,33 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "#target_completion_date" do
-      it { is_expected.to validate_presence_of(:target_completion_date) }
+    describe "#provisional_conversion_date" do
+      it { is_expected.to validate_presence_of(:provisional_conversion_date) }
 
       context "when the date is not on the first of the month" do
-        subject { build(:project, target_completion_date: Date.today.months_since(6).at_end_of_month) }
+        subject { build(:project, provisional_conversion_date: Date.today.months_since(6).at_end_of_month) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_first_of_the_month"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_first_of_the_month"))
         end
       end
 
       context "when date is today" do
-        subject { build(:project, target_completion_date: Date.today) }
+        subject { build(:project, provisional_conversion_date: Date.today) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_in_the_future"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_in_the_future"))
         end
       end
 
       context "when date is in the past" do
-        subject { build(:project, target_completion_date: Date.yesterday) }
+        subject { build(:project, provisional_conversion_date: Date.yesterday) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:target_completion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.target_completion_date.must_be_in_the_future"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_in_the_future"))
         end
       end
     end
@@ -274,9 +274,9 @@ RSpec.describe Project, type: :model do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     it "shows the project that complete earliest first" do
-      last_project = create(:project, target_completion_date: Date.today.beginning_of_month + 3.years)
-      middle_project = create(:project, target_completion_date: Date.today.beginning_of_month + 2.years)
-      first_project = create(:project, target_completion_date: Date.today.beginning_of_month + 1.year)
+      last_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 3.years)
+      middle_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 2.years)
+      first_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 1.year)
 
       ordered_projects = Project.by_target_completion_date
 

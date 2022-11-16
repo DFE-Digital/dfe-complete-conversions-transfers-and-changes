@@ -11,7 +11,7 @@
           end
           summary_list.row do |row|
             row.key { t("project.summary.target_completion_date.title") }
-            row.value { @project.target_completion_date.to_formatted_s(:govuk) }
+            row.value { @project.provisional_conversion_date.to_formatted_s(:govuk) }
           end
           summary_list.row do |row|
             row.key { t("project.summary.local_authority.title") }

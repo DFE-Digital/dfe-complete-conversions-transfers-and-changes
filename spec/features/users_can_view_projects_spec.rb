@@ -16,7 +16,7 @@ RSpec.feature "Users can view a list of projects" do
     create(
       :project,
       urn: 100001,
-      target_completion_date: Date.today.beginning_of_month + 3.years
+      provisional_conversion_date: Date.today.beginning_of_month + 3.years
     )
   }
   let!(:user_1_project) {
@@ -24,7 +24,7 @@ RSpec.feature "Users can view a list of projects" do
       :project,
       urn: 100002,
       caseworker: user_1,
-      target_completion_date: Date.today.beginning_of_month + 2.year
+      provisional_conversion_date: Date.today.beginning_of_month + 2.year
     )
   }
   let!(:user_2_completed_project) {
@@ -33,7 +33,7 @@ RSpec.feature "Users can view a list of projects" do
       urn: 100004,
       caseworker: user_2,
       regional_delivery_officer: regional_delivery_officer,
-      target_completion_date: Date.today.beginning_of_month + 6.months,
+      provisional_conversion_date: Date.today.beginning_of_month + 6.months,
       completed_at: Date.today.beginning_of_month + 7.months
     )
   }
@@ -43,7 +43,7 @@ RSpec.feature "Users can view a list of projects" do
       urn: 100003,
       caseworker: user_2,
       regional_delivery_officer: regional_delivery_officer,
-      target_completion_date: Date.today.beginning_of_month + 1.years
+      provisional_conversion_date: Date.today.beginning_of_month + 1.years
     )
   }
 
@@ -127,7 +127,7 @@ RSpec.feature "Users can view a list of projects" do
 
     within urn.ancestor("li") do
       expect(page).to have_content("School type: #{project.establishment.type}")
-      expect(page).to have_content("Target conversion date: #{project.target_completion_date.to_formatted_s(:govuk)}")
+      expect(page).to have_content("Target conversion date: #{project.provisional_conversion_date.to_formatted_s(:govuk)}")
       expect(page).to have_content("Incoming trust: #{project.incoming_trust.name}")
       expect(page).to have_content("Local authority: #{project.establishment.local_authority}")
     end
