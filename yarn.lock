@@ -13,10 +13,10 @@
     phin "^3.6.0"
     polka "^0.5.2"
 
-"@adobe/jsonschema2md@^7.1.2":
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/@adobe/jsonschema2md/-/jsonschema2md-7.1.2.tgz#f2c5e5fd1ff43f5c051d220bdf2797f13513679a"
-  integrity sha512-ir636sYruKS0Ba072hYlOJxp/V2/KKOi4lWALkkosekvSLE2yAWnBoSOnJWdVWz2qza6KPeEVgigzVGtUPWScA==
+"@adobe/jsonschema2md@^7.1.3":
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/@adobe/jsonschema2md/-/jsonschema2md-7.1.3.tgz#30798eb19c098238a2e9f20814ab614dc5078113"
+  integrity sha512-26efgkNwY9/vcRtRBwdmP2yGG2wdcNyop27goNRnJjTi8BmPzX/vCI2+de0/p9DpjY/eFONLZPGpfbCHZFu9ow==
   dependencies:
     "@adobe/helix-log" "6.0.0"
     "@types/json-schema" "^7.0.8"
@@ -24,7 +24,7 @@
     es2015-i18n-tag "1.6.1"
     ferrum "1.9.4"
     fs-extra "10.1.0"
-    github-slugger "1.4.0"
+    github-slugger "2.0.0"
     js-yaml "4.1.0"
     json-schema "^0.4.0"
     mdast-builder "1.1.1"
@@ -35,7 +35,7 @@
     remark-stringify "10.0.2"
     unified "10.1.2"
     unist-util-inspect "7.0.1"
-    yargs "17.6.0"
+    yargs "17.6.2"
 
 "@arr/every@^1.0.0":
   version "1.0.1"
@@ -583,10 +583,10 @@ get-caller-file@^2.0.5:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
-github-slugger@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.4.0.tgz#206eb96cdb22ee56fdc53a28d5a302338463444e"
-  integrity sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==
+github-slugger@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-2.0.0.tgz#52cf2f9279a21eb6c59dd385b410f0c0adda8f1a"
+  integrity sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==
 
 glob-parent@^6.0.2:
   version "6.0.2"
@@ -1609,15 +1609,15 @@ y18n@^5.0.5:
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.8.tgz#7f4934d0f7ca8c56f95314939ddcd2dd91ce1d55"
   integrity sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==
 
-yargs-parser@^21.0.0:
+yargs-parser@^21.1.1:
   version "21.1.1"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
   integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
 
-yargs@17.6.0:
-  version "17.6.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.6.0.tgz#e134900fc1f218bc230192bdec06a0a5f973e46c"
-  integrity sha512-8H/wTDqlSwoSnScvV2N/JHfLWOKuh5MVla9hqLjK3nsfyy6Y4kDSYSvkU5YCUEPOSnRXfIyx3Sq+B/IWudTo4g==
+yargs@17.6.2:
+  version "17.6.2"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.6.2.tgz#2e23f2944e976339a1ee00f18c77fedee8332541"
+  integrity sha512-1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==
   dependencies:
     cliui "^8.0.1"
     escalade "^3.1.1"
@@ -1625,7 +1625,7 @@ yargs@17.6.0:
     require-directory "^2.1.1"
     string-width "^4.2.3"
     y18n "^5.0.5"
-    yargs-parser "^21.0.0"
+    yargs-parser "^21.1.1"
 
 yocto-queue@^0.1.0:
   version "0.1.0"
