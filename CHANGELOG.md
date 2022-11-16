@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Added
 
+- Rename the "Target completion date" on a project to "Provisional conversion
+  date"
 - Set up accessibility tool
 - Split the Project index page into two tabs - "In Progress" and "Completed"
   projects
