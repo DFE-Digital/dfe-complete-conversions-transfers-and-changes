@@ -8,7 +8,7 @@ tasks:
       to open.
 
     actions:
-      - title: Confirm the school is on track to open on the target date
+      - title: Confirm the school is on track to open on the provisional date
         guidance_summary: How to check the Baseline
         guidance_text: |
           The Academies Operational Practice Unit will usually email the
@@ -24,7 +24,7 @@ tasks:
           * the information about the school is correct
 
           Enter yes if the project is on track to convert, or no if it will not
-          open on the target date.
+          open on the provisional date.
 
           **What to do if your school is not on the Baseline**
 
@@ -86,12 +86,12 @@ tasks:
           Save the responses to the checklist in the school's SharePoint folder
         guidance_summary: What to do if the school has not completed the tasks
         guidance_text: |
-          Depending on the scale of the outstanding tasks, you may need to move the target conversion date to the next month, or later.
+          Depending on the scale of the outstanding tasks, you may need to move the provisional conversion date to the next month, or later.
 
           If the conversion date needs to be moved, you must:
 
           1. inform the school of the outstanding tasks
-          2. agree a new target conversion date with all stakeholders
+          2. agree a new provisional conversion date with all stakeholders
           3. email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) with the new date
           4. change the date in KIM
           5. inform the regional delivery officer who started on this project
@@ -101,7 +101,7 @@ tasks:
     hint: |
       The deadline to confirm all conditions have been met will be in the
       Baseline email you received. The school will not be able to open on the
-      target conversion date unless all conditions have been met.
+      provisional conversion date unless all conditions have been met.
     guidance_summary: What to do if conditions are not met
     guidance_text: |
       All conditions must be met before a school can open as an academy.
@@ -109,7 +109,7 @@ tasks:
       If there are outstanding conditions, you must:
 
       1. inform the school of the outstanding tasks
-      2. agree a new target conversion date with all stakeholders
+      2. agree a new provisional conversion date with all stakeholders
       3. email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) with the new date
       4. change the date in KIM
       5. inform the regional delivery officer who started on this project
@@ -120,7 +120,7 @@ tasks:
           have been met
         guidance_summary: How to confirm if conditions have been met
         guidance_text: |
-          You must email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to confirm if all conditions are met for this school and it will open as an academy on the target conversion date.
+          You must email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to confirm if all conditions are met for this school and it will open as an academy on the provisional conversion date.
 
           The email only needs to confirm if all conditions have been met, or
           not. You do not need to go into detail.
@@ -137,7 +137,7 @@ tasks:
     title: Confirm opening date with the school
     hint: |
       Once you've confirmed that all conditions have been met, contact the
-      school and trust to tell them they can convert on the target conversion
+      school and trust to tell them they can convert on the provisional conversion
       date.
 
     actions:
@@ -148,7 +148,7 @@ tasks:
 
           Your email should include:
 
-          * confirmation the school will convert on the target date
+          * confirmation the school will convert on the provisional date
           * the school's new URN (unique reference number)
           * all signed and sealed legal documents
           * the [Grant expenditure certificate (opens in a new tab)](https://www.gov.uk/government/publications/academy-support-grant) that they need to complete and return
