@@ -5,7 +5,7 @@
           locals: {label: t("project_information.show.school_details.rows.school_type"), content: project.establishment.type} %>
 
     <%= render partial: "projects/index/project_summary_item",
-          locals: {label: t("project.summary.target_completion_date.title"), content: project.target_completion_date.to_formatted_s(:govuk)} %>
+          locals: {label: t("project.summary.target_completion_date.title"), content: project.provisional_completion_date.to_formatted_s(:govuk)} %>
   </div>
 
   <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_14_145029) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_16_111339) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_145029) do
     t.datetime "updated_at", null: false
     t.uuid "team_leader_id"
     t.integer "incoming_trust_ukprn", null: false
-    t.date "target_completion_date", null: false
+    t.date "provisional_completion_date", null: false
     t.uuid "regional_delivery_officer_id"
     t.uuid "caseworker_id"
     t.datetime "caseworker_assigned_at"
