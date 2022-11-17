@@ -88,10 +88,10 @@ jobs:
         name: Load cached Docker image
         run: docker load -i /tmp/docker-save/snapshot.tar || true
 
-      - name: Build
+      - name: Build image
         run: script/ci/cibuild
 
-      - name: Test
+      - name: Run specs
         run: script/ci/test
 
       - name: SonarCloud Scan
