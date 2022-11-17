@@ -73,8 +73,9 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+
+      - name: Create coverage directory
+        run: mkdir coverage
 
       - id: cache-docker
         uses: actions/cache@v3
@@ -93,6 +94,9 @@ jobs:
 
       - name: Run specs
         run: script/ci/test
+
+      - name: Debug
+        run: ls ./coverage
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
