@@ -21,6 +21,11 @@ SimpleCov.start "rails"
 require "simplecov_json_formatter"
 SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
 
+SimpleCov.configure do
+  root "./"
+  coverage_path "./coverage"
+end
+
 # Add Capybara
 require "capybara/rspec"
 
