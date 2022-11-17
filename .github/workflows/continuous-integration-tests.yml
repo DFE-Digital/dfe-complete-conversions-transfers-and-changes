@@ -98,6 +98,12 @@ jobs:
       - name: Debug
         run: ls ./coverage
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage.json
+          path: coverage/coverage.json
+
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
