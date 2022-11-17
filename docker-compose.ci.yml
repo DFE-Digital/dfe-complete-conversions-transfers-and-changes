@@ -26,6 +26,8 @@ services:
       CI: "true"
       SENTRY_ENV: test
       REDIS_URL: redis://test-redis:6379
+    volumes:
+      - coverage-data:/srv/app/coverage
     networks:
       - test-ci
 
@@ -55,6 +57,9 @@ services:
       - 6379:6379
     networks:
       - test-ci
+
+volumes:
+  coverage-data:
 
 networks:
   test-ci:
