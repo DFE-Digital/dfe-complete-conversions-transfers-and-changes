@@ -73,3 +73,8 @@ en:
     in_progress_projects: In progress
     notes: Notes
     contacts: Contacts
+  pages:
+    api_client_timeout:
+      title: Sorry, there was a problem
+      body_text: There was an error getting the details for the school or trust. Refresh the page to try again.
+      email_help: Email the %{team_name} team at %{email} if this error continues.

@@ -23,4 +23,23 @@ module AcademiesApiHelpers
     allow(test_client).to receive(:get_trust).with(ukprn).and_return(fake_result)
     allow(AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
+
+  def mock_timeout_api_responses(urn:, ukprn:)
+    mock_timeout_api_establishment_response(urn:)
+    mock_timeout_api_trust_response(ukprn:)
+  end
+
+  def mock_timeout_api_establishment_response(urn:)
+    test_client = AcademiesApi::Client.new
+
+    allow(test_client).to receive(:get_establishment).with(urn).and_raise(AcademiesApi::Client::Error)
+    allow(AcademiesApi::Client).to receive(:new).and_return(test_client)
+  end
+
+  def mock_timeout_api_trust_response(ukprn:)
+    test_client = AcademiesApi::Client.new
+
+    allow(test_client).to receive(:get_trust).with(ukprn).and_raise(AcademiesApi::Client::Error)
+    allow(AcademiesApi::Client).to receive(:new).and_return(test_client)
+  end
 end
