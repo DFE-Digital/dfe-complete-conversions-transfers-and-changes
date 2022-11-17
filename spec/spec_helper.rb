@@ -18,6 +18,9 @@ require "simplecov"
 SimpleCov.minimum_coverage 100
 SimpleCov.start "rails"
 
+require "simplecov_json_formatter"
+SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+
 # Add Capybara
 require "capybara/rspec"
 
