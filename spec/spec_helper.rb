@@ -18,6 +18,9 @@ require "simplecov"
 SimpleCov.minimum_coverage 100
 SimpleCov.start "rails" unless ENV.fetch("NO_COVERAGE", false) == "true"
 
+require "simplecov_json_formatter"
+SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+
 # Add Capybara
 require "capybara/rspec"
 
