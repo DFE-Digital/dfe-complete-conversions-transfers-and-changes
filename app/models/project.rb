@@ -11,9 +11,9 @@ class Project < ApplicationRecord
   validates :urn, urn: true
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
-  validates :target_completion_date, presence: true
-  validates :target_completion_date, date_in_the_future: true
-  validates :target_completion_date, first_day_of_month: true
+  validates :provisional_conversion_date, presence: true
+  validates :provisional_conversion_date, date_in_the_future: true
+  validates :provisional_conversion_date, first_day_of_month: true
   validates :advisory_board_date, presence: true, on: :create
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
@@ -25,7 +25,7 @@ class Project < ApplicationRecord
   belongs_to :team_leader, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
-  scope :by_target_completion_date, -> { order(target_completion_date: :asc) }
+  scope :by_provisional_conversion_date, -> { order(provisional_conversion_date: :asc) }
 
   scope :completed, -> { where.not(completed_at: nil) }
   scope :open, -> { where(completed_at: nil) }

@@ -70,18 +70,18 @@ tasks:
 
           If you haven't received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.
 
-      - title: Confirm the target conversion date with the local authority
+      - title: Confirm the provisional conversion date with the local authority
         hint:
           Check that the local authority has capacity to convert the school by
-          the target date.
+          the provisional date.
         guidance_summary:
           What to do if the local authority does not have capacity
         guidance_text: |
-          The school and trust will have given a target date they want to convert on.
+          The school and trust will have given a provisional date they want to convert on.
 
-          Tell them if the local authority cannot complete the conversion by the target date.
+          Tell them if the local authority cannot complete the conversion by the provisional date.
 
-          If the local authority cannot complete the conversion by the target date, you'll need to work with the school, trust and local authority to agree a new date.
+          If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.
 
       - title: Send invites to the kick-off meeting or call
         hint:
@@ -180,7 +180,7 @@ tasks:
           * amount of money the school is eligible for
           * school's name
           * trust it's joining
-          * target conversion date
+          * provisional conversion date
 
           It's helpful to include the school or trust's vendor account number too. The Grant payments team will need this to be able to send the money to whoever will receive it.
 
