@@ -94,6 +94,12 @@ jobs:
       - name: Test
         run: script/ci/test
 
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - if: always() && steps.cache-docker.outputs.cache-hit != 'true'
         name: Prepare Docker cache
         run:
