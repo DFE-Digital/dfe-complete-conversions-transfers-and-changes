@@ -51,12 +51,22 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#support_email" do
-    let(:name) { "contact the complete conversions, transfers and changes team" }
+    context "when the display name is nil" do
+      subject { helper.support_email }
 
-    subject { helper.support_email(name) }
+      it "returns a mailto link to the support email with the email as the display name" do
+        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:complete.rsd@education.gov.uk\">complete.rsd@education.gov.uk</a>"
+      end
+    end
 
-    it "returns a mailto link to the support email" do
-      expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:complete.rsd@education.gov.uk\">#{name}</a>"
+    context "when the display name is not nil" do
+      let(:name) { "contact the complete conversions, transfers and changes team" }
+
+      subject { helper.support_email(name) }
+
+      it "returns a mailto link to the support email with the supplied name" do
+        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:complete.rsd@education.gov.uk\">#{name}</a>"
+      end
     end
   end
 end
