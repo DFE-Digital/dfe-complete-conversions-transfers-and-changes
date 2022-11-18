@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Added
 
+- If the Academies API times out, show a custom error page to the user
 - Rename the "Target completion date" on a project to "Provisional conversion
   date"
 - Set up accessibility tool

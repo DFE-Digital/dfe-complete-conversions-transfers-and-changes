@@ -85,5 +85,15 @@ RSpec.describe ProjectsController, type: :request do
         expect(Project.count).to be 0
       end
     end
+
+    context "when the Academies API times out" do
+      before do
+        mock_timeout_api_responses(urn: 123456, ukprn: 10061021)
+      end
+
+      it "redirects to an informational client timeout page" do
+        expect(perform_request).to render_template("pages/api_client_timeout")
+      end
+    end
   end
 end

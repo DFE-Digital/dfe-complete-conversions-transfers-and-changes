@@ -30,4 +30,11 @@ RSpec.feature "Users can view static pages" do
     expect(page).to have_current_path("/internal_server_error")
     expect(page).to have_content("Sorry, there is a problem with the service")
   end
+
+  scenario "can see the `API timeout` error page" do
+    visit page_path(id: "api_client_timeout")
+
+    expect(page).to have_current_path("/api_client_timeout")
+    expect(page).to have_content("Sorry, there was a problem")
+  end
 end
