@@ -16,7 +16,8 @@ module ApplicationHelper
     sanitize(link, attributes: allowed_attributes)
   end
 
-  def support_email(name)
+  def support_email(name = nil)
+    name = Rails.application.config.support_email if name.nil?
     govuk_mail_to(Rails.application.config.support_email, name)
   end
 end
