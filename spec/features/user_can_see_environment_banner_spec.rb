@@ -11,7 +11,7 @@ RSpec.feature "Environment banner" do
 
   describe "environment banner" do
     context "when SENTRY_ENV is production" do
-      before { allow(ENV).to receive(:fetch).with("SENTRY_ENV").and_return("production") }
+      before { allow(ENV).to receive(:fetch).with("SENTRY_ENV", "local_development").and_return("production") }
 
       scenario "cannot see the environment banner" do
         visit root_path
@@ -20,7 +20,7 @@ RSpec.feature "Environment banner" do
     end
 
     context "when SENTRY_ENV is non-production" do
-      before { allow(ENV).to receive(:fetch).with("SENTRY_ENV").and_return("development") }
+      before { allow(ENV).to receive(:fetch).with("SENTRY_ENV", "local_development").and_return("development") }
 
       scenario "can see the environment banner" do
         visit root_path
