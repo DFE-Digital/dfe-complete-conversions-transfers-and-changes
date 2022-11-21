@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "projects#index"
+  root "conversion_projects#index"
 
   # Errors
   match "/404" => "pages#page_not_found", :via => :all
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
-  resources :projects, only: %i[index show new create] do
+  resources :conversion_projects, only: %i[index show new create] do
     collection do
       get "completed"
     end

@@ -4,13 +4,13 @@ RSpec.feature "Users can view project information" do
   include ActionView::Helpers::TextHelper
 
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:project, :with_conditions, caseworker: user) }
+  let(:project) { create(:conversion_project, :with_conditions, caseworker: user) }
   let(:project_id) { project.id }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
-    visit project_information_path(project_id)
+    visit conversion_project_information_path(project_id)
   end
 
   scenario "they can view the users names and email addresses assigned to the project" do

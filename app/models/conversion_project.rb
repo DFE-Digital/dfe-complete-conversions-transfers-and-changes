@@ -1,4 +1,4 @@
-class Project < ApplicationRecord
+class ConversionProject < ApplicationRecord
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
   has_many :sections, dependent: :destroy

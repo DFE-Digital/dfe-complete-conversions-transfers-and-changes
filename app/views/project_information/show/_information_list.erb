@@ -8,7 +8,7 @@
         row.action(text: "Email", href: mail_to_path(@project.caseworker.email), visually_hidden_text: "caseworker")
       end
       if policy(:assignment).assign_caseworker?
-        row.action(href: project_assign_caseworker_path(@project), visually_hidden_text: "caseworker")
+        row.action(href: conversion_project_assign_caseworker_path(@project), visually_hidden_text: "caseworker")
       end
     end
     summary_list.row do |row|
@@ -18,7 +18,7 @@
         row.action(text: "Email", href: mail_to_path(@project.team_leader.email), visually_hidden_text: "team leader")
       end
       if policy(:assignment).assign_team_leader?
-        row.action(href: project_assign_team_lead_path(@project), visually_hidden_text: "team leader")
+        row.action(href: conversion_project_assign_team_lead_path(@project), visually_hidden_text: "team leader")
       end
     end
     summary_list.row do |row|
@@ -28,7 +28,7 @@
         row.action(text: "Email", href: mail_to_path(@project.regional_delivery_officer.email), visually_hidden_text: "regional delivery officer")
       end
       if policy(:assignment).assign_regional_delivery_officer?
-        row.action(href: project_assign_regional_delivery_officer_path(@project), visually_hidden_text: "regional delivery officer")
+        row.action(href: conversion_project_assign_regional_delivery_officer_path(@project), visually_hidden_text: "regional delivery officer")
       end
     end
     summary_list.row do |row|

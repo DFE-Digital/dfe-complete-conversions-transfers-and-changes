@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
-  belongs_to :project
+  belongs_to :conversion_project
+  alias_attribute :project, :conversion_project
 
   validates :name, presence: true, allow_blank: false
   validates :title, presence: true, allow_blank: false

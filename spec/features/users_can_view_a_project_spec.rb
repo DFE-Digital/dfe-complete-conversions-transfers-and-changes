@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can view a project" do
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:project, caseworker: user) }
+  let(:project) { create(:conversion_project, caseworker: user) }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
@@ -10,7 +10,7 @@ RSpec.feature "Users can view a project" do
   end
 
   scenario "they can view a summary of the project details" do
-    visit project_path(project)
+    visit conversion_project_path(project)
 
     within("#project-summary") do
       expect(page).to have_content(project.incoming_trust.name)

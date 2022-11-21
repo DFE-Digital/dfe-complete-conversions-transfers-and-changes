@@ -10,7 +10,7 @@
               <span class="app-task-list__task-name">
                   <%= govuk_link_to(
                         task.title,
-                        project_task_path(@project.id, task.id),
+                        conversion_project_task_path(@project.id, task.id),
                         aria: {describedby: task_status_id(task)}
                       ) %>
               </span>

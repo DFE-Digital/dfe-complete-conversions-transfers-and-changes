@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
   def update_team_leader
     @project.update(team_leader_params)
 
-    redirect_to project_information_path(@project), notice: t("project.assign.team_leader.success")
+    redirect_to conversion_project_information_path(@project), notice: t("project.assign.team_leader.success")
   end
 
   def assign_regional_delivery_officer
@@ -20,7 +20,7 @@ class AssignmentsController < ApplicationController
   def update_regional_delivery_officer
     @project.update(regional_delivery_officer_params)
 
-    redirect_to project_information_path(@project), notice: t("project.assign.regional_delivery_officer.success")
+    redirect_to conversion_project_information_path(@project), notice: t("project.assign.regional_delivery_officer.success")
   end
 
   def assign_caseworker
@@ -31,7 +31,7 @@ class AssignmentsController < ApplicationController
     @project.update(caseworker_assigned_at: DateTime.now) if @project.caseworker_assigned_at.nil?
     @project.update(caseworker_params)
 
-    redirect_to project_information_path(@project), notice: t("project.assign.caseworker.success")
+    redirect_to conversion_project_information_path(@project), notice: t("project.assign.caseworker.success")
   end
 
   private def authorize_user
@@ -39,18 +39,18 @@ class AssignmentsController < ApplicationController
   end
 
   private def team_leader_params
-    params.require(:project).permit(:team_leader_id)
+    params.require(:conversion_project).permit(:team_leader_id)
   end
 
   private def regional_delivery_officer_params
-    params.require(:project).permit(:regional_delivery_officer_id)
+    params.require(:conversion_project).permit(:regional_delivery_officer_id)
   end
 
   private def caseworker_params
-    params.require(:project).permit(:caseworker_id)
+    params.require(:conversion_project).permit(:caseworker_id)
   end
 
   private def find_project
-    @project = Project.find(params[:project_id])
+    @project = ConversionProject.find(params[:conversion_project_id])
   end
 end

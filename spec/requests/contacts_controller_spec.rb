@@ -10,11 +10,11 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#index" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
-      get project_contacts_path(project_id)
+      get conversion_project_contacts_path(project_id)
       response
     end
 
@@ -30,11 +30,11 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#new" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
-      get new_project_contact_path(project_id)
+      get new_conversion_project_contact_path(project_id)
       response
     end
 
@@ -50,14 +50,14 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#create" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:mock_contact) { build(:contact) }
     let(:new_contact_name) { "Josephine Bloggs" }
     let(:new_contact_title) { "Headteacher" }
 
     subject(:perform_request) do
-      post project_contacts_path(project_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
+      post conversion_project_contacts_path(project_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
       response
     end
 
@@ -80,7 +80,7 @@ RSpec.describe ContactsController, type: :request do
 
     context "when the contact is valid" do
       it "saves the contact and redirects to the index view with a success message" do
-        expect(subject).to redirect_to(project_contacts_path(project.id))
+        expect(subject).to redirect_to(conversion_project_contacts_path(project.id))
         expect(request.flash[:notice]).to eq(I18n.t("contact.create.success"))
 
         expect(Contact.count).to be 1
@@ -90,13 +90,13 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#edit" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }
 
     subject(:perform_request) do
-      get edit_project_contact_path(project_id, contact_id)
+      get edit_conversion_project_contact_path(project_id, contact_id)
       response
     end
 
@@ -118,7 +118,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#update" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }
@@ -126,7 +126,7 @@ RSpec.describe ContactsController, type: :request do
     let(:new_contact_title) { "Headteacher" }
 
     subject(:perform_request) do
-      put project_contact_path(project_id, contact_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
+      put conversion_project_contact_path(project_id, contact_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
       response
     end
 
@@ -155,7 +155,7 @@ RSpec.describe ContactsController, type: :request do
 
     context "when the contact is valid" do
       it "saves the contact and redirects to the index view with a success message" do
-        expect(subject).to redirect_to(project_contacts_path(project.id))
+        expect(subject).to redirect_to(conversion_project_contacts_path(project.id))
         expect(request.flash[:notice]).to eq(I18n.t("contact.update.success"))
 
         expect(Contact.count).to be 1
@@ -166,18 +166,18 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#destroy" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }
 
     subject(:perform_request) do
-      delete project_contact_path(project_id, contact_id)
+      delete conversion_project_contact_path(project_id, contact_id)
       response
     end
 
     it "deletes the contact and redirects to the index view with a success message" do
-      expect(perform_request).to redirect_to(project_contacts_path(project.id))
+      expect(perform_request).to redirect_to(conversion_project_contacts_path(project.id))
       expect(request.flash[:notice]).to eq(I18n.t("contact.destroy.success"))
 
       expect(Contact.where(id: contact_id)).to_not exist
@@ -185,13 +185,13 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#confirm_destroy" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }
 
     subject(:perform_request) do
-      get project_contact_delete_path(project_id, contact_id)
+      get conversion_project_contact_delete_path(project_id, contact_id)
       response
     end
 

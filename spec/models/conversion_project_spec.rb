@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Project, type: :model do
+RSpec.describe ConversionProject, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:urn).of_type :integer }
     it { is_expected.to have_db_column(:incoming_trust_ukprn).of_type :integer }
@@ -25,10 +25,10 @@ RSpec.describe Project, type: :model do
 
     describe "accept nested attributes for note" do
       let(:user) { create(:user) }
-      let(:note_attributes) { attributes_for(:note, body: note_body, project: nil, user: user) }
-      let(:project_attributes) { attributes_for(:project) }
+      let(:note_attributes) { attributes_for(:note, body: note_body, conversion_project: nil, user: user) }
+      let(:project_attributes) { attributes_for(:conversion_project) }
 
-      before { Project.create!(**project_attributes, notes_attributes: [note_attributes]) }
+      before { ConversionProject.create!(**project_attributes, notes_attributes: [note_attributes]) }
 
       context "when the note body is blank" do
         let(:note_body) { nil }
@@ -51,11 +51,11 @@ RSpec.describe Project, type: :model do
     describe "delete related entities" do
       context "when the project is deleted" do
         it "destroys all the related notes, contacts, sections leaving nothing orphaned" do
-          project = create(:project)
+          project = create(:conversion_project)
 
-          create_list(:note, 3, project: project)
-          create_list(:contact, 3, project: project)
-          create_list(:section, 3, project: project)
+          create_list(:note, 3, conversion_project: project)
+          create_list(:contact, 3, conversion_project: project)
+          create_list(:section, 3, conversion_project: project)
 
           populated_section = project.sections.first
           task = create(:task, section: populated_section)
@@ -95,7 +95,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.attributes.urn.no_establishment_found"))
+          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.conversion_project.attributes.urn.no_establishment_found"))
         end
       end
     end
@@ -113,7 +113,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:incoming_trust_ukprn]).to include(I18n.t("activerecord.errors.models.project.attributes.incoming_trust_ukprn.no_trust_found"))
+          expect(subject.errors[:incoming_trust_ukprn]).to include(I18n.t("activerecord.errors.models.conversion_project.attributes.incoming_trust_ukprn.no_trust_found"))
         end
       end
     end
@@ -122,29 +122,29 @@ RSpec.describe Project, type: :model do
       it { is_expected.to validate_presence_of(:provisional_conversion_date) }
 
       context "when the date is not on the first of the month" do
-        subject { build(:project, provisional_conversion_date: Date.today.months_since(6).at_end_of_month) }
+        subject { build(:conversion_project, provisional_conversion_date: Date.today.months_since(6).at_end_of_month) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_first_of_the_month"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.conversion_project.attributes.provisional_conversion_date.must_be_first_of_the_month"))
         end
       end
 
       context "when date is today" do
-        subject { build(:project, provisional_conversion_date: Date.today) }
+        subject { build(:conversion_project, provisional_conversion_date: Date.today) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_in_the_future"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.conversion_project.attributes.provisional_conversion_date.must_be_in_the_future"))
         end
       end
 
       context "when date is in the past" do
-        subject { build(:project, provisional_conversion_date: Date.yesterday) }
+        subject { build(:conversion_project, provisional_conversion_date: Date.yesterday) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_in_the_future"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.conversion_project.attributes.provisional_conversion_date.must_be_in_the_future"))
         end
       end
     end
@@ -274,11 +274,11 @@ RSpec.describe Project, type: :model do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     it "shows the project that will convert earliest first" do
-      last_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 3.years)
-      middle_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 2.years)
-      first_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 1.year)
+      last_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 3.years)
+      middle_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 2.years)
+      first_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 1.year)
 
-      ordered_projects = Project.by_provisional_conversion_date
+      ordered_projects = ConversionProject.by_provisional_conversion_date
 
       expect(ordered_projects[0]).to eq first_project
       expect(ordered_projects[1]).to eq middle_project
@@ -289,14 +289,14 @@ RSpec.describe Project, type: :model do
   describe "#completed?" do
     context "when the completed_at is nil, i.e. the project is active" do
       it "returns false" do
-        project = build(:project, completed_at: nil)
+        project = build(:conversion_project, completed_at: nil)
         expect(project.completed?).to eq false
       end
     end
 
     context "when the completed_at is set, i.e. the project is completed" do
       it "returns true" do
-        project = build(:project, completed_at: DateTime.now)
+        project = build(:conversion_project, completed_at: DateTime.now)
         expect(project.completed?).to eq true
       end
     end
@@ -306,12 +306,12 @@ RSpec.describe Project, type: :model do
     describe "completed scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "only returns completed projects" do
-        completed_project_1 = create(:project, completed_at: Date.today - 1.year)
-        completed_project_2 = create(:project, completed_at: Date.today - 1.year)
-        open_project = create(:project, completed_at: nil)
+      it "only returns completed conversion_projects" do
+        completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year)
+        completed_project_2 = create(:conversion_project, completed_at: Date.today - 1.year)
+        open_project = create(:conversion_project, completed_at: nil)
 
-        projects = Project.completed
+        projects = ConversionProject.completed
 
         expect(projects).to include(completed_project_1, completed_project_2)
         expect(projects).to_not include(open_project)
@@ -321,12 +321,12 @@ RSpec.describe Project, type: :model do
     describe "open scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "only returns open projects" do
-        completed_project = create(:project, completed_at: Date.today - 1.year)
-        open_project_1 = create(:project, completed_at: nil)
-        open_project_2 = create(:project, completed_at: nil)
+      it "only returns open conversion_projects" do
+        completed_project = create(:conversion_project, completed_at: Date.today - 1.year)
+        open_project_1 = create(:conversion_project, completed_at: nil)
+        open_project_2 = create(:conversion_project, completed_at: nil)
 
-        projects = Project.open
+        projects = ConversionProject.open
 
         expect(projects).to include(open_project_1, open_project_2)
         expect(projects).to_not include(completed_project)

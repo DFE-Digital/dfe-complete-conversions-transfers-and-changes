@@ -8,11 +8,11 @@ RSpec.feature "Users can create and view and delete contacts" do
 
   let!(:contact) { create(:contact, project: project) }
   let(:user) { create(:user) }
-  let(:project) { create(:project) }
+  let(:project) { create(:conversion_project) }
   let(:project_id) { project.id }
 
   scenario "User views contacts" do
-    visit project_contacts_path(project_id)
+    visit conversion_project_contacts_path(project_id)
 
     expect(page).to have_content("Other contacts")
 
@@ -25,7 +25,7 @@ RSpec.feature "Users can create and view and delete contacts" do
 
     click_link "Add contact"
 
-    expect(page).to have_current_path(new_project_contact_path(project))
+    expect(page).to have_current_path(new_conversion_project_contact_path(project))
 
     select "Trust", from: "Contact for"
     fill_in "Name", with: "Some One"
@@ -35,7 +35,7 @@ RSpec.feature "Users can create and view and delete contacts" do
 
     click_button("Add contact")
 
-    expect(page).to have_current_path(project_contacts_path(project_id))
+    expect(page).to have_current_path(conversion_project_contacts_path(project_id))
 
     expect(page).to have_content("Trust contacts")
 
@@ -48,7 +48,7 @@ RSpec.feature "Users can create and view and delete contacts" do
   end
 
   scenario "User deletes a contact" do
-    visit project_contacts_path(project_id)
+    visit conversion_project_contacts_path(project_id)
     expect(page).to have_content("Other contacts")
 
     expect_page_to_have_contact(
@@ -60,17 +60,17 @@ RSpec.feature "Users can create and view and delete contacts" do
 
     click_link "Change"
 
-    expect(page).to have_current_path(edit_project_contact_path(project, contact))
+    expect(page).to have_current_path(edit_conversion_project_contact_path(project, contact))
 
     click_link("Delete") # Link styled as button
 
-    expect(page).to have_current_path(project_contact_delete_path(project, contact))
+    expect(page).to have_current_path(conversion_project_contact_delete_path(project, contact))
     expect(page).to have_content("Are you sure you want to delete Jo Example?")
     expect(page).to have_content("This will remove the contact for CEO of Learning called Jo Example from the contacts list.")
 
     click_button("Delete")
 
-    expect(page).to have_current_path(project_contacts_path(project_id))
+    expect(page).to have_current_path(conversion_project_contacts_path(project_id))
     expect(page).to have_content("There aren't any contacts for this project yet.")
   end
 

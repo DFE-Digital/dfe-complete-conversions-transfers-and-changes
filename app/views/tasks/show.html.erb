@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <%= govuk_back_link(href: project_path(@task.project)) %>
+  <%= govuk_back_link(href: conversion_project_path(@task.project)) %>
 <% end %>
 
 <div class="govuk-grid-row">
@@ -16,7 +16,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for :task, url: project_task_path, method: :put do |form| %>
+    <%= form_for :task, url: conversion_project_task_path, method: :put do |form| %>
 
     <div class="task-actions__wrapper">
 

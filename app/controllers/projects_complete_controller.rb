@@ -1,6 +1,6 @@
 class ProjectsCompleteController < ApplicationController
   def complete
-    @project = Project.find(project_id)
+    @project = ConversionProject.find(project_id)
     set_project_completed_at
 
     render :completed
@@ -13,6 +13,6 @@ class ProjectsCompleteController < ApplicationController
   end
 
   private def project_id
-    params[:project_id]
+    params[:conversion_project_id]
   end
 end

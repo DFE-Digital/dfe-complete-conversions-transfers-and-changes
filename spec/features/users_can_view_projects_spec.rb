@@ -14,14 +14,14 @@ RSpec.feature "Users can view a list of projects" do
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
   let!(:unassigned_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100001,
       provisional_conversion_date: Date.today.beginning_of_month + 3.years
     )
   }
   let!(:user_1_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100002,
       caseworker: user_1,
       provisional_conversion_date: Date.today.beginning_of_month + 2.year
@@ -29,7 +29,7 @@ RSpec.feature "Users can view a list of projects" do
   }
   let!(:user_2_completed_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100004,
       caseworker: user_2,
       regional_delivery_officer: regional_delivery_officer,
@@ -39,7 +39,7 @@ RSpec.feature "Users can view a list of projects" do
   }
   let!(:user_2_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100003,
       caseworker: user_2,
       regional_delivery_officer: regional_delivery_officer,
@@ -53,7 +53,7 @@ RSpec.feature "Users can view a list of projects" do
     end
 
     scenario "can see all open projects on the project list regardless of assignment" do
-      visit projects_path
+      visit conversion_projects_path
 
       page_has_project(unassigned_project)
       page_has_project(user_1_project)
@@ -61,13 +61,13 @@ RSpec.feature "Users can view a list of projects" do
     end
 
     scenario "can see the completed project on a separate tab" do
-      visit completed_projects_path
+      visit completed_conversion_projects_path
 
       page_has_project(user_2_completed_project)
     end
 
     scenario "the open projects are sorted by target completion date" do
-      visit projects_path
+      visit conversion_projects_path
 
       expect(page.find("ul.projects-list > li:nth-of-type(1)")).to have_content("100003")
       expect(page.find("ul.projects-list > li:nth-of-type(2)")).to have_content("100002")
@@ -81,7 +81,7 @@ RSpec.feature "Users can view a list of projects" do
     end
 
     scenario "can only see assigned projects on the projects list" do
-      visit projects_path
+      visit conversion_projects_path
 
       expect(page).to_not have_content(unassigned_project.urn.to_s)
       expect(page).not_to have_content(user_1_project.urn.to_s)
@@ -95,7 +95,7 @@ RSpec.feature "Users can view a list of projects" do
     end
 
     scenario "can only see assigned projects on the projects list" do
-      visit projects_path
+      visit conversion_projects_path
 
       expect(page).to_not have_content(unassigned_project.urn.to_s)
       expect(page).to have_content(user_1_project.urn.to_s)
@@ -106,17 +106,17 @@ RSpec.feature "Users can view a list of projects" do
   context "when there are no projects in a project list" do
     before do
       sign_in_with_user(user_1)
-      Project.destroy_all
+      ConversionProject.destroy_all
     end
 
     scenario "there is a message indicating there are no open projects" do
-      visit projects_path
+      visit conversion_projects_path
 
       expect(page).to have_content(I18n.t("project_list.open_list_empty"))
     end
 
     scenario "there is a message indicating there are no completed projects" do
-      visit completed_projects_path
+      visit completed_conversion_projects_path
 
       expect(page).to have_content(I18n.t("project_list.completed_list_empty"))
     end
@@ -146,7 +146,7 @@ RSpec.feature "Users can view a single project" do
   scenario "by following a link from the home page" do
     sign_in_with_user(create(:user, :team_leader))
 
-    single_project = create(:project, urn: urn)
+    single_project = create(:conversion_project, urn: urn)
 
     visit root_path
     click_on establishment.name
@@ -156,9 +156,9 @@ RSpec.feature "Users can view a single project" do
   context "when a project does not have an assigned caseworker" do
     scenario "the project page shows an unassigned caseworker" do
       sign_in_with_user(create(:user, :team_leader))
-      single_project = create(:project, urn: urn)
+      single_project = create(:conversion_project, urn: urn)
 
-      visit project_information_path(single_project)
+      visit conversion_project_information_path(single_project)
       expect(page).to have_content(I18n.t("project.summary.caseworker.unassigned"))
     end
   end

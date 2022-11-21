@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can complete a project" do
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:project, caseworker: user) }
+  let(:project) { create(:conversion_project, caseworker: user) }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
@@ -10,7 +10,7 @@ RSpec.feature "Users can complete a project" do
   end
 
   scenario "successfully" do
-    visit project_path(project)
+    visit conversion_project_path(project)
 
     click_on I18n.t("project.complete.submit_button")
 

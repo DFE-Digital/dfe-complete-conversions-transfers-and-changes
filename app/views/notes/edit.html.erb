@@ -11,7 +11,7 @@
 
       <%= form.govuk_submit t("note.edit.save_note_button") do %>
         <% if policy(@note).destroy? %>
-          <%= govuk_button_link_to "Delete", project_note_delete_path(@project, @note), warning: true %>
+          <%= govuk_button_link_to "Delete", conversion_project_note_delete_path(@project, @note), warning: true %>
         <% end %>
         <%= govuk_link_to "Cancel", back_link_destination(@note) %>
       <% end %>

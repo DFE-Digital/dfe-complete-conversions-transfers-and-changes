@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :section, class: "Section" do
-    title { "Project kick-off" }
+    title { "Conversion Project kick-off" }
     order { 0 }
-    project
+    conversion_project
   end
 end

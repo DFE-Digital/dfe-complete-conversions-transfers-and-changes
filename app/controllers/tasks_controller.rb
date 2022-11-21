@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     # The task's not applicable state should be updated regardless of the above logic
     @task.update(not_applicable: not_applicable)
 
-    redirect_to(project_path(@task.project))
+    redirect_to(conversion_project_path(@task.conversion_project))
   end
 
   private def find_task

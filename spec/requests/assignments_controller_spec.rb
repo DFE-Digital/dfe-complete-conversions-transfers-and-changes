@@ -23,11 +23,11 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_team_leader" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
-      get project_assign_team_lead_path(project_id)
+      get conversion_project_assign_team_lead_path(project_id)
       response
     end
 
@@ -39,17 +39,17 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#update_team_leader" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project, team_leader: nil) }
+    let(:project) { create(:conversion_project, team_leader: nil) }
     let(:project_id) { project.id }
     let(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
-      post project_assign_team_lead_path(project_id), params: {project: {team_leader_id: team_leader.id}}
+      post conversion_project_assign_team_lead_path(project_id), params: {conversion_project: {team_leader_id: team_leader.id}}
       response
     end
 
     it "assigns the project team lead and redirefcts with a message" do
-      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(perform_request).to redirect_to(conversion_project_information_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.team_leader.success"))
 
       expect(project.reload.team_leader).to eq team_leader
@@ -59,11 +59,11 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_regional_delivery_officer" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
-      get project_assign_regional_delivery_officer_path(project_id)
+      get conversion_project_assign_regional_delivery_officer_path(project_id)
       response
     end
 
@@ -75,17 +75,17 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#update_regional_delivery_officer" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project, regional_delivery_officer: nil) }
+    let(:project) { create(:conversion_project, regional_delivery_officer: nil) }
     let(:project_id) { project.id }
     let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
     subject(:perform_request) do
-      post project_assign_regional_delivery_officer_path(project_id), params: {project: {regional_delivery_officer_id: regional_delivery_officer.id}}
+      post conversion_project_assign_regional_delivery_officer_path(project_id), params: {conversion_project: {regional_delivery_officer_id: regional_delivery_officer.id}}
       response
     end
 
     it "assigns the project regional delivery officer and redirefcts with a message" do
-      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(perform_request).to redirect_to(conversion_project_information_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.regional_delivery_officer.success"))
 
       expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
@@ -95,11 +95,11 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_caseworker" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
-      get project_assign_caseworker_path(project_id)
+      get conversion_project_assign_caseworker_path(project_id)
       response
     end
 
@@ -111,7 +111,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#update_caseworker" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project, caseworker: nil) }
+    let(:project) { create(:conversion_project, caseworker: nil) }
     let(:project_id) { project.id }
     let(:caseworker) { create(:user, :caseworker) }
 
@@ -121,7 +121,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     subject(:perform_request) do
-      post project_assign_caseworker_path(project_id), params: {project: {caseworker_id: caseworker.id}}
+      post conversion_project_assign_caseworker_path(project_id), params: {conversion_project: {caseworker_id: caseworker.id}}
       response
     end
 
@@ -140,7 +140,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     it "assigns the project caseworker and redirefcts with a message" do
-      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(perform_request).to redirect_to(conversion_project_information_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.caseworker.success"))
 
       expect(project.reload.caseworker).to eq caseworker

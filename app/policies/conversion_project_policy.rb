@@ -1,5 +1,5 @@
-class ProjectPolicy
-  attr_reader :user, :project
+class ConversionProjectPolicy
+  attr_reader :user, :conversion_project
 
   def initialize(user, project)
     @user = user

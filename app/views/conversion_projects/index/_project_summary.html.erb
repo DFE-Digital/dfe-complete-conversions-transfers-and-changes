@@ -1,27 +1,27 @@
 <div class="project-summary govuk-!-margin-bottom-9">
 
   <div class="row-container">
-    <%= render partial: "projects/index/project_summary_item",
+    <%= render partial: "conversion_projects/index/project_summary_item",
           locals: {label: t("project_information.show.school_details.rows.school_type"), content: project.establishment.type} %>
 
-    <%= render partial: "projects/index/project_summary_item",
+    <%= render partial: "conversion_projects/index/project_summary_item",
           locals: {label: t("project.summary.provisional_conversion_date.title"), content: project.provisional_conversion_date.to_formatted_s(:govuk)} %>
   </div>
 
   <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
   <div class="row-container">
-    <%= render partial: "projects/index/project_summary_item",
+    <%= render partial: "conversion_projects/index/project_summary_item",
           locals: {label: t("project.summary.incoming_trust.title"), content: project.incoming_trust.name} %>
 
-    <%= render partial: "projects/index/project_summary_item",
+    <%= render partial: "conversion_projects/index/project_summary_item",
           locals: {label: t("project.summary.local_authority.title"), content: project.establishment.local_authority} %>
   </div>
 
   <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
   <% if project.completed? %>
-    <%= render partial: "projects/index/project_summary_item",
+    <%= render partial: "conversion_projects/index/project_summary_item",
           locals: {label: t("project.summary.completed_at"), content: project.completed_at.to_formatted_s(:govuk_date_time_date_only)} %>
 
     <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">

@@ -13,7 +13,7 @@ RSpec.feature "Users can view the Actions for a Task" do
   end
 
   scenario "user can view task and actions with hints and guidance" do
-    visit project_task_path(project_id, task_id)
+    visit conversion_project_task_path(project_id, task_id)
 
     # Task
     expect(page).to have_css(".govuk-heading-xl", text: "Have you cleared the Supplementary funding agreement?")

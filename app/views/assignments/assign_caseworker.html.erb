@@ -1,6 +1,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for @project, url: project_assign_caseworker_path(@project), method: :post do |form| %>
+    <%= form_for @project, url: conversion_project_assign_caseworker_path(@project), method: :post do |form| %>
       <%= form.govuk_error_summary %>
 
       <span class="govuk-caption-m">URN <%= @project.urn %></span>
@@ -14,7 +14,7 @@
             options: {include_blank: true, selected: @project.caseworker&.id} %>
 
       <%= form.govuk_submit do %>
-        <%= govuk_link_to "Cancel", project_information_path(@project) %>
+        <%= govuk_link_to "Cancel", conversion_project_information_path(@project) %>
       <% end %>
     <% end %>
   </div>

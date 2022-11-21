@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <%= govuk_back_link(href: project_contacts_path(@project)) %>
+  <%= govuk_back_link(href: conversion_project_contacts_path(@project)) %>
 <% end %>
 
 <h1 class="govuk-heading-l"><%= t("contact.new.title") %></h1>
@@ -20,7 +20,7 @@
       <%= form.govuk_phone_field :phone, width: 10 %>
 
       <%= form.govuk_submit t("contact.new.save_contact_button") do %>
-        <%= govuk_link_to "Cancel", project_contacts_path(@project) %>
+        <%= govuk_link_to "Cancel", conversion_project_contacts_path(@project) %>
       <% end %>
     <% end %>
   </div>

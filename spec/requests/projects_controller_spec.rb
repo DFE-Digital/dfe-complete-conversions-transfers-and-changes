@@ -1,27 +1,27 @@
 require "rails_helper"
 
-RSpec.describe ProjectsController, type: :request do
+RSpec.describe ConversionProjectsController, type: :request do
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
   before do
     mock_successful_authentication(regional_delivery_officer.email)
-    allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(regional_delivery_officer.id)
+    allow_any_instance_of(ConversionProjectsController).to receive(:user_id).and_return(regional_delivery_officer.id)
   end
 
   describe "#create" do
-    let(:project) { build(:project) }
-    let(:project_params) { attributes_for(:project, regional_delivery_officer: nil) }
+    let(:project) { build(:conversion_project) }
+    let(:project_params) { attributes_for(:conversion_project, regional_delivery_officer: nil) }
     let(:note_params) { {body: "new note"} }
     let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
-      post projects_path, params: {project: {**project_params, note: note_params}}
+      post conversion_projects_path, params: {conversion_project: {**project_params, note: note_params}}
       response
     end
 
     context "when the project is not valid" do
       before do
-        allow(Project).to receive(:new).and_return(project)
+        allow(ConversionProject).to receive(:new).and_return(project)
         allow(project).to receive(:valid?).and_return false
       end
 
@@ -32,7 +32,7 @@ RSpec.describe ProjectsController, type: :request do
 
     context "when the project is valid" do
       let(:task_list_creator) { TaskListCreator.new }
-      let(:new_project_record) { Project.last }
+      let(:new_project_record) { ConversionProject.last }
 
       before do
         mock_successful_api_responses(urn: 123456, ukprn: 10061021)
@@ -44,13 +44,13 @@ RSpec.describe ProjectsController, type: :request do
       end
 
       it "assigns the regional delivery officer, calls the TaskListCreator, and redirects to the project path" do
-        expect(response).to redirect_to(project_path(new_project_record.id))
-        expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: ProjectsController::DEFAULT_WORKFLOW_ROOT)
+        expect(response).to redirect_to(conversion_project_path(new_project_record.id))
+        expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: ConversionProjectsController::DEFAULT_WORKFLOW_ROOT)
         expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
       end
 
       it "creates a new project and note" do
-        expect(Project.count).to be 1
+        expect(ConversionProject.count).to be 1
         expect(Note.count).to be 1
         expect(Note.last.user).to eq regional_delivery_officer
       end
@@ -82,7 +82,7 @@ RSpec.describe ProjectsController, type: :request do
 
       it "does not create a project" do
         expect { perform_request }.to raise_error(RuntimeError)
-        expect(Project.count).to be 0
+        expect(ConversionProject.count).to be 0
       end
     end
 

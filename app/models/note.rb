@@ -1,7 +1,8 @@
 class Note < ApplicationRecord
-  belongs_to :project
+  belongs_to :conversion_project
   belongs_to :user
   belongs_to :task, optional: true
+  alias_attribute :project, :conversion_project
 
   validates :body, presence: true, allow_blank: false
 

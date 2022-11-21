@@ -6,7 +6,7 @@ RSpec.describe Note, type: :model do
   end
 
   describe "Relationships" do
-    it { is_expected.to belong_to(:project) }
+    it { is_expected.to belong_to(:conversion_project) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:task).required(false) }
   end
@@ -37,7 +37,7 @@ RSpec.describe Note, type: :model do
       let!(:project_level_note) { create(:note) }
       let!(:task_level_note) { create(:note, :task_level_note) }
 
-      subject { Note.project_level_notes(project_level_note.project) }
+      subject { Note.project_level_notes(project_level_note.conversion_project) }
 
       it "returns only project level notes" do
         expect(subject).to include project_level_note

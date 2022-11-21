@@ -20,7 +20,7 @@ RSpec.feature "Users can create and view task level notes" do
   end
 
   scenario "User creates and views task level notes" do
-    visit project_task_path(project_id, task_id)
+    visit conversion_project_task_path(project_id, task_id)
 
     expect_page_to_have_note(
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
@@ -28,20 +28,20 @@ RSpec.feature "Users can create and view task level notes" do
 
     click_link I18n.t("note.show.task_notes.add") # Link styled as button
 
-    expect(page).to have_current_path(new_project_note_path(project, task_id: task_id))
+    expect(page).to have_current_path(new_conversion_project_note_path(project, task_id: task_id))
     expect(page).to have_field("note[task_id]", type: :hidden, with: task_id)
 
     fill_in "Enter note", with: new_note_body
 
     click_button I18n.t("note.new.save_note_button")
 
-    expect(page).to have_current_path(project_task_path(project_id, task_id))
+    expect(page).to have_current_path(conversion_project_task_path(project_id, task_id))
     expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body.delete("*"))
     expect(page.html).to include("<em>important</em>")
   end
 
   scenario "User edits a task level note" do
-    visit project_task_path(project_id, task_id)
+    visit conversion_project_task_path(project_id, task_id)
 
     expect_page_to_have_note(
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
@@ -49,20 +49,20 @@ RSpec.feature "Users can create and view task level notes" do
 
     click_link I18n.t("note.show.task_notes.edit")
 
-    expect(page).to have_current_path(edit_project_note_path(project, Note.first))
-    expect(page).to have_link("Back", href: project_task_path(project_id, task_id))
+    expect(page).to have_current_path(edit_conversion_project_note_path(project, Note.first))
+    expect(page).to have_link("Back", href: conversion_project_task_path(project_id, task_id))
 
     fill_in "Enter note", with: new_note_body
 
     click_button("Save note")
 
-    expect(page).to have_current_path(project_task_path(project_id, task_id))
+    expect(page).to have_current_path(conversion_project_task_path(project_id, task_id))
     expect_page_to_have_note(user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: new_note_body.delete("*"))
     expect(page).to_not have_content("Just had a very interesting phone call with the headteacher about land law")
   end
 
   scenario "User deletes a task level note" do
-    visit project_task_path(project_id, task_id)
+    visit conversion_project_task_path(project_id, task_id)
 
     expect_page_to_have_note(
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
@@ -70,18 +70,18 @@ RSpec.feature "Users can create and view task level notes" do
 
     click_link I18n.t("note.show.task_notes.edit")
 
-    expect(page).to have_current_path(edit_project_note_path(project, Note.first))
-    expect(page).to have_link("Back", href: project_task_path(project_id, task_id))
+    expect(page).to have_current_path(edit_conversion_project_note_path(project, Note.first))
+    expect(page).to have_link("Back", href: conversion_project_task_path(project_id, task_id))
 
     click_link("Delete") # Link styled as button
 
-    expect(page).to have_current_path(project_note_delete_path(project, Note.first))
+    expect(page).to have_current_path(conversion_project_note_delete_path(project, Note.first))
     expect(page).to have_content(I18n.t("note.confirm_destroy.title"))
     expect(page).to have_content(I18n.t("note.confirm_destroy.guidance"))
 
     click_button("Delete")
 
-    expect(page).to have_current_path(project_task_path(project_id, task_id))
+    expect(page).to have_current_path(conversion_project_task_path(project_id, task_id))
   end
 
   private def expect_page_to_have_note(user:, date:, body:)

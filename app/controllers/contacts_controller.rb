@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
     if @contact.valid?
       @contact.save
 
-      redirect_to project_contacts_path(@project), notice: I18n.t("contact.create.success")
+      redirect_to conversion_project_contacts_path(@project), notice: I18n.t("contact.create.success")
     else
       render :new
     end
@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
 
     if @contact.valid?
       @contact.save
-      redirect_to project_contacts_path(@project), notice: I18n.t("contact.update.success")
+      redirect_to conversion_project_contacts_path(@project), notice: I18n.t("contact.update.success")
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     @contact.destroy
 
-    redirect_to project_contacts_path(@project), notice: I18n.t("contact.destroy.success")
+    redirect_to conversion_project_contacts_path(@project), notice: I18n.t("contact.destroy.success")
   end
 
   def confirm_destroy
@@ -52,11 +52,11 @@ class ContactsController < ApplicationController
   end
 
   private def find_project
-    @project = Project.find(params[:project_id])
+    @project = ConversionProject.find(params[:conversion_project_id])
   end
 
   private def find_grouped_contacts
-    @contacts = Contact.where(project: @project).group_by(&:category)
+    @contacts = Contact.where(conversion_project: @project).group_by(&:category)
   end
 
   private def contact_params

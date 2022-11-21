@@ -9,6 +9,6 @@
   <%= render_markdown(note.body) %>
 
   <% if policy(note).edit? %>
-    <p class="govuk-body govuk-!-font-size-16"><%= govuk_link_to "Edit", edit_project_note_path(@project, note) %></p>
+    <p class="govuk-body govuk-!-font-size-16"><%= govuk_link_to "Edit", edit_conversion_project_note_path(@project, note) %></p>
   <% end %>
 <% end %>

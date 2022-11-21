@@ -5,7 +5,8 @@ class Task < ApplicationRecord
 
   default_scope { order(order: "asc") }
 
-  delegate :project, to: :section
+  delegate :conversion_project, to: :section
+  alias_attribute :project, :conversion_project
 
   def actions_count
     @actions_count ||= actions.where(action_type: "single-checkbox").count

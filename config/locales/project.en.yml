@@ -90,7 +90,7 @@ en:
           diocese: Diocese
   helpers:
     label:
-      project:
+      conversion_project:
         urn: School URN
         incoming_trust_ukprn: Incoming trust UK Provider Reference Number (UKPRN)
         caseworker_id: Caseworker
@@ -99,11 +99,11 @@ en:
         establishment_sharepoint_link: School SharePoint link
         trust_sharepoint_link: Trust SharePoint link
     legend:
-      project:
+      conversion_project:
         provisional_conversion_date: Provisional conversion date
         advisory_board_date: Date of advisory board
     hint:
-      project:
+      conversion_project:
         urn: This is the URN of the existing school which is converting to an academy. URN is a 6-digit number.
         incoming_trust_ukprn: UKPRN is an 8-digit number that always starts with a 1.
         caseworker_id: The caseworker responsible for this project
@@ -114,7 +114,7 @@ en:
   activerecord:
     errors:
       models:
-        project:
+        conversion_project:
           attributes:
             urn:
               blank: Enter a school URN

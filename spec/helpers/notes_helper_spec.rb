@@ -35,13 +35,13 @@ RSpec.describe NotesHelper, type: :helper do
     context "when the note is a project level note" do
       let(:note) { create(:note) }
 
-      it { expect(subject).to eq project_notes_path(note.project) }
+      it { expect(subject).to eq conversion_project_notes_path(note.project) }
     end
 
     context "when the note is a task level note" do
       let(:note) { create(:note, :task_level_note) }
 
-      it { expect(subject).to eq project_task_path(note.project, note.task) }
+      it { expect(subject).to eq conversion_project_task_path(note.project, note.task) }
     end
   end
 end

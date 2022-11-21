@@ -7,9 +7,9 @@
       <%= t("project.index.title.all") %>
     </h1>
 
-    <% if policy(:project).new? %>
+    <% if policy(:conversion_project).new? %>
       <p><%= link_to t("project.index.new_button.text"),
-               new_project_path,
+               new_conversion_project_path,
                class: "govuk-button",
                data: {module: "govuk-button"} %></p>
     <% end %>
@@ -24,10 +24,10 @@
           <li>
             <span class="govuk-caption-m">URN <%= project.urn %></span>
             <h2 class="govuk-heading-m govuk-heading-m--school-name">
-              <%= link_to project.establishment.name, project_path(project) %>
+              <%= link_to project.establishment.name, conversion_project_path(project) %>
             </h2>
 
-            <%= render partial: "projects/index/project_summary", locals: {project: project} %>
+            <%= render partial: "conversion_projects/index/project_summary", locals: {project: project} %>
           </li>
         <% end %>
       </ul>

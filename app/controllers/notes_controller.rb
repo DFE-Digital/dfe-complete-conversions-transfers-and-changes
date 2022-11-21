@@ -56,11 +56,11 @@ class NotesController < ApplicationController
   end
 
   private def redirect_path
-    @note.task_level_note? ? project_task_path(@project, @note.task.id) : project_notes_path(@project)
+    @note.task_level_note? ? conversion_project_task_path(@project, @note.task.id) : conversion_project_notes_path(@project)
   end
 
   private def find_project
-    @project = Project.find(params[:project_id])
+    @project = ConversionProject.find(params[:conversion_project_id])
   end
 
   private def find_project_level_notes

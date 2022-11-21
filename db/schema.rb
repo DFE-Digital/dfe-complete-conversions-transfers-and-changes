@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_145250) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
   end
 
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
-    t.uuid "project_id"
+    t.uuid "conversion_project_id"
     t.string "name", null: false
     t.string "title", null: false
     t.string "email"
@@ -36,22 +36,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
     t.datetime "updated_at", null: false
     t.integer "category", default: 0, null: false
     t.index ["category"], name: "index_contacts_on_category"
-    t.index ["project_id"], name: "index_contacts_on_project_id"
+    t.index ["conversion_project_id"], name: "index_contacts_on_conversion_project_id"
   end
 
-  create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
-    t.text "body"
-    t.uuid "project_id"
-    t.uuid "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.uuid "task_id"
-    t.index ["project_id"], name: "index_notes_on_project_id"
-    t.index ["task_id"], name: "index_notes_on_task_id"
-    t.index ["user_id"], name: "index_notes_on_user_id"
-  end
-
-  create_table "projects", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+  create_table "conversion_projects", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.integer "urn", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,19 +54,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
     t.text "establishment_sharepoint_link"
     t.datetime "completed_at"
     t.text "trust_sharepoint_link"
-    t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
-    t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
-    t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
-    t.index ["urn"], name: "index_projects_on_urn"
+    t.index ["caseworker_id"], name: "index_conversion_projects_on_caseworker_id"
+    t.index ["regional_delivery_officer_id"], name: "index_conversion_projects_on_regional_delivery_officer_id"
+    t.index ["team_leader_id"], name: "index_conversion_projects_on_team_leader_id"
+    t.index ["urn"], name: "index_conversion_projects_on_urn"
+  end
+
+  create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.text "body"
+    t.uuid "conversion_project_id"
+    t.uuid "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "task_id"
+    t.index ["conversion_project_id"], name: "index_notes_on_conversion_project_id"
+    t.index ["task_id"], name: "index_notes_on_task_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "sections", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
-    t.uuid "project_id"
+    t.uuid "conversion_project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_sections_on_project_id"
+    t.index ["conversion_project_id"], name: "index_sections_on_conversion_project_id"
   end
 
   create_table "tasks", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -111,13 +111,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
   end
 
   add_foreign_key "actions", "tasks"
-  add_foreign_key "contacts", "projects"
-  add_foreign_key "notes", "projects"
+  add_foreign_key "contacts", "conversion_projects"
+  add_foreign_key "conversion_projects", "users", column: "caseworker_id"
+  add_foreign_key "conversion_projects", "users", column: "regional_delivery_officer_id"
+  add_foreign_key "conversion_projects", "users", column: "team_leader_id"
+  add_foreign_key "notes", "conversion_projects"
   add_foreign_key "notes", "tasks"
   add_foreign_key "notes", "users"
-  add_foreign_key "projects", "users", column: "caseworker_id"
-  add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
-  add_foreign_key "projects", "users", column: "team_leader_id"
-  add_foreign_key "sections", "projects"
+  add_foreign_key "sections", "conversion_projects"
   add_foreign_key "tasks", "sections"
 end

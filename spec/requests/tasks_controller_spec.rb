@@ -15,7 +15,7 @@ RSpec.describe TasksController, type: :request do
     let(:task_id) { task.id }
 
     subject(:perform_request) do
-      get project_task_path(project_id, task_id)
+      get conversion_project_task_path(project_id, task_id)
       response
     end
 
@@ -50,7 +50,7 @@ RSpec.describe TasksController, type: :request do
     let(:params) { {task: {actions: {completed_action.id => 0, incomplete_action.id => 1}}} } # These are inverted since we're testing the change of an action's status
 
     subject(:perform_request) do
-      put project_task_path(project_id, task_id), params: params
+      put conversion_project_task_path(project_id, task_id), params: params
       response
     end
 
@@ -65,7 +65,7 @@ RSpec.describe TasksController, type: :request do
     it "updates the actions and redirects to the project show page" do
       perform_request
 
-      expect(response).to redirect_to(project_path(project_id))
+      expect(response).to redirect_to(conversion_project_path(project_id))
       expect(incomplete_action.reload.completed?).to be true
       expect(completed_action.reload.completed?).to be false
     end

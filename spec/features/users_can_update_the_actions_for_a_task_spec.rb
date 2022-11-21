@@ -15,7 +15,7 @@ RSpec.feature "Users can update the Actions for a Task" do
   end
 
   scenario "User updates a completed action and an incomplete action" do
-    visit project_task_path(project_id, task_id)
+    visit conversion_project_task_path(project_id, task_id)
 
     uncheck("Action 1")
     check("Action 2")
@@ -25,6 +25,6 @@ RSpec.feature "Users can update the Actions for a Task" do
     expect(incomplete_action.reload.completed?).to be true
     expect(completed_action.reload.completed?).to be false
 
-    expect(page).to have_current_path(project_path(project_id))
+    expect(page).to have_current_path(conversion_project_path(project_id))
   end
 end

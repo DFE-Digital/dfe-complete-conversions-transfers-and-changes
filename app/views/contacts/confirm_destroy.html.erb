@@ -1,11 +1,11 @@
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for [@project, @contact], path: project_contact_path(@project, @contact), method: :delete do |form| %>
+    <%= form_for [@project, @contact], path: conversion_project_contact_path(@project, @contact), method: :delete do |form| %>
       <h1 class="govuk-heading-l"><%= t("contact.confirm_destroy.title", contact_name: @contact.name) %></h1>
       <p><%= t("contact.confirm_destroy.guidance", contact_title: @contact.title, contact_name: @contact.name) %></p>
 
       <%= form.govuk_submit "Delete", warning: true do %>
-        <%= govuk_link_to "Cancel", edit_project_contact_path(@project, @contact) %>
+        <%= govuk_link_to "Cancel", edit_conversion_project_contact_path(@project, @contact) %>
       <% end %>
     <% end %>
   </div>

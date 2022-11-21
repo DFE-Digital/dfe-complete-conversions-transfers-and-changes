@@ -4,8 +4,8 @@ module NotesHelper
   end
 
   def back_link_destination(note)
-    return project_task_path(note.project, note.task) if note.task_level_note?
+    return conversion_project_task_path(note.conversion_project, note.task) if note.task_level_note?
 
-    project_notes_path(note.project)
+    conversion_project_notes_path(note.conversion_project)
   end
 end
