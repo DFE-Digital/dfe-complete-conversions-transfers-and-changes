@@ -14,6 +14,13 @@
                data: {module: "govuk-button"} %></p>
     <% end %>
 
+    <% if policy(:project).new? %>
+      <p><%= link_to "Involuntary project",
+               conversion_projects_path,
+               class: "govuk-button",
+               data: {module: "govuk-button"} %></p>
+    <% end %>
+
     <%= render partial: "shared/project_index_sub_navigation" %>
 
     <% if @projects.empty? %>

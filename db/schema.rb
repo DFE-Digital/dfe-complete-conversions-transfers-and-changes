@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_22_152950) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -37,6 +37,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
     t.integer "category", default: 0, null: false
     t.index ["category"], name: "index_contacts_on_category"
     t.index ["project_id"], name: "index_contacts_on_project_id"
+  end
+
+  create_table "conversion_project_details", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.uuid "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+    t.index ["project_id"], name: "index_conversion_project_details_on_project_id"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -66,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
     t.text "establishment_sharepoint_link"
     t.datetime "completed_at"
     t.text "trust_sharepoint_link"
+    t.string "type"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
@@ -112,6 +121,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_144206) do
 
   add_foreign_key "actions", "tasks"
   add_foreign_key "contacts", "projects"
+  add_foreign_key "conversion_project_details", "projects"
   add_foreign_key "notes", "projects"
   add_foreign_key "notes", "tasks"
   add_foreign_key "notes", "users"

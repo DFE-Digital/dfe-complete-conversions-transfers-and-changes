@@ -1,0 +1,3 @@
+class ConversionProject < Project
+
+end

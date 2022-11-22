@@ -1,8 +1,8 @@
-class ProjectsController < ApplicationController
+class ConversionProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
 
-
+  DEFAULT_WORKFLOW_ROOT = Rails.root.join("app", "workflows", "lists", "conversion").freeze
 
   def index
     authorize Project
@@ -15,25 +15,26 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(sections: [:tasks]).find(params[:id])
+    @project = ConversionProject.includes(sections: [:tasks]).find(params[:id])
     authorize @project, policy_class: ProjectPolicy
   end
 
   def new
     authorize Project
-    @project = Project.new
+    @project = ConversionProject.new
   end
 
   def create
     @note = Note.new(**note_params, user_id: user_id)
-    @project = Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
+    @project = ConversionProject.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
 
-    authorize @project
+    authorize @project, policy_class: ProjectPolicy
 
     if @project.valid?
       ActiveRecord::Base.transaction do
         @project.save
-        TaskListCreator.new.call(@project, workflow_root: DEFAULT_WORKFLOW_ROOT)
+        VoluntaryConversionProjectDetails.create(project: @project)
+        TaskListCreator.new.call(@project, workflow_root: VoluntaryConversionProjectDetails::WORKFLOW_ROOT)
       end
 
       notify_team_leaders
@@ -51,7 +52,7 @@ class ProjectsController < ApplicationController
   end
 
   private def project_params
-    params.require(:project).permit(
+    params.require(:conversion_project).permit(
       :urn,
       :incoming_trust_ukprn,
       :provisional_conversion_date,
@@ -63,6 +64,6 @@ class ProjectsController < ApplicationController
   end
 
   private def note_params
-    params.require(:project).require(:note).permit(:body)
+    params.require(:conversion_project).require(:note).permit(:body)
   end
 end

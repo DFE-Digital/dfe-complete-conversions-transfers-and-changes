@@ -22,11 +22,15 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
+  get "conversion_projects", to: "conversion_projects#new"
+  post "conversion_projects", to: "conversion_projects#create"
+
   resources :projects, only: %i[index show new create] do
     collection do
       get "completed"
     end
     get "information", to: "project_information#show"
+
 
     put "complete", to: "projects_complete#complete"
 

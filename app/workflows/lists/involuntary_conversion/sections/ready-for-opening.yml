@@ -1,0 +1,158 @@
+title: Get ready for opening
+tasks:
+  - slug: check-baseline
+    title: Check the Baseline
+    hint: |
+      You must confirm the conversion date within 3 working days of receiving
+      the Baseline email. Indicate on the Baseline that the school is on track
+      to open.
+
+    actions:
+      - title: Confirm the school is on track to open on the provisional date
+        guidance_summary: How to check the Baseline
+        guidance_text: |
+          The Academies Operational Practice Unit will usually email the
+          Baseline spreadsheet to you in the first week of each month.
+
+          The project should be on the Regional Casework Services Baseline
+          spreadsheet. This contains a list of all the schools expected to open
+          as academies the following month, across all regions.
+
+          Check the Regional Casework Services Baseline spreadsheet to confirm:
+
+          * your school is on it
+          * the information about the school is correct
+
+          Enter yes if the project is on track to convert, or no if it will not
+          open on the provisional date.
+
+          **What to do if your school is not on the Baseline**
+
+          There is one Baseline spreadsheet for each region. These are only used
+          by regional delivery officers.
+
+          Sometimes Regional Casework Services projects will show in the
+          regional Baseline spreadsheets by accident.
+
+          If this happens, remove your school from the regional Baseline
+          spreadsheet and add it to the Regional Casework Services Baseline
+          spreadsheet.
+
+          If it doesn't appear at all, enter the school's information in the
+          correct Baseline spreadsheet.
+
+          Email the Academy Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to tell them if you have had to move or add the school to the correct Baseline.
+
+  - slug: complete-and-send-single-worksheet
+    title: Complete and send Single worksheet
+    hint: |
+      You need to [download a single worksheet template (opens in new
+      tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7B16F44F65-3D80-457D-9FB4-D22574FBE8EB%7D&file=Updated_Single_Worksheet.docx)
+      and save it in the school's SharePoint folder.
+    actions:
+      - title: Complete the Single worksheet
+        hint:
+          Fill out the Single worksheet and confirm the information in it is
+          correct.
+      - title: Email the Single worksheet to your line manager for approval
+        hint:
+          Your line manager will reply by email to tell you if they've approved
+          the worksheet.
+      - title:
+          Send the approved Single worksheet to Academies Operational Practice
+          Unit
+        hint: |
+          Send the Single worksheet and, if needed, the Direction to transfer and Trust modification order to [academiesdelivery.operations@education.gov.uk.](mailto:academiesdelivery.operations@education.gov.uk)
+        guidance_summary: When you must complete this
+        guidance_text: |
+          The deadline for this work is normally 5 working days after the
+          Baseline is confirmed. The exact deadline will be in the baseline
+          email sent by The Academies Operational Practice Unit.
+
+  - slug: confirm-school-has-completed-all-actions
+    title: Confirm the school has completed all actions
+    hint: |
+      Check the school have completed all their tasks and save their responses in the school's SharePoint folder.
+    actions:
+      - title: Email the main contact for the conversion
+        guidance_summary: How to structure your email
+        guidance_text: |
+          You should ask them to check and confirm they've completed all tasks.
+
+          You can [use the email template (opens in a new tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BA4E75C24-7E01-4732-9065-EEC840AFE132%7D&file=RSCApprovaltoAcademyOpeningDeskInstructions20200922.docx&action=default&mobileredirect=true) on pages 19 and 20 in your
+          desk instructions to help structure your email.
+
+      - title:
+          Save the responses to the checklist in the school's SharePoint folder
+        guidance_summary: What to do if the school has not completed the tasks
+        guidance_text: |
+          Depending on the scale of the outstanding tasks, you may need to move the provisional conversion date to the next month, or later.
+
+          If the conversion date needs to be moved, you must:
+
+          1. inform the school of the outstanding tasks
+          2. agree a new provisional conversion date with all stakeholders
+          3. email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) with the new date
+          4. change the date in KIM
+          5. inform the regional delivery officer who started on this project
+
+  - slug: confirm-all-conditions-met
+    title: Confirm all conditions have been met
+    hint: |
+      The deadline to confirm all conditions have been met will be in the
+      Baseline email you received. The school will not be able to open on the
+      provisional conversion date unless all conditions have been met.
+    guidance_summary: What to do if conditions are not met
+    guidance_text: |
+      All conditions must be met before a school can open as an academy.
+
+      If there are outstanding conditions, you must:
+
+      1. inform the school of the outstanding tasks
+      2. agree a new provisional conversion date with all stakeholders
+      3. email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) with the new date
+      4. change the date in KIM
+      5. inform the regional delivery officer who started on this project
+
+    actions:
+      - title:
+          Email Academies Operational Practice Unit to confirm all conditions
+          have been met
+        guidance_summary: How to confirm if conditions have been met
+        guidance_text: |
+          You must email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to confirm if all conditions are met for this school and it will open as an academy on the provisional conversion date.
+
+          The email only needs to confirm if all conditions have been met, or
+          not. You do not need to go into detail.
+
+          Things you'll need to check to confirm if all conditions have been met
+          include:
+
+          * commercial transfer agreement signed
+          * leases agreed and signed
+          * risk protection arrangement in place and insurer confirmed
+          * relevant documents signed and sealed
+
+  - slug: confirm-opening-date-with-school
+    title: Confirm opening date with the school
+    hint: |
+      Once you've confirmed that all conditions have been met, contact the
+      school and trust to tell them they can convert on the provisional conversion
+      date.
+
+    actions:
+      - title: Email relevant information to your main contact
+        guidance_summary: What to tell the school
+        guidance_text: |
+          Email your main contact at the school or trust.
+
+          Your email should include:
+
+          * confirmation the school will convert on the provisional date
+          * the school's new URN (unique reference number)
+          * all signed and sealed legal documents
+          * the [Grant expenditure certificate (opens in a new tab)](https://www.gov.uk/government/publications/academy-support-grant) that they need to complete and return
+
+          It can be helpful to mention that they'll soon get some welcome emails from other teams in government. These will contain more information about funding and opening as an academy.
+
+          You can split this information over more than one email if you don't immediately have everything you need.
