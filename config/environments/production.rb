@@ -83,8 +83,9 @@ Rails.application.configure do
   config.active_record.schema_migrations_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.schema_migrations"
   config.active_record.internal_metadata_table_name = "#{ENV["SQL_SERVER_SCHEMA_NAME"]}.ar_internal_metadata"
 
-  # configure the host name
+  # configure the host names
   config.hosts << ENV["HOSTNAME"]
+  config.hosts.concat ENV.fetch("ALLOWED_HOSTS", "").split(",")
 
   # configure ActionMailer
   # set the host so links in emails work

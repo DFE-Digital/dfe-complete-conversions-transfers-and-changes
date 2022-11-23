@@ -24,6 +24,14 @@ set this into the `Rails.application.config.hosts` array, see:
 
 https://guides.rubyonrails.org/configuring.html#actiondispatch-hostauthorization
 
+`ALLOWED_HOSTS`
+
+This is a comma separated list of hostnames that the application will respond to
+behind the CDN, it usually includes the container host name and the cdn
+hostname, see:
+
+https://guides.rubyonrails.org/configuring.html#actiondispatch-hostauthorization
+
 `SENTRY_ENV`
 
 This is the environment name that will appear in Sentry, so one of development,
