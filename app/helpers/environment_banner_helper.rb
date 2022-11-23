@@ -16,6 +16,6 @@ module EnvironmentBannerHelper
   end
 
   private def sentry_env
-    ENV.fetch("SENTRY_ENV")
+    ENV.fetch("SENTRY_ENV", "local_development")
   end
 end
