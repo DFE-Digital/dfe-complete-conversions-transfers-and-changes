@@ -73,3 +73,8 @@ variable "worker_container_command" {
   description = "Container command for the Worker container. `enable_worker_container` must be set to true for this to have any effect."
   type        = list(string)
 }
+
+variable "enable_cdn_frontdoor" {
+  description = "Enable Azure CDN FrontDoor. This will use the Container Apps endpoint as the origin."
+  type        = bool
+}
