@@ -85,6 +85,7 @@ Rails.application.configure do
 
   # configure the host name
   config.hosts << ENV["HOSTNAME"]
+  config.hosts.concat ENV.fetch("ALLOWED_HOSTS", "").split(',')
 
   # configure ActionMailer
   # set the host so links in emails work
