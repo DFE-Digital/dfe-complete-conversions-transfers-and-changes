@@ -2,8 +2,10 @@ title: Project kick-off
 tasks:
   - slug: handover-with-rdo
     title: Handover with regional delivery officer
+    optional: true
     actions:
-      - title:
+      - type: subheading
+        title:
           Review the project information, check the documents and carry out
           research
         hint:
@@ -25,15 +27,16 @@ tasks:
           * Project information, such as advisory board conditions
           * School or trust website for more information about the school
           * Google maps for potential land issues
-
-      - title:
+      - type: subheading
+        title:
           Make notes and write questions to ask the regional delivery officer
         guidance_summary: What to make notes about
         guidance_text: |
           Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.
 
           This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.
-      - title: Attend handover meeting with regional delivery officer
+      - type: subheading
+        title: Attend handover meeting with regional delivery officer
         hint: Discuss any questions you have about the project in the meeting.
 
   - slug: external-stakeholder-kick-off
