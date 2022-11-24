@@ -1,0 +1,29 @@
+<% content_for :pre_content_nav do %>
+  <%= govuk_back_link(href: root_path) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_with model: @project, url: conversion_involuntary_new_path do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <h1 class="govuk-heading-l"><%= t("project.new.title") %></h1>
+
+      <%= form.govuk_text_field :urn, label: {size: "m"}, hint: {text: t("helpers.hint.project.urn").html_safe}, width: 10 %>
+      <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m"}, hint: {text: t("helpers.hint.project.incoming_trust_ukprn").html_safe}, width: 10 %>
+      <%= form.govuk_date_field :provisional_conversion_date, omit_day: true, form_group: {id: "provisional-conversion-date"} %>
+      <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m"} %>
+      <%= form.govuk_text_field :trust_sharepoint_link, label: {size: "m"} %>
+      <%= form.govuk_date_field :advisory_board_date, form_group: {id: "advisory-board-date"} %>
+      <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m"} %>
+
+      <%= form.fields_for :note, @note do |note_form| %>
+        <%= note_form.govuk_text_area :body,
+              label: {text: t("project.new.handover_comments_label"), size: "m"},
+              hint: {text: t("project.new.handover_comments_hint")} %>
+      <% end %>
+
+      <%= form.govuk_submit %>
+    <% end %>
+  </div>
+</div>

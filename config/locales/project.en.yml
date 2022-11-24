@@ -113,37 +113,34 @@ en:
         advisory_board_conditions: If there are conditions to be met as a result of the advisory board.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant documents.
-  activerecord:
-    errors:
-      models:
-        project:
-          attributes:
-            urn:
-              blank: Enter a school URN
-              no_establishment_found: There’s no school with that URN. Check the number you entered is correct.
-              not_a_number: School URN can only contain numbers. No letters or special characters.
-              wrong_length: URN must be 6 digits long. For example, 123456.
-            incoming_trust_ukprn:
-              blank: Enter a UKPRN
-              no_trust_found: There’s no trust with that UKPRN. Check the number you entered is correct.
-              not_a_number: UKPRN can only contain numbers. No letters or special characters.
-              must_be_correct_format: UKPRN must be 8 digits long and start with a 1. For example, 12345678.
-            provisional_conversion_date:
-              blank: Enter a provisional conversion month and year
-              must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
-              must_be_in_the_future: Provisional conversion date must be in the future.
-            regional_delivery_officer_id:
-              blank: Choose a regional delivery officer
-            advisory_board_date:
-              blank: Enter a date of advisory board
-              must_be_in_the_past: The advisory board date must be in the past
-            establishment_sharepoint_link:
-              blank: Enter a school SharePoint link
-              invalid: Enter a school SharePoint link in the correct format
-              https_only: The school SharePoint link must have the https scheme
-              host_not_allowed: Enter a school sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
-            trust_sharepoint_link:
-              blank: Enter a trust SharePoint link
-              invalid: Enter a trust SharePoint link in the correct format
-              https_only: The trust SharePoint link must have the https scheme
-              host_not_allowed: Enter a trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+  errors:
+    attributes:
+      urn:
+        blank: Enter a school URN
+        no_establishment_found: There’s no school with that URN. Check the number you entered is correct.
+        not_a_number: School URN can only contain numbers. No letters or special characters.
+        wrong_length: URN must be 6 digits long. For example, 123456.
+      incoming_trust_ukprn:
+        blank: Enter a UKPRN
+        no_trust_found: There’s no trust with that UKPRN. Check the number you entered is correct.
+        not_a_number: UKPRN can only contain numbers. No letters or special characters.
+        must_be_correct_format: UKPRN must be 8 digits long and start with a 1. For example, 12345678.
+      provisional_conversion_date:
+        blank: Enter a provisional conversion month and year
+        must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
+        must_be_in_the_future: Provisional conversion date must be in the future.
+      regional_delivery_officer_id:
+        blank: Choose a regional delivery officer
+      advisory_board_date:
+        blank: Enter a date of advisory board
+        must_be_in_the_past: The advisory board date must be in the past
+      establishment_sharepoint_link:
+        blank: Enter a school SharePoint link
+        invalid: Enter a school SharePoint link in the correct format
+        https_only: The school SharePoint link must have the https scheme
+        host_not_allowed: Enter a school sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+      trust_sharepoint_link:
+        blank: Enter a trust SharePoint link
+        invalid: Enter a trust SharePoint link in the correct format
+        https_only: The trust SharePoint link must have the https scheme
+        host_not_allowed: Enter a trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'

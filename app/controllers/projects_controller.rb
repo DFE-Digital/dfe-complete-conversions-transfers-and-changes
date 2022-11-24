@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.includes(sections: [:tasks]).find(params[:id])
-    authorize @project
+    authorize @project, policy_class: ProjectPolicy
   end
 
   def new
