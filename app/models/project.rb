@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  delegated_type :projectable, types: %w[ConversionProject]
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
   has_many :sections, dependent: :destroy
