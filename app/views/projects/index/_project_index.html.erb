@@ -16,7 +16,7 @@
 
     <% if policy(:project).new? %>
       <p><%= link_to "Involuntary project",
-               conversion_projects_path,
+               conversion_new_path,
                class: "govuk-button",
                data: {module: "govuk-button"} %></p>
     <% end %>

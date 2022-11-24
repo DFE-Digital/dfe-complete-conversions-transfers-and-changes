@@ -1,3 +1,0 @@
-class InvoluntaryConversionProjectDetails < ConversionProjectDetails
-
-end

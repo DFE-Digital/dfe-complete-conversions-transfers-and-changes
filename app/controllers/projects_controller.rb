@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
 
+  DEFAULT_WORKFLOW_ROOT = Rails.root.join("app", "workflows", "lists", "involuntary_conversion").freeze
 
 
   def index

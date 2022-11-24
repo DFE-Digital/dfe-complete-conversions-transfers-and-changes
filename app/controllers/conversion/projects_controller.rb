@@ -1,4 +1,4 @@
-class ConversionProjectsController < ApplicationController
+class Conversion::ProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
 
@@ -15,26 +15,27 @@ class ConversionProjectsController < ApplicationController
   end
 
   def show
-    @project = ConversionProject.includes(sections: [:tasks]).find(params[:id])
+    @project = Converison::Project.includes(sections: [:tasks]).find(params[:id])
     authorize @project, policy_class: ProjectPolicy
   end
 
   def new
     authorize Project
-    @project = ConversionProject.new
+    @project = Conversion::Project.new
   end
 
   def create
+    binding.pry
     @note = Note.new(**note_params, user_id: user_id)
-    @project = ConversionProject.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
+    @project = Conversion::Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
 
     authorize @project, policy_class: ProjectPolicy
 
     if @project.valid?
       ActiveRecord::Base.transaction do
         @project.save
-        VoluntaryConversionProjectDetails.create(project: @project)
-        TaskListCreator.new.call(@project, workflow_root: VoluntaryConversionProjectDetails::WORKFLOW_ROOT)
+        Conversion::Voluntary::Details.create(project: @project)
+        TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_ROOT)
       end
 
       notify_team_leaders
@@ -59,7 +60,7 @@ class ConversionProjectsController < ApplicationController
       :advisory_board_date,
       :advisory_board_conditions,
       :establishment_sharepoint_link,
-      :trust_sharepoint_link
+      :trust_sharepoint_link,
     )
   end
 
