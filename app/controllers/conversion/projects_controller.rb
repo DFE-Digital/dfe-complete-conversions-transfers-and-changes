@@ -24,28 +24,6 @@ class Conversion::ProjectsController < ApplicationController
     @project = Conversion::Project.new
   end
 
-  def create
-    binding.pry
-    @note = Note.new(**note_params, user_id: user_id)
-    @project = Conversion::Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
-
-    authorize @project, policy_class: ProjectPolicy
-
-    if @project.valid?
-      ActiveRecord::Base.transaction do
-        @project.save
-        Conversion::Voluntary::Details.create(project: @project)
-        TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_ROOT)
-      end
-
-      notify_team_leaders
-
-      redirect_to project_path(@project), notice: I18n.t("project.create.success")
-    else
-      render :new
-    end
-  end
-
   private def notify_team_leaders
     User.team_leaders.each do |team_leader|
       TeamLeaderMailer.new_project_created(team_leader, @project).deliver_later

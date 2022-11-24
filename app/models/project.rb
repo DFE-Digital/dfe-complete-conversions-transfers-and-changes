@@ -4,7 +4,6 @@ class Project < ApplicationRecord
   has_many :sections, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
-  has_one :conversion_project_details, dependent: :destroy
 
   accepts_nested_attributes_for :notes, reject_if: proc { |attributes| attributes[:body].blank? }
 

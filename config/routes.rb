@@ -22,10 +22,17 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
-    namespace :conversion do
+  namespace :conversion do
+    namespace :voluntary do
       get "new", to: "projects#new"
       post "new", to: "projects#create"
     end
+
+    namespace :involuntary do
+      get "new", to: "projects#new"
+      post "new", to: "projects#create"
+    end
+  end
 
 
   resources :projects, only: %i[index show new create] do
