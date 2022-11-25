@@ -39,5 +39,25 @@ RSpec.describe "Create new conversion project" do
         expect(Note.last.user).to eq regional_delivery_officer
       end
     end
+
+    context "when some required project information is not valid" do
+      let(:project_params) { attributes_for(:project, establishment_sharepoint_link: nil, trust_sharepoint_link: nil, regional_delivery_officer: nil) }
+      let(:task_list_creator) { TaskListCreator.new }
+
+      before do
+        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+
+        allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
+        allow(task_list_creator).to receive(:call).and_return true
+
+        perform_request
+      end
+
+      it "does not create a conversion project" do
+        expect(Conversion::Project.count).to be 0
+        expect(Conversion::Involuntary::Details.count).to be 0
+        expect(Note.count).to be 0
+      end
+    end
   end
 end

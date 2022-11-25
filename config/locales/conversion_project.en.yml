@@ -1,4 +1,8 @@
 en:
+  conversion_project:
+    involuntary:
+      new:
+        title: Add a new involuntary conversion project
   helpers:
     label:
       conversion_project:
