@@ -28,6 +28,11 @@ Rails.application.routes.draw do
         get "new", to: "projects#new"
         post "new", to: "projects#create"
       end
+
+      namespace :voluntary do
+        get "new", to: "projects#new"
+        post "new", to: "projects#create"
+      end
     end
   end
 
