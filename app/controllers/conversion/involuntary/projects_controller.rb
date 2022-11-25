@@ -9,7 +9,7 @@ class Conversion::Involuntary::ProjectsController < Conversion::ProjectsControll
       ActiveRecord::Base.transaction do
         @project.save
         Conversion::Involuntary::Details.create(project: @project)
-        TaskListCreator.new.call(@project, workflow_root: DEFAULT_WORKFLOW_ROOT)
+        TaskListCreator.new.call(@project, workflow_root: Conversion::Involuntary::Details::WORKFLOW_PATH)
       end
 
       notify_team_leaders

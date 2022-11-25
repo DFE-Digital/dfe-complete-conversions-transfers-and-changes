@@ -1,0 +1,7 @@
+title: Involuntary
+tasks:
+  - slug: involuntary-task
+    title: Involuntary task
+    actions:
+      - title: Involuntary task action
+        hint: Involuntary task action hint

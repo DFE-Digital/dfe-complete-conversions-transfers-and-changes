@@ -42,8 +42,7 @@ RSpec.feature "Users can create new involuntary conversion projects" do
       click_button("Continue")
 
       expect(page).to have_content(I18n.t("project.show.title"))
-      expect(page).to have_content("Project kick-off")
-      expect(page).to have_content("Handover with regional delivery officer")
+      expect(page).to have_content("Involuntary task")
 
       click_on("Project information")
 
