@@ -7,9 +7,9 @@ As a digital service being developed in DfE we aim to follow the
 
 ## Environments
 
-- [development](https://s184d01-comp-complete-app.salmonsky-fe4d6376.westeurope.azurecontainerapps.io/)
-- [test](https://s184t01-comp-complete-app.ashycoast-5a62f687.westeurope.azurecontainerapps.io)
-- [production](https://s184p01-comp-complete-app.lemonrock-9136c141.westeurope.azurecontainerapps.io/)
+- [development](https://s184d01-compcdnendpoint-duepa5hpd8djhacd.z01.azurefd.net)
+- [test](https://s184t01-compcdnendpoint-gnfrfkdpamcncjdm.z01.azurefd.net)
+- [production](https://s184p01-compcdnendpoint-brbkfbdmdqene3f0.z01.azurefd.net)
 
 ## Shared components and patterns
 
