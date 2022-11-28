@@ -29,7 +29,7 @@
 
     <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
-    <%= render partial: "shared/environment_banner" %>
+    <%= render partial: "shared/environment_banner" unless Rails.env.production? %>
 
     <%= govuk_header(service_name: t("service_name")) %>
 
