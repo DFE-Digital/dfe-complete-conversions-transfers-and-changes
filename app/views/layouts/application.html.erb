@@ -33,7 +33,7 @@
 
     <%= govuk_header(service_name: t("service_name")) %>
 
-    <div class="govuk-width-container ">
+    <div class="govuk-width-container " aria-label="phase banner" role="complementary">
       <%= govuk_phase_banner(
             tag: {text: t("phase_banner.phase")},
             text: t("phase_banner.phase_notice.html")
