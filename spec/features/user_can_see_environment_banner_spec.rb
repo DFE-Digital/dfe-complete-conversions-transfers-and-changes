@@ -15,7 +15,7 @@ RSpec.feature "Environment banner" do
 
       scenario "cannot see the environment banner" do
         visit root_path
-        expect(page).to_not have_css(".environment-banner")
+        expect(page).to_not have_css("#environment-banner")
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.feature "Environment banner" do
 
       scenario "can see the environment banner" do
         visit root_path
-        within(".environment-banner") do
+        within("#environment-banner") do
           expect(page).to have_content("DEVELOPMENT ENVIRONMENT")
         end
       end
