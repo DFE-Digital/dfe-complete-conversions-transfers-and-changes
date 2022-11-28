@@ -1,6 +1,7 @@
-<% content_for :pre_content_nav do %>
-  <%= govuk_back_link(href: project_contacts_path(@project)) %>
-<% end %>
+
+  <% content_for :pre_content_nav do %>
+    <% render partial: "shared/back_link", locals: {href: project_contacts_path(@project)} %>
+  <% end %>
 
 <h1 class="govuk-heading-l"><%= t("contact.edit.title") %></h1>
 

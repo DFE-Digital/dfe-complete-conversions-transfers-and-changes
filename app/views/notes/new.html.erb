@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <%= govuk_back_link(href: back_link_destination(@note)) %>
+  <% render partial: "shared/back_link", locals: {href: back_link_destination(@note)} %>
 <% end %>
 
 <div class="govuk-grid-row govuk-body">
