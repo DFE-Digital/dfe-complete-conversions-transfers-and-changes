@@ -35,16 +35,14 @@ $govuk-global-styles: true;
   padding-left: 0;
 }
 
-.task-checkboxes {
+.task-actions__wrapper {
+  margin-bottom: govuk-spacing(9);
+
   .govuk-checkboxes__item {
     label {
       @extend .govuk-\!-font-weight-bold;
     }
   }
-}
-
-.task-actions__wrapper {
-  margin-bottom: govuk-spacing(9);
 }
 
 .task-action__wrapper {

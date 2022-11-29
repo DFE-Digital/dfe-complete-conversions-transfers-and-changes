@@ -16,8 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The "Cancel" link on the new note page takes the user back to the task page if
   the note is a task-level note.
+- The text of the "Not applicable" checkboxes is bold to match the other task
+  checkboxes.
 
-## Content
+### Content
 
 ## [Release 8][release-8]
 
