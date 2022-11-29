@@ -3,7 +3,7 @@ class Conversion::Involuntary::ProjectsController < Conversion::ProjectsControll
     @note = Note.new(**note_params, user_id: user_id)
     @project = Conversion::Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
 
-    authorize @project, policy_class: ProjectPolicy
+    authorize @project
 
     if @project.valid?
       ActiveRecord::Base.transaction do

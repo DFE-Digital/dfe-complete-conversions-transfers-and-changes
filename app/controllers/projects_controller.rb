@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.includes(sections: [:tasks]).find(params[:id])
-    authorize @project, policy_class: ProjectPolicy
+    authorize @project
   end
 
   private def notify_team_leaders

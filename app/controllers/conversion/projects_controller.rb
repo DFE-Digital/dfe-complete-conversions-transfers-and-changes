@@ -1,6 +1,6 @@
 class Conversion::ProjectsController < ProjectsController
   def new
-    authorize Conversion::Project, policy_class: ProjectPolicy
+    authorize Conversion::Project
     @project = Conversion::Project.new
   end
 
