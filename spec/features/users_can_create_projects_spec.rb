@@ -5,7 +5,7 @@ RSpec.feature "Users can create new projects" do
 
   before do
     sign_in_with_user(regional_delivery_officer)
-    visit new_project_path
+    visit conversion_voluntary_new_path
   end
 
   context "when the URN and UKPRN are valid" do
@@ -34,7 +34,7 @@ RSpec.feature "Users can create new projects" do
         fill_in "Year", with: two_weeks_ago.year
       end
 
-      fill_in "project-advisory-board-conditions-field", with: "This school must:\n1. Do this\n2. And that"
+      fill_in "Advisory board conditions", with: "This school must:\n1. Do this\n2. And that"
 
       fill_in "Handover comments", with: "A new handover comment"
 
