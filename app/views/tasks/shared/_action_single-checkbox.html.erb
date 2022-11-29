@@ -2,8 +2,7 @@
 
   <%= form.govuk_check_boxes_fieldset "action-#{action.id}",
         multiple: false,
-        legend: {text: action.title, hidden: true},
-        classes: "task-checkboxes" do %>
+        legend: {text: action.title, hidden: true} do %>
     <%= form.govuk_check_box "action-#{action.id}",
                             1,
                             0,
