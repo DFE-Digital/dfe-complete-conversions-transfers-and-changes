@@ -21,6 +21,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Content
 
+- Iterate content with things we learned from private beta and regional delivery
+  officers
+
 ## [Release 8][release-8]
 
 ### Features
