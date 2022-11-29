@@ -30,6 +30,7 @@ RSpec.feature "Users can create and view task level notes" do
 
     expect(page).to have_current_path(new_project_note_path(project, task_id: task_id))
     expect(page).to have_field("note[task_id]", type: :hidden, with: task_id)
+    expect(page).to have_link("Cancel", href: project_task_path(project_id, task_id))
 
     fill_in "Enter note", with: new_note_body
 
