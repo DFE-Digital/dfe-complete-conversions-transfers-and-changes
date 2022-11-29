@@ -6,9 +6,8 @@ tasks:
       You must confirm the conversion date within 3 working days of receiving
       the Baseline email. Indicate on the Baseline that the school is on track
       to open.
-
     actions:
-      - title: Confirm the school is on track to open on the provisional date
+      - title: Confirm the school is on track to open on the target date
         guidance_summary: How to check the Baseline
         guidance_text: |
           The Academies Operational Practice Unit will usually email the
@@ -24,7 +23,7 @@ tasks:
           * the information about the school is correct
 
           Enter yes if the project is on track to convert, or no if it will not
-          open on the provisional date.
+          open on the target date.
 
           **What to do if your school is not on the Baseline**
 
@@ -42,7 +41,6 @@ tasks:
           correct Baseline spreadsheet.
 
           Email the Academy Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to tell them if you have had to move or add the school to the correct Baseline.
-
   - slug: complete-and-send-single-worksheet
     title: Complete and send Single worksheet
     hint: |
@@ -62,26 +60,24 @@ tasks:
           Send the approved Single worksheet to Academies Operational Practice
           Unit
         hint: |
-          Send the Single worksheet and, if needed, the Direction to transfer and Trust modification order to [academiesdelivery.operations@education.gov.uk.](mailto:academiesdelivery.operations@education.gov.uk)
+          Send the Single worksheet and, if needed, the Direction to transfer and Trust modification order to [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk).
         guidance_summary: When you must complete this
         guidance_text: |
           The deadline for this work is normally 5 working days after the
           Baseline is confirmed. The exact deadline will be in the baseline
           email sent by The Academies Operational Practice Unit.
-
   - slug: confirm-school-has-completed-all-actions
     title: Confirm the school has completed all actions
     hint: |
-      Check the school have completed all their tasks and save their responses in the school's SharePoint folder.
+      Check the school has completed all their tasks and save their responses in the school's SharePoint folder.
     actions:
       - title: Email the main contact for the conversion
         guidance_summary: How to structure your email
         guidance_text: |
           You should ask them to check and confirm they've completed all tasks.
 
-          You can [use the email template (opens in a new tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BA4E75C24-7E01-4732-9065-EEC840AFE132%7D&file=RSCApprovaltoAcademyOpeningDeskInstructions20200922.docx&action=default&mobileredirect=true) on pages 19 and 20 in your
+          You can [use the email template (opens in new tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BA4E75C24-7E01-4732-9065-EEC840AFE132%7D&file=RSCApprovaltoAcademyOpeningDeskInstructions20200922.docx&action=default&mobileredirect=true) on pages 19 and 20 in your
           desk instructions to help structure your email.
-
       - title:
           Save the responses to the checklist in the school's SharePoint folder
         guidance_summary: What to do if the school has not completed the tasks
@@ -95,7 +91,6 @@ tasks:
           3. email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) with the new date
           4. change the date in KIM
           5. inform the regional delivery officer who started on this project
-
   - slug: confirm-all-conditions-met
     title: Confirm all conditions have been met
     hint: |
@@ -113,7 +108,6 @@ tasks:
       3. email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) with the new date
       4. change the date in KIM
       5. inform the regional delivery officer who started on this project
-
     actions:
       - title:
           Email Academies Operational Practice Unit to confirm all conditions
@@ -121,7 +115,6 @@ tasks:
         guidance_summary: How to confirm if conditions have been met
         guidance_text: |
           You must email the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk) to confirm if all conditions are met for this school and it will open as an academy on the provisional conversion date.
-
           The email only needs to confirm if all conditions have been met, or
           not. You do not need to go into detail.
 
@@ -131,27 +124,24 @@ tasks:
           * commercial transfer agreement signed
           * leases agreed and signed
           * risk protection arrangement in place and insurer confirmed
-          * relevant documents signed and sealed
-
+          * relevant documents signed
   - slug: confirm-opening-date-with-school
     title: Confirm opening date with the school
     hint: |
       Once you've confirmed that all conditions have been met, contact the
       school and trust to tell them they can convert on the provisional conversion
       date.
-
     actions:
       - title: Email relevant information to your main contact
         guidance_summary: What to tell the school
         guidance_text: |
           Email your main contact at the school or trust.
-
           Your email should include:
 
-          * confirmation the school will convert on the provisional date
-          * the school's new URN (unique reference number)
+          * confirmation the school will convert on the target date
+          * the school's new URN
           * all signed and sealed legal documents
-          * the [Grant expenditure certificate (opens in a new tab)](https://www.gov.uk/government/publications/academy-support-grant) that they need to complete and return
+          * the [Grant expenditure certificate (opens in new tab)](https://www.gov.uk/government/publications/academy-support-grant) that they need to complete and return
 
           It can be helpful to mention that they'll soon get some welcome emails from other teams in government. These will contain more information about funding and opening as an academy.
 
