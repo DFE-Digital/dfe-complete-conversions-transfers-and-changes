@@ -7,7 +7,7 @@ tasks:
       the Baseline email. Indicate on the Baseline that the school is on track
       to open.
     actions:
-      - title: Confirm the school is on track to open on the target date
+      - title: Confirm the school is on track to open on the provisional date
         guidance_summary: How to check the Baseline
         guidance_text: |
           The Academies Operational Practice Unit will usually email the
@@ -23,7 +23,7 @@ tasks:
           * the information about the school is correct
 
           Enter yes if the project is on track to convert, or no if it will not
-          open on the target date.
+          open on the provisional date.
 
           **What to do if your school is not on the Baseline**
 
@@ -138,7 +138,7 @@ tasks:
           Email your main contact at the school or trust.
           Your email should include:
 
-          * confirmation the school will convert on the target date
+          * confirmation the school will convert on the provisional date
           * the school's new URN
           * all signed and sealed legal documents
           * the [Grant expenditure certificate (opens in new tab)](https://www.gov.uk/government/publications/academy-support-grant) that they need to complete and return
