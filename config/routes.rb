@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :projects, only: %i[index show new create] do
+  resources :projects, only: %i[index show] do
     collection do
       get "completed"
     end
