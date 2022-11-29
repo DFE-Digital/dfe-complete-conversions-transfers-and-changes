@@ -5,6 +5,8 @@ tasks:
     optional: true
     actions:
       - type: subheading
+        title: Attend the handover with the regional delivery officer
+      - type: single-checkbox
         title:
           Review the project information, check the documents and carry out
           research
@@ -27,7 +29,7 @@ tasks:
           * Project information, such as advisory board conditions
           * School or trust website for more information about the school
           * Google maps for potential land issues
-      - type: subheading
+      - type: single-checkbox
         title:
           Make notes and write questions to ask the regional delivery officer
         guidance_summary: What to make notes about
@@ -35,7 +37,7 @@ tasks:
           Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.
 
           This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.
-      - type: subheading
+      - type: single-checkbox
         title: Attend handover meeting with regional delivery officer
         hint: Discuss any questions you have about the project in the meeting.
 
