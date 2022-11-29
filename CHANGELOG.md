@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Features
+
+#### Added
+
+#### Changed
+
+#### Fixed
+
+- The "Cancel" link on the new note page takes the user back to the task page if
+  the note is a task-level note.
+
+## Content
+
 ## [Release 8][release-8]
 
 ### Features
