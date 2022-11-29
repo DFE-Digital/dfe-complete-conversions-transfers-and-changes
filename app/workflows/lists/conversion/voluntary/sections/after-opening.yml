@@ -31,13 +31,11 @@ tasks:
           * signatures
           * home addresses
           * any other personal information
-
       - title: Save relevant documents in the school's SharePoint folder
       - title: Send relevant documents to the funding team
         guidance_summary: Help sending documents
         guidance_text: |
-          Send the redacted documents to the funding team at [FundingAgreements.CONVERTERS@education.gov.uk](mailto:FundingAgreements.CONVERTERS@education.gov.uk).
-
+          Send the redacted documents to the funding team at [fundingagreements.converters@education.gov.uk](mailto:fundingagreements.converters@education.gov.uk).
   - slug: update-esfa-data-in-kim
     title: Update ESFA data in KIM
     hint:
@@ -57,14 +55,13 @@ tasks:
           * falling rolls
           * fluctuation in Key Stage 2 or 4 performance
           * enquires about expanding the age range or any other [significant changes (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Significant-Change.aspx?OR=Teams-HL&amp;CT=1663336368280&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMjA3MzEwMTAwNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3d%3d)
-          * audit trail for resolved disputes with the local authority or complex
+          * audit trail for resolved disputes with the local authority
           * schools joining a single academy trust to enable it to become a multi-academy trust
-
   - slug: receive-grant-payment-certificate
     title: Receive grant payment certificate
     hint: |
       You should already have sent a copy of the [Grant payment certificate (opens in new tab)](https://www.gov.uk/government/publications/academy-support-grant)
-      when confirming the school's opening date.
+      when confirming the opening date.
     actions:
       - title:
           Check and save the Grant payment certificate in the school's
@@ -76,9 +73,9 @@ tasks:
           What to do if you have not received the Grant payment certificate
         guidance_text: |
           You should ask the school to send the certificate. You must record the
-          date each time you contact them in [the Support grant assurance report (opens in new tab)](https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true)
+          date each time you contact them in [the Support grant assurance report (opens in new tab)](https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true).
       - title: Update KIM with date certificate is received
-        hint: Find this information in the ESFA handover section within KIM
+        hint: Find this information in the ESFA handover section in KIM.
       - title: Update the Support grant assurance report spreadsheet
         hint: |
           You can [open the Support grant assurance report (opens in new tab)](https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true)
