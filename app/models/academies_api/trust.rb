@@ -10,8 +10,8 @@ class AcademiesApi::Trust < AcademiesApi::BaseApiModel
 
   def self.attribute_map
     {
-      original_name: "data.giasData.groupName",
-      companies_house_number: "data.giasData.companiesHouseNumber"
+      original_name: "giasData.groupName",
+      companies_house_number: "giasData.companiesHouseNumber"
     }
   end
 end

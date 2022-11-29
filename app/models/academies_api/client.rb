@@ -15,14 +15,14 @@ class AcademiesApi::Client
 
   def get_establishment(urn)
     begin
-      response = @connection.get("/establishment/urn/#{urn}")
+      response = @connection.get("/establishments/bulk", {urn:})
     rescue Faraday::Error => error
       raise Error.new(error)
     end
 
     case response.status
     when 200
-      Result.new(AcademiesApi::Establishment.new.from_json(response.body), nil)
+      Result.new(AcademiesApi::Establishment.new.from_hash(JSON.parse(response.body)[0]), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishment.errors.not_found", urn: urn)))
     else
@@ -32,14 +32,14 @@ class AcademiesApi::Client
 
   def get_trust(ukprn)
     begin
-      response = @connection.get("/v2/trust/#{ukprn}")
+      response = @connection.get("/v2/trusts/bulk", {ukprn:, establishments: false})
     rescue Faraday::Error => error
       raise Error.new(error)
     end
 
     case response.status
     when 200
-      Result.new(AcademiesApi::Trust.new.from_json(response.body), nil)
+      Result.new(AcademiesApi::Trust.new.from_hash(JSON.parse(response.body)["data"][0]), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     else

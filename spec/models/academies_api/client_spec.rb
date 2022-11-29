@@ -19,7 +19,7 @@ RSpec.describe AcademiesApi::Client do
     let(:client) { described_class.new(connection: fake_successful_establishment_connection(12345678, fake_response)) }
 
     context "when the establishment can be found" do
-      let(:fake_response) { [200, nil, {establishmentName: "Establishment Name"}.to_json] }
+      let(:fake_response) { [200, nil, [{establishmentName: "Establishment Name"}].to_json] }
 
       it "returns a Result with the establishment and no error" do
         result = client.get_establishment(12345678)
@@ -63,7 +63,7 @@ RSpec.describe AcademiesApi::Client do
   def fake_successful_establishment_connection(urn, response)
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/establishment/urn/#{urn}") do |env|
+        stub.get("/establishments/bulk?urn=#{urn}") do |_env|
           response
         end
       end
@@ -73,7 +73,7 @@ RSpec.describe AcademiesApi::Client do
   def fake_failed_establishment_connection(urn)
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/establishment/urn/#{urn}") do |env|
+        stub.get("/establishments/bulk?urn=#{urn}") do |_env|
           raise Faraday::Error
         end
       end
@@ -84,7 +84,7 @@ RSpec.describe AcademiesApi::Client do
     let(:client) { described_class.new(connection: fake_successful_trust_connection(10061021, fake_response)) }
 
     context "when the trust can be found" do
-      let(:fake_response) { [200, nil, {data: {giasData: {groupName: "THE ROMERO CATHOLIC ACADEMY"}}}.to_json] }
+      let(:fake_response) { [200, nil, {data: [{giasData: {groupName: "THE ROMERO CATHOLIC ACADEMY"}}]}.to_json] }
 
       it "returns a Result with the establishment and no error" do
         result = client.get_trust(10061021)
@@ -134,7 +134,7 @@ RSpec.describe AcademiesApi::Client do
   def fake_successful_trust_connection(ukprn, response)
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/v2/trust/#{ukprn}") do |env|
+        stub.get("/v2/trusts/bulk?ukprn=#{ukprn}&establishments=false") do |_env|
           response
         end
       end
@@ -144,7 +144,7 @@ RSpec.describe AcademiesApi::Client do
   def fake_failed_trust_connection(ukprn)
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/v2/trust/#{ukprn}") do |env|
+        stub.get("/v2/trusts/bulk?ukprn=#{ukprn}&establishments=false") do |_env|
           raise Faraday::Error
         end
       end
