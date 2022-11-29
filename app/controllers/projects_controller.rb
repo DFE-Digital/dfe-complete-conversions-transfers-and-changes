@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
 
-  DEFAULT_WORKFLOW_ROOT = Rails.root.join("app", "workflows", "lists", "conversion").freeze
+  DEFAULT_WORKFLOW_ROOT = Rails.root.join("app", "workflows", "lists", "conversion", "voluntary").freeze
 
   def index
     authorize Project
@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.includes(sections: [:tasks]).find(params[:id])
-    authorize @project
+    authorize @project, policy_class: ProjectPolicy
   end
 
   def new

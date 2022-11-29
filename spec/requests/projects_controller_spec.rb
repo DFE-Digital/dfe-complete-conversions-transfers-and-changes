@@ -95,5 +95,22 @@ RSpec.describe ProjectsController, type: :request do
         expect(perform_request).to render_template("pages/api_client_timeout")
       end
     end
+
+    context "when the creating user is not a regional delivery officer" do
+      let(:caseworker) { create(:user, :caseworker) }
+
+      before do
+        mock_successful_authentication(caseworker.email)
+        allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(caseworker.id)
+      end
+
+      it "does not create the project and shows an error message" do
+        perform_request
+        expect(response).not_to render_template(:edit)
+        expect(response).to redirect_to(root_path)
+        follow_redirect!
+        expect(flash.alert).to eq I18n.t("unauthorised_action.message")
+      end
+    end
   end
 end

@@ -13,6 +13,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:establishment_sharepoint_link).of_type :text }
     it { is_expected.to have_db_column(:trust_sharepoint_link).of_type :text }
     it { is_expected.to have_db_column(:completed_at).of_type :datetime }
+    it { is_expected.to have_db_column(:type).of_type :string }
   end
 
   describe "Relationships" do
@@ -95,7 +96,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:urn]).to include(I18n.t("activerecord.errors.models.project.attributes.urn.no_establishment_found"))
+          expect(subject.errors[:urn]).to include(I18n.t("errors.attributes.urn.no_establishment_found"))
         end
       end
     end
@@ -113,7 +114,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:incoming_trust_ukprn]).to include(I18n.t("activerecord.errors.models.project.attributes.incoming_trust_ukprn.no_trust_found"))
+          expect(subject.errors[:incoming_trust_ukprn]).to include(I18n.t("errors.attributes.incoming_trust_ukprn.no_trust_found"))
         end
       end
     end
@@ -126,7 +127,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_first_of_the_month"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_first_of_the_month"))
         end
       end
 
@@ -135,7 +136,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_in_the_future"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_in_the_future"))
         end
       end
 
@@ -144,7 +145,7 @@ RSpec.describe Project, type: :model do
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("activerecord.errors.models.project.attributes.provisional_conversion_date.must_be_in_the_future"))
+          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_in_the_future"))
         end
       end
     end
