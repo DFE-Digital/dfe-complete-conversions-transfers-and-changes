@@ -28,10 +28,15 @@ Rails.application.routes.draw do
         get "new", to: "projects#new"
         post "new", to: "projects#create"
       end
+
+      namespace :voluntary do
+        get "new", to: "projects#new"
+        post "new", to: "projects#create"
+      end
     end
   end
 
-  resources :projects, only: %i[index show new create] do
+  resources :projects, only: %i[index show] do
     collection do
       get "completed"
     end

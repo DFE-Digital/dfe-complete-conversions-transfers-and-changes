@@ -1,4 +1,4 @@
-class Conversion::Involuntary::ProjectsController < Conversion::ProjectsController
+class Conversion::Voluntary::ProjectsController < Conversion::ProjectsController
   def create
     @note = Note.new(**note_params, user_id: user_id)
     @project = Conversion::Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
@@ -8,8 +8,8 @@ class Conversion::Involuntary::ProjectsController < Conversion::ProjectsControll
     if @project.valid?
       ActiveRecord::Base.transaction do
         @project.save
-        Conversion::Involuntary::Details.create(project: @project)
-        TaskListCreator.new.call(@project, workflow_root: Conversion::Involuntary::Details::WORKFLOW_PATH)
+        Conversion::Voluntary::Details.create(project: @project)
+        TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_PATH)
       end
 
       notify_team_leaders

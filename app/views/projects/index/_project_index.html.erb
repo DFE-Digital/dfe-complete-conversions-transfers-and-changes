@@ -9,7 +9,7 @@
 
     <% if policy(:project).new? %>
       <p><%= link_to t("project.index.new_button.text"),
-               new_project_path,
+               conversion_voluntary_new_path,
                class: "govuk-button",
                data: {module: "govuk-button"} %></p>
     <% end %>

@@ -1,13 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ProjectsController, type: :request do
-  let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
-
-  before do
-    mock_successful_authentication(regional_delivery_officer.email)
-    allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(regional_delivery_officer.id)
-  end
-
+RSpec.shared_examples "a conversion project" do
   describe "#create" do
     let(:project) { build(:project) }
     let(:project_params) { attributes_for(:project, regional_delivery_officer: nil) }
@@ -15,7 +8,7 @@ RSpec.describe ProjectsController, type: :request do
     let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
-      post projects_path, params: {project: {**project_params, note: note_params}}
+      post create_path, params: {conversion_project: {**project_params, note: note_params}}
       response
     end
 
@@ -45,7 +38,7 @@ RSpec.describe ProjectsController, type: :request do
 
       it "assigns the regional delivery officer, calls the TaskListCreator, and redirects to the project path" do
         expect(response).to redirect_to(project_path(new_project_record.id))
-        expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: ProjectsController::DEFAULT_WORKFLOW_ROOT)
+        expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: workflow_root)
         expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
       end
 
@@ -58,7 +51,7 @@ RSpec.describe ProjectsController, type: :request do
       it "sends a new project created email to team leaders" do
         expect(ActionMailer::MailDeliveryJob)
           .to(have_been_enqueued.on_queue("default")
-          .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, new_project_record]))
+                                .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, new_project_record]))
       end
 
       context "when the note body is empty" do
@@ -101,7 +94,7 @@ RSpec.describe ProjectsController, type: :request do
 
       before do
         mock_successful_authentication(caseworker.email)
-        allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(caseworker.id)
+        allow_any_instance_of(this_controller).to receive(:user_id).and_return(caseworker.id)
       end
 
       it "does not create the project and shows an error message" do

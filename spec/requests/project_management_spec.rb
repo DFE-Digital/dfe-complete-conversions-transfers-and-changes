@@ -10,7 +10,7 @@ RSpec.describe "Project management" do
     context "when the user is a regional delivery officer" do
       let(:user) { create(:user, :regional_delivery_officer) }
       it "allows the action and renders the new template" do
-        get new_project_path
+        get conversion_voluntary_new_path
         expect(response).to have_http_status(:success)
         expect(response).to render_template(:new)
       end
@@ -25,7 +25,7 @@ RSpec.describe "Project management" do
       let(:user) { create(:user, :caseworker) }
 
       it "redirects to the root path and displays a not authorized message" do
-        get new_project_path
+        get conversion_voluntary_new_path
         expect(response).not_to render_template(:new)
         expect(response).to redirect_to(root_path)
         follow_redirect!
@@ -42,7 +42,7 @@ RSpec.describe "Project management" do
       let(:user) { create(:user, :team_leader) }
 
       it "redirects to the root path and displays a not authorized message" do
-        get new_project_path
+        get conversion_voluntary_new_path
         expect(response).not_to render_template(:new)
         expect(response).to redirect_to(root_path)
         follow_redirect!
