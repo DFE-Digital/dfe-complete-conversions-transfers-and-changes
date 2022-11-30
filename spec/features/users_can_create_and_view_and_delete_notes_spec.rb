@@ -39,6 +39,32 @@ RSpec.feature "Users can create and view notes" do
     expect(page.html).to include("<em>important</em>")
   end
 
+  context "when the project is a conversion project" do
+    let(:project) { create(:project, type: "Conversion::Project") }
+
+    scenario "the user can still create a note" do
+      visit project_notes_path(project_id)
+
+      expect_page_to_have_note(
+        user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
+      )
+
+      click_link "Add note" # Link styled as button
+
+      expect(page).to have_current_path(new_project_note_path(project))
+      expect(page).to have_link("Back", href: project_notes_path(project_id))
+      expect(page).to have_link("Cancel", href: project_notes_path(project_id))
+
+      fill_in "Enter note", with: new_note_body
+
+      click_button("Add note")
+
+      expect(page).to have_current_path(project_notes_path(project_id))
+      expect_page_to_have_note(user: user.full_name, date: Date.today.to_formatted_s(:govuk), body: new_note_body.delete("*"))
+      expect(page.html).to include("<em>important</em>")
+    end
+  end
+
   scenario "User edits a note" do
     visit project_notes_path(project_id)
 
