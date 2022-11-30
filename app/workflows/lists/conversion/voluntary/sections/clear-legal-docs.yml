@@ -13,12 +13,11 @@ tasks:
           tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
         guidance_summary: How to clear a Land questionnaire
         guidance_text: |
-          You must [check the school is using the right Land questionnaire (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-questionnaires).
+          You must [check the school is using the right Land questionnaire (opens in new tab)](https://www.gov.uk/government/publications/academy-land-questionnaires).
 
           You need to clear the Land questionnaire before the Master funding agreement and the Supplemental funding agreement.
 
           The Land questionnaire is critical. It is the basis for all land decisions.
-
           The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.
       - type: single-checkbox
         padding: reduced
@@ -98,6 +97,7 @@ tasks:
         title: Signed by the Secretary of State
         hint: |
           The Secretary of State, or somebody with the authority to act on their behalf, must sign the Supplemental funding agreement.
+
           Usually this is your team leader or the deputy director.
       - type: single-checkbox
         padding: reduced
@@ -267,6 +267,7 @@ tasks:
         title: Signed by the Secretary of State
         hint: |
           The Secretary of State, or somebody with the authority to act on their behalf, must sign the Deed of variation.
+
           Usually this is your team leader or the deputy director.
       - type: single-checkbox
         padding: reduced
@@ -325,11 +326,11 @@ tasks:
           Make sure information in the Direction to transfer is correct and compare it against the model document.
         guidance_summary: Help checking for changes
         guidance_text: |
-          You need to [compare the Direction to transfer against the model documents (opens in a new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
+          You need to [compare the Direction to transfer against the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
 
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
 
-          You'll need to [contact the policy team (opens in a new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about any changes to clause text.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about any changes to clause text.
       - type: single-checkbox
         padding: reduced
         title: Received
@@ -347,7 +348,7 @@ tasks:
     title: 125 year lease
     hint:
       The 125 year lease is the most common way for land to be transferred
-      between the Local authority and the trust.
+      between the local authority and the trust.
     optional: true
     actions:
       - type: subheading
@@ -411,7 +412,7 @@ tasks:
           will
       - type: single-checkbox
         title:
-          Receive email from the school confirming the Tennancy at will has all
+          Receive email from the school confirming the Tenancy at will has all
           relevant signatures
       - type: single-checkbox
         title:
