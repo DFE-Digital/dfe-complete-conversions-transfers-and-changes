@@ -67,6 +67,11 @@ example:
 AUTO_FIX_FORMATTING=1 ONLY_LINTING=1 script/test
 ```
 
+### Running accessibility tests
+
+To run accessibility tests locally, see the
+[accessibility tests documenation](/doc/accessibility-tests.md) for details.
+
 ## Environment variables
 
 See [.env.example](./.env.example)
