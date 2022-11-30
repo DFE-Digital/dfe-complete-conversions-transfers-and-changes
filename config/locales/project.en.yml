@@ -104,9 +104,9 @@ en:
         advisory_board_date: Date of advisory board
     hint:
       project:
-        urn: <a href="https://www.get-information-schools.service.gov.uk/Search" class="govuk-link" rel="noreferrer noopener" target="_blank">Search Get Information About Schools (GIAS) to find the school's URN (opens in a new tab)</a>.
+        urn: <a href="https://www.get-information-schools.service.gov.uk/Search" class="govuk-link" rel="noreferrer noopener" target="_blank">Search Get Information About Schools (GIAS) to find the school's URN (opens in new tab)</a>.
           This is the URN of the existing school which is converting to an academy. A URN is a 6-digit number.
-        incoming_trust_ukprn: <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in a new tab)</a>.
+        incoming_trust_ukprn: <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in new tab)</a>.
           A UKPRN is an 8-digit number that always starts with a 1.
         caseworker_id: The caseworker responsible for this project
         provisional_conversion_date: The provisional conversion date is always the 1st of the month.
