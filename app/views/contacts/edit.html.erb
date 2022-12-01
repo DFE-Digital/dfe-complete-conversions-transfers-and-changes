@@ -6,7 +6,7 @@
 
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for [@project, @contact] do |form| %>
+    <%= form_for [@project, @contact], url: project_contact_path(@project) do |form| %>
       <%= form.govuk_error_summary %>
 
       <%= form.govuk_collection_select :category,
