@@ -3,4 +3,4 @@
 set -e
 
 echo "==> Running accessibility checks..."
-bundle exec rspec --tag accessibility
+NO_COVERAGE=true bundle exec rspec --tag accessibility

@@ -16,7 +16,7 @@
 
 require "simplecov"
 SimpleCov.minimum_coverage 100
-SimpleCov.start "rails"
+SimpleCov.start "rails" unless ENV.fetch("NO_COVERAGE", false) == "true"
 
 # Add Capybara
 require "capybara/rspec"
