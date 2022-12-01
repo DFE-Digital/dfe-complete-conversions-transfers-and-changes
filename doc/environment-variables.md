@@ -45,3 +45,14 @@ This is the 'Client Keys' for the project in Sentry UI, it is a url starting
 https://
 
 See: https://docs.sentry.io/product/sentry-basics/dsn-explainer/
+
+`NO_COVERAGE`
+
+Set this to `true` to stop Simplecov generating coverage reports.
+
+Not setting the variable or setting it to `false` will run Simplecov, this is
+the default behaviour.
+
+We only use this in CI to run our AXE accessibility checks. See:
+
+https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/blob/505ed05431c8398db9dd3ceb51918b77ea148761/script/all/test-accessibility#L6
