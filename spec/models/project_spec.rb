@@ -281,9 +281,9 @@ RSpec.describe Project, type: :model do
 
       ordered_projects = Project.by_provisional_conversion_date
 
-      expect(ordered_projects[0]).to eq first_project
-      expect(ordered_projects[1]).to eq middle_project
-      expect(ordered_projects[2]).to eq last_project
+      expect(ordered_projects[0].id).to eq first_project.id
+      expect(ordered_projects[1].id).to eq middle_project.id
+      expect(ordered_projects[2].id).to eq last_project.id
     end
   end
 
