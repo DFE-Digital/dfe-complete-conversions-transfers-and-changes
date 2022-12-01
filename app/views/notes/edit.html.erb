@@ -4,7 +4,7 @@
 
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for [@project, @note] do |form| %>
+    <%= form_for [@project, @note], url: project_note_path(@project) do |form| %>
       <%= form.govuk_error_summary %>
 
       <%= form.govuk_text_area :body, label: {tag: "h1", size: "l"} %>
