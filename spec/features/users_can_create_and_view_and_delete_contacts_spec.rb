@@ -8,7 +8,7 @@ RSpec.feature "Users can create and view and delete contacts" do
 
   let!(:contact) { create(:contact, project: project) }
   let(:user) { create(:user) }
-  let(:project) { create(:project) }
+  let(:project) { create(:conversion_project) }
   let(:project_id) { project.id }
 
   scenario "User views contacts" do

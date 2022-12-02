@@ -9,7 +9,7 @@ RSpec.describe TaskListCreator do
   end
 
   describe "#call" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
 
     subject! { task_list_creator.call(project, workflow_root: mock_workflow_root) }
 

@@ -10,7 +10,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#index" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -30,7 +30,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#new" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -50,7 +50,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#create" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:mock_contact) { build(:contact) }
     let(:new_contact_name) { "Josephine Bloggs" }
@@ -90,7 +90,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#edit" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }
@@ -118,7 +118,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#update" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }
@@ -166,7 +166,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#destroy" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }
@@ -185,7 +185,7 @@ RSpec.describe ContactsController, type: :request do
   end
 
   describe "#confirm_destroy" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:contact) }
     let(:contact_id) { contact.id }

@@ -5,7 +5,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
   let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
   let!(:caseworker) { create(:user, :caseworker) }
   let(:user) { create(:user, :team_leader) }
-  let(:project) { create(:project, :without_any_assigned_roles) }
+  let(:project) { create(:conversion_project, :without_any_assigned_roles) }
   let(:project_id) { project.id }
 
   before do

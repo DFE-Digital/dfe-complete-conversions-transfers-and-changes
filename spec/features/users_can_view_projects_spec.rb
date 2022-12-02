@@ -14,14 +14,14 @@ RSpec.feature "Users can view a list of projects" do
   let(:user_2) { create(:user, email: "user2@education.gov.uk") }
   let!(:unassigned_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100001,
       provisional_conversion_date: Date.today.beginning_of_month + 3.years
     )
   }
   let!(:user_1_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100002,
       caseworker: user_1,
       provisional_conversion_date: Date.today.beginning_of_month + 2.year
@@ -29,7 +29,7 @@ RSpec.feature "Users can view a list of projects" do
   }
   let!(:user_2_completed_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100004,
       caseworker: user_2,
       regional_delivery_officer: regional_delivery_officer,
@@ -39,7 +39,7 @@ RSpec.feature "Users can view a list of projects" do
   }
   let!(:user_2_project) {
     create(
-      :project,
+      :conversion_project,
       urn: 100003,
       caseworker: user_2,
       regional_delivery_officer: regional_delivery_officer,
@@ -146,7 +146,7 @@ RSpec.feature "Users can view a single project" do
   scenario "by following a link from the home page" do
     sign_in_with_user(create(:user, :team_leader))
 
-    single_project = create(:project, urn: urn)
+    single_project = create(:conversion_project, urn: urn)
 
     visit root_path
     click_on establishment.name
@@ -156,7 +156,7 @@ RSpec.feature "Users can view a single project" do
   context "when a project does not have an assigned caseworker" do
     scenario "the project page shows an unassigned caseworker" do
       sign_in_with_user(create(:user, :team_leader))
-      single_project = create(:project, urn: urn)
+      single_project = create(:conversion_project, urn: urn)
 
       visit project_information_path(single_project)
       expect(page).to have_content(I18n.t("project.summary.caseworker.unassigned"))

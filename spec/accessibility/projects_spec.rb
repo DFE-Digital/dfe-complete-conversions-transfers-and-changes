@@ -10,7 +10,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "in progress projects page" do
-    project = create(:project, regional_delivery_officer: user)
+    project = create(:conversion_project, regional_delivery_officer: user)
     visit projects_path
 
     expect(page).to have_content(project.urn)
@@ -18,7 +18,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "completed projects page" do
-    completed_project = create(:project, regional_delivery_officer: user, completed_at: Date.today)
+    completed_project = create(:conversion_project, regional_delivery_officer: user, completed_at: Date.today)
     visit completed_projects_path
 
     expect(page).to have_content(completed_project.urn)
@@ -40,7 +40,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "project completed page" do
-    project = create(:project, regional_delivery_officer: user)
+    project = create(:conversion_project, regional_delivery_officer: user)
     visit project_path(project)
 
     click_on I18n.t("project.complete.submit_button")

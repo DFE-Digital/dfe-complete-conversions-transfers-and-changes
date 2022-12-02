@@ -23,7 +23,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_team_leader" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -39,7 +39,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#update_team_leader" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project, team_leader: nil) }
+    let(:project) { create(:conversion_project, team_leader: nil) }
     let(:project_id) { project.id }
     let(:team_leader) { create(:user, :team_leader) }
 
@@ -59,7 +59,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_regional_delivery_officer" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -75,7 +75,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#update_regional_delivery_officer" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project, regional_delivery_officer: nil) }
+    let(:project) { create(:conversion_project, regional_delivery_officer: nil) }
     let(:project_id) { project.id }
     let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
@@ -95,7 +95,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_caseworker" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -111,7 +111,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#update_caseworker" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:project, caseworker: nil) }
+    let(:project) { create(:conversion_project, caseworker: nil) }
     let(:project_id) { project.id }
     let(:caseworker) { create(:user, :caseworker) }
 

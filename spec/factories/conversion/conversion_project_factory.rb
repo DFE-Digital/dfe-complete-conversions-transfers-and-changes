@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :project, class: "Project" do
+  factory :conversion_project, class: "Project" do
     type { "Conversion::Project" }
     urn { 123456 }
     incoming_trust_ukprn { 10061021 }

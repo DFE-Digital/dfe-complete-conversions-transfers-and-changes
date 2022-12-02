@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.shared_examples "a conversion project" do
   describe "#create" do
-    let(:project) { build(:project) }
-    let(:project_params) { attributes_for(:project, regional_delivery_officer: nil) }
+    let(:project) { build(:conversion_project) }
+    let(:project_params) { attributes_for(:conversion_project, regional_delivery_officer: nil) }
     let(:note_params) { {body: "new note"} }
     let!(:team_leader) { create(:user, :team_leader) }
 

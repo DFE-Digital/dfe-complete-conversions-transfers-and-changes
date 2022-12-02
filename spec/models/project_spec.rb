@@ -27,7 +27,7 @@ RSpec.describe Project, type: :model do
     describe "accept nested attributes for note" do
       let(:user) { create(:user) }
       let(:note_attributes) { attributes_for(:note, body: note_body, project: nil, user: user) }
-      let(:project_attributes) { attributes_for(:project) }
+      let(:project_attributes) { attributes_for(:conversion_project) }
 
       before { Project.create!(**project_attributes, notes_attributes: [note_attributes]) }
 
@@ -52,7 +52,7 @@ RSpec.describe Project, type: :model do
     describe "delete related entities" do
       context "when the project is deleted" do
         it "destroys all the related notes, contacts, sections leaving nothing orphaned" do
-          project = create(:project)
+          project = create(:conversion_project)
 
           create_list(:note, 3, project: project)
           create_list(:contact, 3, project: project)
@@ -123,7 +123,7 @@ RSpec.describe Project, type: :model do
       it { is_expected.to validate_presence_of(:provisional_conversion_date) }
 
       context "when the date is not on the first of the month" do
-        subject { build(:project, provisional_conversion_date: Date.today.months_since(6).at_end_of_month) }
+        subject { build(:conversion_project, provisional_conversion_date: Date.today.months_since(6).at_end_of_month) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
@@ -132,7 +132,7 @@ RSpec.describe Project, type: :model do
       end
 
       context "when date is today" do
-        subject { build(:project, provisional_conversion_date: Date.today) }
+        subject { build(:conversion_project, provisional_conversion_date: Date.today) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
@@ -141,7 +141,7 @@ RSpec.describe Project, type: :model do
       end
 
       context "when date is in the past" do
-        subject { build(:project, provisional_conversion_date: Date.yesterday) }
+        subject { build(:conversion_project, provisional_conversion_date: Date.yesterday) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
@@ -275,9 +275,9 @@ RSpec.describe Project, type: :model do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     it "shows the project that will convert earliest first" do
-      last_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 3.years)
-      middle_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 2.years)
-      first_project = create(:project, provisional_conversion_date: Date.today.beginning_of_month + 1.year)
+      last_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 3.years)
+      middle_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 2.years)
+      first_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 1.year)
 
       ordered_projects = Project.by_provisional_conversion_date
 
@@ -290,14 +290,14 @@ RSpec.describe Project, type: :model do
   describe "#completed?" do
     context "when the completed_at is nil, i.e. the project is active" do
       it "returns false" do
-        project = build(:project, completed_at: nil)
+        project = build(:conversion_project, completed_at: nil)
         expect(project.completed?).to eq false
       end
     end
 
     context "when the completed_at is set, i.e. the project is completed" do
       it "returns true" do
-        project = build(:project, completed_at: DateTime.now)
+        project = build(:conversion_project, completed_at: DateTime.now)
         expect(project.completed?).to eq true
       end
     end
@@ -308,9 +308,9 @@ RSpec.describe Project, type: :model do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "only returns completed projects" do
-        completed_project_1 = create(:project, completed_at: Date.today - 1.year)
-        completed_project_2 = create(:project, completed_at: Date.today - 1.year)
-        open_project = create(:project, completed_at: nil)
+        completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year)
+        completed_project_2 = create(:conversion_project, completed_at: Date.today - 1.year)
+        open_project = create(:conversion_project, completed_at: nil)
 
         projects = Project.completed
 
@@ -323,9 +323,9 @@ RSpec.describe Project, type: :model do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "only returns open projects" do
-        completed_project = create(:project, completed_at: Date.today - 1.year)
-        open_project_1 = create(:project, completed_at: nil)
-        open_project_2 = create(:project, completed_at: nil)
+        completed_project = create(:conversion_project, completed_at: Date.today - 1.year)
+        open_project_1 = create(:conversion_project, completed_at: nil)
+        open_project_2 = create(:conversion_project, completed_at: nil)
 
         projects = Project.open
 
