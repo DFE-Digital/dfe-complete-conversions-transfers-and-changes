@@ -1,0 +1,121 @@
+title: Project kick-off
+tasks:
+  - slug: handover-with-rdo
+    title: Handover with regional delivery officer
+    actions:
+      - title:
+          Review the project information, check the documents and carry out
+          research
+        hint:
+          Check that no information is missing from the existing project
+          documents and there are no errors.
+        guidance_summary: What to check for
+        guidance_text: |
+          You should check existing project documents, including:
+          * Academy order
+          * Application to convert
+          Check that no information is missing and there are no errors.
+          You should also research the background of the project before you meet with the regional delivery officer.
+          Things to check during your background research include:
+          * Project information, such as advisory board conditions
+          * School or trust website for more information about the school
+          * Google maps for potential land issues
+      - title:
+          Make notes and write questions to ask the regional delivery officer
+        guidance_summary: What to make notes about
+        guidance_text: |
+          Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.
+          This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.
+      - title: Attend handover meeting with regional delivery officer
+        hint: Discuss any questions you have about the project in the meeting.
+
+  - slug: external-stakeholder-kick-off
+    title: External stakeholder kick-off
+    hint:
+      You should start this work after you've had the handover with the regional
+      delivery officer.
+    actions:
+      - title: Send introductory emails
+        hint: |
+          Introduce yourself to the trust and their solicitors. You should also contact the local authority, but do this separately.
+        guidance_summary: What to include in introductory emails
+        guidance_text: |
+          You can [choose an email template (opens in new tab)](https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC) to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.
+          This will help you to:
+          * organise kick-off meetings
+          * clarify roles and expectations
+          * establish dates and deadlines
+          * provide links to documents that need to be completed
+          * agree ways of working
+          You should aim to do this in the first week of picking up the project.
+          Ideally the kick-off meeting should take place within the first couple of weeks.
+      - title:
+          Check and save the local authority proforma in the school's SharePoint
+          folder
+        guidance_summary: Help with the local authority proforma
+        guidance_text: |
+          The regional delivery officer should have sent the local authority proforma to the local authority to complete.
+          If you haven't received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.
+      - title: Confirm the provisional conversion date with the local authority
+        hint:
+          Check that the local authority has capacity to convert the school by
+          the provisional date.
+        guidance_summary:
+          What to do if the local authority does not have capacity
+        guidance_text: |
+          The trust will have given a provisional date they want to convert on.
+          Tell them if the local authority cannot complete the conversion by the provisional date.
+          If the local authority cannot complete the conversion by the provisional date, you'll need to work with the trust and local authority to agree a new date.
+      - title: Send invites to the kick-off meeting or call
+        hint: Check who the trust would like to attend the kick-off meeting.
+        guidance_summary: How to arrange the kick-off meeting
+        guidance_text: |
+          Your introductory email should have included some possible dates for a kick-off meeting.
+          Once the trust have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It's likely to be a video call over Microsoft Teams.
+          Some trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders.
+
+  - slug: process-conversion-grant
+    title: Process grants
+    guidance_summary: How to process grants
+    guidance_text: |
+      Check the converter support grant claim form is ready and confirm the Sponsor Support Grant type and amount. Send the venfor account details and other information to the Grant payments team.
+      Start this as soon as possible. Schools and trusts can start getting charged by solicitors and the local authority early in the process.
+    actions:
+      - title: Check and confirm the school's grant eligibility
+        hint: |
+          A school may have already had some of the grant if they've tried to become an academy before.
+        guidance_summary: How to check grant eligibility
+        guidance_text: |
+          A converting school will be eligible for a £25,000 grant to help with the costs of becoming an academy.
+          If the school has applied to become an academy in the past but not completed the process, they may already have been given some of the money.
+          Check in the school's SharePoint folder to see if a converter support grant claim form has been submitted before.
+          You can also email the Grant payments team at [cfugrantpayments.regionsgroup@education.gov.uk](mailto:cfugrantpayments.regionsgroup@education.gov.uk) to check if the school has previously received any money, and how much they're still eligible for.
+          You must include this information in your email to the Grant payments team later.
+      - title: Receive, check and save the converter support grant claim form
+        hint: Make sure no information is missing.
+        guidance_summary: How to check and save the form
+        guidance_text: |
+          The trust must send you the grant claim form.
+          Check it's complete and save it in the school's SharePoint folder.
+
+      - title: Send the grant information to the payments team
+        hint: |
+          Send them the Academy order and Grant claim form.
+        guidance_summary: Guidance on what information to send
+        guidance_text: |
+          You'll find the Direct academy order and Grant claim form in the school's SharePoint folder.
+          You should send the documents to the Grant payments team by email at [cfugrantpayments.regionsgroup@education.gov.uk](mailto:cfugrantpayments.regionsgroup@education.gov.uk).
+          The subject line of the email must include the:
+          * region the school is in
+          * converter grant type
+          * support grant type
+          * school's name
+          The content of the email must include the:
+          * type of grant, or grants, needed
+          * amount of money the school is eligible for
+          * school's name
+          * trust it's joining
+          * provisional conversion date
+          It's helpful to include the school or trust's vendor account number too. The Grant payments team will need this to be able to send the money to whoever will receive it.
+
+      - title: Tell the trust the grant information as been sent

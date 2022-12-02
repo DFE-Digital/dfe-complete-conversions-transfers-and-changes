@@ -1,0 +1,405 @@
+title: Clear and sign legal documents
+tasks:
+  - slug: clear-and-sign-land-questionnaire
+    title: Land questionnaire
+    hint: |
+      Make sure that any proposals for the land meet legal requirements and ministerial preferences.
+    actions:
+      - type: subheading
+        title: Check and clear the Land questionnaire
+        hint:
+          You can [use the land transfer advice and guidance to check for common
+          problems (opens in new
+          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx).
+        guidance_summary: How to clear a Land questionnaire
+        guidance_text: |
+          You must [check the school is using the right Land questionnaire (opens in new tab)](https://www.gov.uk/government/publications/academy-land-questionnaires).
+          You need to clear the Land questionnaire before the Master funding agreement and the Supplemental funding agreement.
+          The Land questionnaire is critical. It is the basis for all land decisions.
+          The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by solicitor
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+  - slug: clear-and-sign-land-registry-title-plans
+    title: Land registry title plans
+    hint:
+      The Land registry title plans are an essential document in all
+      conversions.
+    actions:
+      - type: subheading
+        title: Check and clear the Land registry title plans
+        hint:
+          Check an official copy of the title plans for boundary issues and
+          buildings that have not been excluded.
+        guidance_summary: Help checking the Land registry title plans
+        guidance_text: |
+          Check you have an official copy of the title plans. An official copy will state that it's from the Land Registry, include a title plan and title number.
+          It's a good idea to look at the site on Google maps and compare that to the title plan. This can help you find out if there's anything to question on the title plan.
+          The boundary should include all school or trust buildings. If the land has become unregistered you should check the title plan.
+          Talk to your line manager or the relevant solicitor if you have questions about anything on the title plan.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+
+  - slug: clear-and-sign-supplemental-funding-agreement
+    title: Supplemental funding agreement
+    hint: |
+      Check the Supplemental funding agreement for changes from the model documents.
+    actions:
+      - type: subheading
+        title: Check and clear the Supplemental funding agreement
+        hint:
+          You can [view the model documents (opens in new
+          tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements)
+          to check for changes.
+        guidance_summary: Help checking the Supplemental funding agreement
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+          We only accept new Supplemental funding agreements that use the 2020 edition of the model documents.
+          Supplemental funding agreements from 2020 onwards and Master funding agreements from 2018 onwards are compatible.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by school or trust
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+      - type: subheading
+        title: Signed by the Secretary of State
+        hint: |
+          The Secretary of State, or somebody with the authority to act on their behalf, must sign the Supplemental funding agreement.
+          Usually this is your team leader or the deputy director.
+      - type: single-checkbox
+        padding: reduced
+        title: Sent to team leader or deputy director
+      - type: single-checkbox
+        padding: reduced
+        title: Document signed on behalf of the Secretary of State
+
+  - slug: clear-and-sign-church-supplemental-agreement
+    title: Church supplemental agreement
+    hint: |
+      This document is only required for Church of England and Catholic schools.
+    optional: true
+    actions:
+      - type: subheading
+        title: Check and clear the Church supplemental agreement
+        hint:
+          You can [view the model documents (opens in new
+          tab)](https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools)
+          to check for changes.
+        guidance_summary: Help checking for changes
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by school or trust
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by diocese
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+      - type: subheading
+        title: Signed by the Secretary of State
+        hint: |
+          The Secretary of State, or somebody with the authority to act on their behalf, must sign the Church supplemental agreement.
+          Usually this is your team leader or the deputy director.
+      - type: single-checkbox
+        padding: reduced
+        title: Sent to team leader or deputy director
+      - type: single-checkbox
+        padding: reduced
+        title: Document signed on behalf of the Secretary of State
+
+  - slug: clear-and-sign-master-funding-agreement
+    title: Master funding agreement
+    hint: |
+      Master funding agreements from before 2018 should be updated to the newer versions.
+    optional: true
+    actions:
+      - type: subheading
+        title: Check and clear the Master funding agreement
+        hint: |
+          You can [view the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements) to check for changes.
+        guidance_summary:
+          Help checking and updating the Master funding agreement
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+          If the trust uses a Master funding agreement from 2018 or earlier, they have two options.
+          They can update to a 2020 version of the Master funding agreement and update any Supplementary funding agreements from 2018 or earlier in the trust too.
+          Alternatively, they can adopt an additional Master funding agreement, from 2020, which the new academy's Supplementary funding agreement will sit under. This will allow the rest of the academies in the trust to continue using the existing Master funding agreement.
+          You will need to clear any new and updated documents. These may need a Deed of variation.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by school or trust
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+      - type: subheading
+        title: Signed by the Secretary of State
+        guidance_summary: How to sign the Master funding agreement
+        guidance_text: |
+          The Secretary of State, or somebody with the authority to act on their behalf, must sign the Master funding agreement.
+          Usually this is your team leader or the deputy director.
+          You only need to send the exact pages that they need to sign. Do not send the full document.
+          Once you've received the signed page, put it back in the document. Then save the signed Master funding agreement as a PDF in the school's SharePoint folder.
+      - type: single-checkbox
+        padding: reduced
+        title: Sent to team leader or deputy director
+      - type: single-checkbox
+        padding: reduced
+        title: Document signed on behalf of the Secretary of State
+
+  - slug: clear-and-sign-articles-of-association
+    title: Articles of association
+    hint:
+      The Articles of association must be updated if the trust currently uses a
+      version from February 2016 or earlier.
+    optional: true
+    actions:
+      - type: subheading
+        title: Check and clear the Articles of association
+        hint:
+          You can use the [land transfer advice and guidance to check for common
+          problems (opens in new
+          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Governance-(includes-clearing-Articles-of-Association).aspx).
+        guidance_summary: Help checking for changes
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by school or trust
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+
+  - slug: clear-and-sign-deed-of-variation
+    title: Deed of variation
+    hint: |
+      You'll only need to complete and clear a Deed of variation if there are changes to the funding agreements.
+    optional: true
+    actions:
+      - type: subheading
+        title: Check and clear the Deed of variation
+        hint: |
+          You can [find the right Deed of variation to use (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx) on SharePoint.
+        guidance_summary: Help checking for changes
+        guidance_text: |
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about changes to clause text.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by school or trust
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+      - type: subheading
+        title: Signed by the Secretary of State
+        hint: |
+          The Secretary of State, or somebody with the authority to act on their behalf, must sign the Deed of variation.
+          Usually this is your team leader or the deputy director.
+      - type: single-checkbox
+        padding: reduced
+        title: Sent to team leader or deputy director
+      - type: single-checkbox
+        padding: reduced
+        title: Document signed on behalf of the Secretary of State
+
+  - slug: clear-and-sign-trust-modification-order
+    title: Trust modification order
+    hint: |
+      The Trust modification order is only needed if there are restrictions on the land titles that need resolving.
+      The Land questionnaire will show if one is needed for this project. You can also check with the solicitors dealing with land issues.
+    optional: true
+    actions:
+      - type: subheading
+        title: Clear and sign the Trust modification order
+        hint: |
+          If one is needed, send the Trust modification order and a copy of the original deed to the Academies Operational Practice Unit at [academiesdelivery.operations@education.gov.uk](mailto:academiesdelivery.operations@education.gov.uk). They will organise how it's cleared and signed.
+          It can take several weeks to hear back from the Academies Operational Practice Unit.
+        guidance_summary: When to use a Trust modification order
+        guidance_text: |
+          A Trust modification order is used when a voluntary or foundation school's land is held by a trust or foundation that is not a diocese.
+          A Trust modification order is likely to be needed if the school is a:
+          * voluntary-controlled school
+          * voluntary-aided school
+          * foundation school
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Sent to Legal advisers office
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared by Legal advisers office
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+
+  - slug: clear-and-sign-direction-to-transfer
+    title: Direction to transfer
+    hint: |
+      A Direction to transfer is only needed when freehold land is owned by a foundation school, governing body or trustees and that land needs to be transferred to the trust or diocese.
+      You can [search Get Information About Schools (opens in new tab)](https://www.get-information-schools.service.gov.uk/Search) to check if it's needed for this school.
+    optional: true
+    actions:
+      - type: subheading
+        title: Check and clear the Direction to transfer
+        hint: |
+          Make sure information in the Direction to transfer is correct and compare it against the model document.
+        guidance_summary: Help checking for changes
+        guidance_text: |
+          You need to [compare the Direction to transfer against the model documents (opens in new tab)](https://www.gov.uk/government/publications/academy-land-transfers-model-directions) to check for any changes.
+          Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
+          You'll need to [contact the policy team (opens in new tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx) about any changes to clause text.
+      - type: single-checkbox
+        padding: reduced
+        title: Received
+      - type: single-checkbox
+        padding: reduced
+        title: Cleared
+      - type: single-checkbox
+        padding: reduced
+        title: Signed by caseworker
+      - type: single-checkbox
+        padding: reduced
+        title: Saved in the school's SharePoint folder
+
+  - slug: 125-year-lease
+    title: 125 year lease
+    hint:
+      The 125 year lease is the most common way for land to be transferred
+      between the local authority and the trust.
+    optional: true
+    actions:
+      - type: subheading
+        title: Confirm the 125 year lease has been signed
+      - type: single-checkbox
+        title:
+          Email the trust to check all relevant parties have signed the 125 year
+          lease
+      - title:
+          Receive email from the trust confirming the 125 year lease is agreed
+          and signed
+      - type: single-checkbox
+        title:
+          Save a copy of the confirmation email in school's SharePoint folder
+
+  - slug: subleases
+    title: Subleases
+    hint:
+      When schools convert, sometimes there are existing land arrangements that
+      are covered by subleases. You will need to clear any subleases that have
+      changed.
+    optional: true
+    actions:
+      - type: subheading
+        title: Clear any changed subleases
+      - type: single-checkbox
+        title: Received
+      - type: single-checkbox
+        title: Cleared
+      - type: single-checkbox
+        title: Signed for school or trust
+      - type: single-checkbox
+        title: Saved in school's Sharepoint folder
+
+      - type: subheading
+        title: Confirm any subleases have been signed
+      - type: single-checkbox
+        title:
+          Email the trust to check all relevant parties have signed any
+          subleases
+      - type: single-checkbox
+        title:
+          Receive email from the trust confirming any subleases are agreed and
+          signed
+      - type: single-checkbox
+        title:
+          Save a copy of the confirmation email in school's SharePoint folder
+
+  - slug: tenancy-at-will
+    title: Tenancy at will
+    hint:
+      A Tenancy at will allows a tenant and landlord to agree that the tenant
+      can use the land owned by the landlord indefinitely.
+    optional: true
+    actions:
+      - type: subheading
+        title: Confirm the Tenancy at will has been signed
+      - type: single-checkbox
+        title:
+          Email the trust to ask if they have agreed and signed the Tenancy at
+          will
+      - type: single-checkbox
+        title:
+          Receive email from the trust confirming the Tenancy at will has all
+          relevant signatures
+      - type: single-checkbox
+        title:
+          Save a copy of the confirmation email in school's SharePoint folder
+
+  - slug: commercial-transfer-agreement
+    title: Commercial transfer agreement
+    hint:
+      The Commercial transfer agreement is essential for all conversion
+      projects.
+    actions:
+      - title:
+          Email the trust to ask if they have agreed and signed the Commercial
+          transfer agreement
+      - title:
+          Receive email from the trust confirming the Commercial transfer
+          agreement has relevant signatures
+      - title:
+          Save a copy of the confirmation email in school's SharePoint folder
