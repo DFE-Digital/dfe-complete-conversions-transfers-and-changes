@@ -93,8 +93,7 @@ RSpec.shared_examples "a conversion project" do
       let(:caseworker) { create(:user, :caseworker) }
 
       before do
-        mock_successful_authentication(caseworker.email)
-        allow_any_instance_of(this_controller).to receive(:user_id).and_return(caseworker.id)
+        sign_in_with(caseworker)
       end
 
       it "does not create the project and shows an error message" do

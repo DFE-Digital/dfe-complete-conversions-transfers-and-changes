@@ -1,4 +1,9 @@
 module SignInHelpers
+  def sign_in_with(user)
+    mock_successful_authentication(user.email)
+    allow_any_instance_of(ApplicationController).to receive(:user_id).and_return(user.id)
+  end
+
   def mock_successful_authentication(email_address)
     OmniAuth.config.mock_auth[:azure_activedirectory_v2] = OmniAuth::AuthHash.new({
       info: {

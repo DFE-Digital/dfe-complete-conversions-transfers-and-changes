@@ -2,8 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Project management" do
   before do
-    mock_successful_authentication(user.email)
-    allow_any_instance_of(ProjectsController).to receive(:user_id).and_return(user.id)
+    sign_in_with(user)
   end
 
   describe "creating a new project" do
