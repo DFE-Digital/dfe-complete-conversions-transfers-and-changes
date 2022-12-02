@@ -1,6 +1,7 @@
 title: Project kick-off
 tasks:
   - slug: handover-with-rdo
+    optional: true
     title: Handover with regional delivery officer
     actions:
       - title:
