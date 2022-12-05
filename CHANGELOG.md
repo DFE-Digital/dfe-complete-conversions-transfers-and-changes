@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the note is a task-level note.
 - The text of the "Not applicable" checkboxes is bold to match the other task
   checkboxes.
+- The assign user select elements are enhanced with the accessible autocomplete
+  component.
 
 ### Content
 
