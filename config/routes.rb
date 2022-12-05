@@ -37,6 +37,14 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: %i[index show] do
+    namespace :conversion do
+      namespace :voluntary do
+        namespace :task_list do
+          resource :land_questionnaire, only: %i[new create edit update]
+        end
+      end
+    end
+
     collection do
       get "completed"
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_153430) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_02_114213) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -89,6 +89,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_153430) do
     t.index ["project_id"], name: "index_sections_on_project_id"
   end
 
+  create_table "task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.boolean "land_questionnaire_received"
+    t.boolean "land_questionnaire_cleared"
+    t.boolean "land_questionnaire_signed_by_solicitor"
+    t.boolean "land_questionnaire_saved_in_school_sharepoint"
+    t.boolean "land_registry_title_plans_received"
+    t.boolean "land_registry_title_plans_cleared"
+    t.boolean "land_registry_title_plans_saved_in_school_sharepoint"
+    t.boolean "supplemental_funding_agreement_received"
+    t.boolean "supplemental_funding_agreement_cleared"
+    t.boolean "supplemental_funding_agreement_signed_by_school"
+    t.boolean "supplemental_funding_agreement_saved_in_school_sharepoint"
+    t.boolean "supplemental_funding_agreement_sent_to_team_leader"
+    t.boolean "supplemental_funding_agreement_document_signed"
+    t.boolean "church_supplemental_agreement_not_applicable"
+    t.boolean "church_supplemental_agreement_received"
+    t.boolean "church_supplemental_agreement_cleared"
+    t.boolean "church_supplemental_agreement_signed_by_school"
+    t.boolean "church_supplemental_agreement_signed_by_diocese"
+    t.boolean "church_supplemental_agreement_saved_in_school_sharepoint"
+    t.uuid "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_task_lists_on_project_id"
+  end
+
   create_table "tasks", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -127,5 +153,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_153430) do
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
   add_foreign_key "projects", "users", column: "team_leader_id"
   add_foreign_key "sections", "projects"
+  add_foreign_key "task_lists", "projects"
   add_foreign_key "tasks", "sections"
 end

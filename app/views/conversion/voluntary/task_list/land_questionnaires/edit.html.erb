@@ -1,0 +1,16 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @land_questionnaire, url: project_conversion_voluntary_task_list_land_questionnaire_path(@project), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_check_boxes_fieldset :stage, multiple: false, legend: nil do %>
+        <%= form.govuk_check_box :received, 1, 0, multiple: false, link_errors: true %>
+        <%= form.govuk_check_box :cleared, 1, 0, multiple: false %>
+        <%= form.govuk_check_box :signed_by_solicitor, 1, 0, multiple: false %>
+        <%= form.govuk_check_box :saved_in_school_sharepoint, 1, 0, multiple: false %>
+      <% end %>
+
+      <%= form.govuk_submit %>
+    <% end %>
+  </div>
+</div>
