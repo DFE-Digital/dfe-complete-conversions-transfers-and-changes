@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can create new projects" do
+RSpec.feature "Users can create new voluntary conversion projects" do
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
   before do
