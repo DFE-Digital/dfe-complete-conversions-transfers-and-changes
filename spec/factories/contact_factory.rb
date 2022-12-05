@@ -6,6 +6,6 @@ FactoryBot.define do
     email { "jo@example.com" }
     phone { "01632 960123" }
 
-    project
+    project factory: :conversion_project
   end
 end

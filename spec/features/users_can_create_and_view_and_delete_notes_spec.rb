@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can create and view notes" do
   let(:user) { create(:user, email: "user@education.gov.uk") }
-  let(:project) { create(:project) }
+  let(:project) { create(:conversion_project) }
   let(:project_id) { project.id }
   let(:new_note_body) { "Just shared some *important* documents with the solictor." }
 
@@ -40,7 +40,7 @@ RSpec.feature "Users can create and view notes" do
   end
 
   context "when the project is a conversion project" do
-    let(:project) { create(:project, type: "Conversion::Project") }
+    let(:project) { create(:conversion_project) }
 
     scenario "the user can still create a note" do
       visit project_notes_path(project_id)

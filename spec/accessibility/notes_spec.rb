@@ -3,7 +3,7 @@ require "axe-rspec"
 
 RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibility: true do
   let(:user) { create(:user, email: "user1@education.gov.uk") }
-  let(:project) { create(:project, caseworker: user) }
+  let(:project) { create(:conversion_project, caseworker: user) }
   let(:section) { create(:section, project: project) }
   let(:task) { create(:task, section: section) }
 

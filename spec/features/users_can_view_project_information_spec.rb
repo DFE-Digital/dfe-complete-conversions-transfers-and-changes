@@ -4,7 +4,7 @@ RSpec.feature "Users can view project information" do
   include ActionView::Helpers::TextHelper
 
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:project, :with_conditions, caseworker: user) }
+  let(:project) { create(:conversion_project, :with_conditions, caseworker: user) }
   let(:project_id) { project.id }
 
   before do

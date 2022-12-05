@@ -10,7 +10,7 @@ RSpec.describe NotesController, type: :request do
   end
 
   describe "#index" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let!(:project_level_note) { create(:note, project: project) }
     let!(:task_level_note) { create(:note, :task_level_note, project: project) }
@@ -34,7 +34,7 @@ RSpec.describe NotesController, type: :request do
   end
 
   describe "#new" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -54,7 +54,7 @@ RSpec.describe NotesController, type: :request do
   end
 
   describe "#create" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:mock_note) { build(:note, project: project) }
     let(:new_note_body) { "Just had an interesting chat about building regulations." }
@@ -109,7 +109,7 @@ RSpec.describe NotesController, type: :request do
   end
 
   describe "#edit" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:note) { create(:note, user: user) }
     let(:note_id) { note.id }
@@ -149,7 +149,7 @@ RSpec.describe NotesController, type: :request do
   end
 
   describe "#update" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:note) { create(:note, user: user) }
     let(:note_id) { note.id }
@@ -222,7 +222,7 @@ RSpec.describe NotesController, type: :request do
   end
 
   describe "#destroy" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:note) { create(:note, user: user) }
     let(:note_id) { note.id }
@@ -264,7 +264,7 @@ RSpec.describe NotesController, type: :request do
   end
 
   describe "#confirm_destroy" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:note) { create(:note, user: user) }
     let(:note_id) { note.id }

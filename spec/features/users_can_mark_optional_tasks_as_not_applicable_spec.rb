@@ -8,7 +8,7 @@ RSpec.feature "Users can mark optional tasks as not applicable to a project" do
     sign_in_with_user(user_one)
   end
 
-  let(:project) { create(:project, urn: 123456, incoming_trust_ukprn: 12345678) }
+  let(:project) { create(:conversion_project, urn: 123456, incoming_trust_ukprn: 12345678) }
   let!(:section) { create(:section, project: project) }
   let(:task) { create(:task, :not_applicable, title: "Not applicable task", section: section) }
   let!(:actions) { create_list(:action, 3, task: task, completed: true) }

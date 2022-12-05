@@ -39,15 +39,15 @@ class AssignmentsController < ApplicationController
   end
 
   private def team_leader_params
-    params.require(:project).permit(:team_leader_id)
+    params.require(:conversion_project).permit(:team_leader_id)
   end
 
   private def regional_delivery_officer_params
-    params.require(:project).permit(:regional_delivery_officer_id)
+    params.require(:conversion_project).permit(:regional_delivery_officer_id)
   end
 
   private def caseworker_params
-    params.require(:project).permit(:caseworker_id)
+    params.require(:conversion_project).permit(:caseworker_id)
   end
 
   private def find_project

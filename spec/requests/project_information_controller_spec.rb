@@ -10,7 +10,7 @@ RSpec.describe ProjectInformationController, type: :request do
   end
 
   describe "#show" do
-    let(:project) { create(:project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do

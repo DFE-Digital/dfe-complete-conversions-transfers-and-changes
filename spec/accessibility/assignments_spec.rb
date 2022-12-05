@@ -3,7 +3,7 @@ require "axe-rspec"
 
 RSpec.feature "Test assignment accessibility", driver: :headless_firefox, accessibility: true do
   let(:user) { create(:user, :team_leader) }
-  let(:project) { create(:project) }
+  let(:project) { create(:conversion_project) }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
