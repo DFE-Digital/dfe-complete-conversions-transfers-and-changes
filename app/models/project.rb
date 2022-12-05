@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
-  attr_writer :establishment
+  attr_writer :establishment, :incoming_trust
 
   has_many :sections, dependent: :destroy
   has_many :notes, dependent: :destroy
