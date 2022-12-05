@@ -12,3 +12,7 @@ en:
       errors:
         not_found: Could not find trust for UKPRN %{ukprn}
         other: There was an error connecting to the Academies API, could not fetch trust with UKPRN %{ukprn}
+    get_trusts:
+      errors:
+        not_found: Could any trusts for the following UKPRNs %{ukprns}
+        other: There was an error connecting to the Academies API, could not fetch trusts for UKPRNs %{ukprns}

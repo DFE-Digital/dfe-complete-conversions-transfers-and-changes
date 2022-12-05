@@ -43,19 +43,31 @@ class AcademiesApi::Client
   end
 
   def get_trust(ukprn)
-    begin
-      response = @connection.get("/v2/trust/#{ukprn}")
-    rescue Faraday::Error => error
-      raise Error.new(error)
-    end
+    response = fetch_trusts([ukprn])
 
     case response.status
     when 200
-      Result.new(AcademiesApi::Trust.new.from_json(response.body), nil)
+      Result.new(AcademiesApi::Trust.new.from_hash(single_trust_from_bulk(response)), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     else
       Result.new(nil, Error.new(I18n.t("academies_api.get_trust.errors.other", ukprn: ukprn)))
+    end
+  end
+
+  def get_trusts(ukprns)
+    response = fetch_trusts(ukprns)
+
+    case response.status
+    when 200
+      trusts = JSON.parse(response.body)["data"].map do |trust|
+        AcademiesApi::Trust.new.from_hash(trust)
+      end
+      Result.new(trusts, nil)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trusts.errors.not_found", ukprns:)))
+    else
+      Result.new(nil, Error.new(I18n.t("academies_api.get_trusts.errors.other", ukprns:)))
     end
   end
 
@@ -65,8 +77,18 @@ class AcademiesApi::Client
     raise Error.new(error)
   end
 
+  private def fetch_trusts(ukprns)
+    @connection.get("/v2/trusts/bulk", {ukprn: ukprns, establishments: false})
+  rescue Faraday::Error => error
+    raise Error.new(error)
+  end
+
   private def single_establishment_from_bulk(response)
     JSON.parse(response.body)[0]
+  end
+
+  private def single_trust_from_bulk(response)
+    JSON.parse(response.body)["data"][0]
   end
 
   private def default_connection
