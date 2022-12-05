@@ -4,9 +4,8 @@ RSpec.describe ProjectInformationController, type: :request do
   let(:user) { create(:user, :team_leader) }
 
   before do
-    mock_successful_authentication(user.email)
+    sign_in_with(user)
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
-    allow_any_instance_of(ProjectInformationController).to receive(:user_id).and_return(user.id)
   end
 
   describe "#show" do

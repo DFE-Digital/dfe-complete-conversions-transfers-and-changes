@@ -7,8 +7,7 @@ RSpec.describe Conversion::Voluntary::ProjectsController, type: :request do
   let(:this_controller) { Conversion::Voluntary::ProjectsController }
 
   before do
-    mock_successful_authentication(regional_delivery_officer.email)
-    allow_any_instance_of(Conversion::Voluntary::ProjectsController).to receive(:user_id).and_return(regional_delivery_officer.id)
+    sign_in_with(regional_delivery_officer)
   end
 
   it_behaves_like "a conversion project"

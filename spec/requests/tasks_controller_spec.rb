@@ -4,8 +4,7 @@ RSpec.describe TasksController, type: :request do
   let(:user) { create(:user) }
 
   before do
-    mock_successful_authentication(user.email)
-    allow_any_instance_of(TasksController).to receive(:user_id).and_return(user.id)
+    sign_in_with(user)
   end
 
   describe "#show" do

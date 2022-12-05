@@ -4,9 +4,8 @@ RSpec.describe AssignmentsController, type: :request do
   let(:user) { create(:user, team_leader: true) }
 
   before do
-    mock_successful_authentication(user.email)
+    sign_in_with(user)
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
-    allow_any_instance_of(AssignmentsController).to receive(:user_id).and_return(user.id)
   end
 
   shared_examples_for "an action which redirects unauthorized users" do
