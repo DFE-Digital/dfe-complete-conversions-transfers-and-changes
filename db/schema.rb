@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_153430) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_163139) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_153430) do
     t.uuid "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "incoming_trust_ukprn"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -63,8 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_153430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "team_leader_id"
-    t.integer "incoming_trust_ukprn", null: false
-    t.date "provisional_conversion_date", null: false
     t.uuid "regional_delivery_officer_id"
     t.uuid "caseworker_id"
     t.datetime "caseworker_assigned_at"
@@ -72,8 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_153430) do
     t.text "advisory_board_conditions"
     t.text "establishment_sharepoint_link"
     t.datetime "completed_at"
-    t.text "trust_sharepoint_link"
     t.string "type"
+    t.text "trust_sharepoint_link"
+    t.date "provisional_conversion_date"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
