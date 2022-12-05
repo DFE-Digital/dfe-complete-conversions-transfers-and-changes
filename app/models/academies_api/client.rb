@@ -14,19 +14,31 @@ class AcademiesApi::Client
   end
 
   def get_establishment(urn)
-    begin
-      response = @connection.get("/establishment/urn/#{urn}")
-    rescue Faraday::Error => error
-      raise Error.new(error)
-    end
+    response = fetch_establishments([urn])
 
     case response.status
     when 200
-      Result.new(AcademiesApi::Establishment.new.from_json(response.body), nil)
+      Result.new(AcademiesApi::Establishment.new.from_hash(single_establishment_from_bulk(response)), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishment.errors.not_found", urn: urn)))
     else
       Result.new(nil, Error.new(I18n.t("academies_api.get_establishment.errors.other", urn: urn)))
+    end
+  end
+
+  def get_establishments(urns)
+    response = fetch_establishments(urns)
+
+    case response.status
+    when 200
+      establishments = JSON.parse(response.body).map do |establishment|
+        AcademiesApi::Establishment.new.from_hash(establishment)
+      end
+      Result.new(establishments, nil)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishments.errors.not_found", urns:)))
+    else
+      Result.new(nil, Error.new(I18n.t("academies_api.get_establishments.errors.other", urns:)))
     end
   end
 
@@ -47,11 +59,22 @@ class AcademiesApi::Client
     end
   end
 
+  private def fetch_establishments(urns)
+    @connection.get("/establishments/bulk", {urn: urns})
+  rescue Faraday::Error => error
+    raise Error.new(error)
+  end
+
+  private def single_establishment_from_bulk(response)
+    JSON.parse(response.body)[0]
+  end
+
   private def default_connection
     Faraday.new(
       url: ENV["ACADEMIES_API_HOST"],
       request: {
-        timeout: ACADEMIES_API_TIMEOUT
+        timeout: ACADEMIES_API_TIMEOUT,
+        params_encoder: Faraday::FlatParamsEncoder
       },
       headers: {
         "Content-Type": "application/json",

@@ -16,16 +16,17 @@ RSpec.describe AcademiesApi::Client do
   end
 
   describe "#get_establishment" do
-    let(:client) { described_class.new(connection: fake_successful_establishment_connection(12345678, fake_response)) }
+    let(:urn) { 123456 }
+    let(:client) { described_class.new(connection: fake_successful_establishment_connection(fake_response)) }
+
+    subject { client.get_establishment(urn) }
 
     context "when the establishment can be found" do
-      let(:fake_response) { [200, nil, {establishmentName: "Establishment Name"}.to_json] }
+      let(:fake_response) { [200, nil, [{establishmentName: "Establishment Name"}].to_json] }
 
       it "returns a Result with the establishment and no error" do
-        result = client.get_establishment(12345678)
-
-        expect(result.object.name).to eql("Establishment Name")
-        expect(result.error).to be_nil
+        expect(subject.object.name).to eql("Establishment Name")
+        expect(subject.error).to be_nil
       end
     end
 
@@ -33,10 +34,9 @@ RSpec.describe AcademiesApi::Client do
       let(:fake_response) { [404, nil, nil] }
 
       it "returns a Result with a NotFoundError and no establishment" do
-        the_result = client.get_establishment(12345678)
-
-        expect(the_result.object).to be_nil
-        expect(the_result.error).to be_a(AcademiesApi::Client::NotFoundError)
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(AcademiesApi::Client::NotFoundError)
+        expect(subject.error.message).to eq(I18n.t("academies_api.get_establishment.errors.not_found", urn:))
       end
     end
 
@@ -44,36 +44,80 @@ RSpec.describe AcademiesApi::Client do
       let(:fake_response) { [500, nil, nil] }
 
       it "returns a Result with an Error and no establishment" do
-        the_result = client.get_establishment(12345678)
-
-        expect(the_result.object).to be_nil
-        expect(the_result.error).to be_a(AcademiesApi::Client::Error)
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(AcademiesApi::Client::Error)
+        expect(subject.error.message).to eq(I18n.t("academies_api.get_establishment.errors.other", urn:))
       end
     end
 
     context "when the connection fails" do
-      it "raises an Error" do
-        client = described_class.new(connection: fake_failed_establishment_connection(12345678))
+      let(:client) { described_class.new(connection: fake_failed_establishment_connection) }
 
-        expect { client.get_establishment(12345678) }.to raise_error(AcademiesApi::Client::Error)
+      it "raises an Error" do
+        expect { subject }.to raise_error(AcademiesApi::Client::Error)
       end
     end
   end
 
-  def fake_successful_establishment_connection(urn, response)
+  describe "#get_establishments" do
+    let(:urn) { 123456 }
+    let(:urns) { [urn] }
+    let(:client) { described_class.new(connection: fake_successful_establishment_connection(fake_response)) }
+
+    subject { client.get_establishments(urns) }
+
+    context "when establishments can be found" do
+      let(:fake_response) { [200, nil, [{establishmentName: "Establishment Name"}].to_json] }
+
+      it "returns a Result with the establishments and no error" do
+        expect(subject.object[0].name).to eql("Establishment Name")
+        expect(subject.error).to be_nil
+      end
+    end
+
+    context "when the establishments cannot be found" do
+      let(:fake_response) { [404, nil, nil] }
+
+      it "returns a Result with a NotFoundError and no establishment" do
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(AcademiesApi::Client::NotFoundError)
+        expect(subject.error.message).to eq(I18n.t("academies_api.get_establishments.errors.not_found", urns:))
+      end
+    end
+
+    context "when there is any other error" do
+      let(:fake_response) { [500, nil, nil] }
+
+      it "returns a Result with an Error and no establishment" do
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(AcademiesApi::Client::Error)
+        expect(subject.error.message).to eq(I18n.t("academies_api.get_establishments.errors.other", urns:))
+      end
+    end
+
+    context "when the connection fails" do
+      let(:client) { described_class.new(connection: fake_failed_establishment_connection) }
+
+      it "raises an Error" do
+        expect { subject }.to raise_error(AcademiesApi::Client::Error)
+      end
+    end
+  end
+
+  def fake_successful_establishment_connection(response)
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/establishment/urn/#{urn}") do |env|
+        stub.get("/establishments/bulk") do |_env|
           response
         end
       end
     end
   end
 
-  def fake_failed_establishment_connection(urn)
+  def fake_failed_establishment_connection
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/establishment/urn/#{urn}") do |env|
+        stub.get("/establishments/bulk") do |_env|
           raise Faraday::Error
         end
       end
