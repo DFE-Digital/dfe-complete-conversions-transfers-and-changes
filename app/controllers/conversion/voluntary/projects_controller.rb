@@ -9,6 +9,7 @@ class Conversion::Voluntary::ProjectsController < Conversion::ProjectsController
       ActiveRecord::Base.transaction do
         @project.save
         Conversion::Voluntary::Details.create(project: @project)
+        Conversion::Voluntary::TaskList.create(project: @project)
         TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_PATH)
       end
 

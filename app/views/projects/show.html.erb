@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: root_path} %>
+  <% render partial: "shared/back_link", locals: { href: root_path } %>
 <% end %>
 
 <%= render partial: "shared/project_summary" %>
@@ -7,6 +7,20 @@
 <%= render partial: "shared/project_sub_navigation" %>
 
 <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
-<%= render "projects/show/task_list" %>
+
+<ol class="app-task-list">
+  <li>
+    <h3 class="app-task-list__section">
+      Clear and sign legal documents
+    </h3>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <%= link_to "Land questionnaire", edit_project_conversion_voluntary_task_list_land_questionnaire_path(@project) %>
+        </span>
+      </li>
+    </ul>
+  </li>
+</ol>
 
 <%= render "projects/show/complete" unless @project.completed? %>
