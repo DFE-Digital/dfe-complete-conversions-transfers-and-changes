@@ -3,6 +3,9 @@ en:
     involuntary:
       new:
         title: Add a new involuntary conversion project
+    voluntary:
+      new:
+        title: Add a new voluntary conversion project
   helpers:
     label:
       conversion_project:

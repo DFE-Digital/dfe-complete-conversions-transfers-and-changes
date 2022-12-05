@@ -8,10 +8,16 @@
     </h1>
 
     <% if policy(:project).new? %>
-      <p><%= link_to t("project.index.new_button.text"),
-               conversion_voluntary_new_path,
-               class: "govuk-button",
-               data: {module: "govuk-button"} %></p>
+      <div class="govuk-button-group">
+        <%= link_to t("conversion_project.voluntary.new.title"),
+              conversion_voluntary_new_path,
+              class: "govuk-button",
+              data: {module: "govuk-button"} %>
+        <%= link_to t("conversion_project.involuntary.new.title"),
+              conversion_involuntary_new_path,
+              class: "govuk-button",
+              data: {module: "govuk-button"} %>
+      </div>
     <% end %>
 
     <%= render partial: "shared/project_index_sub_navigation" %>
