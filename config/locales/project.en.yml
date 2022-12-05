@@ -3,14 +3,11 @@ en:
     index:
       title:
         all: Project list
-      new_button:
-        text: Add a new project
     show:
       title: Task list
       edit_button:
         text: Edit
     new:
-      title: Add a new project
       handover_comments_label: Handover comments
       handover_comments_hint: Please provide a brief overview of how the project has progressed so far, including any issues that have arisen or areas of concern.
     create:

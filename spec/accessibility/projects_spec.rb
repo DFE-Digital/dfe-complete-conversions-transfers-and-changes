@@ -28,14 +28,14 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   scenario "new voluntary conversion projects page" do
     visit conversion_voluntary_new_path
 
-    expect(page).to have_content("Add a new project")
+    expect(page).to have_content(I18n.t("conversion_project.voluntary.new.title"))
     expect(page).to be_axe_clean
   end
 
   scenario "new involuntary conversion projects page" do
     visit conversion_involuntary_new_path
 
-    expect(page).to have_content("Add a new involuntary conversion project")
+    expect(page).to have_content(I18n.t("conversion_project.involuntary.new.title"))
     expect(page).to be_axe_clean
   end
 

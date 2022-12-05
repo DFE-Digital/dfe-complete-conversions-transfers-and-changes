@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Write accessibility tests to run axe, the accessibility tool
 - First version of a task list for involuntary conversions.
+- Renamed the new project button to 'new voluntary conversion project' and added
+  the 'new involuntary conversion project' button
 
 #### Changed
 
