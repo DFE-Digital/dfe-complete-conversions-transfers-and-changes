@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Changed
 
+- Page load speed has been improved on pages that fetch project data from the
+  API. The project index page fetches establishments and trusts in bulk.
+
 #### Fixed
 
 - The "Cancel" link on the new note page takes the user back to the task page if
