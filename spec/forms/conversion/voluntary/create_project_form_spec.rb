@@ -116,6 +116,35 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
       it "returns true" do
         expect(build(:create_project_form).save).to be true
       end
+
+      it "creates a note if the note_body is not empty" do
+        form = build(
+          :create_project_form,
+          note_body: "Some important words"
+        )
+        form.save
+        expect(Note.count).to eq(1)
+        expect(Note.last.body).to eq("Some important words")
+      end
+
+      it "creates a Conversion::Voluntary::Details object" do
+        form = build(:create_project_form)
+        form.save
+        expect(Conversion::Details.count).to eq(1)
+        expect(Conversion::Details.last.type).to eq("Conversion::Voluntary::Details")
+      end
+
+      it "calls the TaskListCreator" do
+        task_list_creator = TaskListCreator.new
+        allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
+        allow(task_list_creator).to receive(:call).and_return true
+        form = build(:create_project_form)
+        form.save
+        new_project = Project.last
+        expect(task_list_creator).to have_received(:call)
+          .with(new_project,
+            workflow_root: Conversion::Voluntary::Details::WORKFLOW_PATH)
+      end
     end
 
     context "when the form is invalid" do
