@@ -1,5 +1,6 @@
 class AcademiesApi::Trust < AcademiesApi::BaseApiModel
   attr_accessor(
+    :ukprn,
     :original_name,
     :companies_house_number
   )
@@ -10,8 +11,9 @@ class AcademiesApi::Trust < AcademiesApi::BaseApiModel
 
   def self.attribute_map
     {
-      original_name: "data.giasData.groupName",
-      companies_house_number: "data.giasData.companiesHouseNumber"
+      ukprn: "giasData.ukprn",
+      original_name: "giasData.groupName",
+      companies_house_number: "giasData.companiesHouseNumber"
     }
   end
 end

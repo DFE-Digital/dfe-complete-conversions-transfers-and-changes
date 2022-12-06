@@ -3,10 +3,15 @@ require "axe-rspec"
 
 RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessibility: true do
   let(:user) { create(:user, :regional_delivery_officer) }
+  let(:mock_establishments_fetcher) { double(EstablishmentsFetcher, call: true) }
+  let(:mock_trusts_fetcher) { double(IncomingTrustsFetcher, call: true) }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
+
+    allow(EstablishmentsFetcher).to receive(:new).and_return(mock_establishments_fetcher)
+    allow(IncomingTrustsFetcher).to receive(:new).and_return(mock_trusts_fetcher)
   end
 
   scenario "in progress projects page" do

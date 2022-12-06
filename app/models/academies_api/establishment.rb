@@ -1,5 +1,6 @@
 class AcademiesApi::Establishment < AcademiesApi::BaseApiModel
   attr_accessor(
+    :urn,
     :name,
     :local_authority,
     :type,
@@ -12,6 +13,7 @@ class AcademiesApi::Establishment < AcademiesApi::BaseApiModel
 
   def self.attribute_map
     {
+      urn: "urn",
       name: "establishmentName",
       local_authority: "localAuthorityName",
       type: "establishmentType.name",

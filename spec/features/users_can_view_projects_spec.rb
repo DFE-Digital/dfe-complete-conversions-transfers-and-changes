@@ -6,8 +6,13 @@ RSpec.feature "Users can view a list of projects" do
     mock_successful_api_responses(urn: 100002, ukprn: 10061021)
     mock_successful_api_responses(urn: 100003, ukprn: 10061021)
     mock_successful_api_responses(urn: 100004, ukprn: 10061021)
+
+    allow(EstablishmentsFetcher).to receive(:new).and_return(mock_establishments_fetcher)
+    allow(IncomingTrustsFetcher).to receive(:new).and_return(mock_trusts_fetcher)
   end
 
+  let(:mock_establishments_fetcher) { double(EstablishmentsFetcher, call: true) }
+  let(:mock_trusts_fetcher) { double(IncomingTrustsFetcher, call: true) }
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: "regionaldeliveryofficer@education.gov.uk") }
   let(:user_1) { create(:user, email: "user1@education.gov.uk") }
@@ -137,10 +142,15 @@ end
 RSpec.feature "Users can view a single project" do
   let(:urn) { 123456 }
   let(:establishment) { build(:academies_api_establishment) }
+  let(:mock_establishments_fetcher) { double(EstablishmentsFetcher, call: true) }
+  let(:mock_trusts_fetcher) { double(IncomingTrustsFetcher, call: true) }
 
   before do
     mock_successful_api_establishment_response(urn: urn, establishment: establishment)
     mock_successful_api_responses(urn: urn, ukprn: 10061021)
+
+    allow(EstablishmentsFetcher).to receive(:new).and_return(mock_establishments_fetcher)
+    allow(IncomingTrustsFetcher).to receive(:new).and_return(mock_trusts_fetcher)
   end
 
   scenario "by following a link from the home page" do
