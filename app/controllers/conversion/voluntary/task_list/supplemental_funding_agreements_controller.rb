@@ -22,10 +22,6 @@ class Conversion::Voluntary::TaskList::SupplementalFundingAgreementsController <
 
   private
 
-  def task_list
-    Conversion::Voluntary::TaskList.find_by(project: @project)
-  end
-
   def supplemental_funding_agreement_params
     params.require(:conversion_voluntary_supplemental_funding_agreement).permit \
       :received, :cleared, :signed_by_school, :saved_in_school_sharepoint, :sent_to_team_leader, :document_signed
