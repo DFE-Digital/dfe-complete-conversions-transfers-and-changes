@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     authorize @project
+    redirect_to project_conversion_voluntary_task_list_index_path(@project)
   end
 
   private def notify_team_leaders
