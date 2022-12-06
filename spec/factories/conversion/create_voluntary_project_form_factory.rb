@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :create_project_form, class: "Conversion::Voluntary::CreateProjectForm" do
+  factory :create_voluntary_project_form, class: "Conversion::Voluntary::CreateProjectForm" do
     urn { 123456 }
     incoming_trust_ukprn { 10061021 }
     provisional_conversion_date { (Date.today + 2.years).at_beginning_of_month }

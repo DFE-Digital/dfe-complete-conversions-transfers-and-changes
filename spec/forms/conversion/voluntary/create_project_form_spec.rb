@@ -10,7 +10,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
       it "must be in the future" do
         form = build(
-          :create_project_form,
+          :create_voluntary_project_form,
           provisional_conversion_date: (Date.today + 1.year).at_beginning_of_month
         )
         expect(form).to be_valid
@@ -21,7 +21,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
       it "cannot be in the past" do
         form = build(
-          :create_project_form,
+          :create_voluntary_project_form,
           provisional_conversion_date: (Date.today + 1.year).at_beginning_of_month
         )
         expect(form).to be_valid
@@ -36,7 +36,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
       it "must be in the past" do
         form = build(
-          :create_project_form,
+          :create_voluntary_project_form,
           advisory_board_date: Date.today - 1.week
         )
         expect(form).to be_valid
@@ -47,7 +47,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
       it "cannot be in the future" do
         form = build(
-          :create_project_form,
+          :create_voluntary_project_form,
           advisory_board_date: Date.today - 1.week
         )
         expect(form).to be_valid
@@ -58,7 +58,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
       context "when no date value is set" do
         it "treats the date as blank" do
-          form = build(:create_project_form, advisory_board_date: nil)
+          form = build(:create_voluntary_project_form, advisory_board_date: nil)
           expect(form).to be_invalid
           expect(form.errors.of_kind?(:advisory_board_date, :blank)).to be true
         end
@@ -114,12 +114,12 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
     context "when the form is valid" do
       it "returns true" do
-        expect(build(:create_project_form).save).to be true
+        expect(build(:create_voluntary_project_form).save).to be true
       end
 
       it "creates a note if the note_body is not empty" do
         form = build(
-          :create_project_form,
+          :create_voluntary_project_form,
           note_body: "Some important words"
         )
         form.save
@@ -128,7 +128,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
       end
 
       it "creates a Conversion::Voluntary::Details object" do
-        form = build(:create_project_form)
+        form = build(:create_voluntary_project_form)
         form.save
         expect(Conversion::Details.count).to eq(1)
         expect(Conversion::Details.last.type).to eq("Conversion::Voluntary::Details")
@@ -138,7 +138,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
         task_list_creator = TaskListCreator.new
         allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
         allow(task_list_creator).to receive(:call).and_return true
-        form = build(:create_project_form)
+        form = build(:create_voluntary_project_form)
         form.save
         new_project = Project.last
         expect(task_list_creator).to have_received(:call)
@@ -149,7 +149,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
     context "when the form is invalid" do
       it "returns nil" do
-        expect(build(:create_project_form, urn: nil).save).to be_nil
+        expect(build(:create_voluntary_project_form, urn: nil).save).to be_nil
       end
     end
   end
