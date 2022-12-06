@@ -2,7 +2,8 @@ class Conversion::Voluntary::TaskList < ApplicationRecord
   belongs_to :project, inverse_of: :task_list
 
   Tasks = [
-    Conversion::Voluntary::LandQuestionnaire
+    Conversion::Voluntary::LandQuestionnaire,
+    Conversion::Voluntary::SupplementalFundingAgreement
   ].freeze
 
   Tasks.each do |task|
