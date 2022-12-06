@@ -1,4 +1,4 @@
-class Conversion::Voluntary::TaskList::LandQuestionnairesController < ApplicationController
+class Conversion::Voluntary::TaskList::LandQuestionnairesController < Conversion::Voluntary::TaskList::BaseTasksController
   def edit
     @project = Project.find(params[:project_id])
     # @land_questionnaire = @project.task_list.land_questionnaire

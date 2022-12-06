@@ -40,7 +40,8 @@ Rails.application.routes.draw do
     namespace :conversion do
       namespace :voluntary do
         namespace :task_list do
-          resource :land_questionnaire, only: %i[new create edit update]
+          resource :land_questionnaire, only: %i[edit update]
+          resource :supplemental_funding_agreement, only: %i[edit update]
         end
       end
     end
