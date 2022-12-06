@@ -8,7 +8,7 @@ FactoryBot.define do
     caseworker { false }
 
     trait :caseworker do
-      email { "caseworker@education.gov.uk" }
+      email { "caseworker-#{SecureRandom.uuid}@education.gov.uk" }
       caseworker { true }
     end
 
@@ -16,14 +16,14 @@ FactoryBot.define do
       first_name { "Team" }
       last_name { "Leader" }
       team_leader { true }
-      email { "team.lead@education.gov.uk" }
+      email { "team-leader-#{SecureRandom.uuid}@education.gov.uk" }
     end
 
     trait :regional_delivery_officer do
       first_name { "Regional" }
       last_name { "Delivery-Officer" }
       regional_delivery_officer { true }
-      email { "regional.delivery.officer@education.gov.uk" }
+      email { "regional-delivery-officer-#{SecureRandom.uuid}@education.gov.uk" }
     end
   end
 end
