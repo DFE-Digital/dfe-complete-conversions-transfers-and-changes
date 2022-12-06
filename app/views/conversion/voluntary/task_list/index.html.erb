@@ -1,0 +1,17 @@
+<ol class="app-task-list">
+  <li>
+    <h3 class="app-task-list__section">
+      Clear and sign legal documents
+    </h3>
+    <ul class="app-task-list__items">
+
+      <% @task_list.tasks.each do |task| %>
+        <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <%= link_to task.readable_name, task_path(task.key) %>
+        </span>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+</ol>

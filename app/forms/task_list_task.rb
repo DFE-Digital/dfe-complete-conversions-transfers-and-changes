@@ -7,5 +7,9 @@ class TaskListTask
     def key
       name.split("::").last.underscore
     end
+
+    def readable_name
+      name.split("::").last.underscore.humanize
+    end
   end
 end

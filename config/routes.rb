@@ -39,10 +39,7 @@ Rails.application.routes.draw do
   resources :projects, only: %i[index show] do
     namespace :conversion do
       namespace :voluntary do
-        namespace :task_list do
-          resource :land_questionnaire, only: %i[edit update]
-          resource :supplemental_funding_agreement, only: %i[edit update]
-        end
+        resources :task_list
       end
     end
 

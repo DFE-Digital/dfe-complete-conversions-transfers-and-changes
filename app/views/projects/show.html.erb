@@ -16,12 +16,14 @@
     <ul class="app-task-list__items">
       <li class="app-task-list__item">
         <span class="app-task-list__task-name">
-          <%= link_to "Land questionnaire", edit_project_conversion_voluntary_task_list_land_questionnaire_path(@project) %>
+          <%= link_to "Land questionnaire", edit_project_conversion_voluntary_task_list_path(@project, "land_questionnaire") %>
+          <%#= link_to "Land questionnaire", task_path("land-questionnaire") %>
         </span>
       </li>
       <li class="app-task-list__item">
         <span class="app-task-list__task-name">
-          <%= link_to "Supplemental funding agreement", edit_project_conversion_voluntary_task_list_supplemental_funding_agreement_path(@project) %>
+          <%= link_to "Supplemental funding agreement", edit_project_conversion_voluntary_task_list_path(@project, "supplemental_funding_agreement") %>
+          <%#= link_to "Supplemental funding agreement", task_path("supplemental-funding-agreement") %>
         </span>
       </li>
     </ul>

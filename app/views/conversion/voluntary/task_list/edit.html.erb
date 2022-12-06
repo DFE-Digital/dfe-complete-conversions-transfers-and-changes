@@ -1,0 +1,11 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: project_conversion_voluntary_task_list_path(@project, @task.class.key), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= render @task.class.key, form: form %>
+
+      <%= form.govuk_submit %>
+    <% end %>
+  </div>
+</div>

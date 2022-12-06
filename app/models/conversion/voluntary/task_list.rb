@@ -19,4 +19,8 @@ class Conversion::Voluntary::TaskList < ApplicationRecord
       mapping: mapping,
       constructor: :compose
   end
+
+  def tasks
+    Tasks
+  end
 end
