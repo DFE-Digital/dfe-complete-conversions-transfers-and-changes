@@ -27,11 +27,13 @@ Rails.application.routes.draw do
       namespace :involuntary do
         get "new", to: "projects#new"
         post "new", to: "projects#create"
+        get ":id", to: "projects#show"
       end
 
       namespace :voluntary do
         get "new", to: "projects#new"
         post "new", to: "projects#create"
+        get ":id", to: "projects#show"
       end
     end
   end
