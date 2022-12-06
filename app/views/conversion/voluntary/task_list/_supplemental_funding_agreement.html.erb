@@ -1,0 +1,8 @@
+<%= form.govuk_check_boxes_fieldset :stage, multiple: false, legend: nil do %>
+  <%= form.govuk_check_box :received, 1, 0, multiple: false, link_errors: true %>
+  <%= form.govuk_check_box :cleared, 1, 0, multiple: false %>
+  <%= form.govuk_check_box :signed_by_school, 1, 0, multiple: false %>
+  <%= form.govuk_check_box :saved_in_school_sharepoint, 1, 0, multiple: false %>
+  <%= form.govuk_check_box :sent_to_team_leader, 1, 0, multiple: false %>
+  <%= form.govuk_check_box :document_signed, 1, 0, multiple: false %>
+<% end %>
