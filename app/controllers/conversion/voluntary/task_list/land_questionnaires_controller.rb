@@ -5,6 +5,7 @@ class Conversion::Voluntary::TaskList::LandQuestionnairesController < Applicatio
     # Why doesn't this work? >:(
 
     @land_questionnaire = Conversion::Voluntary::TaskList.find_by(project: @project).land_questionnaire
+    # @tasks = Conversion::Voluntary::TaskList.find_by(project: @project).tasks
   end
 
   def update
