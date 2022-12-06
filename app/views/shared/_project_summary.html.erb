@@ -29,6 +29,10 @@
             row.key { t("project.summary.trust_sharepoint_link.title") }
             row.value { safe_link_to(t("project.summary.trust_sharepoint_link.value"), @project.trust_sharepoint_link) }
           end
+          summary_list.row do |row|
+            row.key { t("conversion_project.summary.route.title") }
+            row.value { @project.details.route }
+          end
           if @project.completed?
             summary_list.row do |row|
               row.key { t("project.summary.completed_at") }

@@ -10,6 +10,9 @@ en:
       new:
         title: Add a new voluntary conversion project
         hint_html: <p>Enter the school and trust information.</p><p>This will create a conversion project for a school that has been granted an Academy order.</p>
+    summary:
+      route:
+        title: Route
   helpers:
     label:
       conversion_project:
