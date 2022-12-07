@@ -29,15 +29,17 @@ Rails.application.routes.draw do
         post "new", to: "projects#create"
         get ":id", to: "projects#show"
         get ":id/tasks", to: "tasks#index"
-        get ":id/tasks/:section_slug/:task_slug", to: "tasks#show"
+        put ":id/tasks", to: "tasks#update"
+        get ":id/tasks/:section_slug/:task_slug", to: "tasks#edit"
       end
 
       namespace :voluntary do
         get "new", to: "projects#new"
         post "new", to: "projects#create"
         get ":id", to: "projects#show"
-        get ":id/tasks", to: "tasks#index"
-        get ":id/tasks/:section_slug/:task_slug", to: "tasks#show"
+        get ":id/tasks", to: "tasks#index", as: :tasks
+        post ":id/tasks", to: "tasks#update", as: :task_update
+        get ":id/tasks/:section_slug/:task_slug", to: "tasks#edit", as: :task_edit
       end
     end
   end

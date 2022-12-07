@@ -1,0 +1,15 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_with model: @task, url: conversion_voluntary_task_update_path do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_check_box :action_one_for_task_one_in_section_one, 1, 0, multiple: false, link_errors: true, label: { text: t("section_one.task_one") } %>
+
+      <%= form.govuk_text_area :detail_one_for_task_one_in_section_two, label: { text: t("seciton_one.detail_one") }, rows: 10 %>
+
+      <%= form.govuk_text_area :land_issues_trust_modification, label: { text: t("seciton_one.land_issues_trust_modification") }, rows: 10 %>
+
+      <%= form.govuk_submit %>
+    <% end %>
+  </div>
+</div>
