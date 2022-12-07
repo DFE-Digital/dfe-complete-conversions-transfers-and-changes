@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - First version of a task list for involuntary conversions.
 - Renamed the new project button to 'new voluntary conversion project' and added
   the 'new involuntary conversion project' button
+- Show the conversion route on projects
 
 #### Changed
 

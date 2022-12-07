@@ -20,6 +20,13 @@
 
   <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
+  <div class="row-container">
+    <%= render partial: "projects/index/project_summary_item",
+          locals: {label: t("conversion_project.summary.route.title"), content: project.details.route} %>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
   <% if project.completed? %>
     <%= render partial: "projects/index/project_summary_item",
           locals: {label: t("project.summary.completed_at"), content: project.completed_at.to_formatted_s(:govuk_date_time_date_only)} %>

@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.open))
+    @pagy, @projects = pagy(policy_scope(Project.open.includes(:details)))
 
     EstablishmentsFetcher.new.call(@projects)
     IncomingTrustsFetcher.new.call(@projects)
@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 
   def completed
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.completed))
+    @pagy, @projects = pagy(policy_scope(Project.completed.includes(:details)))
   end
 
   def show

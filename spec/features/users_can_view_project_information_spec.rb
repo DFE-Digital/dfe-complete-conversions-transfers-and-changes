@@ -13,26 +13,6 @@ RSpec.feature "Users can view project information" do
     visit project_information_path(project_id)
   end
 
-  scenario "they can view the users names and email addresses assigned to the project" do
-    within("#projectDetails") do
-      expect(page).to have_content(user.full_name)
-      expect(page).to have_link("Email caseworker", href: "mailto:#{user.email}")
-
-      expect(page).to have_content(project.team_leader.full_name)
-      expect(page).to have_link("Email team leader", href: "mailto:#{project.team_leader.email}")
-
-      expect(page).to have_content(project.regional_delivery_officer.full_name)
-      expect(page).to have_link("Email regional delivery officer", href: "mailto:#{project.regional_delivery_officer.email}")
-    end
-  end
-
-  scenario "they can view the advisory board details" do
-    within("#projectDetails") do
-      expect(page).to have_content(project.advisory_board_date.to_formatted_s(:govuk))
-      expect(page.html).to include(simple_format(project.advisory_board_conditions, class: "govuk-body"))
-    end
-  end
-
   scenario "they can view the School SharePoint link" do
     within("#projectDetails") do
       expect(page).to have_link(I18n.t("project.summary.establishment_sharepoint_link.value"), href: project.establishment_sharepoint_link)
@@ -72,6 +52,34 @@ RSpec.feature "Users can view project information" do
   scenario "the diocese details" do
     within("#dioceseDetails") do
       expect(page).to have_content(project.establishment.diocese_name)
+    end
+  end
+
+  context "when the caseworker, team lead and regional delivery officer have been assigned" do
+    let(:project) { create(:conversion_project, :with_team_lead_and_regional_delivery_officer_assigned, caseworker: user) }
+
+    scenario "they can view the users names and email addresses assigned to the project" do
+      within("#projectDetails") do
+        expect(page).to have_content(user.full_name)
+        expect(page).to have_link("Email caseworker", href: "mailto:#{user.email}")
+
+        expect(page).to have_content(project.team_leader.full_name)
+        expect(page).to have_link("Email team leader", href: "mailto:#{project.team_leader.email}")
+
+        expect(page).to have_content(project.regional_delivery_officer.full_name)
+        expect(page).to have_link("Email regional delivery officer", href: "mailto:#{project.regional_delivery_officer.email}")
+      end
+    end
+  end
+
+  context "when there are conditions from the advisory board" do
+    let(:project) { create(:conversion_project, :with_conditions, caseworker: user) }
+
+    scenario "they can view the advisory board details" do
+      within("#projectDetails") do
+        expect(page).to have_content(project.advisory_board_date.to_formatted_s(:govuk))
+        expect(page.html).to include(simple_format(project.advisory_board_conditions, class: "govuk-body"))
+      end
     end
   end
 end
