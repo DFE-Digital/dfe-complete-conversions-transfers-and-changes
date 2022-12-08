@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Features
+
+#### Added
+
+#### Changed
+
+#### Fixed
+
+- Format workflow yml files so that markdown renders correctly
+
+#### Content
+
 ## [Release 9][release-9]
 
 ### Features
