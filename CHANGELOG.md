@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Features
+
+#### Addded
+
+#### Changed
+
+- Church supplemental guidance link now points to specific guidance rather than
+  general model documents page
+
+#### Fixed
+
+#### Content
+
 ## [Release 9][release-9]
 
 ### Features
