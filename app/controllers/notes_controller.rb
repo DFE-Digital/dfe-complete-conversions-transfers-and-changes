@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   after_action :verify_policy_scoped, only: :index
 
   def new
-    @note = Note.new(project: @project, user_id:, task_id: params[:task_id])
+    @note = Note.new(project: @project, user_id:, task_key: params[:task_key])
     authorize @note
   end
 
@@ -68,6 +68,6 @@ class NotesController < ApplicationController
   end
 
   private def note_params
-    params.require(:note).permit(:body, :task_id)
+    params.require(:note).permit(:body, :task_key)
   end
 end

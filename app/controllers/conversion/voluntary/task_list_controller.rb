@@ -6,6 +6,7 @@ class Conversion::Voluntary::TaskListController < ::ApplicationController
   end
 
   def edit
+    @notes = Note.where(task_key: @task.class.key, project: @project)
   end
 
   def update
