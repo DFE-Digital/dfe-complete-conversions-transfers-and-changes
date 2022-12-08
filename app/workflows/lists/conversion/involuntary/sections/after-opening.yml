@@ -19,11 +19,14 @@ tasks:
         guidance_summary: Help redacting the documents
         guidance_text: |
           You need to create a redacted version of each applicable document after they've been signed by the Secretary of State:
+
           * Supplemental Funding Agreement
           * Master Funding Agreement (if applicable)
           * Church Supplemental Agreement (if applicable)
           * Deed of Variation (if applicable)
+
           You must remove or hide:
+
           * names
           * signatures
           * home addresses
@@ -45,6 +48,7 @@ tasks:
         guidance_summary: Things you may want to write notes about
         guidance_text: |
           It can be helpful to include notes about:
+
           * funding or financial issues
           * significant changes to the model funding agreements and articles
           * issues relating to governance
