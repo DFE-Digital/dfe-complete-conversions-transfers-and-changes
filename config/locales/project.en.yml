@@ -110,7 +110,7 @@ en:
           <br/ ><br />
           <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in new tab)</a>.
         caseworker_id: The caseworker responsible for this project
-        provisional_conversion_date: The provisional conversion date is always the 1st of the month.
+        provisional_conversion_date: The provisional conversion date is always the first day of the month.
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant documents.
