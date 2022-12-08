@@ -9,7 +9,19 @@ class TaskListTask
     end
 
     def readable_name
-      name.split("::").last.underscore.humanize
+      key.humanize
     end
+  end
+
+  def in_progress?
+    attributes.values.any?(&:present?)
+  end
+
+  def completed?
+    attributes.values.all?(&:present?)
+  end
+
+  def not_applicable?
+    false
   end
 end
