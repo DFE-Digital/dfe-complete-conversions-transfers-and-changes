@@ -18,6 +18,7 @@ tasks:
           You need to clear the Land questionnaire before the Master funding agreement and the Supplemental funding agreement.
 
           The Land questionnaire is critical. It is the basis for all land decisions.
+
           The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.
       - type: single-checkbox
         padding: reduced
