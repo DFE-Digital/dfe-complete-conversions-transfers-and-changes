@@ -1,22 +1,21 @@
 <% @task_list.load.each do |section| %>
   <li>
     <h3 class="app-task-list__section">
-      Clear and sign legal documents
+      <%= section.title %>
     </h3>
     <ul class="app-task-list__items">
-
-      <% @task_list.task_instances.each do |task| %>
+      <% section.tasks.each do |task| %>
         <li class="app-task-list__item">
         <span class="app-task-list__task-name">
           <%= link_to task.class.readable_name, task_path(task.class.key) %>
         </span>
-          <%=     govuk_tag(
-                    text: task.completed? ? "completed" : "incomplete",
-                    colour: "orange",
-                    classes: "app-task-list__tag"
-                  ) %>
+          <%= govuk_tag(
+                text: task.completed? ? "completed" : "incomplete",
+                colour: "orange",
+                classes: "app-task-list__tag"
+              ) %>
         </li>
       <% end %>
     </ul>
   </li>
-</ol>
+<% end %>

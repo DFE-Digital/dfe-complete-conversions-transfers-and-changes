@@ -1,12 +1,16 @@
 class Conversion::Voluntary::TaskList < ApplicationRecord
   belongs_to :project, inverse_of: :task_list
 
-  TASKS = [
-    Conversion::Voluntary::LandQuestionnaire,
-    Conversion::Voluntary::SupplementalFundingAgreement
+  SECTIONS = [
+    TaskList::Section.new(
+      tasks: [
+        Conversion::Voluntary::LandQuestionnaire,
+        Conversion::Voluntary::SupplementalFundingAgreement
+      ],
+      title: "Clear legal documents")
   ].freeze
 
-  TASKS.each do |task|
+  SECTIONS.map(&:tasks).flatten.each do |task|
     mapping = task.attribute_names.map do |attribute|
       ["#{task.key}_#{attribute}", attribute]
     end
@@ -25,10 +29,10 @@ class Conversion::Voluntary::TaskList < ApplicationRecord
   end
 
   private def load_tasks(section)
-    section.tasks.map do |task|
+    section.tasks = section.tasks.map do |task|
       attributes_for_task = attributes
-                              .select { |key| key.start_with?(task.key) }
-                              .transform_keys { |key| key.sub("#{task.key}_", "") }
+                            .select { |key| key.start_with?(task.key) }
+                            .transform_keys { |key| key.sub("#{task.key}_", "") }
 
       task.new(attributes_for_task)
     end
