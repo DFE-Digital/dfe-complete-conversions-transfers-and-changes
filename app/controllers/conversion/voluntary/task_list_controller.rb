@@ -12,7 +12,7 @@ class Conversion::Voluntary::TaskListController < ::ApplicationController
     @task.assign_attributes task_params
 
     if @task.valid?
-      args = { params[:id].to_s => @task }
+      args = {params[:id].to_s => @task}
       @task_list.update!(args)
 
       redirect_to project_path(@project)
