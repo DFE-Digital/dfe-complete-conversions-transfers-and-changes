@@ -11,22 +11,22 @@ RSpec.shared_examples "a conversion project FormObject" do
       it "must be in the future" do
         form = build(
           form_factory.to_sym,
-          provisional_conversion_date: (Date.today + 1.year).at_beginning_of_month
+          provisional_conversion_date: {3 => 1, 2 => 1, 1 => 2030}
         )
         expect(form).to be_valid
 
-        form.provisional_conversion_date = Date.today - 1.year
+        form.provisional_conversion_date = {3 => 1, 2 => 1, 1 => 2020}
         expect(form).to be_invalid
       end
 
       it "cannot be in the past" do
         form = build(
           form_factory.to_sym,
-          provisional_conversion_date: (Date.today + 1.year).at_beginning_of_month
+          provisional_conversion_date: {3 => 1, 2 => 1, 1 => 2030}
         )
         expect(form).to be_valid
 
-        form.provisional_conversion_date = Date.today - 1.year
+        form.provisional_conversion_date = {3 => 1, 2 => 1, 1 => 2020}
         expect(form).to be_invalid
       end
     end
@@ -37,22 +37,22 @@ RSpec.shared_examples "a conversion project FormObject" do
       it "must be in the past" do
         form = build(
           form_factory.to_sym,
-          advisory_board_date: Date.today - 1.week
+          advisory_board_date: {3 => 1, 2 => 1, 1 => 2020}
         )
         expect(form).to be_valid
 
-        form.advisory_board_date = Date.today + 1.month
+        form.advisory_board_date = {3 => 1, 2 => 1, 1 => 2030}
         expect(form).to be_invalid
       end
 
       it "cannot be in the future" do
         form = build(
           form_factory.to_sym,
-          advisory_board_date: Date.today - 1.week
+          advisory_board_date: {3 => 1, 2 => 1, 1 => 2020}
         )
         expect(form).to be_valid
 
-        form.advisory_board_date = Date.today + 1.month
+        form.advisory_board_date = {3 => 1, 2 => 1, 1 => 2030}
         expect(form).to be_invalid
       end
 
