@@ -9,7 +9,22 @@ en:
         text: Edit
     new:
       handover_comments_label: Handover comments
-      handover_comments_hint: Please provide a brief overview of how the project has progressed so far, including any issues that have arisen or areas of concern.
+      handover_comments_hint:
+        <p class="govuk-body">Provide a brief overview of how the project has progressed so far, including any issues or concerns.</p>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              What to make comments about
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">Useful things to comment on include whether the:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>provisional conversion date has been agreed by the school, trust and local authority</li>
+                <li>local authority proforma has been received or requested</li>
+              </ul>
+          </div>
+        </details>
     create:
       success: Project has been created successfully
     edit:
@@ -101,35 +116,39 @@ en:
         advisory_board_date: Date of advisory board
     hint:
       project:
-        urn: <a href="https://www.get-information-schools.service.gov.uk/Search" class="govuk-link" rel="noreferrer noopener" target="_blank">Search Get Information About Schools (GIAS) to find the school's URN (opens in new tab)</a>.
+        urn: |
           This is the URN of the existing school which is converting to an academy. A URN is a 6-digit number.
-        incoming_trust_ukprn: <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in new tab)</a>.
+          <br /><br />
+          <a href="https://www.get-information-schools.service.gov.uk/Search" class="govuk-link" rel="noreferrer noopener" target="_blank">Search Get Information About Schools (GIAS) to find the school's URN (opens in new tab)</a>.
+        incoming_trust_ukprn: |
           A UKPRN is an 8-digit number that always starts with a 1.
+          <br/ ><br />
+          <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in new tab)</a>.
         caseworker_id: The caseworker responsible for this project
-        provisional_conversion_date: The provisional conversion date is always the 1st of the month.
-        advisory_board_conditions: If there are conditions to be met as a result of the advisory board.
-        establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant documents.
-        trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant documents.
+        provisional_conversion_date: The provisional conversion date is always the first day of the month.
+        advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
+        establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
+        trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
   errors:
     attributes:
       urn:
         blank: Enter a school URN
-        no_establishment_found: There’s no school with that URN. Check the number you entered is correct.
+        no_establishment_found: There's no school with that URN. Check the number you entered is correct.
         not_a_number: School URN can only contain numbers. No letters or special characters.
         wrong_length: URN must be 6 digits long. For example, 123456.
       incoming_trust_ukprn:
         blank: Enter a UKPRN
-        no_trust_found: There’s no trust with that UKPRN. Check the number you entered is correct.
+        no_trust_found: There's no trust with that UKPRN. Check the number you entered is correct.
         not_a_number: UKPRN can only contain numbers. No letters or special characters.
         must_be_correct_format: UKPRN must be 8 digits long and start with a 1. For example, 12345678.
       provisional_conversion_date:
-        blank: Enter a provisional conversion month and year
+        blank: Enter a month and year for the provisional conversion date, like 01 2023. If you do not know the provisional conversion date then enter a date that is at least six months after the advisory board.
         must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
         must_be_in_the_future: Provisional conversion date must be in the future.
       regional_delivery_officer_id:
         blank: Choose a regional delivery officer
       advisory_board_date:
-        blank: Enter a date of advisory board
+        blank: Enter a date for the advisory board, like 01 04 2023
         must_be_in_the_past: The advisory board date must be in the past
       establishment_sharepoint_link:
         blank: Enter a school SharePoint link

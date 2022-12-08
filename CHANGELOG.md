@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Changed
 
+- Content iterations to the add project pages including, copy, hints and errors
 - Page load speed has been improved on pages that fetch project data from the
   API. The project index page fetches establishments and trusts in bulk.
 
