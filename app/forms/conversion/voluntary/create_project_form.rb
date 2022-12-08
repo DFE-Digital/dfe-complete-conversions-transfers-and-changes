@@ -11,14 +11,15 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       regional_delivery_officer_id: user.id
     )
 
-    if valid?
-      ActiveRecord::Base.transaction do
-        @project.save
-        @note = Note.create(body: note_body, project: @project, user: user) if note_body
-        Conversion::Voluntary::Details.create(project: @project)
-        TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_PATH)
-        true
-      end
+    return nil unless valid?
+
+    ActiveRecord::Base.transaction do
+      @project.save
+      @note = Note.create(body: note_body, project: @project, user: user) if note_body
+      Conversion::Voluntary::Details.create(project: @project)
+      TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_PATH)
     end
+
+    @project
   end
 end
