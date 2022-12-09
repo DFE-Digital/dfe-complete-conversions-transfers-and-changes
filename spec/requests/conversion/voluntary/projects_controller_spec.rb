@@ -11,4 +11,24 @@ RSpec.describe Conversion::Voluntary::ProjectsController, type: :request do
   end
 
   it_behaves_like "a conversion project"
+
+  describe "notifications" do
+    context "when a new involuntary conversion project is created" do
+      it "sends a notification to team leaders" do
+        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+        project_params = attributes_for(:conversion_project)
+        team_leader = create(:user, :team_leader)
+        another_team_leader = create(:user, :team_leader)
+
+        post create_path, params: {conversion_project: {**project_params, note: {body: ""}}}
+
+        expect(ActionMailer::MailDeliveryJob)
+          .to(have_been_enqueued.on_queue("default")
+          .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, Project.last]))
+        expect(ActionMailer::MailDeliveryJob)
+          .to(have_been_enqueued.on_queue("default")
+          .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [another_team_leader, Project.last]))
+      end
+    end
+  end
 end
