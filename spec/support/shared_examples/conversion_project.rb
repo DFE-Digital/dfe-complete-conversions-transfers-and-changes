@@ -48,12 +48,6 @@ RSpec.shared_examples "a conversion project" do
         expect(Note.last.user).to eq regional_delivery_officer
       end
 
-      it "sends a new project created email to team leaders" do
-        expect(ActionMailer::MailDeliveryJob)
-          .to(have_been_enqueued.on_queue("default")
-                                .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, new_project_record]))
-      end
-
       context "when the note body is empty" do
         let(:note_params) { {body: ""} }
 
