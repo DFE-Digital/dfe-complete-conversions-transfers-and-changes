@@ -40,9 +40,9 @@ tasks:
       You should start this work after you've had the handover with the regional
       delivery officer.
     actions:
-      - title: Send introductory emails
+      - title: Send introductory emails to the school, trust and solicitors
         hint: |
-          Introduce yourself to the school, trust and their solicitors. You should also contact the local authority, but do this separately.
+          You should also contact the local authority, but do this separately.
         guidance_summary: What to include in introductory emails
         guidance_text: |
           You can [choose an email template (opens in new tab)](https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC) to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.
