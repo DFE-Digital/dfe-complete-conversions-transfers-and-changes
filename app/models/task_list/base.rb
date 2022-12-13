@@ -13,8 +13,8 @@ class TaskList::Base < ActiveRecord::Base
     sections.map(&:tasks).flatten
   end
 
-  def task(key)
-    tasks.find { |task| task.class.key == key }
+  def task(identifier)
+    tasks.find { |task| task.class.identifier == identifier }
   end
 
   def save_task(task)
@@ -28,11 +28,11 @@ class TaskList::Base < ActiveRecord::Base
 
   private def attributes_for_task(task)
     attributes
-      .select { |key| key.start_with?(task.key) }
-      .transform_keys { |key| key.sub("#{task.key}_", "") }
+      .select { |key| key.start_with?(task.identifier) }
+      .transform_keys { |key| key.sub("#{task.identifier}_", "") }
   end
 
   private def attributes_for_task_list(task)
-    task.attributes.transform_keys { |key| "#{task.class.key}_#{key}" }
+    task.attributes.transform_keys { |key| "#{task.class.identifier}_#{key}" }
   end
 end

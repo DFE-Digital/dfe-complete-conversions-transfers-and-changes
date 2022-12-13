@@ -3,12 +3,12 @@ class TaskList::Task
   include ActiveModel::Attributes
 
   class << self
-    def key
+    def identifier
       name.split("::").last.underscore
     end
 
     def humanized_name
-      key.humanize
+      identifier.humanize
     end
   end
 

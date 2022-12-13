@@ -22,11 +22,11 @@ RSpec.describe Conversion::Voluntary::TaskList do
   end
 
   describe "#task" do
-    it "returns a single task by its key" do
+    it "returns a single task by its identifier" do
       task_list = Conversion::Voluntary::TaskList.create!
-      task_key = "handover"
+      task_identifier = "handover"
 
-      task = task_list.task(task_key)
+      task = task_list.task(task_identifier)
 
       expect(task).to be_an_instance_of(Conversion::Voluntary::Tasks::Handover)
     end
@@ -37,9 +37,9 @@ RSpec.describe Conversion::Voluntary::TaskList do
       task_list = Conversion::Voluntary::TaskList.create!(
         handover_review: true
       )
-      task_key = "handover"
+      task_identifier = "handover"
 
-      task = task_list.task(task_key)
+      task = task_list.task(task_identifier)
 
       task.assign_attributes(review: false)
       task_list.save_task(task)

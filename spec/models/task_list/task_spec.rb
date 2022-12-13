@@ -4,10 +4,10 @@ RSpec.describe TaskList::Task, type: :model do
   let(:testing_model) { Conversion::Voluntary::TestingClass }
   let(:testing_model_instance) { testing_model.new }
 
-  describe ".key" do
-    subject { testing_model.key }
+  describe ".identifier" do
+    subject { testing_model.identifier }
 
-    it "returns a snake_case key based on the class name" do
+    it "returns a snake_case identifier based on the class name" do
       expect(subject).to eq("testing_class")
     end
   end
