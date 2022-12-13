@@ -63,7 +63,8 @@ tasks:
       - title:
           Check that the local authority proforma is saved in the school's
           SharePoint folder
-        guidance_summary: Help with the local authority proforma
+        guidance_summary:
+          What to do if you don't have the local authority proforma
         guidance_text: |
           The regional delivery officer should have sent the local authority proforma to the local authority to complete.
 
