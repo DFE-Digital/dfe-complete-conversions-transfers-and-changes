@@ -9,21 +9,22 @@ tasks:
     actions:
       - title: Email the regional delivery officer
 
-  - slug: redact-and-send-documents-to-be-published-on-gov-uk
-    title: Redact and send documents to be published on GOV.UK
+  - slug: redact-and-send-documents
+    title: Redact and send documents
     hint:
-      Documents relating to the conversion will be added to GOV.UK. These must
-      be redacted to remove sensitive information.
+      All relevant documents will be added to GOV.UK and the school or trust
+      websites. These documents must be redacted to remove sensitive
+      information.
     actions:
       - title: Redact all relevant documents
         guidance_summary: Help redacting the documents
         guidance_text: |
           You need to create a redacted version of each applicable document after they've been signed by the Secretary of State:
 
-          * Supplemental Funding Agreement
-          * Master Funding Agreement (if applicable)
-          * Church Supplemental Agreement (if applicable)
-          * Deed of Variation (if applicable)
+          * Supplemental funding agreement
+          * Master funding agreement
+          * Church supplemental agreement
+          * Deed of variation
 
           You must remove or hide:
 
@@ -31,11 +32,19 @@ tasks:
           * signatures
           * home addresses
           * any other personal information
-      - title: Save relevant documents in the school's SharePoint folder
-      - title: Send relevant documents to the funding team
+      - title: Save redacted documents in the school's SharePoint folder
+      - title:
+          Send the redacted documents to the funding team to be published on
+          GOV.UK
         guidance_summary: Help sending documents
         guidance_text: |
-          Send the redacted documents to the funding team at [fundingagreements.converters@education.gov.uk](mailto:fundingagreements.converters@education.gov.uk).
+          Email the documents to [fundingagreements.converters@education.gov.uk](mailto:fundingagreements.converters@education.gov.uk).
+      - title:
+          Send the redacted and unredacted versions of documents to the
+          solicitors
+        hint:
+          You can copy the trust into this email too. They will publish relevant
+          documents on their websites.
 
   - slug: update-esfa-data-in-kim
     title: Update ESFA data in KIM
