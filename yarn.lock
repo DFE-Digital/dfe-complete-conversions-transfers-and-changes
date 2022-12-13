@@ -13,17 +13,17 @@
     phin "^3.6.0"
     polka "^0.5.2"
 
-"@adobe/jsonschema2md@^7.1.4":
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/@adobe/jsonschema2md/-/jsonschema2md-7.1.4.tgz#f8bd20b0228bb6c3ce842feac78d7a9d9169ae58"
-  integrity sha512-sqzH/G+2oNZi5ltwbl0hGJacGTDpXv7uUykzh+LD/DNfOIjUq577b1HbES/JP5yWcp4YkX4I3V5Kxltewr0BUg==
+"@adobe/jsonschema2md@^7.1.5":
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/@adobe/jsonschema2md/-/jsonschema2md-7.1.5.tgz#2dc0fba47801490e588486506df495a31075552a"
+  integrity sha512-uybF3Ryn0xz5lzGz6sb6Th5nkX9H60zOnKVYCUXunUtWENGb7Ut+8CYPzPA9sjY8+gLK8pQq3rbmsKprcjkN0A==
   dependencies:
     "@adobe/helix-log" "6.0.0"
     "@types/json-schema" "^7.0.8"
     "@types/mdast" "^3.0.4"
     es2015-i18n-tag "1.6.1"
     ferrum "1.9.4"
-    fs-extra "11.0.0"
+    fs-extra "11.1.0"
     github-slugger "2.0.0"
     js-yaml "4.1.0"
     json-schema "^0.4.0"
@@ -564,10 +564,10 @@ flatted@^3.1.0:
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.5.tgz"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
-fs-extra@11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.0.0.tgz#5c50cf225ab1b16804cabd4249b7e58feb4bdbe7"
-  integrity sha512-4YxRvMi4P5C3WQTvdRfrv5UVqbISpqjORFQAW5QPiKAauaxNCwrEdIi6pG3tDFhKKpMen+enEhHIzB/tvIO+/w==
+fs-extra@11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.1.0.tgz#5784b102104433bb0e090f48bfc4a30742c357ed"
+  integrity sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
