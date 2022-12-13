@@ -11,6 +11,9 @@ As a digital service being developed in DfE we aim to follow the
 - [test](https://s184t01-compcdnendpoint-gnfrfkdpamcncjdm.z01.azurefd.net)
 - [production](https://s184p01-compcdnendpoint-brbkfbdmdqene3f0.z01.azurefd.net)
 
+Console and logs can be accessed on all three environments, details are in
+[accessing console and logs](/doc/console-and-logs.md)
+
 ## Shared components and patterns
 
 - [DfE GOV.UK Components](https://govuk-components.netlify.app/)

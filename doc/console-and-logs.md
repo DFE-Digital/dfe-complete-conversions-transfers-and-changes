@@ -1,0 +1,65 @@
+# Accessing the console and logs
+
+All environments are hosted in Azure and can be accessed via the Azure portal.
+
+All developers on the team have access to the resources in Azure.
+
+## Environments
+
+### Development
+
+Console and log access is available with no further actions
+
+### Test and Production
+
+A Privileged Identity Management (PIM) request will need to be raised and
+approved before console and logs for these environments can be accessed.
+
+## Privileged Identity Management (PIM)
+
+Steps to open a PIM:
+
+- visit the [Azure Portal](https://portal.azure.com) and ensure you are in the
+  `DfE Platform Identity` tenant (platform.education.gov.uk)
+- Locate the PIM module
+- Click on `My roles`
+- Click on `Azure resources`
+- Activate the `Contributor` role for the appropriate environment
+- Select a time (usually 8 hours) and given a reason for the escalated
+  privileges
+- Another member of the team can approve the PIM, you'll receive an email upon
+  approval (you can all view your pending request in PIM module)
+- Once approved your account will have access to the console and logs
+
+## Console access
+
+To get console access to the running application:
+
+- visit the [Azure Portal](https://portal.azure.com) and ensure you are in the
+  `DfE Platform Identity`
+- Locate the `Container Apps` module
+- Locate the container you want, be careful as the names are very similar:
+  - `s184d01-comp-complete-app` > development
+  - `s184t01-comp-complete-app` > test
+  - `s184p01-comp-complete-app` > production
+- Click on the appropriate container
+- Click on `Console`
+- Choose `/bin/bash` and an interactive shell will start
+
+## Log access
+
+The only logs we have right now are streamed out of the running container, we
+expect this to change soon.
+
+To access the log stream:
+
+- visit the [Azure Portal](https://portal.azure.com) and ensure you are in the
+  `DfE Platform Identity`
+- Locate the `Container Apps` module
+- Locate the container you want, be careful as the names are very similar:
+  - `s184d01-comp-complete-app` > development
+  - `s184t01-comp-complete-app` > test
+  - `s184p01-comp-complete-app` > production
+- Click on the appropriate container
+- Click on `Log stream`
+- An interactive log stream will start
