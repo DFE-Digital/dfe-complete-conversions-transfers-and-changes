@@ -54,7 +54,7 @@ tasks:
           correct.
       - title: Email the Single worksheet to your line manager for approval
         hint:
-          Your line manager will reply by email to tell you if they've approved
+          Your line manager will reply by email to tell you if they have approved
           the worksheet.
       - title:
           Send the approved Single worksheet to Academies Operational Practice
@@ -74,7 +74,7 @@ tasks:
       - title: Email the main contact for the conversion
         guidance_summary: How to structure your email
         guidance_text: |
-          You should ask them to check and confirm they've completed all tasks.
+          You should ask them to check and confirm they have completed all tasks.
 
           You can [use the email template (opens in new tab)](https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BA4E75C24-7E01-4732-9065-EEC840AFE132%7D&file=RSCApprovaltoAcademyOpeningDeskInstructions20200922.docx&action=default&mobileredirect=true) on pages 19 and 20 in your
           desk instructions to help structure your email.
@@ -128,7 +128,7 @@ tasks:
   - slug: confirm-opening-date-with-school
     title: Confirm opening date with the school
     hint: |
-      Once you've confirmed that all conditions have been met, contact the
+      Once you have confirmed that all conditions have been met, contact the
       school and trust to tell them they can convert on the provisional conversion
       date.
     actions:

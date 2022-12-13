@@ -37,7 +37,7 @@ tasks:
   - slug: external-stakeholder-kick-off
     title: External stakeholder kick-off
     hint:
-      You should start this work after you've had the handover with the regional
+      You should start this work after you have had the handover with the regional
       delivery officer.
     actions:
       - title: Send introductory emails
