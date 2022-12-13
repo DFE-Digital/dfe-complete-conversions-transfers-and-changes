@@ -145,5 +145,13 @@ RSpec.describe AssignmentsController, type: :request do
       expect(project.reload.caseworker).to eq caseworker
       expect(project.reload.caseworker_assigned_at).to eq DateTime.now
     end
+
+    it "sends a notification to the caseworker" do
+      perform_request
+
+      expect(ActionMailer::MailDeliveryJob)
+        .to(have_been_enqueued.on_queue("default")
+        .with("CaseworkerMailer", "caseworker_assigned_notification", "deliver_now", args: [caseworker, Project.last]))
+    end
   end
 end

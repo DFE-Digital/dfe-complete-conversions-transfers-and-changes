@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Added
 
+- Send notification to caseworker when assigned to a project
+
 #### Changed
 
 - Church supplemental guidance link now points to specific guidance rather than
