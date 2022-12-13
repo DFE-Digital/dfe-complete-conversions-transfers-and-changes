@@ -78,3 +78,13 @@ variable "enable_cdn_frontdoor" {
   description = "Enable Azure CDN FrontDoor. This will use the Container Apps endpoint as the origin."
   type        = bool
 }
+
+variable "enable_dns_zone" {
+  description = "Conditionally create a DNS zone"
+  type        = bool
+}
+
+variable "dns_zone_domain_name" {
+  description = "DNS zone domain name. If specified, records will automatically be created to point to the CDN."
+  type        = string
+}
