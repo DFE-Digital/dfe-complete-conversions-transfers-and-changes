@@ -97,7 +97,9 @@ tasks:
 
       Start this as soon as possible. Schools and trusts can start getting charged by solicitors and the local authority early in the process.
     actions:
-      - title: Receive, check and save the converter support grant claim form
+      - title:
+          Receive, check and save the converter support grant claim form in the
+          school's SharePoint folder
         hint: Make sure no information is missing.
         guidance_summary: How to check and save the form
         guidance_text: |

@@ -127,7 +127,9 @@ tasks:
           Share the link with them so they can register if needed.
 
           It can take 15 to 20 days for an account to be created.
-      - title: Receive, check and save the Grant claim form
+      - title:
+          Receive, check and save the Grant claim form in the school's
+          SharePoint folder
         hint: Make sure no information is missing.
         guidance_summary: How to check and save the form
         guidance_text: |
