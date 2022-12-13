@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Church supplemental guidance link now points to specific guidance rather than
   general model documents page
+- Remove check grant amount on voluntary and involuntary routes
+- Grant claim form action now includes where the document should be saved
 
 #### Fixed
 
