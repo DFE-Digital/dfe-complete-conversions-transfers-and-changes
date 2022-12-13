@@ -6,10 +6,6 @@ class TaskList::Task
     def identifier
       name.split("::").last.underscore
     end
-
-    def humanized_name
-      identifier.humanize
-    end
   end
 
   def status

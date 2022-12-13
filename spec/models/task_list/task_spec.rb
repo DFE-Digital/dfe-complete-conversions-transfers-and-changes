@@ -12,14 +12,6 @@ RSpec.describe TaskList::Task, type: :model do
     end
   end
 
-  describe ".humanized_name" do
-    subject { testing_model.humanized_name }
-
-    it "returns a humanized name based on the class name" do
-      expect(subject).to eq("Testing class")
-    end
-  end
-
   describe "#status" do
     subject { testing_model_instance.status }
 
