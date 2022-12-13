@@ -65,7 +65,7 @@ tasks:
         guidance_text: |
           The regional delivery officer should have sent the local authority proforma to the local authority to complete.
 
-          If you haven't received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.
+          If you have not received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.
       - title: Confirm the provisional conversion date with the local authority
         hint:
           Check that the local authority has capacity to convert the school by

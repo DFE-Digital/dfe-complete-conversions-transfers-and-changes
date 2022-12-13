@@ -71,7 +71,7 @@ RSpec.feature "Users can create and view and delete contacts" do
     click_button("Delete")
 
     expect(page).to have_current_path(project_contacts_path(project_id))
-    expect(page).to have_content("There aren't any contacts for this project yet.")
+    expect(page).to have_content("There are not any contacts for this project yet.")
   end
 
   private def expect_page_to_have_contact(name:, title:, email: nil, phone: nil)
