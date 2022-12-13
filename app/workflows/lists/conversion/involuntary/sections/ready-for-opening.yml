@@ -43,8 +43,8 @@ tasks:
           correct.
       - title: Email the Single worksheet to your line manager for approval
         hint:
-          Your line manager will reply by email to tell you if they have approved
-          the worksheet.
+          Your line manager will reply by email to tell you if they have
+          approved the worksheet.
       - title:
           Send the approved Single worksheet to Academies Operational Practice
           Unit
