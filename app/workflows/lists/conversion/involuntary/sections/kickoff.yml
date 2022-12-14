@@ -40,8 +40,8 @@ tasks:
     title: External stakeholder kick-off
     hint:
       You should start this work after you've had the handover with the regional
-      delivery officer. This is a good opportunity for you to talk to about
-      common problems and how to avoid them.
+      delivery officer. This is a good opportunity for you to talk about common
+      problems and how to avoid them.
     actions:
       - title: Send introductory emails to the trust and solicitors
         hint: |
