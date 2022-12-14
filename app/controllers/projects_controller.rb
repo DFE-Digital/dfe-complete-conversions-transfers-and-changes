@@ -19,10 +19,4 @@ class ProjectsController < ApplicationController
     @project = Project.includes(sections: [:tasks]).find(params[:id])
     authorize @project
   end
-
-  private def notify_team_leaders(project)
-    User.team_leaders.each do |team_leader|
-      TeamLeaderMailer.new_project_created(team_leader, project).deliver_later
-    end
-  end
 end

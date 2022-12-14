@@ -22,25 +22,4 @@ RSpec.describe Conversion::Involuntary::ProjectsController, type: :request do
   end
 
   it_behaves_like "a conversion project"
-
-  describe "notifications" do
-    context "when a new involuntary conversion project is created" do
-      before do
-        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
-        project = create(:involuntary_conversion_project)
-        create_project_form = build(:create_involuntary_project_form)
-        allow(Conversion::Involuntary::CreateProjectForm).to receive(:new).and_return(create_project_form)
-        allow(create_project_form).to receive(:save).and_return(project)
-      end
-
-      it "does not send a notification to team leaders" do
-        _team_leader = create(:user, :team_leader)
-        _another_team_leader = create(:user, :team_leader)
-
-        post create_path, params: {conversion_project: {**project_form_params, note: {body: ""}}}
-
-        expect(ActionMailer::MailDeliveryJob).not_to(have_been_enqueued.on_queue("default"))
-      end
-    end
-  end
 end
