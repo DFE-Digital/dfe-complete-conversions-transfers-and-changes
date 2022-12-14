@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Involuntary & voluntary redact and send agreements copy iterations
 - They've becomes they have to follow GDS guidelines
 - Remove negative contractions
+- Confirm opening date with school becomes Share the grant certificate and
+  information about opening with the trust
 
 #### Fixed
 
