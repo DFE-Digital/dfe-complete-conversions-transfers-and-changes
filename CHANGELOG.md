@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 #### Content
 
+- Fix typo on phase banner feeback becomes feedback
+
 ## [Release 9][release-9]
 
 ### Features
