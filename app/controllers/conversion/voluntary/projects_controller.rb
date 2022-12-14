@@ -1,7 +1,7 @@
 class Conversion::Voluntary::ProjectsController < Conversion::ProjectsController
   def create
     authorize Conversion::Project
-    @project = Conversion::Voluntary::CreateProjectForm.new(**project_params, user: current_user, note_body: note_params[:body])
+    @project = Conversion::Voluntary::CreateProjectForm.new(**project_params, user: current_user)
 
     if @project.valid?
       @created_project = @project.save

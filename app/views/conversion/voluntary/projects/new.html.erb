@@ -17,12 +17,9 @@
       <%= form.govuk_date_field :provisional_conversion_date, omit_day: true, form_group: {id: "provisional-conversion-date"} %>
       <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m"} %>
       <%= form.govuk_text_field :trust_sharepoint_link, label: {size: "m"} %>
-
-      <%= form.fields_for :note, @note do |note_form| %>
-        <%= note_form.govuk_text_area :body,
-              label: {text: t("project.new.handover_comments_label"), size: "m"},
-              hint: {text: t("project.new.handover_comments_hint").html_safe} %>
-      <% end %>
+      <%= form.govuk_text_area :note_body,
+            label: {text: t("project.new.handover_comments_label"), size: "m"},
+            hint: {text: t("project.new.handover_comments_hint").html_safe} %>
 
       <%= form.govuk_submit %>
     <% end %>

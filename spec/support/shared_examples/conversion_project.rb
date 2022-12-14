@@ -3,11 +3,10 @@ require "rails_helper"
 RSpec.shared_examples "a conversion project" do
   describe "#create" do
     let(:project) { build(:conversion_project) }
-    let(:note_params) { {body: "new note"} }
     let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
-      post create_path, params: {conversion_project: {**project_form_params, note: note_params}}
+      post create_path, params: {conversion_project: {**project_form_params}}
       response
     end
 
@@ -52,7 +51,10 @@ RSpec.shared_examples "a conversion project" do
       end
 
       context "when the note body is empty" do
-        let(:note_params) { {body: ""} }
+        subject(:perform_request) do
+          post create_path, params: {conversion_project: {**project_form_params, note_body: ""}}
+          response
+        end
 
         it "does not create a new note" do
           expect(Note.count).to be 0
