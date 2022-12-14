@@ -356,14 +356,15 @@ tasks:
         title: Confirm the 125 year lease has been signed
       - type: single-checkbox
         title:
-          Email the trust to check all relevant parties have signed the 125 year
-          lease
+          Email the trust to ask if all relevant parties have agreed and signed
+          the 125 year lease
       - title:
-          Receive email from the trust confirming the 125 year lease is agreed
-          and signed
+          Receive email from the trust confirming all relevant parties have
+          agreed and signed the 125 year lease
       - type: single-checkbox
         title:
-          Save a copy of the confirmation email in school's SharePoint folder
+          Save a copy of the confirmation email in the school's SharePoint
+          folder
 
   - slug: subleases
     title: Subleases
