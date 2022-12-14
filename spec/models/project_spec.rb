@@ -84,7 +84,7 @@ RSpec.describe Project, type: :model do
       it { is_expected.to allow_value(123456).for(:urn) }
       it { is_expected.not_to allow_values(12345, 1234567).for(:urn) }
 
-      context "when no establishment with that URN exists in the API" do
+      context "when no establishment with that URN exists in the API and the URN is present" do
         let(:no_establishment_found_result) do
           AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new("Could not find establishment with URN: 12345"))
         end
@@ -92,6 +92,8 @@ RSpec.describe Project, type: :model do
         before do
           allow_any_instance_of(AcademiesApi::Client).to \
             receive(:get_establishment) { no_establishment_found_result }
+
+          subject.assign_attributes(urn: 123456)
         end
 
         it "is invalid" do
@@ -102,7 +104,7 @@ RSpec.describe Project, type: :model do
     end
 
     describe "#incoming_trust_ukprn" do
-      context "when no trust with that UKPRN exists in the API" do
+      context "when no trust with that UKPRN exists in the API and the UKPRN is present" do
         let(:no_trust_found_result) do
           AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
         end
@@ -110,6 +112,8 @@ RSpec.describe Project, type: :model do
         before do
           allow_any_instance_of(AcademiesApi::Client).to \
             receive(:get_trust) { no_trust_found_result }
+
+          subject.assign_attributes(incoming_trust_ukprn: 12345678)
         end
 
         it "is invalid" do

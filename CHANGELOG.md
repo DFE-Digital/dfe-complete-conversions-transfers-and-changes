@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Features
 
-#### Addded
+#### Added
 
 #### Changed
 
@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 #### Fixed
 
 - Format workflow yml files so that markdown renders correctly
+- When submitting the new project form, blank URNs and UKPRNs will show a
+  validation error.
 
 #### Content
 
