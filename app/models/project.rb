@@ -3,6 +3,8 @@ class Project < ApplicationRecord
 
   attr_writer :establishment, :incoming_trust
 
+  delegated_type :task_list, types: %w[ Conversion::Voluntary::TaskList ], dependent: :destroy
+
   has_many :sections, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy

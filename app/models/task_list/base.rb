@@ -1,4 +1,6 @@
 class TaskList::Base < ActiveRecord::Base
+  include TaskList
+
   self.abstract_class = true
 
   def sections

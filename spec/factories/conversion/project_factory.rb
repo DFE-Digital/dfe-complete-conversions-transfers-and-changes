@@ -7,6 +7,7 @@ FactoryBot.define do
     advisory_board_date { (Date.today - 2.weeks) }
     establishment_sharepoint_link { "https://educationgovuk-my.sharepoint.com/establishment-folder" }
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
+    task_list { association :voluntary_conversion_task_list }
 
     after :create do |project|
       create :voluntary_conversion_project_details, project: project
