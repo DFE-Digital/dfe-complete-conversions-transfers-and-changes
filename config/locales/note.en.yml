@@ -3,7 +3,7 @@ en:
     index:
       notes: Notes
       add_note_button: Add note
-      no_notes_yet: There aren't any notes for this project yet.
+      no_notes_yet: There are not any notes for this project yet.
     show:
       task_notes:
         title: Task notes

@@ -198,7 +198,7 @@ tasks:
 
           You only need to send the exact pages that they need to sign. Do not send the full document.
 
-          Once you've received the signed page, put it back in the document. Then save the signed Master funding agreement as a PDF in the school's SharePoint folder.
+          Once you have received the signed page, put it back in the document. Then save the signed Master funding agreement as a PDF in the school's SharePoint folder.
       - type: single-checkbox
         padding: reduced
         title: Sent to team leader or deputy director

@@ -18,12 +18,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Grant claim form action now includes where the document should be saved
 - Voluntary and Involuntary changes to external stakeholder kick-off
 - Involuntary & voluntary redact and send agreements copy iterations
+- They've becomes they have to follow GDS guidelines
+- Remove negative contractions
 
 #### Fixed
 
 - Format workflow yml files so that markdown renders correctly
 
 #### Content
+
+- Fix typo on phase banner feeback becomes feedback
 
 ## [Release 9][release-9]
 
