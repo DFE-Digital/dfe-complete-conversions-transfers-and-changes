@@ -19,7 +19,7 @@ tasks:
       - title: Redact all relevant documents
         guidance_summary: Help redacting the documents
         guidance_text: |
-          You need to create a redacted version of each applicable document after they've been signed by the Secretary of State:
+          You need to create a redacted version of each applicable document after they have been signed by the Secretary of State:
 
           * Supplemental funding agreement
           * Master funding agreement
