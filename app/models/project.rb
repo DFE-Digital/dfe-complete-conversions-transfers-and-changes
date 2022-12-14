@@ -21,7 +21,8 @@ class Project < ApplicationRecord
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
 
-  validate :establishment_exists, :trust_exists, on: :create
+  validate :establishment_exists, on: :create, if: -> { urn.present? }
+  validate :trust_exists, on: :create, if: -> { incoming_trust_ukprn.present? }
 
   belongs_to :caseworker, class_name: "User", optional: true
   belongs_to :team_leader, class_name: "User", optional: true
