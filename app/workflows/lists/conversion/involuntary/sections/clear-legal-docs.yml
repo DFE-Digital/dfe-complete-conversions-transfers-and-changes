@@ -411,15 +411,16 @@ tasks:
         title: Confirm the Tenancy at will has been signed
       - type: single-checkbox
         title:
-          Email the trust to ask if they have agreed and signed the Tenancy at
-          will
+          Email the trust to ask if all relevant parties have agreed and signed
+          the Tenancy at will
       - type: single-checkbox
         title:
-          Receive email from the trust confirming the Tenancy at will has all
-          relevant signatures
+          Receive email from the trust confirming all relevant parties have
+          agreed and signed the Tenancy at will
       - type: single-checkbox
         title:
-          Save a copy of the confirmation email in school's SharePoint folder
+          Save a copy of the confirmation email in the school's SharePoint
+          folder
 
   - slug: commercial-transfer-agreement
     title: Commercial transfer agreement
