@@ -389,15 +389,16 @@ tasks:
         title: Confirm any subleases have been signed
       - type: single-checkbox
         title:
-          Email the trust to check all relevant parties have signed any
-          subleases
+          Email the trust to ask if all relevant parties have agreed and signed
+          any subleases
       - type: single-checkbox
         title:
-          Receive email from the trust confirming any subleases are agreed and
-          signed
+          Receive email from the trust confirming all relevant parties have
+          agreed and signed any subleases
       - type: single-checkbox
         title:
-          Save a copy of the confirmation email in school's SharePoint folder
+          Save a copy of the confirmation email in the school's SharePoint
+          folder
 
   - slug: tenancy-at-will
     title: Tenancy at will
