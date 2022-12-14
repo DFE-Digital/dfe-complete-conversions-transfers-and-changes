@@ -37,12 +37,13 @@ tasks:
   - slug: external-stakeholder-kick-off
     title: External stakeholder kick-off
     hint:
-      You should start this work after you have had the handover with the
-      regional delivery officer.
+      You should start this work after you've had the handover with the regional
+      delivery officer. This is a good opportunity for you to talk about common
+      problems and how to avoid them.
     actions:
-      - title: Send introductory emails
+      - title: Send introductory emails to the school, trust and solicitors
         hint: |
-          Introduce yourself to the school, trust and their solicitors. You should also contact the local authority, but do this separately.
+          You should also contact the local authority, but do this separately.
         guidance_summary: What to include in introductory emails
         guidance_text: |
           You can [choose an email template (opens in new tab)](https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC) to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.
@@ -59,9 +60,10 @@ tasks:
 
           Ideally the kick-off meeting should take place within the first couple of weeks.
       - title:
-          Check and save the local authority proforma in the school's SharePoint
-          folder
-        guidance_summary: Help with the local authority proforma
+          Check that the local authority proforma is saved in the school's
+          SharePoint folder
+        guidance_summary:
+          What to do if you don't have the local authority proforma
         guidance_text: |
           The regional delivery officer should have sent the local authority proforma to the local authority to complete.
 
@@ -69,7 +71,7 @@ tasks:
       - title: Confirm the provisional conversion date with the local authority
         hint:
           Check that the local authority has capacity to convert the school by
-          the provisional date.
+          the provisional date
         guidance_summary:
           What to do if the local authority does not have capacity
         guidance_text: |
