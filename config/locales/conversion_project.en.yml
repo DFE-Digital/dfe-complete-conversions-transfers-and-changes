@@ -5,14 +5,22 @@ en:
       new:
         title: Add a new involuntary conversion project
         hint_html: <p class="govuk-body">Enter the school and trust information.</p><p class="govuk-body">This will create a conversion project for a school that has been issued a Directive academy order.</p>
+      create:
+        success:
+          Involuntary project successfully created
+          <p class="govuk-body">Add details of any contacts you have for the school, trust, local authority and solicitors.</p>
+          <p class="govuk-body">Use the task list to manage the project.</p>
     voluntary:
       route: Voluntary
       new:
         title: Add a new voluntary conversion project
         hint_html: <p class="govuk-body">Enter the school and trust information.</p><p class="govuk-body">This will create a conversion project for a school that has been granted an Academy order.</p>
-    summary:
-      route:
-        title: Route
+      create:
+        success:
+          Voluntary project successfully created
+          <p class="govuk-body">Add details of any contacts you have for the school, trust, local authority and solicitors.</p>
+          <p class="govuk-body">A caseworker will be assigned this project.</p>
+          <p class="govuk-body">There is nothing more for you to do.</p>
   helpers:
     label:
       conversion_project:
@@ -42,3 +50,4 @@ en:
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
+

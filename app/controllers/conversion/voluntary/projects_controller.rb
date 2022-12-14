@@ -14,7 +14,7 @@ class Conversion::Voluntary::ProjectsController < Conversion::ProjectsController
 
       notify_team_leaders
 
-      redirect_to project_path(@project), notice: I18n.t("project.create.success")
+      redirect_to project_path(@project), notice: I18n.t("conversion_project.voluntary.create.success")
     else
       render :new
     end

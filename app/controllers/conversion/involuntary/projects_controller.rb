@@ -12,7 +12,8 @@ class Conversion::Involuntary::ProjectsController < Conversion::ProjectsControll
         TaskListCreator.new.call(@project, workflow_root: Conversion::Involuntary::Details::WORKFLOW_PATH)
       end
 
-      redirect_to project_path(@project), notice: I18n.t("project.create.success")
+      redirect_to project_path(@project), notice: I18n.t("conversion_project.involuntary.create.success")
+
     else
       render :new
     end
