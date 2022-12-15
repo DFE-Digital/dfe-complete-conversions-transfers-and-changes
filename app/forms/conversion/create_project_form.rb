@@ -33,16 +33,27 @@ class Conversion::CreateProjectForm
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
 
+  validate :multiparameter_date_attributes_values
+
+  def initialize(params = {})
+    @attributes_with_invalid_values = []
+    super(params)
+  end
+
   def provisional_conversion_date=(hash)
     @provisional_conversion_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
-  rescue TypeError, NoMethodError
+  rescue NoMethodError
     nil
+  rescue TypeError
+    @attributes_with_invalid_values << :provisional_conversion_date
   end
 
   def advisory_board_date=(hash)
     @advisory_board_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
-  rescue TypeError, NoMethodError
+  rescue NoMethodError
     nil
+  rescue TypeError
+    @attributes_with_invalid_values << :advisory_board_date
   end
 
   private def day_for(value)
@@ -55,6 +66,11 @@ class Conversion::CreateProjectForm
 
   private def year_for(value)
     value[1]
+  end
+
+  private def multiparameter_date_attributes_values
+    return if @attributes_with_invalid_values.empty?
+    @attributes_with_invalid_values.each { |attribute| errors.add(attribute, :invalid) }
   end
 
   private def notify_team_leaders(project)
