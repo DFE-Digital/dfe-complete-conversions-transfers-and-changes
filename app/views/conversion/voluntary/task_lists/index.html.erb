@@ -1,0 +1,28 @@
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: root_path} %>
+<% end %>
+
+<h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
+
+<ol class="app-task-list">
+  <% @project.task_list.sections.each do |section| %>
+    <li>
+      <h3 class="app-task-list__section">
+        <%= section.title %>
+      </h3>
+      <ul class="app-task-list__items">
+        <% section.tasks.each do |task| %>
+          <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                  <%= govuk_link_to(
+                        task.title,
+                        aria: {describedby: task_status_id(task)}
+                      ) %>
+              </span>
+            <%= task_status_tag(task) %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ol>

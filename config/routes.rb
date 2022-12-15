@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       namespace :voluntary do
         get "new", to: "projects#new"
         post "new", to: "projects#create"
+        get ":project_id/tasks", to: "task_lists#index", as: :tasks
       end
     end
   end
