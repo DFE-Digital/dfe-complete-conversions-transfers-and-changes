@@ -44,7 +44,7 @@ class Conversion::CreateProjectForm
     @provisional_conversion_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
   rescue NoMethodError
     nil
-  rescue TypeError
+  rescue TypeError, Date::Error
     @attributes_with_invalid_values << :provisional_conversion_date
   end
 
@@ -52,7 +52,7 @@ class Conversion::CreateProjectForm
     @advisory_board_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
   rescue NoMethodError
     nil
-  rescue TypeError
+  rescue TypeError, Date::Error
     @attributes_with_invalid_values << :advisory_board_date
   end
 

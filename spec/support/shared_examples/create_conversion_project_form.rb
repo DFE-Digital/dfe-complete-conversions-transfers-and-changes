@@ -57,6 +57,22 @@ RSpec.shared_examples "a conversion project FormObject" do
           expect(form.errors.of_kind?(:provisional_conversion_date, :blank)).to be true
         end
       end
+
+      context "when the date doesn't exist" do
+        it "treats the date as invalid" do
+          form = build(form_factory.to_sym, provisional_conversion_date: {3 => 31, 2 => 2, 1 => 2030})
+          expect(form).to be_invalid
+          expect(form.errors.of_kind?(:provisional_conversion_date, :invalid)).to be true
+        end
+      end
+
+      context "when the isn't a date" do
+        it "treats the date as invalid" do
+          form = build(form_factory.to_sym, provisional_conversion_date: {3 => "not", 2 => "a", 1 => "date"})
+          expect(form).to be_invalid
+          expect(form.errors.of_kind?(:provisional_conversion_date, :invalid)).to be true
+        end
+      end
     end
 
     describe "advisory_board_date" do
@@ -113,6 +129,22 @@ RSpec.shared_examples "a conversion project FormObject" do
           form = build(form_factory.to_sym, advisory_board_date: nil)
           expect(form).to be_invalid
           expect(form.errors.of_kind?(:advisory_board_date, :blank)).to be true
+        end
+      end
+
+      context "when the date doesn't exist" do
+        it "treats the date as invalid" do
+          form = build(form_factory.to_sym, advisory_board_date: {3 => 31, 2 => 2, 1 => 2030})
+          expect(form).to be_invalid
+          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        end
+      end
+
+      context "when the isn't a date" do
+        it "treats the date as invalid" do
+          form = build(form_factory.to_sym, advisory_board_date: {3 => "not", 2 => "a", 1 => "date"})
+          expect(form).to be_invalid
+          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
         end
       end
     end
