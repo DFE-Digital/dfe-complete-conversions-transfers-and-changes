@@ -21,6 +21,9 @@ en:
           <p class="govuk-body">Add details of any contacts you have for the school, trust, local authority and solicitors.</p>
           <p class="govuk-body">A caseworker will be assigned this project.</p>
           <p class="govuk-body">There is nothing more for you to do.</p>
+    summary:
+      route:
+        title: Route
   helpers:
     label:
       conversion_project:
@@ -50,4 +53,3 @@ en:
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
-
