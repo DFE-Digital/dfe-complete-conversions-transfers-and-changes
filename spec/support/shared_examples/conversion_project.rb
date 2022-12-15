@@ -3,19 +3,21 @@ require "rails_helper"
 RSpec.shared_examples "a conversion project" do
   describe "#create" do
     let(:project) { build(:conversion_project) }
-    let(:project_params) { attributes_for(:conversion_project, regional_delivery_officer: nil) }
-    let(:note_params) { {body: "new note"} }
     let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
-      post create_path, params: {conversion_project: {**project_params, note: note_params}}
+      post create_path, params: {conversion_project: {**project_form_params}}
       response
+    end
+
+    before do
+      mock_successful_api_responses(urn: any_args, ukprn: any_args)
     end
 
     context "when the project is not valid" do
       before do
-        allow(Project).to receive(:new).and_return(project)
-        allow(project).to receive(:valid?).and_return false
+        allow(form_class).to receive(:new).and_return(project_form)
+        allow(project_form).to receive(:valid?).and_return false
       end
 
       it "re-renders the new template" do
@@ -49,7 +51,10 @@ RSpec.shared_examples "a conversion project" do
       end
 
       context "when the note body is empty" do
-        let(:note_params) { {body: ""} }
+        subject(:perform_request) do
+          post create_path, params: {conversion_project: {**project_form_params, note_body: ""}}
+          response
+        end
 
         it "does not create a new note" do
           expect(Note.count).to be 0

@@ -18,6 +18,7 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       @note = Note.create(body: note_body, project: @project, user: user) if note_body
       Conversion::Voluntary::Details.create(project: @project)
       TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_PATH)
+      notify_team_leaders(@project)
     end
 
     @project

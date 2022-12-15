@@ -1,20 +1,12 @@
 class Conversion::Voluntary::ProjectsController < Conversion::ProjectsController
   def create
-    @note = Note.new(**note_params, user_id: user_id)
-    @project = Conversion::Project.new(**project_params, regional_delivery_officer_id: user_id, notes_attributes: [@note.attributes])
-
-    authorize @project
+    authorize Conversion::Project
+    @project = Conversion::Voluntary::CreateProjectForm.new(**project_params, user: current_user)
 
     if @project.valid?
-      ActiveRecord::Base.transaction do
-        @project.save
-        Conversion::Voluntary::Details.create(project: @project)
-        TaskListCreator.new.call(@project, workflow_root: Conversion::Voluntary::Details::WORKFLOW_PATH)
-      end
+      @created_project = @project.save
 
-      notify_team_leaders
-
-      redirect_to project_path(@project), notice: I18n.t("conversion_project.voluntary.create.success")
+      redirect_to project_path(@created_project), notice: I18n.t("conversion_project.voluntary.create.success")
     else
       render :new
     end

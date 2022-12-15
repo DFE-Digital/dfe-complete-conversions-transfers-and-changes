@@ -7,8 +7,6 @@ class Project < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
-  accepts_nested_attributes_for :notes, reject_if: proc { |attributes| attributes[:body].blank? }
-
   validates :urn, presence: true
   validates :urn, urn: true
   validates :incoming_trust_ukprn, presence: true

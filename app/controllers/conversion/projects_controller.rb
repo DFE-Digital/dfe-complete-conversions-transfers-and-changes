@@ -12,11 +12,8 @@ class Conversion::ProjectsController < ProjectsController
       :advisory_board_date,
       :advisory_board_conditions,
       :establishment_sharepoint_link,
-      :trust_sharepoint_link
+      :trust_sharepoint_link,
+      :note_body
     )
-  end
-
-  private def note_params
-    params.require(:conversion_project).require(:note).permit(:body)
   end
 end
