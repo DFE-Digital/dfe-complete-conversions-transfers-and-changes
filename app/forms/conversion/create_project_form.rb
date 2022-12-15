@@ -35,13 +35,13 @@ class Conversion::CreateProjectForm
 
   def provisional_conversion_date=(hash)
     @provisional_conversion_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
-  rescue NoMethodError
+  rescue TypeError, NoMethodError
     nil
   end
 
   def advisory_board_date=(hash)
     @advisory_board_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
-  rescue NoMethodError
+  rescue TypeError, NoMethodError
     nil
   end
 
