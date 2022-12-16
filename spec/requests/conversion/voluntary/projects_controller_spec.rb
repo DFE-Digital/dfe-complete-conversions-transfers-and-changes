@@ -6,6 +6,7 @@ RSpec.describe Conversion::Voluntary::ProjectsController, type: :request do
   let(:workflow_root) { Conversion::Voluntary::Details::WORKFLOW_PATH }
   let(:form_class) { Conversion::Voluntary::CreateProjectForm }
   let(:project_form) { build(:create_voluntary_project_form) }
+  let(:project_form_params_key) { "conversion_voluntary_create_project_form" }
   let(:project_form_params) {
     attributes_for(:create_voluntary_project_form,
       "provisional_conversion_date(3i)": "1",
