@@ -10,6 +10,7 @@
               <span class="app-task-list__task-name">
                   <%= govuk_link_to(
                         task.title,
+                        task_edit_path(task),
                         aria: {describedby: task_status_id(task)}
                       ) %>
               </span>
