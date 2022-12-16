@@ -10,13 +10,13 @@
       <h1 class="govuk-heading-l"><%= t("conversion_project.involuntary.new.title") %></h1>
       <%= t("conversion_project.involuntary.new.hint_html") %>
 
-      <%= form.govuk_text_field :urn, label: {size: "m"}, hint: {text: t("helpers.hint.project.urn").html_safe}, width: 10 %>
-      <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m"}, hint: {text: t("helpers.hint.project.incoming_trust_ukprn").html_safe}, width: 10 %>
-      <%= form.govuk_date_field :advisory_board_date, form_group: {id: "advisory-board-date"} %>
-      <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m"} %>
-      <%= form.govuk_date_field :provisional_conversion_date, omit_day: true, form_group: {id: "provisional-conversion-date"} %>
-      <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m"} %>
-      <%= form.govuk_text_field :trust_sharepoint_link, label: {size: "m"} %>
+      <%= form.govuk_text_field :urn, label: {size: "m", text: t("helpers.label.conversion_project.urn")}, hint: {text: t("helpers.hint.project.urn").html_safe}, width: 10 %>
+      <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.conversion_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.project.incoming_trust_ukprn").html_safe}, width: 10 %>
+      <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.project.advisory_board_date")}, form_group: {id: "advisory-board-date"} %>
+      <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.conversion_project.advisory_board_conditions")} %>
+      <%= form.govuk_date_field :provisional_conversion_date, legend: {text: t("helpers.legend.project.provisional_conversion_date")}, omit_day: true, form_group: {id: "provisional-conversion-date"} %>
+      <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("helpers.label.conversion_project.establishment_sharepoint_link")} %>
+      <%= form.govuk_text_field :trust_sharepoint_link, label: {size: "m", text: t("helpers.label.conversion_project.trust_sharepoint_link")} %>
       <%= form.govuk_text_area :note_body,
             label: {text: t("project.new.handover_comments_label"), size: "m"},
             hint: {text: t("project.new.handover_comments_hint").html_safe} %>

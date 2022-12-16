@@ -6,7 +6,7 @@ RSpec.shared_examples "a conversion project" do
     let!(:team_leader) { create(:user, :team_leader) }
 
     subject(:perform_request) do
-      post create_path, params: {conversion_project: {**project_form_params}}
+      post create_path, params: {"#{project_form_params_key}": {**project_form_params}}
       response
     end
 
@@ -52,7 +52,7 @@ RSpec.shared_examples "a conversion project" do
 
       context "when the note body is empty" do
         subject(:perform_request) do
-          post create_path, params: {conversion_project: {**project_form_params, note_body: ""}}
+          post create_path, params: {"#{project_form_params_key}": {**project_form_params, note_body: ""}}
           response
         end
 

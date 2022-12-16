@@ -6,6 +6,7 @@ RSpec.describe Conversion::Involuntary::ProjectsController, type: :request do
   let(:workflow_root) { Conversion::Involuntary::Details::WORKFLOW_PATH }
   let(:form_class) { Conversion::Involuntary::CreateProjectForm }
   let(:project_form) { build(:create_involuntary_project_form) }
+  let(:project_form_params_key) { "conversion_involuntary_create_project_form" }
   let(:project_form_params) {
     attributes_for(:create_involuntary_project_form,
       "provisional_conversion_date(3i)": "1",

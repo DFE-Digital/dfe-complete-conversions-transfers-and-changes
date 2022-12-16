@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Format workflow yml files so that markdown renders correctly
 - When submitting the new project form, blank URNs and UKPRNs will show a
   validation error.
+- When resubmitting a create project form which failed validation, the app would
+  throw a 500 error.
 
 #### Content
 
