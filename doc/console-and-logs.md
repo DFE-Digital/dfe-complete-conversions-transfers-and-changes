@@ -8,7 +8,8 @@ All developers on the team have access to the resources in Azure.
 
 ### Development
 
-Console and log access is available with no further actions
+[Console](#console-access) and [log](#log-access) access is available with no
+further actions.
 
 ### Test and Production
 
@@ -29,7 +30,8 @@ Steps to open a PIM:
   privileges
 - Another member of the team can approve the PIM, you'll receive an email upon
   approval (you can all view your pending request in PIM module)
-- Once approved your account will have access to the console and logs
+- Once approved your account will have access to the [Console](#console-access)
+  and [logs](#log-access)
 
 ## Console access
 
