@@ -1,7 +1,9 @@
 # Environment variables
 
-We have three production environments i.e. where Rails is running in
-'production' with RAILS_ENV="production":
+See [.env.example](./.env.example) for local environment variables.
+
+We have three live environments i.e. where Rails is running in 'production' with
+RAILS_ENV="production":
 
 - development
 - test
