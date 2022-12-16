@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_12_121642) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_134847) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -42,6 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_121642) do
   create_table "conversion_details", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "type"
     t.uuid "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conversion_involuntary_task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.boolean "handover_review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,6 +88,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_121642) do
     t.datetime "completed_at"
     t.text "trust_sharepoint_link"
     t.string "type"
+    t.uuid "task_list_id"
+    t.string "task_list_type"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"

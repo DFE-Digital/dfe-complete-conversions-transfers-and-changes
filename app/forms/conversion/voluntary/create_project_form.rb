@@ -8,7 +8,8 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       advisory_board_conditions: advisory_board_conditions,
       provisional_conversion_date: provisional_conversion_date,
       advisory_board_date: advisory_board_date,
-      regional_delivery_officer_id: user.id
+      regional_delivery_officer_id: user.id,
+      task_list: Conversion::Voluntary::TaskList.new
     )
 
     return nil unless valid?

@@ -23,6 +23,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:team_leader).required(false) }
+    it { is_expected.to belong_to(:task_list).required(true) }
 
     describe "delete related entities" do
       context "when the project is deleted" do
@@ -39,11 +40,12 @@ RSpec.describe Project, type: :model do
 
           project.destroy
 
-          expect(Note.count).to eql 0
-          expect(Contact.count).to eql 0
-          expect(Section.count).to eql 0
-          expect(Task.count).to eql 0
-          expect(Action.count).to eql 0
+          expect(Note.count).to be_zero
+          expect(Contact.count).to be_zero
+          expect(Section.count).to be_zero
+          expect(Task.count).to be_zero
+          expect(Action.count).to be_zero
+          expect(Conversion::Voluntary::TaskList.count).to be_zero
         end
       end
     end
