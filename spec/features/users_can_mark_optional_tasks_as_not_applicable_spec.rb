@@ -16,7 +16,7 @@ RSpec.feature "Users can mark optional tasks as not applicable to a project" do
   scenario "they can edit the task and see the status changed to 'not applicable'" do
     visit project_task_path(project, task)
     check "Not applicable"
-    click_button "Continue"
+    click_button "Save and return"
 
     within("#not-applicable-task-status") do
       expect(page).to have_content(I18n.t("tasks.not_applicable"))
