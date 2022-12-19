@@ -9,3 +9,6 @@ en:
       handover:
         title:
           Handover with regional delivery officer
+
+    continue_button:
+      text: Save and return

@@ -20,7 +20,7 @@ RSpec.feature "Users can update the Actions for a Task" do
     uncheck("Action 1")
     check("Action 2")
 
-    click_button("Continue")
+    click_button("Save and return")
 
     expect(incomplete_action.reload.completed?).to be true
     expect(completed_action.reload.completed?).to be false

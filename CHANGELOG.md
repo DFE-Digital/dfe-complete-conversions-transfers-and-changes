@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Remove negative contractions
 - Confirm opening date with school becomes Share the grant certificate and
   information about opening with the trust
+- Tasks Continue button now states 'Save and return', tests updated too
 
 #### Fixed
 
