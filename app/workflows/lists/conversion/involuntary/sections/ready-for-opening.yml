@@ -116,14 +116,15 @@ tasks:
           * risk protection arrangement in place and insurer confirmed
           * relevant documents signed
 
-  - slug: confirm-opening-date-with-school
-    title: Confirm opening date with the trust
+  - slug: share-the-grant-certificate-and-information-about-opening-with-the-trust
+    title:
+      Share the grant certificate and information about opening with the trust
     hint: |
       Once you have confirmed that all conditions have been met, contact the
       trust to tell them they can convert on the provisional conversion date.
     actions:
       - title: Email relevant information to your main contact
-        guidance_summary: What to tell the trust
+        guidance_summary: What to tell the school
         guidance_text: |
           Email your main contact at the trust.
 
@@ -131,9 +132,6 @@ tasks:
 
           * confirmation the school will convert on the provisional date
           * the school's new URN
-          * all signed and sealed legal documents
           * the [Grant expenditure certificate (opens in new tab)](https://www.gov.uk/government/publications/academy-support-grant) that they need to complete and return
-
-          It can be helpful to mention that they'll soon get some welcome emails from other teams in government. These will contain more information about funding and opening as an academy.
 
           You can split this information over more than one email if you do not immediately have everything you need.
