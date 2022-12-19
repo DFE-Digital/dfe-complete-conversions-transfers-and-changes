@@ -1,4 +1,4 @@
-class TaskListController < ApplicationController
+class TaskListsController < ApplicationController
   before_action :find_project, :find_task_list
   before_action :find_task, only: %i[edit update]
 

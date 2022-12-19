@@ -1,4 +1,4 @@
-class Conversion::Involuntary::TaskListsController < TaskListController
+class Conversion::Involuntary::TaskListsController < TaskListsController
   def task_edit_path(task)
     conversion_involuntary_task_path(@project.id, task.class.identifier)
   end
