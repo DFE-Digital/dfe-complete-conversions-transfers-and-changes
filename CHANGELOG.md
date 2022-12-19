@@ -32,6 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 #### Content
 
 - Fix typo on phase banner feeback becomes feedback
+- 125 year lease, subleases, tenancy at will and commercial transfer agreement
+  have standardised actions that use the same language
 
 ## [Release 9][release-9]
 
