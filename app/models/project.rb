@@ -17,8 +17,8 @@ class Project < ApplicationRecord
   validates :provisional_conversion_date, first_day_of_month: true
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
-  validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
-  validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
+  validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
+  validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
 
   validate :establishment_exists, on: :create, if: -> { urn.present? }
   validate :trust_exists, on: :create, if: -> { incoming_trust_ukprn.present? }
