@@ -4,4 +4,4 @@
 
 <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
 
-<%= render "conversion/shared/task_list" %>
+<%= render partial: "conversion/shared/task_list", locals: {locales: :conversion_involuntary_task_list} %>

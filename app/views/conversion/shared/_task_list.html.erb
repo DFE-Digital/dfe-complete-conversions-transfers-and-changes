@@ -2,19 +2,21 @@
   <% @project.task_list.sections.each do |section| %>
     <li>
       <h3 class="app-task-list__section">
-        <%= section.title %>
+        <%= section_title(locales, section.identifier) %>
       </h3>
       <ul class="app-task-list__items">
         <% section.tasks.each do |task| %>
+          <% task_title = task_title(locales, task.class.identifier) %>
+
           <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                   <%= govuk_link_to(
-                        task.title,
+                        task_title,
                         task_edit_path(task),
-                        aria: {describedby: task_status_id(task)}
+                        aria: {describedby: task_status_id(task_title)}
                       ) %>
               </span>
-            <%= task_status_tag(task) %>
+            <%= task_status_tag(task, task_status_id(task_title)) %>
           </li>
         <% end %>
       </ul>

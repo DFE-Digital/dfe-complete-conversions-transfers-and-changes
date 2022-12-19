@@ -16,10 +16,6 @@ class TaskList::Task
     :not_started
   end
 
-  def title
-    I18n.t("task_list.tasks.#{self.class.identifier}.title")
-  end
-
   private def in_progress?
     attributes.values.any?(&:present?)
   end

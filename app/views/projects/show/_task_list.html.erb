@@ -11,10 +11,10 @@
                   <%= govuk_link_to(
                         task.title,
                         project_task_path(@project.id, task.id),
-                        aria: {describedby: task_status_id(task)}
+                        aria: {describedby: task_status_id(task.title)}
                       ) %>
               </span>
-            <%= task_status_tag(task) %>
+            <%= task_status_tag(task, task_status_id(task.title)) %>
           </li>
         <% end %>
       </ul>
