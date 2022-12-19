@@ -31,6 +31,8 @@ class AssignmentsController < ApplicationController
     @project.update(caseworker_assigned_at: DateTime.now) if @project.caseworker_assigned_at.nil?
     @project.update(caseworker_params)
 
+    CaseworkerMailer.caseworker_assigned_notification(@project.caseworker, @project).deliver_later
+
     redirect_to project_information_path(@project), notice: t("project.assign.caseworker.success")
   end
 
