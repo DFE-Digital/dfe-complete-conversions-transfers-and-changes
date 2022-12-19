@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   validation error.
 - When resubmitting a create project form which failed validation, the app would
   throw a 500 error.
+- When creating a new project, missing or invalid dates will render a validation
+  error on the UI with a helpful message to the user.
 
 #### Content
 

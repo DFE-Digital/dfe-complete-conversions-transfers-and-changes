@@ -4,6 +4,8 @@ class Conversion::CreateProjectForm
 
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
+  class NegativeValueError < StandardError; end
+
   attr_accessor :urn,
     :incoming_trust_ukprn,
     :establishment_sharepoint_link,
@@ -33,28 +35,38 @@ class Conversion::CreateProjectForm
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
 
+  validate :multiparameter_date_attributes_values
+
+  def initialize(params = {})
+    @attributes_with_invalid_values = []
+    super(params)
+  end
+
   def provisional_conversion_date=(hash)
-    @provisional_conversion_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
+    @provisional_conversion_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
   rescue NoMethodError
     nil
+  rescue TypeError, Date::Error
+    @attributes_with_invalid_values << :provisional_conversion_date
   end
 
   def advisory_board_date=(hash)
-    @advisory_board_date = Date.new(year_for(hash), month_for(hash), day_for(hash))
+    @advisory_board_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
   rescue NoMethodError
     nil
+  rescue TypeError, Date::Error, NegativeValueError
+    @attributes_with_invalid_values << :advisory_board_date
   end
 
-  private def day_for(value)
-    value[3]
+  private def value_at_position(hash, position)
+    value = hash[position]
+    return NegativeValueError if value.to_i < 0
+    value
   end
 
-  private def month_for(value)
-    value[2]
-  end
-
-  private def year_for(value)
-    value[1]
+  private def multiparameter_date_attributes_values
+    return if @attributes_with_invalid_values.empty?
+    @attributes_with_invalid_values.each { |attribute| errors.add(attribute, :invalid) }
   end
 
   private def notify_team_leaders(project)
