@@ -1,0 +1,52 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "02bae3df5dc344390e29342b85f949e8b77ea2e9d7a4a5e69823d7f8b9664a6c",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/controllers/task_lists_controller.rb",
+      "line": 9,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => task_template_path(Project.find(params[:project_id]).task_list.task(params[:task_id]).class.identifier), {})",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TaskListsController",
+        "method": "edit"
+      },
+      "user_input": "params[:task_id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "4f12037a57acfa3b5eae5cc25928f12a5855e26274d9a337cbd90dc2eaffe246",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/controllers/task_lists_controller.rb",
+      "line": 20,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => task_template_path(Project.find(params[:project_id]).task_list.task(params[:task_id]).class.identifier), {})",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TaskListsController",
+        "method": "update"
+      },
+      "user_input": "params[:task_id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2022-12-19 14:08:48 +0000",
+  "brakeman_version": "5.3.1"
+}
