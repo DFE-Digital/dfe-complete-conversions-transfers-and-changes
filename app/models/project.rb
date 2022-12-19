@@ -14,7 +14,6 @@ class Project < ApplicationRecord
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
   validates :provisional_conversion_date, presence: true
-  validates :provisional_conversion_date, date_in_the_future: true
   validates :provisional_conversion_date, first_day_of_month: true
   validates :advisory_board_date, presence: true, on: :create
   validates :advisory_board_date, date_in_the_past: true
