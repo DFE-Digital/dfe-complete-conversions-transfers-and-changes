@@ -15,7 +15,7 @@ class Project < ApplicationRecord
   validates :incoming_trust_ukprn, ukprn: true
   validates :provisional_conversion_date, presence: true
   validates :provisional_conversion_date, first_day_of_month: true
-  validates :advisory_board_date, presence: true, on: :create
+  validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}, on: :create

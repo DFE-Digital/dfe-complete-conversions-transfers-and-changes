@@ -54,7 +54,7 @@ RSpec.describe Project, type: :model do
   describe "Validations" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-    it { is_expected.to validate_presence_of(:advisory_board_date).on(:create) }
+    it { is_expected.to validate_presence_of(:advisory_board_date) }
 
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
