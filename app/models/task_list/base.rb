@@ -11,6 +11,10 @@ class TaskList::Base < ActiveRecord::Base
     end
   end
 
+  def locales_path
+    self.class.name.underscore.tr("/", ".")
+  end
+
   def tasks
     sections.map(&:tasks).flatten
   end

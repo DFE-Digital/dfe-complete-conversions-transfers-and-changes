@@ -9,4 +9,10 @@ RSpec.describe Conversion::Involuntary::TaskList do
   }
 
   it_behaves_like "a task list"
+
+  describe "#locales_path" do
+    it "returns the appropriate locales path based on the class path" do
+      expect(task_list.locales_path).to eq "conversion.involuntary.task_list"
+    end
+  end
 end
