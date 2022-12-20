@@ -7,7 +7,7 @@ class TaskList::Base < ActiveRecord::Base
     task_list_layout.map do |section|
       tasks = section[:tasks].map { |task| task.new(attributes_for_task(task)) }
 
-      TaskList::Section.new(identifier: section[:identifier], tasks: tasks)
+      TaskList::Section.new(identifier: section[:identifier], tasks: tasks, locales_path: locales_path)
     end
   end
 
