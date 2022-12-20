@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Note, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:body).of_type :text }
+    it { is_expected.to have_db_column(:task_identifier).of_type :string }
   end
 
   describe "Relationships" do
