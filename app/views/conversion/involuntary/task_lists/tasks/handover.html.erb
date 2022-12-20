@@ -1,11 +1,11 @@
+<%= render(TaskList::TaskHeader.new(project: @project, task: @task)) %>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @task, url: conversion_involuntary_update_task_path(@project, @task.class.identifier), method: :put do |form| %>
       <%= form.govuk_error_summary %>
 
-      <%= form.govuk_check_boxes_fieldset :progress, multiple: false, legend: nil do %>
-        <%= form.govuk_check_box :review, 1, 0, multiple: false, link_errors: true %>
-      <% end %>
+      <%= render(TaskList::CheckBoxAction.new(form: form, task: @task, attribute: :review)) %>
 
       <%= form.govuk_submit %>
     <% end %>
