@@ -8,6 +8,7 @@ $govuk-global-styles: true;
 @import "accessible-autocomplete/src/autocomplete";
 
 @import "components/task-list";
+@import "components/task_list/check-box-action-component";
 
 // The accessible autocomplete component does not use
 // GOV.UK fonts by default for suggestions.

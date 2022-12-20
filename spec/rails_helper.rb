@@ -8,6 +8,8 @@ require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require "support/factory_bot"
+require "view_component/test_helpers"
+require "capybara/rspec"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -77,6 +79,9 @@ RSpec.configure do |config|
   config.include AcademiesApiHelpers
   config.include FeatureHelpers, type: :feature
   config.include ProjectHelpers
+
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
 
   # cleanup Omniauth after each example
   config.after(:each) do |example|

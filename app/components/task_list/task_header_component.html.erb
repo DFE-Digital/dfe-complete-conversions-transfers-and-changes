@@ -1,0 +1,18 @@
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l"><%= @establishment_name %></span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= @title %></h1>
+
+    <% if @hint %>
+      <div class="govuk-hint">
+        <%= @hint %>
+      </div>
+    <% end %>
+
+    <% if @guidance %>
+      <%= govuk_details(summary_text: @guidance_link) do %>
+        <%= @guidance %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

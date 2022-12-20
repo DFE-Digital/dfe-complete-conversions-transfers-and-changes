@@ -7,3 +7,26 @@ en:
       tasks:
         handover:
           title: Handover with regional delivery officer
+          hint:
+            html: <p class="govuk-hint">How to make sure the handover with the regional delivery officer is completed, and you can begin work on the project.</p>
+          guidance_link: Additional guidance
+          guidance:
+            html: This is the addtional guidance
+          review:
+            title: Review the project information, check the documents and carry out research
+            hint:
+              html: <p>Check that no information is missing from the existing project documents and there are no errors.</p>
+            guidance_link: What to check for
+            guidance:
+              html:
+                <p>You should check existing project documents, including:</p>
+                <ul>
+                <li>Academy order</li>
+                <li>Application to convert</li>
+                </ul>
+                <p>Check that no information is missing and there are no errors. You should also research the background of the project before you meet with the regional delivery officer. Things to check during your background research include:</p>
+                  <ul>
+                  <li>Project information, such as advisory board conditions</li>
+                  <li>School or trust website for more information about the school</li>
+                  <li>Google maps for potential land issues</li>
+                  </ul>
