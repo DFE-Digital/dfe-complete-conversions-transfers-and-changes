@@ -2,16 +2,16 @@
   <% @project.task_list.sections.each do |section| %>
     <li>
       <h3 class="app-task-list__section">
-        <%= section.title %>
+        <%= t("#{section.locales_path}.title") %>
       </h3>
       <ul class="app-task-list__items">
         <% section.tasks.each do |task| %>
           <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                   <%= govuk_link_to(
-                        task.title,
+                        t("#{task.locales_path}.title"),
                         task_edit_path(task),
-                        aria: {describedby: task_status_id(task)}
+                        aria: {describedby: task_id(task)}
                       ) %>
               </span>
             <%= task_status_tag(task) %>

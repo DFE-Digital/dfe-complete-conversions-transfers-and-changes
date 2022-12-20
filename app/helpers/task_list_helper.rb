@@ -3,6 +3,11 @@ module TaskListHelper
     "#{task.title.parameterize}-status"
   end
 
+  def task_id(task)
+    task_title = t("#{task.locales_path}.title").parameterize
+    "#{task_title}-status"
+  end
+
   def task_status_tag(task)
     # Colours as per https://govuk-components.netlify.app/components/tag/
     tags_for_states = {
