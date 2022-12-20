@@ -20,6 +20,10 @@ class TaskList::Task
     I18n.t("task_list.tasks.#{self.class.identifier}.title")
   end
 
+  def locales_path
+    self.class.name.underscore.tr("/", ".")
+  end
+
   private def in_progress?
     attributes.values.any?(&:present?)
   end
