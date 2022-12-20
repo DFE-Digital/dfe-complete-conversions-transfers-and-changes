@@ -24,6 +24,12 @@ RSpec.describe TaskList::Task, type: :model do
     end
   end
 
+  describe "#locales_path" do
+    it "returns the correct locale path based on the class path" do
+      expect(testing_model_instance.locales_path).to eq "conversion.voluntary.testing_class"
+    end
+  end
+
   describe "#status" do
     subject { testing_model_instance.status }
 
