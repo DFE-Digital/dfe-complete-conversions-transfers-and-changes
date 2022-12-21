@@ -9,7 +9,12 @@ class Note < ApplicationRecord
 
   scope :project_level_notes, ->(project) { where(task: nil).and(where(project: project)) }
 
-  def task_level_note?
+  # TODO: Remove this and the foreign key along with any references when removing the old (YAML) task list.
+  def deprecated_task_level_note?
     task.present?
+  end
+
+  def task_level_note?
+    task_identifier.present?
   end
 end

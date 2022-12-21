@@ -36,7 +36,7 @@ RSpec.describe Note, type: :model do
 
     describe "project_level_notes" do
       let!(:project_level_note) { create(:note) }
-      let!(:task_level_note) { create(:note, :task_level_note) }
+      let!(:task_level_note) { create(:note, :deprecated_task_level_note) }
 
       subject { Note.project_level_notes(project_level_note.project) }
 
@@ -44,6 +44,24 @@ RSpec.describe Note, type: :model do
         expect(subject).to include project_level_note
         expect(subject).not_to include task_level_note
       end
+    end
+  end
+
+  describe "#deprecated_task_level_note?" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    subject { note.deprecated_task_level_note? }
+
+    context "when the Note is not associated with a Task" do
+      let(:note) { create(:note) }
+
+      it { expect(subject).to be false }
+    end
+
+    context "when the Note is associated with a Task" do
+      let(:note) { create(:note, :deprecated_task_level_note) }
+
+      it { expect(subject).to be true }
     end
   end
 
@@ -59,7 +77,7 @@ RSpec.describe Note, type: :model do
     end
 
     context "when the Note is associated with a Task" do
-      let(:note) { create(:note, :task_level_note) }
+      let(:note) { create(:note, task_identifier: "handover") }
 
       it { expect(subject).to be true }
     end

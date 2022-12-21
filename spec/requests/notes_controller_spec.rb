@@ -12,7 +12,7 @@ RSpec.describe NotesController, type: :request do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let!(:project_level_note) { create(:note, project: project) }
-    let!(:task_level_note) { create(:note, :task_level_note, project: project) }
+    let!(:task_level_note) { create(:note, :deprecated_task_level_note, project: project) }
 
     subject(:perform_request) do
       get project_notes_path(project_id)
@@ -251,7 +251,7 @@ RSpec.describe NotesController, type: :request do
     end
 
     context "when the note is a task level note" do
-      let(:note) { create(:note, :task_level_note, user: user) }
+      let(:note) { create(:note, :deprecated_task_level_note, user: user) }
 
       it "deletes the note and redirects to the task view with a success message" do
         expect(subject).to redirect_to(project_task_path(project.id, note.task.id))
