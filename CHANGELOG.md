@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Tenancy at will guidance now explains how rarely it is used and that users
   should contact policy team for advice if one is needed. Voluntary &
   involuntary
+- Fix broken link to email templates in external stakeholder kick-off task
 
 #### Fixed
 
