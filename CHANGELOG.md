@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   should contact policy team for advice if one is needed. Voluntary &
   involuntary
 - Fix broken link to email templates in external stakeholder kick-off task
+- Make guidance link content more descriptive of destination in Articles of
+  association
 
 #### Fixed
 
