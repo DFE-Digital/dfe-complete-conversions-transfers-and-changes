@@ -31,6 +31,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fix broken link to email templates in external stakeholder kick-off task
 - Make guidance link content more descriptive of destination in Articles of
   association
+- Remove 'with the trust' from Share the grant certificate and information about
+  opening task in the voluntary task list as school and trust should be made
+  aware here
 
 #### Fixed
 
