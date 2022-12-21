@@ -216,9 +216,9 @@ tasks:
       - type: subheading
         title: Check and clear the Articles of association
         hint:
-          You can use the [land transfer advice and guidance to check for common
-          problems (opens in new
-          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Governance-(includes-clearing-Articles-of-Association).aspx).
+          You can use the [academy governance guidance (opens in new
+          tab)](https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Governance-(includes-clearing-Articles-of-Association).aspx)
+          to help you check and clear the Articles of association.
         guidance_summary: Help checking for changes
         guidance_text: |
           Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.
