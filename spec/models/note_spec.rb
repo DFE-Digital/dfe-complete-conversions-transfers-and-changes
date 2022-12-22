@@ -36,7 +36,8 @@ RSpec.describe Note, type: :model do
 
     describe "project_level_notes" do
       let!(:project_level_note) { create(:note) }
-      let!(:task_level_note) { create(:note, :deprecated_task_level_note) }
+      let!(:deprecated_task_level_note) { create(:note, :deprecated_task_level_note) }
+      let!(:task_level_note) { create(:note, task_identifier: "handover") }
 
       subject { Note.project_level_notes(project_level_note.project) }
 
