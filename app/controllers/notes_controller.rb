@@ -16,7 +16,7 @@ class NotesController < ApplicationController
     if @note.valid?
       @note.save
 
-      redirect_to(redirect_path, notice: I18n.t("note.create.success"))
+      redirect_to(return_path, notice: I18n.t("note.create.success"))
     else
       render :new
     end
@@ -35,7 +35,7 @@ class NotesController < ApplicationController
 
     if @note.valid?
       @note.save
-      redirect_to redirect_path, notice: I18n.t("note.update.success")
+      redirect_to return_path, notice: I18n.t("note.update.success")
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class NotesController < ApplicationController
 
     @note.destroy
 
-    redirect_to redirect_path, notice: I18n.t("note.destroy.success")
+    redirect_to return_path, notice: I18n.t("note.destroy.success")
   end
 
   def confirm_destroy
@@ -55,9 +55,10 @@ class NotesController < ApplicationController
     authorize @note
   end
 
-  private def redirect_path
-    @note.task_level_note? ? project_task_path(@project, @note.task.id) : project_notes_path(@project)
+  private def return_path
+    @note.deprecated_task_level_note? ? project_task_path(@project, @note.task.id) : project_notes_path(@project)
   end
+  helper_method :return_path
 
   private def find_project
     @project = Project.find(params[:project_id])
