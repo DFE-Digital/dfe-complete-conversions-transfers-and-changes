@@ -48,6 +48,22 @@ RSpec.describe Note, type: :model do
     end
   end
 
+  describe "#task_identifier=" do
+    subject { described_class.new(task_identifier:) }
+
+    context "when task identifier is an empty string" do
+      let(:task_identifier) { "" }
+
+      it { expect(subject.task_identifier).to be_nil }
+    end
+
+    context "when task identifier is not an empty string" do
+      let(:task_identifier) { "handover" }
+
+      it { expect(subject.task_identifier).to eq task_identifier }
+    end
+  end
+
   describe "#deprecated_task_level_note?" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
