@@ -34,6 +34,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Remove 'with the trust' from Share the grant certificate and information about
   opening task in the voluntary task list as school and trust should be made
   aware here
+- Rename Process grants task for involuntary task list to Process the Sponsored
+  support grant
+- Add actions to the Process the Sponsored support grant task telling user to
+  check and confirm the trust's grant eligibility and tell the trust the amount
+  they're able to claim
 
 #### Fixed
 
