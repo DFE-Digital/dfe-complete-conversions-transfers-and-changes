@@ -42,6 +42,21 @@ $govuk-global-styles: true;
     label {
       @extend .govuk-\!-font-weight-bold;
     }
+    div.hint {
+      display: block;
+      padding-right: govuk-spacing(3);
+      padding-left: govuk-spacing(3);
+    }
+
+    div.hint > p {
+      @extend .govuk-hint;
+    }
+
+    div.guidance {
+      display: block;
+      padding-right: govuk-spacing(3);
+      padding-left: govuk-spacing(3);
+    }
   }
 }
 

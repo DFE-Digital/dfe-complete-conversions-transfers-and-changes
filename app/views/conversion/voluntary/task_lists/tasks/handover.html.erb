@@ -10,11 +10,11 @@
       <%= form.govuk_error_summary %>
 
       <div class="task-actions__wrapper">
-        <%= render(TaskList::CheckBoxAction.new(form: form, task: @task, attribute: :review)) %>
+        <%= render(TaskList::CheckBoxAction.new(task: @task, attribute: :review)) %>
 
-        <%= render(TaskList::CheckBoxAction.new(form: form, task: @task, attribute: :notes)) %>
+        <%= render(TaskList::CheckBoxAction.new(task: @task, attribute: :notes)) %>
 
-        <%= render(TaskList::CheckBoxAction.new(form: form, task: @task, attribute: :meeting)) %>
+        <%= render(TaskList::CheckBoxAction.new(task: @task, attribute: :meeting)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>

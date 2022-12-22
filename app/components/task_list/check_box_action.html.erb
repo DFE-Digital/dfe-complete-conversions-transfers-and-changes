@@ -1,15 +1,19 @@
-<div class="govuk-!-margin-bottom-9">
-  <%= @form.govuk_check_box @attribute,
-    1,
-    0,
-    multiple: false,
-    link_errors: true,
-    label: { text: @label, class: "govuk-!-font-weight-bold" },
-    hint: {text: @hint }
-  %>
+<div class="govuk-checkboxes__item">
+  <%= hidden_field_tag(@name, "0", {id: nil}) %>
+  <%= check_box_tag(@name, 1, @task.send(@attribute), {class: "govuk-checkboxes__input"}) %>
+  <%= label_tag(@name, @label, {class: "govuk-label govuk-checkboxes__label"}) %>
+
+  <% if @hint %>
+    <div class="hint">
+      <%= @hint %>
+    </div>
+  <% end %>
+
   <% if @guidance %>
+    <div class="guidance">
     <%= govuk_details(summary_text: @guidance_link) do %>
       <%= @guidance %>
     <% end %>
+    </div>
   <% end %>
 </div>

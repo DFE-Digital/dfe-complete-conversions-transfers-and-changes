@@ -1,12 +1,13 @@
 class TaskList::CheckBoxAction < ViewComponent::Base
-  def initialize(task:, form:, attribute:)
-    @form = form
+  def initialize(task:, attribute:)
     @attribute = attribute
     @locales_path = task.locales_path
     @label = label
     @hint = hint
     @guidance_link = guidance_link
     @guidance = guidance
+    @task = task
+    @name = "#{@task.class.name.parameterize(separator: "_")}[#{@attribute}]"
   end
 
   private def label
