@@ -14,7 +14,7 @@
                         aria: {describedby: task_id(task)}
                       ) %>
               </span>
-            <%= task_status_tag(task) %>
+            <%= task_status_tag(task, task_id(task)) %>
           </li>
         <% end %>
       </ul>

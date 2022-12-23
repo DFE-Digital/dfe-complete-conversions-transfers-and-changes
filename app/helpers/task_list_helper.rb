@@ -8,7 +8,7 @@ module TaskListHelper
     "#{task_title}-status"
   end
 
-  def task_status_tag(task)
+  def task_status_tag(task, task_status_id)
     # Colours as per https://govuk-components.netlify.app/components/tag/
     tags_for_states = {
       not_started: {
@@ -39,7 +39,7 @@ module TaskListHelper
       text: task_state[:text],
       colour: task_state[:colour],
       classes: "app-task-list__tag",
-      html_attributes: {id: task_status_id(task)}
+      html_attributes: {id: task_status_id}
     )
   end
 end
