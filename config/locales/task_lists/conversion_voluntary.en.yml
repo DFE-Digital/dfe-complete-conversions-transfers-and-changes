@@ -127,3 +127,94 @@ en:
             guidance:
               html:
                 <p>You should share the updated checklist with everyone invited to the kick-off meeting or call.</p>
+
+        conversion_grant:
+          title:  Process conversion grant
+          hint:
+            html:
+              <p>Check the grant payment form is ready, the school or trust has a vendor account and send the correct information to the Grant payments team.</p>
+              <p>Start this as soon as possible. Schools and trusts can start incurring solicitor and local authority fees early in the process.</p>
+
+          check_vendor_account:
+            title: Check the school or trust have a vendor account
+            hint:
+              html:
+                <p>The school or trust receiving the conversion grant must have a vendor account.</p>
+                <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00083/SitePages/Set-up-and-mainta.aspx" target="_blank">check if the school or trust has a vendor account (opens in new tab)</a> on SharePoint.</p>
+            guidance_link: How to set up a vendor account
+            guidance:
+              html:
+                <p>Schools and trusts can <a href="https://www.gov.uk/guidance/provide-information-about-your-banking-and-payments-to-dfe" target="_blank">set up a vendor account (opens in new tab)</a> when they provide information about their banking and payments to DfE.</p>
+                <p>Share the link with them so they can register if needed.</p>
+                <p>It can take 15 to 20 days for an account to be created.</p>
+
+          eligibility:
+            title: Check and confirm the school's grant eligibility
+            hint:
+              html:
+                <p>You need to confirm the amount of money the school can receive.</p>
+                <p>This information must be included in your email to the Grant payments team later.</p>
+
+            guidance_link: How check grant eligibility
+            guidance:
+              html:
+                <p>Usually, a converting school will be eligible for a £25,000 grant to help with the costs of becoming an academy.</p>
+                <p>However, if the school has applied to become an academy in the past but not completed the process, they may have received some of the money then.</p>
+
+                <p>Check in the school SharePoint folder to see if a Grant claim form has been submitted already.</p>
+                <p>You can also email the Grant payments team at <a href="mailto:CFUGrantPayments.REGIONSGROUP@education.gov.uk">CFUGrantPayments.REGIONSGROUP@education.gov.uk</a> to check if the school has previously received any money, and how much they’re still eligible for.</p>
+
+          payment_form:
+            title: Receive, check and save the Grant payment form
+            hint:
+              html:
+                <p>The school or trust must send you the Grant payment form.</p>
+                <p>Once they have, check the Grant payment form is complete. Make sure there's no missing information.</p>
+                <p>Save the completed form in the SharePoint folder for that school.</p>
+
+          send_information:
+            title: Send the grant information to the payments team
+            hint:
+              html:
+                <p>You need to send the following documents and information to the Grant payments team:</p>
+                <ul>
+                  <li>Application to convert</li>
+                  <li>Academy order</li>
+                  <li>Grant claim form</li>
+                </ul>
+                <p>You'll find the Academy order, Application to convert and Grant claim form in the school's SharePoint folder.</p>
+            guidance_link: How to contact the Grant payments team
+            guidance:
+              html:
+                <p>You should send the documents to the Grant payments team by email.</p>
+                <p>The subject line of the email must include the:</p>
+                <ul>
+                  <li>region the school is in</li>
+                  <li>grant type (converter grant)</li>
+                  <li>school's name</li>
+                </ul>
+                <p>The content of the email must include the:</p>
+                <ul>
+                  <li>type of grant needed</li>
+                  <li>amount of money the school is eligible for</li>
+                  <li>school's name</li>
+                  <li>trust it's joining</li>
+                  <li>target conversion date</li>
+                </ul>
+                <p>It's helpful to include the school or trust's vendor account number too. The Grant payments team will need this to be able to send the money to whoever will receive it.</p>
+                <p>Send the email to <a href="mailto:GrantPayments.RDD@education.gov.uk">GrantPayments.RDD@education.gov.uk</a>.</p>
+
+          share_payment_date:
+            title: Give the school and trust the grant payment date
+            hint:
+              html: <p>When the Grant payments team have confirmed the date they'll transfer the funds, let the school and trust know when the grant will be paid.</p>
+
+          check_payment:
+            title: Check the school or trust have received the grant
+            hint:
+              html: <p>Check in with the school or trust, whichever was going to receive the payment, to make sure they have the money.</p>
+            guidance_link: When to check the funds have been received
+            guidance:
+              html:
+                <p>It can take several weeks to process the grant payment once you've submitted the request.</p>
+                <p>Get in touch with the school or trust the month after you contact the Grant payments team.</p>

@@ -6,7 +6,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       identifier: :project_kick_off,
       tasks: [
         Conversion::Voluntary::Tasks::Handover,
-        Conversion::Voluntary::Tasks::StakeholderKickOff
+        Conversion::Voluntary::Tasks::StakeholderKickOff,
+        Conversion::Voluntary::Tasks::ConversionGrant
       ]
     }
   ].freeze

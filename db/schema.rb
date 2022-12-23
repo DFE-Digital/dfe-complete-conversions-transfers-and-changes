@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_23_160203) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_23_172352) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -64,6 +64,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_160203) do
     t.boolean "stakeholder_kick_off_setup_meeting"
     t.boolean "stakeholder_kick_off_meeting"
     t.boolean "stakeholder_kick_off_conversion_checklist"
+    t.boolean "conversion_grant_check_vendor_account"
+    t.boolean "conversion_grant_eligibility"
+    t.boolean "conversion_grant_payment_form"
+    t.boolean "conversion_grant_send_information"
+    t.boolean "conversion_grant_share_payment_date"
+    t.boolean "conversion_grant_check_payment"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
