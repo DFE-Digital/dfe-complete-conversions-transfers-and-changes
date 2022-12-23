@@ -7,10 +7,6 @@ class TaskList::Section
     @tasks = tasks
   end
 
-  def title
-    I18n.t("task_list.sections.#{identifier}.title")
-  end
-
   def locales_path
     "#{@locales_path}.#{identifier}"
   end
