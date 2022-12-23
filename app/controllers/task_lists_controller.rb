@@ -1,6 +1,6 @@
 class TaskListsController < ApplicationController
   before_action :find_project, :find_task_list
-  before_action :find_task, only: %i[edit update]
+  before_action :find_task, :find_task_notes, only: %i[edit update]
 
   def index
   end
@@ -37,7 +37,11 @@ class TaskListsController < ApplicationController
     params.fetch(task_param_key, {}).permit @task.attributes.keys
   end
 
-  def task_param_key
+  private def task_param_key
     @task.class.model_name.param_key
+  end
+
+  private def find_task_notes
+    @notes = Note.includes([:user]).where(project: @project, task_identifier: @task.class.identifier)
   end
 end

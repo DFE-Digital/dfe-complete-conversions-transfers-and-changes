@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: back_link_destination(@note)} %>
+  <% render partial: "shared/back_link", locals: {href: return_path} %>
 <% end %>
 
 <div class="govuk-grid-row govuk-body">
@@ -8,11 +8,12 @@
       <%= form.govuk_error_summary %>
 
       <%= form.hidden_field :task_id %>
+      <%= form.hidden_field :task_identifier %>
 
       <%= form.govuk_text_area :body, label: {tag: "h1", size: "l"} %>
 
       <%= form.govuk_submit t("note.new.save_note_button") do %>
-        <%= govuk_link_to "Cancel", back_link_destination(@note) %>
+        <%= govuk_link_to "Cancel", return_path %>
       <% end %>
     <% end %>
   </div>

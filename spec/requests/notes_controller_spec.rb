@@ -12,7 +12,7 @@ RSpec.describe NotesController, type: :request do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let!(:project_level_note) { create(:note, project: project) }
-    let!(:task_level_note) { create(:note, :task_level_note, project: project) }
+    let!(:task_level_note) { create(:note, :deprecated_task_level_note, project: project) }
 
     subject(:perform_request) do
       get project_notes_path(project_id)
@@ -89,20 +89,6 @@ RSpec.describe NotesController, type: :request do
         expect(Note.count).to be 1
         expect(Note.last.body).to eq(new_note_body)
         expect(Note.last.task).to be_nil
-      end
-
-      context "when the note is a task level note" do
-        let(:task) { create(:task) }
-        let(:params) { {note: {body: new_note_body, task_id: task.id}} }
-
-        it "saves the note and redirects to the task view with a success message" do
-          expect(subject).to redirect_to(project_task_path(project.id, task.id))
-          expect(request.flash[:notice]).to eq(I18n.t("note.create.success"))
-
-          expect(Note.count).to be 1
-          expect(Note.last.body).to eq(new_note_body)
-          expect(Note.last.task).to eq task
-        end
       end
     end
   end
@@ -203,20 +189,6 @@ RSpec.describe NotesController, type: :request do
         expect(Note.count).to be 1
         expect(Note.last.body).to eq(new_note_body)
       end
-
-      context "when the note is a task level note" do
-        let(:task) { create(:task) }
-        let(:params) { {note: {body: new_note_body, task_id: task.id}} }
-
-        it "saves the note and redirects to the task view with a success message" do
-          expect(subject).to redirect_to(project_task_path(project.id, task.id))
-          expect(request.flash[:notice]).to eq(I18n.t("note.update.success"))
-
-          expect(Note.count).to be 1
-          expect(Note.last.body).to eq(new_note_body)
-          expect(Note.last.task).to eq task
-        end
-      end
     end
   end
 
@@ -248,17 +220,6 @@ RSpec.describe NotesController, type: :request do
       expect(request.flash[:notice]).to eq(I18n.t("note.destroy.success"))
 
       expect(Note.where(id: note_id)).to_not exist
-    end
-
-    context "when the note is a task level note" do
-      let(:note) { create(:note, :task_level_note, user: user) }
-
-      it "deletes the note and redirects to the task view with a success message" do
-        expect(subject).to redirect_to(project_task_path(project.id, note.task.id))
-        expect(request.flash[:notice]).to eq(I18n.t("note.destroy.success"))
-
-        expect(Note.where(id: note_id)).to_not exist
-      end
     end
   end
 

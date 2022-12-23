@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: back_link_destination(@note)} %>
+  <% render partial: "shared/back_link", locals: {href: return_path} %>
 <% end %>
 
 <div class="govuk-grid-row govuk-body">
@@ -13,7 +13,7 @@
         <% if policy(@note).destroy? %>
           <%= govuk_button_link_to "Delete", project_note_delete_path(@project, @note), warning: true %>
         <% end %>
-        <%= govuk_link_to "Cancel", back_link_destination(@note) %>
+        <%= govuk_link_to "Cancel", return_path %>
       <% end %>
     <% end %>
   </div>

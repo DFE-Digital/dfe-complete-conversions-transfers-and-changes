@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   after_action :verify_policy_scoped, only: :index
 
   def new
-    @note = Note.new(project: @project, user_id:, task_id: params[:task_id])
+    @note = Note.new(project: @project, user_id:, task_identifier: params[:task_identifier], task_id: params[:task_id])
     authorize @note
   end
 
@@ -16,7 +16,7 @@ class NotesController < ApplicationController
     if @note.valid?
       @note.save
 
-      redirect_to(redirect_path, notice: I18n.t("note.create.success"))
+      redirect_to(return_path, notice: I18n.t("note.create.success"))
     else
       render :new
     end
@@ -35,7 +35,7 @@ class NotesController < ApplicationController
 
     if @note.valid?
       @note.save
-      redirect_to redirect_path, notice: I18n.t("note.update.success")
+      redirect_to return_path, notice: I18n.t("note.update.success")
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class NotesController < ApplicationController
 
     @note.destroy
 
-    redirect_to redirect_path, notice: I18n.t("note.destroy.success")
+    redirect_to return_path, notice: I18n.t("note.destroy.success")
   end
 
   def confirm_destroy
@@ -55,8 +55,19 @@ class NotesController < ApplicationController
     authorize @note
   end
 
-  private def redirect_path
-    @note.task_level_note? ? project_task_path(@project, @note.task.id) : project_notes_path(@project)
+  private def return_path
+    return project_task_path(@project, @note.task.id) if @note.deprecated_task_level_note?
+    return task_list_path if @note.task_level_note?
+
+    project_notes_path(@project)
+  end
+  helper_method :return_path
+
+  private def task_list_path
+    case @project.task_list_name.to_sym
+    when :conversion_voluntary_task_list then conversion_voluntary_task_path(@project, @note.task_identifier)
+    when :conversion_involuntary_task_list then conversion_involuntary_task_path(@project, @note.task_identifier)
+    end
   end
 
   private def find_project
@@ -68,6 +79,6 @@ class NotesController < ApplicationController
   end
 
   private def note_params
-    params.require(:note).permit(:body, :task_id)
+    params.require(:note).permit(:body, :task_id, :task_identifier)
   end
 end
