@@ -7,6 +7,8 @@ en:
       tasks:
         handover:
           title: Handover with regional delivery officer
+          hint:
+            html: <p>How to make sure the handover with the regional delivery officer is completed, and you can begin work on the project.</p>
 
           review:
             title: Review the project information, check the documents and carry out research
@@ -14,7 +16,7 @@ en:
               html:
                 <p>Check that no information is missing from the existing project documents and there are no errors.</p>
                 <p>You should also research the background of the project before you meet with the regional delivery officer.</p>
-            guidance_link: What to check for
+            guidance_link: What to review, research and check
             guidance:
               html:
                 <p>Things to check during your background research include:</p>
@@ -31,11 +33,18 @@ en:
                   <li>Academy order</li>
                   <li>Application to convert</li>
                 </ul>
+
           notes:
             title: Make notes and write questions to as the regional delivery officer
+            hint:
+              html:
+                <p>Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.</p>
+                <p>This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.</p>
 
           meeting:
             title: Attend handover meeting with regional delivery officer
             hint:
               html:
-                <p>Discuss any questions you have about the project in the meeting.</p>
+                <p>You should have made a note of things you like to ask and talk about with the Regional deliver officer at the handover meeting.</p>
+                <p>Go through those talking points with them at the meeting.</p>
+                <p>This will prepare you to begin the project.</p>
