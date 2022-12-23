@@ -16,8 +16,8 @@ class TaskList::Task
     :not_started
   end
 
-  def title
-    I18n.t("task_list.tasks.#{self.class.identifier}.title")
+  def locales_path
+    self.class.name.underscore.tr("/", ".")
   end
 
   private def in_progress?

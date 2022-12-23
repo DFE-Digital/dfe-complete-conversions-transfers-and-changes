@@ -12,15 +12,9 @@ RSpec.describe TaskList::Task, type: :model do
     end
   end
 
-  describe "#title" do
-    let(:title) { "Test title" }
-
-    before { allow(I18n).to receive(:t).with("task_list.tasks.#{testing_model.identifier}.title").and_return(title) }
-
-    subject { testing_model_instance.title }
-
-    it "returns the task title from the translation file" do
-      expect(subject).to eq title
+  describe "#locales_path" do
+    it "returns the correct locale path based on the class path" do
+      expect(testing_model_instance.locales_path).to eq "conversion.voluntary.testing_class"
     end
   end
 

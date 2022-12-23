@@ -1,14 +1,4 @@
 en:
   task_list:
-    sections:
-      project_kick_off:
-        title:
-          Project kick-off
-
-    tasks:
-      handover:
-        title:
-          Handover with regional delivery officer
-
     continue_button:
       text: Save and return

@@ -1,0 +1,19 @@
+<div class="govuk-checkboxes__item">
+  <%= hidden_field_tag(@action_id, "0", {id: nil}) %>
+  <%= check_box_tag(@action_id, 1, check_box_value, {class: "govuk-checkboxes__input"}) %>
+  <%= label_tag(@action_id, @label, {class: "govuk-label govuk-checkboxes__label"}) %>
+
+  <% if @hint %>
+    <div class="hint">
+      <%= @hint %>
+    </div>
+  <% end %>
+
+  <% if @guidance %>
+    <div class="guidance">
+    <%= govuk_details(summary_text: @guidance_link) do %>
+      <%= @guidance %>
+    <% end %>
+    </div>
+  <% end %>
+</div>

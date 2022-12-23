@@ -1,17 +1,13 @@
 require "rails_helper"
 
 RSpec.describe TaskList::Section do
-  describe "#title" do
-    let(:section) { described_class.new(identifier:, tasks: []) }
-    let(:identifier) { :project_kick_off }
-    let(:title) { "Project kick-off" }
+  describe "#locales_path" do
+    it "returns the locales path based on the task list class path" do
+      task_list = Conversion::Voluntary::TaskList.new
+      section = described_class
+        .new(identifier: :identifier, tasks: [], locales_path: task_list.locales_path)
 
-    before { allow(I18n).to receive(:t).with("task_list.sections.#{identifier}.title").and_return(title) }
-
-    subject { section.title }
-
-    it "returns the section title from the translation file" do
-      expect(subject).to eq title
+      expect(section.locales_path).to eq "conversion.voluntary.task_list.identifier"
     end
   end
 end

@@ -1,0 +1,21 @@
+.govuk-checkboxes__item {
+  label {
+    @extend .govuk-\!-font-weight-bold;
+  }
+
+  .hint {
+    display: block;
+    padding-right: govuk-spacing(3);
+    padding-left: govuk-spacing(3);
+
+    > p {
+      @extend .govuk-hint;
+    }
+  }
+
+  .guidance {
+    display: block;
+    padding-right: govuk-spacing(3);
+    padding-left: govuk-spacing(3);
+  }
+}
