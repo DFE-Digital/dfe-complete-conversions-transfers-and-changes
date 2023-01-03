@@ -9,6 +9,12 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::StakeholderKickOff,
         Conversion::Voluntary::Tasks::ConversionGrant
       ]
+    },
+    {
+      identifier: :legal_documents,
+      tasks: [
+        Conversion::Voluntary::Tasks::LandQuestionnaire
+      ]
     }
   ].freeze
 
