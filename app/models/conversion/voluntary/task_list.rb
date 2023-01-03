@@ -17,7 +17,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::LandRegistry,
         Conversion::Voluntary::Tasks::SupplementalFundingAgreement,
         Conversion::Voluntary::Tasks::ChurchSupplementalAgreement,
-        Conversion::Voluntary::Tasks::MasterFundingAgreement
+        Conversion::Voluntary::Tasks::MasterFundingAgreement,
+        Conversion::Voluntary::Tasks::ArticlesOfAssociation
       ]
     }
   ].freeze
