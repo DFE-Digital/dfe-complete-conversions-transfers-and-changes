@@ -1,0 +1,25 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        single_worksheet:
+          title: Complete and approve Single worksheet
+          hint:
+            html: <p>You need to <a href="https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EacL3VXFYxlNmqkPI_oelqkBW2_hS4tZwLo52EIuL6rdyw?e=CsOUUl" target="_blank">download a single worksheet template (opens in new tab)</a> and save it in the school's SharePoint folder.</p>
+
+          complete:
+            title: Complete the Single worksheet
+            hint:
+              html: <p>Fill out the Single worksheet and confirm the information in it is correct.</p>
+          approve:
+            title: Email the Single worksheet to your line manager for approval
+            hint:
+              html: <p>Your line manager will reply by email to tell you if they've approved the worksheet.</p>
+          send:
+            title: Send the approved Single worksheet to Academies Operational Practice Unit
+            hint:
+              html: <p>Send the Single worksheet and, if needed, the Direction to transfer and Trust modification order to <a href="mailto:academiesdelivery.operations@education.gov.uk" target="_blank">academiesdelivery.operations@education.gov.uk.</a></p>
+            guidance_link: When you must complete this
+            guidance:
+              html:
+                <p>The deadline for this work is normally 5 working days after the Baseline is confirmed. The exact deadline will be in the baseline email sent by The Academies Operational Practice Unit.</p>
