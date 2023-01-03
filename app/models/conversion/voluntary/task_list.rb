@@ -23,6 +23,12 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::TrustModificationOrder,
         Conversion::Voluntary::Tasks::DirectionToTransfer
       ]
+    },
+    {
+      identifier: :get_ready_for_opening,
+      tasks: [
+        Conversion::Voluntary::Tasks::CheckBaseline
+      ]
     }
   ].freeze
 

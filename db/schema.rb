@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_03_153552) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_03_161022) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -118,6 +118,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_03_153552) do
     t.boolean "direction_to_transfer_saved"
     t.boolean "direction_to_transfer_sent"
     t.boolean "direction_to_transfer_signed_secretary_state"
+    t.boolean "check_baseline_confirm"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
