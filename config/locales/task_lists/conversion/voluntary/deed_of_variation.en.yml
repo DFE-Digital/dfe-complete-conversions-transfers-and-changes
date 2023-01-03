@@ -1,0 +1,36 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        deed_of_variation:
+          title: Deed of variation
+          hint:
+            html: <p>You'll only need to complete and clear a Deed of variation if there are changes to the funding agreements.</p>
+
+          clear_section:
+            title: Check and clear the Deed of variation
+            hint:
+              html: <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx" target="_blank">find the right Deed of variation to use (opens in new tab)</a> on SharePoint.</p>
+            guidance_link: Help checking for changes
+            guidance:
+              html:
+                <p class="govuk-body-m">Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+                <p class="govuk-body-m">You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+
+          sign_section:
+            title: Signed by the Secretary of State
+            hint:
+              html: <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Deed of variation. Usually this is your team leader or the deputy director.</p>
+
+          received:
+            title: Received
+          cleared:
+            title: Cleared
+          signed:
+            title: Signed by school or trust
+          saved:
+            title: Saved in the school's SharePoint folder
+          sent:
+            title: Sent to team leader or deputy director
+          signed_secretary_state:
+            title: Document signed on behalf of the Secretary of State
