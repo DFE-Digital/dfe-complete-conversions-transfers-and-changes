@@ -14,7 +14,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       identifier: :legal_documents,
       tasks: [
         Conversion::Voluntary::Tasks::LandQuestionnaire,
-        Conversion::Voluntary::Tasks::LandRegistry
+        Conversion::Voluntary::Tasks::LandRegistry,
+        Conversion::Voluntary::Tasks::SupplementalFundingAgreement
       ]
     }
   ].freeze
