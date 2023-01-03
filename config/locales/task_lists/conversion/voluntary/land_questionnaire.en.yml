@@ -1,0 +1,27 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        land_questionnaire:
+          title: Land questionnaire
+          hint:
+            html: <p>Make sure that any proposals for the land meet legal requirements and Ministerial preferences.</p>
+          sub_section:
+            title: Check and clear the Land questionnaire
+            hint:
+              html:
+                <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx" class="govuk-link" target="_blank">use the land transfer advice and guidance to check for common problems (opens in new tab)</a>.</p>
+            guidance_link: Help to clear a Land questionnaire
+            guidance:
+              html:
+                <p class="govuk-body-m">You must <a href="https://www.gov.uk/government/publications/academy-land-questionnaires" class="govuk-link" target="_blank">check the school is using the right Land questionnaire (opens in a new tab)</a>. There are four different types.</p>
+                <p class="govuk-body-m">You need to clear the land questionnaire before the Master funding agreement and the Supplemental funding agreement.</p>
+                <p class="govuk-body-m">The Land questionnaire is critical. It is the basis for all land decisions.</p>
+                <p class="govuk-body-m">The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.</p>
+
+          received:
+            title: Received
+          cleared:
+            title: Cleared
+          signed:
+            title: Signed by school or trust
