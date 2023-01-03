@@ -303,3 +303,36 @@ en:
             title: Sent to team leader or deputy director
           signed_secretary_state:
             title: Document signed on behalf of the Secretary of State
+
+        church_supplemental_agreement:
+          title: Church supplemental agreement
+          hint:
+            html: <p>This document is only required for Church of England and Catholic schools.</p>
+          clear_section:
+            title: Check and clear the Church supplemental agreement
+            hint:
+              html: <p>You can <a href="https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools" class="govuk-link" target="_blank">view the model documents (opens in new tab)</a> to check for changes.</p>
+            guidance_link: Help checking the Church supplemental agreement
+            guidance:
+              html:
+                <p class="govuk-body-m">Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+                <p class="govuk-body-m">You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+          sign_section:
+            title: Signed by the Secretary of State
+            hint:
+              html: <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Church supplemental agreement. Usually this is your team leader or the deputy director.</p>
+
+          received:
+            title: Received
+          cleared:
+            title: Cleared
+          signed:
+            title: Signed by school or trust
+          signed_diocese:
+            title: Signed by diocese
+          saved:
+            title: Saved in the school's SharePoint folder
+          sent:
+            title: Sent to team leader or deputy director
+          signed_secretary_state:
+            title: Document signed on behalf of the Secretary of State
