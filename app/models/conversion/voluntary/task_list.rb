@@ -15,7 +15,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       tasks: [
         Conversion::Voluntary::Tasks::LandQuestionnaire,
         Conversion::Voluntary::Tasks::LandRegistry,
-        Conversion::Voluntary::Tasks::SupplementalFundingAgreement
+        Conversion::Voluntary::Tasks::SupplementalFundingAgreement,
+        Conversion::Voluntary::Tasks::ChurchSupplementalAgreement
       ]
     }
   ].freeze
