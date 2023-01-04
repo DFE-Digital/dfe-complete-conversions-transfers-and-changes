@@ -12,6 +12,6 @@ class TaskList::CheckBoxActionComponent < ViewComponent::Base
   end
 
   def check_box_value
-    @task.send(@attribute)
+    @task.public_send(@attribute)
   end
 end
