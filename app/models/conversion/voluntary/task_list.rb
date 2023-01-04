@@ -5,7 +5,42 @@ class Conversion::Voluntary::TaskList < TaskList::Base
     {
       identifier: :project_kick_off,
       tasks: [
-        Conversion::Voluntary::Tasks::Handover
+        Conversion::Voluntary::Tasks::Handover,
+        Conversion::Voluntary::Tasks::StakeholderKickOff,
+        Conversion::Voluntary::Tasks::ConversionGrant
+      ]
+    },
+    {
+      identifier: :legal_documents,
+      tasks: [
+        Conversion::Voluntary::Tasks::LandQuestionnaire,
+        Conversion::Voluntary::Tasks::LandRegistry,
+        Conversion::Voluntary::Tasks::SupplementalFundingAgreement,
+        Conversion::Voluntary::Tasks::ChurchSupplementalAgreement,
+        Conversion::Voluntary::Tasks::MasterFundingAgreement,
+        Conversion::Voluntary::Tasks::ArticlesOfAssociation,
+        Conversion::Voluntary::Tasks::DeedOfVariation,
+        Conversion::Voluntary::Tasks::TrustModificationOrder,
+        Conversion::Voluntary::Tasks::DirectionToTransfer
+      ]
+    },
+    {
+      identifier: :get_ready_for_opening,
+      tasks: [
+        Conversion::Voluntary::Tasks::CheckBaseline,
+        Conversion::Voluntary::Tasks::SingleWorksheet,
+        Conversion::Voluntary::Tasks::SchoolCompleted,
+        Conversion::Voluntary::Tasks::ConditionsMet,
+        Conversion::Voluntary::Tasks::ConfirmOpeningDate
+      ]
+    },
+    {
+      identifier: :project_close,
+      tasks: [
+        Conversion::Voluntary::Tasks::RedactAndSend,
+        Conversion::Voluntary::Tasks::UpdateEsfa,
+        Conversion::Voluntary::Tasks::RegionalHandback,
+        Conversion::Voluntary::Tasks::ReceiveGrantPaymentCertificate
       ]
     }
   ].freeze

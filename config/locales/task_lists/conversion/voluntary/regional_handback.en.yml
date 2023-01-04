@@ -1,0 +1,13 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        regional_handback:
+          title: Handback with regional delivery officer
+
+          complete:
+            title: Complete handback proforma
+          save:
+            title: Save handback proforma in SharePoint
+          send:
+            title: Send completed handback proforma to regional delivery officer

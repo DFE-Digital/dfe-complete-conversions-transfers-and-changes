@@ -21,7 +21,7 @@ RSpec.describe TaskList::CheckBoxActionComponent, type: :component do
 
     it "renders the title and hint" do
       expect(page).to have_text("Attend handover meeting with regional delivery officer")
-      expect(page).to have_text("Discuss any questions you have about the project in the meeting.")
+      expect(page).to have_text("You should have made a note of things you like to ask and talk about with the Regional deliver officer at the handover meeting.")
     end
   end
 

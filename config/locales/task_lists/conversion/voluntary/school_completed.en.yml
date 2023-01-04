@@ -1,0 +1,31 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        school_completed:
+          title: Confirm the school has completed all actions
+          hint:
+            html: <p>Check the school have completed all their tasks and save their responses in the school's SharePoint folder.</p>
+
+          emailed:
+            title: Email the main contact for the conversion
+            guidance_link: How to structure your email
+            guidance:
+              html:
+                <p>You should ask them to check and confirm they've completed all tasks.</p>
+                <p>You can <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BA4E75C24-7E01-4732-9065-EEC840AFE132%7D&amp;file=RSCApprovaltoAcademyOpeningDeskInstructions20200922.docx&amp;action=default&amp;mobileredirect=true" target="_blank">use the email template (opens in a new tab)</a> on pages 19 and 20 in your desk instructions to help structure your email.</p>
+
+          saved:
+            title: Save the responses to the checklist in the school's SharePoint folder
+            guidance_link: What to do if the school has not completed the tasks
+            guidance:
+              html:
+                <p class="govuk-body-m">Depending on the scale of the outstanding tasks, you may need to move the target conversion date to the next month, or later.</p>
+                <p class="govuk-body-m">If the conversion date needs to be moved, you must:</p>
+                <ol class="govuk-list govuk-list--number">
+                  <li>inform the school of the outstanding tasks</li>
+                  <li>agree a new target conversion date with all stakeholders</li>
+                  <li>email the Academies Operational Practice Unit at <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">academiesdelivery.operations@education.gov.uk</a> with the new date</li>
+                  <li>change the date in KIM</li>
+                  <li>inform the regional delivery officer who started on this project</li>
+                </ol>
