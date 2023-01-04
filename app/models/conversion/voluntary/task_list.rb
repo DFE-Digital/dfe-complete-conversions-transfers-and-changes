@@ -22,7 +22,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::DeedOfVariation,
         Conversion::Voluntary::Tasks::TrustModificationOrder,
         Conversion::Voluntary::Tasks::DirectionToTransfer,
-        Conversion::Voluntary::Tasks::OneHundredAndTwentyFiveYearLease
+        Conversion::Voluntary::Tasks::OneHundredAndTwentyFiveYearLease,
+        Conversion::Voluntary::Tasks::Subleases
 
       ]
     },
