@@ -35,7 +35,7 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::SingleWorksheet,
         Conversion::Voluntary::Tasks::SchoolCompleted,
         Conversion::Voluntary::Tasks::ConditionsMet,
-        Conversion::Voluntary::Tasks::ConfirmOpeningDate
+        Conversion::Voluntary::Tasks::ShareInformation
       ]
     },
     {
