@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.shared_examples "a conversion project FormObject" do
   describe "validations" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
     it { is_expected.to validate_presence_of(:trust_sharepoint_link) }
 
@@ -159,6 +161,8 @@ RSpec.shared_examples "a conversion project FormObject" do
   end
 
   describe "urn" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
     it { is_expected.to validate_presence_of(:urn) }
     it { is_expected.to allow_value(123456).for(:urn) }
     it { is_expected.not_to allow_values(12345, 1234567).for(:urn) }
@@ -174,12 +178,17 @@ RSpec.shared_examples "a conversion project FormObject" do
       end
 
       it "is invalid" do
-        expect(subject).to_not be_valid
+        form = build(form_factory.to_sym)
+        expect(form).to be_invalid
       end
     end
   end
 
   describe "incoming_trust_ukprn" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }
+
     context "when no trust with that UKPRN exists in the API" do
       let(:no_trust_found_result) do
         AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
@@ -191,7 +200,8 @@ RSpec.shared_examples "a conversion project FormObject" do
       end
 
       it "is invalid" do
-        expect(subject).to_not be_valid
+        form = build(form_factory.to_sym)
+        expect(form).to be_invalid
       end
     end
   end

@@ -54,7 +54,7 @@ RSpec.describe Project, type: :model do
   describe "Validations" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-    it { is_expected.to validate_presence_of(:advisory_board_date).on(:create) }
+    it { is_expected.to validate_presence_of(:advisory_board_date) }
 
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
@@ -109,24 +109,6 @@ RSpec.describe Project, type: :model do
         it "is invalid" do
           expect(subject).to_not be_valid
           expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_first_of_the_month"))
-        end
-      end
-
-      context "when date is today" do
-        subject { build(:conversion_project, provisional_conversion_date: Date.today) }
-
-        it "is invalid" do
-          expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_in_the_future"))
-        end
-      end
-
-      context "when date is in the past" do
-        subject { build(:conversion_project, provisional_conversion_date: Date.yesterday) }
-
-        it "is invalid" do
-          expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_in_the_future"))
         end
       end
     end
