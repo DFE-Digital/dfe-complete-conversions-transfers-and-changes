@@ -28,7 +28,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       identifier: :get_ready_for_opening,
       tasks: [
         Conversion::Voluntary::Tasks::CheckBaseline,
-        Conversion::Voluntary::Tasks::SingleWorksheet
+        Conversion::Voluntary::Tasks::SingleWorksheet,
+        Conversion::Voluntary::Tasks::SchoolCompleted
       ]
     }
   ].freeze

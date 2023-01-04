@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_03_165658) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_092307) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -122,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_03_165658) do
     t.boolean "single_worksheet_complete"
     t.boolean "single_worksheet_approve"
     t.boolean "single_worksheet_send"
+    t.boolean "school_completed_emailed"
+    t.boolean "school_completed_saved"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
