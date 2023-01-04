@@ -38,7 +38,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       identifier: :project_close,
       tasks: [
         Conversion::Voluntary::Tasks::RedactAndSend,
-        Conversion::Voluntary::Tasks::UpdateEsfa
+        Conversion::Voluntary::Tasks::UpdateEsfa,
+        Conversion::Voluntary::Tasks::RegionalHandback
       ]
     }
   ].freeze
