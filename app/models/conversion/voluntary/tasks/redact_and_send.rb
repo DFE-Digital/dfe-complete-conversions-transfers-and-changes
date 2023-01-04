@@ -1,0 +1,5 @@
+class Conversion::Voluntary::Tasks::RedactAndSend < TaskList::Task
+  attribute :redact
+  attribute :save
+  attribute :send
+end
