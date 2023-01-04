@@ -9,12 +9,11 @@ class Conversion::CreateProjectForm
 
   attribute :urn, :integer
   attribute :incoming_trust_ukprn, :integer
-
-  attr_accessor :establishment_sharepoint_link,
-  :trust_sharepoint_link,
-  :advisory_board_conditions,
-  :note_body,
-  :user
+  attribute :establishment_sharepoint_link
+  attribute :trust_sharepoint_link
+  attribute :advisory_board_conditions
+  attribute :note_body
+  attribute :user
 
   attr_reader :provisional_conversion_date,
     :advisory_board_date
