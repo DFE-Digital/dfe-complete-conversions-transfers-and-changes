@@ -11,15 +11,11 @@
 
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_vendor_account)) %>
 
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :eligibility)) %>
-
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :payment_form)) %>
 
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_information)) %>
 
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :share_payment_date)) %>
-
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_payment)) %>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>
