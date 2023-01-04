@@ -22,17 +22,6 @@
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
 
-      <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.direction_to_transfer.sign_section.title") %></h2>
-      <%= t("conversion.voluntary.tasks.direction_to_transfer.sign_section.hint.html") %>
-
-      <%= govuk_details(
-            summary_text: t("conversion.voluntary.tasks.direction_to_transfer.sign_section.guidance_link"),
-            text: t("conversion.voluntary.tasks.direction_to_transfer.sign_section.guidance.html")
-          ) %>
-
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :sent)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_secretary_state)) %>
-
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>
   </div>
