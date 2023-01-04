@@ -30,7 +30,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::CheckBaseline,
         Conversion::Voluntary::Tasks::SingleWorksheet,
         Conversion::Voluntary::Tasks::SchoolCompleted,
-        Conversion::Voluntary::Tasks::ConditionsMet
+        Conversion::Voluntary::Tasks::ConditionsMet,
+        Conversion::Voluntary::Tasks::ConfirmOpeningDate
       ]
     }
   ].freeze
