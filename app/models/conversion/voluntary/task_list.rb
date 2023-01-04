@@ -33,6 +33,12 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::ConditionsMet,
         Conversion::Voluntary::Tasks::ConfirmOpeningDate
       ]
+    },
+    {
+      identifier: :project_close,
+      tasks: [
+        Conversion::Voluntary::Tasks::RedactAndSend
+      ]
     }
   ].freeze
 

@@ -1,0 +1,36 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        redact_and_send:
+          title: Redact and send funding agreement documents
+          hint:
+            html: <p>Funding agreement documents relating to the conversion will be added to GOV.UK. These must be redacted to remove sensitive information.</p>
+
+          redact:
+            title: Redact all relevant documents
+            guidance_link: Help redacting the documents
+            guidance:
+              html:
+                <p>You need to create a redacted version of each applicable document after they've been signed by the Secretary of State:</p>
+                <ul>
+                  <li>Supplemental Funding Agreement</li>
+                  <li>Master Funding Agreement (if applicable)</li>
+                  <li>Church Supplemental Agreement (if applicable)</li>
+                  <li>Deed of Variation (if applicable)</li>
+                </ul>
+                <p>You must remove or hide:</p>
+                <ul>
+                  <li>names</li>
+                  <li>signatures</li>
+                  <li>home addresses</li>
+                  <li>any other personal information</li>
+                </ul>
+          save:
+            title: Save relevant documents in the school's SharePoint folder
+          send:
+            title: Send relevant documents to the funding team
+            guidance_link: Help sending documents
+            guidance:
+              html:
+                <p>Send the redacted funding agreement documents to the funding team at <a href="mailto:FundingAgreements.CONVERTERS@education.gov.uk" class="govuk-link" target="_blank">FundingAgreements.CONVERTERS@education.gov.uk</a>.</p>
