@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_135421) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_140103) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -130,6 +130,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_135421) do
     t.boolean "receive_grant_payment_certificate_check_and_save"
     t.boolean "receive_grant_payment_certificate_update_kim"
     t.boolean "receive_grant_payment_certificate_update_sheet"
+    t.boolean "one_hundred_and_twenty_five_year_lease_email"
+    t.boolean "one_hundred_and_twenty_five_year_lease_receive"
+    t.boolean "one_hundred_and_twenty_five_year_lease_save"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
