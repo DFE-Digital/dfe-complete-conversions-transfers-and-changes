@@ -12,6 +12,7 @@
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :redact)) %>
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save)) %>
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send)) %>
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_solicitors)) %>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>

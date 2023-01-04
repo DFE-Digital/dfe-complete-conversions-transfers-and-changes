@@ -3,9 +3,10 @@ en:
     voluntary:
       tasks:
         redact_and_send:
-          title: Redact and send funding agreement documents
+          title: Redact and send documents
           hint:
-            html: <p>Funding agreement documents relating to the conversion will be added to GOV.UK. These must be redacted to remove sensitive information.</p>
+            html:
+              <p>All relevant documents will be added to GOV.UK and the school or trust websites. These documents must be redacted to remove sensitive information.</p>
 
           redact:
             title: Redact all relevant documents
@@ -26,11 +27,18 @@ en:
                   <li>home addresses</li>
                   <li>any other personal information</li>
                 </ul>
+
           save:
             title: Save relevant documents in the school's SharePoint folder
+
           send:
-            title: Send relevant documents to the funding team
+            title: Send the redacted documents to the funding team to be published on GOV.UK
             guidance_link: Help sending documents
             guidance:
               html:
                 <p>Send the redacted funding agreement documents to the funding team at <a href="mailto:FundingAgreements.CONVERTERS@education.gov.uk" class="govuk-link" target="_blank">FundingAgreements.CONVERTERS@education.gov.uk</a>.</p>
+
+          send_solicitors:
+            title: Send the redacted and unredacted versions of documents to the solicitors
+            hint:
+              html: <p>You can copy the school and trust into this email too. They will publish relevant documents on their websites.</p>
