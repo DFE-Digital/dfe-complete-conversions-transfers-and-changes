@@ -24,7 +24,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::DirectionToTransfer,
         Conversion::Voluntary::Tasks::OneHundredAndTwentyFiveYearLease,
         Conversion::Voluntary::Tasks::Subleases,
-        Conversion::Voluntary::Tasks::TenancyAtWill
+        Conversion::Voluntary::Tasks::TenancyAtWill,
+        Conversion::Voluntary::Tasks::CommercialTransferAgreement
       ]
     },
     {
