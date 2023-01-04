@@ -12,7 +12,7 @@ RSpec.describe TaskList::CheckBoxActionComponent, type: :component do
     let(:attribute) { "notes" }
 
     it "renders the title" do
-      expect(page).to have_text("Make notes and write questions to as the regional delivery officer")
+      expect(page).to have_text("Make notes and write questions to ask the regional delivery officer")
     end
   end
 
@@ -20,8 +20,8 @@ RSpec.describe TaskList::CheckBoxActionComponent, type: :component do
     let(:attribute) { "meeting" }
 
     it "renders the title and hint" do
-      expect(page).to have_text("Attend handover meeting with regional delivery officer")
-      expect(page).to have_text("You should have made a note of things you like to ask and talk about with the Regional deliver officer at the handover meeting.")
+      expect(page).to have_text(" Discuss any questions you have about the project in the meeting.")
+      expect(page).to have_text("Discuss any questions you have about the project in the meeting.")
     end
   end
 
