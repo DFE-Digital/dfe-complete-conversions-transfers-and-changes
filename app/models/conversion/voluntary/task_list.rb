@@ -39,7 +39,7 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       ]
     },
     {
-      identifier: :project_close,
+      identifier: :after_opening,
       tasks: [
         Conversion::Voluntary::Tasks::RedactAndSend,
         Conversion::Voluntary::Tasks::UpdateEsfa,
