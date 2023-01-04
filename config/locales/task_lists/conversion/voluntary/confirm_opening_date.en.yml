@@ -5,7 +5,8 @@ en:
         confirm_opening_date:
           title: Confirm opening date with the school
           hint:
-            html: <p>Once you've confirmed that all conditions have been met, contact the school and trust to tell them they can convert on the target conversion date.</p>
+            html:
+              <p>Once you've confirmed that all conditions have been met, contact the school and trust to tell them they can convert on the provisional conversion date.</p>
 
           emailed:
             title: Email relevant information to your main contact
