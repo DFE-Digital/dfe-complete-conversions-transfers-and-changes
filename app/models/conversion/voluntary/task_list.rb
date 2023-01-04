@@ -39,7 +39,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       tasks: [
         Conversion::Voluntary::Tasks::RedactAndSend,
         Conversion::Voluntary::Tasks::UpdateEsfa,
-        Conversion::Voluntary::Tasks::RegionalHandback
+        Conversion::Voluntary::Tasks::RegionalHandback,
+        Conversion::Voluntary::Tasks::ReceiveGrantPaymentCertificate
       ]
     }
   ].freeze
