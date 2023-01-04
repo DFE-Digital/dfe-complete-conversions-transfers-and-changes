@@ -11,8 +11,7 @@ en:
             title: Send introductory emails
             hint:
               html:
-                <p>Introduce yourself to the school, trust and their solicitors and organise a kick-off meeting.</p>
-                <p>You should also contact the local authority separately.</p>
+                <p>Introduce yourself to the school, trust and their solicitors. You should also contact the local authority, but do this separately.</p>
             guidance_link: What to include in introductory emails
             guidance:
               html:
@@ -28,11 +27,11 @@ en:
                   <li>agree ways of working</li>
                 </ul>
 
-                <p>You should aim to do this in the first week of picking up the project. Ideally the kick-off meeting should take place within the first couple of weeks.</p>
+                <p>You should aim to do this in the first week of picking up the project.</p>
+                <p>Ideally the kick-off meeting should take place within the first couple of weeks.</p>
+
           local_authority_proforma:
-            title: Check you have the Local authority proforma
-            hint:
-              html: <p>Make sure the local authority has completed and returned their proforma, then save it in SharePoint.</p>
+            title: Check and save the local authority proforma in the school's SharePoint folder
             guidance_link: Help with the Local authority proforma
             guidance:
               html:
@@ -40,21 +39,21 @@ en:
                 <p>If you haven't received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.</p>
 
           confirm_target_conversion_date:
-            title: Confirm the target conversion date with the local authority
+            title: Confirm the provisional conversion date with the local authority
             hint:
               html: <p>Check that the local authority has capacity to convert the school by the target date.</p>
             guidance_link: What to do if the local authority does not have capacity
             guidance:
               html:
-                <p>The school and trust will have given a target date they want to convert on.</p>
-                <p>Tell them if the local authority cannot complete the conversion by the target date.</p>
-                <p>You'll need to work with the school, trust and local authority to agree a new conversion date.</p>
+                <p>The school and trust will have given a provisional date they want to convert on.</p>
+                <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
+                <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.</p>
 
           setup_meeting:
             title: Send invites to the kick-off meeting or call
             hint:
-              html: <p>Check who the school and trust would like to attend the kick-off meeting and send out invites.</p>
-            guidance_link: Advice for arranging the kick-off meeting
+              html: <p>Check who the school and trust would like to attend the kick-off meeting.</p>
+            guidance_link: How to arrange the kick-off meeting
             guidance:
               html:
                 <p>Your introductory email should have included some possible dates for a kick-off meeting.</p>
@@ -64,7 +63,7 @@ en:
           meeting:
             title: Host the kick-off meeting or call
             hint:
-              html: <p>Make sure all attendees understand what they need to do, and when they need to do it by, to complete the conversion on time.</p>
+              html: <p>Make sure all attendees understand what they need to do, and when they need to do it by.</p>
             guidance_link: What to talk about in the kick-off meeting
             guidance:
               html:
@@ -72,7 +71,7 @@ en:
                 <p>You can <a href="https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EZx-RuHD_JxEuaCF68ZXpe8BvSQ3ITlysjfNJ28t0_xzfQ?e=hxRZxt" target="_blank">use the conversion checklist (opens in a new tab)</a> to guide the conversation and make sure you talk about everything you need to.</p>
 
           conversion_checklist:
-            title: Update and share the conversion checklist
+            title: Share the conversion checklist
             hint:
               html: <p>Update the conversion checklist with any agreed actions, dates and comments from the kick-off meeting or call.</p>
             guidance_link: Who to share the checklist with
