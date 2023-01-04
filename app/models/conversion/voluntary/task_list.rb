@@ -21,7 +21,11 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::ArticlesOfAssociation,
         Conversion::Voluntary::Tasks::DeedOfVariation,
         Conversion::Voluntary::Tasks::TrustModificationOrder,
-        Conversion::Voluntary::Tasks::DirectionToTransfer
+        Conversion::Voluntary::Tasks::DirectionToTransfer,
+        Conversion::Voluntary::Tasks::OneHundredAndTwentyFiveYearLease,
+        Conversion::Voluntary::Tasks::Subleases,
+        Conversion::Voluntary::Tasks::TenancyAtWill,
+        Conversion::Voluntary::Tasks::CommercialTransferAgreement
       ]
     },
     {
@@ -31,15 +35,15 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::SingleWorksheet,
         Conversion::Voluntary::Tasks::SchoolCompleted,
         Conversion::Voluntary::Tasks::ConditionsMet,
-        Conversion::Voluntary::Tasks::ConfirmOpeningDate
+        Conversion::Voluntary::Tasks::ShareInformation
       ]
     },
     {
-      identifier: :project_close,
+      identifier: :after_opening,
       tasks: [
+        Conversion::Voluntary::Tasks::TellRegionalDeliveryOfficer,
         Conversion::Voluntary::Tasks::RedactAndSend,
         Conversion::Voluntary::Tasks::UpdateEsfa,
-        Conversion::Voluntary::Tasks::RegionalHandback,
         Conversion::Voluntary::Tasks::ReceiveGrantPaymentCertificate
       ]
     }

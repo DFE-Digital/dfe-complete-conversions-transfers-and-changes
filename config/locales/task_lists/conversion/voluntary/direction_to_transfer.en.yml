@@ -13,25 +13,12 @@ en:
             title: Check and clear the Direction to transfer
             hint:
               html: <p>Make sure information in the Direction to transfer is correct and compare it against the model document.</p>
-            guidance_link: How to clear a Direction to transfer
+            guidance_link: Help checking for changes
             guidance:
               html:
-                <p>You should check that information in the Direction to transfer is correct.</p>
-                <p>You'll also need to <a href="https://www.gov.uk/government/publications/academy-land-transfers-model-directions" class="govuk-link" target="_blank">compare the Direction to transfer against the model documents (opens in a new tab)</a> to check for any changes.</p>
-                <p>Send the Direction to transfer to the Operations team for signing and clearing.</p>
-                <p>You can <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">email the Operations team at academiesdelivery.operations@education.gov.uk</a>.</p>
-                <p>It can take several weeks to hear back from the Operations team.</p>
-
-          sign_section:
-            title: Signed by the Secretary of State
-            hint:
-              html: <p>Send the Direction to transfer to the Academies Operational Practice Unit.<p>
-            guidance_link: How to get the Direction to transfer signed
-            guidance:
-              html:
-                <p class="govuk-body-m">The Academies Operational Practice Unit will arrange for the Direction to transfer to be signed by the deputy director or a grade 6 team member, on behalf of the Secretary of State.</p>
-                <p class="govuk-body-m">You can email the Academies Operational Practice Unit at <a href="academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">mailto:academiesdelivery.operations@education.gov.uk</a>.</p>
-                <p class="govuk-body-m">It can take several weeks to hear back from the Academies Operational Practice Unit.</p>
+                <p>You need to <a href="https://www.gov.uk/government/publications/academy-land-transfers-model-directions" target="_blank">compare the Direction to transfer against the model documents (opens in new tab)</a> to check for any changes.</p>
+                <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+                <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about any changes to clause text.</p>
 
           received:
             title: Received
@@ -41,7 +28,3 @@ en:
             title: Signed by caseworker
           saved:
             title: Saved in the school's SharePoint folder
-          sent:
-            title: Sent to Academies Operational Practice Unit
-          signed_secretary_state:
-            title: Document signed on behalf of the Secretary of State

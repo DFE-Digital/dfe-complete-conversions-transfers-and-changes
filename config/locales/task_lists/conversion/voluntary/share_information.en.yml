@@ -1,0 +1,24 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        share_information:
+          title: Share the grant certificate and information about opening
+          hint:
+            html:
+              <p>Once you have confirmed that all conditions have been met, contact the school and trust to tell them they can convert on the provisional conversion date.</p>
+
+          email:
+            title: Email relevant information to your main contact
+            guidance_link: What to tell the school
+            guidance:
+              html:
+                <p>Email your main contact at the school or trust.</p>
+                <p>Your email should include:</p>
+                <ul>
+                  <li>confirmation the school will convert on the provisional date</li>
+                  <li>the school's new URN</li>
+                  <li>the <a href="https://www.gov.uk/government/publications/academy-support-grant" class="govuk-link" target="_blank">Grant expenditure certificate (opens in new tab)</a> that they need to complete and return</li>
+                  <li>the feedback form (if applicable)</li>
+                </ul>
+                <p>You can split this information over more than one email if you do not immediately have everything you need.</p>

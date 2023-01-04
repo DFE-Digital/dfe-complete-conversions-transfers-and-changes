@@ -20,7 +20,9 @@ en:
           sign_section:
             title: Signed by the Secretary of State
             hint:
-              html: <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Deed of variation. Usually this is your team leader or the deputy director.</p>
+              html:
+                <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Deed of variation.</p>
+                <p>Usually this is your team leader or the deputy director.</p>
 
           received:
             title: Received

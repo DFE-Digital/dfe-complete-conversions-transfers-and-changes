@@ -8,7 +8,7 @@ en:
             html: <p>You must confirm the conversion date within 3 working days of receiving the Baseline email. Indicate on the Baseline that the school is on track to open.</p>
 
           confirm:
-            title: Confirm the school is on track to open on the target date
+            title: Confirm the school is on track to open on the provisional date
             guidance_link: How to check the Baseline
             guidance:
               html:

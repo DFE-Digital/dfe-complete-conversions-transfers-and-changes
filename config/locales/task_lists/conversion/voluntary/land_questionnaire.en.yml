@@ -5,13 +5,13 @@ en:
         land_questionnaire:
           title: Land questionnaire
           hint:
-            html: <p>Make sure that any proposals for the land meet legal requirements and Ministerial preferences.</p>
+            html: <p>Make sure that any proposals for the land meet legal requirements and ministerial preferences.</p>
           sub_section:
             title: Check and clear the Land questionnaire
             hint:
               html:
                 <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Land-Transfer-and-shared-land-use.aspx" class="govuk-link" target="_blank">use the land transfer advice and guidance to check for common problems (opens in new tab)</a>.</p>
-            guidance_link: Help to clear a Land questionnaire
+            guidance_link: How to clear a Land questionnaire
             guidance:
               html:
                 <p class="govuk-body-m">You must <a href="https://www.gov.uk/government/publications/academy-land-questionnaires" class="govuk-link" target="_blank">check the school is using the right Land questionnaire (opens in a new tab)</a>. There are four different types.</p>
@@ -25,3 +25,5 @@ en:
             title: Cleared
           signed:
             title: Signed by school or trust
+          saved:
+            title: Saved in the school's SharePoint folder

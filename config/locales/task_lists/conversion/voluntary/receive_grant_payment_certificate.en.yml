@@ -19,7 +19,7 @@ en:
           update_kim:
             title: Update KIM with date certificate is received
             hint:
-              html: <p>Find this information in the ESFA handover section within KIM</p>
+              html: <p>Find this information in the ESFA handover section in KIM.</p>
 
           update_sheet:
             title: Update the Support grant assurance report spreadsheet

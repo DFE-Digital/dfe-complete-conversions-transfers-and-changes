@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_103819) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_155248) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -65,11 +65,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_103819) do
     t.boolean "stakeholder_kick_off_meeting"
     t.boolean "stakeholder_kick_off_conversion_checklist"
     t.boolean "conversion_grant_check_vendor_account"
-    t.boolean "conversion_grant_eligibility"
     t.boolean "conversion_grant_payment_form"
     t.boolean "conversion_grant_send_information"
     t.boolean "conversion_grant_share_payment_date"
-    t.boolean "conversion_grant_check_payment"
     t.boolean "land_questionnaire_received"
     t.boolean "land_questionnaire_cleared"
     t.boolean "land_questionnaire_signed"
@@ -110,14 +108,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_103819) do
     t.boolean "trust_modification_order_sent_legal"
     t.boolean "trust_modification_order_cleared"
     t.boolean "trust_modification_order_saved"
-    t.boolean "trust_modification_order_sent"
-    t.boolean "trust_modification_order_signed_secretary_state"
     t.boolean "direction_to_transfer_received"
     t.boolean "direction_to_transfer_cleared"
     t.boolean "direction_to_transfer_signed"
     t.boolean "direction_to_transfer_saved"
-    t.boolean "direction_to_transfer_sent"
-    t.boolean "direction_to_transfer_signed_secretary_state"
     t.boolean "check_baseline_confirm"
     t.boolean "single_worksheet_complete"
     t.boolean "single_worksheet_approve"
@@ -125,17 +119,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_103819) do
     t.boolean "school_completed_emailed"
     t.boolean "school_completed_saved"
     t.boolean "conditions_met_emailed"
-    t.boolean "confirm_opening_date_emailed"
     t.boolean "redact_and_send_redact"
     t.boolean "redact_and_send_save"
     t.boolean "redact_and_send_send"
     t.boolean "update_esfa_update"
-    t.boolean "regional_handback_complete"
-    t.boolean "regional_handback_save"
-    t.boolean "regional_handback_send"
     t.boolean "receive_grant_payment_certificate_check_and_save"
     t.boolean "receive_grant_payment_certificate_update_kim"
     t.boolean "receive_grant_payment_certificate_update_sheet"
+    t.boolean "one_hundred_and_twenty_five_year_lease_email"
+    t.boolean "one_hundred_and_twenty_five_year_lease_receive"
+    t.boolean "one_hundred_and_twenty_five_year_lease_save"
+    t.boolean "subleases_received"
+    t.boolean "subleases_cleared"
+    t.boolean "subleases_signed"
+    t.boolean "subleases_saved"
+    t.boolean "subleases_email_signed"
+    t.boolean "subleases_receive_signed"
+    t.boolean "subleases_save_signed"
+    t.boolean "tenancy_at_will_email_signed"
+    t.boolean "tenancy_at_will_receive_signed"
+    t.boolean "tenancy_at_will_save_signed"
+    t.boolean "commercial_transfer_agreement_email_signed"
+    t.boolean "commercial_transfer_agreement_receive_signed"
+    t.boolean "commercial_transfer_agreement_save_signed"
+    t.boolean "tell_regional_delivery_officer_email"
+    t.boolean "share_information_email"
+    t.boolean "redact_and_send_send_solicitors"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

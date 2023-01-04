@@ -14,23 +14,22 @@ en:
             guidance_link: Help checking and updating the Master funding agreement
             guidance:
               html:
-                <p class="govuk-body-m">Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
-                <p class="govuk-body-m">You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
-                <p class="govuk-body-m">If the trust uses a pre-2018 Master funding agreement, they have two options.</p>
-                <p class="govuk-body-m">They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplemental funding agreements in the trust too.</p>
-                <p class="govuk-body-m">Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplemental funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.</p>
-                <p class="govuk-body-m">You will need to clear any new and updated documents. These may need a Deed of variation.</p>
+                <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+                <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+                <p>If the trust uses a pre-2018 Master funding agreement, they have two options.</p>
+                <p>They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplemental funding agreements in the trust too.</p>
+                <p>Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplemental funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.</p>
+                <p>You will need to clear any new and updated documents. These may need a Deed of variation.</p>
+
           sign_section:
             title: Signed by the Secretary of State
             guidance_link: How to sign the Master funding agreement
             guidance:
               html:
-                <p class="govuk-body-m">Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
-                <p class="govuk-body-m">You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
-                <p class="govuk-body-m">If the trust uses a pre-2018 Master funding agreement, they have two options.</p>
-                <p class="govuk-body-m">They can update to a 2020 version of the Master funding agreement and update any pre-2018 Supplemental funding agreements in the trust too.</p>
-                <p class="govuk-body-m">Alternatively, they can adopt an additional 2020 Master funding agreement which the new academy's Supplemental funding agreement will sit under. This will allow the rest of the academies in the trust to stay under the pre-2018 Master funding agreement.</p>
-                <p class="govuk-body-m">You will need to clear any new and updated documents. These may need a Deed of variation.</p>
+                <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Master funding agreement.</p>
+                <p>Usually this is your team leader or the deputy director.</p>
+                <p>You only need to send the exact pages that they need to sign. Do not send the full document.</p>
+                <p>Once you've received the signed page, put it back in the document. Then save the signed Master funding agreement as a PDF in the school's SharePoint folder.</p>
 
           received:
             title: Received

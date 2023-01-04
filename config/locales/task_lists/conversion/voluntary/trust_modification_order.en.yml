@@ -13,30 +13,18 @@ en:
             title: Clear and sign the Trust modification order
             hint:
               html:
-                <p>If one is needed, send the Trust modification order and a copy of the original deed to the Operations team at <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">academiesdelivery.operations@education.gov.uk</a>. They will organise how it's signed and cleared.</p>
+                <p>If one is needed, send the Trust modification order and a copy of the original deed to the Operations team at <a href="mailto:academiesdelivery.operations@education.gov.uk" target="_blank">academiesdelivery.operations@education.gov.uk</a>. They will organise how it's signed and cleared.</p>
                 <p>It can take several weeks to hear back from the Operations team.</p>
             guidance_link: When to use a Trust modification order
             guidance:
               html:
-                <p class="govuk-body-m">A Trust modification order is used when a voluntary or foundation school's land is held by a trust or foundation that is not a diocese.</p>
-                <p class="govuk-body-m">A Trust modification order is likely to be needed if the school is a:</p>
-                <ul class="govuk-list govuk-list--bullet">
+                <p>A Trust modification order is used when a voluntary or foundation school's land is held by a trust or foundation that is not a diocese.</p>
+                <p>A Trust modification order is likely to be needed if the school is a:</p>
+                <ul>
                   <li>voluntary-controlled school</li>
                   <li>voluntary-aided school</li>
                   <li>foundation school</li>
                 </ul>
-
-          sign_section:
-            title: Signed by the Secretary of State
-            hint:
-              html: <p>Send the Trust modification order to the Academies Operational Practice Unit.</p>
-            guidance_link: How to get the Trust modification order signed
-            guidance:
-              html:
-                <p class="govuk-body-m">The Academies Operational Practice Unit will arrange for the Trust modification order to be signed by the deputy director or a grade 6 team member, on behalf of the Secretary of State.</p>
-                <p class="govuk-body-m">You can email the Academies Operational Practice Unit at
-                <a href="academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">mailto:academiesdelivery.operations@education.gov.uk</a>.</p>
-                <p class="govuk-body-m">It can take several weeks to hear back from the Academies Operational Practice Unit.</p>
 
           received:
             title: Received
@@ -46,7 +34,3 @@ en:
             title: Cleared by Legal advisers office
           saved:
             title: Saved in the school's SharePoint folder
-          sent:
-            title: Sent to Academies Operational Practice Unit
-          signed_secretary_state:
-            title: Document signed on behalf of the Secretary of State

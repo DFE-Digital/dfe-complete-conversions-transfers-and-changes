@@ -1,0 +1,11 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        tell_regional_delivery_officer:
+          title: Tell the regional delivery officer that the academy has opened
+          hint:
+            html: <p>You should email the regional delivery officer. Send the school's name, date it opened as an academy and link to the project.</p>
+
+          email:
+            title: Email the regional delivery officer

@@ -3,9 +3,10 @@ en:
     voluntary:
       tasks:
         single_worksheet:
-          title: Complete and approve Single worksheet
+          title: Complete and send Single worksheet
           hint:
-            html: <p>You need to <a href="https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EacL3VXFYxlNmqkPI_oelqkBW2_hS4tZwLo52EIuL6rdyw?e=CsOUUl" target="_blank">download a single worksheet template (opens in new tab)</a> and save it in the school's SharePoint folder.</p>
+            html:
+              <p>You need to <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7B16F44F65-3D80-457D-9FB4-D22574FBE8EB%7D&amp;file=Updated_Single_Worksheet.docx" target="_blank">download a single worksheet template (opens in new tab)</a> and save it in the school's SharePoint folder.</p>
 
           complete:
             title: Complete the Single worksheet
