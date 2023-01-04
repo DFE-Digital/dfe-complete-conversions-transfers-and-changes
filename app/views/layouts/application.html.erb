@@ -23,7 +23,7 @@
   </head>
 
   <body class="govuk-template__body ">
-    <script>
+    <script nonce="<%= content_security_policy_nonce %>">
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
