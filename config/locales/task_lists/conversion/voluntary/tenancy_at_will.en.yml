@@ -1,0 +1,18 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        tenancy_at_will:
+          title: Tenancy at will
+          hint:
+            html: <p>A Tenancy at will allows a tenant and landlord to agree that the tenant can use the land owned by the landlord indefinitely.</p>
+
+          confirm_section:
+            title: Confirm the Tenancy at will has been signed
+
+          email_signed:
+            title: Email the school to ask if they have agreed and signed the Tenancy at will
+          receive_signed:
+            title: Receive email from the school confirming the Tenancy at will has all relevant signatures
+          save_signed:
+            title: Save a copy of the confirmation email in school's SharePoint folder

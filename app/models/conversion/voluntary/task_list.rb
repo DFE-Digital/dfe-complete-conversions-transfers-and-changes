@@ -23,8 +23,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
         Conversion::Voluntary::Tasks::TrustModificationOrder,
         Conversion::Voluntary::Tasks::DirectionToTransfer,
         Conversion::Voluntary::Tasks::OneHundredAndTwentyFiveYearLease,
-        Conversion::Voluntary::Tasks::Subleases
-
+        Conversion::Voluntary::Tasks::Subleases,
+        Conversion::Voluntary::Tasks::TenancyAtWill
       ]
     },
     {
