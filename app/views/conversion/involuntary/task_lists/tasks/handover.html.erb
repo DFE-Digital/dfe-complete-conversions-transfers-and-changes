@@ -11,7 +11,11 @@
 
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :review)) %>
 
-      <%= form.govuk_submit %>
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :notes)) %>
+
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>
   </div>
 
