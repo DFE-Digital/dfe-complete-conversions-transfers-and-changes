@@ -1,0 +1,28 @@
+en:
+  conversion:
+    involuntary:
+      tasks:
+        check_baseline:
+          title: Check the Baseline
+          hint:
+            html: <p>You must confirm the conversion date within 3 working days of receiving the Baseline email. Indicate on the Baseline that the school is on track to open.</p>
+
+          confirm:
+            title: Confirm the school is on track to open on the provisional date
+            guidance_link: How to check the Baseline
+            guidance:
+              html:
+                <p>The Academies Operational Practice Unit will usually email the Baseline spreadsheet to you in the first week of each month.</p>
+                <p>Your projects should be on the Regional Casework Services Baseline spreadsheet. This contains a list of all the schools expected to open as academies the following month, across all regions.</p>
+                <p>Check the Regional Casework Services Baseline spreadsheet to confirm:</p>
+                <ul>
+                <li>your school is on it</li>
+                <li>the information about the school is correct</li>
+                </ul>
+                <p>Enter yes if the project is on track to convert, or no if it will not open on the target date.</p>
+                <p><strong>What to do if your school is not on the Baseline</strong></p>
+                <p>There is one Baseline spreadsheet for each region. These are only used by regional delivery officers.</p>
+                <p>Sometimes Regional Casework Services projects will show in the regional Baseline spreadsheets by accident.</p>
+                <p>If this happens, remove your school from the regional Baseline spreadsheet and add it to the Regional Casework Services Baseline spreadsheet.</p>
+                <p>If it doesn't appear at all, enter the school's information in the correct Baseline spreadsheet.</p>
+                <p>Email the Academy Operational Practice Unit at <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">academiesdelivery.operations@education.gov.uk</a> to tell them if you have had to move or add the school to the correct Baseline.</p>

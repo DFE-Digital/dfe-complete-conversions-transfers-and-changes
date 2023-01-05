@@ -27,6 +27,12 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::TenancyAtWill,
         Conversion::Involuntary::Tasks::CommercialTransferAgreement
       ]
+    },
+    {
+      identifier: :get_ready_for_opening,
+      tasks: [
+        Conversion::Involuntary::Tasks::CheckBaseline
+      ]
     }
   ].freeze
 
