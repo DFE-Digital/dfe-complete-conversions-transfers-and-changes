@@ -19,7 +19,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::SupplementalFundingAgreement,
         Conversion::Involuntary::Tasks::ChurchSupplementalAgreement,
         Conversion::Involuntary::Tasks::MasterFundingAgreement,
-        Conversion::Involuntary::Tasks::ArticlesOfAssociation
+        Conversion::Involuntary::Tasks::ArticlesOfAssociation,
+        Conversion::Involuntary::Tasks::DeedOfVariation
       ]
     }
   ].freeze

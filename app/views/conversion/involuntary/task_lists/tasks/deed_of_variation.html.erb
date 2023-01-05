@@ -1,0 +1,32 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: conversion_involuntary_tasks_path(@project)} %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: conversion_involuntary_update_task_path(@project, @task.class.identifier), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <h2 class="govuk-heading-l"><%= t("conversion.involuntary.tasks.deed_of_variation.clear_section.title") %></h2>
+      <%= t("conversion.involuntary.tasks.deed_of_variation.clear_section.hint.html") %>
+
+      <%= govuk_details(
+            summary_text: t("conversion.involuntary.tasks.deed_of_variation.clear_section.guidance_link"),
+            text: t("conversion.involuntary.tasks.deed_of_variation.clear_section.guidance.html")
+          ) %>
+
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "conversion/shared/task_notes" %>
+  </div>
+</div>
