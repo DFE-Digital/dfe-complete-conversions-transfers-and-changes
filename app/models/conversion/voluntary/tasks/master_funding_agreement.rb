@@ -1,4 +1,4 @@
-class Conversion::Voluntary::Tasks::MasterFundingAgreement < TaskList::Task
+class Conversion::Voluntary::Tasks::MasterFundingAgreement < TaskList::OptionalTask
   attribute :received
   attribute :cleared
   attribute :signed

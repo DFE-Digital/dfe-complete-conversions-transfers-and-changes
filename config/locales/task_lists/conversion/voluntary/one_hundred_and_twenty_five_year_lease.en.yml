@@ -16,3 +16,5 @@ en:
             title: Receive email from the school confirming the 125 year lease is agreed and signed
           save:
             title: Save a copy of the confirmation email in school's SharePoint folder
+          not_applicable:
+            title: Not applicable

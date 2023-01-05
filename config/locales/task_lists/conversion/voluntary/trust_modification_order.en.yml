@@ -34,3 +34,5 @@ en:
             title: Cleared by Legal advisers office
           saved:
             title: Saved in the school's SharePoint folder
+          not_applicable:
+            title: Not applicable

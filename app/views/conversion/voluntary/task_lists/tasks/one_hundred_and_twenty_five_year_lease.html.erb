@@ -10,6 +10,10 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+
+      <div class="govuk-form-group">
         <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.one_hundred_and_twenty_five_year_lease.confirm_section.title") %></h2>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email)) %>

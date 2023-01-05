@@ -27,3 +27,5 @@ en:
             title: Receive email from the school confirming any subleases are agreed and signed
           save_signed:
             title: Save a copy of the confirmation email in school's SharePoint folder
+          not_applicable:
+            title: Not applicable

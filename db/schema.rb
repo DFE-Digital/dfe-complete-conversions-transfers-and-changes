@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_102319) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_135830) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -153,6 +153,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_102319) do
     t.boolean "tell_regional_delivery_officer_email"
     t.boolean "share_information_email"
     t.boolean "redact_and_send_send_solicitors"
+    t.boolean "articles_of_association_not_applicable"
+    t.boolean "church_supplemental_agreement_not_applicable"
+    t.boolean "deed_of_variation_not_applicable"
+    t.boolean "direction_to_transfer_not_applicable"
+    t.boolean "master_funding_agreement_not_applicable"
+    t.boolean "one_hundred_and_twenty_five_year_lease_not_applicable"
+    t.boolean "subleases_not_applicable"
+    t.boolean "tenancy_at_will_not_applicable"
+    t.boolean "trust_modification_order_not_applicable"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

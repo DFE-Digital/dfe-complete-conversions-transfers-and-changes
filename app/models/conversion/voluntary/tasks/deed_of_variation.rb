@@ -1,4 +1,4 @@
-class Conversion::Voluntary::Tasks::DeedOfVariation < TaskList::Task
+class Conversion::Voluntary::Tasks::DeedOfVariation < TaskList::OptionalTask
   attribute :received
   attribute :cleared
   attribute :signed

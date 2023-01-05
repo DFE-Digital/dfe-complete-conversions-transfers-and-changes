@@ -1,4 +1,4 @@
-class Conversion::Voluntary::Tasks::Subleases < TaskList::Task
+class Conversion::Voluntary::Tasks::Subleases < TaskList::OptionalTask
   attribute :received
   attribute :cleared
   attribute :signed
