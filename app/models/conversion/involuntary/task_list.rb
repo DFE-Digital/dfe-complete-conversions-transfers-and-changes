@@ -24,7 +24,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::DirectionToTransfer,
         Conversion::Involuntary::Tasks::OneHundredAndTwentyFiveYearLease,
         Conversion::Involuntary::Tasks::Subleases,
-        Conversion::Involuntary::Tasks::TenancyAtWill
+        Conversion::Involuntary::Tasks::TenancyAtWill,
+        Conversion::Involuntary::Tasks::CommercialTransferAgreement
       ]
     }
   ].freeze
