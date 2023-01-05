@@ -29,3 +29,8 @@ en:
             title: Receive email from the trust confirming all relevant parties have agreed and signed any subleases
           save_signed:
             title: Save a copy of the confirmation email in the school's SharePoint folder
+
+  errors:
+    conversion_involuntary_tasks_subleases:
+      actions:
+        invalid: "Select completed actions, or select ‘Not applicable’"
