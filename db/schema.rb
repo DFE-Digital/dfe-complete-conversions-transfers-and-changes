@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_151645) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_152348) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -115,6 +115,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_151645) do
     t.boolean "one_hundred_and_twenty_five_year_lease_email"
     t.boolean "one_hundred_and_twenty_five_year_lease_receive"
     t.boolean "one_hundred_and_twenty_five_year_lease_save"
+    t.boolean "tenancy_at_will_email_signed"
+    t.boolean "tenancy_at_will_receive_signed"
+    t.boolean "tenancy_at_will_save_signed"
+    t.boolean "tenancy_at_will_not_applicable"
   end
 
   create_table "conversion_voluntary_task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
