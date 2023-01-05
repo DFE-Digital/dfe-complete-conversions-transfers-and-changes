@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_164913) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_165414) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -142,6 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_164913) do
     t.boolean "redact_and_send_save"
     t.boolean "redact_and_send_send"
     t.boolean "redact_and_send_send_solicitors"
+    t.boolean "update_esfa_update"
   end
 
   create_table "conversion_voluntary_task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
