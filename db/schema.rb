@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_144822) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_145521) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -103,6 +103,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_144822) do
     t.boolean "deed_of_variation_cleared"
     t.boolean "deed_of_variation_signed"
     t.boolean "deed_of_variation_saved"
+    t.boolean "trust_modification_order_received"
+    t.boolean "trust_modification_order_sent_legal"
+    t.boolean "trust_modification_order_cleared"
+    t.boolean "trust_modification_order_saved"
   end
 
   create_table "conversion_voluntary_task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
