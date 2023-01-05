@@ -34,14 +34,14 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::CheckBaseline,
         Conversion::Involuntary::Tasks::SingleWorksheet,
         Conversion::Involuntary::Tasks::SchoolCompleted,
-        Conversion::Involuntary::Tasks::ConditionsMet,
-        Conversion::Involuntary::Tasks::ShareInformation
+        Conversion::Involuntary::Tasks::ConditionsMet
       ]
     },
     {
       identifier: :after_opening,
       tasks: [
-        Conversion::Involuntary::Tasks::TellRegionalDeliveryOfficer
+        Conversion::Involuntary::Tasks::TellRegionalDeliveryOfficer,
+        Conversion::Involuntary::Tasks::ShareInformation
       ]
     }
   ].freeze
