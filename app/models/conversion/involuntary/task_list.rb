@@ -15,7 +15,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
       tasks: [
         Conversion::Involuntary::Tasks::Subleases,
         Conversion::Involuntary::Tasks::LandQuestionnaire,
-        Conversion::Involuntary::Tasks::LandRegistry
+        Conversion::Involuntary::Tasks::LandRegistry,
+        Conversion::Involuntary::Tasks::SupplementalFundingAgreement
       ]
     }
   ].freeze
