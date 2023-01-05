@@ -7,6 +7,12 @@ class Conversion::Involuntary::TaskList < TaskList::Base
       tasks: [
         Conversion::Involuntary::Tasks::Handover
       ]
+    },
+    {
+      identifier: :legal_documents,
+      tasks: [
+        Conversion::Involuntary::Tasks::Subleases
+      ]
     }
   ].freeze
 
