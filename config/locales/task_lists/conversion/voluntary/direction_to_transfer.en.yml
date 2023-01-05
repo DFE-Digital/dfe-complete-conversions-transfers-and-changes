@@ -28,3 +28,5 @@ en:
             title: Signed by caseworker
           saved:
             title: Saved in the school's SharePoint folder
+          not_applicable:
+            title: Not applicable
