@@ -1,4 +1,6 @@
 .govuk-checkboxes__item {
+  margin-bottom: govuk-spacing(3);
+
   label {
     @extend .govuk-\!-font-weight-bold;
   }
