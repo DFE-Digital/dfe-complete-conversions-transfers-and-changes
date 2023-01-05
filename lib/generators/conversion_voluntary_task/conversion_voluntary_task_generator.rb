@@ -13,6 +13,6 @@ class ConversionVoluntaryTaskGenerator < Rails::Generators::NamedBase
   end
 
   def generate_migration
-    generate "migration", "Add#{class_name}Task"
+    generate "migration", "AddVoluntary#{class_name}Task"
   end
 end
