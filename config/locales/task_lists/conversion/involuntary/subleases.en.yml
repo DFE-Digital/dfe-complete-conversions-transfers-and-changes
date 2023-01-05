@@ -1,0 +1,31 @@
+en:
+  conversion:
+    involuntary:
+      tasks:
+        subleases:
+          title: Subleases
+          hint:
+            html: <p>When schools convert, sometimes there are existing land arrangements that are covered by subleases. You will need to clear any subleases that have changed.</p>
+
+          clear_section:
+            title: Clear any changed subleases
+
+          confirm_section:
+            title: Confirm any subleases have been signed
+
+          not_applicable:
+            title: Not applicable
+          received:
+            title: Received
+          cleared:
+            title: Cleared
+          signed:
+            title: Signed for school or trust
+          saved:
+            title: Saved in school's Sharepoint folder
+          email_signed:
+            title: Email the trust to ask if all relevant parties have agreed and signed any subleases
+          receive_signed:
+            title: Receive email from the trust confirming all relevant parties have agreed and signed any subleases
+          save_signed:
+            title: Save a copy of the confirmation email in the school's SharePoint folder
