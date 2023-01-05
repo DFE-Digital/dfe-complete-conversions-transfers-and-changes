@@ -43,7 +43,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::TellRegionalDeliveryOfficer,
         Conversion::Involuntary::Tasks::ShareInformation,
         Conversion::Involuntary::Tasks::RedactAndSend,
-        Conversion::Involuntary::Tasks::UpdateEsfa
+        Conversion::Involuntary::Tasks::UpdateEsfa,
+        Conversion::Involuntary::Tasks::ReceiveGrantPaymentCertificate
       ]
     }
   ].freeze
