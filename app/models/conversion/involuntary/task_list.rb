@@ -14,7 +14,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
       identifier: :legal_documents,
       tasks: [
         Conversion::Involuntary::Tasks::Subleases,
-        Conversion::Involuntary::Tasks::LandQuestionnaire
+        Conversion::Involuntary::Tasks::LandQuestionnaire,
+        Conversion::Involuntary::Tasks::LandRegistry
       ]
     }
   ].freeze
