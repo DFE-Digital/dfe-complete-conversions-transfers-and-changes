@@ -1,4 +1,4 @@
-class Conversion::Voluntary::Tasks::ArticlesOfAssociation < TaskList::Task
+class Conversion::Voluntary::Tasks::ArticlesOfAssociation < TaskList::OptionalTask
   attribute :received
   attribute :cleared
   attribute :signed
