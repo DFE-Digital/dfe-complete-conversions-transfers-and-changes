@@ -9,6 +9,7 @@ $govuk-global-styles: true;
 
 @import "components/task-list";
 @import "components/task_list/check-box-action-component";
+@import "components/task_list/task-header-component";
 
 // The accessible autocomplete component does not use
 // GOV.UK fonts by default for suggestions.
