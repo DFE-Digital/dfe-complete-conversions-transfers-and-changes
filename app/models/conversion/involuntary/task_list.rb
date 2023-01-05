@@ -17,7 +17,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::LandQuestionnaire,
         Conversion::Involuntary::Tasks::LandRegistry,
         Conversion::Involuntary::Tasks::SupplementalFundingAgreement,
-        Conversion::Involuntary::Tasks::ChurchSupplementalAgreement
+        Conversion::Involuntary::Tasks::ChurchSupplementalAgreement,
+        Conversion::Involuntary::Tasks::MasterFundingAgreement
       ]
     }
   ].freeze
