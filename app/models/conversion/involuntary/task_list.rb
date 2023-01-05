@@ -21,7 +21,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::MasterFundingAgreement,
         Conversion::Involuntary::Tasks::ArticlesOfAssociation,
         Conversion::Involuntary::Tasks::DeedOfVariation,
-        Conversion::Involuntary::Tasks::TrustModificationOrder
+        Conversion::Involuntary::Tasks::TrustModificationOrder,
+        Conversion::Involuntary::Tasks::DirectionToTransfer
       ]
     }
   ].freeze
