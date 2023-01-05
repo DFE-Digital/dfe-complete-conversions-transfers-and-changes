@@ -9,11 +9,13 @@
     <%= form_for @task, url: conversion_voluntary_update_task_path(@project, @task.class.identifier), method: :put do |form| %>
       <%= form.govuk_error_summary %>
 
-      <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.one_hundred_and_twenty_five_year_lease.confirm_section.title") %></h2>
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.one_hundred_and_twenty_five_year_lease.confirm_section.title") %></h2>
 
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :receive)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :receive)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save)) %>
+      </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>
