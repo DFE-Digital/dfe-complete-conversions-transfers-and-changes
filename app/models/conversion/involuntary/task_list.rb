@@ -22,7 +22,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::ArticlesOfAssociation,
         Conversion::Involuntary::Tasks::DeedOfVariation,
         Conversion::Involuntary::Tasks::TrustModificationOrder,
-        Conversion::Involuntary::Tasks::DirectionToTransfer
+        Conversion::Involuntary::Tasks::DirectionToTransfer,
+        Conversion::Involuntary::Tasks::OneHundredAndTwentyFiveYearLease
       ]
     }
   ].freeze
