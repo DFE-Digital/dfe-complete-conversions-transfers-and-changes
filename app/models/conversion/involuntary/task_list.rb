@@ -34,7 +34,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::CheckBaseline,
         Conversion::Involuntary::Tasks::SingleWorksheet,
         Conversion::Involuntary::Tasks::SchoolCompleted,
-        Conversion::Involuntary::Tasks::ConditionsMet
+        Conversion::Involuntary::Tasks::ConditionsMet,
+        Conversion::Involuntary::Tasks::ShareInformation
       ]
     }
   ].freeze
