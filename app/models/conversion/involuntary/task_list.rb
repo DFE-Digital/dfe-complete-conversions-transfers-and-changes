@@ -6,7 +6,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
       identifier: :project_kick_off,
       tasks: [
         Conversion::Involuntary::Tasks::Handover,
-        Conversion::Involuntary::Tasks::StakeholderKickOff
+        Conversion::Involuntary::Tasks::StakeholderKickOff,
+        Conversion::Involuntary::Tasks::ConversionGrant
       ]
     },
     {
