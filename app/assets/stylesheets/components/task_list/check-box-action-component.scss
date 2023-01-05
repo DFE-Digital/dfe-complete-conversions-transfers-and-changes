@@ -8,8 +8,12 @@
     padding-right: govuk-spacing(3);
     padding-left: govuk-spacing(3);
 
-    > p {
+    p {
       @extend .govuk-hint;
+
+      a {
+        @extend .govuk-link;
+      }
     }
   }
 
@@ -17,5 +21,23 @@
     display: block;
     padding-right: govuk-spacing(3);
     padding-left: govuk-spacing(3);
+
+    p {
+      @extend .govuk-body;
+
+      a {
+        @extend .govuk-link;
+      }
+    }
+
+    ul {
+      @extend .govuk-list;
+      @extend .govuk-list--bullet;
+    }
+
+    ol {
+      @extend .govuk-list;
+      @extend .govuk-list--number;
+    }
   }
 }
