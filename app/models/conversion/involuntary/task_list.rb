@@ -37,6 +37,12 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::ConditionsMet,
         Conversion::Involuntary::Tasks::ShareInformation
       ]
+    },
+    {
+      identifier: :after_opening,
+      tasks: [
+        Conversion::Involuntary::Tasks::TellRegionalDeliveryOfficer
+      ]
     }
   ].freeze
 
