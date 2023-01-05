@@ -24,3 +24,5 @@ en:
             title: Signed by school or trust
           saved:
             title: Saved in the school's SharePoint folder
+          not_applicable:
+            title: Not applicable

@@ -34,4 +34,6 @@ en:
             title: Sent to team leader or deputy director
           signed_secretary_state:
             title: Document signed on behalf of the Secretary of State
+          not_applicable:
+            title: Not applicable
 

@@ -1,4 +1,4 @@
-class Conversion::Involuntary::Tasks::TrustModificationOrder < TaskList::Task
+class Conversion::Involuntary::Tasks::TrustModificationOrder < TaskList::OptionalTask
   attribute :received
   attribute :sent_legal
   attribute :cleared

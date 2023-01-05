@@ -1,4 +1,4 @@
-class Conversion::Involuntary::Tasks::ChurchSupplementalAgreement < TaskList::Task
+class Conversion::Involuntary::Tasks::ChurchSupplementalAgreement < TaskList::OptionalTask
   attribute :received
   attribute :cleared
   attribute :signed

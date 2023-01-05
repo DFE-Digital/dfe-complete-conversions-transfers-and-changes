@@ -1,4 +1,4 @@
-class Conversion::Involuntary::Tasks::DirectionToTransfer < TaskList::Task
+class Conversion::Involuntary::Tasks::DirectionToTransfer < TaskList::OptionalTask
   attribute :received
   attribute :cleared
   attribute :signed

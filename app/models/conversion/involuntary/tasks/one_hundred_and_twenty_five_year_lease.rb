@@ -1,4 +1,4 @@
-class Conversion::Involuntary::Tasks::OneHundredAndTwentyFiveYearLease < TaskList::Task
+class Conversion::Involuntary::Tasks::OneHundredAndTwentyFiveYearLease < TaskList::OptionalTask
   attribute :email
   attribute :receive
   attribute :save
