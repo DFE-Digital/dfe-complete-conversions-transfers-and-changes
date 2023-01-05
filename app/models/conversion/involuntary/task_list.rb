@@ -13,7 +13,6 @@ class Conversion::Involuntary::TaskList < TaskList::Base
     {
       identifier: :legal_documents,
       tasks: [
-        Conversion::Involuntary::Tasks::Subleases,
         Conversion::Involuntary::Tasks::LandQuestionnaire,
         Conversion::Involuntary::Tasks::LandRegistry,
         Conversion::Involuntary::Tasks::SupplementalFundingAgreement,
@@ -23,7 +22,8 @@ class Conversion::Involuntary::TaskList < TaskList::Base
         Conversion::Involuntary::Tasks::DeedOfVariation,
         Conversion::Involuntary::Tasks::TrustModificationOrder,
         Conversion::Involuntary::Tasks::DirectionToTransfer,
-        Conversion::Involuntary::Tasks::OneHundredAndTwentyFiveYearLease
+        Conversion::Involuntary::Tasks::OneHundredAndTwentyFiveYearLease,
+        Conversion::Involuntary::Tasks::Subleases
       ]
     }
   ].freeze
