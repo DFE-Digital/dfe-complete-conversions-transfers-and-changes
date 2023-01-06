@@ -55,7 +55,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       subject { helper.support_email }
 
       it "returns a mailto link to the support email with the email as the display name" do
-        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:complete.rsd@education.gov.uk\">complete.rsd@education.gov.uk</a>"
+        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk\">regionalservices.rg@education.gov.uk</a>"
       end
     end
 
@@ -65,7 +65,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       subject { helper.support_email(name) }
 
       it "returns a mailto link to the support email with the supplied name" do
-        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:complete.rsd@education.gov.uk\">#{name}</a>"
+        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk\">#{name}</a>"
       end
     end
   end
