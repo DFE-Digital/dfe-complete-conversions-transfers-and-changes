@@ -1,0 +1,38 @@
+en:
+  conversion:
+    involuntary:
+      tasks:
+        trust_modification_order:
+          title: Trust modification order
+          hint:
+            html:
+              <p>The Trust modification order is only needed if there are restrictions on the land titles that need resolving.</p>
+              <p>The Land questionnaire will show if one is needed for this project. You can also check with the solicitors dealing with land issues.</p>
+
+          clear_section:
+            title: Clear and sign the Trust modification order
+            hint:
+              html:
+                <p>If one is needed, send the Trust modification order and a copy of the original deed to the Operations team at <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">academiesdelivery.operations@education.gov.uk</a>. They will organise how it's signed and cleared.</p>
+                <p>It can take several weeks to hear back from the Operations team.</p>
+            guidance_link: When to use a Trust modification order
+            guidance:
+              html:
+                <p>A Trust modification order is used when a voluntary or foundation school's land is held by a trust or foundation that is not a diocese.</p>
+                <p>A Trust modification order is likely to be needed if the school is a:</p>
+                <ul>
+                <li>voluntary-controlled school</li>
+                <li>voluntary-aided school</li>
+                <li>foundation school</li>
+                </ul>
+
+          received:
+            title: Received
+          sent_legal:
+            title: Sent to Legal advisers office
+          cleared:
+            title: Cleared by Legal advisers office
+          saved:
+            title: Saved in the school's SharePoint folder
+          not_applicable:
+            title: Not applicable

@@ -14,9 +14,11 @@
       </div>
 
       <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :review)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :notes)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
+        <h2 class="govuk-heading-l"><%= t("conversion.involuntary.tasks.tenancy_at_will.confirm_section.title") %></h2>
+
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email_signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :receive_signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_signed)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>

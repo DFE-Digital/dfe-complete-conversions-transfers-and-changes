@@ -10,13 +10,7 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
-      </div>
-
-      <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :review)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :notes)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>

@@ -9,15 +9,15 @@
     <%= form_for @task, url: conversion_involuntary_update_task_path(@project, @task.class.identifier), method: :put do |form| %>
       <%= form.govuk_error_summary %>
 
-      <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
-      </div>
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :eligibility)) %>
 
-      <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :review)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :notes)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
-      </div>
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :payment_amount)) %>
+
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :payment_form)) %>
+
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_information)) %>
+
+      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :inform_trust)) %>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>
