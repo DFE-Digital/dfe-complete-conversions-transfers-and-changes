@@ -15,7 +15,9 @@
 
       <div class="govuk-form-group">
         <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.master_funding_agreement.clear_section.title") %></h2>
-        <%= t("conversion.voluntary.tasks.master_funding_agreement.clear_section.hint.html") %>
+        <div class="app-task-section__hint">
+          <%= t("conversion.voluntary.tasks.master_funding_agreement.clear_section.hint.html") %>
+        </div>
 
         <%= govuk_details(
               summary_text: t("conversion.voluntary.tasks.master_funding_agreement.clear_section.guidance_link"),
