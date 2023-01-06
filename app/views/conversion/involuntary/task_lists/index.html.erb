@@ -7,3 +7,5 @@
 <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
 
 <%= render "conversion/shared/task_list" %>
+
+<%= render "projects/show/complete" unless @project.completed? %>
