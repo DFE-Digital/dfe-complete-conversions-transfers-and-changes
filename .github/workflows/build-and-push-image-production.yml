@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  set-test-release-version:
-    name: Set Test Release Version
+  set-production-release-version:
+    name: Set Production Release Version
     runs-on: ubuntu-latest
     outputs:
       version: ${{steps.release-version.outputs.version}}
