@@ -31,6 +31,7 @@
 
 en:
   service_name: Complete conversions, transfers and changes
+  support_email_subject: "Complete conversions, transfers and changes: support query"
   phase_banner:
     phase: Beta
     phase_notice:

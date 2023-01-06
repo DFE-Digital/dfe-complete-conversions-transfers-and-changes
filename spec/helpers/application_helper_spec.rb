@@ -51,21 +51,43 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#support_email" do
-    context "when the display name is nil" do
-      subject { helper.support_email }
+    context "when the custom email subject is required (default)" do
+      context "when the display name is nil" do
+        subject { helper.support_email }
 
-      it "returns a mailto link to the support email with the email as the display name" do
-        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk\">regionalservices.rg@education.gov.uk</a>"
+        it "returns a mailto link to the support email, with a custom subject and the email as the display name" do
+          expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk?subject=Complete%20conversions%2C%20transfers%20and%20changes%3A%20support%20query\">regionalservices.rg@education.gov.uk</a>"
+        end
+      end
+
+      context "when the display name is not nil" do
+        let(:name) { "contact the complete conversions, transfers and changes team" }
+
+        subject { helper.support_email(name) }
+
+        it "returns a mailto link to the support email, with a custom subject and the supplied name" do
+          expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk?subject=Complete%20conversions%2C%20transfers%20and%20changes%3A%20support%20query\">#{name}</a>"
+        end
       end
     end
 
-    context "when the display name is not nil" do
-      let(:name) { "contact the complete conversions, transfers and changes team" }
+    context "when the custom email subject is not required" do
+      context "when the display name is nil" do
+        subject { helper.support_email(nil, false) }
 
-      subject { helper.support_email(name) }
+        it "returns a mailto link to the support email with the email as the display name" do
+          expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk\">regionalservices.rg@education.gov.uk</a>"
+        end
+      end
 
-      it "returns a mailto link to the support email with the supplied name" do
-        expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk\">#{name}</a>"
+      context "when the display name is not nil" do
+        let(:name) { "contact the complete conversions, transfers and changes team" }
+
+        subject { helper.support_email(name, false) }
+
+        it "returns a mailto link to the support email with the supplied name" do
+          expect(subject).to eq "<a class=\"govuk-link\" href=\"mailto:regionalservices.rg@education.gov.uk\">#{name}</a>"
+        end
       end
     end
   end

@@ -16,8 +16,13 @@ module ApplicationHelper
     sanitize(link, attributes: allowed_attributes)
   end
 
-  def support_email(name = nil)
+  def support_email(name = nil, with_custom_subject = true)
     name = Rails.application.config.support_email if name.nil?
-    govuk_mail_to(Rails.application.config.support_email, name)
+    if with_custom_subject
+      subject = I18n.t("support_email_subject")
+      govuk_mail_to(Rails.application.config.support_email, name, subject: subject)
+    else
+      govuk_mail_to(Rails.application.config.support_email, name)
+    end
   end
 end
