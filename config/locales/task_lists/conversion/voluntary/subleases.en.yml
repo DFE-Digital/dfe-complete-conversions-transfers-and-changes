@@ -18,14 +18,14 @@ en:
           cleared:
             title: Cleared
           signed:
-            title: Signed for school or trust
+            title: Signed by school or trust
           saved:
             title: Saved in school's Sharepoint folder
           email_signed:
-            title: Email the school to check all relevant parties have signed any subleases
+            title: Email the school to ask if all relevant parties have agreed and signed any subleases
           receive_signed:
-            title: Receive email from the school confirming any subleases are agreed and signed
+            title: Receive email from the school confirming all relevant parties have agreed and signed any subleases
           save_signed:
-            title: Save a copy of the confirmation email in school's SharePoint folder
+            title: Save a copy of the confirmation email in the school's SharePoint folder
           not_applicable:
             title: Not applicable

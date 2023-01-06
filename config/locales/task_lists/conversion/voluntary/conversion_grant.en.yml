@@ -7,7 +7,7 @@ en:
           guidance_link: How to process a conversion grant
           guidance:
             html:
-              <p>Check the grant claim form is ready, the school or trust has a vendor account and send the correct information to the Grant payments team.</p>
+              <p>Check the grant claim form is ready, the school or trust has a vendor account and send the correct information to the Grant Payments team.</p>
               <p>Start this as soon as possible. Schools and trusts can start getting charged by solicitors and the local authority early in the process.</p>
 
           check_vendor_account:
@@ -19,7 +19,7 @@ en:
             guidance:
               html:
                 <p>The school or trust receiving the conversion grant must have a vendor account.</p>
-                <p>Schools and trusts can <a href="https://www.gov.uk/guidance/provide-information-about-your-banking-and-payments-to-dfe" class="govuk-link" target="_blank">set up a vendor account (opens in new tab)</a> when they provide information about their banking and payments to DfE.</p>
+                <p>Schools and trusts can <a href="https://www.gov.uk/guidance/provide-information-about-your-banking-and-payments-to-dfe" class="govuk-link" target="_blank">set up a vendor account (opens in new tab)</a> when they provide information about their banking and payments to Department for Education.</p>
                 <p>Share the link with them so they can register if needed.</p>
                 <p>It can take 15 to 20 days for an account to be created.</p>
 
@@ -42,7 +42,7 @@ en:
             guidance:
               html:
                 <p>You'll find the Academy order, Application to convert and Grant claim form in the school's SharePoint folder.</p>
-                <p>You should send the documents to the Grant payments team by email at <a href="mailto:cfugrantpayments.regionsgroup@education.gov.uk" class="govuk-link" target="_blank">cfugrantpayments.regionsgroup@education.gov.uk</a>.</p>
+                <p>You should send the documents to the Grant Payments team by email at <a href="mailto:cfugrantpayments.regionsgroup@education.gov.uk" target="_blank">cfugrantpayments.regionsgroup@education.gov.uk</a>.</p>
                 <p>The subject line of the email must include the:</p>
                 <ul>
                   <li>region the school is in</li>

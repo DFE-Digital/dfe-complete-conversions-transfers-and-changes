@@ -14,16 +14,16 @@ en:
             guidance_link: How to clear a Land questionnaire
             guidance:
               html:
-                <p class="govuk-body-m">You must <a href="https://www.gov.uk/government/publications/academy-land-questionnaires" class="govuk-link" target="_blank">check the school is using the right Land questionnaire (opens in a new tab)</a>. There are four different types.</p>
-                <p class="govuk-body-m">You need to clear the land questionnaire before the Master funding agreement and the Supplemental funding agreement.</p>
-                <p class="govuk-body-m">The Land questionnaire is critical. It is the basis for all land decisions.</p>
-                <p class="govuk-body-m">The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.</p>
+                <p>You must <a href="https://www.gov.uk/government/publications/academy-land-questionnaires" class="govuk-link" target="_blank">check the school is using the right Land questionnaire (opens in a new tab)</a>.</p>
+                <p>You need to clear the land questionnaire before the Master funding agreement and the Supplemental funding agreement.</p>
+                <p>The Land questionnaire is critical. It is the basis for all land decisions.</p>
+                <p>The answers given inform how the land will be treated. It decides which leases, directions and other land agreements are needed.</p>
 
           received:
             title: Received
           cleared:
             title: Cleared
           signed:
-            title: Signed by school or trust
+            title: Signed by solicitor
           saved:
             title: Saved in the school's SharePoint folder

@@ -15,6 +15,9 @@
 
       <div class="govuk-form-group">
         <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.tenancy_at_will.confirm_section.title") %></h2>
+        <div class="app-task-section__hint">
+          <%= t("conversion.voluntary.tasks.tenancy_at_will.confirm_section.hint.html") %>
+        </div>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email_signed)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :receive_signed)) %>
