@@ -49,7 +49,7 @@
       </main>
     </div>
 
-    <%= govuk_footer(meta_items_title: "Helpful links", meta_items: {"Privacy notice" => page_path(id: "privacy"), "Accessibility Statement" => page_path(id: "accessibility"), "Cookies" => page_path(id: "cookies")}) %>
+    <%= govuk_footer(meta_items_title: "Helpful links", meta_items: {"Privacy notice" => page_path(id: "privacy"), "Accessibility Statement" => page_path(id: "accessibility"), "Cookies" => page_path(id: "cookies"), "Email support" => "mailto:#{Rails.application.config.support_email}?subject=#{I18n.t("support_email_subject")}"}) %>
 
   </body>
   <%= javascript_include_tag "application" %>
