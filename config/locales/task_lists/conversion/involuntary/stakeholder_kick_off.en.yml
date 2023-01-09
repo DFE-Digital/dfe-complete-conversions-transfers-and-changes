@@ -15,7 +15,7 @@ en:
             guidance_link: What to include in introductory emails
             guidance:
               html:
-                <p>You can <a href="https://educationgovuk.sharepoint.com/:f:/r/sites/ServiceDeliveryDirectorate/Shared%20Documents/Operational%20Delivery/Training%20and%20Resources/Resources/Project%20templates?csf=1&web=1&e=Hf4exC" target="blank">choose an email template (opens in new tab)</a> to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.</p>
+                <p>You can <a href="https://educationgovuk.sharepoint.com/sites/ServiceDeliveryDirectorate/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x012000265B42F1C27524438F6B1CC14FCF9E05&id=%2Fsites%2FServiceDeliveryDirectorate%2FShared%20Documents%2FOperational%20Delivery%2FGuidance%2C%20Training%20and%20Resources%2F%281%29%20CONVERSIONS%20%2D%20Guidance%20and%20Templates%2FCONVERSIONS%20%2D%20Template%20Emails%20%26%20Documents&viewid=84d1a8e7%2D052b%2D4a94%2D8d1b%2D850c4e6f284f" target="blank">choose an email template (opens in new tab)</a> to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.</p>
 
                 <p>This will help you to:</p>
 
@@ -34,7 +34,7 @@ en:
             guidance_link: What to do if you don't have the local authority proforma
             guidance:
               html:
-                <p>The regional delivery officer should have sent the Local authority proforma to the local authority to complete.</p>
+                <p>The regional delivery officer should have sent the local authority proforma to the local authority to complete.</p>
                 <p>If you haven't received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.</p>
 
           confirm_target_conversion_date:
@@ -44,7 +44,7 @@ en:
             guidance_link: What to do if the local authority does not have capacity
             guidance:
               html:
-                <p>The school and trust will have given a provisional date they want to convert on.</p>
+                <p>The trust will have given a provisional date they want to convert on.</p>
                 <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
                 <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the trust and local authority to agree a new date.</p>
 
@@ -56,5 +56,5 @@ en:
             guidance:
               html:
                 <p>Your introductory email should have included some possible dates for a kick-off meeting.</p>
-                <p>Once the school have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It’s likely to be a video call over Microsoft Teams.</p>
-                <p>Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders.</p>
+                <p>Once the trust have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It’s likely to be a video call over Microsoft Teams.</p>
+                <p>Some trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders.</p>

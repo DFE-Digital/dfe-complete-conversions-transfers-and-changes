@@ -77,9 +77,9 @@ en:
             guidance_link: Guidance on what information to send
             guidance:
               html:
-                <p>You'll find the Direct academy order and Grant claim form in the
+                <p>You'll find the Directive academy order and Grant claim form in the
                 school's SharePoint folder.</p>
-                <p>You should send the documents to the Grant payments team by email at
+                <p>You should send the documents to the Grant Payments team by email at
                 <a href="mailto:cfugrantpayments.regionsgroup@education.gov.uk" class="govuk-link" target="_blank">cfugrantpayments.regionsgroup@education.gov.uk</a>.</p>
                 <p>The subject line of the email must include the:</p>
                 <ul class="govuk-list govuk-list--bullet">
@@ -97,7 +97,7 @@ en:
                 <li>provisional conversion date</li>
                 </ul>
                 <p>It's helpful to include the school or trust's vendor account number
-                too. The Grant payments team will need this to be able to send the
+                too. The Grant Payments team will need this to be able to send the
                 money to whoever will receive it.</p>
 
           inform_trust:

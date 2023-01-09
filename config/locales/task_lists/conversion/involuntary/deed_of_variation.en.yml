@@ -22,7 +22,7 @@ en:
           cleared:
             title: Cleared
           signed:
-            title: Signed by school or trust
+            title: Signed by trust
           saved:
             title: Saved in the school's SharePoint folder
           not_applicable:

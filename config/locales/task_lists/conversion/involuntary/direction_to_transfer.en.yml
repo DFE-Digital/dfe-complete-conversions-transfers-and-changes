@@ -16,18 +16,16 @@ en:
             guidance_link: Help checking for changes
             guidance:
               html:
-                <p>You should check that information in the Direction to transfer is correct.</p>
-                <p>You'll also need to <a href="https://www.gov.uk/government/publications/academy-land-transfers-model-directions" class="govuk-link" target="_blank">compare the Direction to transfer against the model documents (opens in a new tab)</a> to check for any changes.</p>
-                <p>Send the Direction to transfer to the Operations team for signing and clearing.</p>
-                <p>You can <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">email the Operations team at academiesdelivery.operations@education.gov.uk</a>.</p>
-                <p>It can take several weeks to hear back from the Operations team.</p>
+                <p>You need to <a href="https://www.gov.uk/government/publications/academy-land-transfers-model-directions" target="_blank">compare the Direction to transfer against the model documents (opens in new tab)</a> to check for any changes.</p>
+                <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+                <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about any changes to clause text.</p>
 
           received:
             title: Received
           cleared:
             title: Cleared
           signed:
-            title: Signed by caseworker
+            title: Signed by regional delivery officer
           saved:
             title: Saved in the school's SharePoint folder
           not_applicable:
