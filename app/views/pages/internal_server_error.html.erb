@@ -1,10 +1,10 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Sorry, there is a problem with the service</h1>
-    <p class="govuk-body">Try again later.</p>
+    <h1 class="govuk-heading-l"><%= t("pages.internal_server_error.title") %></h1>
+    <p class="govuk-body"><%= t("pages.internal_server_error.body_text") %></p>
 
     <p class="govuk-body">
-      <%= support_email("Contact the #{t("service_name")} team") %> if you have any questions.
+      <%= t("pages.internal_server_error.email_help", email: support_email).html_safe %>
     </p>
   </div>
 </div>

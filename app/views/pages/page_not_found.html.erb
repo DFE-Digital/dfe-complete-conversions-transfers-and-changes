@@ -1,15 +1,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Page not found</h1>
+    <h1 class="govuk-heading-l"><%= t("pages.page_not_found.title") %></h1>
     <p class="govuk-body">
-      If you typed the web address, check it is correct.
+      <%= t("pages.page_not_found.body_text_1") %>
     </p>
     <p class="govuk-body">
-      If you pasted the web address, check you copied the entire address.
+      <%= t("pages.page_not_found.body_text_2") %>
     </p>
     <p class="govuk-body">
-      If the web address is correct or you selected a link or button, email the
-      <%= t("service_name") %> team at <%= support_email %>.
+      <%= t("pages.page_not_found.email_help", email: support_email).html_safe %>
     </p>
   </div>
 </div>
