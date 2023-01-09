@@ -41,6 +41,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add actions to the Process the Sponsored support grant task telling user to
   check and confirm the trust's grant eligibility and tell the trust the amount
   they're able to claim
+- Support email address changed to regionalservices.rg@education.gov.uk and an
+  optional subject line added to the email helper
 
 #### Fixed
 
