@@ -1,8 +1,11 @@
 en:
   project:
     index:
-      title:
-        all: Project list
+      all:
+        title: Projects
+      completed:
+        title: Completed projects
+      empty: No projects
     show:
       title: Task list
       edit_button:
