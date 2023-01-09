@@ -77,7 +77,7 @@ en:
   pages:
     api_client_timeout:
       title: Sorry, there was a problem
-      body_text: The service timed out when getting the details of the school or trust. Refresh trhe page to try again.
+      body_text: The service timed out when getting the details of the school or trust. Refresh the page to try again.
       email_help: Email the support team at %{email} if this error continues.
     page_not_found:
       title: Page not found
@@ -87,4 +87,4 @@ en:
     internal_server_error:
       title: Sorry, there is a problem with the service
       body_text: The service has an internal server error. Refresh the page and if the problem continues, try again later.
-      email_help: Email the support team at %{email} if the problem still occurrs.
+      email_help: Email the support team at %{email} if the problem still occurs.
