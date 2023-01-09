@@ -10,7 +10,7 @@ jobs:
     name: Set Production Release Version
     runs-on: ubuntu-latest
     outputs:
-      version: ${{steps.release-version.outputs.version}}
+      version: ${{ steps.release-version.outputs.version }}
     steps:
       - id: release-version
         run: echo "version=release-9" >> $GITHUB_OUTPUT
@@ -19,13 +19,13 @@ jobs:
     name: Build and push image production
 
     runs-on: ubuntu-latest
-    needs: set-test-release-version
+    needs: set-production-release-version
 
     steps:
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          ref: ${{needs.set-test-release-version.outputs.version}}
+          ref: ${{ needs.set-production-release-version.outputs.version }}
 
       - name: Azure Container Registry login
         uses: docker/login-action@v2
@@ -43,7 +43,7 @@ jobs:
           if [ "${{ github.event_name }}" = "push" ]; then
             CHECKED_OUT_SHA="$(git log -1 '--format=format:%H')"
             VERSION=sha-${CHECKED_OUT_SHA}
-            TAGS="$TAGS,${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${{needs.set-test-release-version.outputs.version}}"
+            TAGS="$TAGS,${DOCKER_IMAGE}:${VERSION},${DOCKER_IMAGE}:${{ needs.set-production-release-version.outputs.version }}"
           fi
           echo "tags=${TAGS}" >> $GITHUB_OUTPUT
           echo "deploy-version=${VERSION}" >> $GITHUB_OUTPUT
