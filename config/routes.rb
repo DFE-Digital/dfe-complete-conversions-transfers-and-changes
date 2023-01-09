@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
+  namespace :conversions do
+    get "/", to: "/conversions/projects#index"
+  end
+
   scope :projects do
     namespace :conversion do
       namespace :involuntary do

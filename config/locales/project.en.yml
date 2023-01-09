@@ -3,6 +3,8 @@ en:
     index:
       all:
         title: Projects
+      conversions:
+        title: Conversion projects
       completed:
         title: Completed projects
       empty: No projects
