@@ -30,6 +30,16 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
       </div>
 
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-l"><%= t("conversion.involuntary.tasks.deed_of_variation.sign_section.title") %></h2>
+        <div class="app-task-section__hint">
+          <%= t("conversion.involuntary.tasks.deed_of_variation.sign_section.hint.html") %>
+        </div>
+
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :sent)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_secretary_state)) %>
+      </div>
+
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>
   </div>
