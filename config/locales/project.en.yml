@@ -5,6 +5,8 @@ en:
         title: Projects
       conversions:
         title: Conversion projects
+        voluntary:
+          title: Voluntary conversion projects
       completed:
         title: Completed projects
       empty: No projects

@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   namespace :conversions do
     get "/", to: "/conversions/projects#index"
+    namespace :voluntary do
+      get "/", to: "/conversions/voluntary/projects#index"
+    end
   end
 
   scope :projects do
