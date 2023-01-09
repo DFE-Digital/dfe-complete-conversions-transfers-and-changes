@@ -5,16 +5,22 @@ en:
         tenancy_at_will:
           title: Tenancy at will
           hint:
-            html: <p>A Tenancy at will allows a tenant and landlord to agree that the tenant can use the land owned by the landlord indefinitely.</p>
+            html:
+              <p>A Tenancy at will allows a tenant and landlord to agree that the tenant can indefinitely use the land owned by the landlord.</p>
+              <p>It's very rare that this document is used.</p>
+              <p>It's only likely to be used when a trust and land owner are unable to resolve a land use issue through the usual leases, and the trust are happy to proceed at risk.</p>
 
           confirm_section:
             title: Confirm the Tenancy at will has been signed
+            hint:
+              html:
+                <p>You should <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team for advice (opens in new tab)</a> if a trust's solicitor asks about using a Tenancy at will.</p>
 
           email_signed:
-            title: Email the school to ask if they have agreed and signed the Tenancy at will
-          receive_signed:
-            title: Receive email from the school confirming the Tenancy at will has all relevant signatures
-          save_signed:
-            title: Save a copy of the confirmation email in school's SharePoint folder
+            title: Email the trust to ask if all relevant parties have agreed and signed the Tenancy at will
+            receive_signed:
+              title: Receive email from the trust confirming all relevant parties have agreed and signed the Tenancy at will
+            save_signed:
+              title: Save a copy of the confirmation email in the school's SharePoint folder
           not_applicable:
             title: Not applicable

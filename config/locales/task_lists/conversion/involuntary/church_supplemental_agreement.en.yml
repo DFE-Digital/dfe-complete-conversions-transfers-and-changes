@@ -18,14 +18,15 @@ en:
           sign_section:
             title: Signed by the Secretary of State
             hint:
-              html: <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Church supplemental agreement. Usually this is your team leader or the deputy director.</p>
+              html: <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Church supplemental agreement.</p>
+                    <p>Usually this is your team leader or the deputy director.</p>
 
           received:
             title: Received
           cleared:
             title: Cleared
           signed:
-            title: Signed by school or trust
+            title: Signed by trust
           signed_diocese:
             title: Signed by diocese
           saved:

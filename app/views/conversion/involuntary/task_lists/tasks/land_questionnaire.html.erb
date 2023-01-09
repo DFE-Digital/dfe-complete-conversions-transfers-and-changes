@@ -17,10 +17,12 @@
             text: t("conversion.involuntary.tasks.land_questionnaire.sub_section.guidance.html")
           ) %>
 
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
+      </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>

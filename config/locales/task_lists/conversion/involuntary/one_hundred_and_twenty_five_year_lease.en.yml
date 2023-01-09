@@ -11,9 +11,9 @@ en:
             title: Confirm the 125 year lease has been signed
 
           email:
-            title: Email the school to check all relevant parties have signed the 125 year lease
+            title: Email the trust to ask if all relevant parties have signed the 125 year lease
           receive:
-            title: Receive email from the school confirming the 125 year lease is agreed and signed
+            title: Receive email from the trust confirming all relevant parties have agreed and signed the 125 year lease
           save:
             title: Save a copy of the confirmation email in school's SharePoint folder
           not_applicable:

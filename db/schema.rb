@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_170219) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_144257) do
   create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "title", null: false
     t.integer "order", null: false
@@ -76,12 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_170219) do
     t.boolean "land_registry_received"
     t.boolean "land_registry_cleared"
     t.boolean "land_registry_saved"
-    t.boolean "supplemental_funding_agreeement_received"
-    t.boolean "supplemental_funding_agreeement_cleared"
-    t.boolean "supplemental_funding_agreeement_signed"
-    t.boolean "supplemental_funding_agreeement_saved"
-    t.boolean "supplemental_funding_agreeement_sent"
-    t.boolean "supplemental_funding_agreeement_signed_secretary_state"
     t.boolean "church_supplemental_agreement_received"
     t.boolean "church_supplemental_agreement_cleared"
     t.boolean "church_supplemental_agreement_signed"
@@ -145,7 +139,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_170219) do
     t.boolean "update_esfa_update"
     t.boolean "receive_grant_payment_certificate_check_and_save"
     t.boolean "receive_grant_payment_certificate_update_kim"
-    t.boolean "receive_grant_payment_certificate_update_sheet"
+    t.boolean "supplemental_funding_agreement_received"
+    t.boolean "supplemental_funding_agreement_cleared"
+    t.boolean "supplemental_funding_agreement_signed"
+    t.boolean "supplemental_funding_agreement_saved"
+    t.boolean "supplemental_funding_agreement_sent"
+    t.boolean "supplemental_funding_agreement_signed_secretary_state"
+    t.boolean "deed_of_variation_sent"
+    t.boolean "deed_of_variation_signed_secretary_state"
+    t.boolean "direction_to_transfer_not_applicable"
   end
 
   create_table "conversion_voluntary_task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

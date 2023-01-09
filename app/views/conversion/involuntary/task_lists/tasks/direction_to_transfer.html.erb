@@ -14,17 +14,21 @@
       </div>
 
       <h2 class="govuk-heading-l"><%= t("conversion.involuntary.tasks.direction_to_transfer.clear_section.title") %></h2>
-      <%= t("conversion.involuntary.tasks.direction_to_transfer.clear_section.hint.html") %>
+      <div class="app-task-section__hint">
+        <%= t("conversion.involuntary.tasks.direction_to_transfer.clear_section.hint.html") %>
+      </div>
 
       <%= govuk_details(
             summary_text: t("conversion.involuntary.tasks.direction_to_transfer.clear_section.guidance_link"),
             text: t("conversion.involuntary.tasks.direction_to_transfer.clear_section.guidance.html")
           ) %>
 
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
-      <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
+      </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
     <% end %>

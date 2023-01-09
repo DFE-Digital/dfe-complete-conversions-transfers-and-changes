@@ -17,13 +17,24 @@ en:
                 <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
                 <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
 
+          sign_section:
+            title: Signed by the Secretary of State
+            hint:
+              html:
+                <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Deed of variation.</p>
+                <p>Usually this is your team leader or the deputy director.</p>
+
           received:
             title: Received
           cleared:
             title: Cleared
           signed:
-            title: Signed by school or trust
+            title: Signed by trust
           saved:
             title: Saved in the school's SharePoint folder
+          sent:
+            title: Sent to team leader or deputy director
+          signed_secretary_state:
+            title: Document signed on behalf of the Secretary of State
           not_applicable:
             title: Not applicable
