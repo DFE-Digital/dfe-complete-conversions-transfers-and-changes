@@ -29,6 +29,8 @@ class Project < ApplicationRecord
 
   scope :by_provisional_conversion_date, -> { order(provisional_conversion_date: :asc) }
 
+  scope :conversions, -> { where(type: "Conversion::Project") }
+
   scope :completed, -> { where.not(completed_at: nil) }
   scope :open, -> { where(completed_at: nil) }
 
