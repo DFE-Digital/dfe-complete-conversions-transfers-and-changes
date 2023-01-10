@@ -47,19 +47,23 @@ Rails.application.routes.draw do
     end
   end
 
+  concern :informationable do
+    get "information", to: "/project_information#show"
+  end
+
   namespace :conversions do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable notable assignable]
+        concerns: %i[task_listable contactable notable assignable informationable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable notable assignable]
+        concerns: %i[task_listable contactable notable assignable informationable]
     end
   end
 
