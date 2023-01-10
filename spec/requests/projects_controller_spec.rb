@@ -48,6 +48,17 @@ RSpec.describe ProjectsController, type: :request do
     end
   end
 
+  describe "#show" do
+    it "redirects to a 404 page when a projects cannot be found" do
+      project = create(:conversion_project)
+      allow(Project).to receive_message_chain("includes.find").and_raise(ActiveRecord::RecordNotFound)
+
+      get project_path(project)
+
+      expect(response).to have_http_status(:not_found)
+    end
+  end
+
   private def unset_api_data
     # Nillify any project data that comes from the API in order to best test the
     # real scenario, where loaded project data will not have associated API data until

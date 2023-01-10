@@ -1,4 +1,14 @@
 module AcademiesApiHelpers
+  def mock_successful_api_calls(establishment:, trust:)
+    fake_client = double(AcademiesApi::Client,
+      get_establishments: AcademiesApi::Client::Result.new([establishment], nil),
+      get_establishment: AcademiesApi::Client::Result.new(establishment, nil),
+      get_trusts: AcademiesApi::Client::Result.new([trust], nil),
+      get_trust: AcademiesApi::Client::Result.new(trust, nil))
+
+    allow(AcademiesApi::Client).to receive(:new).and_return(fake_client)
+  end
+
   def mock_successful_api_responses(urn:, ukprn:)
     mock_successful_api_establishment_response(urn:)
     mock_successful_api_trust_response(ukprn:)

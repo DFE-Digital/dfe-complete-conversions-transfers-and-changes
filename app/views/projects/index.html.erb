@@ -1,1 +1,17 @@
-<%= render partial: "projects/index/project_index", locals: {text_if_empty: t("project_list.open_list_empty")} %>
+<%= render partial: "projects/shared/signed_in_as", locals: {email_address: current_user.email} %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.index.all.title") %>
+    </h1>
+
+    <%= render partial: "projects/shared/new_projects" if policy(:project).new? %>
+
+    <%= render partial: "shared/project_index_sub_navigation" %>
+
+    <%= render partial: "/shared/projects/list", locals: {projects: @projects, pager: @pagy} %>
+
+  </div>
+</div>

@@ -22,19 +22,27 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
+  namespace :conversions do
+    get "/", to: "/conversions/projects#index"
+    namespace :voluntary do
+      get "/", to: "/conversions/voluntary/projects#index"
+      resources :projects, only: %i[show new create]
+    end
+    namespace :involuntary do
+      get "/", to: "/conversions/involuntary/projects#index"
+      resources :projects, only: %i[show new create]
+    end
+  end
+
   scope :projects do
     namespace :conversion do
       namespace :involuntary do
-        get "new", to: "projects#new"
-        post "new", to: "projects#create"
         get ":project_id/tasks", to: "task_lists#index", as: :tasks
         get ":project_id/tasks/:task_id", to: "task_lists#edit", as: :task
         put ":project_id/tasks/:task_id", to: "task_lists#update", as: :update_task
       end
 
       namespace :voluntary do
-        get "new", to: "projects#new"
-        post "new", to: "projects#create"
         get ":project_id/tasks", to: "task_lists#index", as: :tasks
         get ":project_id/tasks/:task_id", to: "task_lists#edit", as: :task
         put ":project_id/tasks/:task_id", to: "task_lists#update", as: :update_task

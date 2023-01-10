@@ -1,0 +1,12 @@
+<% if policy(:project).new? %>
+  <div class="govuk-button-group">
+    <%= link_to t("conversion_project.voluntary.new.title"),
+          new_conversions_voluntary_project_path,
+          class: "govuk-button",
+          data: {module: "govuk-button"} %>
+    <%= link_to t("conversion_project.involuntary.new.title"),
+          new_conversions_involuntary_project_path,
+          class: "govuk-button",
+          data: {module: "govuk-button"} %>
+  </div>
+<% end %>

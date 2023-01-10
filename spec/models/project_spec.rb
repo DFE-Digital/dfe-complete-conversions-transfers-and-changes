@@ -267,6 +267,48 @@ RSpec.describe Project, type: :model do
   end
 
   describe "Scopes" do
+    describe "conversions" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns conversions projects" do
+        conversion_project = create(:conversion_project)
+        transfer_project = create(:conversion_project, type: "Transfer::Project")
+
+        projects = Project.conversions
+
+        expect(projects).to include(conversion_project)
+        expect(projects).to_not include(transfer_project)
+      end
+    end
+
+    describe "conversions_voluntary" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns voluntary conversion projects" do
+        voluntary_conversion_project = create(:voluntary_conversion_project)
+        involuntary_conversion_project = create(:involuntary_conversion_project)
+
+        projects = Project.conversions_voluntary
+
+        expect(projects).to include(voluntary_conversion_project)
+        expect(projects).to_not include(involuntary_conversion_project)
+      end
+    end
+
+    describe "conversions_involuntary" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns voluntary conversion projects" do
+        voluntary_conversion_project = create(:voluntary_conversion_project)
+        involuntary_conversion_project = create(:involuntary_conversion_project)
+
+        projects = Project.conversions_involuntary
+
+        expect(projects).to include(involuntary_conversion_project)
+        expect(projects).to_not include(voluntary_conversion_project)
+      end
+    end
+
     describe "completed scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 

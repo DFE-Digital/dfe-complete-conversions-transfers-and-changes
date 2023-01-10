@@ -1,0 +1,18 @@
+<% if projects.empty? %>
+  <%= govuk_inset_text(text: t("project.index.empty")) %>
+<% else %>
+  <ul class="projects-list list-style-none govuk-!-padding-0">
+    <% @projects.each do |project| %>
+      <li>
+        <span class="govuk-caption-m">URN <%= project.urn %></span>
+        <h2 class="govuk-heading-m govuk-heading-m--school-name">
+          <%= link_to project.establishment.name, project_path(project) %>
+        </h2>
+
+        <%= render partial: "projects/index/project_summary", locals: {project: project} %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= govuk_pagination(pagy: pager) %>

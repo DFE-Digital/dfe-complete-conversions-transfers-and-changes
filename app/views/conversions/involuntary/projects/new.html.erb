@@ -4,11 +4,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_with model: @project, url: conversion_voluntary_new_path do |form| %>
+    <%= form_with model: @project, url: conversions_involuntary_projects_path do |form| %>
       <%= form.govuk_error_summary %>
 
-      <h1 class="govuk-heading-l"><%= t("conversion_project.voluntary.new.title") %></h1>
-      <%= t("conversion_project.voluntary.new.hint_html") %>
+      <h1 class="govuk-heading-l"><%= t("conversion_project.involuntary.new.title") %></h1>
+      <%= t("conversion_project.involuntary.new.hint_html") %>
 
       <%= form.govuk_text_field :urn, label: {size: "m", text: t("helpers.label.conversion_project.urn")}, hint: {text: t("helpers.hint.project.urn").html_safe}, width: 10 %>
       <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.conversion_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.project.incoming_trust_ukprn").html_safe}, width: 10 %>

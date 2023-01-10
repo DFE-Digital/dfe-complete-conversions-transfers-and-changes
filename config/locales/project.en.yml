@@ -1,8 +1,17 @@
 en:
   project:
     index:
-      title:
-        all: Project list
+      all:
+        title: Projects
+      conversions:
+        title: Conversion projects
+        voluntary:
+          title: Voluntary conversion projects
+        involuntary:
+          title: Involuntary conversion projects
+      completed:
+        title: Completed projects
+      empty: No projects
     show:
       title: Task list
       edit_button:
