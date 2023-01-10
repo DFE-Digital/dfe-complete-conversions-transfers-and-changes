@@ -28,15 +28,23 @@ Rails.application.routes.draw do
     put "task-list/:task_id", to: "task_lists#update", as: :update_task
   end
 
+  concern :contactable do
+    resources :contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "/contacts"
+  end
+
   namespace :conversions do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
-      resources :projects, only: %i[show new create], concerns: %i[task_listable]
+      resources :projects,
+        only: %i[show new create],
+        concerns: %i[task_listable contactable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
-      resources :projects, only: %i[show new create], concerns: %i[task_listable]
+      resources :projects,
+        only: %i[show new create],
+        concerns: %i[task_listable contactable]
     end
   end
 
