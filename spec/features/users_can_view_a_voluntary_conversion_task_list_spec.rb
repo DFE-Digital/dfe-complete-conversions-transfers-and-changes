@@ -12,7 +12,7 @@ RSpec.feature "Users can view a voluntary conversion task list" do
   end
 
   scenario "can see the task list" do
-    visit conversion_voluntary_tasks_path(project_id)
+    visit conversions_voluntary_project_path(project)
 
     expect(page).to have_content("Task list")
   end
