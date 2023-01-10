@@ -25,4 +25,29 @@ module ApplicationHelper
       govuk_mail_to(Rails.application.config.support_email, name)
     end
   end
+
+  def path_to_project(project)
+    return conversions_voluntary_project_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
+    return conversions_involuntary_project_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
+  end
+
+  def path_to_project_task_list(project)
+    return conversions_voluntary_project_task_list_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
+    return conversions_involuntary_project_task_list_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
+  end
+
+  def path_to_project_notes(project)
+    return conversions_voluntary_project_notes_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
+    return conversions_involuntary_project_notes_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
+  end
+
+  def path_to_project_information(project)
+    return conversions_voluntary_project_information_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
+    return conversions_involuntary_project_information_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
+  end
+
+  def path_to_project_contacts(project)
+    return conversions_voluntary_project_contacts_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
+    return conversions_involuntary_project_contacts_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
+  end
 end

@@ -91,4 +91,32 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "project paths" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    context "when the project is a voluntary conversion" do
+      it "returns the correct paths" do
+        project = create(:voluntary_conversion_project)
+
+        expect(helper.path_to_project(project)).to eq conversions_voluntary_project_path(project)
+        expect(helper.path_to_project_task_list(project)).to eq conversions_voluntary_project_task_list_path(project)
+        expect(helper.path_to_project_information(project)).to eq conversions_voluntary_project_information_path(project)
+        expect(helper.path_to_project_notes(project)).to eq conversions_voluntary_project_notes_path(project)
+        expect(helper.path_to_project_contacts(project)).to eq conversions_voluntary_project_contacts_path(project)
+      end
+    end
+
+    context "when the project is a involuntary conversion" do
+      it "returns the correct path" do
+        project = create(:involuntary_conversion_project)
+
+        expect(helper.path_to_project(project)).to eq conversions_involuntary_project_path(project)
+        expect(helper.path_to_project_task_list(project)).to eq conversions_involuntary_project_task_list_path(project)
+        expect(helper.path_to_project_information(project)).to eq conversions_involuntary_project_information_path(project)
+        expect(helper.path_to_project_notes(project)).to eq conversions_involuntary_project_notes_path(project)
+        expect(helper.path_to_project_contacts(project)).to eq conversions_involuntary_project_contacts_path(project)
+      end
+    end
+  end
 end
