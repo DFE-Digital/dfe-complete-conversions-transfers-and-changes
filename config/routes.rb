@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
-      resources :projects, only: %i[show]
+      resources :projects, only: %i[show new create]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
@@ -44,8 +44,6 @@ Rails.application.routes.draw do
       end
 
       namespace :voluntary do
-        get "new", to: "projects#new"
-        post "new", to: "projects#create"
         get ":project_id/tasks", to: "task_lists#index", as: :tasks
         get ":project_id/tasks/:task_id", to: "task_lists#edit", as: :task
         put ":project_id/tasks/:task_id", to: "task_lists#update", as: :update_task
