@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
   def index
     authorize Project
@@ -18,5 +19,9 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(sections: [:tasks]).find(params[:id])
     authorize @project
+  end
+
+  private def not_found_error
+    redirect_to "/404", status: :not_found
   end
 end
