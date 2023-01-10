@@ -22,4 +22,22 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
       expect(response.body).not_to include(involuntary_conversion_project.urn.to_s)
     end
   end
+
+  describe "#show" do
+    it "shows a single voluntary conversion project" do
+      voluntary_conversion_project = create(:conversion_project, urn: 123456, regional_delivery_officer: user)
+
+      get conversions_voluntary_project_path(voluntary_conversion_project)
+
+      expect(response.body).to include(voluntary_conversion_project.urn.to_s)
+    end
+
+    it "returns 404 if the project is involuntary" do
+      involuntary_conversion_project = create(:involuntary_conversion_project, urn: 654321, regional_delivery_officer: user)
+
+      get conversions_voluntary_project_path(involuntary_conversion_project)
+
+      expect(response).to have_http_status(:not_found)
+    end
+  end
 end

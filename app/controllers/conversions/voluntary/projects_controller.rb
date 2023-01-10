@@ -8,4 +8,9 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
 
     render "/conversions/voluntary/index"
   end
+
+  def show
+    @project = Project.conversions_voluntary.includes(sections: [:tasks]).find(params[:id])
+    authorize @project
+  end
 end

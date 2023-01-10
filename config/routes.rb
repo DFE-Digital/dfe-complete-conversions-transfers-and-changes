@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
+      resources :projects, only: %i[show]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
