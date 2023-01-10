@@ -36,17 +36,7 @@ Rails.application.routes.draw do
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
-      resources :projects, only: %i[show new create]
-    end
-  end
-
-  scope :projects do
-    namespace :conversion do
-      namespace :involuntary do
-        get ":project_id/tasks", to: "task_lists#index", as: :tasks
-        get ":project_id/tasks/:task_id", to: "task_lists#edit", as: :task
-        put ":project_id/tasks/:task_id", to: "task_lists#update", as: :update_task
-      end
+      resources :projects, only: %i[show new create], concerns: %i[task_listable]
     end
   end
 

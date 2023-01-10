@@ -12,7 +12,7 @@ RSpec.feature "Users can view an ivoluntary conversion task list" do
   end
 
   scenario "can see the task list" do
-    visit conversion_involuntary_tasks_path(project_id)
+    visit conversions_involuntary_project_task_list_path(project_id)
 
     expect(page).to have_content("Task list")
   end
