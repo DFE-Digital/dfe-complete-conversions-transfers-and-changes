@@ -36,19 +36,30 @@ Rails.application.routes.draw do
     resources :notes, except: %i[show], concerns: :has_destroy_confirmation, controller: "/notes"
   end
 
+  concern :assignable do
+    namespace :assign, controller: "/assignments" do
+      get "team-lead", action: :assign_team_leader
+      post "team-lead", action: :update_team_leader
+      get "regional-delivery-officer", action: :assign_regional_delivery_officer
+      post "regional-delivery-officer", action: :update_regional_delivery_officer
+      get "caseworker", action: :assign_caseworker
+      post "caseworker", action: :update_caseworker
+    end
+  end
+
   namespace :conversions do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable notable]
+        concerns: %i[task_listable contactable notable assignable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable notable]
+        concerns: %i[task_listable contactable notable assignable]
     end
   end
 
