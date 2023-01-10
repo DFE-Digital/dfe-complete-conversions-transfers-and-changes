@@ -32,19 +32,23 @@ Rails.application.routes.draw do
     resources :contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "/contacts"
   end
 
+  concern :notable do
+    resources :notes, except: %i[show], concerns: :has_destroy_confirmation, controller: "/notes"
+  end
+
   namespace :conversions do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable]
+        concerns: %i[task_listable contactable notable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable]
+        concerns: %i[task_listable contactable notable]
     end
   end
 
