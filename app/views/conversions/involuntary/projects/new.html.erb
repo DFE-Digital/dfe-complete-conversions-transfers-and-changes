@@ -4,7 +4,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_with model: @project, url: conversion_involuntary_new_path do |form| %>
+    <%= form_with model: @project, url: conversions_involuntary_projects_path do |form| %>
       <%= form.govuk_error_summary %>
 
       <h1 class="govuk-heading-l"><%= t("conversion_project.involuntary.new.title") %></h1>

@@ -38,7 +38,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "new involuntary conversion projects page" do
-    visit conversion_involuntary_new_path
+    visit new_conversions_involuntary_project_path
 
     expect(page).to have_content(I18n.t("conversion_project.involuntary.new.title"))
     expect(page).to be_axe_clean

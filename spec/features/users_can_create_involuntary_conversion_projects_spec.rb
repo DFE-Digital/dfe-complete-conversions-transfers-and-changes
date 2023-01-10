@@ -5,7 +5,7 @@ RSpec.feature "Users can create new involuntary conversion projects" do
 
   before do
     sign_in_with_user(regional_delivery_officer)
-    visit conversion_involuntary_new_path
+    visit new_conversions_involuntary_project_path
   end
 
   context "when the URN and UKPRN are valid" do
