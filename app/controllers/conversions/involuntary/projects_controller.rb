@@ -12,6 +12,7 @@ class Conversions::Involuntary::ProjectsController < Conversions::ProjectsContro
   def show
     @project = Project.conversions_involuntary.includes(sections: [:tasks]).find(params[:id])
     authorize @project
+    redirect_to conversions_involuntary_project_task_list_path(@project)
   end
 
   def new
