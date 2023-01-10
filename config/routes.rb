@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
+      resources :projects, only: %i[show]
     end
   end
 

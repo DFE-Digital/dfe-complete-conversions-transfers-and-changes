@@ -8,4 +8,9 @@ class Conversions::Involuntary::ProjectsController < Conversions::ProjectsContro
 
     render "/conversions/involuntary/index"
   end
+
+  def show
+    @project = Project.conversions_involuntary.includes(sections: [:tasks]).find(params[:id])
+    authorize @project
+  end
 end
