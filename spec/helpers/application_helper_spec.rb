@@ -104,6 +104,10 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.path_to_project_information(project)).to eq conversions_voluntary_project_information_path(project)
         expect(helper.path_to_project_notes(project)).to eq conversions_voluntary_project_notes_path(project)
         expect(helper.path_to_project_contacts(project)).to eq conversions_voluntary_project_contacts_path(project)
+
+        expect(helper.path_to_team_lead_project_assignment(project)).to eq conversions_voluntary_project_assign_team_lead_path(project)
+        expect(helper.path_to_regional_delivery_officer_project_assignment(project)).to eq conversions_voluntary_project_assign_regional_delivery_officer_path(project)
+        expect(helper.path_to_caseworker_project_assignment(project)).to eq conversions_voluntary_project_assign_caseworker_path(project)
       end
     end
 
@@ -116,6 +120,10 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.path_to_project_information(project)).to eq conversions_involuntary_project_information_path(project)
         expect(helper.path_to_project_notes(project)).to eq conversions_involuntary_project_notes_path(project)
         expect(helper.path_to_project_contacts(project)).to eq conversions_involuntary_project_contacts_path(project)
+
+        expect(helper.path_to_team_lead_project_assignment(project)).to eq conversions_involuntary_project_assign_team_lead_path(project)
+        expect(helper.path_to_regional_delivery_officer_project_assignment(project)).to eq conversions_involuntary_project_assign_regional_delivery_officer_path(project)
+        expect(helper.path_to_caseworker_project_assignment(project)).to eq conversions_involuntary_project_assign_caseworker_path(project)
       end
     end
   end
