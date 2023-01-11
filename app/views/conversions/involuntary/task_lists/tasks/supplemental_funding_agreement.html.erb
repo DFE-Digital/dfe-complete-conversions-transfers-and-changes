@@ -1,0 +1,46 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: task_list_path(@project)} %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: conversions_involuntary_project_update_task_path(@project, @task.class.identifier), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <h2 class="govuk-heading-l"><%= t("conversion.involuntary.tasks.supplemental_funding_agreement.clear_section.title") %></h2>
+      <div class="app-task-section__hint">
+        <%= t("conversion.involuntary.tasks.supplemental_funding_agreement.clear_section.hint.html") %>
+      </div>
+
+      <%= govuk_details(
+            summary_text: t("conversion.involuntary.tasks.supplemental_funding_agreement.clear_section.guidance_link"),
+            text: t("conversion.involuntary.tasks.supplemental_funding_agreement.clear_section.guidance.html")
+          ) %>
+
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
+      </div>
+
+      <h2 class="govuk-heading-l"><%= t("conversion.involuntary.tasks.supplemental_funding_agreement.sign_section.title") %></h2>
+      <div class="app-task-section__hint">
+        <%= t("conversion.involuntary.tasks.supplemental_funding_agreement.sign_section.hint.html") %>
+      </div>
+
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :sent)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_secretary_state)) %>
+      </div>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "conversions/shared/task_notes" %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: root_path} %>
+<% end %>
+
+<h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
+
+<%= render "conversions/shared/task_list" %>
+
+<%= render "projects/show/complete" unless @project.completed? %>
