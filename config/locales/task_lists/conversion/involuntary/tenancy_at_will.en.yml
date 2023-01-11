@@ -18,9 +18,9 @@ en:
 
           email_signed:
             title: Email the trust to ask if all relevant parties have agreed and signed the Tenancy at will
-            receive_signed:
-              title: Receive email from the trust confirming all relevant parties have agreed and signed the Tenancy at will
-            save_signed:
-              title: Save a copy of the confirmation email in the school's SharePoint folder
+          receive_signed:
+            title: Receive email from the trust confirming all relevant parties have agreed and signed the Tenancy at will
+          save_signed:
+            title: Save a copy of the confirmation email in the school's SharePoint folder
           not_applicable:
             title: Not applicable
