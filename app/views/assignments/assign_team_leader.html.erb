@@ -15,7 +15,7 @@
             options: {include_blank: true, selected: @project.team_leader&.id} %>
 
       <%= form.govuk_submit do %>
-        <%= govuk_link_to "Cancel", project_information_path(@project) %>
+        <%= govuk_link_to "Cancel", path_to_project_information(@project) %>
       <% end %>
     <% end %>
   </div>
