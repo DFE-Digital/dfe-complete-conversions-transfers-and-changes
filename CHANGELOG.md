@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [Release 10][release-10]
 
 ### Features
 
@@ -429,7 +429,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-9...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-10...HEAD
+[release-10]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-9...release-10
 [release-9]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-8...release-9
 [release-8]:
