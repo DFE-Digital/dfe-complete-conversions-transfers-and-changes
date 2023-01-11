@@ -10,6 +10,12 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
     sign_in_with_user(user)
   end
 
+  tasks = %w[articles_of_association check_baseline church_supplemental_agreement commercial_transfer_agreement
+    conditions_met conversion_grant deed_of_variation direction_to_transfer handover land_questionnaire land_registry
+    master_funding_agreement one_hundred_and_twenty_five_year_lease receive_grant_payment_certificate redact_and_send
+    school_completed share_information single_worksheet stakeholder_kick_off subleases supplemental_funding_agreement
+    tell_regional_delivery_officer tenancy_at_will trust_modification_order update_esfa]
+
   context "involuntary project" do
     describe "has locales for all tasks" do
       before do
@@ -21,129 +27,11 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
         expect(page).to_not have_css(".translation_missing")
       end
 
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.handover.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.handover.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.stakeholder_kick_off.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.stakeholder_kick_off.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.conversion_grant.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.conversion_grant.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.land_questionnaire.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.land_questionnaire.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.land_registry.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.land_registry.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.supplemental_funding_agreement.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.supplemental_funding_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.church_supplemental_agreement.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.church_supplemental_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.master_funding_agreement.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.master_funding_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.articles_of_association.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.articles_of_association.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.deed_of_variation.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.deed_of_variation.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.trust_modification_order.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.trust_modification_order.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.direction_to_transfer.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.direction_to_transfer.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.one_hundred_and_twenty_five_year_lease.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.one_hundred_and_twenty_five_year_lease.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.subleases.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.subleases.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.tenancy_at_will.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.tenancy_at_will.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.commercial_transfer_agreement.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.commercial_transfer_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.check_baseline.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.check_baseline.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.single_worksheet.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.single_worksheet.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.school_completed.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.school_completed.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.conditions_met.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.conditions_met.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.share_information.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.share_information.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.tell_regional_delivery_officer.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.tell_regional_delivery_officer.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.redact_and_send.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.redact_and_send.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.update_esfa.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.update_esfa.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.involuntary.tasks.receive_grant_payment_certificate.title")}" do
-        click_on I18n.t("conversion.involuntary.tasks.receive_grant_payment_certificate.title")
-        expect(page).to_not have_css(".translation_missing")
+      tasks.each do |task|
+        it "has locales for #{I18n.t("conversion.involuntary.tasks.#{task}.title")}" do
+          click_on I18n.t("conversion.involuntary.tasks.#{task}.title")
+          expect(page).to_not have_css(".translation_missing")
+        end
       end
     end
   end
@@ -159,129 +47,11 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
         expect(page).to_not have_css(".translation_missing")
       end
 
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.handover.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.handover.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.stakeholder_kick_off.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.stakeholder_kick_off.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.conversion_grant.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.conversion_grant.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.land_questionnaire.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.land_questionnaire.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.land_registry.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.land_registry.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.supplemental_funding_agreement.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.supplemental_funding_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.church_supplemental_agreement.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.church_supplemental_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.master_funding_agreement.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.master_funding_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.articles_of_association.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.articles_of_association.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.deed_of_variation.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.deed_of_variation.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.trust_modification_order.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.trust_modification_order.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.direction_to_transfer.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.direction_to_transfer.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.one_hundred_and_twenty_five_year_lease.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.one_hundred_and_twenty_five_year_lease.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.subleases.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.subleases.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.tenancy_at_will.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.tenancy_at_will.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.commercial_transfer_agreement.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.commercial_transfer_agreement.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.check_baseline.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.check_baseline.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.single_worksheet.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.single_worksheet.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.school_completed.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.school_completed.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.conditions_met.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.conditions_met.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.share_information.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.share_information.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.tell_regional_delivery_officer.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.tell_regional_delivery_officer.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.redact_and_send.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.redact_and_send.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.update_esfa.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.update_esfa.title")
-        expect(page).to_not have_css(".translation_missing")
-      end
-
-      it "has locales for #{I18n.t("conversion.voluntary.tasks.receive_grant_payment_certificate.title")}" do
-        click_on I18n.t("conversion.voluntary.tasks.receive_grant_payment_certificate.title")
-        expect(page).to_not have_css(".translation_missing")
+      tasks.each do |task|
+        it "has locales for #{I18n.t("conversion.voluntary.tasks.#{task}.title")}" do
+          click_on I18n.t("conversion.voluntary.tasks.#{task}.title")
+          expect(page).to_not have_css(".translation_missing")
+        end
       end
     end
   end
