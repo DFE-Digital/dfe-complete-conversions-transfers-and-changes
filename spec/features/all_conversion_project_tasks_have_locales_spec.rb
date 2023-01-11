@@ -23,7 +23,7 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
       end
 
       it "has all the links for the involuntary tasks" do
-        expect(page.find_all("ol.app-task-list ul li a").count).to eq 25
+        expect(page.find_all("ol.app-task-list ul li a").count).to eq tasks.count
         expect(page).to_not have_css(".translation_missing")
       end
 
@@ -43,7 +43,7 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
       end
 
       it "has all the links for the voluntary tasks" do
-        expect(page.find_all("ol.app-task-list ul li a").count).to eq 25
+        expect(page.find_all("ol.app-task-list ul li a").count).to eq tasks.count
         expect(page).to_not have_css(".translation_missing")
       end
 
