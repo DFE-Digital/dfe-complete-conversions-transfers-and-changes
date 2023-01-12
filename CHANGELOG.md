@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - after creating a new project, users are redirected to the correct project page
+- links in email notifcations use the correct urls
 
 ## [Release 10][release-10]
 

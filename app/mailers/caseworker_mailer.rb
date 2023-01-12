@@ -5,7 +5,7 @@ class CaseworkerMailer < ApplicationMailer
       to: caseworker.email,
       personalisation: {
         first_name: caseworker.first_name,
-        project_url: project_information_url(project.id)
+        project_url: url_to_project(project)
       }
     )
   end
