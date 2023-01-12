@@ -58,4 +58,12 @@ RSpec.describe Conversions::Involuntary::ProjectsController do
       expect(response).to have_http_status(:not_found)
     end
   end
+
+  describe "after creating a new project" do
+    it "redirects to the project page" do
+      post conversions_involuntary_projects_path, params: {"#{project_form_params_key}": {**project_form_params}}
+
+      expect(response).to redirect_to conversions_involuntary_project_path(Project.last)
+    end
+  end
 end
