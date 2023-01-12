@@ -12,4 +12,8 @@ class Conversions::Involuntary::TaskListsController < TaskListsController
   def task_template_path(task_identifier)
     "conversions/involuntary/task_lists/tasks/#{task_identifier}"
   end
+
+  private def find_project
+    @project = Project.conversions_involuntary.find(params[:project_id])
+  end
 end

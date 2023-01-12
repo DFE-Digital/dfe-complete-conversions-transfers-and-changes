@@ -1,6 +1,7 @@
 class TaskListsController < ApplicationController
   before_action :find_project, :find_task_list
   before_action :find_task, :find_task_notes, only: %i[edit update]
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
   def index
   end
@@ -19,10 +20,6 @@ class TaskListsController < ApplicationController
     else
       render task_template_path(@task.class.identifier)
     end
-  end
-
-  private def find_project
-    @project = Project.find(params[:project_id])
   end
 
   private def find_task_list

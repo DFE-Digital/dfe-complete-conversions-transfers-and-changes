@@ -10,8 +10,9 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
   end
 
   def show
-    @project = Project.conversions_voluntary.includes(sections: [:tasks]).find(params[:id])
+    @project = Project.conversions_voluntary.find(params[:id])
     authorize @project
+    redirect_to conversions_voluntary_project_task_list_path(@project)
   end
 
   def new

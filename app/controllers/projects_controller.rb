@@ -20,8 +20,4 @@ class ProjectsController < ApplicationController
     @project = Project.includes(sections: [:tasks]).find(params[:id])
     authorize @project
   end
-
-  private def not_found_error
-    redirect_to "/404", status: :not_found
-  end
 end

@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
   def update_team_leader
     @project.update(team_leader_params)
 
-    redirect_to project_information_path(@project), notice: t("project.assign.team_leader.success")
+    redirect_to helpers.path_to_project_information(@project), notice: t("project.assign.team_leader.success")
   end
 
   def assign_regional_delivery_officer
@@ -20,7 +20,7 @@ class AssignmentsController < ApplicationController
   def update_regional_delivery_officer
     @project.update(regional_delivery_officer_params)
 
-    redirect_to project_information_path(@project), notice: t("project.assign.regional_delivery_officer.success")
+    redirect_to helpers.path_to_project_information(@project), notice: t("project.assign.regional_delivery_officer.success")
   end
 
   def assign_caseworker
@@ -33,7 +33,7 @@ class AssignmentsController < ApplicationController
 
     CaseworkerMailer.caseworker_assigned_notification(@project.caseworker, @project).deliver_later
 
-    redirect_to project_information_path(@project), notice: t("project.assign.caseworker.success")
+    redirect_to helpers.path_to_project_information(@project), notice: t("project.assign.caseworker.success")
   end
 
   private def authorize_user

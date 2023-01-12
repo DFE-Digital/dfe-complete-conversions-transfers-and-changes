@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added cookies page to describe how we use cookies
 - Send notification to caseworker when assigned to a project
 - Add a Content Security Policy
+- Completely new task list and task backend.
 
 #### Changed
 

@@ -45,6 +45,7 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
       voluntary_conversion_project = create(:conversion_project, urn: 123456, regional_delivery_officer: regional_delivery_officer)
 
       get conversions_voluntary_project_path(voluntary_conversion_project)
+      follow_redirect!
 
       expect(response.body).to include(voluntary_conversion_project.urn.to_s)
     end

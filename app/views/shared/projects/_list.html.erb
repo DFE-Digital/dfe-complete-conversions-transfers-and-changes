@@ -6,7 +6,7 @@
       <li>
         <span class="govuk-caption-m">URN <%= project.urn %></span>
         <h2 class="govuk-heading-m govuk-heading-m--school-name">
-          <%= link_to project.establishment.name, project_path(project) %>
+          <%= link_to project.establishment.name, path_to_project(project) %>
         </h2>
 
         <%= render partial: "projects/index/project_summary", locals: {project: project} %>

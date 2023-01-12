@@ -3,13 +3,13 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
-      "fingerprint": "02bae3df5dc344390e29342b85f949e8b77ea2e9d7a4a5e69823d7f8b9664a6c",
+      "fingerprint": "8ad9a557b5cb233983e1d9eced500829f233497749e8795f65a6f960912e1606",
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/task_lists_controller.rb",
-      "line": 9,
+      "line": 10,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => task_template_path(Project.find(params[:project_id]).task_list.task(params[:task_id]).class.identifier), {})",
+      "code": "render(action => task_template_path(Project.conversions_involuntary.find(params[:project_id]).task_list.task(params[:task_id]).class.identifier), {})",
       "render_path": null,
       "location": {
         "type": "method",
@@ -26,13 +26,13 @@
     {
       "warning_type": "Dynamic Render Path",
       "warning_code": 15,
-      "fingerprint": "4f12037a57acfa3b5eae5cc25928f12a5855e26274d9a337cbd90dc2eaffe246",
+      "fingerprint": "e784caf6337e321fcd095fe7f7257bf30d79c72e87876cc59b8a3785fd7db819",
       "check_name": "Render",
       "message": "Render path contains parameter value",
       "file": "app/controllers/task_lists_controller.rb",
-      "line": 20,
+      "line": 21,
       "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
-      "code": "render(action => task_template_path(Project.find(params[:project_id]).task_list.task(params[:task_id]).class.identifier), {})",
+      "code": "render(action => task_template_path(Project.conversions_involuntary.find(params[:project_id]).task_list.task(params[:task_id]).class.identifier), {})",
       "render_path": null,
       "location": {
         "type": "method",
@@ -47,6 +47,6 @@
       "note": ""
     }
   ],
-  "updated": "2022-12-19 14:08:48 +0000",
+  "updated": "2023-01-12 10:14:27 +0000",
   "brakeman_version": "5.3.1"
 }

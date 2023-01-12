@@ -28,15 +28,46 @@ Rails.application.routes.draw do
     put "task-list/:task_id", to: "task_lists#update", as: :update_task
   end
 
+  concern :contactable do
+    resources :contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "/contacts"
+  end
+
+  concern :notable do
+    resources :notes, except: %i[show], concerns: :has_destroy_confirmation, controller: "/notes"
+  end
+
+  concern :assignable do
+    namespace :assign, controller: "/assignments" do
+      get "team-lead", action: :assign_team_leader
+      post "team-lead", action: :update_team_leader
+      get "regional-delivery-officer", action: :assign_regional_delivery_officer
+      post "regional-delivery-officer", action: :update_regional_delivery_officer
+      get "caseworker", action: :assign_caseworker
+      post "caseworker", action: :update_caseworker
+    end
+  end
+
+  concern :informationable do
+    get "information", to: "/project_information#show"
+  end
+
+  concern :completable do
+    put "complete", to: "/projects_complete#complete"
+  end
+
   namespace :conversions do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
-      resources :projects, only: %i[show new create], concerns: %i[task_listable]
+      resources :projects,
+        only: %i[show new create],
+        concerns: %i[task_listable contactable notable assignable informationable completable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
-      resources :projects, only: %i[show new create], concerns: %i[task_listable]
+      resources :projects,
+        only: %i[show new create],
+        concerns: %i[task_listable contactable notable assignable informationable completable]
     end
   end
 
