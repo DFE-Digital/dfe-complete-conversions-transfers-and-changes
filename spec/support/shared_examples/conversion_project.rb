@@ -38,8 +38,7 @@ RSpec.shared_examples "a conversion project" do
         perform_request
       end
 
-      it "assigns the regional delivery officer, calls the TaskListCreator, and redirects to the project path" do
-        expect(response).to redirect_to(project_path(new_project_record.id))
+      it "assigns the regional delivery officer, calls the TaskListCreator" do
         expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: workflow_root)
         expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
       end

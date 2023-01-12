@@ -27,7 +27,7 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
     if @project.valid?
       @created_project = @project.save
 
-      redirect_to project_path(@created_project), notice: I18n.t("conversion_project.voluntary.create.success")
+      redirect_to conversions_voluntary_project_path(@created_project), notice: I18n.t("conversion_project.voluntary.create.success")
     else
       render :new
     end
