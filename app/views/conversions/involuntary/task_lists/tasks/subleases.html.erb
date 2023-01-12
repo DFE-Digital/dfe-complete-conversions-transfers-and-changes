@@ -30,7 +30,7 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_signed)) %>
       </div>
 
-        <%= form.govuk_submit %>
+        <%= form.govuk_submit I18n.t("task_list.continue_button.text") %>
     <% end %>
   </div>
 
