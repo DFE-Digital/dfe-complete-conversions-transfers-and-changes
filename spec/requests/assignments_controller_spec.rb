@@ -22,7 +22,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_team_leader" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:conversion_project) }
+    let(:project) { create(:voluntary_conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -48,7 +48,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     it "assigns the project team lead and redirefcts with a message" do
-      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(perform_request).to redirect_to(conversions_voluntary_project_information_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.team_leader.success"))
 
       expect(project.reload.team_leader).to eq team_leader
@@ -84,7 +84,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     it "assigns the project regional delivery officer and redirefcts with a message" do
-      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(perform_request).to redirect_to(conversions_voluntary_project_information_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.regional_delivery_officer.success"))
 
       expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
@@ -139,7 +139,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     it "assigns the project caseworker and redirefcts with a message" do
-      expect(perform_request).to redirect_to(project_information_path(project))
+      expect(perform_request).to redirect_to(conversions_voluntary_project_information_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.caseworker.success"))
 
       expect(project.reload.caseworker).to eq caseworker
