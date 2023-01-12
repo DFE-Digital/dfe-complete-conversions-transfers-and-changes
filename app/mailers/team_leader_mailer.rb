@@ -5,7 +5,7 @@ class TeamLeaderMailer < ApplicationMailer
       to: team_leader.email,
       personalisation: {
         first_name: team_leader.first_name,
-        project_url: project_information_url(project.id)
+        project_url: url_to_project(project)
       }
     )
   end
