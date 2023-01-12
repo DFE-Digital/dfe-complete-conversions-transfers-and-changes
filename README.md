@@ -9,7 +9,7 @@ As a digital service being developed in DfE we aim to follow the
 
 - [development](https://s184d01-compcdnendpoint-duepa5hpd8djhacd.z01.azurefd.net)
 - [test](https://s184t01-compcdnendpoint-gnfrfkdpamcncjdm.z01.azurefd.net)
-- [production](https://s184p01-compcdnendpoint-brbkfbdmdqene3f0.z01.azurefd.net)
+- [production](https://complete.education.gov.uk)
 
 Console and logs can be accessed on all three environments, details are in
 [accessing console and logs](/doc/console-and-logs.md)
