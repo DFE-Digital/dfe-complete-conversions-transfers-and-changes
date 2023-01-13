@@ -3,6 +3,8 @@ FactoryBot.define do
     name { "Jo Example" }
     title { "CEO of Learning" }
 
+    organisation_name { "Some Organisation" }
+
     email { "jo@example.com" }
     phone { "01632 960123" }
 

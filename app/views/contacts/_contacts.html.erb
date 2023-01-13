@@ -22,6 +22,10 @@
           row.key { t("contact.details.name") }
           row.value { contact.name }
         end
+        summary_list.row do |row|
+          row.key { t("contact.details.organisation_name") }
+          row.value { contact.organisation_name }
+        end
         if contact.email.present?
           summary_list.row do |row|
             row.key { t("contact.details.email") }

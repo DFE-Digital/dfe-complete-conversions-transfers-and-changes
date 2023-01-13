@@ -7,6 +7,7 @@ en:
       no_contacts_yet: There are not any contacts for this project yet.
     details:
       name: Name
+      organisation_name: Organisation
       title: Role
       email: Email
       phone: Phone
@@ -35,6 +36,7 @@ en:
         category: Contact for
         title: Role
         name: Name
+        organisation_name: Organisation
         email: Email
         phone: Phone
   errors:
