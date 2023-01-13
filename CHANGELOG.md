@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 11][release-11]
+
+### Added
+
+- Users will use the new task list and task backend
+
 ### Fixed
 
 - after creating a new project, users are redirected to the correct project page
@@ -437,7 +443,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-10...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-11...HEAD
+[release-11]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-10...release-11
 [release-10]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-9...release-10
 [release-9]:
