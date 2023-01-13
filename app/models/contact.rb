@@ -15,4 +15,6 @@ class Contact < ApplicationRecord
     trust: 2,
     other: 0
   }
+
+  scope :grouped_by_category, -> { order(:name, category: :desc).group_by(&:category) }
 end

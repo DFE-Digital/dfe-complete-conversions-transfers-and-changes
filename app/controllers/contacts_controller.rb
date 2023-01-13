@@ -56,7 +56,7 @@ class ContactsController < ApplicationController
   end
 
   private def find_grouped_contacts
-    @contacts = Contact.where(project: @project).group_by(&:category)
+    @contacts = @project.contacts.grouped_by_category
   end
 
   private def contact_params
