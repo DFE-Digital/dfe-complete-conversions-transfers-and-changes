@@ -26,14 +26,4 @@ RSpec.describe ContactsHelper, type: :helper do
       end
     end
   end
-
-  describe "#format_category_name" do
-    context "given a category name" do
-      let(:category_name) { "test_category_with_spaces" }
-
-      it "formats the category name as expected" do
-        expect(helper.format_category_name(category_name)).to eq "Test category with spaces"
-      end
-    end
-  end
 end

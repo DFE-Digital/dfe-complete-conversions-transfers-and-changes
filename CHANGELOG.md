@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Users will use the new task list and task backend
+- Solicitor has been added to the contact category options
 
 ### Fixed
 

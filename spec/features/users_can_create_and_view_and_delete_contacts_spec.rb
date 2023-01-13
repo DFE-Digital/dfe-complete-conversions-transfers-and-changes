@@ -27,6 +27,8 @@ RSpec.feature "Users can create and view and delete contacts" do
 
     expect(page).to have_current_path(new_project_contact_path(project))
 
+    expect(page).to have_select("Contact for", selected: "Choose category")
+
     select "Trust", from: "Contact for"
     fill_in "Name", with: "Some One"
     fill_in "Role", with: "Chief of Knowledge"

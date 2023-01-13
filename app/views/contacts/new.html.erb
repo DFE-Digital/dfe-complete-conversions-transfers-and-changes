@@ -9,10 +9,12 @@
     <%= form_for [@project, @contact], url: project_contacts_path(@project) do |form| %>
       <%= form.govuk_error_summary %>
 
-      <%= form.govuk_collection_select :category,
-            Contact.categories.keys,
-            :to_s,
-            ->(category_name) { format_category_name(category_name) } %>
+      <%= form.govuk_select(:category) do %>
+        <option selected="selected" value=""><%= t("contact.categories.choose") %></option>
+        <% Contact.categories.each do |name, category| %>
+          <option value="<%= name %>"><%= name.humanize %></option>
+        <% end %>
+      <% end %>
 
       <%= form.govuk_text_field :title, width: 20 %>
       <%= form.govuk_text_field :name %>
