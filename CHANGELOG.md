@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Completed projec page includes a link to the feedback survey
+
 ## [Release 11][release-11]
 
 ### Added
