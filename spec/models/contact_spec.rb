@@ -13,15 +13,9 @@ RSpec.describe Contact, type: :model do
   end
 
   describe "Validations" do
-    describe "#name" do
-      it { is_expected.to validate_presence_of(:name) }
-      it { is_expected.to_not allow_values("", nil).for(:name) }
-    end
-
-    describe "#title" do
-      it { is_expected.to validate_presence_of(:title) }
-      it { is_expected.to_not allow_values("", nil).for(:title) }
-    end
+    it { should validate_presence_of(:category) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:title) }
 
     describe "#email" do
       it { is_expected.to allow_value("test@example.com").for(:email) }

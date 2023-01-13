@@ -37,3 +37,7 @@ en:
         name: Name
         email: Email
         phone: Phone
+  errors:
+    attributes:
+      category:
+        blank: Choose a category

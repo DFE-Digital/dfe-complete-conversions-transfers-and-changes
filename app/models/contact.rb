@@ -1,6 +1,7 @@
 class Contact < ApplicationRecord
   belongs_to :project
 
+  validates :category, presence: true, allow_blank: false
   validates :name, presence: true, allow_blank: false
   validates :title, presence: true, allow_blank: false
 
