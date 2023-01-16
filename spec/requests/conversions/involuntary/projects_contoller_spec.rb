@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe Conversions::Involuntary::ProjectsController do
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
   let(:create_path) { conversions_involuntary_projects_path }
-  let(:workflow_root) { Conversion::Involuntary::Details::WORKFLOW_PATH }
   let(:form_class) { Conversion::Involuntary::CreateProjectForm }
   let(:project_form) { build(:create_involuntary_project_form) }
   let(:project_form_params_key) { "conversion_involuntary_create_project_form" }

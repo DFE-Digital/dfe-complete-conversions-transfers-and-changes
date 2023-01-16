@@ -45,6 +45,3 @@ else
   yarn run lint:js
 fi
 
-echo "==> Validating workflows..."
-yarn run workflows:validate:tasklists
-yarn run workflows:validate:sections
