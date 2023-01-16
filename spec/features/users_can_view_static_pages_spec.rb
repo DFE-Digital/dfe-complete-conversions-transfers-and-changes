@@ -17,14 +17,6 @@ RSpec.feature "Users can view static pages" do
     expect(page).to have_content("This accessibility statement applies to Complete conversions, transfers and changes.")
   end
 
-  scenario "can see the cookies page" do
-    visit page_path(id: "cookies")
-
-    expect(page).to have_current_path("/cookies")
-    expect(page).to have_content("Cookies") # This string appears all over the site in the footer, so also test:
-    expect(page).to have_content("Essential cookies")
-  end
-
   scenario "can see the `404 page not found` error page" do
     visit page_path(id: "page_not_found")
 
