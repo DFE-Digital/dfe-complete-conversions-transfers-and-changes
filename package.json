@@ -14,7 +14,7 @@
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "govuk-frontend": "^4.4.1",
-    "prettier": "^2.8.2",
+    "prettier": "^2.8.3",
     "@adobe/jsonschema2md": "^7.1.5"
   },
   "dependencies": {
