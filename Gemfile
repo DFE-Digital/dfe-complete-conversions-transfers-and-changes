@@ -52,7 +52,7 @@ gem "faraday"
 gem "sentry-ruby"
 gem "sentry-rails"
 
-gem "sidekiq"
+gem "sidekiq", "< 7.0"
 
 gem "pagy"
 
