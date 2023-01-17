@@ -19,7 +19,6 @@ RSpec.describe Project, type: :model do
   describe "Relationships" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-    it { is_expected.to have_many(:sections).dependent(:destroy) }
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:team_leader).required(false) }
@@ -27,24 +26,16 @@ RSpec.describe Project, type: :model do
 
     describe "delete related entities" do
       context "when the project is deleted" do
-        it "destroys all the related notes, contacts, sections leaving nothing orphaned" do
+        it "destroys all the related notes and contacts leaving nothing orphaned" do
           project = create(:conversion_project)
 
           create_list(:note, 3, project: project)
           create_list(:contact, 3, project: project)
-          create_list(:section, 3, project: project)
-
-          populated_section = project.sections.first
-          task = create(:task, section: populated_section)
-          create_list(:action, 5, task: task)
 
           project.destroy
 
           expect(Note.count).to be_zero
           expect(Contact.count).to be_zero
-          expect(Section.count).to be_zero
-          expect(Task.count).to be_zero
-          expect(Action.count).to be_zero
           expect(Conversion::Voluntary::TaskList.count).to be_zero
         end
       end

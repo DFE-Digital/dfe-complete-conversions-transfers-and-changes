@@ -5,7 +5,6 @@ class Project < ApplicationRecord
 
   delegated_type :task_list, types: %w[Conversion::Voluntary::TaskList, Conversion::Involuntary::TaskList], dependent: :destroy
 
-  has_many :sections, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
