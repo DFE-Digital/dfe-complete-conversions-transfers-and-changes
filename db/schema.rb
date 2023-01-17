@@ -10,22 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_153649) do
-  create_table "actions", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
-    t.string "title", null: false
-    t.integer "order", null: false
-    t.boolean "completed", default: false, null: false
-    t.uuid "task_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "hint"
-    t.string "guidance_summary"
-    t.text "guidance_text"
-    t.string "action_type"
-    t.string "padding", default: "normal"
-    t.index ["task_id"], name: "index_actions_on_task_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_152515) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -290,31 +275,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_153649) do
     t.index ["urn"], name: "index_projects_on_urn"
   end
 
-  create_table "sections", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
-    t.string "title", null: false
-    t.integer "order", null: false
-    t.uuid "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_sections_on_project_id"
-  end
-
-  create_table "tasks", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
-    t.string "title", null: false
-    t.integer "order", null: false
-    t.boolean "completed", default: false, null: false
-    t.uuid "section_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "hint"
-    t.string "guidance_summary"
-    t.text "guidance_text"
-    t.boolean "optional"
-    t.boolean "not_applicable", default: false
-    t.string "slug"
-    t.index ["section_id"], name: "index_tasks_on_section_id"
-  end
-
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -328,13 +288,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_153649) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "actions", "tasks"
   add_foreign_key "contacts", "projects"
   add_foreign_key "notes", "projects"
   add_foreign_key "notes", "users"
   add_foreign_key "projects", "users", column: "caseworker_id"
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
   add_foreign_key "projects", "users", column: "team_leader_id"
-  add_foreign_key "sections", "projects"
-  add_foreign_key "tasks", "sections"
 end
