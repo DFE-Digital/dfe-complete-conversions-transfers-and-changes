@@ -12,7 +12,7 @@ RSpec.describe NotesController, type: :request do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let!(:project_level_note) { create(:note, project: project) }
-    let!(:task_level_note) { create(:note, :deprecated_task_level_note, project: project) }
+    let!(:task_level_note) { create(:note, :task_level_note, project: project) }
 
     subject(:perform_request) do
       get project_notes_path(project_id)
@@ -88,7 +88,6 @@ RSpec.describe NotesController, type: :request do
 
         expect(Note.count).to be 1
         expect(Note.last.body).to eq(new_note_body)
-        expect(Note.last.task).to be_nil
       end
     end
   end

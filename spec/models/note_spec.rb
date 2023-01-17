@@ -9,7 +9,6 @@ RSpec.describe Note, type: :model do
   describe "Relationships" do
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:task).required(false) }
   end
 
   describe "Validations" do
@@ -36,7 +35,6 @@ RSpec.describe Note, type: :model do
 
     describe "project_level_notes" do
       let!(:project_level_note) { create(:note) }
-      let!(:deprecated_task_level_note) { create(:note, :deprecated_task_level_note) }
       let!(:task_level_note) { create(:note, task_identifier: "handover") }
 
       subject { Note.project_level_notes(project_level_note.project) }
@@ -61,24 +59,6 @@ RSpec.describe Note, type: :model do
       let(:task_identifier) { "handover" }
 
       it { expect(subject.task_identifier).to eq task_identifier }
-    end
-  end
-
-  describe "#deprecated_task_level_note?" do
-    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
-
-    subject { note.deprecated_task_level_note? }
-
-    context "when the Note is not associated with a Task" do
-      let(:note) { create(:note) }
-
-      it { expect(subject).to be false }
-    end
-
-    context "when the Note is associated with a Task" do
-      let(:note) { create(:note, :deprecated_task_level_note) }
-
-      it { expect(subject).to be true }
     end
   end
 
