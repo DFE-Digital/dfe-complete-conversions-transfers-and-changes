@@ -79,7 +79,6 @@ Rails.application.routes.draw do
 
     put "complete", to: "projects_complete#complete"
 
-    resources :tasks, only: %i[show update]
     resources :notes, except: %i[show], concerns: :has_destroy_confirmation
     resources :contacts, except: %i[show], concerns: :has_destroy_confirmation
 
