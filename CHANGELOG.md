@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - the order of the contact groups is now as users might expect.
+- the name of the cookie used to store a users session has changed. User will be
+  asked to sign in after this change.
 
 ### Added
 
