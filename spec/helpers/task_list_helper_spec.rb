@@ -1,12 +1,12 @@
 require "rails_helper"
 
 RSpec.describe TaskListHelper, type: :helper do
-  let(:task) { Task.new(title: "Clear land questionnaire") }
+  let(:task) { Conversion::Voluntary::Tasks::Handover.new }
   let(:id_for_task) { "clear-land-questionnaire-status" }
 
   describe "#task_status_id" do
     it "returns the task title as kebab case with '-status' appended" do
-      expect(helper.task_status_id(task)).to eq "clear-land-questionnaire-status"
+      expect(helper.task_status_id(task)).to eq "handover-with-regional-delivery-officer-status"
     end
   end
 

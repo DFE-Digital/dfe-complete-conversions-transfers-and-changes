@@ -1,6 +1,7 @@
 module TaskListHelper
   def task_status_id(task)
-    "#{task.title.parameterize}-status"
+    task_title = t("#{task.locales_path}.title").parameterize
+    "#{task_title.parameterize}-status"
   end
 
   def task_id(task)
