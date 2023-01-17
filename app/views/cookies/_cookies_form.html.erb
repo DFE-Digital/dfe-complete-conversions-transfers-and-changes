@@ -1,0 +1,6 @@
+<h2 class="govuk-heading-l">Change your cookie settings</h2>
+<%= form_for @cookie_form, url: cookies_path do |form| %>
+  <%= form.govuk_error_summary %>
+  <%= form.govuk_collection_radio_buttons :accept_optional_cookies, @cookie_form.responses, :id, :name, legend: {text: "Do you want to accept optional cookies?"} %>
+  <%= form.govuk_submit %>
+<% end %>

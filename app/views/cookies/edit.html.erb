@@ -23,6 +23,11 @@
           <td class="govuk-table__cell">With browser settings (Session).</td>
         </tr>
         <tr class="govuk-table__row">
+          <td class="govuk-table__cell">ACCEPT_OPTIONAL_COOKIES</td>
+          <td class="govuk-table__cell">Used to store your preference.</td>
+          <td class="govuk-table__cell">1 year.</td>
+        </tr>
+        <tr class="govuk-table__row">
           <td class="govuk-table__cell">ASLBSACORS</td>
           <td class="govuk-table__cell">Used to balance the load on our servers.</td>
           <td class="govuk-table__cell">With browser settings (Session).</td>
@@ -34,5 +39,7 @@
         </tr>
       </tbody>
     </table>
+
+    <%= render "cookies_form" %>
   </div>
 </div>
