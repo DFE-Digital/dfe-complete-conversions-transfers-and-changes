@@ -17,6 +17,8 @@ RSpec.feature "Users can complete a project" do
     expect(page).to have_content("Project completed")
     expect(project.reload.completed_at).not_to be_nil
 
+    expect(page).to have_link "short survey", href: "https://forms.office.com/e/xf0k4LcWVN"
+
     click_on I18n.t("project.complete.back_link")
     # The project listing is no longer on the index page (open projects only)
     expect(page).to_not have_content(project.establishment.name)
