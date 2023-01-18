@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added a link to the school's information in GIAS on the project information
   page.
 - Users can manage optional cookies.
+- A Cookie banner is shown on the application to help users understand and
+  manage their cookie preferences.
 
 ## [Release 12][release-12]
 

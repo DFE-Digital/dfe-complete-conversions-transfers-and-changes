@@ -27,9 +27,11 @@
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
-    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
-
     <%= render partial: "shared/environment_banner" %>
+
+    <%= render partial: "cookies/banner" unless optional_cookies_set? %>
+
+    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
     <%= govuk_header(service_name: t("service_name")) %>
 

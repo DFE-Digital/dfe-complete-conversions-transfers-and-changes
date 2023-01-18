@@ -65,4 +65,8 @@ module ApplicationHelper
     return conversions_voluntary_project_assign_caseworker_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
     return conversions_involuntary_project_assign_caseworker_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
   end
+
+  def optional_cookies_set?
+    cookies[:ACCEPT_OPTIONAL_COOKIES].present?
+  end
 end

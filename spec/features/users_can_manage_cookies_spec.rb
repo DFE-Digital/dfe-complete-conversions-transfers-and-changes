@@ -8,12 +8,48 @@ RSpec.feature "Users can manage cookies" do
       expect(page).to have_content("Essential cookies")
     end
 
+    scenario "they can view the cookies banner" do
+      visit root_path
+
+      expect(page).to have_content("Cookies on #{I18n.t("service_name")}")
+    end
+
+    scenario "once optional cookies are set, the banner doesn't show" do
+      visit root_path
+
+      click_on "Accept optional cookies"
+
+      expect(page).not_to have_content("Cookies on #{I18n.t("service_name")}")
+    end
+
+    scenario "they accept optional cookies from the banner" do
+      visit root_path
+
+      click_on "Accept optional cookies"
+
+      visit cookies_path
+      expected_option = find_field("Yes")
+
+      expect(expected_option.checked?).to eq(true)
+    end
+
+    scenario "they reject optional cookies from the banner" do
+      visit root_path
+
+      click_on "Reject optional cookies"
+
+      visit cookies_path
+      expected_option = find_field("No")
+
+      expect(expected_option.checked?).to eq(true)
+    end
+
     context "when the user has yet to make a choice" do
       scenario "we reject optional cookies until told otherwise" do
         visit cookies_path
-        reject_option = find_field("No")
+        expected_option = find_field("No")
 
-        expect(reject_option.checked?).to eq(true)
+        expect(expected_option.checked?).to eq(true)
       end
     end
 
@@ -24,9 +60,9 @@ RSpec.feature "Users can manage cookies" do
       click_on "Continue"
 
       visit cookies_path
-      accept_option = find_field("Yes")
+      expected_option = find_field("Yes")
 
-      expect(accept_option.checked?).to eq(true)
+      expect(expected_option.checked?).to eq(true)
     end
 
     scenario "they can reject optional cookies" do
@@ -36,9 +72,9 @@ RSpec.feature "Users can manage cookies" do
       click_on "Continue"
 
       visit cookies_path
-      reject_option = find_field("No")
+      expected_option = find_field("No")
 
-      expect(reject_option.checked?).to eq(true)
+      expect(expected_option.checked?).to eq(true)
     end
   end
 end
