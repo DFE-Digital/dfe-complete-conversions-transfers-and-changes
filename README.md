@@ -40,7 +40,6 @@ If this is your first time running the application, see the
 
 ## In-depth documentation
 
-- [The workflow files](/doc/workflow-files.md)
 - [User accounts](/doc/user-accounts.md)
 - [Microsoft SQL Server](/doc/microsoft-sql-server.md)
 - [Automated accessibility checks](/doc/accessibility-tests.md)

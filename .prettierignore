@@ -28,5 +28,4 @@
 /public/assets/*
 /coverage
 /terraform
-/doc/workflows/*
 /.idea/
