@@ -17,7 +17,6 @@ class Conversion::Involuntary::CreateProjectForm < Conversion::CreateProjectForm
     ActiveRecord::Base.transaction do
       @project.save
       @note = Note.create(body: note_body, project: @project, user: user) if note_body
-      Conversion::Involuntary::Details.create(project: @project)
     end
 
     @project

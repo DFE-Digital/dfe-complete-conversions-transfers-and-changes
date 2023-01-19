@@ -234,13 +234,6 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(Note.count).to eq(1)
         expect(Note.last.body).to eq("Some important words")
       end
-
-      it "creates the correct object" do
-        form = build(form_factory.to_sym)
-        form.save
-        expect(Conversion::Details.count).to eq(1)
-        expect(Conversion::Details.last.type).to eq(details_class)
-      end
     end
 
     context "when the form is invalid" do

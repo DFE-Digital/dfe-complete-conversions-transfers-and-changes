@@ -8,9 +8,5 @@ FactoryBot.define do
     establishment_sharepoint_link { "https://educationgovuk-my.sharepoint.com/establishment-folder" }
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
     task_list { association :conversion_involuntary_task_list }
-
-    after :create do |project|
-      create :involuntary_conversion_project_details, project: project
-    end
   end
 end
