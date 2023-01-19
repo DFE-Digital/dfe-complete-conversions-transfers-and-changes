@@ -1,5 +1,0 @@
-<% if action.guidance_summary? %>
-  <%= govuk_details(summary_text: action.guidance_summary) do %>
-    <%= render_markdown(action.guidance_text) %>
-  <% end %>
-<% end %>
