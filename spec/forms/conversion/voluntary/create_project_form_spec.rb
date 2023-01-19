@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
   let(:form_factory) { "create_voluntary_project_form" }
-  let(:details_class) { "Conversion::Voluntary::Details" }
   let(:task_list_class) { Conversion::Voluntary::TaskList }
 
   it_behaves_like "a conversion project FormObject"

@@ -17,7 +17,6 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
     ActiveRecord::Base.transaction do
       @project.save
       @note = Note.create(body: note_body, project: @project, user: user) if note_body
-      Conversion::Voluntary::Details.create(project: @project)
       notify_team_leaders(@project)
     end
 

@@ -31,7 +31,7 @@
           end
           summary_list.row do |row|
             row.key { t("conversion_project.summary.route.title") }
-            row.value { @project.details.route }
+            row.value { t("conversion_project.#{@project.route}.route") }
           end
           if @project.completed?
             summary_list.row do |row|
