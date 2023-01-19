@@ -7,12 +7,10 @@
     "lint:js:fix": "yarn run lint:js --fix"
   },
   "devDependencies": {
-    "ajv-cli": "^5.0.0",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "govuk-frontend": "^4.4.1",
-    "prettier": "^2.8.3",
-    "@adobe/jsonschema2md": "^7.1.5"
+    "prettier": "^2.8.3"
   },
   "dependencies": {
     "@ministryofjustice/frontend": "^1.6.4",
