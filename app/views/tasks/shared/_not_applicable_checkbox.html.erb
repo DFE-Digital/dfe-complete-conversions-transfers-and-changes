@@ -1,8 +1,0 @@
-<% if task.optional? %>
-  <div class="govuk-!-margin-bottom-9">
-    <%= form.govuk_check_box :not_applicable,
-          true,
-          label: {text: t("tasks.not_applicable")},
-          checked: task.not_applicable? %>
-  </div>
-<% end %>

@@ -32,51 +32,9 @@ $govuk-global-styles: true;
   }
 }
 
-.app-task-section {
-  &__hint {
-    p {
-      @extend .govuk-hint;
-    }
-  }
-}
-
 .list-style-none {
   list-style: none;
   padding-left: 0;
-}
-
-.task-actions__wrapper {
-  margin-bottom: govuk-spacing(9);
-
-  .govuk-checkboxes__item {
-    label {
-      @extend .govuk-\!-font-weight-bold;
-    }
-  }
-}
-
-.task-action__wrapper {
-  &:first-of-type {
-    margin-top: 0;
-  }
-
-  &__padding-normal {
-    margin-top: govuk-spacing(4);
-  }
-
-  &__padding-reduced {
-    margin-top: govuk-spacing(2);
-  }
-
-  .govuk-form-group {
-    margin-bottom: 0;
-  }
-}
-
-.task-action {
-  &__subheading:not(:first-of-type) {
-    margin-top: govuk-spacing(9);
-  }
 }
 
 .govuk-section-break--s {
