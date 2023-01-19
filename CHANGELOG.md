@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 12][release-12]
+
 ### Added
 
 - Completed project page includes a link to the feedback survey
@@ -456,7 +458,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-11...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-12...HEAD
+[release-12]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-11...release-12
 [release-11]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-10...release-11
 [release-10]:
