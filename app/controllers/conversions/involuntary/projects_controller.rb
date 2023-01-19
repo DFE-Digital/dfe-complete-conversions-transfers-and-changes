@@ -1,7 +1,7 @@
 class Conversions::Involuntary::ProjectsController < Conversions::ProjectsController
   def index
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.conversions_involuntary.open.includes(:details)))
+    @pagy, @projects = pagy(policy_scope(Project.conversions_involuntary.open))
 
     EstablishmentsFetcher.new.call(@projects)
     IncomingTrustsFetcher.new.call(@projects)
