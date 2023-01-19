@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Users will use the new task list and task backend
+- Solicitor has been added to the contact category options
+- Users cannot attempt to submit the 'choose category' option on a new contact
+- The order of contacts has been updated, it is now by category and name
+- Add 'Organisation' to contacts, users can store an organisation name here
 
 ### Fixed
 

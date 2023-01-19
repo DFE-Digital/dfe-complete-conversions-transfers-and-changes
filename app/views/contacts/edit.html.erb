@@ -1,5 +1,5 @@
 <% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: project_contacts_path(@project)} %>
+  <% render partial: "shared/back_link", locals: {href: path_to_project_contacts(@project)} %>
 <% end %>
 
 <h1 class="govuk-heading-l"><%= t("contact.edit.title") %></h1>
@@ -12,10 +12,11 @@
       <%= form.govuk_collection_select :category,
             Contact.categories.keys,
             :to_s,
-            ->(category_name) { format_category_name(category_name) } %>
+            ->(category_name) { category_name.humanize } %>
 
       <%= form.govuk_text_field :title, width: 20 %>
       <%= form.govuk_text_field :name %>
+      <%= form.govuk_text_field :organisation_name %>
       <%= form.govuk_email_field :email %>
       <%= form.govuk_phone_field :phone, width: 10 %>
 

@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
     if @contact.valid?
       @contact.save
 
-      redirect_to project_contacts_path(@project), notice: I18n.t("contact.create.success")
+      redirect_to helpers.path_to_project_contacts(@project), notice: I18n.t("contact.create.success")
     else
       render :new
     end
@@ -56,10 +56,10 @@ class ContactsController < ApplicationController
   end
 
   private def find_grouped_contacts
-    @contacts = Contact.where(project: @project).group_by(&:category)
+    @contacts = @project.contacts.grouped_by_category
   end
 
   private def contact_params
-    params.require(:contact).permit(:name, :title, :category, :email, :phone)
+    params.require(:contact).permit(:name, :organisation_name, :title, :category, :email, :phone)
   end
 end

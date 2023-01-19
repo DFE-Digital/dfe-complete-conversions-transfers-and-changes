@@ -7,6 +7,7 @@ en:
       no_contacts_yet: There are not any contacts for this project yet.
     details:
       name: Name
+      organisation_name: Organisation
       title: Role
       email: Email
       phone: Phone
@@ -27,11 +28,18 @@ en:
       title:
         Are you sure you want to delete %{contact_name}?
       guidance: This will remove the contact for %{contact_title} called %{contact_name} from the contacts list.
+    categories:
+      choose: Choose category
   helpers:
     label:
       contact:
         category: Contact for
         title: Role
         name: Name
+        organisation_name: Organisation
         email: Email
         phone: Phone
+  errors:
+    attributes:
+      category:
+        blank: Choose a category
