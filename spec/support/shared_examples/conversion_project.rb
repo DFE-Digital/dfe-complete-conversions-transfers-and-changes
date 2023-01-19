@@ -26,20 +26,15 @@ RSpec.shared_examples "a conversion project" do
     end
 
     context "when the project is valid" do
-      let(:task_list_creator) { TaskListCreator.new }
       let(:new_project_record) { Project.last }
 
       before do
         mock_successful_api_responses(urn: 123456, ukprn: 10061021)
 
-        allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
-        allow(task_list_creator).to receive(:call).and_return true
-
         perform_request
       end
 
-      it "assigns the regional delivery officer, calls the TaskListCreator" do
-        expect(task_list_creator).to have_received(:call).with(new_project_record, workflow_root: workflow_root)
+      it "assigns the regional delivery officer" do
         expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
       end
 
@@ -58,22 +53,6 @@ RSpec.shared_examples "a conversion project" do
         it "does not create a new note" do
           expect(Note.count).to be 0
         end
-      end
-    end
-
-    context "when the task list cannot be created" do
-      let(:task_list_creator) { TaskListCreator.new }
-
-      before do
-        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
-
-        allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
-        allow(task_list_creator).to receive(:call).and_raise(RuntimeError)
-      end
-
-      it "does not create a project" do
-        expect { perform_request }.to raise_error(RuntimeError)
-        expect(Project.count).to be 0
       end
     end
 

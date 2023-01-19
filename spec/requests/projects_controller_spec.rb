@@ -49,9 +49,9 @@ RSpec.describe ProjectsController, type: :request do
   end
 
   describe "#show" do
-    it "redirects to a 404 page when a projects cannot be found" do
+    it "redirects to a 404 page when a project cannot be found" do
       project = create(:conversion_project)
-      allow(Project).to receive_message_chain("includes.find").and_raise(ActiveRecord::RecordNotFound)
+      allow(Project).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
 
       get project_path(project)
 

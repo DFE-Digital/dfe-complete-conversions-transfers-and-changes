@@ -6,7 +6,4 @@
 
 <%= render partial: "shared/project_sub_navigation" %>
 
-<h2 class="govuk-heading-l">Old task list (do not use!)</h2>
-<%= render "projects/show/task_list" %>
-
 <%= render "projects/show/complete" unless @project.completed? %>

@@ -5,8 +5,8 @@ FactoryBot.define do
     project factory: :conversion_project
     user { association :user, email: "user-#{SecureRandom.uuid}@education.gov.uk" }
 
-    trait :deprecated_task_level_note do
-      task
+    trait :task_level_note do
+      task_identifier { "handover" }
       body { "I really enjoyed performing this task" }
     end
   end

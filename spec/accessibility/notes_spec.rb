@@ -4,8 +4,6 @@ require "axe-rspec"
 RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibility: true do
   let(:user) { create(:user, email: "user1@education.gov.uk") }
   let(:project) { create(:conversion_project, caseworker: user) }
-  let(:section) { create(:section, project: project) }
-  let(:task) { create(:task, section: section) }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
@@ -44,16 +42,17 @@ RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibilit
   end
 
   describe "Task notes" do
-    let!(:task_note) { create(:note, project: project, task: task) }
+    let(:task_identifier) { "handover" }
+    let!(:task_note) { create(:note, :task_level_note, project: project, task_identifier: task_identifier) }
     scenario "new page" do
-      visit new_project_note_path(project, task)
+      visit new_project_note_path(project, task_identifier)
 
       expect(page).to have_content("Enter note")
       expect(page).to be_axe_clean
     end
 
     scenario "show page" do
-      visit project_task_path(project, task)
+      visit conversions_voluntary_project_edit_task_path(project, task_identifier)
 
       expect(page).to have_content(task_note.body)
       expect(page).to be_axe_clean

@@ -241,18 +241,6 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(Conversion::Details.count).to eq(1)
         expect(Conversion::Details.last.type).to eq(details_class)
       end
-
-      it "calls the TaskListCreator" do
-        task_list_creator = TaskListCreator.new
-        allow(TaskListCreator).to receive(:new).and_return(task_list_creator)
-        allow(task_list_creator).to receive(:call).and_return true
-        form = build(form_factory.to_sym)
-        form.save
-        new_project = Project.last
-        expect(task_list_creator).to have_received(:call)
-          .with(new_project,
-            workflow_root: workflow_path)
-      end
     end
 
     context "when the form is invalid" do

@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(sections: [:tasks]).find(params[:id])
+    @project = Project.find(params[:id])
     authorize @project
   end
 end

@@ -18,7 +18,6 @@ class Conversion::Involuntary::CreateProjectForm < Conversion::CreateProjectForm
       @project.save
       @note = Note.create(body: note_body, project: @project, user: user) if note_body
       Conversion::Involuntary::Details.create(project: @project)
-      TaskListCreator.new.call(@project, workflow_root: Conversion::Involuntary::Details::WORKFLOW_PATH)
     end
 
     @project

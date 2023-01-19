@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   after_action :verify_policy_scoped, only: :index
 
   def new
-    @note = Note.new(project: @project, user_id:, task_identifier: params[:task_identifier], task_id: params[:task_id])
+    @note = Note.new(project: @project, user_id:, task_identifier: params[:task_identifier])
     authorize @note
   end
 
@@ -56,7 +56,6 @@ class NotesController < ApplicationController
   end
 
   private def return_path
-    return project_task_path(@project, @note.task.id) if @note.deprecated_task_level_note?
     return task_list_path if @note.task_level_note?
 
     project_notes_path(@project)
@@ -79,6 +78,6 @@ class NotesController < ApplicationController
   end
 
   private def note_params
-    params.require(:note).permit(:body, :task_id, :task_identifier)
+    params.require(:note).permit(:body, :task_identifier)
   end
 end

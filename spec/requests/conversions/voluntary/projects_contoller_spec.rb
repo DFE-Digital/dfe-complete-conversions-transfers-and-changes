@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe Conversions::Voluntary::ProjectsController do
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
   let(:create_path) { conversions_voluntary_projects_path }
-  let(:workflow_root) { Conversion::Voluntary::Details::WORKFLOW_PATH }
   let(:form_class) { Conversion::Voluntary::CreateProjectForm }
   let(:project_form) { build(:create_voluntary_project_form) }
   let(:project_form_params_key) { "conversion_voluntary_create_project_form" }
