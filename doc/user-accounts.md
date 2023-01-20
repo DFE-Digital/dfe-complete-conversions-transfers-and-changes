@@ -119,3 +119,12 @@ provided to avoid not-null constraint errors. For example:
 | john.doe@education.gov.uk   | John       | Doe       | 1           | 0                         | 0          |
 | jane.doe@education.gov.uk   | Jane       | Doe       | 0           | 1                         | 0          |
 | joseph.doe@education.gov.uk | Joseph     | Doe       | 0           | 0                         | 1          |
+
+The User Importer will not create duplicates of existing user records (based on
+email). For example if `jane.doe@education.gov.uk` already exists in the
+database, another record for `jane.doe@education.gov.uk` will not be created if
+that email address is in the uploaded CSV.
+
+The User Importer can be used to update existing records, for example if
+`jane.doe@education.gov.uk` is promoted from a `team_leader` to
+`regional_delivery_officer`, the script can be used to update the user record.
