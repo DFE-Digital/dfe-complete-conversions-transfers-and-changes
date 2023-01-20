@@ -76,7 +76,7 @@ RSpec.feature "Users can manage contacts" do
 
   private def expect_page_to_have_contact(name:, title:, organisation_name: nil, email: nil, phone: nil)
     expect(page).to have_content(name)
-    expect(page).to have_content(organisation_name)
+    expect(page).to have_content(organisation_name) if organisation_name
     expect(page).to have_content(title)
     expect(page).to have_content(email) if email
     expect(page).to have_content(phone) if phone
