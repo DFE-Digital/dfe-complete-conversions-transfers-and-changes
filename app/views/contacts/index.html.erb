@@ -10,7 +10,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l"><%= t("contact.index.contacts") %></h2>
 
-    <% unless has_contacts?(@contacts) %>
+    <% if @grouped_contacts.empty? %>
       <%= govuk_inset_text(text: t("contact.index.no_contacts_yet")) %>
     <% end %>
 
@@ -18,8 +18,11 @@
       <%= govuk_button_link_to t("contact.index.add_contact_button"), new_project_contact_path(@project) %>
     </div>
 
-    <% if has_contacts?(@contacts) %>
-      <%= render "contacts/contacts" %>
+    <% Contact.categories.keys.each do |category| %>
+      <% if @grouped_contacts[category].present? %>
+        <%= render partial: "contact_group", locals: {category: category, contacts: @grouped_contacts[category]} %>
+      <% end %>
     <% end %>
+
   </div>
 </div>

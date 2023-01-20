@@ -25,23 +25,17 @@ RSpec.describe Contact, type: :model do
   end
 
   describe "scopes" do
-    describe "grouped_by_category" do
-      it "groups and orders by category" do
+    describe "by_name" do
+      it "orders by name" do
         mock_successful_api_responses(urn: any_args, ukprn: any_args)
         project = create(:voluntary_conversion_project)
         first_solicitor_contact = create(:contact, category: :solicitor, name: "B solicitor", project: project)
         second_solicitor_contact = create(:contact, category: :solicitor, name: "A solicitor", project: project)
-        _other_contact = create(:contact, category: :other, project: project)
 
-        contacts = project.contacts.grouped_by_category
-        groups = contacts.keys
-        solicitor_group = contacts["solicitor"]
+        ordered_contacts = project.contacts.by_name
 
-        expect(groups.first).to eql "solicitor"
-        expect(groups.last).to eql "other"
-
-        expect(solicitor_group.first).to eq second_solicitor_contact
-        expect(solicitor_group.last).to eq first_solicitor_contact
+        expect(ordered_contacts.first).to eq second_solicitor_contact
+        expect(ordered_contacts.last).to eq first_solicitor_contact
       end
     end
   end

@@ -8,13 +8,13 @@ class Contact < ApplicationRecord
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
 
   enum category: {
-    diocese: 4,
-    local_authority: 3,
     school: 1,
-    solicitor: 5,
     trust: 2,
+    local_authority: 3,
+    solicitor: 5,
+    diocese: 4,
     other: 0
   }
 
-  scope :grouped_by_category, -> { order(:name, category: :desc).group_by(&:category) }
+  scope :by_name, -> { order(:name) }
 end

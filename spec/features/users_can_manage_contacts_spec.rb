@@ -24,6 +24,31 @@ RSpec.feature "Users can manage contacts" do
     )
   end
 
+  scenario "the contact groups are in the order users might expect to use them" do
+    create(:contact, category: :other, project: project)
+    create(:contact, category: :school, project: project)
+    create(:contact, category: :trust, project: project)
+    create(:contact, category: :solicitor, project: project)
+    create(:contact, category: :diocese, project: project)
+    create(:contact, category: :local_authority, project: project)
+
+    visit conversions_voluntary_project_contacts_path(project)
+
+    order_categories = page.find_all("h3.govuk-heading-m")
+
+    %i[
+      school
+      trust
+      local_authority
+      solicitor
+      diocese
+      other
+    ].each_with_index do |category, index|
+      expect(order_categories[index].text)
+        .to eql I18n.t("contact.index.category_heading", category_name: category.to_s.humanize)
+    end
+  end
+
   scenario "they can add a new contact" do
     visit conversions_voluntary_project_contacts_path(project)
 
