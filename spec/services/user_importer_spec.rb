@@ -45,6 +45,23 @@ RSpec.describe UserImporter do
       ).to exist
     end
 
+    context "when an existing user has been updated" do
+      let(:users_csv) do
+        <<~CSV
+          email,first_name,last_name,team_leader,regional_delivery_officer
+          john.doe@education.gov.uk,John,Doe,1,0
+          jane.doe@education.gov.uk,Jane,Doe,1,0
+        CSV
+      end
+
+      it "updates the existing user in place" do
+        call_user_importer
+
+        expect(User.find_by(email: existing_user_email).regional_delivery_officer).to be false
+        expect(User.find_by(email: existing_user_email).team_leader).to be true
+      end
+    end
+
     context "when an error occurs" do
       let(:users_csv) do
         <<~CSV
