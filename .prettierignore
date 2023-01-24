@@ -29,3 +29,4 @@
 /coverage
 /terraform
 /.idea/
+lib/generators/*/USAGE
