@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the order of the contact groups is now as users might expect.
 
+### Added
+
+- Add task generators
+
 ## [Release 12][release-12]
 
 ### Added
