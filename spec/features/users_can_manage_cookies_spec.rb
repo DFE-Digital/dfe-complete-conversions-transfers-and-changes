@@ -27,6 +27,8 @@ RSpec.feature "Users can manage cookies" do
 
       click_on "Accept optional cookies"
 
+      expect(page.body).to include(I18n.t("cookies.updated_message.true"))
+
       visit cookies_path
       expected_option = find_field("Yes")
 
@@ -37,6 +39,8 @@ RSpec.feature "Users can manage cookies" do
       visit root_path
 
       click_on "Reject optional cookies"
+
+      expect(page.body).to include(I18n.t("cookies.updated_message.false"))
 
       visit cookies_path
       expected_option = find_field("No")
