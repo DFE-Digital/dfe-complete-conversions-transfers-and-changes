@@ -69,4 +69,11 @@ module ApplicationHelper
   def optional_cookies_set?
     cookies[:ACCEPT_OPTIONAL_COOKIES].present?
   end
+
+  def enable_google_tag_manager?
+    return false unless ENV["SENTRY_ENV"] == "production"
+    return false unless ENV["GOOGLE_TAG_MANAGER_ID"].present?
+    return false unless cookies[:ACCEPT_OPTIONAL_COOKIES] == true
+    true
+  end
 end

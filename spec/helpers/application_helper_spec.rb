@@ -127,4 +127,58 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#enable_google_tag_manager?" do
+    context "when not in production" do
+      it "returns false" do
+        ClimateControl.modify(
+          SENTRY_ENV: "development",
+          GOOGLE_TAG_MANAGER_ID: ""
+        ) do
+          cookies[:ACCEPT_OPTIONAL_COOKIES] = true
+
+          expect(enable_google_tag_manager?).to eq(false)
+        end
+      end
+    end
+
+    context "when there is no tag manager id" do
+      it "returns false" do
+        ClimateControl.modify(
+          SENTRY_ENV: "production",
+          GOOGLE_TAG_MANAGER_ID: ""
+        ) do
+          cookies[:ACCEPT_OPTIONAL_COOKIES] = true
+
+          expect(enable_google_tag_manager?).to eq(false)
+        end
+      end
+    end
+
+    context "when the user has rejected cookies" do
+      it "returns false" do
+        ClimateControl.modify(
+          SENTRY_ENV: "production",
+          GOOGLE_TAG_MANAGER_ID: "THISISANID"
+        ) do
+          cookies[:ACCEPT_OPTIONAL_COOKIES] = false
+
+          expect(enable_google_tag_manager?).to eq(false)
+        end
+      end
+    end
+
+    context "when the user has accepted cookies" do
+      it "returns true" do
+        ClimateControl.modify(
+          SENTRY_ENV: "production",
+          GOOGLE_TAG_MANAGER_ID: "THISISANID"
+        ) do
+          cookies[:ACCEPT_OPTIONAL_COOKIES] = true
+
+          expect(enable_google_tag_manager?).to eq(true)
+        end
+      end
+    end
+  end
 end

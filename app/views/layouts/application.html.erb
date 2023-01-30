@@ -20,6 +20,8 @@
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "govuk-frontend/govuk/all" %>
+
+    <%= render partial: "shared/google_tag_manager" if enable_google_tag_manager? %>
   </head>
 
   <body class="govuk-template__body ">

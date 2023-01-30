@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Users can manage optional cookies.
 - A Cookie banner is shown on the application to help users understand and
   manage their cookie preferences.
+- Google analytics are now used if the user has accepted optional cookies.
 
 ## [Release 12][release-12]
 
