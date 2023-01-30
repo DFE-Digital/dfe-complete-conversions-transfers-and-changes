@@ -88,6 +88,11 @@ en:
         title: School details
         rows:
           original_school_name: Original school name
+          school_name_link_to_gias:
+            html: |
+              %{school_name}<br/>
+              %{link_to_gias}
+          view_in_gias: View the school's information in GIAS (opens in new tab)
           old_urn: Old Unique Reference Number
           school_type: School type
           age_range: Age range
