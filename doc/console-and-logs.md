@@ -13,8 +13,10 @@ further actions.
 
 ### Test and Production
 
-A Privileged Identity Management (PIM) request will need to be raised and
-approved before console and logs for these environments can be accessed.
+A Privileged Identity Management (PIM) request will need to be raised before
+console and logs for these environments can be accessed. A PIM request for the
+`test` environment will be automatically approved; one for `production` will
+need to be approved by another member of the team.
 
 ## Privileged Identity Management (PIM)
 
@@ -28,8 +30,9 @@ Steps to open a PIM:
 - Activate the `Contributor` role for the appropriate environment
 - Select a time (usually 8 hours) and given a reason for the escalated
   privileges
-- Another member of the team can approve the PIM, you'll receive an email upon
-  approval (you can all view your pending request in PIM module)
+- (Production only) Another member of the team can approve the PIM, you'll
+  receive an email upon approval (you can all view your pending request in PIM
+  module)
 - Once approved your account will have access to the [Console](#console-access)
   and [logs](#log-access)
 
