@@ -61,7 +61,7 @@ RSpec.feature "Users can manage cookies" do
       visit cookies_path
 
       choose "Yes"
-      click_on "Continue"
+      click_on "Save cookie settings"
 
       visit cookies_path
       expected_option = find_field("Yes")
@@ -73,7 +73,7 @@ RSpec.feature "Users can manage cookies" do
       visit cookies_path
 
       choose "No"
-      click_on "Continue"
+      click_on "Save cookie settings"
 
       visit cookies_path
       expected_option = find_field("No")

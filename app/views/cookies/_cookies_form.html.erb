@@ -2,5 +2,5 @@
 <%= form_for @cookie_form, url: cookies_path do |form| %>
   <%= form.govuk_error_summary %>
   <%= form.govuk_collection_radio_buttons :accept_optional_cookies, @cookie_form.responses, :id, :name, legend: {text: "Do you want to accept optional cookies?"} %>
-  <%= form.govuk_submit %>
+  <%= form.govuk_submit t("cookies.submit") %>
 <% end %>
