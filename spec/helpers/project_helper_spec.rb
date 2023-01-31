@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ProjectInformationHelper, type: :helper do
+RSpec.describe ProjectHelper, type: :helper do
   describe "#age_range" do
     context "when the lower age range is nil" do
       let(:establishment) { build(:academies_api_establishment, age_range_lower: nil) }

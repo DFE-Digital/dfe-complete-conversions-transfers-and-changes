@@ -1,4 +1,4 @@
-module ProjectInformationHelper
+module ProjectHelper
   def age_range(establishment)
     return nil if establishment.age_range_lower.blank? || establishment.age_range_upper.blank?
 
