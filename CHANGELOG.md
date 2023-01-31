@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the name of the cookie used to store a users session has changed. User will be
   asked to sign in after this change.
 - cookies page content better reflects the cookies in use.
+- the provisional conversion date is now shown as 'Converting on' with a tag to
+  show the date is provisional.
 
 ### Added
 

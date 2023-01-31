@@ -14,4 +14,11 @@ module ProjectHelper
   def mail_to_path(email)
     "mailto:#{email}"
   end
+
+  def converting_on_date(project)
+    date = project.provisional_conversion_date.to_formatted_s(:govuk)
+    tag = govuk_tag(text: "provisional", colour: "grey")
+
+    "#{date} #{tag}".html_safe
+  end
 end

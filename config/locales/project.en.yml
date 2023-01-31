@@ -51,8 +51,8 @@ en:
         title: Incoming trust
       local_authority:
         title: Local authority
-      provisional_conversion_date:
-        title: Provisional conversion date
+      converting_on:
+        title: Converting on
       region:
         title: Region
       establishment_sharepoint_link:

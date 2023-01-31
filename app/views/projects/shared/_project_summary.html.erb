@@ -10,8 +10,8 @@
             row.value { @project.incoming_trust.name }
           end
           summary_list.row do |row|
-            row.key { t("project.summary.provisional_conversion_date.title") }
-            row.value { @project.provisional_conversion_date.to_formatted_s(:govuk) }
+            row.key { t("project.summary.converting_on.title") }
+            row.value { converting_on_date(@project) }
           end
           summary_list.row do |row|
             row.key { t("project.summary.local_authority.title") }

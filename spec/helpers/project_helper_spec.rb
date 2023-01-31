@@ -54,4 +54,13 @@ RSpec.describe ProjectHelper, type: :helper do
       expect(subject).to eq "mailto:john.doe@education.gov.uk"
     end
   end
+
+  describe "#converting_on_date" do
+    it "returns the formatted date and a provisional tag" do
+      project = build(:conversion_project)
+
+      expect(helper.converting_on_date(project)).to include project.provisional_conversion_date.to_formatted_s(:govuk)
+      expect(helper.converting_on_date(project)).to include "provisional"
+    end
+  end
 end
