@@ -14,6 +14,6 @@ RSpec.feature "Test project information accessibility", driver: :headless_firefo
     visit project_information_path(project)
 
     expect(page).to have_content("Project details")
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 end

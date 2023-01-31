@@ -14,20 +14,20 @@ RSpec.feature "Test assignment accessibility", driver: :headless_firefox, access
     visit project_assign_team_lead_path(project)
 
     expect(page).to have_content("Change team lead")
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "test change caseworker for project page" do
     visit project_assign_caseworker_path(project)
 
     expect(page).to have_content("Change caseworker")
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "test change regional delivery officer for project page" do
     visit project_assign_regional_delivery_officer_path(project)
 
     expect(page).to have_content("Change regional delivery officer")
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 end

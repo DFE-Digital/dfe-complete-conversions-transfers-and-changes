@@ -15,14 +15,14 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
     visit project_contacts_path(project)
 
     expect(page).to have_content(contact.name)
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "new page" do
     visit new_project_contact_path(project)
 
     expect(page).to have_content("Add contact")
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "edit page" do
@@ -30,7 +30,7 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
     visit edit_project_contact_path(project, contact)
 
     expect(page).to have_content("Edit contact")
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "deleted page" do
@@ -38,6 +38,6 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
     visit project_contact_delete_path(project, contact)
 
     expect(page).to have_content(contact.name)
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 end

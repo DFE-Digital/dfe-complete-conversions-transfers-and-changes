@@ -16,28 +16,28 @@ RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibilit
       visit project_notes_path(project)
 
       expect(page).to have_content(note.body)
-      expect(page).to be_axe_clean
+      check_accessibility(page)
     end
 
     scenario "new page" do
       visit new_project_note_path(project)
 
       expect(page).to have_content("Enter note")
-      expect(page).to be_axe_clean
+      check_accessibility(page)
     end
 
     scenario "edit page" do
       visit edit_project_note_path(project, note)
 
       expect(page).to have_content(note.body)
-      expect(page).to be_axe_clean
+      check_accessibility(page)
     end
 
     scenario "deleted page" do
       visit project_note_delete_path(project, note)
 
       expect(page).to have_content("Are you sure you want to delete this note?")
-      expect(page).to be_axe_clean
+      check_accessibility(page)
     end
   end
 
@@ -48,14 +48,14 @@ RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibilit
       visit new_project_note_path(project, task_identifier)
 
       expect(page).to have_content("Enter note")
-      expect(page).to be_axe_clean
+      check_accessibility(page)
     end
 
     scenario "show page" do
       visit conversions_voluntary_project_edit_task_path(project, task_identifier)
 
       expect(page).to have_content(task_note.body)
-      expect(page).to be_axe_clean
+      check_accessibility(page)
     end
   end
 end
