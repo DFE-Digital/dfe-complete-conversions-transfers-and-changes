@@ -9,7 +9,7 @@
 
     <%= render partial: "projects/shared/new_projects" if policy(:project).new? %>
 
-    <%= render partial: "shared/project_index_sub_navigation" %>
+    <%= render partial: "projects/shared/project_index_sub_navigation" %>
 
     <%= render partial: "/shared/projects/list", locals: {projects: @projects, pager: @pagy} %>
 
