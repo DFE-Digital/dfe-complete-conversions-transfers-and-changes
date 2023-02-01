@@ -19,7 +19,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
     visit projects_path
 
     expect(page).to have_content(project.urn)
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "completed projects page" do
@@ -27,21 +27,21 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
     visit completed_projects_path
 
     expect(page).to have_content(completed_project.urn)
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "new voluntary conversion projects page" do
     visit new_conversions_voluntary_project_path
 
     expect(page).to have_content(I18n.t("conversion_project.voluntary.new.title"))
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "new involuntary conversion projects page" do
     visit new_conversions_involuntary_project_path
 
     expect(page).to have_content(I18n.t("conversion_project.involuntary.new.title"))
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 
   scenario "project completed page" do
@@ -51,6 +51,6 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
     click_on I18n.t("project.complete.submit_button")
 
     expect(page).to have_content("Project completed")
-    expect(page).to be_axe_clean
+    check_accessibility(page)
   end
 end

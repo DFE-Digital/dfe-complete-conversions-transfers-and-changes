@@ -1,0 +1,77 @@
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Cookies</h1>
+    <p class="govuk-body">Cookies are small files saved on your phone, tablet or
+      computer when you visit a website.</p>
+    <p class="govuk-body">We use cookies to make this site work and collect
+      information about how you use our service.</p>
+    <h2 class="govuk-heading-l">Essential cookies</h2>
+    <p class="govuk-body">Essential cookies keep your information secure while you use
+      <%= t("service_name") %>. We do not need to ask for permission to use them.</p>
+    <table class="govuk-table" name="essential_cookies_table" aria-label="Essential cookies table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Name</th>
+          <th class="govuk-table__header" scope="col">Purpose</th>
+          <th class="govuk-table__header" scope="col">Expires</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">SESSION</td>
+          <td class="govuk-table__cell">Used to keep you signed in</td>
+          <td class="govuk-table__cell">With browser settings (Session)</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">ACCEPT_OPTIONAL_COOKIES</td>
+          <td class="govuk-table__cell">Used to store your preference</td>
+          <td class="govuk-table__cell">1 year</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">ASLBSACORS</td>
+          <td class="govuk-table__cell">Used to balance the load on our servers</td>
+          <td class="govuk-table__cell">With browser settings (Session)</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">ASLBSA</td>
+          <td class="govuk-table__cell">Used to balance the load on our servers</td>
+          <td class="govuk-table__cell">With browser settings (Session)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Optional cookies</h2>
+    <p class="govuk-body">With your permission, we use optional cookies.</p>
+    <p class="govuk-body">Optional cookies are used by Google Analytics which we use to learn about how you use this service.</p>
+    <p class="govuk-body">Google Analytics stores information about:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>the pages you visit on the service</li>
+      <li>how long you spend on each page</li>
+      <li>what you click on while you’re visiting the service</li>
+    </ul>
+    <p class="govuk-body">Google is not allowed to share our analytics data with anyone.</p>
+    <table class="govuk-table" name="optional_cookies_table" aria-label="Optional cookies table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Name</th>
+          <th class="govuk-table__header" scope="col">Purpose</th>
+          <th class="govuk-table__header" scope="col">Expires</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">_ga</td>
+          <td class="govuk-table__cell">Used to distinguish users</td>
+          <td class="govuk-table__cell">2 years</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">_ga_7H5HDH7D7F</td>
+          <td class="govuk-table__cell">Used to persist session state</td>
+          <td class="govuk-table__cell">2 years</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= render "cookies_form" %>
+  </div>
+</div>

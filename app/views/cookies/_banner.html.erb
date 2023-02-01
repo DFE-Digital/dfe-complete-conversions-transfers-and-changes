@@ -1,0 +1,26 @@
+  <div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on <%= t("service_name") %>">
+    <div class="govuk-cookie-banner__message govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on <%= t("service_name") %></h2>
+          <div class="govuk-cookie-banner__content">
+
+            <%= form_for @cookie_form, url: cookies_path do |form| %>
+              <p class="govuk-body">We use some essential cookies to make this service work.</p>
+              <p class="govuk-body">We’d like to set additional cookies so we can understand how people use the service and make improvements.</p>
+              <div class="govuk-button-group">
+                <%= form.button(:accept_optional_cookies, {id: "cookies_form_accept_optional_cookies", class: "govuk-button", value: true, data: {module: "govuk-button"}}) do %>
+                  Accept optional cookies
+                <% end %>
+                <%= form.button(:accept_optional_cookies, {id: "cookies_form_reject_optional_cookies", class: "govuk-button", value: false, data: {module: "govuk-button"}}) do %>
+                  Reject optional cookies
+                <% end %>
+                <%= govuk_link_to "View cookies", cookies_path %>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

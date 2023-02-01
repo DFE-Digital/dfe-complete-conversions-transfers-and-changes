@@ -6,11 +6,11 @@
 
 Rails.application.configure do
   config.content_security_policy do |policy|
-    policy.default_src :self
+    policy.default_src :self, "https://region1.google-analytics.com"
     policy.font_src :self
-    policy.img_src :self
+    policy.img_src :self, "https://region1.google-analytics.com"
     policy.object_src :none
-    policy.script_src :self
+    policy.script_src :self, "https://www.googletagmanager.com/gtm.js"
     policy.style_src :self
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"

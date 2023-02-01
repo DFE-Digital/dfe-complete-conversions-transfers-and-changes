@@ -8,7 +8,7 @@
   <div class="govuk-notification-banner__content">
     <% flash.each do |type, msg| %>
       <div class="flash <%= type %>">
-        <p class="govuk-notification-banner__heading"><%= msg.html_safe %></p>
+        <%= msg.html_safe %>
       </div>
     <% end %>
   </div>

@@ -1,0 +1,6 @@
+en:
+  cookies:
+    updated_message:
+      "true": You've accepted optional cookies. You can <a href="/cookies">change your cookie settings</a> at any time.
+      "false": You've rejected optional cookies. You can <a href="/cookies">change your cookie settings</a> at any time.
+    submit: Save cookie settings

@@ -20,6 +20,8 @@
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "govuk-frontend/govuk/all" %>
+
+    <%= render partial: "shared/google_tag_manager" if enable_google_tag_manager? %>
   </head>
 
   <body class="govuk-template__body ">
@@ -27,9 +29,11 @@
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
-    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
-
     <%= render partial: "shared/environment_banner" %>
+
+    <%= render partial: "cookies/banner" unless optional_cookies_set? %>
+
+    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
     <%= govuk_header(service_name: t("service_name")) %>
 

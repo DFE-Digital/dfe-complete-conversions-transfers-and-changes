@@ -9,12 +9,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - the order of the contact groups is now as users might expect.
+- the name of the cookie used to store a users session has changed. User will be
+  asked to sign in after this change.
+- cookies page content better reflects the cookies in use.
 
 ### Added
 
 - Add task generators
 - Added a link to the school's information in GIAS on the project information
   page.
+- Users can manage optional cookies.
+- A Cookie banner is shown on the application to help users understand and
+  manage their cookie preferences.
+- Google analytics are now used if the user has accepted optional cookies.
 
 ## [Release 12][release-12]
 
