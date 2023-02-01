@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The Stakeholder kick off task now collects a confirmed conversion date. This
   task will become in-progress after this change. Users must supply a value for
   this.
+- The conversion date is now shown as either provisional or confirmed.
 
 ### Added
 
