@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - cookies page content better reflects the cookies in use.
 - the provisional conversion date is now shown as 'Converting on' with a tag to
   show the date is provisional.
+- The Stakeholder kick off task now collects a confirmed conversion date. This
+  task will become in-progress after this change. Users must supply a value for
+  this.
 
 ### Added
 

@@ -69,3 +69,13 @@
     margin-bottom: 0;
   }
 }
+
+.app-confirmed-conversion-date {
+  margin-top: govuk-spacing(7);
+  margin-bottom: govuk-spacing(7);
+  .govuk-hint {
+    p {
+      @extend .govuk-hint;
+    }
+  }
+}

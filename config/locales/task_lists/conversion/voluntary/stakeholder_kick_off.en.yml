@@ -37,6 +37,17 @@ en:
                 <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
                 <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.</p>
 
+          confirmed_conversion_date:
+            title: Enter the confirmed conversion date
+            hint:
+              html: <p>Check the local authority have capacity to convert the school by this date before you enter it. You only need to enter a month and year. All schools convert on the first day of the month.</p>
+            guidance_link: What to do if the local authority does not have capacity
+            guidance:
+              html:
+                <p>The school and trust will have given a provisional date they want to convert on.</p>
+                <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
+                <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.</p>
+
           setup_meeting:
             title: Send invites to the kick-off meeting or call
             hint:
