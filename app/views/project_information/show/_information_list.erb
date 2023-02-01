@@ -33,7 +33,7 @@
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.advisory_board_date') }
-      row.value { @project.advisory_board_date }
+      row.value { @project.advisory_board_date.to_date.to_formatted_s(:govuk) }
     end
     summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.advisory_board_conditions') }

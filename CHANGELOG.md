@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Removed the old tasks & task lists. The editable tasklist YAML files in
   `workflows` are no longer used
+- Removed ProjectPresenter from the codebase
 
 ## [Release 11][release-11]
 
