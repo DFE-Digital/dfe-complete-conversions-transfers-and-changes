@@ -62,7 +62,7 @@ en:
           meeting:
             title: Host the kick-off meeting or call
             hint:
-              html: <p>Make sure all attendees understand what they need to do, and when they need to do it by</p>.
+              html: <p>Make sure all attendees understand what they need to do, and when they need to do it by.</p>
             guidance_link: What to talk about in the meeting
             guidance:
               html:
