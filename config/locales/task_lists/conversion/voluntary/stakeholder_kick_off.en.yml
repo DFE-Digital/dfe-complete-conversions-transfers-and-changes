@@ -36,6 +36,8 @@ en:
                 <p>The school and trust will have given a provisional date they want to convert on.</p>
                 <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
                 <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.</p>
+            errors:
+              format: Enter a valid confirmed conversion date
 
           setup_meeting:
             title: Send invites to the kick-off meeting or call

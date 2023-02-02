@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   task will become in-progress after this change. Users must supply a value for
   this.
 - The conversion date is now shown as either provisional or confirmed.
+- The Stakeholder kick off, confirmed conversion date is now validated for
+  correct format.
 
 ### Added
 
