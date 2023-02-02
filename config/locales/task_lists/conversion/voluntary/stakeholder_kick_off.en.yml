@@ -26,17 +26,6 @@ en:
                 <p>The regional delivery officer should have sent the local authority proforma to the local authority to complete.</p>
                 <p>If you have not received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.</p>
 
-          confirm_target_conversion_date:
-            title: Confirm the provisional conversion date with the local authority
-            hint:
-              html: <p>Check that the local authority has capacity to convert the school by the provisional date</p>
-            guidance_link: What to do if the local authority does not have capacity
-            guidance:
-              html:
-                <p>The school and trust will have given a provisional date they want to convert on.</p>
-                <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
-                <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.</p>
-
           confirmed_conversion_date:
             title: Enter the confirmed conversion date
             hint:
