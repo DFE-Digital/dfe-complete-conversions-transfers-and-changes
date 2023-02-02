@@ -9,10 +9,8 @@ class Conversion::Project < Project
   end
 
   def conversion_date
-    if task_list_type == "Conversion::Voluntary::TaskList"
-      if task_list.stakeholder_kick_off_confirmed_conversion_date.present?
-        return ConversionDate.new(date: task_list.stakeholder_kick_off_confirmed_conversion_date, provisional: false)
-      end
+    if task_list.stakeholder_kick_off_confirmed_conversion_date.present?
+      return ConversionDate.new(date: task_list.stakeholder_kick_off_confirmed_conversion_date, provisional: false)
     end
 
     ConversionDate.new(date: provisional_conversion_date, provisional: true)
