@@ -25,6 +25,7 @@ class Project < ApplicationRecord
   belongs_to :caseworker, class_name: "User", optional: true
   belongs_to :team_leader, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
+  belongs_to :assigned_to, class_name: "User", optional: true
 
   scope :by_provisional_conversion_date, -> { order(provisional_conversion_date: :asc) }
 

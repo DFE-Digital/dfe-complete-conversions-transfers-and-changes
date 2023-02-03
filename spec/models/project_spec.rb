@@ -7,6 +7,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:provisional_conversion_date).of_type :date }
     it { is_expected.to have_db_column(:caseworker_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
+    it { is_expected.to have_db_column(:assigned_to_id).of_type :uuid }
     it { is_expected.to have_db_column(:caseworker_assigned_at).of_type :datetime }
     it { is_expected.to have_db_column(:advisory_board_date).of_type :date }
     it { is_expected.to have_db_column(:advisory_board_conditions).of_type :text }
@@ -22,6 +23,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:team_leader).required(false) }
+    it { is_expected.to belong_to(:assigned_to).required(false) }
     it { is_expected.to belong_to(:task_list).required(true) }
 
     describe "delete related entities" do
