@@ -19,4 +19,9 @@ locals {
   dns_zone_domain_name                   = var.dns_zone_domain_name
   key_vault_access_users                 = toset(var.key_vault_access_users)
   tfvars_filename                        = var.tfvars_filename
+  enable_monitoring                      = var.enable_monitoring
+  monitor_email_receivers                = var.monitor_email_receivers
+  enable_container_health_probe          = var.enable_container_health_probe
+  cdn_frontdoor_health_probe_path        = var.cdn_frontdoor_health_probe_path
+  monitor_endpoint_healthcheck           = var.monitor_endpoint_healthcheck
 }
