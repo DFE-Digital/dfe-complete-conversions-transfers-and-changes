@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the name of the cookie used to store a users session has changed. User will be
   asked to sign in after this change.
 - cookies page content better reflects the cookies in use.
+- the provisional conversion date is now shown as 'Converting on' with a tag to
+  show the date is provisional.
+- The Stakeholder kick off task now collects a confirmed conversion date. This
+  task will become in-progress after this change. Users must supply a value for
+  this.
+- The conversion date is now shown as either provisional or confirmed.
+- The Stakeholder kick off, confirmed conversion date is now validated for
+  correct format.
 
 ### Added
 

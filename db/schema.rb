@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_19_110157) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_02_123106) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -41,7 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_110157) do
     t.boolean "handover_meeting"
     t.boolean "stakeholder_kick_off_introductory_emails"
     t.boolean "stakeholder_kick_off_local_authority_proforma"
-    t.boolean "stakeholder_kick_off_confirm_target_conversion_date"
     t.boolean "stakeholder_kick_off_setup_meeting"
     t.boolean "conversion_grant_eligibility"
     t.boolean "conversion_grant_payment_amount"
@@ -127,6 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_110157) do
     t.boolean "deed_of_variation_sent"
     t.boolean "deed_of_variation_signed_secretary_state"
     t.boolean "direction_to_transfer_not_applicable"
+    t.date "stakeholder_kick_off_confirmed_conversion_date"
   end
 
   create_table "conversion_voluntary_task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -137,7 +137,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_110157) do
     t.datetime "updated_at", null: false
     t.boolean "stakeholder_kick_off_introductory_emails"
     t.boolean "stakeholder_kick_off_local_authority_proforma"
-    t.boolean "stakeholder_kick_off_confirm_target_conversion_date"
     t.boolean "stakeholder_kick_off_setup_meeting"
     t.boolean "stakeholder_kick_off_meeting"
     t.boolean "stakeholder_kick_off_conversion_checklist"
@@ -231,6 +230,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_110157) do
     t.boolean "subleases_not_applicable"
     t.boolean "tenancy_at_will_not_applicable"
     t.boolean "trust_modification_order_not_applicable"
+    t.date "stakeholder_kick_off_confirmed_conversion_date"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

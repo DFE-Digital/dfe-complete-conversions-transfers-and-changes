@@ -1,4 +1,4 @@
-module ProjectInformationHelper
+module ProjectHelper
   def age_range(establishment)
     return nil if establishment.age_range_lower.blank? || establishment.age_range_upper.blank?
 
@@ -13,5 +13,16 @@ module ProjectInformationHelper
 
   def mail_to_path(email)
     "mailto:#{email}"
+  end
+
+  def converting_on_date(project)
+    conversion_date = project.conversion_date
+
+    return conversion_date.date.to_formatted_s(:govuk) unless conversion_date.provisional?
+
+    date = conversion_date.date.to_formatted_s(:govuk)
+    tag = govuk_tag(text: "provisional", colour: "grey")
+
+    "#{date} #{tag}".html_safe
   end
 end

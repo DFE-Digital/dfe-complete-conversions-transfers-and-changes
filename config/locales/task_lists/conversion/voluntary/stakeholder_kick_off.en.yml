@@ -26,16 +26,18 @@ en:
                 <p>The regional delivery officer should have sent the local authority proforma to the local authority to complete.</p>
                 <p>If you have not received it yet, check that the regional delivery officer sent it and then ask the local authority if they have completed and shared it.</p>
 
-          confirm_target_conversion_date:
-            title: Confirm the provisional conversion date with the local authority
+          confirmed_conversion_date:
+            title: Enter the confirmed conversion date
             hint:
-              html: <p>Check that the local authority has capacity to convert the school by the provisional date</p>
+              html: <p>Check the local authority have capacity to convert the school by this date before you enter it. You only need to enter a month and year. All schools convert on the first day of the month.</p>
             guidance_link: What to do if the local authority does not have capacity
             guidance:
               html:
                 <p>The school and trust will have given a provisional date they want to convert on.</p>
                 <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
                 <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.</p>
+            errors:
+              format: Enter a valid confirmed conversion date
 
           setup_meeting:
             title: Send invites to the kick-off meeting or call
@@ -51,7 +53,7 @@ en:
           meeting:
             title: Host the kick-off meeting or call
             hint:
-              html: <p>Make sure all attendees understand what they need to do, and when they need to do it by</p>.
+              html: <p>Make sure all attendees understand what they need to do, and when they need to do it by.</p>
             guidance_link: What to talk about in the meeting
             guidance:
               html:

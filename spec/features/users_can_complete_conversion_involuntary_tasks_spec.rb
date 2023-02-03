@@ -13,7 +13,7 @@ RSpec.feature "Users can complete tasks in an involuntary conversion project" do
   mandatory_tasks = %w[check_baseline commercial_transfer_agreement
     conditions_met conversion_grant land_questionnaire land_registry
     receive_grant_payment_certificate redact_and_send
-    school_completed share_information single_worksheet stakeholder_kick_off
+    school_completed share_information single_worksheet
     supplemental_funding_agreement
     tell_regional_delivery_officer update_esfa]
 
@@ -22,12 +22,29 @@ RSpec.feature "Users can complete tasks in an involuntary conversion project" do
     one_hundred_and_twenty_five_year_lease subleases tenancy_at_will
     trust_modification_order]
 
+  tasks_with_collected_data = %w[
+    stakeholder_kick_off
+  ]
+
   it "confirms we are checking all tasks" do
     # If this test fails, we have added or removed a task from the page
     # and need to add or remove it from the arrays above
-    tasks_we_are_testing = mandatory_tasks.count + optional_tasks.count
+    tasks_we_are_testing = mandatory_tasks.count + optional_tasks.count + tasks_with_collected_data.count
     tasks_on_page = page.find_all("ol.app-task-list ul li a").count
     expect(tasks_on_page).to eq tasks_we_are_testing
+  end
+
+  scenario "the stakeholder kick off task" do
+    click_on "External stakeholder kick-off"
+    page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
+    within(".app-confirmed-conversion-date") do
+      completion_date = Date.today + 1.year
+      fill_in "Month", with: completion_date.month
+      fill_in "Year", with: completion_date.year
+    end
+    click_on I18n.t("task_list.continue_button.text")
+    table_row = page.find("li.app-task-list__item", text: "External stakeholder kick-off")
+    expect(table_row).to have_content("Completed")
   end
 
   mandatory_tasks.each do |task|
