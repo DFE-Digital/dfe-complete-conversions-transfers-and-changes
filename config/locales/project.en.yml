@@ -154,7 +154,7 @@ en:
         not_a_number: UKPRN can only contain numbers. No letters or special characters.
         must_be_correct_format: UKPRN must be 8 digits long and start with a 1. For example, 12345678.
       provisional_conversion_date:
-        blank: Enter a month and year for the provisional conversion date, like 01 2023. If you do not know the provisional conversion date then enter a date that is at least six months after the advisory board.
+        blank: Enter a provisional conversion date
         must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
         must_be_in_the_future: Provisional conversion date must be in the future.
       regional_delivery_officer_id:
