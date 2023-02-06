@@ -47,8 +47,8 @@ RSpec.describe AssignmentsController, type: :request do
       response
     end
 
-    it "assigns the project team lead and redirefcts with a message" do
-      expect(perform_request).to redirect_to(conversions_voluntary_project_information_path(project))
+    it "assigns the project team lead and redirects with a message" do
+      expect(perform_request).to redirect_to(project_internal_contacts_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.team_leader.success"))
 
       expect(project.reload.team_leader).to eq team_leader
@@ -84,7 +84,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     it "assigns the project regional delivery officer and redirefcts with a message" do
-      expect(perform_request).to redirect_to(conversions_voluntary_project_information_path(project))
+      expect(perform_request).to redirect_to(project_internal_contacts_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.regional_delivery_officer.success"))
 
       expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
@@ -138,8 +138,8 @@ RSpec.describe AssignmentsController, type: :request do
       end
     end
 
-    it "assigns the project caseworker and redirefcts with a message" do
-      expect(perform_request).to redirect_to(conversions_voluntary_project_information_path(project))
+    it "assigns the project caseworker and redirects with a message" do
+      expect(perform_request).to redirect_to(project_internal_contacts_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.caseworker.success"))
 
       expect(project.reload.caseworker).to eq caseworker

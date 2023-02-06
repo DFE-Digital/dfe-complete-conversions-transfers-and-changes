@@ -79,6 +79,8 @@ Rails.application.routes.draw do
 
     put "complete", to: "projects_complete#complete"
 
+    get "internal_contacts", to: "internal_contacts#show"
+
     resources :notes, except: %i[show], concerns: :has_destroy_confirmation
     resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation
 
