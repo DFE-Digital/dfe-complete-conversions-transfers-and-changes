@@ -53,3 +53,9 @@ en:
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
+  errors:
+    attributes:
+      provisional_conversion_date:
+        blank: Enter a provisional conversion date
+        must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
+        must_be_in_the_future: Provisional conversion date must be in the future.
