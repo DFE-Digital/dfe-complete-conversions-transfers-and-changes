@@ -174,7 +174,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           SENTRY_ENV: "production",
           GOOGLE_TAG_MANAGER_ID: "THISISANID"
         ) do
-          cookies[:ACCEPT_OPTIONAL_COOKIES] = true
+          cookies[:ACCEPT_OPTIONAL_COOKIES] = "true"
 
           expect(enable_google_tag_manager?).to eq(true)
         end
