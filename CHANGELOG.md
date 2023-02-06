@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Update hint text and error message for provisional conversion date entry
+
 ## [Release 13][release-13]
 
 ### Changed

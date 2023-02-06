@@ -124,7 +124,6 @@ en:
         trust_sharepoint_link: Trust SharePoint link
     legend:
       project:
-        provisional_conversion_date: Provisional conversion date
         advisory_board_date: Date of advisory board
     hint:
       project:
@@ -137,7 +136,6 @@ en:
           <br/ ><br />
           <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in new tab)</a>.
         caseworker_id: The caseworker responsible for this project
-        provisional_conversion_date: The provisional conversion date is always the first day of the month.
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
@@ -153,10 +151,6 @@ en:
         no_trust_found: There's no trust with that UKPRN. Check the number you entered is correct.
         not_a_number: UKPRN can only contain numbers. No letters or special characters.
         must_be_correct_format: UKPRN must be 8 digits long and start with a 1. For example, 12345678.
-      provisional_conversion_date:
-        blank: Enter a month and year for the provisional conversion date, like 01 2023. If you do not know the provisional conversion date then enter a date that is at least six months after the advisory board.
-        must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
-        must_be_in_the_future: Provisional conversion date must be in the future.
       regional_delivery_officer_id:
         blank: Choose a regional delivery officer
       advisory_board_date:
