@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 13][release-13]
+
 ### Changed
 
 - the order of the contact groups is now as users might expect.
@@ -484,7 +486,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-12...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-13...HEAD
+[release-13]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-12...release-13
 [release-12]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-11...release-12
 [release-11]:
