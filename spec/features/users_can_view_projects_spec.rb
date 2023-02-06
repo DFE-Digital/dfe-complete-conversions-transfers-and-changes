@@ -162,14 +162,4 @@ RSpec.feature "Users can view a single project" do
     click_on establishment.name
     expect(page).to have_content(single_project.urn.to_s)
   end
-
-  context "when a project does not have an assigned caseworker" do
-    scenario "the project page shows an unassigned caseworker" do
-      sign_in_with_user(create(:user, :team_leader))
-      single_project = create(:conversion_project, urn: urn)
-
-      visit project_information_path(single_project)
-      expect(page).to have_content(I18n.t("project.summary.caseworker.unassigned"))
-    end
-  end
 end

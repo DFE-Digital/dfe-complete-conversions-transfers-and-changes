@@ -1,0 +1,43 @@
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: root_path} %>
+<% end %>
+
+<%= render partial: "projects/index/project_summary", locals: {project: @project} %>
+
+<%= render partial: "projects/shared/project_sub_navigation" %>
+
+<div id="projectInternalContacts">
+  <h2 class="govuk-heading-l"><%= t("contact.index.internal_contacts") %></h2>
+  <%= govuk_summary_list do |summary_list|
+        summary_list.row do |row|
+          row.key { t("project_information.show.project_details.rows.caseworker") }
+          row.value { display_name(@project.caseworker) }
+          if @project.caseworker.present?
+            row.action(text: "Email", href: mail_to_path(@project.caseworker.email), visually_hidden_text: "caseworker")
+          end
+          if policy(:assignment).assign_caseworker?
+            row.action(href: path_to_caseworker_project_assignment(@project), visually_hidden_text: "caseworker")
+          end
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.project_details.rows.team_lead") }
+          row.value { display_name(@project.team_leader) }
+          if @project.team_leader.present?
+            row.action(text: "Email", href: mail_to_path(@project.team_leader.email), visually_hidden_text: "team leader")
+          end
+          if policy(:assignment).assign_team_leader?
+            row.action(href: path_to_team_lead_project_assignment(@project), visually_hidden_text: "team leader")
+          end
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.project_details.rows.regional_delivery_officer") }
+          row.value { display_name(@project.regional_delivery_officer) }
+          if @project.regional_delivery_officer.present?
+            row.action(text: "Email", href: mail_to_path(@project.regional_delivery_officer.email), visually_hidden_text: "regional delivery officer")
+          end
+          if policy(:assignment).assign_regional_delivery_officer?
+            row.action(href: path_to_regional_delivery_officer_project_assignment(@project), visually_hidden_text: "regional delivery officer")
+          end
+        end
+      end %>
+</div>

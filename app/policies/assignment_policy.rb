@@ -28,4 +28,8 @@ class AssignmentPolicy
   def update_caseworker?
     assign_caseworker?
   end
+
+  def show?
+    true
+  end
 end
