@@ -75,7 +75,7 @@ en:
     completed_projects: Completed
     in_progress_projects: In progress
     notes: Notes
-    contacts: Contacts
+    external_contacts: External contacts
   pages:
     api_client_timeout:
       title: Sorry, there was a problem

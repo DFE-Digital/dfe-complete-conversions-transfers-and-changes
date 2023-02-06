@@ -1,7 +1,7 @@
 en:
   contact:
     index:
-      contacts: Contacts
+      external_contacts: External contacts
       category_heading: "%{category_name} contacts"
       add_contact_button: Add contact
       no_contacts_yet: There are not any contacts for this project yet.
