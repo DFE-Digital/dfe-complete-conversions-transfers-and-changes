@@ -9,7 +9,7 @@
 
     <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.external_contacts"), path: path_to_project_contacts(@project)} %>
 
-    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.internal_contacts"), path: project_internal_contacts_path(@project)} %>
+    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.internal_contacts"), path: path_to_project_internal_contacts(@project)} %>
 
   </ul>
 </nav>

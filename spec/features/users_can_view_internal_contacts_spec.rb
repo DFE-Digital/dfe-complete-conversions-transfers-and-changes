@@ -10,7 +10,7 @@ RSpec.feature "Users can view internal contacts for a project" do
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
-    visit project_internal_contacts_path(project_id)
+    visit conversions_voluntary_project_internal_contacts_path(project_id)
   end
 
   context "when the caseworker, team lead and regional delivery officer have been assigned" do

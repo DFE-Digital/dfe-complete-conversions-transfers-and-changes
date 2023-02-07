@@ -51,6 +51,11 @@ module ApplicationHelper
     return conversions_involuntary_project_contacts_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
   end
 
+  def path_to_project_internal_contacts(project)
+    return conversions_voluntary_project_internal_contacts_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
+    return conversions_involuntary_project_internal_contacts_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
+  end
+
   def path_to_team_lead_project_assignment(project)
     return conversions_voluntary_project_assign_team_lead_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
     return conversions_involuntary_project_assign_team_lead_path(project) if project.task_list_type == "Conversion::Involuntary::TaskList"
