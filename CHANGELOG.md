@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- the voluntary conversion, stakeholder kick off task had a duplicated action.
+  This has now been corrected. Users may want to verify they have completed the
+  action in the task.
+
 ## [Release 14][release-14]
 
 ### Changed
