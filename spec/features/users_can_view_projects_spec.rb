@@ -78,6 +78,14 @@ RSpec.feature "Users can view a list of projects" do
       expect(page.find("ul.projects-list > li:nth-of-type(2)")).to have_content("100002")
       expect(page.find("ul.projects-list > li:nth-of-type(3)")).to have_content("100001")
     end
+
+    scenario "projects are grouped under conversion date headings" do
+      three_years_time = Date.today.beginning_of_month + 3.years
+
+      visit projects_path
+
+      expect(page).to have_css("h2", text: three_years_time.strftime("%B %Y openers"))
+    end
   end
 
   context "when the user is a regional delivery officer" do

@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - moved the Caseworker, Team Leader and Regional Delivery Officer details to a
   new "Internal contacts" tab.
 
+### Added
+
+- group projects in project list by their provisional conversion date
+
 ## [Release 14][release-14]
 
 ### Changed
