@@ -36,6 +36,16 @@ class AssignmentsController < ApplicationController
     redirect_to helpers.path_to_project_internal_contacts(@project), notice: t("project.assign.caseworker.success")
   end
 
+  def assign_assigned_to
+    @all_eligible_users = helpers.all_eligible_users
+  end
+
+  def update_assigned_to
+    @project.update(assigned_to_params)
+
+    redirect_to helpers.path_to_project_internal_contacts(@project), notice: t("project.assign.assigned_to.success")
+  end
+
   private def authorize_user
     authorize :assignment
   end
@@ -50,6 +60,10 @@ class AssignmentsController < ApplicationController
 
   private def caseworker_params
     params.require(:conversion_project).permit(:caseworker_id)
+  end
+
+  private def assigned_to_params
+    params.require(:conversion_project).permit(:assigned_to_id)
   end
 
   private def find_project
