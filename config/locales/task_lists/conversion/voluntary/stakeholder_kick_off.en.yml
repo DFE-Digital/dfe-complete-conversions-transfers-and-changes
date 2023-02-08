@@ -8,15 +8,22 @@ en:
             html: <p>You should start this work after you've had the handover with the regional delivery officer. This is a good opportunity for you to talk about common problems and how to avoid them.</p>
 
           introductory_emails:
-            title: Send invites to the kick-off meeting or call
+            title: Send introductory emails to the school, trust and solicitors
             hint:
-              html: <p>Check who the school and trust would like to attend the kick-off meeting.</p>
-            guidance_link: How to arrange the kick-off meeting
+              html: <p>You should also contact the local authority, but do this separately.</p>
+            guidance_link: What to include in introductory emails
             guidance:
               html:
-                <p>Your introductory email should have included some possible dates for a kick-off meeting.</p>
-                <p>Once the school have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It's likely to be a video call over Microsoft Teams.</p>
-                <p>Some schools and trusts may prefer to have a 1-to-1 call with you, rather than a meeting involving all stakeholders.</p>
+                <p>You can choose an <a href="https://educationgovuk.sharepoint.com/:f:/s/ServiceDeliveryDirectorate/ElWeWBJ7zxtLhJe3fepy1j4BCRuJnb9DEYgiQiKdCkLt1w?e=EkRZIL" target="_blank">email template (opens in new tab)</a>to help you write your introductory emails. There are templates for the school or trust, their solicitors and the local authority.</p>
+                <p>This will help you to:</p>
+                <ul>
+                  <li>organise kick-off meetings</li>
+                  <li>clarify roles and expectation</li>
+                  <li>establish dates and deadlines provide links to documents that need to be completed</li>
+                  <li>agree ways of working</li>
+                </ul>
+                <p>You should aim to do this in the first week of picking up the project.</p>
+                <p>Ideally the kick-off meeting should take place within the first couple of weeks.</p>
 
           local_authority_proforma:
             title: Check that the local authority proforma is saved in the school's SharePoint folder
