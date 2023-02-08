@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   concern :contactable do
-    resources :contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "/contacts"
+    resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "/contacts"
   end
 
   concern :notable do
@@ -55,19 +55,23 @@ Rails.application.routes.draw do
     put "complete", to: "/projects_complete#complete"
   end
 
+  concern :internal_contactable do
+    get "internal_contacts", to: "/internal_contacts#show"
+  end
+
   namespace :conversions do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable notable assignable informationable completable]
+        concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
       resources :projects,
         only: %i[show new create],
-        concerns: %i[task_listable contactable notable assignable informationable completable]
+        concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable]
     end
   end
 
@@ -80,7 +84,7 @@ Rails.application.routes.draw do
     put "complete", to: "projects_complete#complete"
 
     resources :notes, except: %i[show], concerns: :has_destroy_confirmation
-    resources :contacts, except: %i[show], concerns: :has_destroy_confirmation
+    resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation
 
     namespace :assign, controller: "/assignments" do
       get "team-lead", action: :assign_team_leader
