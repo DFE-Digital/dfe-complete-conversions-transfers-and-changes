@@ -36,6 +36,9 @@ class Project < ApplicationRecord
   scope :completed, -> { where.not(completed_at: nil) }
   scope :open, -> { where(completed_at: nil) }
 
+  scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
+  scope :assigned_to_regional_delivery_officer, ->(user) { where(assigned_to: user).or(where(regional_delivery_officer: user)) }
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end
