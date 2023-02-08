@@ -36,9 +36,9 @@ class ProjectPolicy
       if user.team_leader?
         scope.by_provisional_conversion_date
       elsif user.regional_delivery_officer?
-        scope.by_provisional_conversion_date.where(regional_delivery_officer: user)
+        scope.by_provisional_conversion_date.assigned_to_regional_delivery_officer(user)
       else
-        scope.by_provisional_conversion_date.where(caseworker: user)
+        scope.by_provisional_conversion_date.assigned_to_caseworker(user)
       end
     end
 

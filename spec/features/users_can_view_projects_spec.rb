@@ -2,10 +2,9 @@ require "rails_helper"
 
 RSpec.feature "Users can view a list of projects" do
   before do
-    mock_successful_api_responses(urn: 100001, ukprn: 10061021)
-    mock_successful_api_responses(urn: 100002, ukprn: 10061021)
-    mock_successful_api_responses(urn: 100003, ukprn: 10061021)
-    mock_successful_api_responses(urn: 100004, ukprn: 10061021)
+    (100001..100006).each do |urn|
+      mock_successful_api_responses(urn: urn, ukprn: 10061021)
+    end
 
     allow(EstablishmentsFetcher).to receive(:new).and_return(mock_establishments_fetcher)
     allow(IncomingTrustsFetcher).to receive(:new).and_return(mock_trusts_fetcher)
@@ -49,6 +48,26 @@ RSpec.feature "Users can view a list of projects" do
       caseworker: caseworker,
       regional_delivery_officer: regional_delivery_officer,
       provisional_conversion_date: Date.today.beginning_of_month + 1.years
+    )
+  }
+  let!(:assigned_to_project_for_rdo) {
+    create(
+      :conversion_project,
+      urn: 100005,
+      caseworker: caseworker,
+      regional_delivery_officer: nil,
+      assigned_to: regional_delivery_officer,
+      provisional_conversion_date: Date.today.beginning_of_month + 4.years
+    )
+  }
+  let!(:assigned_to_project_for_caseworker) {
+    create(
+      :conversion_project,
+      urn: 100006,
+      caseworker: nil,
+      regional_delivery_officer: nil,
+      assigned_to: caseworker,
+      provisional_conversion_date: Date.today.beginning_of_month + 5.years
     )
   }
 
@@ -100,6 +119,12 @@ RSpec.feature "Users can view a list of projects" do
       expect(page).to_not have_content(user_project.urn.to_s)
       page_has_project(caseworker_project)
     end
+
+    scenario "can see projects they are assigned to but are NOT the regional development officer" do
+      visit projects_path
+
+      page_has_project(assigned_to_project_for_rdo)
+    end
   end
 
   context "when the user is a caseworker" do
@@ -113,6 +138,12 @@ RSpec.feature "Users can view a list of projects" do
       expect(page).to_not have_content(unassigned_project.urn.to_s)
       expect(page).to_not have_content(user_project.urn.to_s)
       page_has_project(caseworker_project)
+    end
+
+    scenario "can see projects they are assigned to but are NOT the caseworker for" do
+      visit projects_path
+
+      page_has_project(assigned_to_project_for_caseworker)
     end
   end
 
