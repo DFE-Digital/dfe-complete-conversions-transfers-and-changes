@@ -10,7 +10,7 @@
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "govuk-frontend": "^4.5.0",
-    "prettier": "^2.8.3"
+    "prettier": "^2.8.4"
   },
   "dependencies": {
     "@ministryofjustice/frontend": "^1.6.4",
