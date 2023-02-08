@@ -15,8 +15,8 @@ RSpec.feature "Users can view a list of projects" do
   let(:mock_trusts_fetcher) { double(IncomingTrustsFetcher, call: true) }
   let(:team_leader) { create(:user, :team_leader, email: "teamleader@education.gov.uk") }
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer, email: "regionaldeliveryofficer@education.gov.uk") }
-  let(:user_1) { create(:user, email: "user1@education.gov.uk") }
-  let(:user_2) { create(:user, email: "user2@education.gov.uk") }
+  let(:caseworker) { create(:user, :caseworker, email: "caseworker@education.gov.uk") }
+  let(:user) { create(:user, email: "user@education.gov.uk") }
   let!(:unassigned_project) {
     create(
       :conversion_project,
@@ -24,29 +24,29 @@ RSpec.feature "Users can view a list of projects" do
       provisional_conversion_date: Date.today.beginning_of_month + 3.years
     )
   }
-  let!(:user_1_project) {
+  let!(:user_project) {
     create(
       :conversion_project,
       urn: 100002,
-      caseworker: user_1,
+      caseworker: user,
       provisional_conversion_date: Date.today.beginning_of_month + 2.year
     )
   }
-  let!(:user_2_completed_project) {
+  let!(:completed_project) {
     create(
       :conversion_project,
       urn: 100004,
-      caseworker: user_2,
+      caseworker: caseworker,
       regional_delivery_officer: regional_delivery_officer,
       provisional_conversion_date: Date.today.beginning_of_month + 6.months,
       completed_at: Date.today.beginning_of_month + 7.months
     )
   }
-  let!(:user_2_project) {
+  let!(:caseworker_project) {
     create(
       :conversion_project,
       urn: 100003,
-      caseworker: user_2,
+      caseworker: caseworker,
       regional_delivery_officer: regional_delivery_officer,
       provisional_conversion_date: Date.today.beginning_of_month + 1.years
     )
@@ -61,14 +61,14 @@ RSpec.feature "Users can view a list of projects" do
       visit projects_path
 
       page_has_project(unassigned_project)
-      page_has_project(user_1_project)
-      page_has_project(user_2_project)
+      page_has_project(user_project)
+      page_has_project(caseworker_project)
     end
 
     scenario "can see the completed project on a separate tab" do
       visit completed_projects_path
 
-      page_has_project(user_2_completed_project)
+      page_has_project(completed_project)
     end
 
     scenario "the open projects are sorted by target completion date" do
@@ -93,32 +93,46 @@ RSpec.feature "Users can view a list of projects" do
       sign_in_with_user(regional_delivery_officer)
     end
 
-    scenario "can only see assigned projects on the projects list" do
+    scenario "can see projects on which they are the regional development officer" do
       visit projects_path
 
       expect(page).to_not have_content(unassigned_project.urn.to_s)
-      expect(page).not_to have_content(user_1_project.urn.to_s)
-      page_has_project(user_2_project)
+      expect(page).to_not have_content(user_project.urn.to_s)
+      page_has_project(caseworker_project)
+    end
+  end
+
+  context "when the user is a caseworker" do
+    before do
+      sign_in_with_user(caseworker)
+    end
+
+    scenario "can see projects on which they are the caseworker" do
+      visit projects_path
+
+      expect(page).to_not have_content(unassigned_project.urn.to_s)
+      expect(page).to_not have_content(user_project.urn.to_s)
+      page_has_project(caseworker_project)
     end
   end
 
   context "when the user does not have an assigned role" do
     before(:each) do
-      sign_in_with_user(user_1)
+      sign_in_with_user(user)
     end
 
     scenario "can only see assigned projects on the projects list" do
       visit projects_path
 
       expect(page).to_not have_content(unassigned_project.urn.to_s)
-      expect(page).to have_content(user_1_project.urn.to_s)
-      expect(page).to_not have_content(user_2_project.urn.to_s)
+      expect(page).to have_content(user_project.urn.to_s)
+      expect(page).to_not have_content(caseworker_project.urn.to_s)
     end
   end
 
   context "when there are no projects in a project list" do
     before do
-      sign_in_with_user(user_1)
+      sign_in_with_user(user)
       Project.destroy_all
     end
 
