@@ -14,12 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - renamed the "Contacts" tab to "External contacts"
 - moved the Caseworker, Team Leader and Regional Delivery Officer details to a
   new "Internal contacts" tab.
+- The notification banner shown to users after a successful operation has a new
+  visual style.
 
 ## [Release 14][release-14]
 
 ### Changed
 
 - Update hint text and error message for provisional conversion date entry
+- the notification banner now has a unique style for when it informs users of a
+  successful action.
 
 ## [Release 13][release-13]
 
