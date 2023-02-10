@@ -1,4 +1,12 @@
 class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
+  attribute :assigned_to_regional_caseworker_team, :boolean
+
+  CASEWORKER_TEAM_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
+
+  def assigned_to_regional_caseworker_team_responses
+    CASEWORKER_TEAM_RESPONSES
+  end
+
   def save
     @project = Conversion::Project.new(
       urn: urn,
@@ -9,7 +17,8 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       provisional_conversion_date: provisional_conversion_date,
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
-      task_list: Conversion::Voluntary::TaskList.new
+      task_list: Conversion::Voluntary::TaskList.new,
+      assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team
     )
 
     return nil unless valid?
