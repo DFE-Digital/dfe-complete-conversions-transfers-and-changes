@@ -2,15 +2,18 @@
   <%= govuk_inset_text(text: t("project.index.empty")) %>
 <% else %>
   <ul class="projects-list list-style-none govuk-!-padding-0">
-    <% @projects.each do |project| %>
-      <li>
-        <span class="govuk-caption-m">URN <%= project.urn %></span>
-        <h2 class="govuk-heading-m govuk-heading-m--school-name">
-          <%= link_to project.establishment.name, path_to_project(project) %>
-        </h2>
-
-        <%= render partial: "projects/index/project_summary", locals: {project: project} %>
-      </li>
+    <% grouped_project = @projects.group_by { |project| project.provisional_conversion_date.strftime("%B %Y openers") } %>
+      <% grouped_project.each do |opening_date, projects| %>
+        <h2 class="govuk-heading-m"><%= opening_date %></h2>
+        <% projects.each do |project| %>
+          <li>
+            <span class="govuk-caption-m">URN <%= project.urn %></span>
+            <h3 class="govuk-heading-m govuk-heading-m--school-name">
+              <%= link_to project.establishment.name, path_to_project(project) %>
+            </h3>
+            <%= render partial: "projects/index/project_summary", locals: {project: project} %>
+          </li>
+      <% end %>
     <% end %>
   </ul>
 <% end %>

@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The notification banner shown to users after a successful operation has a new
   visual style.
 
+### Added
+
+- group projects in project list by their provisional conversion date
+
 ## [Release 14][release-14]
 
 ### Changed
