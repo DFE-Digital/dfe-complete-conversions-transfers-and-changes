@@ -8,6 +8,8 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
   end
 
   def save
+    assigned_to = assigned_to_regional_caseworker_team ? nil : user
+
     @project = Conversion::Project.new(
       urn: urn,
       incoming_trust_ukprn: incoming_trust_ukprn,
@@ -18,7 +20,8 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
       task_list: Conversion::Voluntary::TaskList.new,
-      assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team
+      assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
+      assigned_to: assigned_to
     )
 
     return nil unless valid?
@@ -26,7 +29,7 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
     ActiveRecord::Base.transaction do
       @project.save
       @note = Note.create(body: note_body, project: @project, user: user) if note_body
-      notify_team_leaders(@project)
+      notify_team_leaders(@project) if assigned_to_regional_caseworker_team
     end
 
     @project

@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   new "Internal contacts" tab.
 - The notification banner shown to users after a successful operation has a new
   visual style.
+- If a voluntary project is being handed over to Regional Casework Services,
+  send the team leader notification; if it is not, assign the current user to
+  the project and do not send the notification.
 
 ### Added
 
