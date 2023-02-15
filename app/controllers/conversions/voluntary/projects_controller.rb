@@ -42,7 +42,8 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
       :advisory_board_conditions,
       :establishment_sharepoint_link,
       :trust_sharepoint_link,
-      :note_body
+      :note_body,
+      :assigned_to_regional_caseworker_team
     )
   end
 end

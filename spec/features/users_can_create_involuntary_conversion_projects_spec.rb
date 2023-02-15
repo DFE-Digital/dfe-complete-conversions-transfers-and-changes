@@ -48,5 +48,9 @@ RSpec.feature "Users can create new involuntary conversion projects" do
 
       expect(page).to have_content(two_weeks_ago.to_formatted_s(:govuk))
     end
+
+    scenario "there is no option to assign the project to the Regional Caseworker Team" do
+      expect(page).to_not have_content(I18n.t("helpers.hint.conversion_project.assigned_to_regional_caseworker_team"))
+    end
   end
 end

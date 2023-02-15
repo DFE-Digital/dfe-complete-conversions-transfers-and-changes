@@ -14,5 +14,6 @@ FactoryBot.define do
   end
 
   factory :create_voluntary_project_form, parent: :create_project_form, class: "Conversion::Voluntary::CreateProjectForm" do
+    assigned_to_regional_caseworker_team { false }
   end
 end

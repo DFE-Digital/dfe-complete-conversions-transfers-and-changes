@@ -1,5 +1,15 @@
 class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
+  attribute :assigned_to_regional_caseworker_team, :boolean
+
+  CASEWORKER_TEAM_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
+
+  def assigned_to_regional_caseworker_team_responses
+    CASEWORKER_TEAM_RESPONSES
+  end
+
   def save
+    assigned_to = assigned_to_regional_caseworker_team ? nil : user
+
     @project = Conversion::Project.new(
       urn: urn,
       incoming_trust_ukprn: incoming_trust_ukprn,
@@ -9,7 +19,9 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       provisional_conversion_date: provisional_conversion_date,
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
-      task_list: Conversion::Voluntary::TaskList.new
+      task_list: Conversion::Voluntary::TaskList.new,
+      assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
+      assigned_to: assigned_to
     )
 
     return nil unless valid?
@@ -17,7 +29,7 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
     ActiveRecord::Base.transaction do
       @project.save
       @note = Note.create(body: note_body, project: @project, user: user) if note_body
-      notify_team_leaders(@project)
+      notify_team_leaders(@project) if assigned_to_regional_caseworker_team
     end
 
     @project
