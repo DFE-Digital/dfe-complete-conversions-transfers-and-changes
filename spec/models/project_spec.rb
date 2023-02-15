@@ -362,5 +362,19 @@ RSpec.describe Project, type: :model do
         expect(projects).to_not include(other_project)
       end
     end
+
+    describe "unassigned scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns projects which do not have an `assigned_to` value" do
+        user = create(:user, :regional_delivery_officer)
+        assigned_project = create(:conversion_project, assigned_to: user)
+        unassigned_project = create(:conversion_project, assigned_to: nil, assigned_to_regional_caseworker_team: true)
+
+        projects = Project.unassigned
+        expect(projects).to include(unassigned_project)
+        expect(projects).to_not include(assigned_project)
+      end
+    end
   end
 end
