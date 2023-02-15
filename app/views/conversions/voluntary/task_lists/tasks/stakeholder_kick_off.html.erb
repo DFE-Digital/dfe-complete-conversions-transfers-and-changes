@@ -12,10 +12,13 @@
       <div class="govuk-form-group">
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :introductory_emails)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :local_authority_proforma)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :setup_meeting)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :conversion_checklist)) %>
         <%= form.govuk_date_field :confirmed_conversion_date,
-              omit_day: true,
-              form_group: {classes: "app-confirmed-conversion-date"},
-              legend: {text: t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
+                                  omit_day: true,
+                                  form_group: {classes: "app-confirmed-conversion-date"},
+                                  legend: {text: t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
           <div class="govuk-hint"><%= t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.hint.html") %></div>
 
           <%= govuk_details(
@@ -23,9 +26,6 @@
                 text: t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.guidance.html")
               ) %>
         <% end %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :setup_meeting)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :conversion_checklist)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
