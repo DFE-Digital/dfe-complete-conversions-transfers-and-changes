@@ -16,6 +16,11 @@ class ProjectsController < ApplicationController
     @pagy, @projects = pagy(policy_scope(Project.completed))
   end
 
+  def unassigned
+    authorize Project
+    @pagy, @projects = pagy(policy_scope(Project.unassigned))
+  end
+
   def show
     @project = Project.find(params[:id])
     authorize @project
