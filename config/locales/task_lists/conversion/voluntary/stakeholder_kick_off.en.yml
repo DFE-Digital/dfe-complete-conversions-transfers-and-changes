@@ -71,12 +71,3 @@ en:
               html:
                 <p>You should discuss and record issues that might complicate or delay the project.</p>
                 <p>You can <a href="https://educationgovuk.sharepoint.com/:w:/s/ServiceDeliveryDirectorate/EZx-RuHD_JxEuaCF68ZXpe8BvSQ3ITlysjfNJ28t0_xzfQ?e=hxRZxt" target="_blank">use the conversion checklist (opens in new tab)</a> to guide the conversation and make sure you talk about everything you need to.</p>
-
-          conversion_checklist:
-            title: Share the conversion checklist
-            hint:
-              html: <p>Update the conversion checklist with any agreed actions, dates and comments from the kick-off meeting or call.</p>
-            guidance_link: Who to share the checklist with
-            guidance:
-              html:
-                <p>You should share the updated checklist with everyone invited to the kick-off meeting or call.</p>

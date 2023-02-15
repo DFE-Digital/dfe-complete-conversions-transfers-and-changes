@@ -14,7 +14,6 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :local_authority_proforma)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :setup_meeting)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :conversion_checklist)) %>
         <%= form.govuk_date_field :confirmed_conversion_date,
                                   omit_day: true,
                                   form_group: {classes: "app-confirmed-conversion-date"},
