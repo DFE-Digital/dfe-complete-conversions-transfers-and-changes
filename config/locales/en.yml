@@ -78,6 +78,7 @@ en:
     project_information: Project information
     completed_projects: Completed
     in_progress_projects: In progress
+    unassigned_projects: Unassigned projects
     notes: Notes
     external_contacts: External contacts
     internal_contacts: Internal contacts

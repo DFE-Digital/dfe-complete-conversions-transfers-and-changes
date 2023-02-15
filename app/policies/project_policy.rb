@@ -14,6 +14,10 @@ class ProjectPolicy
     true
   end
 
+  def unassigned?
+    user.team_leader?
+  end
+
   def show?
     true
   end

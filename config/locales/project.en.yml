@@ -11,6 +11,8 @@ en:
           title: Involuntary conversion projects
       completed:
         title: Completed projects
+      unassigned:
+        title: Unassigned projects
       empty: No projects
     show:
       title: Task list

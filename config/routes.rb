@@ -80,6 +80,7 @@ Rails.application.routes.draw do
   resources :projects, only: %i[index show] do
     collection do
       get "completed"
+      get "unassigned"
     end
     get "information", to: "project_information#show"
 

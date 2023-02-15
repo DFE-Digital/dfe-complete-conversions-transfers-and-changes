@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - add healthcheck endpoint
 - The form to create a voluntary conversion project allows the user to indicate
   if the project is being handed over to Regional Casework Services
+- Add tab for unassigned projects just for team leaders view
 
 ## [Release 14][release-14]
 
