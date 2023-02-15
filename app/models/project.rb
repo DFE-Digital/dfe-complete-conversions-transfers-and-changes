@@ -25,6 +25,7 @@ class Project < ApplicationRecord
   belongs_to :caseworker, class_name: "User", optional: true
   belongs_to :team_leader, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
+  belongs_to :assigned_to, class_name: "User", optional: true
 
   scope :by_provisional_conversion_date, -> { order(provisional_conversion_date: :asc) }
 
@@ -34,6 +35,9 @@ class Project < ApplicationRecord
 
   scope :completed, -> { where.not(completed_at: nil) }
   scope :open, -> { where(completed_at: nil) }
+
+  scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
+  scope :assigned_to_regional_delivery_officer, ->(user) { where(assigned_to: user).or(where(regional_delivery_officer: user)) }
 
   def establishment
     @establishment ||= fetch_establishment(urn)

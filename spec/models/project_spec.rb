@@ -7,6 +7,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:provisional_conversion_date).of_type :date }
     it { is_expected.to have_db_column(:caseworker_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
+    it { is_expected.to have_db_column(:assigned_to_id).of_type :uuid }
     it { is_expected.to have_db_column(:caseworker_assigned_at).of_type :datetime }
     it { is_expected.to have_db_column(:advisory_board_date).of_type :date }
     it { is_expected.to have_db_column(:advisory_board_conditions).of_type :text }
@@ -22,6 +23,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:team_leader).required(false) }
+    it { is_expected.to belong_to(:assigned_to).required(false) }
     it { is_expected.to belong_to(:task_list).required(true) }
 
     describe "delete related entities" do
@@ -327,6 +329,36 @@ RSpec.describe Project, type: :model do
 
         expect(projects).to include(open_project_1, open_project_2)
         expect(projects).to_not include(completed_project)
+      end
+    end
+
+    describe "assigned_to_caseworker scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns projects which have the user as either the `caseworker` or `assigned_to`" do
+        user = create(:user, :caseworker)
+        other_project = create(:conversion_project)
+        caseworker_project = create(:conversion_project, caseworker: user)
+        assigned_to_project = create(:conversion_project, assigned_to: user)
+
+        projects = Project.assigned_to_caseworker(user)
+        expect(projects).to include(caseworker_project, assigned_to_project)
+        expect(projects).to_not include(other_project)
+      end
+    end
+
+    describe "assigned_to_regional_delivery_officer scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns projects which have the user as either the `regional_delivery_officer` or `assigned_to`" do
+        user = create(:user, :regional_delivery_officer)
+        other_project = create(:conversion_project)
+        rdo_project = create(:conversion_project, regional_delivery_officer: user)
+        assigned_to_project = create(:conversion_project, assigned_to: user)
+
+        projects = Project.assigned_to_regional_delivery_officer(user)
+        expect(projects).to include(rdo_project, assigned_to_project)
+        expect(projects).to_not include(other_project)
       end
     end
   end

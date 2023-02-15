@@ -154,4 +154,55 @@ RSpec.describe AssignmentsController, type: :request do
         .with("CaseworkerMailer", "caseworker_assigned_notification", "deliver_now", args: [caseworker, Project.last]))
     end
   end
+
+  describe "#assign_assigned_to" do
+    let(:project) { create(:conversion_project) }
+    let(:project_id) { project.id }
+
+    subject(:perform_request) do
+      get project_assign_assigned_to_path(project_id)
+      response
+    end
+
+    it "returns a successful response" do
+      expect(perform_request).to have_http_status :success
+    end
+
+    context "when the user is a not a team leader" do
+      let(:user) { create(:user, caseworker: true) }
+
+      it "returns a successful response" do
+        expect(perform_request).to have_http_status :success
+      end
+    end
+  end
+
+  describe "#update_assigned_to" do
+    let(:project) { create(:conversion_project, assigned_to: nil) }
+    let(:project_id) { project.id }
+    let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
+
+    subject(:perform_request) do
+      post project_assign_assigned_to_path(project_id), params: {conversion_project: {assigned_to_id: regional_delivery_officer.id}}
+      response
+    end
+
+    it "assigns the project assignee and redirects with a message" do
+      expect(perform_request).to redirect_to(conversions_voluntary_project_internal_contacts_path(project))
+      expect(request.flash[:notice]).to eq(I18n.t("project.assign.assigned_to.success"))
+
+      expect(project.reload.assigned_to).to eq regional_delivery_officer
+    end
+
+    context "when the user is a not a team leader" do
+      let(:user) { create(:user, caseworker: true) }
+
+      it "assigns the project assignee and redirects with a message" do
+        expect(perform_request).to redirect_to(conversions_voluntary_project_internal_contacts_path(project))
+        expect(request.flash[:notice]).to eq(I18n.t("project.assign.assigned_to.success"))
+
+        expect(project.reload.assigned_to).to eq regional_delivery_officer
+      end
+    end
+  end
 end

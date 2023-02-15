@@ -44,6 +44,8 @@ Rails.application.routes.draw do
       post "regional-delivery-officer", action: :update_regional_delivery_officer
       get "caseworker", action: :assign_caseworker
       post "caseworker", action: :update_caseworker
+      get "assigned_to", action: :assign_assigned_to
+      post "assigned_to", action: :update_assigned_to
     end
   end
 
@@ -93,6 +95,8 @@ Rails.application.routes.draw do
       post "regional-delivery-officer", action: :update_regional_delivery_officer
       get "caseworker", action: :assign_caseworker
       post "caseworker", action: :update_caseworker
+      get "assigned_to", action: :assign_assigned_to
+      post "assigned_to", action: :update_assigned_to
     end
   end
 

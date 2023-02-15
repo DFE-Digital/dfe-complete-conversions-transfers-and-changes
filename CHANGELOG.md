@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - group projects in project list by their provisional conversion date
+- Any user can now assign a project to any other user, via the "Assign to" row
+  on the project's "Internal contacts" tab.
 
 ## [Release 14][release-14]
 

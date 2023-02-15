@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_123106) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_161446) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -262,6 +262,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_123106) do
     t.string "type"
     t.uuid "task_list_id"
     t.string "task_list_type"
+    t.uuid "assigned_to_id"
+    t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
@@ -284,6 +286,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_123106) do
   add_foreign_key "contacts", "projects"
   add_foreign_key "notes", "projects"
   add_foreign_key "notes", "users"
+  add_foreign_key "projects", "users", column: "assigned_to_id"
   add_foreign_key "projects", "users", column: "caseworker_id"
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
   add_foreign_key "projects", "users", column: "team_leader_id"

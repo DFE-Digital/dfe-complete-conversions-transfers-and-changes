@@ -69,6 +69,8 @@ en:
         success: Regional delivery officer has been assigned successfully
       caseworker:
         success: Caseworker has been assigned successfully
+      assigned_to:
+        success: Project has been assigned successfully
   project_information:
     show:
       side_navigation:
@@ -79,6 +81,7 @@ en:
           caseworker: Caseworker
           team_lead: Team lead
           regional_delivery_officer: Regional delivery officer
+          assigned_to: Assigned to
           unassigned: Not yet assigned
           advisory_board_date: Date of advisory board
           establishment_sharepoint_link: School SharePoint folder
