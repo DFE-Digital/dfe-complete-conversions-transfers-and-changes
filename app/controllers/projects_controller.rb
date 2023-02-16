@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 
   def unassigned
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.unassigned))
+    @pagy, @projects = pagy(policy_scope(Project.unassigned_to_user.assigned_to_regional_caseworker_team))
   end
 
   def show
