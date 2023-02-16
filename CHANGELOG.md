@@ -40,6 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   kick-off task
 - Add new action Check provisional conversion date to the involuntary
   stakeholder kick-off task
+- Add Assign button to projects on the Unassigned projects tab
 
 ## [Release 14][release-14]
 

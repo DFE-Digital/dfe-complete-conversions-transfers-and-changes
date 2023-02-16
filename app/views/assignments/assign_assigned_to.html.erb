@@ -13,6 +13,7 @@
                     size: "l"},
             class: "accessible-autocomplete-target",
             options: {include_blank: true, selected: @project.assigned_to&.id} %>
+      <%= form.hidden_field :return_to, value: request.referrer %>
 
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", path_to_project_information(@project) %>
