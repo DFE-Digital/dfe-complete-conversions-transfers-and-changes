@@ -54,6 +54,10 @@ class Project < ApplicationRecord
     completed_at.present?
   end
 
+  def unassigned_to_user?
+    assigned_to.nil?
+  end
+
   private def fetch_establishment(urn)
     result = AcademiesApi::Client.new.get_establishment(urn)
     raise result.error if result.error.present?
