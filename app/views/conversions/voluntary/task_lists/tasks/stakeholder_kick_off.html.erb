@@ -12,12 +12,26 @@
       <div class="govuk-form-group">
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :introductory_emails)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :local_authority_proforma)) %>
+        <div class="govuk-checkboxes__item">
+          <%= hidden_field_tag("conversion_voluntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", "0", {id: nil}) %>
+          <%= check_box_tag("conversion_voluntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", 1, @task.check_provisional_conversion_date, {class: "govuk-checkboxes__input"}) %>
+          <%= label_tag("conversion_voluntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.title", date: @project.provisional_conversion_date.strftime("01 %B %Y")), {class: "govuk-label govuk-checkboxes__label"}) %>
+          <div class="hint">
+            <%= t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.hint.html") %>
+          </div>
+          <div class="guidance">
+              <%= govuk_details(summary_text: t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.guidance_link")) do %>
+                <%= t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.guidance.html") %>
+              <% end %>
+            </div>
+        </div>
+
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :setup_meeting)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
         <%= form.govuk_date_field :confirmed_conversion_date,
-                                  omit_day: true,
-                                  form_group: {classes: "app-confirmed-conversion-date"},
-                                  legend: {text: t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
+              omit_day: true,
+              form_group: {classes: "app-confirmed-conversion-date"},
+              legend: {text: t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
           <div class="govuk-hint"><%= t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.hint.html") %></div>
 
           <%= govuk_details(
