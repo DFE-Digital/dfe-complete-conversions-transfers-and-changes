@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The text for the external stakeholder kick off task on the voluntary
   conversion route has been updated, one action removed and the order of the
   actions changed slightly.
+- Amend the text for the stakeholder kick off task on the involuntary conversion
+  route.
 
 ### Added
 
