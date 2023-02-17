@@ -2,6 +2,7 @@ class Conversion::Involuntary::Tasks::StakeholderKickOff < TaskList::Task
   attribute :introductory_emails
   attribute :local_authority_proforma
   attribute :setup_meeting
+  attribute :meeting
   attribute :confirmed_conversion_date
   attribute "confirmed_conversion_date(3i)"
   attribute "confirmed_conversion_date(2i)"
