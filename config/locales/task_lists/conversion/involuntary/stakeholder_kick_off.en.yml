@@ -75,3 +75,10 @@ en:
               html:
                 <p>Everyone should have agreed to and know the confirmed conversion date.</p>
                 <p>You only need to enter a month and year. All schools convert on the first day of the month.</p>
+          check_provisional_conversion_date:
+            title: "Check the local authority is able to convert the school by the provisional conversion date: %{date}"
+            guidance_link: What to do if the local authority is not able meet the provisional conversion date
+            guidance:
+              html:
+                <p>Tell the trust if the local authority cannot complete the conversion by the provisional date.</p>
+                <p>If this happens you'll need to work with the trust and local authority to agree a new date.</p>

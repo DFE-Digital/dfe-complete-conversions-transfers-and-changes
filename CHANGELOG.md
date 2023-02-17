@@ -38,6 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add tab for unassigned projects just for team leaders view
 - Add a new action "Host stakeholder meeting" to the involuntary stakeholder
   kick-off task
+- Add new action Check provisional conversion date to the involuntary
+  stakeholder kick-off task
 
 ## [Release 14][release-14]
 
