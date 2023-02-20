@@ -7,13 +7,13 @@
       <ul class="app-task-list__items">
         <% section.tasks.each do |task| %>
           <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                  <%= govuk_link_to(
-                        t("#{task.locales_path}.title"),
-                        task_edit_path(task),
-                        aria: {describedby: task_id(task)}
-                      ) %>
-              </span>
+            <span class="app-task-list__task-name">
+              <%= govuk_link_to(
+                    t("#{task.locales_path}.title"),
+                    task_edit_path(task),
+                    aria: {describedby: task_id(task)}
+                  ) %>
+            </span>
             <%= task_status_tag(task, task_id(task)) %>
           </li>
         <% end %>

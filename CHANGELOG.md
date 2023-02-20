@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   send the team leader notification; if it is not, assign the current user to
   the project and do not send the notification.
 - Update Rails to 7.0.4.2 to address some security issues.
+- Tasks displayed on the task list are no longer indented.
 
 ### Added
 
