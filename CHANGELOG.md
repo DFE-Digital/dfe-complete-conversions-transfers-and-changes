@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The text for the external stakeholder kick off task on the voluntary
   conversion route has been updated, one action removed and the order of the
   actions changed slightly.
+- Amend the text for the stakeholder kick off task on the involuntary conversion
+  route.
 
 ### Added
 
@@ -34,6 +36,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The form to create a voluntary conversion project allows the user to indicate
   if the project is being handed over to Regional Casework Services
 - Add tab for unassigned projects just for team leaders view
+- Add a new action "Host stakeholder meeting" to the involuntary stakeholder
+  kick-off task
+- Add new action Check provisional conversion date to the involuntary
+  stakeholder kick-off task
 
 ## [Release 14][release-14]
 
