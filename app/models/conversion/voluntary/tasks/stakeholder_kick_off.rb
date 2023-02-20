@@ -3,8 +3,8 @@ class Conversion::Voluntary::Tasks::StakeholderKickOff < TaskList::Task
   attribute :local_authority_proforma
   attribute :setup_meeting
   attribute :meeting
-  attribute :conversion_checklist
   attribute :confirmed_conversion_date
+  attribute :check_provisional_conversion_date
   attribute "confirmed_conversion_date(3i)"
   attribute "confirmed_conversion_date(2i)"
   attribute "confirmed_conversion_date(1i)"
