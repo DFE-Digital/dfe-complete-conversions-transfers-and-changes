@@ -24,6 +24,10 @@ en:
     summary:
       route:
         title: Route
+      completed_by:
+        title: Completed by
+      unassigned: Unassigned
+      assign: Assign
   helpers:
     label:
       conversion_project:

@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   def index
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.open))
+    @pagy, @projects = pagy(policy_scope(Project.open.includes(:assigned_to)))
 
     EstablishmentsFetcher.new.call(@projects)
     IncomingTrustsFetcher.new.call(@projects)
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
 
   def unassigned
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.unassigned))
+    @pagy, @projects = pagy(policy_scope(Project.unassigned_to_user.assigned_to_regional_caseworker_team))
   end
 
   def show

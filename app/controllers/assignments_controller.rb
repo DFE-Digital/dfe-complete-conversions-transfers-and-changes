@@ -41,9 +41,10 @@ class AssignmentsController < ApplicationController
   end
 
   def update_assigned_to
-    @project.update(assigned_to_params)
+    @project.update(assigned_to_params.except(:return_to))
+    return_to = assigned_to_params[:return_to] || helpers.path_to_project_internal_contacts(@project)
 
-    redirect_to helpers.path_to_project_internal_contacts(@project), notice: t("project.assign.assigned_to.success")
+    redirect_to return_to, notice: t("project.assign.assigned_to.success")
   end
 
   private def authorize_user
@@ -63,7 +64,7 @@ class AssignmentsController < ApplicationController
   end
 
   private def assigned_to_params
-    params.require(:conversion_project).permit(:assigned_to_id)
+    params.require(:conversion_project).permit(:assigned_to_id, :return_to)
   end
 
   private def find_project

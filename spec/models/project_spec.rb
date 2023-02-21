@@ -260,6 +260,22 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "unassigned_to_user?" do
+    context "when the project has an `assigned_to` value" do
+      it "returns false" do
+        project = build(:conversion_project, assigned_to: create(:user))
+        expect(project.unassigned_to_user?).to eq false
+      end
+    end
+
+    context "when the project has no `assigned_to` value" do
+      it "returns true" do
+        project = build(:conversion_project, assigned_to: nil)
+        expect(project.unassigned_to_user?).to eq true
+      end
+    end
+  end
+
   describe "Scopes" do
     describe "conversions" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
@@ -363,17 +379,30 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "unassigned scope" do
+    describe "unassigned_to_user scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "returns projects which do not have an `assigned_to` value" do
         user = create(:user, :regional_delivery_officer)
         assigned_project = create(:conversion_project, assigned_to: user)
-        unassigned_project = create(:conversion_project, assigned_to: nil, assigned_to_regional_caseworker_team: true)
+        unassigned_project = create(:conversion_project, assigned_to: nil)
 
-        projects = Project.unassigned
+        projects = Project.unassigned_to_user
         expect(projects).to include(unassigned_project)
         expect(projects).to_not include(assigned_project)
+      end
+    end
+
+    describe "assigned_to_regional_casework_team scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns projects which have `assigned_to_regional_casework_team` set to `true`" do
+        assigned_project = create(:conversion_project, assigned_to_regional_caseworker_team: true)
+        unassigned_project = create(:conversion_project, assigned_to_regional_caseworker_team: false)
+
+        projects = Project.assigned_to_regional_caseworker_team
+        expect(projects).to include(assigned_project)
+        expect(projects).to_not include(unassigned_project)
       end
     end
   end

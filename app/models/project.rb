@@ -39,7 +39,8 @@ class Project < ApplicationRecord
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
   scope :assigned_to_regional_delivery_officer, ->(user) { where(assigned_to: user).or(where(regional_delivery_officer: user)) }
 
-  scope :unassigned, -> { where(assigned_to: nil).and(where(assigned_to_regional_caseworker_team: true)) }
+  scope :unassigned_to_user, -> { where assigned_to: nil }
+  scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
 
   def establishment
     @establishment ||= fetch_establishment(urn)
@@ -51,6 +52,10 @@ class Project < ApplicationRecord
 
   def completed?
     completed_at.present?
+  end
+
+  def unassigned_to_user?
+    assigned_to.nil?
   end
 
   private def fetch_establishment(urn)

@@ -16,9 +16,17 @@
 
     <%= render partial: "projects/index/project_summary_item",
           locals: {label: t("conversion_project.summary.route.title"), content: t("conversion_project.#{project.route}.route")} %>
+
   </div>
 
   <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+  <% if project.unassigned_to_user? && policy(:assignment).assign_assigned_to? && current_page?("/projects/unassigned") %>
+    <%= link_to t("conversion_project.summary.assign"),
+          path_to_assigned_to_project_assignment(project),
+          class: "govuk-button govuk-button--secondary",
+          data: {module: "govuk-button"} %>
+  <% end %>
 
   <% if project.completed? %>
     <%= render partial: "projects/index/project_summary_item",
@@ -26,5 +34,4 @@
 
     <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
   <% end %>
-
 </div>
