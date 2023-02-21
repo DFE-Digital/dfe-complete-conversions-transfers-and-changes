@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 15][release-15]
+
 ### Changed
 
 - the voluntary conversion, stakeholder kick off task had a duplicated action.
@@ -530,7 +532,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-14...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-15...HEAD
+[release-15]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-14...release-15
 [release-14]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-13...release-14
 [release-13]:
