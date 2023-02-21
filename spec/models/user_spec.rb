@@ -17,10 +17,11 @@ RSpec.describe User do
     let!(:team_leader_2) { create(:user, :team_leader, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
     let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
     let!(:regional_delivery_officer_2) { create(:user, :regional_delivery_officer, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
+    let!(:user_without_role) { create(:user, caseworker: false, team_leader: false, regional_delivery_officer: false) }
 
     describe "order_by_first_name" do
       it "orders by first_name" do
-        expect(User.order_by_first_name.count).to be 6
+        expect(User.order_by_first_name.count).to be 7
         expect(User.order_by_first_name.first).to eq caseworker_2
         expect(User.order_by_first_name.last).to eq team_leader
       end
@@ -47,6 +48,13 @@ RSpec.describe User do
         expect(User.caseworkers.count).to be 2
         expect(User.caseworkers.first).to eq caseworker_2
         expect(User.caseworkers.last).to eq caseworker
+      end
+    end
+
+    describe "all_assignable_users" do
+      it "only includes users who have a role" do
+        expect(User.all_assignable_users.count).to eq 6
+        expect(User.all_assignable_users).to_not include(user_without_role)
       end
     end
   end
