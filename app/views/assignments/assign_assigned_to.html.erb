@@ -5,7 +5,7 @@
 
       <span class="govuk-caption-m">URN <%= @project.urn %></span>
       <%= form.govuk_collection_select :assigned_to_id,
-            @all_eligible_users,
+            @all_assignable_users,
             :id,
             ->(user) { full_name_and_email(user) },
             label: {text: t("assignment.assign_assigned_to.title", school_name: @project.establishment.name),

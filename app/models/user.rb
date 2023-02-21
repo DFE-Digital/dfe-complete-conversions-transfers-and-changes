@@ -7,6 +7,8 @@ class User < ApplicationRecord
   scope :regional_delivery_officers, -> { where(regional_delivery_officer: true).order_by_first_name }
   scope :caseworkers, -> { where(caseworker: true).order_by_first_name }
 
+  scope :all_assignable_users, -> { where.not(caseworker: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
+
   validates :first_name, presence: true
   validates :last_name, presence: true
 
