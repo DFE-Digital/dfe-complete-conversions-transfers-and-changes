@@ -25,7 +25,7 @@
   <%= govuk_summary_list(actions: false) do |summary_list|
     summary_list.row do |row|
       row.key { t('project_information.show.school_details.rows.original_school_name') }
-      row.value { t("project_information.show.school_details.rows.school_name_link_to_gias.html", school_name: @project.establishment.name, link_to_gias: safe_link_to(t('project_information.show.school_details.rows.view_in_gias'), "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/#{@project.urn}")) }
+      row.value { (@project.establishment.name + "<br/>" + link_to_school_on_gias(@project.urn)).html_safe }
     end
     summary_list.row do |row|
       row.key { t('project_information.show.school_details.rows.old_urn') }
