@@ -31,4 +31,10 @@ module ProjectHelper
 
     link_to(t("project_information.show.school_details.rows.view_in_gias"), "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/#{urn}", target: :_blank)
   end
+
+  def link_to_trust_on_gias(ukprn)
+    raise ArgumentError if ukprn.nil?
+
+    link_to(t("project_information.show.trust_details.rows.view_in_gias"), "https://get-information-schools.service.gov.uk/Groups/Search?GroupSearchModel.Text=#{ukprn}", target: :_blank)
+  end
 end

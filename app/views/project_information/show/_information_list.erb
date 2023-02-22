@@ -55,7 +55,7 @@
   <%= govuk_summary_list(actions: false) do |summary_list|
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.incoming_trust_name') }
-      row.value { @project.incoming_trust.name }
+      row.value { (@project.incoming_trust.name + "<br/>" + link_to_trust_on_gias(@project.incoming_trust_ukprn)).html_safe }
     end
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.ukprn') }
