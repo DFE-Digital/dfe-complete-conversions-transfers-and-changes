@@ -85,6 +85,7 @@ Rails.application.configure do
 
   # configure the host names
   config.hosts << ENV["HOSTNAME"]
+  config.hosts << IPAddr.new(ENV["CONTAINER_VNET"])
   config.hosts.concat ENV.fetch("ALLOWED_HOSTS", "").split(",")
 
   # configure ActionMailer

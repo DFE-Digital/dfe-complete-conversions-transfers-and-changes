@@ -58,3 +58,9 @@ the default behaviour.
 We only use this in CI to run our AXE accessibility checks. See:
 
 https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/blob/505ed05431c8398db9dd3ceb51918b77ea148761/script/all/test-accessibility#L6
+
+`CONTAINER_VNET`
+
+Contains a range of IP addresses used by the monitoring health probes. This
+range is added to the `ALLOWED_HOSTS` on production, so that the probes can hit
+the `/healthcheck` endpoint to confirm the app is up & running.
