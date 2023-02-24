@@ -121,9 +121,9 @@ variable "monitor_endpoint_healthcheck" {
   type        = string
 }
 
-variable "enable_container_health_probe" {
-  description = "Enable liveness probes for the Container"
-  type        = bool
+variable "container_health_probe_path" {
+  description = "Specifies the path that is used to determine the liveness of the Container"
+  type        = string
 }
 
 variable "monitor_enable_slack_webhook" {
