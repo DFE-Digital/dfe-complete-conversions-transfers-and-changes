@@ -140,3 +140,23 @@ variable "monitor_slack_channel" {
   description = "Slack channel name/id to send messages to"
   type        = string
 }
+
+variable "cdn_frontdoor_enable_rate_limiting" {
+  description = "Enable CDN Front Door Rate Limiting. This will create a WAF policy, and CDN security policy. For pricing reasons, there will only be one WAF policy created."
+  type        = bool
+}
+
+variable "cdn_frontdoor_rate_limiting_threshold" {
+  description = "Maximum number of concurrent requests before Rate Limiting policy is applied"
+  type        = number
+}
+
+variable "existing_network_watcher_name" {
+  description = "Use an existing network watcher to add flow logs."
+  type        = string
+}
+
+variable "existing_network_watcher_resource_group_name" {
+  description = "Existing network watcher resource group."
+  type        = string
+}
