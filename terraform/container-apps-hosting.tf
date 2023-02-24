@@ -21,9 +21,11 @@ module "azure_container_apps_hosting" {
 
   enable_redis_cache = local.enable_redis_cache
 
-  enable_cdn_frontdoor         = local.enable_cdn_frontdoor
-  cdn_frontdoor_custom_domains = local.cdn_frontdoor_custom_domains
-  cdn_frontdoor_host_redirects = local.cdn_frontdoor_host_redirects
+  enable_cdn_frontdoor                  = local.enable_cdn_frontdoor
+  cdn_frontdoor_custom_domains          = local.cdn_frontdoor_custom_domains
+  cdn_frontdoor_host_redirects          = local.cdn_frontdoor_host_redirects
+  cdn_frontdoor_enable_rate_limiting    = local.cdn_frontdoor_enable_rate_limiting
+  cdn_frontdoor_rate_limiting_threshold = local.cdn_frontdoor_rate_limiting_threshold
 
   enable_dns_zone      = local.enable_dns_zone
   dns_zone_domain_name = local.dns_zone_domain_name
@@ -36,4 +38,7 @@ module "azure_container_apps_hosting" {
   monitor_enable_slack_webhook    = local.monitor_enable_slack_webhook
   monitor_slack_webhook_receiver  = local.monitor_slack_webhook_receiver
   monitor_slack_channel           = local.monitor_slack_channel
+
+  existing_network_watcher_name                = local.existing_network_watcher_name
+  existing_network_watcher_resource_group_name = local.existing_network_watcher_resource_group_name
 }
