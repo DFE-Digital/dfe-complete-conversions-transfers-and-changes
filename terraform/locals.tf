@@ -21,8 +21,8 @@ locals {
   tfvars_filename                        = var.tfvars_filename
   enable_monitoring                      = var.enable_monitoring
   monitor_email_receivers                = var.monitor_email_receivers
+  enable_container_health_probe          = var.enable_container_health_probe
   cdn_frontdoor_health_probe_path        = var.cdn_frontdoor_health_probe_path
-  container_health_probe_path            = var.container_health_probe_path
   monitor_endpoint_healthcheck           = var.monitor_endpoint_healthcheck
   monitor_enable_slack_webhook           = var.monitor_enable_slack_webhook
   monitor_slack_webhook_receiver         = var.monitor_slack_webhook_receiver
