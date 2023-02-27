@@ -405,5 +405,21 @@ RSpec.describe Project, type: :model do
         expect(projects).to_not include(unassigned_project)
       end
     end
+
+    describe "by_confirmed_conversion_date scope" do
+      let(:month) { 1 }
+      let(:year) { 2025 }
+
+      let(:task_list) { create(:voluntary_conversion_task_list, stakeholder_kick_off_confirmed_conversion_date: Date.new(2025, 1, 1)) }
+
+      let(:project_in_scope) { create(:conversion_project, task_list_id: task_list.id) }
+      let(:project_out_of_scope) { create(:conversion_project) }
+
+      xit "returns only projects with a `stakeholder_kick_off_confirmed_conversion_date` of the required month & year" do
+        result = Project.by_confirmed_conversion_date(month, year)
+        expect(result).to include(project_in_scope)
+        expect(result).to_not include(project_not_in_scope)
+      end
+    end
   end
 end

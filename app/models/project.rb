@@ -42,6 +42,8 @@ class Project < ApplicationRecord
   scope :unassigned_to_user, -> { where assigned_to: nil }
   scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
 
+  scope :by_confirmed_conversion_date, ->(month, year) { where(id: connection.exec_query("SELECT id FROM projects WHERE task_list_id IN (SELECT id FROM all_confirmed_conversion_dates WHERE MONTH(stakeholder_kick_off_confirmed_conversion_date) = #{month} AND YEAR(stakeholder_kick_off_confirmed_conversion_date) = #{year})").rows.flatten) }
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end
