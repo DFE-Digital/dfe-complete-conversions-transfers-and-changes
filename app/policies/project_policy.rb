@@ -30,6 +30,10 @@ class ProjectPolicy
     create?
   end
 
+  def openers?
+    true
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

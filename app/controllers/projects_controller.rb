@@ -25,4 +25,15 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
   end
+
+  def openers
+    authorize Project
+
+    year = params[:year]
+    month = params[:month]
+
+    # TODO: add a scope for projects with a conversion date of this month & year
+    @projects = Project.all
+    @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
+  end
 end

@@ -87,6 +87,7 @@ Rails.application.routes.draw do
         get "completed"
         get "unassigned"
 
+        get "openers/:month/:year", to: "projects#openers", constraints: {month: /(?:1[0-2]|[1-9])/, year: /(?:(?:20|21|23|24)[0-9]{2})/}
       end
       get "information", to: "project_information#show"
 
