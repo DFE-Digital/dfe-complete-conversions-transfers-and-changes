@@ -75,4 +75,48 @@ RSpec.describe ProjectHelper, type: :helper do
       end
     end
   end
+
+  describe "#link_to_school_on_gias" do
+    context "when a urn is provided" do
+      let(:urn) { "12345" }
+
+      it "returns a link to the school on gias" do
+        expect(link_to_school_on_gias(urn)).to include("https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/#{urn}")
+      end
+
+      it "opens the link in a new tab" do
+        expect(link_to_school_on_gias(urn)).to include("_blank")
+      end
+    end
+
+    context "when a urn is not provided" do
+      let(:urn) { nil }
+
+      it "returns an argument error" do
+        expect { link_to_school_on_gias(urn) }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe "#link_to_trust_on_gias" do
+    context "when a ukprn is provided" do
+      let(:ukprn) { "101456" }
+
+      it "returns a link to the trust on gias" do
+        expect(link_to_trust_on_gias(ukprn)).to include("https://get-information-schools.service.gov.uk/Groups/Search?GroupSearchModel.Text=#{ukprn}")
+      end
+
+      it "opens the link in a new tab" do
+        expect(link_to_trust_on_gias(ukprn)).to include("_blank")
+      end
+    end
+
+    context "when a ukprn is not provided" do
+      let(:ukprn) { nil }
+
+      it "returns an argument error" do
+        expect { link_to_trust_on_gias(ukprn) }.to raise_error(ArgumentError)
+      end
+    end
+  end
 end

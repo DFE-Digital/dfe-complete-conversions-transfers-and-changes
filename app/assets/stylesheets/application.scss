@@ -1,7 +1,9 @@
 $govuk-font-url-function: "font-url";
 $govuk-image-url-function: "image-url";
-
 $govuk-global-styles: true;
+
+// override the default page width
+$govuk-page-width: 1024px;
 
 @import "govuk-frontend/govuk/all";
 @import "@ministryofjustice/frontend/moj/components/sub-navigation/sub-navigation";
