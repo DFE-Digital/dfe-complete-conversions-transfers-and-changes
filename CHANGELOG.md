@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Voluntary > External Stakeholder Kickoff > Send introductory emails copy
+  changes to improve words and handle faith schools/diocese
+
 ## [Release 15][release-15]
 
 ### Changed
