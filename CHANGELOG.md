@@ -10,9 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Involuntary/Sponsored > External Stakeholder Kickoff > Send introductory
   emails copy changes to improve words and handle faith schools/diocese
+- the conversion date can now only be set once on voluntary conversion projects,
+  subsequent changes are considered 'slips' and we be handled separately and
+  later.
 - Voluntary > External Stakeholder Kickoff > Send introductory emails copy
   changes to improve words and handle faith schools/diocese
-- the width of the applicaiton has been increased from 960px to 1024px when
+- the width of the application has been increased from 960px to 1024px when
   viewed on desktop class device.
 
 ## [Release 15][release-15]
