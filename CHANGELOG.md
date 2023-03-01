@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- the width of the applicaiton has been increased from 960px to 1024px when
+  viewed on desktop class device.
+
 ## [Release 15][release-15]
 
 ### Changed
