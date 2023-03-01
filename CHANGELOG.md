@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Involuntary/Sponsored > External Stakeholder Kickoff > Send introductory
   emails copy changes to improve words and handle faith schools/diocese
+- the conversion date can now only be set once on involuntary conversion
+  projects, subsequent changes are considered 'slips' and we be handled
+  separately and later.
 - the conversion date can now only be set once on voluntary conversion projects,
   subsequent changes are considered 'slips' and we be handled separately and
   later.

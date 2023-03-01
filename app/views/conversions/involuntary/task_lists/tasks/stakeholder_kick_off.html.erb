@@ -27,11 +27,13 @@
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :setup_meeting)) %>
       <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
 
-      <%= form.govuk_date_field :confirmed_conversion_date,
-            omit_day: true,
-            form_group: {classes: "app-confirmed-conversion-date"},
-            legend: {text: t("conversion.involuntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
-        <div class="govuk-hint"><%= t("conversion.involuntary.tasks.stakeholder_kick_off.confirmed_conversion_date.hint.html") %></div>
+      <% if @project.conversion_date.nil? %>
+        <%= form.govuk_date_field :confirmed_conversion_date,
+              omit_day: true,
+              form_group: {classes: "app-confirmed-conversion-date"},
+              legend: {text: t("conversion.involuntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
+          <div class="govuk-hint"><%= t("conversion.involuntary.tasks.stakeholder_kick_off.confirmed_conversion_date.hint.html") %></div>
+        <% end %>
       <% end %>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>
