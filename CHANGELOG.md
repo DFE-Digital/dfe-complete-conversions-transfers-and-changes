@@ -43,6 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add new action Check provisional conversion date to the involuntary
   stakeholder kick-off task
 - Add Assign button to projects on the Unassigned projects tab
+- Add link to the trust on GIAS from the project information tab
 
 ## [Release 14][release-14]
 
