@@ -67,10 +67,9 @@ RSpec.describe ProjectHelper, type: :helper do
 
     context "when the conversion date is confirmed" do
       it "returns the formatted date and a provisional tag" do
-        project = build(:conversion_project)
-        project.task_list.stakeholder_kick_off_confirmed_conversion_date = Date.today
+        project = build(:conversion_project, conversion_date: Date.today)
 
-        expect(helper.converting_on_date(project)).to include project.task_list.stakeholder_kick_off_confirmed_conversion_date.to_formatted_s(:govuk)
+        expect(helper.converting_on_date(project)).to include project.conversion_date.to_formatted_s(:govuk)
         expect(helper.converting_on_date(project)).not_to include "provisional"
       end
     end
