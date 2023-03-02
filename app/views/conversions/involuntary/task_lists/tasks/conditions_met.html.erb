@@ -10,7 +10,7 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :emailed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :confirm_all_conditions_met)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>

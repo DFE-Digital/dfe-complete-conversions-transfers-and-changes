@@ -19,7 +19,7 @@ en:
               <li>change the date in KIM</li>
               </ol>
 
-          emailed:
+          confirm_all_conditions_met:
             title: Email Academies Operational Practice Unit to confirm all conditions have been met
             guidance_link: How to confirm if conditions have been met
             guidance:
