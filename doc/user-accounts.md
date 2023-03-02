@@ -33,9 +33,8 @@ This registration contains the secrets used to allow the application to utilise
 the directory, we provide these as environment variables:
 
 `AZURE_TENANT_ID` tenant id, this is the same across all environments and is the
-DfE T1 tenant  
-`AZURE_APPLICATION_CLIENT_ID` application id, this is the same across all
-environments and is the application registration id linked above
+DfE T1 tenant `AZURE_APPLICATION_CLIENT_ID` application id, this is the same
+across all environments and is the application registration id linked above
 `AZURE_APPLICATION_CLIENT_SECRET` secret, each environment has its own secret
 
 ### Secrets
@@ -89,7 +88,12 @@ arguments. For example:
 bin/rails users:create["john.doe@education.gov.uk","John","Doe"]
 ```
 
-> **NOTE:** In some shells, such as Zsh, square brackets must be escaped.
+> **NOTE:** In some shells, such as Zsh, square brackets must be escaped. For
+> example:
+
+```bash
+bin/rails users:create\["john.doe@education.gov.uk","John","Doe"\]
+```
 
 At least the `caseworker` role will need to be assigned to the new user on the
 Rails console:
