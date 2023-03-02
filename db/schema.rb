@@ -25,6 +25,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_151008) do
     t.index ["project_id"], name: "index_contacts_on_project_id"
   end
 
+  create_table "conversion_date_histories", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.date "revised_date"
+    t.date "previous_date"
+    t.uuid "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "conversion_involuntary_task_lists", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.boolean "handover_review"
     t.datetime "created_at", null: false
@@ -242,6 +250,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_151008) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "task_identifier"
+    t.uuid "conversion_date_history_id"
     t.index ["project_id"], name: "index_notes_on_project_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
