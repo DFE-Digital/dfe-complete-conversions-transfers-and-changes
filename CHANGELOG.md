@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Involuntary/Sponsored > External Stakeholder Kickoff > Send introductory
+  emails copy changes to improve words and handle faith schools/diocese
 - Voluntary > External Stakeholder Kickoff > Send introductory emails copy
   changes to improve words and handle faith schools/diocese
 - the width of the applicaiton has been increased from 960px to 1024px when
