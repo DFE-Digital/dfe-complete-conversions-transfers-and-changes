@@ -1,5 +1,13 @@
 class Conversion::Voluntary::TaskList < TaskList::Base
   self.table_name = "conversion_voluntary_task_lists"
+  after_save :set_conversion_date
+
+  def set_conversion_date
+    return if project.nil?
+    return if project.conversion_date.present?
+
+    project.update(conversion_date: stakeholder_kick_off_confirmed_conversion_date)
+  end
 
   TASK_LIST_LAYOUT = [
     {
