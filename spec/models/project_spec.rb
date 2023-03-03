@@ -406,5 +406,23 @@ RSpec.describe Project, type: :model do
         expect(projects).to_not include(unassigned_project)
       end
     end
+
+    describe "opening_by_month_year scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns projects with a confirmed conversion date" do
+        conversion_project = create(:conversion_project)
+        expect(Project.opening_by_month_year(1, 2023)).to_not include(conversion_project)
+      end
+
+      it "only returns projects with a confirmed conversion date in that month & year" do
+        project_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 1, 1))
+        project_not_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 2, 1))
+        project_without_conversion_date = create(:conversion_project)
+
+        expect(Project.opening_by_month_year(1, 2023)).to_not include(project_not_in_scope, project_without_conversion_date)
+        expect(Project.opening_by_month_year(1, 2023)).to include(project_in_scope)
+      end
+    end
   end
 end
