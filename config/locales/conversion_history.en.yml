@@ -1,0 +1,8 @@
+en:
+  errors:
+    attributes:
+      revised_date:
+        format: Enter a valid month and year
+        transaction: Conversion date could not be saved
+      note_body:
+        blank: Enter a reason
