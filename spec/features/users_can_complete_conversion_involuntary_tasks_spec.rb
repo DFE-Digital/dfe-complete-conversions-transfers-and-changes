@@ -47,6 +47,24 @@ RSpec.feature "Users can complete tasks in an involuntary conversion project" do
     expect(table_row).to have_content("Completed")
   end
 
+  context "when the project has a confirmed conversion date" do
+    let(:involuntary_project) { create(:involuntary_conversion_project, conversion_date: Date.new(2024, 1, 1)) }
+
+    scenario "the Conditions met task shows the confirmed conversion date in the hint text" do
+      click_on "Confirm all conditions have been met"
+      expect(page).to have_content("All conditions must be met before the deadline or the school will not be able to convert on 1 January 2024")
+    end
+  end
+
+  context "when the project does not have a confirmed conversion date" do
+    let(:involuntary_project) { create(:involuntary_conversion_project, provisional_conversion_date: Date.new(2023, 12, 1)) }
+
+    scenario "the Conditions met task shows the provisional conversion date in the hint text" do
+      click_on "Confirm all conditions have been met"
+      expect(page).to have_content("All conditions must be met before the deadline or the school will not be able to convert on 1 December 2023")
+    end
+  end
+
   mandatory_tasks.each do |task|
     scenario "a user can complete the actions on the mandatory #{I18n.t("conversion.involuntary.tasks.#{task}.title")} task" do
       click_on I18n.t("conversion.involuntary.tasks.#{task}.title")

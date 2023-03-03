@@ -6,30 +6,23 @@ en:
           title: Confirm all conditions have been met
           hint:
             html:
-              <p>The deadline to confirm all conditions have been met will be in the Baseline email you received. The school will not be able to open on the provisional conversion date unless all conditions have been met.</p>
-          guidance_link: What to do if conditions are not met
+              "The deadline for meeting all conditions is in the email you got from the ADOP (Academies Delivery Operational Practice) team. All conditions must be met before the deadline or the school will not be able to convert on %{date}"
+          guidance_link: How to check all conditions have been met
           guidance:
             html:
-              <p class="govuk-body-m">All conditions must be met before a school can open as an academy.</p>
-              <p class="govuk-body-m">If there are outstanding conditions, you must:</p>
-              <ol class="govuk-list govuk-list--number">
-                <li>inform the school of the outstanding tasks</li>
-                <li>agree a new provisional conversion date with all stakeholders</li>
-                <li>email the Academies Operational Practice Unit at <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">academiesdelivery.operations@education.gov.uk</a> with the new date</li>
-                <li>change the date in KIM</li>
-                <li>inform the regional delivery officer who started on this project</li>
-                </ol>
+              <p>You need to check that:</p>
+              <ul>
+                <li>legal documents are cleared</li>
+                <li>legal documents are signed by the necessary people</li>
+                <li>the school have confirmed all of their actions are complete</li>
+              </ul>
 
           confirm_all_conditions_met:
-            title: Email Academies Operational Practice Unit to confirm all conditions have been met
-            guidance_link: How to confirm if conditions have been met
+            title: Confirm all conditions are met
+            hint:
+              html:
+                <p>This will change the conversion's status on the academy openers list. ADOP use that list to prepare funding agreement letters.</p>
+            guidance_link: What to do if conditions are not met
             guidance:
               html:
-                <p>You must email the Academies Operational Practice Unit at <a href="mailto:academiesdelivery.operations@education.gov.uk" target="_blank">academiesdelivery.operations@education.gov.uk</a> to confirm if all conditions are met for this school and it will open as an academy on the provisional conversion date. The email only needs to confirm if all conditions have been met, or not. You do not need to go into detail.</p>
-                <p>Things you'll need to check to confirm if all conditions have been met include:</p>
-                <ul>
-                  <li>commercial transfer agreement signed</li>
-                  <li>leases agreed and signed</li>
-                  <li>risk protection arrangement in place and insurer confirmed</li>
-                  <li>relevant documents signed</li>
-                </ul>
+                <p>You must agree a new conversion date with all stakeholders and slip the project.</p>
