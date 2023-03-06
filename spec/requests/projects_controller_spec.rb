@@ -89,14 +89,25 @@ RSpec.describe ProjectsController, type: :request do
     end
 
     context "when the month and year are present and in scope" do
+      before do
+        (100001..100002).each do |urn|
+          mock_successful_api_responses(urn: urn, ukprn: 10061021)
+        end
+
+        allow(EstablishmentsFetcher).to receive(:new).and_return(mock_establishments_fetcher)
+        allow(IncomingTrustsFetcher).to receive(:new).and_return(mock_trusts_fetcher)
+      end
+
+      let(:mock_establishments_fetcher) { double(EstablishmentsFetcher, call: true) }
+      let(:mock_trusts_fetcher) { double(IncomingTrustsFetcher, call: true) }
+
       it "shows a page title with the month & year" do
         get "/projects/openers/1/2022"
         expect(response.body).to include("Academies opening in January 2022")
       end
 
-      # TODO: page currently shows all conversion projects
       it "returns project details in table form" do
-        conversion_project = create(:conversion_project)
+        conversion_project = create(:conversion_project, conversion_date: Date.new(2022, 1, 1))
         get "/projects/openers/1/2022"
         expect(response.body).to include(
           conversion_project.establishment.name,
@@ -106,11 +117,18 @@ RSpec.describe ProjectsController, type: :request do
         )
       end
 
-      xit "only returns projects whose confirmed conversion date is in that month & year"
+      it "only returns projects whose confirmed conversion date is in that month & year" do
+        project_in_scope = create(:conversion_project, urn: 100001, conversion_date: Date.new(2022, 1, 1))
+        project_not_in_scope = create(:conversion_project, urn: 100002, conversion_date: Date.new(2022, 2, 1))
+
+        get "/projects/openers/1/2022"
+        expect(response.body).to include(project_in_scope.urn.to_s)
+        expect(response.body).to_not include(project_not_in_scope.urn.to_s)
+      end
 
       context "when there are no academies opening in that month & year" do
-        xit "shows a helpful message" do
-          get "/projects/openers/01/2022"
+        it "shows a helpful message" do
+          get "/projects/openers/1/2022"
           expect(response.body).to include("There are currently no schools expected to become academies in January 2022")
         end
       end
