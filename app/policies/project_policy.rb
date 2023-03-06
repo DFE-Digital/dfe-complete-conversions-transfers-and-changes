@@ -34,6 +34,10 @@ class ProjectPolicy
     true
   end
 
+  def change_conversion_date?
+    @record.conversion_date.present?
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

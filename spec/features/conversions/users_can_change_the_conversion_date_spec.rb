@@ -62,4 +62,14 @@ RSpec.feature "Users can change the conversion date" do
 
     expect(page).to have_content(note)
   end
+
+  context "when the project conversion date is provisional" do
+    scenario "they cannot change the conversion date" do
+      project = create(:conversion_project)
+
+      visit conversions_voluntary_project_path(project)
+
+      expect(page).not_to have_link(I18n.t("conversion_new_date_history_form.new"))
+    end
+  end
 end
