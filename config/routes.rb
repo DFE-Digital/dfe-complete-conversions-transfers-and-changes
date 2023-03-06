@@ -65,39 +65,46 @@ Rails.application.routes.draw do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
+      get "projects/:id", to: "/conversions/voluntary/projects#show", constraints: {id: /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i}, as: :project
+
       resources :projects,
-        only: %i[show new create],
+        only: %i[new create],
         concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
+      get "projects/:id", to: "/conversions/involuntary/projects#show", constraints: {id: /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i}, as: :project
+
       resources :projects,
-        only: %i[show new create],
+        only: %i[new create],
         concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable]
     end
   end
 
-  resources :projects, only: %i[index show] do
-    collection do
-      get "completed"
-      get "unassigned"
-    end
-    get "information", to: "project_information#show"
+  constraints(id: /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i) do
+    resources :projects, only: %i[index show] do
+      collection do
+        get "completed"
+        get "unassigned"
 
-    put "complete", to: "projects_complete#complete"
+      end
+      get "information", to: "project_information#show"
 
-    resources :notes, except: %i[show], concerns: :has_destroy_confirmation
-    resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation
+      put "complete", to: "projects_complete#complete"
 
-    namespace :assign, controller: "/assignments" do
-      get "team-lead", action: :assign_team_leader
-      post "team-lead", action: :update_team_leader
-      get "regional-delivery-officer", action: :assign_regional_delivery_officer
-      post "regional-delivery-officer", action: :update_regional_delivery_officer
-      get "caseworker", action: :assign_caseworker
-      post "caseworker", action: :update_caseworker
-      get "assigned_to", action: :assign_assigned_to
-      post "assigned_to", action: :update_assigned_to
+      resources :notes, except: %i[show], concerns: :has_destroy_confirmation
+      resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation
+
+      namespace :assign, controller: "/assignments" do
+        get "team-lead", action: :assign_team_leader
+        post "team-lead", action: :update_team_leader
+        get "regional-delivery-officer", action: :assign_regional_delivery_officer
+        post "regional-delivery-officer", action: :update_regional_delivery_officer
+        get "caseworker", action: :assign_caseworker
+        post "caseworker", action: :update_caseworker
+        get "assigned_to", action: :assign_assigned_to
+        post "assigned_to", action: :update_assigned_to
+      end
     end
   end
 
