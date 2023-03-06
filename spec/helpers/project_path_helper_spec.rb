@@ -17,6 +17,7 @@ RSpec.describe ProjectPathHelper, type: :helper do
       expect(helper.path_to_regional_delivery_officer_project_assignment(project)).to eq conversions_voluntary_project_assign_regional_delivery_officer_path(project)
       expect(helper.path_to_caseworker_project_assignment(project)).to eq conversions_voluntary_project_assign_caseworker_path(project)
       expect(helper.path_to_assigned_to_project_assignment(project)).to eq conversions_voluntary_project_assign_assigned_to_path(project)
+      expect(helper.path_to_new_conversion_date(project)).to eq conversions_voluntary_project_conversion_date_path(project)
     end
   end
 
@@ -34,6 +35,7 @@ RSpec.describe ProjectPathHelper, type: :helper do
       expect(helper.path_to_regional_delivery_officer_project_assignment(project)).to eq conversions_involuntary_project_assign_regional_delivery_officer_path(project)
       expect(helper.path_to_caseworker_project_assignment(project)).to eq conversions_involuntary_project_assign_caseworker_path(project)
       expect(helper.path_to_assigned_to_project_assignment(project)).to eq conversions_involuntary_project_assign_assigned_to_path(project)
+      expect(helper.path_to_new_conversion_date(project)).to eq conversions_involuntary_project_conversion_date_path(project)
     end
   end
 end

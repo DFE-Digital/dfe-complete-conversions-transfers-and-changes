@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- users can now change the conversion date beyond the initial confirmed date
+
 ### Changed
 
 - Involuntary/Sponsored > External Stakeholder Kickoff guidance iteration and

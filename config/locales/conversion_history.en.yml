@@ -1,4 +1,10 @@
 en:
+  conversion_new_date_history_form:
+    title: Change conversion date for %{school_name}, URN%{urn}, from %{conversion_date}
+    new: Change conversion date
+    cancel: Cancel
+    submit: Confirm new conversion date
+    success: Conversion date has been updated
   errors:
     attributes:
       revised_date:
@@ -6,3 +12,13 @@ en:
         transaction: Conversion date could not be saved
       note_body:
         blank: Enter a reason
+  helpers:
+    label:
+      conversion_new_date_history_form:
+        note_body: Why is a new conversion date needed?
+    legend:
+      conversion_new_date_history_form:
+        revised_date: Enter new conversion date
+    hint:
+      conversion_new_date_history_form:
+        revised_date: You should agree the new conversion date with relevant parties. You only need to enter a month and year as all schools convert on the first day of the month.
