@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - users can now change the conversion date beyond the initial confirmed date
 - the conversion date cannot be changed unless it has been confirmed in the
   External stakeholder kick off task
+- when changing the conversion date, users now see a confirmation page when the
+  change was successful
 
 ### Changed
 

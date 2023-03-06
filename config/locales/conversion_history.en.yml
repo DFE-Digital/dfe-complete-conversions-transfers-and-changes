@@ -4,7 +4,19 @@ en:
     new: Change conversion date
     cancel: Cancel
     submit: Confirm new conversion date
-    success: Conversion date has been updated
+    success:
+      panel:
+        title: Conversion date changed
+      body_html:
+        <p>You have changed the conversion date for %{school_name} %{urn}.</p>
+        <h2 class="govuk-heading-m">New conversion date</h2>
+        <p>The new conversion date is %{conversion_date}.</p>
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p>The conversion has moved to the new month in your project list.</p>
+        <p>You can <a href="%{project_path}">continue working on this conversion</a>, or <a href="%{projects_path}">choose another project to work on</a> from your list.</p>
+        <h2 class="govuk-heading-m">Need to change the conversion date?</h2>
+        <p>You can change the conversion date as many times as you need.</p>
+        <p>If you made a mistake, go back and enter the correct date.</p>
   errors:
     attributes:
       revised_date:

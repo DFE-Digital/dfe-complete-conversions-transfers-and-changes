@@ -11,7 +11,7 @@ class Conversions::DateHistoriesController < ApplicationController
     @form = Conversion::NewDateHistoryForm.new(**conversion_date_history_params, project_id: @project.id, user_id: current_user.id)
 
     if @form.save
-      redirect_to helpers.path_to_project(@project), notice: t("conversion_new_date_history_form.success")
+      render "confirm_new"
     else
       render :new
     end

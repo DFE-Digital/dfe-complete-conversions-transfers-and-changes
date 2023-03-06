@@ -8,7 +8,7 @@ RSpec.feature "Users can change the conversion date" do
     sign_in_with_user(user)
   end
 
-  scenario "they can change the date on a conversion project" do
+  scenario "they can change the date on a conversion project and see a confirmation view" do
     revised_conversion_date = (Date.today + 6.months).at_beginning_of_month
     project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
 
@@ -25,8 +25,7 @@ RSpec.feature "Users can change the conversion date" do
 
     click_button(I18n.t("conversion_new_date_history_form.submit"))
 
-    expect(page).to have_content("Success")
-    expect(page).to have_content(revised_conversion_date.to_formatted_s(:govuk))
+    expect(page).to have_content(I18n.t("conversion_new_date_history_form.success.panel.title"))
   end
 
   scenario "they can cancel the change if needed" do
@@ -58,6 +57,7 @@ RSpec.feature "Users can change the conversion date" do
     fill_in(I18n.t("helpers.label.conversion_new_date_history_form.note_body"), with: note)
     click_button(I18n.t("conversion_new_date_history_form.submit"))
 
+    click_on("continue working on this conversion")
     click_on("Notes")
 
     expect(page).to have_content(note)
