@@ -1,4 +1,18 @@
-<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l"><%= @project.establishment.name %></span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= t("conversion.involuntary.tasks.conditions_met.title") %></h1>
+
+    <div class="app-task-hint">
+      <% date = @project.conversion_date || @project.provisional_conversion_date %>
+      <%= t("conversion.involuntary.tasks.conditions_met.hint.html", date: date.to_fs(:govuk)) %>
+    </div>
+
+    <%= govuk_details(summary_text: t("conversion.involuntary.tasks.conditions_met.guidance_link")) do %>
+      <%= t("conversion.involuntary.tasks.conditions_met.guidance.html") %>
+    <% end %>
+  </div>
+</div>
 
 <% content_for :pre_content_nav do %>
   <% render partial: "shared/back_link", locals: {href: task_list_path(@project)} %>
@@ -10,7 +24,7 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :emailed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :confirm_all_conditions_met)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") %>

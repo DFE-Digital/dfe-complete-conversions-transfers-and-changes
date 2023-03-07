@@ -1,3 +1,3 @@
 class Conversion::Voluntary::Tasks::ConditionsMet < TaskList::Task
-  attribute :emailed
+  attribute :confirm_all_conditions_met
 end

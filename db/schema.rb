@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_01_133116) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_02_151008) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_133116) do
     t.boolean "single_worksheet_send"
     t.boolean "school_completed_emailed"
     t.boolean "school_completed_saved"
-    t.boolean "conditions_met_emailed"
+    t.boolean "conditions_met_confirm_all_conditions_met"
     t.boolean "share_information_email"
     t.boolean "tell_regional_delivery_officer_email"
     t.boolean "redact_and_send_redact"
@@ -195,7 +195,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_133116) do
     t.boolean "single_worksheet_send"
     t.boolean "school_completed_emailed"
     t.boolean "school_completed_saved"
-    t.boolean "conditions_met_emailed"
+    t.boolean "conditions_met_confirm_all_conditions_met"
     t.boolean "redact_and_send_redact"
     t.boolean "redact_and_send_save"
     t.boolean "redact_and_send_send"
