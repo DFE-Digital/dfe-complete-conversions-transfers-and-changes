@@ -35,4 +35,13 @@ module ProjectHelper
 
     link_to(t("project_information.show.trust_details.rows.view_in_gias"), "https://get-information-schools.service.gov.uk/Groups/Search?GroupSearchModel.Text=#{ukprn}", target: :_blank)
   end
+
+  def all_conditions_met_tag(project)
+    tag = if project.all_conditions_met?
+      govuk_tag(text: "yes", colour: "turquoise")
+    else
+      govuk_tag(text: "not started", colour: "blue")
+    end
+    tag.to_s.html_safe
+  end
 end
