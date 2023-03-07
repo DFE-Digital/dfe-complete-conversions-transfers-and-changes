@@ -11,7 +11,7 @@ en:
           introductory_emails:
             title: Send introductory emails
             hint:
-              html: <p>Email the school, trust and solicitors. Also email the diocese if this is a faith school. You should email the local authority separately.</p>
+              html: <p>Email the school, trust and solicitors. Also email the diocese if this is a faith school.</p>
             guidance_link: What to include in introductory emails
             guidance:
               html:
@@ -29,7 +29,8 @@ en:
 
           local_authority_proforma:
             title: Check the local authority proforma
-            hint: Check the information is correct and there is no missing information.
+            hint:
+              html: <p>Check the information is correct and there is no missing information.</p>
             guidance_link: What to do if you don't have the local authority proforma
             guidance:
               html:
@@ -37,20 +38,15 @@ en:
                 <p>However, some local authorities will not share the proforma until after the academy order has been issued.<p>
                 <p>If it is not in SharePoint, check if the person who prepared the project has asked for it.</p>
                 <p>If they have not, ask the local authority to send the proforma to you and save it in SharePoint.</p>
-
+                <p>You can <a href="https://educationgovuk.sharepoint.com/sites/ServiceDeliveryDirectorate/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x012000265B42F1C27524438F6B1CC14FCF9E05&id=%2Fsites%2FServiceDeliveryDirectorate%2FShared%20Documents%2FOperational%20Delivery%2FGuidance%2C%20Training%20and%20Resources%2F%281%29%20CONVERSIONS%20%2D%20Guidance%20and%20Templates%2FCONVERSIONS%20%2D%20Template%20Emails%20%26%20Documents&viewid=84d1a8e7%2D052b%2D4a94%2D8d1b%2D850c4e6f284f" target="blank">use a local authority email template (opens in new tab)</a> to help you write this email.</p>
           confirmed_conversion_date:
             title: Enter the confirmed conversion date
             hint:
-              html: <p>Check the local authority have capacity to convert the school by this date before you enter it. You only need to enter a month and year. All schools convert on the first day of the month.</p>
-            guidance_link: What to do if the local authority does not have capacity
-            guidance:
               html:
-                <p>The school and trust will have given a provisional date they want to convert on.</p>
-                <p>Tell them if the local authority cannot complete the conversion by the provisional date.</p>
-                <p>If the local authority cannot complete the conversion by the provisional date, you'll need to work with the school, trust and local authority to agree a new date.</p>
+                <p>Everyone should have agreed to and know the confirmed conversion date.</p>
+                <p>You only need to enter a month and year. All schools convert on the first day of the month.</p>
             errors:
               format: Enter a valid confirmed conversion date
-
           setup_meeting:
             title: Send invites to the kick-off meeting or call
             hint:
@@ -61,7 +57,6 @@ en:
                 <p>You should have included possible dates for the kick-off meeting in your introductory email.</p>
                 <p>Once the school have got back to you with a suitable date and list of attendees, send out invites to arrange the time, date and location of the meeting. It's likely to be a video call over Microsoft Teams.</p>
                 <p>Some schools and trusts may prefer to have a one-to-one call with you, rather than a meeting involving all stakeholders.</p>
-
           meeting:
             title: Host the kick-off meeting or call
             hint:
@@ -76,7 +71,7 @@ en:
             title: "Check the local authority is able to convert the school by the provisional conversion date: %{date}"
             hint:
               html:
-                <p>The school or trust should have provided a provisional conversion date.</p>
+                <p>The school or trust may have provided a provisional conversion date. Email the local authority to make sure they are able to do what they need to do by this date.</p>
             guidance_link: What to do if the local authority is not able meet the provisional conversion date
             guidance:
               html:

@@ -17,6 +17,9 @@
         <%= hidden_field_tag("conversion_involuntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", "0", {id: nil}) %>
         <%= check_box_tag("conversion_involuntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", 1, @task.check_provisional_conversion_date, {class: "govuk-checkboxes__input"}) %>
         <%= label_tag("conversion_involuntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", t("conversion.involuntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.title", date: @project.provisional_conversion_date.to_formatted_s(:govuk)), {class: "govuk-label govuk-checkboxes__label"}) %>
+        <div class="hint">
+            <%= t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.hint.html") %>
+          </div>
         <div class="guidance">
           <%= govuk_details(summary_text: t("conversion.involuntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.guidance_link")) do %>
             <%= t("conversion.involuntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.guidance.html") %>
