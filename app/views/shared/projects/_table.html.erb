@@ -8,6 +8,7 @@
         <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.urn") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.incoming_trust") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.ukprn") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.all_conditions_met") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.view") %></th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
         <td class="govuk-table__cell"><%= project.urn %></td>
         <td class="govuk-table__cell"><%= project.incoming_trust.name %></td>
         <td class="govuk-table__cell"><%= project.incoming_trust.ukprn %></td>
+        <td class="govuk-table__cell"><%= all_conditions_met_tag(project) %></td>
        <td class="govuk-table__cell">
          <a href="<%= path_to_project(project) %>">
            <%= t("project.openers.table.headers.open.html", school_name: project.establishment.name) %>

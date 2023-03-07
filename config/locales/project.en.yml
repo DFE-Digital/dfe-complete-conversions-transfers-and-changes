@@ -86,6 +86,7 @@ en:
           urn: URN
           incoming_trust: Incoming trust
           ukprn: UKPRN
+          all_conditions_met: All conditions met
           view: View project
           open:
             html:
