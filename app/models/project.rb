@@ -60,6 +60,10 @@ class Project < ApplicationRecord
     assigned_to.nil?
   end
 
+  def all_conditions_met?
+    task_list.conditions_met_confirm_all_conditions_met?
+  end
+
   private def fetch_establishment(urn)
     result = AcademiesApi::Client.new.get_establishment(urn)
     raise result.error if result.error.present?
