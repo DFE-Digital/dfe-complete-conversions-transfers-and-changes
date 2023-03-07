@@ -72,7 +72,7 @@ RSpec.describe UserImporter do
       end
 
       it "rolls back the transaction" do
-        expect { call_user_importer }.to raise_error(ActiveRecord::NotNullViolation)
+        expect { call_user_importer }.to raise_error(InvalidEntryError)
 
         expect(User.count).to be 1
 
@@ -85,6 +85,21 @@ RSpec.describe UserImporter do
             regional_delivery_officer: false
           )
         ).to exist
+      end
+    end
+
+    context "when an email address is invalid" do
+      let(:users_csv) do
+        <<~CSV
+          email,first_name,last_name,team_leader,regional_delivery_officer
+          john.doe.education.gov.uk,John,Doe,1,0
+          jane.doe@education.gov.uk,Jane,Doe,1,0
+        CSV
+      end
+
+      it "returns an error message and does not create a user with that email address" do
+        expect { call_user_importer }.to raise_error(InvalidEntryError)
+        expect(User.find_by(email: "john.doe.education.gov.uk")).to eql(nil)
       end
     end
   end

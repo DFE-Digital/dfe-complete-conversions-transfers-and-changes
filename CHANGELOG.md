@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - add a Project Openers table view
+- Add email validation to the user model
 
 ## [Release 15][release-15]
 
