@@ -73,6 +73,23 @@ en:
         success: Caseworker has been assigned successfully
       assigned_to:
         success: Project has been assigned successfully
+    openers:
+      title: Academies opening in %{date}
+      subtitle: A list of schools becoming academies
+      empty:
+        html:
+          <p>There are currently no schools expected to become academies in %{date}.</p>
+          <p>Check with your line manager if you were expecting some schools to convert in this month.</p>
+      table:
+        headers:
+          school: School
+          urn: URN
+          incoming_trust: Incoming trust
+          ukprn: UKPRN
+          view: View project
+          open:
+            html:
+              Open <span class="govuk-visually-hidden">%{school_name}</span> project
   project_information:
     show:
       side_navigation:

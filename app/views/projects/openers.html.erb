@@ -1,0 +1,13 @@
+<%= render partial: "projects/shared/signed_in_as", locals: {email_address: current_user.email} %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.openers.title", date: @date) %>
+    </h1>
+    <p><%= t("project.openers.subtitle") %></p>
+
+    <%= render partial: "/shared/projects/table", locals: {projects: @projects, date: @date} %>
+  </div>
+</div>
