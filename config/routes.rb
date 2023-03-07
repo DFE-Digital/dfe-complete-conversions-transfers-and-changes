@@ -1,3 +1,7 @@
+VALID_UUID_REGEX = /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i
+MONTH_1_12_REGEX = /(?:1[0-2]|[1-9])/
+YEAR_2000_2499_REGEX = /(?:(?:20|21|23|24)[0-9]{2})/
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -65,7 +69,7 @@ Rails.application.routes.draw do
     get "/", to: "/conversions/projects#index"
     namespace :voluntary do
       get "/", to: "/conversions/voluntary/projects#index"
-      get "projects/:id", to: "/conversions/voluntary/projects#show", constraints: {id: /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i}, as: :project
+      get "projects/:id", to: "/conversions/voluntary/projects#show", constraints: {id: VALID_UUID_REGEX}, as: :project
 
       resources :projects,
         only: %i[new create],
@@ -73,7 +77,7 @@ Rails.application.routes.draw do
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"
-      get "projects/:id", to: "/conversions/involuntary/projects#show", constraints: {id: /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i}, as: :project
+      get "projects/:id", to: "/conversions/involuntary/projects#show", constraints: {id: VALID_UUID_REGEX}, as: :project
 
       resources :projects,
         only: %i[new create],
@@ -81,13 +85,13 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints(id: /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i) do
+  constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index show] do
       collection do
         get "completed"
         get "unassigned"
 
-        get "openers/:month/:year", to: "projects#openers", constraints: {month: /(?:1[0-2]|[1-9])/, year: /(?:(?:20|21|23|24)[0-9]{2})/}
+        get "openers/:month/:year", to: "projects#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
       end
       get "information", to: "project_information#show"
 
