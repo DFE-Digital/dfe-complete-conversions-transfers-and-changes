@@ -25,14 +25,4 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
   end
-
-  def openers
-    authorize Project
-
-    year = params[:year]
-    month = params[:month]
-
-    @projects = Project.opening_by_month_year(month, year)
-    @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
-  end
 end
