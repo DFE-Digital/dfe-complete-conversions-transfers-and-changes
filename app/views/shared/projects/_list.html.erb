@@ -2,7 +2,7 @@
   <%= govuk_inset_text(text: t("project.index.empty")) %>
 <% else %>
   <ul class="projects-list list-style-none govuk-!-padding-0">
-    <% grouped_project = @projects.group_by { |project| project.provisional_conversion_date.strftime("%B %Y openers") } %>
+    <% grouped_project = @projects.group_by { |project| project.conversion_date.nil? ? project.provisional_conversion_date.strftime("%B %Y openers") : project.conversion_date.strftime("%B %Y openers") } %>
       <% grouped_project.each do |opening_date, projects| %>
         <h2 class="govuk-heading-m"><%= opening_date %></h2>
         <% projects.each do |project| %>
