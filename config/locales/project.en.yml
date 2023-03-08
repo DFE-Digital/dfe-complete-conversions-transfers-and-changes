@@ -112,6 +112,7 @@ en:
         rows:
           original_school_name: Original school name
           view_in_gias: View the school's information in GIAS (opens in new tab)
+          address: Addresss
           old_urn: Old Unique Reference Number
           school_type: School type
           age_range: Age range

@@ -138,4 +138,17 @@ RSpec.describe ProjectHelper, type: :helper do
       end
     end
   end
+
+  describe "#address_markup" do
+    it "returns the address on mutiple lines wrapped in the <address> tag" do
+      establishment = build(:academies_api_establishment)
+      markup = address_markup(establishment.address)
+
+      expect(markup).to include("address")
+      expect(markup).to include("/address")
+      expect(markup).to include("#{establishment.address_street}<br/>")
+      expect(markup).to include("#{establishment.address_additional}<br/>")
+      expect(markup).to include(establishment.address_postcode.to_s)
+    end
+  end
 end

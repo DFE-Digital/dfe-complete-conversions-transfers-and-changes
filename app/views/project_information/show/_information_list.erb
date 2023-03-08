@@ -28,6 +28,10 @@
       row.value { (@project.establishment.name + "<br/>" + link_to_school_on_gias(@project.urn)).html_safe }
     end
     summary_list.row do |row|
+      row.key { t('project_information.show.school_details.rows.address') }
+      row.value { address_markup(@project.establishment.address) }
+    end
+    summary_list.row do |row|
       row.key { t('project_information.show.school_details.rows.old_urn') }
       row.value { @project.urn.to_s }
     end

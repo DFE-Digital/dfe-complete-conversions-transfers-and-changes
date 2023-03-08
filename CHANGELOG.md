@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   table
 - Sort the project openers table by All conditions met = true and then
   establishment name
+- the school address from Get information about schools is now shown in the
+  school details on the project information tab
 
 ### Changed
 
