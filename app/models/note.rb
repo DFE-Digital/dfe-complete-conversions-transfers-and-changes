@@ -1,6 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :project
   belongs_to :user
+  belongs_to :conversion_date_history, class_name: "Conversion::DateHistory", optional: true
 
   validates :body, presence: true, allow_blank: false
 
