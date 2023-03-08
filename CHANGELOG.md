@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   change was successful
 - Show a tag for a project's "All conditions met?" status in the project openers
   table
+- Sort the project openers table by All conditions met = true and then
+  establishment name
 
 ### Changed
 
