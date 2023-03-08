@@ -64,6 +64,11 @@ variable "enable_redis_cache" {
   type        = bool
 }
 
+variable "enable_event_hub" {
+  description = "Send Azure Container App logs to an Event Hub sink"
+  type        = bool
+}
+
 variable "enable_worker_container" {
   description = "Conditionally launch a worker container. This container uses the same image and environment variables as a the default container app, but allows a different container commanmd to be ran. The worker container does not expose any ports."
   type        = bool

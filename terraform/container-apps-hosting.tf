@@ -17,6 +17,8 @@ module "azure_container_apps_hosting" {
   enable_worker_container  = local.enable_worker_container
   worker_container_command = local.worker_container_command
 
+  enable_event_hub = local.enable_event_hub
+
   enable_mssql_database = local.enable_mssql_database
 
   enable_redis_cache = local.enable_redis_cache

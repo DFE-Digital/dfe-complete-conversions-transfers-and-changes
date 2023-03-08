@@ -13,6 +13,7 @@ locals {
   enable_mssql_database                        = var.enable_mssql_database
   enable_redis_cache                           = var.enable_redis_cache
   enable_cdn_frontdoor                         = var.enable_cdn_frontdoor
+  enable_event_hub                             = var.enable_event_hub
   cdn_frontdoor_custom_domains                 = var.cdn_frontdoor_custom_domains
   cdn_frontdoor_host_redirects                 = var.cdn_frontdoor_host_redirects
   cdn_frontdoor_enable_rate_limiting           = var.cdn_frontdoor_enable_rate_limiting
