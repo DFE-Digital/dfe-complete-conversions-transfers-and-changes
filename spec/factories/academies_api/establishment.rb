@@ -9,5 +9,11 @@ FactoryBot.define do
     phase { "Secondary" }
     diocese_name { "Diocese of West Placefield" }
     region_name { "West Midlands" }
+    address_street { "The Street" }
+    address_locality { "Locality" }
+    address_additional { "Additional" }
+    address_town { "Town" }
+    address_county { "County" }
+    address_postcode { "PC1 PC2" }
   end
 end

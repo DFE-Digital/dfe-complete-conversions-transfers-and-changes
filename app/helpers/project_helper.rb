@@ -44,4 +44,8 @@ module ProjectHelper
     end
     tag.to_s.html_safe
   end
+
+  def address_markup(address)
+    tag.address address.compact.join("<br/>").html_safe, class: %w[govuk-address]
+  end
 end
