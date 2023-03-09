@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the width of the application has been increased from 960px to 1024px when
   viewed on desktop class device.
 - Amended the Confirm all conditions met task content
+- Amended the text on the Project completed page
 
 ### Added
 

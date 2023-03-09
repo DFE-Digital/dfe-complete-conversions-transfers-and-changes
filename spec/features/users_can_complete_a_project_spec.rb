@@ -15,6 +15,7 @@ RSpec.feature "Users can complete a project" do
     click_on I18n.t("project.complete.submit_button")
 
     expect(page).to have_content("Project completed")
+    expect(page).to have_content("You have completed the project for #{project.establishment.name} #{project.urn}.")
     expect(project.reload.completed_at).not_to be_nil
 
     expect(page).to have_link "short survey", href: "https://forms.office.com/e/xf0k4LcWVN"
