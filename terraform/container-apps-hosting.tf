@@ -1,5 +1,5 @@
 module "azure_container_apps_hosting" {
-  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v0.14.3"
+  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v0.14.6"
 
   environment    = local.environment
   project_name   = local.project_name
@@ -16,6 +16,8 @@ module "azure_container_apps_hosting" {
 
   enable_worker_container  = local.enable_worker_container
   worker_container_command = local.worker_container_command
+
+  enable_event_hub = local.enable_event_hub
 
   enable_mssql_database = local.enable_mssql_database
 
