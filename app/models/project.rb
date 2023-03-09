@@ -42,7 +42,7 @@ class Project < ApplicationRecord
   scope :unassigned_to_user, -> { where assigned_to: nil }
   scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
 
-  scope :opening_by_month_year, ->(month, year) { where.not(conversion_date: nil).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
+  scope :opening_by_month_year, ->(month, year) { includes(:task_list).where.not(conversion_date: nil).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
 
   def establishment
     @establishment ||= fetch_establishment(urn)
@@ -58,6 +58,10 @@ class Project < ApplicationRecord
 
   def unassigned_to_user?
     assigned_to.nil?
+  end
+
+  def all_conditions_met?
+    task_list.conditions_met_confirm_all_conditions_met?
   end
 
   private def fetch_establishment(urn)

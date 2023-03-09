@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   External stakeholder kick off task
 - when changing the conversion date, users now see a confirmation page when the
   change was successful
+- Show a tag for a project's "All conditions met?" status in the project openers
+  table
+- Sort the project openers table by All conditions met = true and then
+  establishment name
 
 ### Changed
 
