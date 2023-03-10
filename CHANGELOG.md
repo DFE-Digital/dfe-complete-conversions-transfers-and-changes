@@ -38,6 +38,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   viewed on desktop class device.
 - Amended the Confirm all conditions met task content
 - Amended the text on the Project completed page
+- The Voluntary project creation journey now has two different "endings"
+  depending on whether the project is being handed over to Regional Caseworker
+  services or not
 
 ### Added
 

@@ -27,7 +27,12 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
     if @project.valid?
       @created_project = @project.save
 
-      redirect_to conversions_voluntary_project_path(@created_project), notice: I18n.t("conversion_project.voluntary.create.success")
+      if project_params["assigned_to_regional_caseworker_team"].eql?("true")
+        @project = @created_project
+        render "created"
+      else
+        redirect_to conversions_voluntary_project_path(@created_project), notice: I18n.t("conversion_project.voluntary.create.assigned_to_regional_delivery_officer.html")
+      end
     else
       render :new
     end
