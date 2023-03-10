@@ -62,7 +62,7 @@ RSpec.describe Conversion::NewDateHistoryForm, type: :model do
   describe "#save" do
     it "creates the conversion date history and note" do
       mock_successful_api_calls(establishment: 123456, trust: 12345678)
-      project = create(:conversion_project, conversion_date: Date.today)
+      project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
       user = create(:user, :caseworker)
       form = create_valid_form_object
       form.project_id = project.id
@@ -84,7 +84,7 @@ RSpec.describe Conversion::NewDateHistoryForm, type: :model do
 
     it "updates the project conversion date with the revised date" do
       mock_successful_api_calls(establishment: 123456, trust: 12345678)
-      project = create(:conversion_project, conversion_date: Date.today)
+      project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
       user = create(:user, :caseworker)
       form = create_valid_form_object
       form.project_id = project.id
@@ -97,7 +97,7 @@ RSpec.describe Conversion::NewDateHistoryForm, type: :model do
 
     it "is transactional, it does nothing if any operation fails and returns an error" do
       mock_successful_api_calls(establishment: 123456, trust: 12345678)
-      project = create(:conversion_project, conversion_date: Date.today)
+      project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
       form = create_valid_form_object
       form.project_id = project.id
 

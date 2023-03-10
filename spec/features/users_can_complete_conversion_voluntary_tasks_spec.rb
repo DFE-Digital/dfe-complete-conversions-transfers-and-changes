@@ -58,7 +58,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
   end
 
   context "when the project does not have a confirmed conversion date" do
-    let(:voluntary_project) { create(:voluntary_conversion_project, provisional_conversion_date: Date.new(2023, 12, 1)) }
+    let(:voluntary_project) { create(:voluntary_conversion_project, conversion_date: Date.new(2023, 12, 1), conversion_date_provisional: true) }
 
     scenario "the Conditions met task shows the provisional conversion date in the hint text" do
       click_on "Confirm all conditions have been met"

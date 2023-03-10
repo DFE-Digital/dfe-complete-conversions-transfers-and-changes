@@ -71,7 +71,7 @@ en:
         assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
   errors:
     attributes:
-      provisional_conversion_date:
+      conversion_date:
         blank: Enter a provisional conversion date
         must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
         must_be_in_the_future: Provisional conversion date must be in the future.

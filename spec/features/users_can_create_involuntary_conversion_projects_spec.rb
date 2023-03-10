@@ -21,7 +21,7 @@ RSpec.feature "Users can create new involuntary conversion projects" do
       fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
 
       within("#provisional-conversion-date") do
-        completion_date = Date.today + 1.year
+        completion_date = Date.today.at_beginning_of_month + 1.year
         fill_in "Month", with: completion_date.month
         fill_in "Year", with: completion_date.year
       end
