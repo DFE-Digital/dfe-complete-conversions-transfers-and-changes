@@ -7,6 +7,7 @@ class Conversion::Involuntary::CreateProjectForm < Conversion::CreateProjectForm
       trust_sharepoint_link: trust_sharepoint_link,
       advisory_board_conditions: advisory_board_conditions,
       provisional_conversion_date: provisional_conversion_date,
+      conversion_date: provisional_conversion_date,
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
       task_list: Conversion::Involuntary::TaskList.new

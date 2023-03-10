@@ -95,15 +95,15 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "#provisional_conversion_date" do
-      it { is_expected.to validate_presence_of(:provisional_conversion_date) }
+    describe "#conversion_date" do
+      it { is_expected.to validate_presence_of(:conversion_date) }
 
       context "when the date is not on the first of the month" do
-        subject { build(:conversion_project, provisional_conversion_date: Date.today.months_since(6).at_end_of_month) }
+        subject { build(:conversion_project, conversion_date: Date.today.months_since(6).at_end_of_month) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_first_of_the_month"))
+          expect(subject.errors[:conversion_date]).to include(I18n.t("errors.attributes.conversion_date.must_be_first_of_the_month"))
         end
       end
     end

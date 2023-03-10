@@ -35,7 +35,7 @@ class ProjectPolicy
   end
 
   def change_conversion_date?
-    @record.conversion_date.present?
+    @record.conversion_date_provisional? == false
   end
 
   class Scope

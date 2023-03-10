@@ -11,6 +11,7 @@ class Conversions::DateHistoriesController < ApplicationController
     @form = Conversion::NewDateHistoryForm.new(**conversion_date_history_params, project_id: @project.id, user_id: current_user.id)
 
     if @form.save
+      @project.reload
       render "confirm_new"
     else
       render :new

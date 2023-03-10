@@ -29,7 +29,7 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :setup_meeting)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
 
-        <% if @project.conversion_date.nil? %>
+        <% if @project.conversion_date_provisional? %>
           <%= form.govuk_date_field :confirmed_conversion_date,
                 omit_day: true,
                 form_group: {classes: "app-confirmed-conversion-date"},
