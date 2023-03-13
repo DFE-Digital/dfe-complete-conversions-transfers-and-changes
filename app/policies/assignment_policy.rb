@@ -21,14 +21,6 @@ class AssignmentPolicy
     assign_regional_delivery_officer?
   end
 
-  def assign_caseworker?
-    @user.team_leader?
-  end
-
-  def update_caseworker?
-    assign_caseworker?
-  end
-
   def assign_assigned_to?
     true
   end
