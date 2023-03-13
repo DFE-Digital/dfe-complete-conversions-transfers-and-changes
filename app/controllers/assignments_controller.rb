@@ -29,6 +29,9 @@ class AssignmentsController < ApplicationController
 
   def update_assigned_to
     @project.update(assigned_to_params.except(:return_to))
+
+    AssignedToMailer.assigned_notification(@project.assigned_to, @project).deliver_later
+
     return_to = assigned_to_params[:return_to] || helpers.path_to_project_internal_contacts(@project)
 
     redirect_to return_to, notice: t("project.assign.assigned_to.success")

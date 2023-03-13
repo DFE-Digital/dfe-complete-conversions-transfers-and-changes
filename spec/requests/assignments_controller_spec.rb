@@ -130,6 +130,14 @@ RSpec.describe AssignmentsController, type: :request do
       expect(project.reload.assigned_to).to eq regional_delivery_officer
     end
 
+    it "sends a notification to the assigned_to person" do
+      perform_request
+
+      expect(ActionMailer::MailDeliveryJob)
+        .to(have_been_enqueued.on_queue("default")
+        .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
+    end
+
     context "when the user is a not a team leader" do
       let(:user) { create(:user, caseworker: true) }
 
