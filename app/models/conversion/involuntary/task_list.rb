@@ -7,8 +7,14 @@ class Conversion::Involuntary::TaskList < TaskList::Base
     return if project.nil?
     return unless project.conversion_date_provisional?
 
-    project.update(conversion_date: stakeholder_kick_off_confirmed_conversion_date, conversion_date_provisional: false)
+    raise TaskListUserError.new("You must set the `user` attribute on #{self}") if user.nil?
+
+    revised_date = stakeholder_kick_off_confirmed_conversion_date
+    note_body = I18n.t("conversion.involuntary.tasks.stakeholder_kick_off.confirmed_conversion_date.note")
+
+    ConversionDateUpdater.new(project: project, revised_date: revised_date, note_body: note_body, user: user).update!
   end
+
   TASK_LIST_LAYOUT = [
     {
       identifier: :project_kick_off,
