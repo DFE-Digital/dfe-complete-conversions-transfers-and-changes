@@ -46,9 +46,6 @@ en:
       submit_button: Mark project as completed
       back_link: Return to project list
     summary:
-      caseworker:
-        title: Caseworker
-        unassigned: Not yet assigned
       incoming_trust:
         title: Incoming trust
       local_authority:
@@ -65,12 +62,8 @@ en:
         value: Open the trust Sharepoint folder in a new tab
       completed_at: Project completed
     assign:
-      team_leader:
-        success: Team leader has been assigned successfully
       regional_delivery_officer:
         success: Regional delivery officer has been assigned successfully
-      caseworker:
-        success: Caseworker has been assigned successfully
       assigned_to:
         success: Project has been assigned successfully
     openers:
@@ -98,8 +91,6 @@ en:
       project_details:
         title: Project details
         rows:
-          caseworker: Caseworker
-          team_lead: Team lead
           regional_delivery_officer: Regional delivery officer
           assigned_to: Assigned to
           unassigned: Not yet assigned

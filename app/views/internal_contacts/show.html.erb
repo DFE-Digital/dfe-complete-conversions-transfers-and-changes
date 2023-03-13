@@ -22,26 +22,6 @@
           end
         end
         summary_list.row do |row|
-          row.key { t("project_information.show.project_details.rows.caseworker") }
-          row.value { display_name(@project.caseworker) }
-          if @project.caseworker.present?
-            row.action(text: "Email", href: mail_to_path(@project.caseworker.email), visually_hidden_text: "caseworker")
-          end
-          if policy(:assignment).assign_caseworker?
-            row.action(href: path_to_caseworker_project_assignment(@project), visually_hidden_text: "caseworker")
-          end
-        end
-        summary_list.row do |row|
-          row.key { t("project_information.show.project_details.rows.team_lead") }
-          row.value { display_name(@project.team_leader) }
-          if @project.team_leader.present?
-            row.action(text: "Email", href: mail_to_path(@project.team_leader.email), visually_hidden_text: "team leader")
-          end
-          if policy(:assignment).assign_team_leader?
-            row.action(href: path_to_team_lead_project_assignment(@project), visually_hidden_text: "team leader")
-          end
-        end
-        summary_list.row do |row|
           row.key { t("project_information.show.project_details.rows.regional_delivery_officer") }
           row.value { display_name(@project.regional_delivery_officer) }
           if @project.regional_delivery_officer.present?

@@ -2,37 +2,15 @@ require "rails_helper"
 
 RSpec.feature "Team leaders can assign users to project roles" do
   let!(:team_leader) { create(:user, team_leader: true) }
-  let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
-  let!(:caseworker) { create(:user, :caseworker) }
-  let(:user) { create(:user, :team_leader) }
+  let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, first_name: "John") }
+  let!(:caseworker) { create(:user, :caseworker, first_name: "Jane") }
+  let(:user) { create(:user, :team_leader, first_name: "Jason") }
   let(:project) { create(:conversion_project, :without_any_assigned_roles) }
   let(:project_id) { project.id }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
-  end
-
-  scenario "Team leader assigns a user to the team leader role" do
-    visit conversions_voluntary_project_internal_contacts_path(project_id)
-
-    team_leader_summary_list_row = -> { page.find("dt", text: "Team lead").ancestor(".govuk-summary-list__row") }
-
-    within team_leader_summary_list_row.call do
-      expect(page).to have_content "Not yet assigned"
-
-      click_on "Change"
-    end
-
-    expect(page).to have_current_path(conversions_voluntary_project_assign_team_lead_path(project))
-
-    select team_leader.full_name, from: I18n.t("assignment.assign_team_leader.title", school_name: project.establishment.name)
-
-    click_on "Continue"
-
-    within team_leader_summary_list_row.call do
-      expect(page).to have_content team_leader.full_name
-    end
   end
 
   scenario "Team leader assigns a user to the regional delivery officer role" do
@@ -57,24 +35,24 @@ RSpec.feature "Team leaders can assign users to project roles" do
     end
   end
 
-  scenario "Team leader assigns a user to the caseworker role" do
+  scenario "Team leader assigns a user to the assigned_to role" do
     visit conversions_voluntary_project_internal_contacts_path(project_id)
 
-    caseworker_summary_list_row = -> { page.find("dt", text: "Caseworker").ancestor(".govuk-summary-list__row") }
+    assigned_to_summary_list_row = -> { page.find("dt", text: "Assigned to").ancestor(".govuk-summary-list__row") }
 
-    within caseworker_summary_list_row.call do
+    within assigned_to_summary_list_row.call do
       expect(page).to have_content "Not yet assigned"
 
       click_on "Change"
     end
 
-    expect(page).to have_current_path(conversions_voluntary_project_assign_caseworker_path(project))
+    expect(page).to have_current_path(conversions_voluntary_project_assign_assigned_to_path(project))
 
-    select caseworker.full_name, from: I18n.t("assignment.assign_caseworker.title", school_name: project.establishment.name)
+    select caseworker.full_name, from: I18n.t("assignment.assign_assigned_to.title", school_name: project.establishment.name)
 
     click_on "Continue"
 
-    within caseworker_summary_list_row.call do
+    within assigned_to_summary_list_row.call do
       expect(page).to have_content caseworker.full_name
     end
   end

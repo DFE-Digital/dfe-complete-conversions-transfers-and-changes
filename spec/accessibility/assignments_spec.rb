@@ -10,17 +10,10 @@ RSpec.feature "Test assignment accessibility", driver: :headless_firefox, access
     sign_in_with_user(user)
   end
 
-  scenario "test change team lead for project page" do
-    visit project_assign_team_lead_path(project)
+  scenario "test change assigned to person for project page" do
+    visit project_assign_assigned_to_path(project)
 
-    expect(page).to have_content("Change team lead")
-    check_accessibility(page)
-  end
-
-  scenario "test change caseworker for project page" do
-    visit project_assign_caseworker_path(project)
-
-    expect(page).to have_content("Change caseworker")
+    expect(page).to have_content("Change assigned person")
     check_accessibility(page)
   end
 
