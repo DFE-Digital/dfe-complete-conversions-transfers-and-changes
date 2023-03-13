@@ -16,7 +16,6 @@ RSpec.describe ConversionDateUpdater do
       conversion_date_updater = described_class.new(project: project, revised_date: revised_date, note_body: note_body, user: user)
 
       expect(conversion_date_updater.update!).to be true
-
     end
 
     it "creates the conversion date history and note" do
