@@ -46,6 +46,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the Caseworker and Team Leader fields from the internal contact tab
 - Started tracking when a project is assigned to a person via the `assigned_at`
   database column
+- when confirming the conversion date in the external stakeholder kick off task,
+  a date history is added that records the change, users will see a note to this
+  effect on the project notes view
 
 ### Added
 
