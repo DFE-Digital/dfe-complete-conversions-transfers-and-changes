@@ -62,6 +62,10 @@
       row.value { (@project.incoming_trust.name + "<br/>" + link_to_trust_on_gias(@project.incoming_trust_ukprn)).html_safe }
     end
     summary_list.row do |row|
+      row.key { t('project_information.show.trust_details.rows.address') }
+      row.value { address_markup(@project.incoming_trust.address) }
+    end
+    summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.ukprn') }
       row.value { @project.incoming_trust_ukprn.to_s }
     end

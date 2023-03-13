@@ -123,6 +123,7 @@ en:
         rows:
           incoming_trust_name: Incoming trust name
           view_in_gias: View the trust information in GIAS (opens in new tab)
+          address: Address
           ukprn: UK Provider Reference Number
           companies_house_number: Companies House number
       local_authority_details:

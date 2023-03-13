@@ -140,15 +140,30 @@ RSpec.describe ProjectHelper, type: :helper do
   end
 
   describe "#address_markup" do
-    it "returns the address on mutiple lines wrapped in the <address> tag" do
-      establishment = build(:academies_api_establishment)
-      markup = address_markup(establishment.address)
+    context "within school details" do
+      it "returns the address on mutiple lines wrapped in the <address> tag" do
+        establishment = build(:academies_api_establishment)
+        markup = address_markup(establishment.address)
 
-      expect(markup).to include("address")
-      expect(markup).to include("/address")
-      expect(markup).to include("#{establishment.address_street}<br/>")
-      expect(markup).to include("#{establishment.address_additional}<br/>")
-      expect(markup).to include(establishment.address_postcode.to_s)
+        expect(markup).to include("address")
+        expect(markup).to include("/address")
+        expect(markup).to include("#{establishment.address_street}<br/>")
+        expect(markup).to include("#{establishment.address_additional}<br/>")
+        expect(markup).to include(establishment.address_postcode.to_s)
+      end
+    end
+
+    context "within trust details" do
+      it "returns the address on mutiple lines wrapped in the <address> tag" do
+        trust = build(:academies_api_trust)
+        markup = address_markup(trust.address)
+
+        expect(markup).to include("address")
+        expect(markup).to include("/address")
+        expect(markup).to include("#{trust.address_street}<br/>")
+        expect(markup).to include("#{trust.address_additional}<br/>")
+        expect(markup).to include(trust.address_postcode.to_s)
+      end
     end
   end
 end
