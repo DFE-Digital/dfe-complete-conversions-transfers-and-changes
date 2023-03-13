@@ -8,7 +8,7 @@ class Conversions::DateHistoriesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     authorize(@project, :change_conversion_date?)
-    @form = Conversion::NewDateHistoryForm.new(**conversion_date_history_params, project_id: @project.id, user_id: current_user.id)
+    @form = Conversion::NewDateHistoryForm.new(**conversion_date_history_params, project: @project, user: current_user)
 
     if @form.save
       @project.reload

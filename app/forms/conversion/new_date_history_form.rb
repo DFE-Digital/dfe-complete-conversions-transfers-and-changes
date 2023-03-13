@@ -4,37 +4,27 @@ class Conversion::NewDateHistoryForm
 
   CONVERSION_DATE_DAY = 1
 
-  attribute :project_id
-  attribute :user_id
+  attribute :project
+  attribute :user
   attribute :note_body
   attribute :revised_date
   attribute "revised_date(3i)"
   attribute "revised_date(2i)"
   attribute "revised_date(1i)"
 
-  validates :project_id, :user_id, :note_body, presence: true
+  validates :project, :user, :note_body, presence: true
 
   validate :revised_date_format
 
   def save
     return false unless valid?
 
-    project = Project.find(project_id)
-    previous_date = project.conversion_date
-    revised_date = date_from_attributes
-
-    ActiveRecord::Base.transaction do
-      conversion_date_history_note = Note.create!(project_id: project_id, user_id: user_id, body: note_body)
-      date_history = Conversion::DateHistory.create!(project_id: project_id, previous_date: previous_date, revised_date: revised_date, note: conversion_date_history_note)
-      project.update!(conversion_date: revised_date)
-
-      raise ActiveRecord::RecordInvalid unless conversion_date_history_note.persisted? && project.persisted? && date_history.persisted?
-    rescue ActiveRecord::RecordInvalid
+    if ConversionDateUpdater.new(project: project, revised_date: date_from_attributes, note_body: note_body, user: user).update!
+      true
+    else
       errors.add(:revised_date, :transaction)
-      return false
+      false
     end
-
-    true
   end
 
   private def revised_date_format
