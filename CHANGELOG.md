@@ -44,6 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   depending on whether the project is being handed over to Regional Caseworker
   services or not
 - Removed the Caseworker and Team Leader fields from the internal contact tab
+- Started tracking when a project is assigned to a person via the `assigned_at`
+  database column
 
 ### Added
 

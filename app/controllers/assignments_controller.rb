@@ -29,6 +29,7 @@ class AssignmentsController < ApplicationController
 
   def update_assigned_to
     @project.update(assigned_to_params.except(:return_to))
+    @project.update(assigned_at: DateTime.now) if @project.assigned_at.nil?
 
     AssignedToMailer.assigned_notification(@project.assigned_to, @project).deliver_later
 

@@ -123,6 +123,11 @@ RSpec.describe AssignmentsController, type: :request do
       response
     end
 
+    around do |spec|
+      freeze_time
+      spec.run
+    end
+
     it "assigns the project assignee and redirects with a message" do
       expect(perform_request).to redirect_to(conversions_voluntary_project_internal_contacts_path(project))
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.assigned_to.success"))
@@ -136,6 +141,26 @@ RSpec.describe AssignmentsController, type: :request do
       expect(ActionMailer::MailDeliveryJob)
         .to(have_been_enqueued.on_queue("default")
         .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
+    end
+
+    it "sets the `assigned_at` date value" do
+      perform_request
+
+      expect(project.reload.assigned_at).to eq DateTime.now
+    end
+
+    context "when the project has been assigned previously" do
+      let(:previously_assigned_at) { DateTime.yesterday.at_midday }
+      let(:previous_user) { create(:user, :caseworker, email: "#{SecureRandom.uuid}@education.gov.uk") }
+
+      before { project.update(assigned_to: previous_user, assigned_at: previously_assigned_at) }
+
+      it "does not update the assigned_at timestamp" do
+        perform_request
+
+        expect(project.reload.assigned_to).to eq regional_delivery_officer
+        expect(project.reload.assigned_at).to eq previously_assigned_at
+      end
     end
 
     context "when the user is a not a team leader" do
