@@ -9,7 +9,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:caseworker_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
     it { is_expected.to have_db_column(:assigned_to_id).of_type :uuid }
-    it { is_expected.to have_db_column(:caseworker_assigned_at).of_type :datetime }
+    it { is_expected.to have_db_column(:assigned_at).of_type :datetime }
     it { is_expected.to have_db_column(:advisory_board_date).of_type :date }
     it { is_expected.to have_db_column(:advisory_board_conditions).of_type :text }
     it { is_expected.to have_db_column(:establishment_sharepoint_link).of_type :text }
