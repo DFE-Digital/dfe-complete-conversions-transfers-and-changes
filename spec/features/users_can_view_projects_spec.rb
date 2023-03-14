@@ -20,7 +20,7 @@ RSpec.feature "Users can view a list of projects" do
     create(
       :conversion_project,
       urn: 100001,
-      provisional_conversion_date: Date.today.beginning_of_month + 3.years
+      conversion_date: Date.today.beginning_of_month + 3.years
     )
   }
   let!(:user_project) {
@@ -28,7 +28,7 @@ RSpec.feature "Users can view a list of projects" do
       :conversion_project,
       urn: 100002,
       caseworker: user,
-      provisional_conversion_date: Date.today.beginning_of_month + 2.year
+      conversion_date: Date.today.beginning_of_month + 2.year
     )
   }
   let!(:completed_project) {
@@ -37,7 +37,7 @@ RSpec.feature "Users can view a list of projects" do
       urn: 100004,
       caseworker: caseworker,
       regional_delivery_officer: regional_delivery_officer,
-      provisional_conversion_date: Date.today.beginning_of_month + 6.months,
+      conversion_date: Date.today.beginning_of_month + 6.months,
       completed_at: Date.today.beginning_of_month + 7.months
     )
   }
@@ -47,7 +47,7 @@ RSpec.feature "Users can view a list of projects" do
       urn: 100003,
       caseworker: caseworker,
       regional_delivery_officer: regional_delivery_officer,
-      provisional_conversion_date: Date.today.beginning_of_month + 1.years
+      conversion_date: Date.today.beginning_of_month + 1.years
     )
   }
   let!(:assigned_to_project_for_rdo) {
@@ -57,7 +57,7 @@ RSpec.feature "Users can view a list of projects" do
       caseworker: caseworker,
       regional_delivery_officer: nil,
       assigned_to: regional_delivery_officer,
-      provisional_conversion_date: Date.today.beginning_of_month + 4.years
+      conversion_date: Date.today.beginning_of_month + 4.years
     )
   }
   let!(:assigned_to_project_for_caseworker) {
@@ -67,7 +67,7 @@ RSpec.feature "Users can view a list of projects" do
       caseworker: nil,
       regional_delivery_officer: nil,
       assigned_to: caseworker,
-      provisional_conversion_date: Date.today.beginning_of_month + 5.years
+      conversion_date: Date.today.beginning_of_month + 5.years
     )
   }
 

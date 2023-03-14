@@ -18,7 +18,7 @@ module ProjectHelper
   def converting_on_date(project)
     return project.conversion_date.to_formatted_s(:govuk) unless project.conversion_date_provisional?
 
-    date = project.provisional_conversion_date.to_formatted_s(:govuk)
+    date = project.conversion_date.to_formatted_s(:govuk)
     tag = govuk_tag(text: "provisional", colour: "grey")
 
     "#{date} #{tag}".html_safe

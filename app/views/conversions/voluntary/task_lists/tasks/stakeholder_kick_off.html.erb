@@ -15,7 +15,7 @@
         <div class="govuk-checkboxes__item">
           <%= hidden_field_tag("conversion_voluntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", "0", {id: nil}) %>
           <%= check_box_tag("conversion_voluntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", 1, @task.check_provisional_conversion_date, {class: "govuk-checkboxes__input"}) %>
-          <%= label_tag("conversion_voluntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.title", date: @project.provisional_conversion_date.strftime("01 %B %Y")), {class: "govuk-label govuk-checkboxes__label"}) %>
+          <%= label_tag("conversion_voluntary_tasks_stakeholder_kick_off[check_provisional_conversion_date]", t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.title", date: @project.conversion_date.strftime("01 %B %Y")), {class: "govuk-label govuk-checkboxes__label"}) %>
           <div class="hint">
             <%= t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.hint.html") %>
           </div>
