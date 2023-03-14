@@ -27,8 +27,6 @@ class Project < ApplicationRecord
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
   belongs_to :assigned_to, class_name: "User", optional: true
 
-  scope :by_provisional_conversion_date, -> { order(provisional_conversion_date: :asc) }
-
   scope :conversions, -> { where(type: "Conversion::Project") }
   scope :conversions_voluntary, -> { conversions.where(task_list_type: "Conversion::Voluntary::TaskList") }
   scope :conversions_involuntary, -> { conversions.where(task_list_type: "Conversion::Involuntary::TaskList") }

@@ -229,22 +229,6 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "by_provisional_conversion_date scope" do
-    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
-
-    it "shows the project that will convert earliest first" do
-      last_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 3.years)
-      middle_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 2.years)
-      first_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 1.year)
-
-      ordered_projects = Project.by_provisional_conversion_date
-
-      expect(ordered_projects[0].id).to eq first_project.id
-      expect(ordered_projects[1].id).to eq middle_project.id
-      expect(ordered_projects[2].id).to eq last_project.id
-    end
-  end
-
   describe "#completed?" do
     context "when the completed_at is nil, i.e. the project is active" do
       it "returns false" do
