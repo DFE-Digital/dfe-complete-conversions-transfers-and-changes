@@ -33,6 +33,11 @@ class Project < ApplicationRecord
   scope :conversions_voluntary, -> { conversions.where(task_list_type: "Conversion::Voluntary::TaskList") }
   scope :conversions_involuntary, -> { conversions.where(task_list_type: "Conversion::Involuntary::TaskList") }
 
+  scope :provisional, -> { where(conversion_date_provisional: true) }
+  scope :confirmed, -> { where(conversion_date_provisional: false) }
+
+  scope :by_conversion_date, -> { order(conversion_date: :asc) }
+
   scope :completed, -> { where.not(completed_at: nil) }
   scope :open, -> { where(completed_at: nil) }
 
