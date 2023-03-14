@@ -134,6 +134,9 @@ en:
         title: Diocese details
         rows:
           diocese: Diocese
+  project_completed:
+    title: Project completed
+    subtitle: You have completed the project for %{school_name} %{urn}.
   helpers:
     label:
       project:

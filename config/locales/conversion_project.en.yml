@@ -16,11 +16,22 @@ en:
         title: Add a new voluntary conversion project
         hint_html: <p class="govuk-body">Enter the school and trust information.</p><p class="govuk-body">This will create a conversion project for a school that has been granted an Academy order.</p>
       create:
-        success:
-          Voluntary project successfully created
-          <p class="govuk-body">Add details of any contacts you have for the school, trust, local authority and solicitors.</p>
-          <p class="govuk-body">A caseworker will be assigned this project.</p>
-          <p class="govuk-body">There is nothing more for you to do.</p>
+        assigned_to_regional_delivery_officer:
+          html:
+            <h2>Project created</h2>
+            <p class="govuk-body">You should add any contact details you have for the school, trust, solicitors, local authority and diocese (if applicable).</p>
+        assigned_to_regional_caseworker_team:
+          title: Project created
+          button: Return to project list
+          html:
+            <p class="govuk-body">You have created a project for %{school_name} %{urn}</p>
+            <h2 class="govuk-heading-l">What happens next</h2>
+            <p class="govuk-body">Another person will be assigned to this project</p>
+            <h2 class="govuk-heading-l">Add contact details</h2>
+            <p class="govuk-body">You should <a href="%{contacts_link}">add any contact details</a> you have for the school, trust, solicitors, diocese and local authority.</p>
+            <p class="govuk-body">This will help the person continuing this project to organise kick-off meetings.</p>
+            <h2 class="govuk-heading-l">Help us improve the service</h2>
+            <p class="govuk-body">Complete this <a href="https://forms.office.com/e/xf0k4LcWVN" class="govuk-link" target="_blank">short survey (opens in a new tab)</a></p>
     summary:
       route:
         title: Route
