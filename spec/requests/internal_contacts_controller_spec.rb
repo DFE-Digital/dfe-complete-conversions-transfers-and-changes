@@ -18,37 +18,32 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     describe "links to assign users to project roles" do
-      let(:change_links) do
-        [
-          project_assign_team_lead_path(project),
-          project_assign_regional_delivery_officer_path(project),
-          project_assign_caseworker_path(project)
-        ]
-      end
-
       before { perform_request }
 
       subject { response.body }
 
       context "when team leader" do
-        it "has change links" do
-          expect(subject).to include(*change_links)
+        it "has regional delivery officer and assign_to links" do
+          expect(subject).to include(project_assign_regional_delivery_officer_path(project))
+          expect(subject).to include(project_assign_assigned_to_path(project))
         end
       end
 
       context "when regional delivery officer" do
         let(:user) { create(:user, :regional_delivery_officer) }
 
-        it "does not have change links" do
-          expect(subject).to_not include(*change_links)
+        it "does not have regional delivery officer link but does have assign_to link" do
+          expect(subject).to_not include(project_assign_regional_delivery_officer_path(project))
+          expect(subject).to include(project_assign_assigned_to_path(project))
         end
       end
 
       context "when caseworker" do
         let(:user) { create(:user, :caseworker) }
 
-        it "does not have change links" do
-          expect(subject).to_not include(*change_links)
+        it "does not have regional delivery officer link but does have assign_to link" do
+          expect(subject).to_not include(project_assign_regional_delivery_officer_path(project))
+          expect(subject).to include(project_assign_assigned_to_path(project))
         end
       end
     end

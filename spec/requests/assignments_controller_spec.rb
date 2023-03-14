@@ -91,70 +91,6 @@ RSpec.describe AssignmentsController, type: :request do
     end
   end
 
-  describe "#assign_caseworker" do
-    it_behaves_like "an action which redirects unauthorized users"
-
-    let(:project) { create(:conversion_project) }
-    let(:project_id) { project.id }
-
-    subject(:perform_request) do
-      get project_assign_caseworker_path(project_id)
-      response
-    end
-
-    it "returns a successful response" do
-      expect(perform_request).to have_http_status :success
-    end
-  end
-
-  describe "#update_caseworker" do
-    it_behaves_like "an action which redirects unauthorized users"
-
-    let(:project) { create(:conversion_project, caseworker: nil) }
-    let(:project_id) { project.id }
-    let(:caseworker) { create(:user, :caseworker) }
-
-    around do |spec|
-      freeze_time
-      spec.run
-    end
-
-    subject(:perform_request) do
-      post project_assign_caseworker_path(project_id), params: {conversion_project: {caseworker_id: caseworker.id}}
-      response
-    end
-
-    context "when the project has been assigned a caseworker previously" do
-      let(:caseworker_assigned_at) { DateTime.yesterday.at_midday }
-      let(:existing_caseworker) { create(:user, :caseworker, email: "#{SecureRandom.uuid}@education.gov.uk") }
-
-      before { project.update(caseworker: existing_caseworker, caseworker_assigned_at: caseworker_assigned_at) }
-
-      it "does not update the caseworker_assigned_at timestamp" do
-        perform_request
-
-        expect(project.reload.caseworker).to eq caseworker
-        expect(project.reload.caseworker_assigned_at).to eq caseworker_assigned_at
-      end
-    end
-
-    it "assigns the project caseworker and redirects with a message" do
-      expect(perform_request).to redirect_to(conversions_voluntary_project_internal_contacts_path(project))
-      expect(request.flash[:notice]).to eq(I18n.t("project.assign.caseworker.success"))
-
-      expect(project.reload.caseworker).to eq caseworker
-      expect(project.reload.caseworker_assigned_at).to eq DateTime.now
-    end
-
-    it "sends a notification to the caseworker" do
-      perform_request
-
-      expect(ActionMailer::MailDeliveryJob)
-        .to(have_been_enqueued.on_queue("default")
-        .with("CaseworkerMailer", "caseworker_assigned_notification", "deliver_now", args: [caseworker, Project.last]))
-    end
-  end
-
   describe "#assign_assigned_to" do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
@@ -192,6 +128,14 @@ RSpec.describe AssignmentsController, type: :request do
       expect(request.flash[:notice]).to eq(I18n.t("project.assign.assigned_to.success"))
 
       expect(project.reload.assigned_to).to eq regional_delivery_officer
+    end
+
+    it "sends a notification to the assigned_to person" do
+      perform_request
+
+      expect(ActionMailer::MailDeliveryJob)
+        .to(have_been_enqueued.on_queue("default")
+        .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
     end
 
     context "when the user is a not a team leader" do

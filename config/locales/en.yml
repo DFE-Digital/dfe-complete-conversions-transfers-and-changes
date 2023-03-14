@@ -64,12 +64,8 @@ en:
       import:
         error: You must provide a path
   assignment:
-    assign_team_leader:
-      title: Change team lead for %{school_name}
     assign_regional_delivery_officer:
       title: Change regional delivery officer for %{school_name}
-    assign_caseworker:
-      title: Change caseworker for %{school_name}
     assign_assigned_to:
       title: Change assigned person for %{school_name}
 
