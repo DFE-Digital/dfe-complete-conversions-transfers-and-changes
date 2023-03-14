@@ -13,7 +13,7 @@
     "prettier": "^2.8.4"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "^1.6.4",
+    "@ministryofjustice/frontend": "^1.6.5",
     "accessible-autocomplete": "^2.0.4"
   }
 }
