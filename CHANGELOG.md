@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   establishment name
 - the school address from Get information about schools is now shown in the
   school details on the project information tab
+- the trust address from Get information about schools is now shown in the trust
+  details on the project information tab
 
 ### Changed
 
