@@ -95,15 +95,15 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "#provisional_conversion_date" do
-      it { is_expected.to validate_presence_of(:provisional_conversion_date) }
+    describe "#conversion_date" do
+      it { is_expected.to validate_presence_of(:conversion_date) }
 
       context "when the date is not on the first of the month" do
-        subject { build(:conversion_project, provisional_conversion_date: Date.today.months_since(6).at_end_of_month) }
+        subject { build(:conversion_project, conversion_date: Date.today.months_since(6).at_end_of_month) }
 
         it "is invalid" do
           expect(subject).to_not be_valid
-          expect(subject.errors[:provisional_conversion_date]).to include(I18n.t("errors.attributes.provisional_conversion_date.must_be_first_of_the_month"))
+          expect(subject.errors[:conversion_date]).to include(I18n.t("errors.attributes.conversion_date.must_be_first_of_the_month"))
         end
       end
     end
@@ -226,22 +226,6 @@ RSpec.describe Project, type: :model do
       it "raises the error" do
         expect { subject.incoming_trust }.to raise_error(AcademiesApi::Client::Error, error_message)
       end
-    end
-  end
-
-  describe "by_provisional_conversion_date scope" do
-    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
-
-    it "shows the project that will convert earliest first" do
-      last_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 3.years)
-      middle_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 2.years)
-      first_project = create(:conversion_project, provisional_conversion_date: Date.today.beginning_of_month + 1.year)
-
-      ordered_projects = Project.by_provisional_conversion_date
-
-      expect(ordered_projects[0].id).to eq first_project.id
-      expect(ordered_projects[1].id).to eq middle_project.id
-      expect(ordered_projects[2].id).to eq last_project.id
     end
   end
 
@@ -436,12 +420,54 @@ RSpec.describe Project, type: :model do
       end
 
       it "only returns projects with a confirmed conversion date in that month & year" do
-        project_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 1, 1))
-        project_not_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 2, 1))
+        project_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false)
+        project_not_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 2, 1), conversion_date_provisional: true)
         project_without_conversion_date = create(:conversion_project)
 
         expect(Project.opening_by_month_year(1, 2023)).to_not include(project_not_in_scope, project_without_conversion_date)
         expect(Project.opening_by_month_year(1, 2023)).to include(project_in_scope)
+      end
+    end
+
+    describe "provisional scope" do
+      it "only returns projects with a provisional conversion date" do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+        provisional_project = create(:conversion_project, conversion_date_provisional: true)
+        confirmed_project = create(:conversion_project, conversion_date_provisional: false)
+
+        scoped_projects = Project.provisional
+
+        expect(scoped_projects).to include provisional_project
+        expect(scoped_projects).not_to include confirmed_project
+      end
+    end
+
+    describe "confirmed scope" do
+      it "only returns projects with a confirmed conversion date" do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+        provisional_project = create(:conversion_project, conversion_date_provisional: true)
+        confirmed_project = create(:conversion_project, conversion_date_provisional: false)
+
+        scoped_projects = Project.confirmed
+
+        expect(scoped_projects).to include confirmed_project
+        expect(scoped_projects).not_to include provisional_project
+      end
+    end
+
+    describe "by_conversion_date scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "shows the project that will convert earliest first" do
+        last_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 3.years)
+        middle_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 2.years)
+        first_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 1.year)
+
+        scoped_projects = Project.by_conversion_date
+
+        expect(scoped_projects[0].id).to eq first_project.id
+        expect(scoped_projects[1].id).to eq middle_project.id
+        expect(scoped_projects[2].id).to eq last_project.id
       end
     end
   end

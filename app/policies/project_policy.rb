@@ -35,7 +35,7 @@ class ProjectPolicy
   end
 
   def change_conversion_date?
-    @record.conversion_date.present?
+    @record.conversion_date_provisional? == false
   end
 
   class Scope
@@ -46,11 +46,11 @@ class ProjectPolicy
 
     def resolve
       if user.team_leader?
-        scope.by_provisional_conversion_date
+        scope.conversions.by_conversion_date
       elsif user.regional_delivery_officer?
-        scope.by_provisional_conversion_date.assigned_to_regional_delivery_officer(user)
+        scope.conversions.by_conversion_date.assigned_to_regional_delivery_officer(user)
       else
-        scope.by_provisional_conversion_date.assigned_to_caseworker(user)
+        scope.conversions.by_conversion_date.assigned_to_caseworker(user)
       end
     end
 

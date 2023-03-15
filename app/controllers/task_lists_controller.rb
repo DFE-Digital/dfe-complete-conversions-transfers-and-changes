@@ -14,6 +14,7 @@ class TaskListsController < ApplicationController
     @task.assign_attributes task_params
 
     if @task.valid?
+      @task_list.user = current_user
       @task_list.save_task(@task)
 
       redirect_to action: :index

@@ -1,6 +1,10 @@
 class TaskList::Base < ActiveRecord::Base
   include TaskList
 
+  class TaskListUserError < StandardError; end
+
+  attr_accessor :user
+
   self.abstract_class = true
 
   def sections

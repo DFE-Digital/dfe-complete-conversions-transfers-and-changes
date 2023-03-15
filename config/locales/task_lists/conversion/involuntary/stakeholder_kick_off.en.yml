@@ -76,6 +76,7 @@ en:
               html:
                 <p>Everyone should have agreed to and know the confirmed conversion date.</p>
                 <p>You only need to enter a month and year. All schools convert on the first day of the month.</p>
+            note: Conversion date confirmed as part of external stakeholder kick off task.
           check_provisional_conversion_date:
             title: "Check the local authority is able to convert the school by the provisional conversion date: %{date}"
             hint:

@@ -56,7 +56,7 @@ RSpec.describe ProjectsOpenersController, type: :request do
       end
 
       it "returns project details in table form" do
-        conversion_project = create(:conversion_project, conversion_date: Date.new(2022, 1, 1))
+        conversion_project = create(:conversion_project, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false)
         get "/projects/openers/1/2022"
         expect(response.body).to include(
           conversion_project.establishment.name,
@@ -67,8 +67,8 @@ RSpec.describe ProjectsOpenersController, type: :request do
       end
 
       it "only returns projects whose confirmed conversion date is in that month & year" do
-        project_in_scope = create(:conversion_project, urn: 100001, conversion_date: Date.new(2022, 1, 1))
-        project_not_in_scope = create(:conversion_project, urn: 100002, conversion_date: Date.new(2022, 2, 1))
+        project_in_scope = create(:conversion_project, urn: 100001, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false)
+        project_not_in_scope = create(:conversion_project, urn: 100002, conversion_date: Date.new(2022, 2, 1), conversion_date_provisional: false)
 
         get "/projects/openers/1/2022"
         expect(response.body).to include(project_in_scope.urn.to_s)

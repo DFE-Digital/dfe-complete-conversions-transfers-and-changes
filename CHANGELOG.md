@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   school details on the project information tab
 - the trust address from Get information about schools is now shown in the trust
   details on the project information tab
+- add a Project Openers table view
+- Add email validation to the user model
 
 ### Changed
 
@@ -46,11 +48,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the Caseworker and Team Leader fields from the internal contact tab
 - Started tracking when a project is assigned to a person via the `assigned_at`
   database column
-
-### Added
-
-- add a Project Openers table view
-- Add email validation to the user model
+- the openers list now only shows conversion projects where the conversion date
+  has been confirmed i.e. not provisional
 
 ## [Release 15][release-15]
 

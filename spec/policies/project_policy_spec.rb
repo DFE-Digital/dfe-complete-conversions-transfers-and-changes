@@ -15,7 +15,7 @@ RSpec.describe ProjectPolicy do
 
     context "when the conversion date is confirmed" do
       it "returns true" do
-        project = build(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
+        project = build(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false)
         user = build(:user, :caseworker)
 
         policy = described_class.new(user, project)

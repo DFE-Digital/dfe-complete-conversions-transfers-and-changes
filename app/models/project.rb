@@ -12,8 +12,8 @@ class Project < ApplicationRecord
   validates :urn, urn: true
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
-  validates :provisional_conversion_date, presence: true
-  validates :provisional_conversion_date, first_day_of_month: true
+  validates :conversion_date, presence: true
+  validates :conversion_date, first_day_of_month: true
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
@@ -27,11 +27,14 @@ class Project < ApplicationRecord
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
   belongs_to :assigned_to, class_name: "User", optional: true
 
-  scope :by_provisional_conversion_date, -> { order(provisional_conversion_date: :asc) }
-
   scope :conversions, -> { where(type: "Conversion::Project") }
   scope :conversions_voluntary, -> { conversions.where(task_list_type: "Conversion::Voluntary::TaskList") }
   scope :conversions_involuntary, -> { conversions.where(task_list_type: "Conversion::Involuntary::TaskList") }
+
+  scope :provisional, -> { where(conversion_date_provisional: true) }
+  scope :confirmed, -> { where(conversion_date_provisional: false) }
+
+  scope :by_conversion_date, -> { order(conversion_date: :asc) }
 
   scope :completed, -> { where.not(completed_at: nil) }
   scope :open, -> { where(completed_at: nil) }
@@ -42,7 +45,7 @@ class Project < ApplicationRecord
   scope :unassigned_to_user, -> { where assigned_to: nil }
   scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
 
-  scope :opening_by_month_year, ->(month, year) { includes(:task_list).where.not(conversion_date: nil).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
+  scope :opening_by_month_year, ->(month, year) { includes(:task_list).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
 
   def establishment
     @establishment ||= fetch_establishment(urn)

@@ -10,7 +10,7 @@ RSpec.feature "Users can change the conversion date" do
 
   scenario "they can change the date on a conversion project and see a confirmation view" do
     revised_conversion_date = (Date.today + 6.months).at_beginning_of_month
-    project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
+    project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false)
 
     visit conversions_voluntary_project_path(project)
 
@@ -29,7 +29,7 @@ RSpec.feature "Users can change the conversion date" do
   end
 
   scenario "they can cancel the change if needed" do
-    project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
+    project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false)
 
     visit conversions_voluntary_project_path(project)
 
@@ -44,7 +44,7 @@ RSpec.feature "Users can change the conversion date" do
   end
 
   scenario "they can view the conversion date change note on the projects notes view" do
-    project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
+    project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false)
     revised_conversion_date = (Date.today + 6.months).at_beginning_of_month
     note = "This is a test note."
 
