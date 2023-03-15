@@ -420,8 +420,8 @@ RSpec.describe Project, type: :model do
       end
 
       it "only returns projects with a confirmed conversion date in that month & year" do
-        project_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 1, 1))
-        project_not_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 2, 1))
+        project_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false)
+        project_not_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 2, 1), conversion_date_provisional: true)
         project_without_conversion_date = create(:conversion_project)
 
         expect(Project.opening_by_month_year(1, 2023)).to_not include(project_not_in_scope, project_without_conversion_date)
