@@ -10,15 +10,15 @@ en:
         add: Add a new task note
         edit: Edit note
     create:
-      success: Note has been added successfully
+      success: Your note has been added
     new:
       save_note_button: Add note
     edit:
       save_note_button: Save note
     update:
-      success: Note has been edited successfully
+      success: Your note has been edited
     destroy:
-      success: Note has been deleted successfully
+      success: Your note has been deleted
     confirm_destroy:
       title: Are you sure you want to delete this note?
       guidance: This will remove the note from the project. If this note contains outdated information, it may be better to leave a new note with an update instead.

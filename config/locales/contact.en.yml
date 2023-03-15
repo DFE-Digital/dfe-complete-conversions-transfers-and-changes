@@ -17,14 +17,14 @@ en:
       title: Add contact
       save_contact_button: Add contact
     create:
-      success: Contact has been added successfully
+      success: Contact added
     edit:
       title: Edit contact
       save_contact_button: Save contact
     update:
-      success: Contact has been updated successfully
+      success: Contact updated
     destroy:
-      success: Contact has been deleted successfully
+      success: Contact deleted
     confirm_destroy:
       title:
         Are you sure you want to delete %{contact_name}?
