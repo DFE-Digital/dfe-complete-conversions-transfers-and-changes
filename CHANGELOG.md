@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 16][release-16]
+
 ### Added
 
 - users can now change the conversion date beyond the initial confirmed date
@@ -578,7 +580,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-15...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-16...HEAD
+[release-16]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-15...release-16
 [release-15]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-14...release-15
 [release-14]:
