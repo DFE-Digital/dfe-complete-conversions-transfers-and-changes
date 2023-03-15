@@ -32,9 +32,11 @@ RSpec.describe ProjectConversionDateMigrator do
           project = create(
             :conversion_project,
             assigned_to: user,
-            provisional_conversion_date: Date.today.at_beginning_of_month,
-            conversion_date: Date.today.at_beginning_of_month + 1.month
+            provisional_conversion_date: Date.today.at_beginning_of_month
           )
+          project.conversion_date = nil
+          project.save(validate: false)
+          allow(project.task_list).to receive(:stakeholder_kick_off_confirmed_conversion_date).and_return(Date.today.at_beginning_of_month + 1.month)
 
           described_class.new(project).migrate_up!
           project.reload
@@ -58,6 +60,9 @@ RSpec.describe ProjectConversionDateMigrator do
             regional_delivery_officer: user,
             provisional_conversion_date: Date.today
           )
+          project.conversion_date = nil
+          project.save(validate: false)
+          allow(project.task_list).to receive(:stakeholder_kick_off_confirmed_conversion_date).and_return(Date.today.at_beginning_of_month + 1.month)
 
           described_class.new(project).migrate_up!
           project.reload
