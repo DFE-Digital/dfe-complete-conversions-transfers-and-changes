@@ -42,8 +42,10 @@ en:
       success: Project has been updated successfully
     complete:
       heading: Completing a project
-      guidance: Check all the tasks have been completed or marked as not applicable.
-      submit_button: Mark project as completed
+      guidance:
+        You should only complete the project when you have finished every task and marked any that are not needed
+        as not applicable. You will not be able to change this project once it is completed.
+      submit_button: Complete project
       back_link: Return to project list
     summary:
       incoming_trust:
