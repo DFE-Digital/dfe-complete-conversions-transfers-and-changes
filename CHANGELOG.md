@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Corrected link and guidance in the volutnary articles of association task.
+  Content was already correct in the sponsored version.
 - Involuntary/Sponsored > External Stakeholder Kickoff guidance iteration and
   fix incorrect guidance
 - Involuntary/Sponsored > External Stakeholder Kickoff > Send introductory
