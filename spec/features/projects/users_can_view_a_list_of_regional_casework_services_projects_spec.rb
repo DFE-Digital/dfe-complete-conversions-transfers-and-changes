@@ -8,11 +8,11 @@ RSpec.feature "Viewing regional casework services projects" do
     end
 
     scenario "they can view a helpful message" do
-      visit regional_casework_services_in_progress_projects_path
+      visit in_progress_regional_casework_services_projects_path
 
       expect(page).to have_content(I18n.t("project.table.in_progress.empty"))
 
-      visit regional_casework_services_completed_projects_path
+      visit completed_regional_casework_services_projects_path
 
       expect(page).to have_content(I18n.t("project.table.completed.empty"))
     end
@@ -68,7 +68,7 @@ RSpec.feature "Viewing regional casework services projects" do
     end
 
     def view_in_progress_projects
-      visit regional_casework_services_in_progress_projects_path
+      visit in_progress_regional_casework_services_projects_path
 
       expect(page).to have_content(I18n.t("project.regional_casework_services.in_progress.title"))
 
@@ -82,7 +82,7 @@ RSpec.feature "Viewing regional casework services projects" do
     end
 
     def view_completed_projects
-      visit regional_casework_services_completed_projects_path
+      visit completed_regional_casework_services_projects_path
 
       expect(page).to have_content(I18n.t("project.regional_casework_services.completed.title"))
 

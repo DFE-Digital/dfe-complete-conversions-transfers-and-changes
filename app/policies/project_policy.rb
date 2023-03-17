@@ -14,14 +14,6 @@ class ProjectPolicy
     user.team_leader?
   end
 
-  def regional_casework_services_in_progress?
-    index?
-  end
-
-  def regional_casework_services_completed?
-    index?
-  end
-
   def user_in_progress?
     index?
   end
