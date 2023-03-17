@@ -36,7 +36,7 @@ class Project < ApplicationRecord
 
   scope :by_conversion_date, -> { order(conversion_date: :asc) }
 
-  scope :completed, -> { where.not(completed_at: nil) }
+  scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
   scope :in_progress, -> { where(completed_at: nil) }
 
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }

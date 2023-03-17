@@ -327,15 +327,17 @@ RSpec.describe Project, type: :model do
     describe "completed scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "only returns completed projects" do
+      it "only returns completed projects ordered by completed at date" do
         completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year)
-        completed_project_2 = create(:conversion_project, completed_at: Date.today - 1.year)
-        open_project = create(:conversion_project, completed_at: nil)
+        completed_project_2 = create(:conversion_project, completed_at: Date.today - 6.months)
+        in_progress_project = create(:conversion_project, completed_at: nil)
 
         projects = Project.completed
 
-        expect(projects).to include(completed_project_1, completed_project_2)
-        expect(projects).to_not include(open_project)
+        expect(projects.first).to eql completed_project_2
+        expect(projects.last).to eql completed_project_1
+
+        expect(projects).to_not include(in_progress_project)
       end
     end
 
