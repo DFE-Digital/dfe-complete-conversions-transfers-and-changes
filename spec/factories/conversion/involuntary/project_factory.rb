@@ -9,5 +9,6 @@ FactoryBot.define do
     establishment_sharepoint_link { "https://educationgovuk-my.sharepoint.com/establishment-folder" }
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
     task_list { association :conversion_involuntary_task_list }
+    directive_academy_order { true }
   end
 end

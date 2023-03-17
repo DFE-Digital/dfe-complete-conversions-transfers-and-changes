@@ -17,6 +17,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:completed_at).of_type :datetime }
     it { is_expected.to have_db_column(:type).of_type :string }
     it { is_expected.to have_db_column(:assigned_to_regional_caseworker_team).of_type :boolean }
+    it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
   end
 
   describe "Relationships" do
@@ -114,6 +115,20 @@ RSpec.describe Project, type: :model do
 
     describe "#trust_sharepoint_link" do
       it { is_expected.to validate_presence_of :trust_sharepoint_link }
+    end
+
+    describe "#directive_academy_order" do
+      it { is_expected.to allow_value(true).for(:directive_academy_order) }
+      it { is_expected.to allow_value(false).for(:directive_academy_order) }
+      it { is_expected.to_not allow_value(nil).for(:directive_academy_order) }
+
+      context "error messages" do
+        it "adds an appropriate error message if the value is nil" do
+          subject.assign_attributes(directive_academy_order: nil)
+          subject.valid?
+          expect(subject.errors[:directive_academy_order]).to include("Select yes if this project has had a Directive academy order issued")
+        end
+      end
     end
   end
 

@@ -10,6 +10,7 @@ FactoryBot.define do
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
     task_list { association :voluntary_conversion_task_list }
     assigned_to { nil }
+    directive_academy_order { false }
 
     trait :with_conditions do
       advisory_board_conditions { "The following must be met:\n 1. Must be red\n2. Must be blue\n" }

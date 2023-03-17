@@ -218,3 +218,5 @@ en:
         invalid: Enter a trust SharePoint link in the correct format
         https_only: The trust SharePoint link must have the https scheme
         host_not_allowed: Enter a trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+      directive_academy_order:
+        inclusion: Select yes if this project has had a Directive academy order issued
