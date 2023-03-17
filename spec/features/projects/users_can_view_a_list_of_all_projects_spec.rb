@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "Viewing all projects in progress" do
-  context "when there are no completed projects" do
+RSpec.feature "Viewing all projects" do
+  context "when there are no projects" do
     before do
       user = create(:user, :caseworker)
       sign_in_with_user(user)
@@ -11,6 +11,10 @@ RSpec.feature "Viewing all projects in progress" do
       visit all_in_progress_projects_path
 
       expect(page).to have_content(I18n.t("project.table.in_progress.empty"))
+
+      visit all_completed_projects_path
+
+      expect(page).to have_content(I18n.t("project.table.completed.empty"))
     end
   end
 
@@ -22,30 +26,41 @@ RSpec.feature "Viewing all projects in progress" do
     end
 
     let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday) }
-    let!(:first_project) { create(:conversion_project, urn: 115652) }
-    let!(:second_project) { create(:conversion_project, urn: 103835) }
+    let!(:in_progress_project) { create(:conversion_project, urn: 115652) }
 
     context "when signed in as a Regional caseworker" do
       let(:user) { create(:user, :caseworker) }
 
-      scenario "they can view all projects" do
+      scenario "they can view all in progress projects" do
         view_all_in_progress_projects
+      end
+
+      scenario "they can view all completed projects" do
+        view_all_completed_projects
       end
     end
 
     context "when signed in as a Regional caseworker team lead" do
       let(:user) { create(:user, :team_leader) }
 
-      scenario "they can view all projects" do
+      scenario "they can view all in progress projects" do
         view_all_in_progress_projects
+      end
+
+      scenario "they can view all completed projects" do
+        view_all_completed_projects
       end
     end
 
     context "when signed in as a Regional delivery officer" do
       let(:user) { create(:user, :regional_delivery_officer) }
 
-      scenario "they can view all projects" do
+      scenario "they can view all in progress projects" do
         view_all_in_progress_projects
+      end
+
+      scenario "they can view all completed projects" do
+        view_all_completed_projects
       end
     end
 
@@ -55,10 +70,21 @@ RSpec.feature "Viewing all projects in progress" do
       expect(page).to have_content(I18n.t("project.all.in_progress.title"))
 
       within("tbody") do
-        expect(page).to have_content(first_project.urn)
-        expect(page).to have_content(second_project.urn)
+        expect(page).to have_content(in_progress_project.urn)
 
         expect(page).not_to have_content(completed_project.urn)
+      end
+    end
+
+    def view_all_completed_projects
+      visit all_completed_projects_path
+
+      expect(page).to have_content(I18n.t("project.index.completed.title"))
+
+      within("tbody") do
+        expect(page).to have_content(completed_project.urn)
+
+        expect(page).not_to have_content(in_progress_project.urn)
       end
     end
   end
