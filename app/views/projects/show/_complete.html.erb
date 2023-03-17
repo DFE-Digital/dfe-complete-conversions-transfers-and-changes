@@ -3,7 +3,7 @@
 
     <%= form_with url: project_complete_path(@project), method: :put do |form| %>
       <h3 class="govuk-heading-m"><%= t("project.complete.heading") %></h3>
-      <p class="govuk-body"><%= t("project.complete.guidance") %></p>
+      <p class="govuk-body"><%= t("project.complete.guidance.html") %></p>
 
       <%= form.govuk_submit t("project.complete.submit_button") %>
 

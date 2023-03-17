@@ -43,8 +43,10 @@ en:
     complete:
       heading: Completing a project
       guidance:
-        You should only complete the project when you have finished every task and marked any that are not needed
-        as not applicable. You will not be able to change this project once it is completed.
+        html:
+          <p>You should only complete the project when you have finished every task and marked any that are not needed
+          as not applicable.</p>
+          <p>You will not be able to change this project once it is completed.</p>
       submit_button: Complete project
       back_link: Return to project list
     summary:
