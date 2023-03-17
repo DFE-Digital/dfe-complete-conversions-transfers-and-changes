@@ -22,6 +22,9 @@ en:
       in_progress:
         title: All projects in progress
         empty: There are no projects in progress
+    regional_casework_services:
+      in_progress:
+        title: Regional casework services projects in progress
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:

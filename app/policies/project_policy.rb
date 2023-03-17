@@ -22,6 +22,10 @@ class ProjectPolicy
     index?
   end
 
+  def regional_casework_services_in_progress?
+    index?
+  end
+
   def show?
     true
   end

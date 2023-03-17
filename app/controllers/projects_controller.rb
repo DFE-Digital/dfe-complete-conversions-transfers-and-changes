@@ -16,6 +16,14 @@ class ProjectsController < ApplicationController
     @pager, @projects = pagy(Project.in_progress.includes(:assigned_to))
   end
 
+  def regional_casework_services_in_progress
+    authorize Project
+    @pager, @projects = pagy(Project.assigned_to_regional_caseworker_team.in_progress.includes(:assigned_to))
+
+    pre_fetch_establishments(@projects)
+    pre_fetch_incoming_trusts(@projects)
+  end
+
   def completed
     authorize Project
     @pagy, @projects = pagy(policy_scope(Project.completed))

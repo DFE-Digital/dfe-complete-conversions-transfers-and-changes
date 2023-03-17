@@ -92,6 +92,7 @@ Rails.application.routes.draw do
     resources :projects, only: %i[index show] do
       collection do
         get "all/in-progress", to: "projects#all_in_progress"
+        get "regional-casework-services/in-progress", to: "projects#regional_casework_services_in_progress"
         get "completed"
         get "unassigned"
 
