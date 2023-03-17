@@ -9,6 +9,11 @@ module AcademiesApiHelpers
     allow(AcademiesApi::Client).to receive(:new).and_return(fake_client)
   end
 
+  def mock_successful_api_response_to_create_any_project
+    mock_successful_api_establishment_response(urn: any_args)
+    mock_successful_api_trust_response(ukprn: any_args)
+  end
+
   def mock_successful_api_responses(urn:, ukprn:)
     mock_successful_api_establishment_response(urn:)
     mock_successful_api_trust_response(ukprn:)
@@ -32,6 +37,16 @@ module AcademiesApiHelpers
 
     allow(test_client).to receive(:get_trust).with(ukprn).and_return(fake_result)
     allow(AcademiesApi::Client).to receive(:new).and_return(test_client)
+  end
+
+  def mock_pre_fetched_api_responses_for_any_establishment_and_trust
+    fake_establishment_fetcher = double(EstablishmentsFetcher)
+    fake_trust_fetcher = double(IncomingTrustsFetcher)
+    allow(EstablishmentsFetcher).to receive(:new).and_return(fake_establishment_fetcher)
+    allow(IncomingTrustsFetcher).to receive(:new).and_return(fake_establishment_fetcher)
+
+    allow(fake_establishment_fetcher).to receive(:call).and_return([])
+    allow(fake_trust_fetcher).to receive(:call).and_return([])
   end
 
   def mock_timeout_api_responses(urn:, ukprn:)
