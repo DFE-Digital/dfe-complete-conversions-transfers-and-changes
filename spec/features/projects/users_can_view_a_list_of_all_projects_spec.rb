@@ -8,11 +8,11 @@ RSpec.feature "Viewing all projects" do
     end
 
     scenario "they can see a helpful message" do
-      visit all_in_progress_projects_path
+      visit in_progress_all_projects_path
 
       expect(page).to have_content(I18n.t("project.table.in_progress.empty"))
 
-      visit all_completed_projects_path
+      visit completed_all_projects_path
 
       expect(page).to have_content(I18n.t("project.table.completed.empty"))
     end
@@ -65,7 +65,7 @@ RSpec.feature "Viewing all projects" do
     end
 
     def view_all_in_progress_projects
-      visit all_in_progress_projects_path
+      visit in_progress_all_projects_path
 
       expect(page).to have_content(I18n.t("project.all.in_progress.title"))
 
@@ -77,7 +77,7 @@ RSpec.feature "Viewing all projects" do
     end
 
     def view_all_completed_projects
-      visit all_completed_projects_path
+      visit completed_all_projects_path
 
       expect(page).to have_content(I18n.t("project.index.completed.title"))
 

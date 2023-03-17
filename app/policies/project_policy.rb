@@ -10,16 +10,8 @@ class ProjectPolicy
     true
   end
 
-  def all_completed?
-    true
-  end
-
   def unassigned?
     user.team_leader?
-  end
-
-  def all_in_progress?
-    index?
   end
 
   def regional_casework_services_in_progress?

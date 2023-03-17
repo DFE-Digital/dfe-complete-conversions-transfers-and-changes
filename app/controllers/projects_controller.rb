@@ -11,11 +11,6 @@ class ProjectsController < ApplicationController
     pre_fetch_incoming_trusts(@projects)
   end
 
-  def all_in_progress
-    authorize Project
-    @pager, @projects = pagy(Project.in_progress.includes(:assigned_to))
-  end
-
   def regional_casework_services_in_progress
     authorize Project
     @pager, @projects = pagy(Project.assigned_to_regional_caseworker_team.in_progress.includes(:assigned_to))
@@ -27,14 +22,6 @@ class ProjectsController < ApplicationController
   def regional_casework_services_completed
     authorize Project
     @pager, @projects = pagy(Project.assigned_to_regional_caseworker_team.completed)
-
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
-  end
-
-  def all_completed
-    authorize Project
-    @pagy, @projects = pagy(Project.completed)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

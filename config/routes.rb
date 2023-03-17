@@ -91,8 +91,10 @@ Rails.application.routes.draw do
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index show] do
       collection do
-        get "all/in-progress", to: "projects#all_in_progress"
-        get "all/completed", to: "projects#all_completed"
+        namespace :all do
+          get "in-progress", to: "projects#in_progress"
+          get "completed", to: "projects#completed"
+        end
         get "regional-casework-services/in-progress", to: "projects#regional_casework_services_in_progress"
         get "regional-casework-services/completed", to: "projects#regional_casework_services_completed"
         get "user/in-progress", to: "projects#user_in_progress"
