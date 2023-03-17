@@ -470,5 +470,25 @@ RSpec.describe Project, type: :model do
         expect(scoped_projects[2].id).to eq last_project.id
       end
     end
+
+    describe "assigned_to" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns project for the passed user" do
+        first_user = create(:user, email: "first.user@education.gov.uk")
+        second_user = create(:user, email: "second.user@education.gov.uk")
+
+        first_users_project = create(:conversion_project, assigned_to: first_user)
+        second_users_project = create(:conversion_project, assigned_to: second_user)
+
+        first_users_projects = Project.assigned_to(first_user)
+        expect(first_users_projects).to include(first_users_project)
+        expect(first_users_projects).not_to include(second_users_project)
+
+        second_users_projects = Project.assigned_to(second_user)
+        expect(second_users_projects).to include(second_users_project)
+        expect(second_users_projects).not_to include(first_users_project)
+      end
+    end
   end
 end

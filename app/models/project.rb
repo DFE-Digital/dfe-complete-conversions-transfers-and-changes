@@ -47,6 +47,8 @@ class Project < ApplicationRecord
 
   scope :opening_by_month_year, ->(month, year) { includes(:task_list).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
 
+  scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end
