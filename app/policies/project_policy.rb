@@ -34,6 +34,10 @@ class ProjectPolicy
     index?
   end
 
+  def user_completed?
+    index?
+  end
+
   def show?
     true
   end

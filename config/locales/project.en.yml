@@ -29,6 +29,8 @@ en:
     user:
       in_progress:
         title: Assigned projects in progress
+      completed:
+        title: Assigned completed projects
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:

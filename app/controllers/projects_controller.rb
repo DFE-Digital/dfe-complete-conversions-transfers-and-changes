@@ -48,6 +48,14 @@ class ProjectsController < ApplicationController
     pre_fetch_incoming_trusts(@projects)
   end
 
+  def user_completed
+    authorize Project
+    @pagy, @projects = pagy(Project.assigned_to(current_user).completed)
+
+    pre_fetch_establishments(@projects)
+    pre_fetch_incoming_trusts(@projects)
+  end
+
   def unassigned
     authorize Project
     @pagy, @projects = pagy(policy_scope(Project.unassigned_to_user.assigned_to_regional_caseworker_team))
