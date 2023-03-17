@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - a new view that shows all completed projects at `/projects/all/completed`, the
   new view switches to a specific table that is focused on showing completed
   projects which is sorted by completion date
+- a new view that shows all completed projects assigned to Regional casework
+  services at `/projects/regional-casework-services/completed`
 
 ## [Release 16][release-16]
 

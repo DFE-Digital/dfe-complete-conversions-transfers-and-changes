@@ -10,7 +10,7 @@ RSpec.feature "Viewing all projects in progress" do
     scenario "they can see a helpful message" do
       visit all_in_progress_projects_path
 
-      expect(page).to have_content(I18n.t("project.all.in_progress.empty"))
+      expect(page).to have_content(I18n.t("project.table.in_progress.empty"))
     end
   end
 

@@ -10,7 +10,7 @@ RSpec.feature "Viewing completed projects" do
     scenario "they can see a helpful message" do
       visit all_completed_projects_path
 
-      expect(page).to have_content(I18n.t("project.completed.empty"))
+      expect(page).to have_content(I18n.t("project.table.completed.empty"))
     end
   end
 

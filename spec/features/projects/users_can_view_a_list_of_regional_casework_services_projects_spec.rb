@@ -1,52 +1,98 @@
 require "rails_helper"
 
 RSpec.feature "Viewing regional casework services projects" do
-  before do
-    sign_in_with_user(user)
-    mock_successful_api_response_to_create_any_project
-    mock_pre_fetched_api_responses_for_any_establishment_and_trust
-  end
+  context "when there are no projects" do
+    before do
+      user = create(:user, :caseworker)
+      sign_in_with_user(user)
+    end
 
-  let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday, assigned_to_regional_caseworker_team: true) }
-  let!(:regional_project) { create(:conversion_project, urn: 121583, assigned_to_regional_caseworker_team: false) }
-  let!(:first_project) { create(:conversion_project, urn: 115652, assigned_to_regional_caseworker_team: true) }
-  let!(:second_project) { create(:conversion_project, urn: 103835, assigned_to_regional_caseworker_team: true) }
+    scenario "they can view a helpful message" do
+      visit regional_casework_services_in_progress_projects_path
 
-  context "when signed in as a Regional caseworker" do
-    let(:user) { create(:user, :caseworker) }
+      expect(page).to have_content(I18n.t("project.table.in_progress.empty"))
 
-    scenario "they can view all in progress projects" do
-      view_in_progress_projects
+      visit regional_casework_services_completed_projects_path
+
+      expect(page).to have_content(I18n.t("project.table.completed.empty"))
     end
   end
 
-  context "when signed in as a Regional caseworker team lead" do
-    let(:user) { create(:user, :team_leader) }
-
-    scenario "they can view all in progress projects" do
-      view_in_progress_projects
+  context "when there are projects" do
+    before do
+      sign_in_with_user(user)
+      mock_successful_api_response_to_create_any_project
+      mock_pre_fetched_api_responses_for_any_establishment_and_trust
     end
-  end
 
-  context "when signed in as a Regional delivery officer" do
-    let(:user) { create(:user, :regional_delivery_officer) }
+    let!(:completed_regional_project) { create(:conversion_project, urn: 126041, assigned_to_regional_caseworker_team: false, completed_at: Date.yesterday) }
+    let!(:in_progress_regional_project) { create(:conversion_project, urn: 126041, assigned_to_regional_caseworker_team: false) }
 
-    scenario "they can view all in progress projects" do
-      view_in_progress_projects
+    let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday, assigned_to_regional_caseworker_team: true) }
+    let!(:in_progress_project) { create(:conversion_project, urn: 115652, assigned_to_regional_caseworker_team: true) }
+
+    context "when signed in as a Regional caseworker" do
+      let(:user) { create(:user, :caseworker) }
+
+      scenario "they can view all in progress projects" do
+        view_in_progress_projects
+      end
+
+      scenario "they can view all in progress projects" do
+        view_completed_projects
+      end
     end
-  end
 
-  def view_in_progress_projects
-    visit regional_casework_services_in_progress_projects_path
+    context "when signed in as a Regional caseworker team lead" do
+      let(:user) { create(:user, :team_leader) }
 
-    expect(page).to have_content(I18n.t("project.regional_casework_services.in_progress.title"))
+      scenario "they can view all in progress projects" do
+        view_in_progress_projects
+      end
 
-    within("tbody") do
-      expect(page).to have_content(first_project.urn)
-      expect(page).to have_content(second_project.urn)
+      scenario "they can view all in progress projects" do
+        view_completed_projects
+      end
+    end
 
-      expect(page).not_to have_content(completed_project.urn)
-      expect(page).not_to have_content(regional_project.urn)
+    context "when signed in as a Regional delivery officer" do
+      let(:user) { create(:user, :regional_delivery_officer) }
+
+      scenario "they can view all in progress projects" do
+        view_in_progress_projects
+      end
+
+      scenario "they can view all in progress projects" do
+        view_completed_projects
+      end
+    end
+
+    def view_in_progress_projects
+      visit regional_casework_services_in_progress_projects_path
+
+      expect(page).to have_content(I18n.t("project.regional_casework_services.in_progress.title"))
+
+      within("tbody") do
+        expect(page).to have_content(in_progress_project.urn)
+        expect(page).not_to have_content(in_progress_regional_project.urn)
+
+        expect(page).not_to have_content(completed_project.urn)
+        expect(page).not_to have_content(completed_regional_project.urn)
+      end
+    end
+
+    def view_completed_projects
+      visit regional_casework_services_completed_projects_path
+
+      expect(page).to have_content(I18n.t("project.regional_casework_services.completed.title"))
+
+      within("tbody") do
+        expect(page).to have_content(completed_project.urn)
+        expect(page).not_to have_content(completed_regional_project.urn)
+
+        expect(page).not_to have_content(in_progress_project.urn)
+        expect(page).not_to have_content(in_progress_regional_project.urn)
+      end
     end
   end
 end

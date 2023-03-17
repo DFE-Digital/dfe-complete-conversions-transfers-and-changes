@@ -14,8 +14,6 @@ en:
       unassigned:
         title: Unassigned projects
       empty: No projects
-    completed:
-      empty: No completed projects
     show:
       title: Task list
       edit_button:
@@ -23,10 +21,11 @@ en:
     all:
       in_progress:
         title: All projects in progress
-        empty: There are no projects in progress
     regional_casework_services:
       in_progress:
         title: Regional casework services projects in progress
+      completed:
+        title: Regional casework services completed projects
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:
@@ -88,6 +87,10 @@ en:
         view: View project
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
+      in_progress:
+        empty: There are no projects in progress
+      completed:
+        empty: There are no completed projects
     openers:
       title: Academies opening in %{date}
       subtitle: A list of schools becoming academies
