@@ -30,6 +30,10 @@ class ProjectPolicy
     index?
   end
 
+  def user_in_progress?
+    index?
+  end
+
   def show?
     true
   end

@@ -95,6 +95,7 @@ Rails.application.routes.draw do
         get "all/completed", to: "projects#all_completed"
         get "regional-casework-services/in-progress", to: "projects#regional_casework_services_in_progress"
         get "regional-casework-services/completed", to: "projects#regional_casework_services_completed"
+        get "user/in-progress", to: "projects#user_in_progress"
         get "unassigned"
 
         get "openers/:month/:year", to: "projects_openers#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :openers

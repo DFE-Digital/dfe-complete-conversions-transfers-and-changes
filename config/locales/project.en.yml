@@ -26,6 +26,9 @@ en:
         title: Regional casework services projects in progress
       completed:
         title: Regional casework services completed projects
+    user:
+      in_progress:
+        title: Assigned projects in progress
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:
