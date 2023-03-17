@@ -2,7 +2,6 @@ class NotesController < ApplicationController
   before_action :find_project
   before_action :find_project_level_notes, only: :index
   after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
 
   def new
     @note = Note.new(project: @project, user_id:, task_identifier: params[:task_identifier])
@@ -74,7 +73,7 @@ class NotesController < ApplicationController
   end
 
   private def find_project_level_notes
-    @notes = policy_scope(Note).includes([:user]).project_level_notes(@project)
+    @notes = Note.project_level_notes(@project).includes(:user)
   end
 
   private def note_params
