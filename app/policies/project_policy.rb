@@ -14,14 +14,6 @@ class ProjectPolicy
     user.team_leader?
   end
 
-  def user_in_progress?
-    index?
-  end
-
-  def user_completed?
-    index?
-  end
-
   def show?
     true
   end

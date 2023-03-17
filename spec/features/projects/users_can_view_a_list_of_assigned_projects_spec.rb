@@ -19,11 +19,11 @@ RSpec.feature "Viewing assigned projects" do
     let(:user) { create(:user, :caseworker) }
 
     scenario "they can view a helpful message" do
-      visit user_in_progress_projects_path
+      visit in_progress_user_projects_path
 
       expect(page).to have_content(I18n.t("project.index.empty"))
 
-      visit user_completed_projects_path
+      visit completed_user_projects_path
 
       expect(page).to have_content(I18n.t("project.table.completed.empty"))
     end
@@ -70,7 +70,7 @@ RSpec.feature "Viewing assigned projects" do
     end
 
     def view_in_progress_projects
-      visit user_in_progress_projects_path
+      visit in_progress_user_projects_path
 
       expect(page).to have_content(I18n.t("project.user.in_progress.title"))
 
@@ -87,7 +87,7 @@ RSpec.feature "Viewing assigned projects" do
     end
 
     def view_completed_projects
-      visit user_completed_projects_path
+      visit completed_user_projects_path
 
       expect(page).to have_content(I18n.t("project.user.completed.title"))
 

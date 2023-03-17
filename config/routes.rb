@@ -99,8 +99,10 @@ Rails.application.routes.draw do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
         end
-        get "user/in-progress", to: "projects#user_in_progress"
-        get "user/completed", to: "projects#user_completed"
+        namespace :user do
+          get "in-progress", to: "projects#in_progress"
+          get "completed", to: "projects#completed"
+        end
         get "unassigned"
 
         get "openers/:month/:year", to: "projects_openers#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :openers
