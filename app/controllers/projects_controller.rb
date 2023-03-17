@@ -24,9 +24,9 @@ class ProjectsController < ApplicationController
     pre_fetch_incoming_trusts(@projects)
   end
 
-  def completed
+  def all_completed
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.completed))
+    @pagy, @projects = pagy(Project.completed)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

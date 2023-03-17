@@ -92,8 +92,8 @@ Rails.application.routes.draw do
     resources :projects, only: %i[index show] do
       collection do
         get "all/in-progress", to: "projects#all_in_progress"
+        get "all/completed", to: "projects#all_completed"
         get "regional-casework-services/in-progress", to: "projects#regional_casework_services_in_progress"
-        get "completed"
         get "unassigned"
 
         get "openers/:month/:year", to: "projects_openers#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :openers

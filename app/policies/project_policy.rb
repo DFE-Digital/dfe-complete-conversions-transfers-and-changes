@@ -10,7 +10,7 @@ class ProjectPolicy
     true
   end
 
-  def completed?
+  def all_completed?
     true
   end
 

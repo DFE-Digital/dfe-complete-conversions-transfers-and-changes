@@ -14,6 +14,8 @@ en:
       unassigned:
         title: Unassigned projects
       empty: No projects
+    completed:
+      empty: No completed projects
     show:
       title: Task list
       edit_button:

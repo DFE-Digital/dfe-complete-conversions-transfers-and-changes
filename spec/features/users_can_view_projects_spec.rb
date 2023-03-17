@@ -84,12 +84,6 @@ RSpec.feature "Users can view a list of projects" do
       page_has_project(caseworker_project)
     end
 
-    scenario "can see the completed project on a separate tab" do
-      visit completed_projects_path
-
-      page_has_project(completed_project)
-    end
-
     scenario "the open projects are sorted by target completion date" do
       visit projects_path
 
@@ -169,12 +163,6 @@ RSpec.feature "Users can view a list of projects" do
 
     scenario "there is a message indicating there are no open projects" do
       visit projects_path
-
-      expect(page).to have_content(I18n.t("project.index.empty"))
-    end
-
-    scenario "there is a message indicating there are no completed projects" do
-      visit completed_projects_path
 
       expect(page).to have_content(I18n.t("project.index.empty"))
     end
