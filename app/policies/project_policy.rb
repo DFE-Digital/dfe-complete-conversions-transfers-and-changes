@@ -18,6 +18,10 @@ class ProjectPolicy
     user.team_leader?
   end
 
+  def all_in_progress?
+    index?
+  end
+
   def show?
     true
   end

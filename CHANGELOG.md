@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Updated success messages for notification banners
 
+### Added
+
+- a new view that shows all in-progress projects at `/projects/all/in-progress`
+
 ## [Release 16][release-16]
 
 ### Added

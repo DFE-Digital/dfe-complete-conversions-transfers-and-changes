@@ -91,6 +91,7 @@ Rails.application.routes.draw do
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index show] do
       collection do
+        get "all/in-progress", to: "projects#all_in_progress"
         get "completed"
         get "unassigned"
 

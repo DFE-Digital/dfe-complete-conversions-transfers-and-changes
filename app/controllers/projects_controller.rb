@@ -11,6 +11,11 @@ class ProjectsController < ApplicationController
     pre_fetch_incoming_trusts(@projects)
   end
 
+  def all_in_progress
+    authorize Project
+    @pager, @projects = pagy(Project.in_progress.includes(:assigned_to))
+  end
+
   def completed
     authorize Project
     @pagy, @projects = pagy(policy_scope(Project.completed))
