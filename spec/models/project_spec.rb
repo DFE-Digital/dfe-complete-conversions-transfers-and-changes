@@ -339,7 +339,7 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "open scope" do
+    describe "in_progress scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "only returns open projects" do
@@ -347,7 +347,7 @@ RSpec.describe Project, type: :model do
         open_project_1 = create(:conversion_project, completed_at: nil)
         open_project_2 = create(:conversion_project, completed_at: nil)
 
-        projects = Project.open
+        projects = Project.in_progress
 
         expect(projects).to include(open_project_1, open_project_2)
         expect(projects).to_not include(completed_project)

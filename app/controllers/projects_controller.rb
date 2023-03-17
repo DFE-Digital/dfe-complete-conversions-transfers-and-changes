@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   def index
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.open.includes(:assigned_to)))
+    @pagy, @projects = pagy(policy_scope(Project.in_progress.includes(:assigned_to)))
 
     EstablishmentsFetcher.new.call(@projects)
     IncomingTrustsFetcher.new.call(@projects)
