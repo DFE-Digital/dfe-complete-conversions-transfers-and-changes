@@ -1,26 +1,37 @@
 require "rails_helper"
 
 RSpec.describe ProjectPolicy do
-  describe "#change_conversion_date?" do
-    context "when the conversion date is provisional" do
-      it "returns false" do
-        project = build(:conversion_project)
-        user = build(:user, :caseworker)
+  subject { described_class }
+  before { mock_successful_api_response_to_create_any_project }
 
-        policy = described_class.new(user, project)
+  let(:application_user) { build(:user, email: "application.user@education.gov.uk") }
 
-        expect(policy.change_conversion_date?).to eq false
+  permissions :change_conversion_date? do
+    context "when the conversion date is not provisional" do
+      it "grants access if project is assigned to the same user" do
+        expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
+      end
+
+      it "denies access if the project is assigend to another user" do
+        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: build(:user), conversion_date_provisional: false))
+      end
+
+      it "denies access if project is assigned to nil" do
+        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: nil, conversion_date_provisional: false))
       end
     end
 
-    context "when the conversion date is confirmed" do
-      it "returns true" do
-        project = build(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false)
-        user = build(:user, :caseworker)
+    context "when the conversion date is provisional" do
+      it "denies access if project is assigned to the same user" do
+        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: true))
+      end
 
-        policy = described_class.new(user, project)
+      it "denies access if the project is assigend to another user" do
+        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: build(:user), conversion_date_provisional: true))
+      end
 
-        expect(policy.change_conversion_date?).to eq true
+      it "denies access if project is assigned to nil" do
+        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: nil, conversion_date_provisional: true))
       end
     end
   end

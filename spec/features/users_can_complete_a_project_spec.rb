@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can complete a project" do
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:conversion_project, caseworker: user) }
+  let(:project) { create(:conversion_project, assigned_to: user) }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)

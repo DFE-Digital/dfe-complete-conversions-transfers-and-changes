@@ -6,7 +6,7 @@ RSpec.describe Conversions::DateHistoriesController do
       user = create(:user, :caseworker)
       sign_in_with(user)
       mock_successful_api_calls(establishment: any_args, trust: any_args)
-      project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false)
+      project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false, assigned_to: user)
       mock_successful_api_establishment_response(urn: project.urn)
 
       post conversions_involuntary_project_conversion_date_path(project), params: {conversion_new_date_history_form: {revised_date: nil, note_body: nil}}

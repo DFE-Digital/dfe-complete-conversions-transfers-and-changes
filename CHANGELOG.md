@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated success messages for notification banners
 - Users who are not assigned to the project can no longer update the task list
   actions
+- Users who are not assigned to the project can no longer change the conversion
+  date
 
 ### Added
 

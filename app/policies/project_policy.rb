@@ -31,7 +31,9 @@ class ProjectPolicy
   end
 
   def change_conversion_date?
-    @record.conversion_date_provisional? == false
+    return false if @record.conversion_date_provisional?
+
+    @record.assigned_to == @user
   end
 
   class Scope
