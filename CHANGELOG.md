@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   actions
 - Users who are not assigned to the project can no longer change the conversion
   date
+- Users who are not assigned to the project can no longer complete it
 
 ### Added
 
