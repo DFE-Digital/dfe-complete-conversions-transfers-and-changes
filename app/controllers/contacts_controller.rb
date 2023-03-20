@@ -6,10 +6,12 @@ class ContactsController < ApplicationController
   end
 
   def new
+    authorize @project, :new_contact?
     @contact = Contact.new(project: @project)
   end
 
   def create
+    authorize @project, :new_contact?
     @contact = Contact.new(project: @project, **contact_params)
 
     if @contact.valid?
@@ -23,12 +25,14 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
+    authorize @contact
 
     @users = User.all
   end
 
   def update
     @contact = Contact.find(params[:id])
+    authorize @contact
 
     @contact.assign_attributes(contact_params)
 
@@ -42,6 +46,8 @@ class ContactsController < ApplicationController
 
   def destroy
     @contact = Contact.find(params[:id])
+    authorize @contact
+
     @contact.destroy
 
     redirect_to project_contacts_path(@project), notice: I18n.t("contact.destroy.success")
@@ -49,6 +55,7 @@ class ContactsController < ApplicationController
 
   def confirm_destroy
     @contact = Contact.find(params[:contact_id])
+    authorize @contact
   end
 
   private def find_project
