@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Users who are not assigned to the project can no longer complete it
 - External contacts can no longer be added, updated of deleted from projects
   that are completed
+- Notes can no longer be added, update or deleted from projects that are
+  completed
 
 ### Added
 

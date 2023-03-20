@@ -3,19 +3,14 @@ class NotePolicy
 
   def initialize(user, note)
     @user = user
-    @record = note
-  end
-
-  def create?
-    true
-  end
-
-  def new?
-    create?
+    @note = note
+    @project = @note.project
   end
 
   def edit?
-    @record.user == @user
+    return false if @project.completed?
+
+    @note.user == @user
   end
 
   def update?

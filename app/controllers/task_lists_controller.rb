@@ -41,6 +41,6 @@ class TaskListsController < ApplicationController
   end
 
   private def find_task_notes
-    @notes = Note.includes([:user]).where(project: @project, task_identifier: @task.class.identifier)
+    @notes = Note.includes([:user, :project]).where(project: @project, task_identifier: @task.class.identifier)
   end
 end

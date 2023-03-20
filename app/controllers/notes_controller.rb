@@ -4,13 +4,15 @@ class NotesController < ApplicationController
   after_action :verify_authorized, except: :index
 
   def new
+    authorize @project, :new_note?
+
     @note = Note.new(project: @project, user_id:, task_identifier: params[:task_identifier])
-    authorize @note
   end
 
   def create
+    authorize @project, :new_note?
+
     @note = Note.new(project: @project, user_id:, **note_params)
-    authorize @note
 
     if @note.valid?
       @note.save
@@ -73,7 +75,7 @@ class NotesController < ApplicationController
   end
 
   private def find_project_level_notes
-    @notes = Note.project_level_notes(@project).includes(:user)
+    @notes = Note.project_level_notes(@project).includes([:user, :project])
   end
 
   private def note_params
