@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can complete tasks in an involuntary conversion project" do
   let(:user) { create(:user, :regional_delivery_officer) }
-  let(:involuntary_project) { create(:involuntary_conversion_project) }
+  let(:involuntary_project) { create(:involuntary_conversion_project, assigned_to: user) }
 
   before do
     mock_successful_api_responses(urn: any_args, ukprn: any_args)

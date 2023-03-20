@@ -11,6 +11,7 @@ class TaskListsController < ApplicationController
   end
 
   def update
+    authorize @task_list, policy_class: TaskListPolicy
     @task.assign_attributes task_params
 
     if @task.valid?

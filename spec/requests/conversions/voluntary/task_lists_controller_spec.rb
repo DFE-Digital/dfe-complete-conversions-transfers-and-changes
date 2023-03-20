@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Conversions::Voluntary::TaskListsController do
-  let(:project) { create(:voluntary_conversion_project) }
+  let(:project) { create(:voluntary_conversion_project, assigned_to: user) }
   let(:project_id) { project.id }
   let(:index_path) { conversions_voluntary_project_task_list_path(project_id) }
   let(:task) { build(:voluntary_conversion_task_handover) }
