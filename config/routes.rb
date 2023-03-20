@@ -98,6 +98,7 @@ Rails.application.routes.draw do
         namespace :regional_casework_services, path: "regional-casework-services" do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
+          get "unassigned", to: "projects#unassigned"
         end
         namespace :user do
           get "in-progress", to: "projects#in_progress"

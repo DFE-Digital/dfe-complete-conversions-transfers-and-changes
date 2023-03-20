@@ -26,6 +26,8 @@ en:
         title: Regional casework services projects in progress
       completed:
         title: Regional casework services completed projects
+      unassigned:
+        title: Regional casework services unassigned projects
     user:
       in_progress:
         title: Assigned projects in progress
@@ -90,12 +92,16 @@ en:
         type: Type of project
         assigned_to: Assigned to
         view: View project
+        assign: Assign project
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
+        assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
       in_progress:
         empty: There are no projects in progress
       completed:
         empty: There are no completed projects
+      unassigned:
+        empty: There are no unassigned projects
     openers:
       title: Academies opening in %{date}
       subtitle: A list of schools becoming academies

@@ -23,6 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   in-progress at `/projects/user/in-progress`
 - a new view that shows a user the project they are assigned and that are
   completed at `/projects/user/completed`
+- a new view that shows all projects that have not been assigned to a user, but
+  have been assigned to Regional casework services at
+  `/projects/regional-casework-services`
 
 ## [Release 16][release-16]
 

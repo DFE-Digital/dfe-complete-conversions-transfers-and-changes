@@ -18,6 +18,14 @@ class RegionalCaseworkServices::ProjectsController < ApplicationController
     pre_fetch_incoming_trusts(@projects)
   end
 
+  def unassigned
+    authorize Project, :index?
+    @pagy, @projects = pagy(Project.assigned_to_regional_caseworker_team.unassigned_to_user)
+
+    pre_fetch_establishments(@projects)
+    pre_fetch_incoming_trusts(@projects)
+  end
+
   private def pre_fetch_establishments(projects)
     EstablishmentsFetcher.new.call(projects)
   end
