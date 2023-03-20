@@ -42,6 +42,14 @@ class ProjectPolicy
     project_assigned_to_user?
   end
 
+  def new_note?
+    return true unless @record.completed?
+  end
+
+  def new_contact?
+    return true unless @record.completed?
+  end
+
   private def project_assigned_to_user?
     @record.assigned_to == @user
   end
