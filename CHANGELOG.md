@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - a new view that shows all projects that have not been assigned to a user, but
   have been assigned to Regional casework services at
   `/projects/regional-casework-services`
+- Add Directive academy order radio buttons to Create project form
 
 ## [Release 16][release-16]
 

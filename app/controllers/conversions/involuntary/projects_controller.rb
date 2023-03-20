@@ -42,7 +42,8 @@ class Conversions::Involuntary::ProjectsController < Conversions::ProjectsContro
       :advisory_board_conditions,
       :establishment_sharepoint_link,
       :trust_sharepoint_link,
-      :note_body
+      :note_body,
+      :directive_academy_order
     )
   end
 end

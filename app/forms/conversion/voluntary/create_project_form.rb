@@ -21,7 +21,8 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       regional_delivery_officer_id: user.id,
       task_list: Conversion::Voluntary::TaskList.new,
       assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
-      assigned_to: assigned_to
+      assigned_to: assigned_to,
+      directive_academy_order: directive_academy_order
     )
 
     return nil unless valid?
