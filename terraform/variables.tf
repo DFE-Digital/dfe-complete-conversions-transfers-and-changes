@@ -142,6 +142,11 @@ variable "enable_container_health_probe" {
   type        = bool
 }
 
+variable "container_health_probe_protocol" {
+  description = "Use HTTPS or a TCP connection for the Container liveness probe"
+  type        = string
+}
+
 variable "monitor_enable_slack_webhook" {
   description = "Enable slack webhooks to send monitoring notifications to a channel"
   type        = bool
