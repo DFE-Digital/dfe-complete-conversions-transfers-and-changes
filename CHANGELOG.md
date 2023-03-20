@@ -27,6 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   have been assigned to Regional casework services at
   `/projects/regional-casework-services`
 - Add Directive academy order radio buttons to Create project form
+- Show the project's Directive academy order information in the project
+  information tab
 
 ## [Release 16][release-16]
 

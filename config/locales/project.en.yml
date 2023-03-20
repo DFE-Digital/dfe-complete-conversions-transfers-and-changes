@@ -134,6 +134,10 @@ en:
           establishment_sharepoint_link: School SharePoint folder
           trust_sharepoint_link: Trust SharePoint folder
           advisory_board_conditions: Conditions from advisory board
+          directive_academy_order:
+            title: Has a Directive academy order been issued?
+            "true": "Yes"
+            "false": "No"
       school_details:
         title: School details
         rows:
