@@ -19,6 +19,7 @@ class Project < ApplicationRecord
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
   validates :directive_academy_order, inclusion: {in: [true, false]}
+  validates :sponsor_trust_required, inclusion: {in: [true, false]}
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
