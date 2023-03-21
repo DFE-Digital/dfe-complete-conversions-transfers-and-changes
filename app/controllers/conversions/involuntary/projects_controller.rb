@@ -43,7 +43,8 @@ class Conversions::Involuntary::ProjectsController < Conversions::ProjectsContro
       :establishment_sharepoint_link,
       :trust_sharepoint_link,
       :note_body,
-      :directive_academy_order
+      :directive_academy_order,
+      :sponsor_trust_required
     )
   end
 end

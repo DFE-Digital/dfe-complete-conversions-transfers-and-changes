@@ -18,6 +18,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:type).of_type :string }
     it { is_expected.to have_db_column(:assigned_to_regional_caseworker_team).of_type :boolean }
     it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
+    it { is_expected.to have_db_column(:sponsor_trust_required).of_type :boolean }
   end
 
   describe "Relationships" do
@@ -127,6 +128,20 @@ RSpec.describe Project, type: :model do
           subject.assign_attributes(directive_academy_order: nil)
           subject.valid?
           expect(subject.errors[:directive_academy_order]).to include("Select yes if this project has had a Directive academy order issued")
+        end
+      end
+    end
+
+    describe "#sponsor_trust_required" do
+      it { is_expected.to allow_value(true).for(:sponsor_trust_required) }
+      it { is_expected.to allow_value(false).for(:sponsor_trust_required) }
+      it { is_expected.to_not allow_value(nil).for(:sponsor_trust_required) }
+
+      context "error messages" do
+        it "adds an appropriate error message if the value is nil" do
+          subject.assign_attributes(sponsor_trust_required: nil)
+          subject.valid?
+          expect(subject.errors[:sponsor_trust_required]).to include("Select yes if this school is joining a Sponsor trust")
         end
       end
     end

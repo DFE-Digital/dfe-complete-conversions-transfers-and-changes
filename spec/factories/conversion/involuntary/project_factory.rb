@@ -10,5 +10,6 @@ FactoryBot.define do
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
     task_list { association :conversion_involuntary_task_list }
     directive_academy_order { true }
+    sponsor_trust_required { true }
   end
 end

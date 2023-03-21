@@ -22,7 +22,8 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       task_list: Conversion::Voluntary::TaskList.new,
       assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
       assigned_to: assigned_to,
-      directive_academy_order: directive_academy_order
+      directive_academy_order: directive_academy_order,
+      sponsor_trust_required: sponsor_trust_required
     )
 
     return nil unless valid?
