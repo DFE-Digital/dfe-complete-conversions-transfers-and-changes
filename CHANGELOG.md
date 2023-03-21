@@ -33,6 +33,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Show the project's Sponsor trust required information in the project
   information tab
 
+### Fixed
+
+- users can submit changes on the involuntary external stakeholder kick off task
+  once the confirmed conversion date is set
+
 ## [Release 16][release-16]
 
 ### Added
