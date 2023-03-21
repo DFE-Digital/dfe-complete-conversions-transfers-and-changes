@@ -21,6 +21,7 @@ locals {
   enable_dns_zone                              = var.enable_dns_zone
   dns_zone_domain_name                         = var.dns_zone_domain_name
   dns_ns_records                               = var.dns_ns_records
+  dns_txt_records                              = var.dns_txt_records
   key_vault_access_users                       = toset(var.key_vault_access_users)
   tfvars_filename                              = var.tfvars_filename
   enable_monitoring                            = var.enable_monitoring
