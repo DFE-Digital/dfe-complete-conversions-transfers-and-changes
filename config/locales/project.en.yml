@@ -138,6 +138,10 @@ en:
             title: Has a Directive academy order been issued?
             "true": "Yes"
             "false": "No"
+          sponsor_trust_required:
+            title: Is the school joining a Sponsor trust?
+            "true": "Yes"
+            "false": "No"
       school_details:
         title: School details
         rows:
