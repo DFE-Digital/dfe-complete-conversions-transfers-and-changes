@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "projects#index"
+  root "user/projects#in_progress"
 
   # Errors
   match "/404" => "pages#page_not_found", :via => :all

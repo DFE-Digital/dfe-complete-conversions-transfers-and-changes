@@ -7,6 +7,8 @@
       <%= t("project.user.in_progress.title") %>
     </h1>
 
+    <%= render partial: "projects/shared/new_projects" if policy(:project).new? %>
+
     <%= render partial: "projects/shared/project_index_sub_navigation" %>
 
     <%= render partial: "/shared/projects/list", locals: {projects: @projects, pager: @pager} %>

@@ -194,9 +194,10 @@ RSpec.feature "Users can view a single project" do
   end
 
   scenario "by following a link from the home page" do
-    sign_in_with_user(create(:user, :team_leader))
+    user = create(:user, :team_leader)
+    sign_in_with_user(user)
 
-    single_project = create(:conversion_project, urn: urn)
+    single_project = create(:conversion_project, urn: urn, assigned_to: user)
 
     visit root_path
     click_on establishment.name
