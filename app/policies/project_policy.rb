@@ -10,10 +10,6 @@ class ProjectPolicy
     true
   end
 
-  def completed?
-    true
-  end
-
   def unassigned?
     user.team_leader?
   end

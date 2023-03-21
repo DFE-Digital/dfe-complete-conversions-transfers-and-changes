@@ -36,8 +36,8 @@ class Project < ApplicationRecord
 
   scope :by_conversion_date, -> { order(conversion_date: :asc) }
 
-  scope :completed, -> { where.not(completed_at: nil) }
-  scope :open, -> { where(completed_at: nil) }
+  scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
+  scope :in_progress, -> { where(completed_at: nil) }
 
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
   scope :assigned_to_regional_delivery_officer, ->(user) { where(assigned_to: user).or(where(regional_delivery_officer: user)) }
@@ -46,6 +46,8 @@ class Project < ApplicationRecord
   scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
 
   scope :opening_by_month_year, ->(month, year) { includes(:task_list).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
+
+  scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
 
   def establishment
     @establishment ||= fetch_establishment(urn)

@@ -18,6 +18,21 @@ en:
       title: Task list
       edit_button:
         text: Edit
+    all:
+      in_progress:
+        title: All projects in progress
+    regional_casework_services:
+      in_progress:
+        title: Regional casework services projects in progress
+      completed:
+        title: Regional casework services completed projects
+      unassigned:
+        title: Regional casework services unassigned projects
+    user:
+      in_progress:
+        title: Assigned projects in progress
+      completed:
+        title: Assigned completed projects
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:
@@ -69,7 +84,24 @@ en:
       regional_delivery_officer:
         success: Regional delivery officer has been assigned
       assigned_to:
-        success: Project has been assigned
+        success: Project has been assigned successfully
+    table:
+      headers:
+        school_name: School name
+        school_urn: School URN
+        type: Type of project
+        assigned_to: Assigned to
+        view: View project
+        assign: Assign project
+      body:
+        view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
+        assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
+      in_progress:
+        empty: There are no projects in progress
+      completed:
+        empty: There are no completed projects
+      unassigned:
+        empty: There are no unassigned projects
     openers:
       title: Academies opening in %{date}
       subtitle: A list of schools becoming academies

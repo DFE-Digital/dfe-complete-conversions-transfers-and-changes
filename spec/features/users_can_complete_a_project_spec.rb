@@ -7,6 +7,7 @@ RSpec.feature "Users can complete a project" do
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
+    mock_pre_fetched_api_responses_for_any_establishment_and_trust
   end
 
   scenario "successfully" do

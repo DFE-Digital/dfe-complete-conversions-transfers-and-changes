@@ -327,19 +327,21 @@ RSpec.describe Project, type: :model do
     describe "completed scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "only returns completed projects" do
+      it "only returns completed projects ordered by completed at date" do
         completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year)
-        completed_project_2 = create(:conversion_project, completed_at: Date.today - 1.year)
-        open_project = create(:conversion_project, completed_at: nil)
+        completed_project_2 = create(:conversion_project, completed_at: Date.today - 6.months)
+        in_progress_project = create(:conversion_project, completed_at: nil)
 
         projects = Project.completed
 
-        expect(projects).to include(completed_project_1, completed_project_2)
-        expect(projects).to_not include(open_project)
+        expect(projects.first).to eql completed_project_2
+        expect(projects.last).to eql completed_project_1
+
+        expect(projects).to_not include(in_progress_project)
       end
     end
 
-    describe "open scope" do
+    describe "in_progress scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "only returns open projects" do
@@ -347,7 +349,7 @@ RSpec.describe Project, type: :model do
         open_project_1 = create(:conversion_project, completed_at: nil)
         open_project_2 = create(:conversion_project, completed_at: nil)
 
-        projects = Project.open
+        projects = Project.in_progress
 
         expect(projects).to include(open_project_1, open_project_2)
         expect(projects).to_not include(completed_project)
@@ -468,6 +470,26 @@ RSpec.describe Project, type: :model do
         expect(scoped_projects[0].id).to eq first_project.id
         expect(scoped_projects[1].id).to eq middle_project.id
         expect(scoped_projects[2].id).to eq last_project.id
+      end
+    end
+
+    describe "assigned_to" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns project for the passed user" do
+        first_user = create(:user, email: "first.user@education.gov.uk")
+        second_user = create(:user, email: "second.user@education.gov.uk")
+
+        first_users_project = create(:conversion_project, assigned_to: first_user)
+        second_users_project = create(:conversion_project, assigned_to: second_user)
+
+        first_users_projects = Project.assigned_to(first_user)
+        expect(first_users_projects).to include(first_users_project)
+        expect(first_users_projects).not_to include(second_users_project)
+
+        second_users_projects = Project.assigned_to(second_user)
+        expect(second_users_projects).to include(second_users_project)
+        expect(second_users_projects).not_to include(first_users_project)
       end
     end
   end

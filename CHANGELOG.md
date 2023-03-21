@@ -10,6 +10,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Updated success messages for notification banners
 
+### Added
+
+- a new view that shows all in-progress projects at `/projects/all/in-progress`
+- a new view that shows all in-progress projects assigned to Regional casework
+  services at `/projects/regional-casework-services/in-progress`
+- a new view that shows all completed projects at `/projects/all/completed`, the
+  new view switches to a specific table that is focused on showing completed
+  projects which is sorted by completion date
+- a new view that shows all completed projects assigned to Regional casework
+- a new view that shows a user the project they are assigned and that are
+  in-progress at `/projects/user/in-progress`
+- a new view that shows a user the project they are assigned and that are
+  completed at `/projects/user/completed`
+- a new view that shows all projects that have not been assigned to a user, but
+  have been assigned to Regional casework services at
+  `/projects/regional-casework-services`
+
 ## [Release 16][release-16]
 
 ### Added

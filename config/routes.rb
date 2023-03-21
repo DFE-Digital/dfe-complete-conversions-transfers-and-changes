@@ -91,7 +91,19 @@ Rails.application.routes.draw do
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index show] do
       collection do
-        get "completed"
+        namespace :all do
+          get "in-progress", to: "projects#in_progress"
+          get "completed", to: "projects#completed"
+        end
+        namespace :regional_casework_services, path: "regional-casework-services" do
+          get "in-progress", to: "projects#in_progress"
+          get "completed", to: "projects#completed"
+          get "unassigned", to: "projects#unassigned"
+        end
+        namespace :user do
+          get "in-progress", to: "projects#in_progress"
+          get "completed", to: "projects#completed"
+        end
         get "unassigned"
 
         get "openers/:month/:year", to: "projects_openers#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :openers
