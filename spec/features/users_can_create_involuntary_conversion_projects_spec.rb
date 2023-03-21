@@ -42,6 +42,11 @@ RSpec.feature "Users can create new involuntary conversion projects" do
       within("#directive-academy-order") do
         choose "Yes"
       end
+
+      within("#sponsor-trust-required") do
+        choose "Yes"
+      end
+
       click_button("Continue")
 
       expect(page).to have_content(I18n.t("project.show.title"))

@@ -21,6 +21,7 @@
             label: {text: t("project.new.handover_comments_label"), size: "m"},
             hint: {text: t("project.new.handover_comments_hint").html_safe} %>
       <%= form.govuk_collection_radio_buttons :directive_academy_order, @project.directive_academy_order_responses, :id, :name, legend: {text: t("helpers.hint.conversion_project.directive_academy_order")}, form_group: {id: "directive-academy-order"} %>
+      <%= form.govuk_collection_radio_buttons :sponsor_trust_required, @project.sponsor_trust_required_responses, :id, :name, legend: {text: t("helpers.hint.conversion_project.sponsor_trust_required")}, form_group: {id: "sponsor-trust-required"} %>
 
       <%= form.govuk_submit %>
     <% end %>

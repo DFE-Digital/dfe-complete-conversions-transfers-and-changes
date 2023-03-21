@@ -11,7 +11,8 @@ class Conversion::Involuntary::CreateProjectForm < Conversion::CreateProjectForm
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
       task_list: Conversion::Involuntary::TaskList.new,
-      directive_academy_order: directive_academy_order
+      directive_academy_order: directive_academy_order,
+      sponsor_trust_required: sponsor_trust_required
     )
 
     return nil unless valid?

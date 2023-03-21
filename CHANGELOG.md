@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add Directive academy order radio buttons to Create project form
 - Show the project's Directive academy order information in the project
   information tab
+- Add Sponsor trust required radio buttons to Create project form
 
 ## [Release 16][release-16]
 

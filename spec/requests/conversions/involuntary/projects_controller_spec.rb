@@ -14,7 +14,8 @@ RSpec.describe Conversions::Involuntary::ProjectsController do
       "advisory_board_date(3i)": "1",
       "advisory_board_date(2i)": "1",
       "advisory_board_date(1i)": "2022",
-      regional_delivery_officer: nil)
+      regional_delivery_officer: nil,
+      sponsor_trust_required: "false")
   }
 
   before do

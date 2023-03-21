@@ -70,6 +70,7 @@ en:
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
         directive_academy_order: Has a Directive academy order been issued?
+        sponsor_trust_required: Is the school joining a Sponsor trust?
   errors:
     attributes:
       conversion_date:
