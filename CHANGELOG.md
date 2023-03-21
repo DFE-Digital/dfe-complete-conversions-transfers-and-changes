@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Notes can no longer be added, update or deleted from projects that are
   completed
 - Tasks can no longer be updated once the project is completed
+- Internal contacts can no longer be updated once the project is completed
 
 ### Added
 

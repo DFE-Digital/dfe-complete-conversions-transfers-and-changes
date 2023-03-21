@@ -66,4 +66,28 @@ RSpec.describe ProjectPolicy do
       expect(subject).not_to permit(application_user, project)
     end
   end
+
+  permissions :update_assigned_to? do
+    it "grants access if project is not completed" do
+      project = build(:conversion_project, assigned_to: application_user, completed_at: nil)
+      expect(subject).to permit(application_user, project)
+    end
+
+    it "denies access if project is completed" do
+      project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
+      expect(subject).not_to permit(application_user, project)
+    end
+  end
+
+  permissions :update_regional_delivery_officer? do
+    it "grants access if project is not completed" do
+      project = build(:conversion_project, assigned_to: application_user, completed_at: nil)
+      expect(subject).to permit(application_user, project)
+    end
+
+    it "denies access if project is completed" do
+      project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
+      expect(subject).not_to permit(application_user, project)
+    end
+  end
 end

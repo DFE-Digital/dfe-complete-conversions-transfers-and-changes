@@ -43,15 +43,29 @@ class ProjectPolicy
   end
 
   def new_note?
-    return true unless @record.completed?
+    edit_project_closed?
   end
 
   def new_contact?
-    return true unless @record.completed?
+    edit_project_closed?
+  end
+
+  def update_assigned_to?
+    edit_project_closed?
+  end
+
+  def update_regional_delivery_officer?
+    edit_project_closed?
   end
 
   private def project_assigned_to_user?
     @record.assigned_to == @user
+  end
+
+  private def edit_project_closed?
+    return false if @record.completed?
+
+    true
   end
 
   class Scope
