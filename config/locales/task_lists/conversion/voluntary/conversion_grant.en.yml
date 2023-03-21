@@ -61,3 +61,5 @@ en:
 
           share_payment_date:
             title: Tell the school or trust the grant information has been sent
+          not_applicable:
+            title: Not applicable

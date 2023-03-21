@@ -10,6 +10,10 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+
+      <div class="govuk-form-group">
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_vendor_account)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :payment_form)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_information)) %>
