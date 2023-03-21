@@ -29,6 +29,9 @@ require "capybara/rspec"
 require "webmock/rspec"
 WebMock.disable_net_connect!(allow_localhost: true)
 
+# Add Pundit helpers
+require "pundit/rspec"
+
 RSpec.configure do |config|
   # Do not run specs tagged accessibility by default
   config.filter_run_excluding accessibility: true

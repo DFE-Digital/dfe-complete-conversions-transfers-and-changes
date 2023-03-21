@@ -1,6 +1,8 @@
 class ProjectsCompleteController < ApplicationController
   def complete
     @project = Project.find(project_id)
+    authorize @project, :update?
+
     set_project_completed_at
 
     render :completed

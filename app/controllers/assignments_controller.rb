@@ -18,6 +18,7 @@ class AssignmentsController < ApplicationController
   end
 
   def update_regional_delivery_officer
+    authorize @project, :update_regional_delivery_officer?
     @project.update(regional_delivery_officer_params)
 
     redirect_to helpers.path_to_project_internal_contacts(@project), notice: t("project.assign.regional_delivery_officer.success")
@@ -28,6 +29,7 @@ class AssignmentsController < ApplicationController
   end
 
   def update_assigned_to
+    authorize @project, :update_assigned_to?
     @project.update(assigned_to_params.except(:return_to))
     @project.update(assigned_at: DateTime.now) if @project.assigned_at.nil?
 

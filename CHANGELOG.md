@@ -9,6 +9,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Updated success messages for notification banners
+- Users who are not assigned to the project can no longer update the task list
+  actions
+- Users who are not assigned to the project can no longer change the conversion
+  date
+- Users who are not assigned to the project can no longer complete it
+- External contacts can no longer be added, updated of deleted from projects
+  that are completed
+- Notes can no longer be added, update or deleted from projects that are
+  completed
+- Tasks can no longer be updated once the project is completed
+- Internal contacts can no longer be updated once the project is completed
 
 ### Added
 

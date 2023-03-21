@@ -45,7 +45,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "project completed page" do
-    project = create(:conversion_project, regional_delivery_officer: user)
+    project = create(:conversion_project, regional_delivery_officer: user, assigned_to: user)
     visit project_path(project)
 
     click_on I18n.t("project.complete.submit_button")
