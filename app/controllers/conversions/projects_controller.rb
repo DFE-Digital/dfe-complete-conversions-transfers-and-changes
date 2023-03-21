@@ -1,7 +1,7 @@
 class Conversions::ProjectsController < ProjectsController
   def index
     authorize Project
-    @pagy, @projects = pagy(policy_scope(Project.conversions.in_progress))
+    @pagy, @projects = pagy(Project.conversions.in_progress)
 
     EstablishmentsFetcher.new.call(@projects)
     IncomingTrustsFetcher.new.call(@projects)

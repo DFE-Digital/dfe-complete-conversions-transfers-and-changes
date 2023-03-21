@@ -15,7 +15,7 @@ RSpec.describe "Project management" do
       end
 
       it "shows the new project button" do
-        get projects_path
+        get in_progress_user_projects_path
         expect(response.body).to include(I18n.t("conversion_project.voluntary.new.title"))
       end
     end
@@ -32,7 +32,7 @@ RSpec.describe "Project management" do
       end
 
       it "does not show the new project button" do
-        get projects_path
+        get in_progress_user_projects_path
         expect(response.body).not_to include(I18n.t("conversion_project.voluntary.new.title"))
       end
     end
@@ -49,7 +49,7 @@ RSpec.describe "Project management" do
       end
 
       it "does not show the new project button" do
-        get projects_path
+        get in_progress_user_projects_path
         expect(response.body).not_to include(I18n.t("conversion_project.voluntary.new.title"))
       end
     end
