@@ -67,9 +67,9 @@ en:
       completed_at: Project completed
     assign:
       regional_delivery_officer:
-        success: Regional delivery officer has been assigned successfully
+        success: Regional delivery officer has been assigned
       assigned_to:
-        success: Project has been assigned successfully
+        success: Project has been assigned
     openers:
       title: Academies opening in %{date}
       subtitle: A list of schools becoming academies
