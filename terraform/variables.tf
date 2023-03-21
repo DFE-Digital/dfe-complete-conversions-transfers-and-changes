@@ -94,23 +94,12 @@ variable "dns_zone_domain_name" {
   type        = string
 }
 
-variable "dns_txt_records" {
-  description = "DNS TXT records to add to the DNS zone"
+variable "dns_ns_records" {
+  description = "DNS NS records to add to the DNS zone"
   type = map(
     object({
       ttl : optional(number),
       records : list(string)
-    })
-  )
-  default = {}
-}
-
-variable "dns_alias_records" {
-  description = "DNS ALIAS records to add to the DNS Zone"
-  type = map(
-    object({
-      ttl : optional(number, 300),
-      target_resource_id : string
     })
   )
   default = {}
