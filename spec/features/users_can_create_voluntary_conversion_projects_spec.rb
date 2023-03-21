@@ -32,8 +32,9 @@ RSpec.feature "Users can create new voluntary conversion projects" do
     context "when the regional delivery officer is keeping the project" do
       it "shows an appropriate message" do
         fill_in_form
-        # The "Are you handing this project over to Regional Casework Services?"
-        # radio button is nil/false by default
+        within("#assigned-to-regional-caseworker-team") do
+          choose("No")
+        end
         click_button("Continue")
 
         expect(page).to have_content("Project created")
@@ -44,7 +45,9 @@ RSpec.feature "Users can create new voluntary conversion projects" do
     context "when the regional delivery officer is handing the project over to someone else" do
       it "shows the project created standalone page" do
         fill_in_form
-        choose("conversion-voluntary-create-project-form-assigned-to-regional-caseworker-team-true-field", visible: false)
+        within("#assigned-to-regional-caseworker-team") do
+          choose("Yes")
+        end
         click_button("Continue")
 
         project = Project.last
@@ -81,6 +84,9 @@ RSpec.feature "Users can create new voluntary conversion projects" do
     fill_in "Advisory board conditions", with: "This school must:\n1. Do this\n2. And that"
 
     fill_in "Handover comments", with: "A new handover comment"
+    within("#assigned-to-regional-caseworker-team") do
+      choose("No")
+    end
     within("#directive-academy-order") do
       choose "No"
     end
