@@ -141,7 +141,7 @@ RSpec.feature "Any user can assign any other user to a project" do
         visit root_path
 
         click_on "Unassigned projects"
-        expect(page).to have_css("span", text: "URN 100001")
+        expect(page).to have_content("100001")
 
         click_on "Assign"
         expect(page).to have_current_path(conversions_voluntary_project_assign_assigned_to_path(unassigned_project))
@@ -149,7 +149,7 @@ RSpec.feature "Any user can assign any other user to a project" do
         select caseworker.full_name, from: I18n.t("assignment.assign_assigned_to.title", school_name: unassigned_project.establishment.name)
 
         click_on "Continue"
-        expect(page).to have_current_path(unassigned_projects_path)
+        expect(page).to have_current_path(unassigned_regional_casework_services_projects_path)
 
         # The project is assigned and therefore does not appear on this page any more
         expect(page).to_not have_css("span", text: "URN 100001")

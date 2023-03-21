@@ -5,7 +5,7 @@
 
     <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.completed_projects"), path: completed_user_projects_path} %>
 
-    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.unassigned_projects"), path: unassigned_projects_path} if policy(:project).unassigned? %>
+    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.unassigned_projects"), path: unassigned_regional_casework_services_projects_path} if policy(:project).unassigned? %>
 
   </ul>
 </nav>

@@ -47,8 +47,8 @@ RSpec.feature "Users can view a list of projects" do
 
       click_on "Unassigned projects"
 
-      expect(page).to have_content("URN 100001")
-      expect(page).to_not have_content("URN 100002")
+      expect(page).to have_content("100001")
+      expect(page).to_not have_content("100002")
     end
   end
 
