@@ -14,7 +14,8 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
       "advisory_board_date(3i)": "1",
       "advisory_board_date(2i)": "1",
       "advisory_board_date(1i)": "2022",
-      regional_delivery_officer: nil)
+      regional_delivery_officer: nil,
+      directive_academy_order: "false")
   }
 
   before do

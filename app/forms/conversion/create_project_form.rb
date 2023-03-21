@@ -4,6 +4,7 @@ class Conversion::CreateProjectForm
   include ActiveRecord::AttributeAssignment
 
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
+  DIRECTIVE_ACADEMY_ORDER_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
 
   class NegativeValueError < StandardError; end
 
@@ -14,6 +15,7 @@ class Conversion::CreateProjectForm
   attribute :advisory_board_conditions
   attribute :note_body
   attribute :user
+  attribute :directive_academy_order
 
   attr_reader :provisional_conversion_date,
     :advisory_board_date
@@ -36,9 +38,15 @@ class Conversion::CreateProjectForm
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
 
+  validates :directive_academy_order, inclusion: {in: %w[true false]}
+
   def initialize(params = {})
     @attributes_with_invalid_values = []
     super(params)
+  end
+
+  def directive_academy_order_responses
+    DIRECTIVE_ACADEMY_ORDER_RESPONSES
   end
 
   def provisional_conversion_date=(hash)

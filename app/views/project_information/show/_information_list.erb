@@ -17,6 +17,10 @@
       row.key { t('project_information.show.project_details.rows.trust_sharepoint_link') }
       row.value { safe_link_to(t("project.summary.trust_sharepoint_link.value"), @project.trust_sharepoint_link) }
     end
+    summary_list.row do |row|
+      row.key { t('project_information.show.project_details.rows.directive_academy_order.title') }
+      row.value { t("project_information.show.project_details.rows.directive_academy_order.#{@project.directive_academy_order}") }
+    end
   end %>
 </div>
 

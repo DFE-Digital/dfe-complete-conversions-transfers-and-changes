@@ -234,6 +234,28 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(Note.count).to eq(1)
         expect(Note.last.body).to eq("Some important words")
       end
+
+      context "when the project does NOT have a Directive academy order" do
+        it "sets directive_academy_order = false on the project" do
+          form = build(
+            form_factory.to_sym,
+            directive_academy_order: "false"
+          )
+          project = form.save
+          expect(project.directive_academy_order).to eq false
+        end
+      end
+
+      context "when the project has a Directive academy order" do
+        it "sets directive_academy_order = true on the project" do
+          form = build(
+            form_factory.to_sym,
+            directive_academy_order: "true"
+          )
+          project = form.save
+          expect(project.directive_academy_order).to eq true
+        end
+      end
     end
 
     context "when the form is invalid" do

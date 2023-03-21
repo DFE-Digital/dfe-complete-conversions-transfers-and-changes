@@ -48,7 +48,8 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
       :establishment_sharepoint_link,
       :trust_sharepoint_link,
       :note_body,
-      :assigned_to_regional_caseworker_team
+      :assigned_to_regional_caseworker_team,
+      :directive_academy_order
     )
   end
 end

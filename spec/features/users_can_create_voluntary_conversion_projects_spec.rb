@@ -81,5 +81,8 @@ RSpec.feature "Users can create new voluntary conversion projects" do
     fill_in "Advisory board conditions", with: "This school must:\n1. Do this\n2. And that"
 
     fill_in "Handover comments", with: "A new handover comment"
+    within("#directive-academy-order") do
+      choose "No"
+    end
   end
 end

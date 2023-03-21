@@ -8,6 +8,7 @@ FactoryBot.define do
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
     user { association :user, :regional_delivery_officer }
     note_body { "A note" }
+    directive_academy_order { "false" }
   end
 
   factory :create_involuntary_project_form, parent: :create_project_form, class: "Conversion::Involuntary::CreateProjectForm" do
