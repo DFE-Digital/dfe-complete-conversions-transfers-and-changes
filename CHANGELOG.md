@@ -27,6 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Project information, they are available in the project summary as before
 - the advisory board details are now separated form the Project details on
   project information
+- when a users should not update a project, the save and continue button is no
+  longer shown on the task view
 
 ### Added
 
