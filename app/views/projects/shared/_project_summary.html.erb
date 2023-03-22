@@ -4,6 +4,8 @@
     <span class="govuk-caption-l">URN <%= @project.urn %></span>
     <h1 class="govuk-heading-l"><%= @project.establishment.name %></h1>
 
+    <%= completed_project_notification_banner(@project) %>
+
     <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary"}) do |summary_list|
           summary_list.row do |row|
             row.key { t("project.summary.incoming_trust.title") }

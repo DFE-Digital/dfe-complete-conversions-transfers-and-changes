@@ -121,6 +121,8 @@ en:
           open:
             html:
               Open <span class="govuk-visually-hidden">%{school_name}</span> project
+    notifications:
+      completed_html: <h3>Project completed<h3><p>This project was completed on %{date} and cannot be changed.</p>
   project_information:
     show:
       side_navigation:

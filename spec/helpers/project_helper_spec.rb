@@ -166,4 +166,23 @@ RSpec.describe ProjectHelper, type: :helper do
       end
     end
   end
+
+  describe "#completed_project_notification_banner" do
+    context "when the project is not complete i.e. in-progress" do
+      it "does nothing" do
+        project = build(:conversion_project, completed_at: nil)
+
+        expect(completed_project_notification_banner(project)).to be_nil
+      end
+    end
+
+    context "when the project is completed" do
+      it "renders the notification banner" do
+        project = build(:conversion_project, completed_at: Date.yesterday)
+
+        expect(completed_project_notification_banner(project))
+          .to include("Project completed")
+      end
+    end
+  end
 end
