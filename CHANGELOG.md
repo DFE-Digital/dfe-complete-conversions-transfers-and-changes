@@ -53,6 +53,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - New Process the Sponsored support grant task added to the Voluntary task list
 - when viewing a completed project, a banner is shown to inform users why they
   cannot change the project
+- when viewing a project to which users are not assigned, a banner is shown to
+  inform users why they cannot change the project
 
 ### Fixed
 

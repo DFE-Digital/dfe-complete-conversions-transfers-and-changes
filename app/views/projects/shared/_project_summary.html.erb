@@ -3,7 +3,7 @@
     <span class="govuk-caption-l">URN <%= @project.urn %></span>
     <h1 class="govuk-heading-l"><%= @project.establishment.name %></h1>
 
-    <%= completed_project_notification_banner(@project) %>
+    <%= project_notification_banner(@project, current_user) %>
   </div>
 </div>
 
