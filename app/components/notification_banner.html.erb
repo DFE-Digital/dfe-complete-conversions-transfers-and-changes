@@ -23,3 +23,18 @@
     </div>
   <% end %>
 <% end %>
+
+<% if @message.present? %>
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <div class="flash">
+          <%= @message.html_safe %>
+        </div>
+      </div>
+    </div>
+<% end %>
