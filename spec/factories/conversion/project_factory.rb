@@ -12,6 +12,7 @@ FactoryBot.define do
     assigned_to { nil }
     directive_academy_order { false }
     sponsor_trust_required { false }
+    regional_delivery_officer { association :user, :regional_delivery_officer }
 
     trait :with_conditions do
       advisory_board_conditions { "The following must be met:\n 1. Must be red\n2. Must be blue\n" }

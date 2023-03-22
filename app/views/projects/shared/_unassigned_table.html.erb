@@ -7,6 +7,7 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_name") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.added_by") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_date") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.assign") %></th>
@@ -17,6 +18,7 @@
       <tr class="govuk-table__row">
         <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
         <td class="govuk-table__cell"><%= project.urn %></td>
+        <td class="govuk-table__cell"><%= project.regional_delivery_officer.full_name %></td>
         <td class="govuk-table__cell"><%= project.conversion_date.to_formatted_s(:govuk) %></td>
         <td class="govuk-table__cell">
           <%= link_to t("project.table.body.view_html", school_name: project.establishment.name), path_to_project(project) %>

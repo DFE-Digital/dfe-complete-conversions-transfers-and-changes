@@ -53,6 +53,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   once the confirmed conversion date is set
 - users can submit changes on the voluntary external stakeholder kick off task
   once the confirmed conversion date is set
+- the user that prepared the conversion for advisory board is now shown on the
+  unassigned projects table
 
 ## [Release 16][release-16]
 
