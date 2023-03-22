@@ -35,8 +35,11 @@
                 form_group: {classes: "app-confirmed-conversion-date"},
                 legend: {text: t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
             <div class="govuk-hint"><%= t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.hint.html") %></div>
-
           <% end %>
+        <% else %>
+          <%= hidden_field_tag("conversion_voluntary_tasks_stakeholder_kick_off[confirmed_conversion_date(3i)]", @task.confirmed_conversion_date.day) %>
+          <%= hidden_field_tag("conversion_voluntary_tasks_stakeholder_kick_off[confirmed_conversion_date(2i)]", @task.confirmed_conversion_date.month) %>
+          <%= hidden_field_tag("conversion_voluntary_tasks_stakeholder_kick_off[confirmed_conversion_date(1i)]", @task.confirmed_conversion_date.year) %>
         <% end %>
       </div>
 
