@@ -67,23 +67,4 @@ class ProjectPolicy
 
     true
   end
-
-  class Scope
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      if user.team_leader?
-        scope.conversions.by_conversion_date
-      elsif user.regional_delivery_officer?
-        scope.conversions.by_conversion_date.assigned_to_regional_delivery_officer(user)
-      else
-        scope.conversions.by_conversion_date.assigned_to_caseworker(user)
-      end
-    end
-
-    private attr_reader :user, :scope
-  end
 end

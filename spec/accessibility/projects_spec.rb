@@ -15,8 +15,8 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "in progress projects page" do
-    project = create(:conversion_project, regional_delivery_officer: user)
-    visit projects_path
+    project = create(:conversion_project, regional_delivery_officer: user, assigned_to: user)
+    visit in_progress_user_projects_path
 
     expect(page).to have_content(project.urn)
     check_accessibility(page)
