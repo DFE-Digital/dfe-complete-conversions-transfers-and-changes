@@ -15,4 +15,10 @@ RSpec.feature "Viewing another user's or unassigned project" do
 
     expect(page).to have_content("Not assigned to project")
   end
+
+  scenario "users do not see the complete project button" do
+    visit conversions_voluntary_project_path(project)
+
+    expect(page).not_to have_button("Complete project")
+  end
 end
