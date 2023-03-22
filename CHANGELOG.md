@@ -44,6 +44,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add Sponsor trust required radio buttons to Create project form
 - Show the project's Sponsor trust required information in the project
   information tab
+- New Process the Sponsored support grant task added to the Voluntary task list
 
 ## [Release 16][release-16]
 

@@ -21,7 +21,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
   optional_tasks = %w[articles_of_association church_supplemental_agreement
     deed_of_variation direction_to_transfer master_funding_agreement
     one_hundred_and_twenty_five_year_lease subleases tenancy_at_will
-    trust_modification_order conversion_grant]
+    trust_modification_order conversion_grant sponsored_support_grant]
 
   tasks_with_collected_data = %w[
     stakeholder_kick_off
