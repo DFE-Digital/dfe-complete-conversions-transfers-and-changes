@@ -43,7 +43,7 @@
         <%= hidden_field_tag("conversion_involuntary_tasks_stakeholder_kick_off[confirmed_conversion_date(1i)]", @task.confirmed_conversion_date.year) %>
       <% end %>
 
-      <%= form.govuk_submit t("task_list.continue_button.text") %>
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@task_list).update? %>
     <% end %>
   </div>
 

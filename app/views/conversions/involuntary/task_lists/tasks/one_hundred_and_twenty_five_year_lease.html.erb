@@ -21,7 +21,7 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save)) %>
       </div>
 
-      <%= form.govuk_submit t("task_list.continue_button.text") %>
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@task_list).update? %>
     <% end %>
   </div>
 
