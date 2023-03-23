@@ -21,7 +21,8 @@ class Conversion::Voluntary::TaskList < TaskList::Base
       tasks: [
         Conversion::Voluntary::Tasks::Handover,
         Conversion::Voluntary::Tasks::StakeholderKickOff,
-        Conversion::Voluntary::Tasks::ConversionGrant
+        Conversion::Voluntary::Tasks::ConversionGrant,
+        Conversion::Voluntary::Tasks::SponsoredSupportGrant
       ]
     },
     {

@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   completed
 - Tasks can no longer be updated once the project is completed
 - Internal contacts can no longer be updated once the project is completed
+- The Voluntary Process conversion grant task is now optional
 
 ### Added
 
@@ -43,6 +44,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add Sponsor trust required radio buttons to Create project form
 - Show the project's Sponsor trust required information in the project
   information tab
+- New Process the Sponsored support grant task added to the Voluntary task list
 
 ### Fixed
 

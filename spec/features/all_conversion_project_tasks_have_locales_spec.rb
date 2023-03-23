@@ -10,11 +10,12 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
     sign_in_with_user(user)
   end
 
-  tasks = %w[articles_of_association check_baseline church_supplemental_agreement commercial_transfer_agreement
+  involuntary_tasks = %w[articles_of_association check_baseline church_supplemental_agreement commercial_transfer_agreement
     conditions_met conversion_grant deed_of_variation direction_to_transfer handover land_questionnaire land_registry
     master_funding_agreement one_hundred_and_twenty_five_year_lease receive_grant_payment_certificate redact_and_send
     school_completed share_information single_worksheet stakeholder_kick_off subleases supplemental_funding_agreement
     tell_regional_delivery_officer tenancy_at_will trust_modification_order update_esfa]
+  voluntary_tasks = involuntary_tasks + %w[sponsored_support_grant]
 
   context "involuntary project" do
     describe "has locales for all tasks" do
@@ -23,11 +24,11 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
       end
 
       it "has all the links for the involuntary tasks" do
-        expect(page.find_all("ol.app-task-list ul li a").count).to eq tasks.count
+        expect(page.find_all("ol.app-task-list ul li a").count).to eq involuntary_tasks.count
         expect(page).to_not have_css(".translation_missing")
       end
 
-      tasks.each do |task|
+      involuntary_tasks.each do |task|
         it "has locales for #{I18n.t("conversion.involuntary.tasks.#{task}.title")}" do
           click_on I18n.t("conversion.involuntary.tasks.#{task}.title")
           expect(page).to_not have_css(".translation_missing")
@@ -43,11 +44,11 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
       end
 
       it "has all the links for the voluntary tasks" do
-        expect(page.find_all("ol.app-task-list ul li a").count).to eq tasks.count
+        expect(page.find_all("ol.app-task-list ul li a").count).to eq voluntary_tasks.count
         expect(page).to_not have_css(".translation_missing")
       end
 
-      tasks.each do |task|
+      voluntary_tasks.each do |task|
         it "has locales for #{I18n.t("conversion.voluntary.tasks.#{task}.title")}" do
           click_on I18n.t("conversion.voluntary.tasks.#{task}.title")
           expect(page).to_not have_css(".translation_missing")
