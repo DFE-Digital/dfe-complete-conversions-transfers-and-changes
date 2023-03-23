@@ -1,11 +1,34 @@
 <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
   <ul class="moj-sub-navigation__list">
 
-    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.in_progress_projects"), path: root_path} %>
+    <%= unless @current_user.team_leader?
+          render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.in_progress_projects"),
+                     path: in_progress_user_projects_path}
+        end %>
 
-    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.completed_projects"), path: completed_user_projects_path} %>
+    <%= unless @current_user.team_leader?
+          render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.completed_projects"),
+                     path: completed_user_projects_path}
+        end %>
 
-    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.unassigned_projects"), path: unassigned_regional_casework_services_projects_path} if policy(:project).unassigned? %>
+    <%= if @current_user.team_leader?
+          render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.unassigned_projects"),
+                     path: unassigned_regional_casework_services_projects_path}
+        end %>
 
+    <%= if @current_user.team_leader?
+          render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.in_progress_projects"),
+                     path: in_progress_regional_casework_services_projects_path}
+        end %>
+
+    <%= if @current_user.team_leader?
+          render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.completed_projects"),
+                     path: completed_regional_casework_services_projects_path}
+        end %>
   </ul>
 </nav>
