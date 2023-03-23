@@ -187,3 +187,8 @@ variable "existing_network_watcher_resource_group_name" {
   description = "Existing network watcher resource group."
   type        = string
 }
+
+variable "container_health_probe_protocol" {
+  description = "Use HTTPS or a TCP connection for the Container liveness probe"
+  type        = string
+}

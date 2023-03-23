@@ -27,6 +27,7 @@ locals {
   enable_monitoring                            = var.enable_monitoring
   monitor_email_receivers                      = var.monitor_email_receivers
   enable_container_health_probe                = var.enable_container_health_probe
+  container_health_probe_protocol              = var.container_health_probe_protocol
   cdn_frontdoor_health_probe_path              = var.cdn_frontdoor_health_probe_path
   monitor_endpoint_healthcheck                 = var.monitor_endpoint_healthcheck
   monitor_enable_slack_webhook                 = var.monitor_enable_slack_webhook
