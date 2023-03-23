@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Sign in" do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, :caseworker) }
 
   context "when the user is signed out" do
     it "redirects them to the sign in page and shows a helpful message" do
@@ -15,11 +15,14 @@ RSpec.describe "Sign in" do
   context "when the user is signed in" do
     before do
       mock_successful_authentication(user.email)
+      allow_any_instance_of(RootController).to receive(:user_id).and_return(user.id)
       allow_any_instance_of(User::ProjectsController).to receive(:user_id).and_return(user.id)
     end
 
     it "loads the requested page" do
       get root_path
+
+      follow_redirect!
 
       expect(response.body).to include(user.email)
       expect(response).to have_http_status(:success)

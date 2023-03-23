@@ -29,6 +29,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project information
 - when a users should not update a project, the save and continue button is no
   longer shown on the task view
+- the unassigned tab has moved to the start for Regional casework services team
+  leads
+- the Regional casework service team leads now see new views for in progress and
+  completed that show all the projects handed over to their team
 
 ### Added
 

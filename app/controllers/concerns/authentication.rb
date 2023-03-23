@@ -2,7 +2,7 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
-    before_action :redirect_unauthenticated_user
+    before_action :redirect_unauthenticated_user, :current_user
 
     helper_method :current_user
   end
