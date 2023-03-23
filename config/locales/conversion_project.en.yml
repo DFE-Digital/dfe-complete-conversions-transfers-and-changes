@@ -13,7 +13,7 @@ en:
     voluntary:
       route: Voluntary
       new:
-        title: Add a new voluntary conversion project
+        title: Add a new conversion project
         hint_html: <p class="govuk-body">Enter the school and trust information.</p><p class="govuk-body">This will create a conversion project for a school that has been granted an Academy order.</p>
       create:
         assigned_to_regional_delivery_officer:

@@ -6,18 +6,11 @@ RSpec.feature "Regional delivery officers can create new projects" do
   context "when the user is a regional delivery officer" do
     let(:user) { create(:user, :regional_delivery_officer) }
 
-    it "shows a button that adds a new voluntary conversion" do
+    it "shows a button that adds a new conversion" do
       visit root_path
 
       expect(page)
         .to have_link I18n.t("conversion_project.voluntary.new.title"), href: new_conversions_voluntary_project_path
-    end
-
-    it "shows a button that adds a new involuntary conversion" do
-      visit root_path
-
-      expect(page)
-        .to have_link I18n.t("conversion_project.involuntary.new.title"), href: new_conversions_involuntary_project_path
     end
   end
 end
