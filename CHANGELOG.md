@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Tasks can no longer be updated once the project is completed
 - Internal contacts can no longer be updated once the project is completed
 - The Voluntary Process conversion grant task is now optional
+- Remove "Create a new involuntary project" button
 
 ### Added
 
