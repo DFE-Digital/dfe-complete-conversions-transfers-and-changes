@@ -4,7 +4,7 @@ class User::ProjectsController < ApplicationController
 
   def in_progress
     authorize Project, :index?
-    @pager, @projects = pagy(Project.assigned_to(current_user).in_progress.includes(:assigned_to))
+    @pager, @projects = pagy(Project.assigned_to(current_user).in_progress.includes(:assigned_to), items: 10)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Internal contacts can no longer be updated once the project is completed
 - The Voluntary Process conversion grant task is now optional
 - Remove "Create a new involuntary project" button
+- the number of items on tabular views has been increased from 10 to 20
 
 ### Added
 
@@ -53,6 +54,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   once the confirmed conversion date is set
 - users can submit changes on the voluntary external stakeholder kick off task
   once the confirmed conversion date is set
+- the user that prepared the conversion for advisory board is now shown on the
+  unassigned projects table
 
 ## [Release 16][release-16]
 
