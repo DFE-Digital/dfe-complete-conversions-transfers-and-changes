@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.feature "Users can view school details" do
+RSpec.feature "Users can view project details" do
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:conversion_project, :with_conditions, caseworker: user) }
+  let(:project) { create(:conversion_project, directive_academy_order: true, sponsor_trust_required: true) }
 
   before do
     mock_successful_api_responses(urn: any_args, ukprn: any_args)
@@ -10,25 +10,15 @@ RSpec.feature "Users can view school details" do
     visit project_information_path(project)
   end
 
-  scenario "they can view the School SharePoint link" do
-    within("#projectDetails") do
-      expect(page).to have_link(I18n.t("project.summary.establishment_sharepoint_link.value"), href: project.establishment_sharepoint_link)
+  scenario "they can see if it has had a directive academy order issued" do
+    within("#projectDetails .govuk-summary-list__row:first-of-type") do
+      expect(page).to have_content("Yes")
     end
   end
 
-  scenario "they can view the Trust SharePoint link" do
-    within("#projectDetails") do
-      expect(page).to have_link(I18n.t("project.summary.trust_sharepoint_link.value"), href: project.trust_sharepoint_link)
-    end
-  end
-
-  context "when there are conditions from the advisory board" do
-    let(:project) { create(:conversion_project, :with_conditions, caseworker: user) }
-
-    scenario "they can view the advisory board details" do
-      within("#projectDetails") do
-        expect(page).to have_content(project.advisory_board_date.to_formatted_s(:govuk))
-      end
+  scenario "they can see if it requires a sponsor trust" do
+    within("#projectDetails .govuk-summary-list__row:last-of-type") do
+      expect(page).to have_content("Yes")
     end
   end
 end

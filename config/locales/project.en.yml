@@ -131,10 +131,8 @@ en:
           regional_delivery_officer: Regional delivery officer
           assigned_to: Assigned to
           unassigned: Not yet assigned
-          advisory_board_date: Date of advisory board
           establishment_sharepoint_link: School SharePoint folder
           trust_sharepoint_link: Trust SharePoint folder
-          advisory_board_conditions: Conditions from advisory board
           directive_academy_order:
             title: Has a Directive academy order been issued?
             "true": "Yes"
@@ -143,6 +141,12 @@ en:
             title: Is the school joining a Sponsor trust?
             "true": "Yes"
             "false": "No"
+      advisory_board_details:
+        title: Advisory board details
+        rows:
+          advisory_board_date: Date of advisory board
+          advisory_board_conditions: Conditions from advisory board
+
       school_details:
         title: School details
         rows:
