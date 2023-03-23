@@ -8,4 +8,4 @@
 
 <%= render partial: "projects/shared/project_sub_navigation" %>
 
-<%= render "projects/show/complete" unless @project.completed? %>
+<%= render "projects/show/complete" if policy(@project).update? %>

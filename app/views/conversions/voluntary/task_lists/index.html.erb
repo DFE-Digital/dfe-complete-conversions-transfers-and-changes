@@ -10,4 +10,4 @@
 
 <%= render "conversions/shared/task_list" %>
 
-<%= render "projects/show/complete" unless @project.completed? %>
+<%= render "projects/show/complete" if policy(@project).update? %>

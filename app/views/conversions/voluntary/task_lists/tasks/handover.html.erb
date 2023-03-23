@@ -7,6 +7,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @task, url: conversions_voluntary_project_update_task_path(@project, @task.class.identifier), method: :put do |form| %>
+
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
@@ -15,7 +16,7 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :meeting)) %>
       </div>
 
-      <%= form.govuk_submit t("task_list.continue_button.text") %>
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@task_list).update? %>
     <% end %>
   </div>
 

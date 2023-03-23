@@ -27,6 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Project information, they are available in the project summary as before
 - the advisory board details are now separated form the Project details on
   project information
+- when a users should not update a project, the save and continue button is no
+  longer shown on the task view
 
 ### Added
 
@@ -51,6 +53,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Show the project's Sponsor trust required information in the project
   information tab
 - New Process the Sponsored support grant task added to the Voluntary task list
+- when viewing a completed project, a banner is shown to inform users why they
+  cannot change the project
+- when viewing a project to which users are not assigned, a banner is shown to
+  inform users why they cannot change the project
 
 ### Fixed
 

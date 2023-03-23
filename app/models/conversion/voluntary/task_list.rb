@@ -1,6 +1,10 @@
 class Conversion::Voluntary::TaskList < TaskList::Base
   self.table_name = "conversion_voluntary_task_lists"
 
+  def self.policy_class
+    TaskListPolicy
+  end
+
   after_save :set_conversion_date
 
   def set_conversion_date

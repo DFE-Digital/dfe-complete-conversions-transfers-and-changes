@@ -166,4 +166,66 @@ RSpec.describe ProjectHelper, type: :helper do
       end
     end
   end
+
+  describe "#project_notification_banner" do
+    context "when the project is not complete i.e. in-progress" do
+      context "when the project is assigned to the user" do
+        it "does nothing" do
+          user = build(:user)
+          project = build(:conversion_project, completed_at: nil, assigned_to: user)
+
+          expect(project_notification_banner(project, user)).to be_nil
+        end
+      end
+
+      context "when the project is not assigned to the user" do
+        it "renders a notification banner" do
+          user = build(:user)
+          other_user = build(:user, email: "other.user@education.gov.uk")
+
+          project = build(:conversion_project, completed_at: nil, assigned_to: other_user)
+
+          expect(project_notification_banner(project, user))
+            .to include("Not assigned to project")
+        end
+      end
+
+      context "when the project is not assigned to any user" do
+        it "renders a notification banner" do
+          user = build(:user)
+
+          project = build(:conversion_project, completed_at: nil, assigned_to: nil)
+
+          expect(project_notification_banner(project, user))
+            .to include("Not assigned to project")
+        end
+      end
+    end
+
+    context "when the project is completed" do
+      context "when the project is assigned to the user" do
+        it "renders the compeleted notification banner" do
+          user = build(:user)
+          other_user = build(:user, email: "other.user@education.gov.uk")
+
+          project = build(:conversion_project, completed_at: Date.today - 3.months, assigned_to: other_user)
+
+          expect(project_notification_banner(project, user))
+            .to include("Project completed")
+        end
+      end
+
+      context "when the project is not assigned to the user" do
+        it "renders completed notification banner" do
+          user = build(:user)
+          other_user = build(:user, email: "other.user@education.gov.uk")
+
+          project = build(:conversion_project, completed_at: Date.today - 3.months, assigned_to: other_user)
+
+          expect(project_notification_banner(project, user))
+            .to include("Project completed")
+        end
+      end
+    end
+  end
 end

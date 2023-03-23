@@ -48,4 +48,14 @@ module ProjectHelper
   def address_markup(address)
     tag.address address.compact.join("<br/>").html_safe, class: %w[govuk-address]
   end
+
+  def project_notification_banner(project, user)
+    if project.completed?
+      render NotificationBanner
+        .new(message: t("project.notifications.completed_html", date: project.completed_at.to_formatted_s(:govuk_date_time_date_only)))
+    elsif project.assigned_to != user || project.assigned_to.nil?
+      render NotificationBanner
+        .new(message: t("project.notifications.not_assigned_html"))
+    end
+  end
 end
