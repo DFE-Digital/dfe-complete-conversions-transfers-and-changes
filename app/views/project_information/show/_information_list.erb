@@ -2,22 +2,6 @@
   <h2 class="govuk-heading-l"><%= t('project_information.show.project_details.title') %></h2>
   <%= govuk_summary_list do |summary_list|
     summary_list.row do |row|
-      row.key { t('project_information.show.project_details.rows.advisory_board_date') }
-      row.value { @project.advisory_board_date.to_date.to_formatted_s(:govuk) }
-    end
-    summary_list.row do |row|
-      row.key { t('project_information.show.project_details.rows.advisory_board_conditions') }
-      row.value { simple_format(@project.advisory_board_conditions, class: "govuk-body") }
-    end
-    summary_list.row do |row|
-      row.key { t('project_information.show.project_details.rows.establishment_sharepoint_link') }
-      row.value { safe_link_to(t("project.summary.establishment_sharepoint_link.value"), @project.establishment_sharepoint_link) }
-    end
-    summary_list.row do |row|
-      row.key { t('project_information.show.project_details.rows.trust_sharepoint_link') }
-      row.value { safe_link_to(t("project.summary.trust_sharepoint_link.value"), @project.trust_sharepoint_link) }
-    end
-    summary_list.row do |row|
       row.key { t('project_information.show.project_details.rows.directive_academy_order.title') }
       row.value { t("project_information.show.project_details.rows.directive_academy_order.#{@project.directive_academy_order}") }
     end
@@ -27,6 +11,20 @@
     end
   end %>
 </div>
+
+<div id="advisoryBoardDetails">
+  <h2 class="govuk-heading-l"><%= t('project_information.show.advisory_board_details.title') %></h2>
+  <%= govuk_summary_list do |summary_list|
+    summary_list.row do |row|
+      row.key { t('project_information.show.advisory_board_details.rows.advisory_board_date') }
+      row.value { @project.advisory_board_date.to_date.to_formatted_s(:govuk) }
+    end
+    summary_list.row do |row|
+      row.key { t('project_information.show.advisory_board_details.rows.advisory_board_conditions') }
+      row.value { simple_format(@project.advisory_board_conditions, class: "govuk-body") }
+    end
+  end %>
+  </div>
 
 <div id="schoolDetails">
   <h2 class="govuk-heading-l"><%= t('project_information.show.school_details.title') %></h2>

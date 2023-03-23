@@ -23,6 +23,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The Voluntary Process conversion grant task is now optional
 - Remove "Create a new involuntary project" button
 - the number of items on tabular views has been increased from 10 to 20
+- the sharepoint links have been removed from the Project details section in
+  Project information, they are available in the project summary as before
+- the advisory board details are now separated form the Project details on
+  project information
 
 ### Added
 
