@@ -37,6 +37,7 @@ module "azure_container_apps_hosting" {
   enable_monitoring               = local.enable_monitoring
   monitor_email_receivers         = local.monitor_email_receivers
   enable_container_health_probe   = local.enable_container_health_probe
+  container_health_probe_protocol = local.container_health_probe_protocol
   cdn_frontdoor_health_probe_path = local.cdn_frontdoor_health_probe_path
   monitor_endpoint_healthcheck    = local.monitor_endpoint_healthcheck
   monitor_enable_slack_webhook    = local.monitor_enable_slack_webhook
