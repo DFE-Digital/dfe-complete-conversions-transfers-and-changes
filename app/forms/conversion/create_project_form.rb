@@ -40,6 +40,8 @@ class Conversion::CreateProjectForm
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
 
+  validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
+
   validates :directive_academy_order, inclusion: {in: %w[true false]}
   validates :sponsor_trust_required, inclusion: {in: %w[true false]}
 
@@ -101,5 +103,9 @@ class Conversion::CreateProjectForm
     raise result.error if result.error.present?
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:incoming_trust_ukprn, :no_trust_found)
+  end
+
+  private def urn_unique_for_in_progress_conversions
+    errors.add(:urn, :duplicate) if Project.in_progress.where(urn: urn).any?
   end
 end
