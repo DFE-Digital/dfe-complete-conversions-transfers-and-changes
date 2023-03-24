@@ -7,7 +7,7 @@
           urn: @project.urn,
           conversion_date: @project.conversion_date.to_formatted_s(:govuk),
           project_path: path_to_project(@project),
-          projects_path: projects_path
+          projects_path: in_progress_user_projects_path
         ) %>
   </div>
 </div>

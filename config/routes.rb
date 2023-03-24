@@ -89,7 +89,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: VALID_UUID_REGEX) do
-    resources :projects, only: %i[index show] do
+    resources :projects, only: %i[show] do
       collection do
         namespace :all do
           get "in-progress", to: "projects#in_progress"

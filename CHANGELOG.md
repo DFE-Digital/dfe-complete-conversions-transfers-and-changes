@@ -70,6 +70,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   once the confirmed conversion date is set
 - the user that prepared the conversion for advisory board is now shown on the
   unassigned projects table
+- after creating a new conversion that will be handed over to the regional
+  casework services team, the link back to the users projects is now fixed
 
 ## [Release 16][release-16]
 
