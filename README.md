@@ -7,8 +7,8 @@ As a digital service being developed in DfE we aim to follow the
 
 ## Environments
 
-- [development](https://s184d01-compcdnendpoint-duepa5hpd8djhacd.z01.azurefd.net)
-- [test](https://s184t01-compcdnendpoint-gnfrfkdpamcncjdm.z01.azurefd.net)
+- [development](https://dev.complete.education.gov.uk)
+- [test](https://test.complete.education.gov.uk)
 - [production](https://complete.education.gov.uk)
 
 Console and logs can be accessed on all three environments, details are in
