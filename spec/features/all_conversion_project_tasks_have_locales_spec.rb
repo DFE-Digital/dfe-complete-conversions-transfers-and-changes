@@ -10,7 +10,7 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
     sign_in_with_user(user)
   end
 
-  involuntary_tasks = %w[articles_of_association check_baseline church_supplemental_agreement commercial_transfer_agreement
+  involuntary_tasks = %w[articles_of_association church_supplemental_agreement commercial_transfer_agreement
     conditions_met conversion_grant deed_of_variation direction_to_transfer handover land_questionnaire land_registry
     master_funding_agreement one_hundred_and_twenty_five_year_lease receive_grant_payment_certificate redact_and_send
     school_completed share_information single_worksheet stakeholder_kick_off subleases supplemental_funding_agreement

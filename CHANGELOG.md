@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated the dev & test URLs in the README
 - users can no longer create a new project with a school URN that already has a
   project in progress, this prevents duplicate projects being created by mistake
+- Removed the "Check the baseline" task from task lists
 
 ## [Release 17][release-17]
 

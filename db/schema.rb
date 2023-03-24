@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_142230) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_27_093354) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -109,7 +109,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_142230) do
     t.boolean "trust_modification_order_not_applicable"
     t.boolean "direction_to_tansfer_not_applicable"
     t.boolean "handover_not_applicable"
-    t.boolean "check_baseline_confirm"
     t.boolean "single_worksheet_complete"
     t.boolean "single_worksheet_approve"
     t.boolean "single_worksheet_send"
@@ -197,7 +196,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_142230) do
     t.boolean "direction_to_transfer_cleared"
     t.boolean "direction_to_transfer_signed"
     t.boolean "direction_to_transfer_saved"
-    t.boolean "check_baseline_confirm"
     t.boolean "single_worksheet_complete"
     t.boolean "single_worksheet_approve"
     t.boolean "single_worksheet_send"

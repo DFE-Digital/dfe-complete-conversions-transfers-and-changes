@@ -10,7 +10,7 @@ RSpec.feature "Users can complete tasks in an involuntary conversion project" do
     visit conversions_involuntary_project_task_list_path(involuntary_project.id)
   end
 
-  mandatory_tasks = %w[check_baseline commercial_transfer_agreement
+  mandatory_tasks = %w[commercial_transfer_agreement
     conditions_met conversion_grant land_questionnaire land_registry
     receive_grant_payment_certificate redact_and_send
     school_completed share_information single_worksheet
