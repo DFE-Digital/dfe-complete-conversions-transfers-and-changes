@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 17][release-17]
+
 ### Changed
 
 - Updated success messages for notification banners
@@ -648,7 +650,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-16...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-17...HEAD
+[release-17]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-16...release-17
 [release-16]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-15...release-16
 [release-15]:
