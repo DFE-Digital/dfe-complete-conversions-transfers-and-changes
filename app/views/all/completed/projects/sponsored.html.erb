@@ -1,0 +1,11 @@
+<%= render partial: "projects/shared/signed_in_as", locals: {email_address: current_user.email} %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <%= t("project.all.completed.sponsored.title") %>
+    </h1>
+
+    <%= render partial: "/projects/shared/completed_table", locals: {projects: @projects, pager: @pager} %>
+  </div>
+</div>

@@ -20,6 +20,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `/projects/all/in-progress/sponsored`
 - a new view that show all in-progress conversion projects that are voluntary at
   `/projects/all/in-progress/voluntary`
+- a new view that show all completed conversion projects that are sponsored at
+  `/projects/all/in-progress/sponsored`
+- a new view that show all completed conversion projects that are voluntary at
+  `/projects/all/in-progress/voluntary`
 
 ## [Release 17][release-17]
 

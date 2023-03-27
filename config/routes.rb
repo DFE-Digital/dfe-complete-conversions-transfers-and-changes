@@ -97,6 +97,11 @@ Rails.application.routes.draw do
             get "voluntary", to: "projects#voluntary"
             get "sponsored", to: "projects#sponsored"
           end
+          namespace :completed do
+            get "/", to: "projects#index"
+            get "voluntary", to: "projects#voluntary"
+            get "sponsored", to: "projects#sponsored"
+          end
         end
         namespace :regional_casework_services, path: "regional-casework-services" do
           get "in-progress", to: "projects#in_progress"
