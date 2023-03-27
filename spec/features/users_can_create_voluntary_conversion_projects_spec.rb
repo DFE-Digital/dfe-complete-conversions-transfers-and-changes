@@ -56,6 +56,18 @@ RSpec.feature "Users can create new voluntary conversion projects" do
         expect(page).to have_content("Another person will be assigned to this project")
         expect(page).to have_link("Return to project list", href: in_progress_user_projects_path)
       end
+
+      it "does not assign the user to the project" do
+        fill_in_form
+        within("#assigned-to-regional-caseworker-team") do
+          choose("Yes")
+        end
+        click_button("Continue")
+
+        project = Project.last
+        expect(project.assigned_to).to be_nil
+        expect(project.assigned_at).to be_nil
+      end
     end
 
     scenario "there is an option to assign the project to the Regional Caseworker Team" do
