@@ -92,8 +92,11 @@ Rails.application.routes.draw do
     resources :projects, only: %i[show] do
       collection do
         namespace :all do
-          get "in-progress", to: "projects#in_progress"
-          get "completed", to: "projects#completed"
+          namespace :in_progress, path: "in-progress" do
+            get "/", to: "projects#index"
+            get "voluntary", to: "projects#voluntary"
+            get "sponsored", to: "projects#sponsored"
+          end
         end
         namespace :regional_casework_services, path: "regional-casework-services" do
           get "in-progress", to: "projects#in_progress"

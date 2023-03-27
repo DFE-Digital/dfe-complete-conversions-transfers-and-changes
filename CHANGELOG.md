@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the "Check the baseline" task from task lists
 - Conversion projects now have a route of voluntary or sponsored
 
+### Added
+
+- a new view that show all in-progress conversion projects that are sponsored at
+  `/projects/all/in-progress/sponsored`
+- a new view that show all in-progress conversion projects that are voluntary at
+  `/projects/all/in-progress/voluntary`
+
 ## [Release 17][release-17]
 
 ### Changed

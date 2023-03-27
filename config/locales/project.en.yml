@@ -21,6 +21,10 @@ en:
     all:
       in_progress:
         title: All projects in progress
+        sponsored:
+          title: All sponsored projects in progress
+        voluntary:
+          title: All voluntary projects in progress
     regional_casework_services:
       in_progress:
         title: Regional casework services projects in progress
