@@ -204,6 +204,17 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(form).to be_invalid
       end
     end
+
+    context "when there is another in-progress project with the same urn" do
+      it "is invalid" do
+        _project_with_urn = create(:conversion_project, urn: 121813)
+        form = build(form_factory.to_sym)
+
+        form.urn = 121813
+        expect(form).to be_invalid
+        expect(form.errors.messages[:urn]).to include I18n.t("errors.attributes.urn.duplicate")
+      end
+    end
   end
 
   describe "incoming_trust_ukprn" do
