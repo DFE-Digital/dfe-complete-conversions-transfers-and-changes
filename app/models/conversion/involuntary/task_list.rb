@@ -49,7 +49,6 @@ class Conversion::Involuntary::TaskList < TaskList::Base
     {
       identifier: :get_ready_for_opening,
       tasks: [
-        Conversion::Involuntary::Tasks::CheckBaseline,
         Conversion::Involuntary::Tasks::SingleWorksheet,
         Conversion::Involuntary::Tasks::SchoolCompleted,
         Conversion::Involuntary::Tasks::ConditionsMet,
