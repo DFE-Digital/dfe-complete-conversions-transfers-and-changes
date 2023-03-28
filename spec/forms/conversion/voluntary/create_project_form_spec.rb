@@ -53,6 +53,12 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
 
         expect(project.assigned_to).to_not be_nil
       end
+
+      it "sets Project.assigned_at to now" do
+        freeze_time
+        project = build(:create_voluntary_project_form, assigned_to_regional_caseworker_team: false).save
+        expect(project.assigned_at).to eq DateTime.now
+      end
     end
   end
 end
