@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Made project list tables headings consistent with openers list
+- Fulls stops added to empty states messages in project lists
 - Updated the dev & test URLs in the README
 - users can no longer create a new project with a school URN that already has a
   project in progress, this prevents duplicate projects being created by mistake
