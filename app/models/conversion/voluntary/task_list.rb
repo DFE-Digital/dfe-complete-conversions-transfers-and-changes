@@ -50,7 +50,6 @@ class Conversion::Voluntary::TaskList < TaskList::Base
     {
       identifier: :get_ready_for_opening,
       tasks: [
-        Conversion::Voluntary::Tasks::SingleWorksheet,
         Conversion::Voluntary::Tasks::SchoolCompleted,
         Conversion::Voluntary::Tasks::ConditionsMet,
         Conversion::Voluntary::Tasks::ShareInformation
@@ -59,9 +58,7 @@ class Conversion::Voluntary::TaskList < TaskList::Base
     {
       identifier: :after_opening,
       tasks: [
-        Conversion::Voluntary::Tasks::TellRegionalDeliveryOfficer,
         Conversion::Voluntary::Tasks::RedactAndSend,
-        Conversion::Voluntary::Tasks::UpdateEsfa,
         Conversion::Voluntary::Tasks::ReceiveGrantPaymentCertificate
       ]
     }

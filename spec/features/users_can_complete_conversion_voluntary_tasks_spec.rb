@@ -14,9 +14,8 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
     conditions_met handover
     land_questionnaire land_registry
     receive_grant_payment_certificate redact_and_send
-    school_completed share_information single_worksheet
-    supplemental_funding_agreement
-    tell_regional_delivery_officer update_esfa]
+    school_completed share_information
+    supplemental_funding_agreement]
 
   optional_tasks = %w[articles_of_association church_supplemental_agreement
     deed_of_variation direction_to_transfer master_funding_agreement
