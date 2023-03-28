@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project in progress, this prevents duplicate projects being created by mistake
 - Removed the "Check the baseline" task from task lists
 - Conversion projects now have a route of voluntary or sponsored
+- A conversion project can now be added on the same day as the advisory board
 
 ### Added
 
