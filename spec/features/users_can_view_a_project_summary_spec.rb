@@ -20,13 +20,13 @@ RSpec.feature "Users can view a project summary" do
     end
   end
 
-  context "when they view a single involuntary conversion project" do
+  context "when they view a single sponsored conversion project" do
     scenario "they see the route" do
-      project = create(:involuntary_conversion_project, caseworker: user)
+      project = create(:voluntary_conversion_project, caseworker: user, sponsor_trust_required: true)
       visit project_path(project)
 
       within("#project-summary") do
-        expect(page).to have_content("Involuntary")
+        expect(page).to have_content("Sponsored")
       end
     end
   end

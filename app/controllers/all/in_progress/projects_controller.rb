@@ -1,15 +1,23 @@
-class All::ProjectsController < ApplicationController
+class All::InProgress::ProjectsController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
-  def in_progress
+  def index
     authorize Project, :index?
     @pager, @projects = pagy(Project.in_progress.includes(:assigned_to))
   end
 
-  def completed
+  def voluntary
     authorize Project, :index?
-    @pager, @projects = pagy(Project.completed)
+    @pager, @projects = pagy(Project.in_progress.voluntary.includes(:assigned_to))
+
+    pre_fetch_establishments(@projects)
+    pre_fetch_incoming_trusts(@projects)
+  end
+
+  def sponsored
+    authorize Project, :index?
+    @pager, @projects = pagy(Project.in_progress.sponsored.includes(:assigned_to))
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

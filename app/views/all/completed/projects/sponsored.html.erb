@@ -2,16 +2,10 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-
     <h1 class="govuk-heading-l">
-      <%= t("project.index.completed.title") %>
+      <%= t("project.all.completed.sponsored.title") %>
     </h1>
 
-    <%= render partial: "/projects/shared/new_projects" if policy(:project).new? %>
-
-    <%= render partial: "/projects/shared/project_index_sub_navigation" %>
-
     <%= render partial: "/projects/shared/completed_table", locals: {projects: @projects, pager: @pager} %>
-
   </div>
 </div>

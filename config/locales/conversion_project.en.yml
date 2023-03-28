@@ -1,5 +1,7 @@
 en:
   conversion_project:
+    sponsored:
+      route: Sponsored
     involuntary:
       route: Involuntary
       new:

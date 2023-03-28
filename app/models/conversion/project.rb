@@ -6,7 +6,7 @@ class Conversion::Project < Project
   has_many :conversion_dates, dependent: :destroy, class_name: "Conversion::DateHistory"
 
   def route
-    return :voluntary if task_list_type == "Conversion::Voluntary::TaskList"
-    return :involuntary if task_list_type == "Conversion::Involuntary::TaskList"
+    return :sponsored if sponsor_trust_required?
+    :voluntary
   end
 end
