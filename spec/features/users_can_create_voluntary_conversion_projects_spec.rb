@@ -52,8 +52,8 @@ RSpec.feature "Users can create new voluntary conversion projects" do
 
         project = Project.last
 
-        expect(page).to have_content("You have created a project for #{project.establishment.name} #{project.urn}")
-        expect(page).to have_content("Another person will be assigned to this project")
+        expect(page).to have_content("You have created a project for #{project.establishment.name}, URN #{project.urn}.")
+        expect(page).to have_content("Another person will be assigned to this project.")
         expect(page).to have_link("Return to project list", href: in_progress_user_projects_path)
       end
 
