@@ -24,9 +24,9 @@ RSpec.describe DateInThePastValidator do
   end
 
   context "when the date is today" do
-    it "is invalid" do
+    it "is valid" do
       subject.date = Date.today
-      expect(subject).to be_invalid
+      expect(subject).to be_valid
     end
   end
 end
