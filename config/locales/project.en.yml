@@ -97,8 +97,8 @@ en:
         success: Project has been assigned successfully
     table:
       headers:
-        school_name: School name
-        school_urn: School URN
+        school_name: School
+        school_urn: URN
         type: Type of project
         assigned_to: Assigned to
         view: View project
