@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require "application_insights"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -100,4 +101,9 @@ Rails.application.configure do
 
   # Use Sidekiq
   config.active_job.queue_adapter = :sidekiq
+
+  # Use Application Insights if a key is available
+  if (key = ENV.fetch("APPLICATION_INSIGHTS_KEY", nil))
+    config.middleware.use ApplicationInsights::Rack::TrackRequest, key, 500, 60
+  end
 end
