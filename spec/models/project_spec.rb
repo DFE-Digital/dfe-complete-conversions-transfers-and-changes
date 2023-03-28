@@ -371,6 +371,19 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "#assigned" do
+      it "only includes projects assigned to a user" do
+        mock_successful_api_response_to_create_any_project
+        assigned_project = create(:conversion_project)
+        unassigned_project = create(:conversion_project, :unassigned)
+
+        projects = Project.assigned
+
+        expect(projects).to include(assigned_project)
+        expect(projects).to_not include(unassigned_project)
+      end
+    end
+
     describe "in_progress scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
@@ -383,6 +396,17 @@ RSpec.describe Project, type: :model do
 
         expect(projects).to include(open_project_1, open_project_2)
         expect(projects).to_not include(completed_project)
+      end
+
+      it "does not include unassigned projects" do
+        mock_successful_api_response_to_create_any_project
+        in_progress_project = create(:conversion_project)
+        unassigned_project = create(:conversion_project, :unassigned)
+
+        projects = Project.in_progress
+
+        expect(projects).to include in_progress_project
+        expect(projects).to_not include unassigned_project
       end
     end
 
