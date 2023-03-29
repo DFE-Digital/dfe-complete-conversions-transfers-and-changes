@@ -119,6 +119,28 @@ RSpec.describe ProjectHelper, type: :helper do
     end
   end
 
+  describe "#link_to_companies_house" do
+    context "when a companies house number is provided" do
+      let(:companies_house_number) { "10768218" }
+
+      it "returns a link to the companies house information" do
+        expect(link_to_companies_house(companies_house_number)).to include("https://find-and-update.company-information.service.gov.uk/company/#{companies_house_number}")
+      end
+
+      it "opens the link in a new tab" do
+        expect(link_to_companies_house(companies_house_number)).to include("_blank")
+      end
+    end
+
+    context "when a companies house number is not provided" do
+      let(:companies_house_number) { nil }
+
+      it "returns an argument error" do
+        expect { link_to_companies_house(companies_house_number) }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
   describe "#all_conditions_met_tag" do
     context "when all_conditions_met is true" do
       let(:task_list) { create(:voluntary_conversion_task_list, conditions_met_confirm_all_conditions_met: true) }

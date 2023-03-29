@@ -36,6 +36,12 @@ module ProjectHelper
     link_to(t("project_information.show.trust_details.rows.view_in_gias"), "https://get-information-schools.service.gov.uk/Groups/Search?GroupSearchModel.Text=#{ukprn}", target: :_blank)
   end
 
+  def link_to_companies_house(companies_house_number)
+    raise ArgumentError if companies_house_number.nil?
+
+    link_to(t("project_information.show.trust_details.rows.view_companies_house"), "https://find-and-update.company-information.service.gov.uk/company/#{companies_house_number}", target: :_blank)
+  end
+
   def all_conditions_met_tag(project)
     tag = if project.all_conditions_met?
       govuk_tag(text: "yes", colour: "turquoise")
