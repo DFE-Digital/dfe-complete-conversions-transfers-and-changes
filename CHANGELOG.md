@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Corrected guidance in 125 year lease task. Now tells user to contact
+  solicitor, not school
 - Updated the dev & test URLs in the README
 - users can no longer create a new project with a school URN that already has a
   project in progress, this prevents duplicate projects being created by mistake
