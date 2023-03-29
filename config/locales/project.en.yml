@@ -115,7 +115,7 @@ en:
         empty: There are no unassigned projects.
     openers:
       title: Academies opening in %{date}
-      subtitle: A list of schools becoming academies
+      subtitle: Schools that are expected to become academies.
       empty:
         html:
           <p>There are currently no schools expected to become academies in %{date}.</p>

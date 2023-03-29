@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Improved the summary text on the openers list and added a full stop.
 - Made project list tables headings consistent with openers list
 - Fulls stops added to empty states messages in project lists
 - Corrected guidance in the commercial transfer agreement tasks. It now says
