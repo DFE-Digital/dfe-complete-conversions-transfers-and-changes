@@ -97,8 +97,8 @@ en:
         success: Project has been assigned successfully
     table:
       headers:
-        school_name: School name
-        school_urn: School URN
+        school_name: School
+        school_urn: URN
         type: Type of project
         assigned_to: Assigned to
         view: View project
@@ -108,11 +108,11 @@ en:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
       in_progress:
-        empty: There are no projects in progress
+        empty: There are no projects in progress.
       completed:
-        empty: There are no completed projects
+        empty: There are no completed projects.
       unassigned:
-        empty: There are no unassigned projects
+        empty: There are no unassigned projects.
     openers:
       title: Academies opening in %{date}
       subtitle: A list of schools becoming academies

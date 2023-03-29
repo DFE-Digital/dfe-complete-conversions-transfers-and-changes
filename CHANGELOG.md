@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Made project list tables headings consistent with openers list
+- Fulls stops added to empty states messages in project lists
 - Corrected guidance in the commercial transfer agreement tasks. It now says
   solicitors, not schools or trusts
 - Corrected guidance in 125 year lease task. Now tells user to contact
