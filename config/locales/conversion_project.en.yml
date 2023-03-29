@@ -6,7 +6,7 @@ en:
       route: Involuntary
       new:
         title: Add a new involuntary conversion project
-        hint_html: <p class="govuk-body">Enter the school and trust information.</p><p class="govuk-body">This will create a conversion project for a school that has been issued a Directive academy order.</p>
+        hint_html: <p class="govuk-body">Enter the school and trust information.</p><p class="govuk-body">This will create a conversion project for a school that has been issued a directive academy order.</p>
       create:
         success:
           Involuntary project successfully created
