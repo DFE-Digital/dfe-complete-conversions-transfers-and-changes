@@ -62,6 +62,16 @@ RSpec.describe Conversion::Voluntary::TaskList do
           project.task_list.update(stakeholder_kick_off_confirmed_conversion_date: revised_conversion_date, user: nil)
         }.to raise_error(TaskList::Base::TaskListUserError)
       end
+
+      it "does not create a date change note if there is no date submitted" do
+        conversion_date = Date.today.at_beginning_of_month - 6.months
+        project = create(:voluntary_conversion_project, conversion_date: conversion_date, conversion_date_provisional: true)
+
+        note_count = project.notes.count
+        project.task_list.update(stakeholder_kick_off_confirmed_conversion_date: nil)
+        project.reload
+        expect(project.notes.count).to eq note_count
+      end
     end
   end
 end

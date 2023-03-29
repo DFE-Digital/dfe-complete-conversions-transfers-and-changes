@@ -32,6 +32,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - a new view that show all completed conversion projects that are voluntary at
   `/projects/all/in-progress/voluntary`
 
+### Fixed
+
+- Fixed a bug where every time a task list was saved, a new note was created
+
 ## [Release 17][release-17]
 
 ### Changed

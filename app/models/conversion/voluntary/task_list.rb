@@ -10,6 +10,7 @@ class Conversion::Voluntary::TaskList < TaskList::Base
   def set_conversion_date
     return if project.nil?
     return unless project.conversion_date_provisional?
+    return if stakeholder_kick_off_confirmed_conversion_date.nil?
 
     raise TaskListUserError.new("You must set the `user` attribute on #{self}") if user.nil?
 
