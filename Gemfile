@@ -52,6 +52,9 @@ gem "faraday"
 gem "sentry-ruby"
 gem "sentry-rails"
 
+# application insights
+gem "application_insights"
+
 gem "sidekiq", "< 7.0"
 
 gem "pagy"

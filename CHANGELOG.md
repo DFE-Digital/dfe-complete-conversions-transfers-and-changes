@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `/projects/all/in-progress/sponsored`
 - a new view that show all completed conversion projects that are voluntary at
   `/projects/all/in-progress/voluntary`
+- basic telemetery is being sent to DfE Application Insights
 
 ### Fixed
 

@@ -64,3 +64,7 @@ https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/bl
 Contains a range of IP addresses used by the monitoring health probes. This
 range is added to the `ALLOWED_HOSTS` on production, so that the probes can hit
 the `/healthcheck` endpoint to confirm the app is up & running.
+
+`APPLICATION_INSIGHTS_KEY`
+
+The instrumentation key for Microsoft Application Insights.
