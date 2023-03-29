@@ -3,7 +3,7 @@ en:
     voluntary:
       tasks:
         sponsored_support_grant:
-          title: Process the Sponsored support grant
+          title: Process the sponsored support grant
           hint:
             html:
               <p>Start this as soon as possible. Trusts can start getting charged by solicitors and the local authority early in the process.</p>
