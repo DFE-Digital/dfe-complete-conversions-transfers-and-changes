@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fulls stops added to empty states messages in project lists
 - Corrected guidance in the commercial transfer agreement tasks. It now says
   solicitors, not schools or trusts
+- Made Sponsored support grant sentence case, not title case
 - Corrected guidance in 125 year lease task. Now tells user to contact
   solicitor, not school
 - Updated the dev & test URLs in the README

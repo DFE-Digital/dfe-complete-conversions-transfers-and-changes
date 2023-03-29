@@ -33,11 +33,11 @@ en:
           title: All voluntary completed projects
     regional_casework_services:
       in_progress:
-        title: Regional casework services projects in progress
+        title: Regional Casework Services projects in progress
       completed:
-        title: Regional casework services completed projects
+        title: Regional Casework Services completed projects
       unassigned:
-        title: Regional casework services unassigned projects
+        title: Regional Casework Services unassigned projects
     user:
       in_progress:
         title: Assigned projects in progress
