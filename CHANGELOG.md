@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 18][release-18]
+
 ### Changed
 
 - Improved the summary text on the openers list and added a full stop.
@@ -685,7 +687,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-17...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-18...HEAD
+[release-18]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-17...release-18
 [release-17]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-16...release-17
 [release-16]:
