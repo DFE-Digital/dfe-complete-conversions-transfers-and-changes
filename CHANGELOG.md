@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - A conversion project can now be added on the same day as the advisory board
 - Projects that have no user assigned to them no longer appear in lists of
   in-progress projects
+- In-progress projects are not orderd by their converison date, with those
+  converting soonest at the top
 
 ### Added
 

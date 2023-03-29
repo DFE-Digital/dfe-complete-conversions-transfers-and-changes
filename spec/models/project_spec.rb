@@ -408,6 +408,18 @@ RSpec.describe Project, type: :model do
         expect(projects).to include in_progress_project
         expect(projects).to_not include unassigned_project
       end
+
+      it "is ordered by conversion date ascending" do
+        mock_successful_api_response_to_create_any_project
+        create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 2.month)
+        project_converting_last = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 3.month)
+        project_converting_first = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 1.month)
+
+        projects = Project.in_progress
+
+        expect(projects.first).to eql project_converting_first
+        expect(projects.last).to eql project_converting_last
+      end
     end
 
     describe "assigned_to_caseworker scope" do
