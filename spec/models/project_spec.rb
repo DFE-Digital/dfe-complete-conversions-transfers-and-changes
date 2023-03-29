@@ -522,5 +522,29 @@ RSpec.describe Project, type: :model do
         expect(second_users_projects).not_to include(first_users_project)
       end
     end
+
+    describe "#voluntary" do
+      it "returns only projects where sponsor_trust_required is false" do
+        mock_successful_api_response_to_create_any_project
+        voluntary_project = create(:conversion_project, sponsor_trust_required: false)
+        sponsored_project = create(:conversion_project, sponsor_trust_required: true)
+        projects = Project.voluntary
+
+        expect(projects).to include(voluntary_project)
+        expect(projects).not_to include(sponsored_project)
+      end
+    end
+
+    describe "#sponsored" do
+      it "returns only projects where sponsor_trust_required is true" do
+        mock_successful_api_response_to_create_any_project
+        voluntary_project = create(:conversion_project, sponsor_trust_required: false)
+        sponsored_project = create(:conversion_project, sponsor_trust_required: true)
+        projects = Project.sponsored
+
+        expect(projects).to include(sponsored_project)
+        expect(projects).not_to include(voluntary_project)
+      end
+    end
   end
 end

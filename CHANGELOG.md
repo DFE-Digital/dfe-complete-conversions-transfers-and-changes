@@ -10,10 +10,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Corrected guidance in the commercial transfer agreement tasks. It now says
   solicitors, not schools or trusts
+- Corrected guidance in 125 year lease task. Now tells user to contact
+  solicitor, not school
 - Updated the dev & test URLs in the README
 - users can no longer create a new project with a school URN that already has a
   project in progress, this prevents duplicate projects being created by mistake
 - Removed the "Check the baseline" task from task lists
+- Conversion projects now have a route of voluntary or sponsored
+- A conversion project can now be added on the same day as the advisory board
+
+### Added
+
+- a new view that show all in-progress conversion projects that are sponsored at
+  `/projects/all/in-progress/sponsored`
+- a new view that show all in-progress conversion projects that are voluntary at
+  `/projects/all/in-progress/voluntary`
+- a new view that show all completed conversion projects that are sponsored at
+  `/projects/all/in-progress/sponsored`
+- a new view that show all completed conversion projects that are voluntary at
+  `/projects/all/in-progress/voluntary`
 
 ## [Release 17][release-17]
 

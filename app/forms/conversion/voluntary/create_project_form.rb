@@ -9,6 +9,7 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
 
   def save
     assigned_to = assigned_to_regional_caseworker_team ? nil : user
+    assigned_at = assigned_to_regional_caseworker_team ? nil : DateTime.now
 
     @project = Conversion::Project.new(
       urn: urn,
@@ -22,6 +23,7 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       task_list: Conversion::Voluntary::TaskList.new,
       assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
       assigned_to: assigned_to,
+      assigned_at: assigned_at,
       directive_academy_order: directive_academy_order,
       sponsor_trust_required: sponsor_trust_required
     )
