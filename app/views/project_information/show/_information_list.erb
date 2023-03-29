@@ -77,7 +77,8 @@
     end
     summary_list.row do |row|
       row.key { t('project_information.show.trust_details.rows.companies_house_number') }
-      row.value { @project.incoming_trust.companies_house_number } end
+      row.value { (@project.incoming_trust.companies_house_number + "<br/>" + link_to_companies_house(@project.incoming_trust.companies_house_number)).html_safe }
+    end
   end %>
 </div>
 
