@@ -6,13 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Standardised capitalisation in supplemental funding agreement voluntary and
+  involuntary tasks
+- Standardised capitalisation in land registry title plans tasks
+- Standardised capitalisation in voluntary and involuntary land questionnaire
+
 ## [Release 18][release-18]
 
 ### Changed
 
-- Standardised capitalisation in supplemental funding agreement voluntary
-  and involuntary tasks
-- Standardised capitalisation in voluntary and involuntary land questionnaire
 - Standardising capitalisation in the project kick-off tasks
 - Improved the summary text on the openers list and added a full stop.
 - Made project list tables headings consistent with openers list
