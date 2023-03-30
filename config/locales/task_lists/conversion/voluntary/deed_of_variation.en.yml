@@ -5,12 +5,12 @@ en:
         deed_of_variation:
           title: Deed of variation
           hint:
-            html: <p>You'll only need to complete and clear a Deed of variation if there are changes to the funding agreements.</p>
+            html: <p>You'll only need to complete and clear a deed of variation if there are changes to the funding agreements.</p>
 
           clear_section:
-            title: Check and clear the Deed of variation
+            title: Check and clear the deed of variation
             hint:
-              html: <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx" target="_blank">find the right Deed of variation to use (opens in new tab)</a> on SharePoint.</p>
+              html: <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx" target="_blank">find the right deed of variation to use (opens in new tab)</a> on SharePoint.</p>
             guidance_link: Help checking for changes
             guidance:
               html:
