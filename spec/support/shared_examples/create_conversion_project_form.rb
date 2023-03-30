@@ -166,7 +166,7 @@ RSpec.shared_examples "a conversion project FormObject" do
           directive_academy_order: nil
         )
         expect(form).to be_invalid
-        expect(form.errors[:directive_academy_order]).to include("Select yes if this project has had a Directive academy order issued")
+        expect(form.errors[:directive_academy_order]).to include("Select yes if this project has had a directive academy order issued")
       end
     end
 
@@ -268,7 +268,7 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(Note.last.body).to eq("Some important words")
       end
 
-      context "when the project does NOT have a Directive academy order" do
+      context "when the project does NOT have a directive academy order" do
         it "sets directive_academy_order = false on the project" do
           form = build(
             form_factory.to_sym,
@@ -279,7 +279,7 @@ RSpec.shared_examples "a conversion project FormObject" do
         end
       end
 
-      context "when the project has a Directive academy order" do
+      context "when the project has a directive academy order" do
         it "sets directive_academy_order = true on the project" do
           form = build(
             form_factory.to_sym,

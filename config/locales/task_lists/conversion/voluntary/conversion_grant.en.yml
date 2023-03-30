@@ -24,7 +24,7 @@ en:
                 <p>It can take 15 to 20 days for an account to be created.</p>
 
           payment_form:
-            title: Receive, check and save the Grant claim form in the school's SharePoint folder
+            title: Receive, check and save the grant claim form in the school's SharePoint folder
             hint:
               html:
                 <p>Make sure no information is missing.</p>
@@ -37,11 +37,11 @@ en:
           send_information:
             title: Send the grant information to the payments team
             hint:
-              html: <p>Send them the Application to convert, Academy order and Grant claim form.</p>
+              html: <p>Send them the application to convert, academy order and grant claim form.</p>
             guidance_link: Guidance on what information to send
             guidance:
               html:
-                <p>You'll find the Academy order, Application to convert and Grant claim form in the school's SharePoint folder.</p>
+                <p>You'll find the academy order, application to convert and grant claim form in the school's SharePoint folder.</p>
                 <p>You should send the documents to the Grant Payments team by email at <a href="mailto:cfugrantpayments.regionsgroup@education.gov.uk" target="_blank">cfugrantpayments.regionsgroup@education.gov.uk</a>.</p>
                 <p>The subject line of the email must include the:</p>
                 <ul>
@@ -57,7 +57,7 @@ en:
                   <li>trust it's joining</li>
                   <li>provisional conversion date</li>
                 </ul>
-                <p>It's helpful to include the school or trust's vendor account number too. The Grant payments team will need this to be able to send the money to whoever will receive it.</p>
+                <p>It's helpful to include the school or trust's vendor account number too. The Grant Payments team will need this to be able to send the money to whoever will receive it.</p>
 
           share_payment_date:
             title: Tell the school or trust the grant information has been sent
