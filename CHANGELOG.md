@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Standardised capitalisation in supplemental funding agreement voluntary
+  and involuntary tasks
 - Standardised capitalisation in voluntary and involuntary land questionnaire
 - Standardising capitalisation in the project kick-off tasks
 - Improved the summary text on the openers list and added a full stop.
