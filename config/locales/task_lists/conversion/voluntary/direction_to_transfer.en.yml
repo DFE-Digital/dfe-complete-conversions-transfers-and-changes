@@ -10,13 +10,13 @@ en:
               <p>You can <a href="https://www.get-information-schools.service.gov.uk/Search" target="_blank">search Get Information About Schools (opens in new tab)</a> to check if it's needed for this school.</p>
 
           clear_section:
-            title: Check and clear the Direction to transfer
+            title: Check and clear the direction to transfer
             hint:
-              html: <p>Make sure information in the Direction to transfer is correct and compare it against the model document.</p>
+              html: <p>Make sure information in the direction to transfer is correct and compare it against the model document.</p>
             guidance_link: Help checking for changes
             guidance:
               html:
-                <p>You need to <a href="https://www.gov.uk/government/publications/academy-land-transfers-model-directions" target="_blank">compare the Direction to transfer against the model documents (opens in new tab)</a> to check for any changes.</p>
+                <p>You need to <a href="https://www.gov.uk/government/publications/academy-land-transfers-model-directions" target="_blank">compare the direction to transfer against the model documents (opens in new tab)</a> to check for any changes.</p>
                 <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
                 <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about any changes to clause text.</p>
 
