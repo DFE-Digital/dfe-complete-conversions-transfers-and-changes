@@ -107,6 +107,7 @@ en:
         assign: Assign project
         added_by: Added by
         conversion_date: Conversion date
+        revised_conversion_date: Revised conversion date
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
@@ -125,6 +126,10 @@ en:
         html:
           <p>There are currently no schools expected to become academies in %{date}.</p>
           <p>Check with your line manager if you were expecting some schools to convert in this month.</p>
+    conversion_date_changed:
+      title: Academies that were expected to convert in %{date}
+      empty_html:
+          <p>None found.</p>
       table:
         headers:
           school: School

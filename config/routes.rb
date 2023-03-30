@@ -102,6 +102,10 @@ Rails.application.routes.draw do
             get "voluntary", to: "projects#voluntary"
             get "sponsored", to: "projects#sponsored"
           end
+          namespace :conversion_date_changed, path: "conversion-date-changed" do
+            get "/:month/:year", to: "projects#index", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
+          end
+
           get "new", to: "projects#new", as: :new
         end
         namespace :regional_casework_services, path: "regional-casework-services" do
