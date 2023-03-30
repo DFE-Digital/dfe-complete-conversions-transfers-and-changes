@@ -239,6 +239,15 @@ RSpec.shared_examples "a conversion project FormObject" do
     end
   end
 
+  describe "region" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    it "sets the region code from the establishment" do
+      project = build(form_factory.to_sym).save
+      expect(project.region).to eq("west_midlands")
+    end
+  end
+
   describe "#save" do
     let(:establishment) { build(:academies_api_establishment) }
 
@@ -292,6 +301,8 @@ RSpec.shared_examples "a conversion project FormObject" do
     end
 
     context "when the form is invalid" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
       it "returns nil" do
         expect(build(form_factory.to_sym, urn: nil).save).to be_nil
       end
