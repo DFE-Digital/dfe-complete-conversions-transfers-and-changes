@@ -628,4 +628,40 @@ RSpec.describe Project, type: :model do
       expect(project.region).to eq("east_midlands")
     end
   end
+
+  describe "#revised_conversion_date" do
+    let(:first_of_this_month) { Date.today.at_beginning_of_month }
+    let(:first_of_future_month) { Date.today.at_beginning_of_month + 3.months }
+
+    it "does not include projects whose conversion date stayed the same" do
+      user = create(:user)
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: project, previous_date: first_of_this_month, revised_date: first_of_this_month)
+
+      another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: another_project, previous_date: first_of_this_month, revised_date: first_of_future_month)
+
+      projects = Project.conversion_date_revised_from(first_of_this_month.month, first_of_this_month.year)
+
+      expect(projects).to include another_project
+      expect(projects).not_to include project
+    end
+
+    it "only includes projects whose latest date history previous date is in the supplied month and year" do
+      user = create(:user)
+      mock_successful_api_response_to_create_any_project
+
+      another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: another_project, previous_date: first_of_this_month, revised_date: first_of_future_month)
+
+      yet_another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: yet_another_project, previous_date: first_of_future_month, revised_date: first_of_future_month + 3.months)
+
+      projects = Project.conversion_date_revised_from(first_of_future_month.month, first_of_future_month.year)
+
+      expect(projects).to include yet_another_project
+      expect(projects).not_to include another_project
+    end
+  end
 end

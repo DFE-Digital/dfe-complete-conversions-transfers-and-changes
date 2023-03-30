@@ -68,6 +68,23 @@ class Project < ApplicationRecord
     east_midlands: "E"
   }, suffix: true
 
+  def self.conversion_date_revised_from(month, year)
+    projects = Project.in_progress.confirmed
+
+    latest_date_histories = Conversion::DateHistory.group(:project_id).maximum(:created_at)
+
+    matching_date_histories = Conversion::DateHistory
+      .where(project_id: latest_date_histories.keys)
+      .where(created_at: latest_date_histories.values)
+      .to_sql
+
+    projects.joins("INNER JOIN (#{matching_date_histories}) AS date_history ON date_history.project_id = projects.id")
+      .where("date_history.previous_date != date_history.revised_date")
+      .where("MONTH(date_history.previous_date) = ?", month)
+      .where("YEAR(date_history.previous_date) = ?", year)
+      .by_conversion_date
+  end
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end
