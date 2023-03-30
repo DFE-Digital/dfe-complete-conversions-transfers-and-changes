@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Standardised capitalisation in supplemental funding agreement voluntary and
+  involuntary tasks
+- Standardised capitalisation in land registry title plans tasks
+- Standardised capitalisation in voluntary and involuntary land questionnaire
 - Standardise capitalisation on clear and sign legal documents pt3
 
 ## [Release 18][release-18]
