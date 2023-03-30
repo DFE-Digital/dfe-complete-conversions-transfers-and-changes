@@ -11,5 +11,6 @@ FactoryBot.define do
     task_list { association :conversion_involuntary_task_list }
     directive_academy_order { true }
     sponsor_trust_required { true }
+    assigned_to { association :user, :caseworker, email: "user.#{SecureRandom.uuid}@education.gov.uk" }
   end
 end

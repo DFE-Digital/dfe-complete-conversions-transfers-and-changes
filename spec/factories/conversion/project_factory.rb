@@ -9,7 +9,7 @@ FactoryBot.define do
     establishment_sharepoint_link { "https://educationgovuk-my.sharepoint.com/establishment-folder" }
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
     task_list { association :voluntary_conversion_task_list }
-    assigned_to { nil }
+    assigned_to { association :user, :caseworker, email: "user.#{SecureRandom.uuid}@education.gov.uk" }
     directive_academy_order { false }
     sponsor_trust_required { false }
     regional_delivery_officer { association :user, :regional_delivery_officer }
@@ -22,11 +22,16 @@ FactoryBot.define do
       team_leader { nil }
       regional_delivery_officer { nil }
       caseworker { nil }
+      assigned_to { nil }
     end
 
     trait :with_team_lead_and_regional_delivery_officer_assigned do
       team_leader { association :user, :team_leader }
       regional_delivery_officer { association :user, :regional_delivery_officer }
+    end
+
+    trait :unassigned do
+      assigned_to { nil }
     end
   end
 end
