@@ -14,7 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Standardised capitalisation in voluntary and involuntary land questionnaire
 - Standardise capitalisation on clear and sign legal documents pt3
 
-
 ## [Release 18][release-18]
 
 ### Changed
