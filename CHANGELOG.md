@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Standardised capitalisation in share grant certificate task
 - Standardised capitalisation in single worksheet task
 - Standardised capitalisation in supplemental funding agreement voluntary and
   involuntary tasks
