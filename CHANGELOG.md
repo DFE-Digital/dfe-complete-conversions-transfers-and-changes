@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Standardised capitalisation in the church supplemental agreement tasks
+- Standardised capitalisation in the master funding agreement tasks
+
 ## [Release 18][release-18]
 
 ### Changed
