@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   converting soonest at the top
 - Added full stops to project handover confirmation page. Also explicitly called
   out the URN. Removed a from opens in a new tab.
+- Projects store the school's region as a first-class attribute
 
 ## [Release 18][release-18]
 

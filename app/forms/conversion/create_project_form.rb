@@ -18,6 +18,7 @@ class Conversion::CreateProjectForm
   attribute :user
   attribute :directive_academy_order
   attribute :sponsor_trust_required
+  attribute :region
 
   attr_reader :provisional_conversion_date,
     :advisory_board_date
@@ -74,6 +75,21 @@ class Conversion::CreateProjectForm
     @attributes_with_invalid_values << :advisory_board_date
   end
 
+  def region
+    @region = establishment.region_code
+  end
+
+  private def establishment
+    @establishment || fetch_establishment(urn)
+  end
+
+  private def fetch_establishment(urn)
+    result = AcademiesApi::Client.new.get_establishment(urn)
+    raise result.error if result.error.present?
+
+    result.object
+  end
+
   private def value_at_position(hash, position)
     value = hash[position]
     return NegativeValueError if value.to_i < 0
@@ -92,8 +108,7 @@ class Conversion::CreateProjectForm
   end
 
   private def establishment_exists
-    result = AcademiesApi::Client.new.get_establishment(urn)
-    raise result.error if result.error.present?
+    establishment
   rescue AcademiesApi::Client::NotFoundError
     errors.add(:urn, :no_establishment_found)
   end

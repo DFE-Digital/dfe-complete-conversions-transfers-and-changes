@@ -19,6 +19,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:assigned_to_regional_caseworker_team).of_type :boolean }
     it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
     it { is_expected.to have_db_column(:sponsor_trust_required).of_type :boolean }
+    it { is_expected.to have_db_column(:region).of_type :string }
   end
 
   describe "Relationships" do
@@ -581,6 +582,15 @@ RSpec.describe Project, type: :model do
         expect(projects).to include(sponsored_project)
         expect(projects).not_to include(voluntary_project)
       end
+    end
+  end
+
+  describe "region" do
+    before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+    it "uses the enum value for regions" do
+      project = create(:conversion_project, region: "E")
+      expect(project.region).to eq("east_midlands")
     end
   end
 end
