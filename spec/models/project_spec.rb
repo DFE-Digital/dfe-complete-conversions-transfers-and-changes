@@ -20,6 +20,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
     it { is_expected.to have_db_column(:sponsor_trust_required).of_type :boolean }
     it { is_expected.to have_db_column(:region).of_type :string }
+    it { is_expected.to have_db_column(:academy_urn).of_type :integer }
   end
 
   describe "Relationships" do
