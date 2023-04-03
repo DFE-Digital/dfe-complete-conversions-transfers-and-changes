@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   in-progress projects
 - In-progress projects are not orderd by their converison date, with those
   converting soonest at the top
+- Added full stops to project handover confirmation page. Also explicitly called
+  out the URN. Removed a from opens in a new tab.
 
 ## [Release 18][release-18]
 

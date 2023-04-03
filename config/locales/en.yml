@@ -47,7 +47,7 @@ en:
     message:
       success: You have signed out. You may still be signed in to your Microsoft account.
   signed_in:
-    message: You are signed in with the email address %{email_address}
+    message: You are signed in with the email address %{email_address}.
   unknown_user:
     message: The email address %{email_address} is not registered to use this service.
   unauthorised_action:
