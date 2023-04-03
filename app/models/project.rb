@@ -36,6 +36,7 @@ class Project < ApplicationRecord
   scope :sponsored, -> { where(sponsor_trust_required: true) }
   scope :voluntary, -> { where(sponsor_trust_required: false) }
 
+  scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :provisional, -> { where(conversion_date_provisional: true) }
   scope :confirmed, -> { where(conversion_date_provisional: false) }
 
