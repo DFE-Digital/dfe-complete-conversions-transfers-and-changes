@@ -147,6 +147,28 @@ RSpec.describe Project, type: :model do
         end
       end
     end
+
+    describe "academy urn" do
+      context "when there is no academy urn" do
+        it "is valid" do
+          project = build(:conversion_project, academy_urn: nil)
+
+          expect(project).to be_valid
+        end
+      end
+
+      context "when there is an academy urn" do
+        it "the urn must be valid" do
+          project = build(:conversion_project, academy_urn: 12345678)
+
+          expect(project).to be_invalid
+
+          project = build(:conversion_project, academy_urn: 123456)
+
+          expect(project).to be_valid
+        end
+      end
+    end
   end
 
   describe "#establishment" do

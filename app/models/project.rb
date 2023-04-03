@@ -10,6 +10,7 @@ class Project < ApplicationRecord
 
   validates :urn, presence: true
   validates :urn, urn: true
+  validates :academy_urn, urn: true, if: -> { academy_urn.present? }
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
   validates :conversion_date, presence: true
