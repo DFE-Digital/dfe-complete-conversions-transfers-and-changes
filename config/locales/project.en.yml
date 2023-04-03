@@ -31,6 +31,8 @@ en:
           title: All sponsored completed projects
         voluntary:
           title: All voluntary completed projects
+      new:
+        title: All conversions without an academy URN
     regional_casework_services:
       in_progress:
         title: Regional Casework Services projects in progress
@@ -104,6 +106,7 @@ en:
         view: View project
         assign: Assign project
         added_by: Added by
+        conversion_date: Conversion date
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
@@ -113,6 +116,8 @@ en:
         empty: There are no completed projects.
       unassigned:
         empty: There are no unassigned projects.
+      new:
+        empty: There are no conversions without an academy URN
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.

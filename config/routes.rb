@@ -102,6 +102,7 @@ Rails.application.routes.draw do
             get "voluntary", to: "projects#voluntary"
             get "sponsored", to: "projects#sponsored"
           end
+          get "new", to: "projects#new", as: :new
         end
         namespace :regional_casework_services, path: "regional-casework-services" do
           get "in-progress", to: "projects#in_progress"

@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- a new view at `/projects/all/new` that shows all conversion projects that
+  require the new Academy URN to be provided
+
 ### Changed
 
 - Standardised capitalisation in supplemental funding agreement voluntary and
