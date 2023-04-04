@@ -1,0 +1,36 @@
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Statistics Page</h1>
+    <h2 class="govuk-heading-l">Overview of all projects</h2>
+    <table class="govuk-table" name="statistics_table" aria-label="Project statistics">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Detail</th>
+          <th class="govuk-table__header" scope="col">Total number</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row" id="voluntary_projects">
+          <td class="govuk-table__cell">Voluntary projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_voluntary_projects %></td>
+        </tr>
+        <tr class="govuk-table__row" id="sponsored_projects">
+          <td class="govuk-table__cell">Sponsored projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_sponsored_projects %></td>
+        </tr>
+        <tr class="govuk-table__row" id="in_progress">
+          <td class="govuk-table__cell">In progress projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_in_progress_projects %></td>
+        </tr>
+        <tr class="govuk-table__row" id="completed">
+          <td class="govuk-table__cell">Completed projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_completed_projects %></td>
+        </tr>
+        <tr class="govuk-table__row" id="all_projects">
+          <td class="govuk-table__cell">All projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_projects %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
