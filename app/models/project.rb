@@ -33,8 +33,8 @@ class Project < ApplicationRecord
   scope :conversions, -> { where(type: "Conversion::Project") }
   scope :conversions_voluntary, -> { conversions.where(task_list_type: "Conversion::Voluntary::TaskList") }
   scope :conversions_involuntary, -> { conversions.where(task_list_type: "Conversion::Involuntary::TaskList") }
-  scope :sponsored, -> { where(sponsor_trust_required: true) }
-  scope :voluntary, -> { where(sponsor_trust_required: false) }
+  scope :sponsored, -> { where(directive_academy_order: true) }
+  scope :voluntary, -> { where(directive_academy_order: false) }
 
   scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :provisional, -> { where(conversion_date_provisional: true) }
