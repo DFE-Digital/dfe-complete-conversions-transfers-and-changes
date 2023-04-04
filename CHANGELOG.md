@@ -6,10 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 19][release-19]
+
 ### Added
 
 - a new view at `/projects/all/new` that shows all conversion projects that
   require the new Academy URN to be provided
+- a new view that shows projects that were going to convert in the given month
+  but have since changed date
 
 ### Changed
 
@@ -32,11 +36,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   out the URN. Removed a from opens in a new tab.
 - Projects store the school's region as a first-class attribute
 - the 'Handover with regional delivery officer' task is now optional
-
-### Added
-
-- a new view that shows project that were going to convert in the given month
-  but have sinced changed date
 
 ## [Release 18][release-18]
 
@@ -722,7 +721,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-18...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-19...HEAD
+[release-19]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-18...release-19
 [release-18]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-17...release-18
 [release-17]:
