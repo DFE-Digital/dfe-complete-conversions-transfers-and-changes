@@ -616,6 +616,17 @@ RSpec.describe Project, type: :model do
         expect(projects).not_to include(existing_project)
       end
     end
+
+    describe "by_region scope" do
+      it "returns only projects for the given region" do
+        mock_successful_api_response_to_create_any_project
+        london_project = create(:conversion_project, region: Project.regions["london"])
+        west_mids_project = create(:conversion_project, region: Project.regions["west_midlands"])
+
+        expect(Project.by_region("london")).to include(london_project)
+        expect(Project.by_region("london")).to_not include(west_mids_project)
+      end
+    end
   end
 
   describe "region" do

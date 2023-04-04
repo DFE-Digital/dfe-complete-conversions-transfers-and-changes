@@ -56,6 +56,8 @@ class Project < ApplicationRecord
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
 
+  scope :by_region, ->(region) { where(region: region) }
+
   enum :region, {
     london: "H",
     south_east: "J",
