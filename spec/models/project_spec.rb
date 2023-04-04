@@ -488,6 +488,19 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "not_assigned_to_regional_casework_team scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns projects which have `assigned_to_regional_casework_team` set to `false`" do
+        not_assigned_to_regional_caseworker = create(:conversion_project, assigned_to_regional_caseworker_team: false)
+        assigned_to_regional_caseworker = create(:conversion_project, assigned_to_regional_caseworker_team: true)
+
+        projects = Project.not_assigned_to_regional_caseworker_team
+        expect(projects).to include(not_assigned_to_regional_caseworker)
+        expect(projects).to_not include(assigned_to_regional_caseworker)
+      end
+    end
+
     describe "opening_by_month_year scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
