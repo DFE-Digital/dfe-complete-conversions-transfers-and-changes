@@ -54,6 +54,18 @@ class Project < ApplicationRecord
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
 
+  enum :region, {
+    london: "H",
+    south_east: "J",
+    yorkshire_and_the_humber: "D",
+    north_west: "B",
+    east_of_england: "G",
+    west_midlands: "F",
+    north_east: "A",
+    south_west: "K",
+    east_midlands: "E"
+  }, suffix: true
+
   def establishment
     @establishment ||= fetch_establishment(urn)
   end

@@ -7,7 +7,7 @@ en:
           hint:
             html: <p>This document is only required for Church of England and Catholic schools.</p>
           clear_section:
-            title: Check and clear the Church supplemental agreement
+            title: Check and clear the church supplemental agreement
             hint:
               html: <p>You can <a href="https://www.gov.uk/government/collections/convert-to-an-academy-documents-for-schools" class="govuk-link" target="_blank">view the model documents (opens in new tab)</a> to check for changes.</p>
             guidance_link: Help checking for changes
@@ -20,7 +20,7 @@ en:
             title: Signed by the Secretary of State
             hint:
               html:
-                <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the Church supplemental agreement.</p>
+                <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the church supplemental agreement.</p>
                 <p>Usually this is your team leader or the deputy director.</p>
 
           received:

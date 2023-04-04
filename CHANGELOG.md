@@ -10,11 +10,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Standardised capitalisation in share grant certificate task
 - Standardised capitalisation in single worksheet task
+- Standardised capitalisation in commercial transfer agreement and tenancy at
+  will
+- Standardised capitalisation in the church supplemental agreement tasks
+- Standardised capitalisation in the master funding agreement tasks
 - Standardised capitalisation in supplemental funding agreement voluntary and
   involuntary tasks
 - Standardised capitalisation in land registry title plans tasks
 - Standardised capitalisation in voluntary and involuntary land questionnaire
 - Standardise capitalisation on clear and sign legal documents pt3
+- Projects that have no user assigned to them no longer appear in lists of
+  in-progress projects
+- In-progress projects are not orderd by their converison date, with those
+  converting soonest at the top
+- Added full stops to project handover confirmation page. Also explicitly called
+  out the URN. Removed a from opens in a new tab.
+- Projects store the school's region as a first-class attribute
+- the 'Handover with regional delivery officer' task is now optional
 
 ## [Release 18][release-18]
 
@@ -35,10 +47,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the "Check the baseline" task from task lists
 - Conversion projects now have a route of voluntary or sponsored
 - A conversion project can now be added on the same day as the advisory board
-- Projects that have no user assigned to them no longer appear in lists of
-  in-progress projects
-- In-progress projects are not orderd by their converison date, with those
-  converting soonest at the top
 
 ### Added
 

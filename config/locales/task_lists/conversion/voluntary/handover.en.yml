@@ -5,6 +5,9 @@ en:
         handover:
           title: Handover with regional delivery officer
 
+          not_applicable:
+            title: Not applicable
+
           review:
             title: Review the project information, check the documents and carry out research
             hint:

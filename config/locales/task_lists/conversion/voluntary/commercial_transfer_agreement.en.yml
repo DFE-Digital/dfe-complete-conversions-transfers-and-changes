@@ -5,11 +5,11 @@ en:
         commercial_transfer_agreement:
           title: Commercial transfer agreement
           hint:
-            html: <p>The Commercial transfer agreement is essential for all conversion projects.</p>
+            html: <p>The commercial transfer agreement is essential for all conversion projects.</p>
 
           email_signed:
-            title: Email the solicitors to ask if all relevant parties have agreed and signed the Commercial transfer agreement
+            title: Email the solicitors to ask if all relevant parties have agreed and signed the commercial transfer agreement
           receive_signed:
-            title: Receive email from the solicitors confirming all relevant parties have agreed and signed the Commercial transfer agreement
+            title: Receive email from the solicitors confirming all relevant parties have agreed and signed the commercial transfer agreement
           save_signed:
             title: Save a copy of the confirmation email in the school's SharePoint folder

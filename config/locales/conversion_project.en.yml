@@ -26,14 +26,14 @@ en:
           title: Project created
           button: Return to project list
           html:
-            <p class="govuk-body">You have created a project for %{school_name} %{urn}</p>
+            <p class="govuk-body">You have created a project for %{school_name}, URN %{urn}.</p>
             <h2 class="govuk-heading-l">What happens next</h2>
-            <p class="govuk-body">Another person will be assigned to this project</p>
+            <p class="govuk-body">Another person will be assigned to this project.</p>
             <h2 class="govuk-heading-l">Add contact details</h2>
             <p class="govuk-body">You should <a href="%{contacts_link}">add any contact details</a> you have for the school, trust, solicitors, diocese and local authority.</p>
             <p class="govuk-body">This will help the person continuing this project to organise kick-off meetings.</p>
             <h2 class="govuk-heading-l">Help us improve the service</h2>
-            <p class="govuk-body">Complete this <a href="https://forms.office.com/e/xf0k4LcWVN" class="govuk-link" target="_blank">short survey (opens in a new tab)</a></p>
+            <p class="govuk-body">Complete this <a href="https://forms.office.com/e/xf0k4LcWVN" class="govuk-link" target="_blank">short survey (opens in new tab)</a>.</p>
     summary:
       route:
         title: Route
