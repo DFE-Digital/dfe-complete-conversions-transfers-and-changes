@@ -1,0 +1,7 @@
+<div id="academyDetails">
+  <h2 class="govuk-heading-l"><%= t("project_information.show.academy_details.title") %></h2>
+
+  <% if @project.academy_urn.nil? %>
+    <%= govuk_inset_text(text: t("project_information.show.academy_details.empty")) %>
+  <% end %>
+</div>

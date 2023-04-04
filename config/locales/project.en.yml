@@ -197,6 +197,9 @@ en:
           age_range: Age range
           school_phase: School phase
           region: Region
+      academy_details:
+        title: Academy details
+        empty: Academy URN has not been provided
       trust_details:
         title: Trust details
         rows:
