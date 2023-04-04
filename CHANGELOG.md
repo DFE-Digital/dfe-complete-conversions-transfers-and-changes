@@ -33,6 +33,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Projects store the school's region as a first-class attribute
 - the 'Handover with regional delivery officer' task is now optional
 
+### Added
+
+- a new view that shows project that were going to convert in the given month
+  but have sinced changed date
+
 ## [Release 18][release-18]
 
 ### Changed
