@@ -11,14 +11,14 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
   end
 
   mandatory_tasks = %w[commercial_transfer_agreement
-    conditions_met handover
+    conditions_met
     land_questionnaire land_registry
     receive_grant_payment_certificate redact_and_send
     school_completed share_information single_worksheet
     supplemental_funding_agreement
     tell_regional_delivery_officer update_esfa]
 
-  optional_tasks = %w[articles_of_association church_supplemental_agreement
+  optional_tasks = %w[handover articles_of_association church_supplemental_agreement
     deed_of_variation direction_to_transfer master_funding_agreement
     one_hundred_and_twenty_five_year_lease subleases tenancy_at_will
     trust_modification_order conversion_grant sponsored_support_grant]
