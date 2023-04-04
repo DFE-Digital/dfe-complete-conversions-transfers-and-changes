@@ -45,6 +45,11 @@ en:
         title: Regional projects in progress
       completed:
         title: Regional completed projects
+      by_region:
+        in_progress:
+          title: Regional projects for %{region} in progress
+        completed:
+          title: Regional completed projects for %{region}
     user:
       in_progress:
         title: Assigned projects in progress

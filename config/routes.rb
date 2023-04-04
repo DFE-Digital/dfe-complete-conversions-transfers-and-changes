@@ -116,6 +116,8 @@ Rails.application.routes.draw do
         namespace :regional, path: "regional" do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
+          get ":region/in-progress", to: "projects#in_progress_by_region", as: :in_progress_by_region
+          get ":region/completed", to: "projects#completed_by_region", as: :completed_by_region
         end
         namespace :user do
           get "in-progress", to: "projects#in_progress"

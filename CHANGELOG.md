@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - New views at `/projects/regional/in-progress` and
   `/projects/regional/completed` to show projects NOT assigned to Regional
   caseworker services
+- New views at `/projects/regional/:region/in-progress` and
+  `/projects/regional/:region/completed` to show projects NOT assigned to
+  Regional caseworker services, filtered by region
 
 ## [Release 19][release-19]
 
