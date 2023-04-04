@@ -44,7 +44,6 @@ class Conversion::CreateProjectForm
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
 
   validates :directive_academy_order, inclusion: {in: %w[true false]}
-  validates :sponsor_trust_required, inclusion: {in: %w[true false]}
 
   def initialize(params = {})
     @attributes_with_invalid_values = []

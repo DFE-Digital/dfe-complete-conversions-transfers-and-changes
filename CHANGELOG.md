@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the sponsored route is only applied to a project where a directive academy
   order has been issued
+- the new project form no longer asks 'Is the school joining a Sponsor trust?'
 
 ## [Release 19][release-19]
 

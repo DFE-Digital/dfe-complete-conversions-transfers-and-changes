@@ -60,5 +60,19 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
         expect(project.assigned_at).to eq DateTime.now
       end
     end
+
+    describe "#sponsor_trust_required" do
+      it "has the same value as directive_academy_order" do
+        mock_successful_api_response_to_create_any_project
+
+        project = build(:create_voluntary_project_form, urn: 121813, directive_academy_order: "false").save
+
+        expect(project.sponsor_trust_required).to eql false
+
+        project = build(:create_voluntary_project_form, urn: 101133, directive_academy_order: "true").save
+
+        expect(project.sponsor_trust_required).to eql true
+      end
+    end
   end
 end

@@ -9,7 +9,6 @@ FactoryBot.define do
     user { association :user, :regional_delivery_officer }
     note_body { "A note" }
     directive_academy_order { "false" }
-    sponsor_trust_required { "false" }
   end
 
   factory :create_involuntary_project_form, parent: :create_project_form, class: "Conversion::Involuntary::CreateProjectForm" do
