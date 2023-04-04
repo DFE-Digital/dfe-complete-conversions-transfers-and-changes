@@ -20,6 +20,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
     it { is_expected.to have_db_column(:sponsor_trust_required).of_type :boolean }
     it { is_expected.to have_db_column(:region).of_type :string }
+    it { is_expected.to have_db_column(:academy_urn).of_type :integer }
   end
 
   describe "Relationships" do
@@ -143,6 +144,28 @@ RSpec.describe Project, type: :model do
           subject.assign_attributes(sponsor_trust_required: nil)
           subject.valid?
           expect(subject.errors[:sponsor_trust_required]).to include("Select yes if this school is joining a Sponsor trust")
+        end
+      end
+    end
+
+    describe "academy urn" do
+      context "when there is no academy urn" do
+        it "is valid" do
+          project = build(:conversion_project, academy_urn: nil)
+
+          expect(project).to be_valid
+        end
+      end
+
+      context "when there is an academy urn" do
+        it "the urn must be valid" do
+          project = build(:conversion_project, academy_urn: 12345678)
+
+          expect(project).to be_invalid
+
+          project = build(:conversion_project, academy_urn: 123456)
+
+          expect(project).to be_valid
         end
       end
     end
@@ -581,6 +604,18 @@ RSpec.describe Project, type: :model do
 
         expect(projects).to include(sponsored_project)
         expect(projects).not_to include(voluntary_project)
+      end
+    end
+
+    describe "#no_academy_urn" do
+      it "returns only projects where academy_urn is nil" do
+        mock_successful_api_response_to_create_any_project
+        new_project = create(:conversion_project, academy_urn: nil)
+        existing_project = create(:conversion_project, academy_urn: 126041)
+        projects = Project.no_academy_urn
+
+        expect(projects).to include(new_project)
+        expect(projects).not_to include(existing_project)
       end
     end
   end

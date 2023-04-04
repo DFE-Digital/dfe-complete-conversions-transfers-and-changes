@@ -10,6 +10,7 @@ class Project < ApplicationRecord
 
   validates :urn, presence: true
   validates :urn, urn: true
+  validates :academy_urn, urn: true, if: -> { academy_urn.present? }
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
   validates :conversion_date, presence: true
@@ -35,6 +36,7 @@ class Project < ApplicationRecord
   scope :sponsored, -> { where(sponsor_trust_required: true) }
   scope :voluntary, -> { where(sponsor_trust_required: false) }
 
+  scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :provisional, -> { where(conversion_date_provisional: true) }
   scope :confirmed, -> { where(conversion_date_provisional: false) }
 
