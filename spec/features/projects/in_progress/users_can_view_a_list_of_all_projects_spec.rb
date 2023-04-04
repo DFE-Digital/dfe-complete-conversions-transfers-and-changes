@@ -31,8 +31,8 @@ RSpec.feature "Viewing all in-progress projects" do
 
     let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday) }
     let!(:in_progress_project) { create(:conversion_project, urn: 115652) }
-    let!(:sponsored_in_progress_project) { create(:conversion_project, urn: 112209, sponsor_trust_required: true) }
-    let!(:voluntary_in_progress_project) { create(:conversion_project, urn: 103835, sponsor_trust_required: false) }
+    let!(:sponsored_in_progress_project) { create(:conversion_project, urn: 112209, directive_academy_order: true) }
+    let!(:voluntary_in_progress_project) { create(:conversion_project, urn: 103835, directive_academy_order: false) }
 
     context "when signed in as a Regional caseworker" do
       let(:user) { create(:user, :caseworker) }

@@ -6,7 +6,7 @@ RSpec.describe Conversion::Project do
 
     context "when a directive academy order has been issued" do
       context "and the school is joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: true, sponsor_trust_required: true) }
+        let(:project) { create(:conversion_project, directive_academy_order: true) }
 
         it "the route is sponsored" do
           expect(project.route).to eq :sponsored
@@ -16,7 +16,7 @@ RSpec.describe Conversion::Project do
 
     context "when the project has not been issued a directive academy order" do
       context "and the school is joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: false, sponsor_trust_required: true) }
+        let(:project) { create(:conversion_project, directive_academy_order: false) }
 
         it "the route is voluntary" do
           expect(project.route).to eq :voluntary
@@ -24,7 +24,7 @@ RSpec.describe Conversion::Project do
       end
 
       context "and the school is not joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: false, sponsor_trust_required: false) }
+        let(:project) { create(:conversion_project, directive_academy_order: false) }
 
         it "the route is voluntary" do
           expect(project.route).to eq :voluntary

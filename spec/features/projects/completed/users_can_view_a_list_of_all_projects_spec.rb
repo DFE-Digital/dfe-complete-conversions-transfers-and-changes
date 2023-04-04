@@ -30,8 +30,8 @@ RSpec.feature "Viewing all completed projects" do
     end
 
     let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday) }
-    let!(:sponsored_completed_project) { create(:conversion_project, urn: 121102, completed_at: Date.yesterday, sponsor_trust_required: true) }
-    let!(:voluntary_completed_project) { create(:conversion_project, urn: 114067, completed_at: Date.yesterday, sponsor_trust_required: false) }
+    let!(:sponsored_completed_project) { create(:conversion_project, urn: 121102, completed_at: Date.yesterday, directive_academy_order: true) }
+    let!(:voluntary_completed_project) { create(:conversion_project, urn: 114067, completed_at: Date.yesterday, directive_academy_order: false) }
     let!(:in_progress_project) { create(:conversion_project, urn: 115652) }
 
     context "when signed in as a Regional caseworker" do

@@ -15,8 +15,7 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
       "advisory_board_date(2i)": "1",
       "advisory_board_date(1i)": "2022",
       regional_delivery_officer: nil,
-      directive_academy_order: "false",
-      sponsor_trust_required: "false")
+      directive_academy_order: "false")
   }
 
   before do
