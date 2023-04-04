@@ -40,6 +40,11 @@ en:
         title: Regional Casework Services completed projects
       unassigned:
         title: Regional Casework Services unassigned projects
+    regional:
+      in_progress:
+        title: Regional projects in progress
+      completed:
+        title: Regional completed projects
     user:
       in_progress:
         title: Assigned projects in progress
