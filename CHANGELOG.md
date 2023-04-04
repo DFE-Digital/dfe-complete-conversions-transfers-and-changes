@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Standardised capitalisation in the church supplemental agreement tasks
+- Standardised capitalisation in the master funding agreement tasks
 - Standardised capitalisation in supplemental funding agreement voluntary and
   involuntary tasks
 - Standardised capitalisation in land registry title plans tasks
