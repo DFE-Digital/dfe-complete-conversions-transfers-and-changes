@@ -66,4 +66,37 @@
       </tbody>
     </table>
   </div>
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">Projects not with Regional casework services</h2>
+    <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Not with Regional casework services statistics">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Detail</th>
+          <th class="govuk-table__header" scope="col">Total number</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body" id="voluntary_projects">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Voluntary projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_not_with_regional_casework_services %></td>
+        </tr>
+        <tr class="govuk-table__row" id="sponsored_projects">
+          <td class="govuk-table__cell">Sponsored projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_not_with_regional_casework_services %></td>
+        </tr>
+        <tr class="govuk-table__row" id="in_progress">
+          <td class="govuk-table__cell">In progress projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_not_with_regional_casework_services %></td>
+        </tr>
+        <tr class="govuk-table__row" id="completed">
+          <td class="govuk-table__cell">Completed projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_not_with_regional_casework_services %></td>
+        </tr>
+        <tr class="govuk-table__row" id="all_projects">
+          <td class="govuk-table__cell">All projects not with Regional casework services</td>
+          <td class="govuk-table__cell"><%= @project_statistics.total_projects_not_with_regional_casework_services %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -77,4 +77,41 @@ RSpec.describe ProjectStatistics, type: :model do
       end
     end
   end
+
+  describe "Regional projects that are not with regional casework services" do
+    let!(:voluntary_in_progress_project_not_with_regional_casework_services_1) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil) }
+    let!(:voluntary_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years) }
+    let!(:sponsored_in_progress_project_not_with_regional_casework_services_1) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil) }
+    let!(:sponsored_completed_project_not_with_regional_casework_services_2) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years) }
+
+    describe "#total_projects_not_with_regional_casework_services" do
+      it "returns the total number of projects not with regional casework services" do
+        expect(subject.total_projects_not_with_regional_casework_services).to eql(4)
+      end
+    end
+
+    describe "#voluntary_projects_not_with_regional_casework_services" do
+      it "returns the total number of voluntary projects not with regional casework services" do
+        expect(subject.voluntary_projects_not_with_regional_casework_services).to eql(2)
+      end
+    end
+
+    describe "#sponsored_projects_not_with_regional_casework_services" do
+      it "returns the total number of sponsored projects not with regional casework services" do
+        expect(subject.sponsored_projects_not_with_regional_casework_services).to eql(2)
+      end
+    end
+
+    describe "#in_progress_projects_not_with_regional_casework_services" do
+      it "returns the total number of in-progress projects not with regional casework services" do
+        expect(subject.in_progress_projects_not_with_regional_casework_services).to eql(2)
+      end
+    end
+
+    describe "#completed_projects_not_with_regional_casework_services" do
+      it "returns the total number of completed projects not with regional casework services" do
+        expect(subject.completed_projects_not_with_regional_casework_services).to eql(2)
+      end
+    end
+  end
 end
