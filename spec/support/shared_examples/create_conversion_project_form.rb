@@ -169,17 +169,6 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(form.errors[:directive_academy_order]).to include("Select yes if this project has had a directive academy order issued")
       end
     end
-
-    describe "sponsor_trust_required" do
-      it "validates the presence of sponsor_trust_required" do
-        form = build(
-          form_factory.to_sym,
-          sponsor_trust_required: nil
-        )
-        expect(form).to be_invalid
-        expect(form.errors[:sponsor_trust_required]).to include("Select yes if this school is joining a Sponsor trust")
-      end
-    end
   end
 
   describe "urn" do

@@ -5,7 +5,6 @@ class Conversion::CreateProjectForm
 
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
   DIRECTIVE_ACADEMY_ORDER_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
-  SPONSOR_TRUST_REQUIRED_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
 
   class NegativeValueError < StandardError; end
 
@@ -17,7 +16,6 @@ class Conversion::CreateProjectForm
   attribute :note_body
   attribute :user
   attribute :directive_academy_order
-  attribute :sponsor_trust_required
   attribute :region
 
   attr_reader :provisional_conversion_date,
@@ -44,7 +42,6 @@ class Conversion::CreateProjectForm
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
 
   validates :directive_academy_order, inclusion: {in: %w[true false]}
-  validates :sponsor_trust_required, inclusion: {in: %w[true false]}
 
   def initialize(params = {})
     @attributes_with_invalid_values = []
@@ -53,10 +50,6 @@ class Conversion::CreateProjectForm
 
   def directive_academy_order_responses
     DIRECTIVE_ACADEMY_ORDER_RESPONSES
-  end
-
-  def sponsor_trust_required_responses
-    SPONSOR_TRUST_REQUIRED_RESPONSES
   end
 
   def provisional_conversion_date=(hash)

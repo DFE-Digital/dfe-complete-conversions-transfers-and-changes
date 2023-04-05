@@ -18,7 +18,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:type).of_type :string }
     it { is_expected.to have_db_column(:assigned_to_regional_caseworker_team).of_type :boolean }
     it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
-    it { is_expected.to have_db_column(:sponsor_trust_required).of_type :boolean }
     it { is_expected.to have_db_column(:region).of_type :string }
     it { is_expected.to have_db_column(:academy_urn).of_type :integer }
   end
@@ -130,20 +129,6 @@ RSpec.describe Project, type: :model do
           subject.assign_attributes(directive_academy_order: nil)
           subject.valid?
           expect(subject.errors[:directive_academy_order]).to include("Select yes if this project has had a directive academy order issued")
-        end
-      end
-    end
-
-    describe "#sponsor_trust_required" do
-      it { is_expected.to allow_value(true).for(:sponsor_trust_required) }
-      it { is_expected.to allow_value(false).for(:sponsor_trust_required) }
-      it { is_expected.to_not allow_value(nil).for(:sponsor_trust_required) }
-
-      context "error messages" do
-        it "adds an appropriate error message if the value is nil" do
-          subject.assign_attributes(sponsor_trust_required: nil)
-          subject.valid?
-          expect(subject.errors[:sponsor_trust_required]).to include("Select yes if this school is joining a Sponsor trust")
         end
       end
     end
@@ -584,10 +569,10 @@ RSpec.describe Project, type: :model do
     end
 
     describe "#voluntary" do
-      it "returns only projects where sponsor_trust_required is false" do
+      it "returns only projects where directive_academy_order is false" do
         mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, sponsor_trust_required: false)
-        sponsored_project = create(:conversion_project, sponsor_trust_required: true)
+        voluntary_project = create(:conversion_project, directive_academy_order: false)
+        sponsored_project = create(:conversion_project, directive_academy_order: true)
         projects = Project.voluntary
 
         expect(projects).to include(voluntary_project)
@@ -596,10 +581,10 @@ RSpec.describe Project, type: :model do
     end
 
     describe "#sponsored" do
-      it "returns only projects where sponsor_trust_required is true" do
+      it "returns only projects where directive_academy_order is true" do
         mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, sponsor_trust_required: false)
-        sponsored_project = create(:conversion_project, sponsor_trust_required: true)
+        voluntary_project = create(:conversion_project, directive_academy_order: false)
+        sponsored_project = create(:conversion_project, directive_academy_order: true)
         projects = Project.sponsored
 
         expect(projects).to include(sponsored_project)

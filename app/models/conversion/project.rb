@@ -6,7 +6,7 @@ class Conversion::Project < Project
   has_many :conversion_dates, dependent: :destroy, class_name: "Conversion::DateHistory"
 
   def route
-    return :sponsored if sponsor_trust_required?
+    return :sponsored if directive_academy_order?
     :voluntary
   end
 end

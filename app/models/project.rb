@@ -20,7 +20,6 @@ class Project < ApplicationRecord
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
   validates :directive_academy_order, inclusion: {in: [true, false]}
-  validates :sponsor_trust_required, inclusion: {in: [true, false]}
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
@@ -33,8 +32,8 @@ class Project < ApplicationRecord
   scope :conversions, -> { where(type: "Conversion::Project") }
   scope :conversions_voluntary, -> { conversions.where(task_list_type: "Conversion::Voluntary::TaskList") }
   scope :conversions_involuntary, -> { conversions.where(task_list_type: "Conversion::Involuntary::TaskList") }
-  scope :sponsored, -> { where(sponsor_trust_required: true) }
-  scope :voluntary, -> { where(sponsor_trust_required: false) }
+  scope :sponsored, -> { where(directive_academy_order: true) }
+  scope :voluntary, -> { where(directive_academy_order: false) }
 
   scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :provisional, -> { where(conversion_date_provisional: true) }

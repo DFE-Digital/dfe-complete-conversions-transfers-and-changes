@@ -11,7 +11,6 @@ FactoryBot.define do
     task_list { association :voluntary_conversion_task_list }
     assigned_to { association :user, :caseworker, email: "user.#{SecureRandom.uuid}@education.gov.uk" }
     directive_academy_order { false }
-    sponsor_trust_required { false }
     region { Project.regions["london"] }
     regional_delivery_officer { association :user, :regional_delivery_officer }
 

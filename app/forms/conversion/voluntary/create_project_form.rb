@@ -25,7 +25,6 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       assigned_to: assigned_to,
       assigned_at: assigned_at,
       directive_academy_order: directive_academy_order,
-      sponsor_trust_required: sponsor_trust_required,
       region: region
     )
 

@@ -22,7 +22,7 @@ RSpec.feature "Users can view a project summary" do
 
   context "when they view a single sponsored conversion project" do
     scenario "they see the route" do
-      project = create(:voluntary_conversion_project, caseworker: user, sponsor_trust_required: true)
+      project = create(:voluntary_conversion_project, caseworker: user, directive_academy_order: true)
       visit project_path(project)
 
       within("#project-summary") do
