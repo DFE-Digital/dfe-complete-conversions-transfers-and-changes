@@ -1,0 +1,21 @@
+<nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
+  <ul class="moj-sub-navigation__list">
+    <% if @region %>
+      <%= render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.in_progress_projects"),
+                     path: in_progress_by_region_regional_projects_path(@region)} %>
+
+      <%= render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.completed_projects"),
+                     path: completed_by_region_regional_projects_path(@region)} %>
+    <% else %>
+      <%= render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.in_progress_projects"),
+                     path: in_progress_regional_projects_path} %>
+
+      <%= render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.completed_projects"),
+                     path: completed_regional_projects_path} %>
+    <% end %>
+  </ul>
+</nav>

@@ -488,6 +488,19 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "not_assigned_to_regional_casework_team scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns projects which have `assigned_to_regional_casework_team` set to `false`" do
+        not_assigned_to_regional_caseworker = create(:conversion_project, assigned_to_regional_caseworker_team: false)
+        assigned_to_regional_caseworker = create(:conversion_project, assigned_to_regional_caseworker_team: true)
+
+        projects = Project.not_assigned_to_regional_caseworker_team
+        expect(projects).to include(not_assigned_to_regional_caseworker)
+        expect(projects).to_not include(assigned_to_regional_caseworker)
+      end
+    end
+
     describe "opening_by_month_year scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
@@ -601,6 +614,17 @@ RSpec.describe Project, type: :model do
 
         expect(projects).to include(new_project)
         expect(projects).not_to include(existing_project)
+      end
+    end
+
+    describe "by_region scope" do
+      it "returns only projects for the given region" do
+        mock_successful_api_response_to_create_any_project
+        london_project = create(:conversion_project, region: Project.regions["london"])
+        west_mids_project = create(:conversion_project, region: Project.regions["west_midlands"])
+
+        expect(Project.by_region("london")).to include(london_project)
+        expect(Project.by_region("london")).to_not include(west_mids_project)
       end
     end
   end
