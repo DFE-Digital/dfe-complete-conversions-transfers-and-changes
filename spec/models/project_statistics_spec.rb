@@ -458,4 +458,20 @@ RSpec.describe ProjectStatistics, type: :model do
       end
     end
   end
+
+  describe "Projects opening in the next 6 months" do
+    describe "#opener_date_and_project_total" do
+      let!(:project_1) { create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 1.month, conversion_date_provisional: false) }
+      let!(:project_2) { create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 3.month, conversion_date_provisional: false) }
+
+      it "returns the table of openers for the next 6 months" do
+        (1..6).each do |i|
+          date = Date.today + i.month
+          within("##{Date::MONTHNAMES[date.month]}_#{date.year}") do
+            expect(page).to have_content(Project.opening_by_month_year(date.month, date.year).count)
+          end
+        end
+      end
+    end
+  end
 end

@@ -188,4 +188,23 @@
       </tbody>
     </table>
   </div>
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">6 month view of all project openers</h2>
+    <table class="govuk-table" name="statistics_table" aria-label="Project statistics">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Project opener date</th>
+          <th class="govuk-table__header" scope="col">Total number</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      <% @project_statistics.opener_date_and_project_total.each do |key, value| %>
+        <tr class="govuk-table__row" id="<%= key.tr(" ", "_") %>">
+          <td class="govuk-table__cell"><%= key %></td>
+          <td class="govuk-table__cell"><%= value %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

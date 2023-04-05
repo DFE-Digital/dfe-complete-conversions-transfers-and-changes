@@ -242,4 +242,13 @@ class ProjectStatistics
   def completed_projects_within_east_midlands_region
     @projects.by_region("east_midlands").completed.count
   end
+
+  def opener_date_and_project_total
+    hash = {}
+    (1..6).each do |i|
+      date = Date.today + i.month
+      hash["#{Date::MONTHNAMES[date.month]} #{date.year}"] = Project.opening_by_month_year(date.month, date.year).count
+    end
+    hash
+  end
 end
