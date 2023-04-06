@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
-## Changed
+## [Release 20][release-20]
+
+### Changed
 
 - remove the use of slip in the all conditions met task
 - references to Legal advisers office become Legal Adviser's Office
@@ -738,7 +740,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-19...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-20...HEAD
+[release-20]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-19...release-20
 [release-19]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-18...release-19
 [release-18]:
