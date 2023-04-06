@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- the link to a project on the openers table now reads 'View Project' not 'html'
+
 ## [Release 20][release-20]
 
 ### Changed
