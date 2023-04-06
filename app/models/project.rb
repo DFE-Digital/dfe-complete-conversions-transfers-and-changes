@@ -95,6 +95,14 @@ class Project < ApplicationRecord
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
+  def academy
+    @academy ||= fetch_academy(academy_urn).object
+  end
+
+  def academy_found?
+    academy.present?
+  end
+
   def completed?
     completed_at.present?
   end
@@ -105,6 +113,10 @@ class Project < ApplicationRecord
 
   def all_conditions_met?
     task_list.conditions_met_confirm_all_conditions_met?
+  end
+
+  private def fetch_academy(urn)
+    AcademiesApi::Client.new.get_establishment(urn)
   end
 
   private def fetch_establishment(urn)

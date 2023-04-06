@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - a section to project that shows the academy details, currently this will not
   show details until the academy URN is provided
+- the academy details will be shown in full once the academy URN is supplied,
+  when the academy details cannot be found, a helpful message is shown
 
 ## [Release 20][release-20]
 
