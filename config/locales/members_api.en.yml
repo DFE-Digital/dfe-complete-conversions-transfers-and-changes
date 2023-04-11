@@ -1,0 +1,5 @@
+en:
+  members_api:
+    errors:
+      other: There was an error connecting to the Members API
+      multiple: "Multiple results found for search term: %{search_term}"
