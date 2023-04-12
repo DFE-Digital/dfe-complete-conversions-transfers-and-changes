@@ -116,18 +116,18 @@ class Project < ApplicationRecord
   end
 
   private def fetch_academy(urn)
-    AcademiesApi::Client.new.get_establishment(urn)
+    Api::AcademiesApi::Client.new.get_establishment(urn)
   end
 
   private def fetch_establishment(urn)
-    result = AcademiesApi::Client.new.get_establishment(urn)
+    result = Api::AcademiesApi::Client.new.get_establishment(urn)
     raise result.error if result.error.present?
 
     result.object
   end
 
   private def fetch_trust(ukprn)
-    result = AcademiesApi::Client.new.get_trust(ukprn)
+    result = Api::AcademiesApi::Client.new.get_trust(ukprn)
     raise result.error if result.error.present?
 
     result.object
@@ -135,13 +135,13 @@ class Project < ApplicationRecord
 
   private def establishment_exists
     establishment
-  rescue AcademiesApi::Client::NotFoundError
+  rescue Api::AcademiesApi::Client::NotFoundError
     errors.add(:urn, :no_establishment_found)
   end
 
   private def trust_exists
     incoming_trust
-  rescue AcademiesApi::Client::NotFoundError
+  rescue Api::AcademiesApi::Client::NotFoundError
     errors.add(:incoming_trust_ukprn, :no_trust_found)
   end
 end

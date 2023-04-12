@@ -1,4 +1,4 @@
-class AcademiesApi::Trust < AcademiesApi::BaseApiModel
+class Api::AcademiesApi::Trust < Api::BaseApiModel
   attr_accessor(
     :ukprn,
     :original_name,

@@ -1,4 +1,4 @@
-class AcademiesApi::BaseApiModel
+class Api::BaseApiModel
   include ActiveModel::Serializers::JSON
 
   class AttributeMapMissingError < RuntimeError; end

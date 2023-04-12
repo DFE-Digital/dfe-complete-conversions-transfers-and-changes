@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe AcademiesApi::BaseApiModel do
+RSpec.describe Api::BaseApiModel do
   shared_examples "a method which maps a response to model attributes" do
     let(:establishment_name) { "Caludon castle school" }
     let(:establishment_type) { "Academy converter" }
@@ -14,7 +14,7 @@ RSpec.describe AcademiesApi::BaseApiModel do
     end
     let(:json_response) { JSON.generate(response) }
     let(:testing_model) do
-      Class.new(AcademiesApi::BaseApiModel) do
+      Class.new(Api::BaseApiModel) do
         attr_accessor :name, :type
 
         def self.attribute_map
@@ -47,10 +47,10 @@ RSpec.describe AcademiesApi::BaseApiModel do
   describe ".attribute_map" do
     context "when .attribute_map is not overridden" do
       let(:error_message) { ".attribute_map hasn't been overridden" }
-      let(:testing_model) { Class.new(AcademiesApi::BaseApiModel) }
+      let(:testing_model) { Class.new(Api::BaseApiModel) }
 
-      it "raises a #{AcademiesApi::BaseApiModel::AttributeMapMissingError}" do
-        expect { testing_model.attribute_map }.to raise_error(AcademiesApi::BaseApiModel::AttributeMapMissingError, error_message)
+      it "raises a #{Api::BaseApiModel::AttributeMapMissingError}" do
+        expect { testing_model.attribute_map }.to raise_error(Api::BaseApiModel::AttributeMapMissingError, error_message)
       end
     end
   end

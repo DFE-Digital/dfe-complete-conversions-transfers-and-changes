@@ -1,4 +1,4 @@
-class AcademiesApi::Client
+class Api::AcademiesApi::Client
   ACADEMIES_API_TIMEOUT = ENV.fetch("ACADEMIES_API_TIMEOUT", 0.6).to_f
 
   class Error < StandardError; end
@@ -18,7 +18,7 @@ class AcademiesApi::Client
 
     case response.status
     when 200
-      Result.new(AcademiesApi::Establishment.new.from_hash(single_establishment_from_bulk(response)), nil)
+      Result.new(Api::AcademiesApi::Establishment.new.from_hash(single_establishment_from_bulk(response)), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishment.errors.not_found", urn: urn)))
     else
@@ -32,7 +32,7 @@ class AcademiesApi::Client
     case response.status
     when 200
       establishments = JSON.parse(response.body).map do |establishment|
-        AcademiesApi::Establishment.new.from_hash(establishment)
+        Api::AcademiesApi::Establishment.new.from_hash(establishment)
       end
       Result.new(establishments, nil)
     when 404
@@ -47,7 +47,7 @@ class AcademiesApi::Client
 
     case response.status
     when 200
-      Result.new(AcademiesApi::Trust.new.from_hash(single_trust_from_bulk(response)), nil)
+      Result.new(Api::AcademiesApi::Trust.new.from_hash(single_trust_from_bulk(response)), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     else
@@ -61,7 +61,7 @@ class AcademiesApi::Client
     case response.status
     when 200
       trusts = JSON.parse(response.body)["data"].map do |trust|
-        AcademiesApi::Trust.new.from_hash(trust)
+        Api::AcademiesApi::Trust.new.from_hash(trust)
       end
       Result.new(trusts, nil)
     when 404

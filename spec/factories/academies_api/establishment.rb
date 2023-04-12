@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :academies_api_establishment, class: "AcademiesApi::Establishment" do
+  factory :academies_api_establishment, class: "Api::AcademiesApi::Establishment" do
     urn { "123456" }
     name { "Caludon Castle School" }
     local_authority { "West Placefield Council" }

@@ -1,4 +1,4 @@
-class AcademiesApi::Establishment < AcademiesApi::BaseApiModel
+class Api::AcademiesApi::Establishment < Api::BaseApiModel
   attr_accessor(
     :urn,
     :name,
