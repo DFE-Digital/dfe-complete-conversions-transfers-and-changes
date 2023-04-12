@@ -105,6 +105,9 @@ Rails.application.routes.draw do
           namespace :conversion_date_changed, path: "conversion-date-changed" do
             get "/:month/:year", to: "projects#index", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
           end
+          namespace :statistics do
+            get "/", to: "projects#index"
+          end
 
           get "new", to: "projects#new", as: :new
         end
