@@ -10,6 +10,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the link to a project on the openers table now reads 'View Project' not 'html'
 
+### Changed
+
+- standardised capitalisation in redact and send documents task
+- removed duplicate content from send redacted docs to funding team to publish
+  on gov.uk action in redact and send documents task
+- standardised capitalisation in the receive grant payment certificate task
+
 ## [Release 20][release-20]
 
 ### Changed

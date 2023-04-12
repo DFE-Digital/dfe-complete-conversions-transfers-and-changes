@@ -5,16 +5,16 @@ en:
         receive_grant_payment_certificate:
           title: Receive grant payment certificate
           hint:
-            html: <p>You should already have sent a copy of the <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">Grant payment certificate (opens in new tab)</a> when you told the school or trust about the final things they need to do.</p>
+            html: <p>You should already have sent a copy of the <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">grant payment certificate (opens in new tab)</a> when confirming the opening date.</p>
 
           check_and_save:
-            title: Check and save the Grant payment certificate in the school's SharePoint folder
+            title: Check and save the grant payment certificate in the school's SharePoint folder
             hint:
               html: <p>Make sure the right template has been used and there is no missing information.</p>
-            guidance_link: What to do if you have not received the Grant payment certificate
+            guidance_link: What to do if you have not received the grant payment certificate
             guidance:
               html:
-                <p>You should ask the trust to send the certificate. You must record the date each time you contact them in <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank">the Support grant assurance report (opens in new tab)</a></p>
+                <p>You should ask the trust to send the certificate. You must record the date each time you contact them in <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank">the support grant assurance report (opens in new tab)</a></p>
 
           update_kim:
             title: Update KIM with date certificate is received

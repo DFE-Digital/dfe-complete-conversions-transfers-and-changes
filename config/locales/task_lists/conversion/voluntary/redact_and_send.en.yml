@@ -15,10 +15,10 @@ en:
               html:
                 <p>You need to create a redacted version of each applicable document after they've been signed by the Secretary of State:</p>
                 <ul>
-                  <li>supplemental Funding Agreement</li>
-                  <li>master Funding Agreement</li>
-                  <li>church Supplemental Agreement (if applicable)</li>
-                  <li>deed of Variation</li>
+                  <li>supplemental funding agreement</li>
+                  <li>master funding agreement</li>
+                  <li>church supplemental agreement (if applicable)</li>
+                  <li>deed of variation</li>
                 </ul>
                 <p>You must remove or hide:</p>
                 <ul>
@@ -37,7 +37,6 @@ en:
             guidance:
               html:
                 <p>Email the documents to <a href="mailto:fundingagreements.converters@education.gov.uk" target="_blank">fundingagreements.converters@education.gov.uk</a>.</p>
-                <p>Send the redacted funding agreement documents to the funding team at <a href="mailto:FundingAgreements.CONVERTERS@education.gov.uk" class="govuk-link" target="_blank">FundingAgreements.CONVERTERS@education.gov.uk</a>.</p>
 
           send_solicitors:
             title: Send the redacted and unredacted versions of documents to the solicitors
