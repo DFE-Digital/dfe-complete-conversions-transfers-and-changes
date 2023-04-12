@@ -3,6 +3,8 @@ class MembersApi::Client
 
   class MultipleResultsError < StandardError; end
 
+  class NotFoundError < StandardError; end
+
   attr_reader :connection
 
   def initialize(connection: nil)
@@ -30,15 +32,35 @@ class MembersApi::Client
     end
   end
 
+  def member_contact_details(member_id)
+    response = member_contact(member_id)
+
+    case response.status
+    when 200
+      body = JSON.parse(response.body)
+      Result.new(body, nil)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("members_api.errors.member_not_found", member_id: member_id)))
+    else
+      Result.new(nil, Error.new(I18n.t("members_api.errors.other")))
+    end
+  end
+
   private def constituency_search(search_term)
     @connection.get("/api/Location/Constituency/Search", {searchText: search_term})
   rescue Faraday::Error => error
     raise Error.new(error)
   end
-
+  
   private def member_id_from_constituency(constituency_data)
     constituency = constituency_data.object["items"][0]["value"]
     constituency.dig("currentRepresentation", "member", "value", "id")
+  end
+
+  private def member_contact(member_id)
+    @connection.get("/api/Members/#{member_id}/Contact")
+  rescue Faraday::Error => error
+    raise Error.new(error)
   end
 
   private def default_connection
