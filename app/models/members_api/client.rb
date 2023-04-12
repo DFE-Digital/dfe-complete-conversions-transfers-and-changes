@@ -32,6 +32,20 @@ class MembersApi::Client
     end
   end
 
+  def member_name(member_id)
+    response = member(member_id)
+
+    case response.status
+    when 200
+      body = JSON.parse(response.body)
+      Result.new(body, nil)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("members_api.errors.member_not_found", member_id: member_id)))
+    else
+      Result.new(nil, Error.new(I18n.t("members_api.errors.other")))
+    end
+  end
+
   def member_contact_details(member_id)
     response = member_contact(member_id)
 
@@ -55,6 +69,12 @@ class MembersApi::Client
   private def member_id_from_constituency(constituency_data)
     constituency = constituency_data.object["items"][0]["value"]
     constituency.dig("currentRepresentation", "member", "value", "id")
+  end
+
+  private def member(member_id)
+    @connection.get("/api/Members/#{member_id}")
+  rescue Faraday::Error => error
+    raise Error.new(error)
   end
 
   private def member_contact(member_id)

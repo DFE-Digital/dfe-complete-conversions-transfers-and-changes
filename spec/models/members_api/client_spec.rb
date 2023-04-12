@@ -89,6 +89,58 @@ RSpec.describe MembersApi::Client do
     end
   end
 
+  describe "#member_name" do
+    let(:client) { described_class.new(connection: fake_successful_member_connection(1234, fake_response)) }
+
+    subject { client.member_name(1234) }
+
+    context "when the member id is not found" do
+      let(:fake_response) { [404, nil, nil] }
+
+      it "returns a Result with a NotFoundError" do
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(MembersApi::Client::NotFoundError)
+        expect(subject.error.message).to eq(I18n.t("members_api.errors.member_not_found", member_id: 1234))
+      end
+    end
+
+    context "when the member id is found" do
+      let(:fake_response) do
+        [200, nil, {"value" =>
+                       {"id" => 4679,
+                        "nameAddressAs" => "Neil O'Brien"}}.to_json]
+      end
+
+      it "returns a Result with the JSON response body and no error" do
+        expect(subject.object).to eql({
+          "value" => {
+            "id" => 4679,
+            "nameAddressAs" => "Neil O'Brien"
+          }
+        })
+        expect(subject.error).to be_nil
+      end
+    end
+
+    context "when the connection fails" do
+      let(:client) { described_class.new(connection: fake_failed_member_connection) }
+
+      it "raises an Error" do
+        expect { subject }.to raise_error(MembersApi::Client::Error)
+      end
+    end
+
+    context "when where is any other error" do
+      let(:fake_response) { [500, nil, nil] }
+
+      it "returns a Result with an Error" do
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(MembersApi::Client::Error)
+        expect(subject.error.message).to eq(I18n.t("members_api.errors.other"))
+      end
+    end
+  end
+
   describe "#member_contact_details" do
     let(:client) { described_class.new(connection: fake_successful_member_contact_connection(1234, fake_response)) }
 
@@ -180,6 +232,26 @@ RSpec.describe MembersApi::Client do
     Faraday.new do |builder|
       builder.adapter :test do |stub|
         stub.get("/api/Location/Constituency/Search") do |_env|
+          raise Faraday::Error
+        end
+      end
+    end
+  end
+
+  def fake_successful_member_connection(id, response)
+    Faraday.new do |builder|
+      builder.adapter :test do |stub|
+        stub.get("/api/Members/#{id}") do |_env|
+          response
+        end
+      end
+    end
+  end
+
+  def fake_failed_member_connection
+    Faraday.new do |builder|
+      builder.adapter :test do |stub|
+        stub.get("/api/Members/1234") do |_env|
           raise Faraday::Error
         end
       end
