@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe MembersApi::Client do
+RSpec.describe Api::MembersApi::Client do
   it "uses the environment variables to build the connection" do
     ClimateControl.modify(
       MEMBERS_API_HOST: "https://members-api.test"
@@ -31,7 +31,7 @@ RSpec.describe MembersApi::Client do
 
       it "returns a Result with an Error" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(MembersApi::Client::Error)
+        expect(subject.error).to be_a(Api::MembersApi::Client::Error)
         expect(subject.error.message).to eq(I18n.t("members_api.errors.other"))
       end
     end
@@ -40,7 +40,7 @@ RSpec.describe MembersApi::Client do
       let(:client) { described_class.new(connection: fake_failed_constituency_search_connection) }
 
       it "raises an Error" do
-        expect { subject }.to raise_error(MembersApi::Client::Error)
+        expect { subject }.to raise_error(Api::MembersApi::Client::Error)
       end
     end
   end
@@ -83,7 +83,7 @@ RSpec.describe MembersApi::Client do
 
       it "returns a MultipleResultsError" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(MembersApi::Client::MultipleResultsError)
+        expect(subject.error).to be_a(Api::MembersApi::Client::MultipleResultsError)
         expect(subject.error.message).to eq(I18n.t("members_api.errors.multiple", search_term: "St A"))
       end
     end
@@ -99,7 +99,7 @@ RSpec.describe MembersApi::Client do
 
       it "returns a Result with a NotFoundError" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(MembersApi::Client::NotFoundError)
+        expect(subject.error).to be_a(Api::MembersApi::Client::NotFoundError)
         expect(subject.error.message).to eq(I18n.t("members_api.errors.member_not_found", member_id: 1234))
       end
     end
@@ -112,12 +112,8 @@ RSpec.describe MembersApi::Client do
       end
 
       it "returns a Result with the JSON response body and no error" do
-        expect(subject.object).to eql({
-          "value" => {
-            "id" => 4679,
-            "nameAddressAs" => "Neil O'Brien"
-          }
-        })
+        expect(subject.object).to be_a(Api::MembersApi::MemberName)
+        expect(subject.object.name_address_as).to eq("Neil O'Brien")
         expect(subject.error).to be_nil
       end
     end
@@ -126,7 +122,7 @@ RSpec.describe MembersApi::Client do
       let(:client) { described_class.new(connection: fake_failed_member_connection) }
 
       it "raises an Error" do
-        expect { subject }.to raise_error(MembersApi::Client::Error)
+        expect { subject }.to raise_error(Api::MembersApi::Client::Error)
       end
     end
 
@@ -135,7 +131,7 @@ RSpec.describe MembersApi::Client do
 
       it "returns a Result with an Error" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(MembersApi::Client::Error)
+        expect(subject.error).to be_a(Api::MembersApi::Client::Error)
         expect(subject.error.message).to eq(I18n.t("members_api.errors.other"))
       end
     end
@@ -151,7 +147,7 @@ RSpec.describe MembersApi::Client do
 
       it "returns a Result with a NotFoundError" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(MembersApi::Client::NotFoundError)
+        expect(subject.error).to be_a(Api::MembersApi::Client::NotFoundError)
         expect(subject.error.message).to eq(I18n.t("members_api.errors.member_not_found", member_id: 1234))
       end
     end
@@ -180,21 +176,10 @@ RSpec.describe MembersApi::Client do
       end
 
       it "returns a Result with the JSON response body and no error" do
-        expect(subject.object).to eql("value" => [{
-          "email" => "daisy.cooper.mp@parliament.uk",
-          "isPreferred" => false,
-          "line1" => "House of Commons",
-          "line2" => "London",
-          "phone" => "020 7219 8568",
-          "postcode" => "SW1A 0AA",
-          "type" => "Parliamentary office",
-          "typeId" => 1
-        },
-          {"isPreferred" => false,
-           "line1" => "Constituency office",
-           "phone" => "01727 519900",
-           "type" => "Constituency office",
-           "typeId" => 4}])
+        expect(subject.object).to be_a(Array)
+        expect(subject.object[0]).to be_a(Api::MembersApi::MemberContactDetails)
+        expect(subject.object[0].line1).to eq("House of Commons")
+        expect(subject.object[0].postcode).to eq("SW1A 0AA")
         expect(subject.error).to be_nil
       end
     end
@@ -203,7 +188,7 @@ RSpec.describe MembersApi::Client do
       let(:client) { described_class.new(connection: fake_failed_member_contact_connection) }
 
       it "raises an Error" do
-        expect { subject }.to raise_error(MembersApi::Client::Error)
+        expect { subject }.to raise_error(Api::MembersApi::Client::Error)
       end
     end
 
@@ -212,7 +197,7 @@ RSpec.describe MembersApi::Client do
 
       it "returns a Result with an Error" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(MembersApi::Client::Error)
+        expect(subject.error).to be_a(Api::MembersApi::Client::Error)
         expect(subject.error.message).to eq(I18n.t("members_api.errors.other"))
       end
     end

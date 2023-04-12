@@ -1,4 +1,4 @@
-class MembersApi::Client
+class Api::MembersApi::Client
   class Error < StandardError; end
 
   class MultipleResultsError < StandardError; end
@@ -37,8 +37,8 @@ class MembersApi::Client
 
     case response.status
     when 200
-      body = JSON.parse(response.body)
-      Result.new(body, nil)
+      result = JSON.parse(response.body)["value"]
+      Result.new(Api::MembersApi::MemberName.new.from_hash(result), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("members_api.errors.member_not_found", member_id: member_id)))
     else
@@ -51,8 +51,10 @@ class MembersApi::Client
 
     case response.status
     when 200
-      body = JSON.parse(response.body)
-      Result.new(body, nil)
+      contact_details = JSON.parse(response.body)["value"].map do |detail|
+        Api::MembersApi::MemberContactDetails.new.from_hash(detail)
+      end
+      Result.new(contact_details, nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("members_api.errors.member_not_found", member_id: member_id)))
     else
@@ -65,7 +67,7 @@ class MembersApi::Client
   rescue Faraday::Error => error
     raise Error.new(error)
   end
-  
+
   private def member_id_from_constituency(constituency_data)
     constituency = constituency_data.object["items"][0]["value"]
     constituency.dig("currentRepresentation", "member", "value", "id")
