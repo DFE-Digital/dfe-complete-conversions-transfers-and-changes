@@ -56,6 +56,8 @@
   end %>
 </div>
 
+<%= render partial: "project_information/show/academy_details" %>
+
 <div id="trustDetails">
   <h2 class="govuk-heading-l"><%= t('project_information.show.trust_details.title') %></h2>
   <%= govuk_summary_list(actions: false) do |summary_list|

@@ -197,6 +197,13 @@ en:
           age_range: Age range
           school_phase: School phase
           region: Region
+      academy_details:
+        title: Academy details
+        empty: Academy URN has not been provided
+        not_found: The academy details could not be found in the Get information about schools data,
+          it can take one day for the data to be syncronised
+        rows:
+          urn: Unique reference number (URN)
       trust_details:
         title: Trust details
         rows:

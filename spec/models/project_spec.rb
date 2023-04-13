@@ -156,6 +156,43 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#academy" do
+    it "returns an establishment object when the urn can be found" do
+      mock_successful_api_response_to_create_any_project
+
+      project = build(:conversion_project, academy_urn: 123456)
+
+      expect(project.academy).to be_a(AcademiesApi::Establishment)
+    end
+
+    it "returns nil when the urn cannot be found" do
+      mock_successful_api_response_to_create_any_project
+      mock_establishment_not_found(urn: 999999)
+
+      project = build(:conversion_project, academy_urn: 999999)
+
+      expect(project.academy).to be_nil
+    end
+  end
+
+  describe "#academy_found?" do
+    before { mock_successful_api_response_to_create_any_project }
+
+    it "returns true when the academy can be found" do
+      project = build(:conversion_project, academy_urn: 123456)
+
+      expect(project.academy_found?).to eql true
+    end
+
+    it "returns false when the academy cannot be found" do
+      project = build(:conversion_project, academy_urn: 123456)
+
+      allow_any_instance_of(Project).to receive(:academy).and_return(nil)
+
+      expect(project.academy_found?).to eql false
+    end
+  end
+
   describe "#establishment" do
     let(:urn) { 123456 }
     let(:establishment) { build(:academies_api_establishment) }

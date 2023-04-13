@@ -17,6 +17,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   on gov.uk action in redact and send documents task
 - standardised capitalisation in the receive grant payment certificate task
 
+### Added
+
+- a section to project that shows the academy details, currently this will not
+  show details until the academy URN is provided
+- the academy details will be shown in full once the academy URN is supplied,
+  when the academy details cannot be found, a helpful message is shown
+
 ## [Release 20][release-20]
 
 ### Changed
