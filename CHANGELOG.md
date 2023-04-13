@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 21][release-21]
+
 ### Fixed
 
 - the link to a project on the openers table now reads 'View Project' not 'html'
@@ -759,7 +761,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-20...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-21...HEAD
+[release-21]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-20...release-21
 [release-20]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-19...release-20
 [release-19]:
