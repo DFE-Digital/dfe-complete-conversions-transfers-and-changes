@@ -19,6 +19,10 @@ class ProjectStatistics
     @projects.in_progress.count
   end
 
+  def total_number_of_unassigned_projects
+    @projects.unassigned_to_user.count
+  end
+
   def total_number_of_completed_projects
     @projects.completed.count
   end
@@ -43,6 +47,10 @@ class ProjectStatistics
     @projects.assigned_to_regional_caseworker_team.completed.count
   end
 
+  def unassigned_projects_with_regional_casework_services
+    @projects.assigned_to_regional_caseworker_team.unassigned_to_user.count
+  end
+
   def total_projects_not_with_regional_casework_services
     @projects.not_assigned_to_regional_caseworker_team.count
   end
@@ -61,6 +69,10 @@ class ProjectStatistics
 
   def completed_projects_not_with_regional_casework_services
     @projects.not_assigned_to_regional_caseworker_team.completed.count
+  end
+
+  def unassigned_projects_not_with_regional_casework_services
+    @projects.not_assigned_to_regional_caseworker_team.unassigned_to_user.count
   end
 
   def total_projects_within_london_region
@@ -241,6 +253,10 @@ class ProjectStatistics
 
   def completed_projects_within_east_midlands_region
     @projects.by_region("east_midlands").completed.count
+  end
+
+  def unassigned_projects_in_region(region)
+    @projects.by_region(region).unassigned_to_user.count
   end
 
   def opener_date_and_project_total

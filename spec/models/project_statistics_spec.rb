@@ -9,16 +9,17 @@ RSpec.describe ProjectStatistics, type: :model do
     let!(:sponsored_in_progress_project_2) { create(:involuntary_conversion_project, completed_at: nil) }
     let!(:voluntary_completed_project_1) { create(:conversion_project, completed_at: Date.today + 2.years) }
     let!(:sponsored_completed_project_2) { create(:involuntary_conversion_project, completed_at: Date.today + 2.years) }
+    let!(:unassigned_projects_with) { create(:conversion_project, assigned_to: nil) }
 
     describe "#total_number_of_projects" do
       it "returns the total number of all projects" do
-        expect(subject.total_number_of_projects).to eql(4)
+        expect(subject.total_number_of_projects).to eql(5)
       end
     end
 
     describe "#total_number_of_voluntary_projects" do
       it "returns the total number of all voluntary projects" do
-        expect(subject.total_number_of_voluntary_projects).to eql(2)
+        expect(subject.total_number_of_voluntary_projects).to eql(3)
       end
     end
 
@@ -34,6 +35,12 @@ RSpec.describe ProjectStatistics, type: :model do
       end
     end
 
+    describe "#total_number_of_unassigned_projects" do
+      it "returns the total number of all unassigned projects" do
+        expect(subject.total_number_of_unassigned_projects).to eql(1)
+      end
+    end
+
     describe "#total_number_of_completed_projects" do
       it "returns the total number of all completed projects" do
         expect(subject.total_number_of_completed_projects).to eql(2)
@@ -46,16 +53,17 @@ RSpec.describe ProjectStatistics, type: :model do
     let!(:voluntary_completed_project_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: true, completed_at: Date.today + 2.years) }
     let!(:sponsored_in_progress_project_with_regional_casework_services_1) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: true, completed_at: nil) }
     let!(:sponsored_completed_project_with_regional_casework_services_2) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: true, completed_at: Date.today + 2.years) }
+    let!(:unassigned_projects_with_regional_casework_services) { create(:conversion_project, assigned_to_regional_caseworker_team: true, assigned_to: nil) }
 
     describe "#total_projects_with_regional_casework_services" do
       it "returns the total number of all projects within regional casework services" do
-        expect(subject.total_projects_with_regional_casework_services).to eql(4)
+        expect(subject.total_projects_with_regional_casework_services).to eql(5)
       end
     end
 
     describe "#voluntary_projects_with_regional_casework_services" do
       it "returns the total number of voluntary projects within regional casework services" do
-        expect(subject.voluntary_projects_with_regional_casework_services).to eql(2)
+        expect(subject.voluntary_projects_with_regional_casework_services).to eql(3)
       end
     end
 
@@ -76,6 +84,12 @@ RSpec.describe ProjectStatistics, type: :model do
         expect(subject.completed_projects_with_regional_casework_services).to eql(2)
       end
     end
+
+    describe "#unassigned_projects_with_regional_casework_services" do
+      it "returns the total number of unassigned projects within regional casework services" do
+        expect(subject.unassigned_projects_with_regional_casework_services).to eql(1)
+      end
+    end
   end
 
   describe "Regional projects that are not with regional casework services" do
@@ -83,16 +97,17 @@ RSpec.describe ProjectStatistics, type: :model do
     let!(:voluntary_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years) }
     let!(:sponsored_in_progress_project_not_with_regional_casework_services_1) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil) }
     let!(:sponsored_completed_project_not_with_regional_casework_services_2) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years) }
+    let!(:unassigned_project_not_with_regional_casework_services) { create(:conversion_project, assigned_to_regional_caseworker_team: false, assigned_to: nil) }
 
     describe "#total_projects_not_with_regional_casework_services" do
       it "returns the total number of projects not with regional casework services" do
-        expect(subject.total_projects_not_with_regional_casework_services).to eql(4)
+        expect(subject.total_projects_not_with_regional_casework_services).to eql(5)
       end
     end
 
     describe "#voluntary_projects_not_with_regional_casework_services" do
       it "returns the total number of voluntary projects not with regional casework services" do
-        expect(subject.voluntary_projects_not_with_regional_casework_services).to eql(2)
+        expect(subject.voluntary_projects_not_with_regional_casework_services).to eql(3)
       end
     end
 
@@ -111,6 +126,12 @@ RSpec.describe ProjectStatistics, type: :model do
     describe "#completed_projects_not_with_regional_casework_services" do
       it "returns the total number of completed projects not with regional casework services" do
         expect(subject.completed_projects_not_with_regional_casework_services).to eql(2)
+      end
+    end
+
+    describe "#unassigned_projects_not_with_regional_casework_services" do
+      it "returns the total number of unassigned  projects not within regional casework services" do
+        expect(subject.unassigned_projects_not_with_regional_casework_services).to eql(1)
       end
     end
   end
@@ -456,6 +477,16 @@ RSpec.describe ProjectStatistics, type: :model do
           expect(subject.completed_projects_within_east_midlands_region).to eql(2)
         end
       end
+    end
+  end
+
+  describe "#unassigned_projects_in_region" do
+    it "returns the total number of unassigned projects for a given region" do
+      _assigned_project_in_region = create(:conversion_project, region: :east_midlands)
+      _unassigned_project_in_region = create(:conversion_project, region: :east_midlands, assigned_to: nil)
+      _project_not_in_region = create(:conversion_project, region: :london)
+
+      expect(subject.unassigned_projects_in_region(:east_midlands)).to eql(1)
     end
   end
 
