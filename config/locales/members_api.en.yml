@@ -1,0 +1,6 @@
+en:
+  members_api:
+    errors:
+      other: There was an error connecting to the Members API
+      multiple: "Multiple results found for search term: %{search_term}"
+      member_not_found: "Member not found: %{member_id}"

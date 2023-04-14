@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- new MembersApi Client to call the Parliamentary Members API and retrieve MP
+  details
+
 ## [Release 21][release-21]
 
 ### Fixed

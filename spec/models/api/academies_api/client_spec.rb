@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe AcademiesApi::Client do
+RSpec.describe Api::AcademiesApi::Client do
   it "uses the environment variables to build the connection" do
     ClimateControl.modify(
       ACADEMIES_API_HOST: "https://test.academies.api",
@@ -11,7 +11,7 @@ RSpec.describe AcademiesApi::Client do
       expect(client_connection.scheme).to eql "https"
       expect(client_connection.host).to eql "test.academies.api"
       expect(client_connection.headers["ApiKey"]).to eql "api-key"
-      expect(client_connection.options[:timeout]).to eql AcademiesApi::Client::ACADEMIES_API_TIMEOUT
+      expect(client_connection.options[:timeout]).to eql Api::AcademiesApi::Client::ACADEMIES_API_TIMEOUT
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with a NotFoundError and no establishment" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::NotFoundError)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::NotFoundError)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_establishment.errors.not_found", urn:))
       end
     end
@@ -45,7 +45,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with an Error and no establishment" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::Error)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::Error)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_establishment.errors.other", urn:))
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe AcademiesApi::Client do
       let(:client) { described_class.new(connection: fake_failed_establishment_connection) }
 
       it "raises an Error" do
-        expect { subject }.to raise_error(AcademiesApi::Client::Error)
+        expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
       end
     end
   end
@@ -80,7 +80,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with a NotFoundError and no establishment" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::NotFoundError)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::NotFoundError)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_establishments.errors.not_found", urns:))
       end
     end
@@ -90,7 +90,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with an Error and no establishment" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::Error)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::Error)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_establishments.errors.other", urns:))
       end
     end
@@ -99,7 +99,7 @@ RSpec.describe AcademiesApi::Client do
       let(:client) { described_class.new(connection: fake_failed_establishment_connection) }
 
       it "raises an Error" do
-        expect { subject }.to raise_error(AcademiesApi::Client::Error)
+        expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
       end
     end
   end
@@ -148,7 +148,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with a NotFoundError and no establishment" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::NotFoundError)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::NotFoundError)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_trust.errors.not_found", ukprn:))
       end
     end
@@ -158,7 +158,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with an Error and no trust" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::Error)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::Error)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_trust.errors.other", ukprn:))
       end
     end
@@ -167,7 +167,7 @@ RSpec.describe AcademiesApi::Client do
       let(:client) { described_class.new(connection: fake_failed_trust_connection) }
 
       it "raises an Error" do
-        expect { subject }.to raise_error(AcademiesApi::Client::Error)
+        expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
       end
     end
   end
@@ -197,7 +197,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with a NotFoundError and no establishment" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::NotFoundError)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::NotFoundError)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_trusts.errors.not_found", ukprns:))
       end
     end
@@ -207,7 +207,7 @@ RSpec.describe AcademiesApi::Client do
 
       it "returns a Result with an Error and no trust" do
         expect(subject.object).to be_nil
-        expect(subject.error).to be_a(AcademiesApi::Client::Error)
+        expect(subject.error).to be_a(Api::AcademiesApi::Client::Error)
         expect(subject.error.message).to eq(I18n.t("academies_api.get_trusts.errors.other", ukprns:))
       end
     end
@@ -216,7 +216,7 @@ RSpec.describe AcademiesApi::Client do
       let(:client) { described_class.new(connection: fake_failed_trust_connection) }
 
       it "raises an Error" do
-        expect { subject }.to raise_error(AcademiesApi::Client::Error)
+        expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
       end
     end
   end

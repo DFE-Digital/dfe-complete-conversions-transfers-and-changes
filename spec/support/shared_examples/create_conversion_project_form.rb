@@ -180,11 +180,11 @@ RSpec.shared_examples "a conversion project FormObject" do
 
     context "when no establishment with that URN exists in the API" do
       let(:no_establishment_found_result) do
-        AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new("Could not find establishment with URN: 12345"))
+        Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("Could not find establishment with URN: 12345"))
       end
 
       before do
-        allow_any_instance_of(AcademiesApi::Client).to \
+        allow_any_instance_of(Api::AcademiesApi::Client).to \
           receive(:get_establishment) { no_establishment_found_result }
       end
 
@@ -213,11 +213,11 @@ RSpec.shared_examples "a conversion project FormObject" do
 
     context "when no trust with that UKPRN exists in the API" do
       let(:no_trust_found_result) do
-        AcademiesApi::Client::Result.new(nil, AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
+        Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
       end
 
       before do
-        allow_any_instance_of(AcademiesApi::Client).to \
+        allow_any_instance_of(Api::AcademiesApi::Client).to \
           receive(:get_trust) { no_trust_found_result }
       end
 

@@ -10,13 +10,13 @@ RSpec.describe IncomingTrustsFetcher do
         build(:conversion_project, incoming_trust_ukprn: 23456789)
       ]
     end
-    let(:mock_client) { AcademiesApi::Client.new }
+    let(:mock_client) { Api::AcademiesApi::Client.new }
     let(:trust) { build(:academies_api_trust, ukprn: "12345678") }
     let(:trust_2) { build(:academies_api_trust, ukprn: "23456789") }
-    let(:trusts_result) { AcademiesApi::Client::Result.new([trust, trust_2], nil) }
+    let(:trusts_result) { Api::AcademiesApi::Client::Result.new([trust, trust_2], nil) }
 
     before do
-      allow(AcademiesApi::Client).to receive(:new).and_return(mock_client)
+      allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
       allow(mock_client).to receive(:get_trust).and_return(true)
 
       allow(mock_client).to receive(:get_trusts).with([12345678, 23456789]).and_return(trusts_result)

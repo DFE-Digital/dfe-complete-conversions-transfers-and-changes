@@ -10,13 +10,13 @@ RSpec.describe EstablishmentsFetcher do
         build(:conversion_project, urn: 234567)
       ]
     end
-    let(:mock_client) { AcademiesApi::Client.new }
+    let(:mock_client) { Api::AcademiesApi::Client.new }
     let(:establishment) { build(:academies_api_establishment, urn: "123456") }
     let(:establishment_2) { build(:academies_api_establishment, urn: "234567") }
-    let(:establishment_result) { AcademiesApi::Client::Result.new([establishment, establishment_2], nil) }
+    let(:establishment_result) { Api::AcademiesApi::Client::Result.new([establishment, establishment_2], nil) }
 
     before do
-      allow(AcademiesApi::Client).to receive(:new).and_return(mock_client)
+      allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
       allow(mock_client).to receive(:get_establishment).and_return(true)
       allow(mock_client).to receive(:get_establishments).with([123456, 234567]).and_return(establishment_result)
     end

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  rescue_from AcademiesApi::Client::Error, with: :client_error
+  rescue_from Api::AcademiesApi::Client::Error, with: :client_error
 
   def not_found_error
     render "pages/page_not_found", status: :not_found

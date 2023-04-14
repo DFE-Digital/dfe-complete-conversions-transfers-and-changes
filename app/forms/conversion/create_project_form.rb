@@ -77,7 +77,7 @@ class Conversion::CreateProjectForm
   end
 
   private def fetch_establishment(urn)
-    result = AcademiesApi::Client.new.get_establishment(urn)
+    result = Api::AcademiesApi::Client.new.get_establishment(urn)
     raise result.error if result.error.present?
 
     result.object
@@ -102,14 +102,14 @@ class Conversion::CreateProjectForm
 
   private def establishment_exists
     establishment
-  rescue AcademiesApi::Client::NotFoundError
+  rescue Api::AcademiesApi::Client::NotFoundError
     errors.add(:urn, :no_establishment_found)
   end
 
   private def trust_exists
-    result = AcademiesApi::Client.new.get_trust(incoming_trust_ukprn)
+    result = Api::AcademiesApi::Client.new.get_trust(incoming_trust_ukprn)
     raise result.error if result.error.present?
-  rescue AcademiesApi::Client::NotFoundError
+  rescue Api::AcademiesApi::Client::NotFoundError
     errors.add(:incoming_trust_ukprn, :no_trust_found)
   end
 
