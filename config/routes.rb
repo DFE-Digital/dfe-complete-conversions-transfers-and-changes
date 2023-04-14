@@ -148,6 +148,27 @@ Rails.application.routes.draw do
     end
   end
 
+  scope :blob do
+    resources :projects, only: %i[show] do
+      resources :tasks, only: %i[edit update]  do
+      end
+    end
+  end
+
+  get "/projects/conversions/:project_id/tasks", to: "projects/tasks#index", as: :project_tasks
+
+  get "/projects/conversions/:project_id/tasks/handover", to: "projects/conversions/tasks/handover#edit", as: :edit_project_conversion_handover
+  put "/projects/conversions/:project_id/tasks/handover", to: "projects/conversions/tasks/handover#update", as: :update_project_conversion_handover
+
+  get "/projects/conversions/:project_id/tasks/stakeholder_kick_off", to: "projects/conversions/tasks/stakeholder_kick_off#edit", as: :edit_project_conversion_stakeholder
+  put "/projects/conversions/:project_id/tasks/stakeholder_kick_off", to: "projects/conversions/tasks/stakeholder_kick_off#update", as: :update_project_conversion_stakeholder
+
+  get "/projects/conversions/:project_id/tasks/academy_name", to: "projects/conversions/tasks/academy_name#edit", as: :edit_project_conversion_academy_name
+  put "/projects/conversions/:project_id/tasks/academy_name", to: "projects/conversions/tasks/academy_name#update", as: :update_project_academy_name
+
+  get "/projects/conversions/:project_id/tasks/main-contact", to: "projects/conversions/tasks/main_contact#edit", as: :edit_project_conversion_main_contact
+  put "/projects/conversions/:project_id/tasks/main-contact", to: "projects/conversions/tasks/main_contact#update", as: :update_project_main_contact
+
   get "cookies", to: "cookies#edit"
   post "cookies", to: "cookies#update"
 

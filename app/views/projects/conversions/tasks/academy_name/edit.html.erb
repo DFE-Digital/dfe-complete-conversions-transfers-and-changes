@@ -1,0 +1,17 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: update_project_academy_name_path(@project), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_text_field :academy_name %>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@task_list).update? %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "conversions/shared/task_notes" %>
+  </div>
+</div>
