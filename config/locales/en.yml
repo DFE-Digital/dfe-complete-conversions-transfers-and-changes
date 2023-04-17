@@ -80,7 +80,7 @@ en:
     internal_contacts: Internal contacts
     member_of_parliament: Member of Parliament
   pages:
-    api_client_timeout:
+    academies_api_client_timeout:
       title: Sorry, there was a problem
       body_text: The service timed out when getting the details of the school or trust. Refresh the page to try again.
       email_help: Email the support team at %{email} if this error continues.
