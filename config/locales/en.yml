@@ -78,11 +78,20 @@ en:
     notes: Notes
     external_contacts: External contacts
     internal_contacts: Internal contacts
+    member_of_parliament: Member of Parliament
   pages:
     api_client_timeout:
       title: Sorry, there was a problem
       body_text: The service timed out when getting the details of the school or trust. Refresh the page to try again.
       email_help: Email the support team at %{email} if this error continues.
+    members_api_client_error:
+      title: Sorry, there was a problem
+      body_text: The service encountered an error when getting the details of the Member of Parliament. Refresh the page to try again.
+      email_help: Email the support team at %{email} if this error continues.
+    members_api_multiple_results_error:
+      title: Sorry, there was a problem
+      body_text: The service unexpectedly returned multiple results when searching for the constituency associated with this school.
+      email_help: Email the support team at %{email} for help with this error.
     page_not_found:
       title: Page not found
       body_text_1: If you typed the web address, check it is correct.

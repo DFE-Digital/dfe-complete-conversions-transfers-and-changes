@@ -77,6 +77,7 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include SignInHelpers
   config.include AcademiesApiHelpers
+  config.include MembersApiHelpers
   config.include FeatureHelpers, type: :feature
   config.include ProjectHelpers
   config.include ViewComponent::TestHelpers, type: :component

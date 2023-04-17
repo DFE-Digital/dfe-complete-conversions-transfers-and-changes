@@ -63,6 +63,10 @@ Rails.application.routes.draw do
     get "internal_contacts", to: "/internal_contacts#show"
   end
 
+  concern :memberable do
+    get "mp", to: "/member_of_parliament#show"
+  end
+
   concern :conversion_date_historyable do
     get "conversion-date", to: "/conversions/date_histories#new"
     post "conversion-date", to: "/conversions/date_histories#create"
@@ -76,7 +80,7 @@ Rails.application.routes.draw do
 
       resources :projects,
         only: %i[new create],
-        concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable]
+        concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable]
     end
     namespace :involuntary do
       get "/", to: "/conversions/involuntary/projects#index"

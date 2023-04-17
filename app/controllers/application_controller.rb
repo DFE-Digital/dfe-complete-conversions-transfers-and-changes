@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
   private def client_error
     render "pages/api_client_timeout", status: 500
   end
+
+  private def members_api_client_error
+    render "pages/members_api_client_error", status: 500
+  end
 end

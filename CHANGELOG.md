@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - new MembersApi Client to call the Parliamentary Members API and retrieve MP
   details
+- show the Member of Parliament details for a school on a new page
 
 ## [Release 21][release-21]
 
