@@ -247,6 +247,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_25_114922) do
     t.boolean "handover_not_applicable"
   end
 
+  create_table "local_authorities", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "code", null: false
+    t.string "address_1", null: false
+    t.string "address_2"
+    t.string "address_3"
+    t.string "address_town"
+    t.string "address_county"
+    t.string "address_postcode", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.text "body"
     t.uuid "project_id"
