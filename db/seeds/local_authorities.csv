@@ -1,0 +1,156 @@
+LA , Local authority name,DCS Address 1,DCS Address 2,DCS Address 3,DCS Town,DCS County,DCS Postcode
+202,Camden London Borough Council,5 Pancras Square,0,0,0,London,N1C 4AG
+203,Royal Borough of Greenwich Council,Woolwich Centre,35  Wellington Street,Woolwich,London,,SE18 6HQ
+204,Hackney London Borough Council,1 Reading Lane,,0,0,London,E8 1GQ
+205,Hammersmith & Fulham London Borough Council,Town Hall,Horton Street,0,0,London,W8 7NX
+206,Islington London Borough Council,222 Upper Street,0,0,0,London,N1 1XR
+207,Kensington & Chelsea Royal Borough Council,Town Hall,Horton Street,0,0,London,W8 7NX
+208,Lambeth Council,Lambeth Town Hall,1st floor,"Brixton Hill, Brixton",London,,SW2 1RW
+209,Lewisham London Borough,"1st Floor, Laurence House",1 Catford Road,0,0,London,SE6 4RU
+210,Southwark London Borough Council,160 Tooley Street,,0,London,,SE1P 5LX
+211,Tower Hamlets London Borough Council,5th Floor Mulberry Place,0,0,0,London,E14 2BG
+212,Wandsworth Borough Council,The Town Hall,Wandsworth High Street,0,0,London,SW18 2PU
+213,Westminster City Council,Westminster City Hall,64 Victoria Street,0,0,London,SW1E 6QP
+301,Barking and Dagenham London Borough Council,1 Town Square,0,0,Barking,Essex,IG11 7LU
+302,Barnet London Borough Council,Building 2,North London Business Park,Oakleigh Road South,0,London,N11 1NP
+303,Bexley London Borough Council,Civic Offices,2 Watling Street,0,Bexleyheath,Kent,DA6 7AT
+304,Brent London Borough Council,Brent Civic Centre,Engineers Way,0,Wembley,Middlesex,HA9 0FJ
+305,Bromley London Borough Council,Bromley Civic Centre,Stockwell Close,,Bromley,Kent,BR1 3UH
+306,Croydon London Borough Council,"9th Floor, Zone B",Bernard Weatherill House,8 Mint Walk,Croydon,Surrey,CR0 1EA
+307,Ealing London Borough Council,Perceval House,14-16 Uxbridge Road,0,Ealing,London,W5 2HL
+308,Enfield London Borough Council,"PO Box 56, Civic Centre",Silver Street,0,Enfield,Middlesex,EN1 3XQ
+309,Haringey London Borough Council,2nd Floor,Riverpark House,225 High Road,Wood Green,London,N22 8HQ
+310,Harrow London Borough Council,Civic Centre,Station Road,0,Harrow,Middlesex,HA1 2XF
+311,Havering London Borough Council,Town Hall,Main Road,0,Romford,Essex,RM1 3BD
+312,Hillingdon London Borough Council,Civic Centre,High Street,0,Uxbridge,0,UB8 1UW
+313,Hounslow London Borough Council,The Civic Centre,Lampton Road,0,Hounslow,Middlesex,TW3 4YN
+314,Kingston Upon Thames Royal Borough,Guildhall,High Street,0,Kingston upon Thames,Surrey,KT1 1EU
+315,Merton London Borough Council,Merton Civic Centre,London Road,0,Morden,Surrey,SM4 5DX
+316,Newham London Borough Council,Newham Dockside,1000 Dockside Road,0,0,London,E16 2QU
+317,Redbridge London Borough Council,Lynton House,255-259 High Road,0,Ilford,Essex,IG1 1NN
+318,Richmond Upon Thames London Borough,1st Floor Civic Centre,44 York Street,0,Twickenham,0,TW1 3BZ
+319,Sutton London Borough,Civic Offices,St Nicholas Way,0,,Sutton,SM1 1EA
+320,Waltham Forest London Borough,Room 206,Town Hall,Forest Road,Walthamstow,London,E17 4JF
+330,Birmingham City Council,Children and Young People Directorate,PO BOX 17550,10 Woodcock Street,Birmingham,West Midlands,B2 2DP
+331,Coventry City Council,Civic Centre 1,Little Park Street,0,Coventry,West Midlands,CV1 5RS
+332,Dudley Metropolitan Borough Council,Council House,Priory Road,0,Dudley,West Midlands,DY1 1HF
+333,Sandwell Metropolitan Borough Council,Sandwell Council House,Freeth Street,0,Oldbury,West Midlands,B69 3DE
+334,Solihull Metropolitan Borough Council,Council House,,0,Solihull,West Midlands,B91 3QB
+335,Walsall Council,Council House,Lichfield Street,0,Walsall,West Midlands,WS1 1TW
+336,City of Wolverhampton Council,Civic Centre,St Peter's Square,0,Wolverhampton,0,WV1 1RR
+340,Knowsley Metropolitan Borough Council,Municipal Building,Archway Road,0,Huyton Merseyside,Knowsley,L36 9YU
+341,Liverpool City Council,Municipal Buildings,Dale Street,0,,Liverpool,L2 2DH
+342,St Helens Metropolitan Borough Council,2nd Floor,Gamble Building,Victoria Square,St Helens,0,WA10 1DY
+343,Sefton Metropolitan Borough Council,5th Floor,St Peter’s House House, 22 Balliol Road,Bootle,Merseyside, L20 3AB
+344,Wirral Metropolitan Borough Council,Hamilton Building,Conway Street,0,Birkenhead,Wirral,CH41 4FD
+350,Bolton Council,First Floor,Town Hall,0,Bolton,0,BL1 1RU
+351,Bury Metropolitan Borough Council,3 Knowsley Place,Duke Street,0,Bury,0,BL9 0EJ
+352,Manchester City Council,Town Hall,,0,Albert Square,Manchester,M60 2LA
+353,Oldham Council,Civic Centre,West Street,0,Oldham,0,OL1 1XJ
+354,Rochdale Borough Council,PO Box 70,Municipal Offices,Smith Street,Rochdale,0,OL16 1YD
+355,Salford City Council,Unity House,Chorley Road,0,Swinton,Manchester,M27 5AW
+356,Stockport Metropolitan Borough Council,Upper Ground Floor,Stopford House,0,Stockport,0,SK1 3XE
+357,Tameside Metropolitan Borough Council,Hyde Town Hall,Market Street,Hyde,Tameside,,SK14 1AL
+358,Trafford Council,First Floor,Trafford Town Hall,Talbot Road,Stretford,,M32 0TH
+359,Wigan Council,Town Hall,Library Street,0,Wigan,0,WN1 1YN
+370,Barnsley Metropolitan Borough Council,PO Box 609,0,0,Barnsley,0,S70 9FH
+371,Doncaster Council,The Civic Office,Waterdale,0,Doncaster,,DN1 3BU
+372,Rotherham Metropolitan Borough Council,Riverside House,Main Street,0,Rotherham,South Yorkshire,S60 2NE
+373,Sheffield City Council,Town Hall,Pinstone Street,0,Sheffield,0,S1 2HH
+380,Bradford Metropolitan District Council,Margaret McMillan Tower,Princes Way,0,Bradford,0,BD1 1NN
+381,Calderdale Metropolitan Borough Council,Town Hall,Crossley Street,0,Halifax,West Yorkshire,HX1 1UJ
+382,Kirklees Council,Civic Centre 111,Market Street,0,Huddersfield,0,HD1 1WG
+383,Leeds City Council,PO BOX 837,Children’s Services,,Leeds,West Yorkshire,LS1 9PZ
+384,Wakefield Metropolitan District Council,County Hall,Bond Street,0,Wakefield,0,WF1 2QW
+390,Gateshead Council,Civic Centre,Regent Street,0,Gateshead,Tyne & Wear,NE8 1HH
+391,Newcastle City Council,Civic Centre,0,0,Newcastle Upon Tyne,0,NE1 8QH
+392,North Tyneside Council,Quadrant,The Silverlink North,Cobalt Business Park,North Tyneside,0,NE27 0BY
+393,South Tyneside Metropolitan Borough Council,"Town Hall, Civic Offices",Westoe Road,0,South Shields,0,NE33 2RL
+394,Sunderland City Council,"Sunderland City Council, Civic Centre",Burdon Road,0,Sunderland,Tyne & Wear,SR2 7DN
+420,Council of the Isles of Scilly,Carn Thomas,St Mary's,0,0,Isles of Scilly,TR21 OPT
+800,Bath and North East Somerset Council,PO Box 25,Riverside,Temple Street,Keynsham,Bristol,BS31 1DN
+801,Bristol City Council,PO Box 57,The Council House,College Green,Bristol,0,BS99 7EB
+802,North Somerset Council,Town Hall,Walliscote Grove Road,0,Weston- super-Mare,Somerset,BS23 1UJ
+803,South Gloucestershire Council,PO Box 298,Civic Centre,0,High Street,Bristol,BS15 0DQ
+805,Hartlepool Borough Council,Level 4 Civic Centre,Victoria Road,0,Hartlepool,0,TS24 8AY
+806,Middlesbrough Council,PO Box 69,Vancouver House,Gurney Street,Middlesbrough,0,TS1 1EL
+807,Redcar and Cleveland Borough Council,Civic Offices PO Box 83,Kirkleatham Street,0,Redcar,0,TS10 1YA
+808,Stockton-on-Tees Borough Council,Municipal Buildings,Church Road,,Stockton on Tees,0,TS18 1LD
+810,Hull City Council,"Room 42, Guildhall",Alfred Gelder Street,0,Kingston Upon Hull,0,HU1 2AA
+811,East Riding of Yorkshire Council,County Hall,Beverley,0,East Riding,Yorkshire,HU17 9BA
+812,North East Lincolnshire Council,Municipal Offices,Town Hall Square,0,Grimsby,North East Lincolnshire,DN31 1HU
+813,North Lincolnshire Council,PO Box 35,Hewson House,"Station Road, Brigg",,North Lincolnshire,DN20 8XJ
+815,North Yorkshire County Council,County Hall,Race Course Lane,0,Northallerton,North Yorkshire,DL7 8AE
+816,City of York Council,West Offices,Station Rise,0,York,0,YO1 6GA
+821,Luton Borough Council,2nd Floor,Town Hall Extension,Upper George Street,Luton,Bedfordshire,LU1 2BQ
+822,Bedford Borough Council,Borough Hall,Cauldwell Street,0,0,Bedford,MK42 9AP
+823,Central Bedfordshire Council,Priory House,Monks Walk,Chicksands,Shefford,Bedfordshire,SG17 5TQ
+825,Buckinghamshire Council,County Hall,Walton Street,0,Aylesbury,Buckinghamshire,HP20 1UA
+826,Milton Keynes Council,Saxton Court,Avebury Boulevard,0,Central Milton Keynes,0,MK9 3HS
+830,Derbyshire County Council,County Hall,,0,Matlock,Derbyshire,DE4 3AG
+831,Derby City Council,The Council House,Corporation Street,0,0,Derby,DE1 2FS
+835,Dorset County Council,County Hall,0,0,Dorchester,Dorset,DT1 1XJ
+836,Borough of Poole,Civic Centre,0,0,Poole,Dorset,BH15 2RU
+837,Bournemouth Borough Council,Town Hall,Bourne Avenue,0,Bournemouth,0,BH2 6DY
+838,Dorset Council,County Hall,0,0,Dorchester,Dorset,DT1 1XJ
+839,"Bournemouth, Christchurch and Poole Council",Town Hall,0,0,Bournemouth,0,BH2 6DY
+840,Durham County Council,County Hall,0,0,Durham,0,DH1 5UJ
+841,Darlington Borough Council,Town Hall,Feethams,0,Darlington,0,DL1 5QT
+845,East Sussex County Council,"PO Box 4, County Hall",St Anne's Crescent,0,Lewes,0,BN7 1SG
+846,Brighton and Hove City Council,Kings House,Grand Avenue,0,Hove,Brighton & Hove,BN3 2SU
+850,Hampshire County Council,3rd Floor,Elizabeth 2 Court North,The Castle,Winchester,Hampshire,SO23 8UB
+851,Portsmouth City Council,"3rd Floor, Civic Offices",Guildhall Square,0,Portsmouth,Hampshire,PO1 2AL
+852,Southampton City Council,The Civic Centre,0,0,Southampton,Hampshire,SO14 7LY
+855,Leicestershire County Council,County Hall,Glenfield,0,Leicester,Leicestershire,LE3 8RF
+856,Leicester City Council,City Hall,Rutland Wing 3rd Floor,115 Charles Street,Leicester,,LE1 1FZ
+857,Rutland County Council,Catmose,Oakham,0,Rutland,0,LE15 6HP
+860,Staffordshire County Council,Number 1,Staffordshire Place,Tipping Street,Stafford,0,ST16 2DH
+861,Stoke-on-Trent City Council,Civic Centre,Glebe Street,0,Stoke on Trent,0,ST4 1HH
+865,Wiltshire Council,County Hall,Bythesea Road,0,Trowbridge,Wiltshire,BA14 8JN
+866,Swindon Borough Council,Civic Offices,Euclid Street,0,Swindon,0,SN1 2JH
+867,Bracknell Forest Council,Times Square,Market Street,0,Bracknell,Berkshire,RG12 1JD
+868,Royal Borough of Windsor & Maidenhead Council,Town Hall,St Ives Road,0,Maidenhead,Berkshire,SL6 1RF
+869,West Berkshire Council,West Street House,West Street,0,Newbury,Berkshire,RG14 1BZ
+870,Reading Borough Council,Civic Centre,Bridge Street,0,Reading,Berkshire,RG1 2LU
+871,Slough Borough Council,Observatory House,25 Windsor Road,0,Slough,Berkshire,SL1 2EL
+872,Wokingham Borough Council,"PO Box 154, Council Offices",Shute End,0,Wokingham,Berkshire,RG40 1WN
+873,Cambridgeshire County Council,Shire Hall,Castle Hill,0,Cambridge,Cambridgeshire,CB3 0AP
+874,Peterborough City Council,Town Hall,Bridge Street,0,Peterborough,0,PE1 1HF
+876,Halton Borough Council,Municipal Building,Kingsway,0,Widness,0,WA8 7QF
+877,Warrington Borough Council,Town Hall,Sankey Street,0,Warrington,0,WA1 1UH
+878,Devon County Council,County Hall,Topsham Road,0,Exeter,Devon,EX2 4QG
+879,Plymouth City Council,Ballard House,West Hoe Road,0,Plymouth,0,PL1 3BJ
+880,Torbay Council,Children's Services (Torhill House 1st Floor South),C/o Townhall Castle Circus,0,Torquay,Devon,TQ1 3DR
+881,Essex County Council,PO Box 11,Children’s Services Corporate Directorate,0,Chelmsford,Essex,CM1 1LX
+882,Southend On Sea City Council,Civic Centre,Victoria Avenue,0,Southend on Sea,Essex,SS2 6ER
+883,Thurrock Council,Civic Offices,New Road,0,Grays,Thurrock,RM17 6SL
+884,Herefordshire Council,Plough Lane,,0,Hereford,0,HR4 0LE
+885,Worcestershire County Council,County Hall,Spetchley Road,0,Worcester,0,WR5 2NP
+886,Kent County Council,Sessions House,County Hall,0,Maidstone,Kent,ME14 1XQ
+887,Medway Council,Gun Wharf,Dock Road,0,Chatham,Kent,ME4 4TR
+888,Lancashire County Council,PO Box 100,County Hall,0,Preston,Lancashire,PR1 0LD
+889,Blackburn with Darwen Borough Council,10 Duke Street,0,0,Blackburn,0,BB2 1DH
+890,Blackpool Council,Number One,Bickerstaffe Square,0,Blackpool,0,FY1 3HS
+891,Nottinghamshire County Council,County Hall,0,0,West Bridgford,Nottingham,NG2 7QP
+892,Nottingham City Council,Loxley House,Station Street,0,0,Nottingham,NG2 3NG
+893,Shropshire Council,Shire Hall,Abbey Foregate,0,Shrewsbury,Shropshire,SY2 6ND
+894,Telford and Wrekin Council,Addenbrooke House,Ironmasters Way,0,Telford,Wrekin,TF3 4NT
+895,Cheshire East Council,Westfields,Middlewich Road,0,Sandbach,Cheshire,CW11 1HZ
+896,Cheshire West and Chester Council,58 Nicholas Street,Chester,0,0,Cheshire West,CH1 2NP
+908,Cornwall Council,New County Hall,0,0,Truro,Cornwall,TR1 3AY
+909,Cumbria County Council,Cumbria House,117 Botchergate,0,Carlisle,Cumbria,CA1 1RD
+916,Gloucestershire County Council,Shire Hall,Westgate Street,0,Gloucester,0,GL1 2TR
+919,Hertfordshire County Council,County Hall,Pegs Lane,0,Hertford,0,SG13 8DF
+921,Isle of Wight Council,County Hall,0,0,Newport,Isle of Wight,PO30 1UD
+925,Lincolnshire County Council,County Offices,0,0,Newland,Lincoln,LN1 1YQ
+926,Norfolk County Council,County Hall,Martineau Lane,0,Norwich,Norfolk,NR1 2DH
+928,Northamptonshire County Council,County Hall,George Row,0,Northampton,0,NN1 1AN
+929,Northumberland County Council,People Group,County Hall,0,Morpeth,Northumberland,NE61  2EF
+931,Oxfordshire County Council,County Hall,New Road,0,Oxford,0,OX1 1ND
+933,Somerset County Council,The Crescent,0,0,Taunton,Somerset,TA1 4DY
+935,Suffolk County Council,Endeavour House,8 Russell Road,0,Ipswich,Suffolk,IP1 2BX
+936,Surrey County Council,County Hall,Penrhyn Road,0,Kingston upon Thames,Surrey,KT1 2DN
+937,Warwickshire County Council,PO BOX 2,Shire Hall,0,Warwick,0,CV34 4RR
+938,West Sussex County Council,County Hall,0,0,Chichester,West Sussex,PO19 1RQ
+940,North Northamptonshire Council,Bowling Green Road,,0,Kettering,Northants,NN15 7QX
+941,West Northamptonshire Council,1 Angel Square,Angel Street,0,Northampton,0,NN1 1ED

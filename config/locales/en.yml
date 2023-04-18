@@ -63,6 +63,9 @@ en:
     user_importer:
       import:
         error: You must provide a path
+    local_authority_importer:
+      import:
+        error: You must provide a path
   assignment:
     assign_regional_delivery_officer:
       title: Change regional delivery officer for %{school_name}
