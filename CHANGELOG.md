@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   details
 - show the Member of Parliament details for a school on a new page
 
+### Changed
+
+- stop search engines from crawling the application
+
 ## [Release 21][release-21]
 
 ### Fixed
