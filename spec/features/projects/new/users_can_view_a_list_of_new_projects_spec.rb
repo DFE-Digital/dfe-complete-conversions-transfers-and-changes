@@ -71,7 +71,7 @@ RSpec.feature "Viewing all new projects" do
       expect(page).to have_content(I18n.t("project.all.new.title"))
 
       within("tbody") do
-        expect(page).to have_content(project_without_academy_urn.academy_urn)
+        expect(page).to have_content(project_without_academy_urn.establishment.name)
 
         expect(page).not_to have_content(project_with_academy_urn.academy_urn)
       end
