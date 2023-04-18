@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - stop search engines from crawling the application
+- the statistics page includes the counts of unassigend projects, which makes
+  the numbers add up
 
 ## [Release 21][release-21]
 

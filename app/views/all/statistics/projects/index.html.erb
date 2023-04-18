@@ -26,6 +26,10 @@
           <td class="govuk-table__cell">Completed projects</td>
           <td class="govuk-table__cell"><%= @project_statistics.total_number_of_completed_projects %></td>
         </tr>
+        <tr class="govuk-table__row" id="unassigned">
+          <td class="govuk-table__cell">Unassigned projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_unassigned_projects %></td>
+        </tr>
         <tr class="govuk-table__row" id="all_projects">
           <td class="govuk-table__cell">All projects</td>
           <td class="govuk-table__cell"><%= @project_statistics.total_number_of_projects %></td>
@@ -58,6 +62,10 @@
         <tr class="govuk-table__row" id="completed">
           <td class="govuk-table__cell">Completed projects</td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_with_regional_casework_services %></td>
+        </tr>
+        <tr class="govuk-table__row" id="unassigned">
+          <td class="govuk-table__cell">Unassigned projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_with_regional_casework_services %></td>
         </tr>
         <tr class="govuk-table__row" id="all_projects">
           <td class="govuk-table__cell">All projects with Regional casework services</td>
@@ -92,6 +100,10 @@
           <td class="govuk-table__cell">Completed projects</td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_not_with_regional_casework_services %></td>
         </tr>
+        <tr class="govuk-table__row" id="unassigned">
+          <td class="govuk-table__cell">Unassigned projects</td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_not_with_regional_casework_services %></td>
+        </tr>
         <tr class="govuk-table__row" id="all_projects">
           <td class="govuk-table__cell">All projects not with Regional casework services</td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_not_with_regional_casework_services %></td>
@@ -99,7 +111,7 @@
       </tbody>
     </table>
   </div>
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     <h2 class="govuk-heading-l">Projects per region</h2>
     <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Not with Regional casework services statistics">
       <thead class="govuk-table__head">
@@ -109,6 +121,7 @@
           <th class="govuk-table__header" scope="col">Sponsored projects</th>
           <th class="govuk-table__header" scope="col">In-progress projects</th>
           <th class="govuk-table__header" scope="col">Completed projects</th>
+          <th class="govuk-table__header" scope="col">Unassigned</th>
           <th class="govuk-table__header" scope="col">All projects</th>
         </tr>
       </thead>
@@ -119,6 +132,8 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_london_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_london_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_london_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:london) %></td>
+
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_london_region %></td>
         </tr>
         <tr class="govuk-table__row" id="south_east">
@@ -127,6 +142,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_south_east_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_south_east_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_south_east_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:south_east) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_south_east_region %></td>
         </tr>
         <tr class="govuk-table__row" id="yorkshire_and_the_humber">
@@ -135,6 +151,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_yorkshire_and_the_humber_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_yorkshire_and_the_humber_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_yorkshire_and_the_humber_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:yorkshire_and_the_humber) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_yorkshire_and_the_humber_region %></td>
         </tr>
         <tr class="govuk-table__row" id="north_west">
@@ -143,6 +160,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_north_west_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_north_west_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_north_west_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:north_west) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_north_west_region %></td>
         </tr>
         <tr class="govuk-table__row" id="east_of_england">
@@ -151,6 +169,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_east_of_england_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_east_of_england_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_east_of_england_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:east_of_england) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_east_of_england_region %></td>
         </tr>
         <tr class="govuk-table__row" id="west_midlands">
@@ -159,6 +178,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_west_midlands_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_west_midlands_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_west_midlands_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:west_midlands) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_west_midlands_region %></td>
         </tr>
         <tr class="govuk-table__row" id="north_east">
@@ -167,6 +187,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_north_east_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_north_east_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_north_east_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:north_west) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_north_east_region %></td>
         </tr>
         <tr class="govuk-table__row" id="south_west">
@@ -175,6 +196,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_south_west_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_south_west_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_south_west_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:south_west) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_south_west_region %></td>
         </tr>
         <tr class="govuk-table__row" id="east_midlands">
@@ -183,6 +205,7 @@
           <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_east_midlands_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_east_midlands_region %></td>
           <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_east_midlands_region %></td>
+          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:east_midlands) %></td>
           <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_east_midlands_region %></td>
         </tr>
       </tbody>
