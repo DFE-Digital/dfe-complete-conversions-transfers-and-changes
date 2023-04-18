@@ -25,10 +25,12 @@ class Api::MembersApi::Client
 
   def member_id(search_term)
     constituency_data = constituency(search_term)
+    raise constituency_data.error if constituency_data.error.present?
+
     if constituency_data.object["items"].count > 1
       Result.new(nil, MultipleResultsError.new(I18n.t("members_api.errors.multiple", search_term: search_term)))
     else
-      member_id_from_constituency(constituency_data)
+      Result.new(member_id_from_constituency(constituency_data), nil)
     end
   end
 

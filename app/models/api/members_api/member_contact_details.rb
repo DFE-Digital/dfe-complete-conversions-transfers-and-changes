@@ -8,6 +8,9 @@ class Api::MembersApi::MemberContactDetails < Api::BaseApiModel
     :notes,
     :line1,
     :line2,
+    :line3,
+    :line4,
+    :line5,
     :postcode,
     :phone,
     :email
@@ -23,9 +26,23 @@ class Api::MembersApi::MemberContactDetails < Api::BaseApiModel
       notes: "notes",
       line1: "line1",
       line2: "line2",
+      line3: "line3",
+      line4: "line4",
+      line5: "line5",
       postcode: "postcode",
       phone: "phone",
       email: "email"
     }
+  end
+
+  def address
+    [
+      line1,
+      line2,
+      line3,
+      line4,
+      line5,
+      postcode
+    ]
   end
 end

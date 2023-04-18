@@ -72,7 +72,7 @@ RSpec.describe Api::MembersApi::Client do
       end
 
       it "returns a the ID" do
-        expect(subject).to eql(12345)
+        expect(subject.object).to eql(12345)
       end
     end
 

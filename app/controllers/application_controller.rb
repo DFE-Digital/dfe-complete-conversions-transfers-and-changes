@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  rescue_from Api::AcademiesApi::Client::Error, with: :client_error
+  rescue_from Api::AcademiesApi::Client::Error, with: :academies_api_client_error
 
   def not_found_error
     render "pages/page_not_found", status: :not_found
@@ -18,7 +18,11 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 
-  private def client_error
-    render "pages/api_client_timeout", status: 500
+  private def academies_api_client_error
+    render "pages/academies_api_client_timeout", status: 500
+  end
+
+  private def members_api_client_error
+    render "pages/members_api_client_error", status: 500
   end
 end

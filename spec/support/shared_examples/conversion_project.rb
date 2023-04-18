@@ -62,7 +62,7 @@ RSpec.shared_examples "a conversion project" do
       end
 
       it "redirects to an informational client timeout page" do
-        expect(perform_request).to render_template("pages/api_client_timeout")
+        expect(perform_request).to render_template("pages/academies_api_client_timeout")
       end
     end
 

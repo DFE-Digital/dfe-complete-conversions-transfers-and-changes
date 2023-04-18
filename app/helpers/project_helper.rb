@@ -52,7 +52,7 @@ module ProjectHelper
   end
 
   def address_markup(address)
-    tag.address address.compact.join("<br/>").html_safe, class: %w[govuk-address]
+    tag.address address.compact_blank.join("<br/>").html_safe, class: %w[govuk-address]
   end
 
   def project_notification_banner(project, user)
