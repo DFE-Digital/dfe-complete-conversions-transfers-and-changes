@@ -173,6 +173,12 @@ variable "cdn_frontdoor_enable_rate_limiting" {
   type        = bool
 }
 
+variable "cdn_frontdoor_origin_fqdn_override" {
+  description = "Manually specify the hostname that the CDN Front Door should target. Defaults to the Container App FQDN"
+  type        = string
+  default     = ""
+}
+
 variable "cdn_frontdoor_rate_limiting_threshold" {
   description = "Maximum number of concurrent requests before Rate Limiting policy is applied"
   type        = number
