@@ -3,7 +3,10 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     {
       client_id: ENV["AZURE_APPLICATION_CLIENT_ID"],
       client_secret: ENV["AZURE_APPLICATION_CLIENT_SECRET"],
-      tenant_id: ENV["AZURE_TENANT_ID"]
+      tenant_id: ENV["AZURE_TENANT_ID"],
+      authorize_params: {
+        redirect_uri: ENV["AZURE_REDIRECT_URI"]
+      }
     }
 end
 
