@@ -24,6 +24,7 @@ module "azure_container_apps_hosting" {
   enable_redis_cache = local.enable_redis_cache
 
   enable_cdn_frontdoor                  = local.enable_cdn_frontdoor
+  cdn_frontdoor_origin_fqdn_override    = local.cdn_frontdoor_origin_fqdn_override
   cdn_frontdoor_custom_domains          = local.cdn_frontdoor_custom_domains
   cdn_frontdoor_host_redirects          = local.cdn_frontdoor_host_redirects
   cdn_frontdoor_enable_rate_limiting    = local.cdn_frontdoor_enable_rate_limiting
