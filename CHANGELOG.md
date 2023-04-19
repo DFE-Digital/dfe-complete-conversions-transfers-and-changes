@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 22][release-22]
+
 ### Added
 
 - new MembersApi Client to call the Parliamentary Members API and retrieve MP
@@ -15,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - stop search engines from crawling the application
-- the statistics page includes the counts of unassigend projects, which makes
+- the statistics page includes the counts of unassigned projects, which makes
   the numbers add up
 
 ## [Release 21][release-21]
@@ -773,7 +775,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-21...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-22...HEAD
+[release-22]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-21...release-22
 [release-21]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-20...release-21
 [release-20]:
