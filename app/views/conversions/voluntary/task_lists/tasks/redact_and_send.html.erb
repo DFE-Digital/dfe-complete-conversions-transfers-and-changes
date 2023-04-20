@@ -11,8 +11,8 @@
 
       <div class="govuk-form-group">
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :redact)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_redaction)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_redaction)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_solicitors)) %>
       </div>
 

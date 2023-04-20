@@ -28,10 +28,10 @@ en:
                   <li>any other personal information</li>
                 </ul>
 
-          save:
+          save_redaction:
             title: Save relevant documents in the school's SharePoint folder
 
-          send:
+          send_redaction:
             title: Send the redacted documents to the funding team to be published on GOV.UK
             guidance_link: Help sending documents
             guidance:
