@@ -11,6 +11,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Address subtle bug in Project creation, which meant two projects with the same
   URN were created in error
 
+### Added
+
+- Raise a specific error page if our access to the Academies Api has been
+  revoked
+
 ## [Release 22][release-22]
 
 ### Added

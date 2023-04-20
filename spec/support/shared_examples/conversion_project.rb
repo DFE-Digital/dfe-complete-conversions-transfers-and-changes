@@ -66,6 +66,16 @@ RSpec.shared_examples "a conversion project" do
       end
     end
 
+    context "when the Academies API returns an unauthorised error" do
+      before do
+        mock_unauthorised_api_responses(urn: 123456, ukprn: 10061021)
+      end
+
+      it "redirects to an informational client unauthorised page" do
+        expect(perform_request).to render_template("pages/academies_api_client_unauthorised")
+      end
+    end
+
     context "when the creating user is not a regional delivery officer" do
       let(:caseworker) { create(:user, :caseworker) }
 

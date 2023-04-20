@@ -57,6 +57,14 @@ RSpec.describe Api::AcademiesApi::Client do
         expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
       end
     end
+
+    context "when the Academies Api returns 401 unauthorised" do
+      let(:fake_response) { [401, nil, "Unauthorized client."] }
+
+      it "raises an Error" do
+        expect { subject }.to raise_error(Api::AcademiesApi::Client::UnauthorisedError)
+      end
+    end
   end
 
   describe "#get_establishments" do
@@ -100,6 +108,14 @@ RSpec.describe Api::AcademiesApi::Client do
 
       it "raises an Error" do
         expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
+      end
+    end
+
+    context "when the Academies Api returns 401 unauthorised" do
+      let(:fake_response) { [401, nil, "Unauthorized client."] }
+
+      it "raises an Error" do
+        expect { subject }.to raise_error(Api::AcademiesApi::Client::UnauthorisedError)
       end
     end
   end

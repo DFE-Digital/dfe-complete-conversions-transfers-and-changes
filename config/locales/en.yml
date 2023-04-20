@@ -84,6 +84,10 @@ en:
       title: Sorry, there was a problem
       body_text: The service timed out when getting the details of the school or trust. Refresh the page to try again.
       email_help: Email the support team at %{email} if this error continues.
+    academies_api_client_unauthorised:
+      title: Sorry, there was a problem
+      body_text: The service is unable to retrieve school or trust details at this time. This may be a temporary error. Please try again soon.
+      email_help: Email the support team at %{email} if this error continues.
     members_api_client_error:
       title: Sorry, there was a problem
       body_text: The service encountered an error when getting the details of the Member of Parliament. Refresh the page to try again.
