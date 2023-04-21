@@ -7,6 +7,8 @@ class Api::AcademiesApi::Client
 
   class MultipleResultsError < StandardError; end
 
+  class UnauthorisedError < StandardError; end
+
   attr_reader :connection
 
   def initialize(connection: nil)
@@ -19,6 +21,8 @@ class Api::AcademiesApi::Client
     case response.status
     when 200
       Result.new(Api::AcademiesApi::Establishment.new.from_hash(single_establishment_from_bulk(response)), nil)
+    when 401
+      raise Api::AcademiesApi::Client::UnauthorisedError.new("Problems connecting to the Academies API")
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishment.errors.not_found", urn: urn)))
     else
@@ -35,6 +39,8 @@ class Api::AcademiesApi::Client
         Api::AcademiesApi::Establishment.new.from_hash(establishment)
       end
       Result.new(establishments, nil)
+    when 401
+      raise Api::AcademiesApi::Client::UnauthorisedError.new("Problems connecting to the Academies API")
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishments.errors.not_found", urns:)))
     else

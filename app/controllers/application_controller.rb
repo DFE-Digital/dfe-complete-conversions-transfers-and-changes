@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from Api::AcademiesApi::Client::Error, with: :academies_api_client_error
+  rescue_from Api::AcademiesApi::Client::UnauthorisedError, with: :academies_api_unauthorised_error
 
   def not_found_error
     render "pages/page_not_found", status: :not_found
@@ -20,6 +21,10 @@ class ApplicationController < ActionController::Base
 
   private def academies_api_client_error
     render "pages/academies_api_client_timeout", status: 500
+  end
+
+  private def academies_api_unauthorised_error
+    render "pages/academies_api_client_unauthorised", status: 401
   end
 
   private def members_api_client_error
