@@ -114,6 +114,6 @@ class Conversion::CreateProjectForm
   end
 
   private def urn_unique_for_in_progress_conversions
-    errors.add(:urn, :duplicate) if Project.in_progress.where(urn: urn).any?
+    errors.add(:urn, :duplicate) if Project.not_completed.where(urn: urn).any?
   end
 end
