@@ -204,6 +204,17 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(form.errors.messages[:urn]).to include I18n.t("errors.attributes.urn.duplicate")
       end
     end
+
+    context "when there is another project with the same urn which is not completed" do
+      it "is invalid" do
+        _project_with_urn = create(:conversion_project, urn: 121813, assigned_to: nil)
+        form = build(form_factory.to_sym)
+
+        form.urn = 121813
+        expect(form).to be_invalid
+        expect(form.errors.messages[:urn]).to include I18n.t("errors.attributes.urn.duplicate")
+      end
+    end
   end
 
   describe "incoming_trust_ukprn" do

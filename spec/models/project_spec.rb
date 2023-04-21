@@ -417,6 +417,21 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "not_completed scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns projects where completed_at is nil" do
+        completed_project = create(:conversion_project, completed_at: Date.today - 1.year)
+        in_progress_project_1 = create(:conversion_project, completed_at: nil)
+        in_progress_project_2 = create(:conversion_project, completed_at: nil)
+
+        projects = Project.not_completed
+
+        expect(projects).to include(in_progress_project_1, in_progress_project_2)
+        expect(projects).to_not include(completed_project)
+      end
+    end
+
     describe "#assigned" do
       it "only includes projects assigned to a user" do
         mock_successful_api_response_to_create_any_project
