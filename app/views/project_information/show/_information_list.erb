@@ -87,6 +87,10 @@
       row.key { t('project_information.show.local_authority_details.rows.local_authority') }
       row.value { @project.establishment.local_authority_name }
     end
+    summary_list.row do |row|
+      row.key { t('project_information.show.local_authority_details.rows.address') }
+      row.value { address_markup(@project.establishment.local_authority.address) }
+    end
   end %>
 </div>
 

@@ -3,4 +3,15 @@ class LocalAuthority < ApplicationRecord
   validates :code, presence: true
   validates :address_1, presence: true
   validates :address_postcode, presence: true, postcode: true
+
+  def address
+    [
+      address_1,
+      address_2,
+      address_3,
+      address_town,
+      address_county,
+      address_postcode
+    ]
+  end
 end

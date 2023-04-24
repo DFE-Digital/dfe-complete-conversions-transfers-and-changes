@@ -3,6 +3,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
     :urn,
     :name,
     :local_authority_name,
+    :local_authority_code,
     :type,
     :age_range_lower,
     :age_range_upper,
@@ -24,6 +25,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
       urn: "urn",
       name: "establishmentName",
       local_authority_name: "localAuthorityName",
+      local_authority_code: "localAuthorityCode",
       type: "establishmentType.name",
       age_range_lower: "statutoryLowAge",
       age_range_upper: "statutoryHighAge",
@@ -50,5 +52,9 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
       address_county,
       address_postcode
     ]
+  end
+
+  def local_authority
+    LocalAuthority.find_by(code: local_authority_code)
   end
 end
