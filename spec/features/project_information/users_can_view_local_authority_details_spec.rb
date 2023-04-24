@@ -12,7 +12,7 @@ RSpec.feature "Users can view local authority details" do
 
   scenario "they can view the name" do
     within("#localAuthorityDetails") do
-      expect(page).to have_content(project.establishment.local_authority)
+      expect(page).to have_content(project.establishment.local_authority_name)
     end
   end
 end

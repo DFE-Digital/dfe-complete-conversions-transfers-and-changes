@@ -20,7 +20,7 @@
           end
           summary_list.row do |row|
             row.key { t("project.summary.local_authority.title") }
-            row.value { @project.establishment.local_authority }
+            row.value { @project.establishment.local_authority_name }
           end
           summary_list.row do |row|
             row.key { t("project.summary.region.title") }

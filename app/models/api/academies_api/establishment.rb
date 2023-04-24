@@ -2,7 +2,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
   attr_accessor(
     :urn,
     :name,
-    :local_authority,
+    :local_authority_name,
     :type,
     :age_range_lower,
     :age_range_upper,
@@ -23,7 +23,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
     {
       urn: "urn",
       name: "establishmentName",
-      local_authority: "localAuthorityName",
+      local_authority_name: "localAuthorityName",
       type: "establishmentType.name",
       age_range_lower: "statutoryLowAge",
       age_range_upper: "statutoryHighAge",

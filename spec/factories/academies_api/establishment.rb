@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :academies_api_establishment, class: "Api::AcademiesApi::Establishment" do
     urn { "123456" }
     name { "Caludon Castle School" }
-    local_authority { "West Placefield Council" }
+    local_authority_name { "West Placefield Council" }
     type { "Academy converter" }
     age_range_lower { 11 }
     age_range_upper { 18 }
