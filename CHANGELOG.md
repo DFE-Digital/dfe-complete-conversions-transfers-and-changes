@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- Add new guidance to project creation page so users know to find information
+- Added new guidance to project creation page so users know to find information
   in the advisory board template
 
 ## [Release 22][release-22]
