@@ -55,7 +55,7 @@ gem "sentry-rails"
 # application insights
 gem "application_insights"
 
-gem "sidekiq", "< 7.0"
+gem "sidekiq", "< 8.0"
 
 gem "pagy"
 
