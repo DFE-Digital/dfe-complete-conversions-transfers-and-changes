@@ -77,7 +77,7 @@ RSpec.feature "Users can create new voluntary conversion projects" do
 
   def fill_in_form
     fill_in "School URN", with: urn
-    fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
+    fill_in "Incoming trust UKPRN (UK Provider Reference Number)", with: ukprn
 
     within("#provisional-conversion-date") do
       completion_date = Date.today + 1.year

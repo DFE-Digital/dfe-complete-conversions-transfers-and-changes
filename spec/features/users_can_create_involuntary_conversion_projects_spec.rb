@@ -18,7 +18,7 @@ RSpec.feature "Users can create new involuntary conversion projects" do
     scenario "a new project is created" do
       expect(page).to have_content(I18n.t("conversion_project.involuntary.new.title"))
       fill_in "School URN", with: urn
-      fill_in "Incoming trust UK Provider Reference Number (UKPRN)", with: ukprn
+      fill_in "Incoming trust UKPRN (UK Provider Reference Number)", with: ukprn
 
       within("#provisional-conversion-date") do
         completion_date = Date.today.at_beginning_of_month + 1.year
