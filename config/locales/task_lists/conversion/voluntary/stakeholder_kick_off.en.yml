@@ -11,7 +11,7 @@ en:
           introductory_emails:
             title: Send introductory emails
             hint:
-              html: <p>Email the school, trust and solicitors. Also email the diocese if this is a faith school.</p>
+              html: <p>Email the school or trust, and their solicitors. Email the diocese too if this is a faith school.</p>
             guidance_link: What to include in introductory emails
             guidance:
               html:
@@ -51,7 +51,7 @@ en:
           setup_meeting:
             title: Send invites to the kick-off meeting or call
             hint:
-              html: <p>Check who the school and trust would like to attend the kick-off meeting.</p>
+              html: <p>Check who the school or trust would like to attend the kick-off meeting.</p>
             guidance_link: How to arrange the kick-off meeting
             guidance:
               html:
