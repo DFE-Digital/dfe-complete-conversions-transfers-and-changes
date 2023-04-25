@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Raise a specific error page if our access to the Academies Api has been
   revoked
 
+### Changed
+
+- Corrected Legal Adviser's Office to Legal Advisors Office in trust
+  modification order task checkboxes
+
 ## [Release 22][release-22]
 
 ### Added
