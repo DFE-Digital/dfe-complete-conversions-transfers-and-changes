@@ -679,6 +679,18 @@ RSpec.describe Project, type: :model do
         expect(Project.by_region("london")).to_not include(west_mids_project)
       end
     end
+
+    describe "added_by scope" do
+      it "returns only the projects that were added by the given user" do
+        mock_successful_api_response_to_create_any_project
+        user = create(:user)
+        added_project = create(:conversion_project, regional_delivery_officer: user)
+        other_project = create(:conversion_project)
+
+        expect(Project.added_by(user)).to include(added_project)
+        expect(Project.added_by(user)).to_not include(other_project)
+      end
+    end
   end
 
   describe "region" do

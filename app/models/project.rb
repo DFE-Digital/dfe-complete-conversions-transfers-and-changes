@@ -56,6 +56,7 @@ class Project < ApplicationRecord
   scope :opening_by_month_year, ->(month, year) { includes(:task_list).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
+  scope :added_by, ->(user) { where(regional_delivery_officer: user) }
 
   scope :by_region, ->(region) { where(region: region) }
 

@@ -7,6 +7,12 @@
                      path: in_progress_user_projects_path}
         end %>
 
+    <%= if @current_user.regional_delivery_officer?
+          render partial: "shared/sub_navigation_item",
+            locals: {name: t("subnavigation.added_by_projects"),
+                     path: added_by_user_projects_path}
+        end %>
+
     <%= unless @current_user.team_leader?
           render partial: "shared/sub_navigation_item",
             locals: {name: t("subnavigation.completed_projects"),

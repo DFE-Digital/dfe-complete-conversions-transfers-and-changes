@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- a new view that shows regional delivery officers the projects they have
+  created
+
 ### Changed
 
 - when creating a new conversion project, users are asked 'what kind of academy

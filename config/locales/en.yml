@@ -82,6 +82,7 @@ en:
     external_contacts: External contacts
     internal_contacts: Internal contacts
     member_of_parliament: Member of Parliament
+    added_by_projects: Added by you
   pages:
     academies_api_client_timeout:
       title: Sorry, there was a problem

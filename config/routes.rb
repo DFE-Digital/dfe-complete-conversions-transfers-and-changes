@@ -131,6 +131,7 @@ Rails.application.routes.draw do
         namespace :user do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
+          get "added-by", to: "projects#added_by"
         end
         get "unassigned"
 
