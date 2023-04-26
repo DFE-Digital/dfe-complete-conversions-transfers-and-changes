@@ -37,6 +37,7 @@ RSpec.feature "Users can sign in to the application" do
       expect(page).to have_button(I18n.t("sign_in.button"))
       within(".flash") do
         expect(page).to have_content(I18n.t("sign_in.message.failure"))
+        expect(page).not_to have_css(".notice")
       end
     end
   end

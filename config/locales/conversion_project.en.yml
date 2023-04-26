@@ -15,8 +15,8 @@ en:
     voluntary:
       route: Voluntary
       new:
-        title: Add a new conversion project
-        hint_html: <p class="govuk-body">Enter the school and trust information.</p><p class="govuk-body">This will create a conversion project for a school that has been granted an Academy order.</p>
+        title: Add a conversion
+        hint_html: <p class="govuk-body">Enter information about the school, trust and the advisory board decision.</p><p class="govuk-body">This will create a new conversion project.</p>
       create:
         assigned_to_regional_delivery_officer:
           html:
@@ -44,8 +44,8 @@ en:
   helpers:
     label:
       conversion_project:
-        urn: School URN
-        incoming_trust_ukprn: Incoming trust UK Provider Reference Number (UKPRN)
+        urn: School URN (Unique Reference Number)
+        incoming_trust_ukprn: Incoming trust UKPRN (UK Provider Reference Number)
         caseworker_id: Caseworker
         regional_delivery_officer_id: Regional delivery officer
         advisory_board_conditions: Advisory board conditions
@@ -58,20 +58,18 @@ en:
     hint:
       conversion_project:
         urn: |
-          This is the URN of the existing school which is converting to an academy. A URN is a 6-digit number.
-          <br /><br />
-          <a href="https://www.get-information-schools.service.gov.uk/Search" class="govuk-link" rel="noreferrer noopener" target="_blank">Search Get Information About Schools (GIAS) to find the school's URN (opens in a new tab)</a>.
+          This is the URN of the existing school which is converting to an academy. A URN is a 6-digit number. You can find it in the advisory board template.
         incoming_trust_ukprn: |
           A UKPRN is an 8-digit number that always starts with a 1.
           <br /><br />
           <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in a new tab)</a>.
         caseworker_id: The caseworker responsible for this project
-        provisional_conversion_date: If you do not have a provisional date, enter a date that is at least six months after the advisory board. You can change this later.
+        provisional_conversion_date: You can find this in the advisory board template.
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
-        directive_academy_order: Has a Directive academy order been issued?
+        directive_academy_order: Has a directive academy order been issued?
   errors:
     attributes:
       conversion_date:
