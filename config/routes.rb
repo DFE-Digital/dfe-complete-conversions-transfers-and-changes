@@ -152,6 +152,11 @@ Rails.application.routes.draw do
     end
   end
 
+  scope :new_tasks do
+    get ":project_id/tasks/:task_identifier", to: "tasks#edit", as: :edit_task
+    put ":project_id/tasks/:task_identifier", to: "tasks#update", as: :update_task
+  end
+
   get "cookies", to: "cookies#edit"
   post "cookies", to: "cookies#update"
 

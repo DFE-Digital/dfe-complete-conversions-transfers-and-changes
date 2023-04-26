@@ -249,7 +249,7 @@ en:
         urn: |
           This is the URN of the existing school which is converting to an academy. A URN is a 6-digit number.
           <br /><br />
-          <a href="https://www.get-information-schools.service.gov.uk/Search" class="govuk-link" rel="noreferrer noopener" target="_blank">Search Get Information About Schools (GIAS) to find the school's URN (opens in new tab)</a>.
+          You can find the school URN in the advisory board template.
         incoming_trust_ukprn: |
           A UKPRN is an 8-digit number that always starts with a 1.
           <br/ ><br />
@@ -258,6 +258,7 @@ en:
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
+        advisory_board_date: You can find this in the advisory board template.
   errors:
     attributes:
       urn:

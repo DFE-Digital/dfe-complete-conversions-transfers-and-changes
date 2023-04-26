@@ -58,7 +58,6 @@ class Conversion::Involuntary::TaskList < TaskList::Base
     {
       identifier: :after_opening,
       tasks: [
-        Conversion::Involuntary::Tasks::TellRegionalDeliveryOfficer,
         Conversion::Involuntary::Tasks::RedactAndSend,
         Conversion::Involuntary::Tasks::UpdateEsfa,
         Conversion::Involuntary::Tasks::ReceiveGrantPaymentCertificate

@@ -5,7 +5,7 @@ en:
         school_completed:
           title: Confirm the school has completed all actions
           hint:
-            html: <p>Check the school have completed all their tasks and save their responses in the school's SharePoint folder.</p>
+            html: <p>Contact the school or trust to check the school have completed all their tasks. Save their responses in the school's SharePoint folder.</p>
 
           emailed:
             title: Email the main contact for the conversion
@@ -20,11 +20,11 @@ en:
             guidance_link: What to do if the school has not completed the tasks
             guidance:
               html:
-                <p class="govuk-body-m">Depending on the scale of the outstanding tasks, you may need to move the provisional conversion date to the next month, or later.</p>
+                <p class="govuk-body-m">Depending on the scale of the outstanding tasks, you may need to move the conversion date to the next month or later.</p>
                 <p class="govuk-body-m">If the conversion date needs to be moved, you must:</p>
                 <ol class="govuk-list govuk-list--number">
                   <li>inform the school of the outstanding tasks</li>
-                  <li>agree a new provisional conversion date with all stakeholders</li>
+                  <li>agree a new conversion date with all stakeholders</li>
                   <li>email the Academies Operational Practice Unit at <a href="mailto:academiesdelivery.operations@education.gov.uk" class="govuk-link" target="_blank">academiesdelivery.operations@education.gov.uk</a> with the new date</li>
                   <li>change the date in KIM</li>
                   <li>inform the regional delivery officer who started on this project</li>

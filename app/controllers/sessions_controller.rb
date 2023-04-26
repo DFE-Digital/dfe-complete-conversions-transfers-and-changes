@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
       redirect_to root_path
     else
-      redirect_to sign_in_path, notice: I18n.t("unknown_user.message", email_address: authenticated_user_email_address)
+      redirect_to sign_in_path, alert: I18n.t("unknown_user.message", email_address: authenticated_user_email_address)
     end
   end
 
