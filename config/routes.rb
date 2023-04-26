@@ -153,6 +153,7 @@ Rails.application.routes.draw do
   end
 
   scope :new_tasks do
+    get ":project_id/tasks", to: "conversions/tasks#index", as: :conversions_tasks
     get ":project_id/tasks/:task_identifier", to: "tasks#edit", as: :edit_task
     put ":project_id/tasks/:task_identifier", to: "tasks#update", as: :update_task
   end

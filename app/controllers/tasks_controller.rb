@@ -11,13 +11,10 @@ class TasksController < ApplicationController
 
     if @task.valid?
       @task.save
-      flash.now[:notice] = "Task saved successfully"
+      redirect_to conversions_tasks_path(@project), notice: t("task_list.save.success")
     else
-      flash.now[:alert] = "Task could not be saved"
+      render task_view
     end
-
-    @project.reload
-    render task_view
   end
 
   private def find_project

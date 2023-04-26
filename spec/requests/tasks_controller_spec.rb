@@ -20,7 +20,7 @@ RSpec.describe TasksController do
 
   describe "#update" do
     context "when the form is valid" do
-      it "updates the task attributes" do
+      it "updates the task attributes and redirects to the tasks index" do
         mock_successful_api_response_to_create_any_project
         project = create(:voluntary_conversion_project, assigned_to: user)
         params = {
@@ -40,7 +40,8 @@ RSpec.describe TasksController do
         expect(project.task_list.redact_and_send_send_redaction).to eql true
         expect(project.task_list.redact_and_send_save_redaction).to eql true
         expect(project.task_list.redact_and_send_send_solicitors).to eql true
-        expect(response.body).to include("Task saved successfully")
+
+        expect(response).to redirect_to(conversions_tasks_path(project))
       end
     end
 
@@ -53,7 +54,7 @@ RSpec.describe TasksController do
         put update_task_path(project, :redact_and_send)
 
         expect(response).to render_template "conversions/tasks/redact_and_send/edit"
-        expect(response.body).to include("Task could not be saved")
+        expect(project.task_list.redact_and_send_redact).to be_nil
       end
     end
   end
