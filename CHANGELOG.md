@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Corrected Legal Adviser's Office to Legal Advisors Office in trust
+  modification order task checkboxes
 - Added new guidance to project creation page so users know to find information
   in the advisory board template
 - Updated content in Confirm the school has completed all actions task so that
