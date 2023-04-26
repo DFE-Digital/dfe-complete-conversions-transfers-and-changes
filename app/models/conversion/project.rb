@@ -9,4 +9,10 @@ class Conversion::Project < Project
     return :sponsored if directive_academy_order?
     :voluntary
   end
+
+  def fetch_provisional_conversion_date
+    return conversion_date if conversion_dates.empty?
+
+    conversion_dates.order(:created_at).first.previous_date
+  end
 end
