@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- update to hint text in external stakeholder kick-off task so content works for
+  both sponsored and voluntary conversions
 - Corrected Legal Adviser's Office to Legal Advisors Office in trust
   modification order task checkboxes
 - Added new guidance to project creation page so users know to find information
