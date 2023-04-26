@@ -27,11 +27,17 @@ module ConversionDatable
   end
 
   private def month
-    attributes["confirmed_conversion_date(2i)"].to_i
+    month = attributes["confirmed_conversion_date(2i)"]
+    return if month.nil?
+
+    month.to_i
   end
 
   private def year
-    attributes["confirmed_conversion_date(1i)"].to_i
+    year = attributes["confirmed_conversion_date(1i)"]
+    return if year.nil?
+
+    year.to_i
   end
 
   private def valid_month?
