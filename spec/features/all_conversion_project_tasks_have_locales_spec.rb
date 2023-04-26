@@ -14,7 +14,7 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
     conditions_met conversion_grant deed_of_variation direction_to_transfer handover land_questionnaire land_registry
     master_funding_agreement one_hundred_and_twenty_five_year_lease receive_grant_payment_certificate redact_and_send
     school_completed share_information single_worksheet stakeholder_kick_off subleases supplemental_funding_agreement
-    tell_regional_delivery_officer tenancy_at_will trust_modification_order update_esfa]
+    tenancy_at_will trust_modification_order update_esfa]
   voluntary_tasks = involuntary_tasks + %w[sponsored_support_grant]
 
   context "involuntary project" do
