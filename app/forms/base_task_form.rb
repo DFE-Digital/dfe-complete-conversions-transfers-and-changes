@@ -6,8 +6,9 @@ class BaseTaskForm
     name.split("::").last.underscore.delete_suffix("_task_form")
   end
 
-  def initialize(tasks_data)
+  def initialize(tasks_data, user)
     @tasks_data = tasks_data
+    @user = user
     super(attributes_from_tasks_data)
   end
 

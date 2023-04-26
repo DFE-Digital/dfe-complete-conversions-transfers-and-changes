@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
+  let(:user) { create(:user) }
+
   describe "validations" do
     let(:form) { valid_form }
 
@@ -34,7 +36,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
     let(:project) { create(:conversion_project) }
 
     it "sets funding_agreement_contact to true" do
-      form = described_class.new(project.task_list)
+      form = described_class.new(project.task_list, user)
       form.assign_attributes(valid_form.attributes)
 
       expect { form.save }.to change { Contact.count }.by(1)
@@ -50,7 +52,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
     context "when there is no main contact for the project" do
       it "creates a new empty Contact" do
         project = create(:conversion_project)
-        form = described_class.new(project.task_list)
+        form = described_class.new(project.task_list, user)
 
         expect(form.name).to be_nil
         expect(form.email).to be_nil
@@ -61,7 +63,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
       it "loads the existing Contact" do
         project = create(:conversion_project)
         main_contact = create(:contact, funding_agreement_contact: true, project: project)
-        form = described_class.new(project.task_list)
+        form = described_class.new(project.task_list, user)
 
         expect(form.name).to eql main_contact.name
         expect(form.email).to eql main_contact.email
@@ -71,7 +73,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
 
   def valid_form
     tasks_data = Conversion::Voluntary::TaskList.new
-    form = described_class.new(tasks_data)
+    form = described_class.new(tasks_data, user)
 
     form.assign_attributes(
       name: "Jane Doe",
