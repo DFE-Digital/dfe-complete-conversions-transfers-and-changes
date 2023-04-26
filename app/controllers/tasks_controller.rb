@@ -15,6 +15,8 @@ class TasksController < ApplicationController
     else
       flash.now[:alert] = "Task could not be saved"
     end
+
+    @project.reload
     render task_view
   end
 
