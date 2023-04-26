@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.feature "Users can view local authority details" do
   let(:user) { create(:user, :caseworker) }
   let(:project) { create(:conversion_project, :with_conditions, caseworker: user) }
+  let(:local_authority) { create(:local_authority) }
 
   before do
     mock_successful_api_responses(urn: any_args, ukprn: any_args)
@@ -12,7 +13,14 @@ RSpec.feature "Users can view local authority details" do
 
   scenario "they can view the name" do
     within("#localAuthorityDetails") do
-      expect(page).to have_content(project.establishment.local_authority)
+      expect(page).to have_content(project.establishment.local_authority_name)
+    end
+  end
+
+  scenario "they can view the address" do
+    within("#localAuthorityDetails") do
+      expect(page).to have_content(local_authority.address_1)
+      expect(page).to have_content(local_authority.address_postcode)
     end
   end
 end

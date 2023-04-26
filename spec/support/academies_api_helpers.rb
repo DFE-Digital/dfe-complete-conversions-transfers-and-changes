@@ -21,10 +21,12 @@ module AcademiesApiHelpers
 
   def mock_successful_api_establishment_response(urn:, establishment: nil)
     establishment = build(:academies_api_establishment) if establishment.nil?
+    local_authority = build(:local_authority)
 
     fake_result = Api::AcademiesApi::Client::Result.new(establishment, nil)
     test_client = Api::AcademiesApi::Client.new
 
+    allow(establishment).to receive(:local_authority).and_return(local_authority)
     allow(test_client).to receive(:get_establishment).with(urn).and_return(fake_result)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end

@@ -217,6 +217,7 @@ en:
         title: Local authority details
         rows:
           local_authority: Local authority
+          address: Address
       diocese_details:
         title: Diocese details
         rows:

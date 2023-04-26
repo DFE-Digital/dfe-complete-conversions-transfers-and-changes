@@ -52,6 +52,9 @@ gem "faraday"
 gem "sentry-ruby"
 gem "sentry-rails"
 
+# postcode validator
+gem "uk_postcode", "~> 2.1.0"
+
 # application insights
 gem "application_insights"
 
