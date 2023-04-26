@@ -1,7 +1,6 @@
 en:
   conversion:
-    voluntary:
-      tasks:
+      task:
         redact_and_send:
           title: Redact and send documents
           hint:

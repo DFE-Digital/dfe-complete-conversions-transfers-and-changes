@@ -18,7 +18,7 @@
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :receive)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_lease)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@task_list).update? %>

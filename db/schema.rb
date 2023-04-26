@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_04_144130) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_20_132458) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -203,15 +203,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_04_144130) do
     t.boolean "school_completed_saved"
     t.boolean "conditions_met_confirm_all_conditions_met"
     t.boolean "redact_and_send_redact"
-    t.boolean "redact_and_send_save"
-    t.boolean "redact_and_send_send"
+    t.boolean "redact_and_send_save_redaction"
+    t.boolean "redact_and_send_send_redaction"
     t.boolean "update_esfa_update"
     t.boolean "receive_grant_payment_certificate_check_and_save"
     t.boolean "receive_grant_payment_certificate_update_kim"
     t.boolean "receive_grant_payment_certificate_update_sheet"
     t.boolean "one_hundred_and_twenty_five_year_lease_email"
     t.boolean "one_hundred_and_twenty_five_year_lease_receive"
-    t.boolean "one_hundred_and_twenty_five_year_lease_save"
+    t.boolean "one_hundred_and_twenty_five_year_lease_save_lease"
     t.boolean "subleases_received"
     t.boolean "subleases_cleared"
     t.boolean "subleases_signed"
