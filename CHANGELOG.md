@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added new guidance to project creation page so users know to find information
   in the advisory board template
 - Removed the "Tell the Regional Delivery Officer the school has opened" task
+- Update content in Share the grant certificate and information about opening
+  task to make it appropriate for both conversion types
 
 ## [Release 22][release-22]
 
