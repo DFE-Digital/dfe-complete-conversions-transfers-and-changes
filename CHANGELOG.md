@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Address subtle bug in Project creation, which meant two projects with the same
   URN were created in error
+- Notification banner when users email not recognised is no longer a success
+  banner.
 
 ### Added
 
