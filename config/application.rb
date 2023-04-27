@@ -42,7 +42,5 @@ module DfeCompleteConversionsTransfersAndChanges
 
     # use the cookie session and set the name of the cookie
     config.session_store :cookie_store, key: "SESSION"
-
-    # Application Insights
   end
 end

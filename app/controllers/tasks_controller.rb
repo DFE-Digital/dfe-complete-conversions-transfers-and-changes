@@ -15,6 +15,8 @@ class TasksController < ApplicationController
     else
       flash.now[:alert] = "Task could not be saved"
     end
+
+    @project.reload
     render task_view
   end
 
@@ -27,7 +29,7 @@ class TasksController < ApplicationController
   end
 
   private def find_task
-    @task = klass_from_path.new(@tasks_data)
+    @task = klass_from_path.new(@tasks_data, current_user)
   end
 
   private def task_params

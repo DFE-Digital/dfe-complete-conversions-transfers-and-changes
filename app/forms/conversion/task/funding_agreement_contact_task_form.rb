@@ -6,12 +6,13 @@ class Conversion::Task::FundingAgreementContactTaskForm < ::BaseTaskForm
   validates :name, :email, :title, presence: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
-  def initialize(tasks_data)
+  def initialize(tasks_data, user)
     @tasks_data = tasks_data
+    @user = user
     @project = tasks_data.project
     @contact = Contact.find_or_create_by(project: @project, funding_agreement_contact: true)
 
-    super(@tasks_data)
+    super(@tasks_data, @user)
 
     assign_attributes(
       name: @contact.name,
