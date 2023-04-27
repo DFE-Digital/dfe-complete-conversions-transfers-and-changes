@@ -29,9 +29,9 @@ en:
           received:
             title: Received
           sent_legal:
-            title: Sent to Legal Advisors Office
+            title: Sent to Legal Adviser's Office
           cleared:
-            title: Cleared by Legal Advisors Office
+            title: Cleared by Legal Adviser's Office
           saved:
             title: Saved in the school's SharePoint folder
           not_applicable:
