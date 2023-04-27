@@ -1,0 +1,23 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: conversions_path(@project)} %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: update_task_path(@project, @task.identifier), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_text_field :name, width: 20 %>
+      <%= form.govuk_text_field :title, width: 20 %>
+      <%= form.govuk_text_field :email, width: 20 %>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "conversions/shared/task_notes" %>
+  </div>
+</div>

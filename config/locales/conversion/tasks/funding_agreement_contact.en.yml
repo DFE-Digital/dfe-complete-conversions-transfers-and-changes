@@ -1,0 +1,26 @@
+en:
+  conversion:
+    task:
+      funding_agreement_contact:
+        title: Confirm who will get the funding agreement letters
+        hint:
+          html:
+            <p>For voluntary conversions, this person will most likely be from
+            the school. They will most likely be from the trust if this is a
+            sponsored conversion. It is not necessarily the person you contact
+            most.<p>
+  helpers:
+    label:
+      conversion_task_funding_agreement_contact_task_form:
+        name: Name
+        title: Role
+        email: Email
+  errors:
+    attributes:
+      name:
+        blank: Enter a full name
+      title:
+        blank: Enter a role
+      email:
+        blank: Enter an email address
+        invalid: Enter a valid email address
