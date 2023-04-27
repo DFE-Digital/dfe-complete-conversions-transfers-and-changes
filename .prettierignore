@@ -30,3 +30,4 @@
 /terraform
 /.idea/
 lib/generators/*/USAGE
+*.csv
