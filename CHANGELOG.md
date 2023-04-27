@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   URN were created in error
 - Notification banner when users email not recognised is no longer a success
   banner.
+- Fixed a bug where the project information page would not load if a Local
+  Authority was not found
 
 ### Added
 
