@@ -22,6 +22,7 @@ class BaseTaskForm
   end
 
   def status
+    return :not_applicable if not_applicable?
     return :completed if completed?
     return :in_progress if in_progress?
 
@@ -52,5 +53,9 @@ class BaseTaskForm
 
   private def completed?
     attributes.values.all?(&:present?)
+  end
+
+  private def not_applicable?
+    false
   end
 end
