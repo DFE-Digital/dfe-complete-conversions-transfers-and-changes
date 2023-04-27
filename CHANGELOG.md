@@ -35,6 +35,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Removed the "Tell the Regional Delivery Officer the school has opened" task
 - Update content in Share the grant certificate and information about opening
   task to make it appropriate for both conversion types
+- Update hint text copy in Receive grant payment certificate to make it
+  applicable to both voluntary and sponsored conversions
 
 ## [Release 22][release-22]
 

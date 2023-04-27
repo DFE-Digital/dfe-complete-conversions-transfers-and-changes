@@ -5,7 +5,7 @@ en:
         receive_grant_payment_certificate:
           title: Receive grant payment certificate
           hint:
-            html: <p>You should already have sent a copy of the <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">grant payment certificate (opens in new tab)</a> when confirming the opening date.</p>
+            html: <p>You should already have sent a copy of the <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">grant payment certificate (opens in new tab)</a> when confirming the academy's opening date.</p>
 
           check_and_save:
             title: Check and save the grant payment certificate in the school's SharePoint folder
