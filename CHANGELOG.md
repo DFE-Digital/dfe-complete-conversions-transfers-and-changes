@@ -31,6 +31,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Updated content in Confirm the school has completed all actions task so that
   it applies to both types of conversion
 - Removed the "Tell the Regional Delivery Officer the school has opened" task
+- Update content in Share the grant certificate and information about opening
+  task to make it appropriate for both conversion types
 
 ## [Release 22][release-22]
 

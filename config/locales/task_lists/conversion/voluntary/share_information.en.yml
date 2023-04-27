@@ -6,11 +6,11 @@ en:
           title: Share the grant certificate and information about opening
           hint:
             html:
-              <p>Once you have confirmed that all conditions have been met, contact the school and trust to tell them they can convert on the provisional conversion date.</p>
+              <p>Once you have confirmed that all conditions have been met, email your main contact at the school or trust to tell them the conversion will happen on the agreed date.</p>
 
           email:
             title: Email relevant information to your main contact
-            guidance_link: What to tell the school
+            guidance_link: What to tell the school or trust
             guidance:
               html:
                 <p>Email your main contact at the school or trust.</p>
