@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 23][release-23]
+
 ### Fixed
 
 - Address subtle bug in Project creation, which meant two projects with the same
@@ -805,7 +807,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-22...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-23...HEAD
+[release-23]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-22...release-23
 [release-22]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-21...release-22
 [release-21]:
