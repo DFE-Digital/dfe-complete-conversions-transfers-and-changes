@@ -72,23 +72,25 @@ Rails.application.routes.draw do
     post "conversion-date", to: "/conversions/date_histories#create"
   end
 
-  namespace :conversions do
-    get "/", to: "/conversions/projects#index"
-    namespace :voluntary do
-      get "/", to: "/conversions/voluntary/projects#index"
-      get "projects/:id", to: "/conversions/voluntary/projects#show", constraints: {id: VALID_UUID_REGEX}, as: :project
+  constraints(id: VALID_UUID_REGEX) do
+    namespace :conversions do
+      get "/", to: "/conversions/projects#index"
+      namespace :voluntary do
+        get "/", to: "/conversions/voluntary/projects#index"
+        get "projects/:id", to: "/conversions/voluntary/projects#show", as: :project
 
-      resources :projects,
-        only: %i[new create],
-        concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable]
-    end
-    namespace :involuntary do
-      get "/", to: "/conversions/involuntary/projects#index"
-      get "projects/:id", to: "/conversions/involuntary/projects#show", constraints: {id: VALID_UUID_REGEX}, as: :project
+        resources :projects,
+          only: %i[new create],
+          concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable]
+      end
+      namespace :involuntary do
+        get "/", to: "/conversions/involuntary/projects#index"
+        get "projects/:id", to: "/conversions/involuntary/projects#show", as: :project
 
-      resources :projects,
-        only: %i[new create],
-        concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable]
+        resources :projects,
+          only: %i[new create],
+          concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable]
+      end
     end
   end
 
