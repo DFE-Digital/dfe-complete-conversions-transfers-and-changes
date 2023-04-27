@@ -91,3 +91,6 @@
 /.github/
 ### git stuff
 /.git/
+
+### Allow local authority seeds
+!db/seeds/local_authorities.csv
