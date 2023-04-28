@@ -94,7 +94,6 @@ tmp/
 
 # Dependencies
 /Brewfile.lock.json
-/.bundle/
 /node_modules/
 /vendor/bundle/
 

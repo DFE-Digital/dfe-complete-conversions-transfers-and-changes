@@ -1,0 +1,2 @@
+---
+BUNDLE_BUILD__TINY_TDS: "--with-freetds-include=/opt/homebrew/include --with-freetds-lib=/opt/homebrew/lib"
