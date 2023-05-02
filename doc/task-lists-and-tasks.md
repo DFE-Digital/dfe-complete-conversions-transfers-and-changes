@@ -132,6 +132,12 @@ Each task and action has a predefined set of locale keys which will be used
 based on the naming conventions, see existing task locale files for more
 details.
 
+And for the new task model:
+
+```
+bin/rails generate conversion:task TaskName
+```
+
 ### A note on notes
 
 As there is no database representation of a task - the task identifier - its
