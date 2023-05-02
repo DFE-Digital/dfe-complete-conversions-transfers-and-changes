@@ -17,6 +17,7 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::LandQuestionnaireTaskForm,
           Conversion::Task::LandRegistryTaskForm,
           Conversion::Task::SupplementalFundingAgreementTaskForm,
+          Conversion::Task::ChurchSupplementalAgreementTaskForm,
           Conversion::Task::ArticlesOfAssociationTaskForm
         ]
       },
