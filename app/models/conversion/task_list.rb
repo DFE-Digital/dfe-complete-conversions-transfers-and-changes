@@ -6,6 +6,7 @@ class Conversion::TaskList < ::BaseTaskList
         tasks: [
           Conversion::Task::HandoverTaskForm,
           Conversion::Task::StakeholderKickOffTaskForm,
+          Conversion::Task::ConversionGrantTaskForm,
           Conversion::Task::FundingAgreementContactTaskForm
         ]
       },

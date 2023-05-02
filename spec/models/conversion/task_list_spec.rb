@@ -8,6 +8,7 @@ RSpec.describe Conversion::TaskList do
       converison_task_list_identifiers = [
         :handover,
         :stakeholder_kick_off,
+        :conversion_grant,
         :funding_agreement_contact,
         :articles_of_association,
         :redact_and_send
@@ -26,6 +27,7 @@ RSpec.describe Conversion::TaskList do
             tasks: [
               Conversion::Task::HandoverTaskForm,
               Conversion::Task::StakeholderKickOffTaskForm,
+              Conversion::Task::ConversionGrantTaskForm,
               Conversion::Task::FundingAgreementContactTaskForm
             ]
           },
@@ -66,7 +68,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 5
+      expect(task_list.tasks.count).to eql 6
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::RedactAndSendTaskForm
     end
