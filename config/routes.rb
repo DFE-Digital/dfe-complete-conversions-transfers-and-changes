@@ -160,6 +160,8 @@ Rails.application.routes.draw do
     put ":project_id/tasks/:task_identifier", to: "tasks#update", as: :update_task
   end
 
+  resources :local_authorities, path: "local-authorities"
+
   get "cookies", to: "cookies#edit"
   post "cookies", to: "cookies#update"
 

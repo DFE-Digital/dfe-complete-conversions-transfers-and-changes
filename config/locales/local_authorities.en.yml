@@ -1,0 +1,14 @@
+en:
+  local_authority:
+    index:
+      title: Local Authorities
+      headers:
+        name: Name
+        view: View details
+      view_details_html:  View <span class="govuk-visually-hidden">%{local_authority}</span> details
+    edit:
+      change_details: Change details for local authority
+    show:
+      code: Code
+      address: Address
+      edit: Edit

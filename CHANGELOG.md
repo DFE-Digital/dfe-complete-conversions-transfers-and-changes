@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - User can provide the new academy urn once it has be created in Get information
   about schools
 - Added a new list of all projects with Academy URNs
+- Display local authorities and their details
 
 ### Changed
 

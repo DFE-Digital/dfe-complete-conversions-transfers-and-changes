@@ -1,0 +1,19 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <%= @local_authority.name %>
+    </h1>
+
+    <%= govuk_summary_list(actions: false) do |summary_list|
+          summary_list.row do |row|
+            row.key { t("local_authority.show.code") }
+            row.value { @local_authority.code }
+          end
+          summary_list.row do |row|
+            row.key { t("local_authority.show.address") }
+            row.value { address_markup(@local_authority.address) }
+          end
+        end %>
+    <%= govuk_link_to t("local_authority.show.edit"), edit_local_authority_path(@local_authority) %>
+  </div>
+</div>
