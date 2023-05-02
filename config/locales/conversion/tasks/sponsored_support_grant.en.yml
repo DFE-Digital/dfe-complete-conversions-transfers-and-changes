@@ -1,0 +1,105 @@
+en:
+  conversion:
+    task:
+      sponsored_support_grant:
+        title: Process the sponsored support grant
+        hint:
+          html:
+            <p>Start this as soon as possible. Trusts can start getting charged by solicitors and the local authority early in the process.</p>
+
+        eligibility:
+          title: Check and confirm the school's grant eligibility
+          hint:
+            html:
+              <p>Confirm if the trust will receive the fast track, intermediate or full sponsored grant.</p>
+          guidance_link: How to check grant eligibility
+          guidance:
+            html:
+              <p>All schools that are issued a directive academy order are allocated
+              to an experienced trust. These trusts are also known as sponsors.</p>
+              <p>In most cases, the sponsor is entitled to the fast track grant.</p>
+              <p>The sponsor will get:</p>
+              <ul>
+              <li>£70,000 for primary and special schools</li>
+              <li>£80,000 for secondary and all-through schools</li>
+              </ul>
+              <p>In some circumstances, the sponsor might be entitled to a larger
+              grant.</p>
+              <p>This would be the intermediate grant, or the full sponsored grant.</p>
+              <p>Intermediate grant amounts are:</p>
+              <ul>
+              <li>£90,000 for primary and special schools</li>
+              <li>£115,000 for secondary and all-through schools</li>
+              </ul>
+              <p>Full sponsored grant amounts are:</p>
+              <ul>
+              <li>£110,000 for primary and special schools</li>
+              <li>£150,000 secondary and all-through schools</li>
+              </ul>
+              <p>All grants include the £25,000 conversion grant. This is used to fund
+              conversion costs, such as legal expenses. Any amount left after
+              conversion costs have been paid for should be used for school
+              improvements.</p>
+              <p>A business case must be approved at advisory board, or by the regional
+              director, for a trust to get the intermediate or full sponsored grant.</p>
+              <p>There is more <a href="https://www.gov.uk/government/publications/sponsored-academies-funding-guidance-for-sponsors" class="govuk-link" target="_blank">guidance on grant eligibility and spending (opens in
+              new tab)</a> on GOV.UK.</p>
+
+        payment_amount:
+          title: Tell the trust how much they are entitled to and how to claim the grant
+          guidance_link: How to claim different grants
+          guidance:
+            html:
+              <p>The sponsor can claim for the fast track grant first, then apply for
+              a top-up later through an intermediate or full sponsored grant.</p>
+              <p>The trust will need to complete and return the <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/WorkplaceDocuments/ARDG%20Internal%20Guidance/Archive_April_2020/Pre-Opening_Funding_Grant_Letter_Claim_Form_Annex_1.docx?d=w6bce8b5b84d841dd977af39eb2191afd&amp;csf=1&amp;web=1&amp;e=h02JhV" class="govuk-link" target="_blank">grant claim form
+              (opens in new tab)</a> to claim the fast track grant. Share the form with them.</p>
+              <p>There is <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Funding-and-Finance.aspx?xsdata=MDV8MDF8fGIzMTZmYzk3NGM2NjQ5OTg0NTNlMDhkYWQ4NTcyMjc2fGZhZDI3N2M5YzYwYTRkYTFiNWYzYjNiOGIzNGE4MmY5fDB8MHw2MzgwNjAxNjU5NzgyNzcxODJ8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKV0lqb2lNQzR3TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazkwYUdWeUlpd2lWMVFpT2pFeGZRPT18MXxNVFkzTURReE9UYzVOamcwTnpzeE5qY3dOREU1TnprMk9EUTNPekU1T20xbFpYUnBibWRmVFhwck1GcHFhRzFPYWxWMFRYcHJNMWxUTURCTk1sSnBURmRGTWsxcVRYUmFSMVV6VGtSRmQxbDZSbTFaTWxFMFFIUm9jbVZoWkM1Mk1nPT18Y2I5OTQ1ODRkNzdiNDY3ODQ1M2UwOGRhZDg1NzIyNzZ8NDA4ZDc0YWZkZmYyNDY2MWIxNzU3OTYzNmQ0MGRkMmE%3D&amp;sdata=SFhTMGxCRWVUQkxvTHRTQmp0emVrUlNHREVQdTlEQjFCMlYzSEY3WlR4dz0%3D&amp;ovuser=fad277c9-c60a-4da1-b5f3-b3b8b34a82f9%2CJoanna.EVANS%40EDUCATION.GOV.UK&amp;OR=Teams-HL&amp;CT=1670513971254&amp;clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIxNDE1LzIyMTEzMDA0MTAwIiwiSGFzRmVkZXJhdGVkVXNlciI6ZmFsc2V9" class="govuk-link" target="_blank">guidance about how to claim different grants (opens in new
+              tab)</a> in SharePoint that explains how a trust can claim the intermediate and full sponsored grants.</p>
+
+        payment_form:
+          title: Receive, check and save the converter support grant claim form in the school's SharePoint folder
+          hint:
+            html:
+              <p>Make sure no information is missing.</p>
+          guidance_link: How to check and save the form
+          guidance:
+            html:
+              <p>The trust must send you the grant claim form.</p>
+              <p>Check it's complete and save it in the school's SharePoint folder.</p>
+
+        send_information:
+          title: Send the grant information to the payments team
+          hint:
+            html:
+              <p>Send them the academy order and grant claim form.</p>
+          guidance_link: Guidance on what information to send
+          guidance:
+            html:
+              <p>You'll find the directive academy order and grant claim form in the
+              school's SharePoint folder.</p>
+              <p>You should send the documents to the Grant Payments team by email at
+              <a href="mailto:cfugrantpayments.regionsgroup@education.gov.uk" class="govuk-link" target="_blank">cfugrantpayments.regionsgroup@education.gov.uk</a>.</p>
+              <p>The subject line of the email must include the:</p>
+              <ul class="govuk-list govuk-list--bullet">
+              <li>region the school is in</li>
+              <li>converter grant type</li>
+              <li>support grant type</li>
+              <li>school's name</li>
+              </ul>
+              <p>The content of the email must include the:</p>
+              <ul class="govuk-list govuk-list--bullet">
+              <li>type of grant, or grants, needed</li>
+              <li>amount of money the school is eligible for</li>
+              <li>school's name</li>
+              <li>trust it's joining</li>
+              <li>provisional conversion date</li>
+              </ul>
+              <p>It's helpful to include the school or trust's vendor account number
+              too. The Grant Payments team will need this to be able to send the
+              money to whoever will receive it.</p>
+
+        inform_trust:
+          title: Tell the trust the grant information as been sent
+        not_applicable:
+          title: Not applicable
