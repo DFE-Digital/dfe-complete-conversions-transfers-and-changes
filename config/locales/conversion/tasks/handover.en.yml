@@ -1,0 +1,41 @@
+en:
+  conversion:
+    task:
+      handover:
+        title: Handover with regional delivery officer
+
+        not_applicable:
+          title: Not applicable
+
+        review:
+          title: Review the project information, check the documents and carry out research
+          hint:
+            html: <p>Check that no information is missing from the existing project documents and there are no errors.</p>
+          guidance_link: What to check for
+          guidance:
+            html:
+              <p>You should check existing project documents, including:</p>
+              <ul>
+                <li>academy order</li>
+                <li>application to convert</li>
+              </ul>
+              <p>Check that no information is missing and there are no errors. You should also research the background of the project before you meet with the regional delivery officer.</p>
+              <p>Things to check during your background research include:</p>
+              <ul>
+                <li>project information, such as advisory board conditions</li>
+                <li>school or trust website for more information about the school</li>
+                <li>Google Maps for potential land issues</li>
+              </ul>
+
+        notes:
+          title: Make notes and write questions to ask the regional delivery officer
+          guidance_link: What to make notes about
+          guidance:
+            html:
+              <p>Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.</p>
+              <p>This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.</p>
+
+        meeting:
+          title: Attend handover meeting with regional delivery officer
+          hint:
+            html: <p>Discuss any questions you have about the project in the meeting.</p>

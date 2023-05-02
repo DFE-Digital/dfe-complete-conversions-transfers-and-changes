@@ -4,6 +4,7 @@ class Conversion::TaskList < ::BaseTaskList
       {
         identifier: :project_kick_off,
         tasks: [
+          Conversion::Task::HandoverTaskForm,
           Conversion::Task::StakeholderKickOffTaskForm,
           Conversion::Task::FundingAgreementContactTaskForm
         ]

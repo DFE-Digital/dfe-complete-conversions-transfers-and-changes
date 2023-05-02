@@ -6,6 +6,7 @@ RSpec.describe Conversion::TaskList do
   describe ".identifiers" do
     it "returns all the identifiers for the tasks in the list" do
       converison_task_list_identifiers = [
+        :handover,
         :stakeholder_kick_off,
         :funding_agreement_contact,
         :articles_of_association,
@@ -23,6 +24,7 @@ RSpec.describe Conversion::TaskList do
           {
             identifier: :project_kick_off,
             tasks: [
+              Conversion::Task::HandoverTaskForm,
               Conversion::Task::StakeholderKickOffTaskForm,
               Conversion::Task::FundingAgreementContactTaskForm
             ]
@@ -64,8 +66,8 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 4
-      expect(task_list.tasks.first).to be_a Conversion::Task::StakeholderKickOffTaskForm
+      expect(task_list.tasks.count).to eql 5
+      expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::RedactAndSendTaskForm
     end
   end
