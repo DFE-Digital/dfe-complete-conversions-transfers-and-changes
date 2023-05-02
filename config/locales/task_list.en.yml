@@ -2,3 +2,5 @@ en:
   task_list:
     continue_button:
       text: Save and return
+    save:
+      success: Task updated sucessfully
