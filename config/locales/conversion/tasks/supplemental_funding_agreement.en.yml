@@ -1,0 +1,40 @@
+en:
+  conversion:
+    voluntary:
+      tasks:
+        supplemental_funding_agreement:
+          title: Supplemental funding agreement
+          hint:
+            html: <p>Check the supplemental funding agreement for changes from the model documents.</p>
+          clear_section:
+            title: Check and clear the supplemental funding agreement
+            hint:
+              html:
+                <p>You can <a href="https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements" class="govuk-link" target="_blank">view the model documents (opens in new tab)</a> to check for changes.</p>
+            guidance_link: Help checking the supplemental funding agreement
+            guidance:
+              html:
+                <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+                <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+                <p>We only accept new supplemental funding agreements that use the 2020 edition of the model documents.</p>
+                <p>Master funding agreements from 2018 onwards are compatible with supplemental funding agreements from 2020 onwards.</p>
+
+          sign_section:
+            title: Signed by the Secretary of State
+            hint:
+              html:
+                <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the supplemental funding agreement.</p>
+                <p>Usually this is your team leader or the deputy director.</p>
+
+          received:
+            title: Received
+          cleared:
+            title: Cleared
+          signed:
+            title: Signed by school or trust
+          saved:
+            title: Saved in the school's SharePoint folder
+          sent:
+            title: Sent to team leader or deputy director
+          signed_secretary_state:
+            title: Document signed on behalf of the Secretary of State
