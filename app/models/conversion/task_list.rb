@@ -14,6 +14,7 @@ class Conversion::TaskList < ::BaseTaskList
       {
         identifier: :legal_documents,
         tasks: [
+          Conversion::Task::LandQuestionnaireTaskForm,
           Conversion::Task::ArticlesOfAssociationTaskForm
         ]
       },
