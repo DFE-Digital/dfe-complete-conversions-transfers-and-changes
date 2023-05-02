@@ -19,7 +19,8 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::SupplementalFundingAgreementTaskForm,
           Conversion::Task::ChurchSupplementalAgreementTaskForm,
           Conversion::Task::MasterFundingAgreementTaskForm,
-          Conversion::Task::ArticlesOfAssociationTaskForm
+          Conversion::Task::ArticlesOfAssociationTaskForm,
+          Conversion::Task::DeedOfVariationTaskForm
         ]
       },
       {

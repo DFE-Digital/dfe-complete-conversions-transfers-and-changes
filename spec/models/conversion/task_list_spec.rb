@@ -17,6 +17,7 @@ RSpec.describe Conversion::TaskList do
         :church_supplemental_agreement,
         :master_funding_agreement,
         :articles_of_association,
+        :deed_of_variation,
         :redact_and_send
       ]
 
@@ -46,7 +47,8 @@ RSpec.describe Conversion::TaskList do
               Conversion::Task::SupplementalFundingAgreementTaskForm,
               Conversion::Task::ChurchSupplementalAgreementTaskForm,
               Conversion::Task::MasterFundingAgreementTaskForm,
-              Conversion::Task::ArticlesOfAssociationTaskForm
+              Conversion::Task::ArticlesOfAssociationTaskForm,
+              Conversion::Task::DeedOfVariationTaskForm
             ]
           },
           {
@@ -80,7 +82,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 12
+      expect(task_list.tasks.count).to eql 13
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::RedactAndSendTaskForm
     end
