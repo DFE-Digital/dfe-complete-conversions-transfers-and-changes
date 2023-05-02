@@ -20,7 +20,8 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::ChurchSupplementalAgreementTaskForm,
           Conversion::Task::MasterFundingAgreementTaskForm,
           Conversion::Task::ArticlesOfAssociationTaskForm,
-          Conversion::Task::DeedOfVariationTaskForm
+          Conversion::Task::DeedOfVariationTaskForm,
+          Conversion::Task::TrustModificationOrderTaskForm
         ]
       },
       {
