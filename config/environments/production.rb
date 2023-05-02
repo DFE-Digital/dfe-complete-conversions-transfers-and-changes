@@ -104,6 +104,9 @@ Rails.application.configure do
 
   # Use Application Insights if a key is available
   if (key = ENV.fetch("APPLICATION_INSIGHTS_KEY", nil))
+    # send task intrumentation
     config.middleware.use ApplicationInsights::Rack::TrackRequest, key, 500, 60
+    # send unhandled exceptions
+    ApplicationInsights::UnhandledException.collect(key)
   end
 end
