@@ -120,6 +120,9 @@ en:
         added_by: Added by
         conversion_date: Conversion date
         revised_conversion_date: Revised conversion date
+        route: Route
+        school_phase: School phase
+        school_type: School type
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
