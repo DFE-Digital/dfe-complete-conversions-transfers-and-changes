@@ -20,6 +20,7 @@ RSpec.describe Conversion::TaskList do
         :deed_of_variation,
         :trust_modification_order,
         :direction_to_transfer,
+        :one_hundred_and_twenty_five_year_lease,
         :redact_and_send
       ]
 

@@ -1,0 +1,19 @@
+en:
+  conversion:
+    task:
+      one_hundred_and_twenty_five_year_lease:
+        title: 125 year lease
+        hint:
+          html: <p>The 125 year lease is the most common way for land to be transferred between the local authority and the trust.</p>
+
+        confirm_section:
+          title: Confirm the 125 year lease has been signed
+
+        email:
+          title: Email the solicitors to ask if all relevant parties have agreed and signed the 125 year lease
+        receive:
+          title: Receive email from the solicitors confirming all relevant parties have agreed and signed the 125 year lease
+        save_lease:
+          title: Save a copy of the confirmation email in the school's SharePoint folder
+        not_applicable:
+          title: Not applicable
