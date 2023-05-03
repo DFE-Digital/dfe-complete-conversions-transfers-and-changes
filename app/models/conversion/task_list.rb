@@ -23,7 +23,8 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::DeedOfVariationTaskForm,
           Conversion::Task::TrustModificationOrderTaskForm,
           Conversion::Task::DirectionToTransferTaskForm,
-          Conversion::Task::OneHundredAndTwentyFiveYearLeaseTaskForm
+          Conversion::Task::OneHundredAndTwentyFiveYearLeaseTaskForm,
+          Conversion::Task::SubleasesTaskForm
         ]
       },
       {
