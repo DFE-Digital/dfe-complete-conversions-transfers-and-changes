@@ -1,0 +1,23 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <%= t("local_authority.edit.change_details", local_authority: @local_authority.name) %>
+    </h1>
+
+    <%= form_for @local_authority, url: local_authority_path(@local_authority), method: :patch do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_text_field :code, label: {size: "m", text: t("local_authority.edit.code")}, width: 10 %>
+      <%= form.govuk_text_field :address_1, label: {size: "m", text: t("local_authority.edit.line_1")}, width: 20 %>
+      <%= form.govuk_text_field :address_2, label: {size: "m", text: t("local_authority.edit.line_2")}, width: 20 %>
+      <%= form.govuk_text_field :address_3, label: {size: "m", text: t("local_authority.edit.line_3")}, width: 20 %>
+      <%= form.govuk_text_field :address_town, label: {size: "m", text: t("local_authority.edit.town")}, width: 20 %>
+      <%= form.govuk_text_field :address_county, label: {size: "m", text: t("local_authority.edit.county")}, width: 20 %>
+      <%= form.govuk_text_field :address_postcode, label: {size: "m", text: t("local_authority.edit.postcode")}, width: 20 %>
+
+      <%= form.govuk_submit t("local_authority.edit.save_and_return") do %>
+        <%= govuk_link_to t("cancel"), local_authority_path(@local_authority) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

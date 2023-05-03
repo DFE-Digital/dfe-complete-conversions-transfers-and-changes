@@ -14,6 +14,10 @@
             row.value { address_markup(@local_authority.address) }
           end
         end %>
-    <%= govuk_link_to t("local_authority.show.edit"), edit_local_authority_path(@local_authority) %>
+    <div class="govuk-button-group">
+      <%= govuk_button_link_to t("local_authority.show.edit"), edit_local_authority_path(@local_authority) %>
+      <%= govuk_link_to t("local_authority.show.back"), local_authorities_path %>
+    </div>
+
   </div>
 </div>
