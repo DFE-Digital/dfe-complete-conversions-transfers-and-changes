@@ -58,6 +58,6 @@ class TasksController < ApplicationController
   end
 
   private def task_klass_identifier
-    task_identifier.underscore.classify
+    task_identifier.underscore.camelize
   end
 end
