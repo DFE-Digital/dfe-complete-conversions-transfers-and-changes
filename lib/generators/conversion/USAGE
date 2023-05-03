@@ -1,0 +1,16 @@
+Description:
+    Generates the files for a new conversion task, `TaskForm` is appended to the class name
+    when necessary, do not include it.
+
+Example:
+    bin/rails generate conversion:task TaskName
+
+    This will create:
+        app/form/conversion/voluntary/tasks/task_name_task_form.rb
+        app/views/conversion/tasks/task_name/edit.html.erb
+        config/locales/conversion/tasks/task_name.en.yml
+        db/migrate/<datetime>_add_conversion_task_name_task_attributes
+
+    Add the attributes to the migration and remember to prefix the names with the task name e.g. task_name_attribute_name.
+
+    Add the new task to the Conversion::TaskList to include the new task in the task list.
