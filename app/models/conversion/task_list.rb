@@ -34,13 +34,15 @@ class Conversion::TaskList < ::BaseTaskList
         tasks: [
           Conversion::Task::SingleWorksheetTaskForm,
           Conversion::Task::SchoolCompletedTaskForm,
-          Conversion::Task::ConditionsMetTaskForm
+          Conversion::Task::ConditionsMetTaskForm,
+          Conversion::Task::ShareInformationTaskForm
         ]
       },
       {
         identifier: :after_opening,
         tasks: [
-          Conversion::Task::RedactAndSendTaskForm
+          Conversion::Task::RedactAndSendTaskForm,
+          Conversion::Task::UpdateEsfaTaskForm
         ]
       }
     ]

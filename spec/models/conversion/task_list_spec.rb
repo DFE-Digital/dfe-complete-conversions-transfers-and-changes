@@ -27,7 +27,9 @@ RSpec.describe Conversion::TaskList do
         :single_worksheet,
         :school_completed,
         :conditions_met,
-        :redact_and_send
+        :share_information,
+        :redact_and_send,
+        :update_esfa
       ]
 
       expect(described_class.identifiers).to eql converison_task_list_identifiers
@@ -72,13 +74,15 @@ RSpec.describe Conversion::TaskList do
             tasks: [
               Conversion::Task::SingleWorksheetTaskForm,
               Conversion::Task::SchoolCompletedTaskForm,
-              Conversion::Task::ConditionsMetTaskForm
+              Conversion::Task::ConditionsMetTaskForm,
+              Conversion::Task::ShareInformationTaskForm
             ]
           },
           {
             identifier: :after_opening,
             tasks: [
-              Conversion::Task::RedactAndSendTaskForm
+              Conversion::Task::RedactAndSendTaskForm,
+              Conversion::Task::UpdateEsfaTaskForm
             ]
           }
         ]
@@ -102,9 +106,9 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 22
+      expect(task_list.tasks.count).to eql 24
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
-      expect(task_list.tasks.last).to be_a Conversion::Task::RedactAndSendTaskForm
+      expect(task_list.tasks.last).to be_a Conversion::Task::UpdateEsfaTaskForm
     end
   end
 end
