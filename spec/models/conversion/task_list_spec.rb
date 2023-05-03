@@ -22,6 +22,7 @@ RSpec.describe Conversion::TaskList do
         :direction_to_transfer,
         :one_hundred_and_twenty_five_year_lease,
         :subleases,
+        :tenancy_at_will,
         :redact_and_send
       ]
 
@@ -56,7 +57,8 @@ RSpec.describe Conversion::TaskList do
               Conversion::Task::TrustModificationOrderTaskForm,
               Conversion::Task::DirectionToTransferTaskForm,
               Conversion::Task::OneHundredAndTwentyFiveYearLeaseTaskForm,
-              Conversion::Task::SubleasesTaskForm
+              Conversion::Task::SubleasesTaskForm,
+              Conversion::Task::TenancyAtWillTaskForm
             ]
           },
           {
@@ -90,7 +92,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 17
+      expect(task_list.tasks.count).to eql 18
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::RedactAndSendTaskForm
     end

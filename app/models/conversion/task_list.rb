@@ -24,7 +24,8 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::TrustModificationOrderTaskForm,
           Conversion::Task::DirectionToTransferTaskForm,
           Conversion::Task::OneHundredAndTwentyFiveYearLeaseTaskForm,
-          Conversion::Task::SubleasesTaskForm
+          Conversion::Task::SubleasesTaskForm,
+          Conversion::Task::TenancyAtWillTaskForm
         ]
       },
       {
