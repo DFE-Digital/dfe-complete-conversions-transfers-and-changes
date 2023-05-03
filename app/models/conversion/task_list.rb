@@ -21,7 +21,8 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::MasterFundingAgreementTaskForm,
           Conversion::Task::ArticlesOfAssociationTaskForm,
           Conversion::Task::DeedOfVariationTaskForm,
-          Conversion::Task::TrustModificationOrderTaskForm
+          Conversion::Task::TrustModificationOrderTaskForm,
+          Conversion::Task::DirectionToTransferTaskForm
         ]
       },
       {
