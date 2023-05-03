@@ -31,7 +31,9 @@ class Conversion::TaskList < ::BaseTaskList
       },
       {
         identifier: :get_ready_for_opening,
-        tasks: []
+        tasks: [
+          Conversion::Task::SingleWorksheetTaskForm
+        ]
       },
       {
         identifier: :after_opening,
