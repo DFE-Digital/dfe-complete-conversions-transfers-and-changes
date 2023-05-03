@@ -33,7 +33,8 @@ class Conversion::TaskList < ::BaseTaskList
         identifier: :get_ready_for_opening,
         tasks: [
           Conversion::Task::SingleWorksheetTaskForm,
-          Conversion::Task::SchoolCompletedTaskForm
+          Conversion::Task::SchoolCompletedTaskForm,
+          Conversion::Task::ConditionsMetTaskForm
         ]
       },
       {
