@@ -29,7 +29,8 @@ RSpec.describe Conversion::TaskList do
         :conditions_met,
         :share_information,
         :redact_and_send,
-        :update_esfa
+        :update_esfa,
+        :receive_grant_payment_certificate
       ]
 
       expect(described_class.identifiers).to eql converison_task_list_identifiers
@@ -82,7 +83,8 @@ RSpec.describe Conversion::TaskList do
             identifier: :after_opening,
             tasks: [
               Conversion::Task::RedactAndSendTaskForm,
-              Conversion::Task::UpdateEsfaTaskForm
+              Conversion::Task::UpdateEsfaTaskForm,
+              Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
             ]
           }
         ]
@@ -106,9 +108,9 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 24
+      expect(task_list.tasks.count).to eql 25
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
-      expect(task_list.tasks.last).to be_a Conversion::Task::UpdateEsfaTaskForm
+      expect(task_list.tasks.last).to be_a Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
     end
   end
 end
