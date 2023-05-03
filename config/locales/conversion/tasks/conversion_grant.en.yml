@@ -1,0 +1,64 @@
+en:
+  conversion:
+    task:
+      conversion_grant:
+        title:  Process conversion grant
+        guidance_link: How to process a conversion grant
+        guidance:
+          html:
+            <p>Check the grant claim form is ready, the school or trust has a vendor account and send the correct information to the Grant Payments team.</p>
+            <p>Start this as soon as possible. Schools and trusts can start getting charged by solicitors and the local authority early in the process.</p>
+
+        check_vendor_account:
+          title: Check the school or trust have a vendor account
+          hint:
+            html:
+              <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00083/SitePages/Set-up-and-mainta.aspx" target="_blank">check if the school or trust has a vendor account (opens in new tab)</a> on SharePoint.</p>
+          guidance_link: How to set up a vendor account
+          guidance:
+            html:
+              <p>The school or trust receiving the conversion grant must have a vendor account.</p>
+              <p>Schools and trusts can <a href="https://www.gov.uk/guidance/provide-information-about-your-banking-and-payments-to-dfe" class="govuk-link" target="_blank">set up a vendor account (opens in new tab)</a> when they provide information about their banking and payments to Department for Education.</p>
+              <p>Share the link with them so they can register if needed.</p>
+              <p>It can take 15 to 20 days for an account to be created.</p>
+
+        payment_form:
+          title: Receive, check and save the grant claim form in the school's SharePoint folder
+          hint:
+            html:
+              <p>Make sure no information is missing.</p>
+          guidance_link: How to check and save the form
+          guidance:
+            html:
+              <p>The school or trust must send you the grant claim form.</p>
+              <p>Check it's complete and save it in the school's SharePoint folder.</p>
+
+        send_information:
+          title: Send the grant information to the payments team
+          hint:
+            html: <p>Send them the application to convert, academy order and grant claim form.</p>
+          guidance_link: Guidance on what information to send
+          guidance:
+            html:
+              <p>You'll find the academy order, application to convert and grant claim form in the school's SharePoint folder.</p>
+              <p>You should send the documents to the Grant Payments team by email at <a href="mailto:cfugrantpayments.regionsgroup@education.gov.uk" target="_blank">cfugrantpayments.regionsgroup@education.gov.uk</a>.</p>
+              <p>The subject line of the email must include the:</p>
+              <ul>
+                <li>region the school is in</li>
+                <li>grant type (converter grant)</li>
+                <li>school's name</li>
+              </ul>
+              <p>The content of the email must include the:</p>
+              <ul>
+                <li>type of grant needed</li>
+                <li>amount of money the school is eligible for</li>
+                <li>school's name</li>
+                <li>trust it's joining</li>
+                <li>provisional conversion date</li>
+              </ul>
+              <p>It's helpful to include the school or trust's vendor account number too. The Grant Payments team will need this to be able to send the money to whoever will receive it.</p>
+
+        share_payment_date:
+          title: Tell the school or trust the grant information has been sent
+        not_applicable:
+          title: Not applicable

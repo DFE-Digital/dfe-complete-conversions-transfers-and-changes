@@ -6,10 +6,31 @@ RSpec.describe Conversion::TaskList do
   describe ".identifiers" do
     it "returns all the identifiers for the tasks in the list" do
       converison_task_list_identifiers = [
+        :handover,
         :stakeholder_kick_off,
+        :conversion_grant,
+        :sponsored_support_grant,
         :funding_agreement_contact,
+        :land_questionnaire,
+        :land_registry,
+        :supplemental_funding_agreement,
+        :church_supplemental_agreement,
+        :master_funding_agreement,
         :articles_of_association,
-        :redact_and_send
+        :deed_of_variation,
+        :trust_modification_order,
+        :direction_to_transfer,
+        :one_hundred_and_twenty_five_year_lease,
+        :subleases,
+        :tenancy_at_will,
+        :commercial_transfer_agreement,
+        :single_worksheet,
+        :school_completed,
+        :conditions_met,
+        :share_information,
+        :redact_and_send,
+        :update_esfa,
+        :receive_grant_payment_certificate
       ]
 
       expect(described_class.identifiers).to eql converison_task_list_identifiers
@@ -23,24 +44,47 @@ RSpec.describe Conversion::TaskList do
           {
             identifier: :project_kick_off,
             tasks: [
+              Conversion::Task::HandoverTaskForm,
               Conversion::Task::StakeholderKickOffTaskForm,
+              Conversion::Task::ConversionGrantTaskForm,
+              Conversion::Task::SponsoredSupportGrantTaskForm,
               Conversion::Task::FundingAgreementContactTaskForm
             ]
           },
           {
             identifier: :legal_documents,
             tasks: [
-              Conversion::Task::ArticlesOfAssociationTaskForm
+              Conversion::Task::LandQuestionnaireTaskForm,
+              Conversion::Task::LandRegistryTaskForm,
+              Conversion::Task::SupplementalFundingAgreementTaskForm,
+              Conversion::Task::ChurchSupplementalAgreementTaskForm,
+              Conversion::Task::MasterFundingAgreementTaskForm,
+              Conversion::Task::ArticlesOfAssociationTaskForm,
+              Conversion::Task::DeedOfVariationTaskForm,
+              Conversion::Task::TrustModificationOrderTaskForm,
+              Conversion::Task::DirectionToTransferTaskForm,
+              Conversion::Task::OneHundredAndTwentyFiveYearLeaseTaskForm,
+              Conversion::Task::SubleasesTaskForm,
+              Conversion::Task::TenancyAtWillTaskForm,
+              Conversion::Task::CommercialTransferAgreementTaskForm
+
             ]
           },
           {
             identifier: :get_ready_for_opening,
-            tasks: []
+            tasks: [
+              Conversion::Task::SingleWorksheetTaskForm,
+              Conversion::Task::SchoolCompletedTaskForm,
+              Conversion::Task::ConditionsMetTaskForm,
+              Conversion::Task::ShareInformationTaskForm
+            ]
           },
           {
             identifier: :after_opening,
             tasks: [
-              Conversion::Task::RedactAndSendTaskForm
+              Conversion::Task::RedactAndSendTaskForm,
+              Conversion::Task::UpdateEsfaTaskForm,
+              Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
             ]
           }
         ]
@@ -64,9 +108,9 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 4
-      expect(task_list.tasks.first).to be_a Conversion::Task::StakeholderKickOffTaskForm
-      expect(task_list.tasks.last).to be_a Conversion::Task::RedactAndSendTaskForm
+      expect(task_list.tasks.count).to eql 25
+      expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
+      expect(task_list.tasks.last).to be_a Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
     end
   end
 end

@@ -1,0 +1,25 @@
+en:
+  conversion:
+    task:
+      land_registry:
+        title: Land registry title plans
+        hint:
+          html: The land registry title plans are an essential document in all conversions.
+        sub_section:
+          title: Check and clear the land registry title plans
+          hint:
+            html: <p>Check an official copy of the title plans for boundary issues and buildings that have not been excluded.</p>
+          guidance_link: Help checking the land registry title plans
+          guidance:
+            html:
+              <p>Check you have an official copy of the title plans. An official copy will state that it's from the Land Registry, include a title plan and title number.</p>
+              <p>It's a good idea to look at the site on Google Maps and compare that to the title plan. This can help you find out if there's anything to question on the title plan.</p>
+              <p>The boundary should include all school or trust buildings. If the land has become unregistered you should check the title plan.</p>
+              <p>Talk to your line manager or the relevant solicitor if you have questions about anything on the title plan.</p>
+
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        saved:
+          title: Saved in the school's SharePoint folder
