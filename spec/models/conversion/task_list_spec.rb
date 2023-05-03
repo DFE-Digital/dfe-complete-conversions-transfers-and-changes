@@ -8,6 +8,7 @@ RSpec.describe Conversion::TaskList do
       converison_task_list_identifiers = [
         :stakeholder_kick_off,
         :funding_agreement_contact,
+        :articles_of_association,
         :redact_and_send
       ]
 
@@ -17,14 +18,32 @@ RSpec.describe Conversion::TaskList do
 
   describe ".layout" do
     it "returns the layout hash for the task list" do
-      conversion_task_list_layout = [
-        identifier: :project_kick_off,
-        tasks: [
-          Conversion::Task::StakeholderKickOffTaskForm,
-          Conversion::Task::FundingAgreementContactTaskForm,
-          Conversion::Task::RedactAndSendTaskForm
+      conversion_task_list_layout =
+        [
+          {
+            identifier: :project_kick_off,
+            tasks: [
+              Conversion::Task::StakeholderKickOffTaskForm,
+              Conversion::Task::FundingAgreementContactTaskForm
+            ]
+          },
+          {
+            identifier: :legal_documents,
+            tasks: [
+              Conversion::Task::ArticlesOfAssociationTaskForm
+            ]
+          },
+          {
+            identifier: :get_ready_for_opening,
+            tasks: []
+          },
+          {
+            identifier: :after_opening,
+            tasks: [
+              Conversion::Task::RedactAndSendTaskForm
+            ]
+          }
         ]
-      ]
       expect(described_class.layout).to eql conversion_task_list_layout
     end
   end
@@ -35,7 +54,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.sections.count).to eql 1
+      expect(task_list.sections.count).to eql 4
     end
   end
 
@@ -45,7 +64,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 3
+      expect(task_list.tasks.count).to eql 4
       expect(task_list.tasks.first).to be_a Conversion::Task::StakeholderKickOffTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::RedactAndSendTaskForm
     end
