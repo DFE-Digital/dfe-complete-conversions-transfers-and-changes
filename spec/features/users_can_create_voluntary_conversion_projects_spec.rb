@@ -101,7 +101,7 @@ RSpec.feature "Users can create new voluntary conversion projects" do
       choose("No")
     end
     within("#directive-academy-order") do
-      choose "No"
+      choose "Academy order"
     end
   end
 end
