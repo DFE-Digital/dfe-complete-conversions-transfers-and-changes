@@ -72,6 +72,12 @@ Rails.application.routes.draw do
     post "conversion-date", to: "/conversions/date_histories#create"
   end
 
+  concern :academy_urn_updateable do
+    get "academy-urn", to: "/conversions/academy_urn#edit"
+    post "academy-urn", to: "/conversions/academy_urn#check"
+    patch "academy-urn", to: "/conversions/academy_urn#update_academy_urn"
+  end
+
   constraints(id: VALID_UUID_REGEX) do
     namespace :conversions do
       get "/", to: "/conversions/projects#index"
@@ -81,7 +87,7 @@ Rails.application.routes.draw do
 
         resources :projects,
           only: %i[new create],
-          concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable]
+          concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable academy_urn_updateable]
       end
       namespace :involuntary do
         get "/", to: "/conversions/involuntary/projects#index"

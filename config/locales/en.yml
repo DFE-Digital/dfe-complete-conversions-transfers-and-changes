@@ -34,6 +34,7 @@ en:
   support_email_subject: "Complete conversions, transfers and changes: support query"
   "yes": "Yes"
   "no": "No"
+  cancel: Cancel
   phase_banner:
     phase: Beta
     phase_notice:

@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - a new view that shows regional delivery officers the projects they have
   created
+- User can provide the new academy urn once it has be created in Get information
+  about schools
 
 ### Changed
 

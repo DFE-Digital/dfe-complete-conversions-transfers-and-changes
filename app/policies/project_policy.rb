@@ -18,6 +18,24 @@ class ProjectPolicy
     user.regional_delivery_officer?
   end
 
+  def edit?
+    return false if @record.completed?
+
+    true
+  end
+
+  def check?
+    return false if @record.completed?
+
+    true
+  end
+
+  def update_academy_urn?
+    return false if @record.completed?
+
+    true
+  end
+
   def new?
     create?
   end
