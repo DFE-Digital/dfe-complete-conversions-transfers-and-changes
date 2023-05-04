@@ -40,7 +40,7 @@ RSpec.feature "Users can create new involuntary conversion projects" do
       fill_in "Handover comments", with: "A new handover comment"
 
       within("#directive-academy-order") do
-        choose "Yes"
+        choose "Directive academy order"
       end
 
       click_button("Continue")
