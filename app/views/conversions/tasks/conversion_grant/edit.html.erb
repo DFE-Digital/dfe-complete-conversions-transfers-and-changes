@@ -20,7 +20,7 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :share_payment_date)) %>
       </div>
 
-      <%= form.govuk_submit t("task_list.continue_button.text") %>
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
     <% end %>
   </div>
 
