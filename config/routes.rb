@@ -122,6 +122,7 @@ Rails.application.routes.draw do
           end
 
           get "new", to: "projects#new", as: :new
+          get "with_academy_urn", to: "projects#with_academy_urn", as: :with_academy_urn
         end
         namespace :regional_casework_services, path: "regional-casework-services" do
           get "in-progress", to: "projects#in_progress"

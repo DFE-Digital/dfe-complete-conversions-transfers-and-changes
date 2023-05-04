@@ -33,6 +33,8 @@ en:
           title: All voluntary completed projects
       new:
         title: All conversions without an academy URN
+      with_academy_urn:
+        title: All conversions with an academy URN
     regional_casework_services:
       in_progress:
         title: Regional Casework Services projects in progress
@@ -160,6 +162,8 @@ en:
         empty: There are no unassigned projects.
       new:
         empty: There are no conversions without an academy URN
+      with_academy_urn:
+        empty: There are no conversions with an academy URN
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.
@@ -195,6 +199,9 @@ en:
       north_east: North East
       south_west: South West
       east_midlands: East Midlands
+    subnavigation:
+      new: URNs to create
+      with_academy_urn: URNs added
   project_information:
     show:
       side_navigation:
