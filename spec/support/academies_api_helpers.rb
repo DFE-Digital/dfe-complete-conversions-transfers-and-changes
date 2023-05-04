@@ -81,7 +81,7 @@ module AcademiesApiHelpers
     test_client = Api::AcademiesApi::Client.new
 
     allow(test_client).to receive(:get_trust).with(ukprn).and_raise(Api::AcademiesApi::Client::UnauthorisedError)
-    allow(test_client).to receive(:get_establishment).with(ukprn).and_raise(Api::AcademiesApi::Client::UnauthorisedError)
+    allow(test_client).to receive(:get_establishment).with(urn).and_raise(Api::AcademiesApi::Client::UnauthorisedError)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 end
