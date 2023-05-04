@@ -31,6 +31,9 @@ en:
       guidance: This will remove the contact for %{contact_title} called %{contact_name} from the contacts list.
     categories:
       choose: Choose category
+    internal_contacts:
+      assigned_to: Assigned to
+      added_by: Added by
   helpers:
     label:
       contact:
