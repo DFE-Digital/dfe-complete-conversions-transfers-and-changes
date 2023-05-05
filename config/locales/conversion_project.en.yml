@@ -24,7 +24,7 @@ en:
             <p class="govuk-body">You should add any contact details you have for the school, trust, solicitors, local authority and diocese (if applicable).</p>
         assigned_to_regional_caseworker_team:
           title: Project created
-          button: Return to project list
+          button: View projects you have added
           html:
             <p class="govuk-body">You have created a project for %{school_name}, URN %{urn}.</p>
             <h2 class="govuk-heading-l">What happens next</h2>

@@ -16,7 +16,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
   scenario "Team leader assigns a user to the regional delivery officer role" do
     visit conversions_voluntary_project_internal_contacts_path(project_id)
 
-    regional_delivery_officer_summary_list_row = -> { page.find("dt", text: "Regional delivery officer").ancestor(".govuk-summary-list__row") }
+    regional_delivery_officer_summary_list_row = -> { page.find("dt", text: I18n.t("contact.internal_contacts.added_by")).ancestor(".govuk-summary-list__row") }
 
     within regional_delivery_officer_summary_list_row.call do
       expect(page).to have_content "Not yet assigned"

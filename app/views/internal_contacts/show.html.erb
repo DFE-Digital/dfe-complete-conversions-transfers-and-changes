@@ -12,7 +12,7 @@
   <h2 class="govuk-heading-l"><%= t("contact.index.internal_contacts") %></h2>
   <%= govuk_summary_list do |summary_list|
         summary_list.row do |row|
-          row.key { t("project_information.show.project_details.rows.assigned_to") }
+          row.key { t("contact.internal_contacts.assigned_to") }
           row.value { display_name(@project.assigned_to) }
           if @project.assigned_to.present?
             row.action(text: "Email", href: mail_to_path(@project.assigned_to.email), visually_hidden_text: "assigned to")
@@ -22,7 +22,7 @@
           end
         end
         summary_list.row do |row|
-          row.key { t("project_information.show.project_details.rows.regional_delivery_officer") }
+          row.key { t("contact.internal_contacts.added_by") }
           row.value { display_name(@project.regional_delivery_officer) }
           if @project.regional_delivery_officer.present?
             row.action(text: "Email", href: mail_to_path(@project.regional_delivery_officer.email), visually_hidden_text: "regional delivery officer")
