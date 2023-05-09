@@ -22,5 +22,14 @@ RSpec.describe LocalAuthority do
       it { is_expected.to allow_value("N1C 4AG").for(:address_postcode) }
       it { is_expected.to_not allow_value("thisisnotapostcode").for(:address_postcode) }
     end
+
+    describe "#code" do
+      it "validates uniqueness" do
+        _local_authority_1 = create(:local_authority, code: 201)
+        local_authority_2 = build(:local_authority, code: 201)
+
+        expect(local_authority_2).to_not be_valid
+      end
+    end
   end
 end
