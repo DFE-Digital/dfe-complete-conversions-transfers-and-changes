@@ -1,0 +1,24 @@
+<%= render partial: "projects/shared/signed_in_as", locals: {email_address: current_user.email} %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.academy_urn.title", school_name: @project.establishment.name) %>
+    </h1>
+
+    <%= t("project.academy_urn.body_html") %>
+
+    <%= form_for @project, url: conversions_voluntary_project_academy_urn_path, method: :post do |form| %>
+        <%= form.govuk_error_summary %>
+
+        <div class="govuk-form-group">
+          <%= form.govuk_text_field :academy_urn, width: 20, label: {size: "m", text: t("project.academy_urn.edit.label")}, hint: {text: t("project.academy_urn.edit.hint")} %>
+        </div>
+
+        <%= form.govuk_submit t("task_list.continue_button.text") do %>
+          <%= govuk_link_to t("cancel"), new_all_projects_path %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

@@ -36,6 +36,7 @@ class Project < ApplicationRecord
   scope :voluntary, -> { where(directive_academy_order: false) }
 
   scope :no_academy_urn, -> { where(academy_urn: nil) }
+  scope :with_academy_urn, -> { where.not(academy_urn: nil) }
   scope :provisional, -> { where(conversion_date_provisional: true) }
   scope :confirmed, -> { where(conversion_date_provisional: false) }
 

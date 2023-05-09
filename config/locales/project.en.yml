@@ -33,6 +33,8 @@ en:
           title: All voluntary completed projects
       new:
         title: All conversions without an academy URN
+      with_academy_urn:
+        title: All conversions with an academy URN
     regional_casework_services:
       in_progress:
         title: Regional Casework Services projects in progress
@@ -75,8 +77,32 @@ en:
               </ul>
           </div>
         </details>
-    edit:
-      title: Edit a project
+    academy_urn:
+      title: Create academy URN for %{school_name} conversion
+      body_html:
+        <p>This is the URN for the academy that the school is converting to.</p>
+        <p>To add the academy URN you must have already created a new establishment in GIAS.</p>
+        <p>It can take up to 24 hours for changes to the academy URN to appear on the project information page.</p>
+      edit:
+        label: Enter academy URN
+        hint: A URN is a 6 digit number.
+      not_found:
+        title: No information found for URN %{academy_urn}
+        body_html:
+          <p>GIAS (Get Information about Schools) may not be up-to-date. It can take up to 24 hours for changes to appear in GIAS.</p>
+          <p>Try again in 24 hours if the URN you entered is correct.</p>
+          <p>Check the URN you entered is correct. Enter it again if it was incorrect.</p>
+        enter_urn_again: Enter URN again
+      confirm:
+        title: Are these details correct?
+        body_html:
+          <p>GIAS (Get Information about Schools) has the following information for URN %{urn}:</p>
+        academy_name: Academy name
+        academy_address: Academy address
+        local_authority: Local authority
+        school_phase: School phase
+        save_and_return: Yes, save and return
+        success: Academy URN %{academy_urn} added to %{school_name}, %{urn}
     update:
       success: Project has been updated successfully
     complete:
@@ -120,8 +146,13 @@ en:
         added_by: Added by
         conversion_date: Conversion date
         revised_conversion_date: Revised conversion date
+        route: Route
+        school_phase: School phase
+        school_type: School type
+        academy_urn: Academy URN
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
+        edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
       in_progress:
         empty: There are no projects in progress.
@@ -131,6 +162,8 @@ en:
         empty: There are no unassigned projects.
       new:
         empty: There are no conversions without an academy URN
+      with_academy_urn:
+        empty: There are no conversions with an academy URN
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.
@@ -166,6 +199,9 @@ en:
       north_east: North East
       south_west: South West
       east_midlands: East Midlands
+    subnavigation:
+      new: URNs to create
+      with_academy_urn: URNs added
   project_information:
     show:
       side_navigation:
@@ -292,3 +328,6 @@ en:
         host_not_allowed: Enter a trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
       directive_academy_order:
         inclusion: Select yes if this project has had a directive academy order issued
+      academy_urn:
+        blank: Please enter an Academy URN
+        invalid_urn: Please enter a valid URN. The URN must be 6 digits long. For example, 123456.

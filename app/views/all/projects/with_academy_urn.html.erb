@@ -3,7 +3,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">
-      <%= t("project.all.new.title") %>
+      <%= t("project.all.with_academy_urn.title") %>
     </h1>
 
     <nav class="moj-sub-navigation" aria-label="Project list sub-navigation">
@@ -13,6 +13,6 @@
       </ul>
     </nav>
 
-    <%= render partial: "/projects/shared/new_table", locals: {projects: @projects, pager: @pager} %>
+    <%= render partial: "/projects/shared/with_academy_urn_table", locals: {projects: @projects, pager: @pager} %>
   </div>
 </div>

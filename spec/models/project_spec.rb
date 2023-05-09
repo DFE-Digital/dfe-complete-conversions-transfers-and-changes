@@ -669,6 +669,18 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "#with_academy_urn" do
+      it "returns only projects where academy_urn is NOT nil" do
+        mock_successful_api_response_to_create_any_project
+        new_project = create(:conversion_project, academy_urn: nil)
+        existing_project = create(:conversion_project, academy_urn: 126041)
+        projects = Project.with_academy_urn
+
+        expect(projects).to include(existing_project)
+        expect(projects).not_to include(new_project)
+      end
+    end
+
     describe "by_region scope" do
       it "returns only projects for the given region" do
         mock_successful_api_response_to_create_any_project

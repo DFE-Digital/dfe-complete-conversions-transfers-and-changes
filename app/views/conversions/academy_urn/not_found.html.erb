@@ -1,0 +1,17 @@
+<%= render partial: "projects/shared/signed_in_as", locals: {email_address: current_user.email} %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.academy_urn.not_found.title", academy_urn: @academy_urn) %>
+    </h1>
+
+    <%= t("project.academy_urn.not_found.body_html") %>
+
+    <div class="govuk-button-group">
+      <%= govuk_button_link_to t("project.academy_urn.not_found.enter_urn_again"), conversions_voluntary_project_academy_urn_path(@project) %>
+      <%= govuk_link_to t("cancel"), new_all_projects_path %>
+    </div>
+  </div>
+</div>

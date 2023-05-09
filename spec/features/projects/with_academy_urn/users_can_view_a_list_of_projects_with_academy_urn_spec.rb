@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Viewing all new projects" do
+RSpec.feature "Viewing all projects with an academy URN" do
   context "when there are no projects" do
     before do
       user = create(:user, :caseworker)
@@ -8,9 +8,9 @@ RSpec.feature "Viewing all new projects" do
     end
 
     scenario "they can see a helpful message" do
-      visit new_all_projects_path
+      visit with_academy_urn_all_projects_path
 
-      expect(page).to have_content(I18n.t("project.table.new.empty"))
+      expect(page).to have_content(I18n.t("project.table.with_academy_urn.empty"))
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.feature "Viewing all new projects" do
       let(:user) { create(:user, :caseworker) }
 
       scenario "they can view all in progress projects" do
-        view_all_new_projects
+        view_all_projects_with_academy_urn
         table_has_the_correct_headers
       end
     end
@@ -37,7 +37,7 @@ RSpec.feature "Viewing all new projects" do
       let(:user) { create(:user, :team_leader) }
 
       scenario "they can view all in progress projects" do
-        view_all_new_projects
+        view_all_projects_with_academy_urn
         table_has_the_correct_headers
       end
     end
@@ -46,7 +46,7 @@ RSpec.feature "Viewing all new projects" do
       let(:user) { create(:user, :regional_delivery_officer) }
 
       scenario "they can view all in progress projects" do
-        view_all_new_projects
+        view_all_projects_with_academy_urn
         table_has_the_correct_headers
       end
     end
@@ -61,19 +61,20 @@ RSpec.feature "Viewing all new projects" do
         expect(page).to have_content("School phase")
         expect(page).to have_content("Conversion date")
         expect(page).to have_content("Route")
+        expect(page).to have_content("Academy URN")
         expect(page).to have_content("View project")
       end
     end
 
-    def view_all_new_projects
-      visit new_all_projects_path
+    def view_all_projects_with_academy_urn
+      visit with_academy_urn_all_projects_path
 
-      expect(page).to have_content(I18n.t("project.all.new.title"))
+      expect(page).to have_content(I18n.t("project.all.with_academy_urn.title"))
 
       within("tbody") do
-        expect(page).to have_content(project_without_academy_urn.establishment.name)
+        expect(page).to have_content(project_with_academy_urn.urn)
 
-        expect(page).not_to have_content(project_with_academy_urn.academy_urn)
+        expect(page).not_to have_content(project_without_academy_urn.urn)
       end
     end
   end
