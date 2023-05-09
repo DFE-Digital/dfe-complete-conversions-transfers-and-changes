@@ -23,3 +23,16 @@ en:
       address: Address
       edit: Edit
       back: Return to list
+    create:
+      success: Local authority successfully created
+    new:
+      title: New local authority
+      name: Name
+      code: Code
+      line_1: Address line 1
+      line_2: Address line 2
+      line_3: Address line 3
+      town: Town
+      county: County
+      postcode: Postcode
+      save_and_return: Save and return
