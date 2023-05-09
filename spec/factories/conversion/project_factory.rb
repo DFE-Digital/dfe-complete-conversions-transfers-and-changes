@@ -33,5 +33,9 @@ FactoryBot.define do
     trait :unassigned do
       assigned_to { nil }
     end
+
+    trait :sponsored do
+      directive_academy_order { true }
+    end
   end
 end
