@@ -40,6 +40,18 @@ class LocalAuthoritiesController < ApplicationController
     end
   end
 
+  def destroy
+    @local_authority = LocalAuthority.find(params[:id])
+
+    @local_authority.destroy
+
+    redirect_to local_authorities_path, notice: I18n.t("local_authority.destroy.success")
+  end
+
+  def confirm_destroy
+    @local_authority = LocalAuthority.find(params[:local_authority_id])
+  end
+
   private def local_authority_params
     params.require(:local_authority)
       .permit(:name, :code, :address_1, :address_2, :address_3, :address_town, :address_county, :address_postcode)

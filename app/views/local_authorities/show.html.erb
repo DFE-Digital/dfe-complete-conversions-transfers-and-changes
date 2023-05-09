@@ -16,6 +16,7 @@
         end %>
     <div class="govuk-button-group">
       <%= govuk_button_link_to t("local_authority.show.edit"), edit_local_authority_path(@local_authority) %>
+      <%= govuk_button_link_to t("local_authority.show.delete"), local_authority_delete_path(@local_authority), warning: true %>
       <%= govuk_link_to t("local_authority.show.back"), local_authorities_path %>
     </div>
 

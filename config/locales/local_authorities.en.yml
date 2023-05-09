@@ -23,6 +23,7 @@ en:
       address: Address
       edit: Edit
       back: Return to list
+      delete: Delete
     create:
       success: Local authority successfully created
     new:
@@ -36,3 +37,8 @@ en:
       county: County
       postcode: Postcode
       save_and_return: Save and return
+    destroy:
+      title: Are you sure you want to delete the record for %{local_authority}?
+      guidance: This action will remove the local authority record for %{local_authority} from this application.
+      delete: Delete
+      success: Local authority deleted successfully
