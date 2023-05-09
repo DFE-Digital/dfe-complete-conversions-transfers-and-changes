@@ -64,10 +64,7 @@ class NotesController < ApplicationController
   helper_method :return_path
 
   private def task_list_path
-    case @project.task_list_name.to_sym
-    when :conversion_voluntary_task_list then conversions_voluntary_project_edit_task_path(@project, @note.task_identifier)
-    when :conversion_involuntary_task_list then conversions_involuntary_project_edit_task_path(@project, @note.task_identifier)
-    end
+    conversions_voluntary_project_edit_task_path(@project, @note.task_identifier)
   end
 
   private def find_project
