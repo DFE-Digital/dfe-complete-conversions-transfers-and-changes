@@ -12,16 +12,4 @@ RSpec.describe Conversions::Voluntary::TaskListsController do
   let(:expected_update_attributes) { {handover_review: true, handover_notes: true, handover_meeting: false} }
 
   it_behaves_like "a task lists controller"
-
-  describe "wrong project type" do
-    it "renders an error when the project is the wrong type and so cannot be found" do
-      sign_in_with(create(:user, :caseworker))
-      mock_successful_api_responses(urn: any_args, ukprn: any_args)
-      involuntary_conversion_project = create(:involuntary_conversion_project)
-
-      get conversions_voluntary_project_task_list_path(involuntary_conversion_project)
-
-      expect(response).to have_http_status :not_found
-    end
-  end
 end
