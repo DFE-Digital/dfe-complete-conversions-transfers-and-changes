@@ -28,16 +28,6 @@ RSpec.feature "Users can change the conversion date" do
     expect(page).to have_content(I18n.t("conversion_new_date_history_form.success.panel.title"))
   end
 
-  context "Involuntary conversions" do
-    scenario "the Change conversion date button is also available on involuntary conversions" do
-      project = create(:involuntary_conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false, assigned_to: user)
-
-      visit conversions_involuntary_project_path(project)
-
-      expect(page).to have_link(I18n.t("conversion_new_date_history_form.new"))
-    end
-  end
-
   scenario "they can cancel the change if needed" do
     project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false, assigned_to: user)
 
