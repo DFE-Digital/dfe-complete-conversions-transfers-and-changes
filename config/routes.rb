@@ -89,14 +89,6 @@ Rails.application.routes.draw do
           only: %i[new create],
           concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable academy_urn_updateable]
       end
-      namespace :involuntary do
-        get "/", to: "/conversions/involuntary/projects#index"
-        get "projects/:id", to: "/conversions/involuntary/projects#show", as: :project
-
-        resources :projects,
-          only: %i[new create],
-          concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable]
-      end
     end
   end
 
