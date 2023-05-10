@@ -42,7 +42,7 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
     it "shows a single voluntary conversion project" do
       voluntary_conversion_project = create(:conversion_project, urn: 123456, regional_delivery_officer: regional_delivery_officer)
 
-      get conversions_voluntary_project_path(voluntary_conversion_project)
+      get project_path(voluntary_conversion_project)
       follow_redirect!
 
       expect(response.body).to include(voluntary_conversion_project.urn.to_s)
@@ -53,7 +53,7 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
     it "redirects to the project page" do
       post conversions_voluntary_projects_path, params: {"#{project_form_params_key}": {**project_form_params}}
 
-      expect(response).to redirect_to conversions_voluntary_project_path(Project.last)
+      expect(response).to redirect_to project_path(Project.last)
     end
   end
 end
