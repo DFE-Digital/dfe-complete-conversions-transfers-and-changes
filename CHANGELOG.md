@@ -22,6 +22,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- when a trust has no companies house number in the database, the project
+  information view can still render
+
 ## [Release 23][release-23]
 
 ### Fixed
