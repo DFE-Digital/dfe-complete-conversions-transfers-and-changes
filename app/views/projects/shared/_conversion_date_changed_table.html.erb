@@ -17,7 +17,7 @@
         <td class="govuk-table__cell"><%= project.urn %></td>
         <td class="govuk-table__cell"><%= project.conversion_date.to_formatted_s(:govuk) %></td>
         <td class="govuk-table__cell">
-          <%= link_to t("project.table.body.view_html", school_name: project.establishment.name), path_to_project(project) %>
+          <%= link_to t("project.table.body.view_html", school_name: project.establishment.name), project_path(project) %>
         </td>
       </tr>
     <% end %>

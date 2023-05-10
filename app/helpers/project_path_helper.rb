@@ -1,8 +1,4 @@
 module ProjectPathHelper
-  def path_to_project(project)
-    return conversions_voluntary_project_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
-  end
-
   def path_to_project_task_list(project)
     return conversions_voluntary_project_task_list_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
   end

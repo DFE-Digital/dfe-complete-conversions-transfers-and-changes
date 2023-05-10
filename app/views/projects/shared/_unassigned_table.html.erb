@@ -21,7 +21,7 @@
         <td class="govuk-table__cell"><%= project.regional_delivery_officer.full_name %></td>
         <td class="govuk-table__cell"><%= project.conversion_date.to_formatted_s(:govuk) %></td>
         <td class="govuk-table__cell">
-          <%= link_to t("project.table.body.view_html", school_name: project.establishment.name), path_to_project(project) %>
+          <%= link_to t("project.table.body.view_html", school_name: project.establishment.name), project_path(project) %>
         </td>
         <td class="govuk-table__cell">
           <%= link_to t("project.table.body.assign_html", school_name: project.establishment.name), path_to_assigned_to_project_assignment(project) %>
