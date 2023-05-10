@@ -20,12 +20,12 @@ class Conversion::Voluntary::CreateProjectForm < Conversion::CreateProjectForm
       conversion_date: provisional_conversion_date,
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
-      task_list: Conversion::Voluntary::TaskList.new,
       assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
       assigned_to: assigned_to,
       assigned_at: assigned_at,
       directive_academy_order: directive_academy_order,
-      region: region
+      region: region,
+      tasks_data: Conversion::TasksData.new
     )
 
     return nil unless valid?

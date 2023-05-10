@@ -8,11 +8,11 @@ FactoryBot.define do
     advisory_board_date { (Date.today - 2.weeks) }
     establishment_sharepoint_link { "https://educationgovuk-my.sharepoint.com/establishment-folder" }
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
-    task_list { association :voluntary_conversion_task_list }
     assigned_to { association :user, :caseworker, email: "user.#{SecureRandom.uuid}@education.gov.uk" }
     directive_academy_order { false }
     region { Project.regions["london"] }
     regional_delivery_officer { association :user, :regional_delivery_officer }
+    tasks_data { association :conversion_tasks_data }
 
     trait :with_conditions do
       advisory_board_conditions { "The following must be met:\n 1. Must be red\n2. Must be blue\n" }
