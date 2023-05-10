@@ -16,15 +16,15 @@ Rails.application.routes.draw do
   end
 
   concern :contactable do
-    resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "/contacts"
+    resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "contacts"
   end
 
   concern :notable do
-    resources :notes, except: %i[show], concerns: :has_destroy_confirmation, controller: "/notes"
+    resources :notes, except: %i[show], concerns: :has_destroy_confirmation, controller: "notes"
   end
 
   concern :assignable do
-    namespace :assign, controller: "/assignments" do
+    namespace :assign, controller: "assignments" do
       get "team-lead", action: :assign_team_leader
       post "team-lead", action: :update_team_leader
       get "regional-delivery-officer", action: :assign_regional_delivery_officer
@@ -35,30 +35,30 @@ Rails.application.routes.draw do
   end
 
   concern :informationable do
-    get "information", to: "/project_information#show"
+    get "information", to: "project_information#show"
   end
 
   concern :completable do
-    put "complete", to: "/projects_complete#complete"
+    put "complete", to: "projects_complete#complete"
   end
 
   concern :internal_contactable do
-    get "internal_contacts", to: "/internal_contacts#show"
+    get "internal_contacts", to: "internal_contacts#show"
   end
 
   concern :memberable do
-    get "mp", to: "/member_of_parliament#show"
+    get "mp", to: "member_of_parliament#show"
   end
 
   concern :conversion_date_historyable do
-    get "conversion-date", to: "/conversions/date_histories#new"
-    post "conversion-date", to: "/conversions/date_histories#create"
+    get "conversion-date", to: "conversions/date_histories#new"
+    post "conversion-date", to: "conversions/date_histories#create"
   end
 
   concern :academy_urn_updateable do
-    get "academy-urn", to: "/conversions/academy_urn#edit"
-    post "academy-urn", to: "/conversions/academy_urn#check"
-    patch "academy-urn", to: "/conversions/academy_urn#update_academy_urn"
+    get "academy-urn", to: "conversions/academy_urn#edit"
+    post "academy-urn", to: "conversions/academy_urn#check"
+    patch "academy-urn", to: "conversions/academy_urn#update_academy_urn"
   end
 
   constraints(id: VALID_UUID_REGEX) do
@@ -118,7 +118,20 @@ Rails.application.routes.draw do
 
   # Projects - all projects are conversions right now
   constraints(id: VALID_UUID_REGEX) do
-    resources :projects, only: %i[show new]
+    resources :projects,
+      only: %i[show new],
+      concerns: %i[
+        task_listable
+        contactable
+        notable
+        assignable
+        informationable
+        completable
+        internal_contactable
+        conversion_date_historyable
+        memberable
+        academy_urn_updateable
+      ]
   end
 
   # Defines the root path route ("/")
