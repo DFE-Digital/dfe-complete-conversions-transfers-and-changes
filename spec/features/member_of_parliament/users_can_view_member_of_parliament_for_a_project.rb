@@ -17,7 +17,7 @@ RSpec.feature "Users can view the Member of Parliament for a project" do
     end
 
     it "shows the MP details" do
-      visit conversions_voluntary_project_mp_path(project)
+      visit project_mp_path(project)
       expect(page).to have_content(I18n.t("member_of_parliament.show.rows.full_title"))
 
       expect(page).to have_content(member_name.name_full_title)
