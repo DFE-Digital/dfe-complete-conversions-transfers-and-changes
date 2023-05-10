@@ -8,7 +8,7 @@ RSpec.describe Conversions::TasksController do
       mock_successful_api_response_to_create_any_project
       project = create(:conversion_project)
 
-      get conversions_tasks_path(project)
+      get project_conversion_tasks_path(project)
 
       expect(response).to have_http_status(:success)
       expect(response).to render_template("conversions/tasks/index")

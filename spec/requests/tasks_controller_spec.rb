@@ -41,7 +41,7 @@ RSpec.describe TasksController do
         expect(project.task_list.redact_and_send_save_redaction).to eql true
         expect(project.task_list.redact_and_send_send_solicitors).to eql true
 
-        expect(response).to redirect_to(conversions_tasks_path(project))
+        expect(response).to redirect_to(project_conversion_tasks_path(project))
       end
     end
 
