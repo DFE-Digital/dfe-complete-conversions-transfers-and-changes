@@ -1,20 +1,4 @@
 class Conversions::Voluntary::ProjectsController < Conversions::ProjectsController
-  def index
-    authorize Project
-    @pagy, @projects = pagy(Project.conversions.in_progress)
-
-    EstablishmentsFetcher.new.call(@projects)
-    IncomingTrustsFetcher.new.call(@projects)
-
-    render "/conversions/voluntary/index"
-  end
-
-  def show
-    @project = Project.conversions.find(params[:id])
-    authorize @project
-    redirect_to conversions_voluntary_project_task_list_path(@project)
-  end
-
   def new
     authorize Conversion::Project
     @project = Conversion::Voluntary::CreateProjectForm.new
