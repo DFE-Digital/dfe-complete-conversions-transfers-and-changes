@@ -27,4 +27,14 @@ RSpec.describe ProjectInformationController, type: :request do
       expect(perform_request).to have_http_status :success
     end
   end
+
+  context "when the trust has no companies house number" do
+    it "renders nothing" do
+      trust = build(:academies_api_trust, companies_house_number: nil)
+      project = create(:conversion_project)
+      allow_any_instance_of(Project).to receive(:incoming_trust).and_return(trust)
+
+      expect { get project_information_path(project) }.not_to raise_error
+    end
+  end
 end
