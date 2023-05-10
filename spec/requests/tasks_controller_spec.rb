@@ -12,7 +12,7 @@ RSpec.describe TasksController do
       mock_successful_api_response_to_create_any_project
       project = create(:voluntary_conversion_project, assigned_to: user)
 
-      get edit_task_path(project, :redact_and_send)
+      get project_edit_task_path(project, :redact_and_send)
 
       expect(response).to render_template "conversions/tasks/redact_and_send/edit"
     end
@@ -32,7 +32,7 @@ RSpec.describe TasksController do
           }
         }
 
-        put update_task_path(project, :redact_and_send), params: params
+        put project_edit_task_path(project, :redact_and_send), params: params
 
         project.reload
 
@@ -51,7 +51,7 @@ RSpec.describe TasksController do
         project = create(:voluntary_conversion_project, assigned_to: user)
         allow_any_instance_of(Conversion::Task::RedactAndSendTaskForm).to receive(:valid?).and_return(false)
 
-        put update_task_path(project, :redact_and_send)
+        put project_edit_task_path(project, :redact_and_send)
 
         expect(response).to render_template "conversions/tasks/redact_and_send/edit"
         expect(project.task_list.redact_and_send_redact).to be_nil

@@ -64,7 +64,7 @@ class NotesController < ApplicationController
   helper_method :return_path
 
   private def task_list_path
-    conversions_voluntary_project_edit_task_path(@project, @note.task_identifier)
+    project_edit_task_path(@project, @note.task_identifier)
   end
 
   private def find_project

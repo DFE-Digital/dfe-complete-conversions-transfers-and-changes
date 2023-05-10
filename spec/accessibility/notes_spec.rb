@@ -52,7 +52,7 @@ RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibilit
     end
 
     scenario "show page" do
-      visit conversions_voluntary_project_edit_task_path(project, task_identifier)
+      visit project_edit_task_path(project, task_identifier)
 
       expect(page).to have_content(task_note.body)
       check_accessibility(page)

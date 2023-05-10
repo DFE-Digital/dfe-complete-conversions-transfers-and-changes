@@ -1,6 +1,6 @@
 class Conversions::Voluntary::TaskListsController < TaskListsController
   def task_edit_path(task)
-    conversions_voluntary_project_edit_task_path(@project.id, task.class.identifier)
+    project_edit_task_path(@project.id, task.class.identifier)
   end
   helper_method :task_edit_path
 
