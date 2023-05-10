@@ -8,6 +8,7 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:team_leader).of_type :boolean }
     it { is_expected.to have_db_column(:regional_delivery_officer).of_type :boolean }
     it { is_expected.to have_db_column(:caseworker).of_type :boolean }
+    it { is_expected.to have_db_column(:service_support).of_type :boolean }
   end
 
   describe "scopes" do
