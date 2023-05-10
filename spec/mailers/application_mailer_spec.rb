@@ -9,7 +9,7 @@ RSpec.describe ApplicationMailer do
         project = create(:voluntary_conversion_project)
         mailer = ApplicationMailer.new
 
-        expect(mailer.url_to_project(project)).to eql conversions_voluntary_project_url(project)
+        expect(mailer.url_to_project(project)).to eql project_url(project)
       end
     end
   end

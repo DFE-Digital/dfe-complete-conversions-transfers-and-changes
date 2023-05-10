@@ -5,7 +5,7 @@ RSpec.describe AssignedToMailer do
     let(:caseworker) { create(:user, :caseworker) }
     let(:project) { create(:voluntary_conversion_project) }
     let(:template_id) { "ec6823ec-0aae-439b-b2f9-c626809b7c61" }
-    let(:expected_personalisation) { {first_name: caseworker.first_name, project_url: conversions_voluntary_project_url(project.id)} }
+    let(:expected_personalisation) { {first_name: caseworker.first_name, project_url: project_url(project.id)} }
 
     subject(:send_mail) { described_class.assigned_notification(caseworker, project).deliver_now }
 
