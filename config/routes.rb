@@ -129,6 +129,7 @@ Rails.application.routes.draw do
   end
 
   namespace :conversions do
+    get "/", to: "projects#index"
     namespace :voluntary do
       resources :projects, only: %i[new create]
     end
