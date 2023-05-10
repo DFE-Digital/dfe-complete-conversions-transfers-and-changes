@@ -62,21 +62,13 @@ en:
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:
-        <p class="govuk-body">Provide a brief overview of how the project has progressed so far, including any issues or concerns.</p>
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              What to make comments about
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            <p class="govuk-body">Useful things to comment on include whether the:</p>
+        <p class="govuk-body">You should give a brief overview of how the project has progressed so far, including any issues or concerns.</p>
+        <p class="govuk-body">Include information about whether the:</p>
               <ul class="govuk-list govuk-list--bullet">
-                <li>provisional conversion date has been agreed by the school, trust and local authority</li>
+                <li>provisional conversion date has been discussed with the local authority</li>
                 <li>local authority proforma has been received or requested</li>
+                <li>introduction and next steps email has been sent to external stakeholders</li>
               </ul>
-          </div>
-        </details>
     academy_urn:
       title: Create academy URN for %{school_name} conversion
       body_html:
