@@ -8,10 +8,12 @@ class LocalAuthoritiesController < ApplicationController
   end
 
   def new
+    authorize LocalAuthority
     @local_authority = LocalAuthority.new
   end
 
   def create
+    authorize LocalAuthority
     @local_authority = LocalAuthority.new(local_authority_params)
 
     if @local_authority.valid?
@@ -24,10 +26,12 @@ class LocalAuthoritiesController < ApplicationController
   end
 
   def edit
+    authorize LocalAuthority
     @local_authority = LocalAuthority.find(params[:id])
   end
 
   def update
+    authorize LocalAuthority
     @local_authority = LocalAuthority.find(params[:id])
     @local_authority.assign_attributes(local_authority_params)
 
@@ -41,6 +45,7 @@ class LocalAuthoritiesController < ApplicationController
   end
 
   def destroy
+    authorize LocalAuthority
     @local_authority = LocalAuthority.find(params[:id])
 
     @local_authority.destroy
@@ -49,6 +54,7 @@ class LocalAuthoritiesController < ApplicationController
   end
 
   def confirm_destroy
+    authorize LocalAuthority
     @local_authority = LocalAuthority.find(params[:local_authority_id])
   end
 

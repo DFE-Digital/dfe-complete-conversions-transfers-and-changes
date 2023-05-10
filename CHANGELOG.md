@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Allow local authority records to be edited
 - Allow new local authority records to be added
 - Allow local authority records to be deleted
+- Ensure only the new `service_support` user can create, edit and delete local
+  authority records
 
 ### Changed
 
