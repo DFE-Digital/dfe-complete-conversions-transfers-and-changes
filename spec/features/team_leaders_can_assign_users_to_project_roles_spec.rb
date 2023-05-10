@@ -14,7 +14,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
   end
 
   scenario "Team leader assigns a user to the regional delivery officer role" do
-    visit conversions_voluntary_project_internal_contacts_path(project_id)
+    visit project_internal_contacts_path(project_id)
 
     regional_delivery_officer_summary_list_row = -> { page.find("dt", text: I18n.t("contact.internal_contacts.added_by")).ancestor(".govuk-summary-list__row") }
 
@@ -36,7 +36,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
   end
 
   scenario "Team leader assigns a user to the assigned_to role" do
-    visit conversions_voluntary_project_internal_contacts_path(project_id)
+    visit project_internal_contacts_path(project_id)
 
     assigned_to_summary_list_row = -> { page.find("dt", text: "Assigned to").ancestor(".govuk-summary-list__row") }
 
