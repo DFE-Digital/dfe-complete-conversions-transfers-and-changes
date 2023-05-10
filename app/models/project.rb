@@ -30,8 +30,6 @@ class Project < ApplicationRecord
   belongs_to :assigned_to, class_name: "User", optional: true
 
   scope :conversions, -> { where(type: "Conversion::Project") }
-  scope :conversions_voluntary, -> { conversions.where(task_list_type: "Conversion::Voluntary::TaskList") }
-  scope :conversions_involuntary, -> { conversions.where(task_list_type: "Conversion::Involuntary::TaskList") }
   scope :sponsored, -> { where(directive_academy_order: true) }
   scope :voluntary, -> { where(directive_academy_order: false) }
 

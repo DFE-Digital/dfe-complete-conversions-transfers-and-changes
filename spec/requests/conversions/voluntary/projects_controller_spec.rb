@@ -31,12 +31,10 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
   describe "#index" do
     it "lists voluntary conversion projects" do
       voluntary_conversion_project = create(:conversion_project, urn: 123456, regional_delivery_officer: regional_delivery_officer)
-      involuntary_conversion_project = create(:involuntary_conversion_project, urn: 654321, regional_delivery_officer: regional_delivery_officer)
 
       get conversions_voluntary_path
 
       expect(response.body).to include(voluntary_conversion_project.urn.to_s)
-      expect(response.body).not_to include(involuntary_conversion_project.urn.to_s)
     end
   end
 
@@ -48,14 +46,6 @@ RSpec.describe Conversions::Voluntary::ProjectsController do
       follow_redirect!
 
       expect(response.body).to include(voluntary_conversion_project.urn.to_s)
-    end
-
-    it "returns 404 if the project is involuntary" do
-      involuntary_conversion_project = create(:involuntary_conversion_project, urn: 654321, regional_delivery_officer: regional_delivery_officer)
-
-      get conversions_voluntary_project_path(involuntary_conversion_project)
-
-      expect(response).to have_http_status(:not_found)
     end
   end
 

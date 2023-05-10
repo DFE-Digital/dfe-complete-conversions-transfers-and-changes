@@ -14,6 +14,6 @@ class Conversions::Voluntary::TaskListsController < TaskListsController
   end
 
   private def find_project
-    @project = Project.conversions_voluntary.find(params[:project_id])
+    @project = Project.conversions.find(params[:project_id])
   end
 end

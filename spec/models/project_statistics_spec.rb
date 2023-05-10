@@ -6,9 +6,9 @@ RSpec.describe ProjectStatistics, type: :model do
 
   describe "all projects" do
     let!(:voluntary_in_progress_project_1) { create(:conversion_project, completed_at: nil) }
-    let!(:sponsored_in_progress_project_2) { create(:involuntary_conversion_project, completed_at: nil) }
+    let!(:sponsored_in_progress_project_2) { create(:conversion_project, completed_at: nil, directive_academy_order: true) }
     let!(:voluntary_completed_project_1) { create(:conversion_project, completed_at: Date.today + 2.years) }
-    let!(:sponsored_completed_project_2) { create(:involuntary_conversion_project, completed_at: Date.today + 2.years) }
+    let!(:sponsored_completed_project_2) { create(:conversion_project, completed_at: Date.today + 2.years, directive_academy_order: true) }
     let!(:unassigned_projects_with) { create(:conversion_project, assigned_to: nil) }
 
     describe "#total_number_of_projects" do
@@ -51,8 +51,8 @@ RSpec.describe ProjectStatistics, type: :model do
   describe "Regional casework services projects" do
     let!(:voluntary_in_progress_project_with_regional_casework_services_1) { create(:conversion_project, assigned_to_regional_caseworker_team: true, completed_at: nil) }
     let!(:voluntary_completed_project_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: true, completed_at: Date.today + 2.years) }
-    let!(:sponsored_in_progress_project_with_regional_casework_services_1) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: true, completed_at: nil) }
-    let!(:sponsored_completed_project_with_regional_casework_services_2) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: true, completed_at: Date.today + 2.years) }
+    let!(:sponsored_in_progress_project_with_regional_casework_services_1) { create(:conversion_project, :sponsored, assigned_to_regional_caseworker_team: true, completed_at: nil) }
+    let!(:sponsored_completed_project_with_regional_casework_services_2) { create(:conversion_project, :sponsored, assigned_to_regional_caseworker_team: true, completed_at: Date.today + 2.years) }
     let!(:unassigned_projects_with_regional_casework_services) { create(:conversion_project, assigned_to_regional_caseworker_team: true, assigned_to: nil) }
 
     describe "#total_projects_with_regional_casework_services" do
@@ -95,8 +95,8 @@ RSpec.describe ProjectStatistics, type: :model do
   describe "Regional projects that are not with regional casework services" do
     let!(:voluntary_in_progress_project_not_with_regional_casework_services_1) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil) }
     let!(:voluntary_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years) }
-    let!(:sponsored_in_progress_project_not_with_regional_casework_services_1) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil) }
-    let!(:sponsored_completed_project_not_with_regional_casework_services_2) { create(:involuntary_conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years) }
+    let!(:sponsored_in_progress_project_not_with_regional_casework_services_1) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil, directive_academy_order: true) }
+    let!(:sponsored_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years, directive_academy_order: true) }
     let!(:unassigned_project_not_with_regional_casework_services) { create(:conversion_project, assigned_to_regional_caseworker_team: false, assigned_to: nil) }
 
     describe "#total_projects_not_with_regional_casework_services" do
@@ -141,8 +141,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_london_region_1) { create(:conversion_project, region: "london", completed_at: nil) }
       let!(:voluntary_project_within_london_region_2) { create(:conversion_project, region: "london", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_south_east_region_1) { create(:conversion_project, region: "south_east") }
-      let!(:involuntary_project_within_london_region_1) { create(:involuntary_conversion_project, region: "london", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_london_region_2) { create(:involuntary_conversion_project, region: "london", completed_at: nil) }
+      let!(:sponsored_project_within_london_region_1) { create(:conversion_project, region: "london", completed_at: Date.today + 2.years, directive_academy_order: true) }
+      let!(:sponsored_project_within_london_region_2) { create(:conversion_project, region: "london", completed_at: nil, directive_academy_order: true) }
 
       describe "#total_projects_within_london_region" do
         it "returns the total number of projects within the London region" do
@@ -179,8 +179,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_south_east_region_1) { create(:conversion_project, region: "south_east", completed_at: nil) }
       let!(:voluntary_project_within_south_east_region_2) { create(:conversion_project, region: "south_east", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_north_west_region_1) { create(:conversion_project, region: "north_west") }
-      let!(:involuntary_project_within_south_east_region_1) { create(:involuntary_conversion_project, region: "south_east", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_south_east_region_2) { create(:involuntary_conversion_project, region: "south_east", completed_at: nil) }
+      let!(:sponsored_project_within_south_east_region_1) { create(:conversion_project, :sponsored, region: "south_east", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_south_east_region_2) { create(:conversion_project, :sponsored, region: "south_east", completed_at: nil) }
 
       describe "#total_projects_within_south_east_region" do
         it "returns the total number of projects within the South East region" do
@@ -217,8 +217,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_yorkshire_and_the_humber_region_1) { create(:conversion_project, region: "yorkshire_and_the_humber", completed_at: nil) }
       let!(:voluntary_project_within_yorkshire_and_the_humber_region_2) { create(:conversion_project, region: "yorkshire_and_the_humber", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_north_west_region_1) { create(:conversion_project, region: "north_west") }
-      let!(:involuntary_project_within_yorkshire_and_the_humber_region_1) { create(:involuntary_conversion_project, region: "yorkshire_and_the_humber", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_yorkshire_and_the_humber_region_2) { create(:involuntary_conversion_project, region: "yorkshire_and_the_humber", completed_at: nil) }
+      let!(:sponsored_project_within_yorkshire_and_the_humber_region_1) { create(:conversion_project, :sponsored, region: "yorkshire_and_the_humber", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_yorkshire_and_the_humber_region_2) { create(:conversion_project, :sponsored, region: "yorkshire_and_the_humber", completed_at: nil) }
 
       describe "#total_projects_within_yorkshire_and_the_humber_region" do
         it "returns the total number of projects within the Yorkshire and the Humber region" do
@@ -255,8 +255,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_north_west_region_1) { create(:conversion_project, region: "north_west", completed_at: nil) }
       let!(:voluntary_project_within_north_west_region_2) { create(:conversion_project, region: "north_west", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_london_region_1) { create(:conversion_project, region: "london") }
-      let!(:involuntary_project_within_north_west_region_1) { create(:involuntary_conversion_project, region: "north_west", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_north_west_region_2) { create(:involuntary_conversion_project, region: "north_west", completed_at: nil) }
+      let!(:sponsored_project_within_north_west_region_1) { create(:conversion_project, :sponsored, region: "north_west", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_north_west_region_2) { create(:conversion_project, :sponsored, region: "north_west", completed_at: nil) }
 
       describe "#total_projects_within_north_west_region" do
         it "returns the total number of projects within the North West region" do
@@ -293,8 +293,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_east_of_england_region_1) { create(:conversion_project, region: "east_of_england", completed_at: nil) }
       let!(:voluntary_project_within_east_of_england_region_2) { create(:conversion_project, region: "east_of_england", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_london_region_1) { create(:conversion_project, region: "london") }
-      let!(:involuntary_project_within_east_of_england_region_1) { create(:involuntary_conversion_project, region: "east_of_england", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_east_of_england_region_2) { create(:involuntary_conversion_project, region: "east_of_england", completed_at: nil) }
+      let!(:sponsored_project_within_east_of_england_region_1) { create(:conversion_project, :sponsored, region: "east_of_england", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_east_of_england_region_2) { create(:conversion_project, :sponsored, region: "east_of_england", completed_at: nil) }
 
       describe "#total_projects_within_east_of_england_region" do
         it "returns the total number of projects within the East of England region" do
@@ -331,8 +331,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_west_midlands_region_1) { create(:conversion_project, region: "west_midlands", completed_at: nil) }
       let!(:voluntary_project_within_west_midlands_region_2) { create(:conversion_project, region: "west_midlands", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_london_region_1) { create(:conversion_project, region: "london") }
-      let!(:involuntary_project_within_west_midlands_region_1) { create(:involuntary_conversion_project, region: "west_midlands", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_west_midlands_region_2) { create(:involuntary_conversion_project, region: "west_midlands", completed_at: nil) }
+      let!(:sponsored_project_within_west_midlands_region_1) { create(:conversion_project, :sponsored, region: "west_midlands", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_west_midlands_region_2) { create(:conversion_project, :sponsored, region: "west_midlands", completed_at: nil) }
 
       describe "#total_projects_within_west_midlands_region" do
         it "returns the total number of projects within the West Midlands region" do
@@ -369,8 +369,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_north_east_region_1) { create(:conversion_project, region: "north_east", completed_at: nil) }
       let!(:voluntary_project_within_north_east_region_2) { create(:conversion_project, region: "north_east", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_london_region_1) { create(:conversion_project, region: "london") }
-      let!(:involuntary_project_within_north_east_region_1) { create(:involuntary_conversion_project, region: "north_east", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_north_east_region_2) { create(:involuntary_conversion_project, region: "north_east", completed_at: nil) }
+      let!(:sponsored_project_within_north_east_region_1) { create(:conversion_project, :sponsored, region: "north_east", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_north_east_region_2) { create(:conversion_project, :sponsored, region: "north_east", completed_at: nil) }
 
       describe "#total_projects_within_north_east_region" do
         it "returns the total number of projects within the North East region" do
@@ -407,8 +407,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_south_west_region_1) { create(:conversion_project, region: "south_west", completed_at: nil) }
       let!(:voluntary_project_within_south_west_region_2) { create(:conversion_project, region: "south_west", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_london_region_1) { create(:conversion_project, region: "london") }
-      let!(:involuntary_project_within_south_west_region_1) { create(:involuntary_conversion_project, region: "south_west", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_south_west_region_2) { create(:involuntary_conversion_project, region: "south_west", completed_at: nil) }
+      let!(:sponsored_project_within_south_west_region_1) { create(:conversion_project, :sponsored, region: "south_west", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_south_west_region_2) { create(:conversion_project, :sponsored, region: "south_west", completed_at: nil) }
 
       describe "#total_projects_within_south_west_region" do
         it "returns the total number of projects within the South West region" do
@@ -445,8 +445,8 @@ RSpec.describe ProjectStatistics, type: :model do
       let!(:voluntary_project_within_east_midlands_region_1) { create(:conversion_project, region: "east_midlands", completed_at: nil) }
       let!(:voluntary_project_within_east_midlands_region_2) { create(:conversion_project, region: "east_midlands", completed_at: Date.today + 2.years) }
       let!(:voluntary_project_within_london_region_1) { create(:conversion_project, region: "london") }
-      let!(:involuntary_project_within_east_midlands_region_1) { create(:involuntary_conversion_project, region: "east_midlands", completed_at: Date.today + 2.years) }
-      let!(:involuntary_project_within_east_midlands_region_2) { create(:involuntary_conversion_project, region: "east_midlands", completed_at: nil) }
+      let!(:sponsored_project_within_east_midlands_region_1) { create(:conversion_project, :sponsored, region: "east_midlands", completed_at: Date.today + 2.years) }
+      let!(:sponsored_project_within_east_midlands_region_2) { create(:conversion_project, :sponsored, region: "east_midlands", completed_at: nil) }
 
       describe "#total_projects_within_east_midlands_region" do
         it "returns the total number of projects within the East Midlands region" do

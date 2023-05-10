@@ -1,7 +1,7 @@
 class Conversions::Voluntary::ProjectsController < Conversions::ProjectsController
   def index
     authorize Project
-    @pagy, @projects = pagy(Project.conversions_voluntary.in_progress)
+    @pagy, @projects = pagy(Project.conversions.in_progress)
 
     EstablishmentsFetcher.new.call(@projects)
     IncomingTrustsFetcher.new.call(@projects)
@@ -10,7 +10,7 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
   end
 
   def show
-    @project = Project.conversions_voluntary.find(params[:id])
+    @project = Project.conversions.find(params[:id])
     authorize @project
     redirect_to conversions_voluntary_project_task_list_path(@project)
   end
