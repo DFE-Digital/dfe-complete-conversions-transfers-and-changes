@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
-  concern :task_listable do
-    get "task-list", to: "task_lists#index", as: :task_list
-    get "task-list/:task_id", to: "task_lists#edit", as: :edit_task
-    put "task-list/:task_id", to: "task_lists#update", as: :update_task
+  concern :conversion_taskable do
+    get "tasks", to: "conversions/tasks#index", as: :conversion_tasks
+    get "tasks/:task_identifier", to: "tasks#edit", as: :edit_task
+    put "tasks/:task_identifier", to: "tasks#update"
   end
 
   concern :external_contactable do
@@ -108,12 +108,6 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :new_tasks do
-    get ":project_id/tasks", to: "conversions/tasks#index", as: :conversions_tasks
-    get ":project_id/tasks/:task_identifier", to: "tasks#edit", as: :edit_task
-    put ":project_id/tasks/:task_identifier", to: "tasks#update", as: :update_task
-  end
-
   resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
 
   # Projects - all projects are conversions right now
@@ -121,7 +115,7 @@ Rails.application.routes.draw do
     resources :projects,
       only: %i[show new],
       concerns: %i[
-        task_listable
+        conversion_taskable
         external_contactable
         notable
         assignable
