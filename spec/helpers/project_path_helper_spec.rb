@@ -9,7 +9,6 @@ RSpec.describe ProjectPathHelper, type: :helper do
 
       expect(helper.path_to_project(project)).to eq conversions_voluntary_project_path(project)
       expect(helper.path_to_project_task_list(project)).to eq conversions_voluntary_project_task_list_path(project)
-      expect(helper.path_to_project_information(project)).to eq conversions_voluntary_project_information_path(project)
       expect(helper.path_to_project_notes(project)).to eq conversions_voluntary_project_notes_path(project)
       expect(helper.path_to_project_contacts(project)).to eq conversions_voluntary_project_contacts_path(project)
 
