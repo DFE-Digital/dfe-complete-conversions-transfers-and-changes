@@ -24,7 +24,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
       click_on "Change"
     end
 
-    expect(page).to have_current_path(conversions_voluntary_project_assign_regional_delivery_officer_path(project))
+    expect(page).to have_current_path(project_assign_regional_delivery_officer_path(project))
 
     select regional_delivery_officer.full_name, from: I18n.t("assignment.assign_regional_delivery_officer.title", school_name: project.establishment.name)
 
