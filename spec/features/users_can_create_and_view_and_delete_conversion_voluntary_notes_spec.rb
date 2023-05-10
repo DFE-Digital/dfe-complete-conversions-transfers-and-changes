@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.feature "Users can create and view and delete conversion voluntary notes" do
   let(:user) { create(:user, email: "user@education.gov.uk") }
-  let(:task) { build(:voluntary_conversion_task_handover) }
   let(:task_identifier) { task.class.identifier }
   let(:project) { create(:conversion_project) }
   let(:project_id) { project.id }
   let(:new_note_body) { "Just shared some *important* documents with the solictor." }
+  let(:task) { Conversion::Task::ArticlesOfAssociationTaskForm.new(project.task_list, user) }
 
   before do
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
