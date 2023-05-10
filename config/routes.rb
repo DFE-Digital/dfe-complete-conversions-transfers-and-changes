@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     put "task-list/:task_id", to: "task_lists#update", as: :update_task
   end
 
-  concern :contactable do
-    resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "contacts"
+  concern :external_contactable do
+    resources :contacts, path: "external-contacts", except: %i[show], concerns: :has_destroy_confirmation, controller: :contacts
   end
 
   concern :notable do
@@ -122,7 +122,7 @@ Rails.application.routes.draw do
       only: %i[show new],
       concerns: %i[
         task_listable
-        contactable
+        external_contactable
         notable
         assignable
         informationable

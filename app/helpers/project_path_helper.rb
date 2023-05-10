@@ -11,10 +11,6 @@ module ProjectPathHelper
     return conversions_voluntary_project_notes_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
   end
 
-  def path_to_project_contacts(project)
-    return conversions_voluntary_project_contacts_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
-  end
-
   def path_to_team_lead_project_assignment(project)
     return conversions_voluntary_project_assign_team_lead_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
   end
