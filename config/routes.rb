@@ -5,23 +5,6 @@ YEAR_2000_2499_REGEX = /(?:(?:20|21|23|24)[0-9]{2})/
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  root "root#home"
-
-  # Errors
-  match "/404" => "pages#page_not_found", :via => :all
-  match "/500" => "pages#internal_server_error", :via => :all
-
-  # Sign in
-  get "/sign-in", to: "sessions#new"
-  # Sign out
-  get "/sign-out", to: "sessions#delete"
-  # Sign in fails
-  get "auth/failure", to: "sessions#failure"
-
-  # Omniauth callbacks
-  get "auth/:provider/callback", to: "sessions#create"
-
   concern :has_destroy_confirmation do
     get "/delete", action: :confirm_destroy
   end
@@ -161,6 +144,27 @@ Rails.application.routes.draw do
   end
 
   resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
+
+  # Projects - all projects are conversions right now
+  resources :projects,
+    only: %i[show new]
+
+  # Defines the root path route ("/")
+  root "root#home"
+
+  # Errors
+  match "/404" => "pages#page_not_found", :via => :all
+  match "/500" => "pages#internal_server_error", :via => :all
+
+  # Sign in
+  get "/sign-in", to: "sessions#new"
+  # Sign out
+  get "/sign-out", to: "sessions#delete"
+  # Sign in fails
+  get "auth/failure", to: "sessions#failure"
+
+  # Omniauth callbacks
+  get "auth/:provider/callback", to: "sessions#create"
 
   get "cookies", to: "cookies#edit"
   post "cookies", to: "cookies#update"
