@@ -79,6 +79,9 @@ en:
   errors:
     attributes:
       conversion_date:
-        blank: Enter a provisional conversion date
+        blank: Enter a month and year for the provisional conversion date, like 9 2023
         must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
-        must_be_in_the_future: Provisional conversion date must be in the future.
+        must_be_in_the_future: Provisional conversion date must be in the future
+      provisional_conversion_date:
+        blank: Enter a month and year for the provisional conversion date, like 9 2023
+        must_be_in_the_future: Provisional conversion date must be in the future
