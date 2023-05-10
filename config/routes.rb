@@ -113,7 +113,7 @@ Rails.application.routes.draw do
   # Projects - all projects are conversions right now
   constraints(id: VALID_UUID_REGEX) do
     resources :projects,
-      only: %i[show new],
+      only: %i[show],
       concerns: %i[
         conversion_taskable
         external_contactable
@@ -126,6 +126,12 @@ Rails.application.routes.draw do
         memberable
         academy_urn_updateable
       ]
+  end
+
+  namespace :conversions do
+    namespace :voluntary do
+      resources :projects, only: %i[new create]
+    end
   end
 
   # Defines the root path route ("/")

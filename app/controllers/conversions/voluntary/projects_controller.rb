@@ -31,7 +31,7 @@ class Conversions::Voluntary::ProjectsController < Conversions::ProjectsControll
         @project = @created_project
         render "created"
       else
-        redirect_to conversions_voluntary_project_path(@created_project), notice: I18n.t("conversion_project.voluntary.create.assigned_to_regional_delivery_officer.html")
+        redirect_to project_path(@created_project), notice: I18n.t("conversion_project.voluntary.create.assigned_to_regional_delivery_officer.html")
       end
     else
       render :new
