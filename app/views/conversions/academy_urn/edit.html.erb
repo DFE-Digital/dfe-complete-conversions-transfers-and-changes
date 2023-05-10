@@ -9,7 +9,7 @@
 
     <%= t("project.academy_urn.body_html") %>
 
-    <%= form_for @project, url: conversions_voluntary_project_academy_urn_path, method: :post do |form| %>
+    <%= form_for @project, url: project_academy_urn_path, method: :post do |form| %>
         <%= form.govuk_error_summary %>
 
         <div class="govuk-form-group">

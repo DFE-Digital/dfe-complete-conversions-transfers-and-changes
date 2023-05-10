@@ -10,7 +10,7 @@
     <%= t("project.academy_urn.not_found.body_html") %>
 
     <div class="govuk-button-group">
-      <%= govuk_button_link_to t("project.academy_urn.not_found.enter_urn_again"), conversions_voluntary_project_academy_urn_path(@project) %>
+      <%= govuk_button_link_to t("project.academy_urn.not_found.enter_urn_again"), project_academy_urn_path(@project) %>
       <%= govuk_link_to t("cancel"), new_all_projects_path %>
     </div>
   </div>
