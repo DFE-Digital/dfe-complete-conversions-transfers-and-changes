@@ -62,21 +62,7 @@ Rails.application.routes.draw do
   end
 
   constraints(id: VALID_UUID_REGEX) do
-    namespace :conversions do
-      get "/", to: "/conversions/projects#index"
-      namespace :voluntary do
-        get "/", to: "/conversions/voluntary/projects#index"
-        get "projects/:id", to: "/conversions/voluntary/projects#show", as: :project
-
-        resources :projects,
-          only: %i[new create],
-          concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable academy_urn_updateable]
-      end
-    end
-  end
-
-  constraints(id: VALID_UUID_REGEX) do
-    resources :projects, only: %i[show] do
+    resources :projects, only: %i[index] do
       collection do
         namespace :all do
           namespace :in_progress, path: "in-progress" do
@@ -119,21 +105,6 @@ Rails.application.routes.draw do
 
         get "openers/:month/:year", to: "projects_openers#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :openers
       end
-      get "information", to: "project_information#show"
-
-      put "complete", to: "projects_complete#complete"
-
-      resources :notes, except: %i[show], concerns: :has_destroy_confirmation
-      resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation
-
-      namespace :assign, controller: "/assignments" do
-        get "team-lead", action: :assign_team_leader
-        post "team-lead", action: :update_team_leader
-        get "regional-delivery-officer", action: :assign_regional_delivery_officer
-        post "regional-delivery-officer", action: :update_regional_delivery_officer
-        get "assigned_to", action: :assign_assigned_to
-        post "assigned_to", action: :update_assigned_to
-      end
     end
   end
 
@@ -146,8 +117,9 @@ Rails.application.routes.draw do
   resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
 
   # Projects - all projects are conversions right now
-  resources :projects,
-    only: %i[show new]
+  constraints(id: VALID_UUID_REGEX) do
+    resources :projects, only: %i[show new]
+  end
 
   # Defines the root path route ("/")
   root "root#home"
