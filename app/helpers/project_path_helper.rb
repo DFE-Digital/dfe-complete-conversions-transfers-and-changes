@@ -34,8 +34,4 @@ module ProjectPathHelper
   def path_to_assigned_to_project_assignment(project)
     return conversions_voluntary_project_assign_assigned_to_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
   end
-
-  def path_to_new_conversion_date(project)
-    return conversions_voluntary_project_conversion_date_path(project) if project.task_list_type == "Conversion::Voluntary::TaskList"
-  end
 end

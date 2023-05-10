@@ -1,1 +1,1 @@
-<%= govuk_button_link_to t("conversion_new_date_history_form.new"), path_to_new_conversion_date(@project), secondary: true if policy(@project).change_conversion_date? %>
+<%= govuk_button_link_to t("conversion_new_date_history_form.new"), new_project_date_history_path(@project), secondary: true if policy(@project).change_conversion_date? %>
