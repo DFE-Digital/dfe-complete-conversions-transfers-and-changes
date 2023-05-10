@@ -24,13 +24,13 @@ Rails.application.routes.draw do
   end
 
   concern :assignable do
-    namespace :assign, controller: "assignments" do
+    namespace :assign, controller: "/assignments" do
       get "team-lead", action: :assign_team_leader
       post "team-lead", action: :update_team_leader
       get "regional-delivery-officer", action: :assign_regional_delivery_officer
       post "regional-delivery-officer", action: :update_regional_delivery_officer
-      get "assigned_to", action: :assign_assigned_to
-      post "assigned_to", action: :update_assigned_to
+      get "assigned-to", action: :assign_assigned_to
+      post "assigned-to", action: :update_assigned_to
     end
   end
 
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   end
 
   concern :internal_contactable do
-    get "internal_contacts", to: "internal_contacts#show"
+    get "internal-contacts", to: "internal_contacts#show"
   end
 
   concern :memberable do
