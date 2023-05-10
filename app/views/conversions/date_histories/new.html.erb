@@ -1,6 +1,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_with model: @form, url: path_to_new_conversion_date(@project) do |form| %>
+    <%= form_with model: @form, url: project_conversion_date_path(@project) do |form| %>
       <%= form.govuk_error_summary %>
 
       <fieldset class="govuk-fieldset">
