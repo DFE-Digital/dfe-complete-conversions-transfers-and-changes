@@ -79,7 +79,7 @@ RSpec.describe ContactsController, type: :request do
 
     context "when the contact is valid" do
       it "saves the contact and redirects to the index view with a success message" do
-        expect(subject).to redirect_to(conversions_voluntary_project_contacts_path(project))
+        expect(subject).to redirect_to(project_contacts_path(project))
         expect(request.flash[:notice]).to eq(I18n.t("contact.create.success"))
 
         expect(Contact.count).to be 1

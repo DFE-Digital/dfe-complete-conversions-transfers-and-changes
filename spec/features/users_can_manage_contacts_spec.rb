@@ -11,7 +11,7 @@ RSpec.feature "Users can manage contacts" do
   let(:project) { create(:voluntary_conversion_project) }
 
   scenario "they can view a projects contacts" do
-    visit conversions_voluntary_project_contacts_path(project)
+    visit project_contacts_path(project)
 
     expect(page).to have_content("Other contacts")
 
@@ -32,7 +32,7 @@ RSpec.feature "Users can manage contacts" do
     create(:contact, category: :diocese, project: project)
     create(:contact, category: :local_authority, project: project)
 
-    visit conversions_voluntary_project_contacts_path(project)
+    visit project_contacts_path(project)
 
     order_categories = page.find_all("h3.govuk-heading-m")
 
@@ -50,7 +50,7 @@ RSpec.feature "Users can manage contacts" do
   end
 
   scenario "they can add a new contact" do
-    visit conversions_voluntary_project_contacts_path(project)
+    visit project_contacts_path(project)
 
     click_link "Add contact"
 
@@ -77,7 +77,7 @@ RSpec.feature "Users can manage contacts" do
   end
 
   scenario "they can delete a contact" do
-    visit conversions_voluntary_project_contacts_path(project)
+    visit project_contacts_path(project)
     expect(page).to have_content("Other contacts")
 
     expect_page_to_have_contact(
