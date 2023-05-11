@@ -1,0 +1,11 @@
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @local_authority, url: local_authority_path(@local_authority), method: :delete do |form| %>
+      <h1 class="govuk-heading-l"><%= t("local_authority.destroy.title", local_authority: @local_authority.name) %></h1>
+      <p><%= t("local_authority.destroy.guidance", local_authority: @local_authority.name) %></p>
+      <%= form.govuk_submit t("local_authority.destroy.delete"), warning: true do %>
+        <%= govuk_link_to "Cancel", edit_local_authority_path(@local_authority) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

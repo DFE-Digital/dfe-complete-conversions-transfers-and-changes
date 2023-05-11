@@ -1,0 +1,32 @@
+<%= render partial: "projects/shared/signed_in_as", locals: {email_address: current_user.email} %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <%= t("local_authority.index.title") %>
+    </h1>
+
+    <%= govuk_button_link_to t("local_authority.new.title"), new_local_authority_path if policy(LocalAuthority).new? %>
+
+    <table class="govuk-table" name="local_authorities_table" aria-label="Local authorities table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col"><%= t("local_authority.index.headers.name") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("local_authority.index.headers.view") %></th>
+      </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      <% @local_authorities.each do |local_authority| %>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__header govuk-table__cell"><%= local_authority.name %></td>
+          <td class="govuk-table__cell">
+            <a href="<%= local_authority_path(local_authority) %>">
+              <%= t("local_authority.index.view_details_html", local_authority: local_authority.name) %>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

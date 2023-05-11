@@ -25,5 +25,12 @@ FactoryBot.define do
       regional_delivery_officer { true }
       email { "regional-delivery-officer-#{SecureRandom.uuid}@education.gov.uk" }
     end
+
+    trait :service_support do
+      first_name { "Service" }
+      last_name { "Support" }
+      service_support { true }
+      email { "service-support-#{SecureRandom.uuid}@education.gov.uk" }
+    end
   end
 end

@@ -1,0 +1,24 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <%= @local_authority.name %>
+    </h1>
+
+    <%= govuk_summary_list(actions: false) do |summary_list|
+          summary_list.row do |row|
+            row.key { t("local_authority.show.code") }
+            row.value { @local_authority.code }
+          end
+          summary_list.row do |row|
+            row.key { t("local_authority.show.address") }
+            row.value { address_markup(@local_authority.address) }
+          end
+        end %>
+    <div class="govuk-button-group">
+      <%= govuk_button_link_to t("local_authority.show.edit"), edit_local_authority_path(@local_authority) if policy(@local_authority).edit? %>
+      <%= govuk_button_link_to t("local_authority.show.delete"), local_authority_delete_path(@local_authority), warning: true if policy(@local_authority).destroy? %>
+      <%= govuk_link_to t("local_authority.show.back"), local_authorities_path %>
+    </div>
+
+  </div>
+</div>

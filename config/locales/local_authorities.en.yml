@@ -1,0 +1,44 @@
+en:
+  local_authority:
+    index:
+      title: Local Authorities
+      headers:
+        name: Name
+        view: View details
+      view_details_html:  View <span class="govuk-visually-hidden">%{local_authority}</span> details
+    edit:
+      change_details: Change details for %{local_authority}
+      code: Code
+      line_1: Address line 1
+      line_2: Address line 2
+      line_3: Address line 3
+      town: Town
+      county: County
+      postcode: Postcode
+      save_and_return: Save and return
+    update:
+      success: Local authority details updated
+    show:
+      code: Code
+      address: Address
+      edit: Edit
+      back: Return to list
+      delete: Delete
+    create:
+      success: Local authority successfully created
+    new:
+      title: New local authority
+      name: Name
+      code: Code
+      line_1: Address line 1
+      line_2: Address line 2
+      line_3: Address line 3
+      town: Town
+      county: County
+      postcode: Postcode
+      save_and_return: Save and return
+    destroy:
+      title: Are you sure you want to delete the record for %{local_authority}?
+      guidance: This action will remove the local authority record for %{local_authority} from this application.
+      delete: Delete
+      success: Local authority deleted successfully
