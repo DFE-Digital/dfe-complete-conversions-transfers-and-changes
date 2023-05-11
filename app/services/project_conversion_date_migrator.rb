@@ -4,12 +4,12 @@ class ProjectConversionDateMigrator
   end
 
   def migrate_up!
-    if @project.provisional_conversion_date.present? && @project.conversion_date.nil? && @project.task_list.stakeholder_kick_off_confirmed_conversion_date.nil?
+    if @project.provisional_conversion_date.present? && @project.conversion_date.nil? && @project.tasks_data.stakeholder_kick_off_confirmed_conversion_date.nil?
       @project.update!(conversion_date: @project.provisional_conversion_date, conversion_date_provisional: true)
-    elsif @project.task_list.stakeholder_kick_off_confirmed_conversion_date.present?
+    elsif @project.tasks_data.stakeholder_kick_off_confirmed_conversion_date.present?
       note_body = "Conversion date confirmed as part of external stakeholder kick off task."
       previous_date = @project.provisional_conversion_date
-      revised_date = @project.task_list.stakeholder_kick_off_confirmed_conversion_date
+      revised_date = @project.tasks_data.stakeholder_kick_off_confirmed_conversion_date
 
       user = if @project.assigned_to.present?
         User.find(@project.assigned_to.id)
