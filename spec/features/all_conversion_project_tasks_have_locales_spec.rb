@@ -19,7 +19,7 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
   context "voluntary project" do
     describe "has locales for all tasks" do
       before do
-        visit conversions_voluntary_project_task_list_path(voluntary_project.id)
+        visit project_conversion_tasks_path(voluntary_project.id)
       end
 
       it "has all the links for the voluntary tasks" do

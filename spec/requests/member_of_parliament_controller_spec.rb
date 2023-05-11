@@ -13,7 +13,7 @@ RSpec.describe MemberOfParliamentController, type: :request do
 
   describe "#show" do
     subject(:perform_request) do
-      get conversions_voluntary_project_mp_path(project.id)
+      get project_mp_path(project.id)
       response
     end
 

@@ -11,20 +11,21 @@ RSpec.feature "Viewing another user's or unassigned project" do
   end
 
   scenario "they see a clear message indicating the project is not assigned to them" do
-    visit conversions_voluntary_project_path(project)
+    visit project_path(project)
 
     expect(page).to have_content("Not assigned to project")
   end
 
   scenario "users do not see the complete project button" do
-    visit conversions_voluntary_project_path(project)
+    visit project_path(project)
 
     expect(page).not_to have_button("Complete project")
   end
 
   scenario "users do not see the submit button on tasks" do
-    project.task_list.tasks.each do |task|
-      visit conversions_voluntary_project_edit_task_path(project, task.class.identifier)
+    task_list = Conversion::TaskList.new(project, user)
+    task_list.tasks.each do |task|
+      visit project_edit_task_path(project, task.class.identifier)
 
       expect(page).not_to have_button("Save and return")
     end

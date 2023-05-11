@@ -5,39 +5,22 @@ YEAR_2000_2499_REGEX = /(?:(?:20|21|23|24)[0-9]{2})/
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  root "root#home"
-
-  # Errors
-  match "/404" => "pages#page_not_found", :via => :all
-  match "/500" => "pages#internal_server_error", :via => :all
-
-  # Sign in
-  get "/sign-in", to: "sessions#new"
-  # Sign out
-  get "/sign-out", to: "sessions#delete"
-  # Sign in fails
-  get "auth/failure", to: "sessions#failure"
-
-  # Omniauth callbacks
-  get "auth/:provider/callback", to: "sessions#create"
-
   concern :has_destroy_confirmation do
     get "/delete", action: :confirm_destroy
   end
 
-  concern :task_listable do
-    get "task-list", to: "task_lists#index", as: :task_list
-    get "task-list/:task_id", to: "task_lists#edit", as: :edit_task
-    put "task-list/:task_id", to: "task_lists#update", as: :update_task
+  concern :conversion_taskable do
+    get "tasks", to: "conversions/tasks#index", as: :conversion_tasks
+    get "tasks/:task_identifier", to: "tasks#edit", as: :edit_task
+    put "tasks/:task_identifier", to: "tasks#update"
   end
 
-  concern :contactable do
-    resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation, controller: "/contacts"
+  concern :external_contactable do
+    resources :contacts, path: "external-contacts", except: %i[show], concerns: :has_destroy_confirmation, controller: :contacts
   end
 
   concern :notable do
-    resources :notes, except: %i[show], concerns: :has_destroy_confirmation, controller: "/notes"
+    resources :notes, except: %i[show], concerns: :has_destroy_confirmation, controller: "notes"
   end
 
   concern :assignable do
@@ -46,54 +29,40 @@ Rails.application.routes.draw do
       post "team-lead", action: :update_team_leader
       get "regional-delivery-officer", action: :assign_regional_delivery_officer
       post "regional-delivery-officer", action: :update_regional_delivery_officer
-      get "assigned_to", action: :assign_assigned_to
-      post "assigned_to", action: :update_assigned_to
+      get "assigned-to", action: :assign_assigned_to
+      post "assigned-to", action: :update_assigned_to
     end
   end
 
   concern :informationable do
-    get "information", to: "/project_information#show"
+    get "information", to: "project_information#show"
   end
 
   concern :completable do
-    put "complete", to: "/projects_complete#complete"
+    put "complete", to: "projects_complete#complete"
   end
 
   concern :internal_contactable do
-    get "internal_contacts", to: "/internal_contacts#show"
+    get "internal-contacts", to: "internal_contacts#show"
   end
 
   concern :memberable do
-    get "mp", to: "/member_of_parliament#show"
+    get "mp", to: "member_of_parliament#show"
   end
 
   concern :conversion_date_historyable do
-    get "conversion-date", to: "/conversions/date_histories#new"
-    post "conversion-date", to: "/conversions/date_histories#create"
+    get "conversion-date", to: "conversions/date_histories#new"
+    post "conversion-date", to: "conversions/date_histories#create"
   end
 
   concern :academy_urn_updateable do
-    get "academy-urn", to: "/conversions/academy_urn#edit"
-    post "academy-urn", to: "/conversions/academy_urn#check"
-    patch "academy-urn", to: "/conversions/academy_urn#update_academy_urn"
+    get "academy-urn", to: "conversions/academy_urn#edit"
+    post "academy-urn", to: "conversions/academy_urn#check"
+    patch "academy-urn", to: "conversions/academy_urn#update_academy_urn"
   end
 
   constraints(id: VALID_UUID_REGEX) do
-    namespace :conversions do
-      get "/", to: "/conversions/projects#index"
-      namespace :voluntary do
-        get "/", to: "/conversions/voluntary/projects#index"
-        get "projects/:id", to: "/conversions/voluntary/projects#show", as: :project
-
-        resources :projects,
-          only: %i[new create],
-          concerns: %i[task_listable contactable notable assignable informationable completable internal_contactable conversion_date_historyable memberable academy_urn_updateable]
-      end
-    end
-  end
-
-  constraints(id: VALID_UUID_REGEX) do
-    resources :projects, only: %i[show] do
+    resources :projects, only: %i[index] do
       collection do
         namespace :all do
           namespace :in_progress, path: "in-progress" do
@@ -136,31 +105,52 @@ Rails.application.routes.draw do
 
         get "openers/:month/:year", to: "projects_openers#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :openers
       end
-      get "information", to: "project_information#show"
-
-      put "complete", to: "projects_complete#complete"
-
-      resources :notes, except: %i[show], concerns: :has_destroy_confirmation
-      resources :contacts, path: :external_contacts, except: %i[show], concerns: :has_destroy_confirmation
-
-      namespace :assign, controller: "/assignments" do
-        get "team-lead", action: :assign_team_leader
-        post "team-lead", action: :update_team_leader
-        get "regional-delivery-officer", action: :assign_regional_delivery_officer
-        post "regional-delivery-officer", action: :update_regional_delivery_officer
-        get "assigned_to", action: :assign_assigned_to
-        post "assigned_to", action: :update_assigned_to
-      end
     end
   end
 
-  scope :new_tasks do
-    get ":project_id/tasks", to: "conversions/tasks#index", as: :conversions_tasks
-    get ":project_id/tasks/:task_identifier", to: "tasks#edit", as: :edit_task
-    put ":project_id/tasks/:task_identifier", to: "tasks#update", as: :update_task
+  resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
+
+  # Projects - all projects are conversions right now
+  constraints(id: VALID_UUID_REGEX) do
+    resources :projects,
+      only: %i[show],
+      concerns: %i[
+        conversion_taskable
+        external_contactable
+        notable
+        assignable
+        informationable
+        completable
+        internal_contactable
+        conversion_date_historyable
+        memberable
+        academy_urn_updateable
+      ]
   end
 
-  resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
+  namespace :conversions do
+    get "/", to: "projects#index"
+    namespace :voluntary do
+      resources :projects, only: %i[new create]
+    end
+  end
+
+  # Defines the root path route ("/")
+  root "root#home"
+
+  # Errors
+  match "/404" => "pages#page_not_found", :via => :all
+  match "/500" => "pages#internal_server_error", :via => :all
+
+  # Sign in
+  get "/sign-in", to: "sessions#new"
+  # Sign out
+  get "/sign-out", to: "sessions#delete"
+  # Sign in fails
+  get "auth/failure", to: "sessions#failure"
+
+  # Omniauth callbacks
+  get "auth/:provider/callback", to: "sessions#create"
 
   get "cookies", to: "cookies#edit"
   post "cookies", to: "cookies#update"

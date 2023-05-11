@@ -25,7 +25,7 @@
         <td class="govuk-table__cell"><%= t("project.table.body.#{project.route}") %></td>
         <td class="govuk-table__cell"><%= project.academy_urn %></td>
         <td class="govuk-table__cell">
-          <a href="<%= path_to_project(project) %>">
+          <a href="<%= project_path(project) %>">
             <%= t("project.table.body.view_html", school_name: project.establishment.name) %>
           </a>
         </td>

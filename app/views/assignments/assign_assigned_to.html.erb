@@ -1,6 +1,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for @project, url: path_to_assigned_to_project_assignment(@project), method: :post do |form| %>
+    <%= form_for @project, url: project_assign_assigned_to_path(@project), method: :post do |form| %>
       <%= form.govuk_error_summary %>
 
       <span class="govuk-caption-m">URN <%= @project.urn %></span>
@@ -16,7 +16,7 @@
       <%= form.hidden_field :return_to, value: request.referrer %>
 
       <%= form.govuk_submit do %>
-        <%= govuk_link_to "Cancel", path_to_project_information(@project) %>
+        <%= govuk_link_to "Cancel", project_internal_contacts_path(@project) %>
       <% end %>
     <% end %>
   </div>

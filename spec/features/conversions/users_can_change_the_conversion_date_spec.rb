@@ -12,7 +12,7 @@ RSpec.feature "Users can change the conversion date" do
     revised_conversion_date = (Date.today + 6.months).at_beginning_of_month
     project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false, assigned_to: user)
 
-    visit conversions_voluntary_project_path(project)
+    visit project_path(project)
 
     click_on(I18n.t("conversion_new_date_history_form.new"))
 
@@ -31,7 +31,7 @@ RSpec.feature "Users can change the conversion date" do
   scenario "they can cancel the change if needed" do
     project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false, assigned_to: user)
 
-    visit conversions_voluntary_project_path(project)
+    visit project_path(project)
 
     click_on(I18n.t("conversion_new_date_history_form.new"))
 
@@ -48,7 +48,7 @@ RSpec.feature "Users can change the conversion date" do
     revised_conversion_date = (Date.today + 6.months).at_beginning_of_month
     note = "This is a test note."
 
-    visit conversions_voluntary_project_path(project)
+    visit project_path(project)
 
     click_on(I18n.t("conversion_new_date_history_form.new"))
 
@@ -67,7 +67,7 @@ RSpec.feature "Users can change the conversion date" do
     scenario "they cannot change the conversion date" do
       project = create(:conversion_project, assigned_to: user)
 
-      visit conversions_voluntary_project_path(project)
+      visit project_path(project)
 
       expect(page).not_to have_link(I18n.t("conversion_new_date_history_form.new"))
     end

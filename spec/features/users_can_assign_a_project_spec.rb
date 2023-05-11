@@ -47,7 +47,7 @@ RSpec.feature "Any user can assign any other user to a project" do
   end
 
   def assign_user_from_internal_contacts
-    visit conversions_voluntary_project_path(project)
+    visit project_path(project)
     click_on "Internal contacts"
 
     within("#projectInternalContacts div:first-of-type") do

@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
   def update_team_leader
     @project.update(team_leader_params)
 
-    redirect_to helpers.path_to_project_internal_contacts(@project), notice: t("project.assign.team_leader.success")
+    redirect_to project_internal_contacts_path(@project), notice: t("project.assign.team_leader.success")
   end
 
   def assign_regional_delivery_officer
@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
     authorize @project, :update_regional_delivery_officer?
     @project.update(regional_delivery_officer_params)
 
-    redirect_to helpers.path_to_project_internal_contacts(@project), notice: t("project.assign.regional_delivery_officer.success")
+    redirect_to project_internal_contacts_path(@project), notice: t("project.assign.regional_delivery_officer.success")
   end
 
   def assign_assigned_to
@@ -35,7 +35,7 @@ class AssignmentsController < ApplicationController
 
     AssignedToMailer.assigned_notification(@project.assigned_to, @project).deliver_later
 
-    return_to = assigned_to_params[:return_to] || helpers.path_to_project_internal_contacts(@project)
+    return_to = assigned_to_params[:return_to] || project_internal_contacts_path(@project)
 
     redirect_to return_to, notice: t("project.assign.assigned_to.success")
   end

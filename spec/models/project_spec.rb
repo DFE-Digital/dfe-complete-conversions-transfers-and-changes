@@ -29,7 +29,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:team_leader).required(false) }
     it { is_expected.to belong_to(:assigned_to).required(false) }
-    it { is_expected.to belong_to(:task_list).required(true) }
+    it { is_expected.to belong_to(:tasks_data).required(true) }
 
     describe "delete related entities" do
       context "when the project is deleted" do
@@ -43,7 +43,7 @@ RSpec.describe Project, type: :model do
 
           expect(Note.count).to be_zero
           expect(Contact.count).to be_zero
-          expect(Conversion::Voluntary::TaskList.count).to be_zero
+          expect(Conversion::TasksData.count).to be_zero
         end
       end
     end
@@ -339,8 +339,8 @@ RSpec.describe Project, type: :model do
 
   describe "#all_conditions_met?" do
     context "when the all conditions met task is completed" do
-      let(:task_list) { create(:voluntary_conversion_task_list, conditions_met_confirm_all_conditions_met: true) }
-      let(:project) { build(:conversion_project, task_list: task_list) }
+      let(:tasks_data) { create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: true) }
+      let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns true" do
         expect(project.all_conditions_met?).to eq(true)
@@ -348,8 +348,8 @@ RSpec.describe Project, type: :model do
     end
 
     context "when the all conditions met task has not been completed" do
-      let(:task_list) { create(:voluntary_conversion_task_list, conditions_met_confirm_all_conditions_met: nil) }
-      let(:project) { build(:conversion_project, task_list: task_list) }
+      let(:tasks_data) { create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: nil) }
+      let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns false" do
         expect(project.all_conditions_met?).to eq(false)

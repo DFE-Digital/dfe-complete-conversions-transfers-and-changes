@@ -4,7 +4,7 @@ class BaseTaskList
   def initialize(project, user)
     @project = project
     @user = user
-    @tasks_data = project.task_list
+    @tasks_data = project.tasks_data
     @sections = initialize_sections
     @tasks = all_tasks
   end

@@ -7,7 +7,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
   before do
     mock_successful_api_responses(urn: any_args, ukprn: any_args)
     sign_in_with_user(user)
-    visit conversions_voluntary_project_task_list_path(voluntary_project.id)
+    visit project_conversion_tasks_path(voluntary_project.id)
   end
 
   mandatory_tasks = %w[commercial_transfer_agreement
@@ -39,7 +39,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
       let(:project) { create(:voluntary_conversion_project, assigned_to: user, conversion_date_provisional: true) }
 
       scenario "they can set the confirmed date" do
-        visit conversions_voluntary_project_task_list_path(project)
+        visit project_conversion_tasks_path(project)
 
         click_on "External stakeholder kick-off"
         page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
@@ -58,9 +58,9 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
       let(:project) { create(:voluntary_conversion_project, assigned_to: user, conversion_date_provisional: false) }
 
       scenario "they can continue to submit the task form" do
-        project.task_list.stakeholder_kick_off_confirmed_conversion_date = Date.today.at_beginning_of_month + 3.months
-        project.task_list.save!
-        visit conversions_voluntary_project_task_list_path(project)
+        project.tasks_data.stakeholder_kick_off_confirmed_conversion_date = Date.today.at_beginning_of_month + 3.months
+        project.tasks_data.save!
+        visit project_conversion_tasks_path(project)
 
         click_on "External stakeholder kick-off"
         page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }

@@ -20,7 +20,7 @@ RSpec.feature "Users can create and view task level notes" do
   end
 
   scenario "User creates and views task level notes" do
-    visit conversions_voluntary_project_edit_task_path(project_id, task_identifier)
+    visit project_edit_task_path(project_id, task_identifier)
 
     expect_page_to_have_note(
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
@@ -29,7 +29,7 @@ RSpec.feature "Users can create and view task level notes" do
     click_link I18n.t("note.show.task_notes.add") # Link styled as button
 
     expect(page).to have_field("note[task_identifier]", type: :hidden, with: task_identifier)
-    expect(page).to have_link("Cancel", href: conversions_voluntary_project_edit_task_path(project_id, task_identifier))
+    expect(page).to have_link("Cancel", href: project_edit_task_path(project_id, task_identifier))
 
     fill_in "Enter note", with: new_note_body
 
@@ -40,7 +40,7 @@ RSpec.feature "Users can create and view task level notes" do
   end
 
   scenario "User edits a task level note" do
-    visit conversions_voluntary_project_edit_task_path(project_id, task_identifier)
+    visit project_edit_task_path(project_id, task_identifier)
 
     expect_page_to_have_note(
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
@@ -49,7 +49,7 @@ RSpec.feature "Users can create and view task level notes" do
     click_link I18n.t("note.show.task_notes.edit")
 
     expect(page).to have_current_path(edit_project_note_path(project, Note.first))
-    expect(page).to have_link("Back", href: conversions_voluntary_project_edit_task_path(project_id, task_identifier))
+    expect(page).to have_link("Back", href: project_edit_task_path(project_id, task_identifier))
 
     fill_in "Enter note", with: new_note_body
 
@@ -60,7 +60,7 @@ RSpec.feature "Users can create and view task level notes" do
   end
 
   scenario "User deletes a task level note" do
-    visit conversions_voluntary_project_edit_task_path(project_id, task_identifier)
+    visit project_edit_task_path(project_id, task_identifier)
 
     expect_page_to_have_note(
       user: user.full_name, date: Date.yesterday.to_formatted_s(:govuk), body: "Just had a very interesting phone call with the headteacher about land law"
@@ -69,7 +69,7 @@ RSpec.feature "Users can create and view task level notes" do
     click_link I18n.t("note.show.task_notes.edit")
 
     expect(page).to have_current_path(edit_project_note_path(project, Note.first))
-    expect(page).to have_link("Back", href: conversions_voluntary_project_edit_task_path(project_id, task_identifier))
+    expect(page).to have_link("Back", href: project_edit_task_path(project_id, task_identifier))
 
     click_link("Delete") # Link styled as button
 
@@ -79,7 +79,7 @@ RSpec.feature "Users can create and view task level notes" do
 
     click_button("Delete")
 
-    expect(page).to have_current_path(conversions_voluntary_project_edit_task_path(project_id, task_identifier))
+    expect(page).to have_current_path(project_edit_task_path(project_id, task_identifier))
   end
 
   private def expect_page_to_have_note(user:, date:, body:)

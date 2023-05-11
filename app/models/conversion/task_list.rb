@@ -7,8 +7,7 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::HandoverTaskForm,
           Conversion::Task::StakeholderKickOffTaskForm,
           Conversion::Task::ConversionGrantTaskForm,
-          Conversion::Task::SponsoredSupportGrantTaskForm,
-          Conversion::Task::FundingAgreementContactTaskForm
+          Conversion::Task::SponsoredSupportGrantTaskForm
         ]
       },
       {

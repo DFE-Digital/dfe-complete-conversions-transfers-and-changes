@@ -5,5 +5,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     authorize @project
+
+    redirect_to project_conversion_tasks_path(@project)
   end
 end

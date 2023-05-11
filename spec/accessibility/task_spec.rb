@@ -12,14 +12,14 @@ RSpec.feature "Test tasks accessibility", driver: :headless_firefox, accessibili
   end
 
   scenario "show tasks page" do
-    visit conversions_voluntary_project_path(project)
+    visit project_path(project)
 
     expect(page).to have_content(I18n.t("conversion.voluntary.tasks.#{task_identifier}.title"))
     check_accessibility(page)
   end
 
   scenario "individual task page" do
-    visit conversions_voluntary_project_edit_task_path(project, task_identifier)
+    visit project_edit_task_path(project, task_identifier)
 
     expect(page).to have_content(I18n.t("conversion.voluntary.tasks.#{task_identifier}.title"))
     check_accessibility(page)

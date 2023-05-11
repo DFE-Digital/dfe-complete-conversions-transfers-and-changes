@@ -11,7 +11,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
 
   describe "#identifier" do
     it "returns the class name without 'TaskForm' as a symbol" do
-      task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+      task_form = described_class.new(Conversion::TasksData.new, user)
 
       expect(task_form.identifier).to eql :articles_of_association
     end
@@ -22,8 +22,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
       it "updates the task list data" do
         mock_successful_api_response_to_create_any_project
         project = create(:conversion_project)
-        task_data = project.task_list
-        task_data.user = user
+        task_data = project.tasks_data
         task_form = described_class.new(task_data, user)
         task_form.received = true
 
@@ -37,8 +36,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
       it "raises error" do
         mock_successful_api_response_to_create_any_project
         project = create(:conversion_project)
-        task_data = project.task_list
-        task_data.user = user
+        task_data = project.tasks_data
         task_form = described_class.new(task_data, user)
         allow(task_data).to receive(:valid?).and_return(false)
 
@@ -50,7 +48,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
   describe "#status" do
     context "when the task has no completed actions" do
       it "returns :not_started" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         expect(task_form.status).to eql :not_started
@@ -59,7 +57,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
 
     context "when the task has some completed actions" do
       it "returns :in_progress" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         task_form.received = true
@@ -70,7 +68,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
 
     context "when the task is not applicable" do
       it "returns :not_applicable" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         task_form.not_applicable = true
@@ -81,7 +79,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
 
     context "when the task has all completed actions" do
       it "returns :completed" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         task_form.received = true
@@ -96,7 +94,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
 
   describe "#locales_path" do
     it "returns the task path without 'TaskForm' as a dot list" do
-      task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+      task_form = described_class.new(Conversion::TasksData.new, user)
 
       expect(task_form.locales_path).to eql "conversion.task.articles_of_association"
     end

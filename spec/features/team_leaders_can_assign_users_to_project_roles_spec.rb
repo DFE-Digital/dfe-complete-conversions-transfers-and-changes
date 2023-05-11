@@ -14,7 +14,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
   end
 
   scenario "Team leader assigns a user to the regional delivery officer role" do
-    visit conversions_voluntary_project_internal_contacts_path(project_id)
+    visit project_internal_contacts_path(project_id)
 
     regional_delivery_officer_summary_list_row = -> { page.find("dt", text: I18n.t("contact.internal_contacts.added_by")).ancestor(".govuk-summary-list__row") }
 
@@ -24,7 +24,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
       click_on "Change"
     end
 
-    expect(page).to have_current_path(conversions_voluntary_project_assign_regional_delivery_officer_path(project))
+    expect(page).to have_current_path(project_assign_regional_delivery_officer_path(project))
 
     select regional_delivery_officer.full_name, from: I18n.t("assignment.assign_regional_delivery_officer.title", school_name: project.establishment.name)
 
@@ -36,7 +36,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
   end
 
   scenario "Team leader assigns a user to the assigned_to role" do
-    visit conversions_voluntary_project_internal_contacts_path(project_id)
+    visit project_internal_contacts_path(project_id)
 
     assigned_to_summary_list_row = -> { page.find("dt", text: "Assigned to").ancestor(".govuk-summary-list__row") }
 
@@ -46,7 +46,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
       click_on "Change"
     end
 
-    expect(page).to have_current_path(conversions_voluntary_project_assign_assigned_to_path(project))
+    expect(page).to have_current_path(project_assign_assigned_to_path(project))
 
     select caseworker.full_name, from: I18n.t("assignment.assign_assigned_to.title", school_name: project.establishment.name)
 

@@ -11,7 +11,7 @@ class TasksController < ApplicationController
 
     if @task.valid?
       @task.save
-      redirect_to conversions_tasks_path(@project), notice: t("task_list.save.success")
+      redirect_to project_conversion_tasks_path(@project), notice: t("task_list.save.success")
     else
       render task_view
     end
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   end
 
   private def find_tasks_data
-    @tasks_data = @project.task_list
+    @tasks_data = @project.tasks_data
   end
 
   private def find_task

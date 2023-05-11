@@ -20,7 +20,7 @@
             <span class="app-task-list__task-name">
               <%= govuk_link_to(
                     t("#{task.locales_path}.title"),
-                    edit_task_path(@project, task.identifier),
+                    project_edit_task_path(@project, task.identifier),
                     aria: {describedby: task_id(task)}
                   ) %>
             </span>

@@ -6,7 +6,7 @@
           school_name: @project.establishment.name,
           urn: @project.urn,
           conversion_date: @project.conversion_date.to_formatted_s(:govuk),
-          project_path: path_to_project(@project),
+          project_path: project_path(@project),
           projects_path: in_progress_user_projects_path
         ) %>
   </div>

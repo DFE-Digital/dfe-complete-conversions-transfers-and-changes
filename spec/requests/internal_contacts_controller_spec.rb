@@ -13,7 +13,7 @@ RSpec.describe AssignmentsController, type: :request do
     let(:project_id) { project.id }
 
     subject(:perform_request) do
-      get conversions_voluntary_project_internal_contacts_path(project_id)
+      get project_internal_contacts_path(project_id)
       response
     end
 

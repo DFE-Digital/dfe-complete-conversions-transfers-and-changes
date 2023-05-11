@@ -3,7 +3,7 @@ class Project < ApplicationRecord
 
   attr_writer :establishment, :incoming_trust
 
-  delegated_type :task_list, types: %w[Conversion::Voluntary::TaskList, Conversion::Involuntary::TaskList], dependent: :destroy
+  delegated_type :tasks_data, types: %w[Conversion::TaskList], dependent: :destroy
 
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy
@@ -52,7 +52,7 @@ class Project < ApplicationRecord
   scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
   scope :not_assigned_to_regional_caseworker_team, -> { where.not(assigned_to_regional_caseworker_team: true) }
 
-  scope :opening_by_month_year, ->(month, year) { includes(:task_list).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
+  scope :opening_by_month_year, ->(month, year) { includes(:tasks_data).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
   scope :added_by, ->(user) { where(regional_delivery_officer: user) }
@@ -113,7 +113,7 @@ class Project < ApplicationRecord
   end
 
   def all_conditions_met?
-    task_list.conditions_met_confirm_all_conditions_met?
+    tasks_data.conditions_met_confirm_all_conditions_met?
   end
 
   private def fetch_academy(urn)

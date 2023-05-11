@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
     if @contact.valid?
       @contact.save
 
-      redirect_to helpers.path_to_project_contacts(@project), notice: I18n.t("contact.create.success")
+      redirect_to project_contacts_path(@project), notice: I18n.t("contact.create.success")
     else
       render :new
     end
