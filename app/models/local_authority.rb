@@ -5,6 +5,8 @@ class LocalAuthority < ApplicationRecord
   validates :address_1, presence: true
   validates :address_postcode, presence: true, postcode: true
 
+  has_one :director_of_child_services
+
   def address
     [
       address_1,
