@@ -8,14 +8,12 @@ RSpec.describe ProjectConversionDateMigrator do
   describe "#migrate_up!" do
     context "when the project is provisional" do
       it "sets the conversion date to the provisional date" do
-        user = create(:user)
         project = create(:conversion_project, provisional_conversion_date: Date.today.at_beginning_of_month)
         project.conversion_date = nil
         project.save(validate: false)
 
-        project.task_list.user = user
-        project.task_list.stakeholder_kick_off_confirmed_conversion_date = nil
-        project.task_list.save
+        project.tasks_data.stakeholder_kick_off_confirmed_conversion_date = nil
+        project.tasks_data.save
 
         described_class.new(project).migrate_up!
         project.reload
@@ -36,7 +34,7 @@ RSpec.describe ProjectConversionDateMigrator do
           )
           project.conversion_date = nil
           project.save(validate: false)
-          allow(project.task_list).to receive(:stakeholder_kick_off_confirmed_conversion_date).and_return(Date.today.at_beginning_of_month + 1.month)
+          allow(project.tasks_data).to receive(:stakeholder_kick_off_confirmed_conversion_date).and_return(Date.today.at_beginning_of_month + 1.month)
 
           described_class.new(project).migrate_up!
           project.reload
@@ -62,7 +60,7 @@ RSpec.describe ProjectConversionDateMigrator do
           )
           project.conversion_date = nil
           project.save(validate: false)
-          allow(project.task_list).to receive(:stakeholder_kick_off_confirmed_conversion_date).and_return(Date.today.at_beginning_of_month + 1.month)
+          allow(project.tasks_data).to receive(:stakeholder_kick_off_confirmed_conversion_date).and_return(Date.today.at_beginning_of_month + 1.month)
 
           described_class.new(project).migrate_up!
           project.reload

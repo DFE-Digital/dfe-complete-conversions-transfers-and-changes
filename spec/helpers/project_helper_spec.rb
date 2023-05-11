@@ -143,8 +143,8 @@ RSpec.describe ProjectHelper, type: :helper do
 
   describe "#all_conditions_met_tag" do
     context "when all_conditions_met is true" do
-      let(:task_list) { create(:voluntary_conversion_task_list, conditions_met_confirm_all_conditions_met: true) }
-      let(:project) { build(:conversion_project, task_list: task_list) }
+      let(:tasks_data) { create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: true) }
+      let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns a turquoise tag with 'yes' text" do
         expect(helper.all_conditions_met_tag(project)).to include("turquoise", "yes")
@@ -152,8 +152,8 @@ RSpec.describe ProjectHelper, type: :helper do
     end
 
     context "when all_conditions_met is false" do
-      let(:task_list) { create(:voluntary_conversion_task_list, conditions_met_confirm_all_conditions_met: nil) }
-      let(:project) { build(:conversion_project, task_list: task_list) }
+      let(:tasks_data) { create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: nil) }
+      let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns a blue tag with 'not started' text" do
         expect(helper.all_conditions_met_tag(project)).to include("blue", "not started")

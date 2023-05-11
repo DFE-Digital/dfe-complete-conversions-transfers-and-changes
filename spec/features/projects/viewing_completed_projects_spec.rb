@@ -22,7 +22,8 @@ RSpec.feature "Viewing completed projects" do
   end
 
   scenario "users do not see the submit button on tasks" do
-    project.task_list.tasks.each do |task|
+    task_list = Conversion::TaskList.new(project, user)
+    task_list.tasks.each do |task|
       visit project_edit_task_path(project, task.class.identifier)
 
       expect(page).not_to have_button("Save and return")

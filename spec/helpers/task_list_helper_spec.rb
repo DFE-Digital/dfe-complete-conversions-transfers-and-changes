@@ -8,7 +8,7 @@ RSpec.describe TaskListHelper, type: :helper do
     it "returns the task title as kebab case with '-status' appended" do
       mock_successful_api_response_to_create_any_project
       project = create(:conversion_project)
-      task_data = project.task_list
+      task_data = project.tasks_data
       user = create(:user)
       task_form = Conversion::Task::ArticlesOfAssociationTaskForm.new(task_data, user)
       expect(helper.task_status_id(task_form)).to eq "articles-of-association-status"
@@ -19,7 +19,7 @@ RSpec.describe TaskListHelper, type: :helper do
     it "returns the task title from the locales in kebab case with '-status' appended" do
       mock_successful_api_response_to_create_any_project
       project = create(:conversion_project)
-      task_data = project.task_list
+      task_data = project.tasks_data
       user = create(:user)
       task_form = Conversion::Task::ArticlesOfAssociationTaskForm.new(task_data, user)
       expect(helper.task_id(task_form)).to eq "articles-of-association-status"
@@ -27,7 +27,6 @@ RSpec.describe TaskListHelper, type: :helper do
   end
 
   describe "#task_status_tag" do
-
     it "returns a tag representing the task status when the status is known" do
       task = double(Conversion::Task::ArticlesOfAssociationTaskForm)
       allow(task).to receive(:status).and_return(:completed)

@@ -262,9 +262,9 @@ RSpec.shared_examples "a conversion project FormObject" do
         expect(project.class.name).to eq("Conversion::Project")
       end
 
-      it "also creates a task list" do
+      it "also creates a tasks data" do
         project = build(form_factory.to_sym).save
-        expect(project.task_list).to be_a(task_list_class)
+        expect(project.tasks_data).to be_a(Conversion::TasksData)
       end
 
       it "creates a note if the note_body is not empty" do
