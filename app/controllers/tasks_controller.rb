@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   end
 
   private def find_tasks_data
-    @tasks_data = @project.task_list
+    @tasks_data = @project.tasks_data
   end
 
   private def find_task

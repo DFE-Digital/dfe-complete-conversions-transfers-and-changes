@@ -7,7 +7,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
     describe "date values" do
       context "when the month is invalid" do
         it "adds the appropriate error" do
-          task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+          task_form = described_class.new(Conversion::TasksData.new, user)
           task_form.assign_attributes(
             "confirmed_conversion_date(2i)": "not a month",
             "confirmed_conversion_date(1i)": "2023"
@@ -21,7 +21,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
 
       context "when the year is invalid" do
         it "adds the appropriate error" do
-          task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+          task_form = described_class.new(Conversion::TasksData.new, user)
           task_form.assign_attributes(
             "confirmed_conversion_date(2i)": "12",
             "confirmed_conversion_date(1i)": "not a year"
@@ -35,7 +35,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
 
       context "when the date is in the past" do
         it "is invalid with the appropriate error message" do
-          task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+          task_form = described_class.new(Conversion::TasksData.new, user)
           task_form.assign_attributes(
             "confirmed_conversion_date(3i)": "1",
             "confirmed_conversion_date(2i)": "1",
@@ -58,7 +58,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
 
   describe "#identifier" do
     it "returns the class name without 'TaskForm' as a symbol" do
-      task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+      task_form = described_class.new(Conversion::TasksData.new, user)
 
       expect(task_form.identifier).to eql :stakeholder_kick_off
     end
@@ -69,8 +69,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
       it "updates the task list data" do
         mock_successful_api_response_to_create_any_project
         project = create(:conversion_project)
-        task_data = project.task_list
-        task_data.user = user
+        task_data = project.tasks_data
         task_form = described_class.new(task_data, user)
         task_form.introductory_emails = true
 
@@ -84,8 +83,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
       it "raises error" do
         mock_successful_api_response_to_create_any_project
         project = create(:conversion_project)
-        task_data = project.task_list
-        task_data.user = user
+        task_data = project.tasks_data
         task_form = described_class.new(task_data, user)
         allow(task_data).to receive(:valid?).and_return(false)
 
@@ -97,7 +95,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
   describe "#status" do
     context "when the task has no completed actions" do
       it "returns :not_started" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         expect(task_form.status).to eql :not_started
@@ -106,7 +104,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
 
     context "when the task has some completed actions" do
       it "returns :in_progress" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         task_form.introductory_emails = true
@@ -117,7 +115,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
 
     context "when the task has all completed actions" do
       it "returns :completed" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         task_form.introductory_emails = true
@@ -134,7 +132,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
 
   describe "#locales_path" do
     it "returns the task path without 'TaskForm' as a dot list" do
-      task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+      task_form = described_class.new(Conversion::TasksData.new, user)
 
       expect(task_form.locales_path).to eql "conversion.task.stakeholder_kick_off"
     end

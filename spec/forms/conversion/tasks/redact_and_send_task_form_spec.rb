@@ -11,7 +11,7 @@ RSpec.describe Conversion::Task::RedactAndSendTaskForm do
 
   describe "#identifier" do
     it "returns the class name without 'TaskForm' as a symbol" do
-      task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+      task_form = described_class.new(Conversion::TasksData.new, user)
 
       expect(task_form.identifier).to eql :redact_and_send
     end
@@ -20,7 +20,7 @@ RSpec.describe Conversion::Task::RedactAndSendTaskForm do
   describe "#save" do
     context "when the form is valid" do
       it "updates the task list data" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
         task_form.save_redaction = true
 
@@ -32,7 +32,7 @@ RSpec.describe Conversion::Task::RedactAndSendTaskForm do
 
     context "when the form is invalid" do
       it "raises error" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
         allow(task_data).to receive(:valid?).and_return(false)
 
@@ -44,7 +44,7 @@ RSpec.describe Conversion::Task::RedactAndSendTaskForm do
   describe "#status" do
     context "when the task has no completed actions" do
       it "returns :not_started" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         expect(task_form.status).to eql :not_started
@@ -53,7 +53,7 @@ RSpec.describe Conversion::Task::RedactAndSendTaskForm do
 
     context "when the task has some completed actions" do
       it "returns :in_progress" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         task_form.redact = true
@@ -64,7 +64,7 @@ RSpec.describe Conversion::Task::RedactAndSendTaskForm do
 
     context "when the task has all completed actions" do
       it "returns :completed" do
-        task_data = Conversion::Voluntary::TaskList.new
+        task_data = Conversion::TasksData.new
         task_form = described_class.new(task_data, user)
 
         task_form.redact = true
@@ -79,7 +79,7 @@ RSpec.describe Conversion::Task::RedactAndSendTaskForm do
 
   describe "#locales_path" do
     it "returns the task path without 'TaskForm' as a dot list" do
-      task_form = described_class.new(Conversion::Voluntary::TaskList.new, user)
+      task_form = described_class.new(Conversion::TasksData.new, user)
 
       expect(task_form.locales_path).to eql "conversion.task.redact_and_send"
     end

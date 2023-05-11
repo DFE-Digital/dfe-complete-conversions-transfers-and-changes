@@ -36,7 +36,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
     let(:project) { create(:conversion_project) }
 
     it "sets funding_agreement_contact to true" do
-      form = described_class.new(project.task_list, user)
+      form = described_class.new(project.tasks_data, user)
       form.assign_attributes(valid_form.attributes)
 
       expect { form.save }.to change { Contact.count }.by(1)
@@ -52,7 +52,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
     context "when there is no main contact for the project" do
       it "creates a new empty Contact" do
         project = create(:conversion_project)
-        form = described_class.new(project.task_list, user)
+        form = described_class.new(project.tasks_data, user)
 
         expect(form.name).to be_nil
         expect(form.email).to be_nil
@@ -63,7 +63,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
       it "loads the existing Contact" do
         project = create(:conversion_project)
         main_contact = create(:contact, funding_agreement_contact: true, project: project)
-        form = described_class.new(project.task_list, user)
+        form = described_class.new(project.tasks_data, user)
 
         expect(form.name).to eql main_contact.name
         expect(form.email).to eql main_contact.email
@@ -72,7 +72,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
   end
 
   def valid_form
-    tasks_data = Conversion::Voluntary::TaskList.new
+    tasks_data = Conversion::TasksData.new
     form = described_class.new(tasks_data, user)
 
     form.assign_attributes(

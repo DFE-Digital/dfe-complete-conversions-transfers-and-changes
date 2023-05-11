@@ -36,10 +36,10 @@ RSpec.describe TasksController do
 
         project.reload
 
-        expect(project.task_list.redact_and_send_redact).to eql true
-        expect(project.task_list.redact_and_send_send_redaction).to eql true
-        expect(project.task_list.redact_and_send_save_redaction).to eql true
-        expect(project.task_list.redact_and_send_send_solicitors).to eql true
+        expect(project.tasks_data.redact_and_send_redact).to eql true
+        expect(project.tasks_data.redact_and_send_send_redaction).to eql true
+        expect(project.tasks_data.redact_and_send_save_redaction).to eql true
+        expect(project.tasks_data.redact_and_send_send_solicitors).to eql true
 
         expect(response).to redirect_to(project_conversion_tasks_path(project))
       end
@@ -54,7 +54,7 @@ RSpec.describe TasksController do
         put project_edit_task_path(project, :redact_and_send)
 
         expect(response).to render_template "conversions/tasks/redact_and_send/edit"
-        expect(project.task_list.redact_and_send_redact).to be_nil
+        expect(project.tasks_data.redact_and_send_redact).to be_nil
       end
     end
   end
