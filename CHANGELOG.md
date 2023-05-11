@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 24][release-24]
+
+### Added
+
 - a new view that shows regional delivery officers the projects they have
   created
 - User can provide the new academy urn once it has be created in Get information
@@ -837,7 +845,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-23...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-24...HEAD
+[release-24]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-23...release-24
 [release-23]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-22...release-23
 [release-22]:
