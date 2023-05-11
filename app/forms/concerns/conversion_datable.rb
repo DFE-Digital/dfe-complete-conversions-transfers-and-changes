@@ -12,7 +12,7 @@ module ConversionDatable
   end
 
   private def conversion_date_format
-    return if month.blank? && year.blank?
+    return if month.nil? && year.nil?
 
     format_error = I18n.t("conversion.task.stakeholder_kick_off.confirmed_conversion_date.errors.format")
 
@@ -28,14 +28,14 @@ module ConversionDatable
 
   private def month
     month = attributes["confirmed_conversion_date(2i)"]
-    return if month.nil?
+    return if month.blank?
 
     month.to_i
   end
 
   private def year
     year = attributes["confirmed_conversion_date(1i)"]
-    return if year.nil?
+    return if year.blank?
 
     year.to_i
   end
