@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- edit handover comments guidance and remove details component
 - when creating a new conversion project, users are asked 'what kind of academy
   order has been issued?' with directive academy order (DAO) or academy order
   (AO) being the responses
