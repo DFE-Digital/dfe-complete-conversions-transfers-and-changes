@@ -33,7 +33,7 @@ class Conversions::ProjectsController < ProjectsController
   end
 
   private def project_params
-    params.require(:conversion_voluntary_create_project_form).permit(
+    params.require(:conversion_create_project_form).permit(
       :urn,
       :incoming_trust_ukprn,
       :provisional_conversion_date,

@@ -10,7 +10,7 @@ RSpec.feature "All new conversion projects have a locale file & all keys are pre
 
   context "voluntary projects" do
     it "have locales when creating a new project" do
-      visit new_conversions_voluntary_project_path
+      visit conversions_new_path
 
       expect(page).to_not have_css(".translation_missing")
     end
@@ -18,7 +18,7 @@ RSpec.feature "All new conversion projects have a locale file & all keys are pre
 
   context "involuntary projects" do
     it "have locales when creating a new project" do
-      visit new_conversions_voluntary_project_path
+      visit conversions_new_path
 
       expect(page).to_not have_css(".translation_missing")
     end

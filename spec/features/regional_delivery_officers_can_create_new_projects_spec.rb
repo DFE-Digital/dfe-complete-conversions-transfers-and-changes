@@ -10,7 +10,7 @@ RSpec.feature "Regional delivery officers can create new projects" do
       visit root_path
 
       expect(page)
-        .to have_link I18n.t("conversion_project.voluntary.new.title"), href: new_conversions_voluntary_project_path
+        .to have_link I18n.t("conversion_project.voluntary.new.title"), href: conversions_new_path
     end
   end
 end

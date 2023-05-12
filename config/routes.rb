@@ -128,10 +128,11 @@ Rails.application.routes.draw do
       ]
   end
 
-  namespace :conversions do
-    get "/", to: "projects#index"
-    namespace :voluntary do
-      resources :projects, only: %i[new create]
+  scope :projects do
+    namespace :conversions do
+      get "/", to: "projects#index"
+      post "/", to: "projects#create"
+      get "new", to: "projects#new"
     end
   end
 

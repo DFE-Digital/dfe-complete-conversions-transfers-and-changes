@@ -22,10 +22,10 @@ RSpec.describe Conversions::ProjectsController do
   end
 
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
-  let(:create_path) { conversions_voluntary_projects_path }
+  let(:create_path) { conversions_path }
   let(:form_class) { Conversion::CreateProjectForm }
   let(:project_form) { build(:create_project_form) }
-  let(:project_form_params_key) { "conversion_voluntary_create_project_form" }
+  let(:project_form_params_key) { "conversion_create_project_form" }
   let(:project_form_params) {
     attributes_for(:create_project_form,
       "provisional_conversion_date(3i)": "1",
@@ -50,7 +50,7 @@ RSpec.describe Conversions::ProjectsController do
 
   describe "after creating a new project" do
     it "redirects to the project page" do
-      post conversions_voluntary_projects_path, params: {"#{project_form_params_key}": {**project_form_params}}
+      post conversions_path, params: {"#{project_form_params_key}": {**project_form_params}}
 
       expect(response).to redirect_to project_path(Project.last)
     end
