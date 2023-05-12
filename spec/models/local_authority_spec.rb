@@ -12,6 +12,10 @@ RSpec.describe LocalAuthority do
     it { is_expected.to have_db_column(:address_postcode).of_type :string }
   end
 
+  describe "Relations" do
+    it { is_expected.to have_one(:director_of_child_services).optional }
+  end
+
   describe "Validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:code) }
