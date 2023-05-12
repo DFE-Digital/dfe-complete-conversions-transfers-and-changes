@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class ExternalContactsController < ApplicationController
   before_action :find_project
 
   def index
@@ -7,12 +7,12 @@ class ContactsController < ApplicationController
 
   def new
     authorize @project, :new_contact?
-    @contact = Contact.new(project: @project)
+    @contact = Contact::Project.new(project: @project)
   end
 
   def create
     authorize @project, :new_contact?
-    @contact = Contact.new(project: @project, **contact_params)
+    @contact = Contact::Project.new(project: @project, **contact_params)
 
     if @contact.valid?
       @contact.save
@@ -63,6 +63,6 @@ class ContactsController < ApplicationController
   end
 
   private def contact_params
-    params.require(:contact).permit(:name, :organisation_name, :title, :category, :email, :phone)
+    params.require(:contact_project).permit(:name, :organisation_name, :title, :category, :email, :phone)
   end
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ContactsController, type: :request do
+RSpec.describe ExternalContactsController, type: :request do
   let(:user) { create(:user) }
 
   before do
