@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- the 'external stakeholder kick-off' task can now be updated without providing
+  a confirmed converison date.
+
 ## [Release 24][release-24]
 
 ### Added
