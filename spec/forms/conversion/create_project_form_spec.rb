@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
-  let(:form_factory) { "create_voluntary_project_form" }
+RSpec.describe Conversion::CreateProjectForm, type: :model do
+  let(:form_factory) { "create_project_form" }
   let(:task_list_class) { Conversion::Voluntary::TaskList }
 
   it_behaves_like "a conversion project FormObject"
@@ -21,7 +21,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
         team_leader = create(:user, :team_leader)
         another_team_leader = create(:user, :team_leader)
 
-        project = build(:create_voluntary_project_form, assigned_to_regional_caseworker_team: true).save
+        project = build(:create_project_form, assigned_to_regional_caseworker_team: true).save
 
         expect(ActionMailer::MailDeliveryJob)
           .to(have_been_enqueued.on_queue("default")
@@ -32,7 +32,7 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
       end
 
       it "does not set Project.assigned_to" do
-        project = build(:create_voluntary_project_form, assigned_to_regional_caseworker_team: true).save
+        project = build(:create_project_form, assigned_to_regional_caseworker_team: true).save
 
         expect(project.assigned_to).to be_nil
       end
@@ -43,20 +43,20 @@ RSpec.describe Conversion::Voluntary::CreateProjectForm, type: :model do
         _team_leader = create(:user, :team_leader)
         _another_team_leader = create(:user, :team_leader)
 
-        _project = build(:create_voluntary_project_form, assigned_to_regional_caseworker_team: false).save
+        _project = build(:create_project_form, assigned_to_regional_caseworker_team: false).save
 
         expect(ActionMailer::MailDeliveryJob).to_not(have_been_enqueued)
       end
 
       it "sets Project.assigned_to the current user" do
-        project = build(:create_voluntary_project_form, assigned_to_regional_caseworker_team: false).save
+        project = build(:create_project_form, assigned_to_regional_caseworker_team: false).save
 
         expect(project.assigned_to).to_not be_nil
       end
 
       it "sets Project.assigned_at to now" do
         freeze_time
-        project = build(:create_voluntary_project_form, assigned_to_regional_caseworker_team: false).save
+        project = build(:create_project_form, assigned_to_regional_caseworker_team: false).save
         expect(project.assigned_at).to eq DateTime.now
       end
     end
