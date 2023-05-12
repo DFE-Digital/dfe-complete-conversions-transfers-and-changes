@@ -36,12 +36,12 @@ RSpec.describe Project, type: :model do
           project = create(:conversion_project)
 
           create_list(:note, 3, project: project)
-          create_list(:contact, 3, project: project)
+          create_list(:project_contact, 3, project: project)
 
           project.destroy
 
           expect(Note.count).to be_zero
-          expect(Contact.count).to be_zero
+          expect(Contact::Project.count).to be_zero
           expect(Conversion::TasksData.count).to be_zero
         end
       end
