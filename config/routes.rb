@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   concern :external_contactable do
-    resources :contacts, path: "external-contacts", except: %i[show], concerns: :has_destroy_confirmation, controller: :contacts
+    resources :contacts, path: "external-contacts", except: %i[show], concerns: :has_destroy_confirmation, controller: :external_contacts, type: "Contact::Project"
   end
 
   concern :notable do

@@ -1,4 +1,4 @@
-class Contact::Base < ApplicationRecord
+class Contact < ApplicationRecord
   self.table_name = :contacts
 
   validates :category, presence: true, allow_blank: false

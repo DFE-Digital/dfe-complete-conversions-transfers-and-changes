@@ -1,16 +1,17 @@
 require "rails_helper"
 
-RSpec.describe Contact, type: :model do
+RSpec.describe Contact::Project, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:name).of_type :string }
     it { is_expected.to have_db_column(:title).of_type :string }
     it { is_expected.to have_db_column(:email).of_type :string }
     it { is_expected.to have_db_column(:phone).of_type :string }
     it { is_expected.to have_db_column(:organisation_name).of_type :string }
+    it { is_expected.to have_db_column(:type).of_type :string }
   end
 
   describe "Relationships" do
-    it { is_expected.to belong_to(:project).optional }
+    it { is_expected.to belong_to(:project) }
   end
 
   describe "Validations" do
@@ -29,8 +30,8 @@ RSpec.describe Contact, type: :model do
       it "orders by name" do
         mock_successful_api_responses(urn: any_args, ukprn: any_args)
         project = create(:voluntary_conversion_project)
-        first_solicitor_contact = create(:contact, category: :solicitor, name: "B solicitor", project: project)
-        second_solicitor_contact = create(:contact, category: :solicitor, name: "A solicitor", project: project)
+        first_solicitor_contact = create(:project_contact, category: :solicitor, name: "B solicitor", project: project)
+        second_solicitor_contact = create(:project_contact, category: :solicitor, name: "A solicitor", project: project)
 
         ordered_contacts = project.contacts.by_name
 

@@ -6,7 +6,7 @@ class Project < ApplicationRecord
   delegated_type :tasks_data, types: %w[Conversion::TaskList], dependent: :destroy
 
   has_many :notes, dependent: :destroy
-  has_many :contacts, dependent: :destroy
+  has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
 
   validates :urn, presence: true
   validates :urn, urn: true

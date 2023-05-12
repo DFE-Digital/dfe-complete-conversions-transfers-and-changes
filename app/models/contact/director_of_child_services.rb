@@ -1,4 +1,8 @@
-class Contact::DirectorOfChildServices < Contact::Base
+class Contact::DirectorOfChildServices < Contact
+  def self.policy_class
+    ContactPolicy
+  end
+
   belongs_to :local_authority
 
   attribute :category, default: 3

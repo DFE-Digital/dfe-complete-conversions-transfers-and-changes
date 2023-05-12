@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ContactsHelper, type: :helper do
+RSpec.describe ExternalContactsHelper, type: :helper do
   describe "#has_contacts?" do
     context "when contacts is nil" do
       let(:contacts) { nil }
@@ -19,7 +19,7 @@ RSpec.describe ContactsHelper, type: :helper do
     end
 
     context "when there are contacts" do
-      let(:contacts) { [build(:contact)] }
+      let(:contacts) { [build(:project_contact)] }
 
       it "returns true" do
         expect(helper.has_contacts?(contacts)).to be true

@@ -4,11 +4,11 @@ class ContactPolicy
   def initialize(user, contact)
     @user = user
     @contact = contact
-    @project = @contact.project
+    @project = @contact.project if contact.class.eql?(Contact::Project)
   end
 
   def edit?
-    return false if @project.completed?
+    return false if @project&.completed?
 
     true
   end
@@ -18,7 +18,7 @@ class ContactPolicy
   end
 
   def destroy?
-    return false if @project.completed?
+    return false if @project&.completed?
 
     true
   end

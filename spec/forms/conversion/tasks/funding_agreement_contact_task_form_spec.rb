@@ -62,7 +62,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
     context "when there is main contact for the project" do
       it "loads the existing Contact" do
         project = create(:conversion_project)
-        main_contact = create(:contact, funding_agreement_contact: true, project: project)
+        main_contact = create(:project_contact, funding_agreement_contact: true, project: project)
         form = described_class.new(project.tasks_data, user)
 
         expect(form.name).to eql main_contact.name

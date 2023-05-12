@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_11_153023) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_12_103751) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -281,6 +281,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_153023) do
     t.datetime "updated_at", null: false
     t.uuid "team_leader_id"
     t.integer "incoming_trust_ukprn", null: false
+    t.date "provisional_conversion_date"
     t.uuid "regional_delivery_officer_id"
     t.uuid "caseworker_id"
     t.datetime "assigned_at"
@@ -296,14 +297,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_153023) do
     t.boolean "assigned_to_regional_caseworker_team", default: false
     t.date "conversion_date"
     t.boolean "conversion_date_provisional", default: true
-    t.date "provisional_conversion_date"
     t.boolean "directive_academy_order", default: false
     t.string "region"
     t.integer "academy_urn"
+    t.uuid "local_authority_id"
     t.uuid "tasks_data_id"
     t.string "tasks_data_type"
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
+    t.index ["local_authority_id"], name: "index_projects_on_local_authority_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
     t.index ["urn"], name: "index_projects_on_urn"
@@ -326,6 +328,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_153023) do
   add_foreign_key "contacts", "projects"
   add_foreign_key "notes", "projects"
   add_foreign_key "notes", "users"
+  add_foreign_key "projects", "local_authorities"
   add_foreign_key "projects", "users", column: "assigned_to_id"
   add_foreign_key "projects", "users", column: "caseworker_id"
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"

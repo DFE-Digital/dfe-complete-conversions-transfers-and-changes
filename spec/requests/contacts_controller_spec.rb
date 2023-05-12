@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ContactsController, type: :request do
+RSpec.describe ExternalContactsController, type: :request do
   let(:user) { create(:user) }
 
   before do
@@ -51,12 +51,12 @@ RSpec.describe ContactsController, type: :request do
   describe "#create" do
     let(:project) { create(:voluntary_conversion_project) }
     let(:project_id) { project.id }
-    let(:mock_contact) { build(:contact) }
+    let(:mock_contact) { build(:project_contact) }
     let(:new_contact_name) { "Josephine Bloggs" }
     let(:new_contact_title) { "Headteacher" }
 
     subject(:perform_request) do
-      post project_contacts_path(project_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
+      post project_contacts_path(project_id), params: {contact_project: {name: new_contact_name, title: new_contact_title}}
       response
     end
 
@@ -91,7 +91,7 @@ RSpec.describe ContactsController, type: :request do
   describe "#edit" do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
-    let(:contact) { create(:contact) }
+    let(:contact) { create(:project_contact) }
     let(:contact_id) { contact.id }
 
     subject(:perform_request) do
@@ -119,13 +119,13 @@ RSpec.describe ContactsController, type: :request do
   describe "#update" do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
-    let(:contact) { create(:contact) }
+    let(:contact) { create(:project_contact) }
     let(:contact_id) { contact.id }
     let(:new_contact_name) { "Josephine Bloggs" }
     let(:new_contact_title) { "Headteacher" }
 
     subject(:perform_request) do
-      put project_contact_path(project_id, contact_id), params: {contact: {name: new_contact_name, title: new_contact_title}}
+      put project_contact_path(project_id, contact_id), params: {contact_project: {name: new_contact_name, title: new_contact_title}}
       response
     end
 
@@ -167,7 +167,7 @@ RSpec.describe ContactsController, type: :request do
   describe "#destroy" do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
-    let(:contact) { create(:contact) }
+    let(:contact) { create(:project_contact) }
     let(:contact_id) { contact.id }
 
     subject(:perform_request) do
@@ -186,7 +186,7 @@ RSpec.describe ContactsController, type: :request do
   describe "#confirm_destroy" do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
-    let(:contact) { create(:contact) }
+    let(:contact) { create(:project_contact) }
     let(:contact_id) { contact.id }
 
     subject(:perform_request) do
