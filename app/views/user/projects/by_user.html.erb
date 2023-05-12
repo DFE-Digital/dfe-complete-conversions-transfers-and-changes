@@ -1,0 +1,11 @@
+<div class="govuk-grid-row">
+ <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.user.by_user.title", user: @user.full_name) %>
+    </h1>
+
+    <%= render partial: "table", locals: {projects: @projects, pager: @pager} %>
+
+  </div>
+</div>

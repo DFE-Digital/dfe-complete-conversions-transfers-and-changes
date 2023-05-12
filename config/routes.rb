@@ -100,6 +100,7 @@ Rails.application.routes.draw do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
           get "added-by", to: "projects#added_by"
+          get ":user_id", to: "projects#by_user", as: :by_user
         end
         get "unassigned"
 
