@@ -9,6 +9,22 @@ module AcademiesApiHelpers
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(fake_client)
   end
 
+  def mock_all_academies_api_responses
+    establishment = build(:academies_api_establishment)
+    trust = build(:academies_api_trust)
+
+    establishments = build_list(:academies_api_establishment, 3)
+    trusts = build_list(:academies_api_trust, 3)
+
+    fake_client = double(Api::AcademiesApi::Client,
+      get_establishments: Api::AcademiesApi::Client::Result.new(establishments, nil),
+      get_establishment: Api::AcademiesApi::Client::Result.new(establishment, nil),
+      get_trusts: Api::AcademiesApi::Client::Result.new(trusts, nil),
+      get_trust: Api::AcademiesApi::Client::Result.new(trust, nil))
+
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(fake_client)
+  end
+
   def mock_successful_api_response_to_create_any_project
     mock_successful_api_establishment_response(urn: any_args)
     mock_successful_api_trust_response(ukprn: any_args)
