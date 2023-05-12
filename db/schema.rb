@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_153023) do
     t.string "organisation_name"
     t.boolean "funding_agreement_contact", default: false
     t.uuid "local_authority_id"
+    t.string "type"
     t.index ["category"], name: "index_contacts_on_category"
     t.index ["project_id"], name: "index_contacts_on_project_id"
   end
