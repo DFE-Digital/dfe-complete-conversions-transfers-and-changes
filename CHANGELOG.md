@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the 'external stakeholder kick-off' task can now be updated without providing
   a confirmed converison date.
+- the back link on the 'Commercial transfer agreement' task is now shown
+  correctly
 
 ## [Release 24][release-24]
 
