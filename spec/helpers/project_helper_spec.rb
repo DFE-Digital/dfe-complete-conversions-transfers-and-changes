@@ -58,9 +58,9 @@ RSpec.describe ProjectHelper, type: :helper do
   describe "#converting_on_date" do
     context "when the conversion date is provisional" do
       it "returns the formatted date and a provisional tag" do
-        project = build(:conversion_project)
+        project = build(:conversion_project, conversion_date_provisional: true)
 
-        expect(helper.converting_on_date(project)).to include project.provisional_conversion_date.to_formatted_s(:govuk)
+        expect(helper.converting_on_date(project)).to include project.conversion_date.to_formatted_s(:govuk)
         expect(helper.converting_on_date(project)).to include "provisional"
       end
     end

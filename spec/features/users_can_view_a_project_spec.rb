@@ -14,7 +14,7 @@ RSpec.feature "Users can view a project" do
 
     within("#project-summary") do
       expect(page).to have_content(project.incoming_trust.name)
-      expect(page).to have_content(project.provisional_conversion_date.to_formatted_s(:govuk))
+      expect(page).to have_content(project.conversion_date.to_formatted_s(:govuk))
       expect(page).to have_content(project.establishment.local_authority_name)
       expect(page).to have_content(project.incoming_trust.name)
       expect(page).to have_content(project.establishment.region_name)
