@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- error message on academy order question in project creation updated
+
 ### Fixed
 
 - the 'external stakeholder kick-off' task can now be updated without providing

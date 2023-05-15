@@ -127,7 +127,7 @@ RSpec.describe Project, type: :model do
         it "adds an appropriate error message if the value is nil" do
           subject.assign_attributes(directive_academy_order: nil)
           subject.valid?
-          expect(subject.errors[:directive_academy_order]).to include("Select yes if this project has had a directive academy order issued")
+          expect(subject.errors[:directive_academy_order]).to include("Select directive academy order or academy order, whichever has been used for this conversion.")
         end
       end
     end
