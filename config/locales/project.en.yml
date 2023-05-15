@@ -117,10 +117,10 @@ en:
         title: Region
       establishment_sharepoint_link:
         title: School SharePoint folder
-        value: Open the school Sharepoint folder in a new tab
+        value: Open the school SharePoint folder in a new tab
       trust_sharepoint_link:
         title: Trust SharePoint folder
-        value: Open the trust Sharepoint folder in a new tab
+        value: Open the trust SharePoint folder in a new tab
       completed_at: Project completed
     assign:
       regional_delivery_officer:
