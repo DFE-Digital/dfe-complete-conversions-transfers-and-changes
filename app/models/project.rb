@@ -116,6 +116,11 @@ class Project < ApplicationRecord
     tasks_data.conditions_met_confirm_all_conditions_met?
   end
 
+  def director_of_child_services
+    local_authority = establishment.local_authority
+    local_authority&.director_of_child_services
+  end
+
   private def fetch_academy(urn)
     Api::AcademiesApi::Client.new.get_establishment(urn)
   end

@@ -720,4 +720,32 @@ RSpec.describe Project, type: :model do
       expect(projects).not_to include another_project
     end
   end
+
+  describe "#director_of_child_services" do
+    let(:urn) { 123456 }
+    let(:establishment) { build(:academies_api_establishment) }
+    let(:local_authority) { create(:local_authority) }
+
+    before do
+      mock_successful_api_establishment_response(urn: urn, establishment:)
+      mock_successful_api_trust_response(ukprn: 10061021)
+      allow_any_instance_of(Api::AcademiesApi::Establishment).to receive(:local_authority).and_return(local_authority)
+    end
+
+    subject { described_class.new(urn: urn) }
+
+    context "when there is a director of child services" do
+      let!(:director) { create(:director_of_child_services, local_authority: local_authority) }
+
+      it "returns the director of child services via the local authority" do
+        expect(subject.director_of_child_services).to eq(director)
+      end
+    end
+
+    context "when there is no director of child services" do
+      it "returns nil" do
+        expect(subject.director_of_child_services).to be_nil
+      end
+    end
+  end
 end
