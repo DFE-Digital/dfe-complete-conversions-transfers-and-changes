@@ -20,7 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- error message on academy order question in project creation updated
+- content in academy order error message no longer references previous iteration
+  of the question
 
 ### Fixed
 
