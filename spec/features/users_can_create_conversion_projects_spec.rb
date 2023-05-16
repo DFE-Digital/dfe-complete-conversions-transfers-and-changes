@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.feature "Users can create new voluntary conversion projects" do
+RSpec.feature "Users can create new conversion projects" do
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
   before do
     sign_in_with_user(regional_delivery_officer)
-    visit new_conversions_voluntary_project_path
+    visit conversions_new_path
   end
 
   context "when the URN and UKPRN are valid" do
@@ -27,47 +27,6 @@ RSpec.feature "Users can create new voluntary conversion projects" do
       click_on("Project information")
 
       expect(page).to have_content(two_weeks_ago.to_formatted_s(:govuk))
-    end
-
-    context "when the regional delivery officer is keeping the project" do
-      it "shows an appropriate message" do
-        fill_in_form
-        within("#assigned-to-regional-caseworker-team") do
-          choose("No")
-        end
-        click_button("Continue")
-
-        expect(page).to have_content("Project created")
-        expect(page).to have_content("You should add any contact details you have for the school, trust, solicitors, local authority and diocese (if applicable).")
-      end
-    end
-
-    context "when the regional delivery officer is handing the project over to someone else" do
-      it "shows the project created standalone page" do
-        fill_in_form
-        within("#assigned-to-regional-caseworker-team") do
-          choose("Yes")
-        end
-        click_button("Continue")
-
-        project = Project.last
-
-        expect(page).to have_content("You have created a project for #{project.establishment.name}, URN #{project.urn}.")
-        expect(page).to have_content("Another person will be assigned to this project.")
-        expect(page).to have_link("View projects you have added", href: added_by_user_projects_path)
-      end
-
-      it "does not assign the user to the project" do
-        fill_in_form
-        within("#assigned-to-regional-caseworker-team") do
-          choose("Yes")
-        end
-        click_button("Continue")
-
-        project = Project.last
-        expect(project.assigned_to).to be_nil
-        expect(project.assigned_at).to be_nil
-      end
     end
 
     scenario "there is an option to assign the project to the Regional Caseworker Team" do
