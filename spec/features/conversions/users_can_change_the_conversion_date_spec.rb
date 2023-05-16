@@ -65,7 +65,7 @@ RSpec.feature "Users can change the conversion date" do
 
   context "when the project conversion date is provisional" do
     scenario "they cannot change the conversion date" do
-      project = create(:conversion_project, assigned_to: user)
+      project = create(:conversion_project, assigned_to: user, conversion_date_provisional: true)
 
       visit project_path(project)
 

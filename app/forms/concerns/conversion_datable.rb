@@ -2,13 +2,16 @@ module ConversionDatable
   extend ActiveSupport::Concern
 
   included do
-    attribute :confirmed_conversion_date, :date
     attribute "confirmed_conversion_date(1i)"
     attribute "confirmed_conversion_date(2i)"
     attribute "confirmed_conversion_date(3i)"
 
     validate :conversion_date_format
     validate :conversion_date_in_the_future, if: -> { valid_month? && valid_year? }
+  end
+
+  def confirmed_conversion_date
+    return Date.new(year, month, 1) if valid_year? && valid_month?
   end
 
   private def conversion_date_format
