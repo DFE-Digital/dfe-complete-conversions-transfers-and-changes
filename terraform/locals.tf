@@ -16,6 +16,7 @@ locals {
   enable_event_hub                             = var.enable_event_hub
   cdn_frontdoor_custom_domains                 = var.cdn_frontdoor_custom_domains
   cdn_frontdoor_origin_fqdn_override           = var.cdn_frontdoor_origin_fqdn_override
+  cdn_frontdoor_origin_host_header_override    = var.cdn_frontdoor_origin_host_header_override
   cdn_frontdoor_host_redirects                 = var.cdn_frontdoor_host_redirects
   cdn_frontdoor_enable_rate_limiting           = var.cdn_frontdoor_enable_rate_limiting
   cdn_frontdoor_rate_limiting_threshold        = var.cdn_frontdoor_rate_limiting_threshold
