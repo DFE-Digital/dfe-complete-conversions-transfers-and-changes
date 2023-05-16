@@ -58,8 +58,6 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
       let(:project) { create(:voluntary_conversion_project, assigned_to: user, conversion_date_provisional: false) }
 
       scenario "they can continue to submit the task form" do
-        project.tasks_data.stakeholder_kick_off_confirmed_conversion_date = Date.today.at_beginning_of_month + 3.months
-        project.tasks_data.save!
         visit project_conversion_tasks_path(project)
 
         click_on "External stakeholder kick-off"

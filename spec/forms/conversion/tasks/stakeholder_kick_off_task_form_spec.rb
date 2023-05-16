@@ -78,23 +78,64 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
   end
 
   describe "#save" do
+    before { mock_successful_api_response_to_create_any_project }
+
+    let(:project) { create(:conversion_project) }
+    let(:tasks_data) { project.tasks_data }
+    let(:task_form) { described_class.new(tasks_data, user) }
+
     context "when the form is valid" do
       it "updates the task list data" do
-        mock_successful_api_response_to_create_any_project
-        project = create(:conversion_project)
-        task_data = project.tasks_data
-        task_form = described_class.new(task_data, user)
         task_form.introductory_emails = true
 
         task_form.save
 
-        expect(task_data.stakeholder_kick_off_introductory_emails).to eql true
+        expect(tasks_data.stakeholder_kick_off_introductory_emails).to eql true
+      end
+
+      context "and the confirmed conversion date is submitted" do
+        let(:project) { create(:conversion_project, conversion_date_provisional: true) }
+
+        it "creates a new date history" do
+          task_form.assign_attributes(
+            "confirmed_conversion_date(2i)": "1",
+            "confirmed_conversion_date(1i)": "2022"
+          )
+
+          expect { task_form.save }.to change { Conversion::DateHistory.count }.by(1)
+          expect(project.reload.conversion_date_provisional?).to be false
+        end
+      end
+
+      context "and the confirmed conversion date is not submitted" do
+        let(:project) { create(:conversion_project, conversion_date_provisional: true) }
+
+        it "does not create a new date history" do
+          task_form.introductory_emails = true
+
+          expect { task_form.save }.not_to change { Conversion::DateHistory.count }
+          expect(project.reload.conversion_date_provisional?).to be true
+        end
+      end
+
+      context "and the conversion date is already confirmed" do
+        let(:project) { create(:conversion_project, conversion_date_provisional: false) }
+
+        it "does not create a new date history" do
+          task_form.introductory_emails = true
+          task_form.assign_attributes(
+            "confirmed_conversion_date(2i)": "1",
+            "confirmed_conversion_date(1i)": "2022"
+          )
+
+          expect { task_form.save }.not_to change { Conversion::DateHistory.count }
+          expect(project.reload.conversion_date_provisional?).to be false
+        end
       end
     end
 
     context "when the form is invalid" do
       it "raises error" do
-        mock_successful_api_response_to_create_any_project
         project = create(:conversion_project)
         task_data = project.tasks_data
         task_form = described_class.new(task_data, user)
@@ -106,37 +147,54 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
   end
 
   describe "#status" do
+    before { mock_successful_api_response_to_create_any_project }
+    let(:project) { create(:conversion_project, conversion_date_provisional: true) }
+    let(:tasks_data) { project.tasks_data }
+    let(:task_form) { described_class.new(tasks_data, user) }
+
     context "when the task has no completed actions" do
       it "returns :not_started" do
-        task_data = Conversion::TasksData.new
-        task_form = described_class.new(task_data, user)
-
         expect(task_form.status).to eql :not_started
       end
     end
 
     context "when the task has some completed actions" do
       it "returns :in_progress" do
-        task_data = Conversion::TasksData.new
-        task_form = described_class.new(task_data, user)
-
         task_form.introductory_emails = true
 
         expect(task_form.status).to eql :in_progress
       end
     end
 
-    context "when the task has all completed actions" do
-      it "returns :completed" do
-        task_data = Conversion::TasksData.new
-        task_form = described_class.new(task_data, user)
-
+    context "when the tasks are all complete but the conversion date is not confirmed" do
+      it "returns :in_progress" do
         task_form.introductory_emails = true
         task_form.local_authority_proforma = true
         task_form.setup_meeting = true
         task_form.meeting = true
         task_form.check_provisional_conversion_date = true
-        task_form.confirmed_conversion_date = Date.today
+
+        expect(task_form.status).to eql :in_progress
+      end
+    end
+
+    context "when only the conversion date is confirmed" do
+      let(:project) { create(:conversion_project, conversion_date_provisional: false) }
+
+      it "returns :in_progress" do
+        expect(task_form.status).to eql :in_progress
+      end
+    end
+
+    context "when the task has all completed actions and confirmed the converison date" do
+      let(:project) { create(:conversion_project, conversion_date_provisional: false) }
+
+      it "returns :completed" do
+        task_form.introductory_emails = true
+        task_form.local_authority_proforma = true
+        task_form.setup_meeting = true
+        task_form.meeting = true
+        task_form.check_provisional_conversion_date = true
 
         expect(task_form.status).to eql :completed
       end
