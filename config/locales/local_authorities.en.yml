@@ -15,12 +15,24 @@ en:
       town: Town
       county: County
       postcode: Postcode
+      director_of_child_services:
+        form_title: Director of Child Services
+        email: Email
+        name: Name
+        title: Role
+        phone: Phone
       save_and_return: Save and return
     update:
       success: Local authority details updated
     show:
       code: Code
       address: Address
+      director_of_child_services:
+        heading: Director of Child Services
+        title: Role
+        name: Name
+        email: Email
+        phone: Phone
       edit: Edit
       back: Return to list
       delete: Delete
@@ -36,6 +48,12 @@ en:
       town: Town
       county: County
       postcode: Postcode
+      director_of_child_services:
+        form_title: Director of Child Services
+        email: Email
+        name: Name
+        title: Role
+        phone: Phone
       save_and_return: Save and return
     destroy:
       title: Are you sure you want to delete the record for %{local_authority}?

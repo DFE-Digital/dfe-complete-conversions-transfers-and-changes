@@ -7,6 +7,8 @@ class LocalAuthority < ApplicationRecord
 
   has_one :director_of_child_services, class_name: "Contact::DirectorOfChildServices"
 
+  accepts_nested_attributes_for :director_of_child_services, reject_if: proc { |l| l[:name].blank? }
+
   def address
     [
       address_1,
