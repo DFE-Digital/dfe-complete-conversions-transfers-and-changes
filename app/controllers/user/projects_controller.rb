@@ -18,6 +18,15 @@ class User::ProjectsController < ApplicationController
     pre_fetch_incoming_trusts(@projects)
   end
 
+  def by_user
+    authorize Project, :index?
+    @user = User.find(params.fetch("user_id"))
+    @pager, @projects = pagy(Project.assigned_to(@user).in_progress)
+
+    pre_fetch_establishments(@projects)
+    pre_fetch_incoming_trusts(@projects)
+  end
+
   def completed
     authorize Project, :index?
     @pager, @projects = pagy(Project.assigned_to(current_user).completed)

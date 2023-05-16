@@ -59,6 +59,8 @@ en:
         title: Assigned completed projects
       added_by:
         title: Added projects in progress
+      by_user:
+        title: Projects assigned to %{user}
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:
@@ -159,6 +161,8 @@ en:
         empty: There are no conversions without an academy URN
       with_academy_urn:
         empty: There are no conversions with an academy URN
+      by_user:
+        empty: There are no projects assigned to %{user}
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.
