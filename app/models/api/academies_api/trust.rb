@@ -1,6 +1,7 @@
 class Api::AcademiesApi::Trust < Api::BaseApiModel
   attr_accessor(
     :ukprn,
+    :group_identifier,
     :original_name,
     :companies_house_number,
     :address_street,
@@ -18,6 +19,7 @@ class Api::AcademiesApi::Trust < Api::BaseApiModel
   def self.attribute_map
     {
       ukprn: "giasData.ukprn",
+      group_identifier: "giasData.groupId",
       original_name: "giasData.groupName",
       companies_house_number: "giasData.companiesHouseNumber",
       address_street: "giasData.groupContactAddress.street",

@@ -248,6 +248,7 @@ en:
           view_in_gias: View the trust information in GIAS (opens in new tab)
           address: Address
           ukprn: UK Provider Reference Number
+          group_identifier: Group identifier (ID)
           companies_house_number: Companies House number
           view_companies_house: View the Companies House information (opens in new tab)
       local_authority_details:

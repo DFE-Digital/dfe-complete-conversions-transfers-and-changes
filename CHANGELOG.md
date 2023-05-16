@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Display trust's Group Identifier within the project information view
+
 - added a new view that can list projects by user
 
 ### Changed
