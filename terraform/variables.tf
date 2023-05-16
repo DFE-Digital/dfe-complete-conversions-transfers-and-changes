@@ -138,11 +138,6 @@ variable "monitor_email_receivers" {
   type        = list(string)
 }
 
-variable "cdn_frontdoor_health_probe_path" {
-  description = "Specifies the path relative to the origin that is used to determine the health of the origin."
-  type        = string
-}
-
 variable "monitor_endpoint_healthcheck" {
   description = "Specify a route that should be monitored for a 200 OK status"
   type        = string
@@ -197,4 +192,10 @@ variable "existing_network_watcher_resource_group_name" {
 variable "container_health_probe_protocol" {
   description = "Use HTTPS or a TCP connection for the Container liveness probe"
   type        = string
+}
+
+variable "enable_cdn_frontdoor_health_probe" {
+  description = "Enable CDN Front Door health probe"
+  type        = bool
+  default     = false
 }
