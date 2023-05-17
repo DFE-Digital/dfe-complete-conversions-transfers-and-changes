@@ -674,6 +674,19 @@ RSpec.describe Project, type: :model do
         expect(Project.added_by(user)).to_not include(other_project)
       end
     end
+
+    describe "by_trust_ukprn scope" do
+      it "returns only the projects for a given trust" do
+        mock_successful_api_response_to_create_any_project
+        trust_ukprn = 10061021
+        project_one = create(:conversion_project, incoming_trust_ukprn: trust_ukprn)
+        project_two = create(:conversion_project, incoming_trust_ukprn: trust_ukprn)
+        project_three = create(:conversion_project, incoming_trust_ukprn: 10134567)
+
+        expect(Project.by_trust_ukprn(trust_ukprn)).to include(project_one, project_two)
+        expect(Project.by_trust_ukprn(trust_ukprn)).to_not include(project_three)
+      end
+    end
   end
 
   describe "region" do
