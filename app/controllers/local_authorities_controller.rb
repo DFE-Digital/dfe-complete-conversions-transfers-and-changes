@@ -5,6 +5,7 @@ class LocalAuthoritiesController < ApplicationController
 
   def show
     @local_authority = LocalAuthority.find(params[:id])
+    @director_of_child_services = @local_authority.director_of_child_services
   end
 
   def new
@@ -28,6 +29,7 @@ class LocalAuthoritiesController < ApplicationController
   def edit
     authorize LocalAuthority
     @local_authority = LocalAuthority.find(params[:id])
+    @director_of_child_services = @local_authority.director_of_child_services || Contact::DirectorOfChildServices.new
   end
 
   def update
@@ -60,6 +62,7 @@ class LocalAuthoritiesController < ApplicationController
 
   private def local_authority_params
     params.require(:local_authority)
-      .permit(:name, :code, :address_1, :address_2, :address_3, :address_town, :address_county, :address_postcode)
+      .permit(:name, :code, :address_1, :address_2, :address_3, :address_town, :address_county, :address_postcode,
+        director_of_child_services_attributes: [:name, :email, :title, :phone])
   end
 end

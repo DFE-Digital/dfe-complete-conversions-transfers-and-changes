@@ -5,6 +5,10 @@ class LocalAuthority < ApplicationRecord
   validates :address_1, presence: true
   validates :address_postcode, presence: true, postcode: true
 
+  has_one :director_of_child_services, class_name: "Contact::DirectorOfChildServices", dependent: :destroy
+
+  accepts_nested_attributes_for :director_of_child_services, reject_if: proc { |l| l[:name].blank? }, allow_destroy: true
+
   def address
     [
       address_1,

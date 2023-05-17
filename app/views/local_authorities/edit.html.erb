@@ -15,6 +15,17 @@
       <%= form.govuk_text_field :address_county, label: {size: "m", text: t("local_authority.edit.county")}, width: 20 %>
       <%= form.govuk_text_field :address_postcode, label: {size: "m", text: t("local_authority.edit.postcode")}, width: 20 %>
 
+      <h2 class="govuk-heading-l">
+        <%= t("local_authority.edit.director_of_child_services.form_title") %>
+      </h2>
+
+      <%= form.fields_for :director_of_child_services, @director_of_child_services do |dcs| %>
+        <%= dcs.govuk_text_field :title, label: {size: "m", text: t("local_authority.edit.director_of_child_services.title")}, width: 20 %>
+        <%= dcs.govuk_text_field :name, label: {size: "m", text: t("local_authority.edit.director_of_child_services.name")}, width: 20 %>
+        <%= dcs.govuk_email_field :email, label: {size: "m", text: t("local_authority.edit.director_of_child_services.email")}, width: 20 %>
+        <%= dcs.govuk_phone_field :phone, label: {size: "m", text: t("local_authority.edit.director_of_child_services.phone")}, width: 10 %>
+      <% end %>
+
       <%= form.govuk_submit t("local_authority.edit.save_and_return") do %>
         <%= govuk_link_to t("cancel"), local_authority_path(@local_authority) %>
       <% end %>

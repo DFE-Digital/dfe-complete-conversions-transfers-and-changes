@@ -19,7 +19,7 @@ RSpec.describe ContactsHelper, type: :helper do
     end
 
     context "when there are contacts" do
-      let(:contacts) { [build(:contact)] }
+      let(:contacts) { [build(:project_contact)] }
 
       it "returns true" do
         expect(helper.has_contacts?(contacts)).to be true

@@ -10,7 +10,7 @@ class Conversion::Task::FundingAgreementContactTaskForm < ::BaseTaskForm
     @tasks_data = tasks_data
     @user = user
     @project = tasks_data.project
-    @contact = Contact.find_or_create_by(project: @project, funding_agreement_contact: true)
+    @contact = Contact::Project.find_or_create_by(project: @project, funding_agreement_contact: true)
 
     super(@tasks_data, @user)
 

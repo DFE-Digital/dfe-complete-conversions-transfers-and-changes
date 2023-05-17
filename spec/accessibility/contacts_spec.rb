@@ -11,7 +11,7 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "show contacts page" do
-    contact = create(:contact, project: project)
+    contact = create(:project_contact, project: project)
     visit project_contacts_path(project)
 
     expect(page).to have_content(contact.name)
@@ -26,7 +26,7 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "edit page" do
-    contact = create(:contact, project: project)
+    contact = create(:project_contact, project: project)
     visit edit_project_contact_path(project, contact)
 
     expect(page).to have_content("Edit contact")
@@ -34,7 +34,7 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "deleted page" do
-    contact = create(:contact, project: project)
+    contact = create(:project_contact, project: project)
     visit project_contact_delete_path(project, contact)
 
     expect(page).to have_content(contact.name)

@@ -31,10 +31,10 @@ RSpec.feature "Users can create a local authority" do
 
         click_on "New local authority"
 
-        fill_in "Name", with: "Greater Bumbletown District Council"
-        fill_in "Code", with: "999"
-        fill_in "Address line 1", with: "1 Bumbletown Street"
-        fill_in "Postcode", with: "BT1 1AA"
+        fill_in "local_authority[name]", with: "Greater Bumbletown District Council"
+        fill_in "local_authority[code]", with: "999"
+        fill_in "local_authority[address_1]", with: "1 Bumbletown Street"
+        fill_in "local_authority[address_postcode]", with: "BT1 1AA"
         click_on "Save and return"
 
         expect(page).to have_content("Local authority successfully created")
@@ -59,10 +59,10 @@ RSpec.feature "Users can create a local authority" do
       scenario "the form shows error messages" do
         visit new_local_authority_path
 
-        fill_in "Name", with: "Greater Bumbletown District Council"
-        fill_in "Code", with: "999"
-        fill_in "Address line 1", with: "1 Bumbletown Street"
-        fill_in "Postcode", with: "BT1 1AA"
+        fill_in "local_authority[name]", with: "Greater Bumbletown District Council"
+        fill_in "local_authority[code]", with: "999"
+        fill_in "local_authority[address_1]", with: "1 Bumbletown Street"
+        fill_in "local_authority[address_postcode]", with: "BT1 1AA"
         click_on "Save and return"
 
         expect(page).to have_content("There is a problem")
