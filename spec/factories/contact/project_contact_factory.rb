@@ -1,9 +1,10 @@
 FactoryBot.define do
-  factory :contact do
+  factory :project_contact, class: Contact::Project do
     name { "Jo Example" }
     title { "CEO of Learning" }
 
     organisation_name { "Some Organisation" }
+    type { "Contact::Project" }
 
     email { "jo@example.com" }
     phone { "01632 960123" }

@@ -14,6 +14,28 @@
             row.value { address_markup(@local_authority.address) }
           end
         end %>
+
+    <% if @director_of_child_services %>
+      <h2 class="govuk-heading-l"><%= t("local_authority.show.director_of_child_services.heading") %></h2>
+      <%= govuk_summary_list(actions: false) do |summary_list|
+            summary_list.row do |row|
+              row.key { t("local_authority.show.director_of_child_services.title") }
+              row.value { @director_of_child_services.title }
+            end
+            summary_list.row do |row|
+              row.key { t("local_authority.show.director_of_child_services.name") }
+              row.value { @director_of_child_services.name }
+            end
+            summary_list.row do |row|
+              row.key { t("local_authority.show.director_of_child_services.email") }
+              row.value { @director_of_child_services.email }
+            end
+            summary_list.row do |row|
+              row.key { t("local_authority.show.director_of_child_services.phone") }
+              row.value { @director_of_child_services.phone }
+            end
+          end %>
+    <% end %>
     <div class="govuk-button-group">
       <%= govuk_button_link_to t("local_authority.show.edit"), edit_local_authority_path(@local_authority) if policy(@local_authority).edit? %>
       <%= govuk_button_link_to t("local_authority.show.delete"), local_authority_delete_path(@local_authority), warning: true if policy(@local_authority).destroy? %>

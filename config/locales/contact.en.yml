@@ -36,7 +36,7 @@ en:
       added_by: Added by
   helpers:
     label:
-      contact:
+      contact_project:
         category: Contact for
         title: Role
         name: Name

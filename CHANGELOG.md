@@ -13,8 +13,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Display trust's Group Identifier within the project information view
 
 - added a new view that can list projects by user
+- show the Director of Child Services contact (if one exists) on the project
+  information page
+- allow the Director of Child Services record to be created/updated alongside
+  the Local Authority
 
-### Changed
+### Changed
 
 ### Fixed
 

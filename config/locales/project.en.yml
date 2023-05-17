@@ -256,6 +256,12 @@ en:
         rows:
           local_authority: Local authority
           address: Address
+      director_of_child_services:
+        title: Director of Child Services
+        rows:
+          name: Name
+          email: Email
+          phone: Phone
       diocese_details:
         title: Diocese details
         rows:

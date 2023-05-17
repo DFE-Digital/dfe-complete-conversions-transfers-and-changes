@@ -9,12 +9,12 @@ RSpec.describe ContactPolicy do
   permissions :edit?, :update?, :destroy?, :confirm_destroy? do
     it "grants access if project is not completed" do
       project = build(:conversion_project, assigned_to: application_user, completed_at: nil)
-      expect(subject).to permit(application_user, build(:contact, project: project))
+      expect(subject).to permit(application_user, build(:project_contact, project: project))
     end
 
     it "denies access if project is completed" do
       project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
-      expect(subject).not_to permit(application_user, build(:contact, project: project))
+      expect(subject).not_to permit(application_user, build(:project_contact, project: project))
     end
   end
 end

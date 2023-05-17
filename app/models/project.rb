@@ -6,7 +6,7 @@ class Project < ApplicationRecord
   delegated_type :tasks_data, types: %w[Conversion::TaskList], dependent: :destroy
 
   has_many :notes, dependent: :destroy
-  has_many :contacts, dependent: :destroy
+  has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
 
   validates :urn, presence: true
   validates :urn, urn: true
@@ -114,6 +114,11 @@ class Project < ApplicationRecord
 
   def all_conditions_met?
     tasks_data.conditions_met_confirm_all_conditions_met?
+  end
+
+  def director_of_child_services
+    local_authority = establishment.local_authority
+    local_authority&.director_of_child_services
   end
 
   private def fetch_academy(urn)
