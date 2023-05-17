@@ -259,6 +259,7 @@ en:
       director_of_child_services:
         title: Director of Child Services
         rows:
+          title: DCS Position
           name: Name
           email: Email
           phone: Phone

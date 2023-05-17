@@ -107,6 +107,10 @@
     <h2 class="govuk-heading-l"><%= t('project_information.show.director_of_child_services.title') %></h2>
     <%= govuk_summary_list(actions: false) do |summary_list|
       summary_list.row do |row|
+        row.key { t('project_information.show.director_of_child_services.rows.title') }
+        row.value { @project.director_of_child_services.title }
+      end
+      summary_list.row do |row|
         row.key { t('project_information.show.director_of_child_services.rows.name') }
         row.value { @project.director_of_child_services.name }
       end
