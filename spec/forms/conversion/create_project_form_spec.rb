@@ -225,7 +225,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
           directive_academy_order: nil
         )
         expect(form).to be_invalid
-        expect(form.errors[:directive_academy_order]).to include("Select yes if this project has had a directive academy order issued")
+        expect(form.errors[:directive_academy_order]).to include("Select directive academy order or academy order, whichever has been used for this conversion")
       end
     end
   end

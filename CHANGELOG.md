@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- content in academy order error message no longer references previous iteration
+  of the question
+
 ### Fixed
 
 - the 'external stakeholder kick-off' task can now be updated without providing
