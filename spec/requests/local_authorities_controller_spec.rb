@@ -81,4 +81,16 @@ RSpec.describe LocalAuthoritiesController, type: :request do
       end
     end
   end
+
+  describe "#destroy" do
+    let!(:local_authority) { create(:local_authority) }
+    let!(:director_of_child_services) { create(:director_of_child_services, local_authority: local_authority) }
+
+    it "destroys an associated director of child services with the local authority" do
+      delete local_authority_path(local_authority.id)
+
+      expect(LocalAuthority.count).to eq 0
+      expect(Contact::DirectorOfChildServices.count).to eq 0
+    end
+  end
 end
