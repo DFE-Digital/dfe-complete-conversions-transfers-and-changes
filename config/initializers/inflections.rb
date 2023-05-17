@@ -14,3 +14,8 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular "director_of_child_services", "directors_of_child_services"
+  inflect.irregular "Director of Child Services", "Directors of Child Services"
+end
