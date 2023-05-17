@@ -24,6 +24,7 @@ module "azure_container_apps_hosting" {
   enable_redis_cache = local.enable_redis_cache
 
   enable_cdn_frontdoor                      = local.enable_cdn_frontdoor
+  enable_cdn_frontdoor_health_probe         = local.enable_cdn_frontdoor_health_probe
   cdn_frontdoor_origin_fqdn_override        = local.cdn_frontdoor_origin_fqdn_override
   cdn_frontdoor_origin_host_header_override = local.cdn_frontdoor_origin_host_header_override
   cdn_frontdoor_custom_domains              = local.cdn_frontdoor_custom_domains
@@ -40,7 +41,6 @@ module "azure_container_apps_hosting" {
   monitor_email_receivers         = local.monitor_email_receivers
   enable_container_health_probe   = local.enable_container_health_probe
   container_health_probe_protocol = local.container_health_probe_protocol
-  cdn_frontdoor_health_probe_path = local.cdn_frontdoor_health_probe_path
   monitor_endpoint_healthcheck    = local.monitor_endpoint_healthcheck
   monitor_enable_slack_webhook    = local.monitor_enable_slack_webhook
   monitor_slack_webhook_receiver  = local.monitor_slack_webhook_receiver

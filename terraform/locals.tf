@@ -14,6 +14,7 @@ locals {
   enable_redis_cache                           = var.enable_redis_cache
   enable_cdn_frontdoor                         = var.enable_cdn_frontdoor
   enable_event_hub                             = var.enable_event_hub
+  enable_cdn_frontdoor_health_probe            = var.enable_cdn_frontdoor_health_probe
   cdn_frontdoor_custom_domains                 = var.cdn_frontdoor_custom_domains
   cdn_frontdoor_origin_fqdn_override           = var.cdn_frontdoor_origin_fqdn_override
   cdn_frontdoor_origin_host_header_override    = var.cdn_frontdoor_origin_host_header_override
@@ -30,7 +31,6 @@ locals {
   monitor_email_receivers                      = var.monitor_email_receivers
   enable_container_health_probe                = var.enable_container_health_probe
   container_health_probe_protocol              = var.container_health_probe_protocol
-  cdn_frontdoor_health_probe_path              = var.cdn_frontdoor_health_probe_path
   monitor_endpoint_healthcheck                 = var.monitor_endpoint_healthcheck
   monitor_enable_slack_webhook                 = var.monitor_enable_slack_webhook
   monitor_slack_webhook_receiver               = var.monitor_slack_webhook_receiver
