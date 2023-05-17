@@ -1,13 +1,13 @@
 require "rails_helper"
 
-RSpec.feature "Users can complete tasks in a voluntary conversion project" do
+RSpec.feature "Users can complete conversion tasks" do
   let(:user) { create(:user, :regional_delivery_officer) }
-  let(:voluntary_project) { create(:voluntary_conversion_project, assigned_to: user) }
+  let(:project) { create(:conversion_project, assigned_to: user) }
 
   before do
-    mock_successful_api_responses(urn: any_args, ukprn: any_args)
+    mock_all_academies_api_responses
     sign_in_with_user(user)
-    visit project_conversion_tasks_path(voluntary_project.id)
+    visit project_conversion_tasks_path(project)
   end
 
   mandatory_tasks = %w[commercial_transfer_agreement
@@ -24,6 +24,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
 
   tasks_with_collected_data = %w[
     stakeholder_kick_off
+    academy_details
   ]
 
   it "confirms we are checking all tasks" do
@@ -36,7 +37,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
 
   describe "the stakeholder kick-off task" do
     context "when the project conversion date is provisional" do
-      let(:project) { create(:voluntary_conversion_project, assigned_to: user, conversion_date_provisional: true) }
+      let(:project) { create(:conversion_project, assigned_to: user, conversion_date_provisional: true) }
 
       scenario "they can set the confirmed date" do
         visit project_conversion_tasks_path(project)
@@ -55,7 +56,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
     end
 
     context "when the project conversion date is confirmed" do
-      let(:project) { create(:voluntary_conversion_project, assigned_to: user, conversion_date_provisional: false) }
+      let(:project) { create(:conversion_project, assigned_to: user, conversion_date_provisional: false) }
 
       scenario "they can continue to submit the task form" do
         visit project_conversion_tasks_path(project)
@@ -69,8 +70,29 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
     end
   end
 
+  describe "the academy details task" do
+    let(:project) { create(:conversion_project, assigned_to: user) }
+
+    scenario "they can not provide a value" do
+      visit project_conversion_tasks_path(project)
+      click_on "Confirm the academy name"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(page).to have_current_path(project_conversion_tasks_path(project))
+    end
+
+    scenario "they can provide a value" do
+      visit project_conversion_tasks_path(project)
+      click_on "Confirm the academy name"
+      fill_in "Enter the academy name", with: "Test academy name"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.tasks_data.reload.academy_details_name).to eql "Test academy name"
+    end
+  end
+
   context "when the project has a confirmed conversion date" do
-    let(:voluntary_project) { create(:voluntary_conversion_project, conversion_date: Date.new(2024, 1, 1)) }
+    let(:project) { create(:conversion_project, conversion_date: Date.new(2024, 1, 1)) }
 
     scenario "the Conditions met task shows the confirmed conversion date in the hint text" do
       click_on "Confirm all conditions have been met"
@@ -79,7 +101,7 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
   end
 
   context "when the project does not have a confirmed conversion date" do
-    let(:voluntary_project) { create(:voluntary_conversion_project, conversion_date: Date.new(2023, 12, 1), conversion_date_provisional: true) }
+    let(:project) { create(:conversion_project, conversion_date: Date.new(2023, 12, 1), conversion_date_provisional: true) }
 
     scenario "the Conditions met task shows the provisional conversion date in the hint text" do
       click_on "Confirm all conditions have been met"
@@ -88,33 +110,33 @@ RSpec.feature "Users can complete tasks in a voluntary conversion project" do
   end
 
   mandatory_tasks.each do |task|
-    scenario "a user can complete the actions on the mandatory #{I18n.t("conversion.voluntary.tasks.#{task}.title")} task" do
-      click_on I18n.t("conversion.voluntary.tasks.#{task}.title")
+    scenario "a user can complete the actions on the mandatory #{I18n.t("conversion.task.#{task}.title")} task" do
+      click_on I18n.t("conversion.task.#{task}.title")
       page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
       click_on I18n.t("task_list.continue_button.text")
-      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.voluntary.tasks.#{task}.title"))
+      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.task.#{task}.title"))
       expect(table_row).to have_content("Completed")
     end
   end
 
   optional_tasks.each do |task|
-    scenario "a user can mark an optional task #{I18n.t("conversion.voluntary.tasks.#{task}.title")} as not applicable" do
-      click_on I18n.t("conversion.voluntary.tasks.#{task}.title")
+    scenario "a user can mark an optional task #{I18n.t("conversion.task.#{task}.title")} as not applicable" do
+      click_on I18n.t("conversion.task.#{task}.title")
       page.find(".govuk-checkboxes__label", text: "Not applicable").click
       click_on I18n.t("task_list.continue_button.text")
-      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.voluntary.tasks.#{task}.title"))
+      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.task.#{task}.title"))
       expect(table_row).to have_content("Not applicable")
     end
   end
 
   optional_tasks.each do |task|
-    scenario "a user can complete the actions on the optional task #{I18n.t("conversion.voluntary.tasks.#{task}.title")}" do
-      click_on I18n.t("conversion.voluntary.tasks.#{task}.title")
+    scenario "a user can complete the actions on the optional task #{I18n.t("conversion.task.#{task}.title")}" do
+      click_on I18n.t("conversion.task.#{task}.title")
       page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
       # uncheck the Not applicable box
       page.find(".govuk-checkboxes__label", text: "Not applicable").click
       click_on I18n.t("task_list.continue_button.text")
-      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.voluntary.tasks.#{task}.title"))
+      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.task.#{task}.title"))
       expect(table_row).to have_content("Completed")
     end
   end
