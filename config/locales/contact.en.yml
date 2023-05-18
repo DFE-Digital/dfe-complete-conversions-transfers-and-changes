@@ -6,6 +6,9 @@ en:
       category_heading: "%{category_name} contacts"
       add_contact_button: Add contact
       no_contacts_yet: There are not any contacts for this project yet.
+      external_contacts_hint:
+        add_contacts: Add contacts for the school, trust, solicitor and local authority. If this is a faith school, add a contact for the diocese too.
+        get_missing_contact_information: You might be able to get missing contact information from the person who prepared this project for, or presented at, the advisory board.
     details:
       name: Name
       organisation_name: Organisation
