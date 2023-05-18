@@ -67,6 +67,9 @@ en:
     local_authority_importer:
       import:
         error: You must provide a path
+    director_of_child_services_importer:
+      import:
+        error: You must provide a path, e.g. director_of_child_services:import[path/to/data.csv]
   assignment:
     assign_regional_delivery_officer:
       title: Change regional delivery officer for %{school_name}

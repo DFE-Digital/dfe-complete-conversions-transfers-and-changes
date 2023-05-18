@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Add importer to import Director of Child Services data
+
 ## [Release 25][release-25]
 
 ### Added
