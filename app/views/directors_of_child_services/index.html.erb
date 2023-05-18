@@ -1,0 +1,36 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <%= t("directors_of_child_services.index.title") %>
+    </h1>
+
+    <table class="govuk-table" name="directors_table" aria-label="Directors of Child Services table">
+      <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col"><%= t("directors_of_child_services.index.table.local_authority") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("directors_of_child_services.index.table.local_authority_address") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("directors_of_child_services.index.table.title") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("directors_of_child_services.index.table.name") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("directors_of_child_services.index.table.email") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("directors_of_child_services.index.table.edit") %></th>
+      </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      <% @directors.each do |director| %>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><%= director.local_authority&.name %></td>
+          <td class="govuk-table__cell"><%= address_markup(director.local_authority&.address) %></td>
+          <td class="govuk-table__cell"><%= director.title %></td>
+          <td class="govuk-table__cell"><%= director.name %></td>
+          <td class="govuk-table__cell"><%= director.email %></td>
+          <td class="govuk-table__cell">
+            <a href="<%= edit_director_of_child_services_path(director) %>">
+              <%= t("directors_of_child_services.index.table.edit_html", name: director.name) %>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

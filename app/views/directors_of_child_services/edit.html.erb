@@ -1,0 +1,28 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <%= t("directors_of_child_services.edit.page_title", local_authority: @local_authority.name) %>
+    </h1>
+
+    <%= form_for @director, url: director_of_child_services_path(@director), method: :patch do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_text_field :title, label: {size: "m", text: t("directors_of_child_services.edit.title")}, width: 20 %>
+      <%= form.govuk_text_field :name, label: {size: "m", text: t("directors_of_child_services.edit.name")}, width: 20 %>
+      <%= form.govuk_email_field :email, label: {size: "m", text: t("directors_of_child_services.edit.email")}, width: 20 %>
+      <%= form.govuk_phone_field :phone, label: {size: "m", text: t("directors_of_child_services.edit.phone")}, width: 10 %>
+
+      <%= form.govuk_submit t("local_authority.edit.save_and_return") do %>
+        <%= govuk_link_to t("cancel"), directors_of_child_services_path %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <aside>
+      <h2 class="govuk-heading-s"><%= t("directors_of_child_services.edit.local_authority_address") %></h2>
+      <div class="govuk-body-m">
+        <%= address_markup(@local_authority.address) %>
+      </div>
+    </aside>
+  </div>
+</div>

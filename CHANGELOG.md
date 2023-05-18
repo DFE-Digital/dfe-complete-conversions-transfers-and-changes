@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add importer to import Director of Child Services data
+- Show the Directors of child services on their own index page. Allow the
+  director records to be edited from this page (but not added or deleted).
 
 ## [Release 25][release-25]
 

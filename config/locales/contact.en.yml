@@ -47,3 +47,24 @@ en:
     attributes:
       category:
         blank: Choose a category
+  directors_of_child_services:
+    index:
+      title: DCS (Director of Children's Services) contact details
+      table:
+        local_authority: Local authority
+        local_authority_address: Local authority address
+        title: DCS position
+        name: Name
+        email: Email
+        phone: Phone
+        edit: Edit
+        edit_html: Edit <span class="govuk-visually-hidden">%{name}</span>
+    edit:
+      page_title: Update contact details for %{local_authority}'s DCS
+      local_authority_address: Local authority address
+      name: Name
+      title: DCS position
+      email: Email
+      phone: Phone
+    update:
+      success: DCS for %{local_authority} has been updated

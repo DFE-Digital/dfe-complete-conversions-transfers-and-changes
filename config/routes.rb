@@ -111,6 +111,8 @@ Rails.application.routes.draw do
 
   resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
 
+  resources :directors_of_child_services, path: "directors-of-child-services", controller: "directors_of_child_services"
+
   # Projects - all projects are conversions right now
   constraints(id: VALID_UUID_REGEX) do
     resources :projects,
