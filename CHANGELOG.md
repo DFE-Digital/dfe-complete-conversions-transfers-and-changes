@@ -9,6 +9,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add importer to import Director of Child Services data
+- a new 'Confirm the academy name' task that collects the confirmed new academy
+  name so that the Get information about schools record can be added.
+
+### Changed
+
+### Fixed
 
 ## [Release 25][release-25]
 
