@@ -49,7 +49,7 @@ en:
         blank: Choose a category
   directors_of_child_services:
     index:
-      title: DCS (Director of Children's Services) contact details
+      title: DCS (Director of child services) contact details
       table:
         local_authority: Local authority
         local_authority_address: Local authority address
