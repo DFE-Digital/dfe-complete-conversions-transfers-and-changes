@@ -62,6 +62,7 @@ RSpec.feature "Viewing all projects with an academy URN" do
         expect(page).to have_content("Conversion date")
         expect(page).to have_content("Route")
         expect(page).to have_content("Academy URN")
+        expect(page).to have_content("Academy URN")
         expect(page).to have_content("View project")
       end
     end

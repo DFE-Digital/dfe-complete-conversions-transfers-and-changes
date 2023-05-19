@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - notes associated with a change to the conversion date can no longer be
   deleted, only edited by the user that added them.
+- The 'new academy URN' and 'with academy URN' views now include the confirmed
+  academy name, this helps servcice support ensure the correct details have been
+  added to Get information about schools.
 
 ### Fixed
 
