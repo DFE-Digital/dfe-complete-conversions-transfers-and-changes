@@ -18,6 +18,8 @@ class NotePolicy
   end
 
   def destroy?
+    return false if @note.conversion_date_history_id.present?
+
     edit?
   end
 
