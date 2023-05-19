@@ -4,8 +4,6 @@ class Conversion::CreateProjectForm
   include ActiveRecord::AttributeAssignment
 
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
-  DIRECTIVE_ACADEMY_ORDER_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")), OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))]
-  CASEWORKER_TEAM_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
 
   class NegativeValueError < StandardError; end
 
@@ -48,10 +46,6 @@ class Conversion::CreateProjectForm
   def initialize(params = {})
     @attributes_with_invalid_values = []
     super(params)
-  end
-
-  def directive_academy_order_responses
-    DIRECTIVE_ACADEMY_ORDER_RESPONSES
   end
 
   def provisional_conversion_date=(hash)
@@ -120,7 +114,17 @@ class Conversion::CreateProjectForm
   end
 
   def assigned_to_regional_caseworker_team_responses
-    CASEWORKER_TEAM_RESPONSES
+    @assigned_to_regional_caseworker_team_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("yes")),
+      OpenStruct.new(id: false, name: I18n.t("no"))
+    ]
+  end
+
+  def directive_academy_order_responses
+    @directive_academy_order_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")),
+      OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))
+    ]
   end
 
   def save
