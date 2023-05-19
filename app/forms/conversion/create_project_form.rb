@@ -5,6 +5,7 @@ class Conversion::CreateProjectForm
 
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
   DIRECTIVE_ACADEMY_ORDER_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")), OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))]
+  CASEWORKER_TEAM_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
 
   class NegativeValueError < StandardError; end
 
@@ -17,6 +18,7 @@ class Conversion::CreateProjectForm
   attribute :user
   attribute :directive_academy_order
   attribute :region
+  attribute :assigned_to_regional_caseworker_team, :boolean
 
   attr_reader :provisional_conversion_date,
     :advisory_board_date
@@ -116,10 +118,6 @@ class Conversion::CreateProjectForm
   private def urn_unique_for_in_progress_conversions
     errors.add(:urn, :duplicate) if Project.not_completed.where(urn: urn).any?
   end
-
-  attribute :assigned_to_regional_caseworker_team, :boolean
-
-  CASEWORKER_TEAM_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
 
   def assigned_to_regional_caseworker_team_responses
     CASEWORKER_TEAM_RESPONSES
