@@ -12,7 +12,7 @@ class Conversion::CreateProjectForm
   attribute :establishment_sharepoint_link
   attribute :trust_sharepoint_link
   attribute :advisory_board_conditions
-  attribute :note_body
+  attribute :handover_note_body
   attribute :user
   attribute :directive_academy_order
   attribute :region
@@ -152,7 +152,7 @@ class Conversion::CreateProjectForm
 
     ActiveRecord::Base.transaction do
       @project.save
-      @note = Note.create(body: note_body, project: @project, user: user) if note_body
+      @note = Note.create(body: handover_note_body, project: @project, user: user) if handover_note_body
       notify_team_leaders(@project) if assigned_to_regional_caseworker_team
     end
 

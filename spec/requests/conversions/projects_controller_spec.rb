@@ -88,7 +88,7 @@ RSpec.describe Conversions::ProjectsController do
 
       context "when the note body is empty" do
         subject(:perform_request) do
-          post conversions_path, params: {conversion_create_project_form: {**project_form_params, note_body: ""}}
+          post conversions_path, params: {conversion_create_project_form: {**project_form_params, handover_note_body: ""}}
 
           response
         end

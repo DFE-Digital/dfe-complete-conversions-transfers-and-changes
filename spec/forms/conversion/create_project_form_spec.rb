@@ -329,7 +329,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
       it "creates a note if the note_body is not empty" do
         form = build(
           form_factory.to_sym,
-          note_body: "Some important words"
+          handover_note_body: "Some important words"
         )
         form.save
         expect(Note.count).to eq(1)
