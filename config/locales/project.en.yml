@@ -35,6 +35,8 @@ en:
         title: All conversions without an academy URN
       with_academy_urn:
         title: All conversions with an academy URN
+      trust_ukprn:
+          title: Projects for %{trust}
     regional_casework_services:
       in_progress:
         title: Regional Casework Services projects in progress
@@ -164,6 +166,8 @@ en:
         empty: There are no conversions with an academy URN
       by_user:
         empty: There are no projects assigned to %{user}
+      trust_ukprn:
+        empty: There are no projects for %{trust}
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.

@@ -1,0 +1,35 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <%= t("project.all.trust_ukprn.title", trust: @trust.name) %>
+    </h1>
+      <% if @projects.empty? %>
+        <%= govuk_inset_text(text: t("project.table.trust_ukprn.empty", trust: @trust.name)) %>
+      <% else %>
+        <table class="govuk-table" name="projects_table" aria-label="Projects table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school") %></th>
+              <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
+              <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_date") %></th>
+              <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view") %></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+          <% @projects.each do |project| %>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
+              <td class="govuk-table__cell"><%= project.urn %></td>
+              <td class="govuk-table__cell"><%= project.conversion_date.to_formatted_s(:govuk) %></td>
+              <td class="govuk-table__cell">
+                <a href="<%= project_path(project) %>">
+                  <%= t("project.table.body.view_html", school_name: project.establishment.name) %>
+                </a>
+              </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
+  </div>
+</div>
