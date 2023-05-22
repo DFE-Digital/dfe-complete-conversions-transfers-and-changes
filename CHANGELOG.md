@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Change the values of the "All conditions met" tag in the openers list, to
   "confirmed" and "unconfirmed"
+- Update the column values on the Openers page, and add new tags for the
+  Direction to transfer and Trust modification order column values
 
 ### Fixed
 
