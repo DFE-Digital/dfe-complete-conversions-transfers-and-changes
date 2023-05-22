@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  department: DfE
   service_name: Complete conversions, transfers and changes
   support_email_subject: "Complete conversions, transfers and changes: support query"
   "yes": "Yes"
