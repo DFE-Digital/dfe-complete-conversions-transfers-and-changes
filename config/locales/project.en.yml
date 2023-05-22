@@ -146,6 +146,7 @@ en:
         route: Route
         school_phase: School phase
         school_type: School type
+        academy_name: Academy name
         academy_urn: Academy URN
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project

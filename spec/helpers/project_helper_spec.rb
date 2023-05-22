@@ -250,4 +250,19 @@ RSpec.describe ProjectHelper, type: :helper do
       end
     end
   end
+
+  describe "#academy_name" do
+    it "returns the academy name when available" do
+      tasks_data = Conversion::TasksData.new(academy_details_name: "New Academy")
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      expect(helper.academy_name(project)).to eql "New Academy"
+    end
+
+    it "returns a unconfirmed tag when there is no academy name" do
+      project = build(:conversion_project)
+
+      expect(helper.academy_name(project)).to include("grey", "Unconfirmed")
+    end
+  end
 end

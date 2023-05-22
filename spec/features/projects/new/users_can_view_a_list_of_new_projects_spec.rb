@@ -61,6 +61,7 @@ RSpec.feature "Viewing all new projects" do
         expect(page).to have_content("School phase")
         expect(page).to have_content("Conversion date")
         expect(page).to have_content("Route")
+        expect(page).to have_content("Academy name")
         expect(page).to have_content("View project")
       end
     end

@@ -64,4 +64,10 @@ module ProjectHelper
         .new(message: t("project.notifications.not_assigned_html"))
     end
   end
+
+  def academy_name(project)
+    return govuk_tag(text: "Unconfirmed", colour: "grey") if project.tasks_data.academy_details_name.nil?
+
+    project.tasks_data.academy_details_name
+  end
 end
