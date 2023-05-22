@@ -41,7 +41,7 @@ class Conversions::ProjectsController < ProjectsController
       :advisory_board_conditions,
       :establishment_sharepoint_link,
       :trust_sharepoint_link,
-      :note_body,
+      :handover_note_body,
       :assigned_to_regional_caseworker_team,
       :directive_academy_order
     )

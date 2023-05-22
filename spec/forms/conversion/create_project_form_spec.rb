@@ -228,6 +228,16 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(form.errors[:directive_academy_order]).to include("Select directive academy order or academy order, whichever has been used for this conversion")
       end
     end
+
+    describe "handover note body" do
+      it "is required" do
+        form = build(
+          form_factory.to_sym,
+          handover_note_body: ""
+        )
+        expect(form).to be_invalid
+      end
+    end
   end
 
   describe "urn" do
@@ -326,14 +336,15 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(project.tasks_data).to be_a(Conversion::TasksData)
       end
 
-      it "creates a note if the note_body is not empty" do
+      it "creates a note associated to the handover task" do
         form = build(
           form_factory.to_sym,
-          note_body: "Some important words"
+          handover_note_body: "Some important words"
         )
         form.save
         expect(Note.count).to eq(1)
         expect(Note.last.body).to eq("Some important words")
+        expect(Note.last.task_identifier).to eq("handover")
       end
 
       context "when the project does NOT have a directive academy order" do

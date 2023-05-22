@@ -4,7 +4,6 @@ class Conversion::CreateProjectForm
   include ActiveRecord::AttributeAssignment
 
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
-  DIRECTIVE_ACADEMY_ORDER_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")), OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))]
 
   class NegativeValueError < StandardError; end
 
@@ -13,16 +12,18 @@ class Conversion::CreateProjectForm
   attribute :establishment_sharepoint_link
   attribute :trust_sharepoint_link
   attribute :advisory_board_conditions
-  attribute :note_body
+  attribute :handover_note_body
   attribute :user
-  attribute :directive_academy_order
+  attribute :directive_academy_order, :boolean
   attribute :region
+  attribute :assigned_to_regional_caseworker_team, :boolean
 
   attr_reader :provisional_conversion_date,
     :advisory_board_date
 
   validates :provisional_conversion_date,
     :advisory_board_date,
+    :handover_note_body,
     presence: true
 
   validates :provisional_conversion_date, date_in_the_future: true, first_day_of_month: true
@@ -41,15 +42,11 @@ class Conversion::CreateProjectForm
 
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
 
-  validates :directive_academy_order, inclusion: {in: %w[true false]}
+  validates :directive_academy_order, :assigned_to_regional_caseworker_team, inclusion: {in: [true, false]}
 
   def initialize(params = {})
     @attributes_with_invalid_values = []
     super(params)
-  end
-
-  def directive_academy_order_responses
-    DIRECTIVE_ACADEMY_ORDER_RESPONSES
   end
 
   def provisional_conversion_date=(hash)
@@ -117,12 +114,18 @@ class Conversion::CreateProjectForm
     errors.add(:urn, :duplicate) if Project.not_completed.where(urn: urn).any?
   end
 
-  attribute :assigned_to_regional_caseworker_team, :boolean
-
-  CASEWORKER_TEAM_RESPONSES = [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
-
   def assigned_to_regional_caseworker_team_responses
-    CASEWORKER_TEAM_RESPONSES
+    @assigned_to_regional_caseworker_team_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("yes")),
+      OpenStruct.new(id: false, name: I18n.t("no"))
+    ]
+  end
+
+  def directive_academy_order_responses
+    @directive_academy_order_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")),
+      OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))
+    ]
   end
 
   def save
@@ -150,7 +153,7 @@ class Conversion::CreateProjectForm
 
     ActiveRecord::Base.transaction do
       @project.save
-      @note = Note.create(body: note_body, project: @project, user: user) if note_body
+      @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
       notify_team_leaders(@project) if assigned_to_regional_caseworker_team
     end
 
