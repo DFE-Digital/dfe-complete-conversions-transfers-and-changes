@@ -258,8 +258,9 @@ en:
           local_authority: Local authority
           address: Address
       director_of_child_services:
-        title: Director of Child Services
+        title: Director of child services
         rows:
+          title: DCS Position
           name: Name
           email: Email
           phone: Phone
