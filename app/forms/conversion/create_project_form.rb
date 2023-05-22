@@ -23,6 +23,7 @@ class Conversion::CreateProjectForm
 
   validates :provisional_conversion_date,
     :advisory_board_date,
+    :handover_note_body,
     presence: true
 
   validates :provisional_conversion_date, date_in_the_future: true, first_day_of_month: true

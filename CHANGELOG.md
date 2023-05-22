@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The 'new academy URN' and 'with academy URN' views now include the confirmed
   academy name, this helps servcice support ensure the correct details have been
   added to Get information about schools.
+- the handover note added by regional delivery officers when creating a new
+  project is now required
 
 ### Fixed
 

@@ -228,6 +228,16 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(form.errors[:directive_academy_order]).to include("Select directive academy order or academy order, whichever has been used for this conversion")
       end
     end
+
+    describe "handover note body" do
+      it "is required" do
+        form = build(
+          form_factory.to_sym,
+          handover_note_body: ""
+        )
+        expect(form).to be_invalid
+      end
+    end
   end
 
   describe "urn" do
