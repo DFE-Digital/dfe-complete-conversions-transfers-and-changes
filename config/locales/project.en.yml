@@ -342,3 +342,5 @@ en:
       academy_urn:
         blank: Please enter an Academy URN
         invalid_urn: Please enter a valid URN. The URN must be 6 digits long. For example, 123456.
+      handover_note_body:
+        blank: Enter handover notes

@@ -22,6 +22,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   added to Get information about schools.
 - the handover note added by regional delivery officers when creating a new
   project is now required
+- the handover note added by regional delivery officers when creating a new
+  project is now associated with the ' Handover with regional delivery officer'
+  task
 
 ### Fixed
 
