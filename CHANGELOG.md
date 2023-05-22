@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Change the values of the "All conditions met" tag in the openers list, to
+  "confirmed" and "unconfirmed"
+
 ### Fixed
 
 ## [Release 26][release-26]

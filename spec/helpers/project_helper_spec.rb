@@ -147,7 +147,7 @@ RSpec.describe ProjectHelper, type: :helper do
       let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns a turquoise tag with 'yes' text" do
-        expect(helper.all_conditions_met_tag(project)).to include("turquoise", "yes")
+        expect(helper.all_conditions_met_tag(project)).to include("turquoise", "confirmed")
       end
     end
 
@@ -156,7 +156,7 @@ RSpec.describe ProjectHelper, type: :helper do
       let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns a blue tag with 'not started' text" do
-        expect(helper.all_conditions_met_tag(project)).to include("blue", "not started")
+        expect(helper.all_conditions_met_tag(project)).to include("blue", "unconfirmed")
       end
     end
   end

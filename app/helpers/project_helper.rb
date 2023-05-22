@@ -44,9 +44,9 @@ module ProjectHelper
 
   def all_conditions_met_tag(project)
     tag = if project.all_conditions_met?
-      govuk_tag(text: "yes", colour: "turquoise")
+      govuk_tag(text: "confirmed", colour: "turquoise")
     else
-      govuk_tag(text: "not started", colour: "blue")
+      govuk_tag(text: "unconfirmed", colour: "blue")
     end
     tag.to_s.html_safe
   end
