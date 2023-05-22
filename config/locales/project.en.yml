@@ -175,6 +175,18 @@ en:
         html:
           <p>There are currently no schools expected to become academies in %{date}.</p>
           <p>Check with your line manager if you were expecting some schools to convert in this month.</p>
+      table:
+        headers:
+          school: School
+          urn: URN
+          route: Route
+          direction_to_transfer: Direction to transfer
+          trust_modification_order: Trust modification order
+          all_conditions_met: All conditions met
+          view_project: View project
+      route:
+        voluntary: Voluntary
+        sponsored: Sponsored
     conversion_date_changed:
       title: Academies that were expected to convert in %{date}
       empty_html:
