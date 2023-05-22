@@ -8,7 +8,7 @@ FactoryBot.define do
     trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/trust-folder" }
     user { association :user, :regional_delivery_officer }
     handover_note_body { "Handover notes" }
-    directive_academy_order { "false" }
+    directive_academy_order { false }
     assigned_to_regional_caseworker_team { false }
   end
 end

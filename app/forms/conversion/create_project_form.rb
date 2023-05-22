@@ -14,7 +14,7 @@ class Conversion::CreateProjectForm
   attribute :advisory_board_conditions
   attribute :handover_note_body
   attribute :user
-  attribute :directive_academy_order
+  attribute :directive_academy_order, :boolean
   attribute :region
   attribute :assigned_to_regional_caseworker_team, :boolean
 
@@ -41,7 +41,7 @@ class Conversion::CreateProjectForm
 
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
 
-  validates :directive_academy_order, inclusion: {in: %w[true false]}
+  validates :directive_academy_order, :assigned_to_regional_caseworker_team, inclusion: {in: [true, false]}
 
   def initialize(params = {})
     @attributes_with_invalid_values = []
