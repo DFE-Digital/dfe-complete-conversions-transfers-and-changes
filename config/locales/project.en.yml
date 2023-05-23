@@ -187,7 +187,7 @@ en:
       route:
         voluntary: Voluntary
         sponsored: Sponsored
-    conversion_date_changed:
+    revised_conversion_date:
       title: Academies that were expected to convert in %{date}
       empty_html:
           <p>None found.</p>
