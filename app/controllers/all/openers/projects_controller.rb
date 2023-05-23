@@ -4,6 +4,8 @@ class All::Openers::ProjectsController < ApplicationController
 
     @projects = ProjectsFetcher.new.sorted_openers(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
+    @month = month
+    @year = year
   end
 
   private def month

@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Move route of the Openers page to `/projects/all/openers/month/year`
 - Move route of the Projects with changed conversion dates to
   `/projects/all/revised-conversion-date/month/year`
+- Tie the Openers and Revised conversion date pages together with tabs
 
 ### Fixed
 

@@ -7,6 +7,8 @@ class All::RevisedConversionDate::ProjectsController < ApplicationController
 
     @projects = Project.conversion_date_revised_from(month, year)
     @date = "#{month_name(month)} #{year}"
+    @month = month
+    @year = year
   end
 
   private def month_name(month)
