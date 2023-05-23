@@ -59,6 +59,8 @@ class Project < ApplicationRecord
 
   scope :by_region, ->(region) { where(region: region) }
 
+  scope :by_trust_ukprn, ->(ukprn) { where(incoming_trust_ukprn: ukprn) }
+
   enum :region, {
     london: "H",
     south_east: "J",
