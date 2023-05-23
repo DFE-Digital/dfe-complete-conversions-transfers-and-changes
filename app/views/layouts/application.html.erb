@@ -35,7 +35,7 @@
 
     <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
-    <%= govuk_header(service_name: t("service_name")) %>
+    <%= render partial: "shared/header" %>
 
     <div class="govuk-width-container " aria-label="phase banner" role="complementary">
       <%= govuk_phase_banner(
