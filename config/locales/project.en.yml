@@ -202,6 +202,9 @@ en:
           open:
             html:
               Open <span class="govuk-visually-hidden">%{school_name}</span> project
+        route:
+          voluntary: Voluntary
+          sponsored: Sponsored
     notifications:
       completed_html: <h3>Project completed<h3><p>This project was completed on %{date} and cannot be changed.</p>
       not_assigned_html: <h3>Not assigned to project</h3><p>This project is not assigned to you and cannot be changed, you can add notes or contacts if required.</p>
