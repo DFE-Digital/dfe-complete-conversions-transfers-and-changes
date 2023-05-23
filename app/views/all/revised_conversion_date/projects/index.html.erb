@@ -4,6 +4,6 @@
     <h1 class="govuk-heading-l">
       <%= t("project.revised_conversion_date.title", date: @date) %>
     </h1>
-    <%= render partial: "/projects/shared/conversion_date_changed_table", locals: {projects: @projects, date: @date} %>
+    <%= render partial: "table", locals: {projects: @projects, date: @date} %>
   </div>
 </div>
