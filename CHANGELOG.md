@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 26][release-26]
+
+### Added
+
 - Add importer to import Director of Child Services data
 - a new 'Confirm the academy name' task that collects the confirmed new academy
   name so that the Get information about schools record can be added.
@@ -888,7 +896,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-25...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-26...HEAD
+[release-26]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-25...release-26
 [release-25]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-24...release-25
 [release-24]:
