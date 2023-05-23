@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   "confirmed" and "unconfirmed"
 - Update the column values on the Openers page, and add new tags for the
   Direction to transfer and Trust modification order column values
+- Move route of the Openers page to `/projects/all/openers/month/year`
 
 ### Fixed
 

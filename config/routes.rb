@@ -78,6 +78,9 @@ Rails.application.routes.draw do
           namespace :conversion_date_changed, path: "conversion-date-changed" do
             get "/:month/:year", to: "projects#index", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
           end
+          namespace :openers do
+            get "/:month/:year", to: "projects#index", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
+          end
           namespace :statistics do
             get "/", to: "projects#index"
           end
@@ -106,8 +109,6 @@ Rails.application.routes.draw do
           get ":user_id", to: "projects#by_user", as: :by_user
         end
         get "unassigned"
-
-        get "openers/:month/:year", to: "projects_openers#openers", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :openers
       end
     end
   end
