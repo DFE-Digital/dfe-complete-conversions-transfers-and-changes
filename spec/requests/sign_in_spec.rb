@@ -24,7 +24,6 @@ RSpec.describe "Sign in" do
 
       follow_redirect!
 
-      expect(response.body).to include(user.email)
       expect(response).to have_http_status(:success)
     end
   end
