@@ -10,5 +10,5 @@
 //= link govuk-frontend/govuk/assets/images/govuk-apple-touch-icon-152x152.png
 //= link govuk-frontend/govuk/assets/images/govuk-apple-touch-icon.png
 //= link govuk-frontend/govuk/assets/images/govuk-opengraph-image.png
-//= link moj-logotype-crest.png
+//= link "@ministryofjustice/frontend/moj/assets/images/moj-logotype-crest.png"
 //= link accessible-autocomplete/dist/accessible-autocomplete.min.js
