@@ -147,7 +147,7 @@ RSpec.describe ProjectHelper, type: :helper do
       let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns a turquoise tag with 'yes' text" do
-        expect(helper.all_conditions_met_tag(project)).to include("turquoise", "yes")
+        expect(helper.all_conditions_met_tag(project)).to include("turquoise", "confirmed")
       end
     end
 
@@ -156,7 +156,7 @@ RSpec.describe ProjectHelper, type: :helper do
       let(:project) { build(:conversion_project, tasks_data: tasks_data) }
 
       it "returns a blue tag with 'not started' text" do
-        expect(helper.all_conditions_met_tag(project)).to include("blue", "not started")
+        expect(helper.all_conditions_met_tag(project)).to include("blue", "unconfirmed")
       end
     end
   end
@@ -263,6 +263,92 @@ RSpec.describe ProjectHelper, type: :helper do
       project = build(:conversion_project)
 
       expect(helper.academy_name(project)).to include("grey", "Unconfirmed")
+    end
+  end
+
+  describe "#trust_modification_order_tag" do
+    before do
+      mock_successful_api_response_to_create_any_project
+      allow(helper).to receive(:trust_modification_order_task).and_return(task)
+    end
+
+    let(:project) { create(:conversion_project) }
+    let(:user) { create(:user) }
+    let(:task) { double(Conversion::Task::TrustModificationOrderTaskForm) }
+
+    context "when the task is not applicable" do
+      it "returns a grey tag with 'not applicable' text" do
+        allow(task).to receive(:status).and_return(:not_applicable)
+        expect(helper.trust_modification_order_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--grey\">not applicable</strong>")
+      end
+    end
+
+    context "when the task is not started" do
+      it "returns a blue tag with 'unconfirmed'" do
+        allow(task).to receive(:status).and_return(:not_started)
+        expect(helper.trust_modification_order_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--blue\">unconfirmed</strong>")
+      end
+    end
+
+    context "when the task is started but not completed" do
+      it "returns a blue tag with 'unconfirmed'" do
+        allow(task).to receive(:status).and_return(:in_progress)
+        expect(helper.trust_modification_order_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--blue\">unconfirmed</strong>")
+      end
+    end
+
+    context "when the task is completed" do
+      it "returns a turquoise tag with 'needed'" do
+        allow(task).to receive(:status).and_return(:completed)
+        expect(helper.trust_modification_order_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--turquoise\">needed</strong>")
+      end
+    end
+  end
+
+  describe "#direction_to_transfer_tag" do
+    before do
+      mock_successful_api_response_to_create_any_project
+      allow(helper).to receive(:direction_to_transfer_task).and_return(task)
+    end
+
+    let(:project) { create(:conversion_project) }
+    let(:user) { create(:user) }
+    let(:task) { double(Conversion::Task::DirectionToTransferTaskForm) }
+
+    context "when the task is not applicable" do
+      it "returns a grey tag with 'not applicable' text" do
+        allow(task).to receive(:status).and_return(:not_applicable)
+        expect(helper.direction_to_transfer_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--grey\">not applicable</strong>")
+      end
+    end
+
+    context "when the task is not started" do
+      it "returns a blue tag with 'unconfirmed'" do
+        allow(task).to receive(:status).and_return(:not_started)
+        expect(helper.direction_to_transfer_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--blue\">unconfirmed</strong>")
+      end
+    end
+
+    context "when the task is started but not completed" do
+      it "returns a blue tag with 'unconfirmed'" do
+        allow(task).to receive(:status).and_return(:in_progress)
+        expect(helper.direction_to_transfer_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--blue\">unconfirmed</strong>")
+      end
+    end
+
+    context "when the task is completed" do
+      it "returns a turquoise tag with 'needed'" do
+        allow(task).to receive(:status).and_return(:completed)
+        expect(helper.direction_to_transfer_tag(project, user))
+          .to eq("<strong class=\"govuk-tag govuk-tag--turquoise\">needed</strong>")
+      end
     end
   end
 end

@@ -88,6 +88,8 @@ en:
     internal_contacts: Internal contacts
     member_of_parliament: Member of Parliament
     added_by_projects: Added by you
+    openers: Opening as planned
+    revised: Revised conversion date
   pages:
     academies_api_client_timeout:
       title: Sorry, there was a problem

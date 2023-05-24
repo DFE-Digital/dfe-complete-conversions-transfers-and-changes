@@ -1,0 +1,22 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.openers.title", date: @date) %>
+    </h1>
+    <p><%= t("project.openers.subtitle") %></p>
+
+    <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
+      <ul class="moj-sub-navigation__list">
+        <%= render partial: "shared/sub_navigation_item",
+              locals: {name: t("subnavigation.openers"),
+                       path: "/projects/all/openers/#{@month}/#{@year}"} %>
+        <%= render partial: "shared/sub_navigation_item",
+              locals: {name: t("subnavigation.revised"),
+                       path: "/projects/all/revised-conversion-date/#{@month}/#{@year}"} %>
+      </ul>
+    </nav>
+
+    <%= render partial: "table", locals: {projects: @projects, date: @date} %>
+  </div>
+</div>

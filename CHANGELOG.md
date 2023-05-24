@@ -10,6 +10,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Change the values of the "All conditions met" tag in the openers list, to
+  "confirmed" and "unconfirmed"
+- Update the column values on the Openers page, and add new tags for the
+  Direction to transfer and Trust modification order column values
+- Move route of the Openers page to `/projects/all/openers/month/year`
+- Move route of the Projects with changed conversion dates to
+  `/projects/all/revised-conversion-date/month/year`
+- Tie the Openers and Revised conversion date pages together with tabs
+
 ### Fixed
 
 ## [Release 26][release-26]
