@@ -78,7 +78,7 @@ Rails.application.routes.draw do
           namespace :revised_conversion_date, path: "revised-conversion-date" do
             get "/:month/:year", to: "projects#index", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
           end
-          namespace :openers do
+          namespace :openers, path: "opening" do
             get "/:month/:year", to: "projects#index", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
           end
           namespace :statistics do

@@ -17,7 +17,7 @@ RSpec.feature "Users can view project openers in table form" do
         tasks_data = create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: true)
         _project = create(:conversion_project, tasks_data: tasks_data, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false)
 
-        visit "/projects/all/openers/1/2023"
+        visit "/projects/all/opening/1/2023"
         expect(page).to have_css("strong.govuk-tag--turquoise", text: "confirmed")
       end
     end
@@ -27,7 +27,7 @@ RSpec.feature "Users can view project openers in table form" do
         tasks_data = create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: nil)
         _project = create(:conversion_project, tasks_data: tasks_data, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false)
 
-        visit "/projects/all/openers/1/2023"
+        visit "/projects/all/opening/1/2023"
         expect(page).to have_css("strong.govuk-tag--blue", text: "unconfirmed")
       end
     end
