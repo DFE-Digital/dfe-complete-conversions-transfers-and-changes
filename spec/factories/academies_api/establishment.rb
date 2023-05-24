@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :academies_api_establishment, class: "Api::AcademiesApi::Establishment" do
     urn { "123456" }
     name { "Caludon Castle School" }
+    establishment_number { "1234" }
     local_authority_name { "West Placefield Council" }
     local_authority_code { "894" }
     type { "Academy converter" }

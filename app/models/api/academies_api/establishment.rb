@@ -2,6 +2,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
   attr_accessor(
     :urn,
     :name,
+    :establishment_number,
     :local_authority_name,
     :local_authority_code,
     :type,
@@ -24,6 +25,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
     {
       urn: "urn",
       name: "establishmentName",
+      establishment_number: "establishmentNumber",
       local_authority_name: "localAuthorityName",
       local_authority_code: "localAuthorityCode",
       type: "establishmentType.name",
@@ -56,5 +58,9 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
 
   def local_authority
     LocalAuthority.find_by(code: local_authority_code)
+  end
+
+  def dfe_number
+    "#{local_authority_code}/#{establishment_number}"
   end
 end
