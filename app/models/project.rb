@@ -7,6 +7,7 @@ class Project < ApplicationRecord
 
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
+  has_one :contact_funding_agreement_letters, class_name: "Contact::FundingAgreementLetters"
 
   validates :urn, presence: true
   validates :urn, urn: true

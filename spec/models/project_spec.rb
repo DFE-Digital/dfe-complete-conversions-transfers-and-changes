@@ -30,6 +30,8 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:assigned_to).required(false) }
     it { is_expected.to belong_to(:tasks_data).required(true) }
 
+    it { is_expected.to have_one(:contact_funding_agreement_letters).optional }
+
     describe "delete related entities" do
       context "when the project is deleted" do
         it "destroys all the related notes and contacts leaving nothing orphaned" do
