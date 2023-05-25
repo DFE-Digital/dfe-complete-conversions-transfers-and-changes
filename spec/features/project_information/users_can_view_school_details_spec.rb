@@ -14,6 +14,7 @@ RSpec.feature "Users can view school details" do
     within("#schoolDetails") do
       expect(page).to have_content(project.establishment.name)
       expect(page).to have_content(project.urn)
+      expect(page).to have_content(project.establishment.dfe_number)
       expect(page).to have_content(project.establishment.type)
       expect(page).to have_content(project.establishment.phase)
       expect(page).to have_content(project.establishment.region_name)

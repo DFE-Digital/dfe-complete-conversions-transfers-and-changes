@@ -34,6 +34,10 @@
       row.value { address_markup(@project.establishment.address) }
     end
     summary_list.row do |row|
+      row.key { t('project_information.show.school_details.rows.dfe_number') }
+      row.value { @project.establishment.dfe_number }
+    end
+    summary_list.row do |row|
       row.key { t('project_information.show.school_details.rows.old_urn') }
       row.value { @project.urn.to_s }
     end
