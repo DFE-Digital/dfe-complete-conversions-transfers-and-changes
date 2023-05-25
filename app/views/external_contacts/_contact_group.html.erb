@@ -33,5 +33,7 @@
           end
         end
       end %>
-
+    <% if @project.funding_agreement_contact_id == contact.id %>
+      <p><%= t("contact.details.funding_agreement_letters") %></p>
+    <% end %>
   <% end %>

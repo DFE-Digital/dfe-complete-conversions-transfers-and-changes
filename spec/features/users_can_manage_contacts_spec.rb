@@ -99,6 +99,13 @@ RSpec.feature "Users can manage contacts" do
     expect(page).to have_content("There are not any contacts for this project yet.")
   end
 
+  scenario "if a contact is the funding agreement contact, it is indicated on the contact" do
+    project.update!(funding_agreement_contact_id: contact.id)
+
+    visit project_contacts_path(project)
+    expect(page).to have_content(I18n.t("contact.details.funding_agreement_letters"))
+  end
+
   private def expect_page_to_have_contact(name:, title:, organisation_name: nil, email: nil, phone: nil)
     expect(page).to have_content(name)
     expect(page).to have_content(organisation_name) if organisation_name
