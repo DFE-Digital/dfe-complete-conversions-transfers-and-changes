@@ -9,6 +9,6 @@
           school_name: @project.establishment.name,
           urn: @project.urn,
           contacts_link: project_contacts_path(@project)) %>
-    <%= govuk_button_link_to t("conversion_project.voluntary.create.assigned_to_regional_caseworker_team.button"), added_by_user_projects_path %>
+    <%= govuk_button_link_to t("conversion_project.voluntary.create.assigned_to_regional_caseworker_team.button"), project_contacts_path(@project) %>
   </div>
 </div>
