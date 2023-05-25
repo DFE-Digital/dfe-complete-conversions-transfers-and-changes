@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Display generated DfE number in project information view for the establishment
+- Indicate the Funding Agreement Letters contact on external contacts page
 
 ### Changed
 

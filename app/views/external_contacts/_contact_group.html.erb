@@ -33,5 +33,7 @@
           end
         end
       end %>
-
+    <% if contact.type == "Contact::FundingAgreementLetters" %>
+      <p><%= t("contact.details.funding_agreement_letters") %></p>
+    <% end %>
   <% end %>
