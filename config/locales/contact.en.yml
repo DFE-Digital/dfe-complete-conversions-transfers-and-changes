@@ -16,6 +16,7 @@ en:
       email: Email
       phone: Phone
       edit_link: Change
+      funding_agreement_letters: This person will receive the funding agreement letters.
     new:
       title: Add contact
       save_contact_button: Add contact
