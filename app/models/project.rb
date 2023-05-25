@@ -124,6 +124,10 @@ class Project < ApplicationRecord
     local_authority&.director_of_child_services
   end
 
+  def external_contacts
+    Contact.where(project_id: id)
+  end
+
   private def fetch_academy(urn)
     Api::AcademiesApi::Client.new.get_establishment(urn)
   end

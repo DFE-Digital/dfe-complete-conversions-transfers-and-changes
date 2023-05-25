@@ -763,4 +763,24 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "#external_contacts" do
+    before { mock_successful_api_response_to_create_any_project }
+    let(:other_contact) { create(:project_contact) }
+    let(:project) { other_contact.project }
+
+    context "when there are existing FundingAgreementLetters contacts" do
+      let!(:funding_contact) { create(:funding_agreement_letters, project: project) }
+
+      it "returns Project contacts and FundingAgreementLetters contacts" do
+        expect(project.external_contacts).to include(funding_contact, other_contact)
+      end
+    end
+
+    context "when there are no FundingAgreementLetters contacts" do
+      it "returns Project contacts only" do
+        expect(project.external_contacts).to eq([other_contact])
+      end
+    end
+  end
 end

@@ -2,7 +2,7 @@ class ExternalContactsController < ApplicationController
   before_action :find_project
 
   def index
-    @grouped_contacts = @project.contacts.by_name.group_by(&:category).with_indifferent_access
+    @grouped_contacts = @project.external_contacts.by_name.group_by(&:category).with_indifferent_access
   end
 
   def new
