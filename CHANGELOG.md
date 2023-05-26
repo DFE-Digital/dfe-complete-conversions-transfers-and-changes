@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Move route of the Projects with changed conversion dates to
   `/projects/all/revised-conversion-date/month/year`
 - Tie the Openers and Revised conversion date pages together with tabs
+- Update content in project creation confirmation page to make clear delivery
+  officers must add contacts
+- Change primary action button to point to external contacts page
 
 ### Fixed
 
