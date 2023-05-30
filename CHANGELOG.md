@@ -22,7 +22,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Tie the Openers and Revised conversion date pages together with tabs
 - Update content in project creation confirmation page to make clear delivery
   officers must add contacts
-- Change primary action button to point to external contacts page
+- Change primary action button on project creation confirmation page to point to
+  external contacts page
+- Pull full stop out of mailto link on single worksheet task and into text
 
 ### Fixed
 

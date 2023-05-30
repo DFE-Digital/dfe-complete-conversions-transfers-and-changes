@@ -18,7 +18,7 @@ en:
         send:
           title: Send the approved single worksheet to Academies Operational Practice Unit
           hint:
-            html: <p>Send the single worksheet and, if needed, the direction to transfer and trust modification order to <a href="mailto:academiesdelivery.operations@education.gov.uk" target="_blank">academiesdelivery.operations@education.gov.uk.</a></p>
+            html: <p>Send the single worksheet and, if needed, the direction to transfer and trust modification order to <a href="mailto:academiesdelivery.operations@education.gov.uk" target="_blank">academiesdelivery.operations@education.gov.uk</a>.</p>
           guidance_link: When you must complete this
           guidance:
             html:
