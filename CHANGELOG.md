@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Change primary action button on project creation confirmation page to point to
   external contacts page
 - Pull full stop out of mailto link on single worksheet task and into text
+- Change primary action button to point to external contacts page
+- Add missing full stop to guidance in grant payment certificate task
 
 ### Fixed
 
