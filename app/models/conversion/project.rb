@@ -15,4 +15,8 @@ class Conversion::Project < Project
 
     conversion_dates.order(:created_at).first.previous_date
   end
+
+  def funding_agreement_contact_id
+    tasks_data.funding_agreement_contact_contact_id
+  end
 end

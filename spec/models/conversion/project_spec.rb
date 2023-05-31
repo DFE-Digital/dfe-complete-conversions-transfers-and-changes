@@ -54,4 +54,19 @@ RSpec.describe Conversion::Project do
       end
     end
   end
+
+  describe "#funding_agreement_contact_id" do
+    let(:project) { create(:conversion_project) }
+    let(:contact) { create(:project_contact, project: project) }
+    let(:tasks_data) { create(:conversion_tasks_data) }
+
+    before do
+      allow(project).to receive(:tasks_data).and_return(tasks_data)
+      allow(tasks_data).to receive(:funding_agreement_contact_contact_id).and_return(contact.id)
+    end
+
+    it "returns the id of the contact who is the Funding Agreement Letters contact" do
+      expect(project.funding_agreement_contact_id).to eq(contact.id)
+    end
+  end
 end
