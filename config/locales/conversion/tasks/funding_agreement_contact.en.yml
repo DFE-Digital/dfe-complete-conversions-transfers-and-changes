@@ -5,22 +5,18 @@ en:
         title: Confirm who will get the funding agreement letters
         hint:
           html:
-            <p>For voluntary conversions, this person will most likely be from
-            the school. They will most likely be from the trust if this is a
-            sponsored conversion. It is not necessarily the person you contact
-            most.<p>
-  helpers:
-    label:
-      conversion_task_funding_agreement_contact_task_form:
-        name: Name
-        title: Role
-        email: Email
-  errors:
-    attributes:
-      name:
-        blank: Enter a full name
-      title:
-        blank: Enter a role
-      email:
-        blank: Enter an email address
-        invalid: Enter a valid email address
+            <p>This person will most likely be from the school in a voluntary conversion. They will most likely be from the trust in a sponsored conversion.</p>
+            <p>They are not necessarily the person you contact most.</p>
+            <p>You must add a new contact first if this person is not already in the contacts list.</p>
+        guidance_link: What funding agreement letters are for
+        guidance:
+          html:
+            <p>After you have confirmed all conditions have been met, ADOP (Academy delivery operational practice) will send funding agreement letters the school or trust. These confirm the DfE will to enter into a funding agreement with the academy and trust.</p>
+        no_contacts:
+          title: Add contacts
+          add_contacts_guidance_html:
+            <p>You must <a href="%{add_contact_link}">add a contact</a> before you can choose which person will get the funding agreement letters.</p>
+            <p>Then you can come back to this task and confirm who will get the letters.</p>
+        choose_a_contact:
+          title: Choose a contact
+          legend:

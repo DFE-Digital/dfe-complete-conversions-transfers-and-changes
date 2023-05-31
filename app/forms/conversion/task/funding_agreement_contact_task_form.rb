@@ -1,34 +1,26 @@
 class Conversion::Task::FundingAgreementContactTaskForm < ::BaseTaskForm
-  attribute :name, :string
-  attribute :email, :string
-  attribute :title, :string
-
-  validates :name, :email, :title, presence: true
-  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
+  attribute :contact_id, :string
 
   def initialize(tasks_data, user)
     @tasks_data = tasks_data
     @user = user
-    @project = tasks_data.project
-    @contact = Contact::Project.find_or_create_by(project: @project, funding_agreement_contact: true)
 
     super(@tasks_data, @user)
-
-    assign_attributes(
-      name: @contact.name,
-      title: @contact.title,
-      email: @contact.email
-    )
   end
 
   def save
-    @contact.assign_attributes(
-      project: @project,
-      name: name,
-      title: title,
-      email: email,
-      funding_agreement_contact: true
-    )
-    @contact.save!
+    change_class_for_funding_letters_contact(contact_id)
+    @tasks_data.update(funding_agreement_contact_contact_id: contact_id)
+  end
+
+  private def change_class_for_funding_letters_contact(contact_id)
+    external_contacts = @tasks_data.project.external_contacts
+    external_contacts.each do |contact|
+      if contact.id == contact_id
+        contact.update(type: "Contact::FundingAgreementLetters")
+      else
+        contact.update(type: "Contact::Project")
+      end
+    end
   end
 end
