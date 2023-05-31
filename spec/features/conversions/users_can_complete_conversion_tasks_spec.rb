@@ -25,6 +25,7 @@ RSpec.feature "Users can complete conversion tasks" do
   tasks_with_collected_data = %w[
     stakeholder_kick_off
     academy_details
+    funding_agreement_contact
   ]
 
   it "confirms we are checking all tasks" do
@@ -106,6 +107,34 @@ RSpec.feature "Users can complete conversion tasks" do
     scenario "the Conditions met task shows the provisional conversion date in the hint text" do
       click_on "Confirm all conditions have been met"
       expect(page).to have_content("All conditions must be met before the deadline or the school will not be able to convert on 1 December 2023")
+    end
+  end
+
+  context "the funding agreement letters task" do
+    let(:project) { create(:conversion_project, assigned_to: user) }
+
+    context "when the project has contacts already" do
+      let!(:contact) { create(:project_contact, project: project) }
+
+      it "lets the user select an existing contact" do
+        visit project_conversion_tasks_path(project)
+        click_on "Confirm who will get the funding agreement letters"
+        choose contact.name
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.funding_agreement_contact_id).to eq contact.id
+      end
+    end
+
+    context "when the project has no contacts" do
+      it "directs the user to add contacts" do
+        visit project_conversion_tasks_path(project)
+        click_on "Confirm who will get the funding agreement letters"
+
+        expect(page).to have_content("Add contacts")
+        click_link "add a contact"
+        expect(page.current_path).to include("external-contacts")
+      end
     end
   end
 
