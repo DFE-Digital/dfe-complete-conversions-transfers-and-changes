@@ -19,4 +19,8 @@ class Conversion::Project < Project
   def all_conditions_met?
     tasks_data.conditions_met_confirm_all_conditions_met?
   end
+
+  def conversion_date_confirmed_and_passed?
+    !conversion_date_provisional? && conversion_date.past?
+  end
 end

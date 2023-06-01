@@ -74,4 +74,48 @@ RSpec.describe Conversion::Project do
       end
     end
   end
+
+  describe "#opened?" do
+    let(:project) {
+      build(:conversion_project,
+        conversion_date: conversion_date,
+        conversion_date_provisional: conversion_date_provisional)
+    }
+
+    context "when the conversion date has not passed" do
+      let(:conversion_date) { Date.tomorrow }
+      let(:conversion_date_provisional) { false }
+
+      it "returns false" do
+        expect(project.conversion_date_confirmed_and_passed?).to be false
+      end
+    end
+
+    context "when the conversion date has passed but the conversion date is provisional" do
+      let(:conversion_date) { Date.yesterday }
+      let(:conversion_date_provisional) { true }
+
+      it "returns false" do
+        expect(project.conversion_date_confirmed_and_passed?).to be false
+      end
+    end
+
+    context "when the conversion date is provisional" do
+      let(:conversion_date) { Date.tomorrow }
+      let(:conversion_date_provisional) { true }
+
+      it "returns false" do
+        expect(project.conversion_date_confirmed_and_passed?).to be false
+      end
+    end
+
+    context "when the conversion date is confirmed and the conversion date has passed" do
+      let(:conversion_date) { Date.yesterday }
+      let(:conversion_date_provisional) { false }
+
+      it "returns true" do
+        expect(project.conversion_date_confirmed_and_passed?).to be true
+      end
+    end
+  end
 end
