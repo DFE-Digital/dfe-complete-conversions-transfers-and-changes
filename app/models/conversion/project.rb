@@ -23,4 +23,11 @@ class Conversion::Project < Project
   def conversion_date_confirmed_and_passed?
     !conversion_date_provisional? && conversion_date.past?
   end
+
+  def grant_payment_certificate_received?
+    user = assigned_to
+    tasks = Conversion::Task::ReceiveGrantPaymentCertificateTaskForm.new(tasks_data, user)
+    return true if tasks.status.eql?(:completed)
+    false
+  end
 end

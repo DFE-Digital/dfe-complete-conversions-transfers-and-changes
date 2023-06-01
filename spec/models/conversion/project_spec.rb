@@ -118,4 +118,35 @@ RSpec.describe Conversion::Project do
       end
     end
   end
+
+  describe "#grant_payment_certificate_received?" do
+    let(:user) { create(:user) }
+    let(:project) { build(:conversion_project, tasks_data: tasks_data) }
+
+    context "when the ReceiveGrantPaymentCertificateTaskForm is NOT completed" do
+      let(:tasks_data) {
+        create(:conversion_tasks_data,
+          receive_grant_payment_certificate_check_and_save: nil,
+          receive_grant_payment_certificate_update_kim: nil,
+          receive_grant_payment_certificate_update_sheet: nil)
+      }
+
+      it "returns false" do
+        expect(project.grant_payment_certificate_received?).to be false
+      end
+    end
+
+    context "when the ReceiveGrantPaymentCertificateTaskForm is completed" do
+      let(:tasks_data) {
+        create(:conversion_tasks_data,
+          receive_grant_payment_certificate_check_and_save: true,
+          receive_grant_payment_certificate_update_kim: true,
+          receive_grant_payment_certificate_update_sheet: true)
+      }
+
+      it "returns true" do
+        expect(project.grant_payment_certificate_received?).to be true
+      end
+    end
+  end
 end
