@@ -114,10 +114,6 @@ class Project < ApplicationRecord
     assigned_to.nil?
   end
 
-  def all_conditions_met?
-    tasks_data.conditions_met_confirm_all_conditions_met?
-  end
-
   def director_of_child_services
     local_authority = establishment.local_authority
     local_authority&.director_of_child_services

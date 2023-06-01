@@ -15,4 +15,8 @@ class Conversion::Project < Project
 
     conversion_dates.order(:created_at).first.previous_date
   end
+
+  def all_conditions_met?
+    tasks_data.conditions_met_confirm_all_conditions_met?
+  end
 end
