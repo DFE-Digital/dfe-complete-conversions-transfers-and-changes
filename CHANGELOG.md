@@ -27,6 +27,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Pull full stop out of mailto link on single worksheet task and into text
 - Change primary action button to point to external contacts page
 - Add missing full stop to guidance in grant payment certificate task
+- Updated the way we present academy name and URN in the conversion date change
+  confirmation page so it is consistent with other confirmation pages
+- Changed the content on the conversion date change confirmation page to provide
+  clearer, more direct guidance about how and when a date can be changed by
+  phrasing the heading as a statement and not a question
 
 ### Fixed
 
