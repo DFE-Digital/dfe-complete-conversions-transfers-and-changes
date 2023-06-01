@@ -12,7 +12,7 @@
       <%= form.govuk_text_area :body, label: {tag: "h1", size: "l"} %>
 
       <%= form.govuk_submit t("note.new.save_note_button") do %>
-        <%= govuk_link_to "Cancel", return_path %>
+        <%= govuk_link_to t("cancel"), return_path %>
       <% end %>
     <% end %>
   </div>

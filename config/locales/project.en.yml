@@ -262,6 +262,12 @@ en:
           it can take one day for the data to be syncronised
         rows:
           urn: Unique reference number (URN)
+          academy_name: Academy name
+          address: Address
+          school_type: School type
+          age_range: Age range
+          school_phase: School phase
+          region: Region
       trust_details:
         title: Trust details
         rows:
