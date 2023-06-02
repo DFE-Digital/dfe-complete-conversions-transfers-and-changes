@@ -72,7 +72,7 @@ RSpec.feature "Users can edit the Academy URN" do
         click_on "Save and return"
         expect(page).to have_content("Are these details correct?")
         click_on "Cancel"
-        expect(page).to have_content("All conversions without an academy URN")
+        expect(page).to have_content("URNs to create")
         expect(page).to have_content(project.establishment.name)
       end
     end

@@ -1,15 +1,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">
-      <%= t("project.all.with_academy_urn.title") %>
+      <%= t("service_support.title") %>
     </h1>
 
-    <nav class="moj-sub-navigation" aria-label="Project list sub-navigation">
-      <ul class="moj-sub-navigation__list">
-        <%= render partial: "shared/sub_navigation_item", locals: {name: t("project.subnavigation.new"), path: new_all_projects_path} %>
-        <%= render partial: "shared/sub_navigation_item", locals: {name: t("project.subnavigation.with_academy_urn"), path: with_academy_urn_all_projects_path} %>
-      </ul>
-    </nav>
+    <%= render partial: "shared/service_support_sub_navigation" %>
+
+    <h2 class="govuk-heading-m"><%= t("service_support.section.with_urn.title") %></h2>
 
     <%= render partial: "/projects/shared/with_academy_urn_table", locals: {projects: @projects, pager: @pager} %>
   </div>

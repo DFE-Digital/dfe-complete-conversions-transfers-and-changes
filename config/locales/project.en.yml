@@ -31,10 +31,6 @@ en:
           title: All sponsored completed projects
         voluntary:
           title: All voluntary completed projects
-      new:
-        title: All conversions without an academy URN
-      with_academy_urn:
-        title: All conversions with an academy URN
       trust_ukprn:
           title: Projects for %{trust}
     regional_casework_services:
