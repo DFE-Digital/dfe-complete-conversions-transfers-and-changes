@@ -32,6 +32,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Changed the content on the conversion date change confirmation page to provide
   clearer, more direct guidance about how and when a date can be changed by
   phrasing the heading as a statement and not a question
+- Adding a new project where the school is not considred 'religious'
+  automatically marks the 'Church supplemental agreement' as not applicable,
+  users can make the task applicable if desired
 
 ### Fixed
 

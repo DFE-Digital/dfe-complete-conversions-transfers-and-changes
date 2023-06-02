@@ -58,6 +58,17 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(project.assigned_at).to eq DateTime.now
       end
     end
+
+    context "and the establishment has a diocese" do
+      it "sets the church supplemental agreement task to not applicable" do
+        establishment = build(:academies_api_establishment, diocese_code: "0000")
+        result = Api::AcademiesApi::Client::Result.new(establishment, nil)
+        allow_any_instance_of(Api::AcademiesApi::Client).to receive(:get_establishment).with(123456).and_return(result)
+        project = build(:create_project_form).save
+
+        expect(project.tasks_data.church_supplemental_agreement_not_applicable).to be true
+      end
+    end
   end
 
   describe "validations" do
