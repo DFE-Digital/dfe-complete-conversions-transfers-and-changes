@@ -4,6 +4,7 @@ class Conversion::Project < Project
   end
 
   has_many :conversion_dates, dependent: :destroy, class_name: "Conversion::DateHistory"
+  has_one :funding_agreement_contact, dependent: :destroy, class_name: "Contact::Project"
 
   def route
     return :sponsored if directive_academy_order?
