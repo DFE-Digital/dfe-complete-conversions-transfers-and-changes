@@ -69,6 +69,14 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(project.tasks_data.church_supplemental_agreement_not_applicable).to be true
       end
     end
+
+    context "and an academy order was issued, i.e. the project is voluntary" do
+      it "sets the Process the sponsored support grant task as not applicable" do
+        project = build(:create_project_form, directive_academy_order: false).save
+
+        expect(project.tasks_data.sponsored_support_grant_not_applicable).to be true
+      end
+    end
   end
 
   describe "validations" do
