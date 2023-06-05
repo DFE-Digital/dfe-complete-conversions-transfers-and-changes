@@ -146,7 +146,7 @@ class Conversion::CreateProjectForm
       assigned_at: assigned_at,
       directive_academy_order: directive_academy_order,
       region: region,
-      tasks_data: Conversion::TasksData.new
+      tasks_data: new_tasks_data
     )
 
     return nil unless valid?
@@ -158,5 +158,22 @@ class Conversion::CreateProjectForm
     end
 
     @project
+  end
+
+  def new_tasks_data
+    Conversion::TasksData.new(
+      church_supplemental_agreement_not_applicable: church_supplemental_agreement_not_applicable?,
+      sponsored_support_grant_not_applicable: sponsored_support_grant_not_applicable?
+    )
+  end
+
+  private def church_supplemental_agreement_not_applicable?
+    return true unless establishment.has_diocese?
+    false
+  end
+
+  private def sponsored_support_grant_not_applicable?
+    return true if directive_academy_order == false
+    false
   end
 end

@@ -16,4 +16,16 @@ RSpec.describe Api::AcademiesApi::Establishment do
       expect(establishment.dfe_number).to eql("300/4567")
     end
   end
+
+  describe "#has_diocese?" do
+    it "returns true when the diocese code is not 0000" do
+      establishment = build(:academies_api_establishment, diocese_code: "CE26")
+      expect(establishment.has_diocese?).to be true
+    end
+
+    it "returns false when the diocses code is 0000" do
+      establishment = build(:academies_api_establishment, diocese_code: "0000")
+      expect(establishment.has_diocese?).to be false
+    end
+  end
 end

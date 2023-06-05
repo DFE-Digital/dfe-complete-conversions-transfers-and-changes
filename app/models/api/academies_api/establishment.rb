@@ -1,4 +1,6 @@
 class Api::AcademiesApi::Establishment < Api::BaseApiModel
+  DIOCESE_NOT_APPLICABLE_CODE = "0000"
+
   attr_accessor(
     :urn,
     :name,
@@ -10,6 +12,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
     :age_range_upper,
     :phase,
     :diocese_name,
+    :diocese_code,
     :region_name,
     :region_code,
     :parliamentary_constituency,
@@ -33,6 +36,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
       age_range_upper: "statutoryHighAge",
       phase: "phaseOfEducation.name",
       diocese_name: "diocese.name",
+      diocese_code: "diocese.code",
       region_name: "gor.name",
       region_code: "gor.code",
       parliamentary_constituency: "parliamentaryConstituency.name",
@@ -62,5 +66,9 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
 
   def dfe_number
     "#{local_authority_code}/#{establishment_number}"
+  end
+
+  def has_diocese?
+    diocese_code != DIOCESE_NOT_APPLICABLE_CODE
   end
 end
