@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 27][release-27]
+
+### Added
+
 - Display generated DfE number in project information view for the establishment
 - Service support users now see their own sub-navigation in the application
 
@@ -17,7 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   "confirmed" and "unconfirmed"
 - Update the column values on the Openers page, and add new tags for the
   Direction to transfer and Trust modification order column values
-- Move route of the Openers page to `/projects/all/openers/month/year`
+- Move route of the Openers page to `/projects/all/opening/month/year`
 - Move route of the Projects with changed conversion dates to
   `/projects/all/revised-conversion-date/month/year`
 - Tie the Openers and Revised conversion date pages together with tabs
@@ -33,7 +41,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Changed the content on the conversion date change confirmation page to provide
   clearer, more direct guidance about how and when a date can be changed by
   phrasing the heading as a statement and not a question
-- Adding a new project where the school is not considred 'religious'
+- Adding a new project where the school is not considered 'religious'
   automatically marks the 'Church supplemental agreement' as not applicable,
   users can make the task applicable if desired
 - Adding a new project that has not been issued with a directive academy order
@@ -926,7 +934,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-26...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-27...HEAD
+[release-27]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-26...release-27
 [release-26]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-25...release-26
 [release-25]:
