@@ -1,8 +1,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">
-      <%= t("local_authority.index.title") %>
+      <%= t("service_support.title") %>
     </h1>
+
+    <%= render partial: "shared/service_support_sub_navigation" %>
+
+    <h2 class="govuk-heading-m"><%= t("service_support.section.local_authorities.title") %></h2>
 
     <%= govuk_button_link_to t("local_authority.new.title"), new_local_authority_path if policy(LocalAuthority).new? %>
 

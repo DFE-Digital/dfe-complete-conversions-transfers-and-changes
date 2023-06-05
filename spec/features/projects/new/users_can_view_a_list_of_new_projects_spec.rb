@@ -69,7 +69,7 @@ RSpec.feature "Viewing all new projects" do
     def view_all_new_projects
       visit new_all_projects_path
 
-      expect(page).to have_content(I18n.t("project.all.new.title"))
+      expect(page).to have_content(I18n.t("service_support.section.without_urn.title"))
 
       within("tbody") do
         expect(page).to have_content(project_without_academy_urn.establishment.name)

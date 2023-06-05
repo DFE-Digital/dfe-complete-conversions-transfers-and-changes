@@ -70,7 +70,7 @@ RSpec.feature "Viewing all projects with an academy URN" do
     def view_all_projects_with_academy_urn
       visit with_academy_urn_all_projects_path
 
-      expect(page).to have_content(I18n.t("project.all.with_academy_urn.title"))
+      expect(page).to have_content(I18n.t("service_support.section.with_urn.title"))
 
       within("tbody") do
         expect(page).to have_content(project_with_academy_urn.urn)
