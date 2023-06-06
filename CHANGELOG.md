@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   site. The navigation items show refelect the user's role.
 - Navigation to the All projects section to allow users to move between in
   progress, completed and statistics views.
+- The Opening section is now included in all projects, it shows conversion that
+  are due to open in the next calendar month and those that were going to open
+  but are no longer.
 
 ### Changed
 

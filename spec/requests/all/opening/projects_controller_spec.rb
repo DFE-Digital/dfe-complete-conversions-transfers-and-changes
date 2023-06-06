@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe All::Openers::ProjectsController, type: :request do
+RSpec.describe All::Opening::ProjectsController, type: :request do
   let(:team_leader) { create(:user, :team_leader) }
 
   before do
@@ -51,13 +51,13 @@ RSpec.describe All::Openers::ProjectsController, type: :request do
       let(:mock_trusts_fetcher) { double(IncomingTrustsFetcher, call: true) }
 
       it "shows a page title with the month & year" do
-        get "/projects/all/opening/1/2022"
+        get confirmed_all_opening_projects_path(1, 2022)
         expect(response.body).to include("Academies opening in January 2022")
       end
 
       it "returns project details in table form" do
         conversion_project = create(:conversion_project, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false)
-        get "/projects/all/opening/1/2022"
+        get confirmed_all_opening_projects_path(1, 2022)
         expect(response.body).to include(
           conversion_project.establishment.name,
           conversion_project.urn.to_s,
@@ -69,14 +69,14 @@ RSpec.describe All::Openers::ProjectsController, type: :request do
         project_in_scope = create(:conversion_project, urn: 100001, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false)
         project_not_in_scope = create(:conversion_project, urn: 100002, conversion_date: Date.new(2022, 2, 1), conversion_date_provisional: false)
 
-        get "/projects/all/opening/1/2022"
+        get confirmed_all_opening_projects_path(1, 2022)
         expect(response.body).to include(project_in_scope.urn.to_s)
         expect(response.body).to_not include(project_not_in_scope.urn.to_s)
       end
 
       context "when there are no academies opening in that month & year" do
         it "shows a helpful message" do
-          get "/projects/all/opening/1/2022"
+          get confirmed_all_opening_projects_path(1, 2022)
           expect(response.body).to include("There are currently no schools expected to become academies in January 2022")
         end
       end

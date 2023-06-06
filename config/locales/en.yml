@@ -129,5 +129,6 @@ en:
     primary:
       all_projects:
         in_progress: In progress
+        opening: Opening
         completed: Completed
         statistics: Statistics

@@ -8,11 +8,13 @@
 
         <ul class="moj-primary-navigation__list">
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.in_progress"), path: all_in_progress_projects_path} %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.in_progress"), path: all_in_progress_projects_path, namespace: "/projects/all/in-progress"} %>
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.completed"), path: all_completed_projects_path} %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.opening"), path: confirmed_all_opening_projects_path, namespace: "/projects/all/opening"} %>
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.statistics"), path: all_statistics_projects_path} %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.completed"), path: all_completed_projects_path, namespace: "/projects/all/completed"} %>
+
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.statistics"), path: all_statistics_projects_path, namespace: "/projects/all/statistics"} %>
 
         </ul>
 
