@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - the urls that some service support views were found have changed.
+- the layout of the statistics page has been updated.
 
 ### Fixed
 

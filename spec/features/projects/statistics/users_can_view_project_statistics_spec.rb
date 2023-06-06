@@ -11,6 +11,6 @@ RSpec.feature "Statistics page" do
   scenario "users can view the statistics page" do
     visit all_statistics_projects_path
 
-    expect(page).to have_content("Statistics Page")
+    expect(page).to have_content("Statistics")
   end
 end
