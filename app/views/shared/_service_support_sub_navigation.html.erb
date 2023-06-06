@@ -1,7 +1,7 @@
 <nav class="moj-sub-navigation" aria-label="Sub-navigation">
   <ul class="moj-sub-navigation__list">
-    <%= render partial: "shared/sub_navigation_item", locals: {name: t("service_support.sub_navigation.without_urn"), path: new_all_projects_path} %>
-    <%= render partial: "shared/sub_navigation_item", locals: {name: t("service_support.sub_navigation.with_urn"), path: with_academy_urn_all_projects_path} %>
+    <%= render partial: "shared/sub_navigation_item", locals: {name: t("service_support.sub_navigation.without_urn"), path: without_academy_urn_service_support_projects_path} %>
+    <%= render partial: "shared/sub_navigation_item", locals: {name: t("service_support.sub_navigation.with_urn"), path: with_academy_urn_service_support_projects_path} %>
     <%= render partial: "shared/sub_navigation_item", locals: {name: t("service_support.sub_navigation.local_authorities"), path: local_authorities_path} %>
   </ul>
 </nav>

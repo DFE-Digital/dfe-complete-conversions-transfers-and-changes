@@ -20,7 +20,7 @@
 
       <%= if policy(:navigation).show_service_support_header_navigation?
             render partial: "shared/navigation/header_navigation_item",
-              locals: {name: t("navigation.header.service_support"), path: new_all_projects_path, namespace: "/service/support/"}
+              locals: {name: t("navigation.header.service_support"), path: without_academy_urn_service_support_projects_path, namespace: "/service-support/"}
           end %>
 
     </ul>

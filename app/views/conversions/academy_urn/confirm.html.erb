@@ -29,7 +29,7 @@
     <%= form_for @project, url: project_academy_urn_path, method: :patch do |form| %>
       <%= form.hidden_field :academy_urn, value: @academy_urn %>
       <%= form.govuk_submit t("project.academy_urn.confirm.save_and_return") do %>
-        <%= govuk_link_to t("cancel"), new_all_projects_path %>
+        <%= govuk_link_to t("cancel"), without_academy_urn_service_support_projects_path %>
       <% end %>
     <% end %>
 

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe All::ProjectsController, type: :request do
+RSpec.describe ServiceSupport::ProjectsController, type: :request do
   before do
     sign_in_with(user)
     mock_all_academies_api_responses
@@ -11,9 +11,9 @@ RSpec.describe All::ProjectsController, type: :request do
   let!(:project_with_urn) { create(:conversion_project, academy_urn: 123456, urn: 154232) }
   let(:user) { create(:user) }
 
-  describe "new" do
+  describe "without_academy_urn" do
     it "does not include completed projects" do
-      get new_all_projects_path
+      get without_academy_urn_service_support_projects_path
 
       expect(response.body).to include project_without_urn.urn.to_s
 
@@ -24,7 +24,7 @@ RSpec.describe All::ProjectsController, type: :request do
 
   describe "with_academy_urn" do
     it "does not include completed projects" do
-      get with_academy_urn_all_projects_path
+      get with_academy_urn_service_support_projects_path
 
       expect(response.body).to include project_with_urn.urn.to_s
 
