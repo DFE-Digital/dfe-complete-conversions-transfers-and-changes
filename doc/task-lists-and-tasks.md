@@ -122,12 +122,6 @@ app/views/conversions/voluntary/task_lists/tasks/name_of_task.html.rb
 config/locales/task_lists/conversion/voluntary/name_of_task.en.yml
 ```
 
-And the same for involuntary conversions:
-
-```
-bin/rails generate conversion_involuntary_task NameOfTask
-```
-
 Each task and action has a predefined set of locale keys which will be used
 based on the naming conventions, see existing task locale files for more
 details.
