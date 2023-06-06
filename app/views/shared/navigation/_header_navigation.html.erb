@@ -1,0 +1,29 @@
+<% if policy(:navigation).show_header_navigation? %>
+  <nav class="moj-header__navigation" aria-label="Header Navigation">
+
+    <ul class="moj-header__navigation-list">
+
+      <%= if policy(:navigation).show_your_projects_header_navigation?
+            render partial: "shared/navigation/header_navigation_item",
+              locals: {name: t("navigation.header.your_projects"), path: in_progress_user_projects_path, namespace: "/projects/user/"}
+          end %>
+
+      <%= if policy(:navigation).show_team_projects_header_navigation?
+            render partial: "shared/navigation/header_navigation_item",
+              locals: {name: t("navigation.header.team_projects"), path: in_progress_regional_casework_services_projects_path, namespace: "/projects/regional-casework-services/"}
+          end %>
+
+      <%= if policy(:navigation).show_all_projects_header_navigation?
+            render partial: "shared/navigation/header_navigation_item",
+              locals: {name: t("navigation.header.all_projects"), path: all_in_progress_projects_path, namespace: "/projects/all/"}
+          end %>
+
+      <%= if policy(:navigation).show_service_support_header_navigation?
+            render partial: "shared/navigation/header_navigation_item",
+              locals: {name: t("navigation.header.service_support"), path: new_all_projects_path, namespace: "/service/support/"}
+          end %>
+
+    </ul>
+
+  </nav>
+<% end %>

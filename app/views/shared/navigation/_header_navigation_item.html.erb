@@ -1,0 +1,3 @@
+<li class="moj-header__navigation-item">
+  <%= link_to name, path, class: "moj-header__navigation-link", "aria-current": (request.path.include?(namespace) ? "page" : nil) %>
+</li>

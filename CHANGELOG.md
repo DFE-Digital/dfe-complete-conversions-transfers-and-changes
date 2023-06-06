@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Do not allow a project to be completed until all conditions have been met, the
   grant certificate is returned and the academy has opened
+- Header navigation to allow users to move between the main sections of the
+  site. The navigation items show refelect the user's role.
 
 ### Changed
 
