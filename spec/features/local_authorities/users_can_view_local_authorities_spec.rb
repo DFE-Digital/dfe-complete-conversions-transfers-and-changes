@@ -6,8 +6,8 @@ RSpec.feature "Users can view local authorities" do
     sign_in_with_user(user)
   end
 
-  let!(:local_authority_1) { create(:local_authority) }
-  let!(:local_authority_2) { create(:local_authority) }
+  let!(:local_authority_1) { create(:local_authority, code: 100) }
+  let!(:local_authority_2) { create(:local_authority, code: 101) }
 
   let(:user) { create(:user, :caseworker) }
 
