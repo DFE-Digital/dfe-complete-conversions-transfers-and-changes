@@ -113,7 +113,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
+  scope "service-support" do
+    resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
+  end
 
   # Projects - all projects are conversions right now
   constraints(id: VALID_UUID_REGEX) do
