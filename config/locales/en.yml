@@ -126,3 +126,8 @@ en:
       team_projects: Team projects
       all_projects: All projects
       service_support: Service support
+    primary:
+      all_projects:
+        in_progress: In progress
+        completed: Completed
+        statistics: Statistics
