@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the layout of the statistics page has been updated.
 - The service support section now uses primary navigation to allow for more
   logical groupings of views.
+- The primary navigation is now shown on all local authority views.
 
 ### Fixed
 

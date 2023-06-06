@@ -12,7 +12,7 @@ RSpec.feature "Service support users can navigate the application" do
     expect(page).to have_content("Service support")
     expect(page).to have_link("URNs to create")
     expect(page).to have_link("URNs added")
-    expect(page).to have_link("Manage local authorities")
+    expect(page).to have_link("Local authorities")
   end
 
   scenario "they can view the projects that need records added to GIAS i.e. those that require academy URNs" do
@@ -36,9 +36,9 @@ RSpec.feature "Service support users can navigate the application" do
   scenario "they can view all local authorities" do
     local_authority = create(:local_authority)
 
-    click_link("Manage local authorities")
+    click_link("Local authorities")
 
-    expect(page).to have_content("Manage local authorities")
+    expect(page).to have_content("Local authorities")
     expect(page).to have_content(local_authority.name)
   end
 end
