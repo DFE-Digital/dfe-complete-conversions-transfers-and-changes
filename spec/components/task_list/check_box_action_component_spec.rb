@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe TaskList::CheckBoxActionComponent, type: :component do
-  let(:task) { double(status: :not_started, locales_path: "conversion.voluntary.tasks.handover") }
+  let(:task) { double(status: :not_started, locales_path: "conversion.task.handover") }
 
   before do
     allow(task).to receive(attribute.to_sym).and_return(true)

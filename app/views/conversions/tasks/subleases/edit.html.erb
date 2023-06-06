@@ -14,7 +14,7 @@
       </div>
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.subleases.clear_section.title") %></h2>
+        <h2 class="govuk-heading-l"><%= t("conversion.task.subleases.clear_section.title") %></h2>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.subleases.confirm_section.title") %></h2>
+        <h2 class="govuk-heading-l"><%= t("conversion.task.subleases.confirm_section.title") %></h2>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email_signed)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :receive_signed)) %>

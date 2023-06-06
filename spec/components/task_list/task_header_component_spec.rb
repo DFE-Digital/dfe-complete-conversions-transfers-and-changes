@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe TaskList::TaskHeaderComponent, type: :component do
   let(:project) { create(:conversion_project) }
-  let(:task) { double(status: :not_started, locales_path: "conversion.voluntary.tasks.handover") }
+  let(:task) { double(status: :not_started, locales_path: "conversion.task.handover") }
 
   before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
