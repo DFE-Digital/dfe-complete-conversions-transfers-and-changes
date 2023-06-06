@@ -1,0 +1,22 @@
+<div class="moj-primary-navigation">
+
+  <div class="moj-primary-navigation__container">
+
+    <div class="moj-primary-navigation__nav">
+
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+
+        <ul class="moj-primary-navigation__list">
+
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.service_support.conversion_urns"), path: without_academy_urn_service_support_projects_path, namespace: "/projects/service-support/"} %>
+
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.service_support.local_authorities"), path: local_authorities_path, namespace: "/service-support/local-authorities"} %>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </div>
+
+</div>
