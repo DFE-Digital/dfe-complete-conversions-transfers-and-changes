@@ -82,4 +82,14 @@ RSpec.describe All::Opening::ProjectsController, type: :request do
       end
     end
   end
+
+  describe "#download_csv" do
+    it "returns the csv with a successful response" do
+      project = create(:conversion_project, conversion_date: Date.new(2025, 5, 1), conversion_date_provisional: false)
+
+      get csv_all_opening_projects_path(5, 2025)
+      expect(response.body).to include(project.urn.to_s)
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
