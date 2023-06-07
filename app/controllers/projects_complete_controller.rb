@@ -3,9 +3,19 @@ class ProjectsCompleteController < ApplicationController
     @project = Project.find(project_id)
     authorize @project, :update?
 
-    set_project_completed_at
+    if project_completable?
+      set_project_completed_at
 
-    render :completed
+      render :completed
+    else
+      flash[:alert] = I18n.t("project.complete.unable_to_complete_html")
+      redirect_to project_conversion_tasks_path(@project)
+    end
+  end
+
+  private def project_completable?
+    return true if @project.all_conditions_met? && @project.conversion_date_confirmed_and_passed? && @project.grant_payment_certificate_received?
+    false
   end
 
   private def set_project_completed_at
