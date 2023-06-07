@@ -33,7 +33,7 @@ class Conversions::AcademyUrnController < ApplicationController
     authorize @project
 
     @project.update(academy_urn: academy_urn)
-    redirect_to new_all_projects_path, notice: t("project.academy_urn.confirm.success", academy_urn: academy_urn, urn: @project.urn, school_name: @project.establishment.name)
+    redirect_to without_academy_urn_service_support_projects_path, notice: t("project.academy_urn.confirm.success", academy_urn: academy_urn, urn: @project.urn, school_name: @project.establishment.name)
   end
 
   def not_found_error

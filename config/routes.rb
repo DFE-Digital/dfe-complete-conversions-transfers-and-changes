@@ -87,9 +87,6 @@ Rails.application.routes.draw do
           namespace :trust do
             get ":trust_ukprn", to: "projects#by_trust", as: :by_trust
           end
-
-          get "new", to: "projects#new", as: :new
-          get "with_academy_urn", to: "projects#with_academy_urn", as: :with_academy_urn
         end
         namespace :regional_casework_services, path: "regional-casework-services" do
           get "in-progress", to: "projects#in_progress"
@@ -108,12 +105,20 @@ Rails.application.routes.draw do
           get "added-by", to: "projects#added_by"
           get ":user_id", to: "projects#by_user", as: :by_user
         end
+
+        namespace :service_support, path: "service-support" do
+          get "without-academy-urn", to: "projects#without_academy_urn", as: :without_academy_urn
+          get "with-academy-urn", to: "projects#with_academy_urn", as: :with_academy_urn
+        end
+
         get "unassigned"
       end
     end
   end
 
-  resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
+  scope "service-support" do
+    resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
+  end
 
   # Projects - all projects are conversions right now
   constraints(id: VALID_UUID_REGEX) do

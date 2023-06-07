@@ -75,3 +75,9 @@ $moj-page-width: $govuk-page-width;
 address.govuk-address {
   font-style: normal;
 }
+
+// MOJ header navigtion
+// We want persitently acitve navigation items
+.moj-header__navigation-link[aria-current] {
+  color: govuk-colour("blue");
+}

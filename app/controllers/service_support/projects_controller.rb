@@ -1,8 +1,8 @@
-class All::ProjectsController < ApplicationController
+class ServiceSupport::ProjectsController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
-  def new
+  def without_academy_urn
     authorize Project, :index?
     @pager, @projects = pagy(Project.not_completed.no_academy_urn.by_conversion_date)
 

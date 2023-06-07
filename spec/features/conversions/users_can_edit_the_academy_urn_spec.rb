@@ -15,7 +15,7 @@ RSpec.feature "Users can edit the Academy URN" do
 
     scenario "the user sees an error message" do
       _project = create(:conversion_project, assigned_to: user, academy_urn: nil)
-      visit new_all_projects_path
+      visit without_academy_urn_service_support_projects_path
 
       click_on "Create academy URN"
       click_on "Save and return"
@@ -31,7 +31,7 @@ RSpec.feature "Users can edit the Academy URN" do
 
     scenario "the user sees an error message" do
       _project = create(:conversion_project, assigned_to: user, academy_urn: nil)
-      visit new_all_projects_path
+      visit without_academy_urn_service_support_projects_path
 
       click_on "Create academy URN"
       fill_in "conversion_project[academy_urn]", with: "FFFFFF"
@@ -49,7 +49,7 @@ RSpec.feature "Users can edit the Academy URN" do
     context "when the Academy URN is correct" do
       scenario "the user can save the Academy URN on the project" do
         project = create(:conversion_project, assigned_to: user, academy_urn: nil, urn: 111111)
-        visit new_all_projects_path
+        visit without_academy_urn_service_support_projects_path
 
         click_on "Create academy URN"
         fill_in "conversion_project[academy_urn]", with: 123456
@@ -64,7 +64,7 @@ RSpec.feature "Users can edit the Academy URN" do
     context "when the Academy URN is incorrect" do
       scenario "the user can go back to the list by clicking Cancel" do
         project = create(:conversion_project, assigned_to: user, academy_urn: nil)
-        visit new_all_projects_path
+        visit without_academy_urn_service_support_projects_path
 
         click_on "Create academy URN"
         fill_in "conversion_project[academy_urn]", with: 123456
@@ -87,7 +87,7 @@ RSpec.feature "Users can edit the Academy URN" do
 
     scenario "the user sees a helpful message and can go back and search again" do
       project = create(:conversion_project, assigned_to: user, academy_urn: nil, urn: 111111)
-      visit new_all_projects_path
+      visit without_academy_urn_service_support_projects_path
 
       click_on "Create academy URN"
       fill_in "conversion_project[academy_urn]", with: 123456
@@ -109,7 +109,7 @@ RSpec.feature "Users can edit the Academy URN" do
 
     scenario "the user sees a helpful message" do
       _project = create(:conversion_project, assigned_to: user, academy_urn: nil, urn: 111111)
-      visit new_all_projects_path
+      visit without_academy_urn_service_support_projects_path
 
       click_on "Create academy URN"
       fill_in "conversion_project[academy_urn]", with: 123456
