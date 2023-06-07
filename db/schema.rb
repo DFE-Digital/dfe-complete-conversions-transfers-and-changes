@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_095316) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_103526) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -202,6 +202,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_095316) do
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
     t.index ["urn"], name: "index_projects_on_urn"
+  end
+
+  create_table "transfer_tasks_data", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
