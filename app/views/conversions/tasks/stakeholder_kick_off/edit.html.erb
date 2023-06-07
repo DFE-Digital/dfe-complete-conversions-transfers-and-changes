@@ -15,13 +15,13 @@
         <div class="govuk-checkboxes__item">
           <%= hidden_field_tag("conversion_task_stakeholder_kick_off_task_form[check_provisional_conversion_date]", "0", {id: nil}) %>
           <%= check_box_tag("conversion_task_stakeholder_kick_off_task_form[check_provisional_conversion_date]", 1, @task.check_provisional_conversion_date, {class: "govuk-checkboxes__input"}) %>
-          <%= label_tag("conversion_task_stakeholder_kick_off_task_form[check_provisional_conversion_date]", t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.title", date: @project.conversion_date.strftime("01 %B %Y")), {class: "govuk-label govuk-checkboxes__label"}) %>
+          <%= label_tag("conversion_task_stakeholder_kick_off_task_form[check_provisional_conversion_date]", t("conversion.task.stakeholder_kick_off.check_provisional_conversion_date.title", date: @project.conversion_date.strftime("01 %B %Y")), {class: "govuk-label govuk-checkboxes__label"}) %>
           <div class="hint">
-            <%= t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.hint.html") %>
+            <%= t("conversion.task.stakeholder_kick_off.check_provisional_conversion_date.hint.html") %>
           </div>
           <div class="guidance">
-              <%= govuk_details(summary_text: t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.guidance_link")) do %>
-                <%= t("conversion.voluntary.tasks.stakeholder_kick_off.check_provisional_conversion_date.guidance.html") %>
+              <%= govuk_details(summary_text: t("conversion.task.stakeholder_kick_off.check_provisional_conversion_date.guidance_link")) do %>
+                <%= t("conversion.task.stakeholder_kick_off.check_provisional_conversion_date.guidance.html") %>
               <% end %>
             </div>
         </div>
@@ -33,8 +33,8 @@
           <%= form.govuk_date_field :confirmed_conversion_date,
                 omit_day: true,
                 form_group: {classes: "app-confirmed-conversion-date"},
-                legend: {text: t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
-            <div class="govuk-hint"><%= t("conversion.voluntary.tasks.stakeholder_kick_off.confirmed_conversion_date.hint.html") %></div>
+                legend: {text: t("conversion.task.stakeholder_kick_off.confirmed_conversion_date.title"), size: "s"} do %>
+            <div class="govuk-hint"><%= t("conversion.task.stakeholder_kick_off.confirmed_conversion_date.hint.html") %></div>
           <% end %>
         <% else %>
           <%= govuk_inset_text do %>

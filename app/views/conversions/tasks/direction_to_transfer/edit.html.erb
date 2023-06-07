@@ -14,12 +14,12 @@
       </div>
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.direction_to_transfer.clear_section.title") %></h2>
-        <%= t("conversion.voluntary.tasks.direction_to_transfer.clear_section.hint.html") %>
+        <h2 class="govuk-heading-l"><%= t("conversion.task.direction_to_transfer.clear_section.title") %></h2>
+        <%= t("conversion.task.direction_to_transfer.clear_section.hint.html") %>
 
         <%= govuk_details(
-              summary_text: t("conversion.voluntary.tasks.direction_to_transfer.clear_section.guidance_link"),
-              text: t("conversion.voluntary.tasks.direction_to_transfer.clear_section.guidance.html")
+              summary_text: t("conversion.task.direction_to_transfer.clear_section.guidance_link"),
+              text: t("conversion.task.direction_to_transfer.clear_section.guidance.html")
             ) %>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>

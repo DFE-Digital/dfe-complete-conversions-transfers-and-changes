@@ -8,19 +8,9 @@ RSpec.feature "All new conversion projects have a locale file & all keys are pre
     sign_in_with_user(user)
   end
 
-  context "voluntary projects" do
-    it "have locales when creating a new project" do
-      visit conversions_new_path
+  it "have locales when creating a new project" do
+    visit conversions_new_path
 
-      expect(page).to_not have_css(".translation_missing")
-    end
-  end
-
-  context "involuntary projects" do
-    it "have locales when creating a new project" do
-      visit conversions_new_path
-
-      expect(page).to_not have_css(".translation_missing")
-    end
+    expect(page).to_not have_css(".translation_missing")
   end
 end

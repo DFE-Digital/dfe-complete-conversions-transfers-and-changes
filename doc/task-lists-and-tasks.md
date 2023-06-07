@@ -52,91 +52,16 @@ association, returning the correct type of task list.
 
 ### Adding a new task
 
-With a task list in place, developers can populate them with tasks.
-
-Each task inherits from the `TaskList::Task` or `Tasklist::OptionalTask` classes
-and declares the attributes that make up the actions in the task.
-
-Conventionally the Task name reflects the actual task the user is performing:
-
-`Conversion::Voluntary::Tasks::CheckBaseline` : Check the Baseline
-`Conversion::Voluntary::Tasks::OneHundredAndTwentyFiveYearLease` : 125 year
-lease
-
-The actual words to describe the task and any content for a task list or task
-are loaded from the locales, convention lets Rails load the correct content
-based on the class names used.
-
-The actions for each task are declared as attributes of the task but are stored
-in the task lists table.
-
-Conventionally, each action must start with the task class name followed by a
-meaningful identifier, much like tasks themselves:
-
-Task: `Conversion::Voluntary::Tasks::Handover`
-
-Task attributes:
-
-```
-attribute :review
-attribute :notes
-attribute :meeting
-```
-
-Database columns:
-
-```
-conversion_voluntary_tasks_review
-conversion_voluntary_tasks_notes
-conversion_voluntary_tasks_meeting
-```
-
-Once again, following the naming convention used allows all of the content to be
-loaded from the locales.
-
-Each new task requires a number of files to be created:
-
-- the model
-- the database migration
-- the view
-- the locales
-
 #### Rails generators
 
-To make this task simpler Rails generators have been created for the current
-task lists:
-
-Run the generator and supply the task class name:
-
-```
-bin/rails generate conversion_voluntary_task NameOfTask
-```
-
-Right now there is a generator per task list, the example above would create:
-
-`Conversion::Voluntary::Tasks::NameOfTask` and the relevant files:
-
-```
-app/models/conversion/voluntary/tasks/name_of_task.rb
-app/views/conversions/voluntary/task_lists/tasks/name_of_task.html.rb
-config/locales/task_lists/conversion/voluntary/name_of_task.en.yml
-```
-
-And the same for involuntary conversions:
-
-```
-bin/rails generate conversion_involuntary_task NameOfTask
-```
-
-Each task and action has a predefined set of locale keys which will be used
-based on the naming conventions, see existing task locale files for more
-details.
-
-And for the new task model:
+To make the task of creating new tasks simpler, Rails generators have been
+created for the new task model:
 
 ```
 bin/rails generate conversion:task TaskName
 ```
+
+TBA: updated information about the new task model
 
 ### A note on notes
 
@@ -164,7 +89,6 @@ type:
 
 ```
 projects = Project.where(task_list_type: "Conversion::Voluntary::TaskList").map { |project| project.id }
-
 Note.where(task_identifier: "<old task identifier>", project_id: projects).destroy_all
 ```
 
@@ -174,7 +98,6 @@ When renaming a task, the task notes should be migrated to the new identifier:
 
 ```
 projects = Project.where(task_list_type: "Conversion::Voluntary::TaskList").map { |project| project.id }
-
 Note.where(task_identifier: "<old task identifier>", project_id: projects).update(task_identifier: "<new task identifier>")
 ```
 
@@ -186,6 +109,5 @@ not be followed:
 ```
 task_identifiers = Conversion::Voluntary::TaskList.new.tasks.map { |task| task.class.identifier }
 projects = Project.where(task_list_type: "Conversion::Voluntary::TaskList").map { |project| project.id }
-
 Note.where(project_id: projects).where.not(task_identifier: [task_identifiers, nil])
 ```

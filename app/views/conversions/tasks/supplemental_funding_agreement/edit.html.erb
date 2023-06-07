@@ -10,14 +10,14 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.supplemental_funding_agreement.clear_section.title") %></h2>
+        <h2 class="govuk-heading-l"><%= t("conversion.task.supplemental_funding_agreement.clear_section.title") %></h2>
         <div class="app-task-section__hint">
-          <%= t("conversion.voluntary.tasks.supplemental_funding_agreement.clear_section.hint.html") %>
+          <%= t("conversion.task.supplemental_funding_agreement.clear_section.hint.html") %>
         </div>
 
         <%= govuk_details(
-              summary_text: t("conversion.voluntary.tasks.supplemental_funding_agreement.clear_section.guidance_link"),
-              text: t("conversion.voluntary.tasks.supplemental_funding_agreement.clear_section.guidance.html")
+              summary_text: t("conversion.task.supplemental_funding_agreement.clear_section.guidance_link"),
+              text: t("conversion.task.supplemental_funding_agreement.clear_section.guidance.html")
             ) %>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
@@ -27,9 +27,9 @@
       </div>
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-l"><%= t("conversion.voluntary.tasks.supplemental_funding_agreement.sign_section.title") %></h2>
+        <h2 class="govuk-heading-l"><%= t("conversion.task.supplemental_funding_agreement.sign_section.title") %></h2>
         <div class="app-task-section__hint">
-          <%= t("conversion.voluntary.tasks.supplemental_funding_agreement.sign_section.hint.html") %>
+          <%= t("conversion.task.supplemental_funding_agreement.sign_section.hint.html") %>
         </div>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :sent)) %>
