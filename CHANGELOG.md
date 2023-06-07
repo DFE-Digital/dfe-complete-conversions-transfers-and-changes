@@ -12,10 +12,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   grant certificate is returned and the academy has opened
 - Header navigation to allow users to move between the main sections of the
   site. The navigation items show refelect the user's role.
+- Navigation to the All projects section to allow users to move between in
+  progress, completed and statistics views.
+- The Opening section is now included in all projects, it shows conversion that
+  are due to open in the next calendar month and those that were going to open
+  but are no longer.
 
 ### Changed
 
 - the urls that some service support views were found have changed.
+- the layout of the statistics page has been updated.
+- The service support section now uses primary navigation to allow for more
+  logical groupings of views.
+- The primary navigation is now shown on all local authority views.
 
 ### Fixed
 

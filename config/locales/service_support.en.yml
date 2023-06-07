@@ -1,14 +1,14 @@
 en:
   service_support:
-    title: Service support
+    conversion_urns:
+      title: Conversion URNs
     sub_navigation:
       without_urn: URNs to create
       with_urn: URNs added
-      local_authorities: Manage local authorities
     section:
       without_urn:
         title: URNs to create
       with_urn:
         title: URNs added
       local_authorities:
-        title: Manage local authorities
+        title: Local authorities

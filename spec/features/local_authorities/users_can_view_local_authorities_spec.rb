@@ -14,7 +14,7 @@ RSpec.feature "Users can view local authorities" do
   scenario "they can view all local authorities" do
     visit local_authorities_path
 
-    expect(page).to have_content("Manage local authorities")
+    expect(page).to have_content("Local authorities")
     expect(page).to have_content(local_authority_1.name)
     expect(page).to have_content(local_authority_2.name)
   end

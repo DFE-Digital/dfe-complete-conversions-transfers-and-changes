@@ -1,3 +1,7 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/service_support_primary_navigation" %>
+<% end %>
+
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @local_authority, url: local_authority_path(@local_authority), method: :delete do |form| %>

@@ -1,7 +1,11 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">Statistics Page</h1>
-    <h2 class="govuk-heading-l">Overview of all projects</h2>
+    <h1 class="govuk-heading-l">Statistics</h1>
+    <h2 class="govuk-heading-m">Overview of all projects</h2>
     <table class="govuk-table" name="statistics_table" aria-label="Project statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -38,7 +42,7 @@
     </table>
   </div>
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l">Projects with Regional casework services</h2>
+    <h2 class="govuk-heading-m">Projects with Regional casework services</h2>
     <table class="govuk-table" name="regional_casework_services_statistics_table" aria-label="Regional casework services statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -75,7 +79,7 @@
     </table>
   </div>
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l">Projects not with Regional casework services</h2>
+    <h2 class="govuk-heading-m">Projects not with Regional casework services</h2>
     <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Not with Regional casework services statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -112,7 +116,7 @@
     </table>
   </div>
   <div class="govuk-grid-column-full">
-    <h2 class="govuk-heading-l">Projects per region</h2>
+    <h2 class="govuk-heading-m">Projects per region</h2>
     <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Not with Regional casework services statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -212,7 +216,7 @@
     </table>
   </div>
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l">6 month view of all project openers</h2>
+    <h2 class="govuk-heading-m">6 month view of all project openers</h2>
     <table class="govuk-table" name="statistics_table" aria-label="Project statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
