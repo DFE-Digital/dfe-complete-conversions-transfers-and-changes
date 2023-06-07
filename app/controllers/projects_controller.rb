@@ -8,4 +8,10 @@ class ProjectsController < ApplicationController
 
     redirect_to project_conversion_tasks_path(@project)
   end
+
+  def index
+    authorize Project, :index?
+
+    redirect_to in_progress_user_projects_path
+  end
 end
