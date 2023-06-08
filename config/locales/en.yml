@@ -135,6 +135,9 @@ en:
       team_projects:
         in_progress: In progress
         unassigend: Unassigned
+      your_projects:
+        in_progress: In progress
+        added_by_you: Added by you
         completed: Completed
       service_support:
         conversion_urns: Conversion URNs

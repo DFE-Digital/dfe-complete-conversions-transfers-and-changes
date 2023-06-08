@@ -50,11 +50,11 @@ en:
           title: Regional completed projects for %{region}
     user:
       in_progress:
-        title: Assigned projects in progress
+        title: In progress
       completed:
-        title: Assigned completed projects
+        title: Completed
       added_by:
-        title: Added projects in progress
+        title: Added by you
       by_user:
         title: Projects assigned to %{user}
     new:
