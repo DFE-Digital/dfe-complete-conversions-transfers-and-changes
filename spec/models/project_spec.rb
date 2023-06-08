@@ -29,6 +29,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:team_leader).required(false) }
     it { is_expected.to belong_to(:assigned_to).required(false) }
     it { is_expected.to belong_to(:tasks_data).required(true) }
+    it { is_expected.to have_one(:funding_agreement_contact).required(false) }
 
     describe "delete related entities" do
       context "when the project is deleted" do
