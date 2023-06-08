@@ -1,7 +1,7 @@
 class Conversion::TasksData < ActiveRecord::Base
   include TasksDatable
 
-  self.table_name = "conversion_voluntary_task_lists"
+  self.table_name = "conversion_tasks_data"
 
   def self.policy_class
     TaskListPolicy
