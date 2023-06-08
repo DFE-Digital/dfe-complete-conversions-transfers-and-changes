@@ -23,7 +23,7 @@ class All::Opening::ProjectsController < ApplicationController
 
     @csv = OpeningProjectsCsvExporter.new(@projects).call
 
-    send_data @csv, filename: "opener.csv", type: :csv, disposition: "attachment"
+    send_data @csv, filename: "opening_#{month}_#{year}.csv", type: :csv, disposition: "attachment"
   end
 
   private def month
