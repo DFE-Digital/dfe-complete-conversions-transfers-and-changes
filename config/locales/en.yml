@@ -132,6 +132,10 @@ en:
         opening: Opening
         completed: Completed
         statistics: Statistics
+      team_projects:
+        in_progress: In progress
+        unassigend: Unassigned
+        completed: Completed
       service_support:
         conversion_urns: Conversion URNs
         local_authorities: Local authorities

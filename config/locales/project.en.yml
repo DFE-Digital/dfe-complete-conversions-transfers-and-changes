@@ -33,11 +33,11 @@ en:
           title: Projects for %{trust}
     regional_casework_services:
       in_progress:
-        title: Regional Casework Services projects in progress
+        title: In progress
       completed:
-        title: Regional Casework Services completed projects
+        title: Completed
       unassigned:
-        title: Regional Casework Services unassigned projects
+        title: Unasssigned
     regional:
       in_progress:
         title: Regional projects in progress
