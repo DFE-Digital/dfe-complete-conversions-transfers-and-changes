@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 28][release-28]
+
 ### Added
 
 - Do not allow a project to be completed until all conditions have been met, the
@@ -955,7 +957,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-27...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-28...HEAD
+[release-28]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-27...release-28
 [release-27]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-26...release-27
 [release-26]:
