@@ -45,6 +45,24 @@ RSpec.describe Api::MembersApi::Client do
     end
   end
 
+  describe "#member_for_constituency" do
+    it "returns a hash when successful" do
+      fake_client = Api::MembersApi::Client.new
+      allow(fake_client).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(4744, nil))
+      fake_name = double(Api::MembersApi::MemberName, name_display_as: "Joe Bloggs")
+      allow(fake_client).to receive(:member_name).and_return(Api::MembersApi::Client::Result.new(fake_name, nil))
+      fake_contact_details = double(find: Api::MembersApi::MemberContactDetails.new.from_hash({email: "joe.bloggs@email.com", line1: "Houses of Parliment", postcode: "SW1A 0AA"}))
+      allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(fake_contact_details, nil))
+
+      response = fake_client.member_for_constituency("St Albans")
+
+      expect(response[:name]).to eq("Joe Bloggs")
+      expect(response[:email]).to eq("joe.bloggs@email.com")
+      expect(response[:address_line1]).to eq("Houses of Parliment")
+      expect(response[:address_postcode]).to eq("SW1A 0AA")
+    end
+  end
+
   describe "#member_id" do
     let(:client) { described_class.new(connection: fake_successful_constituency_search_connection(fake_response)) }
 

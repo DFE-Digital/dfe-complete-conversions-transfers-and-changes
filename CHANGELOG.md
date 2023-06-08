@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   are due to open in the next calendar month and those that were going to open
   but are no longer.
 - Add bare bones Transfer::Project and Transfer::TasksData models
+- Create an opening projects csv exporter
 
 ### Changed
 
@@ -37,8 +38,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Display generated DfE number in project information view for the establishment
 - Service support users now see their own sub-navigation in the application
-- Add the Funding Agreement letters task
-- Indicate the Funding Agreement Letters contact on external contacts page
 
 ### Changed
 

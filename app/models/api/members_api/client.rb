@@ -23,6 +23,22 @@ class Api::MembersApi::Client
     end
   end
 
+  def member_for_constituency(constituency)
+    member_id = member_id(constituency).object
+    member_name = member_name(member_id).object
+    contact_details = member_contact_details(member_id).object.find { |details| details.type_id == 1 }
+    {
+      name: member_name.name_display_as,
+      email: contact_details.email,
+      address_line1: contact_details.line1,
+      address_line2: contact_details.line2,
+      address_line3: contact_details.line3,
+      address_line4: contact_details.line4,
+      address_line5: contact_details.line5,
+      address_postcode: contact_details.postcode
+    }
+  end
+
   def member_id(search_term)
     constituency_data = constituency(search_term)
     raise constituency_data.error if constituency_data.error.present?

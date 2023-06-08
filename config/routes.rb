@@ -78,6 +78,7 @@ Rails.application.routes.draw do
           namespace :opening do
             get "confirmed/:month/:year", to: "projects#confirmed", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :confirmed, defaults: {month: Date.today.next_month.month, year: Date.today.next_month.year}
             get "revised/:month/:year", to: "projects#revised", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :revised, defaults: {month: Date.today.next_month.month, year: Date.today.next_month.year}
+            get "confirmed/:month/:year/csv", to: "projects#download_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
           end
           namespace :statistics do
             get "/", to: "projects#index"
