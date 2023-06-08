@@ -3,7 +3,7 @@ class Project < ApplicationRecord
 
   attr_writer :establishment, :incoming_trust
 
-  delegated_type :tasks_data, types: %w[Conversion::TaskList], dependent: :destroy
+  delegated_type :tasks_data, types: %w[Conversion::TasksData, Transfer::TasksData], dependent: :destroy
 
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
