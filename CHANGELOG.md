@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- All `regional-casework-services` URLs are now `team`, e.g.
+  `/projects/team/in-progress`
+
 ### Fixed
 
 - A user who has no role is now redirected to the all projects section of the
