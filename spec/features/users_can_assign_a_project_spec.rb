@@ -62,7 +62,7 @@ RSpec.feature "Any user can assign any other user to a project" do
   end
 
   def assign_user_from_unassigned_projects
-    visit unassigned_regional_casework_services_projects_path
+    visit unassigned_team_projects_path
     expect(page).to have_content(project.urn)
     click_on "Assign #{project.establishment.name} project"
 
@@ -70,7 +70,7 @@ RSpec.feature "Any user can assign any other user to a project" do
     click_on "Continue"
 
     expect(page).to have_content("Project has been assigned successfully")
-    expect(page).to have_current_path(unassigned_regional_casework_services_projects_path)
+    expect(page).to have_current_path(unassigned_team_projects_path)
     expect(project.reload.assigned_to).to eql another_user
   end
 end

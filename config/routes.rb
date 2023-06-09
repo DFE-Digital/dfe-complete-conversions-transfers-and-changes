@@ -87,7 +87,7 @@ Rails.application.routes.draw do
             get ":trust_ukprn", to: "projects#by_trust", as: :by_trust
           end
         end
-        namespace :regional_casework_services, path: "team" do
+        namespace :team, path: "team" do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
           get "unassigned", to: "projects#unassigned"

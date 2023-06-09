@@ -22,19 +22,19 @@
     <%= if @current_user.team_leader?
           render partial: "shared/sub_navigation_item",
             locals: {name: t("subnavigation.unassigned_projects"),
-                     path: unassigned_regional_casework_services_projects_path}
+                     path: unassigned_team_projects_path}
         end %>
 
     <%= if @current_user.team_leader?
           render partial: "shared/sub_navigation_item",
             locals: {name: t("subnavigation.in_progress_projects"),
-                     path: in_progress_regional_casework_services_projects_path}
+                     path: in_progress_team_projects_path}
         end %>
 
     <%= if @current_user.team_leader?
           render partial: "shared/sub_navigation_item",
             locals: {name: t("subnavigation.completed_projects"),
-                     path: completed_regional_casework_services_projects_path}
+                     path: completed_team_projects_path}
         end %>
   </ul>
 </nav>

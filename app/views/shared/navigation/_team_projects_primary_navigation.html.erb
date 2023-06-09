@@ -7,11 +7,11 @@
       <nav class="moj-primary-navigation" aria-label="Primary navigation">
         <ul class="moj-primary-navigation__list">
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.unassigned"), path: unassigned_regional_casework_services_projects_path, namespace: "/projects/team/unassigned"} %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.unassigned"), path: unassigned_team_projects_path, namespace: "/projects/team/unassigned"} %>
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.in_progress"), path: in_progress_regional_casework_services_projects_path, namespace: "/projects/team/in-progress"} %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.in_progress"), path: in_progress_team_projects_path, namespace: "/projects/team/in-progress"} %>
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.completed"), path: completed_regional_casework_services_projects_path, namespace: "/projects/team/completed"} %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.completed"), path: completed_team_projects_path, namespace: "/projects/team/completed"} %>
 
         </ul>
       </nav>
