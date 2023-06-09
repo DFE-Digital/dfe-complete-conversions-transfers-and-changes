@@ -60,5 +60,16 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("London")
       expect(csv_export).to include("SW1A 0AA")
     end
+
+    it "returns a csv with the trust name" do
+      trust = build(:academies_api_trust)
+      allow(trust).to receive(:name).and_return("Test trust")
+      project = build(:conversion_project, incoming_trust: trust)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Trust name")
+      expect(csv_export).to include("Test trust")
+    end
   end
 end

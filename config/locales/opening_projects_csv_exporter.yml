@@ -4,6 +4,7 @@ en:
       school_urn: School URN
       dfe_number: DfE number
       school_name: School name
+      trust_name: Trust name
       mp_name: MP name
       mp_email: MP email
       mp_address_line_1: "MP address 1"
