@@ -24,10 +24,21 @@ class OpeningProjectsCsvExporter
   end
 
   private def row(project)
+    mp_details = fetch_mp_details(project)
     {
       school_urn: project.urn,
       dfe_number: project.establishment.dfe_number,
-      school_name: project.establishment.name
+      school_name: project.establishment.name,
+      mp_name: mp_details.name,
+      mp_email: mp_details.email,
+      mp_address_line_1: mp_details.address.line1,
+      mp_address_line_2: mp_details.address.line2,
+      mp_address_line_3: mp_details.address.line3,
+      mp_address_postcode: mp_details.address.postcode
     }
+  end
+
+  private def fetch_mp_details(project)
+    Api::MembersApi::Client.new.member_for_constituency(project.establishment.parliamentary_constituency)
   end
 end
