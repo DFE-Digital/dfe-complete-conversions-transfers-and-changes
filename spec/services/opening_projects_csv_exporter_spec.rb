@@ -6,6 +6,10 @@ RSpec.describe OpeningProjectsCsvExporter do
       mock_successful_api_response_to_create_any_project
     end
 
+    it "raises when there are no projects" do
+      expect { OpeningProjectsCsvExporter.new([]) }.to raise_error(ArgumentError)
+    end
+
     it "returns a csv with the school urn" do
       project = build(:conversion_project, urn: 654321)
 

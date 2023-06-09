@@ -1,0 +1,6 @@
+en:
+  opening_projects_csv_export:
+    headers:
+      school_urn: School URN
+      dfe_number: DfE number
+      school_name: School name

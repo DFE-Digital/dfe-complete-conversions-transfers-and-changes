@@ -56,10 +56,10 @@ RSpec.describe Api::MembersApi::Client do
 
       response = fake_client.member_for_constituency("St Albans")
 
-      expect(response[:name]).to eq("Joe Bloggs")
-      expect(response[:email]).to eq("joe.bloggs@email.com")
-      expect(response[:address_line1]).to eq("Houses of Parliment")
-      expect(response[:address_postcode]).to eq("SW1A 0AA")
+      expect(response.name).to eq("Joe Bloggs")
+      expect(response.email).to eq("joe.bloggs@email.com")
+      expect(response.address.line1).to eq("Houses of Parliment")
+      expect(response.address.postcode).to eq("SW1A 0AA")
     end
   end
 
