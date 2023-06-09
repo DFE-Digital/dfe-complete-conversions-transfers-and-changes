@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+- A user who has no role is now redirected to the all projects section of the
+  application.
+
 ## [Release 28][release-28]
 
 ### Added
