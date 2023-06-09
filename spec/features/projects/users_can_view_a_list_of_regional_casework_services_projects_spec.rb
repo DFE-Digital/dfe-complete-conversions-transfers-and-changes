@@ -88,7 +88,7 @@ RSpec.feature "Viewing regional casework services projects" do
     def view_in_progress_projects
       visit in_progress_team_projects_path
 
-      expect(page).to have_content(I18n.t("project.regional_casework_services.in_progress.title"))
+      expect(page).to have_content(I18n.t("project.team.in_progress.title"))
 
       within("tbody") do
         expect(page).to have_content(in_progress_project.urn)
@@ -102,7 +102,7 @@ RSpec.feature "Viewing regional casework services projects" do
     def view_completed_projects
       visit completed_team_projects_path
 
-      expect(page).to have_content(I18n.t("project.regional_casework_services.completed.title"))
+      expect(page).to have_content(I18n.t("project.team.completed.title"))
 
       within("tbody") do
         expect(page).to have_content(completed_project.urn)
@@ -116,7 +116,7 @@ RSpec.feature "Viewing regional casework services projects" do
     def view_unassigned_projects
       visit unassigned_team_projects_path
 
-      expect(page).to have_content(I18n.t("project.regional_casework_services.unassigned.title"))
+      expect(page).to have_content(I18n.t("project.team.unassigned.title"))
 
       within("tbody") do
         expect(page).not_to have_content(completed_project.urn)
