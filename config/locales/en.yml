@@ -134,7 +134,8 @@ en:
         statistics: Statistics
       team_projects:
         in_progress: In progress
-        unassigend: Unassigned
+        unassigned: Unassigned
+        completed: Completed
       your_projects:
         in_progress: In progress
         added_by_you: Added by you
