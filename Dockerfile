@@ -86,6 +86,7 @@ COPY --from=dependencies ${DEPS_HOME}/node_modules ${APP_HOME}/node_modules
 RUN mkdir -p ${APP_HOME}/log
 RUN mkdir -p ${APP_HOME}/tmp
 
+COPY .irbrc ${APP_HOME}/.irbrc
 COPY config.ru ${APP_HOME}/config.ru
 COPY Rakefile ${APP_HOME}/Rakefile
 COPY script ${APP_HOME}/script
