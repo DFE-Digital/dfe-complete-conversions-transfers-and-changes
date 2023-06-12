@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ProjectsFetcher do
+RSpec.describe ConversionProjectsFetcher do
   let(:projects_fetcher) { described_class.new }
 
   describe "#sorted_openers" do

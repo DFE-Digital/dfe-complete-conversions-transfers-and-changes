@@ -1,4 +1,4 @@
-class ProjectsFetcher
+class ConversionProjectsFetcher
   def sorted_openers(month, year)
     projects = Conversion::Project.opening_by_month_year(month, year)
     sort_by_conditions_met_and_name(projects)

@@ -2,7 +2,7 @@ class All::Opening::ProjectsController < ApplicationController
   def confirmed
     authorize Project, :index?
 
-    @projects = ProjectsFetcher.new.sorted_openers(month, year)
+    @projects = ConversionProjectsFetcher.new.sorted_openers(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
   end
 
@@ -16,7 +16,7 @@ class All::Opening::ProjectsController < ApplicationController
   def download_csv
     authorize Project, :index?
 
-    @projects = ProjectsFetcher.new.sorted_openers(month, year)
+    @projects = ConversionProjectsFetcher.new.sorted_openers(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
     @month = month
     @year = year
