@@ -4,7 +4,7 @@ class ServiceSupport::ProjectsController < ApplicationController
 
   def without_academy_urn
     authorize Project, :index?
-    @pager, @projects = pagy(Project.not_completed.no_academy_urn.by_conversion_date)
+    @pager, @projects = pagy(Conversion::Project.not_completed.no_academy_urn.by_conversion_date)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)
@@ -12,7 +12,7 @@ class ServiceSupport::ProjectsController < ApplicationController
 
   def with_academy_urn
     authorize Project, :index?
-    @pager, @projects = pagy(Project.not_completed.with_academy_urn.by_conversion_date)
+    @pager, @projects = pagy(Conversion::Project.not_completed.with_academy_urn.by_conversion_date)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

@@ -3,6 +3,56 @@ require "rails_helper"
 RSpec.describe Conversion::Project do
   before { mock_successful_api_response_to_create_any_project }
 
+  describe "validations" do
+    describe "academy urn" do
+      context "when there is no academy urn" do
+        it "is valid" do
+          project = build(:conversion_project, academy_urn: nil)
+
+          expect(project).to be_valid
+        end
+      end
+
+      context "when there is an academy urn" do
+        it "the urn must be valid" do
+          project = build(:conversion_project, academy_urn: 12345678)
+
+          expect(project).to be_invalid
+
+          project = build(:conversion_project, academy_urn: 123456)
+
+          expect(project).to be_valid
+        end
+      end
+    end
+  end
+
+  describe "scopes" do
+    describe ".no_academy_urn" do
+      it "returns only projects where academy_urn is nil" do
+        mock_successful_api_response_to_create_any_project
+        new_project = create(:conversion_project, academy_urn: nil)
+        existing_project = create(:conversion_project, academy_urn: 126041)
+        projects = Conversion::Project.no_academy_urn
+
+        expect(projects).to include(new_project)
+        expect(projects).not_to include(existing_project)
+      end
+    end
+
+    describe ".with_academy_urn" do
+      it "returns only projects where academy_urn is NOT nil" do
+        mock_successful_api_response_to_create_any_project
+        new_project = create(:conversion_project, academy_urn: nil)
+        existing_project = create(:conversion_project, academy_urn: 126041)
+        projects = Conversion::Project.with_academy_urn
+
+        expect(projects).to include(existing_project)
+        expect(projects).not_to include(new_project)
+      end
+    end
+  end
+
   describe "#route" do
     context "when a directive academy order has been issued" do
       context "and the school is joining a sponsor trust" do
@@ -147,6 +197,43 @@ RSpec.describe Conversion::Project do
       it "returns true" do
         expect(project.grant_payment_certificate_received?).to be true
       end
+    end
+  end
+
+  describe "#academy" do
+    it "returns an establishment object when the urn can be found" do
+      mock_successful_api_response_to_create_any_project
+
+      project = build(:conversion_project, academy_urn: 123456)
+
+      expect(project.academy).to be_a(Api::AcademiesApi::Establishment)
+    end
+
+    it "returns nil when the urn cannot be found" do
+      mock_successful_api_response_to_create_any_project
+      mock_establishment_not_found(urn: 999999)
+
+      project = build(:conversion_project, academy_urn: 999999)
+
+      expect(project.academy).to be_nil
+    end
+  end
+
+  describe "#academy_found?" do
+    before { mock_successful_api_response_to_create_any_project }
+
+    it "returns true when the academy can be found" do
+      project = build(:conversion_project, academy_urn: 123456)
+
+      expect(project.academy_found?).to eql true
+    end
+
+    it "returns false when the academy cannot be found" do
+      project = build(:conversion_project, academy_urn: 123456)
+
+      allow_any_instance_of(Conversion::Project).to receive(:academy).and_return(nil)
+
+      expect(project.academy_found?).to eql false
     end
   end
 end

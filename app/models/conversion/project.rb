@@ -3,6 +3,11 @@ class Conversion::Project < Project
     ProjectPolicy
   end
 
+  validates :academy_urn, urn: true, if: -> { academy_urn.present? }
+
+  scope :no_academy_urn, -> { where(academy_urn: nil) }
+  scope :with_academy_urn, -> { where.not(academy_urn: nil) }
+
   has_many :conversion_dates, dependent: :destroy, class_name: "Conversion::DateHistory"
 
   def route
@@ -29,5 +34,17 @@ class Conversion::Project < Project
     tasks = Conversion::Task::ReceiveGrantPaymentCertificateTaskForm.new(tasks_data, user)
     return true if tasks.status.eql?(:completed)
     false
+  end
+
+  def academy
+    @academy ||= fetch_academy(academy_urn).object
+  end
+
+  def academy_found?
+    academy.present?
+  end
+
+  private def fetch_academy(urn)
+    Api::AcademiesApi::Client.new.get_establishment(urn)
   end
 end

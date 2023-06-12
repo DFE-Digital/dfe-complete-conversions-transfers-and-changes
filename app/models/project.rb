@@ -11,7 +11,6 @@ class Project < ApplicationRecord
 
   validates :urn, presence: true
   validates :urn, urn: true
-  validates :academy_urn, urn: true, if: -> { academy_urn.present? }
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
   validates :conversion_date, presence: true
@@ -34,8 +33,6 @@ class Project < ApplicationRecord
   scope :sponsored, -> { where(directive_academy_order: true) }
   scope :voluntary, -> { where(directive_academy_order: false) }
 
-  scope :no_academy_urn, -> { where(academy_urn: nil) }
-  scope :with_academy_urn, -> { where.not(academy_urn: nil) }
   scope :provisional, -> { where(conversion_date_provisional: true) }
   scope :confirmed, -> { where(conversion_date_provisional: false) }
 
@@ -99,14 +96,6 @@ class Project < ApplicationRecord
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
-  def academy
-    @academy ||= fetch_academy(academy_urn).object
-  end
-
-  def academy_found?
-    academy.present?
-  end
-
   def completed?
     completed_at.present?
   end
@@ -118,10 +107,6 @@ class Project < ApplicationRecord
   def director_of_child_services
     local_authority = establishment.local_authority
     local_authority&.director_of_child_services
-  end
-
-  private def fetch_academy(urn)
-    Api::AcademiesApi::Client.new.get_establishment(urn)
   end
 
   private def fetch_establishment(urn)
