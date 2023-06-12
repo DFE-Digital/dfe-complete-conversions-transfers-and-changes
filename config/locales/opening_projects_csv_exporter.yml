@@ -4,6 +4,13 @@ en:
       school_urn: School URN
       dfe_number: DfE number
       school_name: School name
+      school_type: School type
+      school_address_1: School address 1
+      school_address_2: School address 2
+      school_address_3: School address 3
+      school_town: School town
+      school_county: School county
+      school_postcode: School postcode
       trust_name: Trust name
       mp_name: MP name
       mp_email: MP email

@@ -42,6 +42,39 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Establishment name")
     end
 
+    it "returns a csv with the establishment type" do
+      establishment = build(:academies_api_establishment)
+      allow(establishment).to receive(:type).and_return("Test establishment type")
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("School type")
+      expect(csv_export).to include("Test establishment type")
+    end
+
+    it "returns a csv with the establishment address" do
+      establishment = build(:academies_api_establishment, address_street: "Test school address 1", address_locality: "Test school address 2", address_additional: "Test school address 3", address_town: "Test school town", address_county: "Test school county", address_postcode: "AB1 AB2")
+
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("School address 1")
+      expect(csv_export).to include("School address 2")
+      expect(csv_export).to include("School address 3")
+      expect(csv_export).to include("School town")
+      expect(csv_export).to include("School county")
+      expect(csv_export).to include("School postcode")
+
+      expect(csv_export).to include("Test school address 1")
+      expect(csv_export).to include("Test school address 2")
+      expect(csv_export).to include("Test school address 3")
+      expect(csv_export).to include("Test school town")
+      expect(csv_export).to include("Test school county")
+      expect(csv_export).to include("AB1 AB2")
+    end
+
     it "returns a csv with the MP details" do
       project = build(:conversion_project)
 
