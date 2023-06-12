@@ -88,7 +88,7 @@ type (the scope). Do so by loading only notes form the projects of the task list
 type:
 
 ```
-projects = Project.where(task_list_type: "Conversion::Voluntary::TaskList").map { |project| project.id }
+projects = Project.where(tasks_data_type: "Conversion::TasksData").map { |project| project.id }
 Note.where(task_identifier: "<old task identifier>", project_id: projects).destroy_all
 ```
 
@@ -97,7 +97,7 @@ Note.where(task_identifier: "<old task identifier>", project_id: projects).destr
 When renaming a task, the task notes should be migrated to the new identifier:
 
 ```
-projects = Project.where(task_list_type: "Conversion::Voluntary::TaskList").map { |project| project.id }
+projects = Project.where(tasks_data_type: "Conversion::TasksData").map { |project| project.id }
 Note.where(task_identifier: "<old task identifier>", project_id: projects).update(task_identifier: "<new task identifier>")
 ```
 
@@ -108,6 +108,6 @@ not be followed:
 
 ```
 task_identifiers = Conversion::Voluntary::TaskList.new.tasks.map { |task| task.class.identifier }
-projects = Project.where(task_list_type: "Conversion::Voluntary::TaskList").map { |project| project.id }
+projects = Project.where(tasks_data_type: "Conversion::TasksData").map { |project| project.id }
 Note.where(project_id: projects).where.not(task_identifier: [task_identifiers, nil])
 ```
