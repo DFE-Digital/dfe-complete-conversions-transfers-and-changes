@@ -1,0 +1,12 @@
+en:
+  opening_projects_csv_export:
+    headers:
+      school_urn: School URN
+      dfe_number: DfE number
+      school_name: School name
+      mp_name: MP name
+      mp_email: MP email
+      mp_address_line_1: "MP address 1"
+      mp_address_line_2: "MP address 2"
+      mp_address_line_3: "MP address 3"
+      mp_address_postcode: MP postcode

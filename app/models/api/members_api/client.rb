@@ -27,16 +27,8 @@ class Api::MembersApi::Client
     member_id = member_id(constituency).object
     member_name = member_name(member_id).object
     contact_details = member_contact_details(member_id).object.find { |details| details.type_id == 1 }
-    {
-      name: member_name.name_display_as,
-      email: contact_details.email,
-      address_line1: contact_details.line1,
-      address_line2: contact_details.line2,
-      address_line3: contact_details.line3,
-      address_line4: contact_details.line4,
-      address_line5: contact_details.line5,
-      address_postcode: contact_details.postcode
-    }
+
+    Api::MembersApi::MemberDetails.new(member_name, contact_details)
   end
 
   def member_id(search_term)
