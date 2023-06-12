@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Sign in" do
   let(:user) { create(:user, :caseworker) }
 
-  context "when the user is signed out" do
+  context "when the user is unauthenticated" do
     it "redirects them to the sign in page and shows a helpful message" do
       get root_path
 
@@ -12,7 +12,7 @@ RSpec.describe "Sign in" do
     end
   end
 
-  context "when the user is signed in" do
+  context "when the user is authenticated" do
     before do
       mock_successful_authentication(user.email)
       allow_any_instance_of(RootController).to receive(:user_id).and_return(user.id)

@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def delete
-    session.destroy
+    reset_session
     redirect_to sign_in_path, notice: I18n.t("sign_out.message.success")
   end
 
@@ -24,31 +24,39 @@ class SessionsController < ApplicationController
     redirect_to sign_in_path, notice: I18n.t("sign_in.message.failure")
   end
 
-  private
-
-  def registered_user
+  private def registered_user
     @registered_user ||= User.find_by(email: authenticated_user_email_address)
   end
 
-  def create_session
+  private def create_session
+    assign_active_directory_user_id
+    assign_active_directory_user_group_ids
     session[:user_id] = registered_user.id
   end
 
-  def assign_active_directory_user_id
+  private def assign_active_directory_user_id
     return if registered_user.active_directory_user_id.present?
 
     registered_user.update(active_directory_user_id: active_directory_user_id)
   end
 
-  def authenticated_user_info
+  private def assign_active_directory_user_group_ids
+    registered_user.update!(active_directory_user_group_ids: active_directory_user_group_ids)
+  end
+
+  private def authenticated_user_info
     request.env["omniauth.auth"].info
   end
 
-  def active_directory_user_id
+  private def active_directory_user_id
     request.env["omniauth.auth"]["uid"]
   end
 
-  def authenticated_user_email_address
+  private def active_directory_user_group_ids
+    request.env["omniauth.auth"].dig("extra", "raw_info", "groups").to_a
+  end
+
+  private def authenticated_user_email_address
     authenticated_user_info.email.downcase
   end
 end
