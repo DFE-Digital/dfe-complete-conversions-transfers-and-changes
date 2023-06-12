@@ -125,7 +125,7 @@ RSpec.describe Conversion::Project do
     end
   end
 
-  describe "#opened?" do
+  describe "#conversion_date_confirmed_and_passed?" do
     let(:project) {
       build(:conversion_project,
         conversion_date: conversion_date,
