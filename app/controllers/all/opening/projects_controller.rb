@@ -9,7 +9,7 @@ class All::Opening::ProjectsController < ApplicationController
   def revised
     authorize Project, :index?
 
-    @projects = Project.conversion_date_revised_from(month, year)
+    @projects = Conversion::Project.conversion_date_revised_from(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
   end
 

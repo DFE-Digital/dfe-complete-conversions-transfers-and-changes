@@ -8,7 +8,28 @@ class Conversion::Project < Project
   scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :with_academy_urn, -> { where.not(academy_urn: nil) }
 
+  scope :provisional, -> { where(conversion_date_provisional: true) }
+  scope :confirmed, -> { where(conversion_date_provisional: false) }
+  scope :opening_by_month_year, ->(month, year) { includes(:tasks_data).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
+
   has_many :conversion_dates, dependent: :destroy, class_name: "Conversion::DateHistory"
+
+  def self.conversion_date_revised_from(month, year)
+    projects = Conversion::Project.in_progress.confirmed
+
+    latest_date_histories = Conversion::DateHistory.group(:project_id).maximum(:created_at)
+
+    matching_date_histories = Conversion::DateHistory
+      .where(project_id: latest_date_histories.keys)
+      .where(created_at: latest_date_histories.values)
+      .to_sql
+
+    projects.joins("INNER JOIN (#{matching_date_histories}) AS date_history ON date_history.project_id = projects.id")
+      .where("date_history.previous_date != date_history.revised_date")
+      .where("MONTH(date_history.previous_date) = ?", month)
+      .where("YEAR(date_history.previous_date) = ?", year)
+      .by_conversion_date
+  end
 
   def route
     return :sponsored if directive_academy_order?

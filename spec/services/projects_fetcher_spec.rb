@@ -15,7 +15,7 @@ RSpec.describe ProjectsFetcher do
     let(:projects) { [project_d, project_b, project_a, project_c] }
 
     before do
-      allow(Project).to receive(:opening_by_month_year).and_return(projects)
+      allow(Conversion::Project).to receive(:opening_by_month_year).and_return(projects)
     end
 
     it "sorts the projects by conditions_met? true and then by school name" do

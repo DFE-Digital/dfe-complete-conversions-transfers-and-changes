@@ -446,50 +446,6 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "opening_by_month_year scope" do
-      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
-
-      it "only returns projects with a confirmed conversion date" do
-        conversion_project = create(:conversion_project)
-        expect(Project.opening_by_month_year(1, 2023)).to_not include(conversion_project)
-      end
-
-      it "only returns projects with a confirmed conversion date in that month & year" do
-        project_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false)
-        project_not_in_scope = create(:conversion_project, conversion_date: Date.new(2023, 2, 1), conversion_date_provisional: true)
-        project_without_conversion_date = create(:conversion_project)
-
-        expect(Project.opening_by_month_year(1, 2023)).to_not include(project_not_in_scope, project_without_conversion_date)
-        expect(Project.opening_by_month_year(1, 2023)).to include(project_in_scope)
-      end
-    end
-
-    describe "provisional scope" do
-      it "only returns projects with a provisional conversion date" do
-        mock_successful_api_responses(urn: any_args, ukprn: any_args)
-        provisional_project = create(:conversion_project, conversion_date_provisional: true)
-        confirmed_project = create(:conversion_project, conversion_date_provisional: false)
-
-        scoped_projects = Project.provisional
-
-        expect(scoped_projects).to include provisional_project
-        expect(scoped_projects).not_to include confirmed_project
-      end
-    end
-
-    describe "confirmed scope" do
-      it "only returns projects with a confirmed conversion date" do
-        mock_successful_api_responses(urn: any_args, ukprn: any_args)
-        provisional_project = create(:conversion_project, conversion_date_provisional: true)
-        confirmed_project = create(:conversion_project, conversion_date_provisional: false)
-
-        scoped_projects = Project.confirmed
-
-        expect(scoped_projects).to include confirmed_project
-        expect(scoped_projects).not_to include provisional_project
-      end
-    end
-
     describe "by_conversion_date scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
@@ -593,42 +549,6 @@ RSpec.describe Project, type: :model do
     it "uses the enum value for regions" do
       project = create(:conversion_project, region: "E")
       expect(project.region).to eq("east_midlands")
-    end
-  end
-
-  describe "#revised_conversion_date" do
-    let(:first_of_this_month) { Date.today.at_beginning_of_month }
-    let(:first_of_future_month) { Date.today.at_beginning_of_month + 3.months }
-
-    it "does not include projects whose conversion date stayed the same" do
-      user = create(:user)
-      mock_successful_api_response_to_create_any_project
-      project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
-      create(:date_history, project: project, previous_date: first_of_this_month, revised_date: first_of_this_month)
-
-      another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
-      create(:date_history, project: another_project, previous_date: first_of_this_month, revised_date: first_of_future_month)
-
-      projects = Project.conversion_date_revised_from(first_of_this_month.month, first_of_this_month.year)
-
-      expect(projects).to include another_project
-      expect(projects).not_to include project
-    end
-
-    it "only includes projects whose latest date history previous date is in the supplied month and year" do
-      user = create(:user)
-      mock_successful_api_response_to_create_any_project
-
-      another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
-      create(:date_history, project: another_project, previous_date: first_of_this_month, revised_date: first_of_future_month)
-
-      yet_another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
-      create(:date_history, project: yet_another_project, previous_date: first_of_future_month, revised_date: first_of_future_month + 3.months)
-
-      projects = Project.conversion_date_revised_from(first_of_future_month.month, first_of_future_month.year)
-
-      expect(projects).to include yet_another_project
-      expect(projects).not_to include another_project
     end
   end
 

@@ -33,9 +33,6 @@ class Project < ApplicationRecord
   scope :sponsored, -> { where(directive_academy_order: true) }
   scope :voluntary, -> { where(directive_academy_order: false) }
 
-  scope :provisional, -> { where(conversion_date_provisional: true) }
-  scope :confirmed, -> { where(conversion_date_provisional: false) }
-
   scope :by_conversion_date, -> { order(conversion_date: :asc) }
 
   scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
@@ -49,8 +46,6 @@ class Project < ApplicationRecord
   scope :unassigned_to_user, -> { where assigned_to: nil }
   scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
   scope :not_assigned_to_regional_caseworker_team, -> { where.not(assigned_to_regional_caseworker_team: true) }
-
-  scope :opening_by_month_year, ->(month, year) { includes(:tasks_data).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
   scope :added_by, ->(user) { where(regional_delivery_officer: user) }
@@ -70,23 +65,6 @@ class Project < ApplicationRecord
     south_west: "K",
     east_midlands: "E"
   }, suffix: true
-
-  def self.conversion_date_revised_from(month, year)
-    projects = Project.in_progress.confirmed
-
-    latest_date_histories = Conversion::DateHistory.group(:project_id).maximum(:created_at)
-
-    matching_date_histories = Conversion::DateHistory
-      .where(project_id: latest_date_histories.keys)
-      .where(created_at: latest_date_histories.values)
-      .to_sql
-
-    projects.joins("INNER JOIN (#{matching_date_histories}) AS date_history ON date_history.project_id = projects.id")
-      .where("date_history.previous_date != date_history.revised_date")
-      .where("MONTH(date_history.previous_date) = ?", month)
-      .where("YEAR(date_history.previous_date) = ?", year)
-      .by_conversion_date
-  end
 
   def establishment
     @establishment ||= fetch_establishment(urn)
