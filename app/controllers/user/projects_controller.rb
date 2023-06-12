@@ -12,7 +12,7 @@ class User::ProjectsController < ApplicationController
 
   def added_by
     authorize Project, :index?
-    @pager, @projects = pagy(Project.added_by(current_user).not_completed.by_conversion_date.includes(:assigned_to))
+    @pager, @projects = pagy(Conversion::Project.added_by(current_user).not_completed.by_conversion_date.includes(:assigned_to))
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

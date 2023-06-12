@@ -13,8 +13,6 @@ class Project < ApplicationRecord
   validates :urn, urn: true
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
-  validates :conversion_date, presence: true
-  validates :conversion_date, first_day_of_month: true
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
@@ -33,11 +31,9 @@ class Project < ApplicationRecord
   scope :sponsored, -> { where(directive_academy_order: true) }
   scope :voluntary, -> { where(directive_academy_order: false) }
 
-  scope :by_conversion_date, -> { order(conversion_date: :asc) }
-
   scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
   scope :not_completed, -> { where(completed_at: nil) }
-  scope :in_progress, -> { where(completed_at: nil).assigned.by_conversion_date }
+  scope :in_progress, -> { where(completed_at: nil).assigned }
 
   scope :assigned, -> { where.not(assigned_to: nil) }
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }

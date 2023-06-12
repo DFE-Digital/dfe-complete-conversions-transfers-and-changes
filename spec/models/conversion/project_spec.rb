@@ -95,6 +95,49 @@ RSpec.describe Conversion::Project do
         expect(scoped_projects).not_to include provisional_project
       end
     end
+
+    describe ".in_progress" do
+      it "is ordered by conversion date ascending" do
+        mock_successful_api_response_to_create_any_project
+        create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 2.month)
+        project_converting_last = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 3.month)
+        project_converting_first = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 1.month)
+
+        projects = Conversion::Project.in_progress
+
+        expect(projects.first).to eql project_converting_first
+        expect(projects.last).to eql project_converting_last
+      end
+    end
+
+    describe ".by_conversion_date" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "shows the project that will convert earliest first" do
+        last_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 3.years)
+        middle_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 2.years)
+        first_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 1.year)
+
+        scoped_projects = Conversion::Project.by_conversion_date
+
+        expect(scoped_projects[0].id).to eq first_project.id
+        expect(scoped_projects[1].id).to eq middle_project.id
+        expect(scoped_projects[2].id).to eq last_project.id
+      end
+    end
+  end
+
+  describe "#conversion_date" do
+    it { is_expected.to validate_presence_of(:conversion_date) }
+
+    context "when the date is not on the first of the month" do
+      subject { build(:conversion_project, conversion_date: Date.today.months_since(6).at_end_of_month) }
+
+      it "is invalid" do
+        expect(subject).to_not be_valid
+        expect(subject.errors[:conversion_date]).to include(I18n.t("errors.attributes.conversion_date.must_be_first_of_the_month"))
+      end
+    end
   end
 
   describe "#route" do
