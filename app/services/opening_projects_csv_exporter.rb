@@ -29,6 +29,7 @@ class OpeningProjectsCsvExporter
       school_urn: project.urn,
       dfe_number: project.establishment.dfe_number,
       school_name: project.establishment.name,
+      trust_name: project.incoming_trust.name,
       mp_name: mp_details.name,
       mp_email: mp_details.email,
       mp_address_line_1: mp_details.address.line1,
