@@ -31,7 +31,7 @@ en:
           title: All voluntary completed projects
       trust_ukprn:
           title: Projects for %{trust}
-    regional_casework_services:
+    team:
       in_progress:
         title: In progress
       completed:

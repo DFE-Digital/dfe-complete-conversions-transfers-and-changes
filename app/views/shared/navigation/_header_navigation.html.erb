@@ -10,7 +10,7 @@
 
       <%= if policy(:navigation).show_team_projects_header_navigation?
             render partial: "shared/navigation/header_navigation_item",
-              locals: {name: t("navigation.header.team_projects"), path: unassigned_regional_casework_services_projects_path, namespace: "/projects/regional-casework-services/"}
+              locals: {name: t("navigation.header.team_projects"), path: unassigned_team_projects_path, namespace: "/projects/team/"}
           end %>
 
       <%= if policy(:navigation).show_all_projects_header_navigation?

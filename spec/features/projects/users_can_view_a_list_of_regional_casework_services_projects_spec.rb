@@ -8,15 +8,15 @@ RSpec.feature "Viewing regional casework services projects" do
     end
 
     scenario "they can view a helpful message" do
-      visit in_progress_regional_casework_services_projects_path
+      visit in_progress_team_projects_path
 
       expect(page).to have_content(I18n.t("project.table.in_progress.empty"))
 
-      visit completed_regional_casework_services_projects_path
+      visit completed_team_projects_path
 
       expect(page).to have_content(I18n.t("project.table.completed.empty"))
 
-      visit unassigned_regional_casework_services_projects_path
+      visit unassigned_team_projects_path
 
       expect(page).to have_content(I18n.t("project.table.unassigned.empty"))
     end
@@ -86,9 +86,9 @@ RSpec.feature "Viewing regional casework services projects" do
     end
 
     def view_in_progress_projects
-      visit in_progress_regional_casework_services_projects_path
+      visit in_progress_team_projects_path
 
-      expect(page).to have_content(I18n.t("project.regional_casework_services.in_progress.title"))
+      expect(page).to have_content(I18n.t("project.team.in_progress.title"))
 
       within("tbody") do
         expect(page).to have_content(in_progress_project.urn)
@@ -100,9 +100,9 @@ RSpec.feature "Viewing regional casework services projects" do
     end
 
     def view_completed_projects
-      visit completed_regional_casework_services_projects_path
+      visit completed_team_projects_path
 
-      expect(page).to have_content(I18n.t("project.regional_casework_services.completed.title"))
+      expect(page).to have_content(I18n.t("project.team.completed.title"))
 
       within("tbody") do
         expect(page).to have_content(completed_project.urn)
@@ -114,9 +114,9 @@ RSpec.feature "Viewing regional casework services projects" do
     end
 
     def view_unassigned_projects
-      visit unassigned_regional_casework_services_projects_path
+      visit unassigned_team_projects_path
 
-      expect(page).to have_content(I18n.t("project.regional_casework_services.unassigned.title"))
+      expect(page).to have_content(I18n.t("project.team.unassigned.title"))
 
       within("tbody") do
         expect(page).not_to have_content(completed_project.urn)
