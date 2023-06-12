@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
   def create
     if registered_user
       create_session
-      assign_active_directory_user_id
 
       redirect_to root_path
     else

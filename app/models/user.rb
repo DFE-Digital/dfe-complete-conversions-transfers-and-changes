@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  serialize :active_directory_user_group_ids, Array
+
   has_many :projects, foreign_key: "caseworker"
   has_many :notes
 

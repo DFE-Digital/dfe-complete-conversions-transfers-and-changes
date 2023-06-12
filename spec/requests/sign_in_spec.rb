@@ -22,10 +22,36 @@ RSpec.describe "Sign in" do
     it "loads the requested page" do
       get root_path
 
-      follow_redirect!
-
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to in_progress_user_projects_path
     end
+  end
+
+  it "copies the active directory id to the user" do
+    mock_successful_authentication(user.email)
+
+    get "/auth/azure_activedirectory_v2/callback"
+
+    expect(user.reload.active_directory_user_id).to include("test-user-id")
+  end
+
+  it "copies the Active Directory group ids to the User" do
+    mock_successful_authentication(user.email)
+
+    get "/auth/azure_activedirectory_v2/callback"
+
+    expect(user.reload.active_directory_user_group_ids).to be_a(Array)
+    expect(user.reload.active_directory_user_group_ids).to include("test-group-id-one")
+    expect(user.reload.active_directory_user_group_ids).to include("test-group-id-one")
+  end
+
+  it "updates the active directory group ids when they have changed" do
+    user = create(:user, active_directory_user_group_ids: ["test-group-id-one", "test-group-id-two"])
+    test_group_ids = ["test-group-id-one", "test-group-id-three"]
+    mock_successful_authentication(user.email, test_group_ids)
+
+    get "/auth/azure_activedirectory_v2/callback"
+
+    expect(user.reload.active_directory_user_group_ids).to eql(test_group_ids)
   end
 
   context "when the users is not known by the application" do
