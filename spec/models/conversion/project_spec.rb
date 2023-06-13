@@ -333,8 +333,10 @@ RSpec.describe Conversion::Project do
       mock_successful_api_response_to_create_any_project
       project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
       create(:date_history, project: project, previous_date: first_of_this_month, revised_date: first_of_this_month)
+      create(:date_history, project: project, previous_date: first_of_this_month, revised_date: first_of_this_month)
 
       another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: another_project, previous_date: first_of_this_month - 1.month, revised_date: first_of_future_month)
       create(:date_history, project: another_project, previous_date: first_of_this_month, revised_date: first_of_future_month)
 
       projects = Conversion::Project.conversion_date_revised_from(first_of_this_month.month, first_of_this_month.year)
@@ -343,20 +345,33 @@ RSpec.describe Conversion::Project do
       expect(projects).not_to include project
     end
 
+    it "does not include projects where the only change is from provisional to confirmed and the dates are different" do
+      user = create(:user)
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: project, previous_date: first_of_this_month, revised_date: first_of_future_month)
+
+      projects = Conversion::Project.conversion_date_revised_from(first_of_this_month.month, first_of_this_month.year)
+
+      expect(projects).not_to include project
+    end
+
     it "only includes projects whose latest date history previous date is in the supplied month and year" do
       user = create(:user)
       mock_successful_api_response_to_create_any_project
 
-      another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
-      create(:date_history, project: another_project, previous_date: first_of_this_month, revised_date: first_of_future_month)
+      matching_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: matching_project, previous_date: first_of_this_month - 1.month, revised_date: first_of_this_month)
+      create(:date_history, project: matching_project, previous_date: first_of_this_month, revised_date: first_of_future_month)
 
-      yet_another_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
-      create(:date_history, project: yet_another_project, previous_date: first_of_future_month, revised_date: first_of_future_month + 3.months)
+      not_matching_project = create(:conversion_project, assigned_to: user, conversion_date_provisional: false)
+      create(:date_history, project: not_matching_project, previous_date: first_of_future_month, revised_date: first_of_future_month + 3.months)
+      create(:date_history, project: not_matching_project, previous_date: first_of_this_month + 3.months, revised_date: first_of_future_month + 6.months)
 
-      projects = Conversion::Project.conversion_date_revised_from(first_of_future_month.month, first_of_future_month.year)
+      projects = Conversion::Project.conversion_date_revised_from(first_of_this_month.month, first_of_this_month.year)
 
-      expect(projects).to include yet_another_project
-      expect(projects).not_to include another_project
+      expect(projects).to include matching_project
+      expect(projects).not_to include not_matching_project
     end
   end
 end

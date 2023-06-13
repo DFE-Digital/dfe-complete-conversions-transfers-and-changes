@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - A user who has no role is now redirected to the all projects section of the
   application.
+- The list of projects with a revised conversion date for the month and year no
+  longer includes projects with provisional and confirmed conversion dates that
+  do not match.
 
 ## [Release 28][release-28]
 

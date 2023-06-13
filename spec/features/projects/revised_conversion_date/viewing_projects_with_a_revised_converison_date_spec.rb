@@ -15,10 +15,11 @@ RSpec.feature "Viewing projects with a revised conversion date" do
 
     project_with_matching_date = create(:conversion_project, assigned_to: user, conversion_date_provisional: false, urn: 101133)
     create(:date_history, project: project_with_matching_date, previous_date: Date.today.at_beginning_of_month, revised_date: Date.today.at_beginning_of_month + 3.months)
+    create(:date_history, project: project_with_matching_date, previous_date: Date.today.at_beginning_of_month + 3.months, revised_date: Date.today.at_beginning_of_month + 4.months)
 
-    visit revised_all_opening_projects_path(Date.today.month, Date.today.year)
+    visit revised_all_opening_projects_path((Date.today + 3.months).month, Date.today.year)
 
-    expect(page).to have_content I18n.t("project.revised_conversion_date.title", date: Date.today.to_fs(:govuk_month))
+    expect(page).to have_content I18n.t("project.revised_conversion_date.title", date: (Date.today + 3.months).to_fs(:govuk_month))
     expect(page).to have_content project_with_matching_date.urn
     expect(page).not_to have_content project_with_confirmed_date.urn
     expect(page).not_to have_content project_with_other_date.urn
