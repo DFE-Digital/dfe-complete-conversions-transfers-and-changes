@@ -75,6 +75,39 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("AB1 AB2")
     end
 
+    it "returns a csv with the Local authority name" do
+      local_authority = create(:local_authority, code: "300", name: "Test local authority name")
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Local authority")
+      expect(csv_export).to include("Test local authority name")
+    end
+
+    it "returns a csv with the Local authority address" do
+      local_authority = create(:local_authority, code: "300", address_1: "Test local authority address 1", address_2: "Test local authority address 2", address_3: "Test local authority address 3", address_town: "Test local authority address town", address_county: "Test local authority address county", address_postcode: "LS2 7EW")
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Local authority address 1")
+      expect(csv_export).to include("Local authority address 2")
+      expect(csv_export).to include("Local authority address 3")
+      expect(csv_export).to include("Local authority address town")
+      expect(csv_export).to include("Local authority address county")
+      expect(csv_export).to include("Local authority address postcode")
+
+      expect(csv_export).to include("Test local authority address 1")
+      expect(csv_export).to include("Test local authority address 2")
+      expect(csv_export).to include("Test local authority address 3")
+      expect(csv_export).to include("Test local authority address town")
+      expect(csv_export).to include("Test local authority address county")
+      expect(csv_export).to include("LS2 7EW")
+    end
+
     it "returns a csv with the MP details" do
       project = build(:conversion_project)
 

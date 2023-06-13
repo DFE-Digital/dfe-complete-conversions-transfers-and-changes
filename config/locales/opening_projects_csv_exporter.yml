@@ -11,6 +11,13 @@ en:
       school_town: School town
       school_county: School county
       school_postcode: School postcode
+      local_authority: Local authority
+      local_authority_address_1: Local authority address 1
+      local_authority_address_2: Local authority address 2
+      local_authority_address_3: Local authority address 3
+      local_authority_address_town: Local authority address town
+      local_authority_address_county: Local authority address county
+      local_authority_address_postcode: Local authority address postcode
       trust_name: Trust name
       mp_name: MP name
       mp_email: MP email
