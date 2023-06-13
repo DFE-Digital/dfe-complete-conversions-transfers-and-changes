@@ -137,5 +137,27 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Trust name")
       expect(csv_export).to include("Test trust")
     end
+
+    it "returns a csv with the trust address" do
+      trust = build(:academies_api_trust, address_street: "Test trust address 1", address_locality: "Test trust address 2", address_additional: "Test trust address 3", address_town: "Test trust address town", address_county: "Test trust address county", address_postcode: "AB1 AB2")
+      project = build(:conversion_project, incoming_trust: trust)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Trust address 1")
+      expect(csv_export).to include("Trust address 2")
+      expect(csv_export).to include("Trust address 3")
+      expect(csv_export).to include("Trust address town")
+      expect(csv_export).to include("Trust address county")
+      expect(csv_export).to include("Trust address county")
+      expect(csv_export).to include("Trust address postcode")
+
+      expect(csv_export).to include("Test trust address 1")
+      expect(csv_export).to include("Test trust address 2")
+      expect(csv_export).to include("Test trust address 3")
+      expect(csv_export).to include("Test trust address town")
+      expect(csv_export).to include("Test trust address county")
+      expect(csv_export).to include("AB1 AB2")
+    end
   end
 end

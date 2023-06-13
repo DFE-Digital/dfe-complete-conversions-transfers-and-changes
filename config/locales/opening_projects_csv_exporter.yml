@@ -19,6 +19,12 @@ en:
       local_authority_address_county: Local authority address county
       local_authority_address_postcode: Local authority address postcode
       trust_name: Trust name
+      trust_address_1: Trust address 1
+      trust_address_2: Trust address 2
+      trust_address_3: Trust address 3
+      trust_address_town: Trust address town
+      trust_address_county: Trust address county
+      trust_address_postcode: Trust address postcode
       mp_name: MP name
       mp_email: MP email
       mp_address_line_1: "MP address 1"
