@@ -28,6 +28,7 @@ class OpeningProjectsCsvExporter
     {
       school_urn: project.urn,
       dfe_number: project.establishment.dfe_number,
+      conversion_date: project.conversion_date.strftime("%Y/%m/%d"),
       school_name: project.establishment.name,
       school_type: project.establishment.type,
       school_address_1: project.establishment.address_street,

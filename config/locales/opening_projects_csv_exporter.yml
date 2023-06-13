@@ -3,6 +3,7 @@ en:
     headers:
       school_urn: School URN
       dfe_number: DfE number
+      conversion_date: Conversion date
       school_name: School name
       school_type: School type
       school_address_1: School address 1
