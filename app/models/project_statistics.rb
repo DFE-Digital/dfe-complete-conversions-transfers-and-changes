@@ -1,6 +1,6 @@
 class ProjectStatistics
   def initialize
-    @projects = Project.all
+    @projects = Conversion::Project.all
   end
 
   def total_number_of_projects
@@ -263,7 +263,7 @@ class ProjectStatistics
     hash = {}
     (1..6).each do |i|
       date = Date.today + i.month
-      hash["#{Date::MONTHNAMES[date.month]} #{date.year}"] = Project.opening_by_month_year(date.month, date.year).count
+      hash["#{Date::MONTHNAMES[date.month]} #{date.year}"] = Conversion::Project.opening_by_month_year(date.month, date.year).count
     end
     hash
   end

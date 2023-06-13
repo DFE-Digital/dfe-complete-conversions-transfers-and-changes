@@ -11,11 +11,8 @@ class Project < ApplicationRecord
 
   validates :urn, presence: true
   validates :urn, urn: true
-  validates :academy_urn, urn: true, if: -> { academy_urn.present? }
   validates :incoming_trust_ukprn, presence: true
   validates :incoming_trust_ukprn, ukprn: true
-  validates :conversion_date, presence: true
-  validates :conversion_date, first_day_of_month: true
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
@@ -34,16 +31,9 @@ class Project < ApplicationRecord
   scope :sponsored, -> { where(directive_academy_order: true) }
   scope :voluntary, -> { where(directive_academy_order: false) }
 
-  scope :no_academy_urn, -> { where(academy_urn: nil) }
-  scope :with_academy_urn, -> { where.not(academy_urn: nil) }
-  scope :provisional, -> { where(conversion_date_provisional: true) }
-  scope :confirmed, -> { where(conversion_date_provisional: false) }
-
-  scope :by_conversion_date, -> { order(conversion_date: :asc) }
-
   scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
   scope :not_completed, -> { where(completed_at: nil) }
-  scope :in_progress, -> { where(completed_at: nil).assigned.by_conversion_date }
+  scope :in_progress, -> { where(completed_at: nil).assigned }
 
   scope :assigned, -> { where.not(assigned_to: nil) }
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
@@ -52,8 +42,6 @@ class Project < ApplicationRecord
   scope :unassigned_to_user, -> { where assigned_to: nil }
   scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
   scope :not_assigned_to_regional_caseworker_team, -> { where.not(assigned_to_regional_caseworker_team: true) }
-
-  scope :opening_by_month_year, ->(month, year) { includes(:tasks_data).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
   scope :added_by, ->(user) { where(regional_delivery_officer: user) }
@@ -74,37 +62,12 @@ class Project < ApplicationRecord
     east_midlands: "E"
   }, suffix: true
 
-  def self.conversion_date_revised_from(month, year)
-    projects = Project.in_progress.confirmed
-
-    latest_date_histories = Conversion::DateHistory.group(:project_id).maximum(:created_at)
-
-    matching_date_histories = Conversion::DateHistory
-      .where(project_id: latest_date_histories.keys)
-      .where(created_at: latest_date_histories.values)
-      .to_sql
-
-    projects.joins("INNER JOIN (#{matching_date_histories}) AS date_history ON date_history.project_id = projects.id")
-      .where("date_history.previous_date != date_history.revised_date")
-      .where("MONTH(date_history.previous_date) = ?", month)
-      .where("YEAR(date_history.previous_date) = ?", year)
-      .by_conversion_date
-  end
-
   def establishment
     @establishment ||= fetch_establishment(urn)
   end
 
   def incoming_trust
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
-  end
-
-  def academy
-    @academy ||= fetch_academy(academy_urn).object
-  end
-
-  def academy_found?
-    academy.present?
   end
 
   def completed?
@@ -118,10 +81,6 @@ class Project < ApplicationRecord
   def director_of_child_services
     local_authority = establishment.local_authority
     local_authority&.director_of_child_services
-  end
-
-  private def fetch_academy(urn)
-    Api::AcademiesApi::Client.new.get_establishment(urn)
   end
 
   private def fetch_establishment(urn)
