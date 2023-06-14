@@ -55,7 +55,16 @@
       </main>
     </div>
 
-    <%= govuk_footer(meta_items_title: "Helpful links", meta_items: {"Privacy notice" => page_path(id: "privacy"), "Accessibility Statement" => page_path(id: "accessibility"), "Cookies" => page_path(id: "cookies"), "Email support" => "mailto:#{Rails.application.config.support_email}?subject=#{I18n.t("support_email_subject")}"}) %>
+    <%= govuk_footer(
+          meta_items_title: "Helpful links",
+          meta_items: [
+            {text: "Privacy notice", href: page_path(id: "privacy")},
+            {text: "Accessibility Statement", href: page_path(id: "accessibility")},
+            {text: "Cookies", href: page_path(id: "cookies")},
+            {text: "How to use this service (opens in new tab)", href: "https://educationgovuk.sharepoint.com/sites/lvewp00299/SitePages/Using-the-Complete-conversions,-transfers-and-changes-digital-product.aspx", attr: {target: "_blank"}},
+            {text: "Email support", href: "mailto:#{Rails.application.config.support_email}?subject=#{I18n.t("support_email_subject")}"}
+          ]
+        ) %>
 
   </body>
   <%= javascript_include_tag "application" %>
