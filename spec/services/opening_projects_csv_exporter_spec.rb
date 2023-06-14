@@ -216,5 +216,14 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Test trust address county")
       expect(csv_export).to include("AB1 AB2")
     end
+
+    it "returns a csv with the approval date" do
+      project = build(:conversion_project, advisory_board_date: Date.new(2022, 6, 1))
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Approval date")
+      expect(csv_export).to include("2022/06/01")
+    end
   end
 end
