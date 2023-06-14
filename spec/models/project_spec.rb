@@ -4,6 +4,7 @@ RSpec.describe Project, type: :model do
   describe "Columns" do
     it { is_expected.to have_db_column(:urn).of_type :integer }
     it { is_expected.to have_db_column(:incoming_trust_ukprn).of_type :integer }
+    it { is_expected.to have_db_column(:outgoing_trust_ukprn).of_type :integer }
     it { is_expected.to have_db_column(:conversion_date).of_type :date }
     it { is_expected.to have_db_column(:caseworker_id).of_type :uuid }
     it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
@@ -54,6 +55,7 @@ RSpec.describe Project, type: :model do
 
     it { is_expected.to validate_presence_of(:advisory_board_date) }
     it { is_expected.not_to validate_presence_of(:conversion_date) }
+    it { is_expected.not_to validate_presence_of(:outgoing_trust_ukprn) }
 
     describe "#urn" do
       it { is_expected.to validate_presence_of(:urn) }
