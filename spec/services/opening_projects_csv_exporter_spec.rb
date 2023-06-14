@@ -31,6 +31,15 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("765/4321")
     end
 
+    it "returns a csv with the project type" do
+      project = build(:conversion_project)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Project type")
+      expect(csv_export).to include("Conversion")
+    end
+
     it "returns a csv with the project conversion date" do
       project = build(:conversion_project, conversion_date: Date.new(2025, 5, 1))
 

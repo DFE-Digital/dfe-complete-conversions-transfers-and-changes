@@ -28,6 +28,7 @@ class OpeningProjectsCsvExporter
     {
       school_urn: project.urn,
       dfe_number: project.establishment.dfe_number,
+      project_type: "Conversion",
       conversion_date: project.conversion_date.strftime("%Y/%m/%d"),
       director_of_child_services_name: project.director_of_child_services&.name,
       director_of_child_services_role: project.director_of_child_services&.title,

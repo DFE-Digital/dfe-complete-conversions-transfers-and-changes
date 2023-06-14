@@ -3,6 +3,7 @@ en:
     headers:
       school_urn: School URN
       dfe_number: DfE number
+      project_type: Project type
       conversion_date: Conversion date
       director_of_child_services_name: Director of child services name
       director_of_child_services_role: Director of child services role
