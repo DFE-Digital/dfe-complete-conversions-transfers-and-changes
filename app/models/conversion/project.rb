@@ -21,7 +21,7 @@ class Conversion::Project < Project
   def self.conversion_date_revised_from(month, year)
     projects = Conversion::Project.in_progress.confirmed
 
-    latest_date_histories = Conversion::DateHistory.group(:project_id).maximum(:created_at)
+    latest_date_histories = Conversion::DateHistory.group(:project_id).having("COUNT(created_at) > 1").maximum(:created_at)
 
     matching_date_histories = Conversion::DateHistory
       .where(project_id: latest_date_histories.keys)
