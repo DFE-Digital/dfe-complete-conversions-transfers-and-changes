@@ -84,6 +84,54 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("AB1 AB2")
     end
 
+    it "returns a csv with the Director of child serivces name" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, name: "Test director of child services name", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Test director of child services name")
+      expect(csv_export).to include("Director of child services name")
+    end
+
+    it "returns a csv with the Director of child serivces role" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, title: "Test director of child services role", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Test director of child services role")
+      expect(csv_export).to include("Director of child services role")
+    end
+
+    it "returns a csv with the Director of child serivces email" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, email: "test@email.com", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("test@email.com")
+      expect(csv_export).to include("Director of child services email")
+    end
+
+    it "returns a csv with the Director of child serivces phone" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, phone: "01234 567891", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("01234 567891")
+      expect(csv_export).to include("Director of child services phone")
+    end
+
     it "returns a csv with the Local authority name" do
       local_authority = create(:local_authority, code: "300", name: "Test local authority name")
       establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
