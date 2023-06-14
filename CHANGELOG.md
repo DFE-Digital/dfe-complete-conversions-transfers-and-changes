@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add `outgoing_trust_ukprn` to Transfer::Project model
+- The unassigned project table now includes the region a project is in.
 
 ### Changed
 
