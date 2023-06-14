@@ -61,7 +61,8 @@ class OpeningProjectsCsvExporter
       mp_address_line_2: mp_details.address.line2,
       mp_address_line_3: mp_details.address.line3,
       mp_address_postcode: mp_details.address.postcode,
-      approval_date: project.advisory_board_date.strftime("%Y/%m/%d")
+      approval_date: project.advisory_board_date.strftime("%Y/%m/%d"),
+      project_lead: project.assigned_to.full_name
     }
   end
 

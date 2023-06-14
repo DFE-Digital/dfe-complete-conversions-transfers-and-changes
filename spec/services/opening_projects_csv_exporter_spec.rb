@@ -225,5 +225,15 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Approval date")
       expect(csv_export).to include("2022/06/01")
     end
+
+    it "returns a csv with the project lead" do
+      user = build(:user, first_name: "Joe", last_name: "Bloggs")
+      project = build(:conversion_project, assigned_to: user)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Project lead")
+      expect(csv_export).to include("Joe Bloggs")
+    end
   end
 end
