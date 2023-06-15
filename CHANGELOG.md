@@ -41,6 +41,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add bare bones Transfer::Project and Transfer::TasksData models
 - Create an opening projects csv exporter
 - The team projects section now has primary navigation.
+- Add remaining attributes to csv for data export for funding agreement letter
 
 ### Changed
 

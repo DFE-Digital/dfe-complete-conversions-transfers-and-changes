@@ -31,6 +31,24 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("765/4321")
     end
 
+    it "returns a csv with the project type" do
+      project = build(:conversion_project)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Project type")
+      expect(csv_export).to include("Conversion")
+    end
+
+    it "returns a csv with the project conversion date" do
+      project = build(:conversion_project, conversion_date: Date.new(2025, 5, 1))
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Conversion date")
+      expect(csv_export).to include("2025/05/01")
+    end
+
     it "returns a csv with the establishment name" do
       establishment = build(:academies_api_establishment)
       allow(establishment).to receive(:name).and_return("Establishment name")
@@ -40,6 +58,120 @@ RSpec.describe OpeningProjectsCsvExporter do
 
       expect(csv_export).to include("School name")
       expect(csv_export).to include("Establishment name")
+    end
+
+    it "returns a csv with the establishment type" do
+      establishment = build(:academies_api_establishment)
+      allow(establishment).to receive(:type).and_return("Test establishment type")
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("School type")
+      expect(csv_export).to include("Test establishment type")
+    end
+
+    it "returns a csv with the establishment address" do
+      establishment = build(:academies_api_establishment, address_street: "Test school address 1", address_locality: "Test school address 2", address_additional: "Test school address 3", address_town: "Test school town", address_county: "Test school county", address_postcode: "AB1 AB2")
+
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("School address 1")
+      expect(csv_export).to include("School address 2")
+      expect(csv_export).to include("School address 3")
+      expect(csv_export).to include("School town")
+      expect(csv_export).to include("School county")
+      expect(csv_export).to include("School postcode")
+
+      expect(csv_export).to include("Test school address 1")
+      expect(csv_export).to include("Test school address 2")
+      expect(csv_export).to include("Test school address 3")
+      expect(csv_export).to include("Test school town")
+      expect(csv_export).to include("Test school county")
+      expect(csv_export).to include("AB1 AB2")
+    end
+
+    it "returns a csv with the Director of child serivces name" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, name: "Test director of child services name", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Test director of child services name")
+      expect(csv_export).to include("Director of child services name")
+    end
+
+    it "returns a csv with the Director of child serivces role" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, title: "Test director of child services role", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Test director of child services role")
+      expect(csv_export).to include("Director of child services role")
+    end
+
+    it "returns a csv with the Director of child serivces email" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, email: "test@email.com", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("test@email.com")
+      expect(csv_export).to include("Director of child services email")
+    end
+
+    it "returns a csv with the Director of child serivces phone" do
+      local_authority = create(:local_authority)
+      create(:director_of_child_services, phone: "01234 567891", local_authority: local_authority)
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("01234 567891")
+      expect(csv_export).to include("Director of child services phone")
+    end
+
+    it "returns a csv with the Local authority name" do
+      local_authority = create(:local_authority, code: "300", name: "Test local authority name")
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Local authority")
+      expect(csv_export).to include("Test local authority name")
+    end
+
+    it "returns a csv with the Local authority address" do
+      local_authority = create(:local_authority, code: "300", address_1: "Test local authority address 1", address_2: "Test local authority address 2", address_3: "Test local authority address 3", address_town: "Test local authority address town", address_county: "Test local authority address county", address_postcode: "LS2 7EW")
+      establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
+      project = build(:conversion_project, establishment: establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Local authority address 1")
+      expect(csv_export).to include("Local authority address 2")
+      expect(csv_export).to include("Local authority address 3")
+      expect(csv_export).to include("Local authority address town")
+      expect(csv_export).to include("Local authority address county")
+      expect(csv_export).to include("Local authority address postcode")
+
+      expect(csv_export).to include("Test local authority address 1")
+      expect(csv_export).to include("Test local authority address 2")
+      expect(csv_export).to include("Test local authority address 3")
+      expect(csv_export).to include("Test local authority address town")
+      expect(csv_export).to include("Test local authority address county")
+      expect(csv_export).to include("LS2 7EW")
     end
 
     it "returns a csv with the MP details" do
@@ -70,6 +202,47 @@ RSpec.describe OpeningProjectsCsvExporter do
 
       expect(csv_export).to include("Trust name")
       expect(csv_export).to include("Test trust")
+    end
+
+    it "returns a csv with the trust address" do
+      trust = build(:academies_api_trust, address_street: "Test trust address 1", address_locality: "Test trust address 2", address_additional: "Test trust address 3", address_town: "Test trust address town", address_county: "Test trust address county", address_postcode: "AB1 AB2")
+      project = build(:conversion_project, incoming_trust: trust)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Trust address 1")
+      expect(csv_export).to include("Trust address 2")
+      expect(csv_export).to include("Trust address 3")
+      expect(csv_export).to include("Trust address town")
+      expect(csv_export).to include("Trust address county")
+      expect(csv_export).to include("Trust address county")
+      expect(csv_export).to include("Trust address postcode")
+
+      expect(csv_export).to include("Test trust address 1")
+      expect(csv_export).to include("Test trust address 2")
+      expect(csv_export).to include("Test trust address 3")
+      expect(csv_export).to include("Test trust address town")
+      expect(csv_export).to include("Test trust address county")
+      expect(csv_export).to include("AB1 AB2")
+    end
+
+    it "returns a csv with the approval date" do
+      project = build(:conversion_project, advisory_board_date: Date.new(2022, 6, 1))
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Approval date")
+      expect(csv_export).to include("2022/06/01")
+    end
+
+    it "returns a csv with the project lead" do
+      user = build(:user, first_name: "Joe", last_name: "Bloggs")
+      project = build(:conversion_project, assigned_to: user)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Project lead")
+      expect(csv_export).to include("Joe Bloggs")
     end
   end
 end
