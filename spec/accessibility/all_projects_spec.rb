@@ -51,6 +51,7 @@ RSpec.feature "All projects", driver: :headless_firefox, accessibility: true do
   scenario "> Opening > Revised conversion date" do
     project = create(:conversion_project, assigned_to: user, urn: 123434, conversion_date_provisional: false)
     create(:date_history, project: project, previous_date: Date.today.next_month.at_beginning_of_month)
+    create(:date_history, project: project, previous_date: Date.today.next_month.at_beginning_of_month)
 
     visit revised_all_opening_projects_path
 

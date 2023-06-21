@@ -4,7 +4,7 @@ RSpec.describe ProjectPolicy do
   subject { described_class }
   before { mock_successful_api_response_to_create_any_project }
 
-  let(:application_user) { build(:user, email: "application.user@education.gov.uk") }
+  let(:application_user) { build(:user, :caseworker, email: "application.user@education.gov.uk") }
 
   permissions :update? do
     it "grants access if project is assigned to the same user" do

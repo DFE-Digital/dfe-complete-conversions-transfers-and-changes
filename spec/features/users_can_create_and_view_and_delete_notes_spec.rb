@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Users can create and view notes" do
-  let(:user) { create(:user, email: "user@education.gov.uk") }
+  let(:user) { create(:user, :caseworker, email: "user@education.gov.uk") }
   let(:project) { create(:conversion_project) }
   let(:project_id) { project.id }
   let(:new_note_body) { "Just shared some *important* documents with the solictor." }
