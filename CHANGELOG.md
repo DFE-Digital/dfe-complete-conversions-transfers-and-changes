@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - All `regional-casework-services` URLs are now `team`, e.g.
   `/projects/team/in-progress`
+- Content updated in trust modification order task. Checkbox descriptions now
+  accurate. Additional clarifications added to guidance.
 
 ### Fixed
 
