@@ -22,7 +22,7 @@ class AssignmentPolicy
   end
 
   def assign_assigned_to?
-    true
+    @user.has_role?
   end
 
   def update_assigned_to?
