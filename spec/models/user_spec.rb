@@ -80,4 +80,22 @@ RSpec.describe User do
       expect(subject).to eq "John Doe"
     end
   end
+
+  describe "#has_role?" do
+    it "returns true when the user has one of the set roles" do
+      caseworker_user = create(:user, :caseworker)
+      regional_delivery_officer_user = create(:user, :regional_delivery_officer)
+      team_lead_user = create(:user, :team_leader)
+
+      expect(caseworker_user.has_role?).to be true
+      expect(regional_delivery_officer_user.has_role?).to be true
+      expect(team_lead_user.has_role?).to be true
+    end
+
+    it "returns false when the user has no set role" do
+      user = create(:user)
+
+      expect(user.has_role?).to be false
+    end
+  end
 end

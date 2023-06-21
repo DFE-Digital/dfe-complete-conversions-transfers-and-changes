@@ -19,4 +19,9 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def has_role?
+    return true if caseworker? || regional_delivery_officer? || team_leader?
+    false
+  end
 end
