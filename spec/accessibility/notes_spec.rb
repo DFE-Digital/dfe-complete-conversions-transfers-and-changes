@@ -2,7 +2,7 @@ require "rails_helper"
 require "axe-rspec"
 
 RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibility: true do
-  let(:user) { create(:user, email: "user1@education.gov.uk") }
+  let(:user) { create(:user, :caseworker, email: "user1@education.gov.uk") }
   let(:project) { create(:conversion_project, caseworker: user) }
 
   before do

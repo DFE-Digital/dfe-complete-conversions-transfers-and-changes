@@ -53,10 +53,14 @@ class ProjectPolicy
   end
 
   def new_note?
+    return false unless @user.has_role?
+
     edit_project_closed?
   end
 
   def new_contact?
+    return false unless @user.has_role?
+
     edit_project_closed?
   end
 
