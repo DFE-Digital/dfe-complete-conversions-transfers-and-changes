@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Users who do not have a recognised role can no longer add notes or contacts.
+- Users who do not have a recognised role can no longer edit contacts.
 
 ### Fixed
 

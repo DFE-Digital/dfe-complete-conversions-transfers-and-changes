@@ -9,6 +9,7 @@ class ContactPolicy
 
   def edit?
     return false if @project&.completed?
+    return false unless @user.has_role?
 
     true
   end
@@ -19,6 +20,7 @@ class ContactPolicy
 
   def destroy?
     return false if @project&.completed?
+    return false unless @user.has_role?
 
     true
   end

@@ -12,6 +12,13 @@ RSpec.describe ContactPolicy do
       expect(subject).to permit(application_user, build(:project_contact, project: project))
     end
 
+    it "denies if the user has no role" do
+      user = build(:user)
+      project = build(:conversion_project)
+
+      expect(subject).not_to permit(user, build(:project_contact, project: project))
+    end
+
     it "denies access if project is completed" do
       project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
       expect(subject).not_to permit(application_user, build(:project_contact, project: project))
