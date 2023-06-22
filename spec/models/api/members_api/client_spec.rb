@@ -61,6 +61,20 @@ RSpec.describe Api::MembersApi::Client do
       expect(response.address.line1).to eq("Houses of Parliment")
       expect(response.address.postcode).to eq("SW1A 0AA")
     end
+
+    it "raises an error if the member_contact_details is nil" do
+      fake_client = Api::MembersApi::Client.new
+      allow(fake_client).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(4744, nil))
+      fake_name = double(Api::MembersApi::MemberName, name_display_as: "Joe Bloggs")
+      allow(fake_client).to receive(:member_name).and_return(Api::MembersApi::Client::Result.new(fake_name, nil))
+      allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(nil, nil))
+
+      response = fake_client.member_for_constituency("St Albans")
+
+      expect(response.object).to be_nil
+      expect(response.error).to be_a(Api::MembersApi::Client::Error)
+      expect(response.error.message).to eq(I18n.t("members_api.errors.contact_details_not_found", member_id: 4744))
+    end
   end
 
   describe "#member_id" do
