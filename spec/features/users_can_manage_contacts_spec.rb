@@ -6,7 +6,7 @@ RSpec.feature "Users can manage contacts" do
     sign_in_with_user(user)
   end
 
-  let(:user) { create(:user) }
+  let(:user) { create(:user, :caseworker) }
   let!(:project) { create(:voluntary_conversion_project) }
   let!(:contact) { create(:project_contact, project: project) }
 
