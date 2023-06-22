@@ -4,7 +4,7 @@ class All::Trusts::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @trusts = ByTrustProjectFetcherService.new.call
+    @pager, @trusts = pagy_array(ByTrustProjectFetcherService.new.call)
   end
 
   def show

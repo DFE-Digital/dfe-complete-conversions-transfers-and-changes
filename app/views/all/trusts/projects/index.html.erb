@@ -8,6 +8,6 @@
       <%= t("project.all.by_trust.title") %>
     </h1>
 
-    <%= render partial: "trust_table", locals: {trusts: @trusts} %>
+    <%= render partial: "trust_table", locals: {trusts: @trusts, pager: @pager} %>
   </div>
 </div>
