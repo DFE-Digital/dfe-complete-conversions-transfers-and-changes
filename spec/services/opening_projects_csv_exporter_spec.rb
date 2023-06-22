@@ -281,7 +281,6 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export.encoding.name).to eq("UTF-8")
     end
 
-
     it "returns a csv with the new academy name" do
       establishment = build(:academies_api_establishment)
       allow(establishment).to receive(:name).and_return("New Academy")

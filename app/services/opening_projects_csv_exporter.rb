@@ -30,7 +30,7 @@ class OpeningProjectsCsvExporter
       dfe_number: project.establishment.dfe_number,
       project_type: "Conversion",
       route: I18n.t("project.openers.route.#{project.route}"),
-      conversion_date: project.conversion_date.strftime("%Y/%m/%d"),
+      conversion_date: project.conversion_date.to_formatted_s(:csv),
       director_of_child_services_name: project.director_of_child_services&.name,
       director_of_child_services_role: project.director_of_child_services&.title,
       director_of_child_services_email: project.director_of_child_services&.email,
@@ -63,7 +63,7 @@ class OpeningProjectsCsvExporter
       mp_address_line_2: mp_details.address.line2,
       mp_address_line_3: mp_details.address.line3,
       mp_address_postcode: mp_details.address.postcode,
-      approval_date: project.advisory_board_date.strftime("%Y/%m/%d"),
+      approval_date: project.advisory_board_date.to_formatted_s(:csv),
       project_lead: project.assigned_to.full_name,
       academy_name: project.academy.name
     }
