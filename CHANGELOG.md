@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - A view, by trust, that shows the trusts that have in-progress projects in the
   application and lists the projects.
+- Add Route and Academy name to the CSV export
 
 ### Changed
 
