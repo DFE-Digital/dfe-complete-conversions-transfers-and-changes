@@ -131,6 +131,7 @@ en:
         in_progress: In progress
         opening: Opening
         by_trust: By trust
+        by_local_authority: By local authority
         completed: Completed
         statistics: Statistics
       team_projects:
