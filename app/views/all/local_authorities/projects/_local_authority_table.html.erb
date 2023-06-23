@@ -7,6 +7,7 @@
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.local_authority_name") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.local_authority_code") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view_projects") %></th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
@@ -15,6 +16,9 @@
         <td class="govuk-table__header govuk-table__cell"><%= local_authority.name %></td>
         <td class="govuk-table__cell"><%= local_authority.code %></td>
         <td class="govuk-table__cell"><%= local_authority.conversion_count %></td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.view_projects_for_local_authority_html", local_authority_name: local_authority.name), by_local_authority_all_local_authorities_projects_path(local_authority.code) %>
+        </td>
       </tr>
     <% end %>
     </tbody>

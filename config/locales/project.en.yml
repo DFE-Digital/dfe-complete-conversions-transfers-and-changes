@@ -167,6 +167,7 @@ en:
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
         view_projects_html: View projects <span class="govuk-visually-hidden">for %{trust_name}</span>
+        view_projects_for_local_authority_html: View projects<span class="govuk-visually-hidden"> for %{local_authority_name}</span>
       in_progress:
         empty: There are no projects in progress.
       completed:

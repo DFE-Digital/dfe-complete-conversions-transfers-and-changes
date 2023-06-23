@@ -29,6 +29,7 @@ RSpec.feature "Users can view a list of local authorities that have projectss" d
         expect(page).to have_content(local_authority.name)
         expect(page).to have_content(local_authority.code)
         expect(page).to have_content("1")
+        expect(page).to have_link("View projects", href: by_local_authority_all_local_authorities_projects_path(local_authority.code))
       end
     end
   end

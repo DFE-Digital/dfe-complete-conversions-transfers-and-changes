@@ -89,6 +89,7 @@ Rails.application.routes.draw do
           end
           namespace :local_authorities, path: "local-authorities" do
             get "/", to: "projects#index"
+            get ":local_authority_id", to: "projects#show", as: :by_local_authority
           end
         end
         namespace :team, path: "team" do
