@@ -26,7 +26,7 @@
               <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
               <td class="govuk-table__cell"><%= project.urn %></td>
               <td class="govuk-table__cell"><%= project.conversion_date.to_formatted_s(:govuk) %></td>
-              <td class="govuk-table__cell"><%= project.assigned_to.full_name %></td>
+              <td class="govuk-table__cell"><%= display_name(project.assigned_to) %></td>
               <td class="govuk-table__cell">
                 <a href="<%= project_path(project) %>">
                   <%= t("project.table.body.view_html", school_name: project.establishment.name) %>
