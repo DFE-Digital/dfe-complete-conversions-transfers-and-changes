@@ -23,6 +23,8 @@ en:
           title: All sponsored projects in progress
         voluntary:
           title: All voluntary projects in progress
+      by_trust:
+        title: All projects by trust
       completed:
         title: All completed projects
         sponsored:
@@ -151,10 +153,15 @@ en:
         school_type: School type
         academy_name: Academy name
         academy_urn: Academy URN
+        trust_name: Trust
+        group_identifier: Group identifier
+        conversion_count: Conversions
+        view_projects: View projects
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
+        view_projects_html: View projects <span class="govuk-visually-hidden">for %{trust_name}</span>
       in_progress:
         empty: There are no projects in progress.
       completed:
@@ -169,6 +176,9 @@ en:
         empty: There are no projects assigned to %{user}
       trust_ukprn:
         empty: There are no projects for %{trust}
+      by_trust:
+        empty: There are no trusts to view
+        caption: Table of trusts that have in-progress projects
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.

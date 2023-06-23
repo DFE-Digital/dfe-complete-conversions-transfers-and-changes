@@ -83,8 +83,9 @@ Rails.application.routes.draw do
           namespace :statistics do
             get "/", to: "projects#index"
           end
-          namespace :trust do
-            get ":trust_ukprn", to: "projects#by_trust", as: :by_trust
+          namespace :trusts do
+            get "/", to: "projects#index"
+            get ":trust_ukprn", to: "projects#show", as: :by_trust
           end
         end
         namespace :team, path: "team" do

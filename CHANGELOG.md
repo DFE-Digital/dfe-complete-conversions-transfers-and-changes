@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- A view, by trust, that shows the trusts that have in-progress projects in the
+  application and lists the projects.
+
 ### Changed
 
 - Users who do not have a recognised role can no longer add notes or contacts.

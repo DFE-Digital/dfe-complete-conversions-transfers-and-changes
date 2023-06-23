@@ -130,6 +130,7 @@ en:
       all_projects:
         in_progress: In progress
         opening: Opening
+        by_trust: By trust
         completed: Completed
         statistics: Statistics
       team_projects:

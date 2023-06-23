@@ -1,0 +1,29 @@
+<% if trusts.empty? %>
+  <%= govuk_inset_text(text: t("project.table.by_trust.empty")) %>
+<% else %>
+  <table class="govuk-table" name="projects_table" aria-label="Projects table">
+    <caption class="govuk-table__caption govuk-!-display-none"><%= t("project.table.by_trust.caption") %></caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.trust_name") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.group_identifier") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view_projects") %></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <% trusts.each do |trust| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-table__cell"><%= trust.name %></td>
+        <td class="govuk-table__cell"><%= trust.group_id %></td>
+        <td class="govuk-table__cell"><%= trust.conversion_count %></td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.view_projects_html", trust_name: trust.name), by_trust_all_trusts_projects_path(trust.ukprn) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= govuk_pagination(pagy: pager) %>

@@ -12,7 +12,7 @@ RSpec.feature "Users can view a list of projects for a given trust" do
     scenario "they see an empty message" do
       trust = build(:academies_api_trust)
 
-      visit by_trust_all_trust_projects_path(trust.ukprn)
+      visit by_trust_all_trusts_projects_path(trust.ukprn)
 
       expect(page).to have_content("Projects for #{trust.name}")
       expect(page).to have_content("There are no projects for #{trust.name}")
@@ -24,7 +24,7 @@ RSpec.feature "Users can view a list of projects for a given trust" do
       project = create(:conversion_project, incoming_trust_ukprn: 10060639)
       trust = build(:academies_api_trust, ukprn: project.incoming_trust_ukprn)
 
-      visit by_trust_all_trust_projects_path(10060639)
+      visit by_trust_all_trusts_projects_path(10060639)
 
       expect(page).to have_content("Projects for #{trust.name}")
       expect(page).to have_content(project.urn)
