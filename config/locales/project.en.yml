@@ -178,6 +178,7 @@ en:
         empty: There are no projects for %{trust}
       by_trust:
         empty: There are no trusts to view
+        caption: Table of trusts that have in-progress projects
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.
