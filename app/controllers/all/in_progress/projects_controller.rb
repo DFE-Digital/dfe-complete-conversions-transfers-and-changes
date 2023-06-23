@@ -9,7 +9,7 @@ class All::InProgress::ProjectsController < ApplicationController
 
   def voluntary
     authorize Project, :index?
-    @pager, @projects = pagy(Project.in_progress.voluntary.includes(:assigned_to))
+    @pager, @projects = pagy(Conversion::Project.in_progress.voluntary.includes(:assigned_to))
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)
@@ -17,7 +17,7 @@ class All::InProgress::ProjectsController < ApplicationController
 
   def sponsored
     authorize Project, :index?
-    @pager, @projects = pagy(Project.in_progress.sponsored.includes(:assigned_to))
+    @pager, @projects = pagy(Conversion::Project.in_progress.sponsored.includes(:assigned_to))
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

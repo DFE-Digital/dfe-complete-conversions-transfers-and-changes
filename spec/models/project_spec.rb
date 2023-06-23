@@ -108,20 +108,6 @@ RSpec.describe Project, type: :model do
     describe "#trust_sharepoint_link" do
       it { is_expected.to validate_presence_of :trust_sharepoint_link }
     end
-
-    describe "#directive_academy_order" do
-      it { is_expected.to allow_value(true).for(:directive_academy_order) }
-      it { is_expected.to allow_value(false).for(:directive_academy_order) }
-      it { is_expected.to_not allow_value(nil).for(:directive_academy_order) }
-
-      context "error messages" do
-        it "adds an appropriate error message if the value is nil" do
-          subject.assign_attributes(directive_academy_order: nil)
-          subject.valid?
-          expect(subject.errors[:directive_academy_order]).to include("Select directive academy order or academy order, whichever has been used for this conversion")
-        end
-      end
-    end
   end
 
   describe "#establishment" do
@@ -441,30 +427,6 @@ RSpec.describe Project, type: :model do
         second_users_projects = Project.assigned_to(second_user)
         expect(second_users_projects).to include(second_users_project)
         expect(second_users_projects).not_to include(first_users_project)
-      end
-    end
-
-    describe "#voluntary" do
-      it "returns only projects where directive_academy_order is false" do
-        mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, directive_academy_order: false)
-        sponsored_project = create(:conversion_project, directive_academy_order: true)
-        projects = Project.voluntary
-
-        expect(projects).to include(voluntary_project)
-        expect(projects).not_to include(sponsored_project)
-      end
-    end
-
-    describe "#sponsored" do
-      it "returns only projects where directive_academy_order is true" do
-        mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, directive_academy_order: false)
-        sponsored_project = create(:conversion_project, directive_academy_order: true)
-        projects = Project.sponsored
-
-        expect(projects).to include(sponsored_project)
-        expect(projects).not_to include(voluntary_project)
       end
     end
 

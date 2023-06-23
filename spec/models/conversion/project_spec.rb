@@ -25,6 +25,20 @@ RSpec.describe Conversion::Project do
         end
       end
     end
+
+    describe "#directive_academy_order" do
+      it { is_expected.to allow_value(true).for(:directive_academy_order) }
+      it { is_expected.to allow_value(false).for(:directive_academy_order) }
+      it { is_expected.to_not allow_value(nil).for(:directive_academy_order) }
+
+      context "error messages" do
+        it "adds an appropriate error message if the value is nil" do
+          subject.assign_attributes(directive_academy_order: nil)
+          subject.valid?
+          expect(subject.errors[:directive_academy_order]).to include("Select directive academy order or academy order, whichever has been used for this conversion")
+        end
+      end
+    end
   end
 
   describe "scopes" do
@@ -123,6 +137,30 @@ RSpec.describe Conversion::Project do
         expect(scoped_projects[0].id).to eq first_project.id
         expect(scoped_projects[1].id).to eq middle_project.id
         expect(scoped_projects[2].id).to eq last_project.id
+      end
+    end
+
+    describe "#voluntary" do
+      it "returns only projects where directive_academy_order is false" do
+        mock_successful_api_response_to_create_any_project
+        voluntary_project = create(:conversion_project, directive_academy_order: false)
+        sponsored_project = create(:conversion_project, directive_academy_order: true)
+        projects = Conversion::Project.voluntary
+
+        expect(projects).to include(voluntary_project)
+        expect(projects).not_to include(sponsored_project)
+      end
+    end
+
+    describe "#sponsored" do
+      it "returns only projects where directive_academy_order is true" do
+        mock_successful_api_response_to_create_any_project
+        voluntary_project = create(:conversion_project, directive_academy_order: false)
+        sponsored_project = create(:conversion_project, directive_academy_order: true)
+        projects = Conversion::Project.sponsored
+
+        expect(projects).to include(sponsored_project)
+        expect(projects).not_to include(voluntary_project)
       end
     end
   end

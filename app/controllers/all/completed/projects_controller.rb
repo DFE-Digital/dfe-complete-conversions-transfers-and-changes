@@ -12,7 +12,7 @@ class All::Completed::ProjectsController < ApplicationController
 
   def voluntary
     authorize Project, :index?
-    @pager, @projects = pagy(Project.completed.voluntary)
+    @pager, @projects = pagy(Conversion::Project.completed.voluntary)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)
@@ -20,7 +20,7 @@ class All::Completed::ProjectsController < ApplicationController
 
   def sponsored
     authorize Project, :index?
-    @pager, @projects = pagy(Project.completed.sponsored)
+    @pager, @projects = pagy(Conversion::Project.completed.sponsored)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

@@ -17,7 +17,6 @@ class Project < ApplicationRecord
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
   validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
-  validates :directive_academy_order, inclusion: {in: [true, false]}
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
@@ -28,8 +27,6 @@ class Project < ApplicationRecord
   belongs_to :assigned_to, class_name: "User", optional: true
 
   scope :conversions, -> { where(type: "Conversion::Project") }
-  scope :sponsored, -> { where(directive_academy_order: true) }
-  scope :voluntary, -> { where(directive_academy_order: false) }
 
   scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
   scope :not_completed, -> { where(completed_at: nil) }
