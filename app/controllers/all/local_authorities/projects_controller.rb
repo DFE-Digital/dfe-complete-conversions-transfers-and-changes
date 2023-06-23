@@ -4,7 +4,7 @@ class All::LocalAuthorities::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @local_authorities = ByLocalAuthorityProjectFetcherService.new.call
+    @pager, @local_authorities = pagy_array(ByLocalAuthorityProjectFetcherService.new.call)
   end
 
   def show

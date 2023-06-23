@@ -8,6 +8,6 @@
       <%= t("project.all.by_local_authority.title") %>
     </h1>
 
-    <%= render partial: "local_authority_table", locals: {local_authorities: @local_authorities} %>
+    <%= render partial: "local_authority_table", locals: {local_authorities: @local_authorities, pager: @pager} %>
   </div>
 </div>
