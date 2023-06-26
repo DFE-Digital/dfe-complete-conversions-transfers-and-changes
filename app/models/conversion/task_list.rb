@@ -9,8 +9,7 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::ConversionGrantTaskForm,
           Conversion::Task::SponsoredSupportGrantTaskForm,
           Conversion::Task::AcademyDetailsTaskForm,
-          Conversion::Task::FundingAgreementContactTaskForm,
-          Conversion::Task::RiskProtectionArrangementTaskForm
+          Conversion::Task::FundingAgreementContactTaskForm
         ]
       },
       {
@@ -34,6 +33,7 @@ class Conversion::TaskList < ::BaseTaskList
       {
         identifier: :get_ready_for_opening,
         tasks: [
+          Conversion::Task::RiskProtectionArrangementTaskForm,
           Conversion::Task::SingleWorksheetTaskForm,
           Conversion::Task::SchoolCompletedTaskForm,
           Conversion::Task::ConditionsMetTaskForm,

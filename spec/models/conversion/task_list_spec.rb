@@ -12,7 +12,6 @@ RSpec.describe Conversion::TaskList do
         :sponsored_support_grant,
         :academy_details,
         :funding_agreement_contact,
-        :risk_protection_arrangement,
         :land_questionnaire,
         :land_registry,
         :supplemental_funding_agreement,
@@ -26,6 +25,7 @@ RSpec.describe Conversion::TaskList do
         :subleases,
         :tenancy_at_will,
         :commercial_transfer_agreement,
+        :risk_protection_arrangement,
         :single_worksheet,
         :school_completed,
         :conditions_met,
@@ -51,8 +51,7 @@ RSpec.describe Conversion::TaskList do
               Conversion::Task::ConversionGrantTaskForm,
               Conversion::Task::SponsoredSupportGrantTaskForm,
               Conversion::Task::AcademyDetailsTaskForm,
-              Conversion::Task::FundingAgreementContactTaskForm,
-              Conversion::Task::RiskProtectionArrangementTaskForm
+              Conversion::Task::FundingAgreementContactTaskForm
             ]
           },
           {
@@ -77,6 +76,7 @@ RSpec.describe Conversion::TaskList do
           {
             identifier: :get_ready_for_opening,
             tasks: [
+              Conversion::Task::RiskProtectionArrangementTaskForm,
               Conversion::Task::SingleWorksheetTaskForm,
               Conversion::Task::SchoolCompletedTaskForm,
               Conversion::Task::ConditionsMetTaskForm,
