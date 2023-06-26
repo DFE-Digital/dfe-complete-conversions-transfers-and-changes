@@ -87,6 +87,10 @@ Rails.application.routes.draw do
             get "/", to: "projects#index"
             get ":trust_ukprn", to: "projects#show", as: :by_trust
           end
+          namespace :local_authorities, path: "local-authorities" do
+            get "/", to: "projects#index"
+            get ":local_authority_id", to: "projects#show", as: :by_local_authority
+          end
         end
         namespace :team, path: "team" do
           get "in-progress", to: "projects#in_progress"

@@ -33,6 +33,8 @@ en:
           title: All voluntary completed projects
       trust_ukprn:
           title: Projects for %{trust}
+      by_local_authority:
+        title: All projects by local authority
     team:
       in_progress:
         title: In progress
@@ -157,11 +159,15 @@ en:
         group_identifier: Group identifier
         conversion_count: Conversions
         view_projects: View projects
+        local_authority_name: Local authority
+        local_authority_code: Code
+        conversion_count: Conversions
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
         view_projects_html: View projects <span class="govuk-visually-hidden">for %{trust_name}</span>
+        view_projects_for_local_authority_html: View projects<span class="govuk-visually-hidden"> for %{local_authority_name}</span>
       in_progress:
         empty: There are no projects in progress.
       completed:
@@ -179,6 +185,9 @@ en:
       by_trust:
         empty: There are no trusts to view
         caption: Table of trusts that have in-progress projects
+      by_local_authority:
+        empty: There are no local authorities with projects
+        caption: Table of local authorities that have in-progress projects
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.
