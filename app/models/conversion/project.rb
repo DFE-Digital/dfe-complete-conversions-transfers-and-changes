@@ -6,6 +6,7 @@ class Conversion::Project < Project
   validates :academy_urn, urn: true, if: -> { academy_urn.present? }
   validates :conversion_date, presence: true
   validates :conversion_date, first_day_of_month: true
+  validates :directive_academy_order, inclusion: {in: [true, false]}
 
   scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :with_academy_urn, -> { where.not(academy_urn: nil) }
@@ -15,6 +16,9 @@ class Conversion::Project < Project
   scope :opening_by_month_year, ->(month, year) { includes(:tasks_data).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
   scope :by_conversion_date, -> { order(conversion_date: :asc) }
   scope :in_progress, -> { where(completed_at: nil).assigned.by_conversion_date }
+
+  scope :sponsored, -> { where(directive_academy_order: true) }
+  scope :voluntary, -> { where(directive_academy_order: false) }
 
   has_many :conversion_dates, dependent: :destroy, class_name: "Conversion::DateHistory"
 
