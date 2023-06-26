@@ -26,6 +26,7 @@ RSpec.feature "Users can complete conversion tasks" do
     stakeholder_kick_off
     academy_details
     funding_agreement_contact
+    risk_protection_arrangement
   ]
 
   it "confirms we are checking all tasks" do
@@ -135,6 +136,42 @@ RSpec.feature "Users can complete conversion tasks" do
         click_link "add a contact"
         expect(page.current_path).to include("external-contacts")
       end
+    end
+  end
+
+  describe "the risk protection arrangement task" do
+    before do
+      visit project_conversion_tasks_path(project)
+      click_on "Confirm the academy's risk protection arrangements"
+    end
+
+    scenario "the response can be stanard" do
+      choose "Yes, joining standard RPA"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.risk_protection_arrangement_option).to eq "standard"
+    end
+
+    scenario "the response can be church or trust" do
+      choose "Yes, joining church or trust RPA"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.risk_protection_arrangement_option).to eq "church_or_trust"
+    end
+
+    scenario "the response can be commercial" do
+      choose "No, buying commercial insurance"
+      expect(page).to have_content("insurance no later than 11.59pm")
+
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.risk_protection_arrangement_option).to eq "commercial"
+    end
+
+    scenario "the response can be blank" do
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.risk_protection_arrangement_option).to be_nil
     end
   end
 
