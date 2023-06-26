@@ -292,5 +292,14 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Academy name")
       expect(csv_export).to include("New Academy")
     end
+
+    it "returns an empty string when there is no academy" do
+      project = build(:conversion_project)
+      allow(project).to receive(:academy).and_return(nil)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Academy name")
+    end
   end
 end

@@ -65,7 +65,7 @@ class OpeningProjectsCsvExporter
       mp_address_postcode: mp_details.address.postcode,
       approval_date: project.advisory_board_date.to_formatted_s(:csv),
       project_lead: project.assigned_to.full_name,
-      academy_name: project.academy.name
+      academy_name: project.academy&.name
     }
   end
 
