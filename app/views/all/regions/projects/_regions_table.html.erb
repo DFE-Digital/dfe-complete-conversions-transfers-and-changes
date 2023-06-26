@@ -1,0 +1,21 @@
+<% if regions.empty? %>
+  <%= govuk_inset_text(text: t("project.table.by_region.empty")) %>
+<% else %>
+  <table class="govuk-table" name="projects_table" aria-label="Projects table">
+    <caption class="govuk-table__caption govuk-!-display-none"><%= t("project.table.by_region.caption") %></caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.region") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <% regions.each do |region| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-table__cell"><%= t("project.region.#{region.name}") %></td>
+        <td class="govuk-table__cell"><%= region.conversion_count %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

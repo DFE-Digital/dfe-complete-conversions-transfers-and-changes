@@ -35,6 +35,9 @@ en:
           title: Projects for %{trust}
       by_local_authority:
         title: All projects by local authority
+      by_region:
+        title: All projects by region
+        title_with_region: Projects for %{region} region
     team:
       in_progress:
         title: In progress
@@ -162,12 +165,14 @@ en:
         local_authority_name: Local authority
         local_authority_code: Code
         conversion_count: Conversions
+        region: Region
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
         view_projects_html: View projects <span class="govuk-visually-hidden">for %{trust_name}</span>
         view_projects_for_local_authority_html: View projects<span class="govuk-visually-hidden"> for %{local_authority_name}</span>
+        view_projects_for_html: View projects<span class="govuk-visually-hidden"> for %{entity}</span>
       in_progress:
         empty: There are no projects in progress.
       completed:
@@ -188,6 +193,9 @@ en:
       by_local_authority:
         empty: There are no local authorities with projects
         caption: Table of local authorities that have in-progress projects
+      by_region:
+        empty: There are no regions with projects
+        caption: Table of regions that have in-progress projects
     openers:
       title: Academies opening in %{date}
       subtitle: Schools that are expected to become academies.

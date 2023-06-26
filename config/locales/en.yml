@@ -132,6 +132,7 @@ en:
         opening: Opening
         by_trust: By trust
         by_local_authority: By local authority
+        by_region: By region
         completed: Completed
         statistics: Statistics
       team_projects:
