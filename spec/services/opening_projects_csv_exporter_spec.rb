@@ -40,6 +40,28 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Conversion")
     end
 
+    context "a voluntary project" do
+      it "returns a csv with the project route" do
+        project = build(:conversion_project)
+
+        csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+        expect(csv_export).to include("Route")
+        expect(csv_export).to include("Voluntary")
+      end
+    end
+
+    context "a sponsored project" do
+      it "returns a csv with the project route" do
+        project = build(:conversion_project, :sponsored)
+
+        csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+        expect(csv_export).to include("Route")
+        expect(csv_export).to include("Sponsored")
+      end
+    end
+
     it "returns a csv with the project conversion date" do
       project = build(:conversion_project, conversion_date: Date.new(2025, 5, 1))
 
@@ -257,6 +279,18 @@ RSpec.describe OpeningProjectsCsvExporter do
 
       csv_export = OpeningProjectsCsvExporter.new([project]).call
       expect(csv_export.encoding.name).to eq("UTF-8")
+    end
+
+    it "returns a csv with the new academy name" do
+      establishment = build(:academies_api_establishment)
+      allow(establishment).to receive(:name).and_return("New Academy")
+      project = build(:conversion_project)
+      allow(project).to receive(:academy).and_return(establishment)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+      expect(csv_export).to include("Academy name")
+      expect(csv_export).to include("New Academy")
     end
   end
 end
