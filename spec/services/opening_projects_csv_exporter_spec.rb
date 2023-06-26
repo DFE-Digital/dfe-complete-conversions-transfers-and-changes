@@ -244,5 +244,19 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Project lead")
       expect(csv_export).to include("Joe Bloggs")
     end
+
+    it "prepends a BOM to the file" do
+      project = build(:conversion_project, urn: 654321)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+      expect(csv_export.chr).to eq("\uFEFF")
+    end
+
+    it "sends the file in UTF-8 encoding" do
+      project = build(:conversion_project, urn: 654321)
+
+      csv_export = OpeningProjectsCsvExporter.new([project]).call
+      expect(csv_export.encoding.name).to eq("UTF-8")
+    end
   end
 end

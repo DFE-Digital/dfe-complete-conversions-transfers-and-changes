@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Enforce UTF-8 encoding in the CSV download via a BOM (byte order mark) and by
+  generating the CSV file in UTF-8
+
 ## [Release 29][release-29]
 
 ### Added

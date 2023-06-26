@@ -8,7 +8,7 @@ class OpeningProjectsCsvExporter
   end
 
   def call
-    @csv = CSV.generate(headers: true) do |csv|
+    @csv = CSV.generate("\uFEFF", headers: true, encoding: "UTF-8") do |csv|
       csv << headers
       @projects.each do |project|
         csv << row(project).values
