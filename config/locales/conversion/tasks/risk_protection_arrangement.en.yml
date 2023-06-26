@@ -1,0 +1,19 @@
+en:
+  conversion:
+    task:
+      risk_protection_arrangement:
+        title: Confirm the academy's risk protection arrangements
+        hint:
+          html: <p>The RPA (risk protection arrangement) is an alternative to commercial insurance. It may save the academy time and money.</p>
+            <p>An academy must join the RPA or have commercially available insurance in place in order to open.</p>
+
+        option:
+          title: Is the academy joining the RPA?
+          responses:
+            standard: Yes, joining standard RPA
+            church_or_trust: Yes, joining church or trust RPA
+            commercial:
+              option: No, buying commercial insurance
+              hint_html:
+                <p>If they do not join the RPA the academy must buy commercial insurance no later than 11.59pm the day before it opens.</p>
+                <p>Any commercial insurance policy must begin to cover the academy no later than midnight on the day the academy opens.</p>

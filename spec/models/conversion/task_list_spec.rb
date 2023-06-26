@@ -12,6 +12,7 @@ RSpec.describe Conversion::TaskList do
         :sponsored_support_grant,
         :academy_details,
         :funding_agreement_contact,
+        :risk_protection_arrangement,
         :land_questionnaire,
         :land_registry,
         :supplemental_funding_agreement,
@@ -50,7 +51,8 @@ RSpec.describe Conversion::TaskList do
               Conversion::Task::ConversionGrantTaskForm,
               Conversion::Task::SponsoredSupportGrantTaskForm,
               Conversion::Task::AcademyDetailsTaskForm,
-              Conversion::Task::FundingAgreementContactTaskForm
+              Conversion::Task::FundingAgreementContactTaskForm,
+              Conversion::Task::RiskProtectionArrangementTaskForm
             ]
           },
           {
@@ -110,7 +112,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 26
+      expect(task_list.tasks.count).to eql 27
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
     end

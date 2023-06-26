@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add Route and Academy name to the CSV export
 - A view, by local authority, that shows the local authorities that have
   in-progress projects in the applicaiton and list those projects.
+- The risk protection arrangement task (RPA) to the conversion task list.
 
 ### Changed
 
