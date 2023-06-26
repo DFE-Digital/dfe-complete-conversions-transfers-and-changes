@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 30][release-30]
+
+### Added
+
 - A view, by trust, that shows the trusts that have in-progress projects in the
   application and lists the projects.
 - Add Route and Academy name to the CSV export
@@ -1000,7 +1008,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-29...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-30...HEAD
+[release-30]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-29...release-30
 [release-29]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-28...release-29
 [release-28]:
