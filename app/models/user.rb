@@ -16,6 +16,22 @@ class User < ApplicationRecord
 
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
+  enum :team, {
+    london: "london",
+    south_east: "south_east",
+    yorkshire_and_the_humber: "yorkshire_and_the_humber",
+    north_west: "north_west",
+    east_of_england: "east_of_england",
+    west_midlands: "west_midlands",
+    north_east: "north_east",
+    south_west: "south_west",
+    east_midlands: "east_midlands",
+    regional_casework_services: "regional_casework_services",
+    service_support: "service_support",
+    academies_operational_practice_unit: "academies_operational_practice_unit",
+    education_and_skills_funding_agency: "education_and_skills_funding_agency"
+  }, suffix: true
+
   def full_name
     "#{first_name} #{last_name}"
   end

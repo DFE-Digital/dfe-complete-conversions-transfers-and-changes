@@ -10,6 +10,7 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:caseworker).of_type :boolean }
     it { is_expected.to have_db_column(:service_support).of_type :boolean }
     it { is_expected.to have_db_column(:active_directory_user_group_ids).of_type :string }
+    it { is_expected.to have_db_column(:team).of_type :string }
   end
 
   describe "scopes" do
@@ -96,6 +97,14 @@ RSpec.describe User do
       user = create(:user)
 
       expect(user.has_role?).to be false
+    end
+  end
+
+  describe "#team" do
+    it "uses the enum suffix as expected" do
+      user = create(:user, team: "london")
+
+      expect(user.london_team?).to be true
     end
   end
 end
