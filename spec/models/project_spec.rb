@@ -20,6 +20,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
     it { is_expected.to have_db_column(:region).of_type :string }
     it { is_expected.to have_db_column(:academy_urn).of_type :integer }
+    it { is_expected.to have_db_column(:team).of_type :string }
   end
 
   describe "Relationships" do
@@ -501,6 +502,14 @@ RSpec.describe Project, type: :model do
       it "returns nil" do
         expect(subject.director_of_child_services).to be_nil
       end
+    end
+  end
+
+  describe "#team" do
+    subject { described_class.new(team: "regional_casework_services") }
+
+    it "uses the enum suffix as intended" do
+      expect(subject.regional_casework_services_team?).to be true
     end
   end
 end
