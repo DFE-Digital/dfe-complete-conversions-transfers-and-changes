@@ -97,6 +97,7 @@ Rails.application.routes.draw do
           end
           namespace :users do
             get "/", to: "projects#index"
+            get ":user_id", to: "projects#show", as: :by_user, constraints: {user_id: VALID_UUID_REGEX}
           end
         end
         namespace :team, path: "team" do
@@ -114,7 +115,6 @@ Rails.application.routes.draw do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
           get "added-by", to: "projects#added_by"
-          get ":user_id", to: "projects#by_user", as: :by_user
         end
 
         namespace :service_support, path: "service-support" do

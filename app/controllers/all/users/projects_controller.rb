@@ -6,4 +6,14 @@ class All::Users::ProjectsController < ApplicationController
     authorize Project, :index?
     @users = ByUserProjectFetcherService.new.call
   end
+
+  def show
+    authorize Project, :index?
+    @user = User.find(user_id)
+    @projects = Project.not_completed.assigned_to(@user)
+  end
+
+  private def user_id
+    params[:user_id]
+  end
 end

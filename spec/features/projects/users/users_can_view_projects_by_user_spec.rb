@@ -17,7 +17,7 @@ RSpec.feature "Users can view a list users" do
   end
 
   context "when there are projects to fetch users for" do
-    scenario "they see the user and a count of projects" do
+    scenario "they see the user and a count of projects with a link" do
       create(:conversion_project, assigned_to: user)
 
       visit all_users_projects_path
@@ -25,6 +25,7 @@ RSpec.feature "Users can view a list users" do
       within("tbody > tr:first-child") do
         expect(page).to have_content(user.full_name)
         expect(page).to have_content("1")
+        expect(page).to have_link("View projects", href: by_user_all_users_projects_path(user))
       end
     end
   end
