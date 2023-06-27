@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Add a rake task to update the `team` attribute on all existing users
+
 ### Changed
 
 ### Fixed
