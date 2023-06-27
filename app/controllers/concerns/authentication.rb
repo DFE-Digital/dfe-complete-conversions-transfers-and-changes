@@ -14,14 +14,14 @@ module Authentication
   private def current_user
     return unless user_authenticated?
 
-    @current_user ||= User.find(user_id)
+    @current_user ||= User.find(current_user_id)
   end
 
   private def user_authenticated?
-    user_id.present?
+    current_user_id.present?
   end
 
-  private def user_id
+  private def current_user_id
     session[:user_id]
   end
 end
