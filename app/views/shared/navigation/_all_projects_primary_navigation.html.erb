@@ -14,6 +14,8 @@
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_region"), path: all_regions_projects_path, namespace: "/projects/all/regions"} %>
 
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_user"), path: all_users_projects_path, namespace: "/projects/all/users"} %>
+
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_trust"), path: all_trusts_projects_path, namespace: "/projects/all/trusts"} %>
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_local_authority"), path: all_local_authorities_projects_path, namespace: "/projects/all/local-authorities"} %>

@@ -186,7 +186,7 @@ en:
       with_academy_urn:
         empty: There are no conversions with an academy URN
       by_user:
-        empty: There are no projects assigned to %{user}
+        empty: There are no users with projects
       trust_ukprn:
         empty: There are no projects for %{trust}
       by_trust:

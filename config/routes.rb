@@ -95,6 +95,9 @@ Rails.application.routes.draw do
             get "/", to: "projects#index"
             get ":region_id", to: "projects#show", as: :by_region
           end
+          namespace :users do
+            get "/", to: "projects#index"
+          end
         end
         namespace :team, path: "team" do
           get "in-progress", to: "projects#in_progress"

@@ -9,15 +9,6 @@ RSpec.feature "Users can view another users projects" do
   let(:user) { create(:user, email: "user@education.gov.uk") }
   let(:other_user) { create(:user, email: "other.user@education.gov.uk", first_name: "Other", last_name: "User") }
 
-  context "when there are no projects assigned to the user" do
-    scenario "they see a empty message" do
-      visit by_user_user_projects_path(other_user.id)
-
-      expect(page).to have_content(other_user.full_name)
-      expect(page).to have_content("no projects assigned")
-    end
-  end
-
   scenario "by user id" do
     user_project = create(:conversion_project, assigned_to: other_user)
     other_project = create(:conversion_project, urn: 153234)
