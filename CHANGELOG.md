@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The opening view no longer shows the status of the direction to transfer or
   trust modification order tasks.
+- The all conditions met column on the opening view is no longer shown as a
+  coloured tag and is one of Yes or Not yet.
 
 ### Fixed
 

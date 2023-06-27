@@ -42,13 +42,12 @@ module ProjectHelper
     link_to(t("project_information.show.trust_details.rows.view_companies_house"), "https://find-and-update.company-information.service.gov.uk/company/#{companies_house_number}", target: :_blank)
   end
 
-  def all_conditions_met_tag(project)
-    tag = if project.all_conditions_met?
-      govuk_tag(text: "confirmed", colour: "turquoise")
+  def all_conditions_met_value(project)
+    if project.all_conditions_met?
+      "Yes"
     else
-      govuk_tag(text: "unconfirmed", colour: "blue")
+      "Not yet"
     end
-    tag.to_s.html_safe
   end
 
   def address_markup(address)

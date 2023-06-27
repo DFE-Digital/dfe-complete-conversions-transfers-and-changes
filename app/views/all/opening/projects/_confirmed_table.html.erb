@@ -17,7 +17,7 @@
         <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
         <td class="govuk-table__cell"><%= project.urn %></td>
         <td class="govuk-table__cell"><%= t("project.openers.route.#{project.route}") %></td>
-        <td class="govuk-table__cell"><%= all_conditions_met_tag(project) %></td>
+        <td class="govuk-table__cell"><%= all_conditions_met_value(project) %></td>
        <td class="govuk-table__cell">
          <a href="<%= project_path(project) %>">
            <%= t("project.table.body.view_html", school_name: project.establishment.name) %>
