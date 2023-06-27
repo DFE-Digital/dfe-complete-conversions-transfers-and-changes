@@ -25,6 +25,7 @@ RSpec.feature "Users can view a list regions that have projects" do
       within("tbody > tr:first-child") do
         expect(page).to have_content("North West")
         expect(page).to have_content("1")
+        expect(page).to have_link("View projects", href: by_region_all_regions_projects_path("north_west"))
       end
     end
   end
