@@ -8,6 +8,6 @@
       <%= t("project.all.by_user.title") %>
     </h1>
 
-    <%= render partial: "users_table", locals: {users: @users} %>
+    <%= render partial: "users_table", locals: {users: @users, pager: @pager} %>
   </div>
 </div>

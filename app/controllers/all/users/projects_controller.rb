@@ -4,7 +4,7 @@ class All::Users::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @users = ByUserProjectFetcherService.new.call
+    @pager, @users = pagy_array(ByUserProjectFetcherService.new.call)
   end
 
   def show
