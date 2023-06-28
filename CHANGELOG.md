@@ -57,6 +57,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `/projects/team/in-progress`
 - Content updated in trust modification order task. Checkbox descriptions now
   accurate. Additional clarifications added to guidance.
+- Content updated in direction to transfer task. Checbox descriptions now
+  accurate. Additional clarifications added to guidance.
 
 ### Fixed
 
