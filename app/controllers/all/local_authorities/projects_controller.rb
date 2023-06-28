@@ -10,13 +10,17 @@ class All::LocalAuthorities::ProjectsController < ApplicationController
   def show
     authorize Project, :index?
     @local_authority = LocalAuthority.find_by!(code: local_authority_code)
-    @projects = Project.not_completed.to_a.select { |p| p.establishment.local_authority_code == local_authority_code }
-
-    pre_fetch_establishments(@projects)
+    @projects = projects_for_local_authority(local_authority_code)
   end
 
   private def local_authority_code
     params[:local_authority_id]
+  end
+
+  private def projects_for_local_authority(local_authority_code)
+    projects = Project.not_completed
+    pre_fetch_establishments(projects)
+    @projects = projects.to_a.select { |p| p.establishment.local_authority_code == local_authority_code }
   end
 
   private def pre_fetch_establishments(projects)
