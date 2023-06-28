@@ -6,7 +6,7 @@ class EstablishmentsFetcherService
 
   def call!
     return unless @projects&.any?
-    raise ArgumentError unless @projects.is_a?(ActiveRecord::Relation)
+    raise ArgumentError.new("You must pass in the result of an ActiveRecord query (ActiveRecord::Relation)") unless @projects.is_a?(ActiveRecord::Relation)
 
     @projects.in_batches(of: 20) do |batch_of_projects|
       urns = batch_of_projects.pluck(:urn)
