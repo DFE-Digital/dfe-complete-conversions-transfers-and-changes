@@ -132,6 +132,8 @@ class Conversion::CreateProjectForm
     assigned_to = assigned_to_regional_caseworker_team ? nil : user
     assigned_at = assigned_to_regional_caseworker_team ? nil : DateTime.now
 
+    team = assigned_to_regional_caseworker_team ? "regional_casework_services" : Project.teams[Project.regions.key(region)]
+
     @project = Conversion::Project.new(
       urn: urn,
       incoming_trust_ukprn: incoming_trust_ukprn,
@@ -142,6 +144,7 @@ class Conversion::CreateProjectForm
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
       assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
+      team: team,
       assigned_to: assigned_to,
       assigned_at: assigned_at,
       directive_academy_order: directive_academy_order,

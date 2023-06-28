@@ -34,6 +34,11 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
 
         expect(project.assigned_to).to be_nil
       end
+
+      it "sets the team attribute on the project to regional_casework_services" do
+        project = build(:create_project_form, assigned_to_regional_caseworker_team: true).save
+        expect(project.team).to eq("regional_casework_services")
+      end
     end
 
     context "when the project is NOT being assigned to the Regional Caseworker Team" do
@@ -56,6 +61,11 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         freeze_time
         project = build(:create_project_form, assigned_to_regional_caseworker_team: false).save
         expect(project.assigned_at).to eq DateTime.now
+      end
+
+      it "sets the team attribute on the project to the region of the establishment" do
+        project = build(:create_project_form, assigned_to_regional_caseworker_team: false).save
+        expect(project.team).to eq("west_midlands")
       end
     end
 
