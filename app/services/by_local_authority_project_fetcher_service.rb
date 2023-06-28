@@ -12,7 +12,7 @@ class ByLocalAuthorityProjectFetcherService
   private def conversions_count_by_local_authority
     projects = Project.not_completed.select(:id, :urn)
 
-    EstablishmentsFetcher.new.call(projects)
+    EstablishmentsFetcherService.new(projects).call!
 
     projects.group_by { |p| p.establishment.local_authority_code }
   end

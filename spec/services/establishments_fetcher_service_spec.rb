@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe EstablishmentsFetcher do
+RSpec.describe EstablishmentsFetcherService do
   describe "#call" do
     it "fetches the establishments and updates the projects" do
       api_client = Api::AcademiesApi::Client.new
@@ -11,7 +11,7 @@ RSpec.describe EstablishmentsFetcher do
 
       create(:conversion_project, establishment: nil)
       projects = Project.all
-      described_class.new.call(projects)
+      described_class.new(projects).call!
 
       expect(projects.first.establishment).not_to be_nil
     end
@@ -26,7 +26,7 @@ RSpec.describe EstablishmentsFetcher do
 
         create_list(:conversion_project, 6)
         projects = Project.all
-        described_class.new.call(projects)
+        described_class.new(projects).call!
 
         expect(api_client).to have_received(:get_establishments).exactly(1).times
       end
@@ -42,7 +42,7 @@ RSpec.describe EstablishmentsFetcher do
         create_list(:conversion_project, 21)
 
         projects = Project.all
-        described_class.new.call(projects)
+        described_class.new(projects).call!
 
         expect(api_client).to have_received(:get_establishments).exactly(2).times
       end
@@ -51,15 +51,15 @@ RSpec.describe EstablishmentsFetcher do
     it "raises unless an ActiveRecord relation is passed in" do
       project = build(:conversion_project)
 
-      expect { described_class.new.call([project]) }.to raise_error(ArgumentError)
+      expect { described_class.new([project]).call! }.to raise_error(ArgumentError)
     end
 
     it "returns nil if passed nil" do
-      expect(described_class.new.call(nil)).to be_nil
+      expect(described_class.new(nil).call!).to be_nil
     end
 
     it "returns nil if there are no projects" do
-      expect(described_class.new.call([])).to be_nil
+      expect(described_class.new([]).call!).to be_nil
     end
   end
 end
