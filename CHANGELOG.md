@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add a rake task to update the `team` attribute on all existing users
+- Added a view, by region, that shows the region with in-progress projects
+- By region view links to the projects in that region
 
 ### Changed
 
