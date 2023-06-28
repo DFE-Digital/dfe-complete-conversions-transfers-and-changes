@@ -388,9 +388,9 @@ RSpec.describe Project, type: :model do
     describe "assigned_to_regional_casework_team scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "returns projects which have `assigned_to_regional_casework_team` set to `true`" do
-        assigned_project = create(:conversion_project, assigned_to_regional_caseworker_team: true)
-        unassigned_project = create(:conversion_project, assigned_to_regional_caseworker_team: false)
+      it "returns projects which are in the `regional_casework_services` team" do
+        assigned_project = create(:conversion_project, team: "regional_casework_services")
+        unassigned_project = create(:conversion_project, team: "london")
 
         projects = Project.assigned_to_regional_caseworker_team
         expect(projects).to include(assigned_project)
@@ -402,8 +402,8 @@ RSpec.describe Project, type: :model do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "returns projects which have `assigned_to_regional_casework_team` set to `false`" do
-        not_assigned_to_regional_caseworker = create(:conversion_project, assigned_to_regional_caseworker_team: false)
-        assigned_to_regional_caseworker = create(:conversion_project, assigned_to_regional_caseworker_team: true)
+        not_assigned_to_regional_caseworker = create(:conversion_project, team: "west_midlands")
+        assigned_to_regional_caseworker = create(:conversion_project, team: "regional_casework_services")
 
         projects = Project.not_assigned_to_regional_caseworker_team
         expect(projects).to include(not_assigned_to_regional_caseworker)

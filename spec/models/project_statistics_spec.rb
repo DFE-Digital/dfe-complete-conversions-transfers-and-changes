@@ -49,11 +49,11 @@ RSpec.describe ProjectStatistics, type: :model do
   end
 
   describe "Regional casework services projects" do
-    let!(:voluntary_in_progress_project_with_regional_casework_services_1) { create(:conversion_project, assigned_to_regional_caseworker_team: true, completed_at: nil) }
-    let!(:voluntary_completed_project_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: true, completed_at: Date.today + 2.years) }
-    let!(:sponsored_in_progress_project_with_regional_casework_services_1) { create(:conversion_project, :sponsored, assigned_to_regional_caseworker_team: true, completed_at: nil) }
-    let!(:sponsored_completed_project_with_regional_casework_services_2) { create(:conversion_project, :sponsored, assigned_to_regional_caseworker_team: true, completed_at: Date.today + 2.years) }
-    let!(:unassigned_projects_with_regional_casework_services) { create(:conversion_project, assigned_to_regional_caseworker_team: true, assigned_to: nil) }
+    let!(:voluntary_in_progress_project_with_regional_casework_services_1) { create(:conversion_project, team: "regional_casework_services", completed_at: nil) }
+    let!(:voluntary_completed_project_with_regional_casework_services_2) { create(:conversion_project, team: "regional_casework_services", completed_at: Date.today + 2.years) }
+    let!(:sponsored_in_progress_project_with_regional_casework_services_1) { create(:conversion_project, :sponsored, team: "regional_casework_services", completed_at: nil) }
+    let!(:sponsored_completed_project_with_regional_casework_services_2) { create(:conversion_project, :sponsored, team: "regional_casework_services", completed_at: Date.today + 2.years) }
+    let!(:unassigned_projects_with_regional_casework_services) { create(:conversion_project, team: "regional_casework_services", assigned_to: nil) }
 
     describe "#total_projects_with_regional_casework_services" do
       it "returns the total number of all projects within regional casework services" do
@@ -93,11 +93,11 @@ RSpec.describe ProjectStatistics, type: :model do
   end
 
   describe "Regional projects that are not with regional casework services" do
-    let!(:voluntary_in_progress_project_not_with_regional_casework_services_1) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil) }
-    let!(:voluntary_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years) }
-    let!(:sponsored_in_progress_project_not_with_regional_casework_services_1) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: nil, directive_academy_order: true) }
-    let!(:sponsored_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, assigned_to_regional_caseworker_team: false, completed_at: Date.today + 2.years, directive_academy_order: true) }
-    let!(:unassigned_project_not_with_regional_casework_services) { create(:conversion_project, assigned_to_regional_caseworker_team: false, assigned_to: nil) }
+    let!(:voluntary_in_progress_project_not_with_regional_casework_services_1) { create(:conversion_project, team: "london", completed_at: nil) }
+    let!(:voluntary_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, team: "london", completed_at: Date.today + 2.years) }
+    let!(:sponsored_in_progress_project_not_with_regional_casework_services_1) { create(:conversion_project, team: "london", completed_at: nil, directive_academy_order: true) }
+    let!(:sponsored_completed_project_not_with_regional_casework_services_2) { create(:conversion_project, team: "london", completed_at: Date.today + 2.years, directive_academy_order: true) }
+    let!(:unassigned_project_not_with_regional_casework_services) { create(:conversion_project, team: "london", assigned_to: nil) }
 
     describe "#total_projects_not_with_regional_casework_services" do
       it "returns the total number of projects not with regional casework services" do
