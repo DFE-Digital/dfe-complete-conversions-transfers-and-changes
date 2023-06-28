@@ -59,12 +59,11 @@ module AcademiesApiHelpers
 
   def mock_pre_fetched_api_responses_for_any_establishment_and_trust
     fake_establishment_fetcher = double(EstablishmentsFetcher)
-    fake_trust_fetcher = double(IncomingTrustsFetcher)
+    fake_trust_fetcher = double(TrustsFetcherService)
     allow(EstablishmentsFetcher).to receive(:new).and_return(fake_establishment_fetcher)
-    allow(IncomingTrustsFetcher).to receive(:new).and_return(fake_establishment_fetcher)
-
+    allow(TrustsFetcherService).to receive(:new).and_return(fake_trust_fetcher)
     allow(fake_establishment_fetcher).to receive(:call).and_return([])
-    allow(fake_trust_fetcher).to receive(:call).and_return([])
+    allow(fake_trust_fetcher).to receive(:call!).and_return([])
   end
 
   def mock_timeout_api_responses(urn:, ukprn:)

@@ -4,7 +4,7 @@ class Conversions::ProjectsController < ProjectsController
     @pagy, @projects = pagy(Project.conversions.in_progress)
 
     EstablishmentsFetcher.new.call(@projects)
-    IncomingTrustsFetcher.new.call(@projects)
+    TrustsFetcherService.new(@projects).call!
 
     render "/conversions/index"
   end

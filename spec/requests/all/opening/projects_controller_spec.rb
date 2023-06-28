@@ -44,11 +44,11 @@ RSpec.describe All::Opening::ProjectsController, type: :request do
         end
 
         allow(EstablishmentsFetcher).to receive(:new).and_return(mock_establishments_fetcher)
-        allow(IncomingTrustsFetcher).to receive(:new).and_return(mock_trusts_fetcher)
+        allow(TrustsFetcherService).to receive(:new).and_return(mock_trusts_fetcher)
       end
 
       let(:mock_establishments_fetcher) { double(EstablishmentsFetcher, call: true) }
-      let(:mock_trusts_fetcher) { double(IncomingTrustsFetcher, call: true) }
+      let(:mock_trusts_fetcher) { double(TrustsFetcherService, call!: true) }
 
       it "shows a page title with the month & year" do
         get confirmed_all_opening_projects_path(1, 2022)
