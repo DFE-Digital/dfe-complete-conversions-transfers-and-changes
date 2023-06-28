@@ -29,13 +29,13 @@ RSpec.feature "Viewing regional casework services projects" do
       mock_pre_fetched_api_responses_for_any_establishment_and_trust
     end
 
-    let!(:completed_regional_project) { create(:conversion_project, urn: 126041, assigned_to_regional_caseworker_team: false, completed_at: Date.yesterday) }
-    let!(:in_progress_regional_project) { create(:conversion_project, urn: 126041, assigned_to_regional_caseworker_team: false, assigned_to: user) }
+    let!(:completed_regional_project) { create(:conversion_project, urn: 126041, team: "london", completed_at: Date.yesterday) }
+    let!(:in_progress_regional_project) { create(:conversion_project, urn: 126041, team: "london", assigned_to: user) }
 
-    let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday, assigned_to_regional_caseworker_team: true, assigned_to: user) }
-    let!(:in_progress_project) { create(:conversion_project, urn: 115652, assigned_to_regional_caseworker_team: true, assigned_to: user) }
+    let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday, team: "regional_casework_services", assigned_to: user) }
+    let!(:in_progress_project) { create(:conversion_project, urn: 115652, team: "regional_casework_services", assigned_to: user) }
 
-    let!(:unassigned_project) { create(:conversion_project, urn: 103835, assigned_to_regional_caseworker_team: true, assigned_to: nil) }
+    let!(:unassigned_project) { create(:conversion_project, urn: 103835, team: "regional_casework_services", assigned_to: nil) }
 
     context "when signed in as a Regional caseworker" do
       let(:user) { create(:user, :caseworker) }

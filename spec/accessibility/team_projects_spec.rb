@@ -10,7 +10,7 @@ RSpec.feature "Team projects", driver: :headless_firefox, accessibility: true do
   end
 
   scenario "> In progress" do
-    project = create(:conversion_project, assigned_to: user, assigned_to_regional_caseworker_team: true, urn: 123456)
+    project = create(:conversion_project, assigned_to: user, team: "regional_casework_services", urn: 123456)
 
     visit in_progress_team_projects_path
 
@@ -20,7 +20,7 @@ RSpec.feature "Team projects", driver: :headless_firefox, accessibility: true do
   end
 
   scenario "> Completed" do
-    project = create(:conversion_project, assigned_to: user, completed_at: Date.yesterday, assigned_to_regional_caseworker_team: true, urn: 123434)
+    project = create(:conversion_project, assigned_to: user, completed_at: Date.yesterday, team: "regional_casework_services", urn: 123434)
 
     visit completed_team_projects_path
 
@@ -30,7 +30,7 @@ RSpec.feature "Team projects", driver: :headless_firefox, accessibility: true do
   end
 
   scenario "> Unassigned" do
-    create(:conversion_project, assigned_to: nil, urn: 123434, assigned_to_regional_caseworker_team: true)
+    create(:conversion_project, assigned_to: nil, urn: 123434, team: "regional_casework_services")
 
     visit unassigned_team_projects_path
 

@@ -10,7 +10,7 @@ RSpec.feature "Viewing unassigned team projects" do
     let(:user) { create(:user, :team_leader) }
 
     scenario "they can view all unassigned projects in the team" do
-      matching_project = create(:conversion_project, assigned_to: nil, assigned_to_regional_caseworker_team: true)
+      matching_project = create(:conversion_project, assigned_to: nil, team: "regional_casework_services")
 
       visit unassigned_team_projects_path
 
