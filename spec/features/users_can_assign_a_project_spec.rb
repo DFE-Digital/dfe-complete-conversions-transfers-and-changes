@@ -7,7 +7,7 @@ RSpec.feature "Any user can assign any other user to a project" do
     sign_in_with_user(user)
   end
 
-  let!(:project) { create(:conversion_project, assigned_to_regional_caseworker_team: true, assigned_to: nil) }
+  let!(:project) { create(:conversion_project, team: "regional_casework_services", assigned_to: nil) }
   let!(:another_user) { create(:user, :caseworker, first_name: "Another", last_name: "User") }
 
   context "when the user is a regional caseworker" do

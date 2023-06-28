@@ -38,8 +38,8 @@ class Project < ApplicationRecord
   scope :assigned_to_regional_delivery_officer, ->(user) { where(assigned_to: user).or(where(regional_delivery_officer: user)) }
 
   scope :unassigned_to_user, -> { where assigned_to: nil }
-  scope :assigned_to_regional_caseworker_team, -> { where(assigned_to_regional_caseworker_team: true) }
-  scope :not_assigned_to_regional_caseworker_team, -> { where.not(assigned_to_regional_caseworker_team: true) }
+  scope :assigned_to_regional_caseworker_team, -> { where(team: "regional_casework_services") }
+  scope :not_assigned_to_regional_caseworker_team, -> { where.not(team: "regional_casework_services") }
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
   scope :added_by, ->(user) { where(regional_delivery_officer: user) }
