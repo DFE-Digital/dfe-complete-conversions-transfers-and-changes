@@ -1,46 +1,65 @@
 require "rails_helper"
 
 RSpec.describe IncomingTrustsFetcher do
-  let(:incoming_trusts_fetcher) { described_class.new }
-
   describe "#call" do
-    let(:projects) do
-      [
-        build(:conversion_project, incoming_trust_ukprn: 12345678),
-        build(:conversion_project, incoming_trust_ukprn: 23456789)
-      ]
-    end
-    let(:mock_client) { Api::AcademiesApi::Client.new }
-    let(:trust) { build(:academies_api_trust, ukprn: "12345678") }
-    let(:trust_2) { build(:academies_api_trust, ukprn: "23456789") }
-    let(:trusts_result) { Api::AcademiesApi::Client::Result.new([trust, trust_2], nil) }
+    it "fetches the trusts and updates the projects" do
+      api_client = Api::AcademiesApi::Client.new
+      allow(Api::AcademiesApi::Client).to receive(:new).and_return(api_client)
+      allow(api_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([], nil))
+      allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
+      allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
 
-    before do
-      allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
-      allow(mock_client).to receive(:get_trust).and_return(true)
+      create(:conversion_project,incoming_trust: nil)
+      projects = Project.all
+      described_class.new.call(projects)
 
-      allow(mock_client).to receive(:get_trusts).with([12345678, 23456789]).and_return(trusts_result)
+      expect(projects.first.incoming_trust).not_to be_nil
     end
 
-    subject! { incoming_trusts_fetcher.call(projects) }
+    context "when there is a single batch of 10 projects or less" do
+      it "calls the API once" do
+        api_client = Api::AcademiesApi::Client.new
+        allow(Api::AcademiesApi::Client).to receive(:new).and_return(api_client)
+        allow(api_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([], nil))
+        allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
+        allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
 
-    context "when projects is nil" do
-      let(:projects) { nil }
+        create_list(:conversion_project, 6)
+        projects = Project.all
+        described_class.new.call(projects)
 
-      it { expect(subject).to be_nil }
+        expect(api_client).to have_received(:get_trusts).exactly(1).times
+      end
     end
 
-    context "when projects is an empty array" do
-      let(:projects) { [] }
+    context "whent there are multiple batches of projects" do
+      it "calls the API the appropriate number of times" do
+        api_client = Api::AcademiesApi::Client.new
+        allow(Api::AcademiesApi::Client).to receive(:new).and_return(api_client)
+        allow(api_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([], nil))
+        allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
+        allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
+        create_list(:conversion_project, 21)
 
-      it { expect(subject).to be_nil }
+        projects = Project.all
+        described_class.new.call(projects)
+
+        expect(api_client).to have_received(:get_trusts).exactly(2).times
+      end
     end
 
-    it "fetches Trust data and assigns it to the projects" do
-      expect(projects.find { |project| project.incoming_trust_ukprn == 12345678 }.incoming_trust).to eq trust
-      expect(projects.find { |project| project.incoming_trust_ukprn == 23456789 }.incoming_trust).to eq trust_2
+    it "raises unless an ActiveRecord relation is passed in" do
+      project = build(:conversion_project)
 
-      expect(mock_client).to_not have_received(:get_trust)
+      expect { described_class.new.call([project]) }.to raise_error(ArgumentError)
+    end
+
+    it "returns nil if passed nil" do
+      expect(described_class.new.call(nil)).to be_nil
+    end
+
+    it "returns nil if there are no projects" do
+      expect(described_class.new.call([])).to be_nil
     end
   end
 end
