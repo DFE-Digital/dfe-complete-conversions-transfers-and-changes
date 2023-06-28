@@ -42,33 +42,12 @@ module ProjectHelper
     link_to(t("project_information.show.trust_details.rows.view_companies_house"), "https://find-and-update.company-information.service.gov.uk/company/#{companies_house_number}", target: :_blank)
   end
 
-  def all_conditions_met_tag(project)
-    tag = if project.all_conditions_met?
-      govuk_tag(text: "confirmed", colour: "turquoise")
+  def all_conditions_met_value(project)
+    if project.all_conditions_met?
+      "Yes"
     else
-      govuk_tag(text: "unconfirmed", colour: "blue")
+      "Not yet"
     end
-    tag.to_s.html_safe
-  end
-
-  def trust_modification_order_tag(project, current_user)
-    task = trust_modification_order_task(project, current_user)
-    task_state = tags_for_states.fetch(task.status, tags_for_states[:unknown])
-
-    govuk_tag(
-      text: task_state[:text],
-      colour: task_state[:colour]
-    )
-  end
-
-  def direction_to_transfer_tag(project, current_user)
-    task = direction_to_transfer_task(project, current_user)
-    task_state = tags_for_states.fetch(task.status, tags_for_states[:unknown])
-
-    govuk_tag(
-      text: task_state[:text],
-      colour: task_state[:colour]
-    )
   end
 
   def address_markup(address)
@@ -89,38 +68,5 @@ module ProjectHelper
     return govuk_tag(text: "Unconfirmed", colour: "grey") if project.tasks_data.academy_details_name.nil?
 
     project.tasks_data.academy_details_name
-  end
-
-  private def trust_modification_order_task(project, current_user)
-    Conversion::Task::TrustModificationOrderTaskForm.new(project.tasks_data, current_user)
-  end
-
-  private def direction_to_transfer_task(project, current_user)
-    Conversion::Task::DirectionToTransferTaskForm.new(project.tasks_data, current_user)
-  end
-
-  private def tags_for_states
-    {
-      not_started: {
-        text: "unconfirmed",
-        colour: "blue"
-      },
-      in_progress: {
-        text: "unconfirmed",
-        colour: "blue"
-      },
-      completed: {
-        text: "needed",
-        colour: "turquoise"
-      },
-      not_applicable: {
-        text: "not applicable",
-        colour: "grey"
-      },
-      unknown: {
-        text: "unknown",
-        colour: "grey"
-      }
-    }
   end
 end
