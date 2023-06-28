@@ -13,6 +13,7 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
     allow(fake_client).to receive(:get_establishment).with(establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
     allow(fake_client).to receive(:get_establishment).with(another_establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(another_establishment, nil))
     allow(fake_client).to receive(:get_establishment).with(yet_another_establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(yet_another_establishment, nil))
+    allow(fake_client).to receive(:get_establishments).with(any_args).and_return(Api::AcademiesApi::Client::Result.new([establishment, another_establishment, establishment, yet_another_establishment], nil))
 
     create(:local_authority, code: "909", name: "Cumbria County Council")
     create(:local_authority, code: "213", name: "Westminster City Council")
