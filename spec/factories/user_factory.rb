@@ -6,6 +6,7 @@ FactoryBot.define do
     team_leader { false }
     regional_delivery_officer { false }
     caseworker { false }
+    team { User.teams["london"] }
 
     trait :caseworker do
       email { "caseworker-#{SecureRandom.uuid}@education.gov.uk" }
