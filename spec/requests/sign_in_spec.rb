@@ -15,8 +15,8 @@ RSpec.describe "Sign in" do
   context "when the user is authenticated" do
     before do
       mock_successful_authentication(user.email)
-      allow_any_instance_of(RootController).to receive(:user_id).and_return(user.id)
-      allow_any_instance_of(User::ProjectsController).to receive(:user_id).and_return(user.id)
+      allow_any_instance_of(RootController).to receive(:current_user_id).and_return(user.id)
+      allow_any_instance_of(User::ProjectsController).to receive(:current_user_id).and_return(user.id)
     end
 
     it "loads the requested page" do

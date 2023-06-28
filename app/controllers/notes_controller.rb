@@ -6,13 +6,13 @@ class NotesController < ApplicationController
   def new
     authorize @project, :new_note?
 
-    @note = Note.new(project: @project, user_id:, task_identifier: params[:task_identifier])
+    @note = Note.new(project: @project, user_id: @current_user.id, task_identifier: params[:task_identifier])
   end
 
   def create
     authorize @project, :new_note?
 
-    @note = Note.new(project: @project, user_id:, **note_params)
+    @note = Note.new(project: @project, user_id: @current_user.id, **note_params)
 
     if @note.valid?
       @note.save

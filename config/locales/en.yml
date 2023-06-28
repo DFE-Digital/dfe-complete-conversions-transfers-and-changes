@@ -133,6 +133,7 @@ en:
         by_trust: By trust
         by_local_authority: By local authority
         by_region: By region
+        by_user: By user
         completed: Completed
         statistics: Statistics
       team_projects:
