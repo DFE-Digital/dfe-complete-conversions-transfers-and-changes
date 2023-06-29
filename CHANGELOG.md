@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 31][release-31]
+
+### Added
+
 - Add a rake task to update the `team` attribute on all existing users
 - Added a view, by region, that shows the region with in-progress projects
 - By region view links to the projects in that region
@@ -1023,7 +1031,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-30...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-31...HEAD
+[release-31]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-30...release-31
 [release-30]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-29...release-30
 [release-29]:
