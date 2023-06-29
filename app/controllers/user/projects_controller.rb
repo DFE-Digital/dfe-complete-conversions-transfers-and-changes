@@ -27,10 +27,10 @@ class User::ProjectsController < ApplicationController
   end
 
   private def pre_fetch_establishments(projects)
-    EstablishmentsFetcher.new.call(projects)
+    EstablishmentsFetcherService.new(projects).call!
   end
 
   private def pre_fetch_incoming_trusts(projects)
-    IncomingTrustsFetcher.new.call(projects)
+    TrustsFetcherService.new(projects).call!
   end
 end

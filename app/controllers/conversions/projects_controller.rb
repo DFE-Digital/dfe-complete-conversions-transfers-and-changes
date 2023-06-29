@@ -3,8 +3,8 @@ class Conversions::ProjectsController < ProjectsController
     authorize Project
     @pagy, @projects = pagy(Project.conversions.in_progress)
 
-    EstablishmentsFetcher.new.call(@projects)
-    IncomingTrustsFetcher.new.call(@projects)
+    EstablishmentsFetcherService.new(@projects).call!
+    TrustsFetcherService.new(@projects).call!
 
     render "/conversions/index"
   end

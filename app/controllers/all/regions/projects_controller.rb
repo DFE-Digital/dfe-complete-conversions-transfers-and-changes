@@ -18,7 +18,7 @@ class All::Regions::ProjectsController < ApplicationController
   end
 
   private def pre_fetch_establishments(projects)
-    EstablishmentsFetcher.new.call(projects)
+    EstablishmentsFetcherService.new(projects).call!
   end
 
   private def region
