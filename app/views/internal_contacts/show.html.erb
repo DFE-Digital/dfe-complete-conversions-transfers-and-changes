@@ -22,6 +22,10 @@
           end
         end
         summary_list.row do |row|
+          row.key { t("contact.internal_contacts.assigned_to_team") }
+          row.value { t("teams.#{@project.team}") }
+        end
+        summary_list.row do |row|
           row.key { t("contact.internal_contacts.added_by") }
           row.value { display_name(@project.regional_delivery_officer) }
           if @project.regional_delivery_officer.present?

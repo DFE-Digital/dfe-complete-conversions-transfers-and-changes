@@ -38,6 +38,7 @@ en:
     internal_contacts:
       assigned_to: Assigned to
       added_by: Added by
+      assigned_to_team: Assigned to team
   helpers:
     label:
       contact_project:

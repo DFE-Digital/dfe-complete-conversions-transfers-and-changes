@@ -25,5 +25,11 @@ RSpec.feature "Users can view internal contacts for a project" do
         expect(page).to have_link("Email regional delivery officer", href: "mailto:#{project.regional_delivery_officer.email}")
       end
     end
+
+    scenario "they can view the assigned team" do
+      within("#projectInternalContacts") do
+        expect(page).to have_content(I18n.t("teams.#{project.team}"))
+      end
+    end
   end
 end
