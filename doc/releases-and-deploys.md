@@ -69,13 +69,14 @@ Actions for the repo, and select ['Deploy to Environment'](#) from the sidebar.
 A button will be visible in the top right corner labelled 'Run workflow'.
 Clicking this button will open a modal window where you will be prompted with
 the following options:
-- **Use workflow from:**
-    - Select the dropdown, then click 'Tags' and select your 'release-x' tag.
-- **Choose an environment to deploy to:**
-    - Select 'test' or 'production' as appropriate
 
-Clicking the 'Run workflow' button will kick-off a deployment with your specified
-options.
+- **Use workflow from:**
+  - Select the dropdown, then click 'Tags' and select your 'release-x' tag.
+- **Choose an environment to deploy to:**
+  - Select 'test' or 'production' as appropriate
+
+Clicking the 'Run workflow' button will kick-off a deployment with your
+specified options.
 
 The Docker image will be built, then pushed up to a container registry, and then
 both Azure Container Apps (web app & worker) will be restarted with the latest

@@ -74,7 +74,7 @@ jobs:
 
   deploy-image:
     name: Deploy '${{ needs.set-env.outputs.branch }}' to ${{ needs.set-env.outputs.environment }}
-    needs: [ build-and-push-image, set-env ]
+    needs: [build-and-push-image, set-env]
     runs-on: ubuntu-22.04
     environment: ${{ needs.set-env.outputs.environment }}
     steps:
