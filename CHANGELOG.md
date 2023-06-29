@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Allow users to change a Project's team assignment via the Internal Contacts
+  page
+
 ### Changed
 
 ### Fixed

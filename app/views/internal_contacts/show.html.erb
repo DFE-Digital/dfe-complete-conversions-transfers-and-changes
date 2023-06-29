@@ -24,6 +24,9 @@
         summary_list.row do |row|
           row.key { t("contact.internal_contacts.assigned_to_team") }
           row.value { t("teams.#{@project.team}") }
+          if policy(:assignment).assign_assigned_to?
+            row.action(href: project_assign_team_path(@project), visually_hidden_text: "assigned to team")
+          end
         end
         summary_list.row do |row|
           row.key { t("contact.internal_contacts.added_by") }

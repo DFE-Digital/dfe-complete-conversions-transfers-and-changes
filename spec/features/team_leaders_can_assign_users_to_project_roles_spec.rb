@@ -38,7 +38,7 @@ RSpec.feature "Team leaders can assign users to project roles" do
   scenario "Team leader assigns a user to the assigned_to role" do
     visit project_internal_contacts_path(project_id)
 
-    assigned_to_summary_list_row = -> { page.find("dt", text: "Assigned to").ancestor(".govuk-summary-list__row") }
+    assigned_to_summary_list_row = -> { page.find("dt", text: "Assigned to user").ancestor(".govuk-summary-list__row") }
 
     within assigned_to_summary_list_row.call do
       expect(page).to have_content "Not yet assigned"
