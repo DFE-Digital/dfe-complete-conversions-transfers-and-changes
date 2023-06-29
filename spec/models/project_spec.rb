@@ -16,7 +16,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:trust_sharepoint_link).of_type :text }
     it { is_expected.to have_db_column(:completed_at).of_type :datetime }
     it { is_expected.to have_db_column(:type).of_type :string }
-    it { is_expected.to have_db_column(:assigned_to_regional_caseworker_team).of_type :boolean }
     it { is_expected.to have_db_column(:directive_academy_order).of_type :boolean }
     it { is_expected.to have_db_column(:region).of_type :string }
     it { is_expected.to have_db_column(:academy_urn).of_type :integer }

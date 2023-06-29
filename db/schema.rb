@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_152519) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_154941) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -187,7 +187,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_152519) do
     t.text "trust_sharepoint_link"
     t.string "type"
     t.uuid "assigned_to_id"
-    t.boolean "assigned_to_regional_caseworker_team", default: false
     t.date "conversion_date"
     t.boolean "conversion_date_provisional", default: true
     t.boolean "directive_academy_order", default: false
