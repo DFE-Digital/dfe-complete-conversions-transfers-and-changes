@@ -28,4 +28,12 @@ class AssignmentPolicy
   def update_assigned_to?
     assign_assigned_to?
   end
+
+  def assign_team?
+    @user.has_role?
+  end
+
+  def update_team?
+    @user.has_role?
+  end
 end

@@ -36,8 +36,9 @@ en:
     categories:
       choose: Choose category
     internal_contacts:
-      assigned_to: Assigned to
+      assigned_to: Assigned to user
       added_by: Added by
+      assigned_to_team: Assigned to team
   helpers:
     label:
       contact_project:

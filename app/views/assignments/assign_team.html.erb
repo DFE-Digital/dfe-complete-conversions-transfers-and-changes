@@ -1,0 +1,17 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @project, url: project_assign_team_path(@project), method: :post do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <span class="govuk-caption-m">URN <%= @project.urn %></span>
+      <%= form.govuk_collection_radio_buttons :team,
+            Project.teams.keys,
+            :to_s,
+            ->(team) { I18n.t("teams.#{team}") },
+            legend: {text: t("assignment.assign_team.title", school_name: @project.establishment.name)} %>
+      <%= form.govuk_submit do %>
+        <%= govuk_link_to t("cancel"), project_internal_contacts_path(@project) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

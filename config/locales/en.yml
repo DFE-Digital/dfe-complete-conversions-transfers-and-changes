@@ -78,6 +78,8 @@ en:
       title: Change regional delivery officer for %{school_name}
     assign_assigned_to:
       title: Change assigned person for %{school_name}
+    assign_team:
+      title: Change assigned team for %{school_name}
     assign_team_leader:
       title: Change assigned team leader for %{school_name}
 

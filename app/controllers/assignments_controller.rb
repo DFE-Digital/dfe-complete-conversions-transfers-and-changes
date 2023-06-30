@@ -40,6 +40,16 @@ class AssignmentsController < ApplicationController
     redirect_to return_to, notice: t("project.assign.assigned_to.success")
   end
 
+  def assign_team
+  end
+
+  def update_team
+    authorize @project, :update_assigned_to?
+
+    @project.update(assigned_to_team_params)
+    redirect_to project_internal_contacts_path(@project), notice: t("project.assign.assigned_to_team.success")
+  end
+
   private def authorize_user
     authorize :assignment
   end
@@ -54,6 +64,10 @@ class AssignmentsController < ApplicationController
 
   private def assigned_to_params
     params.require(:conversion_project).permit(:assigned_to_id, :return_to)
+  end
+
+  private def assigned_to_team_params
+    params.require(:conversion_project).permit(:team)
   end
 
   private def find_project

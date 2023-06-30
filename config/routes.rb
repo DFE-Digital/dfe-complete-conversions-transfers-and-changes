@@ -31,6 +31,8 @@ Rails.application.routes.draw do
       post "regional-delivery-officer", action: :update_regional_delivery_officer
       get "assigned-to", action: :assign_assigned_to
       post "assigned-to", action: :update_assigned_to
+      get "team", action: :assign_team
+      post "team", action: :update_team
     end
   end
 
