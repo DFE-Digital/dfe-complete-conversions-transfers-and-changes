@@ -16,9 +16,16 @@ Console and logs can be accessed on all three environments, details are in
 
 ## Errors and monitoring
 
-We use
+All environments can be monitored in Azure application insights, each
+environment has a dashboard:
+
+- [development dashboard](https://portal.azure.com/#@platform.education.gov.uk/dashboard/arm/subscriptions/1d692707-6019-4f8c-b337-ec8cad61f998/resourcegroups/s184d01-comp/providers/microsoft.portal/dashboards/45d817c7-d715-4872-b976-c6b6fef76f04-dashboard)
+- [test dashboard](https://portal.azure.com/#@platform.education.gov.uk/dashboard/arm/subscriptions/8e6b3792-ae2c-4424-9815-19d6a77b0600/resourcegroups/s184t01-comp/providers/microsoft.portal/dashboards/5918b480-2d54-4540-94c8-bfd73dc3befe-dashboard)
+- [production dashboard](https://portal.azure.com/#@platform.education.gov.uk/dashboard/arm/subscriptions/e8bc9314-d27f-403a-bbe0-6b189d2efad2/resourcegroups/s184p01-comp/providers/microsoft.portal/dashboards/b473541d-3b3b-45d5-b025-97974730e369-dashboard)
+
+Historically we used
 [sentry.io](https://sentry.io/organizations/sdd-n7/projects/complete-conversions-transfers-and-changes/?project=6684508)
-to monitor errors and the performance of the application.
+which may still be available.
 
 ## Architecture decision records
 
