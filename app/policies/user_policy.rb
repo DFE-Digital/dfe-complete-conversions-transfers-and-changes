@@ -9,4 +9,12 @@ class UserPolicy
   def index?
     @user.service_support?
   end
+
+  def new?
+    index?
+  end
+
+  def create?
+    index?
+  end
 end

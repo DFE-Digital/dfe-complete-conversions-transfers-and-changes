@@ -15,4 +15,36 @@ RSpec.feature "Users can manage user accounts" do
     expect(page).to have_content(user.full_name)
     expect(page).to have_content(other_user.full_name)
   end
+
+  scenario "new users can be added" do
+    visit users_path
+
+    click_on "Add a new user"
+    fill_in "First name", with: "First"
+    fill_in "Last name", with: "Last"
+    fill_in "Email address", with: "first.last@education.gov.uk"
+    choose "North East"
+    check "User is a team lead or manager"
+
+    click_on "Add user"
+
+    expect(page).to have_content("First Last")
+    expect(page).to have_content("first.last@education.gov.uk")
+    expect(page).to have_content("Success")
+  end
+
+  scenario "invalid users cannot be added" do
+    visit users_path
+
+    click_on "Add a new user"
+    fill_in "First name", with: "First"
+    fill_in "Last name", with: "Last"
+    fill_in "Email address", with: "first.last@not-education-domain.gov.uk"
+    choose "North East"
+    check "User is a team lead or manager"
+
+    click_on "Add user"
+
+    expect(page).to have_content("There is a problem")
+  end
 end

@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Allow users to change a Project's team assignment via the Internal Contacts
   page
 - a new view that shows the users in the application
+- new users can now be added by service support users of the application
 
 ### Changed
 
