@@ -143,7 +143,6 @@ class Conversion::CreateProjectForm
       conversion_date: provisional_conversion_date,
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
-      assigned_to_regional_caseworker_team: assigned_to_regional_caseworker_team,
       team: team,
       assigned_to: assigned_to,
       assigned_at: assigned_at,
