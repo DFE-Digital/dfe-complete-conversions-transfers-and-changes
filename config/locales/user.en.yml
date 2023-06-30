@@ -1,0 +1,8 @@
+en:
+  user:
+    title: Users
+    table:
+      caption: Table of users
+      headers:
+        name: Name
+        email: Email
