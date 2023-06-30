@@ -5,6 +5,6 @@ class UsersController < ApplicationController
   def index
     authorize User
 
-    @users = User.all
+    @pager, @users = pagy(User.order_by_first_name)
   end
 end
