@@ -106,5 +106,9 @@ RSpec.describe User do
 
       expect(user.london_team?).to be true
     end
+
+    it "has the expected enum values" do
+      expect(User.teams.count).to eq(13)
+    end
   end
 end

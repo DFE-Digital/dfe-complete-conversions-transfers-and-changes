@@ -510,5 +510,9 @@ RSpec.describe Project, type: :model do
     it "uses the enum suffix as intended" do
       expect(subject.regional_casework_services_team?).to be true
     end
+
+    it "has the expected enum values" do
+      expect(Project.teams.count).to eq(10)
+    end
   end
 end
