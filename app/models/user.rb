@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   include Teamable
+  before_save :apply_roles_based_on_team
+
   serialize :active_directory_user_group_ids, Array
 
   has_many :projects, foreign_key: "caseworker"
@@ -12,9 +14,9 @@ class User < ApplicationRecord
 
   scope :all_assignable_users, -> { where.not(caseworker: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-
+  validates :first_name, :last_name, :email, :team, presence: true
+  validates :email, uniqueness: {case_sensitive: false}
+  validates :email, format: {with: /\A\S+@education.gov.uk\z/}
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
   enum :team, USER_TEAMS, suffix: true
@@ -26,5 +28,38 @@ class User < ApplicationRecord
   def has_role?
     return true if caseworker? || regional_delivery_officer? || team_leader?
     false
+  end
+
+  def team_options
+    User.teams.keys.map { |team| OpenStruct.new(id: team, name: I18n.t("user.teams.#{team}")) }
+  end
+
+  private def apply_roles_based_on_team
+    assign_attributes(
+      caseworker: apply_regional_caseworker_role?,
+      service_support: apply_service_support_role?,
+      regional_delivery_officer: apply_regional_delivery_officer_role?,
+      team_leader: apply_team_lead_role?
+    )
+  end
+
+  private def apply_service_support_role?
+    team == "service_support"
+  end
+
+  private def apply_regional_caseworker_role?
+    team == "regional_casework_services" && team_leader == false
+  end
+
+  private def apply_regional_delivery_officer_role?
+    REGIONAL_TEAMS.value?(team)
+  end
+
+  private def apply_team_lead_role?
+    team_leader && can_have_team_lead?
+  end
+
+  private def can_have_team_lead?
+    apply_regional_delivery_officer_role? || team == "regional_casework_services"
   end
 end

@@ -11,6 +11,7 @@ FactoryBot.define do
     trait :caseworker do
       email { "caseworker-#{SecureRandom.uuid}@education.gov.uk" }
       caseworker { true }
+      team { "regional_casework_services" }
     end
 
     trait :team_leader do
@@ -18,6 +19,7 @@ FactoryBot.define do
       last_name { "Leader" }
       team_leader { true }
       email { "team-leader-#{SecureRandom.uuid}@education.gov.uk" }
+      team { "regional_casework_services" }
     end
 
     trait :regional_delivery_officer do

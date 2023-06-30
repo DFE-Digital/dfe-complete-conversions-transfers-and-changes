@@ -20,7 +20,7 @@ RSpec.describe User do
     let!(:team_leader_2) { create(:user, :team_leader, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
     let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
     let!(:regional_delivery_officer_2) { create(:user, :regional_delivery_officer, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
-    let!(:user_without_role) { create(:user, caseworker: false, team_leader: false, regional_delivery_officer: false) }
+    let!(:user_without_role) { create(:user, caseworker: false, team_leader: false, regional_delivery_officer: false, team: "education_and_skills_funding_agency") }
 
     describe "order_by_first_name" do
       it "orders by first_name" do
@@ -70,6 +70,130 @@ RSpec.describe User do
     describe "#last_name" do
       it { is_expected.to validate_presence_of(:first_name) }
     end
+
+    describe "#email" do
+      it { is_expected.to validate_presence_of(:email) }
+
+      it "can only have a @education.gov.uk domain" do
+        user = build(:user, email: "user@not-valid-domain.gov.uk")
+
+        expect(user).to be_invalid
+      end
+
+      it "must be unique" do
+        create(:user, email: "user@education.gov.uk")
+        new_user = build(:user, email: "user@education.gov.uk")
+
+        expect(new_user).to be_invalid
+      end
+    end
+  end
+
+  describe "callbacks" do
+    describe "before save" do
+      context "when the team is regional casework services" do
+        context "and team lead is not set" do
+          it "assigns the caseworker role correctly" do
+            user_attributes = valid_user_attributes
+            user_attributes[:team] = "regional_casework_services"
+            user_attributes[:team_leader] = false
+
+            user = described_class.create!(user_attributes)
+
+            expect(user.caseworker).to be true
+            expect(user.team_leader).to be false
+            expect(user.regional_delivery_officer).to be false
+            expect(user.service_support).to be false
+          end
+        end
+
+        context "and team lead is set" do
+          it "assigns the team leader role correctly" do
+            user_attributes = valid_user_attributes
+            user_attributes[:team] = "regional_casework_services"
+            user_attributes[:team_leader] = true
+
+            user = described_class.create!(user_attributes)
+
+            expect(user.caseworker).to be false
+            expect(user.team_leader).to be true
+            expect(user.regional_delivery_officer).to be false
+            expect(user.service_support).to be false
+          end
+        end
+      end
+
+      context "when the team is regional" do
+        context "and team lead is not set" do
+          it "assigns the regional delivery officer and team leader role correctly" do
+            user_attributes = valid_user_attributes
+            user_attributes[:team] = "london"
+            user_attributes[:team_leader] = false
+
+            user = described_class.create!(user_attributes)
+
+            expect(user.caseworker).to be false
+            expect(user.team_leader).to be false
+            expect(user.regional_delivery_officer).to be true
+            expect(user.service_support).to be false
+          end
+        end
+
+        context "and team lead is set" do
+          it "assigns the regional delivery officer and team leader role correctly" do
+            user_attributes = valid_user_attributes
+            user_attributes[:team] = "london"
+            user_attributes[:team_leader] = true
+
+            user = described_class.create!(user_attributes)
+
+            expect(user.caseworker).to be false
+            expect(user.team_leader).to be true
+            expect(user.regional_delivery_officer).to be true
+            expect(user.service_support).to be false
+          end
+        end
+      end
+
+      context "when the team is service support" do
+        it "assigns the service support role correctly" do
+          user_attributes = valid_user_attributes
+          user_attributes[:team] = "service_support"
+          user_attributes[:team_leader] = false
+
+          user = described_class.create!(user_attributes)
+
+          expect(user.caseworker).to be false
+          expect(user.team_leader).to be false
+          expect(user.regional_delivery_officer).to be false
+          expect(user.service_support).to be true
+        end
+      end
+
+      context "when the team is not regional or regional casework services" do
+        it "cannot be a team lead" do
+          user_attributes = valid_user_attributes
+          user_attributes[:team] = "service_support"
+          user_attributes[:team_leader] = true
+
+          user = described_class.create!(user_attributes)
+
+          expect(user.team_leader).to be false
+        end
+      end
+    end
+  end
+
+  describe "#team_options" do
+    it "returns the correct team options for a user" do
+      options = described_class.new.team_options
+
+      expect(options.count).to eql 13
+      expect(options.first.id).to eql "london"
+      expect(options.first.name).to eql "London"
+      expect(options.last.id).to eql "education_and_skills_funding_agency"
+      expect(options.last.name).to eql "Education and Skills Funding Agency (ESFA)"
+    end
   end
 
   describe "#full_name" do
@@ -94,7 +218,7 @@ RSpec.describe User do
     end
 
     it "returns false when the user has no set role" do
-      user = create(:user)
+      user = create(:user, team: "education_and_skills_funding_agency")
 
       expect(user.has_role?).to be false
     end
@@ -110,5 +234,15 @@ RSpec.describe User do
     it "has the expected enum values" do
       expect(User.teams.count).to eq(13)
     end
+  end
+
+  def valid_user_attributes
+    {
+      first_name: "First",
+      last_name: "Last",
+      email: "first.last@education.gov.uk",
+      team: "london",
+      team_leader: false
+    }
   end
 end
