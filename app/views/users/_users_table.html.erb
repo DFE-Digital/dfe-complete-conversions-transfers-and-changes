@@ -4,6 +4,7 @@
     <tr class="govuk-table__row">
       <th class="govuk-table__header" scope="col"><%= t("user.table.headers.name") %></th>
       <th class="govuk-table__header" scope="col"><%= t("user.table.headers.email") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("user.table.headers.team") %></th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -11,6 +12,7 @@
     <tr class="govuk-table__row">
       <td class="govuk-table__header govuk-table__cell"><%= account.full_name %></td>
       <td class="govuk-table__cell"><%= account.email %></td>
+      <td class="govuk-table__cell"><%= t("user.teams.#{account.team}") %></td>
     </tr>
   <% end %>
   </tbody>

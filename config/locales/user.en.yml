@@ -18,6 +18,7 @@ en:
       headers:
         name: Name
         email: Email
+        team: Team
     teams:
       london: London
       south_east: South East

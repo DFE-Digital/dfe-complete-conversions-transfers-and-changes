@@ -12,8 +12,11 @@ RSpec.feature "Users can manage user accounts" do
 
     visit users_path
 
-    expect(page).to have_content(user.full_name)
-    expect(page).to have_content(other_user.full_name)
+    within("tbody") do
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_content(other_user.full_name)
+      expect(page).to have_content("Service Support")
+    end
   end
 
   scenario "new users can be added" do
@@ -28,9 +31,12 @@ RSpec.feature "Users can manage user accounts" do
 
     click_on "Add user"
 
-    expect(page).to have_content("First Last")
-    expect(page).to have_content("first.last@education.gov.uk")
     expect(page).to have_content("Success")
+
+    within("tbody") do
+      expect(page).to have_content("First Last")
+      expect(page).to have_content("first.last@education.gov.uk")
+    end
   end
 
   scenario "invalid users cannot be added" do
