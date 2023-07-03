@@ -215,6 +215,24 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("SW1A 0AA")
     end
 
+    context "when the Members API returns multiple results" do
+      before do
+        mock_nil_member_for_constituency_response
+      end
+
+      it "returns nil for the member contact details" do
+        project = build(:conversion_project)
+
+        csv_export = OpeningProjectsCsvExporter.new([project]).call
+
+        expect(csv_export).to_not include("Member Parliment")
+        expect(csv_export).to_not include("member.parliment@parliment.uk")
+        expect(csv_export).to_not include("House of Commons")
+        expect(csv_export).to_not include("London")
+        expect(csv_export).to_not include("SW1A 0AA")
+      end
+    end
+
     it "returns a csv with the trust name" do
       trust = build(:academies_api_trust)
       allow(trust).to receive(:name).and_return("Test trust")

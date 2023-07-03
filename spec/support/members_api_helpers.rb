@@ -89,6 +89,12 @@ module MembersApiHelpers
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
   end
 
+  def mock_nil_member_for_constituency_response
+    test_client = Api::MembersApi::Client.new
+    allow(test_client).to receive(:member_for_constituency).and_return(nil)
+    allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
+  end
+
   def mock_members_api_unavailable_response
     test_client = Api::MembersApi::Client.new
     error_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error)

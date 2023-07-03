@@ -24,7 +24,14 @@ class Api::MembersApi::Client
   end
 
   def member_for_constituency(constituency)
-    member_id = member_id(constituency).object
+    member = member_id(constituency)
+
+    if member.error.present?
+      track_error(member.error.message)
+      return nil
+    end
+
+    member_id = member.object
     member_name = member_name(member_id).object
     contact_details = member_contact_details(member_id).object.find { |details| details.type_id == 1 }
 
@@ -107,6 +114,14 @@ class Api::MembersApi::Client
         "Content-Type": "application/json"
       }
     )
+  end
+
+  private def track_error(error_message)
+    if ENV.fetch("APPLICATION_INSIGHTS_KEY", nil)
+      tc = ApplicationInsights::TelemetryClient.new(ENV.fetch("APPLICATION_INSIGHTS_KEY"))
+      tc.track_event(error_message)
+      tc.flush
+    end
   end
 
   class Result
