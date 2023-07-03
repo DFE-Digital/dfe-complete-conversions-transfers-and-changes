@@ -16,6 +16,7 @@ RSpec.feature "Users can manage user accounts" do
       expect(page).to have_content(user.full_name)
       expect(page).to have_content(other_user.full_name)
       expect(page).to have_content("Service Support")
+      expect(page).to have_content("No")
     end
   end
 

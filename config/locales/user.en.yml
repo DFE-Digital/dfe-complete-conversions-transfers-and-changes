@@ -26,8 +26,12 @@ en:
         name: Name
         email: Email
         team: Team
+        team_lead: Team lead
         edit_user: Edit user
       body:
+        team_lead:
+          "true": "Yes"
+          "false": "No"
         edit_user_html: Edit user<span class="govuk-visually-hidden"> for %{user}</span>
     teams:
       london: London
