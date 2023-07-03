@@ -31,3 +31,4 @@
 /.idea/
 lib/generators/*/USAGE
 *.csv
+/.github/
