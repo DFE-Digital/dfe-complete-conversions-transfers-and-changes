@@ -43,7 +43,7 @@ module MembersApiHelpers
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
   end
 
-  def mock_successful_memeber_details
+  def mock_successful_member_details
     address = OpenStruct.new(
       line1: "House of Commons",
       line2: "London",

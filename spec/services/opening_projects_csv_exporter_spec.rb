@@ -4,7 +4,7 @@ RSpec.describe OpeningProjectsCsvExporter do
   describe "#call" do
     before do
       mock_successful_api_response_to_create_any_project
-      mock_successful_memeber_details
+      mock_successful_member_details
     end
 
     it "raises when there are no projects" do
@@ -115,7 +115,7 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("AB1 AB2")
     end
 
-    it "returns a csv with the Director of child serivces name" do
+    it "returns a csv with the Director of child services name" do
       local_authority = create(:local_authority)
       create(:director_of_child_services, name: "Test director of child services name", local_authority: local_authority)
       establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
@@ -127,7 +127,7 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Director of child services name")
     end
 
-    it "returns a csv with the Director of child serivces role" do
+    it "returns a csv with the Director of child services role" do
       local_authority = create(:local_authority)
       create(:director_of_child_services, title: "Test director of child services role", local_authority: local_authority)
       establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
@@ -139,7 +139,7 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Director of child services role")
     end
 
-    it "returns a csv with the Director of child serivces email" do
+    it "returns a csv with the Director of child services email" do
       local_authority = create(:local_authority)
       create(:director_of_child_services, email: "test@email.com", local_authority: local_authority)
       establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
@@ -151,7 +151,7 @@ RSpec.describe OpeningProjectsCsvExporter do
       expect(csv_export).to include("Director of child services email")
     end
 
-    it "returns a csv with the Director of child serivces phone" do
+    it "returns a csv with the Director of child services phone" do
       local_authority = create(:local_authority)
       create(:director_of_child_services, phone: "01234 567891", local_authority: local_authority)
       establishment = build(:academies_api_establishment, local_authority_code: local_authority.code)
