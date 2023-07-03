@@ -26,6 +26,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(user_id)
+    authorize @user
+  end
+
+  def update
+    @user = User.find(user_id)
+    authorize @user
+
+    @user.assign_attributes(user_params)
+    if @user.valid?
+      @user.save!
+      redirect_to users_path, notice: I18n.t("user.edit.success", email: @user.email)
+    else
+      render :edit
+    end
+  end
+
   private def user_params
     params.require(:user).permit(
       :first_name,
@@ -34,5 +52,9 @@ class UsersController < ApplicationController
       :team,
       :team_leader
     )
+  end
+
+  private def user_id
+    params[:id]
   end
 end

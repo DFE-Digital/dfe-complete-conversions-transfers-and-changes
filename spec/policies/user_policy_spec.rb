@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe UserPolicy do
-  permissions :index?, :new?, :create? do
+  permissions :index?, :new?, :create?, :edit?, :update? do
     it "grants access if the user has the service_support flag" do
       user = build(:user, :service_support)
       expect(described_class).to permit(user)

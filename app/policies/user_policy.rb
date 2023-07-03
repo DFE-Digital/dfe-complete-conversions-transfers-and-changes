@@ -17,4 +17,12 @@ class UserPolicy
   def create?
     index?
   end
+
+  def edit?
+    index?
+  end
+
+  def update?
+    index?
+  end
 end

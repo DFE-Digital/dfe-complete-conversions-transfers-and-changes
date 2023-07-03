@@ -12,6 +12,13 @@ en:
         <p>Users require an account in the application to record who works on what and to control what
         features they can access, which is added here.</p>
       success: User %{email} added successfully
+    edit:
+      title: Edit a user
+      save:
+        button: Save user
+      cancel:
+        button: Cancel
+      success: User %{email} updated successfully
     title: Users
     table:
       caption: Table of users
@@ -19,6 +26,9 @@ en:
         name: Name
         email: Email
         team: Team
+        edit_user: Edit user
+      body:
+        edit_user_html: Edit user<span class="govuk-visually-hidden"> for %{user}</span>
     teams:
       london: London
       south_east: South East

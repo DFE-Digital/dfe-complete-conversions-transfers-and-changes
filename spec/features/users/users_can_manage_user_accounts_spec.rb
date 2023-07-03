@@ -53,4 +53,26 @@ RSpec.feature "Users can manage user accounts" do
 
     expect(page).to have_content("There is a problem")
   end
+
+  scenario "existing users can be edited" do
+    existing_user = create(:user, :regional_delivery_officer, team: "london")
+
+    visit edit_user_path(existing_user)
+
+    choose "North East"
+    click_on "Save user"
+
+    expect(existing_user.reload.team).to eql "north_east"
+  end
+
+  scenario "exisiting users cannot be made invalid" do
+    existing_user = create(:user, :regional_delivery_officer, team: "london")
+
+    visit edit_user_path(existing_user)
+
+    fill_in "First name", with: ""
+    click_on "Save user"
+
+    expect(page).to have_content("There is a problem")
+  end
 end
