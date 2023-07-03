@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe AssignmentsController, type: :request do
-  let(:user) { create(:user, team_leader: true) }
+  let(:user) { create(:user, :team_leader) }
 
   before do
     sign_in_with(user)
@@ -105,7 +105,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     context "when the user is a not a team leader" do
-      let(:user) { create(:user, caseworker: true) }
+      let(:user) { create(:user, :caseworker) }
 
       it "returns a successful response" do
         expect(perform_request).to have_http_status :success
@@ -164,7 +164,7 @@ RSpec.describe AssignmentsController, type: :request do
     end
 
     context "when the user is a not a team leader" do
-      let(:user) { create(:user, caseworker: true) }
+      let(:user) { create(:user, :caseworker) }
 
       it "assigns the project assignee and redirects with a message" do
         expect(perform_request).to redirect_to(project_internal_contacts_path(project))

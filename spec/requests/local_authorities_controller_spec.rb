@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe LocalAuthoritiesController, type: :request do
-  let(:user) { create(:user, service_support: true) }
+  let(:user) { create(:user, :service_support) }
 
   before do
     sign_in_with(user)

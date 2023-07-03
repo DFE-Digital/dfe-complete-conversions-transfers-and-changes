@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe AssignmentsController, type: :request do
-  let(:user) { create(:user, team_leader: true) }
+  let(:user) { create(:user, :team_leader) }
 
   before do
     sign_in_with(user)

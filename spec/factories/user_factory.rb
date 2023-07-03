@@ -5,8 +5,9 @@ FactoryBot.define do
     last_name { "Doe" }
     team_leader { false }
     regional_delivery_officer { false }
+    service_support { false }
     caseworker { false }
-    team { User.teams["london"] }
+    team { "academies_operational_practice_unit" }
 
     trait :caseworker do
       email { "caseworker-#{SecureRandom.uuid}@education.gov.uk" }
@@ -27,6 +28,7 @@ FactoryBot.define do
       last_name { "Delivery-Officer" }
       regional_delivery_officer { true }
       email { "regional-delivery-officer-#{SecureRandom.uuid}@education.gov.uk" }
+      team { "london" }
     end
 
     trait :service_support do
@@ -34,6 +36,7 @@ FactoryBot.define do
       last_name { "Support" }
       service_support { true }
       email { "service-support-#{SecureRandom.uuid}@education.gov.uk" }
+      team { "service_support" }
     end
   end
 end
