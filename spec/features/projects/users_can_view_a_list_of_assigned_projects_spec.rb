@@ -30,7 +30,8 @@ RSpec.feature "Viewing assigned projects" do
   end
 
   context "when there are projects" do
-    let!(:in_progress_assigned_project) { create(:conversion_project, urn: 103835, assigned_to: user) }
+    let!(:in_progress_assigned_project) { create(:conversion_project, urn: 103835, assigned_to: user, conversion_date: (Date.today + 1.month).at_beginning_of_month) }
+    let!(:in_progress_assigned_project_next_year) { create(:conversion_project, urn: 103835, assigned_to: user, conversion_date: (Date.today + 1.year).at_beginning_of_month) }
     let!(:completed_assigned_project) { create(:conversion_project, urn: 114067, assigned_to: user, completed_at: Date.yesterday) }
 
     context "when signed in as a Regional caseworker" do
@@ -83,6 +84,9 @@ RSpec.feature "Viewing assigned projects" do
 
         expect(page).not_to have_content(completed_other_user_project.urn)
         expect(page).not_to have_content(completed_unassigned_project.urn)
+
+        expect(page.find("h2.govuk-heading-m:first-of-type").text).to eq((Date.today + 1.month).at_beginning_of_month.strftime("%B %Y openers"))
+        expect(page.find("h2.govuk-heading-m:last-of-type").text).to eq((Date.today + 1.year).at_beginning_of_month.strftime("%B %Y openers"))
       end
     end
 

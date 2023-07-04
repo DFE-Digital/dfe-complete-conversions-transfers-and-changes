@@ -4,7 +4,7 @@ class All::InProgress::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @pager, @projects = pagy(Project.in_progress.includes(:assigned_to))
+    @pager, @projects = pagy(Conversion::Project.in_progress.includes(:assigned_to))
   end
 
   def voluntary
