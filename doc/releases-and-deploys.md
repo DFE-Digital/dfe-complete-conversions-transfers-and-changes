@@ -63,22 +63,21 @@ flexibility to deploy as often as needed.
 
 ### Deploying
 
-To deploy a release to either `testing` or `production` update the relevant
-GitHub action to a specific release:
+To deploy a release to either `test` or `production` environments, go to GitHub
+Actions for the repo, and select ['Deploy to Environment'](#) from the sidebar.
 
-- [build-and-push-image-test.yml](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/blob/main/.github/workflows/build-and-push-image-test.yml)
-- [build-and-push-image-production.yml]()
+A button will be visible in the top right corner labelled 'Run workflow'.
+Clicking this button will open a modal window where you will be prompted with
+the following options:
 
-- Create a new branch off of `main` called `deploy-release-{x}-to-{environment}`
-  where `x` is the release number and `environment` is either `test` or
-  `production`.
-- Update the workflow file by changing the `release-x` value around line 16.
-- Commit the change with the branch name as the commit message.
-- Push the branch and open a PR, use the branch name as the PR message.
-- Get the PR reviewed and approved, once approved, merge into the `main` branch.
-- Open the [Azure portal](https://azure.microsoft.com)
-- Locate the `Container app` in the correct environment (either `test` or
-  `production`), the container app names are very similar, verify you have the
-  correct one!
-- Locate the `Revision management` and click on the provisioned version
-- In the `Revision details` click `Restart`
+- **Use workflow from:**
+  - Select the dropdown, then click 'Tags' and select your 'release-x' tag.
+- **Choose an environment to deploy to:**
+  - Select 'test' or 'production' as appropriate
+
+Clicking the 'Run workflow' button will kick-off a deployment with your
+specified options.
+
+The Docker image will be built, then pushed up to a container registry, and then
+both Azure Container Apps (web app & worker) will be restarted with the latest
+image.
