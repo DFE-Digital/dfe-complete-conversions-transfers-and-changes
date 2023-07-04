@@ -65,7 +65,7 @@ jobs:
           context: .
           file: ./Dockerfile
           build-args: |
-            RAILS_ENV=${{ needs.set-env.outputs.environment }}
+            RAILS_ENV=development
           tags: |
             ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:${{ needs.set-env.outputs.branch }}
             ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:sha-${{ needs.set-env.outputs.checked-out-sha }}
