@@ -4,7 +4,7 @@ class All::Completed::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @pager, @projects = pagy(Project.completed)
+    @pager, @projects = pagy(Conversion::Project.completed)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)

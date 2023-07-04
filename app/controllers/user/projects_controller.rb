@@ -4,7 +4,7 @@ class User::ProjectsController < ApplicationController
 
   def in_progress
     authorize Project, :index?
-    @pager, @projects = pagy(Project.assigned_to(current_user).in_progress.includes(:assigned_to), items: 10)
+    @pager, @projects = pagy(Conversion::Project.assigned_to(current_user).in_progress.includes(:assigned_to), items: 10)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)
@@ -20,7 +20,7 @@ class User::ProjectsController < ApplicationController
 
   def completed
     authorize Project, :index?
-    @pager, @projects = pagy(Project.assigned_to(current_user).completed)
+    @pager, @projects = pagy(Conversion::Project.assigned_to(current_user).completed)
 
     pre_fetch_establishments(@projects)
     pre_fetch_incoming_trusts(@projects)
