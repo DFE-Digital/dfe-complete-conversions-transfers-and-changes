@@ -8,11 +8,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 32][release-32]
+
+### Added
+
 - Allow users to change a Project's team assignment via the Internal Contacts
   page
 - a new view that shows the users in the application
 - new users can now be added by service support users of the application
-- existing users can now be edited in the applcation
+- existing users can now be edited in the application
 
 ### Changed
 
@@ -1042,7 +1050,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-31...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-32...HEAD
+[release-32]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-31...release-32
 [release-31]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-30...release-31
 [release-30]:
