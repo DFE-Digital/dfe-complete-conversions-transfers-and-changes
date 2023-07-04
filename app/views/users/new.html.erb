@@ -1,0 +1,31 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= t("user.add.title") %></h1>
+    <%= t("user.add.hint_html") %>
+
+    <%= form_with model: @user do |form| %>
+
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_fieldset legend: {text: "User details"} do %>
+        <%= form.govuk_text_field :first_name, label: {size: "s"}, width: 10 %>
+        <%= form.govuk_text_field :last_name, label: {size: "s"}, width: 10 %>
+        <%= form.govuk_text_field :email, label: {size: "s"}, width: 20 %>
+      <% end %>
+
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :team, @user.team_options, :id, :name %>
+
+        <%= form.govuk_check_boxes_fieldset :team_leader, multiple: false, legend: {size: "s"}  do %>
+          <%= t("helpers.hint.user.team_lead.html") %>
+          <%= form.govuk_check_box :team_leader, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.user.team_lead")} %>
+        <% end %>
+      </div>
+
+      <%= form.govuk_submit t("user.add.save.button") do %>
+        <%= link_to t("user.add.cancel.button"), users_path, class: "govuk-button govuk-button--secondary" %>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>

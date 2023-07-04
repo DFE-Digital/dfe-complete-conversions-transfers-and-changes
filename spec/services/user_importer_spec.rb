@@ -5,9 +5,9 @@ RSpec.describe UserImporter do
   let(:user_importer) { UserImporter.new }
   let(:users_csv) do
     <<~CSV
-      email,first_name,last_name,team_leader,regional_delivery_officer
-      john.doe@education.gov.uk,John,Doe,1,0
-      jane.doe@education.gov.uk,Jane,Doe,0,1
+      email,first_name,last_name,team,team_leader,regional_delivery_officer,caseworker
+      john.doe@education.gov.uk,John,Doe,regional_casework_services,1,0,0
+      jane.doe@education.gov.uk,Jane,Doe,london,0,1,0
     CSV
   end
 
@@ -30,7 +30,8 @@ RSpec.describe UserImporter do
           first_name: "John",
           last_name: "Doe",
           team_leader: true,
-          regional_delivery_officer: false
+          regional_delivery_officer: false,
+          team: "regional_casework_services"
         )
       ).to exist
 
@@ -40,7 +41,8 @@ RSpec.describe UserImporter do
           first_name: "Jane",
           last_name: "Doe",
           team_leader: false,
-          regional_delivery_officer: true
+          regional_delivery_officer: true,
+          team: "london"
         )
       ).to exist
     end
@@ -48,9 +50,9 @@ RSpec.describe UserImporter do
     context "when an existing user has been updated" do
       let(:users_csv) do
         <<~CSV
-          email,first_name,last_name,team_leader,regional_delivery_officer
-          john.doe@education.gov.uk,John,Doe,1,0
-          jane.doe@education.gov.uk,Jane,Doe,1,0
+          email,first_name,last_name,team,team_leader,regional_delivery_officer,caseworker
+          john.doe@education.gov.uk,John,Doe,regional_casework_services,1,0,0
+          jane.doe@education.gov.uk,Jane,Doe,regional_casework_services,1,0,0
         CSV
       end
 

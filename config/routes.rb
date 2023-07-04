@@ -161,6 +161,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: %w[index new create edit update]
+
   # Defines the root path route ("/")
   root "root#home"
 

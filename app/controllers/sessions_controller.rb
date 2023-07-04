@@ -36,11 +36,11 @@ class SessionsController < ApplicationController
   private def assign_active_directory_user_id
     return if registered_user.active_directory_user_id.present?
 
-    registered_user.update(active_directory_user_id: active_directory_user_id)
+    registered_user.update_attribute(:active_directory_user_id, active_directory_user_id)
   end
 
   private def assign_active_directory_user_group_ids
-    registered_user.update!(active_directory_user_group_ids: active_directory_user_group_ids)
+    registered_user.update_attribute(:active_directory_user_group_ids, active_directory_user_group_ids)
   end
 
   private def authenticated_user_info
