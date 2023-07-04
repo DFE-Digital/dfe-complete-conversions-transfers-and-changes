@@ -92,7 +92,7 @@ jobs:
             az containerapp update \
               --name ${{ secrets.AZURE_ACA_NAME }} \
               --resource-group ${{ secrets.AZURE_ACA_RESOURCE_GROUP }} \
-              --image ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:${{ needs.set-env.outputs.branch }} \
+              --image ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:sha-${{ needs.set-env.outputs.checked-out-sha }} \
               --output none
 
       - name: Azure login with ACA Worker credentials
@@ -109,5 +109,5 @@ jobs:
             az containerapp update \
               --name ${{ secrets.AZURE_ACA_NAME }}-worker \
               --resource-group ${{ secrets.AZURE_ACA_RESOURCE_GROUP }} \
-              --image ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:${{ needs.set-env.outputs.branch }} \
+              --image ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:sha-${{ needs.set-env.outputs.checked-out-sha }} \
               --output none
