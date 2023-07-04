@@ -1,6 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Api::MembersApi::Client do
+  let(:telemetry_client) { double(ApplicationInsights::TelemetryClient, track_event: true, flush: true) }
+
+  before do
+    allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
+  end
+
   it "uses the environment variables to build the connection" do
     ClimateControl.modify(
       MEMBERS_API_HOST: "https://members-api.test"
@@ -74,6 +80,21 @@ RSpec.describe Api::MembersApi::Client do
       expect(response.object).to be_nil
       expect(response.error).to be_a(Api::MembersApi::Client::Error)
       expect(response.error.message).to eq(I18n.t("members_api.errors.contact_details_not_found", member_id: 4744))
+    end
+
+    it "logs a warning if there are multiple contact details, and returns a nil object" do
+      ClimateControl.modify(
+        APPLICATION_INSIGHTS_KEY: "fake-key-1234"
+      ) do
+        fake_client = Api::MembersApi::Client.new
+        allow(fake_client).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::MultipleResultsError.new(I18n.t("members_api.errors.multiple", search_term: "St Albans"))))
+        allow(fake_client).to receive(:member_name).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error))
+        allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error))
+
+        response = fake_client.member_for_constituency("St Albans")
+        expect(response).to be_nil
+        expect(telemetry_client).to have_received(:track_event).with(I18n.t("members_api.errors.multiple", search_term: "St Albans"))
+      end
     end
   end
 

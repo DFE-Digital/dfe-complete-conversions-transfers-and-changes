@@ -43,7 +43,7 @@ module MembersApiHelpers
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
   end
 
-  def mock_successful_memeber_details
+  def mock_successful_member_details
     address = OpenStruct.new(
       line1: "House of Commons",
       line2: "London",
@@ -86,6 +86,12 @@ module MembersApiHelpers
     not_found_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError)
 
     allow(test_client).to receive(:member_contact_details).and_return(not_found_result)
+    allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
+  end
+
+  def mock_nil_member_for_constituency_response
+    test_client = Api::MembersApi::Client.new
+    allow(test_client).to receive(:member_for_constituency).and_return(nil)
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
   end
 

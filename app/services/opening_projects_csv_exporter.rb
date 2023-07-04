@@ -57,16 +57,21 @@ class OpeningProjectsCsvExporter
       trust_address_town: project.incoming_trust.address_town,
       trust_address_county: project.incoming_trust.address_county,
       trust_address_postcode: project.incoming_trust.address_postcode,
-      mp_name: mp_details.name,
-      mp_email: mp_details.email,
-      mp_address_line_1: mp_details.address.line1,
-      mp_address_line_2: mp_details.address.line2,
-      mp_address_line_3: mp_details.address.line3,
-      mp_address_postcode: mp_details.address.postcode,
+      mp_name: mp_details&.name,
+      mp_email: mp_details&.email,
+      mp_address_line_1: fetch_address_line(mp_details, :line1),
+      mp_address_line_2: fetch_address_line(mp_details, :line2),
+      mp_address_line_3: fetch_address_line(mp_details, :line3),
+      mp_address_postcode: fetch_address_line(mp_details, :postcode),
       approval_date: project.advisory_board_date.to_formatted_s(:csv),
       project_lead: project.assigned_to.full_name,
       academy_name: project.academy&.name
     }
+  end
+
+  private def fetch_address_line(mp_details, attribute)
+    return nil if mp_details.nil?
+    mp_details.address.send(attribute)
   end
 
   private def fetch_mp_details(project)

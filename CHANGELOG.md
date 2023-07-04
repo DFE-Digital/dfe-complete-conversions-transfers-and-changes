@@ -15,6 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Allow CSV export to go ahead when a school's parliamentary constituency is
+  unclear
+
 ## [Release 31][release-31]
 
 ### Added
