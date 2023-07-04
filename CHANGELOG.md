@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Allow CSV export to go ahead when a school's parliamentary constituency is
   unclear
 - Fix date ordering on project index pages
+- the confirmed and revised opening lists now correctly change month
 
 ## [Release 31][release-31]
 
