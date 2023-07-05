@@ -1,0 +1,19 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= t("user.set_team.title") %></h1>
+    <%= t("user.set_team.hint_html") %>
+
+    <%= form_with model: @user, url: users_team_path, method: :post do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_collection_radio_buttons :team,
+            @user.team_options,
+            :id,
+            :name,
+            legend: {text: t("user.set_team.team.label")},
+            hint: {text: t("user.set_team.team.hint")} %>
+
+      <%= form.govuk_submit t("user.set_team.save.button") %>
+    <% end %>
+  </div>
+</div>

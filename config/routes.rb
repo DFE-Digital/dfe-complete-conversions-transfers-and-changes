@@ -162,6 +162,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %w[index new create edit update]
+  get "users/team", to: "users#set_team"
+  post "users/team", to: "users#update_team"
 
   # Defines the root path route ("/")
   root "root#home"

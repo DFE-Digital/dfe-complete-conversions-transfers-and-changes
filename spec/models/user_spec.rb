@@ -192,7 +192,7 @@ RSpec.describe User do
       expect(options.first.id).to eql "london"
       expect(options.first.name).to eql "London"
       expect(options.last.id).to eql "education_and_skills_funding_agency"
-      expect(options.last.name).to eql "Education and Skills Funding Agency (ESFA)"
+      expect(options.last.name).to eql "ESFA (Education and Skills Funding Agency)"
     end
   end
 

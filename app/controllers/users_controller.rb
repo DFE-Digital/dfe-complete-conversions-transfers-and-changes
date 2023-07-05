@@ -44,6 +44,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_team
+    @user = current_user
+    authorize @user
+  end
+
+  def update_team
+    @user = current_user
+    authorize @user
+
+    @user.assign_attributes(team_params)
+    if @user.valid?
+      @user.save!(context: :set_team)
+      redirect_to root_path, notice: I18n.t("user.set_team.success", email: @user.email)
+    else
+      render :set_team
+    end
+  end
+
   private def user_params
     params.require(:user).permit(
       :first_name,
@@ -56,5 +74,9 @@ class UsersController < ApplicationController
 
   private def user_id
     params[:id]
+  end
+
+  private def team_params
+    params.require(:user).permit(:team)
   end
 end

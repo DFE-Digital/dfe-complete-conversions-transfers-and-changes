@@ -15,6 +15,7 @@ class User < ApplicationRecord
   scope :all_assignable_users, -> { where.not(caseworker: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
 
   validates :first_name, :last_name, :email, :team, presence: true
+  validates :team, presence: true, on: :set_team
   validates :email, uniqueness: {case_sensitive: false}
   validates :email, format: {with: /\A\S+@education.gov.uk\z/}
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}

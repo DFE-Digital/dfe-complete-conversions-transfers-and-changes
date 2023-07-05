@@ -25,4 +25,12 @@ class UserPolicy
   def update?
     index?
   end
+
+  def set_team?
+    @user == @user_account
+  end
+
+  def update_team?
+    set_team?
+  end
 end
