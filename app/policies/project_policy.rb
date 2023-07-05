@@ -72,6 +72,10 @@ class ProjectPolicy
     edit_project_closed?
   end
 
+  def unassigned?
+    @user.team_leader?
+  end
+
   private def project_assigned_to_user?
     @record.assigned_to == @user
   end
