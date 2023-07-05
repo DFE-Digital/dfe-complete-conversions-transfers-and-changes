@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
     if registered_user
       create_session
 
+      return redirect_to users_team_path if current_user.team.nil?
+
       redirect_to root_path
     else
       redirect_to sign_in_path, alert: I18n.t("unknown_user.message", email_address: authenticated_user_email_address)

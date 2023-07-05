@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- If your user account is not assigned to a team, you will be asked to choose
+  one next time you sign in to the application.
+
 ### Changed
 
 ### Fixed

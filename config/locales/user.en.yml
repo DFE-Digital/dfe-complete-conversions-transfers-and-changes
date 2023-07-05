@@ -19,6 +19,17 @@ en:
       cancel:
         button: Cancel
       success: User %{email} updated successfully
+    set_team:
+      title: Which team do you work in?
+      hint_html:
+        <p>Choose the team most relevant to the work you do.</p>
+        <p>Contact the service support team if you feel you do not have an option.</p>
+      team:
+        label: Choose your team
+        hint: All users must belong to one of the following teams.
+      save: 
+        button: Save team
+      success: The team for %{email} has been set successfully
     title: Users
     table:
       caption: Table of users
@@ -43,10 +54,10 @@ en:
       north_east: North East
       south_west: South West
       east_midlands: East Midlands
-      regional_casework_services: Regional Casework Services (RCS)
+      regional_casework_services: RCS (Regional Casework Services)
       service_support: Service Support
-      academies_operational_practice_unit: Academies Operational Practice Unit (AOPU)
-      education_and_skills_funding_agency: Education and Skills Funding Agency (ESFA)
+      academies_operational_practice_unit: AOPU (Academies Operational Practice Unit)
+      education_and_skills_funding_agency: ESFA (Education and Skills Funding Agency)
   helpers:
     legend:
       user:
