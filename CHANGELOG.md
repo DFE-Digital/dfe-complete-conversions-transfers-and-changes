@@ -13,6 +13,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- the opening list now prefetches establishment and trust details, improving the
+  performance of the view.
+
 ### Fixed
 
 ## [Release 32][release-32]

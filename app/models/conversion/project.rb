@@ -13,7 +13,7 @@ class Conversion::Project < Project
 
   scope :provisional, -> { where(conversion_date_provisional: true) }
   scope :confirmed, -> { where(conversion_date_provisional: false) }
-  scope :opening_by_month_year, ->(month, year) { includes(:tasks_data).where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
+  scope :opening_by_month_year, ->(month, year) { where(conversion_date_provisional: false).and(where("YEAR(conversion_date) = ?", year)).and(where("MONTH(conversion_date) = ?", month)) }
   scope :by_conversion_date, -> { order(conversion_date: :asc) }
   scope :in_progress, -> { where(completed_at: nil).assigned.by_conversion_date }
 
