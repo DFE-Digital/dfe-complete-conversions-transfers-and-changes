@@ -2,48 +2,57 @@ en:
   conversion:
     task:
       sponsored_support_grant:
-        title: Process the sponsored support grant
+        title: Confirm and process the sponsored support grant
         hint:
           html:
-            <p>Start this as soon as possible. Trusts can start getting charged by solicitors and the local authority early in the process.</p>
+            <p>There are 3 levels of sponsored grant available to academies:</p>
+            <ul>
+            <li>fast track</li>
+            <li>intermediate</li>
+            <li>full sponsored</li>
+            </ul>
+            <p>Academies or their sponsor trust can only apply for one of these grant levels at first. The level of grant can be increased later on if necessary.</p>
+            <p>These grants are only available to schools converting due to:</p>
+            <ul>
+            <li>an inadequate rating in an Ofsted inspection</li>
+            <li>intervention by DfE following at least 2 requires improvement ratings in Ofsted inspections</li>
+            </ul>
+            <p>Schools issued a directive academy order are automatically eligible for these grants. Others converting with an academy order may be able to access this funding too. This is judged on a case-by-case basis.</p>
+        guidance_link: How to check grant eligibility
+        guidance:
+          html:
+            <p>The fast track grant amounts are:</p>
+            <ul>
+            <li>£70,000 for primary and special schools</li>
+            <li>£80,000 for secondary and all-through schools</li>
+            </ul>
+            <p>In some circumstances, the sponsor might be entitled to a larger
+            grant.</p>
+            <p>This would be the intermediate grant, or the full sponsored grant.</p>
+            <p>Intermediate grant amounts are:</p>
+            <ul>
+            <li>£90,000 for primary and special schools</li>
+            <li>£115,000 for secondary and all-through schools</li>
+            </ul>
+            <p>Full sponsored grant amounts are:</p>
+            <ul>
+            <li>£110,000 for primary and special schools</li>
+            <li>£150,000 secondary and all-through schools</li>
+            </ul>
+            <p>All grants include the £25,000 conversion grant. This is used to fund
+            conversion costs, such as legal expenses. Any amount left after
+            conversion costs have been paid for should be used for school
+            improvements.</p>
+            <p>A business case must be approved at advisory board, or by the regional
+            director, for a trust to get the intermediate or full sponsored grant.</p>
+            <p>There is more <a href="https://www.gov.uk/government/publications/sponsored-academies-funding-guidance-for-sponsors" class="govuk-link" target="_blank">guidance on grant eligibility and spending (opens in
+            new tab)</a> on GOV.UK.</p>
 
         eligibility:
           title: Check and confirm the school's grant eligibility
           hint:
             html:
               <p>Confirm if the trust will receive the fast track, intermediate or full sponsored grant.</p>
-          guidance_link: How to check grant eligibility
-          guidance:
-            html:
-              <p>All schools that are issued a directive academy order are allocated
-              to an experienced trust. These trusts are also known as sponsors.</p>
-              <p>In most cases, the sponsor is entitled to the fast track grant.</p>
-              <p>The sponsor will get:</p>
-              <ul>
-              <li>£70,000 for primary and special schools</li>
-              <li>£80,000 for secondary and all-through schools</li>
-              </ul>
-              <p>In some circumstances, the sponsor might be entitled to a larger
-              grant.</p>
-              <p>This would be the intermediate grant, or the full sponsored grant.</p>
-              <p>Intermediate grant amounts are:</p>
-              <ul>
-              <li>£90,000 for primary and special schools</li>
-              <li>£115,000 for secondary and all-through schools</li>
-              </ul>
-              <p>Full sponsored grant amounts are:</p>
-              <ul>
-              <li>£110,000 for primary and special schools</li>
-              <li>£150,000 secondary and all-through schools</li>
-              </ul>
-              <p>All grants include the £25,000 conversion grant. This is used to fund
-              conversion costs, such as legal expenses. Any amount left after
-              conversion costs have been paid for should be used for school
-              improvements.</p>
-              <p>A business case must be approved at advisory board, or by the regional
-              director, for a trust to get the intermediate or full sponsored grant.</p>
-              <p>There is more <a href="https://www.gov.uk/government/publications/sponsored-academies-funding-guidance-for-sponsors" class="govuk-link" target="_blank">guidance on grant eligibility and spending (opens in
-              new tab)</a> on GOV.UK.</p>
 
         payment_amount:
           title: Tell the trust how much they are entitled to and how to claim the grant
