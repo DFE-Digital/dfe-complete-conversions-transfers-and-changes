@@ -35,7 +35,7 @@
 
     <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
-    <%= render partial: "shared/header" %>
+    <%= render partial: "shared/dfe_header" %>
 
     <div class="govuk-width-container " aria-label="phase banner" role="complementary">
       <%= govuk_phase_banner(
@@ -55,17 +55,7 @@
       </main>
     </div>
 
-    <%= govuk_footer(
-          meta_items_title: "Helpful links",
-          meta_items: [
-            {text: "Privacy notice", href: page_path(id: "privacy")},
-            {text: "Accessibility Statement", href: page_path(id: "accessibility")},
-            {text: "Cookies", href: page_path(id: "cookies")},
-            {text: "How to use this service (opens in new tab)", href: "https://educationgovuk.sharepoint.com/sites/lvewp00299/SitePages/Using-the-Complete-conversions,-transfers-and-changes-digital-product.aspx", attr: {target: "_blank"}},
-            {text: "Email support", href: "mailto:#{Rails.application.config.support_email}?subject=#{I18n.t("support_email_subject")}"}
-          ]
-        ) %>
-
+    <%= render partial: "shared/dfe_footer" %>
   </body>
   <%= javascript_include_tag "application" %>
   <%= yield :footer_post_js %>
