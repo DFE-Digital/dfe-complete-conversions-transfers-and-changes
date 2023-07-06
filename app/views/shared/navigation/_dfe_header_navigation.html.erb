@@ -1,0 +1,34 @@
+   <nav class="dfe-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" aria-labelledby="label-navigation">
+      <div class="dfe-width-container">
+         <p class="dfe-header__navigation-title">
+            <span id="label-navigation">Menu</span>
+            <button class="dfe-header__navigation-close" id="close-menu">
+               <svg class="dfe-icon dfe-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+                  <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+               </svg>
+               <span class="govuk-visually-hidden">Close menu</span>
+            </button>
+         </p>
+         <ul class="dfe-header__navigation-list">
+            <%= if policy(:navigation).show_your_projects_header_navigation?
+                  render partial: "shared/navigation/dfe_header_navigation_item",
+                    locals: {title: t("navigation.header.your_projects"), path: in_progress_user_projects_path, namespace: "/projects/user/"}
+                end %>
+
+            <%= if policy(:navigation).show_team_projects_header_navigation?
+                  render partial: "shared/navigation/dfe_header_navigation_item",
+                    locals: {title: t("navigation.header.team_projects"), path: unassigned_team_projects_path, namespace: "/projects/team/"}
+                end %>
+
+            <%= if policy(:navigation).show_all_projects_header_navigation?
+                  render partial: "shared/navigation/dfe_header_navigation_item",
+                    locals: {title: t("navigation.header.all_projects"), path: all_in_progress_projects_path, namespace: "/projects/all/"}
+                end %>
+
+            <%= if policy(:navigation).show_service_support_header_navigation?
+                  render partial: "shared/navigation/dfe_header_navigation_item",
+                    locals: {title: t("navigation.header.service_support"), path: without_academy_urn_service_support_projects_path, namespace: "/service-support/"}
+                end %>
+         </ul>
+      </div>
+   </nav>
