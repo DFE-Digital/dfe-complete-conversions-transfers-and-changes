@@ -6,7 +6,7 @@ RSpec.feature "Users can view a list users" do
     mock_all_academies_api_responses
   end
 
-  let(:user) { create(:user, email: "user@education.gov.uk") }
+  let(:user) { create(:user, email: "user@education.gov.uk", team: :london) }
 
   context "when there are no projects to fetch users for" do
     scenario "they see an empty message" do
@@ -24,6 +24,7 @@ RSpec.feature "Users can view a list users" do
 
       within("tbody > tr:first-child") do
         expect(page).to have_content(user.full_name)
+        expect(page).to have_content("London")
         expect(page).to have_content("1")
         expect(page).to have_link("View projects", href: by_user_all_users_projects_path(user))
       end

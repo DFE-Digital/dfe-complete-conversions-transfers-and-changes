@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - If your user account is not assigned to a team, you will be asked to choose
   one next time you sign in to the application.
+- The team a user is associated with is now shown on the All projects, by team
+  view.
 
 ### Changed
 
