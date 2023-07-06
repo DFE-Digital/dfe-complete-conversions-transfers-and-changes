@@ -42,6 +42,7 @@ If this is your first time running the application, see the
 
 - [User accounts](/doc/user-accounts.md)
 - [Task lists and tasks](/doc/task-lists-and-tasks.md)
+- [API Consumption](/doc/api-consumption.md)
 - [Microsoft SQL Server](/doc/microsoft-sql-server.md)
 - [Automated accessibility checks](/doc/accessibility-tests.md)
 - [Console and logs in live environments](/doc/console-and-logs.md)
