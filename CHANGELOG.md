@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The application now uses the DfE Design System header, footer and buttons.
 - Change the Team projects views to only show projects aligned to the user's
   team
+- Only team leaders can see the Unassigned projects page in the Team projects
+  view
 
 ### Fixed
 

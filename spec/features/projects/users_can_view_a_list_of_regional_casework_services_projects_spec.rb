@@ -21,4 +21,40 @@ RSpec.feature "Viewing regional casework services projects" do
       expect(page).to have_content(I18n.t("project.table.unassigned.empty"))
     end
   end
+
+  context "navigation" do
+    before do
+      sign_in_with_user(user)
+    end
+
+    context "when the user is a team_leader" do
+      let(:user) { create(:user, :team_leader) }
+
+      scenario "they can see a link to the unassigned projects page" do
+        visit in_progress_team_projects_path
+
+        expect(page.find("nav.moj-primary-navigation")).to have_content "Unassigned"
+      end
+    end
+
+    context "when the user is a regional delivery officer" do
+      let(:user) { create(:user, :regional_delivery_officer) }
+
+      scenario "they can NOT see a link to the unassigned projects page" do
+        visit in_progress_team_projects_path
+
+        expect(page.find("nav.moj-primary-navigation")).to_not have_content "Unassigned"
+      end
+    end
+
+    context "when the user is a caseworker" do
+      let(:user) { create(:user, :caseworker) }
+
+      scenario "they can NOT see a link to the unassigned projects page" do
+        visit in_progress_team_projects_path
+
+        expect(page.find("nav.moj-primary-navigation")).to_not have_content "Unassigned"
+      end
+    end
+  end
 end
