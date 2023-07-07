@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Users without a team show up as 'No team' in the User management list.
+
 ## [Release 32][release-32]
 
 ### Added

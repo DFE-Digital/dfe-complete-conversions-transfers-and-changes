@@ -76,4 +76,24 @@ RSpec.feature "Users can manage user accounts" do
 
     expect(page).to have_content("There is a problem")
   end
+
+  context "then the users team is nil becuase it is a legacy account" do
+    scenario "no team is shown" do
+      other_user = User.new(
+        first_name: "First",
+        last_name: "Last",
+        email: "first.last@education.gov.uk",
+        team: nil
+      )
+      other_user.save(validate: false)
+
+      sign_in_with_user(user)
+
+      visit users_path
+
+      within("tbody") do
+        expect(page).to have_content("No team")
+      end
+    end
+  end
 end
