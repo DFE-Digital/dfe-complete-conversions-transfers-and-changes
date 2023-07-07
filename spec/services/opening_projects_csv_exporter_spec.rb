@@ -68,7 +68,7 @@ RSpec.describe OpeningProjectsCsvExporter do
       csv_export = OpeningProjectsCsvExporter.new([project]).call
 
       expect(csv_export).to include("Conversion date")
-      expect(csv_export).to include("2025/05/01")
+      expect(csv_export).to include("2025-05-01")
     end
 
     it "returns a csv with the establishment name" do
@@ -272,7 +272,7 @@ RSpec.describe OpeningProjectsCsvExporter do
       csv_export = OpeningProjectsCsvExporter.new([project]).call
 
       expect(csv_export).to include("Approval date")
-      expect(csv_export).to include("2022/06/01")
+      expect(csv_export).to include("2022-06-01")
     end
 
     it "returns a csv with the project lead" do
