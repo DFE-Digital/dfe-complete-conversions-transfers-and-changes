@@ -17,7 +17,7 @@
 
             <%= if policy(:navigation).show_team_projects_header_navigation?
                   render partial: "shared/navigation/dfe_header_navigation_item",
-                    locals: {title: t("navigation.header.team_projects"), path: unassigned_team_projects_path, namespace: "/projects/team/"}
+                    locals: {title: t("navigation.header.team_projects"), path: (current_user.team_leader? ? unassigned_team_projects_path : in_progress_team_projects_path), namespace: "/projects/team/"}
                 end %>
 
             <%= if policy(:navigation).show_all_projects_header_navigation?

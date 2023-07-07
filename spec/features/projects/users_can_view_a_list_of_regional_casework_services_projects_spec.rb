@@ -35,6 +35,14 @@ RSpec.feature "Viewing regional casework services projects" do
 
         expect(page.find("nav.moj-primary-navigation")).to have_content "Unassigned"
       end
+
+      scenario "the Team projects link leads to the unassigned page" do
+        visit root_path
+
+        click_on "Team projects"
+
+        expect(page.find("h1")).to have_content("Unassigned")
+      end
     end
 
     context "when the user is a regional delivery officer" do
@@ -45,6 +53,14 @@ RSpec.feature "Viewing regional casework services projects" do
 
         expect(page.find("nav.moj-primary-navigation")).to_not have_content "Unassigned"
       end
+
+      scenario "the Team projects link leads to the in-progress page" do
+        visit root_path
+
+        click_on "Team projects"
+
+        expect(page.find("h1")).to have_content("In progress")
+      end
     end
 
     context "when the user is a caseworker" do
@@ -54,6 +70,14 @@ RSpec.feature "Viewing regional casework services projects" do
         visit in_progress_team_projects_path
 
         expect(page.find("nav.moj-primary-navigation")).to_not have_content "Unassigned"
+      end
+
+      scenario "the Team projects link leads to the in-progress page" do
+        visit root_path
+
+        click_on "Team projects"
+
+        expect(page.find("h1")).to have_content("In progress")
       end
     end
   end
