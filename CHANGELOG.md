@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   team
 - Only team leaders can see the Unassigned projects page in the Team projects
   view
+- All users with a role and a team can now view the Team projects view
 
 ### Fixed
 

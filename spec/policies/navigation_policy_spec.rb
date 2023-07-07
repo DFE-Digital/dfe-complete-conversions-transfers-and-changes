@@ -61,14 +61,19 @@ RSpec.describe NavigationPolicy do
       expect(described_class).not_to permit(user)
     end
 
-    it "does not permit for a user that has the caseworker role" do
-      user = build(:user, :caseworker)
+    it "does not permit a user that has no team" do
+      user = build(:user, :caseworker, team: nil)
       expect(described_class).not_to permit(user)
     end
 
-    it "does not permit for a user that has the regional delivery officer role" do
+    it "permits for a user that has the caseworker role" do
+      user = build(:user, :caseworker)
+      expect(described_class).to permit(user)
+    end
+
+    it "permits for a user that has the regional delivery officer role" do
       user = build(:user, :regional_delivery_officer)
-      expect(described_class).not_to permit(user)
+      expect(described_class).to permit(user)
     end
 
     it "permits for a user that has the regional casework services team lead role" do
