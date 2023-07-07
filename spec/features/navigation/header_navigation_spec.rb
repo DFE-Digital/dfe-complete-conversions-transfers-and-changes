@@ -6,7 +6,7 @@ RSpec.feature "Header navigation" do
       visit root_path
 
       expect(page).not_to have_link "All projects"
-      expect(page).not_to have_css ".moj-header__navigation"
+      expect(page).not_to have_css ".dfe-header__navigation"
     end
   end
 
@@ -17,7 +17,7 @@ RSpec.feature "Header navigation" do
       visit root_path
 
       expect(page).not_to have_link "All projects"
-      expect(page).not_to have_css ".moj-header__navigation"
+      expect(page).not_to have_css ".dfe-header__navigation"
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.feature "Header navigation" do
 
       expect(page).to have_link "Your projects"
       expect(page).to have_link "All projects"
-      expect(page).to have_css ".moj-header__navigation"
+      expect(page).to have_css ".dfe-header__navigation"
     end
   end
 end

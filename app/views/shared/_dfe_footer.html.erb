@@ -1,0 +1,29 @@
+<footer class="govuk-footer " role="contentinfo">
+  <div class="govuk-width-container ">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to "Privacy notice", page_path(id: "privacy"), class: "govuk-footer__link" %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to "Accessibility Statement", page_path(id: "accessibility"), class: "govuk-footer__link" %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to "Cookies", page_path(id: "cookies"), class: "govuk-footer__link" %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to "How to use this service (opens in new tab)",
+                  "https://educationgovuk.sharepoint.com/sites/lvewp00299/SitePages/Using-the-Complete-conversions,-transfers-and-changes-digital-product.aspx",
+                  class: "govuk-footer__link",
+                  target: "_blank" %>
+          </li>
+          <li class="govuk-footer__inline-list-item">
+            <%= link_to "Email support", "mailto:#{Rails.application.config.support_email}", class: "govuk-footer__link" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
