@@ -4,9 +4,9 @@ RSpec.describe ByUserProjectFetcherService do
   it "returns a sorted list of simple user objects with projects" do
     mock_successful_api_response_to_create_any_project
 
-    user = create(:user, first_name: "A", last_name: "User", email: "a.user@education.gov.uk")
-    another_user = create(:user, first_name: "B", last_name: "User", email: "b.user@education.gov.uk")
-    yet_another_user = create(:user, first_name: "C", last_name: "User", email: "c.user@education.gov.uk")
+    user = create(:user, first_name: "A", last_name: "User", email: "a.user@education.gov.uk", team: :london)
+    another_user = create(:user, first_name: "B", last_name: "User", email: "b.user@education.gov.uk", team: :north_west)
+    yet_another_user = create(:user, first_name: "C", last_name: "User", email: "c.user@education.gov.uk", team: :service_support)
 
     create(:conversion_project, urn: 121813, assigned_to: user)
     create(:conversion_project, urn: 121102, assigned_to: user)
@@ -21,11 +21,13 @@ RSpec.describe ByUserProjectFetcherService do
     first_result = result.first
 
     expect(first_result.name).to eql "A User"
+    expect(first_result.team).to eql "london"
     expect(first_result.conversion_count).to eql 2
 
     last_result = result.last
 
     expect(last_result.name).to eql "C User"
+    expect(last_result.team).to eql "service_support"
     expect(last_result.conversion_count).to eql 1
   end
 

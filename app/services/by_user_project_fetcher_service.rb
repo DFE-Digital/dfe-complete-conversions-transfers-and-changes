@@ -20,6 +20,7 @@ class ByUserProjectFetcherService
       OpenStruct.new(
         name: user.full_name,
         email: user.email,
+        team: user.team,
         id: user.id,
         conversion_count: conversion_counts.fetch(user.id)
       )
