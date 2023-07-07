@@ -80,7 +80,6 @@ Rails.application.routes.draw do
           namespace :opening do
             get "confirmed/", to: "projects#confirmed_next_month"
             get "confirmed/:month/:year", to: "projects#confirmed", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
-            get "confirmed/:month/:year/csv", to: "projects#download_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
             get "revised/:month/:year", to: "projects#revised", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
             get "revised/", to: "projects#revised_next_month"
           end
@@ -102,6 +101,11 @@ Rails.application.routes.draw do
           namespace :users do
             get "/", to: "projects#index"
             get ":user_id", to: "projects#show", as: :by_user, constraints: {user_id: VALID_UUID_REGEX}
+          end
+          namespace :export do
+            namespace :funding_agreement_letters, path: "funding-agreement-letters" do
+              get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+            end
           end
         end
         namespace :team, path: "team" do

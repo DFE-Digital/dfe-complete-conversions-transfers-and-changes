@@ -1,4 +1,4 @@
-class OpeningProjectsCsvExporter
+class Export::FundingAgreementLettersCsvExporterService
   require "csv"
 
   def initialize(projects)
