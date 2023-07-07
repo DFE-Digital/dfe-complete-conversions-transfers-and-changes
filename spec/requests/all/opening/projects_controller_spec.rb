@@ -4,7 +4,7 @@ RSpec.describe All::Opening::ProjectsController, type: :request do
   let(:team_leader) { create(:user, :team_leader) }
 
   before do
-    mock_successful_api_responses(urn: any_args, ukprn: any_args)
+    mock_all_academies_api_responses
     sign_in_with(team_leader)
   end
 

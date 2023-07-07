@@ -4,14 +4,11 @@ RSpec.feature "Users can view project openers in table form" do
   let(:team_leader) { create(:user, :team_leader) }
 
   before do
+    mock_all_academies_api_responses
     sign_in_with(team_leader)
   end
 
   context "All conditions met tag" do
-    before do
-      mock_successful_api_responses(urn: any_args, ukprn: any_args)
-    end
-
     context "when a project has all conditions met" do
       it "shows the correct value" do
         tasks_data = create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: true)
