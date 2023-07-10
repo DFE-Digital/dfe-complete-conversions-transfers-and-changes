@@ -19,6 +19,11 @@
           <%= t("helpers.hint.user.team_lead.html") %>
           <%= form.govuk_check_box :team_leader, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.user.team_lead")} %>
         <% end %>
+
+        <%= form.govuk_check_boxes_fieldset :disabled, multiple: false, legend: {size: "s"}  do %>
+          <%= t("helpers.hint.user.disabled.html") %>
+          <%= form.govuk_check_box :disabled, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.user.disabled")} %>
+        <% end %>
       </div>
 
       <%= form.govuk_submit t("user.edit.save.button") do %>

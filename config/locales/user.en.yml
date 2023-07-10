@@ -63,18 +63,22 @@ en:
       user:
         team: User team
         team_leader: Team lead
+        disabled: Disable user
     label:
       user:
         first_name: First name
         last_name: Last name
         email: Email address
         team_lead: User is a team lead or manager
+        disabled: Disabled
     hint:
       user:
         email: "@education.gov.uk email addresses only"
         team: All users must belong in one of the following teams. Sub-teams within these are not required.
         team_lead:
           html: <p>If the user is a lead or manager within the team, check this box.</p>
+        disabled:
+          html: <p>Disabled users cannot access the application and will not show up in list of users.</p>
   errors:
     attributes:
       first_name:

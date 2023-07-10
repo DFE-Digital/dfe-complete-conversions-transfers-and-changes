@@ -77,6 +77,40 @@ RSpec.feature "Users can manage user accounts" do
     expect(page).to have_content("There is a problem")
   end
 
+  scenario "existing users can be disabled" do
+    existing_user = create(:user)
+
+    visit edit_user_path(existing_user)
+    check "Disabled"
+
+    click_on "Save user"
+
+    expect(existing_user.reload.disabled).to be true
+
+    click_on "Disabled users"
+
+    within("tbody") do
+      expect(page).to have_content(existing_user.email)
+    end
+  end
+
+  scenario "disabled users can be enabled" do
+    existing_user = create(:disabled_user)
+
+    visit edit_user_path(existing_user)
+    uncheck "Disabled"
+
+    click_on "Save user"
+
+    expect(existing_user.reload.disabled).to be false
+
+    click_on "Enabled users"
+
+    within("tbody") do
+      expect(page).to have_content(existing_user.email)
+    end
+  end
+
   context "then the users team is nil becuase it is a legacy account" do
     scenario "no team is shown" do
       other_user = User.new(

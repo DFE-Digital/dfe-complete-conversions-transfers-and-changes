@@ -261,6 +261,44 @@ RSpec.describe User do
     end
   end
 
+  describe "#disabled" do
+    it "returns true when disabled_at has a value" do
+      user = build(:disabled_user)
+
+      expect(user.disabled).to be true
+    end
+
+    it "returns false when disabled_at is nil" do
+      user = build(:user)
+
+      expect(user.disabled).to be false
+    end
+
+    it "can be set with 1 and 0 strings" do
+      user = build(:user)
+
+      user.update!(disabled: "1")
+
+      expect(user.disabled).to be true
+
+      user.update!(disabled: "0")
+
+      expect(user.disabled).to be false
+    end
+
+    it "can be set with true and false" do
+      user = build(:user)
+
+      user.update!(disabled: true)
+
+      expect(user.disabled).to be true
+
+      user.update!(disabled: false)
+
+      expect(user.disabled).to be false
+    end
+  end
+
   def valid_user_attributes
     {
       first_name: "First",

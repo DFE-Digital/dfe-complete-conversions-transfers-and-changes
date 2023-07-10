@@ -33,6 +33,18 @@ class User < ApplicationRecord
     false
   end
 
+  def disabled
+    disabled_at.present?
+  end
+
+  def disabled=(value)
+    if ActiveRecord::Type::Boolean.new.serialize(value)
+      write_attribute(:disabled_at, DateTime.now)
+    else
+      write_attribute(:disabled_at, nil)
+    end
+  end
+
   def team_options
     User.teams.keys.map { |team| OpenStruct.new(id: team, name: I18n.t("user.teams.#{team}")) }
   end
