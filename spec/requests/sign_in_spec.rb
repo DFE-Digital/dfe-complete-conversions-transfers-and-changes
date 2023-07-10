@@ -64,4 +64,17 @@ RSpec.describe "Sign in" do
       expect(flash.to_h.values).to include I18n.t("unknown_user.message", email_address: "user@education.gov.uk")
     end
   end
+
+  context "but the user is inactive" do
+    it "redirects to the sign in view and shows a helpful message" do
+      inactive_user = create(:inactive_user)
+      mock_successful_authentication(inactive_user.email)
+
+      get "/auth/azure_activedirectory_v2/callback"
+
+      expect(request).to redirect_to(sign_in_path)
+      expect(flash.notice).to include("inactive")
+      expect(flash.notice).to include(inactive_user.email)
+    end
+  end
 end
