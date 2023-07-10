@@ -38,5 +38,12 @@ FactoryBot.define do
       email { "service-support-#{SecureRandom.uuid}@education.gov.uk" }
       team { "service_support" }
     end
+
+    factory :disabled_user do
+      first_name { "Disabled" }
+      last_name { "User" }
+      email { "disabled.user@education.gov.uk" }
+      disabled_at { Date.today }
+    end
   end
 end

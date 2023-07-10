@@ -11,6 +11,7 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:service_support).of_type :boolean }
     it { is_expected.to have_db_column(:active_directory_user_group_ids).of_type :string }
     it { is_expected.to have_db_column(:team).of_type :string }
+    it { is_expected.to have_db_column(:disabled_at).of_type :datetime }
   end
 
   describe "scopes" do
@@ -58,6 +59,30 @@ RSpec.describe User do
       it "only includes users who have a role" do
         expect(User.all_assignable_users.count).to eq 6
         expect(User.all_assignable_users).to_not include(user_without_role)
+      end
+    end
+
+    describe "enabled" do
+      it "contains only enabled users" do
+        enabled_user = create(:user, disabled_at: nil, email: "enabled.user@education.gov.uk")
+        disabled_user = create(:disabled_user)
+
+        scoped_users = User.enabled
+
+        expect(scoped_users).to include(enabled_user)
+        expect(scoped_users).not_to include(disabled_user)
+      end
+    end
+
+    describe "disabled" do
+      it "contains only enabled users" do
+        enabled_user = create(:user, disabled_at: nil, email: "enabled.user@education.gov.uk")
+        disabled_user = create(:disabled_user)
+
+        scoped_users = User.disabled
+
+        expect(scoped_users).to include(disabled_user)
+        expect(scoped_users).not_to include(enabled_user)
       end
     end
   end
