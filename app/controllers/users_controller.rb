@@ -2,10 +2,16 @@ class UsersController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
-  def index
-    authorize User
+  def index_enabled
+    authorize User, :index?
 
-    @pager, @users = pagy(User.order_by_first_name)
+    @pager, @users = pagy(User.enabled.order_by_first_name)
+  end
+
+  def index_disabled
+    authorize User, :index?
+
+    @pager, @users = pagy(User.disabled.order_by_first_name)
   end
 
   def new

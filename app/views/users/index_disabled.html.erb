@@ -8,12 +8,11 @@
       <%= t("user.title") %>
     </h1>
 
-    <div class="govuk-button-group">
-      <%= link_to t("user.add.button"),
-            new_user_path,
-            class: "govuk-button",
-            data: {module: "govuk-button"} %>
-    </div>
+    <%= render partial: "users_sub_navigation" %>
+
+    <h2 class="govuk-heading-m">
+      <%= t("user.disabled.title") %>
+    </h2>
 
     <%= render partial: "users_table", locals: {user_accounts: @users, pager: @pager} %>
 

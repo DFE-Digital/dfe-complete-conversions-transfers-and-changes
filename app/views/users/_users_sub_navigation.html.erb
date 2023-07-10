@@ -1,0 +1,6 @@
+<nav class="moj-sub-navigation" aria-label="Sub-navigation">
+  <ul class="moj-sub-navigation__list">
+    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.enabled_users"), path: users_enabled_path} %>
+    <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.disabled_users"), path: users_disabled_path} %>
+  </ul>
+</nav>

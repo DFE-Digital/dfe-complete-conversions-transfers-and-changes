@@ -165,7 +165,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %w[index new create edit update]
+  resources :users, only: %w[new create edit update]
+  get "users", to: redirect("users/enabled")
+  get "users/enabled", to: "users#index_enabled"
+  get "users/disabled", to: "users#index_disabled"
   get "users/team", to: "users#set_team"
   post "users/team", to: "users#update_team"
 

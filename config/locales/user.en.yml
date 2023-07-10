@@ -27,10 +27,14 @@ en:
       team:
         label: Choose your team
         hint: All users must belong to one of the following teams.
-      save: 
+      save:
         button: Save team
       success: The team for %{email} has been set successfully
     title: Users
+    enabled:
+      title: Enabled users
+    disabled:
+      title: Disabled users
     table:
       caption: Table of users
       headers:
@@ -78,7 +82,9 @@ en:
         team_lead:
           html: <p>If the user is a lead or manager within the team, check this box.</p>
         disabled:
-          html: <p>Disabled users cannot access the application and will not show up in list of users.</p>
+          html:
+            <p>Disabled users cannot access the application and will not show up in lists of users regardless
+            of team assignment.</p>
   errors:
     attributes:
       first_name:
