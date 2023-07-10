@@ -11,8 +11,10 @@ class User < ApplicationRecord
   scope :team_leaders, -> { where(team_leader: true).order_by_first_name }
   scope :regional_delivery_officers, -> { where(regional_delivery_officer: true).order_by_first_name }
   scope :caseworkers, -> { where(caseworker: true).order_by_first_name }
+  scope :active, -> { where(deactivated_at: nil) }
+  scope :inactive, -> { where.not(deactivated_at: nil) }
 
-  scope :all_assignable_users, -> { where.not(caseworker: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
+  scope :all_assignable_users, -> { active.where.not(caseworker: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
 
   validates :first_name, :last_name, :email, :team, presence: true
   validates :team, presence: true, on: :set_team

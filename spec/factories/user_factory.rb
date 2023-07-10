@@ -38,5 +38,12 @@ FactoryBot.define do
       email { "service-support-#{SecureRandom.uuid}@education.gov.uk" }
       team { "service_support" }
     end
+
+    factory :inactive_user do
+      first_name { "Inactive" }
+      last_name { "User" }
+      email { "inactive.user@education.gov.uk" }
+      deactivated_at { Date.today }
+    end
   end
 end
