@@ -21,7 +21,8 @@ class NavigationPolicy
   end
 
   def show_team_projects_header_navigation?
-    return true if @user.team_leader?
+    return false unless @user.has_role?
+    return true unless @user.team.nil?
 
     false
   end

@@ -4,33 +4,17 @@ class Team::ProjectsController < ApplicationController
 
   def in_progress
     authorize Project, :index?
-    @pager, @projects = pagy(Project.assigned_to_regional_caseworker_team.in_progress.includes(:assigned_to))
-
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
+    @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).in_progress)
   end
 
   def completed
     authorize Project, :index?
-    @pager, @projects = pagy(Project.assigned_to_regional_caseworker_team.completed)
-
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
+    @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).completed)
   end
 
   def unassigned
-    authorize Project, :index?
-    @pagy, @projects = pagy(Project.assigned_to_regional_caseworker_team.unassigned_to_user)
+    authorize Project, :unassigned?
 
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
-  end
-
-  private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).call!
-  end
-
-  private def pre_fetch_incoming_trusts(projects)
-    TrustsFetcherService.new(projects).call!
+    @pagy, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).unassigned)
   end
 end

@@ -17,8 +17,8 @@ RSpec.feature "Any user can assign any other user to a project" do
       assign_user_from_internal_contacts
     end
 
-    scenario "they can assign a user from the unassigned projects view" do
-      assign_user_from_unassigned_projects
+    scenario "they can NOT assign a user from the unassigned projects view" do
+      cannot_assign_user_from_unassigned_projects
     end
   end
 
@@ -41,8 +41,8 @@ RSpec.feature "Any user can assign any other user to a project" do
       assign_user_from_internal_contacts
     end
 
-    scenario "they can assign a user from the unassigned projects view" do
-      assign_user_from_unassigned_projects
+    scenario "they can NOT assign a user from the unassigned projects view" do
+      cannot_assign_user_from_unassigned_projects
     end
   end
 
@@ -72,5 +72,10 @@ RSpec.feature "Any user can assign any other user to a project" do
     expect(page).to have_content("Project has been assigned successfully")
     expect(page).to have_current_path(unassigned_team_projects_path)
     expect(project.reload.assigned_to).to eql another_user
+  end
+
+  def cannot_assign_user_from_unassigned_projects
+    visit unassigned_team_projects_path
+    expect(page).to have_content(I18n.t("unauthorised_action.message"))
   end
 end

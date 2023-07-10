@@ -116,4 +116,11 @@ RSpec.describe ProjectPolicy do
       expect(subject).not_to permit(application_user, project)
     end
   end
+
+  permissions :unassigned? do
+    it "denies access to anyone who is not a team leader" do
+      expect(subject).to permit(build(:user, :team_leader))
+      expect(subject).to_not permit(application_user)
+    end
+  end
 end
