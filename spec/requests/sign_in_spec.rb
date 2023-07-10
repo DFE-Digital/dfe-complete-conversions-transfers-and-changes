@@ -64,4 +64,16 @@ RSpec.describe "Sign in" do
       expect(flash.to_h.values).to include I18n.t("unknown_user.message", email_address: "user@education.gov.uk")
     end
   end
+  context "but the user is disabled" do
+    it "redirects to the sign in view and shows a helpful message" do
+      disabled_user = create(:disabled_user)
+      mock_successful_authentication(disabled_user.email)
+
+      get "/auth/azure_activedirectory_v2/callback"
+
+      expect(request).to redirect_to(sign_in_path)
+      expect(flash.notice).to include("disabled")
+      expect(flash.notice).to include(disabled_user.email)
+    end
+  end
 end
