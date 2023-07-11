@@ -28,13 +28,12 @@
         <% end %>
       </div>
 
+      <div class="govuk-form-group">
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :payment_amount)) %>
-
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :payment_form)) %>
-
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_information)) %>
-
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :inform_trust)) %>
+      </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
     <% end %>
