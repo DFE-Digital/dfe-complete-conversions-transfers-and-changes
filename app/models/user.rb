@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   scope :all_assignable_users, -> { active.where.not(caseworker: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
 
+  scope :by_team, ->(team) { where(team: team) }
+
   validates :first_name, :last_name, :email, :team, presence: true
   validates :team, presence: true, on: :set_team
   validates :email, uniqueness: {case_sensitive: false}

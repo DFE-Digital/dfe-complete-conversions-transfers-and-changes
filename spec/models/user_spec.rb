@@ -15,11 +15,11 @@ RSpec.describe User do
   end
 
   describe "scopes" do
-    let!(:caseworker) { create(:user, :caseworker) }
+    let!(:caseworker) { create(:user, :caseworker, team: "regional_casework_services") }
     let!(:caseworker_2) { create(:user, :caseworker, first_name: "Aaron", email: "aaron-caseworker@education.gov.uk") }
-    let!(:team_leader) { create(:user, :team_leader) }
+    let!(:team_leader) { create(:user, :team_leader, team: "regional_casework_services") }
     let!(:team_leader_2) { create(:user, :team_leader, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
-    let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
+    let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, team: "london") }
     let!(:regional_delivery_officer_2) { create(:user, :regional_delivery_officer, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
     let!(:user_without_role) { create(:user, caseworker: false, team_leader: false, regional_delivery_officer: false, team: "education_and_skills_funding_agency") }
 
@@ -83,6 +83,13 @@ RSpec.describe User do
 
         expect(scoped_users).to include(inactive_user)
         expect(scoped_users).not_to include(active_user)
+      end
+    end
+
+    describe "by_team" do
+      it "returns users in the desired team" do
+        expect(User.by_team("london")).to include(regional_delivery_officer)
+        expect(User.by_team("regional_casework_services")).to include(caseworker, team_leader)
       end
     end
   end
