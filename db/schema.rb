@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_100251) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_113655) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -144,6 +144,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_100251) do
     t.boolean "handover_not_applicable"
     t.string "academy_details_name"
     t.string "risk_protection_arrangement_option"
+    t.boolean "check_accuracy_of_higher_needs_confirm_number"
+    t.boolean "check_accuracy_of_higher_needs_confirm_published_number"
   end
 
   create_table "local_authorities", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

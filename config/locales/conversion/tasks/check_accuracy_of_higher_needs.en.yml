@@ -1,0 +1,63 @@
+en:
+  conversion:
+    task:
+      check_accuracy_of_higher_needs:
+        title: Check accuracy of high needs places information
+        hint:
+          html:
+            <p>The local authority funds high needs places at a local authority maintained school. The ESFA (Education and Skills Funding Agency) funds high needs places at an academy.</p>
+            <p>You must make sure that ESFA know the correct number of high needs places to fund.</p>
+            <p>If it is incorrect, pupils with special educational needs may not get the right support. You will need to work with the school and ESFA after opening to resolve any funding payment issues.</p>
+
+        confirm_number:
+          title: Confirm if the academy will have high needs places ESFA must fund
+          hint:
+            html:
+              <p>Ask the local authority and school to confirm if there are high needs places at the school. They also need to tell you if that number is the same or will be different at the academy.</p>
+              <p>The information the local authority and school have may differ and they may not agree on numbers.</p>
+              <p>If that is the case the ESFA will use the latest section 251 spreadsheet to make a funding decision.</p>
+          guidance_link: Help checking and confirming high needs places
+          guidance:
+            html:
+              <h3 class="govuk-heading-s">Understanding differences in high needs places information</h3>
+              <p>You may find different numbers of high needs places in the local authority proforma and Get information about schools.</p>
+              <p>Some numbers show the total amount of high needs places a school can support, known as their capacity. Others show how many places having funding in that academic year.</p>
+
+              <h3 class="govuk-heading-s">What to discuss with the local authority and school</h3>
+              <p>You need to talk to the local authority and school to confirm:</p>
+              <ul>
+                <li>whether the school has high needs places</li>
+                <li>the number of high needs places that ESFA must fund at the academy</li>
+                <li>how many of those funded places are for pre-16 pupils (up to and including year 11)</li>
+                <li>how many of those funded places are post-16 pupils (years 12 and 13)</li>
+              </ul>
+
+        confirm_published_number:
+          title: Confirm the section 251 spreadsheet shows the number of high needs places ESFA must fund
+          hint:
+            html:
+              <p>Ask the local authority and school to check the section 251 spreadsheet. They must confirm if the information in it is correct.</p>
+              <p>ESFA create the spreadsheet every year. It is then emailed to delivery officers and caseworkers. Email <a href="mailto:academy.openers@education.gov.uk">academy.openers@education.gov.uk</a> for the latest version of the document if you don't have it.</p>
+          guidance_link: Help checking the 251 spreadsheet
+          guidance:
+            html:
+              <p>The section 251 spreadsheet shows how many high needs places the local authority funds.</p>
+              <p>ESFA need to know if that number will be the same when the academy opens, or if there are any changes. ESFA use the section 251 spreadsheet to calculate how much funding to give the academy for their high needs places.</p>
+              <p>The spreadsheet is only published once a year. Place numbers may change between publications so it can be out of date and post-16s places might not be included in the figures.</p>
+
+              <h3 class="govuk-heading-s">What the ESFA need to know</h3>
+              <p>The ESFA need to know if any data in the section 251 spreadsheet is has changed since it was last published.</p>
+              <p>For example, they need to know if:</p>
+              <ul>
+                <li>a school with no high needs places is on the section 251 spreadsheet</li>
+                <li>a school with high needs places is missing</li>
+                <li>the number of pre-16 high needs places is wrong</li>
+                <li>the number of high needs places on the spreadsheet includes post-16 pupils or not</li>
+                <li>the ESFA needs to fund post-16s (year 12 and 13) places that are not included in the section 251</li>
+              </ul>
+
+              <h3 class="govuk-heading-s">How to update the section 251 spreadsheet</h3>
+              <p>Missing or incorrect information can be changed using a notification of changes document.</p>
+              <p>The local authority and school must complete one and send it to you.</p>
+              <p>You must email the notification of changes to the academy openers team once you have it.</p>
+              <p>Email the openers team at <a href="mailto:academy.openers@education.gov.uk">academy.openers@education.gov.uk</a>if you, the local authority or the school have any questions about the section 251 spreadsheet.</p>

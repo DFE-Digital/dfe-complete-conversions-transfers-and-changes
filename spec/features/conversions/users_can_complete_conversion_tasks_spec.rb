@@ -10,12 +10,15 @@ RSpec.feature "Users can complete conversion tasks" do
     visit project_conversion_tasks_path(project)
   end
 
-  mandatory_tasks = %w[commercial_transfer_agreement
+  mandatory_tasks = %w[
+    check_accuracy_of_higher_needs
+    commercial_transfer_agreement
     conditions_met
     land_questionnaire land_registry
     receive_grant_payment_certificate redact_and_send
     school_completed share_information single_worksheet
-    supplemental_funding_agreement update_esfa]
+    supplemental_funding_agreement update_esfa
+  ]
 
   optional_tasks = %w[handover articles_of_association church_supplemental_agreement
     deed_of_variation direction_to_transfer master_funding_agreement
