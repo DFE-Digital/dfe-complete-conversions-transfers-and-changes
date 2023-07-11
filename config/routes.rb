@@ -106,6 +106,9 @@ Rails.application.routes.draw do
             namespace :funding_agreement_letters, path: "funding-agreement-letters" do
               get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
             end
+            namespace :risk_protection_arrangement, path: "risk-protection-arrangement" do
+              get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+            end
           end
         end
         namespace :team, path: "team" do
