@@ -86,6 +86,12 @@ RSpec.feature "Users can manage user accounts" do
     click_on "Save user"
 
     expect(existing_user.reload.active).to be false
+
+    click_on "Inactive users"
+
+    within("tbody") do
+      expect(page).to have_content(existing_user.email)
+    end
   end
 
   scenario "inactive users can be activated" do
@@ -97,6 +103,12 @@ RSpec.feature "Users can manage user accounts" do
     click_on "Save user"
 
     expect(existing_user.reload.active).to be true
+
+    click_on "Active users"
+
+    within("tbody") do
+      expect(page).to have_content(existing_user.email)
+    end
   end
 
   context "then the users team is nil becuase it is a legacy account" do

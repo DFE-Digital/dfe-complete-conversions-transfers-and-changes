@@ -98,6 +98,8 @@ en:
     added_by_projects: Added by you
     openers: Opening as planned
     revised: Revised conversion date
+    active_users: Active users
+    inactive_users: Inactive users
   pages:
     academies_api_client_timeout:
       title: Sorry, there was a problem

@@ -31,6 +31,10 @@ en:
         button: Save team
       success: The team for %{email} has been set successfully
     title: Users
+    active:
+      title: Active users
+    inactive:
+      title: Inactive users
     table:
       caption: Table of users
       headers:
