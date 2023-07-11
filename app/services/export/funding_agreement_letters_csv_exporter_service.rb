@@ -19,7 +19,7 @@ class Export::FundingAgreementLettersCsvExporterService
   private def headers
     example_row = row(@projects.first)
     example_row.keys.map do |column|
-      I18n.t("opening_projects_csv_export.headers.#{column}")
+      I18n.t("export.funding_agreement_letters.csv.headers.#{column}")
     end
   end
 
