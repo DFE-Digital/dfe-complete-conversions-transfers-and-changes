@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.save
+      send_new_account_email(@user)
       redirect_to users_path, notice: I18n.t("user.add.success", email: @user.email)
     else
       render :new
@@ -78,5 +79,9 @@ class UsersController < ApplicationController
 
   private def team_params
     params.require(:user).permit(:team)
+  end
+
+  private def send_new_account_email(user)
+    UserAccountMailer.new_account_added(user)
   end
 end
