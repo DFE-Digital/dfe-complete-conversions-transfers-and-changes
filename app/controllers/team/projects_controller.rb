@@ -15,6 +15,6 @@ class Team::ProjectsController < ApplicationController
   def unassigned
     authorize Project, :unassigned?
 
-    @pagy, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).unassigned)
+    @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).unassigned)
   end
 end
