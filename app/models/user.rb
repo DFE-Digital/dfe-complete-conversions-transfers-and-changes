@@ -33,6 +33,18 @@ class User < ApplicationRecord
     false
   end
 
+  def active
+    deactivated_at.nil?
+  end
+
+  def active=(value)
+    if ActiveRecord::Type::Boolean.new.serialize(value)
+      write_attribute(:deactivated_at, nil)
+    else
+      write_attribute(:deactivated_at, DateTime.now)
+    end
+  end
+
   def team_options
     User.teams.keys.map { |team| OpenStruct.new(id: team, name: I18n.t("user.teams.#{team}")) }
   end

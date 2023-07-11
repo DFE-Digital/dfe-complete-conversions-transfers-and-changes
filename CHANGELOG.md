@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   one next time you sign in to the application.
 - The team a user is associated with is now shown on the All projects, by team
   view.
+- User accounts can now be deactivated which prevents the user from accessing
+  the application or from showing up in user selections, inactive accounts can
+  be reactivated.
 
 ### Changed
 
