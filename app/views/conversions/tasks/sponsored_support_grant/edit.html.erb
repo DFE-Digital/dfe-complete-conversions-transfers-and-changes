@@ -14,7 +14,19 @@
       </div>
 
       <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :eligibility)) %>
+        <%= form.govuk_radio_buttons_fieldset(:type, legend: {size: "l", text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.title")}) do %>
+          <div class="app-task-section__hint">
+            <%= t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.hint.html") %>
+          </div>
+          <%= govuk_details(
+                summary_text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.guidance_link"),
+                text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.guidance.html")
+              ) %>
+          <%= form.govuk_radio_button :type, "fast-track", label: {text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.fast_track")} %>
+          <%= form.govuk_radio_button :type, "intermediate", label: {text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.intermediate")} %>
+          <%= form.govuk_radio_button :type, "full-sponsored", label: {text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.full_sponsored")} %>
+        <% end %>
+      </div>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :payment_amount)) %>
 
@@ -23,7 +35,6 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send_information)) %>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :inform_trust)) %>
-      </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
     <% end %>

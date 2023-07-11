@@ -47,13 +47,26 @@ en:
             director, for a trust to get the intermediate or full sponsored grant.</p>
             <p>There is more <a href="https://www.gov.uk/government/publications/sponsored-academies-funding-guidance-for-sponsors" class="govuk-link" target="_blank">guidance on grant eligibility and spending (opens in
             new tab)</a> on GOV.UK.</p>
-
-        eligibility:
-          title: Check and confirm the school's grant eligibility
-          hint:
-            html:
-              <p>Confirm if the trust will receive the fast track, intermediate or full sponsored grant.</p>
-
+        type_of_grant:
+          radio_buttons:
+            title: What type of grant is the trust applying for?
+            hint:
+              html:
+                <p>Confirm if the trust will receive the fast track, intermediate or full sponsored grant.</p>
+                <p>This can be changed later on if the trust finds they need more money than they originally expected.</p>
+            guidance_link: Changing the grant amount if the trust needs more funding later
+            guidance:
+              html:
+                <p>Trusts can discover new information that means they might need more funding than they first thought they would.</p>
+                <p>When this happens, speak to your regional director. They will need to approve the new grant amount. You may need to write a business case for the additional funding.</p>
+                <p>When the new funding is agreed and approved, the trust will need to complete a new grant claim form and send it to the grants team.</p>
+                <p>You can then come back to this task and update the grant type information.</p>
+            responses:
+              fast_track: Fast track
+              intermediate: Intermediate
+              full_sponsored: Full sponsored
+          checkboxes:
+            title: Process the sponsored grant
         payment_amount:
           title: Tell the trust how much they are entitled to and how to claim the grant
           guidance_link: How to claim different grants

@@ -4,4 +4,5 @@ class Conversion::Task::SponsoredSupportGrantTaskForm < BaseOptionalTaskForm
   attribute :payment_form, :boolean
   attribute :send_information, :boolean
   attribute :inform_trust, :boolean
+  attribute :type, :string
 end
