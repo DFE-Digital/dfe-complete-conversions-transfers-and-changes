@@ -103,4 +103,35 @@ RSpec.describe ByTeamProjectFetcherService do
       expect(described_class.new(user.team).unassigned).to eq([])
     end
   end
+
+  describe "#users" do
+    it "returns a sorted list of users in the user's team, with their assigned_to project counts" do
+      user_1 = create(:user, :caseworker, team: "regional_casework_services", first_name: "Abbie")
+      user_2 = create(:user, :caseworker, team: "regional_casework_services", first_name: "Ben")
+      user_3 = create(:user, :caseworker, team: "regional_casework_services", first_name: "Claire")
+      _user_4 = create(:user, :caseworker, team: "regional_casework_services", first_name: "Danniella")
+      user_5 = create(:user, team: "london")
+      _project_1 = create(:conversion_project, assigned_to: user_1)
+      _project_2 = create(:conversion_project, assigned_to: user_2)
+      _project_3 = create(:conversion_project, assigned_to: user_3)
+      _project_4 = create(:conversion_project, assigned_to: user_1)
+      _project_5 = create(:conversion_project, assigned_to: user_5)
+
+      result = described_class.new(user_1.team).users
+      expect(result[0].name).to eq("Abbie Doe")
+      expect(result[0].conversion_count).to eq(2)
+      expect(result[1].name).to eq("Ben Doe")
+      expect(result[1].conversion_count).to eq(1)
+      expect(result[2].name).to eq("Claire Doe")
+      expect(result[2].conversion_count).to eq(1)
+      expect(result[3].name).to eq("Danniella Doe")
+      expect(result[3].conversion_count).to eq(0)
+      expect(result).to_not include(user_5.full_name)
+    end
+
+    it "returns an empty array when the user's team is nil" do
+      user = build(:user, team: nil)
+      expect(described_class.new(user.team).users).to eq([])
+    end
+  end
 end

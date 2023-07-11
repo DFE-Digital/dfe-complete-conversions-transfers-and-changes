@@ -38,6 +38,19 @@ class ByTeamProjectFetcherService
     pre_fetch_establishments_and_trusts(projects)
   end
 
+  def users
+    return [] if @team.nil?
+
+    @users = User.by_team(@team).compact.map do |user|
+      OpenStruct.new(
+        name: user.full_name,
+        email: user.email,
+        id: user.id,
+        conversion_count: Conversion::Project.assigned_to(user).count
+      )
+    end.sort_by { |object| object.name }
+  end
+
   private def pre_fetch_establishments_and_trusts(projects)
     EstablishmentsFetcherService.new(projects).call!
     TrustsFetcherService.new(projects).call!
