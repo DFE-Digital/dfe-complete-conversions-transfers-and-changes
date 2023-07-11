@@ -115,6 +115,7 @@ Rails.application.routes.draw do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
           get "unassigned", to: "projects#unassigned"
+          get "users", to: "projects#users"
         end
         namespace :regional, path: "regional" do
           get "in-progress", to: "projects#in_progress"

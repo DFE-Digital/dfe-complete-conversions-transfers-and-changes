@@ -17,4 +17,10 @@ class Team::ProjectsController < ApplicationController
 
     @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).unassigned)
   end
+
+  def users
+    authorize Project, :index?
+
+    @pager, @users = pagy_array(ByTeamProjectFetcherService.new(current_user.team).users)
+  end
 end
