@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   view
 - All users with a role and a team can now view the Team projects view
 - The users view is now split into active and inactive user accounts.
+- The number of pages shown in the pager has been increased to 10
 
 ### Fixed
 
