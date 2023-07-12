@@ -188,6 +188,12 @@ variable "cdn_frontdoor_rate_limiting_threshold" {
   type        = number
 }
 
+variable "container_apps_allow_ips_inbound" {
+  description = "Restricts access to the Container Apps by creating a network security group rule that only allow inbound traffic from the provided list of IPs"
+  type        = list(string)
+  default     = []
+}
+
 variable "existing_network_watcher_name" {
   description = "Use an existing network watcher to add flow logs."
   type        = string
