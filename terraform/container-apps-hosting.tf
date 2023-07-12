@@ -1,5 +1,5 @@
 module "azure_container_apps_hosting" {
-  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v0.19.0"
+  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v0.19.1"
 
   environment    = local.environment
   project_name   = local.project_name
@@ -25,6 +25,7 @@ module "azure_container_apps_hosting" {
 
   enable_cdn_frontdoor                      = local.enable_cdn_frontdoor
   enable_cdn_frontdoor_health_probe         = local.enable_cdn_frontdoor_health_probe
+  cdn_frontdoor_forwarding_protocol         = local.cdn_frontdoor_forwarding_protocol
   cdn_frontdoor_origin_fqdn_override        = local.cdn_frontdoor_origin_fqdn_override
   cdn_frontdoor_origin_host_header_override = local.cdn_frontdoor_origin_host_header_override
   cdn_frontdoor_custom_domains              = local.cdn_frontdoor_custom_domains

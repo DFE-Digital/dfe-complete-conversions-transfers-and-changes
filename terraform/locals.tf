@@ -15,6 +15,7 @@ locals {
   enable_cdn_frontdoor                         = var.enable_cdn_frontdoor
   enable_event_hub                             = var.enable_event_hub
   enable_cdn_frontdoor_health_probe            = var.enable_cdn_frontdoor_health_probe
+  cdn_frontdoor_forwarding_protocol            = var.cdn_frontdoor_forwarding_protocol
   cdn_frontdoor_custom_domains                 = var.cdn_frontdoor_custom_domains
   cdn_frontdoor_origin_fqdn_override           = var.cdn_frontdoor_origin_fqdn_override
   cdn_frontdoor_origin_host_header_override    = var.cdn_frontdoor_origin_host_header_override
