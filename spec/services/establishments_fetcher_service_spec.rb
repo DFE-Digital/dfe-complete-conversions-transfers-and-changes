@@ -61,5 +61,22 @@ RSpec.describe EstablishmentsFetcherService do
     it "returns nil if there are no projects" do
       expect(described_class.new([]).call!).to be_nil
     end
+
+    it "raises when the Academies API has an error" do
+      ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "not-a-real-key") do
+        api_client = Api::AcademiesApi::Client.new
+        allow(Api::AcademiesApi::Client).to receive(:new).and_return(api_client)
+        allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new(nil, double))
+        allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
+        allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(double, nil))
+        application_insight_client = double(track_event: true, flush: true)
+        allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(application_insight_client)
+
+        create(:conversion_project)
+
+        expect { described_class.new(Project.all).call! }.to raise_error(Api::AcademiesApi::Client::Error)
+        expect(ApplicationInsights::TelemetryClient).to have_received(:new).exactly(1).time
+      end
+    end
   end
 end
