@@ -15,6 +15,12 @@
             data: {module: "govuk-button"} %>
     </div>
 
+    <%= render partial: "users_sub_navigation" %>
+
+    <h2 class="govuk-heading-m">
+      <%= t("user.active.title") %>
+    </h2>
+
     <%= render partial: "users_table", locals: {user_accounts: @users, pager: @pager} %>
 
   </div>

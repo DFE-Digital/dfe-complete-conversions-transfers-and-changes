@@ -11,6 +11,7 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:service_support).of_type :boolean }
     it { is_expected.to have_db_column(:active_directory_user_group_ids).of_type :string }
     it { is_expected.to have_db_column(:team).of_type :string }
+    it { is_expected.to have_db_column(:deactivated_at).of_type :datetime }
   end
 
   describe "scopes" do
@@ -58,6 +59,30 @@ RSpec.describe User do
       it "only includes users who have a role" do
         expect(User.all_assignable_users.count).to eq 6
         expect(User.all_assignable_users).to_not include(user_without_role)
+      end
+    end
+
+    describe "active" do
+      it "contains only active users" do
+        active_user = create(:user, deactivated_at: nil, email: "active.user@education.gov.uk")
+        inactive_user = create(:inactive_user)
+
+        scoped_users = User.active
+
+        expect(scoped_users).to include(active_user)
+        expect(scoped_users).not_to include(inactive_user)
+      end
+    end
+
+    describe "inactive" do
+      it "contains only inactive users" do
+        active_user = create(:user, deactivated_at: nil, email: "active.user@education.gov.uk")
+        inactive_user = create(:inactive_user)
+
+        scoped_users = User.inactive
+
+        expect(scoped_users).to include(inactive_user)
+        expect(scoped_users).not_to include(active_user)
       end
     end
   end
@@ -233,6 +258,44 @@ RSpec.describe User do
 
     it "has the expected enum values" do
       expect(User.teams.count).to eq(13)
+    end
+  end
+
+  describe "#active" do
+    it "returns true when deactivated_at is nil" do
+      user = build(:user)
+
+      expect(user.active).to be true
+    end
+
+    it "returns false when deactivated_at has a value" do
+      user = build(:inactive_user)
+
+      expect(user.active).to be false
+    end
+
+    it "can be set with 1 and 0 strings" do
+      user = build(:user)
+
+      user.update!(active: "0")
+
+      expect(user.active).to be false
+
+      user.update!(active: "1")
+
+      expect(user.active).to be true
+    end
+
+    it "can be set with true and false" do
+      user = build(:user)
+
+      user.update!(active: false)
+
+      expect(user.active).to be false
+
+      user.update!(active: true)
+
+      expect(user.active).to be true
     end
   end
 

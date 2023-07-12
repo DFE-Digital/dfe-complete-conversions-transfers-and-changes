@@ -54,6 +54,8 @@ en:
     message: You are signed in with the email address %{email_address}.
   unknown_user:
     message: The email address %{email_address} is not registered to use this service.
+  inactive_user:
+    message: The email address %{email_address} is inactive, if you believe this is in error, contact support.
   unauthorised_action:
     message: You are not authorised to perform this action.
   project_list:
@@ -96,6 +98,8 @@ en:
     added_by_projects: Added by you
     openers: Opening as planned
     revised: Revised conversion date
+    active_users: Active users
+    inactive_users: Inactive users
   pages:
     academies_api_client_timeout:
       title: Sorry, there was a problem

@@ -12,7 +12,9 @@ class SessionsController < ApplicationController
 
       redirect_to root_path
     else
-      redirect_to sign_in_path, alert: I18n.t("unknown_user.message", email_address: authenticated_user_email_address)
+      return redirect_inactive_user if inactive_user?
+
+      redirect_unknown_user
     end
   end
 
@@ -26,7 +28,11 @@ class SessionsController < ApplicationController
   end
 
   private def registered_user
-    @registered_user ||= User.find_by(email: authenticated_user_email_address)
+    @registered_user ||= User.active.find_by(email: authenticated_user_email_address)
+  end
+
+  private def inactive_user?
+    User.inactive.find_by(email: authenticated_user_email_address)
   end
 
   private def create_session
@@ -59,5 +65,13 @@ class SessionsController < ApplicationController
 
   private def authenticated_user_email_address
     authenticated_user_info.email.downcase
+  end
+
+  private def redirect_unknown_user
+    redirect_to sign_in_path, alert: I18n.t("unknown_user.message", email_address: authenticated_user_email_address)
+  end
+
+  private def redirect_inactive_user
+    redirect_to sign_in_path, notice: I18n.t("inactive_user.message", email_address: authenticated_user_email_address)
   end
 end
