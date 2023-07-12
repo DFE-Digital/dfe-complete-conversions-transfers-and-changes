@@ -5,6 +5,9 @@ class All::InProgress::ProjectsController < ApplicationController
   def index
     authorize Project, :index?
     @pager, @projects = pagy(Conversion::Project.in_progress.includes(:assigned_to))
+
+    pre_fetch_establishments(@projects)
+    pre_fetch_incoming_trusts(@projects)
   end
 
   def voluntary

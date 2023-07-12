@@ -34,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - Users without a team show up as 'No team' in the User management list.
+- View with large numbers of projects that batch fetch establishment and trust
+  data from the API should now load on pages after page one.
 
 ## [Release 32][release-32]
 

@@ -64,6 +64,8 @@ module AcademiesApiHelpers
     allow(TrustsFetcherService).to receive(:new).and_return(fake_trust_fetcher)
     allow(fake_establishment_fetcher).to receive(:call!).and_return([])
     allow(fake_trust_fetcher).to receive(:call!).and_return([])
+    allow(fake_establishment_fetcher).to receive(:batched!).and_return([])
+    allow(fake_trust_fetcher).to receive(:batched!).and_return([])
   end
 
   def mock_timeout_api_responses(urn:, ukprn:)
