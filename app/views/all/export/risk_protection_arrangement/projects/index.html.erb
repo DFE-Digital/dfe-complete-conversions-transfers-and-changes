@@ -1,0 +1,24 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
+<table class="govuk-table" name="projects_table" aria-label="Risk protection arrangement exports">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">Date</th>
+      <th class="govuk-table__header" scope="col">Confirmed</th>
+      <th class="govuk-table__header" scope="col">Revised</th>
+      <th class="govuk-table__header" scope="col">Export</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <% @months.each do |month| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-table__cell"><%= month.to_fs(:govuk_month) %></td>
+        <td class="govuk-table__header govuk-table__cell"><%= link_to "View projects", "/projects/all/opening/confirmed/#{month.month}/#{month.year}" %></td>
+        <td class="govuk-table__header govuk-table__cell"><%= link_to "View projects", "/projects/all/opening/revised/#{month.month}/#{month.year}" %></td>
+        <td class="govuk-table__header govuk-table__cell"><%= link_to "Export", "/projects/all/export/risk-protection-arrangement/#{month.month}/#{month.year}/csv" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

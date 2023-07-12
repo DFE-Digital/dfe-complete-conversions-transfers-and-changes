@@ -1,0 +1,24 @@
+en:
+  export:
+    risk_protection_arrangement:
+      csv:
+        headers:
+          school_urn: School URN
+          school_name: School name
+          academy_urn: Academy URN
+          academy_name: Academy name
+          trust_identifier: Trust group identifier
+          trust_companies_house_number: Trust companies house number
+          trust_name: Trust name
+          conversion_date: Conversion date
+          all_conditions_met: All conditions met
+          risk_protection_arrangement: Risk protection arrangement
+          assigned_to_name: Assigned to name
+          assigned_to_email: Assigned to email
+        values:
+          unconfirmed: unconfirmed
+          "yes": "yes"
+          "no": "no"
+          standard: standard
+          church_or_trust: church or trust
+          commercial: commercial
