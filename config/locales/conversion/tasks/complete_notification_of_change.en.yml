@@ -1,0 +1,51 @@
+en:
+  conversion:
+    task:
+      complete_notification_of_change:
+        title: Complete a notification of change document
+        hint:
+          html:
+            <p>The local authority must complete a notification of change document if the section 251 spreadsheet is incorrect.</p>
+            <p>You will need to use the notification of changes document if the:</p>
+            <ul>
+              <li>school is not on the spreadsheet but has high needs places</li>
+              <li>school is on the spreadsheet but does not have high needs places</li>
+              <li>number of pre-16 high needs places is wrong</li>
+              <li>post-16 and pre-16 high needs places have been counted together</li>
+              <li>post-16 high needs places that need funding are not on the spreadsheet</li>
+            </ul>
+            <p>Pre-16 high needs places are for all pupils up to and including year 11. Post-16 high needs places are for pupils in years 12 and 13.</p>
+            <p>It is critical to make sure this information is accurate so that ESFA are able to fund high needs places at the academy. You will need to work with the school and ESFA after opening to resolve any funding payment issues.</p>
+
+        not_applicable:
+          title: Not applicable
+
+        tell_local_authority:
+          title: Tell the local authority to complete the notification of change document
+          hint:
+            html:
+              <p>Each year the academy openers team send out the notification of change document by email, with guidance on how to use it.</p>
+              <p>You can email <a href="mailto:academy.openers@education.gov.uk">academy.openers@education.gov.uk</a> to ask for a notification of change document if you do not have one. Email the notification of change document to your contact at the local authority.</p>
+              <p>They must complete the notification of change and email it back to you. They must also include the school in the email they send you.</p>
+
+        check_document:
+          title: Check the returned notification of change document
+          hint:
+            html:
+              <p>Compare the the notification of changes document to the section 251 spreadsheet.</p>
+          guidance_link: What to check for
+          guidance:
+            html:
+              <p>You must make sure that the notification of change document includes:</p>
+              <ul>
+              <li>school information that matches what is shown in the project</li>
+              <li>the conversion date</li>
+              <li>high needs places numbers in the correct locations</li>
+              <li>the number "0" in categories where no high needs places are required</li>
+              <li>the signature of the local authority's Chief Finance Officer</li>
+              </ul>
+
+        send_document:
+          title: Send the completed notification of change to ESFA
+          hint:
+            html: <p>Email the completed notification of change document to the ESFA at <a href="mailto:academy.openers@education.gov.uk">academy.openers@education.gov.uk</a>.</p>

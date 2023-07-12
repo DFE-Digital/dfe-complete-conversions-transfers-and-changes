@@ -6,6 +6,8 @@ class Conversion::TaskList < ::BaseTaskList
         tasks: [
           Conversion::Task::HandoverTaskForm,
           Conversion::Task::StakeholderKickOffTaskForm,
+          Conversion::Task::CheckAccuracyOfHigherNeedsTaskForm,
+          Conversion::Task::CompleteNotificationOfChangeTaskForm,
           Conversion::Task::ConversionGrantTaskForm,
           Conversion::Task::SponsoredSupportGrantTaskForm,
           Conversion::Task::AcademyDetailsTaskForm,
