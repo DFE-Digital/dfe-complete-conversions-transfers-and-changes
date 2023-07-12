@@ -150,6 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_113923) do
     t.boolean "complete_notification_of_change_tell_local_authority"
     t.boolean "complete_notification_of_change_check_document"
     t.boolean "complete_notification_of_change_send_document"
+    t.string "sponsored_support_grant_type"
   end
 
   create_table "local_authorities", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

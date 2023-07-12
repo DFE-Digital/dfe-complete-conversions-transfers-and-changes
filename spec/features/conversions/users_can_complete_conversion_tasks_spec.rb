@@ -23,13 +23,14 @@ RSpec.feature "Users can complete conversion tasks" do
   optional_tasks = %w[handover articles_of_association church_supplemental_agreement
     complete_notification_of_change deed_of_variation direction_to_transfer master_funding_agreement
     one_hundred_and_twenty_five_year_lease subleases tenancy_at_will
-    trust_modification_order conversion_grant sponsored_support_grant]
+    trust_modification_order conversion_grant]
 
   tasks_with_collected_data = %w[
     stakeholder_kick_off
     academy_details
     funding_agreement_contact
     risk_protection_arrangement
+    sponsored_support_grant
   ]
 
   it "confirms we are checking all tasks" do
@@ -175,6 +176,34 @@ RSpec.feature "Users can complete conversion tasks" do
       click_on I18n.t("task_list.continue_button.text")
 
       expect(project.reload.tasks_data.risk_protection_arrangement_option).to be_nil
+    end
+  end
+
+  describe "the sponsored support grant task" do
+    before do
+      visit project_conversion_tasks_path(project)
+      click_on "Confirm and process the sponsored support grant"
+    end
+
+    scenario "the response can be fast track" do
+      choose "Fast track"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "fast-track"
+    end
+
+    scenario "the response can be intermediate" do
+      choose "Intermediate"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "intermediate"
+    end
+
+    scenario "the response can be full sponsored" do
+      choose "Full sponsored"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "full-sponsored"
     end
   end
 

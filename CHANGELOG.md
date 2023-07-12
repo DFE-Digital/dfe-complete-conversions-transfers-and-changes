@@ -71,6 +71,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   trust modification order tasks.
 - The all conditions met column on the opening view is no longer shown as a
   coloured tag and is one of Yes or Not yet.
+- Update sponsored support grant task to include a new radio button action
 
 ### Fixed
 
