@@ -1,4 +1,8 @@
 class All::Export::RiskProtectionArrangement::ProjectsController < ApplicationController
+  def index
+    @months = export_months
+  end
+
   def csv
     authorize Project, :index?
 
@@ -14,5 +18,11 @@ class All::Export::RiskProtectionArrangement::ProjectsController < ApplicationCo
 
   private def year
     params[:year]
+  end
+
+  private def export_months
+    6.times.map do |index|
+      Date.today.last_month.at_beginning_of_month + index.months
+    end
   end
 end

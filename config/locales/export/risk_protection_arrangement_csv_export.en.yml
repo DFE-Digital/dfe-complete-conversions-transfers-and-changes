@@ -1,6 +1,8 @@
 en:
   export:
     risk_protection_arrangement:
+      index:
+        title: RPA (Risk Protection Arrangement) exports
       csv:
         headers:
           school_urn: School URN
