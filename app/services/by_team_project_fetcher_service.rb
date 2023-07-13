@@ -46,7 +46,7 @@ class ByTeamProjectFetcherService
         name: user.full_name,
         email: user.email,
         id: user.id,
-        conversion_count: Conversion::Project.assigned_to(user).count
+        conversion_count: Conversion::Project.in_progress.assigned_to(user).count
       )
     end.sort_by { |object| object.name }
   end

@@ -129,6 +129,16 @@ RSpec.describe ByTeamProjectFetcherService do
       expect(result).to_not include(user_5.full_name)
     end
 
+    it "only returns in_progress projects" do
+      user = create(:user, :caseworker, team: "regional_casework_services", first_name: "Abbie")
+      _project_1 = create(:conversion_project, assigned_to: user)
+      _project_2 = create(:conversion_project, assigned_to: user, completed_at: Date.yesterday)
+
+      result = described_class.new(user.team).users
+      expect(result[0].name).to eq("Abbie Doe")
+      expect(result[0].conversion_count).to eq(1)
+    end
+
     it "returns an empty array when the user's team is nil" do
       user = build(:user, team: nil)
       expect(described_class.new(user.team).users).to eq([])
