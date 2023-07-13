@@ -3,6 +3,10 @@ class All::Export::RiskProtectionArrangement::ProjectsController < ApplicationCo
     @months = export_months
   end
 
+  def show
+    @month = Date.parse("#{year}-#{month}-1")
+  end
+
   def csv
     authorize Project, :index?
 

@@ -16,9 +16,15 @@
     <% @months.each do |month| %>
       <tr class="govuk-table__row">
         <td class="govuk-table__header govuk-table__cell"><%= month.to_fs(:govuk_month) %></td>
-        <td class="govuk-table__cell"><%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/opening/confirmed/#{month.month}/#{month.year}" %></td>
-        <td class="govuk-table__cell"><%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/opening/revised/#{month.month}/#{month.year}" %></td>
-        <td class="govuk-table__cell"><%= link_to t("project.table.body.export_for_html", date: month.to_fs(:govuk_month)), "/projects/all/export/risk-protection-arrangement/#{month.month}/#{month.year}/csv" %></td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/opening/confirmed/#{month.month}/#{month.year}" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/opening/revised/#{month.month}/#{month.year}" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.export_for_html", date: month.to_fs(:govuk_month)), "/projects/all/export/risk-protection-arrangement/#{month.month}/#{month.year}" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

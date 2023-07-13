@@ -38,4 +38,15 @@ RSpec.feature "Users can export rpa data" do
     expect(page).to have_content(four_months_time.to_fs(:govuk_month))
     expect(page).to have_link("Export")
   end
+
+  scenario "they can view a download page for a month" do
+    mock_all_academies_api_responses
+    this_month = Date.today.at_beginning_of_month
+    create(:conversion_project, conversion_date: this_month, conversion_date_provisional: false)
+
+    visit "/projects/all/export/risk-protection-arrangement/#{this_month.month}/#{this_month.year}"
+
+    expect(page).to have_content(this_month.to_fs(:govuk_month))
+    expect(page).to have_link("Download")
+  end
 end

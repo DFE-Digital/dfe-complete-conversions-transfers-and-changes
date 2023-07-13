@@ -3,6 +3,11 @@ en:
     risk_protection_arrangement:
       index:
         title: RPA (Risk Protection Arrangement) exports
+      show:
+        title: "%{date} RPA (Risk Protection Arrangement) export"
+        body_html:
+          <p>Export downloads can take time to prepare, please be patient.</p>
+        button: Download csv file
       csv:
         headers:
           school_urn: School URN
