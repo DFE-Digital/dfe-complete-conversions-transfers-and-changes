@@ -2,7 +2,7 @@ class All::Export::RiskProtectionArrangement::ProjectsController < ApplicationCo
   def csv
     authorize Project, :index?
 
-    projects = ConversionProjectsFetcherService.new.sorted_openers(month, year)
+    projects = ProjectsForExportService.new.risk_protection_arrangement_projects(month: month, year: year)
     csv = Export::RiskProtectionArrangementCsvExportService.new(projects).call
 
     send_data csv, filename: "risk_protection_arrangement_export_#{month}_#{year}.csv", type: :csv, disposition: "attachment"
