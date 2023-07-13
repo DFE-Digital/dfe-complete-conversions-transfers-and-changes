@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 33][release-33]
+
 ### Added
 
 - If your user account is not assigned to a team, you will be asked to choose
@@ -1081,7 +1083,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-32...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-33...HEAD
+[release-33]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-32...release-33
 [release-32]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-31...release-32
 [release-31]:
