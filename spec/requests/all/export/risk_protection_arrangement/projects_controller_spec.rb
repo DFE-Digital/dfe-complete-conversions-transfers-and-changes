@@ -19,7 +19,7 @@ RSpec.describe All::Export::RiskProtectionArrangement::ProjectsController, type:
 
     it "formats the csv filename with the month & year" do
       get csv_all_export_risk_protection_arrangement_projects_path(5, 2025)
-      expect(response.header["Content-Disposition"]).to include("risk_protection_arrangement_export_5_2025.csv")
+      expect(response.header["Content-Disposition"]).to include("2025-5_risk_protection_arrangement_export.csv")
     end
   end
 end
