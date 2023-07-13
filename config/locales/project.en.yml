@@ -49,6 +49,8 @@ en:
         title: Completed
       unassigned:
         title: Unassigned
+      users:
+        title: By user
     regional:
       in_progress:
         title: Regional projects in progress

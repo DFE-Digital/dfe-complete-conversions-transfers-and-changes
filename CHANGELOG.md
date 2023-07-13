@@ -15,6 +15,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - User accounts can now be deactivated which prevents the user from accessing
   the application or from showing up in user selections, inactive accounts can
   be reactivated.
+- Add a "Users" view to the Team projects area, to view other users on your
+  team, with their conversion project counts.
+- Add a "by user" view to the Team projects area, where a user can view projects
+  assigned to another user on the same team.
 
 ### Changed
 
