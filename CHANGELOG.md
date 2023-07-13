@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Only show counts of in-progress projects on the Team "By user" projects page
+
 ## [Release 33][release-33]
 
 ### Added
