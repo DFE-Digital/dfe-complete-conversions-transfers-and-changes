@@ -11,6 +11,16 @@ en:
           academy_order_type: Academy order type
           assigned_to_name: Assigned to name
           assigned_to_email: Assigned to email
+          school_urn: School URN
+          school_dfe_number: DfE number
+          school_name: School name
+          school_type: School type
+          school_address_1: School address 1
+          school_address_2: School address 2
+          school_address_3: School address 3
+          school_address_town: School town
+          school_address_county: School county
+          school_address_postcode: School postcode
         values:
           project_type:
             conversion: Conversion

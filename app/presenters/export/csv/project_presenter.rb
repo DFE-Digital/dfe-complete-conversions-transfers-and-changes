@@ -1,4 +1,6 @@
 class Export::Csv::ProjectPresenter
+  include Export::Csv::SchoolPresenterModule
+
   def initialize(project)
     @project = project
   end
