@@ -42,6 +42,14 @@ en:
           incoming_trust_address_town: Incoming trust address town
           incoming_trust_address_county: Incoming trust address county
           incoming_trust_address_postcode: Incoming trust address postcode
+          local_authority_code: Local authority code
+          local_authority_name: Local authority
+          local_authority_address_1: Local authority address 1
+          local_authority_address_2: Local authority address 2
+          local_authority_address_3: Local authority address 3
+          local_authority_address_town: Local authority address town
+          local_authority_address_county: Local authority address county
+          local_authority_address_postcode: Local authority address postcode
         values:
           project_type:
             conversion: Conversion
