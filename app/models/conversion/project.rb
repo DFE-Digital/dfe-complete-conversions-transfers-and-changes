@@ -3,6 +3,8 @@ class Conversion::Project < Project
     ProjectPolicy
   end
 
+  attr_writer :academy
+
   validates :academy_urn, urn: true, if: -> { academy_urn.present? }
   validates :conversion_date, presence: true
   validates :conversion_date, first_day_of_month: true
