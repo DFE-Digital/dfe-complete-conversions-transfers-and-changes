@@ -19,10 +19,10 @@ class ByMonthProjectFetcherService
   end
 
   private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).call!
+    EstablishmentsFetcherService.new(projects).batched!
   end
 
   private def pre_fetch_trusts(projects)
-    TrustsFetcherService.new(projects).call!
+    TrustsFetcherService.new(projects).batched!
   end
 end

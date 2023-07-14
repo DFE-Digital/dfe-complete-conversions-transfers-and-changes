@@ -28,17 +28,17 @@ RSpec.describe ByMonthProjectFetcherService do
       mock_all_academies_api_responses
       create_list(:conversion_project, 21, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional: false)
 
-      establishments_fetcher = double(call!: true)
+      establishments_fetcher = double(batched!: true)
       allow(EstablishmentsFetcherService).to receive(:new).and_return(establishments_fetcher)
 
-      trusts_fetcher = double(call!: true)
+      trusts_fetcher = double(batched!: true)
       allow(TrustsFetcherService).to receive(:new).and_return(trusts_fetcher)
 
       projects_fetcher = described_class.new
       projects_fetcher.sorted_openers(1, 2023)
 
-      expect(establishments_fetcher).to have_received(:call!)
-      expect(trusts_fetcher).to have_received(:call!)
+      expect(establishments_fetcher).to have_received(:batched!)
+      expect(trusts_fetcher).to have_received(:batched!)
     end
   end
 end
