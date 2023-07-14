@@ -2,7 +2,7 @@ class All::Export::FundingAgreementLetters::ProjectsController < ApplicationCont
   def csv
     authorize Project, :index?
 
-    projects = ConversionProjectsFetcherService.new.sorted_openers(month, year)
+    projects = ProjectsForExportService.new.funding_agreement_letters_projects(month: month, year: year)
     csv = Export::FundingAgreementLettersCsvExporterService.new(projects).call
 
     send_data csv, filename: "opening_#{month}_#{year}.csv", type: :csv, disposition: "attachment"

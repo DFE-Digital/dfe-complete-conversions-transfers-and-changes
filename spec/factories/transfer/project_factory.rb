@@ -12,5 +12,6 @@ FactoryBot.define do
     region { Project.regions["london"] }
     regional_delivery_officer { association :user, :regional_delivery_officer }
     tasks_data { association :transfer_tasks_data }
+    outgoing_trust_ukprn { 10059062 }
   end
 end
