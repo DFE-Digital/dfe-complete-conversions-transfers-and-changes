@@ -10,7 +10,7 @@ class All::Trusts::ProjectsController < ApplicationController
   def show
     authorize Project, :index?
     ukprn = params[:trust_ukprn]
-    @pager, @projects = pagy(Conversion::Project.not_completed.by_trust_ukprn(ukprn).by_conversion_date)
+    @pager, @projects = pagy(Conversion::Project.not_completed.by_trust_ukprn(ukprn).by_conversion_date.includes(:assigned_to))
 
     pre_fetch_establishments(@projects)
     @trust = Api::AcademiesApi::Client.new.get_trust(ukprn).object

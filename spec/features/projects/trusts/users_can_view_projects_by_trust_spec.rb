@@ -30,5 +30,20 @@ RSpec.feature "Users can view a list trusts" do
         expect(page).to have_link("View projects"), href: by_trust_all_trusts_projects_path(trust.ukprn)
       end
     end
+
+    scenario "when there are enough projects to page they see a pager" do
+      21.times do
+        create(:conversion_project, incoming_trust_ukprn: 12345678)
+      end
+
+      trust = build(:academies_api_trust, ukprn: 12345678)
+      allow_any_instance_of(Project).to receive(:incoming_trust).and_return(trust)
+
+      visit by_trust_all_trusts_projects_path(trust.ukprn)
+
+      save_page
+
+      expect(page).to have_css(".govuk-pagination")
+    end
   end
 end
