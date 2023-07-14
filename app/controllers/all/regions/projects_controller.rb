@@ -12,7 +12,7 @@ class All::Regions::ProjectsController < ApplicationController
     return not_found_error unless Project.regions.include?(region)
 
     @region = region
-    @pager, @projects = pagy(Conversion::Project.not_completed.by_region(region).by_conversion_date)
+    @pager, @projects = pagy(Conversion::Project.not_completed.by_region(region).by_conversion_date.includes(:assigned_to))
 
     pre_fetch_establishments(@projects)
   end
