@@ -468,6 +468,24 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "assigned_to_users" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "returns projects assigned to the passed-in users" do
+        first_user = create(:user, email: "first.user@education.gov.uk")
+        second_user = create(:user, email: "second.user@education.gov.uk")
+        third_user = create(:user, email: "third.user@education.gov.uk")
+
+        first_users_project = create(:conversion_project, assigned_to: first_user)
+        second_users_project = create(:conversion_project, assigned_to: second_user)
+        third_users_project = create(:conversion_project, assigned_to: third_user)
+
+        projects = Project.assigned_to_users([first_user, second_user])
+        expect(projects).to include(first_users_project, second_users_project)
+        expect(projects).to_not include(third_users_project)
+      end
+    end
+
     describe "by_region scope" do
       it "returns only projects for the given region" do
         mock_successful_api_response_to_create_any_project
