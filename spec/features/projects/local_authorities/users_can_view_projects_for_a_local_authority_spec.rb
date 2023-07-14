@@ -30,5 +30,18 @@ RSpec.feature "Users can view a list of projects for a local authority" do
         expect(page).to have_content(project.urn)
       end
     end
+
+    scenario "when there are enough projects to page they see a pager" do
+      create(:local_authority, code: "100")
+      21.times do
+        create(:conversion_project)
+      end
+      establishment = build(:academies_api_establishment, urn: 123456, local_authority_code: "100")
+      allow_any_instance_of(Project).to receive(:establishment).and_return(establishment)
+
+      visit by_local_authority_all_local_authorities_projects_path("100")
+
+      expect(page).to have_css(".govuk-pagination")
+    end
   end
 end

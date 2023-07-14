@@ -10,20 +10,16 @@ class All::LocalAuthorities::ProjectsController < ApplicationController
   def show
     authorize Project, :index?
     @local_authority = LocalAuthority.find_by!(code: local_authority_code)
-    @projects = projects_for_local_authority(local_authority_code)
+    @pager, @projects = pagy_array(projects_for_local_authority(local_authority_code))
+  end
+
+  private def projects_for_local_authority(local_authority_code)
+    projects = Project.not_completed.includes(:assigned_to)
+    EstablishmentsFetcherService.new(projects).batched!
+    projects.to_a.select { |p| p.establishment.local_authority_code == local_authority_code }
   end
 
   private def local_authority_code
     params[:local_authority_id]
-  end
-
-  private def projects_for_local_authority(local_authority_code)
-    projects = Project.not_completed
-    pre_fetch_establishments(projects)
-    @projects = projects.to_a.select { |p| p.establishment.local_authority_code == local_authority_code }
-  end
-
-  private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).call!
   end
 end
