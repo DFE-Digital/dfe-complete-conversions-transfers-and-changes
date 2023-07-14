@@ -89,6 +89,6 @@ class UsersController < ApplicationController
   end
 
   private def send_new_account_email(user)
-    UserAccountMailer.new_account_added(user)
+    UserAccountMailer.new_account_added(user).deliver_later
   end
 end
