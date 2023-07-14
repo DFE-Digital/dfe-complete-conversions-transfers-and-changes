@@ -515,4 +515,28 @@ RSpec.describe Project, type: :model do
       expect(Project.teams.count).to eq(10)
     end
   end
+
+  describe "delegation" do
+    it "delegates local_authority to establishment" do
+      local_authotity = double(code: 100)
+      establishment = double
+      project = build(:conversion_project)
+      allow(establishment).to receive(:local_authority).and_return(local_authotity)
+      allow(project).to receive(:establishment).and_return(establishment)
+
+      expect(project.local_authority.code).to eql 100
+    end
+
+    it "delegates director_of_child_services to local_authority" do
+      director_of_child_services = double(email: "director.child@domain.com")
+      local_authotity = double
+      establishment = double
+      project = build(:conversion_project)
+      allow(local_authotity).to receive(:director_of_child_services).and_return(director_of_child_services)
+      allow(establishment).to receive(:local_authority).and_return(local_authotity)
+      allow(project).to receive(:establishment).and_return(establishment)
+
+      expect(project.director_of_child_services.email).to eql "director.child@domain.com"
+    end
+  end
 end

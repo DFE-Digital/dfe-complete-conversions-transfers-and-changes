@@ -6,6 +6,8 @@ class Project < ApplicationRecord
 
   delegated_type :tasks_data, types: %w[Conversion::TasksData, Transfer::TasksData], dependent: :destroy
   delegate :local_authority_code, to: :establishment
+  delegate :local_authority, to: :establishment
+  delegate :director_of_child_services, to: :local_authority
 
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
