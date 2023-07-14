@@ -1,4 +1,4 @@
-class ConversionProjectsFetcherService
+class ByMonthProjectFetcherService
   def initialize(prefetch: true)
     @prefetch = prefetch
   end

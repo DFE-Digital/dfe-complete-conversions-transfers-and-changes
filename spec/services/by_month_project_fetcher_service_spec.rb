@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ConversionProjectsFetcherService do
+RSpec.describe ByMonthProjectFetcherService do
   describe "#sorted_openers" do
     context "with pre fetching disabled for this test" do
       before do
