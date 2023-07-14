@@ -14,6 +14,21 @@ class ByMonthProjectFetcherService
     sort_by_conditions_met_and_name(projects)
   end
 
+  def confirmed_openers_by_team(month, year, team)
+    projects = if team.eql?("regional_casework_services")
+      Conversion::Project.assigned_to_regional_caseworker_team.opening_by_month_year(month, year).includes(:tasks_data)
+    else
+      Conversion::Project.not_assigned_to_regional_caseworker_team.by_region(team).opening_by_month_year(month, year).includes(:tasks_data)
+    end
+
+    if @prefetch
+      pre_fetch_establishments(projects)
+      pre_fetch_trusts(projects)
+    end
+
+    sort_by_conditions_met_and_name(projects)
+  end
+
   private def sort_by_conditions_met_and_name(projects)
     projects.sort_by { |p| [p.all_conditions_met? ? 0 : 1, p.establishment.name] }
   end
