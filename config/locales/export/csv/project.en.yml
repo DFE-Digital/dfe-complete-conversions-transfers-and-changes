@@ -29,6 +29,10 @@ en:
           academy_address_town: Academy town
           academy_address_county: Academy county
           academy_address_postcode: Academy postcode
+          director_of_child_services_name: Director of child services name
+          director_of_child_services_role: Director of child services role
+          director_of_child_services_email: Director of child services email
+          director_of_child_services_phone: Director of child services phone
         values:
           project_type:
             conversion: Conversion

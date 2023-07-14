@@ -1,6 +1,7 @@
 class Export::Csv::ProjectPresenter
   include Export::Csv::SchoolPresenterModule
   include Export::Csv::AcademyPresenterModule
+  include Export::Csv::DirectorOfChildServicesPresenterModule
 
   def initialize(project)
     @project = project
