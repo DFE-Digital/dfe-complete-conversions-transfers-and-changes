@@ -33,6 +33,15 @@ en:
           director_of_child_services_role: Director of child services role
           director_of_child_services_email: Director of child services email
           director_of_child_services_phone: Director of child services phone
+          incoming_trust_identifier: Incoming trust group identifier
+          incoming_trust_companies_house_number: Incoming trust companies house number
+          incoming_trust_name: Incoming trust name
+          incoming_trust_address_1: Incoming trust address 1
+          incoming_trust_address_2: Incoming trust address 2
+          incoming_trust_address_3: Incoming trust address 3
+          incoming_trust_address_town: Incoming trust address town
+          incoming_trust_address_county: Incoming trust address county
+          incoming_trust_address_postcode: Incoming trust address postcode
         values:
           project_type:
             conversion: Conversion

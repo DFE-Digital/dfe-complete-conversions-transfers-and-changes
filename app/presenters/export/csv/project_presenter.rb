@@ -2,6 +2,7 @@ class Export::Csv::ProjectPresenter
   include Export::Csv::SchoolPresenterModule
   include Export::Csv::AcademyPresenterModule
   include Export::Csv::DirectorOfChildServicesPresenterModule
+  include Export::Csv::IncomingTrustPresenterModule
 
   def initialize(project)
     @project = project
