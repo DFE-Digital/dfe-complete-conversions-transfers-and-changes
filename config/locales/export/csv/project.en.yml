@@ -21,6 +21,14 @@ en:
           school_address_town: School town
           school_address_county: School county
           school_address_postcode: School postcode
+          academy_urn: Academy URN
+          academy_name: Academy name
+          academy_address_1: Academy address 1
+          academy_address_2: Academy address 2
+          academy_address_3: Academy address 3
+          academy_address_town: Academy town
+          academy_address_county: Academy county
+          academy_address_postcode: Academy postcode
         values:
           project_type:
             conversion: Conversion
