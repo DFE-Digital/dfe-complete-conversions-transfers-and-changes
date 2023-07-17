@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Limit line lengths to 75 characters after increasing app width to 1200px
 - Only show counts of in-progress projects on the Team "By user" projects page
 - Send the new user email when an account is added.
 
