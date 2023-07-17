@@ -68,13 +68,4 @@ class Export::FundingAgreementLettersCsvExporterService
       academy_name: project.academy&.name
     }
   end
-
-  private def fetch_address_line(mp_details, attribute)
-    return nil if mp_details.nil?
-    mp_details.address.send(attribute)
-  end
-
-  private def fetch_mp_details(project)
-    Api::MembersApi::Client.new.member_for_constituency(project.establishment.parliamentary_constituency)
-  end
 end
