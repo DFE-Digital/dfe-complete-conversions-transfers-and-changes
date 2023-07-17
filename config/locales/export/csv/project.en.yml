@@ -50,6 +50,13 @@ en:
           local_authority_address_town: Local authority address town
           local_authority_address_county: Local authority address county
           local_authority_address_postcode: Local authority address postcode
+          mp_name: MP name
+          mp_email: MP email
+          mp_constituency: Constituency
+          mp_address_1: MP address 1
+          mp_address_2: MP address 2
+          mp_address_3: MP address 3
+          mp_address_postcode: MP postcode
         values:
           project_type:
             conversion: Conversion

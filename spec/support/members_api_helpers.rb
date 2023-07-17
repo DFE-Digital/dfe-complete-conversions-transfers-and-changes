@@ -44,13 +44,13 @@ module MembersApiHelpers
   end
 
   def mock_successful_member_details
-    address = OpenStruct.new(
+    address = double(
+      "MP address",
       line1: "House of Commons",
       line2: "London",
       line3: "",
       postcode: "SW1A 0AA"
     )
-
     member_details = double(
       Api::MembersApi::MemberDetails,
       name: "Member Parliament",
