@@ -87,4 +87,57 @@ RSpec.describe ByMonthProjectFetcherService do
       expect(trusts_fetcher).to have_received(:batched!)
     end
   end
+
+  describe "#revised_openers_by_team" do
+    context "with pre fetching disabled for this test" do
+      before do
+        mock_all_academies_api_responses
+      end
+
+      let(:user_1) { create(:user, :caseworker, team: "regional_casework_services") }
+      let(:user_2) { create(:user, :caseworker, team: "london") }
+
+      let!(:project_a) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, team: "regional_casework_services") }
+      let!(:project_b) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, team: "regional_casework_services") }
+      let!(:project_c) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, region: "london", team: "london") }
+
+      before do
+        create(:date_history, project: project_a, previous_date: Date.new(2023, 1, 1), revised_date: Date.new(2023, 2, 1))
+        create(:date_history, project: project_a, previous_date: Date.new(2023, 2, 1), revised_date: Date.new(2023, 3, 1))
+        create(:date_history, project: project_c, previous_date: Date.new(2023, 1, 1), revised_date: Date.new(2023, 2, 1))
+        create(:date_history, project: project_c, previous_date: Date.new(2023, 2, 1), revised_date: Date.new(2023, 3, 1))
+      end
+
+      context "when the user is in the regional_casework_services team" do
+        it "returns only projects where the team is regional_casework_services" do
+          projects_fetcher = described_class.new(prefetch: false)
+          expect(projects_fetcher.revised_openers_by_team(2, 2023, user_1.team)).to eq([project_a])
+        end
+      end
+
+      context "when the user is in a regional team" do
+        it "returns only projects where the region matches the user's team" do
+          projects_fetcher = described_class.new(prefetch: false)
+          expect(projects_fetcher.revised_openers_by_team(2, 2023, user_2.team)).to eq([project_c])
+        end
+      end
+    end
+
+    it "prefetches establishments and trusts by default" do
+      mock_all_academies_api_responses
+      create_list(:conversion_project, 21, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional: false)
+
+      establishments_fetcher = double(batched!: true)
+      allow(EstablishmentsFetcherService).to receive(:new).and_return(establishments_fetcher)
+
+      trusts_fetcher = double(batched!: true)
+      allow(TrustsFetcherService).to receive(:new).and_return(trusts_fetcher)
+
+      projects_fetcher = described_class.new
+      projects_fetcher.revised_openers_by_team(1, 2023, "regional_casework_services")
+
+      expect(establishments_fetcher).to have_received(:batched!)
+      expect(trusts_fetcher).to have_received(:batched!)
+    end
+  end
 end
