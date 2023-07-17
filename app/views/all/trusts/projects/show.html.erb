@@ -35,6 +35,8 @@
               </tr>
           <% end %>
           </tbody>
+
+          <%= govuk_pagination(pagy: @pager) %>
         </table>
       <% end %>
   </div>
