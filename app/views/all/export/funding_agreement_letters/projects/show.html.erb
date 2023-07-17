@@ -1,0 +1,12 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_back_link(href: all_export_funding_agreement_letters_projects_path) %>
+    <h1 class="govuk-heading-xl"><%= t("export.funding_agreement_letters.show.title", date: @month.to_fs(:govuk_month)) %></h1>
+    <div class="govuk-body">
+      <%= t("export.funding_agreement_letters.show.body_html") %>
+    </div>
+    <div class="govuk-form-group">
+      <%= govuk_button_link_to t("export.funding_agreement_letters.show.button"), "/projects/all/export/funding-agreement-letters/#{@month.month}/#{@month.year}/csv" %>
+    </div>
+  </div>
+</div>

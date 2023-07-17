@@ -5,6 +5,10 @@ class All::Export::FundingAgreementLetters::ProjectsController < ApplicationCont
     @months = export_months
   end
 
+  def show
+    @month = Date.parse("#{year}-#{month}-1")
+  end
+
   def csv
     authorize Project, :index?
 

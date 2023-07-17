@@ -3,3 +3,8 @@ en:
     funding_agreement_letters:
       index:
         title: Funding agreement letter exports
+      show:
+        title: "%{date} funding agreement letter export"
+        body_html:
+          <p>Export downloads can take time to prepare, please be patient.</p>
+        button: Download csv file
