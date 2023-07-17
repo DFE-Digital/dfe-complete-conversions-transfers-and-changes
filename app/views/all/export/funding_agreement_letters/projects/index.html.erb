@@ -1,0 +1,31 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
+<table class="govuk-table" name="projects_table" aria-label="Table of funding agreement letter exports">
+  <caption class="govuk-table__caption govuk-table__caption--l"><%= t("export.funding_agreement_letters.index.title") %></caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.date") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.confirmed") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.revised") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.export") %></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <% @months.each do |month| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-table__cell"><%= month.to_fs(:govuk_month) %></td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/opening/confirmed/#{month.month}/#{month.year}" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/opening/revised/#{month.month}/#{month.year}" %>
+        </td>
+        <td class="govuk-table__cell">
+          <%= link_to t("project.table.body.export_for_html", date: month.to_fs(:govuk_month)), csv_all_export_funding_agreement_letters_projects_path(month.month, month.year) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

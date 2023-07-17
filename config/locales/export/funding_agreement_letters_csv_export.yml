@@ -1,45 +1,5 @@
 en:
   export:
     funding_agreement_letters:
-      csv:
-        headers:
-          school_urn: School URN
-          dfe_number: DfE number
-          project_type: Project type
-          conversion_date: Conversion date
-          director_of_child_services_name: Director of child services name
-          director_of_child_services_role: Director of child services role
-          director_of_child_services_email: Director of child services email
-          director_of_child_services_phone: Director of child services phone
-          school_name: School name
-          school_type: School type
-          school_address_1: School address 1
-          school_address_2: School address 2
-          school_address_3: School address 3
-          school_town: School town
-          school_county: School county
-          school_postcode: School postcode
-          local_authority: Local authority
-          local_authority_address_1: Local authority address 1
-          local_authority_address_2: Local authority address 2
-          local_authority_address_3: Local authority address 3
-          local_authority_address_town: Local authority address town
-          local_authority_address_county: Local authority address county
-          local_authority_address_postcode: Local authority address postcode
-          trust_name: Trust name
-          trust_address_1: Trust address 1
-          trust_address_2: Trust address 2
-          trust_address_3: Trust address 3
-          trust_address_town: Trust address town
-          trust_address_county: Trust address county
-          trust_address_postcode: Trust address postcode
-          mp_name: MP name
-          mp_email: MP email
-          mp_address_line_1: "MP address 1"
-          mp_address_line_2: "MP address 2"
-          mp_address_line_3: "MP address 3"
-          mp_address_postcode: MP postcode
-          approval_date: Approval date
-          project_lead: Project lead
-          route: Route
-          academy_name: Academy name
+      index:
+        title: Funding agreement letter exports

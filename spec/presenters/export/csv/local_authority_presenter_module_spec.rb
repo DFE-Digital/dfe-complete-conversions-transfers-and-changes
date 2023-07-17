@@ -12,13 +12,12 @@ RSpec.describe Export::Csv::LocalAuthorityPresenterModule do
     expect(subject.local_authority_code).to eql "100"
   end
 
-
   it "presents the name" do
     expect(subject.local_authority_name).to eql "West Northamptonshire"
   end
 
   it "presents the school address" do
-    expect(subject.local_authority_address_1).to eql  "1 Angel Square"
+    expect(subject.local_authority_address_1).to eql "1 Angel Square"
     expect(subject.local_authority_address_2).to eql "Angel Street"
     expect(subject.local_authority_address_3).to eql nil
     expect(subject.local_authority_address_town).to eql nil
