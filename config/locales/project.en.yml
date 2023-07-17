@@ -176,6 +176,9 @@ en:
         region: Region
         email: Email
         user: User name
+        date: Date
+        confirmed: Confirmed
+        revised: Revised
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
@@ -183,6 +186,7 @@ en:
         view_projects_html: View projects <span class="govuk-visually-hidden">for %{trust_name}</span>
         view_projects_for_local_authority_html: View projects<span class="govuk-visually-hidden"> for %{local_authority_name}</span>
         view_projects_for_html: View projects<span class="govuk-visually-hidden"> for %{entity}</span>
+        export_for_html: Export<span class="govuk-visually-hidden"> for %{date}</span>
       empty:
         projects: There are no projects
       in_progress:
