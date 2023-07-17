@@ -222,6 +222,44 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#member_of_parliament" do
+    it "returns the details of the MP for the projects establishment constituency" do
+      mock_successful_member_details
+
+      project = build(:conversion_project)
+      allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+
+      member_of_parliament = project.member_of_parliament
+
+      expect(member_of_parliament.name).to eql "Member Parliament"
+      expect(member_of_parliament.email).to eql "member.parliament@parliament.uk"
+      expect(member_of_parliament.address.postcode).to eql "SW1A 0AA"
+    end
+
+    it "only goes to the API once per instance of Project" do
+      mock_api_client = mock_successful_member_details
+
+      project = build(:conversion_project)
+      allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+
+      project.member_of_parliament
+      project.member_of_parliament
+
+      expect(mock_api_client).to have_received(:member_for_constituency).exactly(1).time
+    end
+
+    it "returns nil when the API returns nothing" do
+      mock_nil_member_for_constituency_response
+
+      project = build(:conversion_project)
+      allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+
+      member_of_parliament = project.member_of_parliament
+
+      expect(member_of_parliament).to be nil
+    end
+  end
+
   describe "#completed?" do
     context "when the completed_at is nil, i.e. the project is active" do
       it "returns false" do
