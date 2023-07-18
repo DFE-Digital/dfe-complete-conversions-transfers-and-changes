@@ -21,13 +21,14 @@ RSpec.describe User do
     let!(:caseworker_2) { create(:regional_casework_services_user, first_name: "Aaron", email: "aaron-caseworker@education.gov.uk") }
     let!(:team_leader) { create(:regional_casework_services_team_lead_user, first_name: "Zoe") }
     let!(:team_leader_2) { create(:regional_casework_services_team_lead_user, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
-    let!(:regional_delivery_officer) { create(:regional_delivery_officer_user) }
+    let!(:regional_delivery_officer_team_lead) { create(:regional_delivery_officer_user, manage_team: true, email: "rdo.lead@education.gov.uk") }
+    let!(:regional_delivery_officer) { create(:regional_delivery_officer_user, first_name: "Zavier") }
     let!(:regional_delivery_officer_2) { create(:regional_delivery_officer_user, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
     let!(:user_without_role) { create(:user, assign_to_project: false, manage_team: false, add_new_project: false, team: "education_and_skills_funding_agency") }
 
     describe "order_by_first_name" do
       it "orders by first_name" do
-        expect(User.order_by_first_name.count).to be 7
+        expect(User.order_by_first_name.count).to be 8
         expect(User.order_by_first_name.first).to eq caseworker_2
         expect(User.order_by_first_name.last).to eq team_leader
       end
@@ -35,15 +36,22 @@ RSpec.describe User do
 
     describe "regional casework services team leaders" do
       it "only includes users that have the team leader role sorted by first_name" do
-        expect(User.team_leaders.count).to be 2
-        expect(User.team_leaders.first).to eq team_leader_2
-        expect(User.team_leaders.last).to eq team_leader
+        expect(User.regional_casework_services_team_leads.count).to be 2
+        expect(User.regional_casework_services_team_leads.first).to eq team_leader_2
+        expect(User.regional_casework_services_team_leads.last).to eq team_leader
+      end
+    end
+
+    describe "regional delivery officer team leaders" do
+      it "only includes users that have the team leader role sorted by first_name" do
+        expect(User.regional_delivery_officer_team_leads.count).to be 1
+        expect(User.regional_delivery_officer_team_leads.first).to eq regional_delivery_officer_team_lead
       end
     end
 
     describe "regional_delivery_officers" do
       it "only includes users that have the regional delivery officer role sorted by first_name" do
-        expect(User.regional_delivery_officers.count).to be 2
+        expect(User.regional_delivery_officers.count).to be 3
         expect(User.regional_delivery_officers.first).to eq regional_delivery_officer_2
         expect(User.regional_delivery_officers.last).to eq regional_delivery_officer
       end
@@ -59,7 +67,7 @@ RSpec.describe User do
 
     describe "all_assignable_users" do
       it "only includes users who have a role" do
-        expect(User.all_assignable_users.count).to eq 6
+        expect(User.all_assignable_users.count).to eq 7
         expect(User.all_assignable_users).to_not include(user_without_role)
       end
     end
