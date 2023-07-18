@@ -18,11 +18,11 @@ class User < ApplicationRecord
   scope :regional_delivery_officers, -> { where(team: User.regional_teams).order_by_first_name }
   scope :regional_delivery_officer_team_leads, -> { regional_delivery_officers.where(manage_team: true).order_by_first_name }
 
+  scope :assignable, -> { where(assign_to_project: true) }
   scope :by_team, ->(team) { where(team: team) }
 
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where.not(deactivated_at: nil) }
-  scope :all_assignable_users, -> { active.where.not(assign_to_project: false).or(where.not(manage_team: false)).or(where.not(add_new_project: false)) }
 
   validates :first_name, :last_name, :email, :team, presence: true
   validates :team, presence: true, on: :set_team
@@ -48,7 +48,6 @@ class User < ApplicationRecord
   def is_regional_delivery_officer?
     User.regional_teams.include?(team)
   end
-
 
   def active
     deactivated_at.nil?

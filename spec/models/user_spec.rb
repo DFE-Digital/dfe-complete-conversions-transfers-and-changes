@@ -65,10 +65,10 @@ RSpec.describe User do
       end
     end
 
-    describe "all_assignable_users" do
-      it "only includes users who have a role" do
-        expect(User.all_assignable_users.count).to eq 7
-        expect(User.all_assignable_users).to_not include(user_without_role)
+    describe "assignable" do
+      it "only includes users who have the assign_to_projects flag" do
+        expect(User.assignable.count).to eq 5
+        expect(User.assignable).to_not include(user_without_role)
       end
     end
 

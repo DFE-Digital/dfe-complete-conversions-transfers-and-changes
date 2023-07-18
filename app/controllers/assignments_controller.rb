@@ -25,7 +25,7 @@ class AssignmentsController < ApplicationController
   end
 
   def assign_assigned_to
-    @all_assignable_users = User.all_assignable_users
+    @all_assignable_users = User.assignable
   end
 
   def update_assigned_to
