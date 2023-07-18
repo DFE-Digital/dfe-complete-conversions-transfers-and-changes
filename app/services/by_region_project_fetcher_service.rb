@@ -1,5 +1,5 @@
 class ByRegionProjectFetcherService
-  def call
+  def conversion_counts
     conversion_counts = conversion_count_by_region
 
     if conversion_counts

@@ -9,7 +9,7 @@ RSpec.describe ByRegionProjectFetcherService do
     create(:conversion_project, region: "south_west")
     create(:conversion_project, region: "north_west")
 
-    result = described_class.new.call
+    result = described_class.new.conversion_counts
 
     expect(result.count).to eql 3
 
@@ -25,6 +25,6 @@ RSpec.describe ByRegionProjectFetcherService do
   end
 
   it "returns an empty array when there are no projects to source trusts" do
-    expect(described_class.new.call).to eql []
+    expect(described_class.new.conversion_counts).to eql []
   end
 end
