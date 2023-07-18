@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_080143) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_085530) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -221,7 +221,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_080143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "team_leader", default: false
-    t.boolean "regional_delivery_officer", default: false, null: false
+    t.boolean "add_new_project", default: false, null: false
     t.string "first_name"
     t.string "last_name"
     t.string "active_directory_user_id"

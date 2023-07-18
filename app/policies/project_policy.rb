@@ -15,7 +15,7 @@ class ProjectPolicy
   end
 
   def create?
-    user.regional_delivery_officer?
+    user.add_new_project?
   end
 
   def edit?

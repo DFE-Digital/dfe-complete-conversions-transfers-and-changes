@@ -15,7 +15,7 @@ class NavigationPolicy
 
   def show_your_projects_header_navigation?
     return true if @user.assign_to_project?
-    return true if @user.regional_delivery_officer?
+    return true if @user.add_new_project?
 
     false
   end

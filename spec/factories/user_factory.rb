@@ -4,7 +4,7 @@ FactoryBot.define do
     first_name { "John" }
     last_name { "Doe" }
     team_leader { false }
-    regional_delivery_officer { false }
+    add_new_project { false }
     service_support { false }
     assign_to_project { false }
     team { "academies_operational_practice_unit" }
@@ -26,7 +26,7 @@ FactoryBot.define do
     trait :regional_delivery_officer do
       first_name { "Regional" }
       last_name { "Delivery-Officer" }
-      regional_delivery_officer { true }
+      add_new_project { true }
       email { "regional-delivery-officer-#{SecureRandom.uuid}@education.gov.uk" }
       team { "london" }
     end
@@ -37,6 +37,15 @@ FactoryBot.define do
       service_support { true }
       email { "service-support-#{SecureRandom.uuid}@education.gov.uk" }
       team { "service_support" }
+    end
+
+    factory :regional_delivery_officer do
+      first_name { "Regional" }
+      last_name { "Delivery-Officer" }
+      email { "regional.delivery-officer@education.gov.uk" }
+      assign_to_project { true }
+      add_new_project { true }
+      team { "north_west" }
     end
 
     factory :regional_caseworker_user do

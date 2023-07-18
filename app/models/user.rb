@@ -9,12 +9,12 @@ class User < ApplicationRecord
 
   scope :order_by_first_name, -> { order(first_name: :asc) }
   scope :team_leaders, -> { where(team_leader: true).order_by_first_name }
-  scope :regional_delivery_officers, -> { where(regional_delivery_officer: true).order_by_first_name }
+  scope :regional_delivery_officers, -> { where(add_new_project: true).order_by_first_name }
   scope :caseworkers, -> { where(assign_to_project: true).order_by_first_name }
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where.not(deactivated_at: nil) }
 
-  scope :all_assignable_users, -> { active.where.not(assign_to_project: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
+  scope :all_assignable_users, -> { active.where.not(assign_to_project: false).or(where.not(team_leader: false)).or(where.not(add_new_project: false)) }
 
   scope :by_team, ->(team) { where(team: team) }
 
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def has_role?
-    return true if assign_to_project? || regional_delivery_officer? || team_leader?
+    return true if assign_to_project? || add_new_project? || team_leader?
     false
   end
 
@@ -55,7 +55,7 @@ class User < ApplicationRecord
     assign_attributes(
       assign_to_project: apply_regional_caseworker_role?,
       service_support: apply_service_support_role?,
-      regional_delivery_officer: apply_regional_delivery_officer_role?,
+      add_new_project: apply_regional_delivery_officer_role?,
       team_leader: apply_team_lead_role?
     )
   end

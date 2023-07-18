@@ -10,7 +10,7 @@
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.your_projects.in_progress"), path: in_progress_user_projects_path, namespace: "/projects/user/in-progress"} %>
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.your_projects.added_by_you"), path: added_by_user_projects_path, namespace: "/projects/user/added-by"} if @current_user.regional_delivery_officer? %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.your_projects.added_by_you"), path: added_by_user_projects_path, namespace: "/projects/user/added-by"} if @current_user.add_new_project? %>
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.your_projects.completed"), path: completed_user_projects_path, namespace: "/projects/user/completed"} %>
 
