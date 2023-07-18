@@ -43,7 +43,7 @@ FactoryBot.define do
       manage_conversion_urns { true }
     end
 
-    factory :regional_delivery_officer do
+    factory :regional_delivery_officer_user do
       first_name { "Regional" }
       last_name { "Delivery-Officer" }
       email { "regional.delivery-officer@education.gov.uk" }
@@ -52,7 +52,7 @@ FactoryBot.define do
       team { "north_west" }
     end
 
-    factory :regional_casework_team_lead do
+    factory :regional_casework_services_team_lead_user do
       first_name { "Regional" }
       last_name { "Casework-Team-Lead" }
       email { "regional.casework-team-lead@education.gov.uk" }
@@ -61,7 +61,7 @@ FactoryBot.define do
       team { "regional_casework_services" }
     end
 
-    factory :regional_caseworker_user do
+    factory :regional_casework_services_user do
       first_name { "Regional" }
       last_name { "Caseworker" }
       email { "regional.caseworker@education.gov.uk" }

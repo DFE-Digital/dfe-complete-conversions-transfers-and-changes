@@ -8,15 +8,15 @@ class User < ApplicationRecord
   has_many :notes
 
   scope :order_by_first_name, -> { order(first_name: :asc) }
+
   scope :team_leaders, -> { where(manage_team: true).order_by_first_name }
-  scope :regional_delivery_officers, -> { where(add_new_project: true).order_by_first_name }
-  scope :caseworkers, -> { where(assign_to_project: true).order_by_first_name }
+  scope :regional_delivery_officers, -> { where(team: User.regional_teams).order_by_first_name }
+  scope :caseworkers, -> { where(team: "regional_casework_services").where(manage_team: false).order_by_first_name }
+  scope :by_team, ->(team) { where(team: team) }
+
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where.not(deactivated_at: nil) }
-
   scope :all_assignable_users, -> { active.where.not(assign_to_project: false).or(where.not(manage_team: false)).or(where.not(add_new_project: false)) }
-
-  scope :by_team, ->(team) { where(team: team) }
 
   validates :first_name, :last_name, :email, :team, presence: true
   validates :team, presence: true, on: :set_team

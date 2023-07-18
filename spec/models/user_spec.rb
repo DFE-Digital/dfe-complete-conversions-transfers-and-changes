@@ -17,12 +17,12 @@ RSpec.describe User do
   end
 
   describe "scopes" do
-    let!(:caseworker) { create(:user, :caseworker, team: "regional_casework_services") }
-    let!(:caseworker_2) { create(:user, :caseworker, first_name: "Aaron", email: "aaron-caseworker@education.gov.uk") }
-    let!(:team_leader) { create(:user, :team_leader, team: "regional_casework_services") }
-    let!(:team_leader_2) { create(:user, :team_leader, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
-    let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, team: "london") }
-    let!(:regional_delivery_officer_2) { create(:user, :regional_delivery_officer, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
+    let!(:caseworker) { create(:regional_casework_services_user) }
+    let!(:caseworker_2) { create(:regional_casework_services_user, first_name: "Aaron", email: "aaron-caseworker@education.gov.uk") }
+    let!(:team_leader) { create(:regional_casework_services_team_lead_user, first_name: "Zoe") }
+    let!(:team_leader_2) { create(:regional_casework_services_team_lead_user, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
+    let!(:regional_delivery_officer) { create(:regional_delivery_officer_user) }
+    let!(:regional_delivery_officer_2) { create(:regional_delivery_officer_user, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
     let!(:user_without_role) { create(:user, assign_to_project: false, manage_team: false, add_new_project: false, team: "education_and_skills_funding_agency") }
 
     describe "order_by_first_name" do
@@ -33,7 +33,7 @@ RSpec.describe User do
       end
     end
 
-    describe "team_leaders" do
+    describe "regional casework services team leaders" do
       it "only includes users that have the team leader role sorted by first_name" do
         expect(User.team_leaders.count).to be 2
         expect(User.team_leaders.first).to eq team_leader_2
@@ -90,7 +90,7 @@ RSpec.describe User do
 
     describe "by_team" do
       it "returns users in the desired team" do
-        expect(User.by_team("london")).to include(regional_delivery_officer)
+        expect(User.by_team("north_west")).to include(regional_delivery_officer)
         expect(User.by_team("regional_casework_services")).to include(caseworker, team_leader)
       end
     end

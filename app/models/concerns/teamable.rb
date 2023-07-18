@@ -21,4 +21,10 @@ module Teamable
   })
 
   PROJECT_TEAMS = REGIONAL_TEAMS.merge({regional_casework_services: "regional_casework_services"})
+
+  class_methods do
+    def regional_teams
+      REGIONAL_TEAMS.values
+    end
+  end
 end
