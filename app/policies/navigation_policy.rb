@@ -36,7 +36,7 @@ class NavigationPolicy
   end
 
   def show_service_support_header_navigation?
-    return true if @user.service_support?
+    return true if @user.service_support_team?
 
     false
   end

@@ -54,7 +54,9 @@ class User < ApplicationRecord
   private def apply_roles_based_on_team
     assign_attributes(
       assign_to_project: apply_regional_caseworker_role?,
-      service_support: apply_service_support_role?,
+      manage_user_accounts: apply_service_support_role?,
+      manage_conversion_urns: apply_service_support_role?,
+      manage_local_authorities: apply_service_support_role?,
       add_new_project: apply_regional_delivery_officer_role?,
       manage_team: apply_team_lead_role?
     )

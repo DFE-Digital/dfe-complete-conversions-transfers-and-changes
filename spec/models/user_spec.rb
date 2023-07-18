@@ -8,7 +8,9 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:manage_team).of_type :boolean }
     it { is_expected.to have_db_column(:add_new_project).of_type :boolean }
     it { is_expected.to have_db_column(:assign_to_project).of_type :boolean }
-    it { is_expected.to have_db_column(:service_support).of_type :boolean }
+    it { is_expected.to have_db_column(:manage_user_accounts).of_type :boolean }
+    it { is_expected.to have_db_column(:manage_user_accounts).of_type :boolean }
+    it { is_expected.to have_db_column(:manage_local_authorities).of_type :boolean }
     it { is_expected.to have_db_column(:active_directory_user_group_ids).of_type :string }
     it { is_expected.to have_db_column(:team).of_type :string }
     it { is_expected.to have_db_column(:deactivated_at).of_type :datetime }
@@ -135,7 +137,9 @@ RSpec.describe User do
             expect(user.assign_to_project).to be true
             expect(user.manage_team).to be false
             expect(user.add_new_project).to be false
-            expect(user.service_support).to be false
+            expect(user.manage_user_accounts).to be false
+            expect(user.manage_local_authorities).to be false
+            expect(user.manage_conversion_urns).to be false
           end
         end
 
@@ -150,7 +154,9 @@ RSpec.describe User do
             expect(user.assign_to_project).to be false
             expect(user.manage_team).to be true
             expect(user.add_new_project).to be false
-            expect(user.service_support).to be false
+            expect(user.manage_user_accounts).to be false
+            expect(user.manage_local_authorities).to be false
+            expect(user.manage_conversion_urns).to be false
           end
         end
       end
@@ -167,7 +173,9 @@ RSpec.describe User do
             expect(user.assign_to_project).to be false
             expect(user.manage_team).to be false
             expect(user.add_new_project).to be true
-            expect(user.service_support).to be false
+            expect(user.manage_user_accounts).to be false
+            expect(user.manage_local_authorities).to be false
+            expect(user.manage_conversion_urns).to be false
           end
         end
 
@@ -182,7 +190,9 @@ RSpec.describe User do
             expect(user.assign_to_project).to be false
             expect(user.manage_team).to be true
             expect(user.add_new_project).to be true
-            expect(user.service_support).to be false
+            expect(user.manage_user_accounts).to be false
+            expect(user.manage_local_authorities).to be false
+            expect(user.manage_conversion_urns).to be false
           end
         end
       end
@@ -198,7 +208,9 @@ RSpec.describe User do
           expect(user.assign_to_project).to be false
           expect(user.manage_team).to be false
           expect(user.add_new_project).to be false
-          expect(user.service_support).to be true
+          expect(user.manage_user_accounts).to be true
+          expect(user.manage_local_authorities).to be true
+          expect(user.manage_conversion_urns).to be true
         end
       end
 

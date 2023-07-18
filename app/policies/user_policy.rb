@@ -7,7 +7,7 @@ class UserPolicy
   end
 
   def index?
-    @user.service_support?
+    @user.manage_user_accounts?
   end
 
   def new?

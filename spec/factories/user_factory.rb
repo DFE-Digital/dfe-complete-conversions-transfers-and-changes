@@ -5,8 +5,10 @@ FactoryBot.define do
     last_name { "Doe" }
     manage_team { false }
     add_new_project { false }
-    service_support { false }
     assign_to_project { false }
+    manage_user_accounts { false }
+    manage_local_authorities { false }
+    manage_conversion_urns { false }
     team { "academies_operational_practice_unit" }
 
     trait :caseworker do
@@ -34,9 +36,11 @@ FactoryBot.define do
     trait :service_support do
       first_name { "Service" }
       last_name { "Support" }
-      service_support { true }
       email { "service-support-#{SecureRandom.uuid}@education.gov.uk" }
       team { "service_support" }
+      manage_user_accounts { true }
+      manage_local_authorities { true }
+      manage_conversion_urns { true }
     end
 
     factory :regional_delivery_officer do
@@ -63,6 +67,16 @@ FactoryBot.define do
       email { "regional.caseworker@education.gov.uk" }
       assign_to_project { true }
       team { "regional_casework_services" }
+    end
+
+    factory :service_support_user do
+      first_name { "Service" }
+      last_name { "Support" }
+      email { "service.support@education.gov.uk" }
+      team { "service_support" }
+      manage_user_accounts { true }
+      manage_local_authorities { true }
+      manage_conversion_urns { true }
     end
 
     factory :inactive_user do
