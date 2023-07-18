@@ -2,10 +2,12 @@ class Project < ApplicationRecord
   include Teamable
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
-  attr_writer :establishment, :incoming_trust
+  attr_writer :establishment, :incoming_trust, :member_of_parliament
 
   delegated_type :tasks_data, types: %w[Conversion::TasksData, Transfer::TasksData], dependent: :destroy
   delegate :local_authority_code, to: :establishment
+  delegate :local_authority, to: :establishment
+  delegate :director_of_child_services, to: :local_authority
 
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
@@ -71,6 +73,10 @@ class Project < ApplicationRecord
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
+  def member_of_parliament
+    @member_of_parliament ||= fetch_member_of_parliament
+  end
+
   def completed?
     completed_at.present?
   end
@@ -82,6 +88,10 @@ class Project < ApplicationRecord
   def director_of_child_services
     local_authority = establishment.local_authority
     local_authority&.director_of_child_services
+  end
+
+  private def fetch_member_of_parliament
+    Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
   end
 
   private def fetch_establishment(urn)

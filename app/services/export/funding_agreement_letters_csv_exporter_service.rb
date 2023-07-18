@@ -1,80 +1,86 @@
 class Export::FundingAgreementLettersCsvExporterService
   require "csv"
 
+  COLUMN_HEADERS = %i[
+    school_urn
+    school_name
+    school_type
+    school_dfe_number
+    school_address_1
+    school_address_2
+    school_address_3
+    school_address_town
+    school_address_county
+    school_address_postcode
+    academy_urn
+    academy_name
+    academy_address_1
+    academy_address_2
+    academy_address_3
+    academy_address_town
+    academy_address_county
+    academy_address_postcode
+    incoming_trust_identifier
+    incoming_trust_companies_house_number
+    incoming_trust_name
+    incoming_trust_address_1
+    incoming_trust_address_2
+    incoming_trust_address_3
+    incoming_trust_address_town
+    incoming_trust_address_county
+    incoming_trust_address_postcode
+    director_of_child_services_name
+    director_of_child_services_role
+    director_of_child_services_email
+    local_authority_code
+    local_authority_name
+    local_authority_address_1
+    local_authority_address_2
+    local_authority_address_3
+    local_authority_address_town
+    local_authority_address_county
+    local_authority_address_postcode
+    mp_constituency
+    mp_name
+    mp_email
+    mp_address_1
+    mp_address_2
+    mp_address_3
+    mp_address_postcode
+    advisory_board_date
+    project_type
+    academy_order_type
+    conversion_date
+    assigned_to_name
+    assigned_to_email
+  ]
+
   def initialize(projects)
     @projects = projects
-
-    raise ArgumentError.new("You must provide at least one project") if @projects.count.zero?
   end
 
   def call
     @csv = CSV.generate("\uFEFF", headers: true, encoding: "UTF-8") do |csv|
       csv << headers
-      @projects.each do |project|
-        csv << row(project).values
+      if @projects.any?
+        @projects.each do |project|
+          csv << row(project)
+        end
       end
     end
   end
 
   private def headers
-    example_row = row(@projects.first)
-    example_row.keys.map do |column|
-      I18n.t("export.funding_agreement_letters.csv.headers.#{column}")
+    COLUMN_HEADERS.map do |column|
+      I18n.t("export.csv.project.headers.#{column}")
     end
   end
 
   private def row(project)
-    mp_details = fetch_mp_details(project)
-    {
-      school_urn: project.urn,
-      dfe_number: project.establishment.dfe_number,
-      project_type: "Conversion",
-      route: I18n.t("project.openers.route.#{project.route}"),
-      conversion_date: project.conversion_date.to_formatted_s(:csv),
-      director_of_child_services_name: project.director_of_child_services&.name,
-      director_of_child_services_role: project.director_of_child_services&.title,
-      director_of_child_services_email: project.director_of_child_services&.email,
-      director_of_child_services_phone: project.director_of_child_services&.phone,
-      school_name: project.establishment.name,
-      school_type: project.establishment.type,
-      school_address_1: project.establishment.address_street,
-      school_address_2: project.establishment.address_locality,
-      school_address_3: project.establishment.address_additional,
-      school_town: project.establishment.address_town,
-      school_county: project.establishment.address_county,
-      school_postcode: project.establishment.address_postcode,
-      local_authority: project.establishment.local_authority&.name,
-      local_authority_address_1: project.establishment.local_authority&.address_1,
-      local_authority_address_2: project.establishment.local_authority&.address_2,
-      local_authority_address_3: project.establishment.local_authority&.address_3,
-      local_authority_address_town: project.establishment.local_authority&.address_town,
-      local_authority_address_county: project.establishment.local_authority&.address_county,
-      local_authority_address_postcode: project.establishment.local_authority&.address_postcode,
-      trust_name: project.incoming_trust.name,
-      trust_address_1: project.incoming_trust.address_street,
-      trust_address_2: project.incoming_trust.address_locality,
-      trust_address_3: project.incoming_trust.address_additional,
-      trust_address_town: project.incoming_trust.address_town,
-      trust_address_county: project.incoming_trust.address_county,
-      trust_address_postcode: project.incoming_trust.address_postcode,
-      mp_name: mp_details&.name,
-      mp_email: mp_details&.email,
-      mp_address_line_1: fetch_address_line(mp_details, :line1),
-      mp_address_line_2: fetch_address_line(mp_details, :line2),
-      mp_address_line_3: fetch_address_line(mp_details, :line3),
-      mp_address_postcode: fetch_address_line(mp_details, :postcode),
-      approval_date: project.advisory_board_date.to_formatted_s(:csv),
-      project_lead: project.assigned_to.full_name,
-      academy_name: project.academy&.name
-    }
-  end
+    presenter = Export::Csv::ProjectPresenter.new(project)
 
-  private def fetch_address_line(mp_details, attribute)
-    return nil if mp_details.nil?
-    mp_details.address.send(attribute)
-  end
-
-  private def fetch_mp_details(project)
-    Api::MembersApi::Client.new.member_for_constituency(project.establishment.parliamentary_constituency)
+    COLUMN_HEADERS.map do |column|
+      presenter.public_send(column)
+    end
   end
 end

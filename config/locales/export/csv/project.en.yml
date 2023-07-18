@@ -1,0 +1,71 @@
+en:
+  export:
+    csv:
+      project:
+        headers:
+          project_type: Project type
+          conversion_date: Conversion date
+          all_conditions_met: All conditions met
+          risk_protection_arrangement: Risk protection arrangement
+          advisory_board_date: Advisory board date
+          academy_order_type: Academy order type
+          assigned_to_name: Assigned to name
+          assigned_to_email: Assigned to email
+          school_urn: School URN
+          school_dfe_number: DfE number
+          school_name: School name
+          school_type: School type
+          school_address_1: School address 1
+          school_address_2: School address 2
+          school_address_3: School address 3
+          school_address_town: School town
+          school_address_county: School county
+          school_address_postcode: School postcode
+          academy_urn: Academy URN
+          academy_name: Academy name
+          academy_address_1: Academy address 1
+          academy_address_2: Academy address 2
+          academy_address_3: Academy address 3
+          academy_address_town: Academy town
+          academy_address_county: Academy county
+          academy_address_postcode: Academy postcode
+          director_of_child_services_name: Director of child services name
+          director_of_child_services_role: Director of child services role
+          director_of_child_services_email: Director of child services email
+          director_of_child_services_phone: Director of child services phone
+          incoming_trust_identifier: Incoming trust group identifier
+          incoming_trust_companies_house_number: Incoming trust companies house number
+          incoming_trust_name: Incoming trust name
+          incoming_trust_address_1: Incoming trust address 1
+          incoming_trust_address_2: Incoming trust address 2
+          incoming_trust_address_3: Incoming trust address 3
+          incoming_trust_address_town: Incoming trust address town
+          incoming_trust_address_county: Incoming trust address county
+          incoming_trust_address_postcode: Incoming trust address postcode
+          local_authority_code: Local authority code
+          local_authority_name: Local authority
+          local_authority_address_1: Local authority address 1
+          local_authority_address_2: Local authority address 2
+          local_authority_address_3: Local authority address 3
+          local_authority_address_town: Local authority address town
+          local_authority_address_county: Local authority address county
+          local_authority_address_postcode: Local authority address postcode
+          mp_name: MP name
+          mp_email: MP email
+          mp_constituency: Constituency
+          mp_address_1: MP address 1
+          mp_address_2: MP address 2
+          mp_address_3: MP address 3
+          mp_address_postcode: MP postcode
+        values:
+          project_type:
+            conversion: Conversion
+            transfer: Transfer
+          unconfirmed: unconfirmed
+          "yes": "yes"
+          "no": "no"
+          directive_academy_order: Directive academy order
+          academy_order: Academy order
+          standard: standard
+          church_or_trust: church or trust
+          commercial: commercial

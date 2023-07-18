@@ -21,7 +21,7 @@ RSpec.describe All::Export::FundingAgreementLetters::ProjectsController, type: :
 
     it "formats the csv filename with the month & year" do
       get csv_all_export_funding_agreement_letters_projects_path(5, 2025)
-      expect(response.header["Content-Disposition"]).to include("opening_5_2025.csv")
+      expect(response.header["Content-Disposition"]).to include("2025-5_funding_agreement_letters_export.csv")
     end
   end
 end

@@ -44,21 +44,22 @@ module MembersApiHelpers
   end
 
   def mock_successful_member_details
-    address = OpenStruct.new(
+    address = double(
+      "MP address",
       line1: "House of Commons",
       line2: "London",
       line3: "",
       postcode: "SW1A 0AA"
     )
-
     member_details = double(
       Api::MembersApi::MemberDetails,
-      name: "Member Parliment",
-      email: "member.parliment@parliment.uk",
+      name: "Member Parliament",
+      email: "member.parliament@parliament.uk",
       address: address
     )
     members_client = double(Api::MembersApi::Client, member_for_constituency: member_details)
     allow(Api::MembersApi::Client).to receive(:new).and_return(members_client)
+    members_client
   end
 
   def mock_members_api_multiple_constituencies_response
