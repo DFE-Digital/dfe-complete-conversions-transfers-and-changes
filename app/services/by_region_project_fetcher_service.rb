@@ -9,6 +9,10 @@ class ByRegionProjectFetcherService
     end
   end
 
+  def regional_casework_services_projects(region)
+    Conversion::Project.by_region(region).assigned_to_regional_caseworker_team.by_conversion_date
+  end
+
   private def conversion_count_by_region
     projects = Conversion::Project.not_completed
     return false unless projects.any?
