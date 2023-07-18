@@ -178,7 +178,7 @@ RSpec.describe User do
 
             user = described_class.create!(user_attributes)
 
-            expect(user.assign_to_project).to be false
+            expect(user.assign_to_project).to be true
             expect(user.manage_team).to be false
             expect(user.add_new_project).to be true
             expect(user.manage_user_accounts).to be false
@@ -195,7 +195,7 @@ RSpec.describe User do
 
             user = described_class.create!(user_attributes)
 
-            expect(user.assign_to_project).to be false
+            expect(user.assign_to_project).to be true
             expect(user.manage_team).to be true
             expect(user.add_new_project).to be true
             expect(user.manage_user_accounts).to be false
@@ -323,6 +323,34 @@ RSpec.describe User do
       user.update!(active: true)
 
       expect(user.active).to be true
+    end
+  end
+
+  describe "#is_regional_caseworker?" do
+    it "returns true when the user is in the RCS team and is not a team lead" do
+      caseworker_user = build(:regional_casework_services_user)
+      other_user = build(:regional_casework_services_team_lead_user)
+
+      expect(caseworker_user.is_regional_caseworker?).to be true
+      expect(other_user.is_regional_caseworker?).to be false
+    end
+  end
+
+  describe "#is_regional_delivery_officer?" do
+    it "returns true when the user is in one of the regional teams" do
+      regional_delivery_officer_user = build(:regional_delivery_officer_user)
+      other_user = build(:regional_casework_services_team_lead_user)
+
+      expect(regional_delivery_officer_user.is_regional_delivery_officer?).to be true
+      expect(other_user.is_regional_caseworker?).to be false
+    end
+
+    it "returns true when the regional delivery officer is also a team lead" do
+      rdo_user = build(:regional_delivery_officer_user)
+      rdo_team_lead_user = build(:regional_delivery_officer_team_lead_user)
+
+      expect(rdo_user.is_regional_delivery_officer?).to be true
+      expect(rdo_team_lead_user.is_regional_delivery_officer?).to be true
     end
   end
 

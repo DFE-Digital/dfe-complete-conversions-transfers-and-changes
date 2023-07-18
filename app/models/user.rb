@@ -41,6 +41,15 @@ class User < ApplicationRecord
     false
   end
 
+  def is_regional_caseworker?
+    team == "regional_casework_services" && manage_team == false
+  end
+
+  def is_regional_delivery_officer?
+    User.regional_teams.include?(team)
+  end
+
+
   def active
     deactivated_at.nil?
   end
@@ -59,11 +68,11 @@ class User < ApplicationRecord
 
   private def apply_roles_based_on_team
     assign_attributes(
-      assign_to_project: apply_regional_caseworker_role?,
+      assign_to_project: is_regional_caseworker? || is_regional_delivery_officer?,
       manage_user_accounts: apply_service_support_role?,
       manage_conversion_urns: apply_service_support_role?,
       manage_local_authorities: apply_service_support_role?,
-      add_new_project: apply_regional_delivery_officer_role?,
+      add_new_project: is_regional_delivery_officer?,
       manage_team: apply_team_lead_role?
     )
   end
@@ -72,19 +81,11 @@ class User < ApplicationRecord
     team == "service_support"
   end
 
-  private def apply_regional_caseworker_role?
-    team == "regional_casework_services" && manage_team == false
-  end
-
-  private def apply_regional_delivery_officer_role?
-    REGIONAL_TEAMS.value?(team)
-  end
-
   private def apply_team_lead_role?
-    manage_team && can_have_team_lead?
+    manage_team && can_be_team_lead?
   end
 
-  private def can_have_team_lead?
-    apply_regional_delivery_officer_role? || team == "regional_casework_services"
+  private def can_be_team_lead?
+    is_regional_delivery_officer? || team == "regional_casework_services"
   end
 end

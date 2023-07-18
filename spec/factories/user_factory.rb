@@ -43,6 +43,16 @@ FactoryBot.define do
       manage_conversion_urns { true }
     end
 
+    factory :regional_delivery_officer_team_lead_user do
+      first_name { "Regional" }
+      last_name { "Delivery-Officer" }
+      email { "regional.delivery-officer@education.gov.uk" }
+      assign_to_project { true }
+      add_new_project { true }
+      team { "north_west" }
+      manage_team { true }
+    end
+
     factory :regional_delivery_officer_user do
       first_name { "Regional" }
       last_name { "Delivery-Officer" }
