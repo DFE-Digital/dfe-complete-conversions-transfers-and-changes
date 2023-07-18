@@ -7,7 +7,7 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:last_name).of_type :string }
     it { is_expected.to have_db_column(:team_leader).of_type :boolean }
     it { is_expected.to have_db_column(:regional_delivery_officer).of_type :boolean }
-    it { is_expected.to have_db_column(:caseworker).of_type :boolean }
+    it { is_expected.to have_db_column(:assign_to_project).of_type :boolean }
     it { is_expected.to have_db_column(:service_support).of_type :boolean }
     it { is_expected.to have_db_column(:active_directory_user_group_ids).of_type :string }
     it { is_expected.to have_db_column(:team).of_type :string }
@@ -21,7 +21,7 @@ RSpec.describe User do
     let!(:team_leader_2) { create(:user, :team_leader, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
     let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, team: "london") }
     let!(:regional_delivery_officer_2) { create(:user, :regional_delivery_officer, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
-    let!(:user_without_role) { create(:user, caseworker: false, team_leader: false, regional_delivery_officer: false, team: "education_and_skills_funding_agency") }
+    let!(:user_without_role) { create(:user, assign_to_project: false, team_leader: false, regional_delivery_officer: false, team: "education_and_skills_funding_agency") }
 
     describe "order_by_first_name" do
       it "orders by first_name" do
@@ -132,7 +132,7 @@ RSpec.describe User do
 
             user = described_class.create!(user_attributes)
 
-            expect(user.caseworker).to be true
+            expect(user.assign_to_project).to be true
             expect(user.team_leader).to be false
             expect(user.regional_delivery_officer).to be false
             expect(user.service_support).to be false
@@ -147,7 +147,7 @@ RSpec.describe User do
 
             user = described_class.create!(user_attributes)
 
-            expect(user.caseworker).to be false
+            expect(user.assign_to_project).to be false
             expect(user.team_leader).to be true
             expect(user.regional_delivery_officer).to be false
             expect(user.service_support).to be false
@@ -164,7 +164,7 @@ RSpec.describe User do
 
             user = described_class.create!(user_attributes)
 
-            expect(user.caseworker).to be false
+            expect(user.assign_to_project).to be false
             expect(user.team_leader).to be false
             expect(user.regional_delivery_officer).to be true
             expect(user.service_support).to be false
@@ -179,7 +179,7 @@ RSpec.describe User do
 
             user = described_class.create!(user_attributes)
 
-            expect(user.caseworker).to be false
+            expect(user.assign_to_project).to be false
             expect(user.team_leader).to be true
             expect(user.regional_delivery_officer).to be true
             expect(user.service_support).to be false
@@ -195,7 +195,7 @@ RSpec.describe User do
 
           user = described_class.create!(user_attributes)
 
-          expect(user.caseworker).to be false
+          expect(user.assign_to_project).to be false
           expect(user.team_leader).to be false
           expect(user.regional_delivery_officer).to be false
           expect(user.service_support).to be true
