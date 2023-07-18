@@ -8,13 +8,13 @@ class User < ApplicationRecord
   has_many :notes
 
   scope :order_by_first_name, -> { order(first_name: :asc) }
-  scope :team_leaders, -> { where(team_leader: true).order_by_first_name }
+  scope :team_leaders, -> { where(manage_team: true).order_by_first_name }
   scope :regional_delivery_officers, -> { where(add_new_project: true).order_by_first_name }
   scope :caseworkers, -> { where(assign_to_project: true).order_by_first_name }
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where.not(deactivated_at: nil) }
 
-  scope :all_assignable_users, -> { active.where.not(assign_to_project: false).or(where.not(team_leader: false)).or(where.not(add_new_project: false)) }
+  scope :all_assignable_users, -> { active.where.not(assign_to_project: false).or(where.not(manage_team: false)).or(where.not(add_new_project: false)) }
 
   scope :by_team, ->(team) { where(team: team) }
 
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def has_role?
-    return true if assign_to_project? || add_new_project? || team_leader?
+    return true if assign_to_project? || add_new_project? || manage_team?
     false
   end
 
@@ -56,7 +56,7 @@ class User < ApplicationRecord
       assign_to_project: apply_regional_caseworker_role?,
       service_support: apply_service_support_role?,
       add_new_project: apply_regional_delivery_officer_role?,
-      team_leader: apply_team_lead_role?
+      manage_team: apply_team_lead_role?
     )
   end
 
@@ -65,7 +65,7 @@ class User < ApplicationRecord
   end
 
   private def apply_regional_caseworker_role?
-    team == "regional_casework_services" && team_leader == false
+    team == "regional_casework_services" && manage_team == false
   end
 
   private def apply_regional_delivery_officer_role?
@@ -73,7 +73,7 @@ class User < ApplicationRecord
   end
 
   private def apply_team_lead_role?
-    team_leader && can_have_team_lead?
+    manage_team && can_have_team_lead?
   end
 
   private def can_have_team_lead?

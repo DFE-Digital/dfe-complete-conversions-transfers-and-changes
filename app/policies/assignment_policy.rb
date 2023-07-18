@@ -6,7 +6,7 @@ class AssignmentPolicy
   end
 
   def assign_team_leader?
-    @user.team_leader?
+    @user.manage_team?
   end
 
   def update_team_leader?
@@ -14,7 +14,7 @@ class AssignmentPolicy
   end
 
   def assign_regional_delivery_officer?
-    @user.team_leader?
+    @user.manage_team?
   end
 
   def update_regional_delivery_officer?

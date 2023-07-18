@@ -5,7 +5,7 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:email).of_type :string }
     it { is_expected.to have_db_column(:first_name).of_type :string }
     it { is_expected.to have_db_column(:last_name).of_type :string }
-    it { is_expected.to have_db_column(:team_leader).of_type :boolean }
+    it { is_expected.to have_db_column(:manage_team).of_type :boolean }
     it { is_expected.to have_db_column(:add_new_project).of_type :boolean }
     it { is_expected.to have_db_column(:assign_to_project).of_type :boolean }
     it { is_expected.to have_db_column(:service_support).of_type :boolean }
@@ -21,7 +21,7 @@ RSpec.describe User do
     let!(:team_leader_2) { create(:user, :team_leader, first_name: "Andy", email: "aaron-team-leader@education.gov.uk") }
     let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, team: "london") }
     let!(:regional_delivery_officer_2) { create(:user, :regional_delivery_officer, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
-    let!(:user_without_role) { create(:user, assign_to_project: false, team_leader: false, add_new_project: false, team: "education_and_skills_funding_agency") }
+    let!(:user_without_role) { create(:user, assign_to_project: false, manage_team: false, add_new_project: false, team: "education_and_skills_funding_agency") }
 
     describe "order_by_first_name" do
       it "orders by first_name" do
@@ -128,12 +128,12 @@ RSpec.describe User do
           it "assigns the caseworker role correctly" do
             user_attributes = valid_user_attributes
             user_attributes[:team] = "regional_casework_services"
-            user_attributes[:team_leader] = false
+            user_attributes[:manage_team] = false
 
             user = described_class.create!(user_attributes)
 
             expect(user.assign_to_project).to be true
-            expect(user.team_leader).to be false
+            expect(user.manage_team).to be false
             expect(user.add_new_project).to be false
             expect(user.service_support).to be false
           end
@@ -143,12 +143,12 @@ RSpec.describe User do
           it "assigns the team leader role correctly" do
             user_attributes = valid_user_attributes
             user_attributes[:team] = "regional_casework_services"
-            user_attributes[:team_leader] = true
+            user_attributes[:manage_team] = true
 
             user = described_class.create!(user_attributes)
 
             expect(user.assign_to_project).to be false
-            expect(user.team_leader).to be true
+            expect(user.manage_team).to be true
             expect(user.add_new_project).to be false
             expect(user.service_support).to be false
           end
@@ -160,12 +160,12 @@ RSpec.describe User do
           it "assigns the regional delivery officer and team leader role correctly" do
             user_attributes = valid_user_attributes
             user_attributes[:team] = "london"
-            user_attributes[:team_leader] = false
+            user_attributes[:manage_team] = false
 
             user = described_class.create!(user_attributes)
 
             expect(user.assign_to_project).to be false
-            expect(user.team_leader).to be false
+            expect(user.manage_team).to be false
             expect(user.add_new_project).to be true
             expect(user.service_support).to be false
           end
@@ -175,12 +175,12 @@ RSpec.describe User do
           it "assigns the regional delivery officer and team leader role correctly" do
             user_attributes = valid_user_attributes
             user_attributes[:team] = "london"
-            user_attributes[:team_leader] = true
+            user_attributes[:manage_team] = true
 
             user = described_class.create!(user_attributes)
 
             expect(user.assign_to_project).to be false
-            expect(user.team_leader).to be true
+            expect(user.manage_team).to be true
             expect(user.add_new_project).to be true
             expect(user.service_support).to be false
           end
@@ -191,12 +191,12 @@ RSpec.describe User do
         it "assigns the service support role correctly" do
           user_attributes = valid_user_attributes
           user_attributes[:team] = "service_support"
-          user_attributes[:team_leader] = false
+          user_attributes[:manage_team] = false
 
           user = described_class.create!(user_attributes)
 
           expect(user.assign_to_project).to be false
-          expect(user.team_leader).to be false
+          expect(user.manage_team).to be false
           expect(user.add_new_project).to be false
           expect(user.service_support).to be true
         end
@@ -206,11 +206,11 @@ RSpec.describe User do
         it "cannot be a team lead" do
           user_attributes = valid_user_attributes
           user_attributes[:team] = "service_support"
-          user_attributes[:team_leader] = true
+          user_attributes[:manage_team] = true
 
           user = described_class.create!(user_attributes)
 
-          expect(user.team_leader).to be false
+          expect(user.manage_team).to be false
         end
       end
     end
@@ -312,7 +312,7 @@ RSpec.describe User do
       last_name: "Last",
       email: "first.last@education.gov.uk",
       team: "london",
-      team_leader: false
+      manage_team: false
     }
   end
 end

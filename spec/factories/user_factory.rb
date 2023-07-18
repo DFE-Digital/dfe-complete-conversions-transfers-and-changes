@@ -3,7 +3,7 @@ FactoryBot.define do
     email { "user@education.gov.uk" }
     first_name { "John" }
     last_name { "Doe" }
-    team_leader { false }
+    manage_team { false }
     add_new_project { false }
     service_support { false }
     assign_to_project { false }
@@ -18,7 +18,7 @@ FactoryBot.define do
     trait :team_leader do
       first_name { "Team" }
       last_name { "Leader" }
-      team_leader { true }
+      manage_team { true }
       email { "team-leader-#{SecureRandom.uuid}@education.gov.uk" }
       team { "regional_casework_services" }
     end
@@ -46,6 +46,15 @@ FactoryBot.define do
       assign_to_project { true }
       add_new_project { true }
       team { "north_west" }
+    end
+
+    factory :regional_casework_team_lead do
+      first_name { "Regional" }
+      last_name { "Casework-Team-Lead" }
+      email { "regional.casework-team-lead@education.gov.uk" }
+      assign_to_project { false }
+      manage_team { true }
+      team { "regional_casework_services" }
     end
 
     factory :regional_caseworker_user do

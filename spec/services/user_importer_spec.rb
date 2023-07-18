@@ -5,7 +5,7 @@ RSpec.describe UserImporter do
   let(:user_importer) { UserImporter.new }
   let(:users_csv) do
     <<~CSV
-      email,first_name,last_name,team,team_leader,add_new_project,assign_to_project
+      email,first_name,last_name,team,manage_team,add_new_project,assign_to_project
       john.doe@education.gov.uk,John,Doe,regional_casework_services,1,0,0
       jane.doe@education.gov.uk,Jane,Doe,london,0,1,0
     CSV
@@ -29,7 +29,7 @@ RSpec.describe UserImporter do
           email: "john.doe@education.gov.uk",
           first_name: "John",
           last_name: "Doe",
-          team_leader: true,
+          manage_team: true,
           add_new_project: false,
           team: "regional_casework_services"
         )
@@ -40,7 +40,7 @@ RSpec.describe UserImporter do
           email: existing_user_email,
           first_name: "Jane",
           last_name: "Doe",
-          team_leader: false,
+          manage_team: false,
           add_new_project: true,
           team: "london"
         )
@@ -50,7 +50,7 @@ RSpec.describe UserImporter do
     context "when an existing user has been updated" do
       let(:users_csv) do
         <<~CSV
-          email,first_name,last_name,team,team_leader,add_new_project,assign_to_project
+          email,first_name,last_name,team,manage_team,add_new_project,assign_to_project
           john.doe@education.gov.uk,John,Doe,regional_casework_services,1,0,0
           jane.doe@education.gov.uk,Jane,Doe,regional_casework_services,1,0,0
         CSV
@@ -60,14 +60,14 @@ RSpec.describe UserImporter do
         call_user_importer
 
         expect(User.find_by(email: existing_user_email).add_new_project).to be false
-        expect(User.find_by(email: existing_user_email).team_leader).to be true
+        expect(User.find_by(email: existing_user_email).manage_team).to be true
       end
     end
 
     context "when an error occurs" do
       let(:users_csv) do
         <<~CSV
-          email,first_name,last_name,team_leader,add_new_project
+          email,first_name,last_name,manage_team,add_new_project
           #{existing_user_email},Josephine,Doe,0,1
           ,Malformed,Record,,
         CSV
@@ -83,7 +83,7 @@ RSpec.describe UserImporter do
             email: existing_user_email,
             first_name: "Jane",
             last_name: "Doe",
-            team_leader: false,
+            manage_team: false,
             add_new_project: false
           )
         ).to exist
@@ -93,7 +93,7 @@ RSpec.describe UserImporter do
     context "when an email address is invalid" do
       let(:users_csv) do
         <<~CSV
-          email,first_name,last_name,team_leader,add_new_project
+          email,first_name,last_name,manage_team,add_new_project
           john.doe.education.gov.uk,John,Doe,1,0
           jane.doe@education.gov.uk,Jane,Doe,1,0
         CSV

@@ -73,7 +73,7 @@ class ProjectPolicy
   end
 
   def unassigned?
-    @user.team_leader?
+    @user.manage_team?
   end
 
   private def project_assigned_to_user?

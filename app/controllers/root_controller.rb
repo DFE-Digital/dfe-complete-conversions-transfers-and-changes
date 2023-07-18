@@ -1,6 +1,6 @@
 class RootController < ApplicationController
   def home
-    return redirect_to unassigned_team_projects_path if current_user.team_leader?
+    return redirect_to unassigned_team_projects_path if current_user.manage_team?
 
     return redirect_to without_academy_urn_service_support_projects_path if current_user.service_support?
 
