@@ -121,6 +121,12 @@ Rails.application.routes.draw do
           get "unassigned", to: "projects#unassigned"
           get "users", to: "projects#users"
           get "user/:user_id", to: "projects#by_user", as: :by_user
+          namespace :opening do
+            get "confirmed/", to: "projects#confirmed_next_month"
+            get "confirmed/:month/:year", to: "projects#confirmed", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
+            get "revised/:month/:year", to: "projects#revised", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
+            get "revised/", to: "projects#revised_next_month"
+          end
         end
         namespace :regional, path: "regional" do
           get "in-progress", to: "projects#in_progress"

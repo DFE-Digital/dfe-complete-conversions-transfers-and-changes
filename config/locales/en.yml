@@ -147,6 +147,7 @@ en:
         unassigned: Unassigned
         completed: Completed
         by_user: By user
+        opening: Opening
       your_projects:
         in_progress: In progress
         added_by_you: Added by you
