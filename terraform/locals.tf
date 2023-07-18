@@ -14,6 +14,8 @@ locals {
   enable_redis_cache                           = var.enable_redis_cache
   enable_cdn_frontdoor                         = var.enable_cdn_frontdoor
   enable_event_hub                             = var.enable_event_hub
+  enable_logstash_consumer                     = var.enable_logstash_consumer
+  eventhub_export_log_analytics_table_names    = var.eventhub_export_log_analytics_table_names
   enable_cdn_frontdoor_health_probe            = var.enable_cdn_frontdoor_health_probe
   cdn_frontdoor_forwarding_protocol            = var.cdn_frontdoor_forwarding_protocol
   cdn_frontdoor_custom_domains                 = var.cdn_frontdoor_custom_domains

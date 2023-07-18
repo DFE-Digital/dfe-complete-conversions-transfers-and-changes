@@ -74,6 +74,18 @@ variable "enable_event_hub" {
   type        = bool
 }
 
+variable "enable_logstash_consumer" {
+  description = "Create an Event Hub consumer group for Logstash"
+  type        = bool
+  default     = false
+}
+
+variable "eventhub_export_log_analytics_table_names" {
+  description = "List of Log Analytics table names that you want to export to Event Hub. See https://learn.microsoft.com/en-gb/azure/azure-monitor/logs/logs-data-export?tabs=portal#supported-tables for a list of supported tables"
+  type        = list(string)
+  default     = []
+}
+
 variable "enable_worker_container" {
   description = "Conditionally launch a worker container. This container uses the same image and environment variables as a the default container app, but allows a different container commanmd to be ran. The worker container does not expose any ports."
   type        = bool
