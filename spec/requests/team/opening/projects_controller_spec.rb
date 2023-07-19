@@ -8,6 +8,22 @@ RSpec.describe Team::Opening::ProjectsController, type: :request do
     sign_in_with(user)
   end
 
+  describe "#in_progress" do
+    it "works" do
+      25.times do
+        create(:conversion_project, team: "regional_casework_services")
+      end
+
+      get "/projects/team/in-progress"
+
+      expect(response).to have_http_status(:success)
+
+      get "/projects/team/in-progress?page=2"
+
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "#confirmed_next_month" do
     it "redirects to next month" do
       get confirmed_team_opening_projects_path
