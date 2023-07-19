@@ -45,6 +45,7 @@ class Project < ApplicationRecord
   scope :not_assigned_to_regional_caseworker_team, -> { where.not(team: "regional_casework_services") }
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
+  scope :assigned_to_users, ->(users) { where(assigned_to_id: [users]) }
   scope :added_by, ->(user) { where(regional_delivery_officer: user) }
 
   scope :by_region, ->(region) { where(region: region) }
