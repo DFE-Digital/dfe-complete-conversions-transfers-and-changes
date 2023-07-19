@@ -14,8 +14,8 @@ class All::LocalAuthorities::ProjectsController < ApplicationController
   end
 
   private def projects_for_local_authority(local_authority_code)
+    EstablishmentsFetcherService.new(Project.not_completed).batched!
     projects = Project.not_completed.includes(:assigned_to)
-    EstablishmentsFetcherService.new(projects).batched!
     projects.to_a.select { |p| p.establishment.local_authority_code == local_authority_code }
   end
 
