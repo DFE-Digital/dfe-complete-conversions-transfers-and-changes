@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, :team, presence: true
   validates :team, presence: true, on: :set_team
   validates :email, uniqueness: {case_sensitive: false}
-  validates :email, format: {with: /\A\S+@education.gov.uk\z/}
+  validates :email, format: {with: /\A\S+@education.gov.uk\z/i}
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
   enum :team, USER_TEAMS, suffix: true

@@ -112,6 +112,12 @@ RSpec.describe User do
         expect(user).to be_invalid
       end
 
+      it "the validation is not case sensitve" do
+        user = build(:user, email: "USER@EDUCATION.GOV.UK")
+
+        expect(user).to be_valid
+      end
+
       it "must be unique" do
         create(:user, email: "user@education.gov.uk")
         new_user = build(:user, email: "user@education.gov.uk")
