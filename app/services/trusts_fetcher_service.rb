@@ -28,7 +28,7 @@ class TrustsFetcherService
     return if @projects.nil? || @projects.empty?
     raise ArgumentError.new("You must pass in the result of an ActiveRecord query (ActiveRecord::Relation)") unless @projects.is_a?(ActiveRecord::Relation)
 
-    @projects.in_batches(of: 10) do |batch_of_projects|
+    @projects.find_in_batches(batch_size: 10) do |batch_of_projects|
       ukprns = batch_of_projects.pluck(:incoming_trust_ukprn)
       response = Api::AcademiesApi::Client.new.get_trusts(ukprns)
 
