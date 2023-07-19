@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 34][release-34]
+
+### Added
+
 - Add confirmed and revised Project openers by team
 
 ### Fixed
@@ -1092,7 +1100,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-33...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-34...HEAD
+[release-34]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-33...release-34
 [release-33]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-32...release-33
 [release-32]:
