@@ -36,12 +36,10 @@ RSpec.describe Team::Opening::ProjectsController, type: :request do
         mock_successful_api_responses(urn: urn, ukprn: 10061021)
       end
 
-      allow(EstablishmentsFetcherService).to receive(:new).and_return(mock_establishments_fetcher)
-      allow(TrustsFetcherService).to receive(:new).and_return(mock_trusts_fetcher)
+      allow(AcademiesApiPreFetcherService).to receive(:new).and_return(mock_acadmies_api_fetcher)
     end
 
-    let(:mock_establishments_fetcher) { double(EstablishmentsFetcherService, batched!: true) }
-    let(:mock_trusts_fetcher) { double(TrustsFetcherService, batched!: true) }
+    let(:mock_acadmies_api_fetcher) { double(AcademiesApiPreFetcherService, call!: double) }
 
     it "only returns projects assigned to the user's team" do
       project_assigned_to_rcs = create(:conversion_project, urn: 100001, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false, team: "regional_casework_services")
@@ -62,12 +60,10 @@ RSpec.describe Team::Opening::ProjectsController, type: :request do
         mock_successful_api_responses(urn: urn, ukprn: 10061021)
       end
 
-      allow(EstablishmentsFetcherService).to receive(:new).and_return(mock_establishments_fetcher)
-      allow(TrustsFetcherService).to receive(:new).and_return(mock_trusts_fetcher)
+      allow(AcademiesApiPreFetcherService).to receive(:new).and_return(mock_acadmies_api_fetcher)
     end
 
-    let(:mock_establishments_fetcher) { double(EstablishmentsFetcherService, batched!: true) }
-    let(:mock_trusts_fetcher) { double(TrustsFetcherService, batched!: true) }
+    let(:mock_acadmies_api_fetcher) { double(AcademiesApiPreFetcherService, call!: double) }
 
     it "only returns projects assigned to the user's team" do
       project_assigned_to_rcs = create(:conversion_project, urn: 100001, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false, team: "regional_casework_services")

@@ -1,58 +1,38 @@
 class ByMonthProjectFetcherService
-  def initialize(prefetch: true)
-    @prefetch = prefetch
+  def initialize(pre_fetch_academies_api: true)
+    @pre_fetch_academies_api = pre_fetch_academies_api
   end
 
   def sorted_openers(month, year)
-    projects = Conversion::Project.opening_by_month_year(month, year)
+    projects = Conversion::Project.includes(:tasks_data).opening_by_month_year(month, year)
 
-    if @prefetch
-      pre_fetch_establishments(projects)
-      pre_fetch_trusts(projects)
-    end
-
+    AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
     sort_by_conditions_met_and_name(projects)
   end
 
   def confirmed_openers_by_team(month, year, team)
     projects = if team.eql?("regional_casework_services")
-      Conversion::Project.assigned_to_regional_caseworker_team.opening_by_month_year(month, year).includes(:tasks_data)
+      Conversion::Project.assigned_to_regional_caseworker_team.includes(:tasks_data).opening_by_month_year(month, year)
     else
-      Conversion::Project.not_assigned_to_regional_caseworker_team.by_region(team).opening_by_month_year(month, year).includes(:tasks_data)
+      Conversion::Project.not_assigned_to_regional_caseworker_team.by_region(team).includes(:tasks_data).opening_by_month_year(month, year)
     end
 
-    if @prefetch
-      pre_fetch_establishments(projects)
-      pre_fetch_trusts(projects)
-    end
-
+    AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
     sort_by_conditions_met_and_name(projects)
   end
 
   def revised_openers_by_team(month, year, team)
     projects = if team.eql?("regional_casework_services")
-      Conversion::Project.assigned_to_regional_caseworker_team.conversion_date_revised_from(month, year).includes(:tasks_data)
+      Conversion::Project.assigned_to_regional_caseworker_team.includes(:tasks_data).conversion_date_revised_from(month, year)
     else
-      Conversion::Project.not_assigned_to_regional_caseworker_team.by_region(team).conversion_date_revised_from(month, year).includes(:tasks_data)
+      Conversion::Project.not_assigned_to_regional_caseworker_team.by_region(team).includes(:tasks_data).conversion_date_revised_from(month, year)
     end
 
-    if @prefetch
-      pre_fetch_establishments(projects)
-      pre_fetch_trusts(projects)
-    end
-
+    AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
     sort_by_conditions_met_and_name(projects)
   end
 
   private def sort_by_conditions_met_and_name(projects)
     projects.sort_by { |p| [p.all_conditions_met? ? 0 : 1, p.establishment.name] }
-  end
-
-  private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).batched!
-  end
-
-  private def pre_fetch_trusts(projects)
-    TrustsFetcherService.new(projects).batched!
   end
 end

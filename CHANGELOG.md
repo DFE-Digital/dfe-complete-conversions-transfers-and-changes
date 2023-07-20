@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- The Team projects views now work when there are more than twenty projects.
+
 ## [Release 34][release-34]
 
 ### Added
