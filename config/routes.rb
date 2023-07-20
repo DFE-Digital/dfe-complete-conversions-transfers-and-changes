@@ -119,8 +119,10 @@ Rails.application.routes.draw do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
           get "unassigned", to: "projects#unassigned"
-          get "users", to: "projects#users"
-          get "user/:user_id", to: "projects#by_user", as: :by_user
+          namespace :users do
+            get "/", to: "projects#index"
+            get "/:user_id", to: "projects#show", as: :by_user
+          end
           namespace :opening do
             get "confirmed/", to: "projects#confirmed_next_month"
             get "confirmed/:month/:year", to: "projects#confirmed", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}

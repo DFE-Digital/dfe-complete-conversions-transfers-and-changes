@@ -69,7 +69,7 @@ en:
         title: Completed
       added_by:
         title: Added by you
-      by_user:
+      show:
         title: Projects assigned to %{user}
     new:
       handover_comments_label: Handover comments
