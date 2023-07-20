@@ -416,6 +416,8 @@ en:
         inclusion: Select directive academy order or academy order, whichever has been used for this conversion
       assigned_to_regional_caseworker_team:
         inclusion: Select yes or no
+      two_requires_improvement:
+        inclusion: Select yes or no
       academy_urn:
         blank: Please enter an Academy URN
         invalid_urn: Please enter a valid URN. The URN must be 6 digits long. For example, 123456.
