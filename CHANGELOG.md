@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+## [Release 35][release-35]
+
+### Added
+
+### Changed
+
+### Fixed
+
 - The Team projects views now work when there are more than twenty projects.
 
 ## [Release 34][release-34]
@@ -1103,7 +1111,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-34...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-35...HEAD
+[release-35]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-34...release-35
 [release-34]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-33...release-34
 [release-33]:
