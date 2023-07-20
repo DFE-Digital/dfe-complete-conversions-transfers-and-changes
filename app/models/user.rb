@@ -8,15 +8,21 @@ class User < ApplicationRecord
   has_many :notes
 
   scope :order_by_first_name, -> { order(first_name: :asc) }
-  scope :team_leaders, -> { where(team_leader: true).order_by_first_name }
-  scope :regional_delivery_officers, -> { where(regional_delivery_officer: true).order_by_first_name }
-  scope :caseworkers, -> { where(caseworker: true).order_by_first_name }
+
+  scope :team_leaders, -> { where(manage_team: true).order_by_first_name }
+
+  scope :regional_casework_services, -> { where(team: "regional_casework_services").order_by_first_name }
+  scope :caseworkers, -> { regional_casework_services.where(manage_team: false).order_by_first_name }
+  scope :regional_casework_services_team_leads, -> { regional_casework_services.where(manage_team: true).order_by_first_name }
+
+  scope :regional_delivery_officers, -> { where(team: User.regional_teams).order_by_first_name }
+  scope :regional_delivery_officer_team_leads, -> { regional_delivery_officers.where(manage_team: true).order_by_first_name }
+
+  scope :assignable, -> { where(assign_to_project: true) }
+  scope :by_team, ->(team) { where(team: team) }
+
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where.not(deactivated_at: nil) }
-
-  scope :all_assignable_users, -> { active.where.not(caseworker: false).or(where.not(team_leader: false)).or(where.not(regional_delivery_officer: false)) }
-
-  scope :by_team, ->(team) { where(team: team) }
 
   validates :first_name, :last_name, :email, :team, presence: true
   validates :team, presence: true, on: :set_team
@@ -31,8 +37,16 @@ class User < ApplicationRecord
   end
 
   def has_role?
-    return true if caseworker? || regional_delivery_officer? || team_leader?
+    return true if assign_to_project? || add_new_project? || manage_team?
     false
+  end
+
+  def is_regional_caseworker?
+    team == "regional_casework_services" && manage_team == false
+  end
+
+  def is_regional_delivery_officer?
+    User.regional_teams.include?(team)
   end
 
   def active
@@ -53,10 +67,12 @@ class User < ApplicationRecord
 
   private def apply_roles_based_on_team
     assign_attributes(
-      caseworker: apply_regional_caseworker_role?,
-      service_support: apply_service_support_role?,
-      regional_delivery_officer: apply_regional_delivery_officer_role?,
-      team_leader: apply_team_lead_role?
+      assign_to_project: is_regional_caseworker? || is_regional_delivery_officer?,
+      manage_user_accounts: apply_service_support_role?,
+      manage_conversion_urns: apply_service_support_role?,
+      manage_local_authorities: apply_service_support_role?,
+      add_new_project: is_regional_delivery_officer?,
+      manage_team: apply_team_lead_role?
     )
   end
 
@@ -64,19 +80,11 @@ class User < ApplicationRecord
     team == "service_support"
   end
 
-  private def apply_regional_caseworker_role?
-    team == "regional_casework_services" && team_leader == false
-  end
-
-  private def apply_regional_delivery_officer_role?
-    REGIONAL_TEAMS.value?(team)
-  end
-
   private def apply_team_lead_role?
-    team_leader && can_have_team_lead?
+    manage_team && can_be_team_lead?
   end
 
-  private def can_have_team_lead?
-    apply_regional_delivery_officer_role? || team == "regional_casework_services"
+  private def can_be_team_lead?
+    is_regional_delivery_officer? || team == "regional_casework_services"
   end
 end

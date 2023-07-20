@@ -15,7 +15,7 @@ class ProjectPolicy
   end
 
   def create?
-    user.regional_delivery_officer?
+    user.add_new_project?
   end
 
   def edit?
@@ -73,7 +73,7 @@ class ProjectPolicy
   end
 
   def unassigned?
-    @user.team_leader?
+    @user.manage_team?
   end
 
   private def project_assigned_to_user?

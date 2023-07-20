@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Team leaders can assign users to project roles" do
-  let!(:team_leader) { create(:user, team_leader: true) }
+  let!(:team_leader) { create(:user, manage_team: true) }
   let!(:regional_delivery_officer) { create(:user, :regional_delivery_officer, first_name: "John") }
   let!(:caseworker) { create(:user, :caseworker, first_name: "Jane") }
   let(:user) { create(:user, :team_leader, first_name: "Jason") }

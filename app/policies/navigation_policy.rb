@@ -14,8 +14,8 @@ class NavigationPolicy
   end
 
   def show_your_projects_header_navigation?
-    return true if @user.caseworker?
-    return true if @user.regional_delivery_officer?
+    return true if @user.assign_to_project?
+    return true if @user.add_new_project?
 
     false
   end
@@ -36,7 +36,7 @@ class NavigationPolicy
   end
 
   def show_service_support_header_navigation?
-    return true if @user.service_support?
+    return true if @user.service_support_team?
 
     false
   end

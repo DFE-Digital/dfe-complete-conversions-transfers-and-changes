@@ -75,7 +75,7 @@ class UsersController < ApplicationController
       :last_name,
       :email,
       :team,
-      :team_leader,
+      :manage_team,
       :active
     )
   end

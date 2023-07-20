@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_113923) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_141059) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -220,16 +220,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_113923) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "team_leader", default: false
-    t.boolean "regional_delivery_officer", default: false, null: false
+    t.boolean "manage_team", default: false
+    t.boolean "add_new_project", default: false, null: false
     t.string "first_name"
     t.string "last_name"
     t.string "active_directory_user_id"
-    t.boolean "caseworker", default: false
-    t.boolean "service_support", default: false
+    t.boolean "assign_to_project", default: false
+    t.boolean "manage_user_accounts", default: false
     t.string "active_directory_user_group_ids"
     t.string "team"
     t.datetime "deactivated_at"
+    t.boolean "manage_conversion_urns", default: false
+    t.boolean "manage_local_authorities", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -7,7 +7,7 @@ class LocalAuthorityPolicy
   end
 
   def new?
-    return true if @user.service_support?
+    return true if @user.manage_local_authorities?
     false
   end
 
