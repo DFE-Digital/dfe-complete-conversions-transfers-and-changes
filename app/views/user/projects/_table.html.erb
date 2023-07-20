@@ -1,5 +1,5 @@
 <% if projects.empty? %>
-  <%= govuk_inset_text(text: t("project.table.by_user.empty", user: @user.full_name)) %>
+  <%= govuk_inset_text(text: t("project.all.by_user.projects.empty", user: @user.full_name)) %>
 <% else %>
   <table class="govuk-table" name="projects_table" aria-label="Projects table">
     <thead class="govuk-table__head">
@@ -26,3 +26,5 @@
     </tbody>
   </table>
 <% end %>
+
+<%= govuk_pagination(pagy: pager) %>

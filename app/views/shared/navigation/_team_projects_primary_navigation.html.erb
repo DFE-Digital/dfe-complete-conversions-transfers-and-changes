@@ -13,7 +13,7 @@
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.opening"), path: confirmed_team_opening_projects_path, namespace: "/projects/team/opening"} %>
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.by_user"), path: users_team_projects_path, namespace: "/projects/team/user"} %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.by_user"), path: team_users_projects_path, namespace: "/projects/team/user"} %>
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.completed"), path: completed_team_projects_path, namespace: "/projects/team/completed"} %>
 

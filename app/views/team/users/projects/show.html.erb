@@ -6,7 +6,7 @@
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">
-      <%= t("project.user.by_user.title", user: @user.full_name) %>
+      <%= t("project.user.show.title", user: @user.full_name) %>
     </h1>
 
     <%= render partial: "user/projects/table", locals: {projects: @projects, pager: @pager} %>
