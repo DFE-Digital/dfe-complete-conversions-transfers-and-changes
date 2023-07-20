@@ -42,6 +42,7 @@ en:
         title: All projects by user
         projects:
           title: Projects for %{name}
+          empty: There are no in-progress projects for this user
     team:
       in_progress:
         title: In progress
@@ -199,8 +200,6 @@ en:
         empty: There are no conversions without an academy URN
       with_academy_urn:
         empty: There are no conversions with an academy URN
-      by_user:
-        empty: There are no users with projects
       trust_ukprn:
         empty: There are no projects for %{trust}
       by_trust:

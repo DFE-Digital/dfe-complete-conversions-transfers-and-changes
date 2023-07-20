@@ -13,7 +13,7 @@ RSpec.feature "Users can view a list of projects for a user" do
       visit by_user_all_users_projects_path(user)
 
       expect(page).to have_content("Projects for #{user.full_name}")
-      expect(page).to have_content("There are no projects")
+      expect(page).to have_content("There are no in-progress projects for this user")
     end
   end
 
