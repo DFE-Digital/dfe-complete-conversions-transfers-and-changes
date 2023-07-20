@@ -62,5 +62,8 @@ RSpec.feature "Users can create new conversion projects" do
     within("#directive-academy-order") do
       choose "Academy order"
     end
+    within("#two-requires-improvement") do
+      choose "No"
+    end
   end
 end

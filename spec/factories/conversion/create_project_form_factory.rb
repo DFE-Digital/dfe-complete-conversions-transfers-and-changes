@@ -10,5 +10,6 @@ FactoryBot.define do
     handover_note_body { "Handover notes" }
     directive_academy_order { false }
     assigned_to_regional_caseworker_team { false }
+    two_requires_improvement { false }
   end
 end

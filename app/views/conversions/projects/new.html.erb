@@ -28,6 +28,13 @@
             legend: {text: t("helpers.legend.conversion_project.directive_academy_order")},
             hint: {text: t("helpers.hint.conversion_project.directive_academy_order")},
             form_group: {id: "directive-academy-order"} %>
+      <%= form.govuk_collection_radio_buttons :two_requires_improvement,
+            @project.two_requires_improvement_responses,
+            :id,
+            :name,
+            legend: {text: t("helpers.legend.conversion_project.two_requires_improvement")},
+            hint: {text: t("helpers.hint.conversion_project.two_requires_improvement")},
+            form_group: {id: "two-requires-improvement"} %>
 
       <%= form.govuk_submit %>
     <% end %>
