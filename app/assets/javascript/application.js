@@ -1,3 +1,6 @@
+// include the DfE Frontend JS here
+//= require dfefrontend
+//
 // Initialise the GOVUK Frontend
 //
 // It will only initialise components that are actually present on the page, see:
