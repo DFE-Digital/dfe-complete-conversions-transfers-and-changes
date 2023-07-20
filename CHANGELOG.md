@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add "2RI" question to the new Conversion project form
+- Remove hint from the "DAO" question on the create Conversion project form
 
 ### Changed
 

@@ -66,7 +66,6 @@ en:
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
-        directive_academy_order: A DAO (directive academy order) is always issued for sponsored conversions. Voluntary conversions are granted an AO (academy order).
         two_requires_improvement: A 2RI conversion is when a local authority maintained school becomes an academy after getting at least 2 overall Requires Improvement ratings from Ofsted.
     responses:
       conversion_project:
