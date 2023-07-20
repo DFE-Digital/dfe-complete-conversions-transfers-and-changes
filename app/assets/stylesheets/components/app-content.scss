@@ -1,0 +1,23 @@
+.app-content {
+  h4,
+  h5,
+  h6,
+  p,
+  ul:not(.app-task-list):not(.app-tabs):not(.moj-sub-navigation__list):not(
+      .app-task-list__items
+    ):not(.projects-list),
+  ol:not(.app-task-list),
+  .app-table--constrained,
+  .govuk-checkboxes__label,
+  .govuk-details__summary-text,
+  .govuk-details__text,
+  .govuk-notification-banner .govuk-notification-banner__content > div p,
+  .govuk-notification-banner .govuk-notification-banner__content > div,
+  .govuk-checkboxes__item .guidance p {
+    max-width: 38rem;
+  }
+
+  .govuk-details__summary-text {
+    display: inline-block;
+  }
+}

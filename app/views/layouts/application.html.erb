@@ -48,7 +48,7 @@
 
     <div class="govuk-width-container ">
       <%= yield :pre_content_nav %>
-      <main class="govuk-main-wrapper " id="main-content" role="main">
+      <main class="govuk-main-wrapper app-content" id="main-content" role="main">
         <%= render(NotificationBanner.new(flashes: flash)) %>
 
         <%= yield %>
