@@ -11,7 +11,8 @@ class ByTeamProjectFetcherService
     else
       Conversion::Project.by_region(@team).in_progress.includes(:assigned_to).by_conversion_date
     end
-    pre_fetch_establishments_and_trusts(projects)
+
+    AcademiesApiPreFetcherService.new.call!(projects)
   end
 
   def completed
@@ -23,7 +24,7 @@ class ByTeamProjectFetcherService
       Conversion::Project.by_region(@team).completed.by_conversion_date
     end
 
-    pre_fetch_establishments_and_trusts(projects)
+    AcademiesApiPreFetcherService.new.call!(projects)
   end
 
   def unassigned
@@ -35,7 +36,7 @@ class ByTeamProjectFetcherService
       Conversion::Project.by_region(@team).unassigned_to_user.by_conversion_date
     end
 
-    pre_fetch_establishments_and_trusts(projects)
+    AcademiesApiPreFetcherService.new.call!(projects)
   end
 
   def users
@@ -49,11 +50,5 @@ class ByTeamProjectFetcherService
         conversion_count: Conversion::Project.in_progress.assigned_to(user).count
       )
     end.sort_by { |object| object.name }
-  end
-
-  private def pre_fetch_establishments_and_trusts(projects)
-    EstablishmentsFetcherService.new(projects).call!
-    TrustsFetcherService.new(projects).call!
-    projects
   end
 end

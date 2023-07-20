@@ -2,8 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Any user can assign any other user to a project" do
   before do
-    mock_successful_api_response_to_create_any_project
-    mock_pre_fetched_api_responses_for_any_establishment_and_trust
+    mock_all_academies_api_responses
     sign_in_with_user(user)
   end
 
