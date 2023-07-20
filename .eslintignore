@@ -3,3 +3,4 @@
 /vendor/
 /public/assets
 /coverage
+app/assets/javascript/dfefrontend.js

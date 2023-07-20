@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- The DfE frontend javascript is now loaded, the mobile navigation button should
+  now work as expected.
+
 ## [Release 35][release-35]
 
 ### Added
