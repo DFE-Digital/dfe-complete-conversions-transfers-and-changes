@@ -312,6 +312,16 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(form.errors.messages[:urn]).to include I18n.t("errors.attributes.urn.duplicate")
       end
     end
+
+    context "when there is a Transfer project with the same urn" do
+      it "is valid" do
+        _project_with_urn = create(:transfer_project, urn: 121813, assigned_to: nil)
+        form = build(:create_conversion_project_form)
+
+        form.urn = 121813
+        expect(form).to be_valid
+      end
+    end
   end
 
   describe "incoming_trust_ukprn" do
