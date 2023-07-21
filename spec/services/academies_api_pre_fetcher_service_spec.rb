@@ -72,8 +72,8 @@ RSpec.describe AcademiesApiPreFetcherService do
     allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new([establishment], nil))
     allow(api_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([trust], nil))
 
-    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
-    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
 
     api_client
   end
@@ -89,8 +89,8 @@ RSpec.describe AcademiesApiPreFetcherService do
     allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::Error.new))
     allow(api_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::Error.new))
 
-    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
-    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
 
     api_client
   end
