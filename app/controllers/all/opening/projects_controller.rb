@@ -2,7 +2,7 @@ class All::Opening::ProjectsController < ApplicationController
   def confirmed
     authorize Project, :index?
 
-    @projects = ByMonthProjectFetcherService.new.sorted_openers(month, year)
+    @projects = ByMonthProjectFetcherService.new.confirmed(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
   end
 
@@ -15,7 +15,7 @@ class All::Opening::ProjectsController < ApplicationController
   def revised
     authorize Project, :index?
 
-    @projects = Conversion::Project.conversion_date_revised_from(month, year)
+    @projects = ByMonthProjectFetcherService.new.revised(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
   end
 

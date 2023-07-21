@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ByMonthProjectFetcherService do
-  describe "#sorted_openers" do
+  describe "#confirmed" do
     context "with pre fetching disable for this spec" do
       it "sorts the projects by conditions_met? true and then by school name" do
         project_one = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "Y school"))
@@ -11,10 +11,10 @@ RSpec.describe ByMonthProjectFetcherService do
 
         allow(Conversion::Project).to receive(:opening_by_month_year).and_return([project_one, project_two, project_three, project_four])
 
-        sorted_projects = described_class.new(pre_fetch_academies_api: false).sorted_openers(1, 2025)
+        confirmed_projects = described_class.new(pre_fetch_academies_api: false).confirmed(1, 2025)
 
-        expect(sorted_projects.first).to eq project_four
-        expect(sorted_projects.last).to eq project_one
+        expect(confirmed_projects.first).to eq project_four
+        expect(confirmed_projects.last).to eq project_one
       end
     end
 
@@ -26,7 +26,7 @@ RSpec.describe ByMonthProjectFetcherService do
       allow(AcademiesApiPreFetcherService).to receive(:new).and_return(academies_api_pre_fetcher)
 
       projects_fetcher = described_class.new
-      projects_fetcher.sorted_openers(1, 2023)
+      projects_fetcher.confirmed(1, 2023)
 
       expect(academies_api_pre_fetcher).to have_received(:call!).once
     end
