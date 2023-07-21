@@ -19,7 +19,7 @@ class AcademiesApiPreFetcherService
     #
     # We re-enable Bullet once this code has executed
     Bullet.enable = false if defined?(Bullet)
-    @projects.find_in_batches(batch_size: ENV.fetch("ACADEMIES_API_BATCH_SIZE", 20).to_i).with_index do |projects, index|
+    @projects.find_in_batches(batch_size: ENV.fetch("ACADEMIES_API_BATCH_SIZE", 20).to_i) do |projects|
       establishment_urns = projects.pluck(:urn).compact
       incoming_trusts_ukprns = projects.pluck(:incoming_trust_ukprn).compact
 
