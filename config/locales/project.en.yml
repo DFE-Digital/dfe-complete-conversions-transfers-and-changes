@@ -283,6 +283,10 @@ en:
             title: Has a directive academy order been issued?
             "true": "Yes"
             "false": "No"
+          two_requires_improvement:
+            title: Is this conversion due to intervention following 2RI?
+            "true": "Yes"
+            "false": "No"
       advisory_board_details:
         title: Advisory board details
         rows:
