@@ -72,7 +72,6 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-rails"
   gem "brakeman"
-  gem "bullet"
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "rails-controller-testing"
@@ -87,6 +86,7 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 5.1"
   gem "webmock", "~> 3.17"
+  gem "bullet"
 end
 
 group :linting do
