@@ -9,14 +9,14 @@ class All::Trusts::ProjectsController < ApplicationController
 
   def show
     authorize Project, :index?
-    ukprn = params[:trust_ukprn]
-    @pager, @projects = pagy(Conversion::Project.not_completed.by_trust_ukprn(ukprn).by_conversion_date.includes(:assigned_to))
 
-    pre_fetch_establishments(@projects)
-    @trust = Api::AcademiesApi::Client.new.get_trust(ukprn).object
+    @trust = Api::AcademiesApi::Client.new.get_trust(incoming_trust_ukprn).object
+    @pager, @projects = pagy(Conversion::Project.not_completed.by_trust_ukprn(@trust.ukprn).by_conversion_date.includes(:assigned_to))
+
+    AcademiesApiPreFetcherService.new.call!(@projects)
   end
 
-  private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).call!
+  private def incoming_trust_ukprn
+    params[:trust_ukprn]
   end
 end
