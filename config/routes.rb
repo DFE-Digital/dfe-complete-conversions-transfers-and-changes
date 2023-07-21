@@ -69,8 +69,6 @@ Rails.application.routes.draw do
         namespace :all do
           namespace :in_progress, path: "in-progress" do
             get "/", to: "projects#index"
-            get "voluntary", to: "projects#voluntary"
-            get "sponsored", to: "projects#sponsored"
           end
           namespace :completed do
             get "/", to: "projects#index"
