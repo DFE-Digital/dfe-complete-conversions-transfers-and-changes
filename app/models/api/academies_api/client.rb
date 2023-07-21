@@ -78,12 +78,16 @@ class Api::AcademiesApi::Client
   end
 
   private def fetch_establishments(urns)
+    Rails.logger.info("Academies API: fetching establishments: #{urns}")
+
     @connection.get("/establishments/bulk", {urn: urns})
   rescue Faraday::Error => error
     raise Error.new(error)
   end
 
   private def fetch_trusts(ukprns)
+    Rails.logger.info("Academies API: fetching trusts: #{ukprns}")
+
     @connection.get("/v2/trusts/bulk", {ukprn: ukprns, establishments: false})
   rescue Faraday::Error => error
     raise Error.new(error)
