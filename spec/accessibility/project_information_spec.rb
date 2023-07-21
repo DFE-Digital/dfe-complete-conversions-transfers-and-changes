@@ -6,8 +6,8 @@ RSpec.feature "Test project information accessibility", driver: :headless_firefo
   let(:project) { create(:conversion_project, caseworker: user) }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
+    mock_all_academies_api_responses
   end
 
   scenario "project information page" do

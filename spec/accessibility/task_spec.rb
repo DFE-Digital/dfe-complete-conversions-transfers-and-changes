@@ -7,8 +7,8 @@ RSpec.feature "Test tasks accessibility", driver: :headless_firefox, accessibili
   let(:task_identifier) { "handover" }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
+    mock_all_academies_api_responses
   end
 
   scenario "show tasks page" do
