@@ -72,8 +72,6 @@ Rails.application.routes.draw do
           end
           namespace :completed do
             get "/", to: "projects#index"
-            get "voluntary", to: "projects#voluntary"
-            get "sponsored", to: "projects#sponsored"
           end
           namespace :opening do
             get "confirmed/", to: "projects#confirmed_next_month"
