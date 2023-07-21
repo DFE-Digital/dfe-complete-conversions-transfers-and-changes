@@ -172,7 +172,6 @@ Rails.application.routes.draw do
 
   scope :projects do
     namespace :conversions do
-      get "/", to: "projects#index"
       post "/", to: "projects#create"
       get "new", to: "projects#new"
     end

@@ -1,14 +1,4 @@
 class Conversions::ProjectsController < ProjectsController
-  def index
-    authorize Project
-    @pagy, @projects = pagy(Project.conversions.in_progress)
-
-    EstablishmentsFetcherService.new(@projects).call!
-    TrustsFetcherService.new(@projects).call!
-
-    render "/conversions/index"
-  end
-
   def new
     authorize Conversion::Project
     @project = Conversion::CreateProjectForm.new
