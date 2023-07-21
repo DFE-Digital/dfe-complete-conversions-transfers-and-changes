@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe Conversion::CreateProjectForm, type: :model do
   let(:form_factory) { "create_project_form" }
-  let(:task_list_class) { Conversion::Voluntary::TaskList }
 
   context "when the project is successfully created" do
     let(:establishment) { build(:academies_api_establishment) }
