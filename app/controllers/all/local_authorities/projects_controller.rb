@@ -4,19 +4,15 @@ class All::LocalAuthorities::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @pager, @local_authorities = pagy_array(ByLocalAuthorityProjectFetcherService.new.call)
+    @pager, @local_authorities = pagy_array(ByLocalAuthorityProjectFetcherService.new.local_authorities_with_projects)
   end
 
   def show
     authorize Project, :index?
     @local_authority = LocalAuthority.find_by!(code: local_authority_code)
-    @pager, @projects = pagy_array(projects_for_local_authority(local_authority_code))
-  end
+    @pager, @projects = pagy(ByLocalAuthorityProjectFetcherService.new.projects_for_local_authority(@local_authority.code))
 
-  private def projects_for_local_authority(local_authority_code)
-    EstablishmentsFetcherService.new(Project.not_completed).batched!
-    projects = Project.not_completed.includes(:assigned_to)
-    projects.to_a.select { |p| p.establishment.local_authority_code == local_authority_code }
+    AcademiesApiPreFetcherService.new.call!(@projects)
   end
 
   private def local_authority_code
