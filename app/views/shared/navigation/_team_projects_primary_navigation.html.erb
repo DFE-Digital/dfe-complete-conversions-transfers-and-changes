@@ -15,6 +15,8 @@
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.by_user"), path: team_users_projects_path, namespace: "/projects/team/user"} %>
 
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.handed_over"), path: handed_over_team_projects_path, namespace: "/projects/team/handed-over"} if policy(Project).handed_over? %>
+
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.team_projects.completed"), path: completed_team_projects_path, namespace: "/projects/team/completed"} %>
 
         </ul>

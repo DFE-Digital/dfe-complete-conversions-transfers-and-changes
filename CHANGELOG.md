@@ -44,6 +44,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Only show counts of in-progress projects on the Team "By user" projects page
 - Send the new user email when an account is added.
 
+### Added
+
+- Add a "Handed over" view to Team projects area where projects which have been
+  handed over to regional_caseworks_services team can be viewed
+
 ## [Release 33][release-33]
 
 ### Added

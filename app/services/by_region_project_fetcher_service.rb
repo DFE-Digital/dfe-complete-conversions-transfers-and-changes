@@ -10,7 +10,7 @@ class ByRegionProjectFetcherService
   end
 
   def regional_casework_services_projects(region)
-    Conversion::Project.by_region(region).assigned_to_regional_caseworker_team.by_conversion_date
+    Conversion::Project.by_region(region).assigned_to_regional_caseworker_team.includes(:assigned_to).by_conversion_date
   end
 
   private def conversion_count_by_region

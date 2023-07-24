@@ -76,6 +76,10 @@ class ProjectPolicy
     @user.manage_team?
   end
 
+  def handed_over?
+    true
+  end
+
   private def project_assigned_to_user?
     @record.assigned_to == @user
   end

@@ -17,4 +17,13 @@ class Team::ProjectsController < ApplicationController
 
     @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).unassigned)
   end
+
+  def handed_over
+    authorize Project, :handed_over?
+
+    @current_users_team = current_user.team
+    @pager, @projects = pagy(ByRegionProjectFetcherService.new.regional_casework_services_projects(@current_users_team))
+
+    AcademiesApiPreFetcherService.new.call!(@projects)
+  end
 end
