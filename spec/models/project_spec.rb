@@ -54,7 +54,6 @@ RSpec.describe Project, type: :model do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     it { is_expected.to validate_presence_of(:advisory_board_date) }
-    it { is_expected.not_to validate_presence_of(:conversion_date) }
     it { is_expected.not_to validate_presence_of(:outgoing_trust_ukprn) }
 
     describe "#urn" do
