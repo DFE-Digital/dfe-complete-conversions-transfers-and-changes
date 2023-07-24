@@ -10,8 +10,8 @@ FactoryBot.define do
       body { "I really enjoyed performing this task" }
     end
 
-    trait :conversion_date_history do
-      conversion_date_history_id { association :date_history }
+    trait :for_significant_date_history do
+      significant_date_history_id { association :date_history }
       body { "This is the reason the conversion date has changed" }
     end
   end

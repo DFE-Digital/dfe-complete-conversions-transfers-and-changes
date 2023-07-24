@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_145221) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_141550) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -25,14 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_145221) do
     t.uuid "local_authority_id"
     t.index ["category"], name: "index_contacts_on_category"
     t.index ["project_id"], name: "index_contacts_on_project_id"
-  end
-
-  create_table "conversion_date_histories", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
-    t.date "revised_date"
-    t.date "previous_date"
-    t.uuid "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "conversion_tasks_data", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -173,7 +165,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_145221) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "task_identifier"
-    t.uuid "conversion_date_history_id"
+    t.uuid "significant_date_history_id"
     t.index ["project_id"], name: "index_notes_on_project_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
@@ -210,6 +202,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_145221) do
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
     t.index ["urn"], name: "index_projects_on_urn"
+  end
+
+  create_table "significant_date_histories", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.date "revised_date"
+    t.date "previous_date"
+    t.uuid "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transfer_tasks_data", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

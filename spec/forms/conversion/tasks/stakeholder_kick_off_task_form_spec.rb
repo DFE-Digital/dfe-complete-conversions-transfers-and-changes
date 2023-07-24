@@ -102,7 +102,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
             "confirmed_conversion_date(1i)": "2022"
           )
 
-          expect { task_form.save }.to change { Conversion::DateHistory.count }.by(1)
+          expect { task_form.save }.to change { SignificantDateHistory.count }.by(1)
           expect(project.reload.conversion_date_provisional?).to be false
         end
       end
@@ -113,7 +113,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
         it "does not create a new date history" do
           task_form.introductory_emails = true
 
-          expect { task_form.save }.not_to change { Conversion::DateHistory.count }
+          expect { task_form.save }.not_to change { SignificantDateHistory.count }
           expect(project.reload.conversion_date_provisional?).to be true
         end
       end
@@ -128,7 +128,7 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
             "confirmed_conversion_date(1i)": "2022"
           )
 
-          expect { task_form.save }.not_to change { Conversion::DateHistory.count }
+          expect { task_form.save }.not_to change { SignificantDateHistory.count }
           expect(project.reload.conversion_date_provisional?).to be false
         end
       end

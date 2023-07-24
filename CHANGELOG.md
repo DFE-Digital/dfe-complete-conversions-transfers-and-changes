@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- conversions dates changes have been made generic ahead of support for
+  transfers, no user facing changes.
+
 ### Fixed
 
 ## [Release 36][release-36]
