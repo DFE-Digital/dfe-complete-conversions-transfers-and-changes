@@ -25,10 +25,10 @@ RSpec.describe ConversionDateUpdater do
       conversion_date_updater = described_class.new(project: project, revised_date: revised_date, note_body: note_body, user: user)
 
       expect(conversion_date_updater.update!).to be true
-      expect(project.conversion_dates.count).to eql 1
+      expect(project.significant_dates.count).to eql 1
       expect(Note.count).to eql 1
 
-      conversion_date_history = project.conversion_dates.first
+      conversion_date_history = project.significant_dates.first
       expect(conversion_date_history.revised_date).to eql revised_date
 
       note = conversion_date_history.note
@@ -59,7 +59,7 @@ RSpec.describe ConversionDateUpdater do
       expect(conversion_date_updater.update!).to be false
       expect(project.reload.conversion_date).not_to eql revised_date
       expect(Note.count).to be_zero
-      expect(project.conversion_dates.count).to be_zero
+      expect(project.significant_dates.count).to be_zero
     end
   end
 end

@@ -4,7 +4,7 @@ class User::ProjectsController < ApplicationController
 
   def in_progress
     authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.assigned_to(current_user).in_progress.includes(:assigned_to), items: 10)
+    @pager, @projects = pagy(Conversion::Project.assigned_to(current_user).in_progress.includes(:assigned_to).ordered_by_significant_date, items: 10)
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end

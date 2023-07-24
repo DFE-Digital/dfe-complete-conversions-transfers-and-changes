@@ -15,7 +15,7 @@ RSpec.feature "Viewing assigned projects" do
   let!(:in_progress_unassigned_project) { create(:conversion_project, urn: 115652, assigned_to: nil) }
 
   context "when there are no projects" do
-    let(:user) { create(:user, :caseworker) }
+    let(:user) { create(:regional_casework_services_user) }
 
     scenario "they can view a helpful message" do
       visit in_progress_user_projects_path
@@ -34,7 +34,7 @@ RSpec.feature "Viewing assigned projects" do
     let!(:completed_assigned_project) { create(:conversion_project, urn: 114067, assigned_to: user, completed_at: Date.yesterday) }
 
     context "when signed in as a Regional caseworker" do
-      let(:user) { create(:user, :caseworker) }
+      let(:user) { create(:regional_casework_services_user) }
 
       scenario "they can view all in progress projects" do
         view_in_progress_projects
@@ -46,7 +46,7 @@ RSpec.feature "Viewing assigned projects" do
     end
 
     context "when signed in as a Regional caseworker team lead" do
-      let(:user) { create(:user, :team_leader) }
+      let(:user) { create(:regional_casework_services_team_lead_user) }
 
       scenario "they can view all in progress projects" do
         view_in_progress_projects
@@ -58,7 +58,7 @@ RSpec.feature "Viewing assigned projects" do
     end
 
     context "when signed in as a Regional delivery officer" do
-      let(:user) { create(:user, :regional_delivery_officer) }
+      let(:user) { create(:regional_delivery_officer_user) }
 
       scenario "they can view all in progress projects" do
         view_in_progress_projects

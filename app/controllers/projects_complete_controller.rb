@@ -14,7 +14,7 @@ class ProjectsCompleteController < ApplicationController
   end
 
   private def project_completable?
-    return true if @project.all_conditions_met? && @project.conversion_date_confirmed_and_passed? && @project.grant_payment_certificate_received?
+    return true if @project.all_conditions_met? && @project.confirmed_date_and_in_the_past? && @project.grant_payment_certificate_received?
     false
   end
 

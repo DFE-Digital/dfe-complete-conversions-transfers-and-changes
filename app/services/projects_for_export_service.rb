@@ -10,6 +10,6 @@ class ProjectsForExportService
   end
 
   private def projects_by_month_and_year(month, year)
-    Conversion::Project.opening_by_month_year(month, year)
+    Conversion::Project.confirmed.filtered_by_significant_date(month, year)
   end
 end
