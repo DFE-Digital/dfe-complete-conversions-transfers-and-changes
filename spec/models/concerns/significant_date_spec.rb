@@ -108,8 +108,8 @@ RSpec.describe SignificantDate do
 
     describe ".filtered_by_significant_date" do
       it "only returns projects with a significant date for the given month and year" do
-        matching_project = create(:conversion_project, conversion_date: Date.parse("2023-1-1"))
-        other_project = create(:conversion_project, conversion_date: Date.parse("2023-10-1"))
+        matching_project = create(:conversion_project, significant_date: Date.parse("2023-1-1"))
+        other_project = create(:conversion_project, significant_date: Date.parse("2023-10-1"))
 
         scoped_projects = Project.filtered_by_significant_date(1, 2023)
 

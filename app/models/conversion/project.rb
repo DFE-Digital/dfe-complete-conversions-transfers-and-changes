@@ -5,9 +5,14 @@ class Conversion::Project < Project
 
   attr_writer :academy
 
+  alias_attribute :conversion_date, :significant_date
+  alias_attribute :conversion_date_provisional, :significant_date_provisional
+
   validates :academy_urn, urn: true, if: -> { academy_urn.present? }
   validates :directive_academy_order, inclusion: {in: [true, false]}
   validates :two_requires_improvement, inclusion: {in: [true, false]}
+  validates :conversion_date, presence: true
+  validates :conversion_date, first_day_of_month: true
 
   scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :with_academy_urn, -> { where.not(academy_urn: nil) }

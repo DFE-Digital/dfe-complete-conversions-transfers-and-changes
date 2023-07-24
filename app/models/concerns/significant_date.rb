@@ -4,22 +4,22 @@ module SignificantDate
   included do
     has_many :significant_dates, dependent: :destroy, class_name: "SignificantDateHistory"
 
-    validates :conversion_date, presence: true
-    validates :conversion_date, first_day_of_month: true
+    validates :significant_date, presence: true
+    validates :significant_date, first_day_of_month: true
 
-    scope :provisional, -> { where(conversion_date_provisional: true) }
-    scope :confirmed, -> { where(conversion_date_provisional: false) }
-    scope :ordered_by_significant_date, -> { order(conversion_date: :asc) }
-    scope :filtered_by_significant_date, ->(month, year) { where("MONTH(conversion_date) = ?", month).and(where("YEAR(conversion_date) = ?", year)) }
+    scope :provisional, -> { where(significant_date_provisional: true) }
+    scope :confirmed, -> { where(significant_date_provisional: false) }
+    scope :ordered_by_significant_date, -> { order(significant_date: :asc) }
+    scope :filtered_by_significant_date, ->(month, year) { where("MONTH(significant_date) = ?", month).and(where("YEAR(significant_date) = ?", year)) }
 
     def provisional_date
-      return conversion_date if significant_dates.empty?
+      return significant_date if significant_dates.empty?
 
       significant_dates.order(:created_at).first.previous_date
     end
 
     def confirmed_date_and_in_the_past?
-      !conversion_date_provisional? && conversion_date.past?
+      !significant_date_provisional? && significant_date.past?
     end
   end
 
