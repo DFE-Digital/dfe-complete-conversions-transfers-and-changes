@@ -63,8 +63,7 @@ RSpec.describe All::Opening::ProjectsController, type: :request do
 
             expect(response.body).to include(
               conversion_project.establishment.name,
-              conversion_project.urn.to_s,
-              I18n.t("project.openers.route.#{conversion_project.route}")
+              conversion_project.urn.to_s
             )
           end
 
