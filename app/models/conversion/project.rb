@@ -76,6 +76,11 @@ class Conversion::Project < Project
     academy.present?
   end
 
+  def academy_order_type
+    return :directive_academy_order if directive_academy_order?
+    :academy_order
+  end
+
   private def fetch_academy(urn)
     Api::AcademiesApi::Client.new.get_establishment(urn)
   end
