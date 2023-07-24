@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - All views that pre fetch data from the Academies API do so via the new method.
+- the Opening list now shows the academy order type instead of the route.
 
 ### Fixed
 

@@ -226,10 +226,13 @@ en:
           school: School
           urn: URN
           route: Route
-          direction_to_transfer: Direction to transfer
-          trust_modification_order: Trust modification order
+          academy_order_type: Academy order type
           all_conditions_met: All conditions met
           view_project: View project
+        values:
+          academy_order_type:
+            academy_order: AO (Academy Order)
+            directive_academy_order: DAO (Directive Academy Order)
       route:
         voluntary: Voluntary
         sponsored: Sponsored
