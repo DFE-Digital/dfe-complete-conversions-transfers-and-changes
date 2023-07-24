@@ -48,6 +48,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Add a "Handed over" view to Team projects area where projects which have been
   handed over to regional_caseworks_services team can be viewed
+- Regional casework services team cannot view the Handed over tab or view
 
 ## [Release 33][release-33]
 

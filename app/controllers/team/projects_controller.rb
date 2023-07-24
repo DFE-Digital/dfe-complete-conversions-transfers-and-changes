@@ -19,7 +19,11 @@ class Team::ProjectsController < ApplicationController
   end
 
   def handed_over
-    authorize Project, :handed_over?
+    begin
+      authorize Project, :handed_over?
+    rescue Pundit::NotAuthorizedError
+      return head(:not_found)
+    end
 
     @current_users_team = current_user.team
     @pager, @projects = pagy(ByRegionProjectFetcherService.new.regional_casework_services_projects(@current_users_team))

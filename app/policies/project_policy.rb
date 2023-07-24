@@ -77,7 +77,7 @@ class ProjectPolicy
   end
 
   def handed_over?
-    true
+    @user.team != "regional_casework_services"
   end
 
   private def project_assigned_to_user?
