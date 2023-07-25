@@ -42,8 +42,25 @@ class Export::Csv::ProjectPresenter
   end
 
   def academy_order_type
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
     return I18n.t("export.csv.project.values.directive_academy_order") if @project.directive_academy_order?
+
     I18n.t("export.csv.project.values.academy_order")
+  end
+
+  def two_requires_improvement
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
+    return I18n.t("export.csv.project.values.yes") if @project.two_requires_improvement?
+
+    I18n.t("export.csv.project.values.no")
+  end
+
+  def sponsored_grant_type
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.sponsored_support_grant_not_applicable?
+    return I18n.t("export.csv.project.values.unconfirmed") if @project.tasks_data.sponsored_support_grant_type.nil?
+
+    I18n.t("export.csv.project.values.sponsored_grant_type.#{@project.tasks_data.sponsored_support_grant_type}")
   end
 
   def assigned_to_name
