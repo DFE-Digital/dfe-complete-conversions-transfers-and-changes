@@ -42,7 +42,9 @@ class Export::Csv::ProjectPresenter
   end
 
   def academy_order_type
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
     return I18n.t("export.csv.project.values.directive_academy_order") if @project.directive_academy_order?
+
     I18n.t("export.csv.project.values.academy_order")
   end
 

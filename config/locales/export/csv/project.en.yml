@@ -62,10 +62,11 @@ en:
             conversion: Conversion
             transfer: Transfer
           unconfirmed: unconfirmed
+          not_applicable: not applicable
           "yes": "yes"
           "no": "no"
-          directive_academy_order: Directive academy order
-          academy_order: Academy order
+          directive_academy_order: directive academy order
+          academy_order: academy order
           standard: standard
           church_or_trust: church or trust
           commercial: commercial

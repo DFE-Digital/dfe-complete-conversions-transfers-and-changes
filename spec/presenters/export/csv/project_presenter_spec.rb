@@ -17,6 +17,29 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.project_type).to eql "Transfer"
   end
 
+  it "presents the academy order type" do
+    project = build(:conversion_project, directive_academy_order: true)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.academy_order_type).to eql "directive academy order"
+
+    project = build(:conversion_project, directive_academy_order: false)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.academy_order_type).to eql "academy order"
+  end
+
+  it "presents the academy order type for a transfer" do
+    project = build(:transfer_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.academy_order_type).to eql "not applicable"
+  end
+
+
   it "presents the conversion date" do
     project = double(Conversion::Project, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional?: false)
 
