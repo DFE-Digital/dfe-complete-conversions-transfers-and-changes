@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add "2RI" question to the new Conversion project form
 - Remove hint from the "DAO" question on the create Conversion project form
 - Show the "2RI" value on the Project information page
+- Add a very basic create form for Transfer projects
 
 ### Changed
 
