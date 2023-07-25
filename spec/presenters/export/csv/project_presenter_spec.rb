@@ -39,6 +39,27 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.academy_order_type).to eql "not applicable"
   end
 
+  it "presents the two requires improvement value" do
+    project = build(:conversion_project, two_requires_improvement: true)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.two_requires_improvement).to eql "yes"
+
+    project = build(:conversion_project, two_requires_improvement: false)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.two_requires_improvement).to eql "no"
+  end
+
+  it "presents the two requires improvement value for a transfer" do
+    project = build(:transfer_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.academy_order_type).to eql "not applicable"
+  end
 
   it "presents the conversion date" do
     project = double(Conversion::Project, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional?: false)

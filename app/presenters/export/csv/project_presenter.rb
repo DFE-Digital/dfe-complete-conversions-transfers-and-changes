@@ -48,6 +48,13 @@ class Export::Csv::ProjectPresenter
     I18n.t("export.csv.project.values.academy_order")
   end
 
+  def two_requires_improvement
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
+    return I18n.t("export.csv.project.values.yes") if @project.two_requires_improvement?
+
+    I18n.t("export.csv.project.values.no")
+  end
+
   def assigned_to_name
     @project.assigned_to.full_name
   end

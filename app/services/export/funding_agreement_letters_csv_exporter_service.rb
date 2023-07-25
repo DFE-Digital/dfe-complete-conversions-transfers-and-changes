@@ -50,6 +50,7 @@ class Export::FundingAgreementLettersCsvExporterService
     advisory_board_date
     project_type
     academy_order_type
+    two_requires_improvement
     conversion_date
     assigned_to_name
     assigned_to_email
