@@ -52,6 +52,8 @@ en:
         title: Unassigned
       users:
         title: By user
+      handed_over:
+        title: Handed over
     regional:
       in_progress:
         title: Regional projects in progress
@@ -196,6 +198,8 @@ en:
         empty: There are no completed projects.
       unassigned:
         empty: There are no unassigned projects.
+      handed_over:
+        empty: There are no handed over projects.
       new:
         empty: There are no conversions without an academy URN
       with_academy_urn:

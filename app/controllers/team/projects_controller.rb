@@ -17,4 +17,17 @@ class Team::ProjectsController < ApplicationController
 
     @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).unassigned)
   end
+
+  def handed_over
+    begin
+      authorize Project, :handed_over?
+    rescue Pundit::NotAuthorizedError
+      return head(:not_found)
+    end
+
+    @current_users_team = current_user.team
+    @pager, @projects = pagy(ByRegionProjectFetcherService.new.regional_casework_services_projects(@current_users_team))
+
+    AcademiesApiPreFetcherService.new.call!(@projects)
+  end
 end

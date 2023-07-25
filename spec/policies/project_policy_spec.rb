@@ -123,4 +123,11 @@ RSpec.describe ProjectPolicy do
       expect(subject).to_not permit(application_user)
     end
   end
+
+  permissions :handed_over? do
+    it "denies access to anyone who is in the regional casework services team" do
+      expect(subject).to_not permit(build(:user, team: "regional_casework_services"))
+      expect(subject).to permit(build(:user, :regional_delivery_officer))
+    end
+  end
 end

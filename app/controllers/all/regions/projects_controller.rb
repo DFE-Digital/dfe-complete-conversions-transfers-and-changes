@@ -4,7 +4,7 @@ class All::Regions::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @regions = ByRegionProjectFetcherService.new.call
+    @regions = ByRegionProjectFetcherService.new.conversion_counts
   end
 
   def show

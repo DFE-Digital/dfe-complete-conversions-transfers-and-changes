@@ -1,5 +1,5 @@
 class ByRegionProjectFetcherService
-  def call
+  def conversion_counts
     conversion_counts = conversion_count_by_region
 
     if conversion_counts
@@ -7,6 +7,10 @@ class ByRegionProjectFetcherService
     else
       []
     end
+  end
+
+  def regional_casework_services_projects(region)
+    Conversion::Project.by_region(region).assigned_to_regional_caseworker_team.includes(:assigned_to).by_conversion_date
   end
 
   private def conversion_count_by_region
