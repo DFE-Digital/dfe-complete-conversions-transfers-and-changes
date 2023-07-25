@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe AcademiesApiPreFetcherService do
-  it "prefetches Academies API data in batches of 10 and populates projects" do
+  it "prefetches Academies API data in batches of 20 and populates projects" do
     api_client = mock_academies_api_client_get_establishments_and_trusts
 
     25.times do
@@ -15,8 +15,8 @@ RSpec.describe AcademiesApiPreFetcherService do
     expect(projects.last.establishment).not_to be_nil
     expect(projects.last.incoming_trust).not_to be_nil
 
-    expect(api_client).to have_received(:get_establishments).exactly(3).times
-    expect(api_client).to have_received(:get_trusts).exactly(3).times
+    expect(api_client).to have_received(:get_establishments).exactly(2).times
+    expect(api_client).to have_received(:get_trusts).exactly(2).times
 
     expect(api_client).to have_received(:get_establishment).exactly(25).times
     expect(api_client).to have_received(:get_trust).exactly(25).times
@@ -72,8 +72,8 @@ RSpec.describe AcademiesApiPreFetcherService do
     allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new([establishment], nil))
     allow(api_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([trust], nil))
 
-    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
-    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
 
     api_client
   end
@@ -89,8 +89,8 @@ RSpec.describe AcademiesApiPreFetcherService do
     allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::Error.new))
     allow(api_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::Error.new))
 
-    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
-    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_trust).and_return(Api::AcademiesApi::Client::Result.new(trust, nil))
+    allow(api_client).to receive(:get_establishment).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
 
     api_client
   end

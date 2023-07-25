@@ -3,8 +3,15 @@ class ByMonthProjectFetcherService
     @pre_fetch_academies_api = pre_fetch_academies_api
   end
 
-  def sorted_openers(month, year)
+  def confirmed(month, year)
     projects = Conversion::Project.includes(:tasks_data).opening_by_month_year(month, year)
+
+    AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
+    sort_by_conditions_met_and_name(projects)
+  end
+
+  def revised(month, year)
+    projects = Conversion::Project.conversion_date_revised_from(month, year)
 
     AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
     sort_by_conditions_met_and_name(projects)

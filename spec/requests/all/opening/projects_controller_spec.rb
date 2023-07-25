@@ -51,18 +51,6 @@ RSpec.describe All::Opening::ProjectsController, type: :request do
         end
 
         context "when the month and year are present and in scope" do
-          before do
-            (100001..100002).each do |urn|
-              mock_successful_api_responses(urn: urn, ukprn: 10061021)
-            end
-
-            allow(EstablishmentsFetcherService).to receive(:new).and_return(mock_establishments_fetcher)
-            allow(TrustsFetcherService).to receive(:new).and_return(mock_trusts_fetcher)
-          end
-
-          let(:mock_establishments_fetcher) { double(EstablishmentsFetcherService, batched!: true) }
-          let(:mock_trusts_fetcher) { double(TrustsFetcherService, batched!: true) }
-
           it "shows a page title with the month & year" do
             get "/projects/all/opening/confirmed/1/2022"
 

@@ -4,8 +4,8 @@ RSpec.feature "Users can edit the Academy URN" do
   let(:user) { create(:user, :caseworker) }
 
   before do
-    mock_pre_fetched_api_responses_for_any_establishment_and_trust
     sign_in_with_user(user)
+    mock_all_academies_api_responses
   end
 
   context "when the user does not enter a URN in the Academy URN field" do

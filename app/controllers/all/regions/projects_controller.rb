@@ -13,12 +13,7 @@ class All::Regions::ProjectsController < ApplicationController
 
     @region = region
     @pager, @projects = pagy(Conversion::Project.not_completed.by_region(region).by_conversion_date.includes(:assigned_to))
-
-    pre_fetch_establishments(@projects)
-  end
-
-  private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).call!
+    AcademiesApiPreFetcherService.new.call!(@projects)
   end
 
   private def region

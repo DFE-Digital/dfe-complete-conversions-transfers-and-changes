@@ -28,15 +28,5 @@ RSpec.feature "Users can view a list regions that have projects" do
         expect(page).to have_link("View projects", href: by_region_all_regions_projects_path("north_west"))
       end
     end
-
-    scenario "when there are enough projects to page they see a pager" do
-      21.times do
-        create(:conversion_project, region: :london)
-      end
-
-      visit by_region_all_regions_projects_path(:london)
-
-      expect(page).to have_css(".govuk-pagination")
-    end
   end
 end

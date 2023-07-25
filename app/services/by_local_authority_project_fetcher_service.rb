@@ -1,5 +1,5 @@
 class ByLocalAuthorityProjectFetcherService
-  def call
+  def local_authorities_with_projects
     conversion_counts = conversions_count_by_local_authority
 
     if conversion_counts
@@ -9,10 +9,17 @@ class ByLocalAuthorityProjectFetcherService
     end
   end
 
-  private def conversions_count_by_local_authority
-    projects = Project.not_completed.select(:id, :urn)
+  def projects_for_local_authority(local_authority_code)
+    all_projects = Project.not_completed.select(:id, :urn, :incoming_trust_ukprn)
+    projects_for_local_authority = all_projects.select { |p| p.establishment.local_authority_code == local_authority_code }
 
-    EstablishmentsFetcherService.new(projects).batched!
+    Conversion::Project.where(id: projects_for_local_authority.pluck(:id)).includes(:assigned_to).by_conversion_date
+  end
+
+  private def conversions_count_by_local_authority
+    projects = Project.not_completed.select(:id, :urn, :incoming_trust_ukprn)
+
+    AcademiesApiPreFetcherService.new.call!(projects)
 
     projects.group_by { |p| p.establishment.local_authority_code }
   end

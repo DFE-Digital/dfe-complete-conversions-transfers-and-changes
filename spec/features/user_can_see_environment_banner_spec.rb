@@ -1,32 +1,30 @@
 require "rails_helper"
 
 RSpec.feature "Environment banner" do
-  let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:conversion_project, caseworker: user) }
-
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    user = create(:user)
     sign_in_with_user(user)
   end
 
   describe "environment banner" do
-    context "when SENTRY_ENV is production" do
-      before { allow(ENV).to receive(:fetch).with("SENTRY_ENV", "local_development").and_return("production") }
-
-      scenario "cannot see the environment banner" do
+    scenario "when the SETNRY_ENV is production cannot see the environment banner" do
+      ClimateControl.modify(
+        SENTRY_ENV: "production"
+      ) do
         visit root_path
+
         expect(page).to_not have_css("#environment-banner")
       end
     end
+  end
 
-    context "when SENTRY_ENV is non-production" do
-      before { allow(ENV).to receive(:fetch).with("SENTRY_ENV", "local_development").and_return("development") }
-
-      scenario "can see the environment banner" do
-        visit root_path
-        within("#environment-banner") do
-          expect(page).to have_content("DEVELOPMENT ENVIRONMENT")
-        end
+  scenario "when the SENTRY_ENV is development can see the environment banner" do
+    ClimateControl.modify(
+      SENTRY_ENV: "development"
+    ) do
+      visit root_path
+      within("#environment-banner") do
+        expect(page).to have_content("DEVELOPMENT ENVIRONMENT")
       end
     end
   end

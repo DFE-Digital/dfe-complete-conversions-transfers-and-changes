@@ -57,17 +57,6 @@ module AcademiesApiHelpers
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 
-  def mock_pre_fetched_api_responses_for_any_establishment_and_trust
-    fake_establishment_fetcher = double(EstablishmentsFetcherService)
-    fake_trust_fetcher = double(TrustsFetcherService)
-    allow(EstablishmentsFetcherService).to receive(:new).and_return(fake_establishment_fetcher)
-    allow(TrustsFetcherService).to receive(:new).and_return(fake_trust_fetcher)
-    allow(fake_establishment_fetcher).to receive(:call!).and_return([])
-    allow(fake_trust_fetcher).to receive(:call!).and_return([])
-    allow(fake_establishment_fetcher).to receive(:batched!).and_return([])
-    allow(fake_trust_fetcher).to receive(:batched!).and_return([])
-  end
-
   def mock_timeout_api_responses(urn:, ukprn:)
     mock_timeout_api_establishment_response(urn:)
     mock_timeout_api_trust_response(ukprn:)

@@ -14,6 +14,7 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
     allow(fake_client).to receive(:get_establishment).with(another_establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(another_establishment, nil))
     allow(fake_client).to receive(:get_establishment).with(yet_another_establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(yet_another_establishment, nil))
     allow(fake_client).to receive(:get_establishments).with(any_args).and_return(Api::AcademiesApi::Client::Result.new([establishment, another_establishment, establishment, yet_another_establishment], nil))
+    allow(fake_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([double("Trust", ukprn: 10010010)], nil))
 
     create(:local_authority, code: "909", name: "Cumbria County Council")
     create(:local_authority, code: "213", name: "Westminster City Council")
@@ -24,7 +25,7 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
     create(:conversion_project, urn: establishment.urn)
     create(:conversion_project, urn: yet_another_establishment.urn)
 
-    result = described_class.new.call
+    result = described_class.new.local_authorities_with_projects
 
     expect(result.count).to eql 3
 
@@ -42,6 +43,6 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
   end
 
   it "returns an empty array when there are no projects to source trusts" do
-    expect(described_class.new.call).to eql []
+    expect(described_class.new.local_authorities_with_projects).to eql []
   end
 end

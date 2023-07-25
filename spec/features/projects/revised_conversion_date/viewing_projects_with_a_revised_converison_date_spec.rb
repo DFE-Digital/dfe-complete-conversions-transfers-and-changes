@@ -5,7 +5,7 @@ RSpec.feature "Viewing projects with a revised conversion date" do
     user = create(:user)
 
     sign_in_with_user(user)
-    mock_successful_api_response_to_create_any_project
+    mock_all_academies_api_responses
 
     project_with_confirmed_date = create(:conversion_project, assigned_to: user, conversion_date_provisional: false, urn: 121813)
     create(:date_history, project: project_with_confirmed_date, previous_date: Date.today.at_beginning_of_month, revised_date: Date.today.at_beginning_of_month)

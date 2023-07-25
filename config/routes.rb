@@ -69,13 +69,9 @@ Rails.application.routes.draw do
         namespace :all do
           namespace :in_progress, path: "in-progress" do
             get "/", to: "projects#index"
-            get "voluntary", to: "projects#voluntary"
-            get "sponsored", to: "projects#sponsored"
           end
           namespace :completed do
             get "/", to: "projects#index"
-            get "voluntary", to: "projects#voluntary"
-            get "sponsored", to: "projects#sponsored"
           end
           namespace :opening do
             get "confirmed/", to: "projects#confirmed_next_month"
@@ -130,12 +126,6 @@ Rails.application.routes.draw do
             get "revised/", to: "projects#revised_next_month"
           end
         end
-        namespace :regional, path: "regional" do
-          get "in-progress", to: "projects#in_progress"
-          get "completed", to: "projects#completed"
-          get ":region/in-progress", to: "projects#in_progress_by_region", as: :in_progress_by_region
-          get ":region/completed", to: "projects#completed_by_region", as: :completed_by_region
-        end
         namespace :user do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
@@ -176,7 +166,6 @@ Rails.application.routes.draw do
 
   scope :projects do
     namespace :conversions do
-      get "/", to: "projects#index"
       post "/", to: "projects#create"
       get "new", to: "projects#new"
     end

@@ -6,8 +6,8 @@ RSpec.feature "Test assignment accessibility", driver: :headless_firefox, access
   let(:project) { create(:conversion_project) }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
+    mock_all_academies_api_responses
   end
 
   scenario "test change assigned to person for project page" do

@@ -6,8 +6,8 @@ RSpec.feature "Test note accessibility", driver: :headless_firefox, accessibilit
   let(:project) { create(:conversion_project, caseworker: user) }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
+    mock_all_academies_api_responses
   end
 
   describe "Project level notes" do

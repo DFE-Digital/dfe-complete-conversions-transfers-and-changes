@@ -8,21 +8,13 @@ class Team::Users::ProjectsController < ApplicationController
   def show
     authorize Project, :index?
 
-    user_id = params[:user_id]
     @user = User.find(user_id)
-    @pager, @projects = pagy(Conversion::Project.assigned_to(@user)
-                                                .in_progress
-                                                .by_conversion_date)
+    @pager, @projects = pagy(Conversion::Project.assigned_to(@user).in_progress.by_conversion_date)
 
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
+    AcademiesApiPreFetcherService.new.call!(@projects)
   end
 
-  private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).call!
-  end
-
-  private def pre_fetch_incoming_trusts(projects)
-    TrustsFetcherService.new(projects).call!
+  private def user_id
+    params[:user_id]
   end
 end

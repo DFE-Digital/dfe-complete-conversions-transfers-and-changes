@@ -6,31 +6,6 @@ class All::Completed::ProjectsController < ApplicationController
     authorize Project, :index?
     @pager, @projects = pagy(Conversion::Project.completed)
 
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
-  end
-
-  def voluntary
-    authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.completed.voluntary)
-
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
-  end
-
-  def sponsored
-    authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.completed.sponsored)
-
-    pre_fetch_establishments(@projects)
-    pre_fetch_incoming_trusts(@projects)
-  end
-
-  private def pre_fetch_establishments(projects)
-    EstablishmentsFetcherService.new(projects).call!
-  end
-
-  private def pre_fetch_incoming_trusts(projects)
-    TrustsFetcherService.new(projects).call!
+    AcademiesApiPreFetcherService.new.call!(@projects)
   end
 end

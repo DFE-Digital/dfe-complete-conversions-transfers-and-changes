@@ -4,9 +4,8 @@ RSpec.feature "Users can complete a project" do
   let(:user) { create(:user, :caseworker) }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
     sign_in_with_user(user)
-    mock_pre_fetched_api_responses_for_any_establishment_and_trust
+    mock_all_academies_api_responses
   end
 
   context "when all conditions have been met and the academy has opened" do
