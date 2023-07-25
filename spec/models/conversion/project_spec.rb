@@ -426,4 +426,14 @@ RSpec.describe Conversion::Project do
       expect(projects).not_to include not_matching_project
     end
   end
+
+  describe "#academy_order_type" do
+    it "returns the correct type for the project" do
+      directive_academy_order_project = build(:conversion_project, directive_academy_order: true)
+      academy_order_project = build(:conversion_project, directive_academy_order: false)
+
+      expect(directive_academy_order_project.academy_order_type).to eql :directive_academy_order
+      expect(academy_order_project.academy_order_type).to eql :academy_order
+    end
+  end
 end
