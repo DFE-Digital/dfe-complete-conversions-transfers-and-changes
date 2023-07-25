@@ -43,7 +43,8 @@ class Conversions::ProjectsController < ProjectsController
       :trust_sharepoint_link,
       :handover_note_body,
       :assigned_to_regional_caseworker_team,
-      :directive_academy_order
+      :directive_academy_order,
+      :two_requires_improvement
     )
   end
 end

@@ -17,6 +17,7 @@ class Conversion::CreateProjectForm
   attribute :directive_academy_order, :boolean
   attribute :region
   attribute :assigned_to_regional_caseworker_team, :boolean
+  attribute :two_requires_improvement, :boolean
 
   attr_reader :provisional_conversion_date,
     :advisory_board_date
@@ -42,7 +43,9 @@ class Conversion::CreateProjectForm
 
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
 
-  validates :directive_academy_order, :assigned_to_regional_caseworker_team, inclusion: {in: [true, false]}
+  validates :directive_academy_order,
+    :assigned_to_regional_caseworker_team,
+    :two_requires_improvement, inclusion: {in: [true, false]}
 
   def initialize(params = {})
     @attributes_with_invalid_values = []
@@ -128,6 +131,13 @@ class Conversion::CreateProjectForm
     ]
   end
 
+  def two_requires_improvement_responses
+    @two_requires_improvement_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("yes")),
+      OpenStruct.new(id: false, name: I18n.t("no"))
+    ]
+  end
+
   def save
     assigned_to = assigned_to_regional_caseworker_team ? nil : user
     assigned_at = assigned_to_regional_caseworker_team ? nil : DateTime.now
@@ -147,6 +157,7 @@ class Conversion::CreateProjectForm
       assigned_to: assigned_to,
       assigned_at: assigned_at,
       directive_academy_order: directive_academy_order,
+      two_requires_improvement: two_requires_improvement,
       region: region,
       tasks_data: new_tasks_data
     )

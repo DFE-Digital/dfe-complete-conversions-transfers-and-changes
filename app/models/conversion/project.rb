@@ -9,6 +9,7 @@ class Conversion::Project < Project
   validates :conversion_date, presence: true
   validates :conversion_date, first_day_of_month: true
   validates :directive_academy_order, inclusion: {in: [true, false]}
+  validates :two_requires_improvement, inclusion: {in: [true, false]}
 
   scope :no_academy_urn, -> { where(academy_urn: nil) }
   scope :with_academy_urn, -> { where.not(academy_urn: nil) }

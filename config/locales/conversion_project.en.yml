@@ -51,6 +51,7 @@ en:
         provisional_conversion_date: Provisional conversion date
         advisory_board_date: Date of advisory board
         directive_academy_order: What kind of academy order has been used?
+        two_requires_improvement: Is this conversion due to intervention following 2RI?
     hint:
       conversion_project:
         urn: |
@@ -65,7 +66,7 @@ en:
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
-        directive_academy_order: A DAO (directive academy order) is always issued for sponsored conversions. Voluntary conversions are granted an AO (academy order).
+        two_requires_improvement: A 2RI conversion is when a local authority maintained school becomes an academy after getting at least 2 overall Requires Improvement ratings from Ofsted.
     responses:
       conversion_project:
         directive_academy_order:
