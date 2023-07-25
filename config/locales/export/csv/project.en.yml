@@ -10,6 +10,7 @@ en:
           advisory_board_date: Advisory board date
           academy_order_type: Academy order type
           two_requires_improvement: 2RI (Two Requires Improvement)
+          sponsored_grant_type: Sponsored Grant Type
           assigned_to_name: Assigned to name
           assigned_to_email: Assigned to email
           school_urn: School URN
@@ -62,6 +63,10 @@ en:
           project_type:
             conversion: Conversion
             transfer: Transfer
+          sponsored_grant_type:
+            fast_track: fast track
+            intermidiate: intermidiate
+            sponsored: sponsored
           unconfirmed: unconfirmed
           not_applicable: not applicable
           "yes": "yes"

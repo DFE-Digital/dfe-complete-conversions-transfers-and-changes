@@ -32,11 +32,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the academy order type for a transfer" do
-    project = build(:transfer_project)
-
-    presenter = described_class.new(project)
-
-    expect(presenter.academy_order_type).to eql "not applicable"
+    not_applicable_for_a_transfer
   end
 
   it "presents the two requires improvement value" do
@@ -54,11 +50,50 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the two requires improvement value for a transfer" do
-    project = build(:transfer_project)
+    not_applicable_for_a_transfer
+  end
+
+  it "presents the sponsored grant type" do
+    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: nil, sponsored_support_grant_not_applicable?: false)
+    project = double(Conversion::Project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
-    expect(presenter.academy_order_type).to eql "not applicable"
+    expect(presenter.sponsored_grant_type).to eql "unconfirmed"
+
+    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :fast_track, sponsored_support_grant_not_applicable?: false)
+    project = double(Conversion::Project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.sponsored_grant_type).to eql "fast track"
+
+    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :intermidiate, sponsored_support_grant_not_applicable?: false)
+    project = double(Conversion::Project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.sponsored_grant_type).to eql "intermidiate"
+
+    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :sponsored, sponsored_support_grant_not_applicable?: false)
+    project = double(Conversion::Project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.sponsored_grant_type).to eql "sponsored"
+  end
+
+  it "presents the sponsored grant type value when it does not apply" do
+    tasks_data = double(Conversion::TasksData, sponsored_support_grant_not_applicable?: true)
+    project = double(Conversion::Project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.sponsored_grant_type).to eql "not applicable"
+  end
+
+  it "presents the sponsored grant type value for a transfer" do
+    not_applicable_for_a_transfer
   end
 
   it "presents the conversion date" do
@@ -147,5 +182,13 @@ RSpec.describe Export::Csv::ProjectPresenter do
     presenter = described_class.new(project)
 
     expect(presenter.assigned_to_email).to eql "assigned.user@education.gov.uk"
+  end
+
+  def not_applicable_for_a_transfer
+    project = build(:transfer_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.academy_order_type).to eql "not applicable"
   end
 end

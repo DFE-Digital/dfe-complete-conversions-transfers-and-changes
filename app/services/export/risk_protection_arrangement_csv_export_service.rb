@@ -14,6 +14,7 @@ class Export::RiskProtectionArrangementCsvExportService
     risk_protection_arrangement
     academy_order_type
     two_requires_improvement
+    sponsored_grant_type
     assigned_to_name
     assigned_to_email
   ]
