@@ -1,0 +1,13 @@
+<div id="advisoryBoardDetails">
+  <h2 class="govuk-heading-l"><%= t("project_information.show.advisory_board_details.title") %></h2>
+  <%= govuk_summary_list do |summary_list|
+        summary_list.row do |row|
+          row.key { t("project_information.show.advisory_board_details.rows.advisory_board_date") }
+          row.value { project.advisory_board_date.to_date.to_formatted_s(:govuk) }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.advisory_board_details.rows.advisory_board_conditions") }
+          row.value { simple_format(project.advisory_board_conditions, class: "govuk-body") }
+        end
+      end %>
+</div>

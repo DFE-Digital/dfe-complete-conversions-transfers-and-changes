@@ -1,0 +1,31 @@
+<div id="incomingTrustDetails">
+  <h2 class="govuk-heading-l"><%= t("project_information.show.incoming_trust_details.title") %></h2>
+  <%= govuk_summary_list(actions: false) do |summary_list|
+        summary_list.row do |row|
+          row.key { t("project_information.show.incoming_trust_details.rows.incoming_trust_name") }
+          row.value { (incoming_trust.name + "<br/>" + link_to_trust_on_gias(incoming_trust.ukprn)).html_safe }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.incoming_trust_details.rows.address") }
+          row.value { address_markup(incoming_trust.address) }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.incoming_trust_details.rows.ukprn") }
+          row.value { incoming_trust.ukprn.to_s }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.incoming_trust_details.rows.group_identifier") }
+          row.value { incoming_trust.group_identifier.to_s }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.incoming_trust_details.rows.companies_house_number") }
+          row.value {
+            if incoming_trust.companies_house_number.present?
+              (incoming_trust.companies_house_number +
+               "<br/>" +
+               link_to_companies_house(incoming_trust.companies_house_number)).html_safe
+            end
+          }
+        end
+      end %>
+</div>

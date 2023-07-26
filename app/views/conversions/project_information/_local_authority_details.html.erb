@@ -1,0 +1,37 @@
+<div id="localAuthorityDetails">
+  <h2 class="govuk-heading-l"><%= t("project_information.show.local_authority_details.title") %></h2>
+  <%= govuk_summary_list(actions: false) do |summary_list|
+        summary_list.row do |row|
+          row.key { t("project_information.show.local_authority_details.rows.local_authority") }
+          row.value { project.establishment.local_authority_name }
+        end
+        if project.establishment.local_authority
+          summary_list.row do |row|
+            row.key { t("project_information.show.local_authority_details.rows.address") }
+            row.value { address_markup(@project.establishment.local_authority.address) }
+          end
+        end
+      end %>
+
+  <% if project.director_of_child_services %>
+    <h2 class="govuk-heading-l"><%= t("project_information.show.director_of_child_services.title") %></h2>
+    <%= govuk_summary_list(actions: false) do |summary_list|
+          summary_list.row do |row|
+            row.key { t("project_information.show.director_of_child_services.rows.title") }
+            row.value { project.director_of_child_services.title }
+          end
+          summary_list.row do |row|
+            row.key { t("project_information.show.director_of_child_services.rows.name") }
+            row.value { project.director_of_child_services.name }
+          end
+          summary_list.row do |row|
+            row.key { t("project_information.show.director_of_child_services.rows.email") }
+            row.value { project.director_of_child_services.email }
+          end
+          summary_list.row do |row|
+            row.key { t("project_information.show.director_of_child_services.rows.phone") }
+            row.value { project.director_of_child_services.phone }
+          end
+        end %>
+  <% end %>
+</div>
