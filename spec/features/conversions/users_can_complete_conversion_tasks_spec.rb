@@ -7,7 +7,7 @@ RSpec.feature "Users can complete conversion tasks" do
   before do
     mock_all_academies_api_responses
     sign_in_with_user(user)
-    visit project_conversion_tasks_path(project)
+    visit project_tasks_path(project)
   end
 
   mandatory_tasks = %w[
@@ -46,7 +46,7 @@ RSpec.feature "Users can complete conversion tasks" do
       let(:project) { create(:conversion_project, assigned_to: user, conversion_date_provisional: true) }
 
       scenario "they can set the confirmed date" do
-        visit project_conversion_tasks_path(project)
+        visit project_tasks_path(project)
 
         click_on "External stakeholder kick-off"
         page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
@@ -65,7 +65,7 @@ RSpec.feature "Users can complete conversion tasks" do
       let(:project) { create(:conversion_project, assigned_to: user, conversion_date_provisional: false) }
 
       scenario "they can continue to submit the task form" do
-        visit project_conversion_tasks_path(project)
+        visit project_tasks_path(project)
 
         click_on "External stakeholder kick-off"
         page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
@@ -80,15 +80,15 @@ RSpec.feature "Users can complete conversion tasks" do
     let(:project) { create(:conversion_project, assigned_to: user) }
 
     scenario "they can not provide a value" do
-      visit project_conversion_tasks_path(project)
+      visit project_tasks_path(project)
       click_on "Confirm the academy name"
       click_on I18n.t("task_list.continue_button.text")
 
-      expect(page).to have_current_path(project_conversion_tasks_path(project))
+      expect(page).to have_current_path(project_tasks_path(project))
     end
 
     scenario "they can provide a value" do
-      visit project_conversion_tasks_path(project)
+      visit project_tasks_path(project)
       click_on "Confirm the academy name"
       fill_in "Enter the academy name", with: "Test academy name"
       click_on I18n.t("task_list.continue_button.text")
@@ -122,7 +122,7 @@ RSpec.feature "Users can complete conversion tasks" do
       let!(:contact) { create(:project_contact, project: project) }
 
       it "lets the user select an existing contact" do
-        visit project_conversion_tasks_path(project)
+        visit project_tasks_path(project)
         click_on "Confirm who will get the funding agreement letters"
         choose contact.name
         click_on I18n.t("task_list.continue_button.text")
@@ -133,7 +133,7 @@ RSpec.feature "Users can complete conversion tasks" do
 
     context "when the project has no contacts" do
       it "directs the user to add contacts" do
-        visit project_conversion_tasks_path(project)
+        visit project_tasks_path(project)
         click_on "Confirm who will get the funding agreement letters"
 
         expect(page).to have_content("Add contacts")
@@ -145,7 +145,7 @@ RSpec.feature "Users can complete conversion tasks" do
 
   describe "the risk protection arrangement task" do
     before do
-      visit project_conversion_tasks_path(project)
+      visit project_tasks_path(project)
       click_on "Confirm the academy's risk protection arrangements"
     end
 
@@ -181,7 +181,7 @@ RSpec.feature "Users can complete conversion tasks" do
 
   describe "the sponsored support grant task" do
     before do
-      visit project_conversion_tasks_path(project)
+      visit project_tasks_path(project)
       click_on "Confirm and process the sponsored support grant"
     end
 

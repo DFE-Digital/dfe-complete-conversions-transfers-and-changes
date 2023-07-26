@@ -1,5 +1,17 @@
 class TasksController < ApplicationController
-  before_action :find_project, :find_tasks_data, :find_task, :find_task_notes
+  include Projectable
+
+  before_action :find_tasks_data
+  before_action :find_task, :find_task_notes, except: :index
+
+  def index
+    case @project.type
+    when "Conversion::Project"
+      @task_list = Conversion::TaskList.new(@project, current_user)
+    when "Transfer::Project"
+      @task_list = Transfer::TaskList.new(@project, current_user)
+    end
+  end
 
   def edit
     render task_view
@@ -11,7 +23,7 @@ class TasksController < ApplicationController
 
     if @task.valid?
       @task.save
-      redirect_to project_conversion_tasks_path(@project), notice: t("task_list.save.success")
+      redirect_to project_tasks_path(@project), notice: t("task_list.save.success")
     else
       render task_view
     end

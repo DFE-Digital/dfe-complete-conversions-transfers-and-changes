@@ -23,7 +23,7 @@
     <% else %>
       <h2 class="govuk-heading-l"><%= t("conversion.task.funding_agreement_contact.no_contacts.title") %></h2>
       <%= t("conversion.task.funding_agreement_contact.no_contacts.add_contacts_guidance_html", add_contact_link: project_contacts_path(@project)) %>
-      <%= govuk_button_link_to t("task_list.continue_button.text"), project_conversion_tasks_path(@project) %>
+      <%= govuk_button_link_to t("task_list.continue_button.text"), project_tasks_path(@project) %>
     <% end %>
   </div>
 

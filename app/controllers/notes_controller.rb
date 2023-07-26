@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-  before_action :find_project
+  include Projectable
+
   before_action :find_project_level_notes, only: :index
   after_action :verify_authorized, except: :index
 

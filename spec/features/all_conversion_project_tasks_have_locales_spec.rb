@@ -11,7 +11,7 @@ RSpec.feature "All task lists have a locale file & all keys are present" do
 
   describe "conversion tasks" do
     before do
-      visit project_conversion_tasks_path(project)
+      visit project_tasks_path(project)
     end
 
     it "links to all the tasks" do

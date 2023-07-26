@@ -1,5 +1,5 @@
 class ExternalContactsController < ApplicationController
-  before_action :find_project
+  include Projectable
 
   def index
     @grouped_contacts = @project.contacts.by_name.group_by(&:category).with_indifferent_access
@@ -56,10 +56,6 @@ class ExternalContactsController < ApplicationController
   def confirm_destroy
     @contact = Contact.find(params[:contact_id])
     authorize @contact
-  end
-
-  private def find_project
-    @project = Project.find(params[:project_id])
   end
 
   private def contact_params

@@ -7,6 +7,18 @@ RSpec.describe TasksController do
     sign_in_with(user)
   end
 
+  describe "#index" do
+    it "render the task list" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project)
+
+      get project_tasks_path(project)
+
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template("tasks/index")
+    end
+  end
+
   describe "#edit" do
     it "renders the correct edit view" do
       mock_successful_api_response_to_create_any_project
@@ -41,7 +53,7 @@ RSpec.describe TasksController do
         expect(project.tasks_data.redact_and_send_save_redaction).to eql true
         expect(project.tasks_data.redact_and_send_send_solicitors).to eql true
 
-        expect(response).to redirect_to(project_conversion_tasks_path(project))
+        expect(response).to redirect_to(project_tasks_path(project))
       end
     end
 

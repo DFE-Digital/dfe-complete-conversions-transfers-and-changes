@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
-  concern :conversion_taskable do
-    get "tasks", to: "conversions/tasks#index", as: :conversion_tasks
+  concern :taskable do
+    get "tasks", to: "tasks#index"
     get "tasks/:task_identifier", to: "tasks#edit", as: :edit_task
     put "tasks/:task_identifier", to: "tasks#update"
   end
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
     resources :projects,
       only: %i[show],
       concerns: %i[
-        conversion_taskable
+        taskable
         external_contactable
         notable
         assignable
