@@ -12,35 +12,15 @@
     <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary"}) do |summary_list|
           summary_list.row do |row|
             row.key { t("project.summary.type.title") }
-            row.value { t("project.summary.type.conversion") }
+            row.value { t("project.summary.type.transfer") }
           end
           summary_list.row do |row|
             row.key { t("project.summary.incoming_trust.title") }
             row.value { @project.incoming_trust.name }
           end
           summary_list.row do |row|
-            row.key { t("project.summary.converting_on.title") }
-            row.value { converting_on_date(@project) }
-          end
-          summary_list.row do |row|
-            row.key { t("project.summary.local_authority.title") }
-            row.value { @project.establishment.local_authority_name }
-          end
-          summary_list.row do |row|
             row.key { t("project.summary.region.title") }
             row.value { @project.establishment.region_name }
-          end
-          summary_list.row do |row|
-            row.key { t("project.summary.establishment_sharepoint_link.title") }
-            row.value { safe_link_to(t("project.summary.establishment_sharepoint_link.value"), @project.establishment_sharepoint_link) }
-          end
-          summary_list.row do |row|
-            row.key { t("project.summary.trust_sharepoint_link.title") }
-            row.value { safe_link_to(t("project.summary.trust_sharepoint_link.value"), @project.trust_sharepoint_link) }
-          end
-          summary_list.row do |row|
-            row.key { t("conversion_project.summary.route.title") }
-            row.value { t("conversion_project.#{@project.route}.route") }
           end
           if @project.completed?
             summary_list.row do |row|

@@ -1,0 +1,27 @@
+<%= render partial: "transfers/shared/project_summary" %>
+
+<h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
+
+<ol class="app-task-list">
+  <% @task_list.sections.each do |section| %>
+    <li>
+      <h3 class="app-task-list__section">
+        <%= t("#{section.locales_path}.title") %>
+      </h3>
+      <ul class="app-task-list__items">
+        <% section.tasks.each do |task| %>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <%= govuk_link_to(
+                    t("#{task.locales_path}.title"),
+                    project_edit_task_path(@project, task.identifier),
+                    aria: {describedby: task_id(task)}
+                  ) %>
+            </span>
+            <%= task_status_tag(task, task_id(task)) %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ol>

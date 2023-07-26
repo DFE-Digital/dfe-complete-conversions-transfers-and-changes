@@ -128,6 +128,10 @@ en:
         <li>The receive grant payment certificate task is completed</li>
         </ul>
     summary:
+      type:
+        title: Type
+        conversion: Conversion
+        transfer: Transfer
       incoming_trust:
         title: Incoming trust
       local_authority:
