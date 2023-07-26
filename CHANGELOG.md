@@ -8,10 +8,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 36][release-36]
+
+### Added
+
 - Add "2RI" question to the new Conversion project form
 - Remove hint from the "DAO" question on the create Conversion project form
 - Show the "2RI" value on the Project information page
 - Add a very basic create form for Transfer projects
+- Add a "Handed over" view to Team projects area where projects which have been
+  handed over to regional_caseworks_services team can be viewed
+- Regional casework services team cannot view the Handed over tab or view
 
 ### Changed
 
@@ -45,12 +56,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Limit line lengths to 75 characters after increasing app width to 1200px
 - Only show counts of in-progress projects on the Team "By user" projects page
 - Send the new user email when an account is added.
-
-### Added
-
-- Add a "Handed over" view to Team projects area where projects which have been
-  handed over to regional_caseworks_services team can be viewed
-- Regional casework services team cannot view the Handed over tab or view
 
 ## [Release 33][release-33]
 
@@ -1129,7 +1134,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-35...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-36...HEAD
+[release-36]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-35...release-36
 [release-35]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-34...release-35
 [release-34]:
