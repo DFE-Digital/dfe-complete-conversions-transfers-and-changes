@@ -1,0 +1,11 @@
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: root_path} %>
+<% end %>
+
+<%= render partial: "projects/shared/project_summary" %>
+
+<%= render partial: "projects/shared/project_actions" %>
+
+<%= render partial: "projects/shared/project_sub_navigation" %>
+
+<%= render partial: "shared/internal_contacts", locals: {project: @project} %>

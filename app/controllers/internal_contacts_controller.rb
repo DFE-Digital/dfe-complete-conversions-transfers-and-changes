@@ -1,6 +1,6 @@
 class InternalContactsController < ApplicationController
   include Projectable
 
-  def show
+  def index
   end
 end

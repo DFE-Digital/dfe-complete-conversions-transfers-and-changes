@@ -49,4 +49,11 @@ RSpec.feature "Users can view a transfer" do
     expect(page).to have_content(transfer_project.urn)
     expect(page).to have_content("External contacts")
   end
+
+  scenario "they can view the internal contacts" do
+    visit project_internal_contacts_path(transfer_project)
+
+    expect(page).to have_content(transfer_project.urn)
+    expect(page).to have_content("Internal contacts")
+  end
 end

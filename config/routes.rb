@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   end
 
   concern :internal_contactable do
-    get "internal-contacts", to: "internal_contacts#show"
+    get "internal-contacts", to: "internal_contacts#index"
   end
 
   concern :memberable do
