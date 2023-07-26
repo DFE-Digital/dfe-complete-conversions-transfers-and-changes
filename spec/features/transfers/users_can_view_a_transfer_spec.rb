@@ -17,6 +17,17 @@ RSpec.feature "Users can view a transfer" do
     expect(page).to have_content("West Midlands")
   end
 
+  scenario "they can navigate the sub sections" do
+    visit project_path(transfer_project)
+
+    expect(page).to have_content(transfer_project.urn)
+    expect(page).to have_link("Task list")
+    expect(page).to have_link("Project information")
+    expect(page).to have_link("Notes")
+    expect(page).to have_link("External contacts")
+    expect(page).to have_link("Internal contacts")
+  end
+
   scenario "they can view the task list" do
     visit project_path(transfer_project)
 
