@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The DfE frontend javascript is now loaded, the mobile navigation button should
   now work as expected.
+- Move pager on the `by trust` view to the bottom of the page
 
 ## [Release 35][release-35]
 
