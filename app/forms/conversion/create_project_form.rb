@@ -1,19 +1,6 @@
-class Conversion::CreateProjectForm
-  include ActiveModel::Model
-  include ActiveModel::Attributes
-  include ActiveRecord::AttributeAssignment
-
-  SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
-
-  class NegativeValueError < StandardError; end
-
-  attribute :urn, :integer
-  attribute :incoming_trust_ukprn, :integer
-  attribute :establishment_sharepoint_link
-  attribute :trust_sharepoint_link
+class Conversion::CreateProjectForm < CreateProjectForm
   attribute :advisory_board_conditions
   attribute :handover_note_body
-  attribute :user
   attribute :directive_academy_order, :boolean
   attribute :region
   attribute :assigned_to_regional_caseworker_team, :boolean
@@ -28,18 +15,6 @@ class Conversion::CreateProjectForm
     presence: true
 
   validates :provisional_conversion_date, date_in_the_future: true, first_day_of_month: true
-  validates :advisory_board_date, date_in_the_past: true
-
-  validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
-  validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
-
-  validates :urn, presence: true, urn: true
-  validates :incoming_trust_ukprn, presence: true, ukprn: true
-
-  validate :multiparameter_date_attributes_values
-
-  validate :establishment_exists, if: -> { urn.present? }
-  validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
 
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
 
@@ -60,38 +35,8 @@ class Conversion::CreateProjectForm
     @attributes_with_invalid_values << :provisional_conversion_date
   end
 
-  def advisory_board_date=(hash)
-    @advisory_board_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
-  rescue NoMethodError
-    nil
-  rescue TypeError, Date::Error, NegativeValueError
-    @attributes_with_invalid_values << :advisory_board_date
-  end
-
   def region
     @region = establishment.region_code
-  end
-
-  private def establishment
-    @establishment || fetch_establishment(urn)
-  end
-
-  private def fetch_establishment(urn)
-    result = Api::AcademiesApi::Client.new.get_establishment(urn)
-    raise result.error if result.error.present?
-
-    result.object
-  end
-
-  private def value_at_position(hash, position)
-    value = hash[position]
-    return NegativeValueError if value.to_i < 0
-    value
-  end
-
-  private def multiparameter_date_attributes_values
-    return if @attributes_with_invalid_values.empty?
-    @attributes_with_invalid_values.each { |attribute| errors.add(attribute, :invalid) }
   end
 
   private def notify_team_leaders(project)
@@ -100,21 +45,8 @@ class Conversion::CreateProjectForm
     end
   end
 
-  private def establishment_exists
-    establishment
-  rescue Api::AcademiesApi::Client::NotFoundError
-    errors.add(:urn, :no_establishment_found)
-  end
-
-  private def trust_exists
-    result = Api::AcademiesApi::Client.new.get_trust(incoming_trust_ukprn)
-    raise result.error if result.error.present?
-  rescue Api::AcademiesApi::Client::NotFoundError
-    errors.add(:incoming_trust_ukprn, :no_trust_found)
-  end
-
   private def urn_unique_for_in_progress_conversions
-    errors.add(:urn, :duplicate) if Project.not_completed.where(urn: urn).any?
+    errors.add(:urn, :duplicate) if Conversion::Project.not_completed.where(urn: urn).any?
   end
 
   def assigned_to_regional_caseworker_team_responses

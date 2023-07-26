@@ -6,7 +6,13 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
 
-    redirect_to project_conversion_tasks_path(@project)
+    # TODO: Temporary until we add Tasks for Transfer Projects
+    case @project.type
+    when "Conversion::Project"
+      redirect_to project_conversion_tasks_path(@project)
+    when "Transfer::Project"
+      render "transfers/projects/show"
+    end
   end
 
   def index

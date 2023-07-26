@@ -170,6 +170,10 @@ Rails.application.routes.draw do
       post "/", to: "projects#create"
       get "new", to: "projects#new"
     end
+    namespace :transfers do
+      get "new", to: "projects#new"
+      post "/", to: "projects#create"
+    end
   end
 
   resources :users, only: %w[new create edit update]

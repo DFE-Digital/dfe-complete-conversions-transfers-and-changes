@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe Conversion::CreateProjectForm, type: :model do
   let(:form_factory) { "create_project_form" }
-  let(:task_list_class) { Conversion::Voluntary::TaskList }
 
   context "when the project is successfully created" do
     let(:establishment) { build(:academies_api_establishment) }
@@ -311,6 +310,16 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         form.urn = 121813
         expect(form).to be_invalid
         expect(form.errors.messages[:urn]).to include I18n.t("errors.attributes.urn.duplicate")
+      end
+    end
+
+    context "when there is a Transfer project with the same urn" do
+      it "is valid" do
+        _project_with_urn = create(:transfer_project, urn: 121813, assigned_to: nil)
+        form = build(:create_conversion_project_form)
+
+        form.urn = 121813
+        expect(form).to be_valid
       end
     end
   end
