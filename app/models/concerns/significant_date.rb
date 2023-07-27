@@ -4,7 +4,6 @@ module SignificantDate
   included do
     has_many :significant_dates, dependent: :destroy, class_name: "SignificantDateHistory"
 
-    validates :significant_date, presence: true
     validates :significant_date, first_day_of_month: true
 
     scope :provisional, -> { where(significant_date_provisional: true) }
