@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   support for transfers, no user facing changes.
 - the conversion URN tables no longer include the route, school phase or type.
 - the statistic page no longer shows voluntary or sponsored project totals.
+- the task list is now disaplyed in a narrower layout.
 
 ### Fixed
 
