@@ -11,7 +11,7 @@ RSpec.feature "Users can view trust details" do
   end
 
   scenario "they can view the trust name, UKPRN and companies house number" do
-    within("#trustDetails") do
+    within("#incomingTrustDetails") do
       expect(page).to have_content(project.incoming_trust.name)
       expect(page).to have_content(project.incoming_trust_ukprn)
       expect(page).to have_content(project.incoming_trust.companies_house_number)
@@ -19,7 +19,7 @@ RSpec.feature "Users can view trust details" do
   end
 
   scenario "the trust address is shown" do
-    within("#trustDetails") do
+    within("#incomingTrustDetails") do
       expect(page).to have_content(project.incoming_trust.address_street)
       expect(page).to have_content(project.incoming_trust.address_additional)
       expect(page).to have_content(project.incoming_trust.address_locality)

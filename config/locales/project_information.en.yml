@@ -1,0 +1,88 @@
+en:
+  project_information:
+    show:
+      side_navigation:
+        title: Jump to section
+      project_details:
+        title: Project details
+        rows:
+          regional_delivery_officer: Regional delivery officer
+          assigned_to: Assigned to
+          unassigned: Not yet assigned
+          establishment_sharepoint_link: School SharePoint folder
+          trust_sharepoint_link: Trust SharePoint folder
+          directive_academy_order:
+            title: Has a directive academy order been issued?
+            "true": "Yes"
+            "false": "No"
+          two_requires_improvement:
+            title: Is this conversion due to intervention following 2RI?
+            "true": "Yes"
+            "false": "No"
+      advisory_board_details:
+        title: Advisory board details
+        rows:
+          advisory_board_date: Date of advisory board
+          advisory_board_conditions: Conditions from advisory board
+
+      school_details:
+        title: School details
+        rows:
+          original_school_name: Original school name
+          view_in_gias: View the school's information in GIAS (opens in new tab)
+          address: Addresss
+          dfe_number: DfE number
+          old_urn: Old Unique Reference Number
+          school_type: School type
+          age_range: Age range
+          school_phase: School phase
+          region: Region
+      academy_details:
+        title: Academy details
+        empty: Academy URN has not been provided
+        not_found: The academy details could not be found in the Get information about schools data,
+          it can take one day for the data to be syncronised
+        rows:
+          urn: Unique reference number (URN)
+          academy_name: Academy name
+          address: Address
+          school_type: School type
+          age_range: Age range
+          school_phase: School phase
+          region: Region
+      trust_details:
+        rows:
+          view_in_gias: View the trust information in GIAS (opens in new tab)
+          view_companies_house: View the Companies House information (opens in new tab)
+      incoming_trust_details:
+        title: Incoming trust details
+        rows:
+          incoming_trust_name: Incoming trust name
+          address: Address
+          ukprn: UK Provider Reference Number
+          group_identifier: Group identifier (ID)
+          companies_house_number: Companies House number
+      outgoing_trust_details:
+        title: Outgoing trust details
+        rows:
+          outgoing_trust_name: Incoming trust name
+          address: Address
+          ukprn: UK Provider Reference Number
+          group_identifier: Group identifier (ID)
+          companies_house_number: Companies House number
+      local_authority_details:
+        title: Local authority details
+        rows:
+          local_authority: Local authority
+          address: Address
+      director_of_child_services:
+        title: Director of child services
+        rows:
+          title: DCS Position
+          name: Name
+          email: Email
+          phone: Phone
+      diocese_details:
+        title: Diocese details
+        rows:
+          diocese: Diocese

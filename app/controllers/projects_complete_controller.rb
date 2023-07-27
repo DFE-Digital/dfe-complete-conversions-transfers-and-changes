@@ -9,7 +9,7 @@ class ProjectsCompleteController < ApplicationController
       render :completed
     else
       flash[:alert] = I18n.t("project.complete.unable_to_complete_html")
-      redirect_to project_conversion_tasks_path(@project)
+      redirect_to project_tasks_path(@project)
     end
   end
 

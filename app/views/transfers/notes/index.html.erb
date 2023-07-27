@@ -1,14 +1,8 @@
-<% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: root_path} %>
-<% end %>
+<%= render partial: "transfers/shared/project_summary" %>
 
-<%= render partial: "projects/shared/project_summary" %>
+<%= render partial: "/shared/projects/sub_navigation" %>
 
-<%= render partial: "projects/shared/project_actions" %>
-
-<%= render partial: "projects/shared/project_sub_navigation" %>
-
-<div class="govuk-grid-row govuk-body">
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l"><%= t("note.index.notes") %></h2>
 

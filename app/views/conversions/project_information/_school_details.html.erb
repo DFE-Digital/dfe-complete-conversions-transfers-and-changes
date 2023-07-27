@@ -1,0 +1,37 @@
+<div id="schoolDetails">
+  <h2 class="govuk-heading-l"><%= t("project_information.show.school_details.title") %></h2>
+  <%= govuk_summary_list(actions: false) do |summary_list|
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.original_school_name") }
+          row.value { (establishment.name + "<br/>" + link_to_school_on_gias(establishment.urn)).html_safe }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.address") }
+          row.value { address_markup(establishment.address) }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.dfe_number") }
+          row.value { establishment.dfe_number }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.old_urn") }
+          row.value { establishment.urn.to_s }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.school_type") }
+          row.value { establishment.type }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.age_range") }
+          row.value { age_range(establishment) }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.school_phase") }
+          row.value { establishment.phase }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.region") }
+          row.value { establishment.region_name }
+        end
+      end %>
+</div>

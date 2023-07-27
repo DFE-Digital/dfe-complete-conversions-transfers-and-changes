@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Early support to view a transfer project, no user facing changes.
+
 ### Changed
 
 - conversions dates changes have been made generic ahead of support for

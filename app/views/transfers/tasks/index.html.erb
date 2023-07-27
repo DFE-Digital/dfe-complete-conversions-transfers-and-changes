@@ -1,11 +1,6 @@
-<% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: root_path} %>
-<% end %>
+<%= render partial: "transfers/shared/project_summary" %>
 
-<%= render partial: "projects/shared/project_summary" %>
-<%= render partial: "projects/shared/project_actions" %>
-
-<%= render partial: "shared/projects/sub_navigation" %>
+<%= render partial: "/shared/projects/sub_navigation" %>
 
 <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
 
@@ -32,5 +27,3 @@
     </li>
   <% end %>
 </ol>
-
-<%= render "projects/show/complete" if policy(@project).update? %>

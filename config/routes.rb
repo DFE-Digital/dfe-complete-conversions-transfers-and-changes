@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     get "/delete", action: :confirm_destroy
   end
 
-  concern :conversion_taskable do
-    get "tasks", to: "conversions/tasks#index", as: :conversion_tasks
+  concern :taskable do
+    get "tasks", to: "tasks#index"
     get "tasks/:task_identifier", to: "tasks#edit", as: :edit_task
     put "tasks/:task_identifier", to: "tasks#update"
   end
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   end
 
   concern :internal_contactable do
-    get "internal-contacts", to: "internal_contacts#show"
+    get "internal-contacts", to: "internal_contacts#index"
   end
 
   concern :memberable do
@@ -63,6 +63,37 @@ Rails.application.routes.draw do
     patch "academy-urn", to: "conversions/academy_urn#update_academy_urn"
   end
 
+  # A project
+  constraints(id: VALID_UUID_REGEX) do
+    resources :projects,
+      only: %i[show],
+      concerns: %i[
+        taskable
+        external_contactable
+        notable
+        assignable
+        informationable
+        completable
+        internal_contactable
+        conversion_date_historyable
+        memberable
+        academy_urn_updateable
+      ]
+  end
+
+  # New projects by type
+  scope :projects do
+    namespace :conversions do
+      get "new", to: "projects#new"
+      post "/", to: "projects#create"
+    end
+    namespace :transfers do
+      get "new", to: "projects#new"
+      post "/", to: "projects#create"
+    end
+  end
+
+  # All projects
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index] do
       collection do
@@ -111,6 +142,14 @@ Rails.application.routes.draw do
             end
           end
         end
+      end
+    end
+  end
+
+  #  Team projects
+  constraints(id: VALID_UUID_REGEX) do
+    resources :projects, only: %i[index] do
+      collection do
         namespace :team, path: "team" do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
@@ -127,49 +166,41 @@ Rails.application.routes.draw do
             get "revised/", to: "projects#revised_next_month"
           end
         end
+      end
+    end
+  end
+
+  # Your projects
+  constraints(id: VALID_UUID_REGEX) do
+    resources :projects, only: %i[index] do
+      collection do
         namespace :user do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
           get "added-by", to: "projects#added_by"
         end
-
-        namespace :service_support, path: "service-support" do
-          get "without-academy-urn", to: "projects#without_academy_urn", as: :without_academy_urn
-          get "with-academy-urn", to: "projects#with_academy_urn", as: :with_academy_urn
-        end
-
-        get "unassigned"
       end
     end
   end
 
+  # Service support projects
+  constraints(id: VALID_UUID_REGEX) do
+    resources :projects, only: %i[index] do
+      collection do
+        namespace :service_support, path: "service-support" do
+          get "without-academy-urn", to: "projects#without_academy_urn", as: :without_academy_urn
+          get "with-academy-urn", to: "projects#with_academy_urn", as: :with_academy_urn
+        end
+      end
+    end
+  end
+
+  # service support
   scope "service-support" do
     resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
   end
 
-  # Projects - all projects are conversions right now
-  constraints(id: VALID_UUID_REGEX) do
-    resources :projects,
-      only: %i[show],
-      concerns: %i[
-        conversion_taskable
-        external_contactable
-        notable
-        assignable
-        informationable
-        completable
-        internal_contactable
-        conversion_date_historyable
-        memberable
-        academy_urn_updateable
-      ]
-  end
-
   scope :projects do
-    namespace :conversions do
-      post "/", to: "projects#create"
-      get "new", to: "projects#new"
-    end
     namespace :transfers do
       get "new", to: "projects#new"
       post "/", to: "projects#create"

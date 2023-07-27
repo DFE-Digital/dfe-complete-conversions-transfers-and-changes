@@ -1,10 +1,6 @@
 class InternalContactsController < ApplicationController
-  before_action :find_project
+  include Projectable
 
-  def show
-  end
-
-  private def find_project
-    @project = Project.find(params[:project_id])
+  def index
   end
 end

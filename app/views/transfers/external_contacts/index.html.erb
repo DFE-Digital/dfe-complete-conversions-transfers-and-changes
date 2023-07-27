@@ -1,25 +1,10 @@
-<% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: root_path} %>
-<% end %>
+<%= render partial: "transfers/shared/project_summary" %>
 
-<%= render partial: "projects/shared/project_summary" %>
+<%= render partial: "/shared/projects/sub_navigation" %>
 
-<%= render partial: "projects/shared/project_actions" %>
-
-<%= render partial: "projects/shared/project_sub_navigation" %>
-
-<div class="govuk-grid-row govuk-body">
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l"><%= t("contact.index.external_contacts") %></h2>
-
-    <div class="govuk-!-margin-bottom-5">
-      <p class="govuk-hint">
-        <%= t("contact.index.external_contacts_hint.add_contacts") %>
-      </p>
-      <p class="govuk-hint">
-        <%= t("contact.index.external_contacts_hint.get_missing_contact_information") %>
-      </p>
-    </div>
 
     <% if @grouped_contacts.empty? %>
       <%= govuk_inset_text(text: t("contact.index.no_contacts_yet")) %>

@@ -1,0 +1,27 @@
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: root_path} %>
+<% end %>
+
+<%= render partial: "projects/shared/project_summary" %>
+
+<%= render partial: "projects/shared/project_actions" %>
+
+<%= render partial: "shared/projects/sub_navigation" %>
+
+<div class="govuk-grid-row govuk-body">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l"><%= t("note.index.notes") %></h2>
+
+    <% unless has_notes?(@notes) %>
+      <%= govuk_inset_text(text: t("note.index.no_notes_yet")) %>
+    <% end %>
+
+    <div class="govuk-!-margin-bottom-5">
+      <%= govuk_button_link_to t("note.index.add_note_button"), new_project_note_path(@project) %>
+    </div>
+
+    <% if has_notes?(@notes) %>
+      <%= render "notes/notes" %>
+    <% end %>
+  </div>
+</div>

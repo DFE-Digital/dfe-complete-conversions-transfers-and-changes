@@ -1,0 +1,11 @@
+<%= render partial: "shared/project_information/project_details", locals: { project: @project } %>
+
+<%= render partial: "shared/project_information/advisory_board_details", locals: { project: @project } %>
+
+<%= render partial: "academy_details", locals: { academy: @project.establishment } %>
+
+<%= render partial: "shared/project_information/incoming_trust_details", locals: { incoming_trust: @project.incoming_trust } %>
+
+<%= render partial: "outgoing_trust_details", locals: { outgoing_trust: @project.outgoing_trust } %>
+
+<%= render partial: "shared/project_information/diocese_details", locals: { establishment: @project.establishment } %>
