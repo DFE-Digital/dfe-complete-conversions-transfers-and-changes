@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Conversion::DateHistory do
+RSpec.describe SignificantDateHistory do
   describe "Attributes" do
     it { is_expected.to have_db_column(:revised_date).of_type :date }
     it { is_expected.to have_db_column(:previous_date).of_type :date }

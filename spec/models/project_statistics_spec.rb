@@ -499,7 +499,7 @@ RSpec.describe ProjectStatistics, type: :model do
         (1..6).each do |i|
           date = Date.today + i.month
           within("##{Date::MONTHNAMES[date.month]}_#{date.year}") do
-            expect(page).to have_content(Project.opening_by_month_year(date.month, date.year).count)
+            expect(page).to have_content(Project.confirmed.filtered_by_significant_date(date.month, date.year).count)
           end
         end
       end

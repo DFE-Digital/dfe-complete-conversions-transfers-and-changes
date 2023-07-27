@@ -5,7 +5,7 @@ RSpec.describe ProjectsForExportService do
     it "returns only conversion projects" do
       mock_academies_api_client_get_establishments_and_trusts
 
-      transfer_project = create(:transfer_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
+      transfer_project = create(:transfer_project, transfer_date_provisional: false, transfer_date: Date.parse("2025-1-1"))
       conversion_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
 
       projects_for_export = described_class.new.risk_protection_arrangement_projects(month: 1, year: 2025)

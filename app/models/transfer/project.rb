@@ -3,6 +3,9 @@ class Transfer::Project < Project
     ProjectPolicy
   end
 
+  alias_attribute :transfer_date, :significant_date
+  alias_attribute :transfer_date_provisional, :significant_date_provisional
+
   validates :outgoing_trust_ukprn, presence: true
   validates :outgoing_trust_ukprn, ukprn: true
   validate :outgoing_trust_exists, if: -> { outgoing_trust_ukprn.present? }

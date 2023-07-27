@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- conversions dates changes have been made generic ahead of support for
+  transfers, no user facing changes.
+- the conversion date is now stored as a more generic significant date ahead of
+  support for transfers, no user facing changes.
+
 ### Fixed
 
 ## [Release 36][release-36]
@@ -28,6 +33,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - All views that pre fetch data from the Academies API do so via the new method.
 - the Opening list now shows the academy order type instead of the route.
+- The underlying mechanics for conversion dates has changed to significnat dates
+  ahead of adding transfer projects, no user facing changes.
 
 ### Fixed
 

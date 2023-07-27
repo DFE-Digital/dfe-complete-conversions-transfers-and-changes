@@ -39,7 +39,7 @@
         <% else %>
           <%= govuk_inset_text do %>
             <p>The conversion date has been confirmed and is currently <%= @project.conversion_date.to_fs(:govuk) %></p>
-            <p>The provisional conversion date was <%= @project.fetch_provisional_conversion_date.to_fs(:govuk) %>.</p>
+            <p>The provisional conversion date was <%= @project.provisional_date.to_fs(:govuk) %>.</p>
             <p>Any further changes to the conversion date must be recorded on the main project screen.</p>
           <% end %>
 

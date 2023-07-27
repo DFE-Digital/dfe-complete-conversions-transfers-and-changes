@@ -1,5 +1,7 @@
 class Project < ApplicationRecord
   include Teamable
+  include SignificantDate
+
   SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
 
   attr_writer :establishment, :incoming_trust, :member_of_parliament
