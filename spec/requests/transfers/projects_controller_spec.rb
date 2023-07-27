@@ -8,6 +8,9 @@ RSpec.describe Transfers::ProjectsController do
       "advisory_board_date(3i)": "1",
       "advisory_board_date(2i)": "1",
       "advisory_board_date(1i)": "2022",
+      "significant_date(3i)": "1",
+      "significant_date(2i)": "1",
+      "significant_date(1i)": Time.now.year + 1.year,
       regional_delivery_officer: nil)
   }
 

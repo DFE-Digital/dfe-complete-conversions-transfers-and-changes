@@ -1,5 +1,9 @@
 class Transfer::CreateProjectForm < CreateProjectForm
+  attr_reader :significant_date
+
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
+  validates :significant_date, presence: true
+  validates :significant_date, date_in_the_future: true, first_day_of_month: true
 
   validate :urn_unique_for_in_progress_transfers, if: -> { urn.present? }
 
@@ -16,6 +20,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       establishment_sharepoint_link: establishment_sharepoint_link,
       trust_sharepoint_link: trust_sharepoint_link,
       advisory_board_date: advisory_board_date,
+      significant_date: significant_date,
       regional_delivery_officer_id: user.id,
       team: user.team,
       assigned_to: user,
@@ -31,5 +36,13 @@ class Transfer::CreateProjectForm < CreateProjectForm
     end
 
     @project
+  end
+
+  def significant_date=(hash)
+    @significant_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
+  rescue NoMethodError
+    nil
+  rescue TypeError, Date::Error, NegativeValueError
+    @attributes_with_invalid_values << :significant_date
   end
 end

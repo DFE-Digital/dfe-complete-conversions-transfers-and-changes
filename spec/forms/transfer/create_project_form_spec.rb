@@ -78,6 +78,18 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         end
       end
     end
+
+    describe "significant_date" do
+      it { is_expected.to validate_presence_of(:significant_date) }
+
+      it "must be in the future" do
+        form = build(:create_transfer_project_form, significant_date: {3 => 1, 2 => 1, 1 => 2030})
+        expect(form).to be_valid
+
+        form.significant_date = {3 => 1, 2 => 1, 1 => 2020}
+        expect(form).to be_invalid
+      end
+    end
   end
 
   describe "urn" do

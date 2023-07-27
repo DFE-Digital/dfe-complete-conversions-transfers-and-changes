@@ -13,6 +13,7 @@ RSpec.feature "Users can create new conversion projects" do
     let(:incoming_ukprn) { 10061021 }
     let(:outgoing_ukprn) { 10090252 }
     let(:two_weeks_ago) { Date.today - 2.weeks }
+    let(:two_moths_time) { Date.today + 2.months }
 
     before { mock_all_academies_api_responses }
 
@@ -46,6 +47,11 @@ RSpec.feature "Users can create new conversion projects" do
       fill_in "Day", with: two_weeks_ago.day
       fill_in "Month", with: two_weeks_ago.month
       fill_in "Year", with: two_weeks_ago.year
+    end
+
+    within("#provisional-transfer-date") do
+      fill_in "Month", with: two_moths_time.month
+      fill_in "Year", with: two_moths_time.year
     end
   end
 end

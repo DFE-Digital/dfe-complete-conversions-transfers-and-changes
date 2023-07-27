@@ -24,6 +24,7 @@ class Transfers::ProjectsController < ApplicationController
       :outgoing_trust_ukprn,
       :establishment_sharepoint_link,
       :advisory_board_date,
+      :significant_date,
       :trust_sharepoint_link
     )
   end
