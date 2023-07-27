@@ -111,70 +111,17 @@
           <th class="govuk-table__header govuk-table__header--numeric" scope="col">All projects</th>
         </tr>
       </thead>
-      <tbody class="govuk-table__body" id="london">
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__cell">London</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_london_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_london_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:london) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_london_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="south_east">
-          <th scope="row" class="govuk-table__cell">South East</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_south_east_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_south_east_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:south_east) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_south_east_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="yorkshire_and_the_humber">
-          <th scope="row" class="govuk-table__cell">Yorkshire and the Humber</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_yorkshire_and_the_humber_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_yorkshire_and_the_humber_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:yorkshire_and_the_humber) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_yorkshire_and_the_humber_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="north_west">
-          <th scope="row" class="govuk-table__cell">North West</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_north_west_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_north_west_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:north_west) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_north_west_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="east_of_england">
-          <th scope="row" class="govuk-table__cell">East of England West</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_east_of_england_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_east_of_england_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:east_of_england) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_east_of_england_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="west_midlands">
-          <th scope="row" class="govuk-table__cell">West Midlands</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_west_midlands_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_west_midlands_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:west_midlands) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_west_midlands_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="north_east">
-          <th scope="row" class="govuk-table__cell">North East</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_north_east_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_north_east_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:north_west) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_north_east_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="south_west">
-          <th scope="row" class="govuk-table__cell">South West</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_south_west_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_south_west_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:south_west) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_south_west_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="east_midlands">
-          <th scope="row" class="govuk-table__cell">East Midlands</th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_within_east_midlands_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_within_east_midlands_region %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_in_region(:east_midlands) %></td>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_within_east_midlands_region %></td>
-        </tr>
+      <tbody class="govuk-table__body">
+        <% Project.regions.keys.each do |region| %>
+          <% statistics = @project_statistics.statistics_for_region(region) %>
+          <tr class="govuk-table__row" id="<%= region.dasherize %>">
+            <th scope="row" class="govuk-table__cell"><%= t("project.region.#{region}") %></th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.in_progress %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.completed %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.unassigned %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.total %></td>
+          </tr>
+      <% end %>
       </tbody>
     </table>
   </div>
@@ -191,12 +138,12 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-      <% @project_statistics.opener_date_and_project_total.each do |key, value| %>
-        <tr class="govuk-table__row" id="<%= key.tr(" ", "_") %>">
-          <th scope="row" class="govuk-table__cell"><%= key %></th>
-          <td class="govuk-table__cell govuk-table__cell--numeric"><%= value %></td>
-        </tr>
-      <% end %>
+        <% @project_statistics.opener_date_and_project_total.each do |key, value| %>
+          <tr class="govuk-table__row" id="<%= key.tr(" ", "_") %>">
+            <th scope="row" class="govuk-table__cell"><%= key %></th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= value %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
