@@ -3,83 +3,73 @@
 <% end %>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Statistics</h1>
-    <h2 class="govuk-heading-m">Overview of all projects</h2>
+  <div class="govuk-grid-column-one-half">
+    <h1 class="govuk-heading-xl">Statistics</h1>
+    <h2 class="govuk-heading-l">Overview of all projects</h2>
     <table class="govuk-table" name="statistics_table" aria-label="Project statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col">Detail</th>
-          <th class="govuk-table__header" scope="col">Total number</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total number</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-        <tr class="govuk-table__row" id="voluntary_projects">
-          <td class="govuk-table__cell">Voluntary projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_voluntary_projects %></td>
-        </tr>
-        <tr class="govuk-table__row" id="sponsored_projects">
-          <td class="govuk-table__cell">Sponsored projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_sponsored_projects %></td>
-        </tr>
         <tr class="govuk-table__row" id="in_progress">
-          <td class="govuk-table__cell">In progress projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_in_progress_projects %></td>
+          <th scope="row" class="govuk-table__cell">In progress projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_in_progress_projects %></td>
         </tr>
         <tr class="govuk-table__row" id="completed">
-          <td class="govuk-table__cell">Completed projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_completed_projects %></td>
+          <th scope="row" class="govuk-table__cell">Completed projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_completed_projects %></td>
         </tr>
         <tr class="govuk-table__row" id="unassigned">
-          <td class="govuk-table__cell">Unassigned projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_unassigned_projects %></td>
+          <th scope="row" class="govuk-table__cell">Unassigned projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_unassigned_projects %></td>
         </tr>
         <tr class="govuk-table__row" id="all_projects">
-          <td class="govuk-table__cell">All projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_number_of_projects %></td>
+          <th scope="row" class="govuk-table__cell">All projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_projects %></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-m">Projects with Regional casework services</h2>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <h2 class="govuk-heading-l">Projects with Regional casework services</h2>
     <table class="govuk-table" name="regional_casework_services_statistics_table" aria-label="Regional casework services statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col">Detail</th>
-          <th class="govuk-table__header" scope="col">Total number</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total number</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body" id="voluntary_projects">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Voluntary projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_with_regional_casework_services %></td>
-        </tr>
-        <tr class="govuk-table__row" id="sponsored_projects">
-          <td class="govuk-table__cell">Sponsored projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_with_regional_casework_services %></td>
-        </tr>
         <tr class="govuk-table__row" id="in_progress">
-          <td class="govuk-table__cell">In progress projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">In progress projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_with_regional_casework_services %></td>
         </tr>
         <tr class="govuk-table__row" id="completed">
-          <td class="govuk-table__cell">Completed projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">Completed projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_with_regional_casework_services %></td>
         </tr>
         <tr class="govuk-table__row" id="unassigned">
-          <td class="govuk-table__cell">Unassigned projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">Unassigned projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_with_regional_casework_services %></td>
         </tr>
         <tr class="govuk-table__row" id="all_projects">
-          <td class="govuk-table__cell">All projects with Regional casework services</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">All projects with Regional casework services</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_with_regional_casework_services %></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-m">Projects not with Regional casework services</h2>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <h2 class="govuk-heading-l">Projects not with Regional casework services</h2>
     <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Not with Regional casework services statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
@@ -87,150 +77,73 @@
           <th class="govuk-table__header" scope="col">Total number</th>
         </tr>
       </thead>
-      <tbody class="govuk-table__body" id="voluntary_projects">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Voluntary projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_not_with_regional_casework_services %></td>
-        </tr>
-        <tr class="govuk-table__row" id="sponsored_projects">
-          <td class="govuk-table__cell">Sponsored projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_not_with_regional_casework_services %></td>
-        </tr>
         <tr class="govuk-table__row" id="in_progress">
-          <td class="govuk-table__cell">In progress projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_not_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">In progress projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_not_with_regional_casework_services %></td>
         </tr>
         <tr class="govuk-table__row" id="completed">
-          <td class="govuk-table__cell">Completed projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_not_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">Completed projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_not_with_regional_casework_services %></td>
         </tr>
         <tr class="govuk-table__row" id="unassigned">
-          <td class="govuk-table__cell">Unassigned projects</td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_not_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">Unassigned projects</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_not_with_regional_casework_services %></td>
         </tr>
         <tr class="govuk-table__row" id="all_projects">
-          <td class="govuk-table__cell">All projects not with Regional casework services</td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_not_with_regional_casework_services %></td>
+          <th scope="row" class="govuk-table__cell">All projects not with Regional casework services</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_not_with_regional_casework_services %></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="govuk-grid-column-full">
-    <h2 class="govuk-heading-m">Projects per region</h2>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <h2 class="govuk-heading-l">Projects per region</h2>
     <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Not with Regional casework services statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col">Region</th>
-          <th class="govuk-table__header" scope="col">Voluntary projects</th>
-          <th class="govuk-table__header" scope="col">Sponsored projects</th>
-          <th class="govuk-table__header" scope="col">In-progress projects</th>
-          <th class="govuk-table__header" scope="col">Completed projects</th>
-          <th class="govuk-table__header" scope="col">Unassigned</th>
-          <th class="govuk-table__header" scope="col">All projects</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">In-progress projects</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Completed projects</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Unassigned</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">All projects</th>
         </tr>
       </thead>
-      <tbody class="govuk-table__body" id="london">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">London</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_london_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_london_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_london_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_london_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:london) %></td>
-
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_london_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="south_east">
-          <td class="govuk-table__cell">South East</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_south_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_south_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_south_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_south_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:south_east) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_south_east_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="yorkshire_and_the_humber">
-          <td class="govuk-table__cell">Yorkshire and the Humber</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_yorkshire_and_the_humber_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_yorkshire_and_the_humber_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_yorkshire_and_the_humber_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_yorkshire_and_the_humber_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:yorkshire_and_the_humber) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_yorkshire_and_the_humber_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="north_west">
-          <td class="govuk-table__cell">North West</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_north_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_north_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_north_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_north_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:north_west) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_north_west_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="east_of_england">
-          <td class="govuk-table__cell">East of England West</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_east_of_england_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_east_of_england_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_east_of_england_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_east_of_england_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:east_of_england) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_east_of_england_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="west_midlands">
-          <td class="govuk-table__cell">West Midlands</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_west_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_west_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_west_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_west_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:west_midlands) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_west_midlands_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="north_east">
-          <td class="govuk-table__cell">North East</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_north_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_north_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_north_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_north_east_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:north_west) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_north_east_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="south_west">
-          <td class="govuk-table__cell">South West</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_south_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_south_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_south_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_south_west_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:south_west) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_south_west_region %></td>
-        </tr>
-        <tr class="govuk-table__row" id="east_midlands">
-          <td class="govuk-table__cell">East Midlands</td>
-          <td class="govuk-table__cell"><%= @project_statistics.voluntary_projects_within_east_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.sponsored_projects_within_east_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.in_progress_projects_within_east_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.completed_projects_within_east_midlands_region %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.unassigned_projects_in_region(:east_midlands) %></td>
-          <td class="govuk-table__cell"><%= @project_statistics.total_projects_within_east_midlands_region %></td>
-        </tr>
+      <tbody class="govuk-table__body">
+        <% Project.regions.keys.each do |region| %>
+          <% statistics = @project_statistics.statistics_for_region(region) %>
+          <tr class="govuk-table__row" id="<%= region.dasherize %>">
+            <th scope="row" class="govuk-table__cell"><%= t("project.region.#{region}") %></th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.in_progress %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.completed %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.unassigned %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.total %></td>
+          </tr>
+      <% end %>
       </tbody>
     </table>
   </div>
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-m">6 month view of all project openers</h2>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <h2 class="govuk-heading-l">6 month view of all project openers</h2>
     <table class="govuk-table" name="statistics_table" aria-label="Project statistics">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col">Project opener date</th>
-          <th class="govuk-table__header" scope="col">Total number</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total number</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-      <% @project_statistics.opener_date_and_project_total.each do |key, value| %>
-        <tr class="govuk-table__row" id="<%= key.tr(" ", "_") %>">
-          <td class="govuk-table__cell"><%= key %></td>
-          <td class="govuk-table__cell"><%= value %></td>
-        </tr>
-      <% end %>
+        <% @project_statistics.opener_date_and_project_total.each do |key, value| %>
+          <tr class="govuk-table__row" id="<%= key.tr(" ", "_") %>">
+            <th scope="row" class="govuk-table__cell"><%= key %></th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= value %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
