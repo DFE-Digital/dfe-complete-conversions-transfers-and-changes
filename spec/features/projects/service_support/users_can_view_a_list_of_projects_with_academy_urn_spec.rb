@@ -56,10 +56,7 @@ RSpec.feature "Viewing all projects with an academy URN" do
       within("thead") do
         expect(page).to have_content("School")
         expect(page).to have_content("URN")
-        expect(page).to have_content("School type")
-        expect(page).to have_content("School phase")
         expect(page).to have_content("Conversion date")
-        expect(page).to have_content("Route")
         expect(page).to have_content("Academy URN")
         expect(page).to have_content("Academy URN")
         expect(page).to have_content("View project")

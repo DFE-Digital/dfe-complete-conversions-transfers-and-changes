@@ -5,5 +5,8 @@ Date::DATE_FORMATS[:govuk_weekday] = "%-d %B %Y, %a"
 Date::DATE_FORMATS[:govuk_month] = "%B %Y"
 Date::DATE_FORMATS[:govuk_month_only] = "%B"
 
+# Date format for all significant date (conversion date and transfer date)
+Date::DATE_FORMATS[:significant_date] = "%b %Y"
+
 # date format for csv files
 Date::DATE_FORMATS[:csv] = "%Y-%m-%d"
