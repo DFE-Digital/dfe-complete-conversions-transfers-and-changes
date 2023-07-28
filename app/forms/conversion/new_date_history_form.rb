@@ -19,7 +19,7 @@ class Conversion::NewDateHistoryForm
   def save
     return false unless valid?
 
-    if ConversionDateUpdater.new(project: project, revised_date: date_from_attributes, note_body: note_body, user: user).update!
+    if SignificantDateCreatorService.new(project: project, revised_date: date_from_attributes, note_body: note_body, user: user).update!
       true
     else
       errors.add(:revised_date, :transaction)

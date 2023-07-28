@@ -79,7 +79,7 @@ RSpec.describe Conversion::NewDateHistoryForm, type: :model do
       form.project = project
       form.user = user
 
-      allow_any_instance_of(ConversionDateUpdater).to receive("update!").and_return(false)
+      allow_any_instance_of(SignificantDateCreatorService).to receive("update!").and_return(false)
 
       expect(form.save).to eq false
       expect(form.errors.messages[:revised_date]).to include(I18n.t("errors.attributes.revised_date.transaction"))

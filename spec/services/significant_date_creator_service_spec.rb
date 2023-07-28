@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ConversionDateUpdater do
+RSpec.describe SignificantDateCreatorService do
   let(:user) { create(:user, :caseworker) }
   let(:note_body) { "This is my note body." }
 
@@ -54,7 +54,7 @@ RSpec.describe ConversionDateUpdater do
 
       allow(project).to receive(:update!).and_raise(ActiveRecord::RecordInvalid)
 
-      conversion_date_updater = ConversionDateUpdater.new(project: project, revised_date: revised_date, note_body: note_body, user: user)
+      conversion_date_updater = described_class.new(project: project, revised_date: revised_date, note_body: note_body, user: user)
 
       expect(conversion_date_updater.update!).to be false
       expect(project.reload.conversion_date).not_to eql revised_date
