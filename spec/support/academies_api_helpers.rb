@@ -69,6 +69,13 @@ module AcademiesApiHelpers
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
   end
 
+  def mock_trust_not_found(ukprn:)
+    mock_client = Api::AcademiesApi::Client.new
+    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError)
+    allow(mock_client).to receive(:get_trust).with(ukprn).and_return(not_found_result)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
+  end
+
   def mock_timeout_api_establishment_response(urn:)
     test_client = Api::AcademiesApi::Client.new
 

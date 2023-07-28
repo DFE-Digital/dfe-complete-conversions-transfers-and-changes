@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Transfer::CreateProjectForm, type: :model do
-  before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+  before { mock_all_academies_api_responses }
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
@@ -78,6 +78,18 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         end
       end
     end
+
+    describe "#provisional_transfer_date" do
+      it { is_expected.to validate_presence_of(:provisional_transfer_date) }
+
+      it "must be in the future" do
+        form = build(:create_transfer_project_form, provisional_transfer_date: {3 => 1, 2 => 1, 1 => 2030})
+        expect(form).to be_valid
+
+        form.provisional_transfer_date = {3 => 1, 2 => 1, 1 => 2020}
+        expect(form).to be_invalid
+      end
+    end
   end
 
   describe "urn" do
@@ -90,13 +102,10 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("Could not find establishment with URN: 12345"))
       end
 
-      before do
-        allow_any_instance_of(Api::AcademiesApi::Client).to \
-          receive(:get_establishment) { no_establishment_found_result }
-      end
-
       it "is invalid" do
         form = build(:create_transfer_project_form)
+        mock_establishment_not_found(urn: form.urn)
+
         expect(form).to be_invalid
       end
     end
@@ -140,17 +149,10 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }
 
     context "when no trust with that UKPRN exists in the API" do
-      let(:no_trust_found_result) do
-        Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
-      end
-
-      before do
-        allow_any_instance_of(Api::AcademiesApi::Client).to \
-          receive(:get_trust) { no_trust_found_result }
-      end
-
       it "is invalid" do
         form = build(:create_transfer_project_form)
+        mock_trust_not_found(ukprn: form.incoming_trust_ukprn)
+
         expect(form).to be_invalid
       end
     end
@@ -162,17 +164,10 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     it { is_expected.to validate_presence_of(:outgoing_trust_ukprn) }
 
     context "when no trust with that UKPRN exists in the API" do
-      let(:no_trust_found_result) do
-        Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
-      end
-
-      before do
-        allow_any_instance_of(Api::AcademiesApi::Client).to \
-          receive(:get_trust) { no_trust_found_result }
-      end
-
       it "is invalid" do
         form = build(:create_transfer_project_form)
+        mock_trust_not_found(ukprn: form.incoming_trust_ukprn)
+
         expect(form).to be_invalid
       end
     end
