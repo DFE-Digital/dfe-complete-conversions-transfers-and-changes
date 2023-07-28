@@ -15,6 +15,10 @@
             row.value { t("project.summary.type.transfer") }
           end
           summary_list.row do |row|
+            row.key { t("project.summary.transfer_date.title") }
+            row.value { significant_date(@project) }
+          end
+          summary_list.row do |row|
             row.key { t("project.summary.incoming_trust.title") }
             row.value { @project.incoming_trust.name }
           end

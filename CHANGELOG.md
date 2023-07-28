@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Early support to view a transfer project, no user facing changes.
 - Transfer projects can confirm the transfer date.
+- The transfer date is shown in the project summary for transfer projects.
 
 ### Changed
 
