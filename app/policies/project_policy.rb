@@ -53,7 +53,11 @@ class ProjectPolicy
   end
 
   def change_conversion_date?
-    change_significant_date?
+    @record.is_a?(Conversion::Project) && change_significant_date?
+  end
+
+  def change_transfer_date?
+    @record.is_a?(Transfer::Project) && change_significant_date?
   end
 
   def new_note?
