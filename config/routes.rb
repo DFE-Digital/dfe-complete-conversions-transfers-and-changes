@@ -52,9 +52,9 @@ Rails.application.routes.draw do
     get "mp", to: "member_of_parliament#show"
   end
 
-  concern :conversion_date_historyable do
-    get "conversion-date", to: "conversions/date_histories#new"
-    post "conversion-date", to: "conversions/date_histories#create"
+  concern :significant_date_historyable do
+    get "change-date", to: "date_histories#new"
+    post "change-date", to: "date_histories#create"
   end
 
   concern :academy_urn_updateable do
@@ -75,7 +75,7 @@ Rails.application.routes.draw do
         informationable
         completable
         internal_contactable
-        conversion_date_historyable
+        significant_date_historyable
         memberable
         academy_urn_updateable
       ]
