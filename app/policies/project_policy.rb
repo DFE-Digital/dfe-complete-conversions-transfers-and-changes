@@ -46,10 +46,18 @@ class ProjectPolicy
     project_assigned_to_user?
   end
 
-  def change_conversion_date?
-    return false if @record.conversion_date_provisional?
+  def change_significant_date?
+    return false if @record.significant_date_provisional?
 
     project_assigned_to_user?
+  end
+
+  def change_conversion_date?
+    @record.is_a?(Conversion::Project) && change_significant_date?
+  end
+
+  def change_transfer_date?
+    @record.is_a?(Transfer::Project) && change_significant_date?
   end
 
   def new_note?

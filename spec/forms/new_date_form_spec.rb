@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Conversion::NewDateHistoryForm, type: :model do
+RSpec.describe NewDateHistoryForm, type: :model do
   let(:form) { create_valid_form_object }
 
   describe "validations" do

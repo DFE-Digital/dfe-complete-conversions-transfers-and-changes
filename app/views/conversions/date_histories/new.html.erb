@@ -1,6 +1,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_with model: @form, url: project_conversion_date_path(@project) do |form| %>
+    <%= form_with model: @form, url: project_change_date_path(@project) do |form| %>
       <%= form.govuk_error_summary %>
 
       <fieldset class="govuk-fieldset">
@@ -15,9 +15,12 @@
           </h1>
         </legend>
 
-        <%= form.govuk_date_field :revised_date, omit_day: true %>
+        <%= form.govuk_date_field :revised_date,
+              omit_day: true,
+              legend: {text: t("helpers.legend.conversion_new_date_history_form.revised_date")},
+              hint: {text: t("helpers.hint.conversion_new_date_history_form.revised_date")} %>
 
-        <%= form.govuk_text_area :note_body, label: {size: "m"} %>
+        <%= form.govuk_text_area :note_body, label: {text: t("helpers.label.conversion_new_date_history_form.note_body"), size: "m"} %>
 
         <div class="govuk-button-group">
           <%= form.govuk_submit(t("conversion_new_date_history_form.submit")) %>

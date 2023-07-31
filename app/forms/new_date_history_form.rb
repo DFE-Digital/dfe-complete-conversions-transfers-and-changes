@@ -1,4 +1,4 @@
-class Conversion::NewDateHistoryForm
+class NewDateHistoryForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
