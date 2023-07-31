@@ -7,6 +7,12 @@ en:
       hint_html: <p class="govuk-body">Enter information about the school, trust and the advisory board decision.</p><p class="govuk-body">This will create a new transfer project.</p>
     created:
       success: Transfer project successfully created
+    complete:
+      unable_to_complete_html:
+        <p>This project cannot be completed until:</p>
+        <ul>
+        <li>The transfer date has been confirmed and is in the past</li>
+        </ul>
   helpers:
     label:
       transfer_project:

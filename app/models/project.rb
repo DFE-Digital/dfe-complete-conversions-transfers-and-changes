@@ -93,6 +93,10 @@ class Project < ApplicationRecord
     local_authority&.director_of_child_services
   end
 
+  def type_locale
+    type.parameterize(separator: "_")
+  end
+
   private def fetch_member_of_parliament
     Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
   end

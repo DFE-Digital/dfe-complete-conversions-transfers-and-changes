@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can complete a project" do
+RSpec.feature "Users can complete a conversion project" do
   let(:user) { create(:user, :caseworker) }
 
   before do

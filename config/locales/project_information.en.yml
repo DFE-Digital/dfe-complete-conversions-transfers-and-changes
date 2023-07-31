@@ -16,7 +16,10 @@ en:
             "true": "Yes"
             "false": "No"
           two_requires_improvement:
-            title: Is this conversion due to intervention following 2RI?
+            conversion_project:
+              title: Is this conversion due to intervention following 2RI?
+            transfer_project:
+              title: Is this transfer due to intervention following 2RI?
             "true": "Yes"
             "false": "No"
       advisory_board_details:
