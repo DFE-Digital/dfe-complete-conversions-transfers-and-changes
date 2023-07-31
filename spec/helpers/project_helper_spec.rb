@@ -55,23 +55,35 @@ RSpec.describe ProjectHelper, type: :helper do
     end
   end
 
-  describe "#converting_on_date" do
-    context "when the conversion date is provisional" do
+  describe "#significant_date" do
+    context "when the significant date is provisional" do
       it "returns the formatted date and a provisional tag" do
         project = build(:conversion_project, conversion_date_provisional: true)
 
-        expect(helper.converting_on_date(project)).to include project.conversion_date.to_formatted_s(:govuk)
-        expect(helper.converting_on_date(project)).to include "provisional"
+        expect(helper.significant_date(project)).to include project.conversion_date.to_formatted_s(:govuk)
+        expect(helper.significant_date(project)).to include "provisional"
       end
     end
 
-    context "when the conversion date is confirmed" do
+    context "when the significant date is confirmed" do
       it "returns the formatted date and a provisional tag" do
         project = build(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false)
 
-        expect(helper.converting_on_date(project)).to include project.conversion_date.to_formatted_s(:govuk)
-        expect(helper.converting_on_date(project)).not_to include "provisional"
+        expect(helper.significant_date(project)).to include project.conversion_date.to_formatted_s(:govuk)
+        expect(helper.significant_date(project)).not_to include "provisional"
       end
+    end
+
+    it "works for transfer dates as well" do
+      project = build(:transfer_project, transfer_date: Date.today.at_beginning_of_month, transfer_date_provisional: false)
+
+      expect(helper.significant_date(project)).to include project.transfer_date.to_formatted_s(:govuk)
+      expect(helper.significant_date(project)).not_to include "provisional"
+
+      project = build(:transfer_project, transfer_date: Date.today.at_beginning_of_month, transfer_date_provisional: true)
+
+      expect(helper.significant_date(project)).to include project.transfer_date.to_formatted_s(:govuk)
+      expect(helper.significant_date(project)).to include "provisional"
     end
   end
 

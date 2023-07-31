@@ -15,10 +15,10 @@ module ProjectHelper
     "mailto:#{email}"
   end
 
-  def converting_on_date(project)
-    return project.conversion_date.to_formatted_s(:govuk) unless project.conversion_date_provisional?
+  def significant_date(project)
+    return project.significant_date.to_formatted_s(:govuk) unless project.significant_date_provisional?
 
-    date = project.conversion_date.to_formatted_s(:govuk)
+    date = project.significant_date.to_formatted_s(:govuk)
     tag = govuk_tag(text: "provisional", colour: "grey")
 
     "#{date} #{tag}".html_safe

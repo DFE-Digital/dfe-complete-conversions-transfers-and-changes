@@ -1,0 +1,9 @@
+en:
+  transfer:
+    task:
+      task_name:
+        title:
+        hint:
+          html:
+        guidance_link:
+        guidance:

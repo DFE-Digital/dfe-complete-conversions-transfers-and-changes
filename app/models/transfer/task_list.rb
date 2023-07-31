@@ -3,7 +3,9 @@ class Transfer::TaskList < ::BaseTaskList
     [
       {
         identifier: :project_kick_off,
-        tasks: []
+        tasks: [
+          Transfer::Task::StakeholderKickOffTaskForm
+        ]
       }
     ]
   end

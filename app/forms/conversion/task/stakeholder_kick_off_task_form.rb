@@ -16,7 +16,7 @@ class Conversion::Task::StakeholderKickOffTaskForm < ::BaseTaskForm
 
   def save
     if @project.conversion_date_provisional? && confirmed_conversion_date.present?
-      ConversionDateUpdater.new(
+      ::SignificantDateCreatorService.new(
         project: @project,
         revised_date: confirmed_conversion_date,
         note_body: "Conversion date confirmed as part of the External stakeholder kick off task.",

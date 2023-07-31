@@ -1,5 +1,9 @@
 class Transfer::CreateProjectForm < CreateProjectForm
+  attr_reader :provisional_transfer_date
+
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
+  validates :provisional_transfer_date, presence: true
+  validates :provisional_transfer_date, date_in_the_future: true, first_day_of_month: true
 
   validate :urn_unique_for_in_progress_transfers, if: -> { urn.present? }
 
@@ -16,6 +20,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       establishment_sharepoint_link: establishment_sharepoint_link,
       trust_sharepoint_link: trust_sharepoint_link,
       advisory_board_date: advisory_board_date,
+      transfer_date: provisional_transfer_date,
       regional_delivery_officer_id: user.id,
       team: user.team,
       assigned_to: user,
@@ -24,12 +29,18 @@ class Transfer::CreateProjectForm < CreateProjectForm
       tasks_data: Transfer::TasksData.new
     )
 
-    return nil unless valid?
-
-    ActiveRecord::Base.transaction do
-      @project.save
+    if valid?
+      @project.save!
+      return @project
     end
+    nil
+  end
 
-    @project
+  def provisional_transfer_date=(hash)
+    @provisional_transfer_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
+  rescue NoMethodError
+    nil
+  rescue TypeError, Date::Error, NegativeValueError
+    @attributes_with_invalid_values << :provisional_transfer_date
   end
 end
