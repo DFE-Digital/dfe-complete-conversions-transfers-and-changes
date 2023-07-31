@@ -50,6 +50,11 @@ class Conversion::Project < Project
     :academy_order
   end
 
+  def completable?
+    return true if all_conditions_met? && confirmed_date_and_in_the_past? && grant_payment_certificate_received?
+    false
+  end
+
   private def fetch_academy(urn)
     Api::AcademiesApi::Client.new.get_establishment(urn)
   end

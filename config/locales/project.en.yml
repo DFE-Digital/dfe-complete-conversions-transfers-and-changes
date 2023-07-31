@@ -120,13 +120,6 @@ en:
           <p>You will not be able to change this project once it is completed.</p>
       submit_button: Complete project
       back_link: Return to project list
-      unable_to_complete_html:
-        <p>This project cannot be completed until:</p>
-        <ul>
-        <li>The conversion date has been confirmed and is in the past</li>
-        <li>The confirm all conditions have been met task is completed</li>
-        <li>The receive grant payment certificate task is completed</li>
-        </ul>
     summary:
       type:
         title: Type
