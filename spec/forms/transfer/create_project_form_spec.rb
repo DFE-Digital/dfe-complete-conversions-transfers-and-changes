@@ -5,7 +5,7 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
-    it { is_expected.to validate_presence_of(:trust_sharepoint_link) }
+    it { is_expected.to validate_presence_of(:incoming_trust_sharepoint_link) }
 
     describe "advisory_board_date" do
       it { is_expected.to validate_presence_of(:advisory_board_date) }

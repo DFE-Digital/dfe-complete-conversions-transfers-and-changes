@@ -18,7 +18,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       incoming_trust_ukprn: incoming_trust_ukprn,
       outgoing_trust_ukprn: outgoing_trust_ukprn,
       establishment_sharepoint_link: establishment_sharepoint_link,
-      trust_sharepoint_link: trust_sharepoint_link,
+      incoming_trust_sharepoint_link: incoming_trust_sharepoint_link,
       advisory_board_date: advisory_board_date,
       transfer_date: provisional_transfer_date,
       regional_delivery_officer_id: user.id,

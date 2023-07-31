@@ -22,7 +22,7 @@ class Project < ApplicationRecord
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
-  validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
+  validates :incoming_trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }

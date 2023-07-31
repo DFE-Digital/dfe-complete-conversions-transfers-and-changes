@@ -182,7 +182,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_150711) do
     t.text "advisory_board_conditions"
     t.text "establishment_sharepoint_link"
     t.datetime "completed_at"
-    t.text "trust_sharepoint_link"
+    t.text "incoming_trust_sharepoint_link"
     t.string "type"
     t.uuid "assigned_to_id"
     t.date "significant_date"

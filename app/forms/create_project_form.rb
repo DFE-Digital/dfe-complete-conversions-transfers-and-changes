@@ -11,7 +11,7 @@ class CreateProjectForm
   attribute :incoming_trust_ukprn, :integer
   attribute :outgoing_trust_ukprn, :integer
   attribute :establishment_sharepoint_link
-  attribute :trust_sharepoint_link
+  attribute :incoming_trust_sharepoint_link
   attribute :user
 
   attr_reader :advisory_board_date
@@ -22,7 +22,7 @@ class CreateProjectForm
   validates :advisory_board_date, date_in_the_past: true
 
   validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
-  validates :trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
+  validates :incoming_trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
