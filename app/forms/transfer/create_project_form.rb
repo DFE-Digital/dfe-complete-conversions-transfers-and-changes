@@ -16,7 +16,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
     @project = Transfer::Project.new(
       urn: urn,
       incoming_trust_ukprn: incoming_trust_ukprn,
-      outgoing_trust_ukprn: incoming_trust_ukprn,
+      outgoing_trust_ukprn: outgoing_trust_ukprn,
       establishment_sharepoint_link: establishment_sharepoint_link,
       trust_sharepoint_link: trust_sharepoint_link,
       advisory_board_date: advisory_board_date,

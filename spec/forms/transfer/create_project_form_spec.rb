@@ -198,6 +198,11 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         project = build(:create_transfer_project_form).save
         expect(project.tasks_data).to be_a(Transfer::TasksData)
       end
+
+      it "sets the outgoing trust" do
+        project = build(:create_transfer_project_form, outgoing_trust_ukprn: 10061008).save
+        expect(project.reload.outgoing_trust_ukprn).to eql(10061008)
+      end
     end
 
     context "when the form is invalid" do
