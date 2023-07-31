@@ -8,7 +8,7 @@
       end %>
   <%= govuk_summary_list do |summary_list|
         summary_list.row do |row|
-          row.key { t("project_information.show.project_details.rows.two_requires_improvement.title") }
+          row.key { t("project_information.show.project_details.rows.two_requires_improvement.#{project.type_locale}.title") }
           row.value { t("project_information.show.project_details.rows.two_requires_improvement.#{project.two_requires_improvement}") }
         end
       end %>
