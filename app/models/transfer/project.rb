@@ -14,6 +14,11 @@ class Transfer::Project < Project
     @outgoing_trust ||= fetch_trust(outgoing_trust_ukprn)
   end
 
+  def completable?
+    return true if confirmed_date_and_in_the_past?
+    false
+  end
+
   private def outgoing_trust_exists
     outgoing_trust
   rescue Api::AcademiesApi::Client::NotFoundError

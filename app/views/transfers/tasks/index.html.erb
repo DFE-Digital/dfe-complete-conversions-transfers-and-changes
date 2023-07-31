@@ -3,3 +3,5 @@
 <%= render partial: "/shared/projects/sub_navigation" %>
 
 <%= render partial: "shared/projects/task_list" %>
+
+<%= render "projects/show/complete" if policy(@project).update? %>
