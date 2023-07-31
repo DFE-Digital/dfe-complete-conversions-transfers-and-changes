@@ -140,6 +140,8 @@ en:
         title: Trust SharePoint folder
         value: Open the trust SharePoint folder in a new tab
       completed_at: Project completed
+      transfer_date:
+        title: Transferring on
     assign:
       regional_delivery_officer:
         success: Regional delivery officer has been assigned
