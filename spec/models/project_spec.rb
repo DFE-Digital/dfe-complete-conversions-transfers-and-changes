@@ -291,6 +291,16 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#type_locale" do
+    it "returns the project type as a string we can use in locales" do
+      conversion_project = build(:conversion_project)
+      expect(conversion_project.type_locale).to eq("conversion_project")
+
+      transfer_project = build(:transfer_project)
+      expect(transfer_project.type_locale).to eq("transfer_project")
+    end
+  end
+
   describe "Scopes" do
     describe "conversions" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }

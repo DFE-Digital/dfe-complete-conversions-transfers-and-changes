@@ -8,7 +8,7 @@ class ProjectsCompleteController < ApplicationController
 
       render :completed
     else
-      flash[:alert] = I18n.t("#{@project.type.downcase.gsub("::", "_")}.complete.unable_to_complete_html")
+      flash[:alert] = I18n.t("#{@project.type_locale}.complete.unable_to_complete_html")
       redirect_to project_tasks_path(@project)
     end
   end
