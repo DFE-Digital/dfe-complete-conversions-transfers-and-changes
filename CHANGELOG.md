@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - some project sub views now render in a wider layout.
+- the outgoing trust UKPRN is now assigned correctly.
 
 ## [Release 36][release-36]
 
