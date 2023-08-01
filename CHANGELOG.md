@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The back link on a single conversion project has been removed as it does not
   link back to the expected location in all cases.
 - The 'user' path now matches the navigations 'yours'.
+- The new conversion button has moved up the page.
 
 ### Fixed
 

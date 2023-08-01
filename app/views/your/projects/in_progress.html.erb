@@ -4,14 +4,20 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+    <%= render partial: "projects/shared/new_projects" if policy(:project).new? %>
+  </div>
+</div>
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
       <%= t("project.user.in_progress.title") %>
     </h1>
+  </div>
+</div>
 
-    <%= render partial: "projects/shared/new_projects" if policy(:project).new? %>
-
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
     <%= render partial: "/shared/projects/list", locals: {projects: @projects, pager: @pager} %>
-
   </div>
 </div>
