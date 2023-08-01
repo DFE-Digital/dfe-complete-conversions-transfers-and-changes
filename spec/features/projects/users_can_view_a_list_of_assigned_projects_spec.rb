@@ -84,8 +84,8 @@ RSpec.feature "Viewing assigned projects" do
         expect(page).not_to have_content(completed_other_user_project.urn)
         expect(page).not_to have_content(completed_unassigned_project.urn)
 
-        expect(page.find("h2.govuk-heading-m:first-of-type").text).to eq((Date.today + 1.month).at_beginning_of_month.strftime("%B %Y openers"))
-        expect(page.find("h2.govuk-heading-m:last-of-type").text).to eq((Date.today + 1.year).at_beginning_of_month.strftime("%B %Y openers"))
+        expect(page.find("h2.govuk-heading-l:first-of-type").text).to eq((Date.today + 1.month).at_beginning_of_month.strftime("%B %Y"))
+        expect(page.find("h2.govuk-heading-l:last-of-type").text).to eq((Date.today + 1.year).at_beginning_of_month.strftime("%B %Y"))
       end
     end
 

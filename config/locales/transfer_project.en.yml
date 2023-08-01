@@ -1,5 +1,6 @@
 en:
   transfer_project:
+    type: Transfer
     add:
       title: Add a transfer
     new:
@@ -13,6 +14,12 @@ en:
         <ul>
         <li>The transfer date has been confirmed and is in the past</li>
         </ul>
+    summary_card:
+      type: Type
+      incoming_trust: Incoming trust
+      outgoing_trust: Outgoing trust
+      transfer_date: Transfer date
+      region: Region
   helpers:
     label:
       transfer_project:

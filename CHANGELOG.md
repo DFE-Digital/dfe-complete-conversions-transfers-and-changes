@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The transfer date is shown in the project summary for transfer projects.
 - A transfer project can be completed.
 - All three SharePoint links are now shown on the transfer project summary.
+- A transfer project can be displayed on the Your in-progress projects view.
 
 ### Changed
 
@@ -31,6 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   link back to the expected location in all cases.
 - The 'user' path now matches the navigations 'yours'.
 - The new conversion button has moved up the page.
+- The layout and information shown on the Your in-progress projects view has
+  been improved.
 
 ### Fixed
 

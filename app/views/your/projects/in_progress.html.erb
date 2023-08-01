@@ -10,14 +10,28 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">
+    <h1 class="govuk-heading-xl">
       <%= t("project.user.in_progress.title") %>
     </h1>
   </div>
 </div>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <%= render partial: "/shared/projects/list", locals: {projects: @projects, pager: @pager} %>
+  <div class="govuk-grid-column-two-thirds">
+    <% if @projects.empty? %>
+      <%= govuk_inset_text(text: t("project.index.empty")) %>
+    <% else %>
+      <ul class="projects-list list-style-none govuk-!-padding-0">
+        <% grouped_project = @projects.group_by { |project| project.significant_date.strftime("%B %Y") } %>
+        <% grouped_project.each do |opening_date, projects| %>
+          <h2 class="govuk-heading-l"><%= opening_date %></h2>
+          <% projects.each do |project| %>
+            <%= render partial: "conversion_card", locals: {project: project} if project.type.eql?("Conversion::Project") %>
+            <%= render partial: "transfer_card", locals: {project: project} if project.type.eql?("Transfer::Project") %>
+          <% end %>
+        <% end %>
+      </ul>
+      <%= govuk_pagination(pagy: @pager) %>
+    <% end %>
   </div>
 </div>
