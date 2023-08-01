@@ -174,10 +174,10 @@ en:
         trust_name: Trust
         group_identifier: Group identifier
         conversion_count: Conversions
+        transfer_count: Transfers
         view_projects: View projects
         local_authority_name: Local authority
         local_authority_code: Code
-        conversion_count: Conversions
         region: Region
         email: Email
         user: User name

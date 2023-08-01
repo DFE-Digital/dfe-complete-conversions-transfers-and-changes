@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ByLocalAuthorityProjectFetcherService do
-  it "returns a sorted list of simple local authority objects with projects" do
+  it "returns a sorted list of simple local authority objects with conversion and transfer projects" do
     establishment = build(:academies_api_establishment, local_authority_code: "909", urn: 121813)
     another_establishment = build(:academies_api_establishment, local_authority_code: "213", urn: 121102)
     yet_another_establishment = build(:academies_api_establishment, local_authority_code: "926", urn: 121583)
@@ -23,7 +23,9 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
     create(:conversion_project, urn: establishment.urn)
     create(:conversion_project, urn: another_establishment.urn)
     create(:conversion_project, urn: establishment.urn)
-    create(:conversion_project, urn: yet_another_establishment.urn)
+
+    create(:transfer_project, urn: establishment.urn)
+    create(:transfer_project, urn: yet_another_establishment.urn)
 
     result = described_class.new.local_authorities_with_projects
 
@@ -34,12 +36,21 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
     expect(first_result.name).to eql "Cumbria County Council"
     expect(first_result.code).to eql "909"
     expect(first_result.conversion_count).to eql 2
+    expect(first_result.transfer_count).to eql 1
+
+    middle_result = result[1]
+
+    expect(middle_result.name).to eql "Norfolk County Council"
+    expect(middle_result.code).to eql "926"
+    expect(middle_result.conversion_count).to eql 0
+    expect(middle_result.transfer_count).to eql 1
 
     last_result = result.last
 
     expect(last_result.name).to eql "Westminster City Council"
     expect(last_result.code).to eql "213"
     expect(last_result.conversion_count).to eql 1
+    expect(last_result.transfer_count).to eql 0
   end
 
   it "returns an empty array when there are no projects to source trusts" do
