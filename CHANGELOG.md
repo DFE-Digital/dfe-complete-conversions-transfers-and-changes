@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Transfer projects can confirm the transfer date.
 - The transfer date is shown in the project summary for transfer projects.
 - A transfer project can be completed.
+- All three SharePoint links are now shown on the transfer project summary.
 
 ### Changed
 

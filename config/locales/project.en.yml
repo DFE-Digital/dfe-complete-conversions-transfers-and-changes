@@ -139,6 +139,9 @@ en:
       incoming_trust_sharepoint_link:
         title: Incoming trust SharePoint folder
         value: Open the incoming trust SharePoint folder in a new tab
+      outgoing_trust_sharepoint_link:
+        title: Outgoing trust SharePoint folder
+        value: Open the outgoing trust SharePoint folder in a new tab
       completed_at: Project completed
       transfer_date:
         title: Transferring on

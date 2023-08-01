@@ -7,6 +7,7 @@ FactoryBot.define do
     advisory_board_date { (Date.today - 2.weeks) }
     establishment_sharepoint_link { "https://educationgovuk-my.sharepoint.com/establishment-folder" }
     incoming_trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/incoming-trust-folder" }
+    outgoing_trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder" }
     assigned_to { association :user, :caseworker, email: "user.#{SecureRandom.uuid}@education.gov.uk" }
     directive_academy_order { false }
     region { Project.regions["london"] }

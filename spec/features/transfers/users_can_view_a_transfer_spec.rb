@@ -15,6 +15,9 @@ RSpec.feature "Users can view a transfer" do
     expect(page).to have_content(transfer_project.urn)
     expect(page).to have_content("transfer")
     expect(page).to have_content("West Midlands")
+    expect(page).to have_link("SharePoint folder in a new tab", href: "https://educationgovuk-my.sharepoint.com/establishment-folder")
+    expect(page).to have_link("SharePoint folder in a new tab", href: "https://educationgovuk-my.sharepoint.com/incoming-trust-folder")
+    expect(page).to have_link("SharePoint folder in a new tab", href: "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder")
   end
 
   scenario "they can navigate the sub sections" do
