@@ -41,7 +41,8 @@ RSpec.feature "Users can create new conversion projects" do
     fill_in "Outgoing trust UKPRN (UK Provider Reference Number)", with: outgoing_ukprn
 
     fill_in "School SharePoint link", with: "https://educationgovuk-my.sharepoint.com/school-folder"
-    fill_in "Trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/trust-folder"
+    fill_in "Incoming trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"
+    fill_in "Outgoing trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder"
 
     within("#advisory-board-date") do
       fill_in "Day", with: two_weeks_ago.day

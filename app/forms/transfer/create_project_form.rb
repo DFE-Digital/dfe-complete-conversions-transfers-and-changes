@@ -1,11 +1,15 @@
 class Transfer::CreateProjectForm < CreateProjectForm
   attr_reader :provisional_transfer_date
 
+  attribute :outgoing_trust_sharepoint_link
+
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
   validates :provisional_transfer_date, presence: true
   validates :provisional_transfer_date, date_in_the_future: true, first_day_of_month: true
 
   validate :urn_unique_for_in_progress_transfers, if: -> { urn.present? }
+
+  validates :outgoing_trust_sharepoint_link, presence: true, sharepoint_url: true
 
   def initialize(params = {})
     @attributes_with_invalid_values = []
@@ -19,6 +23,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       outgoing_trust_ukprn: outgoing_trust_ukprn,
       establishment_sharepoint_link: establishment_sharepoint_link,
       incoming_trust_sharepoint_link: incoming_trust_sharepoint_link,
+      outgoing_trust_sharepoint_link: outgoing_trust_sharepoint_link,
       advisory_board_date: advisory_board_date,
       transfer_date: provisional_transfer_date,
       regional_delivery_officer_id: user.id,

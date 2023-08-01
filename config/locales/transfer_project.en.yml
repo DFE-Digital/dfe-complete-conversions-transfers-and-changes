@@ -23,7 +23,8 @@ en:
         regional_delivery_officer_id: Regional delivery officer
         advisory_board_conditions: Advisory board conditions
         establishment_sharepoint_link: School SharePoint link
-        trust_sharepoint_link: Trust SharePoint link
+        incoming_trust_sharepoint_link: Incoming trust SharePoint link
+        outgoing_trust_sharepoint_link: Outgoing trust SharePoint link
     legend:
       transfer_project:
         advisory_board_date: Date of advisory board
@@ -43,9 +44,14 @@ en:
         provisional_transfer_date: You can find this in the advisory board template.
         advisory_board_conditions: Enter details of conditions that must be met before the school can transfer.
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
-        trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
+        incoming_trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
   errors:
     attributes:
       provisional_transfer_date:
         blank: Enter a month and year for the provisional transfer date, like 9 2023
         must_be_in_the_future: Provisional transfer date must be in the future
+      outgoing_trust_sharepoint_link:
+        blank: Enter an outgoing trust SharePoint link
+        invalid: Enter a outgoing trust SharePoint link in the correct format
+        https_only: The outgoing trust SharePoint link must have the https scheme
+        host_not_allowed: Enter an outgoing trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
