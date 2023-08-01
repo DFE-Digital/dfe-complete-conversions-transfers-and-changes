@@ -359,7 +359,7 @@ GEM
       connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
       redis (>= 4.5.0, < 5)
-    simplecov (0.21.2)
+    simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
@@ -460,7 +460,7 @@ DEPENDENCIES
   sentry-ruby
   shoulda-matchers (~> 5.1)
   sidekiq (< 7.0)
-  simplecov (~> 0.21.2)
+  simplecov (~> 0.22.0)
   sprockets-rails
   standard
   tzinfo-data
