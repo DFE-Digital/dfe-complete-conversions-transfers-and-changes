@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - remove the third checkbox from Receive grant payment certificate task and
   amend the guidance on the first checkbox to be more explicit.
 - remove Route from project summaries.
+- 'Trust' is now 'Incoming trust' on conversions and transfers.
 
 ### Fixed
 

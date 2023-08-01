@@ -136,9 +136,9 @@ en:
       establishment_sharepoint_link:
         title: School SharePoint folder
         value: Open the school SharePoint folder in a new tab
-      trust_sharepoint_link:
-        title: Trust SharePoint folder
-        value: Open the trust SharePoint folder in a new tab
+      incoming_trust_sharepoint_link:
+        title: Incoming trust SharePoint folder
+        value: Open the incoming trust SharePoint folder in a new tab
       completed_at: Project completed
       transfer_date:
         title: Transferring on
@@ -339,11 +339,11 @@ en:
         invalid: Enter a school SharePoint link in the correct format
         https_only: The school SharePoint link must have the https scheme
         host_not_allowed: Enter a school sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
-      trust_sharepoint_link:
-        blank: Enter a trust SharePoint link
-        invalid: Enter a trust SharePoint link in the correct format
-        https_only: The trust SharePoint link must have the https scheme
-        host_not_allowed: Enter a trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+      incoming_trust_sharepoint_link:
+        blank: Enter an incoming trust SharePoint link
+        invalid: Enter a incoming trust SharePoint link in the correct format
+        https_only: The incoming trust SharePoint link must have the https scheme
+        host_not_allowed: Enter an incoming trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
       directive_academy_order:
         inclusion: Select directive academy order or academy order, whichever has been used for this conversion
       assigned_to_regional_caseworker_team:
