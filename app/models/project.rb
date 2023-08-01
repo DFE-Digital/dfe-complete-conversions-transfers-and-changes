@@ -2,8 +2,6 @@ class Project < ApplicationRecord
   include Teamable
   include SignificantDate
 
-  SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
-
   attr_writer :establishment, :incoming_trust, :member_of_parliament
 
   delegated_type :tasks_data, types: %w[Conversion::TasksData, Transfer::TasksData], dependent: :destroy
@@ -21,8 +19,8 @@ class Project < ApplicationRecord
   validates :incoming_trust_ukprn, ukprn: true
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
-  validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
-  validates :incoming_trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
+  validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
+  validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }

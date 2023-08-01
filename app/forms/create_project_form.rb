@@ -3,8 +3,6 @@ class CreateProjectForm
   include ActiveModel::Attributes
   include ActiveRecord::AttributeAssignment
 
-  SHAREPOINT_URLS = %w[educationgovuk-my.sharepoint.com educationgovuk.sharepoint.com].freeze
-
   class NegativeValueError < StandardError; end
 
   attribute :urn, :integer
@@ -21,8 +19,8 @@ class CreateProjectForm
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
 
-  validates :establishment_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
-  validates :incoming_trust_sharepoint_link, presence: true, url: {hostnames: SHAREPOINT_URLS}
+  validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
+  validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
