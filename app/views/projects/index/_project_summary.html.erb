@@ -14,9 +14,6 @@
     <%= render partial: "projects/index/project_summary_item",
           locals: {label: t("project.summary.local_authority.title"), content: project.establishment.local_authority_name} %>
 
-    <%= render partial: "projects/index/project_summary_item",
-          locals: {label: t("conversion_project.summary.route.title"), content: t("conversion_project.#{project.route}.route")} %>
-
   </div>
 
   <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">

@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the task list is now disaplyed in a narrower layout.
 - remove the third checkbox from Receive grant payment certificate task and
   amend the guidance on the first checkbox to be more explicit.
+- remove Route from project summaries.
 
 ### Fixed
 
