@@ -4,19 +4,19 @@
     <%= unless @current_user.team_leader?
           render partial: "shared/sub_navigation_item",
             locals: {name: t("subnavigation.in_progress_projects"),
-                     path: in_progress_user_projects_path}
+                     path: in_progress_your_projects_path}
         end %>
 
     <%= if @current_user.regional_delivery_officer?
           render partial: "shared/sub_navigation_item",
             locals: {name: t("subnavigation.added_by_projects"),
-                     path: added_by_user_projects_path}
+                     path: added_by_your_projects_path}
         end %>
 
     <%= unless @current_user.team_leader?
           render partial: "shared/sub_navigation_item",
             locals: {name: t("subnavigation.completed_projects"),
-                     path: completed_user_projects_path}
+                     path: completed_your_projects_path}
         end %>
 
     <%= if @current_user.team_leader?

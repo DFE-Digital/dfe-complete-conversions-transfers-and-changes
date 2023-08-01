@@ -1,4 +1,4 @@
-class User::ProjectsController < ApplicationController
+class Your::ProjectsController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 

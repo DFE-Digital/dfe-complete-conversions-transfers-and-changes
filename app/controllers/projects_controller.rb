@@ -12,6 +12,6 @@ class ProjectsController < ApplicationController
   def index
     authorize Project, :index?
 
-    redirect_to in_progress_user_projects_path
+    redirect_to in_progress_your_projects_path
   end
 end

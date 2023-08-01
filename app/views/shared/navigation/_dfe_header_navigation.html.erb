@@ -12,7 +12,7 @@
          <ul class="dfe-header__navigation-list">
             <%= if policy(:navigation).show_your_projects_header_navigation?
                   render partial: "shared/navigation/dfe_header_navigation_item",
-                    locals: {title: t("navigation.header.your_projects"), path: in_progress_user_projects_path, namespace: "/projects/user/"}
+                    locals: {title: t("navigation.header.your_projects"), path: in_progress_your_projects_path, namespace: "/projects/yours/"}
                 end %>
 
             <%= if policy(:navigation).show_team_projects_header_navigation?

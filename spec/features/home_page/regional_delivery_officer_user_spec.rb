@@ -9,7 +9,7 @@ RSpec.feature "The home page for a regional delivery officers user" do
   scenario "redirects to the your projects view" do
     visit root_path
 
-    expect(page.current_path).to eql in_progress_user_projects_path
+    expect(page.current_path).to eql in_progress_your_projects_path
   end
 
   scenario "shows the added by you primary navigation" do

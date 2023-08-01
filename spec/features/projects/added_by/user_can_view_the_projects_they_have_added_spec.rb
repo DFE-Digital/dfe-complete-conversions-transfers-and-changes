@@ -8,7 +8,7 @@ RSpec.feature "Viewing all projects a user has added" do
     end
 
     scenario "they can see a helpful message" do
-      visit added_by_user_projects_path
+      visit added_by_your_projects_path
 
       expect(page).to have_content(I18n.t("project.table.in_progress.empty"))
     end
@@ -33,7 +33,7 @@ RSpec.feature "Viewing all projects a user has added" do
     end
 
     def view_all_added_projects
-      visit added_by_user_projects_path
+      visit added_by_your_projects_path
 
       expect(page).to have_content(I18n.t("project.user.added_by.title"))
 

@@ -5,7 +5,7 @@
 
       <%= if policy(:navigation).show_your_projects_header_navigation?
             render partial: "shared/navigation/header_navigation_item",
-              locals: {name: t("navigation.header.your_projects"), path: in_progress_user_projects_path, namespace: "/projects/user/"}
+              locals: {name: t("navigation.header.your_projects"), path: in_progress_your_projects_path, namespace: "/projects/yours/"}
           end %>
 
       <%= if policy(:navigation).show_team_projects_header_navigation?
