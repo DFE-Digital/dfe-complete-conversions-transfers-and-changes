@@ -82,7 +82,7 @@ group :test do
   gem "axe-core-rspec"
   gem "capybara"
   gem "climate_control"
-  gem "simplecov", "~> 0.21.2"
+  gem "simplecov", "~> 0.22.0"
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 5.1"
   gem "webmock", "~> 3.17"
