@@ -13,7 +13,7 @@ class ByLocalAuthorityProjectFetcherService
     all_projects = Project.not_completed.select(:id, :urn, :incoming_trust_ukprn)
     projects_for_local_authority = all_projects.select { |p| p.establishment.local_authority_code == local_authority_code }
 
-    Conversion::Project.where(id: projects_for_local_authority.pluck(:id)).includes(:assigned_to).by_conversion_date
+    Project.where(id: projects_for_local_authority.pluck(:id)).includes(:assigned_to).ordered_by_significant_date
   end
 
   private def projects_by_local_authority

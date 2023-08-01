@@ -165,6 +165,7 @@ en:
         assign: Assign project
         added_by: Added by
         conversion_date: Conversion date
+        significant_date: Significant date
         revised_conversion_date: Revised conversion date
         route: Route
         school_phase: School phase
