@@ -95,6 +95,10 @@ class Project < ApplicationRecord
     type.parameterize(separator: "_")
   end
 
+  def academy_order_type
+    :not_applicable
+  end
+
   private def fetch_member_of_parliament
     Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
   end

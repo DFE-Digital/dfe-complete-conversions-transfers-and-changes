@@ -240,6 +240,7 @@ en:
           academy_order_type:
             academy_order: AO (Academy Order)
             directive_academy_order: DAO (Directive Academy Order)
+            not_applicable: Not applicable
       route:
         voluntary: Voluntary
         sponsored: Sponsored
