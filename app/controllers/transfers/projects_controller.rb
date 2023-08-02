@@ -26,7 +26,8 @@ class Transfers::ProjectsController < ApplicationController
       :advisory_board_date,
       :provisional_transfer_date,
       :incoming_trust_sharepoint_link,
-      :outgoing_trust_sharepoint_link
+      :outgoing_trust_sharepoint_link,
+      :handover_note_body
     )
   end
 end

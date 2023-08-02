@@ -19,6 +19,10 @@
       <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_sharepoint_link")} %>
       <%= form.govuk_text_field :outgoing_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_sharepoint_link")} %>
 
+      <%= form.govuk_text_area :handover_note_body,
+            label: {text: t("project.new.handover_comments_label"), size: "m"},
+            hint: {text: t("project.new.handover_comments_hint").html_safe} %>
+
       <%= form.govuk_submit %>
     <% end %>
   </div>
