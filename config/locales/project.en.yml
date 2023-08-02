@@ -185,6 +185,7 @@ en:
         date: Date
         confirmed: Confirmed
         revised: Revised
+        team: Team
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
