@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - A transfer project can be completed.
 - All three SharePoint links are now shown on the transfer project summary.
 - A transfer project can be displayed on the Your in-progress projects view.
+- The new transfer project form is now complete and ready for the point transfer
+  projects are enabled.
 
 ### Changed
 

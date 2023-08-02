@@ -36,11 +36,11 @@ RSpec.feature "Users can create new conversion projects" do
   end
 
   def fill_in_form
-    fill_in "School URN", with: urn
-    fill_in "Incoming trust UKPRN (UK Provider Reference Number)", with: incoming_ukprn
+    fill_in "Academy URN", with: urn
+    fill_in "Incoming trust UKPRN", with: incoming_ukprn
     fill_in "Outgoing trust UKPRN (UK Provider Reference Number)", with: outgoing_ukprn
 
-    fill_in "School SharePoint link", with: "https://educationgovuk-my.sharepoint.com/school-folder"
+    fill_in "Academy SharePoint link", with: "https://educationgovuk-my.sharepoint.com/school-folder"
     fill_in "Incoming trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"
     fill_in "Outgoing trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder"
 
