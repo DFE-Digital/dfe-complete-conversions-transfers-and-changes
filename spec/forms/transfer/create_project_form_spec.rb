@@ -199,6 +199,16 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     end
   end
 
+  describe "advisory board conditions" do
+    it "saves any that are provided" do
+      form = build(:create_transfer_project_form, advisory_board_conditions: "These are the conditions.")
+
+      project = form.save
+
+      expect(project.advisory_board_conditions).to eql("These are the conditions.")
+    end
+  end
+
   describe "#save" do
     let(:establishment) { build(:academies_api_establishment) }
 

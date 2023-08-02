@@ -7,22 +7,38 @@
     <%= form_with model: @project, url: transfers_path do |form| %>
       <%= form.govuk_error_summary %>
 
-      <h1 class="govuk-heading-l"><%= t("transfer_project.new.title") %></h1>
+      <h1 class="govuk-heading-xl"><%= t("transfer_project.new.title") %></h1>
       <%= t("transfer_project.new.hint_html") %>
 
-      <%= form.govuk_text_field :urn, label: {size: "m", text: t("helpers.label.transfer_project.urn")}, hint: {text: t("helpers.hint.transfer_project.urn").html_safe}, width: 10 %>
-      <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10 %>
-      <%= form.govuk_text_field :outgoing_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.outgoing_trust_ukprn").html_safe}, width: 10 %>
-      <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.transfer_project.advisory_board_date")}, form_group: {id: "advisory-board-date"}, hint: {text: t("helpers.hint.project.advisory_board_date").html_safe} %>
-      <%= form.govuk_date_field :provisional_transfer_date, legend: {text: t("helpers.legend.transfer_project.provisional_transfer_date")}, omit_day: true, form_group: {id: "provisional-transfer-date"}, hint: {text: t("helpers.hint.transfer_project.provisional_transfer_date")} %>
-      <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.establishment_sharepoint_link")} %>
-      <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_sharepoint_link")} %>
-      <%= form.govuk_text_field :outgoing_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_sharepoint_link")} %>
+      <div class="govuk-form-group">
+        <%= form.govuk_text_field :urn, label: {size: "m", text: t("helpers.label.transfer_project.urn")}, hint: {text: t("helpers.hint.transfer_project.urn").html_safe}, width: 10 %>
+        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10 %>
+        <%= form.govuk_text_field :outgoing_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.outgoing_trust_ukprn").html_safe}, width: 10 %>
+      </div>
 
-      <%= form.govuk_collection_radio_buttons :assigned_to_regional_caseworker_team, @project.assigned_to_regional_caseworker_team_responses, :id, :name, legend: {text: t("helpers.hint.conversion_project.assigned_to_regional_caseworker_team")}, form_group: {id: "assigned-to-regional-caseworker-team"} %>
-      <%= form.govuk_text_area :handover_note_body,
-            label: {text: t("project.new.handover_comments_label"), size: "m"},
-            hint: {text: t("project.new.handover_comments_hint").html_safe} %>
+      <div class="govuk-form-group">
+        <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.establishment_sharepoint_link")} %>
+        <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_sharepoint_link")} %>
+        <%= form.govuk_text_field :outgoing_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_sharepoint_link")} %>
+      </div>
+
+      <div class="govuk-form-group">
+        <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.transfer_project.advisory_board_date")}, form_group: {id: "advisory-board-date"}, hint: {text: t("helpers.hint.project.advisory_board_date").html_safe} %>
+        <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.transfer_project.advisory_board_conditions")} %>
+      </div>
+
+      <div class="govuk-form-group">
+        <%= form.govuk_date_field :provisional_transfer_date, legend: {text: t("helpers.legend.transfer_project.provisional_transfer_date")}, omit_day: true, form_group: {id: "provisional-transfer-date"}, hint: {text: t("helpers.hint.transfer_project.provisional_transfer_date")} %>
+      </div>
+
+
+
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :assigned_to_regional_caseworker_team, @project.assigned_to_regional_caseworker_team_responses, :id, :name, legend: {text: t("helpers.hint.transfer_project.assigned_to_regional_caseworker_team")}, form_group: {id: "assigned-to-regional-caseworker-team"} %>
+        <%= form.govuk_text_area :handover_note_body,
+              label: {text: t("project.new.handover_comments_label"), size: "m"},
+              hint: {text: t("project.new.handover_comments_hint").html_safe} %>
+      </div>
 
       <%= form.govuk_submit %>
     <% end %>

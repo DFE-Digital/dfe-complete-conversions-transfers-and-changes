@@ -25,6 +25,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       incoming_trust_sharepoint_link: incoming_trust_sharepoint_link,
       outgoing_trust_sharepoint_link: outgoing_trust_sharepoint_link,
       advisory_board_date: advisory_board_date,
+      advisory_board_conditions: advisory_board_conditions,
       transfer_date: provisional_transfer_date,
       regional_delivery_officer_id: user.id,
       team: user.team,
