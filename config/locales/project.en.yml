@@ -165,7 +165,7 @@ en:
         assign: Assign project
         added_by: Added by
         conversion_date: Conversion date
-        significant_date: Conversion or transfer date
+        conversion_or_transfer_date: Conversion or transfer date
         revised_conversion_date: Revised conversion date
         route: Route
         school_phase: School phase
@@ -187,6 +187,9 @@ en:
         revised: Revised
         team: Team
       body:
+        type_name:
+          conversion_project: Conversion
+          transfer_project: Transfer
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
         assign_html: Assign <span class="govuk-visually-hidden">%{school_name}</span> project
