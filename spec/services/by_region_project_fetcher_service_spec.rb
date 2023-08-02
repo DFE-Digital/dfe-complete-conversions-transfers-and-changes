@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ByRegionProjectFetcherService do
-  describe "#conversion_count" do
+  describe "#project_counts" do
     it "returns a sorted list of simple view objects with project counts" do
       mock_successful_api_response_to_create_any_project
 
@@ -9,8 +9,10 @@ RSpec.describe ByRegionProjectFetcherService do
       create(:conversion_project, region: "london")
       create(:conversion_project, region: "south_west")
       create(:conversion_project, region: "north_west")
+      create(:transfer_project, region: "south_west")
+      create(:transfer_project, region: "london")
 
-      result = described_class.new.conversion_counts
+      result = described_class.new.project_counts
 
       expect(result.count).to eql 3
 
@@ -18,15 +20,17 @@ RSpec.describe ByRegionProjectFetcherService do
 
       expect(first_result.name).to eql "london"
       expect(first_result.conversion_count).to eql 1
+      expect(first_result.transfer_count).to eql 1
 
       last_result = result.last
 
       expect(last_result.name).to eql "south_west"
       expect(last_result.conversion_count).to eql 2
+      expect(last_result.transfer_count).to eql 1
     end
 
     it "returns an empty array when there are no projects to source trusts" do
-      expect(described_class.new.conversion_counts).to eql []
+      expect(described_class.new.project_counts).to eql []
     end
   end
 

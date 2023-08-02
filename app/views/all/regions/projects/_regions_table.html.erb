@@ -7,6 +7,7 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.region") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.transfer_count") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view_projects") %></th>
       </tr>
     </thead>
@@ -15,6 +16,7 @@
       <tr class="govuk-table__row">
         <td class="govuk-table__header govuk-table__cell"><%= t("project.region.#{region.name}") %></td>
         <td class="govuk-table__cell"><%= region.conversion_count %></td>
+        <td class="govuk-table__cell"><%= region.transfer_count %></td>
         <td class="govuk-table__cell">
           <%= link_to t("project.table.body.view_projects_for_html", entity: t("project.region.#{region.name}")), by_region_all_regions_projects_path(region.name) %>
         </td>
