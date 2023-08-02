@@ -232,6 +232,16 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         project = build(:create_transfer_project_form, outgoing_trust_ukprn: 10061008).save
         expect(project.reload.outgoing_trust_ukprn).to eql(10061008)
       end
+
+      it "creates a note associated to the handover task" do
+        form = build(:create_transfer_project_form, handover_note_body: "This is the handover note.")
+
+        form.save
+
+        expect(Note.count).to eq(1)
+        expect(Note.last.body).to eq("This is the handover note.")
+        expect(Note.last.task_identifier).to eq("handover")
+      end
     end
 
     context "when the form is invalid" do

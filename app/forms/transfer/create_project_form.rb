@@ -35,11 +35,14 @@ class Transfer::CreateProjectForm < CreateProjectForm
       tasks_data: Transfer::TasksData.new
     )
 
-    if valid?
-      @project.save!
-      return @project
+    return nil unless valid?
+
+    ActiveRecord::Base.transaction do
+      @project.save
+      @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
     end
-    nil
+
+    @project
   end
 
   def provisional_transfer_date=(hash)
