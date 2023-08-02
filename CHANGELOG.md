@@ -27,6 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   amend the guidance on the first checkbox to be more explicit.
 - remove Route from project summaries.
 - 'Trust' is now 'Incoming trust' on conversions and transfers.
+- The back link on a single conversion project has been removed as it does not
+  link back to the expected location in all cases.
 
 ### Fixed
 
