@@ -36,7 +36,6 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
     tasks_data = create(:conversion_tasks_data,
       receive_grant_payment_certificate_check_and_save: true,
       receive_grant_payment_certificate_update_kim: true,
-      receive_grant_payment_certificate_update_sheet: true,
       conditions_met_confirm_all_conditions_met: true)
     project = create(:conversion_project,
       regional_delivery_officer: user,

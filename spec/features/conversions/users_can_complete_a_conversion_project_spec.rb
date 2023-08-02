@@ -13,7 +13,6 @@ RSpec.feature "Users can complete a conversion project" do
       create(:conversion_tasks_data,
         receive_grant_payment_certificate_check_and_save: true,
         receive_grant_payment_certificate_update_kim: true,
-        receive_grant_payment_certificate_update_sheet: true,
         conditions_met_confirm_all_conditions_met: true)
     }
     let(:project) {

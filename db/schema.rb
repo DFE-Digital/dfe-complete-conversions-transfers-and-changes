@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_144749) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_150711) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -97,7 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_144749) do
     t.boolean "update_esfa_update"
     t.boolean "receive_grant_payment_certificate_check_and_save"
     t.boolean "receive_grant_payment_certificate_update_kim"
-    t.boolean "receive_grant_payment_certificate_update_sheet"
     t.boolean "one_hundred_and_twenty_five_year_lease_email"
     t.boolean "one_hundred_and_twenty_five_year_lease_receive"
     t.boolean "one_hundred_and_twenty_five_year_lease_save_lease"

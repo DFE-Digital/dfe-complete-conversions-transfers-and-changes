@@ -192,8 +192,7 @@ RSpec.describe Conversion::Project do
       let(:tasks_data) {
         create(:conversion_tasks_data,
           receive_grant_payment_certificate_check_and_save: nil,
-          receive_grant_payment_certificate_update_kim: nil,
-          receive_grant_payment_certificate_update_sheet: nil)
+          receive_grant_payment_certificate_update_kim: nil)
       }
 
       it "returns false" do
@@ -205,8 +204,7 @@ RSpec.describe Conversion::Project do
       let(:tasks_data) {
         create(:conversion_tasks_data,
           receive_grant_payment_certificate_check_and_save: true,
-          receive_grant_payment_certificate_update_kim: true,
-          receive_grant_payment_certificate_update_sheet: true)
+          receive_grant_payment_certificate_update_kim: true)
       }
 
       it "returns true" do
