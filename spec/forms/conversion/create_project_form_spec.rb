@@ -258,12 +258,25 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
     end
 
     describe "handover note body" do
-      it "is required" do
-        form = build(
-          form_factory.to_sym,
-          handover_note_body: ""
-        )
-        expect(form).to be_invalid
+      context "when the project is being handed over" do
+        it "is required" do
+          form = build(
+            form_factory.to_sym,
+            handover_note_body: ""
+          )
+          form.assigned_to_regional_caseworker_team = true
+          expect(form).to be_invalid
+        end
+      end
+      context "when the project is not being handed over" do
+        it "is not required" do
+          form = build(
+            form_factory.to_sym,
+            handover_note_body: ""
+          )
+          form.assigned_to_regional_caseworker_team = false
+          expect(form).to be_valid
+        end
       end
     end
   end

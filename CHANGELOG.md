@@ -36,6 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   been improved.
 - improved content on sign in page to include registraiton, guidance and release
   notes links
+- The handover note when adding a new project is only required if you indicate
+  that the project will be handed over.
 
 ### Fixed
 

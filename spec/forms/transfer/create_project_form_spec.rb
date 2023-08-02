@@ -180,6 +180,25 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     end
   end
 
+  describe "handover note body" do
+    context "when the project is being handed over" do
+      it "is required" do
+        form = build(:create_transfer_project_form, handover_note_body: "")
+        form.assigned_to_regional_caseworker_team = true
+
+        expect(form).to be_invalid
+      end
+    end
+    context "when the project is not being handed over" do
+      it "is not required" do
+        form = build(:create_transfer_project_form, handover_note_body: "")
+        form.assigned_to_regional_caseworker_team = false
+
+        expect(form).to be_valid
+      end
+    end
+  end
+
   describe "#save" do
     let(:establishment) { build(:academies_api_establishment) }
 

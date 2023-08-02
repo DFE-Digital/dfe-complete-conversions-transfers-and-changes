@@ -26,7 +26,7 @@ class CreateProjectForm
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
 
-  validates :handover_note_body, presence: true
+  validates :handover_note_body, presence: true, if: -> { assigned_to_regional_caseworker_team.eql?(true) }
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }

@@ -27,6 +27,7 @@ class Transfers::ProjectsController < ApplicationController
       :provisional_transfer_date,
       :incoming_trust_sharepoint_link,
       :outgoing_trust_sharepoint_link,
+      :assigned_to_regional_caseworker_team,
       :handover_note_body
     )
   end
