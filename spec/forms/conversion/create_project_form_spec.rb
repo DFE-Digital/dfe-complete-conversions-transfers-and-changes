@@ -92,7 +92,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
-    it { is_expected.to validate_presence_of(:trust_sharepoint_link) }
+    it { is_expected.to validate_presence_of(:incoming_trust_sharepoint_link) }
 
     describe "provisional_conversion_date" do
       it { is_expected.to validate_presence_of(:provisional_conversion_date) }

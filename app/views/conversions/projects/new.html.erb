@@ -16,7 +16,7 @@
       <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.conversion_project.advisory_board_conditions")} %>
       <%= form.govuk_date_field :provisional_conversion_date, legend: {text: t("helpers.legend.conversion_project.provisional_conversion_date")}, omit_day: true, form_group: {id: "provisional-conversion-date"}, hint: {text: t("helpers.hint.conversion_project.provisional_conversion_date")} %>
       <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("helpers.label.conversion_project.establishment_sharepoint_link")} %>
-      <%= form.govuk_text_field :trust_sharepoint_link, label: {size: "m", text: t("helpers.label.conversion_project.trust_sharepoint_link")} %>
+      <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.conversion_project.trust_sharepoint_link")} %>
       <%= form.govuk_text_area :handover_note_body,
             label: {text: t("project.new.handover_comments_label"), size: "m"},
             hint: {text: t("project.new.handover_comments_hint").html_safe} %>

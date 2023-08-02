@@ -26,6 +26,18 @@
             row.key { t("project.summary.region.title") }
             row.value { @project.establishment.region_name }
           end
+          summary_list.row do |row|
+            row.key { t("project.summary.establishment_sharepoint_link.title") }
+            row.value { safe_link_to(t("project.summary.establishment_sharepoint_link.value"), @project.establishment_sharepoint_link) }
+          end
+          summary_list.row do |row|
+            row.key { t("project.summary.incoming_trust_sharepoint_link.title") }
+            row.value { safe_link_to(t("project.summary.incoming_trust_sharepoint_link.value"), @project.incoming_trust_sharepoint_link) }
+          end
+          summary_list.row do |row|
+            row.key { t("project.summary.outgoing_trust_sharepoint_link.title") }
+            row.value { safe_link_to(t("project.summary.outgoing_trust_sharepoint_link.value"), @project.outgoing_trust_sharepoint_link) }
+          end
           if @project.completed?
             summary_list.row do |row|
               row.key { t("project.summary.completed_at") }

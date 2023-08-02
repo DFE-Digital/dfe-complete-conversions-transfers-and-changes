@@ -1,12 +1,12 @@
 require "rails_helper"
 
-RSpec.describe UrlValidator do
+RSpec.describe SharepointUrlValidator do
   let(:link) { "https://example.com" }
   let(:testing_model) do
     Class.new do
       include ActiveModel::Model
       attr_accessor :link
-      validates :link, url: {hostnames: %w[example another-example]}
+      validates :link, sharepoint_url: true
     end
   end
 
@@ -40,12 +40,10 @@ RSpec.describe UrlValidator do
   end
 
   context "when the URL matches the hostname and scheme" do
-    %w[https://example.com https://another-example.com].each do |url|
-      let(:link) { url }
+    let(:link) { "https://educationgovuk.sharepoint.com" }
 
-      it "is valid" do
-        expect(subject.valid?).to be true
-      end
+    it "is valid" do
+      expect(subject.valid?).to be true
     end
   end
 end
