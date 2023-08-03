@@ -9,5 +9,6 @@ FactoryBot.define do
     incoming_trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/incoming-trust-folder" }
     outgoing_trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder" }
     user { association :user, :regional_delivery_officer }
+    handover_note_body { "This is a handover note." }
   end
 end

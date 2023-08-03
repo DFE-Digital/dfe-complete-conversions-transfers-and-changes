@@ -6,6 +6,7 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
   describe "validations" do
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
     it { is_expected.to validate_presence_of(:incoming_trust_sharepoint_link) }
+    it { is_expected.to validate_presence_of(:outgoing_trust_sharepoint_link) }
 
     describe "advisory_board_date" do
       it { is_expected.to validate_presence_of(:advisory_board_date) }
@@ -180,6 +181,35 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     end
   end
 
+  describe "handover note body" do
+    context "when the project is being handed over" do
+      it "is required" do
+        form = build(:create_transfer_project_form, handover_note_body: "")
+        form.assigned_to_regional_caseworker_team = true
+
+        expect(form).to be_invalid
+      end
+    end
+    context "when the project is not being handed over" do
+      it "is not required" do
+        form = build(:create_transfer_project_form, handover_note_body: "")
+        form.assigned_to_regional_caseworker_team = false
+
+        expect(form).to be_valid
+      end
+    end
+  end
+
+  describe "advisory board conditions" do
+    it "saves any that are provided" do
+      form = build(:create_transfer_project_form, advisory_board_conditions: "These are the conditions.")
+
+      project = form.save
+
+      expect(project.advisory_board_conditions).to eql("These are the conditions.")
+    end
+  end
+
   describe "#save" do
     let(:establishment) { build(:academies_api_establishment) }
 
@@ -202,6 +232,16 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
       it "sets the outgoing trust" do
         project = build(:create_transfer_project_form, outgoing_trust_ukprn: 10061008).save
         expect(project.reload.outgoing_trust_ukprn).to eql(10061008)
+      end
+
+      it "creates a note associated to the handover task" do
+        form = build(:create_transfer_project_form, handover_note_body: "This is the handover note.")
+
+        form.save
+
+        expect(Note.count).to eq(1)
+        expect(Note.last.body).to eq("This is the handover note.")
+        expect(Note.last.task_identifier).to eq("handover")
       end
     end
 

@@ -11,16 +11,22 @@ class CreateProjectForm
   attribute :establishment_sharepoint_link
   attribute :incoming_trust_sharepoint_link
   attribute :user
+  attribute :advisory_board_conditions
+  attribute :handover_note_body
+  attribute :assigned_to_regional_caseworker_team, :boolean
 
   attr_reader :advisory_board_date
 
   validates :urn, presence: true, urn: true
   validates :incoming_trust_ukprn, presence: true, ukprn: true
+
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
+
+  validates :handover_note_body, presence: true, if: -> { assigned_to_regional_caseworker_team.eql?(true) }
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
@@ -37,6 +43,13 @@ class CreateProjectForm
     nil
   rescue TypeError, Date::Error, NegativeValueError
     @attributes_with_invalid_values << :advisory_board_date
+  end
+
+  def assigned_to_regional_caseworker_team_responses
+    @assigned_to_regional_caseworker_team_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("yes")),
+      OpenStruct.new(id: false, name: I18n.t("no"))
+    ]
   end
 
   private def establishment

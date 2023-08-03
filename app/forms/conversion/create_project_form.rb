@@ -1,19 +1,11 @@
 class Conversion::CreateProjectForm < CreateProjectForm
-  attribute :advisory_board_conditions
-  attribute :handover_note_body
   attribute :directive_academy_order, :boolean
   attribute :region
-  attribute :assigned_to_regional_caseworker_team, :boolean
   attribute :two_requires_improvement, :boolean
 
-  attr_reader :provisional_conversion_date,
-    :advisory_board_date
+  attr_reader :provisional_conversion_date
 
-  validates :provisional_conversion_date,
-    :advisory_board_date,
-    :handover_note_body,
-    presence: true
-
+  validates :provisional_conversion_date, presence: true
   validates :provisional_conversion_date, date_in_the_future: true, first_day_of_month: true
 
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
@@ -47,13 +39,6 @@ class Conversion::CreateProjectForm < CreateProjectForm
 
   private def urn_unique_for_in_progress_conversions
     errors.add(:urn, :duplicate) if Conversion::Project.not_completed.where(urn: urn).any?
-  end
-
-  def assigned_to_regional_caseworker_team_responses
-    @assigned_to_regional_caseworker_team_responses ||= [
-      OpenStruct.new(id: true, name: I18n.t("yes")),
-      OpenStruct.new(id: false, name: I18n.t("no"))
-    ]
   end
 
   def directive_academy_order_responses
