@@ -8,7 +8,7 @@
       <%= t("project.all.by_user.projects.title", name: @user.full_name) %>
     </h1>
 
-    <%= render partial: "user/projects/table", locals: {projects: @projects, pager: @pager} %>
+    <%= render partial: "your/projects/table", locals: {projects: @projects, pager: @pager} %>
 
   </div>
 </div>

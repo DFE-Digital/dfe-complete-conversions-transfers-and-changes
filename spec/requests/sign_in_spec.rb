@@ -16,13 +16,13 @@ RSpec.describe "Sign in" do
     before do
       mock_successful_authentication(user.email)
       allow_any_instance_of(RootController).to receive(:current_user_id).and_return(user.id)
-      allow_any_instance_of(User::ProjectsController).to receive(:current_user_id).and_return(user.id)
+      allow_any_instance_of(Your::ProjectsController).to receive(:current_user_id).and_return(user.id)
     end
 
     it "loads the requested page" do
       get root_path
 
-      expect(response).to redirect_to in_progress_user_projects_path
+      expect(response).to redirect_to in_progress_your_projects_path
     end
   end
 

@@ -174,7 +174,7 @@ Rails.application.routes.draw do
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index] do
       collection do
-        namespace :user do
+        namespace :your, path: :yours do
           get "in-progress", to: "projects#in_progress"
           get "completed", to: "projects#completed"
           get "added-by", to: "projects#added_by"

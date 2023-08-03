@@ -11,7 +11,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
 
   scenario "in progress projects page" do
     project = create(:conversion_project, regional_delivery_officer: user, assigned_to: user)
-    visit in_progress_user_projects_path
+    visit in_progress_your_projects_path
 
     expect(page).to have_content(project.urn)
     check_accessibility(page)
@@ -19,7 +19,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
 
   scenario "completed projects page" do
     completed_project = create(:conversion_project, assigned_to: user, completed_at: Date.today)
-    visit completed_user_projects_path
+    visit completed_your_projects_path
 
     expect(page).to have_content(completed_project.urn)
     check_accessibility(page)

@@ -1,5 +1,6 @@
 en:
   conversion_project:
+    type: Conversion
     sponsored:
       route: Sponsored
     voluntary:
@@ -24,11 +25,20 @@ en:
               <li>trust</li>
               <li>solicitors</li>
               <li>local authority</li>
-            </ul> 
+            </ul>
             <p class="govuk-body">You must also add contact details for the diocese if this is a faith school.</p>
             <p class="govuk-body">This will help the person continuing this project to organise the kick-off meeting.</p>
             <h2 class="govuk-heading-l">What happens next</h2>
             <p class="govuk-body">Another person will be assigned to this project.</p>
+    summary_card:
+      type: Type
+      incoming_trust: Incoming trust
+      conversion_date: Conversion date
+      all_conditions_met:
+        title: All conditions met
+        "true": "Yes"
+        "false": "Not yet"
+      region: Region
     summary:
       route:
         title: Route

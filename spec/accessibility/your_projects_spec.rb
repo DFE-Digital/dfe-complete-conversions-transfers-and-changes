@@ -12,7 +12,7 @@ RSpec.feature "Your projects", driver: :headless_firefox, accessibility: true do
   scenario "> in progress" do
     project = create(:conversion_project, assigned_to: user, urn: 123456)
 
-    visit in_progress_user_projects_path
+    visit in_progress_your_projects_path
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("Your projects")
@@ -22,7 +22,7 @@ RSpec.feature "Your projects", driver: :headless_firefox, accessibility: true do
   scenario "> Completed" do
     project = create(:conversion_project, assigned_to: user, completed_at: Date.yesterday, urn: 123434)
 
-    visit completed_user_projects_path
+    visit completed_your_projects_path
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("Completed")
@@ -32,7 +32,7 @@ RSpec.feature "Your projects", driver: :headless_firefox, accessibility: true do
   scenario "> Added by you" do
     project = create(:conversion_project, regional_delivery_officer: user, urn: 120532)
 
-    visit added_by_user_projects_path
+    visit added_by_your_projects_path
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("Added by you")

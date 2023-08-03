@@ -4,7 +4,7 @@ class RootController < ApplicationController
 
     return redirect_to without_academy_urn_service_support_projects_path if current_user.service_support_team?
 
-    return redirect_to in_progress_user_projects_path if current_user.assign_to_project? || current_user.add_new_project?
+    return redirect_to in_progress_your_projects_path if current_user.assign_to_project? || current_user.add_new_project?
 
     redirect_to all_in_progress_projects_path
   end

@@ -1,10 +1,10 @@
-class User::ProjectsController < ApplicationController
+class Your::ProjectsController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
   def in_progress
     authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.assigned_to(current_user).in_progress.includes(:assigned_to).ordered_by_significant_date, items: 10)
+    @pager, @projects = pagy(Project.assigned_to(current_user).in_progress.includes(:tasks_data).ordered_by_significant_date, items: 10)
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end

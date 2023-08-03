@@ -24,7 +24,7 @@ RSpec.describe ProjectsController, type: :request do
 
     it "redirects to the in progress projects path" do
       get projects_path
-      expect(response).to redirect_to(in_progress_user_projects_path)
+      expect(response).to redirect_to(in_progress_your_projects_path)
     end
   end
 end
