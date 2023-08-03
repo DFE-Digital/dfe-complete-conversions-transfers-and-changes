@@ -40,7 +40,7 @@ en:
           title: Check the returned notification of change document
           hint:
             html:
-              <p>Compare the the notification of changes document to the section 251 spreadsheet.</p>
+              <p>Compare the notification of changes document to the section 251 spreadsheet.</p>
           guidance_link: What to check for
           guidance:
             html:
