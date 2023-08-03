@@ -142,6 +142,7 @@ en:
         by_user: By user
         completed: Completed
         statistics: Statistics
+        exports: Exports
       team_projects:
         in_progress: In progress
         unassigned: Unassigned

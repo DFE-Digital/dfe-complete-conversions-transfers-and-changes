@@ -2,8 +2,8 @@
   <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
 <% end %>
 
-<table class="govuk-table" name="projects_table" aria-label="Risk protection arrangement exports">
-  <caption class="govuk-table__caption govuk-table__caption--l"><%= t("export.risk_protection_arrangement.index.title") %></caption>
+<table class="govuk-table" name="projects_table" aria-label="Education and Skills Funding Agency exports">
+  <caption class="govuk-table__caption govuk-table__caption--l"><%= t("export.education_and_skills_funding_agency.index.title") %></caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" scope="col"><%= t("project.table.headers.date") %></th>
@@ -23,7 +23,7 @@
           <%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/opening/revised/#{month.month}/#{month.year}" %>
         </td>
         <td class="govuk-table__cell">
-          <%= link_to t("project.table.body.export_for_html", date: month.to_fs(:govuk_month)), show_all_export_risk_protection_arrangement_projects_path(month.month, month.year) %>
+          <%= link_to t("project.table.body.export_for_html", date: month.to_fs(:govuk_month)), show_all_export_education_and_skills_funding_agency_projects_path(month.month, month.year) %>
         </td>
       </tr>
     <% end %>

@@ -1,17 +1,20 @@
-class All::Export::RiskProtectionArrangement::ProjectsController < ApplicationController
+class All::Export::EducationAndSkillsFundingAgency::ProjectsController < ApplicationController
   def index
+    authorize :export
     @months = export_months
   end
 
   def show
+    authorize :export
     @month = Date.parse("#{year}-#{month}-1")
   end
 
   def csv
+    authorize :export
     authorize Project, :index?
 
     projects = ProjectsForExportService.new.risk_protection_arrangement_projects(month: month, year: year)
-    csv = Export::RiskProtectionArrangementCsvExportService.new(projects).call
+    csv = Export::EducationAndSkillsFundingAgencyCsvExportService.new(projects).call
 
     send_data csv, filename: "#{year}-#{month}_risk_protection_arrangement_export.csv", type: :csv, disposition: "attachment"
   end

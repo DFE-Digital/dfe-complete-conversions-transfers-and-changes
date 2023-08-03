@@ -1,4 +1,4 @@
-class Export::RiskProtectionArrangementCsvExportService
+class Export::EducationAndSkillsFundingAgencyCsvExportService
   require "csv"
 
   COLUMN_HEADERS = %i[
