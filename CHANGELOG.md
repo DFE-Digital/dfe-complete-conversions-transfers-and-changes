@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - removed erroneous additional s from Address on the project information page
+- used details components to chunk up the guidance in the notification of change
+  task to improve readability
 
 ### Fixed
 
