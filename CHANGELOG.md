@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- removed erroneous additional s from Address on the project information page
+
 ### Fixed
 
 ## [Release 37][release-37]
