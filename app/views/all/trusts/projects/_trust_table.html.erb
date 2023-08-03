@@ -8,6 +8,7 @@
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.trust_name") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.group_identifier") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.transfer_count") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view_projects") %></th>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
         <td class="govuk-table__header govuk-table__cell"><%= trust.name %></td>
         <td class="govuk-table__cell"><%= trust.group_id %></td>
         <td class="govuk-table__cell"><%= trust.conversion_count %></td>
+        <td class="govuk-table__cell"><%= trust.transfer_count %></td>
         <td class="govuk-table__cell">
           <%= link_to t("project.table.body.view_projects_html", trust_name: trust.name), by_trust_all_trusts_projects_path(trust.ukprn) %>
         </td>
