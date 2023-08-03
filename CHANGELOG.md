@@ -34,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The new conversion button has moved up the page.
 - The layout and information shown on the Your in-progress projects view has
   been improved.
+- improved content on sign in page to include registraiton, guidance and release
+  notes links
 
 ### Fixed
 
