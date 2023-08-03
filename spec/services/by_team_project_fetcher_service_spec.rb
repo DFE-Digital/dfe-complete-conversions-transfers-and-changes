@@ -1,27 +1,30 @@
 require "rails_helper"
 
 RSpec.describe ByTeamProjectFetcherService do
-  before { mock_successful_api_response_to_create_any_project }
-
   describe "#in_progress" do
-    let(:project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", conversion_date: Date.today.at_beginning_of_month) }
-    let(:project_london) { create(:conversion_project, team: "regional_casework_services", region: "london") }
+    before { mock_all_academies_api_responses }
+
+    let!(:conversion_project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", conversion_date: Date.today.at_beginning_of_month) }
+    let!(:conversion_project_london) { create(:conversion_project, team: "regional_casework_services", region: "london") }
+    let!(:transfer_project_rcs) { create(:transfer_project, team: "regional_casework_services", region: "north_east", transfer_date: Date.today.at_beginning_of_month) }
+    let!(:transfer_project_london) { create(:transfer_project, team: "regional_casework_services", region: "london", transfer_date: Date.today.at_beginning_of_month + 2.years) }
 
     context "when the user is in the 'regional_casework_services' team" do
-      let(:project_rcs_2) { create(:conversion_project, team: "regional_casework_services", region: "north_east", conversion_date: (Date.today + 1.month).at_beginning_of_month) }
+      let!(:project_rcs_2) { create(:conversion_project, team: "regional_casework_services", region: "north_east", conversion_date: (Date.today + 1.month).at_beginning_of_month) }
 
       it "returns all projects where the project's team is regional_casework_services" do
         user = build(:user, team: "regional_casework_services")
 
         result = described_class.new(user.team).in_progress
-        expect(result).to include(project_rcs, project_london)
+        expect(result).to include(conversion_project_rcs, conversion_project_london, transfer_project_rcs, transfer_project_london)
       end
 
-      it "orders projects by conversion date" do
+      it "orders projects by significant date" do
         user = build(:user, team: "regional_casework_services")
 
         result = described_class.new(user.team).in_progress
-        expect(result).to eq([project_rcs, project_rcs_2])
+        expect(result.first.significant_date).to eq(Date.today.at_beginning_of_month)
+        expect(result.last.significant_date).to eq(Date.today.at_beginning_of_month + 2.years)
       end
     end
 
@@ -30,8 +33,8 @@ RSpec.describe ByTeamProjectFetcherService do
         user = build(:user, team: "london")
 
         result = described_class.new(user.team).in_progress
-        expect(result).to include(project_london)
-        expect(result).to_not include(project_rcs)
+        expect(result).to include(conversion_project_london, transfer_project_london)
+        expect(result).to_not include(conversion_project_rcs, transfer_project_rcs)
       end
     end
 
@@ -47,15 +50,19 @@ RSpec.describe ByTeamProjectFetcherService do
   end
 
   describe "#completed" do
-    let(:project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", completed_at: Date.yesterday) }
-    let(:project_london) { create(:conversion_project, team: "regional_casework_services", region: "london", completed_at: Date.yesterday) }
+    before { mock_all_academies_api_responses }
+
+    let!(:conversion_project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", completed_at: Date.yesterday) }
+    let!(:conversion_project_london) { create(:conversion_project, team: "regional_casework_services", region: "london", completed_at: Date.yesterday) }
+    let!(:transfer_project_rcs) { create(:transfer_project, team: "regional_casework_services", region: "north_east", completed_at: Date.yesterday) }
+    let!(:transfer_project_london) { create(:transfer_project, team: "regional_casework_services", region: "london", completed_at: Date.yesterday) }
 
     context "when the user is in the 'regional_casework_services' team" do
       it "returns all completed projects where the project's team is regional_casework_services" do
         user = build(:user, team: "regional_casework_services")
 
         result = described_class.new(user.team).completed
-        expect(result).to include(project_rcs, project_london)
+        expect(result).to include(conversion_project_rcs, conversion_project_london, transfer_project_rcs, transfer_project_london)
       end
     end
 
@@ -64,8 +71,8 @@ RSpec.describe ByTeamProjectFetcherService do
         user = build(:user, team: "london")
 
         result = described_class.new(user.team).completed
-        expect(result).to include(project_london)
-        expect(result).to_not include(project_rcs)
+        expect(result).to include(conversion_project_london, transfer_project_london)
+        expect(result).to_not include(conversion_project_rcs, transfer_project_rcs)
       end
     end
 
@@ -76,15 +83,19 @@ RSpec.describe ByTeamProjectFetcherService do
   end
 
   describe "#unassigned" do
-    let(:project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", assigned_to: nil) }
-    let(:project_london) { create(:conversion_project, team: "regional_casework_services", region: "london", assigned_to: nil) }
+    before { mock_all_academies_api_responses }
+
+    let!(:conversion_project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", assigned_to: nil) }
+    let!(:conversion_project_london) { create(:conversion_project, team: "regional_casework_services", region: "london", assigned_to: nil) }
+    let!(:transfer_project_rcs) { create(:transfer_project, team: "regional_casework_services", region: "north_east", assigned_to: nil) }
+    let!(:transfer_project_london) { create(:transfer_project, team: "regional_casework_services", region: "london", assigned_to: nil) }
 
     context "when the user is in the 'regional_casework_services' team" do
       it "returns all in-progress projects where the project's team is regional_casework_services" do
         user = build(:user, team: "regional_casework_services")
 
         result = described_class.new(user.team).unassigned
-        expect(result).to include(project_rcs, project_london)
+        expect(result).to include(conversion_project_rcs, conversion_project_london, transfer_project_rcs, transfer_project_london)
       end
     end
 
@@ -93,8 +104,8 @@ RSpec.describe ByTeamProjectFetcherService do
         user = build(:user, team: "london")
 
         result = described_class.new(user.team).unassigned
-        expect(result).to include(project_london)
-        expect(result).to_not include(project_rcs)
+        expect(result).to include(conversion_project_london, transfer_project_london)
+        expect(result).to_not include(conversion_project_rcs, transfer_project_rcs)
       end
     end
 
@@ -105,6 +116,8 @@ RSpec.describe ByTeamProjectFetcherService do
   end
 
   describe "#users" do
+    before { mock_all_academies_api_responses }
+
     it "returns a sorted list of users in the user's team, with their assigned_to project counts" do
       user_1 = create(:user, :caseworker, team: "regional_casework_services", first_name: "Abbie")
       user_2 = create(:user, :caseworker, team: "regional_casework_services", first_name: "Ben")
@@ -116,6 +129,8 @@ RSpec.describe ByTeamProjectFetcherService do
       _project_3 = create(:conversion_project, assigned_to: user_3)
       _project_4 = create(:conversion_project, assigned_to: user_1)
       _project_5 = create(:conversion_project, assigned_to: user_5)
+      _project_6 = create(:transfer_project, assigned_to: user_3)
+      _project_7 = create(:transfer_project, assigned_to: user_3)
 
       result = described_class.new(user_1.team).users
       expect(result[0].name).to eq("Abbie Doe")
@@ -124,6 +139,7 @@ RSpec.describe ByTeamProjectFetcherService do
       expect(result[1].conversion_count).to eq(1)
       expect(result[2].name).to eq("Claire Doe")
       expect(result[2].conversion_count).to eq(1)
+      expect(result[2].transfer_count).to eq(2)
       expect(result[3].name).to eq("Danniella Doe")
       expect(result[3].conversion_count).to eq(0)
       expect(result).to_not include(user_5.full_name)

@@ -6,7 +6,7 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_name") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
-        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_date") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.significant_date") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.assigned_to") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view") %></th>
       </tr>
@@ -16,7 +16,7 @@
       <tr class="govuk-table__row">
         <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
         <td class="govuk-table__cell"><%= project.urn %></td>
-        <td class="govuk-table__cell"><%= project.conversion_date.to_formatted_s(:govuk) %></td>
+        <td class="govuk-table__cell"><%= project.significant_date.to_formatted_s(:govuk) %></td>
         <td class="govuk-table__cell"><%= display_name(project.assigned_to) %></td>
         <td class="govuk-table__cell">
           <a href="<%= project_path(project) %>">

@@ -1,21 +1,21 @@
 class ByTrustProjectFetcherService
   def call
-    conversion_counts = conversion_count_by_trust
+    projects = projects_by_trust
 
-    if conversion_counts
-      trusts = get_trusts(conversion_counts.keys)
+    if projects
+      trusts = get_trusts(projects.keys)
 
-      sort_trust_objects_by_name(build_trust_objects(trusts, conversion_counts))
+      sort_trust_objects_by_name(build_trust_objects(trusts, projects))
     else
       []
     end
   end
 
-  private def conversion_count_by_trust
-    projects = Conversion::Project.not_completed
+  private def projects_by_trust
+    projects = Project.not_completed
     return false unless projects.any?
 
-    projects.group(:incoming_trust_ukprn).count
+    projects.group_by(&:incoming_trust_ukprn)
   end
 
   private def get_trusts(ukprns)
@@ -23,15 +23,16 @@ class ByTrustProjectFetcherService
     client.get_trusts(ukprns).object
   end
 
-  private def build_trust_objects(trusts, conversion_counts)
-    return [] unless trusts.present? && conversion_counts
+  private def build_trust_objects(trusts, projects)
+    return [] unless trusts.present? && projects
 
     trusts.map do |trust|
       OpenStruct.new(
         name: trust.name,
         ukprn: trust.ukprn,
         group_id: trust.group_identifier,
-        conversion_count: conversion_counts.fetch(trust.ukprn.to_i)
+        conversion_count: projects.fetch(trust.ukprn.to_i).count { |p| p.type == "Conversion::Project" },
+        transfer_count: projects.fetch(trust.ukprn.to_i).count { |p| p.type == "Transfer::Project" }
       )
     end
   end

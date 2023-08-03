@@ -156,7 +156,7 @@ en:
         success: Project has been assigned to team successfully
     table:
       headers:
-        school_name: School
+        school_name: School or academy
         school_urn: URN
         type: Type of project
         completed_at: Completed at
@@ -165,6 +165,7 @@ en:
         assign: Assign project
         added_by: Added by
         conversion_date: Conversion date
+        significant_date: Conversion or transfer date
         revised_conversion_date: Revised conversion date
         route: Route
         school_phase: School phase
@@ -174,16 +175,17 @@ en:
         trust_name: Trust
         group_identifier: Group identifier
         conversion_count: Conversions
+        transfer_count: Transfers
         view_projects: View projects
         local_authority_name: Local authority
         local_authority_code: Code
-        conversion_count: Conversions
         region: Region
         email: Email
         user: User name
         date: Date
         confirmed: Confirmed
         revised: Revised
+        team: Team
       body:
         view_html: View <span class="govuk-visually-hidden">%{school_name}</span> project
         edit_html: Create academy URN <span class="govuk-visually-hidden">for %{school_name}</span>
@@ -239,6 +241,7 @@ en:
           academy_order_type:
             academy_order: AO (Academy Order)
             directive_academy_order: DAO (Directive Academy Order)
+            not_applicable: Not applicable
       route:
         voluntary: Voluntary
         sponsored: Sponsored

@@ -1,20 +1,20 @@
 class ByUserProjectFetcherService
   def call
-    conversion_counts = conversion_count_by_user
-    return [] unless conversion_counts
+    projects = projects_by_user
+    return [] unless projects
 
-    sort_view_objects_by_name(build_view_objects(conversion_counts))
+    sort_view_objects_by_name(build_view_objects(projects))
   end
 
-  private def conversion_count_by_user
-    projects = Conversion::Project.assigned.not_completed
+  private def projects_by_user
+    projects = Project.assigned.not_completed
     return false unless projects.any?
 
-    projects.group(:assigned_to_id).count
+    projects.group_by(&:assigned_to_id)
   end
 
-  private def build_view_objects(conversion_counts)
-    users = User.where(id: conversion_counts.keys)
+  private def build_view_objects(projects)
+    users = User.where(id: projects.keys)
 
     users.compact.map do |user|
       OpenStruct.new(
@@ -22,7 +22,8 @@ class ByUserProjectFetcherService
         email: user.email,
         team: user.team,
         id: user.id,
-        conversion_count: conversion_counts.fetch(user.id)
+        conversion_count: projects.fetch(user.id).count { |p| p.type == "Conversion::Project" },
+        transfer_count: projects.fetch(user.id).count { |p| p.type == "Transfer::Project" }
       )
     end
   end

@@ -1,32 +1,33 @@
 class ByRegionProjectFetcherService
-  def conversion_counts
-    conversion_counts = conversion_count_by_region
+  def project_counts
+    projects = projects_by_region
 
-    if conversion_counts
-      sort_view_objects_by_name(build_view_objects(conversion_counts))
+    if projects
+      sort_view_objects_by_name(build_view_objects(projects))
     else
       []
     end
   end
 
   def regional_casework_services_projects(region)
-    Conversion::Project.by_region(region).assigned_to_regional_caseworker_team.includes(:assigned_to).by_conversion_date
+    Project.by_region(region).assigned_to_regional_caseworker_team.includes(:assigned_to).ordered_by_significant_date
   end
 
-  private def conversion_count_by_region
-    projects = Conversion::Project.not_completed
+  private def projects_by_region
+    projects = Project.not_completed
     return false unless projects.any?
 
-    projects.group(:region).count
+    projects.group_by(&:region)
   end
 
-  private def build_view_objects(conversion_counts)
-    return [] unless conversion_counts.any?
+  private def build_view_objects(projects)
+    return [] unless projects.any?
 
-    conversion_counts.keys.map do |region|
+    projects.keys.map do |region|
       OpenStruct.new(
         name: region,
-        conversion_count: conversion_counts.fetch(region)
+        conversion_count: projects[region].count { |p| p.type == "Conversion::Project" },
+        transfer_count: projects[region].count { |p| p.type == "Transfer::Project" }
       )
     end
   end

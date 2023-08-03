@@ -34,6 +34,8 @@ RSpec.describe ByTrustProjectFetcherService do
     create(:conversion_project, incoming_trust_ukprn: another_trust.ukprn)
     create(:conversion_project, incoming_trust_ukprn: trust.ukprn)
     create(:conversion_project, incoming_trust_ukprn: yet_another_trust.ukprn)
+    create(:transfer_project, incoming_trust_ukprn: trust.ukprn)
+    create(:transfer_project, incoming_trust_ukprn: yet_another_trust.ukprn)
 
     result = described_class.new.call
 
@@ -45,6 +47,7 @@ RSpec.describe ByTrustProjectFetcherService do
     expect(first_result.ukprn).to eql 10059745
     expect(first_result.group_id).to eql "TR00796"
     expect(first_result.conversion_count).to eql 2
+    expect(first_result.transfer_count).to eql 1
 
     last_result = result.last
 
@@ -52,6 +55,7 @@ RSpec.describe ByTrustProjectFetcherService do
     expect(last_result.ukprn).to eql 10066123
     expect(last_result.group_id).to eql "TR03819"
     expect(last_result.conversion_count).to eql 1
+    expect(last_result.transfer_count).to eql 1
   end
 
   it "returns an empty array when there are no projects to source trusts" do

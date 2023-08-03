@@ -8,19 +8,20 @@ RSpec.describe ByMonthProjectFetcherService do
         project_two = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "B school"))
         project_three = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "A school"))
         project_four = double(Conversion::Project, all_conditions_met?: true, establishment: double("Establishment", name: "Z school"))
+        project_five = double(Transfer::Project, all_conditions_met?: false, establishment: double("Establishment", name: "C school"))
+        project_six = double(Transfer::Project, all_conditions_met?: false, establishment: double("Establishment", name: "D school"))
 
-        allow(Project).to receive(:filtered_by_significant_date).and_return([project_one, project_two, project_three, project_four])
+        allow(Project).to receive(:filtered_by_significant_date).and_return([project_one, project_two, project_three, project_four, project_five, project_six])
 
         confirmed_projects = described_class.new(pre_fetch_academies_api: false).confirmed(1, 2025)
 
-        expect(confirmed_projects.first).to eq project_four
-        expect(confirmed_projects.last).to eq project_one
+        expect(confirmed_projects).to eq [project_four, project_three, project_two, project_five, project_six, project_one]
       end
     end
 
     it "prefetches establishments and trusts by default" do
       mock_all_academies_api_responses
-      create_list(:conversion_project, 21, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional: false)
+      create_list(:conversion_project, 21, significant_date: Date.parse("2023-1-1"), significant_date_provisional: false)
 
       academies_api_pre_fetcher = double(call!: true)
       allow(AcademiesApiPreFetcherService).to receive(:new).and_return(academies_api_pre_fetcher)
@@ -36,11 +37,11 @@ RSpec.describe ByMonthProjectFetcherService do
     it "returns only the projects where the date was the given month but has since changed" do
       mock_all_academies_api_responses
 
-      project = create(:conversion_project, conversion_date: Date.parse("2025-6-1"), conversion_date_provisional: false)
+      project = create(:conversion_project, significant_date: Date.parse("2025-6-1"), significant_date_provisional: false)
       create(:date_history, project: project, previous_date: Date.parse("2025-1-1"), revised_date: Date.parse("2025-6-1"))
       create(:date_history, project: project, previous_date: Date.parse("2025-1-1"), revised_date: Date.parse("2025-1-1"))
 
-      other_project = create(:conversion_project, conversion_date: Date.parse("2025-6-1"), conversion_date_provisional: false)
+      other_project = create(:conversion_project, significant_date: Date.parse("2025-6-1"), significant_date_provisional: false)
       create(:date_history, project: project, previous_date: Date.parse("2025-1-1"), revised_date: Date.parse("2025-6-1"))
 
       projects = described_class.new.revised(1, 2025)
@@ -59,9 +60,9 @@ RSpec.describe ByMonthProjectFetcherService do
       let(:user_1) { create(:regional_casework_services_user, team: "regional_casework_services") }
       let(:user_2) { create(:regional_delivery_officer_user, team: "london") }
 
-      let!(:project_a) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, team: "regional_casework_services") }
-      let!(:project_b) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, team: "regional_casework_services") }
-      let!(:project_c) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, region: "london", team: "london") }
+      let!(:project_a) { create(:conversion_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, team: "regional_casework_services") }
+      let!(:project_b) { create(:transfer_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, team: "regional_casework_services") }
+      let!(:project_c) { create(:conversion_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, region: "london", team: "london") }
 
       context "when the user is in the regional_casework_services team" do
         it "returns only projects where the team is regional_casework_services" do
@@ -80,7 +81,7 @@ RSpec.describe ByMonthProjectFetcherService do
 
     it "prefetches establishments and trusts by default" do
       mock_all_academies_api_responses
-      create_list(:conversion_project, 21, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional: false)
+      create_list(:conversion_project, 21, significant_date: Date.parse("2023-1-1"), significant_date_provisional: false)
 
       academies_api_pre_fetcher = double(call!: true)
       allow(AcademiesApiPreFetcherService).to receive(:new).and_return(academies_api_pre_fetcher)
@@ -101,35 +102,39 @@ RSpec.describe ByMonthProjectFetcherService do
       let(:user_1) { create(:regional_casework_services_user, team: "regional_casework_services") }
       let(:user_2) { create(:regional_delivery_officer_user, team: "london") }
 
-      let!(:project_a) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, team: "regional_casework_services") }
-      let!(:project_b) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, team: "regional_casework_services") }
-      let!(:project_c) { create(:conversion_project, conversion_date: Date.new(2023, 1, 1), conversion_date_provisional: false, region: "london", team: "london") }
+      let!(:project_a) { create(:conversion_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, team: "regional_casework_services") }
+      let!(:project_b) { create(:transfer_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, team: "regional_casework_services") }
+      let!(:project_c) { create(:conversion_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, team: "regional_casework_services") }
+      let!(:project_d) { create(:conversion_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, region: "london", team: "london") }
+      let!(:project_e) { create(:transfer_project, significant_date: Date.new(2023, 1, 1), significant_date_provisional: false, region: "london", team: "london") }
 
       before do
         create(:date_history, project: project_a, previous_date: Date.new(2023, 1, 1), revised_date: Date.new(2023, 2, 1))
         create(:date_history, project: project_a, previous_date: Date.new(2023, 2, 1), revised_date: Date.new(2023, 3, 1))
-        create(:date_history, project: project_c, previous_date: Date.new(2023, 1, 1), revised_date: Date.new(2023, 2, 1))
-        create(:date_history, project: project_c, previous_date: Date.new(2023, 2, 1), revised_date: Date.new(2023, 3, 1))
+        create(:date_history, project: project_b, previous_date: Date.new(2023, 1, 1), revised_date: Date.new(2023, 2, 1))
+        create(:date_history, project: project_b, previous_date: Date.new(2023, 2, 1), revised_date: Date.new(2023, 3, 1))
+        create(:date_history, project: project_d, previous_date: Date.new(2023, 1, 1), revised_date: Date.new(2023, 2, 1))
+        create(:date_history, project: project_d, previous_date: Date.new(2023, 2, 1), revised_date: Date.new(2023, 3, 1))
       end
 
       context "when the user is in the regional_casework_services team" do
         it "returns only projects where the team is regional_casework_services" do
           projects_fetcher = described_class.new
-          expect(projects_fetcher.revised_openers_by_team(2, 2023, user_1.team)).to eq([project_a])
+          expect(projects_fetcher.revised_openers_by_team(2, 2023, user_1.team)).to include(project_a, project_b)
         end
       end
 
       context "when the user is in a regional team" do
         it "returns only projects where the region matches the user's team" do
           projects_fetcher = described_class.new
-          expect(projects_fetcher.revised_openers_by_team(2, 2023, user_2.team)).to eq([project_c])
+          expect(projects_fetcher.revised_openers_by_team(2, 2023, user_2.team)).to eq([project_d])
         end
       end
     end
 
     it "prefetches establishments and trusts by default" do
       mock_all_academies_api_responses
-      create_list(:conversion_project, 21, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional: false)
+      create_list(:conversion_project, 21, significant_date: Date.parse("2023-1-1"), significant_date_provisional: false)
 
       academies_api_pre_fetcher = double(call!: true)
       allow(AcademiesApiPreFetcherService).to receive(:new).and_return(academies_api_pre_fetcher)
