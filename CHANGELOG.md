@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 37][release-37]
+
+### Added
+
 - Early support to view a transfer project, no user facing changes.
 - Transfer projects can confirm the transfer date.
 - The transfer date is shown in the project summary for transfer projects.
@@ -1173,7 +1181,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-36...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-37...HEAD
+[release-37]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-36...release-37
 [release-36]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-35...release-36
 [release-35]:
