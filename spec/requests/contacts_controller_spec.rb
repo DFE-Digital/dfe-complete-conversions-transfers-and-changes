@@ -26,6 +26,20 @@ RSpec.describe ExternalContactsController, type: :request do
     it "returns a successful response" do
       expect(subject).to have_http_status :success
     end
+
+    context "when the project has a director of child services" do
+      let(:local_authority) { create(:local_authority) }
+
+      before do
+        create(:director_of_child_services, local_authority: local_authority)
+        allow_any_instance_of(Api::AcademiesApi::Establishment).to receive(:local_authority).and_return(local_authority)
+      end
+
+      it "includes the director of child services in the response" do
+        director = local_authority.director_of_child_services
+        expect(subject.body).to include(director.name)
+      end
+    end
   end
 
   describe "#new" do
