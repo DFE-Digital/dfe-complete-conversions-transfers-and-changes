@@ -27,7 +27,8 @@ RSpec.feature "Users can manage contacts" do
   scenario "the contact groups are in the order users might expect to use them" do
     create(:project_contact, category: :other, project: project)
     create(:project_contact, category: :school, project: project)
-    create(:project_contact, category: :trust, project: project)
+    create(:project_contact, category: :incoming_trust, project: project)
+    create(:project_contact, category: :outgoing_trust, project: project)
     create(:project_contact, category: :solicitor, project: project)
     create(:project_contact, category: :diocese, project: project)
     create(:project_contact, category: :local_authority, project: project)
@@ -38,7 +39,8 @@ RSpec.feature "Users can manage contacts" do
 
     %i[
       school
-      trust
+      incoming_trust
+      outgoing_trust
       local_authority
       solicitor
       diocese
@@ -56,7 +58,7 @@ RSpec.feature "Users can manage contacts" do
 
     expect(page).to have_select("Contact for", selected: "Choose category")
 
-    select "Trust", from: "Contact for"
+    select "Incoming trust", from: "Contact for"
     fill_in "Name", with: "Some One"
     fill_in "Organisation", with: "Trust Name"
     fill_in "Role", with: "Chief of Knowledge"
@@ -65,7 +67,7 @@ RSpec.feature "Users can manage contacts" do
 
     click_button("Add contact")
 
-    expect(page).to have_content("Trust contacts")
+    expect(page).to have_content("Incoming trust contacts")
 
     expect_page_to_have_contact(
       name: "Some One",

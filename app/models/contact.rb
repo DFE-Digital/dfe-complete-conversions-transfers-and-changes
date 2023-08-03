@@ -8,7 +8,8 @@ class Contact < ApplicationRecord
 
   enum category: {
     school: 1,
-    trust: 2,
+    incoming_trust: 2,
+    outgoing_trust: 6,
     local_authority: 3,
     solicitor: 5,
     diocese: 4,
