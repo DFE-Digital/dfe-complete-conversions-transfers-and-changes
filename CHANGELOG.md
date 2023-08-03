@@ -41,6 +41,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The handover note when adding a new project is only required if you indicate
   that the project will be handed over.
 - The order of the new project form fields has been improved.
+- All "By" views now include Transfer project counts as well as Conversion
+  project counts
 
 ### Fixed
 
