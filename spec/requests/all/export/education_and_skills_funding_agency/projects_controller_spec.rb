@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe All::Export::EducationAndSkillsFundingAgency::ProjectsController, type: :request do
-  let(:team_leader) { create(:user, :team_leader) }
+  let(:user) { create(:user, team: :education_and_skills_funding_agency) }
 
   before do
     mock_all_academies_api_responses
-    sign_in_with(team_leader)
+    sign_in_with(user)
   end
 
   describe "#csv" do
