@@ -13,6 +13,8 @@ RSpec.describe ByUserProjectFetcherService do
     create(:conversion_project, urn: 117574, assigned_to: another_user)
     create(:conversion_project, urn: 121583, assigned_to: nil)
     create(:conversion_project, urn: 121583, assigned_to: yet_another_user)
+    create(:transfer_project, urn: 101133, assigned_to: user)
+    create(:transfer_project, urn: 112209, assigned_to: yet_another_user)
 
     result = described_class.new.call
 
@@ -23,12 +25,14 @@ RSpec.describe ByUserProjectFetcherService do
     expect(first_result.name).to eql "A User"
     expect(first_result.team).to eql "london"
     expect(first_result.conversion_count).to eql 2
+    expect(first_result.transfer_count).to eql 1
 
     last_result = result.last
 
     expect(last_result.name).to eql "C User"
     expect(last_result.team).to eql "service_support"
     expect(last_result.conversion_count).to eql 1
+    expect(last_result.transfer_count).to eql 1
   end
 
   it "returns an empty array when there are no projects to source trusts" do
