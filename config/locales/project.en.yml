@@ -156,7 +156,7 @@ en:
         success: Project has been assigned to team successfully
     table:
       headers:
-        school_name: School
+        school_name: School or academy
         school_urn: URN
         type: Type of project
         completed_at: Completed at
@@ -165,7 +165,7 @@ en:
         assign: Assign project
         added_by: Added by
         conversion_date: Conversion date
-        significant_date: Significant date
+        significant_date: Conversion or transfer date
         revised_conversion_date: Revised conversion date
         route: Route
         school_phase: School phase
