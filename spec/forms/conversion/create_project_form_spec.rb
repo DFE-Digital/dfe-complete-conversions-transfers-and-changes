@@ -28,6 +28,17 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
                                 .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [another_team_leader, project]))
       end
 
+      context "if a team leader is deactivated" do
+        it "does not send a notification to that team leader" do
+          team_leader = create(:user, :team_leader, deactivated_at: Date.yesterday)
+
+          project = build(:create_project_form, assigned_to_regional_caseworker_team: true).save
+          expect(ActionMailer::MailDeliveryJob)
+            .to_not(have_been_enqueued.on_queue("default")
+                                  .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, project]))
+        end
+      end
+
       it "does not set Project.assigned_to" do
         project = build(:create_project_form, assigned_to_regional_caseworker_team: true).save
 

@@ -143,6 +143,18 @@ RSpec.describe AssignmentsController, type: :request do
         .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
     end
 
+    context "the assigned_to person is deactivated" do
+      it "does not send a notification to the assigned_to person" do
+        regional_delivery_officer.update!(deactivated_at: Date.yesterday)
+
+        perform_request
+
+        expect(ActionMailer::MailDeliveryJob)
+          .to_not(have_been_enqueued.on_queue("default")
+                                .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
+      end
+    end
+
     it "sets the `assigned_at` date value" do
       perform_request
 

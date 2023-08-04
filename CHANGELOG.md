@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   contacts area, not the Local authority information area.
 - updated grants team email address
 - added C of E/cofe issue to accessibility statement
+- do not send any mails to deactivated users
 
 ### Fixed
 
