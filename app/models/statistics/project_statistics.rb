@@ -1,4 +1,4 @@
-class ProjectStatistics
+class Statistics::ProjectStatistics
   def initialize
     @projects = Conversion::Project.all
   end

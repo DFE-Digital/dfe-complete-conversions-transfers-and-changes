@@ -111,7 +111,7 @@ Rails.application.routes.draw do
             get "revised/", to: "projects#revised_next_month"
           end
           namespace :statistics do
-            get "/", to: "projects#index"
+            get "/", to: "statistics#index"
           end
           namespace :trusts do
             get "/", to: "projects#index"

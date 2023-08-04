@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe ProjectStatistics, type: :model do
-  subject { ProjectStatistics.new }
+RSpec.describe Statistics::ProjectStatistics, type: :model do
+  subject { Statistics::ProjectStatistics.new }
   before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
   describe "all projects" do

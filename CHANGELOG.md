@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add "Outgoing trust" category to External contacts
+- Show user counts by team on the statistics page
 
 ### Changed
 
@@ -16,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - used details components to chunk up the guidance in the notification of change
   task to improve readability
 - removed extra the from notifcation of change task and add a transfer form
+- add simple side navigation to the statistics page
 
 ### Fixed
 
