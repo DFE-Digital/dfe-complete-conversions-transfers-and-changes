@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Show user counts by team on the statistics page
 - Add a Handover task to Transfer projects
 - Add more actions to the Stakeholder kick-off task for Transfers
+- Store the DateTime of a user's latest session (the last time they logged in)
 
 ### Changed
 

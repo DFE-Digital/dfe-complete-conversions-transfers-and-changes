@@ -38,6 +38,7 @@ class SessionsController < ApplicationController
   private def create_session
     assign_active_directory_user_id
     assign_active_directory_user_group_ids
+    update_latest_session_for_user
     session[:user_id] = registered_user.id
   end
 
@@ -49,6 +50,10 @@ class SessionsController < ApplicationController
 
   private def assign_active_directory_user_group_ids
     registered_user.update_attribute(:active_directory_user_group_ids, active_directory_user_group_ids)
+  end
+
+  private def update_latest_session_for_user
+    registered_user.update(latest_session: DateTime.now)
   end
 
   private def authenticated_user_info

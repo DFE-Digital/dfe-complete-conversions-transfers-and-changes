@@ -14,6 +14,7 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:active_directory_user_group_ids).of_type :string }
     it { is_expected.to have_db_column(:team).of_type :string }
     it { is_expected.to have_db_column(:deactivated_at).of_type :datetime }
+    it { is_expected.to have_db_column(:latest_session).of_type :datetime }
   end
 
   describe "scopes" do
