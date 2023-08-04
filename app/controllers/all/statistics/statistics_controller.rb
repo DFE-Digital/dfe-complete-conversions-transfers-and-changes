@@ -1,4 +1,4 @@
-class All::Statistics::ProjectsController < ApplicationController
+class All::Statistics::StatisticsController < ApplicationController
   def index
     @project_statistics = Statistics::ProjectStatistics.new
   end
