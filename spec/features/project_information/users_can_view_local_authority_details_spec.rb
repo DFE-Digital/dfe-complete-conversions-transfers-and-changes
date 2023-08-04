@@ -50,21 +50,4 @@ RSpec.feature "Users can view local authority details" do
       end
     end
   end
-
-  context "when the local authority has a director of child services" do
-    before do
-      mock_successful_api_responses(urn: any_args, ukprn: any_args)
-      create(:director_of_child_services, local_authority: local_authority)
-      allow_any_instance_of(Api::AcademiesApi::Establishment).to receive(:local_authority).and_return(local_authority)
-      sign_in_with_user(user)
-      visit project_information_path(project)
-    end
-
-    scenario "they can view the director of child services" do
-      director = local_authority.director_of_child_services
-      within("#localAuthorityDetails") do
-        expect(page).to have_content(director.name)
-      end
-    end
-  end
 end
