@@ -1,5 +1,5 @@
 class All::Statistics::ProjectsController < ApplicationController
   def index
-    @project_statistics = ProjectStatistics.new
+    @project_statistics = Statistics::ProjectStatistics.new
   end
 end
