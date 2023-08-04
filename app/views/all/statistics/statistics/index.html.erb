@@ -148,3 +148,25 @@
     </table>
   </div>
 </div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <h2 class="govuk-heading-l">Users per team</h2>
+    <table class="govuk-table" name="statistics_table" aria-label="Users count by team">
+      <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col">Team</th>
+        <th class="govuk-table__header govuk-table__header--numeric" scope="col">Number of users</th>
+      </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <% @user_statistics.users_count_per_team.each do |key, value| %>
+          <tr class="govuk-table__row" id="users_<%= key %>">
+            <th scope="row" class="govuk-table__cell"><%= t("teams.#{key}") %></th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= value %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
