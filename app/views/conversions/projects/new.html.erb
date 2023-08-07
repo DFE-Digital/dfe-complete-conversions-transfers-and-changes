@@ -11,8 +11,8 @@
       <%= t("conversion_project.voluntary.new.hint_html") %>
 
       <div class="govuk-form-group">
-        <%= form.govuk_text_field :urn, label: {size: "m", text: t("helpers.label.conversion_project.urn")}, hint: {text: t("helpers.hint.project.urn").html_safe}, width: 10 %>
-        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.conversion_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.project.incoming_trust_ukprn").html_safe}, width: 10 %>
+        <%= form.govuk_text_field :urn, label: {size: "m"}, width: 10 %>
+        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m"}, width: 10 %>
       </div>
 
       <div class="govuk-form-group">
@@ -24,9 +24,9 @@
         <%= form.govuk_date_field :provisional_conversion_date, legend: {text: t("helpers.legend.conversion_project.provisional_conversion_date")}, omit_day: true, form_group: {id: "provisional-conversion-date"}, hint: {text: t("helpers.hint.conversion_project.provisional_conversion_date")} %>
         </div>
 
-        <div class="govuk-form-group">
-        <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("helpers.label.conversion_project.establishment_sharepoint_link")} %>
-        <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.conversion_project.trust_sharepoint_link")} %>
+      <div class="govuk-form-group">
+        <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m"} %>
+        <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m"} %>
       </div>
 
       <div class="govuk-form-group">
