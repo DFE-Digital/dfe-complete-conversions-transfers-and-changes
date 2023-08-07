@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_091931) do
-  create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_114533) do
+ create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
     t.string "title", null: false
@@ -215,6 +215,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_091931) do
   create_table "transfer_tasks_data", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "handover_review"
+    t.boolean "handover_notes"
+    t.boolean "handover_meeting"
+    t.boolean "handover_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
