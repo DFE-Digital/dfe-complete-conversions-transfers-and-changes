@@ -23,6 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- The all projects in-progress table is sorted by the conversion or transfer
+  date.
+
 ## [Release 37][release-37]
 
 ### Added
