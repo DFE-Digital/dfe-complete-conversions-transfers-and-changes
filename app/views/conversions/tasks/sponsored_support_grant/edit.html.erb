@@ -13,7 +13,7 @@
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
       </div>
 
-      <div class="govuk-form-group">
+      <div class="govuk-form-group govuk-!-margin-bottom-9">
         <%= form.govuk_radio_buttons_fieldset(:type, legend: {size: "l", text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.title")}) do %>
           <div class="app-task-section__hint">
             <%= t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.hint.html") %>
@@ -22,10 +22,12 @@
                 summary_text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.guidance_link"),
                 text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.guidance.html")
               ) %>
-          <%= form.govuk_radio_button :type, "fast-track", label: {text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.fast_track")} %>
-          <%= form.govuk_radio_button :type, "intermediate", label: {text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.intermediate")} %>
-          <%= form.govuk_radio_button :type, "full-sponsored", label: {text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.full_sponsored")} %>
+        <% @task.type_options.each do |option| %>
+          <%= form.govuk_radio_button :type,
+                option,
+                label: {text: t("conversion.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.#{option}")} %>
         <% end %>
+      <% end %>
       </div>
 
       <div class="govuk-form-group">

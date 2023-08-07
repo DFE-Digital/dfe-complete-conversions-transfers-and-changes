@@ -6,4 +6,11 @@ class Conversion::TasksData < ActiveRecord::Base
   def self.policy_class
     TaskListPolicy
   end
+
+  enum :sponsored_support_grant_type,
+    {
+      fast_track: "fast_track",
+      intermediate: "intermediate",
+      full_sponsored: "full_sponsored"
+    }
 end

@@ -189,7 +189,7 @@ RSpec.feature "Users can complete conversion tasks" do
       choose "Fast track"
       click_on I18n.t("task_list.continue_button.text")
 
-      expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "fast-track"
+      expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "fast_track"
     end
 
     scenario "the response can be intermediate" do
@@ -203,7 +203,7 @@ RSpec.feature "Users can complete conversion tasks" do
       choose "Full sponsored"
       click_on I18n.t("task_list.continue_button.text")
 
-      expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "full-sponsored"
+      expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "full_sponsored"
     end
   end
 
