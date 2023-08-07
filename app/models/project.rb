@@ -99,6 +99,10 @@ class Project < ApplicationRecord
     :not_applicable
   end
 
+  def all_conditions_met?
+    tasks_data.conditions_met_confirm_all_conditions_met?
+  end
+
   private def fetch_member_of_parliament
     Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
   end

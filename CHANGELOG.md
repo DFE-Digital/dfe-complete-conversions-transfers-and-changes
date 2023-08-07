@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Add "Outgoing trust" category to External contacts
 - Show user counts by team on the statistics page
+- Add All conditions met? task to Transfer projects
 
 ### Changed
 

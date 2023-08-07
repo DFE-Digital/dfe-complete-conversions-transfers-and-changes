@@ -40,9 +40,23 @@ RSpec.describe Transfer::Project do
     end
   end
 
-  describe "#all_conditions_met" do
-    it "returns false" do
-      expect(described_class.new.all_conditions_met?).to be false
+  describe "#all_conditions_met?" do
+    context "when the all conditions met task is completed" do
+      let(:tasks_data) { create(:transfer_tasks_data, conditions_met_confirm_all_conditions_met: true) }
+      let(:project) { build(:transfer_project, tasks_data: tasks_data) }
+
+      it "returns true" do
+        expect(project.all_conditions_met?).to eq(true)
+      end
+    end
+
+    context "when the all conditions met task has not been completed" do
+      let(:tasks_data) { create(:transfer_tasks_data, conditions_met_confirm_all_conditions_met: nil) }
+      let(:project) { build(:transfer_project, tasks_data: tasks_data) }
+
+      it "returns false" do
+        expect(project.all_conditions_met?).to eq(false)
+      end
     end
   end
 end

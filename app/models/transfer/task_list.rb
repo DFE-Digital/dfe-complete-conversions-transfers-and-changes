@@ -6,6 +6,12 @@ class Transfer::TaskList < ::BaseTaskList
         tasks: [
           Transfer::Task::StakeholderKickOffTaskForm
         ]
+      },
+      {
+        identifier: :get_ready_for_opening,
+        tasks: [
+          Transfer::Task::ConditionsMetTaskForm
+        ]
       }
     ]
   end
