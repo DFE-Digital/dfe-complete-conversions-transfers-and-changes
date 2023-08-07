@@ -16,10 +16,10 @@ RSpec.feature "Viewing all in-progress projects" do
   end
 
   context "when there are projects in progress" do
-    let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday) }
-    let!(:in_progress_project) { create(:conversion_project, urn: 115652) }
-
     scenario "they can view all in progress projects" do
+      completed_project = create(:conversion_project, urn: 121583, completed_at: Date.yesterday)
+      in_progress_project = create(:conversion_project, urn: 115652)
+
       visit all_in_progress_projects_path
 
       expect(page).to have_content(I18n.t("project.all.in_progress.title"))
@@ -28,6 +28,20 @@ RSpec.feature "Viewing all in-progress projects" do
         expect(page).to have_content(in_progress_project.urn)
 
         expect(page).not_to have_content(completed_project.urn)
+      end
+    end
+
+    scenario "they are sorted by significant date" do
+      last_project = create(:conversion_project, conversion_date: Date.parse("2023-12-1"), urn: 165432)
+      first_project = create(:conversion_project, conversion_date: Date.parse("2023-1-1"), urn: 123456)
+
+      visit all_in_progress_projects_path
+
+      within "tbody tr:first-child" do
+        expect(page).to have_content(first_project.urn)
+      end
+      within "tbody tr:last-child" do
+        expect(page).to have_content(last_project.urn)
       end
     end
 
