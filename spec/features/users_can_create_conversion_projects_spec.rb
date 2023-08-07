@@ -45,7 +45,7 @@ RSpec.feature "Users can create new conversion projects" do
     end
 
     fill_in "School SharePoint link", with: "https://educationgovuk-my.sharepoint.com/school-folder"
-    fill_in "Trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/trust-folder"
+    fill_in "Incoming trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/trust-folder"
 
     within("#advisory-board-date") do
       fill_in "Day", with: two_weeks_ago.day
