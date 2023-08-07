@@ -16,6 +16,12 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::ArticlesOfAssociationTaskForm,
           Transfer::Task::CommercialTransferAgreementTaskForm
         ]
+      },
+      {
+        identifier: :get_ready_for_opening,
+        tasks: [
+          Transfer::Task::ConditionsMetTaskForm
+        ]
       }
     ]
   end
