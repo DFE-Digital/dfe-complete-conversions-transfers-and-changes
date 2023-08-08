@@ -111,7 +111,7 @@ RSpec.feature "Users can manage user accounts" do
     end
   end
 
-  context "then the users team is nil becuase it is a legacy account" do
+  context "then the users team is nil because it is a legacy account" do
     scenario "no team is shown" do
       other_user = User.new(
         first_name: "First",
@@ -128,6 +128,23 @@ RSpec.feature "Users can manage user accounts" do
       within("tbody") do
         expect(page).to have_content("No team")
       end
+    end
+  end
+
+  scenario "the user's last session datetime is shown" do
+    date = DateTime.new(2023, 0o1, 0o1, 10, 30, 0o0, 0)
+    _other_user = create(:user, :caseworker, latest_session: date)
+
+    sign_in_with_user(user)
+
+    visit users_path
+
+    within("thead") do
+      expect(page).to have_content("Last seen")
+    end
+
+    within("tbody") do
+      expect(page).to have_content(date.to_formatted_s(:govuk_date_time))
     end
   end
 end
