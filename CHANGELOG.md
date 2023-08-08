@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the Director of Child Services contact information is now in the External
   contacts area, not the Local authority information area.
 - updated grants team email address
+- added C of E/cofe issue to accessibility statement
 
 ### Fixed
 
