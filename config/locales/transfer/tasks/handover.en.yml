@@ -1,0 +1,32 @@
+en:
+  transfer:
+    task:
+      handover:
+        title: Handover with regional delivery officer
+
+        not_applicable:
+          title: Not applicable
+
+        review:
+          title: Review the project information and carry out research
+          guidance_link: What to check for
+          guidance:
+            html:
+              <p>Things to check during your background research include:</p>
+              <ul>
+              <li>project information, such as advisory board conditions</li>
+              <li>advisory board template, for more information about the project</li>
+              <li>trust websites for more information about the outgoing and incoming trust</li>
+              <li>the age of the incoming trust model documents and whether they need to be updated</li>
+              </ul>
+        notes:
+          title: Make notes and write questions to ask the regional delivery officer
+          guidance_link: What to check for
+          guidance:
+            html:
+              <p>Note down things you want to ask and talk about with the regional delivery officer at the handover meeting.</p>
+              <p>This is an opportunity to clarify anything that you're unsure about after reviewing the project and doing your background research.</p>
+        meeting:
+          title: Attend handover meeting with regional delivery officer
+          hint:
+            html: <p>Discuss any questions you have about the project in the meeting.</p>
