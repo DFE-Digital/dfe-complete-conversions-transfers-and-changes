@@ -1,0 +1,58 @@
+en:
+  transfer:
+    task:
+      master_funding_agreement:
+        title: Master funding agreement
+        hint:
+          html: <p>Update the master funding agreement to a new version if the incoming trust uses one from before 2018.</p>
+                <p>Use a deed of termination to end the master funding agreement for the outgoing trust if it will close after this transfer.</p>
+
+        clear_section:
+          title: Check and clear the master funding agreement
+          hint:
+            html: <p>You can <a href="https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements" target="_blank">view the model documents (opens in new tab)</a> to check for changes.</p>
+          guidance_link: Help checking and updating the master funding agreement
+          guidance:
+            html:
+              <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+              <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+              <h3>Changing an old master funding agreement</h3>
+              <p>If the trust uses a master funding agreement from 2018 or earlier, they have two options.</p>
+              <ol>
+                <li>Update to a 2020 version of the master funding agreement and update any supplemental funding agreements from 2018 or earlier</li>
+                <li>add a second master funding agreement. This must be a 2020 version</li>
+              </ol>
+              <h4>Update the existing the master funding agreement</h4>
+              <p>DfE's preferred option is to update the existing master funding agreement to a new version, from 2020.</p>
+              <p>Ask the trust if they want to take this approach first. If they do not want to update the existing master funding agreement, they can add a second one.</p>
+              <h4>Add a second master funding agreement</h4>
+              <p>This should only be considered on a case-by-case basis.</p>
+              <p>The new academy's supplemental funding agreement will relate to that additional master funding agreement. This will allow the rest of the academies in the trust to continue using the existing master funding agreement.</p>
+              <p>You will need to clear any new and updated documents. These may need a deed of variation.</p>
+
+        sign_section:
+          title: Signed by the Secretary of State
+          hint:
+            html:
+              <p>The master funding agreement does not always need signing.</p>
+              <p>A deed of variation is attached to any master funding agreement that needs updating. This is sent to somebody who can sign on behalf of the Secretary of State.</p>
+              <p>That deed of variation will get signed. This acts as approval for the change to the master funding agreement, and the new version of it.</p>
+          guidance_link: How to sign the master funding agreement
+          guidance:
+            html:
+              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the master funding agreement.</p>
+              <p>Each team may have a different process for signing and sealing documents. Follow your team's signing process.</p>
+              <p>Once you have the signed version of the document, save it as a PDF in SharePoint.</p>
+
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        signed:
+          title: Signed by incoming trust
+        saved:
+          title: Saved in academy and incoming trust SharePoint folders
+        signed_secretary_state:
+          title: Signed on behalf of secretary of state
+        not_applicable:
+          title: Not applicable

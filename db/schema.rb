@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_113348) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -222,6 +222,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
     t.boolean "stakeholder_kick_off_introductory_emails"
     t.boolean "stakeholder_kick_off_setup_meeting"
     t.boolean "stakeholder_kick_off_meeting"
+    t.boolean "master_funding_agreement_received"
+    t.boolean "master_funding_agreement_cleared"
+    t.boolean "master_funding_agreement_signed"
+    t.boolean "master_funding_agreement_saved"
+    t.boolean "master_funding_agreement_signed_secretary_state"
+    t.boolean "master_funding_agreement_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
