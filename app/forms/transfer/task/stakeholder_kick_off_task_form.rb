@@ -1,6 +1,10 @@
 class Transfer::Task::StakeholderKickOffTaskForm < BaseTaskForm
   include TransferDatable
 
+  attribute :introductory_emails, :boolean
+  attribute :setup_meeting, :boolean
+  attribute :meeting, :boolean
+
   def initialize(tasks_data, user)
     @tasks_data = tasks_data
     @user = user
@@ -17,6 +21,12 @@ class Transfer::Task::StakeholderKickOffTaskForm < BaseTaskForm
         user: @user
       ).update!
     end
+
+    @tasks_data.assign_attributes(
+      stakeholder_kick_off_introductory_emails: introductory_emails,
+      stakeholder_kick_off_setup_meeting: setup_meeting,
+      stakeholder_kick_off_meeting: meeting
+    )
 
     @tasks_data.save!
   end

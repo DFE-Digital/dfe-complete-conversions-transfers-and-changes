@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add "Outgoing trust" category to External contacts
 - Show user counts by team on the statistics page
 - Add a Handover task to Transfer projects
+- Add more actions to the Stakeholder kick-off task for Transfers
 
 ### Changed
 

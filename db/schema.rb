@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_114533) do
- create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
+  create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
     t.string "title", null: false
@@ -219,6 +219,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_114533) do
     t.boolean "handover_notes"
     t.boolean "handover_meeting"
     t.boolean "handover_not_applicable"
+    t.boolean "stakeholder_kick_off_introductory_emails"
+    t.boolean "stakeholder_kick_off_setup_meeting"
+    t.boolean "stakeholder_kick_off_meeting"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

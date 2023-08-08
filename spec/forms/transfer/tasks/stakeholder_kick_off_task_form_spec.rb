@@ -85,7 +85,7 @@ RSpec.describe Transfer::Task::StakeholderKickOffTaskForm do
     let(:task_form) { described_class.new(tasks_data, user) }
 
     context "when the form is valid" do
-      context "and the confirmed conversion date is submitted" do
+      context "and the confirmed transfer date is submitted" do
         let(:project) { create(:transfer_project, transfer_date_provisional: true) }
 
         it "creates a new date history" do
@@ -141,16 +141,46 @@ RSpec.describe Transfer::Task::StakeholderKickOffTaskForm do
     let(:tasks_data) { project.tasks_data }
     let(:task_form) { described_class.new(tasks_data, user) }
 
-    context "when the transfer date is not confirmed" do
-      it "returns :in_progress" do
+    context "when the task has no completed actions" do
+      it "returns :not_started" do
         expect(task_form.status).to eql :not_started
       end
     end
 
-    context "when the transfer date is confirmed" do
+    context "when the task has some completed actions" do
+      it "returns :in_progress" do
+        task_form.introductory_emails = true
+
+        expect(task_form.status).to eql :in_progress
+      end
+    end
+
+    context "when the tasks are all complete but the transfer date is not confirmed" do
+      it "returns :in_progress" do
+        task_form.introductory_emails = true
+        task_form.setup_meeting = true
+        task_form.meeting = true
+
+        expect(task_form.status).to eql :in_progress
+      end
+    end
+
+    context "when only the transfer date is confirmed" do
+      let(:project) { create(:transfer_project, transfer_date_provisional: false) }
+
+      it "returns :in_progress" do
+        expect(task_form.status).to eql :in_progress
+      end
+    end
+
+    context "when the task has all completed actions and confirmed the transfer date" do
       let(:project) { create(:transfer_project, transfer_date_provisional: false) }
 
       it "returns :completed" do
+        task_form.introductory_emails = true
+        task_form.setup_meeting = true
+        task_form.meeting = true
+
         expect(task_form.status).to eql :completed
       end
     end
