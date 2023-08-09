@@ -33,7 +33,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
 
   private def notify_team_leaders(project)
     User.team_leaders.each do |team_leader|
-      TeamLeaderMailer.new_project_created(team_leader, project).deliver_later
+      TeamLeaderMailer.new_project_created(team_leader, project).deliver_later if team_leader.active
     end
   end
 

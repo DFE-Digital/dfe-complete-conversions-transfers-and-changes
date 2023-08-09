@@ -33,7 +33,8 @@ class AssignmentsController < ApplicationController
     @project.update(assigned_to_params.except(:return_to))
     @project.update(assigned_at: DateTime.now) if @project.assigned_at.nil?
 
-    AssignedToMailer.assigned_notification(@project.assigned_to, @project).deliver_later
+    assignee = @project.assigned_to
+    AssignedToMailer.assigned_notification(assignee, @project).deliver_later if assignee.active
 
     return_to = assigned_to_params[:return_to] || project_internal_contacts_path(@project)
 
