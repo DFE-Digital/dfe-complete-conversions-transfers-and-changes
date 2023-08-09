@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_09_134700) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_135448) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -240,6 +240,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_134700) do
     t.boolean "articles_of_association_signed"
     t.boolean "articles_of_association_saved"
     t.boolean "articles_of_association_not_applicable"
+    t.boolean "commercial_transfer_agreement_confirm_agreed"
+    t.boolean "commercial_transfer_agreement_confirm_signed"
+    t.boolean "commercial_transfer_agreement_save_confirmation_emails"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
