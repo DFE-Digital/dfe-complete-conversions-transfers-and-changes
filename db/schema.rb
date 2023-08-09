@@ -235,6 +235,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_134700) do
     t.boolean "deed_of_novation_and_variation_saved"
     t.boolean "deed_of_novation_and_variation_signed_secretary_state"
     t.boolean "deed_of_novation_and_variation_sent"
+    t.boolean "articles_of_association_received"
+    t.boolean "articles_of_association_cleared"
+    t.boolean "articles_of_association_signed"
+    t.boolean "articles_of_association_saved"
+    t.boolean "articles_of_association_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

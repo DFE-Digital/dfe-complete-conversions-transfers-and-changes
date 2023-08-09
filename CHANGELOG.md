@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Show the time of the user's latest session in the User table, as "Last seen"
 - Add master funding agreement task to Transfer projects
 - Add a Deed of novation and variation task to Transfer projects
+- Add Articles of Association task to Transfer projects
 
 ### Changed
 

@@ -1,0 +1,34 @@
+en:
+  transfer:
+    task:
+      articles_of_association:
+        title: Articles of association
+        hint:
+          html:
+            <p>You must update the articles of association if any of the following statements are true:</p>
+            <ul>
+            <li>the trust currently uses a version from February 2016 or earlier</li>
+            <li>a different type of academy is joining the trust (for example, a Church of England academy joining a trust containing only community academies)</li>
+            <li>it is a condition of the advisory board's decision</li>
+            </ul>
+            <p>You do not always need to update the articles but it is strongly advised, even when not required.</p>
+        clear_section:
+          title: Check and clear the articles of association
+          hint:
+            html: <p>You can use the <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Governance-(includes-clearing-Articles-of-Association).aspx" target="_blank">academy governance guidance (opens in new tab)</a> to help you check and clear the articles of association.</p>
+          guidance_link: Help checking for changes
+          guidance:
+            html:
+              <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+              <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        signed:
+          title: Signed by school or trust
+        saved:
+          title: Saved in the school's SharePoint folder
+        not_applicable:
+          title: Not applicable
