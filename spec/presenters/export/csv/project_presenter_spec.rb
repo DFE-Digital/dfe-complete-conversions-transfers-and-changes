@@ -113,8 +113,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents all conditions met" do
-    tasks_data = double(Conversion::TasksData, conditions_met_confirm_all_conditions_met: true)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    project = double(Conversion::Project, all_conditions_met: true)
 
     presenter = described_class.new(project)
 
@@ -122,8 +121,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents all conditions met when it has not been met" do
-    tasks_data = double(Conversion::TasksData, conditions_met_confirm_all_conditions_met: nil)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    project = double(Conversion::Project, all_conditions_met: nil)
 
     presenter = described_class.new(project)
 

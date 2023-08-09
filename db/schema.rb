@@ -90,7 +90,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_135448) do
     t.boolean "single_worksheet_send"
     t.boolean "school_completed_emailed"
     t.boolean "school_completed_saved"
-    t.boolean "conditions_met_confirm_all_conditions_met"
     t.boolean "redact_and_send_redact"
     t.boolean "redact_and_send_save_redaction"
     t.boolean "redact_and_send_send_redaction"
@@ -197,6 +196,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_135448) do
     t.string "team"
     t.boolean "two_requires_improvement", default: false
     t.text "outgoing_trust_sharepoint_link"
+    t.boolean "all_conditions_met", default: false
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"

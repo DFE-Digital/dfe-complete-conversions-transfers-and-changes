@@ -19,11 +19,6 @@ class Transfer::Project < Project
     false
   end
 
-  def all_conditions_met?
-    # TODO: Replace with task value once task data is added
-    false
-  end
-
   private def outgoing_trust_exists
     outgoing_trust
   rescue Api::AcademiesApi::Client::NotFoundError

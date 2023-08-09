@@ -13,6 +13,7 @@ FactoryBot.define do
     regional_delivery_officer { association :user, :regional_delivery_officer }
     tasks_data { association :conversion_tasks_data }
     team { Project.teams["london"] }
+    all_conditions_met { nil }
 
     trait :with_conditions do
       advisory_board_conditions { "The following must be met:\n 1. Must be red\n2. Must be blue\n" }

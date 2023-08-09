@@ -155,8 +155,7 @@ RSpec.describe ProjectHelper, type: :helper do
 
   describe "#all_conditions_met_value" do
     context "when all_conditions_met is true" do
-      let(:tasks_data) { create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: true) }
-      let(:project) { build(:conversion_project, tasks_data: tasks_data) }
+      let(:project) { build(:conversion_project, all_conditions_met: true) }
 
       it "returns a turquoise tag with 'yes' text" do
         expect(helper.all_conditions_met_value(project)).to eql "Yes"
@@ -164,8 +163,7 @@ RSpec.describe ProjectHelper, type: :helper do
     end
 
     context "when all_conditions_met is false" do
-      let(:tasks_data) { create(:conversion_tasks_data, conditions_met_confirm_all_conditions_met: nil) }
-      let(:project) { build(:conversion_project, tasks_data: tasks_data) }
+      let(:project) { build(:conversion_project, all_conditions_met: nil) }
 
       it "returns a blue tag with 'not started' text" do
         expect(helper.all_conditions_met_value(project)).to eql "Not yet"

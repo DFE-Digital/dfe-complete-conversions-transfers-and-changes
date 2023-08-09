@@ -20,6 +20,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:region).of_type :string }
     it { is_expected.to have_db_column(:academy_urn).of_type :integer }
     it { is_expected.to have_db_column(:team).of_type :string }
+    it { is_expected.to have_db_column(:all_conditions_met).of_type :boolean }
   end
 
   describe "Relationships" do
@@ -578,6 +579,24 @@ RSpec.describe Project, type: :model do
 
     it "has the expected enum values" do
       expect(Project.teams.count).to eq(10)
+    end
+  end
+
+  describe "#all_conditions_met?" do
+    context "when the all conditions met task is completed" do
+      let(:project) { build(:conversion_project, all_conditions_met: true) }
+
+      it "returns true" do
+        expect(project.all_conditions_met?).to eq(true)
+      end
+    end
+
+    context "when the all conditions met task has not been completed" do
+      let(:project) { build(:conversion_project, all_conditions_met: nil) }
+
+      it "returns false" do
+        expect(project.all_conditions_met?).to eq(false)
+      end
     end
   end
 
