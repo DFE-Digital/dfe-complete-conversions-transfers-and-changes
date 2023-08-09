@@ -243,6 +243,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_135448) do
     t.boolean "commercial_transfer_agreement_confirm_agreed"
     t.boolean "commercial_transfer_agreement_confirm_signed"
     t.boolean "commercial_transfer_agreement_save_confirmation_emails"
+    t.boolean "supplemental_funding_agreement_received"
+    t.boolean "supplemental_funding_agreement_cleared"
+    t.boolean "supplemental_funding_agreement_saved"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

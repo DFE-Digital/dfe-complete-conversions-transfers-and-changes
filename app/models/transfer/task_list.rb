@@ -14,7 +14,8 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::MasterFundingAgreementTaskForm,
           Transfer::Task::DeedOfNovationAndVariationTaskForm,
           Transfer::Task::ArticlesOfAssociationTaskForm,
-          Transfer::Task::CommercialTransferAgreementTaskForm
+          Transfer::Task::CommercialTransferAgreementTaskForm,
+          Transfer::Task::SupplementalFundingAgreementTaskForm
         ]
       },
       {
