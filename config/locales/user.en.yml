@@ -43,6 +43,7 @@ en:
         team: Team
         team_lead: Team lead
         edit_user: Edit user
+        last_seen: Last seen
       body:
         team_lead:
           "true": "Yes"

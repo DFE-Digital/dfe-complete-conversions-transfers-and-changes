@@ -54,6 +54,14 @@ RSpec.describe "Sign in" do
     expect(user.reload.active_directory_user_group_ids).to eql(test_group_ids)
   end
 
+  it "updates the latest_session column on the user" do
+    freeze_time
+    mock_successful_authentication(user.email)
+
+    get "/auth/azure_activedirectory_v2/callback"
+    expect(user.reload.latest_session).to eq(DateTime.now)
+  end
+
   context "when the users is not known by the application" do
     before { mock_successful_authentication("user@education.gov.uk") }
 

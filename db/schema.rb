@@ -240,6 +240,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
     t.datetime "deactivated_at"
     t.boolean "manage_conversion_urns", default: false
     t.boolean "manage_local_authorities", default: false
+    t.datetime "latest_session"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
