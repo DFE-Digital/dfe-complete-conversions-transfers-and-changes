@@ -1,0 +1,46 @@
+en:
+  transfer:
+    task:
+      deed_of_novation_and_variation:
+        title: Deed of novation and variation
+        hint:
+          html:
+            <p>A deed of novation and variation transfers the liabilites and obligations of the outgoing trust to the incoming trust.</p>
+            <p>You use this deed to move the supplemental funding agreement to the incoming trust.</p>
+
+        clear_section:
+          title: Check and clear the deed of novation and variation
+          hint:
+            html:
+              <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx" target="_blank">find the right deed of novation and variation to use (opens in new tab)</a> on SharePoint.</p>
+              <p>Deed of novation and varation model documents are not available on GOV.UK. You may need to send copies to the solicitor or trust for them to complete.</p>
+          guidance_link: Help checking for changes
+          guidance:
+            html:
+              <p class="govuk-body-m">Changes that personalise the model documents to a acadeny or trust are expected. The wording of clauses should not change.</p>
+              <p class="govuk-body-m">You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+
+        sign_section:
+          title: Signed by the Secretary of State
+          guidance_link: How to sign the deed of novation and variation
+          guidance:
+            html:
+              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the deed of novation and variation.</p>
+              <p>Each team may have a different process for signing and sealing documents. Follow your team's signing process.</p>
+              <p>Once you have the signed version of the document, save it as a PDF in SharePoint.</p>
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        signed_outgoing_trust:
+          title: Signed by outgoing trust
+        signed_incoming_trust:
+          title: Signed by incoming trust
+        saved:
+          title: Saved in academy SharePoint folder
+        sent:
+          title: Sent to team leader or deputy director
+        signed_secretary_state:
+          title: Signed on behalf of Secretary of State
+        not_applicable:
+          title: Not applicable

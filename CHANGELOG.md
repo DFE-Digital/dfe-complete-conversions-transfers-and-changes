@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Store the DateTime of a user's latest session (the last time they logged in)
 - Show the time of the user's latest session in the User table, as "Last seen"
 - Add master funding agreement task to Transfer projects
+- Add a Deed of novation and variation task to Transfer projects
 
 ### Changed
 
