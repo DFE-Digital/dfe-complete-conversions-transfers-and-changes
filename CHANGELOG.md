@@ -27,6 +27,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - updated grants team email address
 - added C of E/cofe issue to accessibility statement
 - do not send any mails to deactivated users
+- Amended all table views to be able to display a conversion project as well as
+  a transfer project
+- Remove the View project column from the table views and make the school name
+  link to the project view instead
 
 ### Fixed
 
