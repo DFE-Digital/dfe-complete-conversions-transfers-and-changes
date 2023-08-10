@@ -12,7 +12,8 @@ class Transfer::TaskList < ::BaseTaskList
         identifier: :legal_documents,
         tasks: [
           Transfer::Task::MasterFundingAgreementTaskForm,
-          Transfer::Task::DeedOfNovationAndVariationTaskForm
+          Transfer::Task::DeedOfNovationAndVariationTaskForm,
+          Transfer::Task::ArticlesOfAssociationTaskForm
         ]
       }
     ]
