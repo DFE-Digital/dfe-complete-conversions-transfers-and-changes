@@ -1,0 +1,16 @@
+en:
+  transfer:
+    task:
+      commercial_transfer_agreement:
+        title: Commercial transfer agreement
+        hint:
+          html:
+            <p>The commercial transfer agreement is essential for all transfer projects.</p>
+            <p>It may not be agreed and signed until the final month before the academy is transferred.</p>
+
+        confirm_agreed:
+          title: Confirm commercial transfer agreement is agreed
+        confirm_signed:
+          title: Confirm commercial transfer agreement is signed
+        save_confirmation_emails:
+          title: Save a copy of the confirmation emails in the academy's SharePoint folder
