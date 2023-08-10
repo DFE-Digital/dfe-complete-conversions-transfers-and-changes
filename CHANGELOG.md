@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add more actions to the Stakeholder kick-off task for Transfers
 - Store the DateTime of a user's latest session (the last time they logged in)
 - Show the time of the user's latest session in the User table, as "Last seen"
+- Add master funding agreement task to Transfer projects
 
 ### Changed
 
