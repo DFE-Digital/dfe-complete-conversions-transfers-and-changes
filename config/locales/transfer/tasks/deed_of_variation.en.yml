@@ -1,0 +1,46 @@
+en:
+  transfer:
+    task:
+      deed_of_variation:
+        title: Deed of variation
+        hint:
+          html:
+            <p>You only need to use a deed of variation if both the following are true.</p>
+            <p>The incoming trust is:</p>
+              <ul>
+              <li>updating an old master funding agreement that covers all current academies in the trust</li>
+              <li>not using an additional master funding agreement for the transfer of this academy</li>
+              </ul>
+        clear_section:
+          title: Check and clear the deed of variation
+          hint:
+            html:
+              <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx" target="_blank">find the right deed of variation to use (opens in new tab)</a> on SharePoint.</p>
+              <p>Deed of varation model documents are not available on GOV.UK. You may need to send copies to the solicitor or trust for them to complete.</p>
+          guidance_link: Help checking for changes
+          guidance:
+            html:
+              <p>Changes that personalise the model documents to an academy or trust are expected. The wording of clauses should not change.</p>
+              <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+        sign_section:
+          title: Signed by the Secretary of State
+          guidance_link: How to sign the deed of variation
+          guidance:
+            html:
+              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the deed of variation.</p>
+              <p>Each team may have a different process for signing and sealing documents. Follow your team's signing process.</p>
+              <p>Once you have the signed version of the document, save it as a PDF in SharePoint.</p>
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        signed:
+          title: Signed by school or trust
+        saved:
+          title: Saved in the school's SharePoint folder
+        sent:
+          title: Sent to team leader or deputy director
+        signed_secretary_state:
+          title: Document signed on behalf of the Secretary of State
+        not_applicable:
+          title: Not applicable
