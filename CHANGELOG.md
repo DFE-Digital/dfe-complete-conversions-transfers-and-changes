@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add Articles of Association task to Transfer projects
 - Add commercial transfer agreement task to Transfer projects
 - Add All conditions met? task to Transfer projects
+- Add Supplmental funding agreement task to Transfer projects
 
 ### Changed
 

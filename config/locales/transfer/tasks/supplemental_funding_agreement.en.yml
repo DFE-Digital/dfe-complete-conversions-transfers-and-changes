@@ -1,0 +1,22 @@
+en:
+  transfer:
+    task:
+      supplemental_funding_agreement:
+        title: Supplemental funding agreement
+        clear_section:
+          title: Check and clear the supplemental funding agreement
+          hint:
+            html: You can <a href="https://www.gov.uk/government/publications/academy-and-free-school-funding-agreements" target="_blank">view the model documents (opens in new tab)</a> to check for changes.
+          guidance_link: Help checking the supplemental funding agreement
+          guidance:
+            html:
+              <p>Changes that personalise the model documents to an academy or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+              <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+              <p>We only accept new supplemental funding agreements that use the 2020 edition of the model documents.</p>
+              <p>Master funding agreements from 2018 onwards are compatible with supplemental funding agreements from 2020 onwards.</p>
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        saved:
+          title: Saved in the academy SharePoint folder
