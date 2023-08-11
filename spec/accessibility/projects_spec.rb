@@ -35,14 +35,14 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   scenario "project completed page" do
     tasks_data = create(:conversion_tasks_data,
       receive_grant_payment_certificate_check_and_save: true,
-      receive_grant_payment_certificate_update_kim: true,
-      conditions_met_confirm_all_conditions_met: true)
+      receive_grant_payment_certificate_update_kim: true)
     project = create(:conversion_project,
       regional_delivery_officer: user,
       assigned_to: user,
       tasks_data: tasks_data,
       conversion_date: 1.month.ago.at_beginning_of_month,
-      conversion_date_provisional: false)
+      conversion_date_provisional: false,
+      all_conditions_met: true)
     visit project_path(project)
 
     click_on I18n.t("project.complete.submit_button")

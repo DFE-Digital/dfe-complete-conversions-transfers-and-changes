@@ -22,7 +22,7 @@ class Export::Csv::ProjectPresenter
   end
 
   def all_conditions_met
-    if @project.tasks_data.conditions_met_confirm_all_conditions_met.nil?
+    if @project.all_conditions_met.nil?
       return I18n.t("export.csv.project.values.no")
     end
 

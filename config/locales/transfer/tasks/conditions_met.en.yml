@@ -1,0 +1,13 @@
+en:
+  transfer:
+    task:
+      conditions_met:
+        title: Confirm all conditions have been met
+        hint:
+        guidance_link: How to check all conditions have been met
+        guidance:
+        confirm_all_conditions_met:
+          title: Confirm all conditions are met
+          hint:
+          guidance_link: What to do if conditions are not met
+          guidance:

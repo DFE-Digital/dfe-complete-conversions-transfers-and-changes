@@ -39,10 +39,4 @@ RSpec.describe Transfer::Project do
       end
     end
   end
-
-  describe "#all_conditions_met" do
-    it "returns false" do
-      expect(described_class.new.all_conditions_met?).to be false
-    end
-  end
 end

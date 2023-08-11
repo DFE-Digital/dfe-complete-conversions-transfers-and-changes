@@ -1,4 +1,4 @@
-class Conversion::Task::ConditionsMetTaskForm < BaseTaskForm
+class Transfer::Task::ConditionsMetTaskForm < BaseTaskForm
   attribute :confirm_all_conditions_met, :boolean
 
   def initialize(tasks_data, user)
@@ -10,6 +10,6 @@ class Conversion::Task::ConditionsMetTaskForm < BaseTaskForm
   end
 
   def save
-    @project.update(all_conditions_met: confirm_all_conditions_met)
+    @project.update!(all_conditions_met: confirm_all_conditions_met)
   end
 end
