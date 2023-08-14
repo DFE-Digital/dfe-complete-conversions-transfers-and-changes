@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Every page now has a unique page title
 
+### Changed
+
+- Bring the flash banners in line with GOV.uk styles
+
 ## [Release 38][release-38]
 
 ### Added
