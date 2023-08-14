@@ -1,0 +1,9 @@
+en:
+  transfer:
+    task_list:
+      project_kick_off:
+        title: Project kick-off
+      legal_documents:
+        title: Clear and sign legal documents
+      get_ready_for_opening:
+        title: Get ready for opening

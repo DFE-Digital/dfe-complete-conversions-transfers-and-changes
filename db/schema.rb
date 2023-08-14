@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_120325) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -90,7 +90,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
     t.boolean "single_worksheet_send"
     t.boolean "school_completed_emailed"
     t.boolean "school_completed_saved"
-    t.boolean "conditions_met_confirm_all_conditions_met"
     t.boolean "redact_and_send_redact"
     t.boolean "redact_and_send_save_redaction"
     t.boolean "redact_and_send_send_redaction"
@@ -197,6 +196,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
     t.string "team"
     t.boolean "two_requires_improvement", default: false
     t.text "outgoing_trust_sharepoint_link"
+    t.boolean "all_conditions_met", default: false
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
@@ -222,6 +222,37 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_151713) do
     t.boolean "stakeholder_kick_off_introductory_emails"
     t.boolean "stakeholder_kick_off_setup_meeting"
     t.boolean "stakeholder_kick_off_meeting"
+    t.boolean "master_funding_agreement_received"
+    t.boolean "master_funding_agreement_cleared"
+    t.boolean "master_funding_agreement_signed"
+    t.boolean "master_funding_agreement_saved"
+    t.boolean "master_funding_agreement_signed_secretary_state"
+    t.boolean "master_funding_agreement_not_applicable"
+    t.boolean "deed_of_novation_and_variation_received"
+    t.boolean "deed_of_novation_and_variation_cleared"
+    t.boolean "deed_of_novation_and_variation_signed_outgoing_trust"
+    t.boolean "deed_of_novation_and_variation_signed_incoming_trust"
+    t.boolean "deed_of_novation_and_variation_saved"
+    t.boolean "deed_of_novation_and_variation_signed_secretary_state"
+    t.boolean "deed_of_novation_and_variation_sent"
+    t.boolean "articles_of_association_received"
+    t.boolean "articles_of_association_cleared"
+    t.boolean "articles_of_association_signed"
+    t.boolean "articles_of_association_saved"
+    t.boolean "articles_of_association_not_applicable"
+    t.boolean "commercial_transfer_agreement_confirm_agreed"
+    t.boolean "commercial_transfer_agreement_confirm_signed"
+    t.boolean "commercial_transfer_agreement_save_confirmation_emails"
+    t.boolean "supplemental_funding_agreement_received"
+    t.boolean "supplemental_funding_agreement_cleared"
+    t.boolean "supplemental_funding_agreement_saved"
+    t.boolean "deed_of_variation_received"
+    t.boolean "deed_of_variation_cleared"
+    t.boolean "deed_of_variation_signed"
+    t.boolean "deed_of_variation_saved"
+    t.boolean "deed_of_variation_sent"
+    t.boolean "deed_of_variation_signed_secretary_state"
+    t.boolean "deed_of_variation_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

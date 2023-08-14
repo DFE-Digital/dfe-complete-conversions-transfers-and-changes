@@ -7,6 +7,23 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::HandoverTaskForm,
           Transfer::Task::StakeholderKickOffTaskForm
         ]
+      },
+      {
+        identifier: :legal_documents,
+        tasks: [
+          Transfer::Task::MasterFundingAgreementTaskForm,
+          Transfer::Task::DeedOfNovationAndVariationTaskForm,
+          Transfer::Task::ArticlesOfAssociationTaskForm,
+          Transfer::Task::CommercialTransferAgreementTaskForm,
+          Transfer::Task::DeedOfVariationTaskForm,
+          Transfer::Task::SupplementalFundingAgreementTaskForm
+        ]
+      },
+      {
+        identifier: :get_ready_for_opening,
+        tasks: [
+          Transfer::Task::ConditionsMetTaskForm
+        ]
       }
     ]
   end

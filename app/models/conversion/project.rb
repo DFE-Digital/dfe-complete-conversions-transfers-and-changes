@@ -26,10 +26,6 @@ class Conversion::Project < Project
     :voluntary
   end
 
-  def all_conditions_met?
-    tasks_data.conditions_met_confirm_all_conditions_met?
-  end
-
   def grant_payment_certificate_received?
     user = assigned_to
     tasks = Conversion::Task::ReceiveGrantPaymentCertificateTaskForm.new(tasks_data, user)

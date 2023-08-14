@@ -12,14 +12,14 @@ RSpec.feature "Users can complete a conversion project" do
     let(:tasks_data) {
       create(:conversion_tasks_data,
         receive_grant_payment_certificate_check_and_save: true,
-        receive_grant_payment_certificate_update_kim: true,
-        conditions_met_confirm_all_conditions_met: true)
+        receive_grant_payment_certificate_update_kim: true)
     }
     let(:project) {
       create(:conversion_project,
         assigned_to: user,
         conversion_date: 2.months.ago.at_beginning_of_month,
         conversion_date_provisional: false,
+        all_conditions_met: true,
         tasks_data: tasks_data)
     }
 

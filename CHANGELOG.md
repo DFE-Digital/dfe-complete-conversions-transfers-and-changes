@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 38][release-38]
+
 ### Added
 
 - Add "Outgoing trust" category to External contacts
@@ -14,6 +16,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add more actions to the Stakeholder kick-off task for Transfers
 - Store the DateTime of a user's latest session (the last time they logged in)
 - Show the time of the user's latest session in the User table, as "Last seen"
+- Add master funding agreement task to Transfer projects
+- Add a Deed of novation and variation task to Transfer projects
+- Add Articles of Association task to Transfer projects
+- Add commercial transfer agreement task to Transfer projects
+- Add All conditions met? task to Transfer projects
+- Add Supplmental funding agreement task to Transfer projects
+- Add Deed of Variation task to Transfer projects
 
 ### Changed
 
@@ -27,6 +36,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - updated grants team email address
 - added C of E/cofe issue to accessibility statement
 - do not send any mails to deactivated users
+- Amended all table views to be able to display a conversion project as well as
+  a transfer project
+- Remove the View project column from the table views and make the school name
+  link to the project view instead
 
 ### Fixed
 
@@ -1202,7 +1215,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-37...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-38...HEAD
+[release-38]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-37...release-38
 [release-37]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-36...release-37
 [release-36]:
