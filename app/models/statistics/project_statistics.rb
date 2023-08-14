@@ -1,22 +1,39 @@
 class Statistics::ProjectStatistics
   def initialize
     @projects = Conversion::Project.all
+    @transfer_projects = Transfer::Project.all
   end
 
-  def total_number_of_projects
+  def total_number_of_conversion_projects
     @projects.count
   end
 
-  def total_number_of_in_progress_projects
+  def total_number_of_transfer_projects
+    @transfer_projects.count
+  end
+
+  def total_number_of_in_progress_conversion_projects
     @projects.in_progress.count
   end
 
-  def total_number_of_unassigned_projects
+  def total_number_of_in_progress_transfer_projects
+    @transfer_projects.in_progress.count
+  end
+
+  def total_number_of_unassigned_conversion_projects
     @projects.unassigned_to_user.count
   end
 
-  def total_number_of_completed_projects
+  def total_number_of_unassigned_transfer_projects
+    @transfer_projects.unassigned_to_user.count
+  end
+
+  def total_number_of_completed_conversion_projects
     @projects.completed.count
+  end
+
+  def total_number_of_completed_transfer_projects
+    @transfer_projects.completed.count
   end
 
   def total_projects_with_regional_casework_services

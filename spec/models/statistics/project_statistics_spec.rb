@@ -9,29 +9,56 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
       create_list(:conversion_project, 2, assigned_to: nil)
       create(:conversion_project)
       create(:conversion_project, completed_at: Date.today)
+      create_list(:transfer_project, 2, assigned_to: nil)
+      create(:transfer_project)
+      create(:transfer_project, completed_at: Date.today)
     end
 
-    describe "#total_number_of_projects" do
-      it "returns the total number of all projects" do
-        expect(subject.total_number_of_projects).to eql(4)
+    describe "#total_number_of_conversion_projects" do
+      it "returns the total number of all conversion projects" do
+        expect(subject.total_number_of_conversion_projects).to eql(4)
       end
     end
 
-    describe "#total_number_of_in_progress_projects" do
-      it "returns the total number of all in-progress projects" do
-        expect(subject.total_number_of_in_progress_projects).to eql(1)
+    describe "#total_number_of_transfer_projects" do
+      it "returns the total number of all transfer projects" do
+        expect(subject.total_number_of_transfer_projects).to eql(4)
       end
     end
 
-    describe "#total_number_of_unassigned_projects" do
-      it "returns the total number of all unassigned projects" do
-        expect(subject.total_number_of_unassigned_projects).to eql(2)
+    describe "#total_number_of_in_progress_conversion_projects" do
+      it "returns the total number of all in-progress conversion projects" do
+        expect(subject.total_number_of_in_progress_conversion_projects).to eql(1)
       end
     end
 
-    describe "#total_number_of_completed_projects" do
-      it "returns the total number of all completed projects" do
-        expect(subject.total_number_of_completed_projects).to eql(1)
+    describe "#total_number_of_in_progress_transfer_projects" do
+      it "returns the total number of all in-progress transfer projects" do
+        expect(subject.total_number_of_in_progress_transfer_projects).to eql(1)
+      end
+    end
+
+    describe "#total_number_of_unassigned_conversion_projects" do
+      it "returns the total number of all unassigned conversion projects" do
+        expect(subject.total_number_of_unassigned_conversion_projects).to eql(2)
+      end
+    end
+
+    describe "#total_number_of_unassigned_transfer_projects" do
+      it "returns the total number of all unassigned transfer projects" do
+        expect(subject.total_number_of_unassigned_transfer_projects).to eql(2)
+      end
+    end
+
+    describe "#total_number_of_completed_conversion_projects" do
+      it "returns the total number of all completed onversion projects" do
+        expect(subject.total_number_of_completed_conversion_projects).to eql(1)
+      end
+    end
+
+    describe "#total_number_of_completed_transfer_projects" do
+      it "returns the total number of all completed transfer projects" do
+        expect(subject.total_number_of_completed_transfer_projects).to eql(1)
       end
     end
   end
