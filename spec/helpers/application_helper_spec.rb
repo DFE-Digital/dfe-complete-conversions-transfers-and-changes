@@ -145,4 +145,10 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#page_title" do
+    it "returns the supplied title concatenated with the service name" do
+      expect(helper.page_title("A page")).to eq("A page - #{t('service_name')}")
+    end
+  end
 end

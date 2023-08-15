@@ -36,4 +36,8 @@ module ApplicationHelper
     return false unless cookies[:ACCEPT_OPTIONAL_COOKIES] == "true"
     true
   end
+
+  def page_title(title)
+    "#{title} - #{I18n.t("service_name")}"
+  end
 end
