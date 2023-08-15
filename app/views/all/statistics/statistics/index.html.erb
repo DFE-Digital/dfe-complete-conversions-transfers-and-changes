@@ -110,24 +110,29 @@
           <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">Detail</th>
-            <th class="govuk-table__header" scope="col">Total number</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Conversions</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Transfers</th>
           </tr>
           </thead>
           <tr class="govuk-table__row" id="in_progress">
             <th scope="row" class="govuk-table__cell">In progress projects</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_conversion_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.in_progress_transfer_projects_not_with_regional_casework_services %></td>
           </tr>
           <tr class="govuk-table__row" id="completed">
             <th scope="row" class="govuk-table__cell">Completed projects</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_conversion_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.completed_transfer_projects_not_with_regional_casework_services %></td>
           </tr>
           <tr class="govuk-table__row" id="unassigned">
             <th scope="row" class="govuk-table__cell">Unassigned projects</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_conversion_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.unassigned_transfer_projects_not_with_regional_casework_services %></td>
           </tr>
           <tr class="govuk-table__row" id="all_projects">
             <th scope="row" class="govuk-table__cell">All projects not with Regional casework services</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_conversion_projects_not_with_regional_casework_services %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_transfer_projects_not_with_regional_casework_services %></td>
           </tr>
           </tbody>
         </table>
