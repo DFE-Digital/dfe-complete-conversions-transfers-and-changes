@@ -2,6 +2,10 @@
   <%= render partial: "shared/navigation/service_support_primary_navigation" %>
 <% end %>
 
+<% content_for :page_title do %>
+  <%= page_title(t("local_authority.destroy.title", local_authority: @local_authority.name)) %>
+<% end %>
+
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @local_authority, url: local_authority_path(@local_authority), method: :delete do |form| %>

@@ -1,3 +1,7 @@
+<% content_for :page_title do %>
+  <%= page_title(t("contact.confirm_destroy.title", contact_name: @contact.name)) %>
+<% end %>
+
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for [@project, @contact], url: project_contact_path(@project, @contact), method: :delete do |form| %>
