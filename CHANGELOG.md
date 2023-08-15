@@ -40,6 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   a transfer project
 - Remove the View project column from the table views and make the school name
   link to the project view instead
+- added missing full stop to all conditions met task
 
 ### Fixed
 
