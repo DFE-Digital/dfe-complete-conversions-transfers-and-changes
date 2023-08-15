@@ -108,12 +108,21 @@ class Statistics::ProjectStatistics
     @transfer_projects.not_assigned_to_regional_caseworker_team.unassigned_to_user.count
   end
 
-  def statistics_for_region(region)
+  def conversion_project_statistics_for_region(region)
     OpenStruct.new(
       total: @projects.by_region(region).count,
       in_progress: @projects.by_region(region).in_progress.count,
       completed: @projects.by_region(region).completed.count,
       unassigned: @projects.by_region(region).unassigned_to_user.count
+    )
+  end
+
+  def transfer_project_statistics_for_region(region)
+    OpenStruct.new(
+      total: @transfer_projects.by_region(region).count,
+      in_progress: @transfer_projects.by_region(region).in_progress.count,
+      completed: @transfer_projects.by_region(region).completed.count,
+      unassigned: @transfer_projects.by_region(region).unassigned_to_user.count
     )
   end
 

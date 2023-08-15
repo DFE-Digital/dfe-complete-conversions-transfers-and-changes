@@ -20,7 +20,8 @@
         <%= render partial: "shared/side_navigation_item", locals: {name: "Overview of all projects", path: "#projectOverview"} %>
         <%= render partial: "shared/side_navigation_item", locals: {name: "Projects with Regional casework services", path: "#projectsRCS"} %>
         <%= render partial: "shared/side_navigation_item", locals: {name: "Projects not with Regional casework services", path: "#projectsNotRCS"} %>
-        <%= render partial: "shared/side_navigation_item", locals: {name: "Projects per region", path: "#projectsPerRegion"} %>
+        <%= render partial: "shared/side_navigation_item", locals: {name: "Conversion projects per region", path: "#conversionProjectsPerRegion"} %>
+        <%= render partial: "shared/side_navigation_item", locals: {name: "Transfer projects per region", path: "#transferProjectsPerRegion"} %>
         <%= render partial: "shared/side_navigation_item", locals: {name: "6 month view of all project openers", path: "#sixMonthView"} %>
         <%= render partial: "shared/side_navigation_item", locals: {name: "Users per team", path: "#usersPerTeam"} %>
       </ul>
@@ -141,20 +142,49 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <h2 class="govuk-heading-l" id="projectsPerRegion">Projects per region</h2>
-        <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Not with Regional casework services statistics">
+        <h2 class="govuk-heading-l" id="conversionProjectsPerRegion">Conversion projects per region</h2>
+        <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Conversion projects per region statistics">
           <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">Region</th>
             <th class="govuk-table__header govuk-table__header--numeric" scope="col">In-progress projects</th>
             <th class="govuk-table__header govuk-table__header--numeric" scope="col">Completed projects</th>
-            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Unassigned</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Unassigned projects</th>
             <th class="govuk-table__header govuk-table__header--numeric" scope="col">All projects</th>
           </tr>
           </thead>
           <tbody class="govuk-table__body">
           <% Project.regions.keys.each do |region| %>
-            <% statistics = @project_statistics.statistics_for_region(region) %>
+            <% statistics = @project_statistics.conversion_project_statistics_for_region(region) %>
+            <tr class="govuk-table__row" id="<%= region.dasherize %>">
+              <th scope="row" class="govuk-table__cell"><%= t("project.region.#{region}") %></th>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.in_progress %></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.completed %></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.unassigned %></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.total %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-l" id="transferProjectsPerRegion">Transfer projects per region</h2>
+        <table class="govuk-table" name="not_with_regional_casework_services_statistics_table" aria-label="Transfer projects per region statistics">
+          <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Region</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">In-progress projects</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Completed projects</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Unassigned projects</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">All projects</th>
+          </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+          <% Project.regions.keys.each do |region| %>
+            <% statistics = @project_statistics.conversion_project_statistics_for_region(region) %>
             <tr class="govuk-table__row" id="<%= region.dasherize %>">
               <th scope="row" class="govuk-table__cell"><%= t("project.region.#{region}") %></th>
               <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.in_progress %></td>

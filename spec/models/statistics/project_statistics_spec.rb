@@ -202,7 +202,7 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
   end
 
   describe "projects per region" do
-    it "returns the statistics for the region" do
+    before do
       create(:conversion_project, region: :london, completed_at: nil)
       create(:conversion_project, region: :london, completed_at: Date.today + 2.years)
       create(:conversion_project, region: :south_east)
@@ -210,12 +210,34 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
       create(:conversion_project, region: :london, completed_at: nil, directive_academy_order: true)
       create(:conversion_project, region: :london, assigned_to: nil)
 
-      statistics = subject.statistics_for_region(:london)
+      create(:transfer_project, region: :london, completed_at: nil)
+      create(:transfer_project, region: :london, completed_at: Date.today + 2.years)
+      create(:transfer_project, region: :west_midlands)
+      create(:transfer_project, region: :london, completed_at: Date.today + 2.years, directive_academy_order: true)
+      create(:transfer_project, region: :london, completed_at: nil, directive_academy_order: true)
+      create(:transfer_project, region: :london, assigned_to: nil)
+    end
 
-      expect(statistics.total).to eql(5)
-      expect(statistics.in_progress).to eql(2)
-      expect(statistics.completed).to eql(2)
-      expect(statistics.unassigned).to eql(1)
+    describe "#conversion_project_statistics_for_region" do
+      it "returns the conversion project statistics for the region" do
+        statistics = subject.conversion_project_statistics_for_region(:london)
+
+        expect(statistics.total).to eql(5)
+        expect(statistics.in_progress).to eql(2)
+        expect(statistics.completed).to eql(2)
+        expect(statistics.unassigned).to eql(1)
+      end
+    end
+
+    describe "#transfer_project_statistics_for_region" do
+      it "returns the transfer project statistics for the region" do
+        statistics = subject.transfer_project_statistics_for_region(:london)
+
+        expect(statistics.total).to eql(5)
+        expect(statistics.in_progress).to eql(2)
+        expect(statistics.completed).to eql(2)
+        expect(statistics.unassigned).to eql(1)
+      end
     end
   end
 
