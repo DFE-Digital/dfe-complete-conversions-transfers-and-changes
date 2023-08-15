@@ -69,29 +69,58 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
       create(:conversion_project, team: :regional_casework_services, completed_at: Date.today + 2.years)
       create(:conversion_project, team: :regional_casework_services, assigned_to: nil)
       create(:conversion_project, team: :north_west, assigned_to: nil)
+
+      create(:transfer_project, team: :regional_casework_services, completed_at: nil)
+      create(:transfer_project, team: :regional_casework_services, completed_at: Date.today + 2.years)
+      create(:transfer_project, team: :regional_casework_services, assigned_to: nil)
+      create(:transfer_project, team: :north_west, assigned_to: nil)
     end
 
-    describe "#total_projects_with_regional_casework_services" do
-      it "returns the total number of all projects within regional casework services" do
-        expect(subject.total_projects_with_regional_casework_services).to eql(3)
+    describe "#total_conversion_projects_with_regional_casework_services" do
+      it "returns the total number of all conversion projects within regional casework services" do
+        expect(subject.total_conversion_projects_with_regional_casework_services).to eql(3)
       end
     end
 
-    describe "#in_progress_projects_with_regional_casework_services" do
-      it "returns the total number of in-progress projects within regional casework services" do
-        expect(subject.in_progress_projects_with_regional_casework_services).to eql(1)
+    describe "#total_transfer_projects_with_regional_casework_services" do
+      it "returns the total number of all transfer projects within regional casework services" do
+        expect(subject.total_transfer_projects_with_regional_casework_services).to eql(3)
       end
     end
 
-    describe "#completed_projects_with_regional_casework_services" do
-      it "returns the total number of completed projects within regional casework services" do
-        expect(subject.completed_projects_with_regional_casework_services).to eql(1)
+    describe "#in_progress_conversion_projects_with_regional_casework_services" do
+      it "returns the total number of in-progress conversion projects within regional casework services" do
+        expect(subject.in_progress_conversion_projects_with_regional_casework_services).to eql(1)
       end
     end
 
-    describe "#unassigned_projects_with_regional_casework_services" do
-      it "returns the total number of unassigned projects within regional casework services" do
-        expect(subject.unassigned_projects_with_regional_casework_services).to eql(1)
+    describe "#in_progress_transfer_projects_with_regional_casework_services" do
+      it "returns the total number of in-progress transfer projects within regional casework services" do
+        expect(subject.in_progress_transfer_projects_with_regional_casework_services).to eql(1)
+      end
+    end
+
+    describe "#completed_conversion_projects_with_regional_casework_services" do
+      it "returns the total number of completed conversion projects within regional casework services" do
+        expect(subject.completed_conversion_projects_with_regional_casework_services).to eql(1)
+      end
+    end
+
+    describe "#completed_transfer_projects_with_regional_casework_services" do
+      it "returns the total number of completed transfer projects within regional casework services" do
+        expect(subject.completed_transfer_projects_with_regional_casework_services).to eql(1)
+      end
+    end
+
+    describe "#unassigned_conversion_projects_with_regional_casework_services" do
+      it "returns the total number of unassigned conversion projects within regional casework services" do
+        expect(subject.unassigned_conversion_projects_with_regional_casework_services).to eql(1)
+      end
+    end
+
+    describe "#unassigned_transfer_projects_with_regional_casework_services" do
+      it "returns the total number of unassigned transfer projects within regional casework services" do
+        expect(subject.unassigned_transfer_projects_with_regional_casework_services).to eql(1)
       end
     end
   end

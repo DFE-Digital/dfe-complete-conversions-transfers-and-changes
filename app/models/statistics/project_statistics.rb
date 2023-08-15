@@ -36,20 +36,36 @@ class Statistics::ProjectStatistics
     @transfer_projects.completed.count
   end
 
-  def total_projects_with_regional_casework_services
+  def total_conversion_projects_with_regional_casework_services
     @projects.assigned_to_regional_caseworker_team.count
   end
 
-  def in_progress_projects_with_regional_casework_services
+  def total_transfer_projects_with_regional_casework_services
+    @transfer_projects.assigned_to_regional_caseworker_team.count
+  end
+
+  def in_progress_conversion_projects_with_regional_casework_services
     @projects.assigned_to_regional_caseworker_team.in_progress.count
   end
 
-  def completed_projects_with_regional_casework_services
+  def in_progress_transfer_projects_with_regional_casework_services
+    @transfer_projects.assigned_to_regional_caseworker_team.in_progress.count
+  end
+
+  def completed_conversion_projects_with_regional_casework_services
     @projects.assigned_to_regional_caseworker_team.completed.count
   end
 
-  def unassigned_projects_with_regional_casework_services
+  def completed_transfer_projects_with_regional_casework_services
+    @transfer_projects.assigned_to_regional_caseworker_team.completed.count
+  end
+
+  def unassigned_conversion_projects_with_regional_casework_services
     @projects.assigned_to_regional_caseworker_team.unassigned_to_user.count
+  end
+
+  def unassigned_transfer_projects_with_regional_casework_services
+    @transfer_projects.assigned_to_regional_caseworker_team.unassigned_to_user.count
   end
 
   def total_projects_not_with_regional_casework_services
