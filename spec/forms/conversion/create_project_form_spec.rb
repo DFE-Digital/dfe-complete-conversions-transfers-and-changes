@@ -90,7 +90,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
       end
     end
 
-    context "and an academy order was issued, i.e. the project is voluntary" do
+    context "and an academy order was issued" do
       it "sets the Process the sponsored support grant task as not applicable" do
         project = build(:create_project_form, directive_academy_order: false).save
 

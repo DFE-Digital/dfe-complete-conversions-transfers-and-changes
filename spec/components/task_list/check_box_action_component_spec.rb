@@ -34,17 +34,4 @@ RSpec.describe TaskList::CheckBoxActionComponent, type: :component do
       expect(page).to have_text("Things to check during your background research include:")
     end
   end
-
-  context "when the checkbox task is a 'Conversion::Voluntary' task" do
-    let(:attribute) { "notes" }
-
-    before do
-      allow(task).to receive_message_chain("class.name").and_return("Conversion::Voluntary::Tasks::HandoverTask")
-      render_inline(TaskList::CheckBoxActionComponent.new(task: task, attribute: attribute))
-    end
-
-    it "renders the correct `name` for the form input" do
-      expect(page.find_field("conversion_voluntary_tasks_handover_task[notes]")).to be_present
-    end
-  end
 end
