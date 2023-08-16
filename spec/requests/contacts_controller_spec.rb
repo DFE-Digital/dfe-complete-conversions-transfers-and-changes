@@ -63,7 +63,7 @@ RSpec.describe ExternalContactsController, type: :request do
   end
 
   describe "#create" do
-    let(:project) { create(:voluntary_conversion_project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:mock_contact) { build(:project_contact) }
     let(:new_contact_name) { "Josephine Bloggs" }

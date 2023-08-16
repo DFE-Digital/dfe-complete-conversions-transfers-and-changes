@@ -6,7 +6,7 @@ RSpec.describe ApplicationMailer do
   describe "#url_to_project" do
     context "when the conversion is voluntary" do
       it "returns the correct url" do
-        project = create(:voluntary_conversion_project)
+        project = create(:conversion_project)
         mailer = ApplicationMailer.new
 
         expect(mailer.url_to_project(project)).to eql project_url(project)

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :voluntary_conversion_project, class: "Conversion::Project", aliases: [:conversion_project] do
+  factory :conversion_project, class: "Conversion::Project" do
     type { "Conversion::Project" }
     urn { 123456 }
     incoming_trust_ukprn { 10061021 }
