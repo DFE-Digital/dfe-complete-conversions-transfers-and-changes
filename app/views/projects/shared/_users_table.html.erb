@@ -4,7 +4,8 @@
   <tr class="govuk-table__row">
     <th class="govuk-table__header" scope="col"><%= t("project.table.headers.user") %></th>
     <th class="govuk-table__header" scope="col"><%= t("project.table.headers.email") %></th>
-    <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+    <th class="govuk-table__header govuk-table__header--numeric" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+    <th class="govuk-table__header govuk-table__header--numeric" scope="col"><%= t("project.table.headers.transfer_count") %></th>
     <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view_projects") %></th>
   </tr>
   </thead>
@@ -13,7 +14,8 @@
     <tr class="govuk-table__row">
       <td class="govuk-table__header govuk-table__cell"><%= user.name %></td>
       <td class="govuk-table__cell"><%= user.email %></td>
-      <td class="govuk-table__cell"><%= user.conversion_count %></td>
+      <td class="govuk-table__cell govuk-table__cell--numeric"><%= user.conversion_count %></td>
+      <td class="govuk-table__cell govuk-table__cell--numeric"><%= user.transfer_count %></td>
       <td class="govuk-table__cell">
         <%= link_to t("project.table.body.view_projects_for_html", entity: user.name), by_user_team_users_projects_path(user.id) if user.conversion_count > 0 %>
       </td>
