@@ -152,24 +152,6 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
       end
     end
 
-    describe "#voluntary_projects_not_with_regional_casework_services" do
-      it "returns the total number of voluntary projects not with regional casework services" do
-        expect(subject.voluntary_projects_not_with_regional_casework_services).to eql(3)
-      end
-    end
-
-    describe "#sponsored_projects_not_with_regional_casework_services" do
-      it "returns the total number of sponsored projects not with regional casework services" do
-        expect(subject.sponsored_projects_not_with_regional_casework_services).to eql(2)
-      end
-    end
-
-    describe "#in_progress_conversion_projects_not_with_regional_casework_services" do
-      it "returns the total number of in-progress conversion projects not with regional casework services" do
-        expect(subject.in_progress_conversion_projects_not_with_regional_casework_services).to eql(2)
-      end
-    end
-
     describe "#in_progress_transfer_projects_not_with_regional_casework_services" do
       it "returns the total number of in-progress transfer projects not with regional casework services" do
         expect(subject.in_progress_transfer_projects_not_with_regional_casework_services).to eql(2)

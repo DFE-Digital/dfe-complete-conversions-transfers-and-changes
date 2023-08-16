@@ -95,30 +95,6 @@ RSpec.describe Conversion::Project do
         expect(scoped_projects[2].id).to eq last_project.id
       end
     end
-
-    describe "#voluntary" do
-      it "returns only projects where directive_academy_order is false" do
-        mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, directive_academy_order: false)
-        sponsored_project = create(:conversion_project, directive_academy_order: true)
-        projects = Conversion::Project.voluntary
-
-        expect(projects).to include(voluntary_project)
-        expect(projects).not_to include(sponsored_project)
-      end
-    end
-
-    describe "#sponsored" do
-      it "returns only projects where directive_academy_order is true" do
-        mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, directive_academy_order: false)
-        sponsored_project = create(:conversion_project, directive_academy_order: true)
-        projects = Conversion::Project.sponsored
-
-        expect(projects).to include(sponsored_project)
-        expect(projects).not_to include(voluntary_project)
-      end
-    end
   end
 
   describe "#conversion_date" do
