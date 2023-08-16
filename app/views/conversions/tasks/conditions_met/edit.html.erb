@@ -1,3 +1,7 @@
+<% content_for :page_title do %>
+  <%= page_title(t("conversion.task.conditions_met.title")) %>
+<% end %>
+
 <div class="govuk-grid-row govuk-!-margin-bottom-9">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l"><%= @project.establishment.name %></span>

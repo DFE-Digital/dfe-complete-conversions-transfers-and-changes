@@ -1,3 +1,7 @@
+<% content_for :page_title do %>
+  <%= page_title(t("project.user.by_user.title", user: @user.full_name)) %>
+<% end %>
+
 <div class="govuk-grid-row">
  <div class="govuk-grid-column-full">
 

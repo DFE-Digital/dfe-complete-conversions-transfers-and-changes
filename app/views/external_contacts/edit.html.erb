@@ -2,6 +2,10 @@
   <% render partial: "shared/back_link", locals: {href: project_contacts_path(@project)} %>
 <% end %>
 
+<% content_for :page_title do %>
+  <%= page_title(t("contact.edit.title")) %>
+<% end %>
+
 <h1 class="govuk-heading-l"><%= t("contact.edit.title") %></h1>
 
 <div class="govuk-grid-row govuk-body">

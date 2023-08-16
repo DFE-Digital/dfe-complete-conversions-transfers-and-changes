@@ -1,3 +1,7 @@
+<% content_for :page_title do %>
+  <%= page_title(t("note.confirm_destroy.title")) %>
+<% end %>
+
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for [@project, @note], url: project_note_path(@project, @note), method: :delete do |form| %>
