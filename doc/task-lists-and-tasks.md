@@ -7,46 +7,44 @@ model in the application.
 
 ### Adding a new task list
 
-A new task list can be added by inheriting from the `TaskList::Base` class.
+A new task list can be added by inheriting from the `BaseTaskList` class.
 
 The new task list will need a table to store the actions than make up each task,
 conventionally the table name must follow the class path, something like:
 
+(For all examples, this is a _Conversion_ project and tasks data. For Transfer
+projects, amend accordingly.)
+
 Class path:
 
 ```
-Conversion::Voluntary::TaskList
+Conversion::TaskList
 ```
 
 Table name:
 
 ```
-conversion_voluntary_task_lists
+conversion_tasks_data
 ```
 
-The new task list must then declare a `task_list_layout` method that returns an
-array of sections and tasks which is used to instantiate `TaskList::Section` and
-`TaskList::Task` objects. See the existing task lists to get a sense of this
-data structure:
+The new task list must then declare a `layout` method that returns an array of
+sections and tasks which is used to instantiate `Conversion::Task::*` form
+objects. See the existing task lists to get a sense of this data structure:
 
 ```
 [
     {
         identifier: :project_kick_off,
         tasks: [
-                Conversion::Voluntary::Tasks::Handover,
-                Conversion::Voluntary::Tasks::StakeholderKickOff,
-                Conversion::Voluntary::Tasks::ConversionGrant
+                    Conversion::Task::HandoverTaskForm,
+                    Conversion::Task::StakeholderKickOffTaskForm,
+                    Conversion::Task::CheckAccuracyOfHigherNeedsTaskForm
                 ]
     },
 ]
 ```
 
 You'll see how each task list groups its own tasks in a `tasks` directory.
-
-With the new task list in place, you must declare it in the `delegate_type` on
-the Project model, which will force each project to have a `TaskList`
-association, returning the correct type of task list.
 
 ## Tasks
 
@@ -61,7 +59,20 @@ created for the new task model:
 bin/rails generate conversion:task TaskName
 ```
 
-TBA: updated information about the new task model
+This will generate a migration, a Form object (inheriting from `BaseTaskForm`),
+and `edit` view and a locale file for the task.
+
+Edit the migration to add the data attributes to the database which the form
+will collect. These will be stored in the `conversion_tasks_data` table and the
+columns follow a specific naming convention (see existing forms for details).
+
+Add the attribute names to the Form object for your task. If it is an optional
+task, the Form should inherit from `BaseOptionalTaskForm` instead of
+`BaseTaskForm`.
+
+Edit the view to add your checkboxes, form fields etc.
+
+Edit the locale file with your desired text.
 
 ### A note on notes
 
@@ -107,7 +118,7 @@ Orphaned task notes can be located in the database as needed should this advice
 not be followed:
 
 ```
-task_identifiers = Conversion::Voluntary::TaskList.new.tasks.map { |task| task.class.identifier }
+task_identifiers = Conversion::TaskList.new.tasks.map { |task| task.class.identifier }
 projects = Project.where(tasks_data_type: "Conversion::TasksData").map { |project| project.id }
 Note.where(project_id: projects).where.not(task_identifier: [task_identifiers, nil])
 ```
