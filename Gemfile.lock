@@ -457,6 +457,7 @@ DEPENDENCIES
   govuk_markdown
   high_voltage
   mail-notify
+  nokogiri
   omniauth
   omniauth-azure-activedirectory-v2
   omniauth-rails_csrf_protection
