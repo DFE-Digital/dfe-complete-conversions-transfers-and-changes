@@ -1,8 +1,6 @@
 en:
   conversion_project:
     type: Conversion
-    sponsored:
-      route: Sponsored
     new:
       title: Add a conversion
       hint_html: <p class="govuk-body">Enter information about the school, trust and the advisory board decision.</p><p class="govuk-body">This will create a new conversion project.</p>
