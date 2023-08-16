@@ -130,7 +130,7 @@ class Statistics::ProjectStatistics
     hash = {}
     (1..6).each do |i|
       date = Date.today + i.month
-      hash["#{Date::MONTHNAMES[date.month]} #{date.year}"] = Conversion::Project.confirmed.filtered_by_significant_date(date.month, date.year).count
+      hash["#{date.month}/#{date.year}"] = {conversions: Conversion::Project.confirmed.filtered_by_significant_date(date.month, date.year).count, transfers: Transfer::Project.confirmed.filtered_by_significant_date(date.month, date.year).count}
     end
     hash
   end

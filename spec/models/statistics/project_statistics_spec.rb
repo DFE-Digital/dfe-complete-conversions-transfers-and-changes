@@ -243,16 +243,24 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
 
   describe "Projects opening in the next 6 months" do
     describe "#opener_date_and_project_total" do
-      let!(:project_1) { create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 1.month, conversion_date_provisional: false) }
-      let!(:project_2) { create(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 3.month, conversion_date_provisional: false) }
+      let!(:project_1) { create(:conversion_project, conversion_date: Date.new(2023, 2, 1), conversion_date_provisional: false) }
+      let!(:project_2) { create(:conversion_project, conversion_date: Date.new(2023, 5, 1), conversion_date_provisional: false) }
+      let!(:project_3) { create(:transfer_project, transfer_date: Date.new(2023, 3, 1), transfer_date_provisional: false) }
+      let!(:project_4) { create(:transfer_project, transfer_date: Date.new(2023, 6, 1), transfer_date_provisional: false) }
 
       it "returns the table of openers for the next 6 months" do
-        (1..6).each do |i|
-          date = Date.today + i.month
-          within("##{Date::MONTHNAMES[date.month]}_#{date.year}") do
-            expect(page).to have_content(Project.confirmed.filtered_by_significant_date(date.month, date.year).count)
-          end
-        end
+        travel_to Time.zone.local(2023, 0o1, 0o1, 0o1, 0o1, 44)
+
+        statistics = subject.opener_date_and_project_total
+
+        expect(statistics).to eql(
+          "2/2023" => {conversions: 1, transfers: 0},
+          "3/2023" => {conversions: 0, transfers: 1},
+          "4/2023" => {conversions: 0, transfers: 0},
+          "5/2023" => {conversions: 1, transfers: 0},
+          "6/2023" => {conversions: 0, transfers: 1},
+          "7/2023" => {conversions: 0, transfers: 0}
+        )
       end
     end
   end

@@ -205,14 +205,16 @@
           <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">Project opener date</th>
-            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Total number</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Conversions</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Transfers</th>
           </tr>
           </thead>
           <tbody class="govuk-table__body">
           <% @project_statistics.opener_date_and_project_total.each do |key, value| %>
-            <tr class="govuk-table__row" id="<%= key.tr(" ", "_") %>">
-              <th scope="row" class="govuk-table__cell"><%= key %></th>
-              <td class="govuk-table__cell govuk-table__cell--numeric"><%= value %></td>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__cell"><%= Date.strptime(key, "%m/%Y").to_formatted_s(:govuk_month) %></th>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= value[:conversions] %></td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= value[:transfers] %></td>
             </tr>
           <% end %>
           </tbody>
