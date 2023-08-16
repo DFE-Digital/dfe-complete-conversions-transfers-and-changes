@@ -5,7 +5,7 @@ en:
         title: Confirm all conditions have been met
         hint:
           html:
-            "The deadline for meeting all conditions is in the email you got from the ADOP (Academies Delivery Operational Practice) team. All conditions must be met before the deadline or the school will not be able to convert on %{date}"
+            "The deadline for meeting all conditions is in the email you got from the ADOP (Academies Delivery Operational Practice) team. All conditions must be met before the deadline or the school will not be able to convert on %{date}."
         guidance_link: How to check all conditions have been met
         guidance:
           html:
