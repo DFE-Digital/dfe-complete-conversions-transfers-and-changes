@@ -20,8 +20,8 @@ en:
           title: Confirm all conditions are met
           hint:
             html:
-              <p>This will change the conversion's status on the academy openers list. ADOP use that list to prepare funding agreement letters.</p>
+              <p>This will change the conversion's status on the "By month" project list. ADOP use that list to prepare funding agreement letters.</p>
           guidance_link: What to do if conditions are not met
           guidance:
             html:
-              <p>You must agree a new conversion date with all stakeholders, then change conversion date recorded in this project.</p>
+              <p>You must agree a new conversion date with all stakeholders, then change the conversion date for this project.</p>
