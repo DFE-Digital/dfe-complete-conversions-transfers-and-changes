@@ -134,36 +134,6 @@ RSpec.describe Conversion::Project do
     end
   end
 
-  describe "#route" do
-    context "when a directive academy order has been issued" do
-      context "and the school is joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: true) }
-
-        it "the route is sponsored" do
-          expect(project.route).to eq :sponsored
-        end
-      end
-    end
-
-    context "when the project has not been issued a directive academy order" do
-      context "and the school is joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: false) }
-
-        it "the route is voluntary" do
-          expect(project.route).to eq :voluntary
-        end
-      end
-
-      context "and the school is not joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: false) }
-
-        it "the route is voluntary" do
-          expect(project.route).to eq :voluntary
-        end
-      end
-    end
-  end
-
   describe "#grant_payment_certificate_received?" do
     let(:user) { create(:user) }
     let(:project) { build(:conversion_project, tasks_data: tasks_data) }
