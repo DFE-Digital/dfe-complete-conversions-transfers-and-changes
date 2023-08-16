@@ -19,7 +19,7 @@ en:
               <h3>Changing an old master funding agreement</h3>
               <p>If the trust uses a master funding agreement from 2018 or earlier, they have two options.</p>
               <ol>
-                <li>Update to a 2020 version of the master funding agreement and update any supplemental funding agreements from 2018 or earlier</li>
+                <li>update to a 2020 version of the master funding agreement and update any supplemental funding agreements from 2018 or earlier</li>
                 <li>add a second master funding agreement. This must be a 2020 version</li>
               </ol>
               <h4>Update the existing the master funding agreement</h4>
@@ -34,15 +34,15 @@ en:
           title: Signed by the Secretary of State
           hint:
             html:
-              <p>The master funding agreement does not always need signing.</p>
+              <p>The master funding agreement does not always need to be signed.</p>
               <p>A deed of variation is attached to any master funding agreement that needs updating. This is sent to somebody who can sign on behalf of the Secretary of State.</p>
               <p>That deed of variation will get signed. This acts as approval for the change to the master funding agreement, and the new version of it.</p>
           guidance_link: How to sign the master funding agreement
           guidance:
             html:
-              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the master funding agreement.</p>
+              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the master funding agreement or deed of variation.</p>
               <p>Each team may have a different process for signing and sealing documents. Follow your team's signing process.</p>
-              <p>Once you have the signed version of the document, save it as a PDF in SharePoint.</p>
+              <p>Once you have the signed version of the document, attach the old and updated documents together and save it as a PDF in SharePoint.</p>
 
         received:
           title: Received
@@ -53,6 +53,6 @@ en:
         saved:
           title: Saved in academy and incoming trust SharePoint folders
         signed_secretary_state:
-          title: Signed on behalf of secretary of state
+          title: Signed on behalf of Secretary of State
         not_applicable:
           title: Not applicable
