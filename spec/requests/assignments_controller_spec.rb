@@ -5,7 +5,7 @@ RSpec.describe AssignmentsController, type: :request do
 
   before do
     sign_in_with(user)
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_all_academies_api_responses
   end
 
   shared_examples_for "an action which redirects unauthorized users" do
@@ -36,22 +36,44 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#update_team_leader" do
-    it_behaves_like "an action which redirects unauthorized users"
+    context "when the project is a conversion project" do
+      let(:project) { create(:conversion_project, team_leader: nil) }
+      let(:project_id) { project.id }
+      let(:team_leader) { create(:user, :team_leader) }
 
-    let(:project) { create(:conversion_project, team_leader: nil) }
-    let(:project_id) { project.id }
-    let(:team_leader) { create(:user, :team_leader) }
+      subject(:perform_request) do
+        post project_assign_team_lead_path(project_id), params: {conversion_project: {team_leader_id: team_leader.id}}
+        response
+      end
 
-    subject(:perform_request) do
-      post project_assign_team_lead_path(project_id), params: {conversion_project: {team_leader_id: team_leader.id}}
-      response
+      it_behaves_like "an action which redirects unauthorized users"
+
+      it "assigns the project team lead and redirects with a message" do
+        expect(perform_request).to redirect_to(project_internal_contacts_path(project))
+        expect(request.flash[:notice]).to eq(I18n.t("project.assign.team_leader.success"))
+
+        expect(project.reload.team_leader).to eq team_leader
+      end
     end
 
-    it "assigns the project team lead and redirects with a message" do
-      expect(perform_request).to redirect_to(project_internal_contacts_path(project))
-      expect(request.flash[:notice]).to eq(I18n.t("project.assign.team_leader.success"))
+    context "when the project is a transfer project" do
+      let(:project) { create(:transfer_project, team_leader: nil) }
+      let(:project_id) { project.id }
+      let(:team_leader) { create(:user, :team_leader) }
 
-      expect(project.reload.team_leader).to eq team_leader
+      subject(:perform_request) do
+        post project_assign_team_lead_path(project_id), params: {transfer_project: {team_leader_id: team_leader.id}}
+        response
+      end
+
+      it_behaves_like "an action which redirects unauthorized users"
+
+      it "assigns the project team lead and redirects with a message" do
+        expect(perform_request).to redirect_to(project_internal_contacts_path(project))
+        expect(request.flash[:notice]).to eq(I18n.t("project.assign.team_leader.success"))
+
+        expect(project.reload.team_leader).to eq team_leader
+      end
     end
   end
 
@@ -72,22 +94,44 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#update_regional_delivery_officer" do
-    it_behaves_like "an action which redirects unauthorized users"
+    context "when the project is a conversion project" do
+      let(:project) { create(:conversion_project, regional_delivery_officer: nil) }
+      let(:project_id) { project.id }
+      let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
-    let(:project) { create(:conversion_project, regional_delivery_officer: nil) }
-    let(:project_id) { project.id }
-    let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
+      subject(:perform_request) do
+        post project_assign_regional_delivery_officer_path(project_id), params: {conversion_project: {regional_delivery_officer_id: regional_delivery_officer.id}}
+        response
+      end
 
-    subject(:perform_request) do
-      post project_assign_regional_delivery_officer_path(project_id), params: {conversion_project: {regional_delivery_officer_id: regional_delivery_officer.id}}
-      response
+      it_behaves_like "an action which redirects unauthorized users"
+
+      it "assigns the project regional delivery officer and redirects with a message" do
+        expect(perform_request).to redirect_to(project_internal_contacts_path(project))
+        expect(request.flash[:notice]).to eq(I18n.t("project.assign.regional_delivery_officer.success"))
+
+        expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
+      end
     end
 
-    it "assigns the project regional delivery officer and redirefcts with a message" do
-      expect(perform_request).to redirect_to(project_internal_contacts_path(project))
-      expect(request.flash[:notice]).to eq(I18n.t("project.assign.regional_delivery_officer.success"))
+    context "when the project is a transfer project" do
+      let(:project) { create(:transfer_project, regional_delivery_officer: nil) }
+      let(:project_id) { project.id }
+      let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
-      expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
+      subject(:perform_request) do
+        post project_assign_regional_delivery_officer_path(project_id), params: {transfer_project: {regional_delivery_officer_id: regional_delivery_officer.id}}
+        response
+      end
+
+      it_behaves_like "an action which redirects unauthorized users"
+
+      it "assigns the project regional delivery officer and redirects with a message" do
+        expect(perform_request).to redirect_to(project_internal_contacts_path(project))
+        expect(request.flash[:notice]).to eq(I18n.t("project.assign.regional_delivery_officer.success"))
+
+        expect(project.reload.regional_delivery_officer).to eq regional_delivery_officer
+      end
     end
   end
 
@@ -118,65 +162,81 @@ RSpec.describe AssignmentsController, type: :request do
     let(:project_id) { project.id }
     let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
 
-    subject(:perform_request) do
-      post project_assign_assigned_to_path(project_id), params: {conversion_project: {assigned_to_id: regional_delivery_officer.id}}
-      response
-    end
+    context "when the project is a conversion project" do
+      subject(:perform_request) do
+        post project_assign_assigned_to_path(project_id), params: {conversion_project: {assigned_to_id: regional_delivery_officer.id}}
+        response
+      end
 
-    around do |spec|
-      freeze_time
-      spec.run
-    end
+      around do |spec|
+        freeze_time
+        spec.run
+      end
 
-    it "assigns the project assignee and redirects with a message" do
-      expect(perform_request).to redirect_to(project_internal_contacts_path(project))
-      expect(request.flash[:notice]).to eq(I18n.t("project.assign.assigned_to.success"))
+      it "assigns the project assignee and redirects with a message" do
+        expect(perform_request).to redirect_to(project_internal_contacts_path(project))
+        expect(request.flash[:notice]).to eq(I18n.t("project.assign.assigned_to.success"))
 
-      expect(project.reload.assigned_to).to eq regional_delivery_officer
-    end
+        expect(project.reload.assigned_to).to eq regional_delivery_officer
+      end
 
-    it "sends a notification to the assigned_to person" do
-      perform_request
-
-      expect(ActionMailer::MailDeliveryJob)
-        .to(have_been_enqueued.on_queue("default")
-        .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
-    end
-
-    context "the assigned_to person is deactivated" do
-      it "does not send a notification to the assigned_to person" do
-        regional_delivery_officer.update!(deactivated_at: Date.yesterday)
-
+      it "sends a notification to the assigned_to person" do
         perform_request
 
         expect(ActionMailer::MailDeliveryJob)
-          .to_not(have_been_enqueued.on_queue("default")
+          .to(have_been_enqueued.on_queue("default")
                                 .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
       end
-    end
 
-    it "sets the `assigned_at` date value" do
-      perform_request
+      context "the assigned_to person is deactivated" do
+        it "does not send a notification to the assigned_to person" do
+          regional_delivery_officer.update!(deactivated_at: Date.yesterday)
 
-      expect(project.reload.assigned_at).to eq DateTime.now
-    end
+          perform_request
 
-    context "when the project has been assigned previously" do
-      let(:previously_assigned_at) { DateTime.yesterday.at_midday }
-      let(:previous_user) { create(:user, :caseworker, email: "#{SecureRandom.uuid}@education.gov.uk") }
+          expect(ActionMailer::MailDeliveryJob)
+            .to_not(have_been_enqueued.on_queue("default")
+                                      .with("AssignedToMailer", "assigned_notification", "deliver_now", args: [regional_delivery_officer, Project.last]))
+        end
+      end
 
-      before { project.update(assigned_to: previous_user, assigned_at: previously_assigned_at) }
-
-      it "does not update the assigned_at timestamp" do
+      it "sets the `assigned_at` date value" do
         perform_request
 
-        expect(project.reload.assigned_to).to eq regional_delivery_officer
-        expect(project.reload.assigned_at).to eq previously_assigned_at
+        expect(project.reload.assigned_at).to eq DateTime.now
+      end
+
+      context "when the project has been assigned previously" do
+        let(:previously_assigned_at) { DateTime.yesterday.at_midday }
+        let(:previous_user) { create(:user, :caseworker, email: "#{SecureRandom.uuid}@education.gov.uk") }
+
+        before { project.update(assigned_to: previous_user, assigned_at: previously_assigned_at) }
+
+        it "does not update the assigned_at timestamp" do
+          perform_request
+
+          expect(project.reload.assigned_to).to eq regional_delivery_officer
+          expect(project.reload.assigned_at).to eq previously_assigned_at
+        end
+      end
+
+      context "when the user is a not a team leader" do
+        let(:user) { create(:user, :caseworker) }
+
+        it "assigns the project assignee and redirects with a message" do
+          expect(perform_request).to redirect_to(project_internal_contacts_path(project))
+          expect(request.flash[:notice]).to eq(I18n.t("project.assign.assigned_to.success"))
+
+          expect(project.reload.assigned_to).to eq regional_delivery_officer
+        end
       end
     end
 
-    context "when the user is a not a team leader" do
-      let(:user) { create(:user, :caseworker) }
+    context "when the project is a transfer project" do
+      subject(:perform_request) do
+        post project_assign_assigned_to_path(project_id), params: {transfer_project: {assigned_to_id: regional_delivery_officer.id}}
+        response
+      end
 
       it "assigns the project assignee and redirects with a message" do
         expect(perform_request).to redirect_to(project_internal_contacts_path(project))

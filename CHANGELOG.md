@@ -16,6 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Bring the flash banners in line with GOV.uk styles
 - corrected content in action on all conditions met conversion task
 
+### Fixed
+
+- Transfer projects can be assigned to users & teams
+
 ## [Release 38][release-38]
 
 ### Added

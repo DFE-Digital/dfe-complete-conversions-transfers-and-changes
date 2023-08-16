@@ -56,19 +56,23 @@ class AssignmentsController < ApplicationController
   end
 
   private def team_leader_params
-    params.require(:conversion_project).permit(:team_leader_id)
+    return params.require(:conversion_project).permit(:team_leader_id) if params[:conversion_project].present?
+    return params.require(:transfer_project).permit(:team_leader_id) if params[:transfer_project].present?
   end
 
   private def regional_delivery_officer_params
-    params.require(:conversion_project).permit(:regional_delivery_officer_id)
+    return params.require(:conversion_project).permit(:regional_delivery_officer_id) if params[:conversion_project].present?
+    return params.require(:transfer_project).permit(:regional_delivery_officer_id) if params[:transfer_project].present?
   end
 
   private def assigned_to_params
-    params.require(:conversion_project).permit(:assigned_to_id, :return_to)
+    return params.require(:conversion_project).permit(:assigned_to_id, :return_to) if params[:conversion_project].present?
+    return params.require(:transfer_project).permit(:assigned_to_id, :return_to) if params[:transfer_project].present?
   end
 
   private def assigned_to_team_params
-    params.require(:conversion_project).permit(:team)
+    return params.require(:transfer_project).permit(:team) if params[:transfer_project].present?
+    return params.require(:conversion_project).permit(:team) if params[:conversion_project].present?
   end
 
   private def find_project
