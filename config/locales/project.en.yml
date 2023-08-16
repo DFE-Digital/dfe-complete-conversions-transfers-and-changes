@@ -5,8 +5,6 @@ en:
         title: Projects
       conversions:
         title: Conversion projects
-        voluntary:
-          title: Voluntary conversion projects
       completed:
         title: Completed projects
       unassigned:
@@ -21,16 +19,12 @@ en:
         title: All projects in progress
         sponsored:
           title: All sponsored projects in progress
-        voluntary:
-          title: All voluntary projects in progress
       by_trust:
         title: All projects by trust
       completed:
         title: All completed projects
         sponsored:
           title: All sponsored completed projects
-        voluntary:
-          title: All voluntary completed projects
       trust_ukprn:
           title: Projects for %{trust}
       by_local_authority:
@@ -246,7 +240,6 @@ en:
             directive_academy_order: DAO (Directive Academy Order)
             not_applicable: Not applicable
       route:
-        voluntary: Voluntary
         sponsored: Sponsored
     revised_conversion_date:
       title: Academies that were expected to convert in %{date}
@@ -264,7 +257,6 @@ en:
             html:
               Open <span class="govuk-visually-hidden">%{school_name}</span> project
         route:
-          voluntary: Voluntary
           sponsored: Sponsored
     notifications:
       completed_html: <h3>Project completed<h3><p>This project was completed on %{date} and cannot be changed.</p>
