@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can create and view and delete conversion voluntary notes" do
+RSpec.feature "Users can create and view and delete conversion notes" do
   let(:user) { create(:user, :caseworker, email: "user@education.gov.uk") }
   let(:task_identifier) { task.class.identifier }
   let(:project) { create(:conversion_project) }
