@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Bring the flash banners in line with GOV.uk styles
 - corrected content in action on all conditions met conversion task
+- All `opening` URLs are now `by-month`, i.e. `/projects/all/by-month` and
+  `/projects/team/by-month`
 
 ### Fixed
 

@@ -135,7 +135,7 @@ en:
     primary:
       all_projects:
         in_progress: In progress
-        opening: Opening
+        by_month: By month
         by_trust: By trust
         by_local_authority: By local authority
         by_region: By region
@@ -148,7 +148,7 @@ en:
         unassigned: Unassigned
         completed: Completed
         by_user: By user
-        opening: Opening
+        by_month: By month
         handed_over: Handed over
       your_projects:
         in_progress: In progress

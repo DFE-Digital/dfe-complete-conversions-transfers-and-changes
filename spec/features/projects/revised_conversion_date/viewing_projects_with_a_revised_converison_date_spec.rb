@@ -17,7 +17,7 @@ RSpec.feature "Viewing projects with a revised conversion date" do
     create(:date_history, project: project_with_matching_date, previous_date: Date.today.at_beginning_of_month, revised_date: Date.today.at_beginning_of_month + 3.months)
     create(:date_history, project: project_with_matching_date, previous_date: Date.today.at_beginning_of_month + 3.months, revised_date: Date.today.at_beginning_of_month + 4.months)
 
-    visit "/projects/all/opening/revised/#{(Date.today + 3.months).month}/#{(Date.today + 3.months).year}"
+    visit "/projects/all/by-month/revised/#{(Date.today + 3.months).month}/#{(Date.today + 3.months).year}"
 
     expect(page).to have_content I18n.t("project.revised_conversion_date.title", date: (Date.today + 3.months).to_fs(:govuk_month))
     expect(page).to have_content project_with_matching_date.urn

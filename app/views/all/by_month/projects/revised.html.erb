@@ -1,5 +1,5 @@
 <% content_for :primary_navigation do %>
-  <%= render partial: "shared/navigation/team_projects_primary_navigation" %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
 <% end %>
 
 <% content_for :page_title do %>
@@ -17,13 +17,13 @@
       <ul class="moj-sub-navigation__list">
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("subnavigation.openers"),
-                       path: confirmed_team_opening_projects_path} %>
+                       path: confirmed_all_by_month_projects_path} %>
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("subnavigation.revised"),
-                       path: revised_team_opening_projects_path} %>
+                       path: revised_all_by_month_projects_path} %>
       </ul>
     </nav>
 
-    <%= render partial: "all/opening/projects/revised_table", locals: {projects: @projects, date: @date} %>
+    <%= render partial: "revised_table", locals: {projects: @projects, date: @date} %>
   </div>
 </div>

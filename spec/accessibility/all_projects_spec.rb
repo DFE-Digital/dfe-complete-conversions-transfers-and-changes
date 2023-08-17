@@ -41,7 +41,7 @@ RSpec.feature "All projects", driver: :headless_firefox, accessibility: true do
   scenario "> Opening > Confirmed conversion date" do
     project = create(:conversion_project, assigned_to: user, urn: 123434, conversion_date: Date.today.next_month.at_beginning_of_month, conversion_date_provisional: false)
 
-    visit confirmed_all_opening_projects_path
+    visit confirmed_all_by_month_projects_path
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("Opening")
@@ -53,7 +53,7 @@ RSpec.feature "All projects", driver: :headless_firefox, accessibility: true do
     create(:date_history, project: project, previous_date: Date.today.next_month.at_beginning_of_month)
     create(:date_history, project: project, previous_date: Date.today.next_month.at_beginning_of_month)
 
-    visit revised_all_opening_projects_path
+    visit revised_all_by_month_projects_path
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("Opening")
