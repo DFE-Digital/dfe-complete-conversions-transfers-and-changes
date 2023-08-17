@@ -6,7 +6,7 @@ Example:
     bin/rails generate transfer:task TaskName
 
     This will create:
-        app/form/transfer/voluntary/tasks/task_name_task_form.rb
+        app/form/transfer/tasks/task_name_task_form.rb
         app/views/transfer/tasks/task_name/edit.html.erb
         config/locales/transfer/tasks/task_name.en.yml
         db/migrate/<datetime>_add_transfer_task_name_task_attributes

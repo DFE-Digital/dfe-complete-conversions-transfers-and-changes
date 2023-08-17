@@ -22,7 +22,7 @@ RSpec.describe AssignmentsController, type: :request do
   describe "#assign_team_leader" do
     it_behaves_like "an action which redirects unauthorized users"
 
-    let(:project) { create(:voluntary_conversion_project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do

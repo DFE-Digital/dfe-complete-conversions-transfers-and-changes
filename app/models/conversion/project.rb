@@ -18,14 +18,6 @@ class Conversion::Project < Project
   scope :with_academy_urn, -> { where.not(academy_urn: nil) }
   scope :by_conversion_date, -> { ordered_by_significant_date }
 
-  scope :sponsored, -> { where(directive_academy_order: true) }
-  scope :voluntary, -> { where(directive_academy_order: false) }
-
-  def route
-    return :sponsored if directive_academy_order?
-    :voluntary
-  end
-
   def grant_payment_certificate_received?
     user = assigned_to
     tasks = Conversion::Task::ReceiveGrantPaymentCertificateTaskForm.new(tasks_data, user)

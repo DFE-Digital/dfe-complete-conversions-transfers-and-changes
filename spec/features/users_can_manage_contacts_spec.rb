@@ -7,7 +7,7 @@ RSpec.feature "Users can manage contacts" do
   end
 
   let(:user) { create(:user, :caseworker) }
-  let!(:project) { create(:voluntary_conversion_project) }
+  let!(:project) { create(:conversion_project) }
   let!(:contact) { create(:project_contact, project: project) }
 
   scenario "they can view a projects contacts" do

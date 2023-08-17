@@ -25,10 +25,10 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
     check_accessibility(page)
   end
 
-  scenario "new voluntary conversion projects page" do
+  scenario "new conversion projects page" do
     visit conversions_new_path
 
-    expect(page).to have_content(I18n.t("conversion_project.voluntary.new.title"))
+    expect(page).to have_content(I18n.t("conversion_project.new.title"))
     check_accessibility(page)
   end
 

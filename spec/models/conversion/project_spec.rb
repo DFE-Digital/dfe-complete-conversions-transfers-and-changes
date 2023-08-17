@@ -95,30 +95,6 @@ RSpec.describe Conversion::Project do
         expect(scoped_projects[2].id).to eq last_project.id
       end
     end
-
-    describe "#voluntary" do
-      it "returns only projects where directive_academy_order is false" do
-        mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, directive_academy_order: false)
-        sponsored_project = create(:conversion_project, directive_academy_order: true)
-        projects = Conversion::Project.voluntary
-
-        expect(projects).to include(voluntary_project)
-        expect(projects).not_to include(sponsored_project)
-      end
-    end
-
-    describe "#sponsored" do
-      it "returns only projects where directive_academy_order is true" do
-        mock_successful_api_response_to_create_any_project
-        voluntary_project = create(:conversion_project, directive_academy_order: false)
-        sponsored_project = create(:conversion_project, directive_academy_order: true)
-        projects = Conversion::Project.sponsored
-
-        expect(projects).to include(sponsored_project)
-        expect(projects).not_to include(voluntary_project)
-      end
-    end
   end
 
   describe "#conversion_date" do
@@ -130,36 +106,6 @@ RSpec.describe Conversion::Project do
       it "is invalid" do
         expect(subject).to_not be_valid
         expect(subject.errors[:conversion_date]).to include(I18n.t("errors.attributes.conversion_date.must_be_first_of_the_month"))
-      end
-    end
-  end
-
-  describe "#route" do
-    context "when a directive academy order has been issued" do
-      context "and the school is joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: true) }
-
-        it "the route is sponsored" do
-          expect(project.route).to eq :sponsored
-        end
-      end
-    end
-
-    context "when the project has not been issued a directive academy order" do
-      context "and the school is joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: false) }
-
-        it "the route is voluntary" do
-          expect(project.route).to eq :voluntary
-        end
-      end
-
-      context "and the school is not joining a sponsor trust" do
-        let(:project) { create(:conversion_project, directive_academy_order: false) }
-
-        it "the route is voluntary" do
-          expect(project.route).to eq :voluntary
-        end
       end
     end
   end

@@ -29,7 +29,7 @@ RSpec.describe Contact::Project, type: :model do
     describe "by_name" do
       it "orders by name" do
         mock_successful_api_responses(urn: any_args, ukprn: any_args)
-        project = create(:voluntary_conversion_project)
+        project = create(:conversion_project)
         first_solicitor_contact = create(:project_contact, category: :solicitor, name: "B solicitor", project: project)
         second_solicitor_contact = create(:project_contact, category: :solicitor, name: "A solicitor", project: project)
 

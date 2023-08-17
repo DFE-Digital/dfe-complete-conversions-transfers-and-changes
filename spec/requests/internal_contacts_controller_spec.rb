@@ -9,7 +9,7 @@ RSpec.describe AssignmentsController, type: :request do
   end
 
   describe "#show" do
-    let(:project) { create(:voluntary_conversion_project) }
+    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
