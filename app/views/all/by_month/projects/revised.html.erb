@@ -12,15 +12,16 @@
     <h1 class="govuk-heading-l">
       <%= t("project.revised_conversion_date.title", date: @date) %>
     </h1>
+    <p><%= t("project.revised_conversion_date.subtitle", date: @date) %></p>
 
     <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
       <ul class="moj-sub-navigation__list">
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("subnavigation.openers"),
-                       path: confirmed_all_by_month_projects_path} %>
+                       path: "/projects/all/by-month/confirmed/#{@month}/#{@year}"} %>
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("subnavigation.revised"),
-                       path: revised_all_by_month_projects_path} %>
+                       path: "/projects/all/by-month/revised/#{@month}/#{@year}"} %>
       </ul>
     </nav>
 

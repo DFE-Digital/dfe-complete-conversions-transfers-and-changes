@@ -1,0 +1,47 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("project.by_month.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <%= t("project.by_month.title") %>
+    </h1>
+
+    <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
+      <ul class="moj-sub-navigation__list">
+        <%= render partial: "shared/sub_navigation_item",
+              locals: {name: t("subnavigation.openers"),
+                       path: confirmed_all_by_month_projects_path} %>
+        <%= render partial: "shared/sub_navigation_item",
+              locals: {name: t("subnavigation.revised"),
+                       path: revised_all_by_month_projects_path} %>
+      </ul>
+    </nav>
+  </div>
+  <div class="govuk-grid-column-two-thirds">
+    <table class="govuk-table" aria-label="Projects table">
+      <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.month") %></th>
+        <th class="govuk-table__header govuk-table__header--numeric" scope="col"><%= t("project.table.headers.conversion_count") %></th>
+        <th class="govuk-table__header govuk-table__header--numeric" scope="col"><%= t("project.table.headers.transfer_count") %></th>
+      </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      <% @months.each do |month| %>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><%= link_to month.date.to_formatted_s(:govuk_month), "/projects/all/by-month/revised/#{month.date.month}/#{month.date.year}" %></td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= month.conversions %></td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><%= month.transfers %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

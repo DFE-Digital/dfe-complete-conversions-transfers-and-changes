@@ -39,9 +39,13 @@ RSpec.feature "All projects", driver: :headless_firefox, accessibility: true do
   end
 
   scenario "> Opening > Confirmed conversion date" do
-    project = create(:conversion_project, assigned_to: user, urn: 123434, conversion_date: Date.today.next_month.at_beginning_of_month, conversion_date_provisional: false)
+    next_month = Date.today.next_month.at_beginning_of_month
+    project = create(:conversion_project, assigned_to: user, urn: 123434, conversion_date: next_month, conversion_date_provisional: false)
 
     visit confirmed_all_by_month_projects_path
+
+    expect(page).to have_content("#{Date::MONTHNAMES[next_month.month]} #{next_month.year}")
+    click_on "#{Date::MONTHNAMES[next_month.month]} #{next_month.year}"
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("Opening")
@@ -49,11 +53,15 @@ RSpec.feature "All projects", driver: :headless_firefox, accessibility: true do
   end
 
   scenario "> Opening > Revised conversion date" do
+    next_month = Date.today.next_month.at_beginning_of_month
     project = create(:conversion_project, assigned_to: user, urn: 123434, conversion_date_provisional: false)
-    create(:date_history, project: project, previous_date: Date.today.next_month.at_beginning_of_month)
-    create(:date_history, project: project, previous_date: Date.today.next_month.at_beginning_of_month)
+    create(:date_history, project: project, previous_date: next_month)
+    create(:date_history, project: project, previous_date: next_month)
 
     visit revised_all_by_month_projects_path
+
+    expect(page).to have_content("#{Date::MONTHNAMES[next_month.month]} #{next_month.year}")
+    click_on "#{Date::MONTHNAMES[next_month.month]} #{next_month.year}"
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("Opening")

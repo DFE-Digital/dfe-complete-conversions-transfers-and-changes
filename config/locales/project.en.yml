@@ -215,13 +215,15 @@ en:
       by_user:
         empty: There are no users with projects
         caption: Table of users who have in-progress projects
+    by_month:
+      title: By month
     openers:
-      title: Academies opening in %{date}
-      subtitle: Schools that are expected to become academies.
+      title: Confirmed conversions and transfers in %{date}
+      subtitle: Schools that are expected to become academies and academies transferring to different trusts.
       empty:
         html:
-          <p>There are currently no schools expected to become academies in %{date}.</p>
-          <p>Check with your line manager if you were expecting some schools to convert in this month.</p>
+          <p>There are currently no schools expected to become academies or academies transferring to different trusts in %{date}.</p>
+          <p>Check with your line manager if you were expecting some schools to convert or transfer in this month.</p>
       table:
         headers:
           school: School
@@ -230,15 +232,18 @@ en:
           academy_order_type: Academy order type
           all_conditions_met: All conditions met
           view_project: View project
+          month: Month
         values:
           academy_order_type:
             academy_order: AO (Academy Order)
             directive_academy_order: DAO (Directive Academy Order)
             not_applicable: Not applicable
     revised_conversion_date:
-      title: Academies that were expected to convert in %{date}
+      title: Revised conversions and transfers in %{date}
+      subtitle: Projects that were due to convert or transfer in %{date} but have changed their date.
       empty_html:
-          <p>None found.</p>
+        <p>There are currently no schools expected to become academies or academies transferring to different trusts in %{date}.</p>
+        <p>Check with your line manager if you were expecting some schools to convert or transfer in this month.</p>
       table:
         headers:
           school: School

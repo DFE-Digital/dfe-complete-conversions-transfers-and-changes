@@ -8,22 +8,36 @@ RSpec.describe All::ByMonth::ProjectsController, type: :request do
     sign_in_with(team_leader)
   end
 
-  describe "#confirmed_next_month" do
-    it "redirects to next month" do
+  describe "#confirmed_index" do
+    it "shows the next 6 months" do
       get confirmed_all_by_month_projects_path
-      follow_redirect!
 
       expect(response).to have_http_status(:success)
-      expect(request.params.fetch(:month)).to eq Date.today.next_month.month.to_s
-      expect(request.params.fetch(:year)).to eq Date.today.next_month.year.to_s
+
+      next_6_months = []
+      (1..6).each do |i|
+        date = Date.today + i.months
+        next_6_months << "#{Date::MONTHNAMES[date.month]} #{date.year}"
+      end
+
+      next_6_months.each do |month|
+        expect(response.body).to include(month)
+      end
 
       travel_to Date.today + 2.months do
         get confirmed_all_by_month_projects_path
-        follow_redirect!
 
         expect(response).to have_http_status(:success)
-        expect(request.params.fetch(:month)).to eq Date.today.next_month.month.to_s
-        expect(request.params.fetch(:year)).to eq Date.today.next_month.year.to_s
+
+        next_6_months = []
+        (1..6).each do |i|
+          date = Date.today + i.months
+          next_6_months << "#{Date::MONTHNAMES[date.month]} #{date.year}"
+        end
+
+        next_6_months.each do |month|
+          expect(response.body).to include(month)
+        end
       end
     end
   end
@@ -55,7 +69,7 @@ RSpec.describe All::ByMonth::ProjectsController, type: :request do
         it "shows a page title with the month & year" do
           get "/projects/all/by-month/confirmed/1/2022"
 
-          expect(response.body).to include("Academies opening in January 2022")
+          expect(response.body).to include("Confirmed conversions and transfers in January 2022")
         end
 
         it "returns project details in table form" do
@@ -87,29 +101,43 @@ RSpec.describe All::ByMonth::ProjectsController, type: :request do
           it "shows a helpful message" do
             get "/projects/all/by-month/confirmed/1/2022"
 
-            expect(response.body).to include("There are currently no schools expected to become academies in January 2022")
+            expect(response.body).to include("There are currently no schools expected to become academies or academies transferring to different trusts in January 2022")
           end
         end
       end
     end
   end
 
-  describe "#revised_next_month" do
+  describe "#revised_index" do
     it "redirects to next month" do
       get revised_all_by_month_projects_path
-      follow_redirect!
 
       expect(response).to have_http_status(:success)
-      expect(request.params.fetch(:month)).to eq Date.today.next_month.month.to_s
-      expect(request.params.fetch(:year)).to eq Date.today.next_month.year.to_s
+
+      next_6_months = []
+      (1..6).each do |i|
+        date = Date.today + i.months
+        next_6_months << "#{Date::MONTHNAMES[date.month]} #{date.year}"
+      end
+
+      next_6_months.each do |month|
+        expect(response.body).to include(month)
+      end
 
       travel_to Date.today + 2.months do
         get revised_all_by_month_projects_path
-        follow_redirect!
 
         expect(response).to have_http_status(:success)
-        expect(request.params.fetch(:month)).to eq Date.today.next_month.month.to_s
-        expect(request.params.fetch(:year)).to eq Date.today.next_month.year.to_s
+
+        next_6_months = []
+        (1..6).each do |i|
+          date = Date.today + i.months
+          next_6_months << "#{Date::MONTHNAMES[date.month]} #{date.year}"
+        end
+
+        next_6_months.each do |month|
+          expect(response.body).to include(month)
+        end
       end
     end
   end

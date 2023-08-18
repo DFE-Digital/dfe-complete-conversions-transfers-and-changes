@@ -4,12 +4,23 @@ class All::ByMonth::ProjectsController < ApplicationController
 
     @projects = ByMonthProjectFetcherService.new.confirmed(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
+    @month = month
+    @year = year
   end
 
-  def confirmed_next_month
-    month = Date.today.next_month.month
-    year = Date.today.next_month.year
-    redirect_to action: "confirmed", month: month, year: year
+  def confirmed_index
+    authorize Project, :index?
+
+    @months = []
+    (1..6).each do |i|
+      date = Date.today + i.month
+      @months << OpenStruct.new(
+        date: date,
+        transfers: ByMonthProjectFetcherService.new.confirmed_transfers(date.month, date.year).count,
+        conversions: ByMonthProjectFetcherService.new.confirmed_conversions(date.month, date.year).count
+      )
+    end
+    @months
   end
 
   def revised
@@ -17,12 +28,23 @@ class All::ByMonth::ProjectsController < ApplicationController
 
     @projects = ByMonthProjectFetcherService.new.revised(month, year)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
+    @month = month
+    @year = year
   end
 
-  def revised_next_month
-    month = Date.today.next_month.month
-    year = Date.today.next_month.year
-    redirect_to action: "revised", month: month, year: year
+  def revised_index
+    authorize Project, :index?
+
+    @months = []
+    (1..6).each do |i|
+      date = Date.today + i.month
+      @months << OpenStruct.new(
+        date: date,
+        transfers: ByMonthProjectFetcherService.new.revised_transfers(date.month, date.year).count,
+        conversions: ByMonthProjectFetcherService.new.revised_conversions(date.month, date.year).count
+      )
+    end
+    @months
   end
 
   private def month
