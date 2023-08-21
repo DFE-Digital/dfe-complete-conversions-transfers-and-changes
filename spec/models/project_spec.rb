@@ -600,6 +600,12 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#academy_order_type" do
+    it "returns not applicable" do
+      expect(subject.academy_order_type).to eq(:not_applicable)
+    end
+  end
+
   describe "delegation" do
     it "delegates local_authority to establishment" do
       local_authotity = double(code: 100)

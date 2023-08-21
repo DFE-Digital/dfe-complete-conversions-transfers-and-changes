@@ -175,4 +175,20 @@ RSpec.describe Conversion::Project do
       expect(project.academy_found?).to eql false
     end
   end
+
+  describe "#academy_order_type" do
+    context "when the project has an Academy order" do
+      it "returns academy_order" do
+        project = create(:conversion_project, directive_academy_order: false)
+        expect(project.academy_order_type).to eq(:academy_order)
+      end
+    end
+
+    context "when the project has a Directive academy order" do
+      it "returns directive_academy_order" do
+        project = create(:conversion_project, directive_academy_order: true)
+        expect(project.academy_order_type).to eq(:directive_academy_order)
+      end
+    end
+  end
 end

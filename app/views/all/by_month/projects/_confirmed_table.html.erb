@@ -6,23 +6,23 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.school") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.urn") %></th>
-        <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.academy_order_type") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.local_authority") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.team") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.type") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.all_conditions_met") %></th>
-        <th class="govuk-table__header" scope="col"><%= t("project.openers.table.headers.view_project") %></th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
     <% projects.each do |project| %>
       <tr class="govuk-table__row">
-        <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
+        <td class="govuk-table__header govuk-table__cell">
+          <a href="<%= project_path(project) %>" class="govuk-link govuk-link--no-visited-state"><%= project.establishment.name %></a>
+        </td>
         <td class="govuk-table__cell"><%= project.urn %></td>
-        <td class="govuk-table__cell"><%= t("project.openers.table.values.academy_order_type.#{project.academy_order_type}") %></td>
+        <td class="govuk-table__cell"><%= project.establishment.local_authority_name %></td>
+        <td class="govuk-table__cell"><%= t("teams.#{project.team}") %></td>
+        <td class="govuk-table__cell"><%= t("project.table.body.type_name.#{project.type_locale}") %></td>
         <td class="govuk-table__cell"><%= all_conditions_met_value(project) %></td>
-       <td class="govuk-table__cell">
-         <a href="<%= project_path(project) %>">
-           <%= t("project.table.body.view_html", school_name: project.establishment.name) %>
-         </a>
-       </td>
       </tr>
     <% end %>
     </tbody>
