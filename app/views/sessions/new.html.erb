@@ -2,26 +2,30 @@
   <%= page_title("Sign in") %>
 <% end %>
 
-<h1 class="govuk-heading-xl">
-  Sign in
-</h1>
-<p>This product can be used by delivery officers or caseworkers at the Department for Education.</p>
-<p>It can also be used by the Academies Operational Practice Unit and Service Support team, as well as some teams at the Education and Skills Funding Agency.</p>
-<p>You can use this product to manage work that helps DfE to convert schools to academies.</p>
-<%= form_tag("/auth/azure_activedirectory_v2", method: "post") do %>
-  <%= button_tag(t("sign_in.button", type: :submit), class: "govuk-button") %>
-<% end %>
-<h2 class="govuk-heading-m">Register for access</h2>
-<p>If you do not have access you can <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-X7F89QcWu5CjlJXwF0TVktUMEpZSU5aTEVYVlIyRE1JSjdMREtIVDhWQiQlQCN0PWcu" class="govuk-link" rel="noreferrer noopener" target="_blank">sign up to use Complete conversions, transfers and changes (opens in new tab)</a>.</p>
-<p>To register, you’ll need to provide your:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>full name</li>
-  <li>@education.gov.uk email address</li>
-  <li>team information</li>
-  <li>job title</li>
- </ul>
-<h2 class="govuk-heading-m">How to use Complete conversions, transfers and changes</h2>
-<p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvewp00299/SitePages/using-the-complete-conversions-transfers-and-changes-digital-product.aspx" class="govuk-link" rel="noreferrer noopener" target="_blank">read our guidance about how to use the product (opens in new tab)</a> if you’re new to Complete conversions transfers and changes or just unsure on how to do certain things with it.</p>
-<h2 class="govuk-heading-m">Updates and releases</h2>
-<p>We regularly update the product and release new versions of it, based on user feedback.</p>
-<p>You can <a href="https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/releases" class="govuk-link" rel="noreferrer noopener" target="_blank">read our release notes (opens in new tab)</a> to find out what we’ve done to improve the product.</p>
+<div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds">
+  <h1 class="govuk-heading-xl">
+    Sign in
+  </h1>
+  <p class="govuk-body">This product can be used by delivery officers or caseworkers at the Department for Education.</p>
+  <p class="govuk-body">It can also be used by the Academies Operational Practice Unit and Service Support team, as well as some teams at the Education and Skills Funding Agency.</p>
+  <p class="govuk-body">You can use this product to manage work that helps DfE to convert schools to academies.</p>
+  <%= form_tag("/auth/azure_activedirectory_v2", method: "post") do %>
+    <%= button_tag(t("sign_in.button", type: :submit), class: "govuk-button") %>
+  <% end %>
+  <h2 class="govuk-heading-m">Register for access</h2>
+  <p class="govuk-body">If you do not have access you can <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-X7F89QcWu5CjlJXwF0TVktUMEpZSU5aTEVYVlIyRE1JSjdMREtIVDhWQiQlQCN0PWcu" class="govuk-link" rel="noreferrer noopener" target="_blank">sign up to use Complete conversions, transfers and changes (opens in new tab)</a>.</p>
+  <p class="govuk-body">To register, you’ll need to provide your:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>full name</li>
+    <li>@education.gov.uk email address</li>
+    <li>team information</li>
+    <li>job title</li>
+   </ul>
+  <h2 class="govuk-heading-m">How to use Complete conversions, transfers and changes</h2>
+  <p class="govuk-body">You can <a href="https://educationgovuk.sharepoint.com/sites/lvewp00299/SitePages/using-the-complete-conversions-transfers-and-changes-digital-product.aspx" class="govuk-link" rel="noreferrer noopener" target="_blank">read our guidance about how to use the product (opens in new tab)</a> if you’re new to Complete conversions transfers and changes or just unsure on how to do certain things with it.</p>
+  <h2 class="govuk-heading-m">Updates and releases</h2>
+  <p class="govuk-body">We regularly update the product and release new versions of it, based on user feedback.</p>
+  <p class="govuk-body">You can <a href="https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/releases" class="govuk-link" rel="noreferrer noopener" target="_blank">read our release notes (opens in new tab)</a> to find out what we’ve done to improve the product.</p>
+ </div>
+</div>
