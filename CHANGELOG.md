@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - All `opening` URLs are now `by-month`, i.e. `/projects/all/by-month` and
   `/projects/team/by-month`
 - The links on the By region table have been moved to the region name column.
+- The links on the By user table have been moved to the user name column.
 
 ### Fixed
 
