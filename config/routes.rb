@@ -104,7 +104,7 @@ Rails.application.routes.draw do
           namespace :completed do
             get "/", to: "projects#index"
           end
-          namespace :opening do
+          namespace :by_month, path: "by-month" do
             get "confirmed/", to: "projects#confirmed_next_month"
             get "confirmed/:month/:year", to: "projects#confirmed", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
             get "revised/:month/:year", to: "projects#revised", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
@@ -159,7 +159,7 @@ Rails.application.routes.draw do
             get "/", to: "projects#index"
             get "/:user_id", to: "projects#show", as: :by_user
           end
-          namespace :opening do
+          namespace :by_month, path: "by-month" do
             get "confirmed/", to: "projects#confirmed_next_month"
             get "confirmed/:month/:year", to: "projects#confirmed", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
             get "revised/:month/:year", to: "projects#revised", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}

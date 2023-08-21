@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Team::Opening::ProjectsController, type: :request do
+RSpec.describe Team::ByMonth::ProjectsController, type: :request do
   let(:user) { create(:user, :caseworker, team: "regional_casework_services") }
 
   before do
@@ -10,7 +10,7 @@ RSpec.describe Team::Opening::ProjectsController, type: :request do
 
   describe "#confirmed_next_month" do
     it "redirects to next month" do
-      get confirmed_team_opening_projects_path
+      get confirmed_team_by_month_projects_path
       follow_redirect!
 
       expect(response).to have_http_status(:success)
@@ -21,7 +21,7 @@ RSpec.describe Team::Opening::ProjectsController, type: :request do
 
   describe "#revised_next_month" do
     it "redirects to next month" do
-      get revised_team_opening_projects_path
+      get revised_team_by_month_projects_path
       follow_redirect!
 
       expect(response).to have_http_status(:success)
@@ -46,7 +46,7 @@ RSpec.describe Team::Opening::ProjectsController, type: :request do
       project_assigned_to_rcs_2 = create(:conversion_project, urn: 100002, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false, team: "regional_casework_services")
       project_assigned_to_region = create(:conversion_project, urn: 100003, conversion_date: Date.new(2022, 1, 1), conversion_date_provisional: false, team: "london")
 
-      get "/projects/team/opening/confirmed/1/2022"
+      get "/projects/team/by-month/confirmed/1/2022"
 
       expect(response.body).to include(project_assigned_to_rcs.urn.to_s)
       expect(response.body).to include(project_assigned_to_rcs_2.urn.to_s)
@@ -78,7 +78,7 @@ RSpec.describe Team::Opening::ProjectsController, type: :request do
       create(:date_history, project: project_assigned_to_region, previous_date: Date.new(2022, 1, 1), revised_date: Date.new(2022, 2, 1))
       create(:date_history, project: project_assigned_to_region, previous_date: Date.new(2022, 2, 1), revised_date: Date.new(2022, 3, 1))
 
-      get "/projects/team/opening/revised/2/2022"
+      get "/projects/team/by-month/revised/2/2022"
 
       expect(response.body).to include(project_assigned_to_rcs.urn.to_s)
       expect(response.body).to include(project_assigned_to_rcs_2.urn.to_s)

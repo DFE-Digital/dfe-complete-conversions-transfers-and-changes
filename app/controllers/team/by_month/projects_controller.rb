@@ -1,8 +1,8 @@
-class All::Opening::ProjectsController < ApplicationController
+class Team::ByMonth::ProjectsController < ApplicationController
   def confirmed
     authorize Project, :index?
 
-    @projects = ByMonthProjectFetcherService.new.confirmed(month, year)
+    @projects = ByMonthProjectFetcherService.new.confirmed_openers_by_team(month, year, current_user.team)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
   end
 
@@ -15,7 +15,7 @@ class All::Opening::ProjectsController < ApplicationController
   def revised
     authorize Project, :index?
 
-    @projects = ByMonthProjectFetcherService.new.revised(month, year)
+    @projects = ByMonthProjectFetcherService.new.revised_openers_by_team(month, year, current_user.team)
     @date = "#{Date::MONTHNAMES[month.to_i]} #{year}"
   end
 
