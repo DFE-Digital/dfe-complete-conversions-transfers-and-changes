@@ -13,7 +13,7 @@
       <%= t("project.team.users.title") %>
     </h1>
 
-    <%= render partial: "/projects/shared/users_table", locals: {users: @users, pager: @pager} %>
+    <%= render partial: "users_table", locals: {users: @users, pager: @pager} %>
 
   </div>
 </div>

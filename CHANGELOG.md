@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The links on the By trust table have been moved to the trust name column.
 - The links on the By local authority table have been moved to the local  
   authority name column.
+- The links on the Team By user table have been moved to the user name column.
 
 ### Fixed
 
