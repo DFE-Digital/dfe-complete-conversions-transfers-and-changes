@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add Form M task to Transfer projects
 - Add Church Supplemental Agreement task to Transfer projects
 - Add jump links to task lists
+- Validate that a transfer's incoming trust is not the same as it's outgoing
+  trust
 
 ### Changed
 
@@ -27,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The links on the By region table have been moved to the region name column.
 - The links on the By user table have been moved to the user name column.
 - The links on the By trust table have been moved to the trust name column.
-- The links on the By local authority table have been moved to the local  
+- The links on the By local authority table have been moved to the local
   authority name column.
 - The links on the Team By user table have been moved to the user name column.
 - Rework the columns on the By month > Confirmed table data

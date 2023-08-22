@@ -11,6 +11,8 @@ class Transfer::CreateProjectForm < CreateProjectForm
 
   validates :outgoing_trust_sharepoint_link, presence: true, sharepoint_url: true
 
+  validate :check_incoming_trust_and_outgoing_trust
+
   def initialize(params = {})
     @attributes_with_invalid_values = []
     super(params)
@@ -51,5 +53,9 @@ class Transfer::CreateProjectForm < CreateProjectForm
     nil
   rescue TypeError, Date::Error, NegativeValueError
     @attributes_with_invalid_values << :provisional_transfer_date
+  end
+
+  def check_incoming_trust_and_outgoing_trust
+    errors.add(:incoming_trust_ukprn, I18n.t("errors.attributes.incoming_trust_ukprn.ukprns_must_not_match")) if incoming_trust_ukprn == outgoing_trust_ukprn
   end
 end
