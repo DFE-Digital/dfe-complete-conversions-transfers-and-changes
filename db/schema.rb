@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_10_120325) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_22_141039) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -253,6 +253,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_120325) do
     t.boolean "deed_of_variation_sent"
     t.boolean "deed_of_variation_signed_secretary_state"
     t.boolean "deed_of_variation_not_applicable"
+    t.boolean "land_consent_letter_drafted"
+    t.boolean "land_consent_letter_signed"
+    t.boolean "land_consent_letter_sent"
+    t.boolean "land_consent_letter_saved"
+    t.boolean "land_consent_letter_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
