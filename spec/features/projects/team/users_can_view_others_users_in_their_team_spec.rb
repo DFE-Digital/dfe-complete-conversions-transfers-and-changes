@@ -22,7 +22,7 @@ RSpec.feature "Users can view the other users in their team" do
 
     visit team_users_projects_path
     expect(page).to have_content(other_user.full_name)
-    click_on "View projects for #{other_user.full_name}"
+    click_on other_user.full_name
     expect(page).to have_content("Projects assigned to #{other_user.full_name}")
     expect(page).to have_content(project.establishment.name)
   end

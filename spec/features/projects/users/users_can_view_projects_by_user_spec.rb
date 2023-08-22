@@ -26,7 +26,7 @@ RSpec.feature "Users can view a list users" do
         expect(page).to have_content(user.full_name)
         expect(page).to have_content("London")
         expect(page).to have_content("1")
-        expect(page).to have_link("View projects", href: by_user_all_users_projects_path(user))
+        expect(page).to have_link(user.full_name, href: by_user_all_users_projects_path(user))
       end
     end
   end

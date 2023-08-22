@@ -18,7 +18,7 @@ RSpec.feature "Users can view a list trusts" do
 
   context "when there are projects to fetch trusts for" do
     scenario "they see the trust listed and a link" do
-      create(:conversion_project, incoming_trust_ukprn: 10010010)
+      project = create(:conversion_project, incoming_trust_ukprn: 10010010)
 
       visit all_trusts_projects_path
 
@@ -26,7 +26,7 @@ RSpec.feature "Users can view a list trusts" do
         expect(page).to have_content("Trust Name")
         expect(page).to have_content("TR100100")
         expect(page).to have_content("1")
-        expect(page).to have_link("View projects"), href: by_trust_all_trusts_projects_path(10010010)
+        expect(page).to have_link(project.incoming_trust.name, href: by_trust_all_trusts_projects_path(10010010))
       end
     end
 
