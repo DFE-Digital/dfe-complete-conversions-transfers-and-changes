@@ -9,7 +9,7 @@ class Team::Users::ProjectsController < ApplicationController
     authorize Project, :index?
 
     @user = User.find(user_id)
-    @pager, @projects = pagy(Conversion::Project.assigned_to(@user).in_progress.by_conversion_date)
+    @pager, @projects = pagy(Project.assigned_to(@user).in_progress.ordered_by_significant_date)
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
