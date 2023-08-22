@@ -4,6 +4,10 @@
   <% render partial: "conversions/tasks/shared/back_link", locals: {project_id: @project.id} %>
 <% end %>
 
+<% content_for :page_title do %>
+  <%= page_title(t("conversion.task.funding_agreement_contact.title")) %>
+<% end %>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <% if @project.contacts.count > 0 %>
