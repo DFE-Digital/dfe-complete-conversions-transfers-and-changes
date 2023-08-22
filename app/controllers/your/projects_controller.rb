@@ -11,14 +11,14 @@ class Your::ProjectsController < ApplicationController
 
   def added_by
     authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.added_by(current_user).not_completed.by_conversion_date.includes(:assigned_to))
+    @pager, @projects = pagy(Project.added_by(current_user).not_completed.ordered_by_significant_date.includes(:assigned_to))
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
 
   def completed
     authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.assigned_to(current_user).completed)
+    @pager, @projects = pagy(Project.assigned_to(current_user).completed)
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
