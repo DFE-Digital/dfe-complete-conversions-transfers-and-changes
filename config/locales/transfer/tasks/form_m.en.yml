@@ -1,0 +1,27 @@
+en:
+  transfer:
+    task:
+      form_m:
+        title: Form M
+        hint:
+          html:
+            <p>Form M is used to gather details about the transfer of land from the outgoing trust to the incoming trust.</p>
+            <p>The form should be completed and submitted by the outgoing trust.</p>
+            <p>They need to include an official copy of the title plan, including the title number, and any freeholds as registered with the Land Registry.</p>
+        clear_section:
+          title: Check and clear Form M
+          hint:
+            html:
+              <p>You must check for anything that contradicts or references information in the 125 year lease.</p>
+              <p>Contact the real estate team to discuss any issues.</p>
+              <p>The names of the people you need to contact are in <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/WorkplaceDocuments/ARDG%20Internal%20Guidance/6.%20Taking%20action%20with%20underperforming%20open%20academies%20and%20free%20schools/Academy%20transfer/Transfer_of_land_guidance_January_2023.docx?d=we1401195a189494a9b530895909cdd39&csf=1&web=1&e=2SfXLo" target="_blank">the Form M guidance (Word document)</a>.</p>
+        received_form_m:
+          title: Received completed Form M from outgoing trust
+        received_title_plans:
+          title: Received title plans, numbers and freehold information
+        cleared:
+          title: Cleared
+        signed:
+          title: Signed by outgoing trust
+        saved:
+          title: Saved in academy's SharePoint folder
