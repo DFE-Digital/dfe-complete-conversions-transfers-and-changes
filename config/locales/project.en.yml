@@ -229,7 +229,9 @@ en:
           route: Route
           academy_order_type: Academy order type
           all_conditions_met: All conditions met
-          view_project: View project
+          local_authority: Local authority
+          team: Team
+          type: Project type
         values:
           academy_order_type:
             academy_order: AO (Academy Order)
