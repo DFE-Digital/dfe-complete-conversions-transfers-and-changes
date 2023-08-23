@@ -16,7 +16,8 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::ArticlesOfAssociationTaskForm,
           Transfer::Task::CommercialTransferAgreementTaskForm,
           Transfer::Task::DeedOfVariationTaskForm,
-          Transfer::Task::SupplementalFundingAgreementTaskForm
+          Transfer::Task::SupplementalFundingAgreementTaskForm,
+          Transfer::Task::LandConsentLetterTaskForm
         ]
       },
       {

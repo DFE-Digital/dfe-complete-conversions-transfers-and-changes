@@ -1,0 +1,25 @@
+en:
+  transfer:
+    task:
+      land_consent_letter:
+        title: Land consent letter
+        hint:
+          html:
+            <p>The land consent letter shows that DfE and the Secretary of State agree to the trusts' land transfers.</p>
+            <p>It is not always needed. For example, when land is transferring from a diocese to a trust.</p>
+        draft_letter:
+          title: Draft, sign and send the letter
+          hint:
+            html:
+              <p>There is <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/WorkplaceDocuments/ARDG%20Internal%20Guidance/6.%20Taking%20action%20with%20underperforming%20open%20academies%20and%20free%20schools/Academy%20transfer/Land_consent_letter_January_2023.docx?d=w31779e5987644f0086dc024655656d64&csf=1&web=1&e=CO3PRJ">a template to help you draft the land consent letter (Microsoft Word document)</a>. Do this after you have reviewed the Form M and completed other land tasks.</p>
+              <p>You cannot send the letter to the trusts' solicitors until all conditions are met. You should send it out with other signed and sealed legal documents. The solicitors need to send the letter on to the Land Registry.</p>
+        drafted:
+          title: Drafted
+        signed:
+          title: Signed by person with delegated authority
+        sent:
+          title: Sent to both trusts, their solicitors and the local authority
+        saved:
+          title: Saved in academy's SharePoint folder
+        not_applicable:
+          title: Not applicable
