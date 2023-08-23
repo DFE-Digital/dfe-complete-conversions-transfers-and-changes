@@ -1,0 +1,22 @@
+en:
+  transfer:
+    task:
+      rpa_policy:
+        title: Confirm the academy's risk protection arrangements
+        hint:
+          html:
+            <p>You must let the RPA (risk protection arrangement) team know if the academy will change its arrangement. Contact them in the first week of the final month before the transfer happens.</p>
+            <p>If there is no change, you do not need to contact the RPA team.</p>
+        confirm:
+          title: Confirm if the academy's arrangements will continue or change
+          hint:
+            html:
+              <p>Ask the outgoing trust if the academy is in an RPA or has commercial insurance. Ask the incoming trust if it wants to continue this arrangement or not.</p>
+          guidance_link: What do to if the academy changes its arrangements
+          guidance:
+            html:
+              <p>The academy must be in an RPA or have commercially available insurance. </p>
+              <strong>Changing or leaving an RPA</strong>
+              <p>You must email the RPA team at <a href="mailto:rpa.dfe@education.gov.uk">rpa.dfe@education.gov.uk</a> and tell them that the academy is ending its RPA and what it is doing instead. It may join a different type of RPA, or buy insurance.</p>
+              <strong>Ending commercial insurance and joining an RPA</strong>
+              <p>You must email the RPA team at <a href="mailto:rpa.dfe@education.gov.uk">rpa.dfe@education.gov.uk</a> and tell them if the academy has chosen to end its existing insurance policy and join an RPA. Include details of whether it will join a standard RPA, a church RPA or trust RPA.</p>
