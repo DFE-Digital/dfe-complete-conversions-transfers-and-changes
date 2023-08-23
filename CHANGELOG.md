@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Transfer projects can be assigned to users & teams
 - Show Transfers on the all completed projects page, projects added by you page
   and the completed projects by you page
+- Don't constrain the banners to a two-thirds section
 
 ## [Release 38][release-38]
 
