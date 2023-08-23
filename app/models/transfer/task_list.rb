@@ -23,7 +23,8 @@ class Transfer::TaskList < ::BaseTaskList
       {
         identifier: :get_ready_for_opening,
         tasks: [
-          Transfer::Task::ConditionsMetTaskForm
+          Transfer::Task::ConditionsMetTaskForm,
+          Transfer::Task::RpaPolicyTaskForm
         ]
       }
     ]
