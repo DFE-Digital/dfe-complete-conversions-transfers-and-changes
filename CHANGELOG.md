@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add transfer project statistics to statistics page
 - Add Transfer project counts to Team > By user view
 - Add Land consent letter task to Transfer projects
+- Add page titles to Transfer and Conversion project task pages
 
 ### Changed
 
