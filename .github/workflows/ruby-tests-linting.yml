@@ -1,0 +1,33 @@
+name: CI / Ruby / Linting
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  linter:
+    name: Formatting
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      ONLY_LINTING: "true"
+      BUNDLE_ONLY: "linting"
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 17.8.0
+
+      - name: Run linter
+        run: |
+          ./script/no-docker/test
