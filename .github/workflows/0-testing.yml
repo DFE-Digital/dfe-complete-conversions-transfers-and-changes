@@ -10,6 +10,8 @@ jobs:
   build-image:
     name: Prepare Image
     uses: ./.github/workflows/1-build-image.yml
+    with:
+      version: test
 
   run-test-accessibility:
     needs: build-image

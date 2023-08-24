@@ -2,6 +2,10 @@ name: CI / Image / Build
 
 on:
   workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
 
 env:
   DOCKER_IMAGE: complete-app
@@ -10,16 +14,13 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        version: [development, ci]
     steps:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
       - run: |
-          TARGET=${{ matrix.version }}
+          TARGET=${{ inputs.version }}
           if [ $TARGET == "development" ]; then
             DOCKER_TARGET="web"
           else
@@ -37,13 +38,12 @@ jobs:
           file: ./Dockerfile
           target: ${{ env.TARGET }}
           build-args: |
-            RAILS_ENV=${{ matrix.version }}
-          tags: '${{ env.DOCKER_IMAGE }}-${{ matrix.version }}'
+            RAILS_ENV=${{ inputs.version }}
           push: false
-          outputs: type=docker,dest=/tmp/${{ env.DOCKER_IMAGE }}-${{ matrix.version }}.tar
+          outputs: type=docker,dest=/tmp/${{ env.DOCKER_IMAGE }}-${{ inputs.version }}.tar
 
-      - name: Upload ${{ matrix.version }} artifact
+      - name: Upload ${{ inputs.version }} artifact
         uses: actions/upload-artifact@v3
         with:
-          name: '${{ env.DOCKER_IMAGE }}-${{ matrix.version }}'
-          path: /tmp/${{ env.DOCKER_IMAGE }}-${{ matrix.version }}.tar
+          name: '${{ env.DOCKER_IMAGE }}-${{ inputs.version }}'
+          path: /tmp/${{ env.DOCKER_IMAGE }}-${{ inputs.version }}.tar

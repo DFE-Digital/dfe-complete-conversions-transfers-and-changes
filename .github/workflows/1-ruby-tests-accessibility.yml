@@ -32,12 +32,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: ${{ env.DOCKER_IMAGE }}-ci
-          path: /tmp/${{ env.DOCKER_IMAGE }}-ci.tar
+          name: ${{ env.DOCKER_IMAGE }}-test
+          path: /tmp/${{ env.DOCKER_IMAGE }}-test.tar
 
       - name: Load image
         run: |
-          docker load --input /tmp/${{ env.DOCKER_IMAGE }}-ci.tar
+          docker load --input /tmp/${{ env.DOCKER_IMAGE }}-test.tar
 
       - name: Run accessibility checks
         env:
@@ -60,5 +60,5 @@ jobs:
             -e NO_COVERAGE \
             --env-file .env.test \
             --name app \
-            ${{ env.DOCKER_IMAGE }}-ci \
+            ${{ env.DOCKER_IMAGE }}-test \
             ./script/all/test
