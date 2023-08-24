@@ -1,0 +1,31 @@
+#!/bin/sh
+# script/initial_setup:
+#
+# Runs the basic setup for a development environment
+#
+# Makes no assumptions about how you manage Ruby and Node, you need to bring your
+# own.
+#
+
+# We assume you have Homebrew installed
+if ! command -v brew > /dev/null; then
+  echo "Cannot continue this script will only run Homebrew installed and working, sorry!"
+  exit 1
+fi
+
+echo "--> Developer dependencies"
+echo "==> Installing dependencies with Homebrew..."
+brew bundle install --verbose --no-lock
+
+echo "==> Installing Ruby gems"
+bundle install
+
+echo "==> Installing Node modules"
+yarn install
+
+echo "==> Setting up the database"
+script/start_backing_services
+
+bin/rails db:prepare
+
+script/stop_backing_services

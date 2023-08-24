@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# script/check_accessibility:
+#
+# Runs AXE tests, disbales Simplecov and then enables it so that coverage is not
+# measured for these
+echo "--> Accessibility"
+script/start_backing_services
+
+echo "==> Running AXE"
+echo "==> Disabling coverage"
+export NO_COVERAGE=true
+bin/rspec --tag accessibility spec/accessibility
+echo "==> Enabling coverage"
+export NO_COVERAGE=false

@@ -1,0 +1,11 @@
+#!/bin/sh
+# script/backing_services:
+#
+# Make sure the backing services are running
+
+echo "==> Checking backing services"
+if ! docker-compose ps | grep -q "dfe-complete-sql-server\|Up"; then
+  echo "--> Starting backing services with docker-compose.yml"
+  docker-compose -f docker-compose.yml up -d
+  sleep 3
+fi
