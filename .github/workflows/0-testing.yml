@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-image:
+    name: Prepare Image
+    uses: ./.github/workflows/1-build-image.yml
+
+  run-test-accessibility:
+    needs: build-image
+    name: Accessibility
+    uses: ./.github/workflows/1-ruby-tests-accessibility.yml
+
+  run-test-application:
+    needs: build-image
+    name: Application
+    uses: ./.github/workflows/2-ruby-tests-application.yml
+
+  run-test-linting:
+    needs: build-image
+    name: Linting
+    uses: ./.github/workflows/3-ruby-tests-linting.yml

@@ -1,16 +1,10 @@
 name: CI / Image / Push
 
 on:
-  workflow_run:
-    workflows: [CI / Image / Build]
-    types:
-      - completed
-  workflow_dispatch:
+  workflow_call:
     inputs:
       environment:
-        type: environment
-        description: "Choose an environment to deploy to"
-        required: true
+        type: string
 
 env:
   DOCKER_IMAGE: complete-app

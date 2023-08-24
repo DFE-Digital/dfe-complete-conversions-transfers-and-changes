@@ -1,17 +1,13 @@
 name: CI / Ruby / Accessibility
 
 on:
-  workflow_run:
-    workflows: [CI / Image / Build]
-    types:
-      - completed
+  workflow_call:
 
 env:
   DOCKER_IMAGE: complete-app
 
 jobs:
   accessibility-checks:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Accessibility checks
     runs-on: ubuntu-latest
     # Service containers to run

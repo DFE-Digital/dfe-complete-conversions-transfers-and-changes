@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+env:
+  DOCKER_IMAGE: complete-app
+
+jobs:
+  update:
+    name: Deploy to ${{ inputs.environment }}
+    runs-on: ubuntu-22.04
+    environment: ${{ inputs.environment }}
+    strategy:
+      matrix:
+        container: ['', '-worker']
+    steps:
+      - name: Azure login with ACA credentials
+        if: strategy.matrix.container == ''
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_ACA_CREDENTIALS }}
+
+      - name: Azure login with ACA credentials
+        if: strategy.matrix.container == '-worker'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_ACA_WORKER_CREDENTIALS }}
+
+      - name: Update Azure Container Apps Revision
+        uses: azure/CLI@v1
+        id: azure
+        with:
+          azcliversion: 2.50.0
+          inlineScript: |
+            az config set extension.use_dynamic_install=yes_without_prompt
+            az containerapp update \
+              --name ${{ secrets.AZURE_ACA_NAME }}${{ strategy.matrix.container }} \
+              --resource-group ${{ secrets.AZURE_ACA_RESOURCE_GROUP }} \
+              --image ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:latest \
+              --output none

@@ -1,10 +1,7 @@
 name: CI / Image / Build
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+  workflow_call:
 
 env:
   DOCKER_IMAGE: complete-app
