@@ -71,6 +71,8 @@ en:
           not_applicable: not applicable
           "yes": "yes"
           "no": "no"
+          "true": "yes"
+          "false": "no"
           directive_academy_order: directive academy order
           academy_order: academy order
           standard: standard

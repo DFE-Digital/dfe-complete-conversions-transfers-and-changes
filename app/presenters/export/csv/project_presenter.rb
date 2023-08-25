@@ -26,7 +26,7 @@ class Export::Csv::ProjectPresenter
       return I18n.t("export.csv.project.values.no")
     end
 
-    I18n.t("export.csv.project.values.yes")
+    I18n.t("export.csv.project.values.#{@project.all_conditions_met}")
   end
 
   def risk_protection_arrangement
