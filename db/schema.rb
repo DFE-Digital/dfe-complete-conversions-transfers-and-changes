@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_143714) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_25_100251) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -264,6 +264,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_143714) do
     t.boolean "form_m_cleared"
     t.boolean "form_m_signed"
     t.boolean "form_m_saved"
+    t.boolean "church_supplemental_agreement_received"
+    t.boolean "church_supplemental_agreement_cleared"
+    t.boolean "church_supplemental_agreement_signed_incoming_trust"
+    t.boolean "church_supplemental_agreement_signed_diocese"
+    t.boolean "church_supplemental_agreement_saved_after_signing_by_trust_diocese"
+    t.boolean "church_supplemental_agreement_signed_secretary_state"
+    t.boolean "church_supplemental_agreement_saved_after_signing_by_secretary_state"
+    t.boolean "church_supplemental_agreement_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
