@@ -1,16 +1,27 @@
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full-width">
     <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
 
-    <ol class="app-task-list">
-      <% @task_list.sections.each do |section| %>
-        <li>
-          <h3 class="app-task-list__section">
-            <%= t("#{section.locales_path}.title") %>
-          </h3>
-          <ul class="app-task-list__items">
-            <% section.tasks.each do |task| %>
-              <li class="app-task-list__item">
+    <div class="govuk-grid-column-one-quarter">
+      <nav>
+        <h2 class="govuk-heading-m"><%= t("project_information.show.side_navigation.title") %></h2>
+        <ul class="list-style-none govuk-!-padding-0">
+          <% @task_list.sections.each do |section| %>
+            <%= render partial: "shared/side_navigation_item", locals: {name: t("#{section.locales_path}.title"), path: "##{section.identifier}"} %>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+      <ol class="app-task-list">
+        <% @task_list.sections.each do |section| %>
+          <li>
+            <h3 class="app-task-list__section" id="<%= section.identifier %>">
+              <%= t("#{section.locales_path}.title") %>
+            </h3>
+            <ul class="app-task-list__items">
+              <% section.tasks.each do |task| %>
+                <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <%= govuk_link_to(
                         t("#{task.locales_path}.title"),
@@ -18,12 +29,13 @@
                         aria: {describedby: task_id(task)}
                       ) %>
                 </span>
-                <%= task_status_tag(task, task_id(task)) %>
-              </li>
-            <% end %>
-          </ul>
-        </li>
-      <% end %>
-    </ol>
+                  <%= task_status_tag(task, task_id(task)) %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ol>
+    </div>
   </div>
 </div>
