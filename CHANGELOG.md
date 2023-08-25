@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   authority name column.
 - The links on the Team By user table have been moved to the user name column.
 - Rework the columns on the By month > Confirmed table data
+- content changes to the sponsored grant task
 
 ### Fixed
 
