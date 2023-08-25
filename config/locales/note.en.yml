@@ -43,4 +43,4 @@ en:
             email:
               invalid: Enter an email address in the correct format, like name@example.com
             title:
-              blank: Enter a title
+              blank: Enter a role
