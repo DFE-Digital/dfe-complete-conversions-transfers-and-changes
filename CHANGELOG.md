@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add RPA Policy task to Transfer projects
 - Add Form M task to Transfer projects
 - Add Church Supplemental Agreement task to Transfer projects
+- Add jump links to task lists
 
 ### Changed
 
