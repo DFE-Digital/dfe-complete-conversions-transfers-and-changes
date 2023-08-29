@@ -23,6 +23,7 @@
         <%= render partial: "shared/side_navigation_item", locals: {name: "Conversion projects per region", path: "#conversionProjectsPerRegion"} %>
         <%= render partial: "shared/side_navigation_item", locals: {name: "Transfer projects per region", path: "#transferProjectsPerRegion"} %>
         <%= render partial: "shared/side_navigation_item", locals: {name: "6 month view of all project openers", path: "#sixMonthView"} %>
+        <%= render partial: "shared/side_navigation_item", locals: {name: "New projects this month", path: "#newProjects"} %>
         <%= render partial: "shared/side_navigation_item", locals: {name: "Users per team", path: "#usersPerTeam"} %>
       </ul>
     </nav>
@@ -217,6 +218,28 @@
               <td class="govuk-table__cell govuk-table__cell--numeric"><%= value[:transfers] %></td>
             </tr>
           <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+        <h2 class="govuk-heading-l" id="newProjects">New projects this month (<%= Date.today.to_fs(:govuk_month) %>)</h2>
+        <table class="govuk-table" name="statistics_table" aria-label="Project statistics">
+          <tbody class="govuk-table__body">
+            <tr>
+              <th scope="row" class="govuk-table__cell">Total</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.new_projects_this_month.total %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="govuk-table__cell">Conversions</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.new_projects_this_month.conversions %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="govuk-table__cell">Transfers</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.new_projects_this_month.transfers %></td>
+            </tr>
           </tbody>
         </table>
       </div>

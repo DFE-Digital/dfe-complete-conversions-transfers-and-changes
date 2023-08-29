@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add jump links to task lists
 - Validate that a transfer's incoming trust is not the same as it's outgoing
   trust
+- Show a count of projects added this month on the statistics page
 
 ### Changed
 
