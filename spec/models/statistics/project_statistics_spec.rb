@@ -246,4 +246,17 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
       end
     end
   end
+
+  describe "new projects this month" do
+    it "returns a count of projects created in the current month" do
+      create(:conversion_project, created_at: Time.now.beginning_of_month)
+      create(:conversion_project, created_at: Time.now.beginning_of_month + 1.day)
+      create(:transfer_project, created_at: Time.now.beginning_of_month + 1.week)
+      create(:transfer_project, created_at: Time.now.beginning_of_month - 1.month)
+
+      expect(subject.new_projects_this_month.total).to eq(3)
+      expect(subject.new_projects_this_month.transfers).to eq(1)
+      expect(subject.new_projects_this_month.conversions).to eq(2)
+    end
+  end
 end

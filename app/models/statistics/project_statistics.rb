@@ -126,4 +126,15 @@ class Statistics::ProjectStatistics
     end
     hash
   end
+
+  def new_projects_this_month
+    transfers_count = Transfer::Project.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
+    conversions_count = Conversion::Project.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
+
+    OpenStruct.new(
+      total: transfers_count + conversions_count,
+      transfers: transfers_count,
+      conversions: conversions_count
+    )
+  end
 end
