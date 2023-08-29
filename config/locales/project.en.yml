@@ -319,6 +319,7 @@ en:
         no_trust_found: There's no trust with that UKPRN. Check the number you entered is correct.
         not_a_number: UKPRN can only contain numbers. No letters or special characters.
         must_be_correct_format: UKPRN must be 8 digits long and start with a 1. For example, 12345678.
+        ukprns_must_not_match: Incoming trust must not be the same as the outgoing trust.
       outgoing_trust_ukprn:
         blank: Enter a UKPRN
         no_trust_found: There's no trust with that UKPRN. Check the number you entered is correct.
