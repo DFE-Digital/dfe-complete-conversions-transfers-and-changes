@@ -1,0 +1,44 @@
+en:
+  transfer:
+    task:
+      church_supplemental_agreement:
+        title: Church supplemental agreement
+        hint:
+          html:
+            <p>This document is only required for Church of England and Catholic acadmies.</p>
+            <p>Any existing church supplemetnal agreements should be terminated during a transfer and a new one written to replace it.</p>
+            <p>This can be done by deed of termination or deed of novation and variation. The department prefers to use a deed of termination.</p>
+        not_applicable:
+          title: Not applicable
+        clear_section:
+          title: Check and clear the church supplemental agreement
+          hint:
+            html:
+              <p>You can <a href="https://www.gov.uk/government/publications/church-academies-model-documents" target="_blank">view the model documents (opens in new tab)</a> to check for changes.</p>
+          guidance_link: Help checking for changes
+          guidance:
+            html:
+              <p>Changes that personalise the model documents to an academy or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+              <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+        sign_section:
+          title: Signed by the Secretary of State
+          guidance_link: How to sign the Church Supplemental Agreement
+          guidance:
+            html:
+              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the church supplemental agreement.</p>
+              <p>Each team may have a different process for signing and sealing documents. Follow your team's signing process.</p>
+              <p>Once you have the signed version of the document, save it as a PDF in SharePoint.</p>
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        signed_incoming_trust:
+          title: Signed by incoming trust
+        signed_diocese:
+          title: Signed by diocese
+        saved_after_signing_by_trust_diocese:
+          title: Saved in the academy SharePoint folder
+        signed_secretary_state:
+          title: Signed on behalf of Secretary of State
+        saved_after_signing_by_secretary_state:
+          title: Saved in academy SharePoint folder
