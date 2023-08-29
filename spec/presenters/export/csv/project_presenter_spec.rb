@@ -120,8 +120,16 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.all_conditions_met).to eql "yes"
   end
 
-  it "presents all conditions met when it has not been met" do
+  it "presents all conditions met when it has not been met (nil)" do
     project = double(Conversion::Project, all_conditions_met: nil)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.all_conditions_met).to eql "no"
+  end
+
+  it "presents all conditions met when it has not been met (false)" do
+    project = double(Conversion::Project, all_conditions_met: false)
 
     presenter = described_class.new(project)
 

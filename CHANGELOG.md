@@ -38,6 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Show Transfers on the all completed projects page, projects added by you page
   and the completed projects by you page
 - Don't constrain the banners to a two-thirds section
+- Show the correct values for `all_conditions_met?` in the project CSV export
 
 ## [Release 38][release-38]
 
