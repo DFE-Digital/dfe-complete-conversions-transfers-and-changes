@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 39][release-39]
+
 ### Added
 
 - Every page now has a unique page title
@@ -1257,7 +1259,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-38...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-39...HEAD
+[release-39]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-38...release-39
 [release-38]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-37...release-38
 [release-37]:
