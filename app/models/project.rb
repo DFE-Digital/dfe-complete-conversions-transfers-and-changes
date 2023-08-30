@@ -12,6 +12,7 @@ class Project < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
   has_one :funding_agreement_contact, dependent: :destroy, class_name: "Contact::Project", required: false
+  has_one :main_contact, dependent: :destroy, class_name: "Contact::Project", required: false
 
   validates :urn, presence: true
   validates :urn, urn: true
