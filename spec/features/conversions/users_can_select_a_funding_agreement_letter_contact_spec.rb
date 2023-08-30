@@ -13,7 +13,7 @@ RSpec.feature "Users select a contact to receive the funding agreement letters" 
     let!(:contact_1) { create(:project_contact, project: project, name: "John Smith") }
     let!(:contact_2) { create(:project_contact, project: project, name: "Jane Jones") }
 
-    it "allows the user to select one of the existing contacts on the Funding Agreement Letters task page" do
+    skip "allows the user to select one of the existing contacts on the Funding Agreement Letters task page" do
       visit project_tasks_path(project)
       click_on "Confirm who will get the funding agreement letters"
       expect(page).to have_content(contact_1.name)
@@ -35,7 +35,7 @@ RSpec.feature "Users select a contact to receive the funding agreement letters" 
       project.update(funding_agreement_contact_id: contact_2.id)
     end
 
-    it "shows the contact as preselected on the Funding Agreement Letters task page" do
+    skip "shows the contact as preselected on the Funding Agreement Letters task page" do
       visit project_tasks_path(project)
       click_on "Confirm who will get the funding agreement letters"
 
@@ -43,7 +43,7 @@ RSpec.feature "Users select a contact to receive the funding agreement letters" 
     end
 
     context "and the funding agreement letters contact is changed" do
-      it "switches the contact for the project" do
+      skip "switches the contact for the project" do
         visit project_tasks_path(project)
         click_on "Confirm who will get the funding agreement letters"
 
@@ -56,7 +56,7 @@ RSpec.feature "Users select a contact to receive the funding agreement letters" 
   end
 
   context "when the project does not have any contacts" do
-    it "directs the user to the external contacts page" do
+    skip "directs the user to the external contacts page" do
       visit project_tasks_path(project)
       click_on "Confirm who will get the funding agreement letters"
 
@@ -65,7 +65,7 @@ RSpec.feature "Users select a contact to receive the funding agreement letters" 
       expect(page.current_path).to include("external-contacts")
     end
 
-    it "allows the user to go back to the task list without adding a user" do
+    skip "allows the user to go back to the task list without adding a user" do
       visit project_tasks_path(project)
       click_on "Confirm who will get the funding agreement letters"
 

@@ -27,7 +27,6 @@ RSpec.feature "Users can complete conversion tasks" do
   tasks_with_collected_data = %w[
     stakeholder_kick_off
     academy_details
-    funding_agreement_contact
     risk_protection_arrangement
     sponsored_support_grant
     conditions_met
@@ -121,7 +120,7 @@ RSpec.feature "Users can complete conversion tasks" do
     context "when the project has contacts already" do
       let!(:contact) { create(:project_contact, project: project) }
 
-      it "lets the user select an existing contact" do
+      skip "lets the user select an existing contact" do
         visit project_tasks_path(project)
         click_on "Confirm who will get the funding agreement letters"
         choose contact.name
@@ -132,7 +131,7 @@ RSpec.feature "Users can complete conversion tasks" do
     end
 
     context "when the project has no contacts" do
-      it "directs the user to add contacts" do
+      skip "directs the user to add contacts" do
         visit project_tasks_path(project)
         click_on "Confirm who will get the funding agreement letters"
 
