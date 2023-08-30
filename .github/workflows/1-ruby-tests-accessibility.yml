@@ -33,7 +33,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ env.DOCKER_IMAGE }}-test
-          path: /tmp/${{ env.DOCKER_IMAGE }}-test.tar
+          path: /tmp
 
       - name: Load image
         run: |
