@@ -4,11 +4,29 @@
 FROM ruby:3.1.2 as base
 LABEL org.opencontainers.image.authors="contact@dxw.com"
 
-RUN curl -L https://deb.nodesource.com/setup_16.x | bash -
-RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN \
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
-  tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y build-essential libpq-dev ca-certificates curl gnupg
+
+# Setup Node installation
+# https://github.com/nodesource/distributions#installation-instructions
+#
+# depdends on ca-certificates, curl and gnupg
+#
+ENV NODE_MAJOR=18
+
+RUN mkdir /etc/apt/keyrings
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" \
+| tee /etc/apt/sources.list.d/nodesource.list
+
+# Setup Yarn installation
+# https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable
+#
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+# Install Node and Yarn
+RUN apt-get update && apt-get install -y nodejs yarn
 
 RUN curl http://www.freetds.org/files/stable/freetds-1.1.24.tar.gz --output freetds-1.1.24.tar.gz
 RUN tar -xzf freetds-1.1.24.tar.gz
