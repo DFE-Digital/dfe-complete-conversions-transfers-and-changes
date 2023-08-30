@@ -5,7 +5,8 @@ class Transfer::TaskList < ::BaseTaskList
         identifier: :project_kick_off,
         tasks: [
           Transfer::Task::HandoverTaskForm,
-          Transfer::Task::StakeholderKickOffTaskForm
+          Transfer::Task::StakeholderKickOffTaskForm,
+          Transfer::Task::MainContactTaskForm
         ]
       },
       {

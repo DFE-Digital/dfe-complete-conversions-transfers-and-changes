@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add the Main contact task to the Conversion project task list
+- Add the Main contact task to the Transfer project task list
 
 ### Changed
 
