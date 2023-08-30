@@ -60,5 +60,5 @@ jobs:
             -e NO_COVERAGE \
             --env-file .env.test \
             --name app \
-            ${{ env.DOCKER_IMAGE }}-test \
+            ${{ env.DOCKER_IMAGE }} \
             ./script/all/test
