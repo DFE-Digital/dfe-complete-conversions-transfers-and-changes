@@ -190,6 +190,43 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.assigned_to_email).to eql "assigned.user@education.gov.uk"
   end
 
+  it "presents the main contact email" do
+    user = double(Contact::Project, email: "main.contact@education.gov.uk")
+    project = double(Conversion::Project, main_contact: user)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.main_contact_email).to eql "main.contact@education.gov.uk"
+  end
+
+  it "presents the main contact name" do
+    user = double(Contact::Project, name: "Bob Robertson")
+    project = double(Conversion::Project, main_contact: user)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.main_contact_name).to eql "Bob Robertson"
+  end
+
+  it "presents the main contact title" do
+    user = double(Contact::Project, title: "Very important person")
+    project = double(Conversion::Project, main_contact: user)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.main_contact_title).to eql "Very important person"
+  end
+
+  it "handles a project without a main contact" do
+    project = double(Conversion::Project, main_contact: nil)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.main_contact_name).to be_nil
+    expect(presenter.main_contact_email).to be_nil
+    expect(presenter.main_contact_title).to be_nil
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 
