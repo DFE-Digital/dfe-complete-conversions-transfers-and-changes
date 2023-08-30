@@ -40,6 +40,7 @@ jobs:
           build-args: |
             RAILS_ENV=${{ inputs.version }}
           push: false
+          tags: ${{ env.DOCKER_IMAGE }}:latest
           outputs: type=docker,dest=/tmp/${{ env.DOCKER_IMAGE }}-${{ inputs.version }}.tar
 
       - name: Upload ${{ inputs.version }} artifact
