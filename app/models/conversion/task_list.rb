@@ -10,7 +10,8 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::CompleteNotificationOfChangeTaskForm,
           Conversion::Task::ConversionGrantTaskForm,
           Conversion::Task::SponsoredSupportGrantTaskForm,
-          Conversion::Task::AcademyDetailsTaskForm
+          Conversion::Task::AcademyDetailsTaskForm,
+          Conversion::Task::MainContactTaskForm
         ]
       },
       {

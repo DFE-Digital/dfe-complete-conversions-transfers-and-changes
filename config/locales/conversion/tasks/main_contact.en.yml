@@ -1,0 +1,13 @@
+en:
+  conversion:
+    task:
+      main_contact:
+        title: Confirm who is the main contact for this conversion
+        no_contacts:
+          title: Add contacts
+          add_contacts_guidance_html:
+            <p>You must <a href="%{add_contact_link}">add a contact</a> before you can choose which person is the main contact for the conversion.</p>
+            <p>Then you can come back to this task and confirm who is the main contact.</p>
+        choose_a_contact:
+          title: Choose a contact
+          legend:

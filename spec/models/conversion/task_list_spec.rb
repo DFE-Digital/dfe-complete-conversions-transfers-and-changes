@@ -13,6 +13,7 @@ RSpec.describe Conversion::TaskList do
         :conversion_grant,
         :sponsored_support_grant,
         :academy_details,
+        :main_contact,
         :land_questionnaire,
         :land_registry,
         :supplemental_funding_agreement,
@@ -53,7 +54,8 @@ RSpec.describe Conversion::TaskList do
               Conversion::Task::CompleteNotificationOfChangeTaskForm,
               Conversion::Task::ConversionGrantTaskForm,
               Conversion::Task::SponsoredSupportGrantTaskForm,
-              Conversion::Task::AcademyDetailsTaskForm
+              Conversion::Task::AcademyDetailsTaskForm,
+              Conversion::Task::MainContactTaskForm
             ]
           },
           {
