@@ -48,6 +48,11 @@ jobs:
           REDIS_URL: "redis://redis:6379"
           NO_COVERAGE: "true"
           CI: "true"
+          AZURE_APPLICATION_CLIENT_ID: "AZURE_APPLICATION_CLIENT_ID"
+          AZURE_APPLICATION_CLIENT_SECRET: "AZURE_APPLICATION_CLIENT_SECRET"
+          AZURE_TENANT_ID: "AZURE_TENANT_ID"
+          AZURE_REDIRECT_URI: "AZURE_REDIRECT_URI"
+          GOV_NOTIFY_API_KEY: "GOV_NOTIFY_API_KEY"
         run: |
           echo "==> Running accessibility checks..."
           docker run --rm \
@@ -58,7 +63,11 @@ jobs:
             -e REDIS_URL \
             -e CI \
             -e NO_COVERAGE \
-            --env-file .env.test \
+            -e AZURE_APPLICATION_CLIENT_ID \
+            -e AZURE_APPLICATION_CLIENT_SECRET \
+            -e AZURE_TENANT_ID \
+            -e AZURE_REDIRECT_URI \
+            -e GOV_NOTIFY_API_KEY \
             --name app \
             ${{ env.DOCKER_IMAGE }} \
             ./script/all/test
