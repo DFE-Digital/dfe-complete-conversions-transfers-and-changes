@@ -1,0 +1,24 @@
+#!/bin/sh
+# script/check_all:
+#
+# Runs all the checks that should take place before opening a PR i.e. as close the CI as we can be.
+#
+# We do not cover infastructure as code or the scripts
+
+set -e
+
+echo "--> Checking everything 🔍"
+
+# run linting and formating
+script/lint_and_format
+
+# run specs and coverage
+script/specs_and_coverage
+
+# run accessibility test
+script/check_accessibility
+
+# run static analysis
+script/static_analysis
+
+echo "--> Finished checking everything, if you are reading this then the checks passed! 🎉"

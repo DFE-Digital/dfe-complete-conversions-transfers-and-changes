@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# script/fix:
+#
+# Runs all erblint, standardrb, prettier and eslint with fixing enabled
+
+echo "==> Ensuring auto fixing is enabled"
+
+user_auto_fix_state=$AUTO_FIX
+
+export AUTO_FIX=true
+
+script/lint_and_format
+
+echo "==> Restoring auto fix state"
+export AUTO_FIX="$user_auto_fix_state"

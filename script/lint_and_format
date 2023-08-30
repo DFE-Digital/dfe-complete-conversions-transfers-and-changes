@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# script/lint_and_format:
+#
+# Runs all erblint, standardrb, prettier and eslint
+#
+# When AUTO_FIX is set, fixing will take place if available
+
+echo "--> Linting and formatting"
+
+if [ -n "$AUTO_FIX" ]; then
+  echo "--> Auto fixing is enabled"
+
+  echo "==> running Standardrb"
+  bin/standardrb -f simple --fix
+  echo "==> finished Standardrb"
+
+  echo "==> running erblint"
+  bin/erblint --lint-all --autocorrect
+  echo "==> finished erblint"
+
+  echo "==> running Prettier"
+  yarn run lint:format:fix
+  echo "==> finished Prettier"
+
+  echo "==> running eslint"
+  yarn run lint:js:fix
+  echo "==> finished eslint"
+
+else
+  echo "--> Auto fixing is disabled"
+
+  echo "==> running Standardrb"
+  bin/standardrb -f simple
+  echo "==> finished Standardrb"
+
+  echo "==> running erblint"
+  bin/erblint --lint-all
+  echo "==> finished erblint"
+
+  echo "==> running Prettier"
+  yarn run lint:format
+  echo "==> finished Prettier"
+
+  echo "==> running eslint"
+  yarn run lint:js
+  echo "==> finished eslint"
+
+fi
+
+echo "--> Finshed linting and formatting"

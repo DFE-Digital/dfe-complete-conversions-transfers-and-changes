@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# script/static_analysis:
+#
+# Runs Brakeman
+echo "--> Static analysis"
+
+echo "==> Running Brakeman"
+bin/brakeman
+echo "==> finished Brakeman"

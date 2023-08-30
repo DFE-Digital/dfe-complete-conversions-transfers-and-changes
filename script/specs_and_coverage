@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# script/specs_and_coverage:
+#
+# Runs Rspec along with Simplecov, unless a specific spec or set of specs is passed
+
+echo "--> Specs and coverage"
+script/start_backing_services
+
+# if there are specific specs, coverage will not be accurate so do not include it
+if [ $# -eq 0 ]; then
+  echo "==> running Rspec and Simplecov"
+  bin/rspec
+else
+  echo "==> running Rspec without Simplecov"
+  export NO_COVERAGE=true
+  bin/rspec "$@"
+  export NO_COVERAGE=false
+fi
+
+echo "==> finised  Rspec and Simplecov"

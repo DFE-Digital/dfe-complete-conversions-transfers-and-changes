@@ -1,5 +1,3 @@
-brew "rbenv"
-brew "nodenv"
 brew "docker"
 brew "freetds"
-brew "redis"
+brew "yarn"
