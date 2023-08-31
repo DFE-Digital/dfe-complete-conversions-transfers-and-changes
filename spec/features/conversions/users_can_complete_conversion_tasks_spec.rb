@@ -27,10 +27,10 @@ RSpec.feature "Users can complete conversion tasks" do
   tasks_with_collected_data = %w[
     stakeholder_kick_off
     academy_details
-    funding_agreement_contact
     risk_protection_arrangement
     sponsored_support_grant
     conditions_met
+    main_contact
   ]
 
   it "confirms we are checking all tasks" do
@@ -121,7 +121,7 @@ RSpec.feature "Users can complete conversion tasks" do
     context "when the project has contacts already" do
       let!(:contact) { create(:project_contact, project: project) }
 
-      it "lets the user select an existing contact" do
+      skip "lets the user select an existing contact" do
         visit project_tasks_path(project)
         click_on "Confirm who will get the funding agreement letters"
         choose contact.name
@@ -132,9 +132,37 @@ RSpec.feature "Users can complete conversion tasks" do
     end
 
     context "when the project has no contacts" do
-      it "directs the user to add contacts" do
+      skip "directs the user to add contacts" do
         visit project_tasks_path(project)
         click_on "Confirm who will get the funding agreement letters"
+
+        expect(page).to have_content("Add contacts")
+        click_link "add a contact"
+        expect(page.current_path).to include("external-contacts")
+      end
+    end
+  end
+
+  context "the main contact task" do
+    let(:project) { create(:conversion_project, assigned_to: user) }
+
+    context "when the project has contacts already" do
+      let!(:contact) { create(:project_contact, project: project) }
+
+      it "lets the user select an existing contact" do
+        visit project_tasks_path(project)
+        click_on "Confirm who is the main contact for this conversion"
+        choose contact.name
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.main_contact_id).to eq contact.id
+      end
+    end
+
+    context "when the project has no contacts" do
+      it "directs the user to add contacts" do
+        visit project_tasks_path(project)
+        click_on "Confirm who is the main contact for this conversion"
 
         expect(page).to have_content("Add contacts")
         click_link "add a contact"

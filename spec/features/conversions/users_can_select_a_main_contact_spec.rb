@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users select a contact to receive the funding agreement letters" do
+RSpec.feature "Users select a main contact for a conversion" do
   let(:user) { create(:user, :caseworker) }
   let(:project) { create(:conversion_project, assigned_to: user) }
 
@@ -13,65 +13,65 @@ RSpec.feature "Users select a contact to receive the funding agreement letters" 
     let!(:contact_1) { create(:project_contact, project: project, name: "John Smith") }
     let!(:contact_2) { create(:project_contact, project: project, name: "Jane Jones") }
 
-    skip "allows the user to select one of the existing contacts on the Funding Agreement Letters task page" do
+    it "allows the user to select one of the existing contacts on the Main Contact task page" do
       visit project_tasks_path(project)
-      click_on "Confirm who will get the funding agreement letters"
+      click_on "Confirm who is the main contact for this conversion"
       expect(page).to have_content(contact_1.name)
       expect(page).to have_content(contact_2.name)
 
       choose contact_1.name
       click_button "Save and return"
 
-      expect(project.reload.funding_agreement_contact_id).to eq(contact_1.id)
-      expect(page.find("#confirm-who-will-get-the-funding-agreement-letters-status").text).to eq("Completed")
+      expect(project.reload.main_contact_id).to eq(contact_1.id)
+      expect(page.find("#confirm-who-is-the-main-contact-for-this-conversion-status").text).to eq("Completed")
     end
   end
 
-  context "when the project already has a funding agreement letters contact set" do
+  context "when the project already has a main contact set" do
     let!(:contact_1) { create(:project_contact, project: project, name: "John Smith") }
     let!(:contact_2) { create(:project_contact, project: project, name: "Jane Jones") }
 
     before do
-      project.update(funding_agreement_contact_id: contact_2.id)
+      project.update(main_contact_id: contact_2.id)
     end
 
-    skip "shows the contact as preselected on the Funding Agreement Letters task page" do
+    it "shows the contact as preselected on the Main Contact task page" do
       visit project_tasks_path(project)
-      click_on "Confirm who will get the funding agreement letters"
+      click_on "Confirm who is the main contact for this conversion"
 
       expect(page).to have_checked_field(contact_2.name)
     end
 
-    context "and the funding agreement letters contact is changed" do
-      skip "switches the contact for the project" do
+    context "and the main contact is changed" do
+      it "switches the contact for the project" do
         visit project_tasks_path(project)
-        click_on "Confirm who will get the funding agreement letters"
+        click_on "Confirm who is the main contact for this conversion"
 
         choose contact_1.name
         click_on "Save and return"
 
-        expect(project.reload.funding_agreement_contact_id).to eq(contact_1.id)
+        expect(project.reload.main_contact_id).to eq(contact_1.id)
       end
     end
   end
 
   context "when the project does not have any contacts" do
-    skip "directs the user to the external contacts page" do
+    it "directs the user to the external contacts page" do
       visit project_tasks_path(project)
-      click_on "Confirm who will get the funding agreement letters"
+      click_on "Confirm who is the main contact for this conversion"
 
       expect(page).to have_content("Add contacts")
       click_link "add a contact"
       expect(page.current_path).to include("external-contacts")
     end
 
-    skip "allows the user to go back to the task list without adding a user" do
+    it "allows the user to go back to the task list without adding a user" do
       visit project_tasks_path(project)
-      click_on "Confirm who will get the funding agreement letters"
+      click_on "Confirm who is the main contact for this conversion"
 
       expect(page).to have_content("Add contacts")
       click_link "Save and return"
-      expect(page.find("#confirm-who-will-get-the-funding-agreement-letters-status").text).to eq("Not started")
+      expect(page.find("#confirm-who-is-the-main-contact-for-this-conversion-status").text).to eq("Not started")
     end
   end
 end
