@@ -17,6 +17,9 @@ class Export::EducationAndSkillsFundingAgencyCsvExportService
     sponsored_grant_type
     assigned_to_name
     assigned_to_email
+    main_contact_name
+    main_contact_email
+    main_contact_title
   ]
 
   def initialize(projects)

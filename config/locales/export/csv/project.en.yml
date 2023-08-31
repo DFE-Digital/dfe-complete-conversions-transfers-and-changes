@@ -59,6 +59,9 @@ en:
           mp_address_2: MP address 2
           mp_address_3: MP address 3
           mp_address_postcode: MP postcode
+          main_contact_name: Main contact name
+          main_contact_email: Main contact email
+          main_contact_title: Main contact role
         values:
           project_type:
             conversion: Conversion

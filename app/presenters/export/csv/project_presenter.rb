@@ -70,4 +70,16 @@ class Export::Csv::ProjectPresenter
   def assigned_to_email
     @project.assigned_to.email
   end
+
+  def main_contact_name
+    @project.main_contact&.name
+  end
+
+  def main_contact_email
+    @project.main_contact&.email
+  end
+
+  def main_contact_title
+    @project.main_contact&.title
+  end
 end

@@ -55,6 +55,9 @@ class Export::FundingAgreementLettersCsvExporterService
     conversion_date
     assigned_to_name
     assigned_to_email
+    main_contact_name
+    main_contact_email
+    main_contact_title
   ]
 
   def initialize(projects)
