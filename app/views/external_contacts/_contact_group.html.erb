@@ -32,8 +32,11 @@
             row.value { contact.phone }
           end
         end
+        if @project.main_contact_id == contact.id
+          summary_list.row do |row|
+            row.key { t("contact.details.main_contact") }
+            row.value { t("yes") }
+          end
+        end
       end %>
-    <% if @project.main_contact_id == contact.id %>
-      <p><%= t("contact.details.main_contact") %></p>
-    <% end %>
   <% end %>
