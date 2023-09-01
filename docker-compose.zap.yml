@@ -1,0 +1,65 @@
+version: "3.8"
+services:
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile.checks
+      cache_from:
+        - type=gha
+      args:
+        RAILS_ENV: "test"
+    command: bin/rails server
+    ports:
+      - "3000:3000"
+    depends_on:
+      test-db-health:
+        condition: service_healthy
+      test-redis:
+        condition: service_started
+    env_file:
+       - .env.test
+    environment:
+      DATABASE_URL: sqlserver://sa:strongPassword&@test-db:1433/sip_test
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
+      SECRET_KEY_BASE: secret
+      CI: "true"
+      SENTRY_ENV: test
+      REDIS_URL: redis://test-redis:6379
+    networks:
+      - test-ci
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    depends_on:
+      application:
+        condition: service_started
+    command: zap-full-scan.py -t http://application
+
+  test-db:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: strongPassword&
+    networks:
+      - test-ci
+
+  test-db-health:
+    image: mcr.microsoft.com/mssql-tools:latest
+    command: /bin/bash -c "touch /var/log/sqlcmd.log && tail -f /var/log/sqlcmd.log"
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S test-db -U sa -P 'strongPassword&' -o /var/log/sqlcmd.log
+      interval: "2s"
+      retries: 10
+    depends_on:
+      - test-db
+    networks:
+      - test-ci
+
+  test-redis:
+    image: redis:6
+    ports:
+      - 6379:6379
+    networks:
+      - test-ci
+
+networks:
+  test-ci:
