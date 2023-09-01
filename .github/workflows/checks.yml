@@ -2,6 +2,9 @@ name: Checks
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-cache:
@@ -25,7 +28,7 @@ jobs:
           push: false
           tags: complete-app:latest
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-to: type=gha,mode=min
 
   lint-and-format:
     name: Linting and formatting
