@@ -5,6 +5,8 @@
 # Runs all erblint, standardrb, prettier and eslint
 #
 # When AUTO_FIX is set, fixing will take place if available
+#
+set -e
 
 echo "--> Linting and formatting"
 
