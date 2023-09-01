@@ -98,6 +98,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
       -
         name: Build and cache
+        id: build_and_cache
         uses: docker/build-push-action@v4
         with:
           context: .
@@ -113,6 +114,17 @@ jobs:
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
           run --rm test bin/rspec
+      -
+        name: Copy coverage report
+        env:
+          IMAGE_ID: ${{ steps.build_and_cache.outputs.imageid }}
+          DIGEST: ${{ steps.build_and_cache.outputs.digest }}
+          META: ${{ steps.build_and_cache.outputs.metadata }}
+        run: |
+          docker container ls
+          echo "Image id is $IMAGE_ID"
+          echo "Digets is $DIGEST"
+          echo "Meta is $META"
 
   accessibility:
     name: Accessibility
