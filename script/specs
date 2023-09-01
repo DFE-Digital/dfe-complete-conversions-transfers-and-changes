@@ -3,5 +3,7 @@
 #
 # Shortcut to run just Rspec
 
+set -e
+
 # run specs and coverage
 script/specs_and_coverage "$@"
