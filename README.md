@@ -1,5 +1,7 @@
 [![Continuous integration](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration-tests.yml/badge.svg)](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/continuous-integration-tests.yml)
 
+[![Checks](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/checks.yml/badge.svg?branch=main)](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/actions/workflows/checks.yml)
+
 # DfE: Complete conversions, transfers and changes
 
 As a digital service being developed in DfE we aim to follow the
