@@ -6,6 +6,8 @@ class Contact < ApplicationRecord
   validates :title, presence: true, allow_blank: false
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
 
+  scope :by_name, -> { order(:name) }
+
   enum category: {
     school: 1,
     incoming_trust: 2,
@@ -15,6 +17,4 @@ class Contact < ApplicationRecord
     diocese: 4,
     other: 0
   }
-
-  scope :by_name, -> { order(:name) }
 end
