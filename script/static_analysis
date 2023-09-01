@@ -3,6 +3,9 @@
 # script/static_analysis:
 #
 # Runs Brakeman
+#
+set -e
+
 echo "--> Static analysis"
 
 echo "==> Running Brakeman"

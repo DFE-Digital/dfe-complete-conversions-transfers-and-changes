@@ -4,6 +4,9 @@
 #
 # Runs AXE tests, disbales Simplecov and then enables it so that coverage is not
 # measured for these
+#
+set -e
+
 echo "--> Accessibility"
 script/start_backing_services
 

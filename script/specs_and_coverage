@@ -3,6 +3,8 @@
 # script/specs_and_coverage:
 #
 # Runs Rspec along with Simplecov, unless a specific spec or set of specs is passed
+#
+set -e
 
 echo "--> Specs and coverage"
 script/start_backing_services
