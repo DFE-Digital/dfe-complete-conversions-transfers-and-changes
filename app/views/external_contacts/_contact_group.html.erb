@@ -38,5 +38,11 @@
             row.value { t("yes") }
           end
         end
+        if @project.establishment_main_contact_id == contact.id
+          summary_list.row do |row|
+            row.key { t("contact.details.establishment_main_contact") }
+            row.value { t("yes") }
+          end
+        end
       end %>
   <% end %>

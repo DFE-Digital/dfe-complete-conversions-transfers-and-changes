@@ -108,6 +108,38 @@ RSpec.feature "Users can manage contacts" do
     expect(page).to have_content(I18n.t("contact.details.main_contact"))
   end
 
+  scenario "they can create a new contact and set it as the establishment main contact" do
+    visit project_contacts_path(project)
+
+    click_link "Add contact"
+
+    expect(page).to have_select("Contact for", selected: "Choose category")
+
+    select "School", from: "Contact for"
+    fill_in "Name", with: "Some One"
+    fill_in "Organisation", with: "Trust Name"
+    fill_in "Role", with: "Chief of Knowledge"
+    fill_in "Email", with: "some@example.com"
+    check "contact_project[establishment_main_contact]"
+
+    click_button("Add contact")
+
+    expect(page).to have_content("School contacts")
+    expect(page).to have_content(I18n.t("contact.details.establishment_main_contact"))
+  end
+
+  scenario "they can edit a contact and set it to be the establishment main contact" do
+    contact = create(:project_contact, project: project, category: "school")
+
+    visit edit_project_contact_path(project, contact)
+    check "contact_project[establishment_main_contact]"
+
+    click_button("Save contact")
+
+    expect(project.reload.establishment_main_contact_id).to eq(contact.id)
+    expect(page).to have_content(I18n.t("contact.details.establishment_main_contact"))
+  end
+
   private def expect_page_to_have_contact(name:, title:, organisation_name: nil, email: nil, phone: nil)
     expect(page).to have_content(name)
     expect(page).to have_content(organisation_name) if organisation_name

@@ -18,6 +18,7 @@ en:
       edit_link: Change
       funding_agreement_letters: This person will receive the funding agreement letters.
       main_contact: Project main contact
+      establishment_main_contact: Is this the main contact for the establishment?
     new:
       title: Add contact
       save_contact_button: Add contact
@@ -49,6 +50,7 @@ en:
         organisation_name: Organisation
         email: Email
         phone: Phone
+        establishment_main_contact: Is this the main contact for the establishment?
   errors:
     attributes:
       category:

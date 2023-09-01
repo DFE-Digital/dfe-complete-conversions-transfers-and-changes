@@ -25,6 +25,9 @@
       <%= form.govuk_text_field :organisation_name %>
       <%= form.govuk_email_field :email %>
       <%= form.govuk_phone_field :phone, width: 10 %>
+      <%= form.govuk_check_boxes_fieldset :establishment_main_contact, multiple: false, legend: {text: t("helpers.label.contact_project.establishment_main_contact"), size: "s"} do %>
+        <%= form.govuk_check_box :establishment_main_contact, 1, 0, multiple: false, link_errors: true, label: {text: t("yes")} %>
+      <% end %>
 
       <%= form.govuk_submit t("contact.new.save_contact_button") do %>
         <%= govuk_link_to "Cancel", project_contacts_path(@project) %>

@@ -12,10 +12,11 @@ class ExternalContactsController < ApplicationController
 
   def create
     authorize @project, :new_contact?
-    @contact = Contact::Project.new(project: @project, **contact_params)
+    @contact = Contact::Project.new(project: @project, **contact_params.except(:establishment_main_contact))
 
     if @contact.valid?
       @contact.save
+      set_establishment_main_contact(@contact)
 
       redirect_to project_contacts_path(@project), notice: I18n.t("contact.create.success")
     else
@@ -34,7 +35,8 @@ class ExternalContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     authorize @contact
 
-    @contact.assign_attributes(contact_params)
+    set_establishment_main_contact(@contact)
+    @contact.assign_attributes(contact_params.except(:establishment_main_contact))
 
     if @contact.valid?
       @contact.save
@@ -59,6 +61,17 @@ class ExternalContactsController < ApplicationController
   end
 
   private def contact_params
-    params.require(:contact_project).permit(:name, :organisation_name, :title, :category, :email, :phone)
+    params.require(:contact_project).permit(:name, :organisation_name, :title, :category, :email, :phone, :establishment_main_contact)
+  end
+
+  private def set_establishment_main_contact(contact)
+    project = Project.find(contact.project_id)
+    return unless project
+
+    if contact_params[:establishment_main_contact] == "1"
+      project.update(establishment_main_contact_id: contact.id)
+    else
+      project.update(establishment_main_contact_id: nil)
+    end
   end
 end
