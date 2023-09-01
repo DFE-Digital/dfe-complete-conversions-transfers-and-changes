@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.checks
-      target: test
       cache_from:
         - type=gha
       args:

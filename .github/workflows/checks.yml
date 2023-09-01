@@ -23,7 +23,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.checks
-          target: test
           build-args: RAILS_ENV=test
           push: false
           tags: complete-app:latest
@@ -47,7 +46,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.checks
-          target: test
           build-args: |
             RAILS_ENV=test
           push: false
@@ -76,7 +74,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.checks
-          target: test
           build-args: |
             RAILS_ENV=test
           push: false
@@ -105,7 +102,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.checks
-          target: test
           build-args: |
             RAILS_ENV=test
           push: false
@@ -135,7 +131,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.checks
-          target: test
           build-args: RAILS_ENV=test
           push: false
           load: true
