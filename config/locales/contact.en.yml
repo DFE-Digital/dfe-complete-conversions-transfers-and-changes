@@ -53,3 +53,5 @@ en:
     attributes:
       category:
         blank: Choose a category
+      establishment_main_contact:
+        invalid: You can only select a "School" contact as the main contact for an establishment

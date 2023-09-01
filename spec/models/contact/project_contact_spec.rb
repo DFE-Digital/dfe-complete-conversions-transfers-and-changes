@@ -23,6 +23,38 @@ RSpec.describe Contact::Project, type: :model do
       it { is_expected.to allow_value("test@example.com").for(:email) }
       it { is_expected.to_not allow_value("notavalidemail").for(:email) }
     end
+
+    describe "establishment_main_contact_for_school_only" do
+      before do
+        mock_successful_api_response_to_create_any_project
+      end
+
+      context "when the contact is not the establishment main contact" do
+        it "returns true" do
+          project = create(:conversion_project, establishment_main_contact: nil)
+          contact = create(:project_contact, project: project)
+          expect(contact.valid?).to be true
+        end
+      end
+
+      context "when the contact category is a school contact" do
+        it "returns true" do
+          project = create(:conversion_project)
+          contact = create(:project_contact, project: project, category: "school")
+          project.update(establishment_main_contact_id: contact.id)
+          expect(contact.valid?).to be true
+        end
+      end
+
+      context "when the contact is the establishment main contact but the contact category is NOT school" do
+        it "returns false" do
+          project = create(:conversion_project)
+          contact = create(:project_contact, project: project, category: "solicitor")
+          project.update(establishment_main_contact_id: contact.id)
+          expect(contact.valid?).to be false
+        end
+      end
+    end
   end
 
   describe "scopes" do
