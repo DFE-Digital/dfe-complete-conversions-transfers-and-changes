@@ -14,6 +14,29 @@ As a digital service being developed in DfE we aim to follow the
 Console and logs can be accessed on all three environments, details are in
 [accessing console and logs](/doc/console-and-logs.md)
 
+## Getting started
+
+If this is your first time running the application, see the
+[`getting started documentation`](/doc/getting-started.md) for instructions.
+
+## Day to day development
+
+There are [developer scripts](/doc/developer-scripts.md) to make working on the
+code straight forward for those that would like to use them.
+
+## In-depth documentation
+
+- [User accounts](/doc/user-accounts.md)
+- [Task lists and tasks](/doc/task-lists-and-tasks.md)
+- [API Consumption](/doc/api-consumption.md)
+- [Microsoft SQL Server](/doc/microsoft-sql-server.md)
+- [Automated accessibility checks](/doc/accessibility-tests.md)
+- [Console and logs in live environments](/doc/console-and-logs.md)
+- [Releases and deployments](/doc/releases-and-deploys.md)
+- [Environment variables](/doc/environment-variables.md)
+- [Infrastructure and Terraform](/doc/infrastructure-and-terraform.md)
+- [Developer scripts](/doc/developer-scripts.md)
+
 ## Errors and monitoring
 
 All environments can be monitored in Azure application insights, each
@@ -35,24 +58,8 @@ You can find the ADRs for this project in [doc/decisions](/doc/decisions).
 
 - [DfE GOV.UK Components](https://govuk-components.netlify.app/)
 - [DfE GOV.UK Form Builder](https://govuk-form-builder.netlify.app/)
-- [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend)
 - [GOV.UK Accessible autocomplete](https://github.com/alphagov/accessible-autocomplete)
-- [MOJ Frontend](https://github.com/ministryofjustice/moj-frontend)
 - [dxw Mail Notify](https://github.com/dxw/mail-notify)
-
-## Getting started
-
-If this is your first time running the application, see the
-[`getting started documentation`](/doc/getting-started.md) for instructions.
-
-## In-depth documentation
-
-- [User accounts](/doc/user-accounts.md)
-- [Task lists and tasks](/doc/task-lists-and-tasks.md)
-- [API Consumption](/doc/api-consumption.md)
-- [Microsoft SQL Server](/doc/microsoft-sql-server.md)
-- [Automated accessibility checks](/doc/accessibility-tests.md)
-- [Console and logs in live environments](/doc/console-and-logs.md)
-- [Releases and deployments](/doc/releases-and-deploys.md)
-- [Environment variables](/doc/environment-variables.md)
-- [Infrastructure and Terraform](/doc/infrastructure-and-terraform.md)
+- [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend)
+- [MOJ Frontend](https://github.com/ministryofjustice/moj-frontend)
+- [DfE Frontend](https://design.education.gov.uk/design-system/dfe-frontend)
