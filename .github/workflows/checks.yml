@@ -107,12 +107,17 @@ jobs:
           push: false
           load: true
           tags: complete-app:latest
+          labels: complete-app
           cache-from: type=gha
       -
         name: Run RSpec and Simplecov
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
           run --rm test bin/rspec
+
+      - name: Copy coverage report
+        run: |
+          docker container ls
 
   accessibility:
     name: Accessibility
