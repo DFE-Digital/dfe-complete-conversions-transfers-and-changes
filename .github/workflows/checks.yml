@@ -86,7 +86,7 @@ jobs:
         run: |
           docker run --rm complete-app:latest bin/brakeman
 
-  specs:
+  specs-and-coverage:
     name: Specs and coverage
     runs-on: ubuntu-latest
     needs: build-and-cache
@@ -94,6 +94,10 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+      -
+        name: Set up coverage report
+        run: |
+          mkdir ./coverage
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -114,6 +118,12 @@ jobs:
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
           run --rm test bin/rspec
+      -
+        name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage.json
+          path: coverage/coverage.json
 
   accessibility:
     name: Accessibility
@@ -123,6 +133,10 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
+      -
+        name: Set up coverage report
+        run: |
+          mkdir ./coverage
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -142,13 +156,31 @@ jobs:
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
           run -e NO_COVERAGE=true --rm test bin/rspec --tag accessibility spec/accessibility
+
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    needs: specs-and-coverage
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Download coverage report
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage.json
+          path: coverage/
+      - name: Update coverage report paths
+        env:
+          GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}
+        run: |
+          mv coverage/coverage.json coverage/coverage.json.bak
+          sed 's|/srv/app/|$GITHUB_WORKSPACE/|' coverage/coverage.json.bak > coverage/coverage.json
+      - name: Debug coverage
+        run: |
+          cat coverage/coverage.json
+          ls -la
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

@@ -85,6 +85,7 @@ group :test do
   gem "capybara"
   gem "climate_control"
   gem "simplecov", "~> 0.22.0"
+  gem "simplecov_json_formatter"
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 5.1"
   gem "webmock", "~> 3.17"

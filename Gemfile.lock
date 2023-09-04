@@ -475,6 +475,7 @@ DEPENDENCIES
   shoulda-matchers (~> 5.1)
   sidekiq (< 7.0)
   simplecov (~> 0.22.0)
+  simplecov_json_formatter
   sprockets-rails
   standard
   tzinfo-data
