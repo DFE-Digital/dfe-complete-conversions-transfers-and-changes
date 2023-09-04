@@ -27,6 +27,8 @@ services:
       REDIS_URL: redis://test-redis:6379
     networks:
       - test-ci
+    volumes:
+      - test-ci:/srv/app/coverage
 
   test-db:
     image: mcr.microsoft.com/azure-sql-edge:latest
@@ -57,3 +59,7 @@ services:
 
 networks:
   test-ci:
+
+volumes:
+  test-ci:
+    name: test-ci-coverage-report
