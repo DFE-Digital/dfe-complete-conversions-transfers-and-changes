@@ -15,7 +15,14 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "simplecov"
+require "simplecov_json_formatter"
+
 SimpleCov.minimum_coverage 100
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::JSONFormatter
+])
+
 unless ENV.fetch("NO_COVERAGE", false) == "true"
   SimpleCov.start "rails" do
     add_filter "lib/generators/"
