@@ -1,0 +1,56 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: project_tasks_path(@project)} %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("transfer.task.deed_of_termination_for_the_master_funding_agreement.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: project_edit_task_path(@project, @task.class.identifier), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-l"><%= t("transfer.task.deed_of_termination_for_the_master_funding_agreement.check_and_clear_section.title") %></h2>
+
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved_academy_and_outgoing_trust_sharepoint)) %>
+      </div>
+
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-l"><%= t("transfer.task.deed_of_termination_for_the_master_funding_agreement.check_financial_reports_section.title") %></h2>
+
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :contact_financial_reporting_team)) %>
+      </div>
+
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-l"><%= t("transfer.task.deed_of_termination_for_the_master_funding_agreement.signed_by_secretary_of_state_section.title") %></h2>
+        <div class="app-task-section__hint">
+          <%= t("transfer.task.deed_of_termination_for_the_master_funding_agreement.signed_by_secretary_of_state_section.hint.html") %>
+        </div>
+        <%= govuk_details(
+              summary_text: t("transfer.task.deed_of_termination_for_the_master_funding_agreement.signed_by_secretary_of_state_section.guidance_link"),
+              text: t("transfer.task.deed_of_termination_for_the_master_funding_agreement.signed_by_secretary_of_state_section.guidance.html")
+            ) %>
+
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_secretary_state)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved_in_academy_sharepoint_folder)) %>
+      </div>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "shared/tasks/task_notes" %>
+  </div>
+</div>

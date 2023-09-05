@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_095034) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_06_104512) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -273,6 +273,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_095034) do
     t.boolean "church_supplemental_agreement_signed_secretary_state"
     t.boolean "church_supplemental_agreement_saved_after_signing_by_secretary_state"
     t.boolean "church_supplemental_agreement_not_applicable"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_received"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_cleared"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_signed"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_saved_academy_and_outgoing_trust_sharepoint"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_contact_financial_reporting_team"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_signed_secretary_state"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_saved_in_academy_sharepoint_folder"
+    t.boolean "deed_of_termination_for_the_master_funding_agreement_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
