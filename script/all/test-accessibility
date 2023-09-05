@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -e
-
-echo "==> Running accessibility checks..."
-NO_COVERAGE=true bundle exec rspec --tag accessibility
