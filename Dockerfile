@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Base
 # ------------------------------------------------------------------------------
-FROM ruby:3.1.2 as base
+FROM ruby:3.1.4 as base
 LABEL org.opencontainers.image.authors="contact@dxw.com"
 
 RUN apt-get update && apt-get install -y build-essential libpq-dev ca-certificates curl gnupg
@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y build-essential libpq-dev ca-certificat
 #
 ENV NODE_MAJOR=18
 
-RUN mkdir /etc/apt/keyrings
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 
 RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" \
@@ -63,8 +62,10 @@ ENV BUNDLE_GEM_GROUPS ${RAILS_ENV}
 COPY Gemfile ${DEPS_HOME}/Gemfile
 COPY Gemfile.lock ${DEPS_HOME}/Gemfile.lock
 
-RUN gem update --system 3.3.15
-RUN gem install bundler -v 2.3.23
+# We pin versions because Docker will cache this layer anyway, the only way to update
+# is to modify these versions
+RUN gem update --system 3.3.26
+RUN gem install bundler --version 2.3.26
 RUN bundle config set frozen "true"
 RUN bundle config set no-cache "true"
 RUN bundle config set with "${BUNDLE_GEM_GROUPS}"
