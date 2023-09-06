@@ -10,7 +10,7 @@
 
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for [@project, @contact], url: project_contact_path(@project) do |form| %>
+    <%= form_for @contact, url: project_contact_path(@project), method: :put do |form| %>
       <%= form.govuk_error_summary %>
 
       <%= form.govuk_collection_select :category,
@@ -23,9 +23,12 @@
       <%= form.govuk_text_field :organisation_name %>
       <%= form.govuk_email_field :email %>
       <%= form.govuk_phone_field :phone, width: 10 %>
+      <%= form.govuk_check_boxes_fieldset :establishment_main_contact, multiple: false, legend: {text: t("helpers.label.contact_project.establishment_main_contact"), size: "s"} do %>
+        <%= form.govuk_check_box :establishment_main_contact, 1, 0, multiple: false, link_errors: true, label: {text: t("yes")} %>
+      <% end %>
 
       <%= form.govuk_submit t("contact.edit.save_contact_button") do %>
-        <%= govuk_button_link_to "Delete", project_contact_delete_path(@project, @contact), warning: true %>
+        <%= govuk_button_link_to "Delete", project_contact_delete_path(@project, @existing_contact), warning: true %>
         <%= govuk_link_to "Cancel", project_contacts_path(@project) %>
       <% end %>
     <% end %>
