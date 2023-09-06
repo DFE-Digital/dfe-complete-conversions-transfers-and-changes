@@ -1,0 +1,52 @@
+en:
+  transfer:
+    task:
+      deed_termination_church_agreement:
+        title: Deed of termination for the church supplemental agreement
+        hint:
+          html:
+            <p>Use a deed of termination to end an outgoing trust's church supplemental agreement.</p>
+            <p>Once the existing church supplemental agreement has been terminated, you will need to draft a new one for the incoming trust.</p>
+        guidance_link: Other ways to deal with a church supplemental agreement
+        guidance:
+          html:
+            <p>Solicitors may want to transfer a church supplemental agreement to the new trust with a deed of novation and variation instead.</p>
+            <p>This is not advised and is not our preferred option.</p>
+            <p>Only use a deed of novation and variation on a case-by-case basis.</p>
+
+        not_applicable:
+          title: Not applicable
+
+        clear_section:
+          title: Check and clear the deed of termination
+          guidance_link: Using a deed of termination to transfer a church supplemental agreement
+          guidance:
+            html:
+              <p>There is no model document for using a deed of termination to transfer a church supplemental agreement.</p>
+              <p>You must <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> if you need to use the deed of termination for transferring a church supplemental agreement.</p>
+        received:
+          title: Received
+        cleared:
+          title: Cleared by policy
+        signed_outgoing_trust:
+          title: Signed by outgoing trust
+        signed_diocese:
+          title: Signed by diocese
+        saved:
+          title: Saved in academy and outgoing trust SharePoint folder
+
+        sign_section:
+          title: Signed by the Secretary of State
+          hint:
+            html:
+              <p>This must be signed before the transfer date.</p>
+          guidance_link: How to sign the deed of termination
+          guidance:
+            html:
+              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the deed of termination.</p>
+              <p>Each team may have a different process for signing and sealing documents. Follow your team's signing process.</p>
+              <p>Once you have the signed version of the document, save it as a PDF in SharePoint.</p>
+        signed_secretary_state:
+          title: Signed on behalf of Secretary of State
+        saved_after_signing_by_secretary_state:
+          title: Saved in academy SharePoint folder
