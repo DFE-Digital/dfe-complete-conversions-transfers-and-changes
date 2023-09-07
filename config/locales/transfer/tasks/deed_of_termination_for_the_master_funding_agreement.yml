@@ -1,0 +1,52 @@
+en:
+  transfer:
+    task:
+      deed_of_termination_for_the_master_funding_agreement:
+        title: Deed of termination for the master funding agreement
+        hint:
+          html: <p>Use a deed of termination to end a master funding agreement.</p>
+                <p>You should only do this when the:</p>
+                <ul>
+                  <li>outgoing trust is a multi-academy trust</li>
+                  <li>multi-academy trust will close once the transfer happens</li>
+                </ul>
+                <p>Single academy trusts do not have master funding agreements. Do not complete this task if the outgoing trust is a single academy trust.</p>
+        check_and_clear_section:
+          title: Check and clear the deed of termination
+        check_financial_reports_section:
+          title: Check financial reports
+        signed_by_secretary_of_state_section:
+          title: Signed by the Secretary of State
+          hint:
+            html:
+              <p>Do not get the deed of termination signed by the Secretary of State until the academy has transferred to the new trust.</p>
+          guidance_link: How to sign the deed of termination
+          guidance:
+            html:
+              <p>The Secretary of State, or somebody with the authority to act on their behalf, must sign the deed of termination.</p>
+              <p>Each team may have a different process for signing and sealing documents. Follow your team's signing process.</p>
+              <p>Once you have the signed version of the document, save it as a PDF in SharePoint.</p>
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        signed:
+          title: Signed by outgoing trust
+        saved_academy_and_outgoing_trust_sharepoint:
+          title: Saved in academy and outgoing trust SharePoint folder
+        contact_financial_reporting_team:
+          title: Contact Financial Reporting team
+          hint:
+            html:
+              <p>After the transfer happens, the Financial Reporting team email the outgoing trust to set a deadline for them to submit their financial reports to DfE. The Financial Reporting team will copy you into that email. </p>
+              <p>When that deadline passes, you must contact the Financial Reporting team to check the reports have been recieved and approved.</p>
+          guidance_link: How to contact the Financial Reporting team
+          guidance:
+            html:
+              <p>Email the financial reporting team at <a href="mailto:academies.financialreporting@education.gov.uk">academies.financialreporting@education.gov.uk</a>.</p>
+        signed_secretary_state:
+          title: Signed on behalf of Secretary of State
+        saved_in_academy_sharepoint_folder:
+          title: Saved in academy SharePoint folder
+        not_applicable:
+          title: Not applicable

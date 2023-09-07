@@ -20,7 +20,8 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::SupplementalFundingAgreementTaskForm,
           Transfer::Task::LandConsentLetterTaskForm,
           Transfer::Task::FormMTaskForm,
-          Transfer::Task::ChurchSupplementalAgreementTaskForm
+          Transfer::Task::ChurchSupplementalAgreementTaskForm,
+          Transfer::Task::DeedOfTerminationForTheMasterFundingAgreementTaskForm
         ]
       },
       {
