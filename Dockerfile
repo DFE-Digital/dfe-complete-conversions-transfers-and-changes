@@ -1,9 +1,19 @@
 # ------------------------------------------------------------------------------
-# Base
+# Base stage
 # ------------------------------------------------------------------------------
-FROM ruby:3.1.4 as base
-LABEL org.opencontainers.image.authors="contact@dxw.com"
+FROM ruby:3.1.4 AS base
 
+# setup env
+ENV APP_HOME /srv/app
+ENV DEPS_HOME /deps
+
+# RAILS_ENV defaults to production
+ARG RAILS_ENV
+ENV RAILS_ENV ${RAILS_ENV:-production}
+ENV NODE_ENV ${RAILS_ENV:-production}
+
+# Install basics
+#
 RUN apt-get update && apt-get install -y build-essential libpq-dev ca-certificates curl gnupg
 
 # Setup Node installation
@@ -24,9 +34,17 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# Install Node and Yarn
-RUN apt-get update && apt-get install -y nodejs yarn
+# Install system dependancies
+RUN \
+  if [ "${RAILS_ENV}" = "test" ]; then \
+    apt-get update && apt-get install -y nodejs yarn firefox-esr shellcheck; \
+  else \
+    apt-get update && apt-get install -y nodejs yarn; \
+  fi
 
+# Install FreeTDS
+# https://github.com/rails-sqlserver/tiny_tds#install
+#
 RUN curl http://www.freetds.org/files/stable/freetds-1.1.24.tar.gz --output freetds-1.1.24.tar.gz
 RUN tar -xzf freetds-1.1.24.tar.gz
 WORKDIR freetds-1.1.24
@@ -34,25 +52,24 @@ RUN ./configure --prefix=/usr/local --with-tdsver=7.3
 RUN make
 RUN make install
 
+# Intstall Geckodriver
+#
+# default Geckodriver version
+ARG gecko_driver_version=0.32.0
+
 RUN \
-  apt-get update && \
-  apt-get install -y --fix-missing --no-install-recommends \
-  build-essential \
-  libpq-dev
-
-ENV APP_HOME /srv/app
-ENV DEPS_HOME /deps
-
-ARG RAILS_ENV
-ENV RAILS_ENV ${RAILS_ENV:-production}
-ENV NODE_ENV ${RAILS_ENV:-production}
+  if [ "${RAILS_ENV}" = "test" ]; then \
+    wget https://github.com/mozilla/geckodriver/releases/download/v$gecko_driver_version/geckodriver-v$gecko_driver_version-linux64.tar.gz && \
+    tar -xvzf  geckodriver-v$gecko_driver_version-linux64.tar.gz && \
+    rm geckodriver-v$gecko_driver_version-linux64.tar.gz && \
+    chmod +x geckodriver && \
+    mv geckodriver* /usr/local/bin; \
+  fi
 
 # ------------------------------------------------------------------------------
-# Dependencies
+# Dependencies stage
 # ------------------------------------------------------------------------------
 FROM base AS dependencies
-
-RUN apt-get update && apt-get install -y yarn
 
 WORKDIR ${DEPS_HOME}
 
@@ -77,7 +94,7 @@ COPY yarn.lock ${DEPS_HOME}/yarn.lock
 COPY package.json ${DEPS_HOME}/package.json
 
 RUN \
-  if [ ${RAILS_ENV} = "production" ]; then \
+  if [ "${RAILS_ENV}" = "production" ]; then \
   yarn install --frozen-lockfile --production; \
   else \
   yarn install --frozen-lockfile; \
@@ -85,9 +102,9 @@ RUN \
 # End
 
 # ------------------------------------------------------------------------------
-# Web
+# Application stage
 # ------------------------------------------------------------------------------
-FROM base AS web
+FROM base AS application
 
 WORKDIR ${APP_HOME}
 
@@ -118,6 +135,15 @@ COPY db ${APP_HOME}/db
 COPY app ${APP_HOME}/app
 # End
 
+# Copy specs
+COPY .eslintignore ${APP_HOME}/.eslintignore
+COPY .eslintrc.json ${APP_HOME}/.eslintrc.json
+COPY .prettierignore ${APP_HOME}/.prettierignore
+COPY .prettierrc ${APP_HOME}/.prettierrc
+COPY .rspec ${APP_HOME}/.rspec
+COPY spec ${APP_HOME}/spec
+# End
+
 # Create tmp/pids
 RUN mkdir -p tmp/pids
 
@@ -145,31 +171,3 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 EXPOSE 3000
 
 CMD ["bundle", "exec", "rails", "server"]
-
-# ------------------------------------------------------------------------------
-# Test
-# ------------------------------------------------------------------------------
-FROM web as test
-
-RUN \
-  apt-get update && \
-  apt-get install -y \
-  firefox-esr \
-  shellcheck \
-  yarn
-
-ARG gecko_driver_version=0.32.0
-
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v$gecko_driver_version/geckodriver-v$gecko_driver_version-linux64.tar.gz
-RUN tar -xvzf  geckodriver-v$gecko_driver_version-linux64.tar.gz
-RUN rm geckodriver-v$gecko_driver_version-linux64.tar.gz
-RUN chmod +x geckodriver
-RUN mv geckodriver* /usr/local/bin
-
-COPY .eslintignore ${APP_HOME}/.eslintignore
-COPY .eslintrc.json ${APP_HOME}/.eslintrc.json
-COPY .prettierignore ${APP_HOME}/.prettierignore
-COPY .prettierrc ${APP_HOME}/.prettierrc
-
-COPY .rspec ${APP_HOME}/.rspec
-COPY spec ${APP_HOME}/spec
