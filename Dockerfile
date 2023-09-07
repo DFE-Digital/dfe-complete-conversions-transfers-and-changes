@@ -144,6 +144,11 @@ COPY .rspec ${APP_HOME}/.rspec
 COPY spec ${APP_HOME}/spec
 # End
 
+# Copy files you want to lint
+COPY README.md ${APP_HOME}/README.md
+COPY CHANGELOG.md ${APP_HOME}/CHANGELOG.md
+#end
+
 # Create tmp/pids
 RUN mkdir -p tmp/pids
 
