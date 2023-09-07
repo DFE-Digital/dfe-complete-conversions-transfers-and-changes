@@ -12,7 +12,7 @@
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= t("transfer.task.conditions_met.title") %></h1>
 
     <div class="app-task-hint">
-      <%= t("transfer.task.conditions_met.hint.html", date: @project.transfer_date.to_fs(:govuk)) %>
+      <%= t("transfer.task.conditions_met.hint.html", transfer_date: @project.transfer_date.to_fs(:govuk)) %>
     </div>
 
     <%= govuk_details(summary_text: t("transfer.task.conditions_met.guidance_link")) do %>
