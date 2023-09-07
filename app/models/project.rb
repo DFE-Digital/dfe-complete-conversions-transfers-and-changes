@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   has_one :funding_agreement_contact, dependent: :destroy, class_name: "Contact::Project", required: false
   has_one :main_contact, dependent: :destroy, class_name: "Contact::Project", required: false
   has_one :establishment_main_contact, dependent: :destroy, class_name: "Contact::Project", required: false
+  has_one :incoming_trust_main_contact, dependent: :destroy, class_name: "Contact::Project", required: false
 
   validates :urn, presence: true
   validates :urn, urn: true
