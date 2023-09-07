@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_134022) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_085358) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -235,7 +235,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_134022) do
     t.boolean "deed_of_novation_and_variation_signed_incoming_trust"
     t.boolean "deed_of_novation_and_variation_saved"
     t.boolean "deed_of_novation_and_variation_signed_secretary_state"
-    t.boolean "deed_of_novation_and_variation_sent"
+    t.boolean "deed_of_novation_and_variation_save_after_sign"
     t.boolean "articles_of_association_received"
     t.boolean "articles_of_association_cleared"
     t.boolean "articles_of_association_signed"
