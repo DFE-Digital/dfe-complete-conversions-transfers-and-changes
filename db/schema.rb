@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_085358) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_143938) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -141,6 +141,41 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_085358) do
     t.boolean "complete_notification_of_change_check_document"
     t.boolean "complete_notification_of_change_send_document"
     t.string "sponsored_support_grant_type"
+  end
+
+  create_table "gias_establishments", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.integer "urn"
+    t.integer "ukprn"
+    t.string "name"
+    t.integer "establishment_number"
+    t.string "local_authority_name"
+    t.integer "local_authority_code"
+    t.string "region_name"
+    t.string "region_code"
+    t.string "type_name"
+    t.integer "type_code"
+    t.integer "age_range_lower"
+    t.integer "age_range_upper"
+    t.string "phase_name"
+    t.integer "phase_code"
+    t.string "diocese_name"
+    t.string "diocese_code"
+    t.string "parliamentary_constituency_name"
+    t.string "parliamentary_constituency_code"
+    t.string "address_street"
+    t.string "address_locality"
+    t.string "address_additional"
+    t.string "address_town"
+    t.string "address_county"
+    t.string "address_postcode"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["establishment_number"], name: "index_gias_establishments_on_establishment_number"
+    t.index ["local_authority_code"], name: "index_gias_establishments_on_local_authority_code"
+    t.index ["name"], name: "index_gias_establishments_on_name"
+    t.index ["ukprn"], name: "index_gias_establishments_on_ukprn"
+    t.index ["urn"], name: "index_gias_establishments_on_urn", unique: true
   end
 
   create_table "local_authorities", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
