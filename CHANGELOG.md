@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   transfers.
 - The application can now store the un-published GIAS establishment records.
 - Allow a contact to be marked as the "establishment main contact"
+- Allow a contact to be marked as the "incoming trust main contact"
 
 ### Changed
 

@@ -26,6 +26,9 @@
       <%= form.govuk_check_boxes_fieldset :establishment_main_contact, multiple: false, legend: {text: t("helpers.label.contact_project.establishment_main_contact"), size: "s"} do %>
         <%= form.govuk_check_box :establishment_main_contact, 1, 0, multiple: false, link_errors: true, label: {text: t("yes")} %>
       <% end %>
+      <%= form.govuk_check_boxes_fieldset :incoming_trust_main_contact, multiple: false, legend: {text: t("helpers.label.contact_project.incoming_trust_main_contact"), size: "s"} do %>
+        <%= form.govuk_check_box :incoming_trust_main_contact, 1, 0, multiple: false, link_errors: true, label: {text: t("yes")} %>
+      <% end %>
 
       <%= form.govuk_submit t("contact.edit.save_contact_button") do %>
         <%= govuk_button_link_to "Delete", project_contact_delete_path(@project, @existing_contact), warning: true %>
