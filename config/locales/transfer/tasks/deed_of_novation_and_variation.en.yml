@@ -38,9 +38,7 @@ en:
           title: Signed by incoming trust
         saved:
           title: Saved in academy SharePoint folder
-        sent:
-          title: Sent to team leader or deputy director
         signed_secretary_state:
           title: Signed on behalf of Secretary of State
-        not_applicable:
-          title: Not applicable
+        save_after_sign:
+          title: Saved in academy SharePoint folder

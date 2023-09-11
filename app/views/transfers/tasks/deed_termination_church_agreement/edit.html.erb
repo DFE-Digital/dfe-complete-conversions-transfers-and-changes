@@ -5,7 +5,7 @@
 <% end %>
 
 <% content_for :page_title do %>
-  <%= page_title(t("transfer.task.deed_of_novation_and_variation.title")) %>
+  <%= page_title(t("transfer.task.deed_termination_church_agreement.title")) %>
 <% end %>
 
 <div class="govuk-grid-row">
@@ -14,33 +14,38 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-l"><%= t("transfer.task.deed_of_novation_and_variation.clear_section.title") %></h2>
-        <div class="app-task-section__hint">
-          <%= t("transfer.task.deed_of_novation_and_variation.clear_section.hint.html") %>
-        </div>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-l"><%= t("transfer.task.deed_termination_church_agreement.clear_section.title") %></h2>
 
         <%= govuk_details(
-              summary_text: t("transfer.task.deed_of_novation_and_variation.clear_section.guidance_link"),
-              text: t("transfer.task.deed_of_novation_and_variation.clear_section.guidance.html")
+              summary_text: t("transfer.task.deed_termination_church_agreement.clear_section.guidance_link"),
+              text: t("transfer.task.deed_termination_church_agreement.clear_section.guidance.html")
             ) %>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_outgoing_trust)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_incoming_trust)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_diocese)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
       </div>
 
       <div class="govuk-form-group">
-        <h2 class="govuk-heading-l"><%= t("transfer.task.deed_of_novation_and_variation.sign_section.title") %></h2>
+        <h2 class="govuk-heading-l"><%= t("transfer.task.deed_termination_church_agreement.sign_section.title") %></h2>
+
+        <div class="app-task-section__hint">
+          <%= t("transfer.task.deed_termination_church_agreement.sign_section.hint.html") %>
+        </div>
 
         <%= govuk_details(
-              summary_text: t("transfer.task.deed_of_novation_and_variation.sign_section.guidance_link"),
-              text: t("transfer.task.deed_of_novation_and_variation.sign_section.guidance.html")
+              summary_text: t("transfer.task.deed_termination_church_agreement.sign_section.guidance_link"),
+              text: t("transfer.task.deed_termination_church_agreement.sign_section.guidance.html")
             ) %>
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed_secretary_state)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_after_sign)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved_after_signing_by_secretary_state)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>

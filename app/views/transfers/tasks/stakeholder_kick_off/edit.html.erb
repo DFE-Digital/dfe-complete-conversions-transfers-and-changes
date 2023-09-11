@@ -21,7 +21,7 @@
         <% if @project.transfer_date_provisional? %>
           <%= form.govuk_date_field :confirmed_transfer_date,
                 omit_day: true,
-                form_group: {classes: "app-confirmed-conversion-date"},
+                form_group: {classes: "app-confirmed-transfer-date"},
                 legend: {text: t("transfer.task.stakeholder_kick_off.confirmed_transfer_date.title"), size: "s"} do %>
             <div class="govuk-hint"><%= t("transfer.task.stakeholder_kick_off.confirmed_transfer_date.hint.html") %></div>
           <% end %>

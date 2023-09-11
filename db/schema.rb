@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_104512) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_085358) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -235,7 +235,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_104512) do
     t.boolean "deed_of_novation_and_variation_signed_incoming_trust"
     t.boolean "deed_of_novation_and_variation_saved"
     t.boolean "deed_of_novation_and_variation_signed_secretary_state"
-    t.boolean "deed_of_novation_and_variation_sent"
+    t.boolean "deed_of_novation_and_variation_save_after_sign"
     t.boolean "articles_of_association_received"
     t.boolean "articles_of_association_cleared"
     t.boolean "articles_of_association_signed"
@@ -281,6 +281,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_104512) do
     t.boolean "deed_of_termination_for_the_master_funding_agreement_signed_secretary_state"
     t.boolean "deed_of_termination_for_the_master_funding_agreement_saved_in_academy_sharepoint_folder"
     t.boolean "deed_of_termination_for_the_master_funding_agreement_not_applicable"
+    t.boolean "deed_termination_church_agreement_received"
+    t.boolean "deed_termination_church_agreement_cleared"
+    t.boolean "deed_termination_church_agreement_signed_outgoing_trust"
+    t.boolean "deed_termination_church_agreement_signed_diocese"
+    t.boolean "deed_termination_church_agreement_saved"
+    t.boolean "deed_termination_church_agreement_signed_secretary_state"
+    t.boolean "deed_termination_church_agreement_saved_after_signing_by_secretary_state"
+    t.boolean "deed_termination_church_agreement_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
