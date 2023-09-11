@@ -4,4 +4,10 @@ class Contact::Project < Contact
   end
 
   belongs_to :project, optional: true
+
+  def establishment_main_contact
+    return false unless project_id
+    project = ::Project.find(project_id)
+    project&.establishment_main_contact_id.eql?(id)
+  end
 end

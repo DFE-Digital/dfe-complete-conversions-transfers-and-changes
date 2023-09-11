@@ -18,6 +18,7 @@ en:
       edit_link: Change
       funding_agreement_letters: This person will receive the funding agreement letters.
       main_contact: Project main contact
+      establishment_main_contact: Is this the main contact for the school or academy?
     new:
       title: Add contact
       save_contact_button: Add contact
@@ -49,7 +50,18 @@ en:
         organisation_name: Organisation
         email: Email
         phone: Phone
+        establishment_main_contact: Is this the main contact for the school or academy?
+      contact_create_project_contact_form:
+        category: Contact for
+        title: Role
+        name: Name
+        organisation_name: Organisation
+        email: Email
+        phone: Phone
+        establishment_main_contact: Is this the main contact for the school or academy?
   errors:
     attributes:
       category:
         blank: Choose a category
+      establishment_main_contact:
+        invalid: You can only select a School contact as the school or academy's main contact

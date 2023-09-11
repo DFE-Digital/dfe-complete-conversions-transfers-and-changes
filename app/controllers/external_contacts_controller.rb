@@ -7,16 +7,14 @@ class ExternalContactsController < ApplicationController
 
   def new
     authorize @project, :new_contact?
-    @contact = Contact::Project.new(project: @project)
+    @contact = Contact::CreateProjectContactForm.new({}, @project)
   end
 
   def create
     authorize @project, :new_contact?
-    @contact = Contact::Project.new(project: @project, **contact_params)
+    @contact = Contact::CreateProjectContactForm.new(contact_params, @project)
 
-    if @contact.valid?
-      @contact.save
-
+    if @contact.save
       redirect_to project_contacts_path(@project), notice: I18n.t("contact.create.success")
     else
       render :new
@@ -24,20 +22,20 @@ class ExternalContactsController < ApplicationController
   end
 
   def edit
-    @contact = Contact.find(params[:id])
-    authorize @contact
+    @existing_contact = Contact.find(params[:id])
+    authorize @existing_contact
 
+    @contact = Contact::CreateProjectContactForm.new_from_contact({}, @project, @existing_contact)
     @users = User.all
   end
 
   def update
-    @contact = Contact.find(params[:id])
-    authorize @contact
+    @existing_contact = Contact.find(params[:id])
+    authorize @existing_contact
 
-    @contact.assign_attributes(contact_params)
+    @contact = Contact::CreateProjectContactForm.new(contact_params, @project, @existing_contact)
 
-    if @contact.valid?
-      @contact.save
+    if @contact.save
       redirect_to project_contacts_path(@project), notice: I18n.t("contact.update.success")
     else
       render :edit
@@ -59,6 +57,6 @@ class ExternalContactsController < ApplicationController
   end
 
   private def contact_params
-    params.require(:contact_project).permit(:name, :organisation_name, :title, :category, :email, :phone)
+    params.require(:contact_create_project_contact_form).permit(:name, :organisation_name, :title, :category, :email, :phone, :establishment_main_contact)
   end
 end

@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added the 'Deed of termination for the church supplemental agreement' task to
   transfers.
 - The application can now store the un-published GIAS establishment records.
+- Allow a contact to be marked as the "establishment main contact"
 
 ### Changed
 
