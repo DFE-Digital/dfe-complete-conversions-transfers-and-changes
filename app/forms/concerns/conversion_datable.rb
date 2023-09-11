@@ -11,7 +11,7 @@ module ConversionDatable
   end
 
   def confirmed_conversion_date
-    return Date.new(year, month, 1) if valid_year? && valid_month?
+    Date.new(year, month, 1) if valid_year? && valid_month?
   end
 
   private def conversion_date_format

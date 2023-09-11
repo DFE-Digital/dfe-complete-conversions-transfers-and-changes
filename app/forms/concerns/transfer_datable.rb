@@ -11,7 +11,7 @@ module TransferDatable
   end
 
   def confirmed_transfer_date
-    return Date.new(year, month, 1) if valid_year? && valid_month?
+    Date.new(year, month, 1) if valid_year? && valid_month?
   end
 
   private def transfer_date_format

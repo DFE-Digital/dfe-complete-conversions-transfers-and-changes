@@ -12,7 +12,7 @@ class Export::Csv::ProjectPresenter
 
   def project_type
     return I18n.t("export.csv.project.values.project_type.conversion") if @project.is_a?(Conversion::Project)
-    return I18n.t("export.csv.project.values.project_type.transfer") if @project.is_a?(Transfer::Project)
+    I18n.t("export.csv.project.values.project_type.transfer") if @project.is_a?(Transfer::Project)
   end
 
   def conversion_date
