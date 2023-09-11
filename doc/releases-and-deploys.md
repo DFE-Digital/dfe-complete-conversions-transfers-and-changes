@@ -50,9 +50,6 @@ flexibility to release as often as needed.
   reference the release tag and paste in the changes from `CHANGELOG.md`
   included in the release.
 
-We have a [template](https://trello.com/c/8enGdMyy) to track releases on our
-Trello board.
-
 ## Deployments
 
 A deployment applies the changes in a release to an environment with the
