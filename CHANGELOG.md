@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add deeds of termination for MFA task to Transfer projects
 - Added the 'Deed of termination for the church supplemental agreement' task to
   transfers.
+- The application can now store the un-published GIAS establishment records.
 
 ### Changed
 
