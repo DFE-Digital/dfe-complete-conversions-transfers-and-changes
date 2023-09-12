@@ -12,17 +12,18 @@ class Transfer::TaskList < ::BaseTaskList
       {
         identifier: :legal_documents,
         tasks: [
-          Transfer::Task::MasterFundingAgreementTaskForm,
-          Transfer::Task::DeedOfNovationAndVariationTaskForm,
-          Transfer::Task::ArticlesOfAssociationTaskForm,
-          Transfer::Task::CommercialTransferAgreementTaskForm,
-          Transfer::Task::DeedOfVariationTaskForm,
-          Transfer::Task::SupplementalFundingAgreementTaskForm,
-          Transfer::Task::LandConsentLetterTaskForm,
           Transfer::Task::FormMTaskForm,
+          Transfer::Task::LandConsentLetterTaskForm,
+          Transfer::Task::SupplementalFundingAgreementTaskForm,
+          Transfer::Task::DeedOfNovationAndVariationTaskForm,
           Transfer::Task::ChurchSupplementalAgreementTaskForm,
+          Transfer::Task::MasterFundingAgreementTaskForm,
+          Transfer::Task::ArticlesOfAssociationTaskForm,
+          Transfer::Task::DeedOfVariationTaskForm,
           Transfer::Task::DeedOfTerminationForTheMasterFundingAgreementTaskForm,
-          Transfer::Task::DeedTerminationChurchAgreementTaskForm
+          Transfer::Task::DeedTerminationChurchAgreementTaskForm,
+          # Closure of transfer declaration
+          Transfer::Task::CommercialTransferAgreementTaskForm
         ]
       },
       {
