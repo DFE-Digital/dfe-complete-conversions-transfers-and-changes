@@ -14,6 +14,6 @@ class AddDirectiveAcademyOrderToProjects < ActiveRecord::Migration[7.0]
 
   def directive_academy_order(project)
     return false if project.task_list_type == "Conversion::Voluntary::TaskList"
-    return true if project.task_list_type == "Conversion::Involuntary::TaskList"
+    true if project.task_list_type == "Conversion::Involuntary::TaskList"
   end
 end

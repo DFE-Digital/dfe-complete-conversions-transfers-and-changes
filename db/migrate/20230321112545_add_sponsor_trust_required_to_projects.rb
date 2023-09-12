@@ -14,6 +14,6 @@ class AddSponsorTrustRequiredToProjects < ActiveRecord::Migration[7.0]
 
   def sponsor_trust_required(project)
     return false if project.task_list_type == "Conversion::Voluntary::TaskList"
-    return true if project.task_list_type == "Conversion::Involuntary::TaskList"
+    true if project.task_list_type == "Conversion::Involuntary::TaskList"
   end
 end
