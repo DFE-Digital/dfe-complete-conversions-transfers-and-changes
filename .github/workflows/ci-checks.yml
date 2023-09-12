@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile.checks
+          file: ./Dockerfile
           build-args: RAILS_ENV=test
           push: false
           tags: complete-app:latest
@@ -45,7 +45,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile.checks
+          file: ./Dockerfile
           build-args: |
             RAILS_ENV=test
           push: false
@@ -74,7 +74,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile.checks
+          file: ./Dockerfile
           build-args: |
             RAILS_ENV=test
           push: false
@@ -102,7 +102,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile.checks
+          file: ./Dockerfile
           build-args: |
             RAILS_ENV=test
           push: false
@@ -131,7 +131,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile.checks
+          file: ./Dockerfile
           build-args: RAILS_ENV=test
           push: false
           load: true
