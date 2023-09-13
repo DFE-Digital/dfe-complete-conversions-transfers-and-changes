@@ -234,6 +234,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_143938) do
     t.boolean "all_conditions_met", default: false
     t.uuid "main_contact_id"
     t.uuid "establishment_main_contact_id"
+    t.uuid "incoming_trust_main_contact_id"
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"

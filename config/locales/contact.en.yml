@@ -19,6 +19,7 @@ en:
       funding_agreement_letters: This person will receive the funding agreement letters.
       main_contact: Project main contact
       establishment_main_contact: Is this the main contact for the school or academy?
+      incoming_trust_main_contact: Is this the main contact for the incoming trust?
     new:
       title: Add contact
       save_contact_button: Add contact
@@ -51,6 +52,7 @@ en:
         email: Email
         phone: Phone
         establishment_main_contact: Is this the main contact for the school or academy?
+        incoming_trust_main_contact: Is this the main contact for the incoming trust?
       contact_create_project_contact_form:
         category: Contact for
         title: Role
@@ -59,9 +61,12 @@ en:
         email: Email
         phone: Phone
         establishment_main_contact: Is this the main contact for the school or academy?
+        incoming_trust_main_contact: Is this the main contact for the incoming trust?
   errors:
     attributes:
       category:
         blank: Choose a category
       establishment_main_contact:
         invalid: You can only select a School contact as the school or academy's main contact
+      incoming_trust_main_contact:
+        invalid: You can only select an Incoming trust contact as the incoming trust's main contact

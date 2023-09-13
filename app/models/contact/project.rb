@@ -10,4 +10,10 @@ class Contact::Project < Contact
     project = ::Project.find(project_id)
     project&.establishment_main_contact_id.eql?(id)
   end
+
+  def incoming_trust_main_contact
+    return false unless project_id
+    project = ::Project.find(project_id)
+    project&.incoming_trust_main_contact_id.eql?(id)
+  end
 end
