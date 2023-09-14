@@ -1,3 +1,7 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
 <% content_for :page_title do %>
   <%= page_title(t("export.education_and_skills_funding_agency.show.title", date: @month.to_fs(:govuk_month))) %>
 <% end %>

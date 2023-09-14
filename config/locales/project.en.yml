@@ -175,6 +175,7 @@ en:
         date: Date
         confirmed: Confirmed
         revised: Revised
+        export: Export
         team: Team
       body:
         type_name:
