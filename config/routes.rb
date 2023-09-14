@@ -146,7 +146,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #  Team projects
+  #  Your team projects
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index] do
       collection do
