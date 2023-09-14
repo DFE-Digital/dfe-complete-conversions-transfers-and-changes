@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Allow a contact to be marked as the "establishment main contact"
 - Allow a contact to be marked as the "incoming trust main contact"
 - Allow a contact to be marked as the "outgoing trust main contact"
+- Add missing navigation to the individual (show) export pages
 
 ### Changed
 
