@@ -158,6 +158,24 @@ RSpec.feature "Users can manage contacts" do
     expect(page).to have_content(I18n.t("contact.details.incoming_trust_main_contact"))
   end
 
+  scenario "they can create a new contact and set it as the outgoing trust main contact" do
+    visit project_contacts_path(project)
+
+    click_link "Add contact"
+
+    select "Outgoing trust", from: "Contact for"
+    fill_in "Name", with: "Some One"
+    fill_in "Organisation", with: "Trust Name"
+    fill_in "Role", with: "Chief of Knowledge"
+    fill_in "Email", with: "some@example.com"
+    check "contact_create_project_contact_form[outgoing_trust_main_contact]"
+
+    click_button("Add contact")
+
+    expect(page).to have_content("Outgoing trust contacts")
+    expect(page).to have_content(I18n.t("contact.details.outgoing_trust_main_contact"))
+  end
+
   private def expect_page_to_have_contact(name:, title:, organisation_name: nil, email: nil, phone: nil)
     expect(page).to have_content(name)
     expect(page).to have_content(organisation_name) if organisation_name

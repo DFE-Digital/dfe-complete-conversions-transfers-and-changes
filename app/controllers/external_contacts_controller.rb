@@ -57,6 +57,6 @@ class ExternalContactsController < ApplicationController
   end
 
   private def contact_params
-    params.require(:contact_create_project_contact_form).permit(:name, :organisation_name, :title, :category, :email, :phone, :establishment_main_contact, :incoming_trust_main_contact)
+    params.require(:contact_create_project_contact_form).permit(:name, :organisation_name, :title, :category, :email, :phone, :establishment_main_contact, :incoming_trust_main_contact, :outgoing_trust_main_contact)
   end
 end

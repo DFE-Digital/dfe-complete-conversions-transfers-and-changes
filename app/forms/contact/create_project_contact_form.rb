@@ -11,6 +11,7 @@ class Contact::CreateProjectContactForm
   attribute :phone
   attribute :establishment_main_contact
   attribute :incoming_trust_main_contact
+  attribute :outgoing_trust_main_contact
   attribute :project_id
   attr_accessor :category,
     :name,
@@ -20,10 +21,12 @@ class Contact::CreateProjectContactForm
     :phone,
     :establishment_main_contact,
     :incoming_trust_main_contact,
+    :outgoing_trust_main_contact,
     :project_id
 
   validate :establishment_main_contact_for_school_only, if: -> { establishment_main_contact.eql?("1") }
   validate :incoming_trust_main_contact_for_incoming_trust_only, if: -> { incoming_trust_main_contact.eql?("1") }
+  validate :outgoing_trust_main_contact_for_outgoing_trust_only, if: -> { outgoing_trust_main_contact.eql?("1") }
 
   def initialize(args = {}, project = nil, contact = nil)
     @project = project
@@ -42,7 +45,8 @@ class Contact::CreateProjectContactForm
          email: contact.email,
          phone: contact.phone,
          establishment_main_contact: contact.establishment_main_contact,
-         incoming_trust_main_contact: contact.incoming_trust_main_contact},
+         incoming_trust_main_contact: contact.incoming_trust_main_contact,
+         outgoing_trust_main_contact: contact.outgoing_trust_main_contact},
       @project,
       @contact)
   end
@@ -62,6 +66,7 @@ class Contact::CreateProjectContactForm
         @contact.save
         set_establishment_main_contact
         set_incoming_trust_main_contact
+        set_outgoing_trust_main_contact
       end
     else
       errors.merge!(@contact.errors)
@@ -77,6 +82,11 @@ class Contact::CreateProjectContactForm
   private def incoming_trust_main_contact_for_incoming_trust_only
     return true if category.eql?("incoming_trust")
     errors.add(:incoming_trust_main_contact, :invalid)
+  end
+
+  private def outgoing_trust_main_contact_for_outgoing_trust_only
+    return true if category.eql?("outgoing_trust")
+    errors.add(:outgoing_trust_main_contact, :invalid)
   end
 
   private def set_establishment_main_contact
@@ -96,6 +106,16 @@ class Contact::CreateProjectContactForm
       project.update!(incoming_trust_main_contact_id: @contact.id)
     else
       project.update!(incoming_trust_main_contact_id: nil)
+    end
+  end
+
+  private def set_outgoing_trust_main_contact
+    project = @project || Project.find(@contact.project_id)
+
+    if outgoing_trust_main_contact == "1"
+      project.update!(outgoing_trust_main_contact_id: @contact.id)
+    else
+      project.update!(outgoing_trust_main_contact_id: nil)
     end
   end
 end

@@ -94,4 +94,31 @@ RSpec.describe Contact::Project, type: :model do
       expect(contact.incoming_trust_main_contact).to be false
     end
   end
+
+  describe "#outgoing_trust_main_contact" do
+    before do
+      mock_successful_api_responses(urn: any_args, ukprn: any_args)
+    end
+
+    it "returns true if the contact is the outgoing_trust_main_contact for its project" do
+      project = create(:conversion_project)
+      contact = create(:project_contact, project: project)
+      project.outgoing_trust_main_contact_id = contact.id
+      project.save
+
+      expect(contact.reload.outgoing_trust_main_contact).to be true
+    end
+
+    it "returns false if the contact is NOT the outgoing_trust_main_contact for its project" do
+      project = create(:conversion_project, outgoing_trust_main_contact_id: SecureRandom.uuid)
+      contact = create(:project_contact, project: project)
+
+      expect(contact.outgoing_trust_main_contact).to be false
+    end
+
+    it "returns false if the contact does not have a project" do
+      contact = create(:project_contact, project_id: nil)
+      expect(contact.outgoing_trust_main_contact).to be false
+    end
+  end
 end

@@ -195,4 +195,82 @@ RSpec.describe Contact::CreateProjectContactForm do
       end
     end
   end
+
+  describe "outgoing_trust_main_contact" do
+    context "a new contact" do
+      context "when the outgoing_trust_main_contact is checked" do
+        context "when the contact category is outgoing_trust" do
+          it "is valid" do
+            contact_form = Contact::CreateProjectContactForm.new({}, project)
+            contact_form.outgoing_trust_main_contact = "1"
+            contact_form.category = "outgoing_trust"
+            expect(contact_form).to be_valid
+          end
+
+          it "marks the contact as the outgoing_trust_main_contact on the project" do
+            contact_form = Contact::CreateProjectContactForm.new({}, project)
+            contact_form.outgoing_trust_main_contact = "1"
+            contact_form.category = "outgoing_trust"
+            contact_form.name = "New Contact"
+            contact_form.title = "Financial Controller"
+            contact_form.organisation_name = "Trust"
+            contact_form.save
+            contact = Contact::Project.last
+            expect(project.reload.outgoing_trust_main_contact).to eq(contact)
+          end
+        end
+
+        context "when the contact category is NOT outgoing_trust" do
+          it "is not valid" do
+            contact_form = Contact::CreateProjectContactForm.new({}, project)
+            contact_form.outgoing_trust_main_contact = "1"
+            contact_form.category = "school"
+            expect(contact_form).to_not be_valid
+          end
+        end
+      end
+    end
+
+    context "editing a contact" do
+      context "when the outgoing_trust_main_contact is checked" do
+        context "when the contact category is outgoing_trust" do
+          let(:contact) { create(:project_contact, project: project, category: "outgoing_trust") }
+
+          it "is valid" do
+            contact_form = Contact::CreateProjectContactForm.new_from_contact(project, contact)
+            contact_form.outgoing_trust_main_contact = "1"
+            expect(contact_form).to be_valid
+          end
+        end
+
+        context "when the contact category is NOT outgoing_trust" do
+          let(:contact) { create(:project_contact, project: project, category: "solicitor") }
+
+          it "is not valid" do
+            contact_form = Contact::CreateProjectContactForm.new_from_contact(project, contact)
+            contact_form.outgoing_trust_main_contact = "1"
+            expect(contact_form).to_not be_valid
+          end
+        end
+      end
+
+      context "when the outgoing_trust_main_contact box is NOT checked" do
+        context "when the contact was previously marked as the outgoing_trust_main_contact" do
+          let(:contact) { create(:project_contact, project: project, category: "outgoing_trust") }
+
+          before do
+            project.update!(outgoing_trust_main_contact_id: contact.id)
+          end
+
+          it "removes the outgoing_trust_main_contact from the project" do
+            contact_form = Contact::CreateProjectContactForm.new_from_contact(project, contact)
+            contact_form.outgoing_trust_main_contact = "0"
+            contact_form.save
+
+            expect(project.outgoing_trust_main_contact_id).to be_nil
+          end
+        end
+      end
+    end
+  end
 end
