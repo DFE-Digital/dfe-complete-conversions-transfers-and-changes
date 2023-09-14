@@ -1,7 +1,5 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full-width">
-    <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
-
     <div class="govuk-grid-column-one-quarter">
       <nav>
         <h2 class="govuk-heading-m"><%= t("project_information.show.side_navigation.title") %></h2>
@@ -13,6 +11,9 @@
       </nav>
     </div>
     <div class="govuk-grid-column-three-quarters">
+      <div class="govuk-grid-row">
+        <h2 class="govuk-heading-l"><%= t("project.show.title") %></h2>
+      </div>
       <div class="govuk-grid-row">
         <ol class="app-task-list">
           <% @task_list.sections.each do |section| %>
