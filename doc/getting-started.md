@@ -43,11 +43,9 @@ instance.
    The application will use these credentials to access the database and so must
    all be the same.
 
-## Add yourself as a user
+## Seeding the database
 
-You can only sign in locally if you have an @education.gov.uk Microsoft account
-AND that email is register in the application iteself,
-[see 'Creating a new user'](/doc/users-accounts.md#creating-a-new-user)
+Read the [seeding the database documentation](/doc/seeding-the-database.md).
 
 ## Get the server running
 
