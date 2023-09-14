@@ -20,6 +20,7 @@ en:
       main_contact: Project main contact
       establishment_main_contact: Is this the main contact for the school or academy?
       incoming_trust_main_contact: Is this the main contact for the incoming trust?
+      outgoing_trust_main_contact: Is this the main contact for the outgoing trust?
     new:
       title: Add contact
       save_contact_button: Add contact
@@ -53,6 +54,7 @@ en:
         phone: Phone
         establishment_main_contact: Is this the main contact for the school or academy?
         incoming_trust_main_contact: Is this the main contact for the incoming trust?
+        outgoing_trust_main_contact: Is this the main contact for the outgoing trust?
       contact_create_project_contact_form:
         category: Contact for
         title: Role
@@ -62,6 +64,7 @@ en:
         phone: Phone
         establishment_main_contact: Is this the main contact for the school or academy?
         incoming_trust_main_contact: Is this the main contact for the incoming trust?
+        outgoing_trust_main_contact: Is this the main contact for the outgoing trust?
   errors:
     attributes:
       category:
@@ -70,3 +73,5 @@ en:
         invalid: You can only select a School contact as the school or academy's main contact
       incoming_trust_main_contact:
         invalid: You can only select an Incoming trust contact as the incoming trust's main contact
+      outgoing_trust_main_contact:
+        invalid: You can only select an Outgoing trust contact as the outgoing trust's main contact
