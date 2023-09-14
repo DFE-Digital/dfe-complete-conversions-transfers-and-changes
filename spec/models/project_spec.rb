@@ -35,6 +35,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_one(:main_contact).required(false) }
     it { is_expected.to have_one(:establishment_main_contact).required(false) }
     it { is_expected.to have_one(:incoming_trust_main_contact).required(false) }
+    it { is_expected.to have_one(:outgoing_trust_main_contact).required(false) }
 
     describe "delete related entities" do
       context "when the project is deleted" do
