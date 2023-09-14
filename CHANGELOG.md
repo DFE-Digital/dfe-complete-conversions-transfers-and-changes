@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Remove the Funding agreement letters contact task from the Conversion project
   task list
 - Change order of the legal tasks in the Transfer task list
+- The 'Team projects' section is now 'Your team projects'
 
 ## [Release 39][release-39]
 

@@ -39,7 +39,7 @@ RSpec.feature "Viewing regional casework services projects" do
       scenario "the Team projects link leads to the unassigned page" do
         visit root_path
 
-        click_on "Team projects"
+        click_on "Your team projects"
 
         expect(page.find("h1")).to have_content("Unassigned")
       end
@@ -57,7 +57,7 @@ RSpec.feature "Viewing regional casework services projects" do
       scenario "the Team projects link leads to the in-progress page" do
         visit root_path
 
-        click_on "Team projects"
+        click_on "Your team projects"
 
         expect(page.find("h1")).to have_content("In progress")
       end
@@ -75,7 +75,7 @@ RSpec.feature "Viewing regional casework services projects" do
       scenario "the Team projects link leads to the in-progress page" do
         visit root_path
 
-        click_on "Team projects"
+        click_on "Your team projects"
 
         expect(page.find("h1")).to have_content("In progress")
       end
