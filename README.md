@@ -26,6 +26,7 @@ code straight forward for those that would like to use them.
 
 ## In-depth documentation
 
+- [Seeding the database](/doc/seeding-the-database.md)
 - [User accounts](/doc/user-accounts.md)
 - [Task lists and tasks](/doc/task-lists-and-tasks.md)
 - [Importing GIAS data](/doc/import-gias-data.md)
