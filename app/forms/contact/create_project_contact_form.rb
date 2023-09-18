@@ -75,7 +75,7 @@ class Contact::CreateProjectContactForm
   end
 
   private def establishment_main_contact_for_school_only
-    return true if category.eql?("school")
+    return true if category.eql?("school_or_academy")
     errors.add(:establishment_main_contact, :invalid)
   end
 

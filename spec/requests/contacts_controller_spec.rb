@@ -70,7 +70,7 @@ RSpec.describe ExternalContactsController, type: :request do
     let(:new_contact_title) { "Headteacher" }
 
     subject(:perform_request) do
-      post project_contacts_path(project_id), params: {contact_create_project_contact_form: {name: new_contact_name, title: new_contact_title, category: "school"}}
+      post project_contacts_path(project_id), params: {contact_create_project_contact_form: {name: new_contact_name, title: new_contact_title, category: "school_or_academy"}}
       response
     end
 

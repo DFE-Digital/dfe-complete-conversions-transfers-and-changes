@@ -7,7 +7,7 @@ class Contact < ApplicationRecord
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
 
   enum category: {
-    school: 1,
+    school_or_academy: 1,
     incoming_trust: 2,
     outgoing_trust: 6,
     local_authority: 3,

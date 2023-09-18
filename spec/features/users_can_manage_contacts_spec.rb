@@ -26,7 +26,7 @@ RSpec.feature "Users can manage contacts" do
 
   scenario "the contact groups are in the order users might expect to use them" do
     create(:project_contact, category: :other, project: project)
-    create(:project_contact, category: :school, project: project)
+    create(:project_contact, category: :school_or_academy, project: project)
     create(:project_contact, category: :incoming_trust, project: project)
     create(:project_contact, category: :outgoing_trust, project: project)
     create(:project_contact, category: :solicitor, project: project)
@@ -38,7 +38,7 @@ RSpec.feature "Users can manage contacts" do
     order_categories = page.find_all("h3.govuk-heading-m")
 
     %i[
-      school
+      school_or_academy
       incoming_trust
       outgoing_trust
       local_authority
@@ -115,7 +115,7 @@ RSpec.feature "Users can manage contacts" do
 
     expect(page).to have_select("Contact for", selected: "Choose category")
 
-    select "School", from: "Contact for"
+    select "School or academy", from: "Contact for"
     fill_in "Name", with: "Some One"
     fill_in "Organisation", with: "Trust Name"
     fill_in "Role", with: "Chief of Knowledge"
@@ -124,12 +124,12 @@ RSpec.feature "Users can manage contacts" do
 
     click_button("Add contact")
 
-    expect(page).to have_content("School contacts")
+    expect(page).to have_content("School or academy contacts")
     expect(page).to have_content(I18n.t("contact.details.establishment_main_contact"))
   end
 
   scenario "they can edit a contact and set it to be the establishment main contact" do
-    contact = create(:project_contact, project: project, category: "school")
+    contact = create(:project_contact, project: project, category: "school_or_academy")
 
     visit edit_project_contact_path(project, contact)
     check "contact_create_project_contact_form[establishment_main_contact]"
