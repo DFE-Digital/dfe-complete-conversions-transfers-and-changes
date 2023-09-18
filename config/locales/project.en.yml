@@ -77,7 +77,7 @@ en:
       title: Create academy URN for %{school_name} conversion
       body_html:
         <p>This is the URN for the academy that the school is converting to.</p>
-        <p>To add the academy URN you must have already created a new establishment in GIAS.</p>
+        <p>To add the academy URN you must have already created a new academy in GIAS.</p>
         <p>It can take up to 24 hours for changes to the academy URN to appear on the project information page.</p>
       edit:
         label: Enter academy URN
@@ -286,7 +286,7 @@ en:
         caseworker_id: Caseworker
         regional_delivery_officer_id: Regional delivery officer
         advisory_board_conditions: Advisory board conditions
-        establishment_sharepoint_link: School SharePoint link
+        establishment_sharepoint_link: School or academy SharePoint link
         trust_sharepoint_link: Trust SharePoint link
     legend:
       project:
@@ -303,14 +303,14 @@ en:
           <a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in new tab)</a>.
         caseworker_id: The caseworker responsible for this project
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
-        establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
+        establishment_sharepoint_link: Provide a link to the SharePoint folder for this school or academy. This is where you save all the relevant school documents.
         trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         advisory_board_date: You can find this in the advisory board template.
   errors:
     attributes:
       urn:
         blank: Enter a school URN
-        no_establishment_found: There's no school with that URN. Check the number you entered is correct.
+        no_establishment_found: There's no school or academy with that URN. Check the number you entered is correct.
         not_a_number: School URN can only contain numbers. No letters or special characters.
         wrong_length: URN must be 6 digits long. For example, 123456.
         duplicate: There is already an in-progress project with this URN
