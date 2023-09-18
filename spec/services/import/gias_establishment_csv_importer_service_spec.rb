@@ -7,32 +7,65 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       service = described_class.new(path)
 
       expect { service.import! }.to change { Gias::Establishment.count }
-      expect(Gias::Establishment.count).to eql(1)
+      expect(Gias::Establishment.count).to eql(2)
 
-      imported_record = Gias::Establishment.last
+      imported_records = Gias::Establishment.order(:urn)
 
-      expect(imported_record.name).to eql("The Lanes Primary School")
-      expect(imported_record.urn).to eql(144731)
+      expect(imported_records.first.name).to eql("The Lanes Primary School")
+      expect(imported_records.first.urn).to eql(144731)
+
+      expect(imported_records.last.name).to eql("Lightcliffe C of E Primary School")
+      expect(imported_records.last.urn).to eql(144865)
     end
 
     it "it skips row when there is no change for the record" do
-      establishment = create(:gias_establishment, urn: 144731)
-
       path = file_fixture("gias_establishment_data_good.csv")
       service = described_class.new(path)
+      service.import!
 
-      expect(establishment).not_to receive(:update!)
+      record = Gias::Establishment.last
+      allow(record).to receive(:update!)
+
       expect { service.import! }.not_to change { Gias::Establishment.count }
+      expect(record).not_to have_received(:update!)
     end
 
     it "does not create duplicate records based on the urn, updating instead" do
       establishment = create(:gias_establishment, urn: 144731, name: "School name")
+      create(:gias_establishment, urn: 144865)
 
       path = file_fixture("gias_establishment_data_good.csv")
       service = described_class.new(path)
 
       expect { service.import! }.not_to change { Gias::Establishment.count }
       expect(establishment.reload.name).to eql("The Lanes Primary School")
+    end
+
+    it "returns a hash of statistics for the import" do
+      create(:gias_establishment, urn: 144865, name: "School name")
+
+      path = file_fixture("gias_establishment_data_good.csv")
+      service = described_class.new(path)
+
+      result = service.import!
+
+      expect(result[:total]).to eql(2)
+      expect(result[:new]).to eql(1)
+      expect(result[:changed]).to eql(2)
+      expect(result[:time]).to be_truthy
+    end
+
+    it "returns a hash that includes the changes" do
+      create(:gias_establishment, urn: 144865, name: "School name")
+
+      path = file_fixture("gias_establishment_data_good.csv")
+      service = described_class.new(path)
+
+      result = service.import!
+      changes = result.dig(:changes, 144865)
+
+      expect(changes.dig("name", :new_value)).to eql("Lightcliffe C of E Primary School")
+      expect(changes.dig("name", :previous_value)).to eql("School name")
     end
   end
 
@@ -63,7 +96,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
     it "returns the values that are required by the importer and nothing else" do
       row = CSV::Row.new(
         ["URN", "Other column"],
-        ["123456", "not intereseted"]
+        ["123456", "not interested"]
       )
 
       service = described_class.new("/path")
@@ -71,7 +104,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       expect(row_attributes["urn"]).to eql "123456"
       expect(row_attributes.keys).not_to include("Other column")
-      expect(row_attributes.values).not_to include("not intereseted")
+      expect(row_attributes.values).not_to include("not interested")
     end
 
     it "maps the csv headers to the attributes used by the model" do
@@ -88,15 +121,15 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
     end
   end
 
-  describe "#compare_attributes" do
-    it "returns false when there is no change" do
+  describe "#changed_attributes" do
+    it "returns empty when there is no change" do
       model_attributes = {urn: 123456, name: "A school name"}
       csv_attributes = {urn: "123456", name: "A school name"}
 
       service = described_class.new("/path")
-      result = service.values_updated?(csv_attributes, model_attributes)
+      result = service.changed_attributes(csv_attributes, model_attributes)
 
-      expect(result).to be false
+      expect(result).to eql({})
     end
 
     it "returns true when the values in the csv have changed" do
@@ -104,9 +137,9 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       csv_attributes = {urn: "123456", name: "A updated school name"}
 
       service = described_class.new("/path")
-      result = service.values_updated?(csv_attributes, model_attributes)
+      result = service.changed_attributes(csv_attributes, model_attributes)
 
-      expect(result).to be true
+      expect(result).to eql({name: {previous_value: "A school name", new_value: "A updated school name"}})
     end
   end
 end

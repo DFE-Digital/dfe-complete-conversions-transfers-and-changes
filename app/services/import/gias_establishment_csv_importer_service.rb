@@ -37,37 +37,44 @@ class Import::GiasEstablishmentCsvImporterService
   end
 
   def import!
-    total_records = 0
-    changed_records = 0
-    skipped_records = 0
+    total = 0
+    changed_rows = {}
+    current = Gias::Establishment.count
 
     time = Benchmark.realtime do
       CSV.foreach(@path, headers: true, encoding: ENCODING) do |row|
         establishment = Gias::Establishment.find_or_create_by!(urn: row.fetch("URN"))
         csv_attributes = csv_row_attributes(row)
 
-        if values_updated?(csv_attributes, establishment.attributes)
+        row_changes = changed_attributes(csv_attributes, establishment.attributes)
+
+        if row_changes.any?
           establishment.update!(csv_attributes)
-          changed_records += 1
-        else
-          skipped_records += 1
+          changed_rows[establishment.urn] = row_changes
         end
 
-        total_records += 1
+        total += 1
       end
     end
 
-    print "# records updated: #{changed_records}\n# records skipped: #{skipped_records}\n\nTotal # records: #{total_records}\n\nTime taken: #{time}"
-    true
+    {
+      total: total,
+      new: total - current,
+      changed: changed_rows.count,
+      changes: changed_rows,
+      time: time
+    }
   end
 
-  def values_updated?(csv_attributes, model_attributes)
+  def changed_attributes(csv_attributes, model_attributes)
     model_attribute_strings = model_attributes.transform_values(&:to_s)
     csv_attribute_strings = csv_attributes.transform_values(&:to_s)
 
-    result = false
+    result = {}
     csv_attribute_strings.each_pair do |key, value|
-      result = true unless model_attribute_strings[key] == value
+      unless model_attribute_strings[key] == value
+        result[key] = {previous_value: model_attribute_strings[key], new_value: value}
+      end
     end
     result
   end
