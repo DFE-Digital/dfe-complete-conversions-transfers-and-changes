@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_19_101125) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_115055) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -334,6 +334,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_101125) do
     t.boolean "closure_or_transfer_declaration_cleared"
     t.boolean "closure_or_transfer_declaration_saved"
     t.boolean "closure_or_transfer_declaration_sent"
+    t.boolean "confirm_incoming_trust_has_completed_all_actions_emailed"
+    t.boolean "confirm_incoming_trust_has_completed_all_actions_saved"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

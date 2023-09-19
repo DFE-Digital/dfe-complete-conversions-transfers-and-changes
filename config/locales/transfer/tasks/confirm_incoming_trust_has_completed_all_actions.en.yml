@@ -1,0 +1,27 @@
+en:
+  transfer:
+    task:
+      confirm_incoming_trust_has_completed_all_actions:
+        title: Confirm the incoming trust has completed all actions
+        hint:
+          html: Contact the incoming trust to check they have completed all their tasks. Save their responses in the academy and incoming trust SharePoint folders.
+        emailed:
+          title: Email the main contact for the transfer
+          guidance_link: How to structure your email
+          guidance:
+            html:
+              <p>You should ask them to check and confirm they've completed all required tasks.</p>
+              <p>Some teams have an email template you can use to help structure your email. Contact your line manager if you need a copy of the template.</p>
+        saved:
+          title: Save the responses to the checklist in the academy and incoming trust SharePoint folders
+          guidance_link: What to do if the incoming trust has not completed the tasks
+          guidance:
+            html:
+              <p>Depending on the scale of the outstanding tasks, you may need to move the transfer date to the next month or later.</p>
+              <p>If the transfer date needs to be moved, you must:</p>
+              <ol>
+              <li>inform the academy and incoming trust of the outstanding tasks</li>
+              <li>agree a new transfer date with all stakeholders</li>
+              <li>enter the new transfer date</li>
+              <li>tell any delivery officers or caseworkers who worked on this project previously about the change of date</li>
+              </ol>

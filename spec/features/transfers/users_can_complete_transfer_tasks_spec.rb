@@ -16,6 +16,7 @@ RSpec.feature "Users can complete transfer tasks" do
     form_m
     rpa_policy
     supplemental_funding_agreement
+    confirm_incoming_trust_has_completed_all_actions
   ]
 
   optional_tasks = %w[
