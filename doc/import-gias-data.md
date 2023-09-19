@@ -80,7 +80,9 @@ The importer assumes the following:
 Whilst the importer runs an `upsert` the MS SQL database adapter will rely on
 does not support the
 [Rails upsert](https://api.rubyonrails.org/classes/ActiveRecord/Persistence/ClassMethods.html#method-i-upsert)
-method so we have to use a `SELECT` and `UPDATE` to achieve the same thing.
+method so we have to use a `SELECT` and `UPDATE` to achieve the same thing, this
+does mean a new record will result in two transactions, one to create the
+initial record with the URN and a second to update the values.
 
 ## Running the import
 
