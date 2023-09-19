@@ -21,7 +21,11 @@ module "azure_container_apps_hosting" {
   enable_logstash_consumer                  = local.enable_logstash_consumer
   eventhub_export_log_analytics_table_names = local.eventhub_export_log_analytics_table_names
 
-  enable_mssql_database = local.enable_mssql_database
+  enable_mssql_database       = local.enable_mssql_database
+  mssql_server_admin_password = local.mssql_server_admin_password
+  mssql_database_name                = local.mssql_database_name
+  mssql_firewall_ipv4_allow_list     = local.mssql_firewall_ipv4_allow_list
+  mssql_server_public_access_enabled = local.mssql_server_public_access_enabled
 
   enable_redis_cache = local.enable_redis_cache
 
