@@ -51,7 +51,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       expect(result[:total]).to eql(2)
       expect(result[:new]).to eql(1)
-      expect(result[:changed]).to eql(2)
+      expect(result[:changed]).to eql(1)
       expect(result[:time]).to be_truthy
     end
 
@@ -66,6 +66,46 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       expect(changes.dig("name", :new_value)).to eql("Lightcliffe C of E Primary School")
       expect(changes.dig("name", :previous_value)).to eql("School name")
+    end
+
+    it "returns a hash that includes an error when the file is not found" do
+      path = "not/a/path.csv"
+      service = described_class.new(path)
+
+      result = service.import!
+
+      expect(result.dig(:errors, :file)).to eq("The source file at not/a/path.csv could not be found.")
+    end
+
+    it "returns a hash that includes an error when the file does not have the correct headers" do
+      path = file_fixture("gias_establishment_data_bad.csv")
+      service = described_class.new(path)
+
+      result = service.import!
+
+      expect(result.dig(:errors, :headers)).to eq("The source file at spec/fixtures/files/gias_establishment_data_bad.csv does not contain all the required headers.")
+    end
+
+    it "returns a hash that includes an error if any row cannot be found or created" do
+      path = file_fixture("gias_establishment_data_good.csv")
+      service = described_class.new(path)
+
+      allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "144731").and_return(nil)
+
+      result = service.import!
+
+      expect(result.dig(:errors, 144731)).to eq("Could not find or create a record for urn: 144731")
+    end
+
+    it "returns a hash that includes an error if any row cannot be updated" do
+      path = file_fixture("gias_establishment_data_good.csv")
+      service = described_class.new(path)
+
+      allow_any_instance_of(Gias::Establishment).to receive(:update).and_return(false)
+
+      result = service.import!
+
+      expect(result.dig(:errors, 144731)).to eq("Could not update record for urn: 144731")
     end
   end
 

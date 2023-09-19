@@ -34,36 +34,23 @@ class Import::GiasEstablishmentCsvImporterService
 
   def initialize(path)
     @path = path
+    reset_import_stats
   end
 
   def import!
-    total = 0
-    changed_rows = {}
-    current = Gias::Establishment.count
+    reset_import_stats
 
-    time = Benchmark.realtime do
-      CSV.foreach(@path, headers: true, encoding: ENCODING) do |row|
-        establishment = Gias::Establishment.find_or_create_by!(urn: row.fetch("URN"))
-        csv_attributes = csv_row_attributes(row)
-
-        row_changes = changed_attributes(csv_attributes, establishment.attributes)
-
-        if row_changes.any?
-          establishment.update!(csv_attributes)
-          changed_rows[establishment.urn] = row_changes
-        end
-
-        total += 1
-      end
+    unless File.exist?(@path)
+      @errors[:file] = "The source file at #{@path} could not be found."
+      return import_result
     end
 
-    {
-      total: total,
-      new: total - current,
-      changed: changed_rows.count,
-      changes: changed_rows,
-      time: time
-    }
+    unless required_columns_present?
+      @errors[:headers] = "The source file at #{@path} does not contain all the required headers."
+      return import_result
+    end
+
+    import_rows
   end
 
   def changed_attributes(csv_attributes, model_attributes)
@@ -93,5 +80,53 @@ class Import::GiasEstablishmentCsvImporterService
     return false if headers.nil?
 
     IMPORT_MAP.values.to_set.subset?(headers.to_set)
+  end
+
+  private def import_rows
+    @time = Benchmark.realtime do
+      CSV.foreach(@path, headers: true, encoding: ENCODING) do |row|
+        urn = row.fetch("URN")
+        establishment = Gias::Establishment.find_or_create_by(urn: urn)
+
+        unless establishment
+          @errors[urn.to_i] = "Could not find or create a record for urn: #{urn}"
+          break
+        end
+
+        csv_attributes = csv_row_attributes(row)
+        row_changes = changed_attributes(csv_attributes, establishment.attributes)
+
+        if row_changes.any?
+          unless establishment.update(csv_attributes)
+            @errors[urn.to_i] = "Could not update record for urn: #{urn}"
+            break
+          end
+          @changed_rows[establishment.urn] = row_changes
+        end
+
+        @total += 1
+      end
+    end
+
+    import_result
+  end
+
+  private def reset_import_stats
+    @total = 0
+    @changed_rows = {}
+    @current = Gias::Establishment.count
+    @time = nil
+    @errors = {}
+  end
+
+  private def import_result
+    {
+      total: @total,
+      new: @total - @current,
+      changed: @changed_rows.count - (@total - @current),
+      changes: @changed_rows,
+      time: @time,
+      errors: @errors
+    }
   end
 end
