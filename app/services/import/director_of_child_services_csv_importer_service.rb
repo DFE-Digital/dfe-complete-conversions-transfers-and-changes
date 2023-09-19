@@ -6,7 +6,7 @@ end
 class MissingLocalAuthorityError < StandardError
 end
 
-class DirectorOfChildServicesImporter
+class Import::DirectorOfChildServicesCsvImporterService
   def call(csv_path)
     sanitized_csv(csv_path).each do |row|
       Contact::DirectorOfChildServices.transaction do

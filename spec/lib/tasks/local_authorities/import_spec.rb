@@ -6,11 +6,11 @@ RSpec.describe "rake local_authorities:import", type: :task do
   let(:csv_path) { "/csv/local_authorities.csv" }
 
   before do
-    allow_any_instance_of(LocalAuthorityImporter).to receive(:call)
+    allow_any_instance_of(Import::LocalAuthorityCsvImporterService).to receive(:call)
   end
 
   it "calls LocalAuthorityImporter service with the supplied path" do
-    expect_any_instance_of(LocalAuthorityImporter).to receive(:call).with(Pathname.new(csv_path)).once
+    expect_any_instance_of(Import::LocalAuthorityCsvImporterService).to receive(:call).with(Pathname.new(csv_path)).once
 
     subject.invoke(csv_path)
   end

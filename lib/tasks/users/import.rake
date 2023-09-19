@@ -5,6 +5,6 @@ namespace :users do
 
     csv_path = Rails.root.join(ENV["CSV_PATH"])
 
-    UserImporter.new.call(csv_path)
+    Import::UserCsvImporterService.new.call(csv_path)
   end
 end

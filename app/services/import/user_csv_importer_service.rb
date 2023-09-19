@@ -2,7 +2,7 @@ require "csv"
 class InvalidEntryError < StandardError
 end
 
-class UserImporter
+class Import::UserCsvImporterService
   def call(csv_path)
     @csv_path = csv_path
     upsert_users

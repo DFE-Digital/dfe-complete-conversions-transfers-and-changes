@@ -5,6 +5,6 @@ namespace :local_authorities do
 
     csv_path = Rails.root.join(args[:csv_path])
 
-    LocalAuthorityImporter.new.call(csv_path)
+    Import::LocalAuthorityCsvImporterService.new.call(csv_path)
   end
 end

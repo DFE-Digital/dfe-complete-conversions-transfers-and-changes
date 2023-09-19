@@ -6,11 +6,11 @@ RSpec.describe "rake director_of_child_services:import", type: :task do
   let(:csv_path) { "/csv/dcs.csv" }
 
   before do
-    allow_any_instance_of(DirectorOfChildServicesImporter).to receive(:call)
+    allow_any_instance_of(Import::DirectorOfChildServicesCsvImporterService).to receive(:call)
   end
 
   it "calls DirectorOfChildServices service with the supplied path" do
-    expect_any_instance_of(DirectorOfChildServicesImporter).to receive(:call).with(Pathname.new(csv_path)).once
+    expect_any_instance_of(Import::DirectorOfChildServicesCsvImporterService).to receive(:call).with(Pathname.new(csv_path)).once
 
     subject.invoke(csv_path)
   end

@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe DirectorOfChildServicesImporter do
-  subject { DirectorOfChildServicesImporter.new }
+RSpec.describe Import::DirectorOfChildServicesCsvImporterService do
+  subject { Import::DirectorOfChildServicesCsvImporterService.new }
 
   let(:csv_path) { "/csv/dcs.csv" }
   let(:csv) do
