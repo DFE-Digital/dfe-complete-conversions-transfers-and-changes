@@ -22,8 +22,8 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::DeedOfVariationTaskForm,
           Transfer::Task::DeedOfTerminationForTheMasterFundingAgreementTaskForm,
           Transfer::Task::DeedTerminationChurchAgreementTaskForm,
-          # Closure of transfer declaration
-          Transfer::Task::CommercialTransferAgreementTaskForm
+          Transfer::Task::CommercialTransferAgreementTaskForm,
+          Transfer::Task::ClosureOrTransferDeclarationTaskForm
         ]
       },
       {

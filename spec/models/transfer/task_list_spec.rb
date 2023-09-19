@@ -20,6 +20,7 @@ RSpec.describe Transfer::TaskList do
         :deed_of_termination_for_the_master_funding_agreement,
         :deed_termination_church_agreement,
         :commercial_transfer_agreement,
+        :closure_or_transfer_declaration,
         :conditions_met,
         :rpa_policy
       ]
@@ -44,7 +45,7 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 16
+      expect(task_list.tasks.count).to eql 17
       expect(task_list.tasks.first).to be_a Transfer::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Transfer::Task::RpaPolicyTaskForm
     end

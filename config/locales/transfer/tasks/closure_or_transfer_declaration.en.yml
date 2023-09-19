@@ -1,0 +1,22 @@
+en:
+  transfer:
+    task:
+      closure_or_transfer_declaration:
+        title: Closure or transfer declaration
+        hint:
+          html: If the outgoing trust will close after this transfer, they must send DfE the closure or transfer declaration. You usually get this in the final month before the transfer.
+        check_and_clear_section:
+          title: Check and clear the closure or transfer declaration
+        not_applicable:
+          title: Not applicable
+        received:
+          title: Received
+        cleared:
+          title: Cleared
+        saved:
+          title: Saved in academy and outgoing trust SharePoint folders
+        sent:
+          title: Sent to the Academies Financial Reporting team
+          hint:
+            html:
+              You must email the closure or transfer declaration to the Academies Financial Reporting team at <a href="mailto:academies.financialreporting@education.gov.uk">academies.financialreporting@education.gov.uk</a>.
