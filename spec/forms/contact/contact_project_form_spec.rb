@@ -18,18 +18,18 @@ RSpec.describe Contact::CreateProjectContactForm do
       end
 
       context "when the establishment_main_contact box is checked" do
-        context "when the contact category is school" do
+        context "when the contact category is school_or_academy" do
           it "is valid" do
             contact_form = Contact::CreateProjectContactForm.new({}, project)
             contact_form.establishment_main_contact = "1"
-            contact_form.category = "school"
+            contact_form.category = "school_or_academy"
             expect(contact_form).to be_valid
           end
 
           it "marks the contact as the establishment main contact on the project" do
             contact_form = Contact::CreateProjectContactForm.new({}, project)
             contact_form.establishment_main_contact = "1"
-            contact_form.category = "school"
+            contact_form.category = "school_or_academy"
             contact_form.name = "New Contact"
             contact_form.title = "Financial Controller"
             contact_form.organisation_name = "School"
@@ -39,7 +39,7 @@ RSpec.describe Contact::CreateProjectContactForm do
           end
         end
 
-        context "when the contact category is NOT school" do
+        context "when the contact category is NOT school_or_academy" do
           it "is not valid" do
             contact_form = Contact::CreateProjectContactForm.new({}, project)
             contact_form.establishment_main_contact = "1"
@@ -57,7 +57,7 @@ RSpec.describe Contact::CreateProjectContactForm do
 
       it "does not create the contact" do
         contact_form = Contact::CreateProjectContactForm.new({}, project)
-        contact_form.category = "school"
+        contact_form.category = "school_or_academy"
         contact_form.name = "New Contact"
         contact_form.title = "Financial Controller"
         contact_form.organisation_name = "School"
@@ -87,8 +87,8 @@ RSpec.describe Contact::CreateProjectContactForm do
       end
 
       context "when the establishment_main_contact box is checked" do
-        context "when the contact category is school" do
-          let(:contact) { create(:project_contact, project: project, category: "school") }
+        context "when the contact category is school_or_academy" do
+          let(:contact) { create(:project_contact, project: project, category: "school_or_academy") }
 
           it "is valid" do
             contact_form = Contact::CreateProjectContactForm.new_from_contact(project, contact)
@@ -105,7 +105,7 @@ RSpec.describe Contact::CreateProjectContactForm do
           end
         end
 
-        context "when the contact category is NOT school" do
+        context "when the contact category is NOT school_or_academy" do
           let(:contact) { create(:project_contact, project: project, category: "solicitor") }
 
           it "is not valid" do
@@ -146,7 +146,7 @@ RSpec.describe Contact::CreateProjectContactForm do
           it "is not valid" do
             contact_form = Contact::CreateProjectContactForm.new({}, project)
             contact_form.incoming_trust_main_contact = "1"
-            contact_form.category = "school"
+            contact_form.category = "school_or_academy"
             expect(contact_form).to_not be_valid
           end
         end
@@ -224,7 +224,7 @@ RSpec.describe Contact::CreateProjectContactForm do
           it "is not valid" do
             contact_form = Contact::CreateProjectContactForm.new({}, project)
             contact_form.outgoing_trust_main_contact = "1"
-            contact_form.category = "school"
+            contact_form.category = "school_or_academy"
             expect(contact_form).to_not be_valid
           end
         end

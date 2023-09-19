@@ -9,7 +9,7 @@ en:
           regional_delivery_officer: Regional delivery officer
           assigned_to: Assigned to
           unassigned: Not yet assigned
-          establishment_sharepoint_link: School SharePoint folder
+          establishment_sharepoint_link: School or academy SharePoint folder
           trust_sharepoint_link: Trust SharePoint folder
           directive_academy_order:
             title: Has a directive academy order been issued?

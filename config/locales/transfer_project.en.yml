@@ -51,8 +51,8 @@ en:
           <p>A UKPRN is an 8-digit number that always starts with a 1.</p>
           <p><a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the outgoing trust's UKPRN (opens in new tab).</a>.</p>
         provisional_transfer_date: You can find this in the advisory board template.
-        advisory_board_conditions: Enter details of conditions that must be met before the school can transfer.
-        establishment_sharepoint_link: Provide a link to the SharePoint folder for this school. This is where you save all the relevant school documents.
+        advisory_board_conditions: Enter details of conditions that must be met before the school or academy can transfer.
+        establishment_sharepoint_link: Provide a link to the SharePoint folder for this school or academy. This is where you save all the relevant school documents.
         incoming_trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         handover_note_body_html:
           <p>You must describe how the project has progressed so far and highlight any issues or concerns.</p>
