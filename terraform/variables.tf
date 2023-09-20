@@ -70,6 +70,16 @@ variable "mssql_server_admin_password" {
   sensitive   = true
 }
 
+variable "mssql_azuread_admin_username" {
+  description = "Username of a User within Azure AD that you want to assign as the SQL Server Administrator"
+  type        = string
+}
+
+variable "mssql_azuread_admin_object_id" {
+  description = "Object ID of a User within Azure AD that you want to assign as the SQL Server Administrator"
+  type        = string
+}
+
 variable "mssql_database_name" {
   description = "The name of the MSSQL database to create. Must be set if `enable_mssql_database` is true"
   type        = string
