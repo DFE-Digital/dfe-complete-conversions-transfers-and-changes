@@ -64,6 +64,39 @@ variable "enable_mssql_database" {
   type        = bool
 }
 
+variable "mssql_server_admin_password" {
+  description = "The local administrator password for the MSSQL server"
+  type        = string
+  sensitive   = true
+}
+
+variable "mssql_azuread_admin_username" {
+  description = "Username of a User within Azure AD that you want to assign as the SQL Server Administrator"
+  type        = string
+}
+
+variable "mssql_azuread_admin_object_id" {
+  description = "Object ID of a User within Azure AD that you want to assign as the SQL Server Administrator"
+  type        = string
+}
+
+variable "mssql_database_name" {
+  description = "The name of the MSSQL database to create. Must be set if `enable_mssql_database` is true"
+  type        = string
+}
+
+variable "mssql_firewall_ipv4_allow_list" {
+  description = "A list of IPv4 Addresses that require remote access to the MSSQL Server"
+  type        = list(string)
+  default     = []
+}
+
+variable "mssql_server_public_access_enabled" {
+  description = "Enable public internet access to your MSSQL instance. Be sure to specify 'mssql_firewall_ipv4_allow_list' to restrict inbound connections"
+  type        = bool
+  default     = false
+}
+
 variable "enable_redis_cache" {
   description = "Set to true to create a Redis Cache"
   type        = bool

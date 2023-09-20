@@ -11,6 +11,12 @@ locals {
   enable_worker_container                      = var.enable_worker_container
   worker_container_command                     = var.worker_container_command
   enable_mssql_database                        = var.enable_mssql_database
+  mssql_server_admin_password                  = var.mssql_server_admin_password
+  mssql_azuread_admin_username                 = var.mssql_azuread_admin_username
+  mssql_azuread_admin_object_id                = var.mssql_azuread_admin_object_id
+  mssql_database_name                          = var.mssql_database_name
+  mssql_firewall_ipv4_allow_list               = var.mssql_firewall_ipv4_allow_list
+  mssql_server_public_access_enabled           = var.mssql_server_public_access_enabled
   enable_redis_cache                           = var.enable_redis_cache
   enable_cdn_frontdoor                         = var.enable_cdn_frontdoor
   enable_event_hub                             = var.enable_event_hub
