@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   include Teamable
+  include Eventable
   include SignificantDate
 
   attr_writer :establishment, :incoming_trust, :member_of_parliament
@@ -11,7 +12,6 @@ class Project < ApplicationRecord
 
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
-  has_many :events, dependent: :destroy, as: :eventable
 
   has_one :funding_agreement_contact, dependent: :destroy, class_name: "Contact::Project", required: false
   has_one :main_contact, dependent: :destroy, class_name: "Contact::Project", required: false
