@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Allow a contact to be marked as the "outgoing trust main contact"
 - Add missing navigation to the individual (show) export pages
 - Add Closure or transfer declaration task to transfers
+- Add "Confirm incoming trust has completed all actions" task to transfers
 
 ### Changed
 
