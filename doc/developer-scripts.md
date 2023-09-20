@@ -35,7 +35,7 @@ As any subset of specs will not reach the required coverage.
 
 You want to only check formatting
 
-`script/linting_and_formatting`
+`script/lint_and_format`
 
 ### Auto fixing option
 
