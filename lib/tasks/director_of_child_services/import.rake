@@ -5,6 +5,6 @@ namespace :director_of_child_services do
 
     csv_path = Rails.root.join(args[:csv_path])
 
-    DirectorOfChildServicesImporter.new.call(csv_path)
+    Import::DirectorOfChildServicesCsvImporterService.new.call(csv_path)
   end
 end

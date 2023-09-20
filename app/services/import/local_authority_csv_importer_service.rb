@@ -3,7 +3,7 @@ require "csv"
 class InvalidEntryError < StandardError
 end
 
-class LocalAuthorityImporter
+class Import::LocalAuthorityCsvImporterService
   def call(csv_path)
     sanitized_csv(csv_path).each do |row|
       LocalAuthority.transaction do

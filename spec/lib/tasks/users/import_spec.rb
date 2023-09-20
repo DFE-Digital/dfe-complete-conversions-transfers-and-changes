@@ -2,18 +2,18 @@ require "rails_helper"
 
 RSpec.describe "rake user_importer:import", type: :task do
   let(:csv_path) { "/csv/users.csv" }
-  let(:mock_user_importer) { UserImporter.new }
+  let(:mock_user_importer) { Import::UserCsvImporterService.new }
 
   subject { Rake::Task["users:import"] }
 
   before do
-    allow(UserImporter).to receive(:new).and_return(mock_user_importer)
+    allow(Import::UserCsvImporterService).to receive(:new).and_return(mock_user_importer)
     allow(mock_user_importer).to receive(:call).and_return(true)
   end
 
   after { subject.reenable }
 
-  it "calls the #{UserImporter} service with the supplied path" do
+  it "calls the #{Import::UserCsvImporterService} service with the supplied path" do
     ClimateControl.modify(CSV_PATH: csv_path) do
       subject.execute
     end

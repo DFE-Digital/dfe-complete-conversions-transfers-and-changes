@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe UserImporter do
+RSpec.describe Import::UserCsvImporterService do
   let(:csv_path) { "/csv/users.csv" }
-  let(:user_importer) { UserImporter.new }
+  let(:user_importer) { Import::UserCsvImporterService.new }
   let(:users_csv) do
     <<~CSV
       email,first_name,last_name,team,manage_team,add_new_project,assign_to_project

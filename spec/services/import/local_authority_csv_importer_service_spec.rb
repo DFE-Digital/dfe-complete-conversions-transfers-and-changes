@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe LocalAuthorityImporter do
-  subject { LocalAuthorityImporter.new }
+RSpec.describe Import::LocalAuthorityCsvImporterService do
+  subject { Import::LocalAuthorityCsvImporterService.new }
 
   let(:csv_path) { "/csv/local_authorities.csv" }
   let(:csv) do
