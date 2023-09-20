@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_110217) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_101125) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -329,6 +329,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_110217) do
     t.boolean "deed_termination_church_agreement_signed_secretary_state"
     t.boolean "deed_termination_church_agreement_saved_after_signing_by_secretary_state"
     t.boolean "deed_termination_church_agreement_not_applicable"
+    t.boolean "closure_or_transfer_declaration_not_applicable"
+    t.boolean "closure_or_transfer_declaration_received"
+    t.boolean "closure_or_transfer_declaration_cleared"
+    t.boolean "closure_or_transfer_declaration_saved"
+    t.boolean "closure_or_transfer_declaration_sent"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
