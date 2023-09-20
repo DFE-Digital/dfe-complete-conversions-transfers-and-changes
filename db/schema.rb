@@ -143,6 +143,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_093557) do
     t.string "sponsored_support_grant_type"
   end
 
+  create_table "events", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "eventable_type"
+    t.uuid "eventable_id"
+    t.integer "grouping"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable"
+    t.index ["grouping"], name: "index_events_on_grouping"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "gias_establishments", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.integer "urn"
     t.integer "ukprn"

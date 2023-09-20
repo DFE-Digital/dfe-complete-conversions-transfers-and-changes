@@ -11,6 +11,8 @@ class Project < ApplicationRecord
 
   has_many :notes, dependent: :destroy
   has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
+  has_many :events, dependent: :destroy, as: :eventable
+
   has_one :funding_agreement_contact, dependent: :destroy, class_name: "Contact::Project", required: false
   has_one :main_contact, dependent: :destroy, class_name: "Contact::Project", required: false
   has_one :establishment_main_contact, dependent: :destroy, class_name: "Contact::Project", required: false
