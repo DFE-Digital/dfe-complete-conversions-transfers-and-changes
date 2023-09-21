@@ -11,13 +11,13 @@ RSpec.feature "Users can view project details" do
   end
 
   scenario "they can see if it has had a directive academy order issued" do
-    within("#projectDetails .govuk-summary-list__row:contains('Has a directive academy order been issued?')") do
+    within("#reasonsFor .govuk-summary-list__row:contains('Has a directive academy order been issued?')") do
       expect(page).to have_content("Yes")
     end
   end
 
   scenario "they can see if it has had two 'Requires improvement' ratings" do
-    within("#projectDetails .govuk-summary-list__row:contains('Is this conversion due to intervention following 2RI?')") do
+    within("#reasonsFor .govuk-summary-list__row:contains('Is this conversion due to intervention following 2RI?')") do
       expect(page).to have_content("Yes")
     end
   end

@@ -1,15 +1,15 @@
-<div id="projectDetails">
-  <h2 class="govuk-heading-l"><%= t("project_information.show.project_details.title") %></h2>
+<div id="reasonsFor">
+  <h2 class="govuk-heading-l"><%= t("project_information.show.reasons_for.conversion.title") %></h2>
   <%= govuk_summary_list do |summary_list|
         summary_list.row do |row|
-          row.key { t("project_information.show.project_details.rows.directive_academy_order.title") }
-          row.value { t("project_information.show.project_details.rows.directive_academy_order.#{project.directive_academy_order}") }
+          row.key { t("project_information.show.reasons_for.directive_academy_order.title") }
+          row.value { t("project_information.show.reasons_for.directive_academy_order.#{project.directive_academy_order}") }
         end
       end %>
   <%= govuk_summary_list do |summary_list|
         summary_list.row do |row|
-          row.key { t("project_information.show.project_details.rows.two_requires_improvement.#{project.type_locale}.title") }
-          row.value { t("project_information.show.project_details.rows.two_requires_improvement.#{project.two_requires_improvement}") }
+          row.key { t("project_information.show.reasons_for.two_requires_improvement.conversion_project.title") }
+          row.value { t("project_information.show.reasons_for.two_requires_improvement.#{project.two_requires_improvement}") }
         end
       end %>
 </div>

@@ -11,17 +11,18 @@ en:
           unassigned: Not yet assigned
           establishment_sharepoint_link: School or academy SharePoint folder
           trust_sharepoint_link: Trust SharePoint folder
-          directive_academy_order:
-            title: Has a directive academy order been issued?
-            "true": "Yes"
-            "false": "No"
-          two_requires_improvement:
-            conversion_project:
-              title: Is this conversion due to intervention following 2RI?
-            transfer_project:
-              title: Is this transfer due to intervention following 2RI?
-            "true": "Yes"
-            "false": "No"
+      reasons_for:
+        conversion:
+          title: Reasons for the conversion
+        directive_academy_order:
+          title: Has a directive academy order been issued?
+          "true": "Yes"
+          "false": "No"
+        two_requires_improvement:
+          conversion_project:
+            title: Is this conversion due to intervention following 2RI?
+          "true": "Yes"
+          "false": "No"
       advisory_board_details:
         title: Advisory board details
         rows:
