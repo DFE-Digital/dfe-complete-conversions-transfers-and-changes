@@ -31,6 +31,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Change order of the legal tasks in the Transfer task list
 - The 'Team projects' section is now 'Your team projects'
 - The "School" contact type is now "School or academy"
+- Amend the "Your team projects" in progress table view to show either a team
+  column or region column depending on whether the current user is a regional
+  delivery officer or a regional case worker
 
 ## [Release 39][release-39]
 

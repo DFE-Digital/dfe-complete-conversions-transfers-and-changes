@@ -112,7 +112,7 @@ en:
       back_link: Return to project list
     summary:
       type:
-        title: Type
+        title: Project type
         conversion: Conversion
         transfer: Transfer
       incoming_trust:
