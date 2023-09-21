@@ -111,30 +111,42 @@ en:
       submit_button: Complete project
       back_link: Return to project list
     summary:
+      heading:
+        conversion: School URN %{urn}
+        transfer: Academy URN %{urn}
       type:
         title: Project type
         conversion: Conversion
         transfer: Transfer
       incoming_trust:
         title: Incoming trust
+      outgoing_trust:
+        title: Outgoing trust
       local_authority:
         title: Local authority
+      la_and_region:
+        title: LA and region
       converting_on:
-        title: Converting on
+        title: Conversion date
       region:
         title: Region
-      establishment_sharepoint_link:
-        title: School SharePoint folder
-        value: Open the school SharePoint folder in a new tab
+      school_sharepoint_link:
+        title: School folder (opens in new tab)
+      academy_sharepoint_link:
+        title: Academy folder (opens in new tab)
+      trust_sharepoint_link:
+        title: Trust folder (opens in new tab)
       incoming_trust_sharepoint_link:
-        title: Incoming trust SharePoint folder
-        value: Open the incoming trust SharePoint folder in a new tab
+        title: Incoming trust folder
       outgoing_trust_sharepoint_link:
         title: Outgoing trust SharePoint folder
-        value: Open the outgoing trust SharePoint folder in a new tab
+      sharepoint_links:
+        title: SharePoint links
+      sharepoint_link:
+        title: SharePoint link
       completed_at: Project completed
       transfer_date:
-        title: Transferring on
+        title: Transfer date
     assign:
       regional_delivery_officer:
         success: Regional delivery officer has been assigned

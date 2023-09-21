@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Amend the "Your team projects" in progress table view to show either a team
   column or region column depending on whether the current user is a regional
   delivery officer or a regional case worker
+- Rework the project summary to contain more concise information.
 
 ## [Release 39][release-39]
 
