@@ -33,6 +33,12 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::ConfirmIncomingTrustHasCompletedAllActionsTaskForm,
           Transfer::Task::RpaPolicyTaskForm
         ]
+      },
+      {
+        identifier: :after_transfer,
+        tasks: [
+          Transfer::Task::RedactAndSendDocumentsTaskForm
+        ]
       }
     ]
   end

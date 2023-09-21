@@ -23,7 +23,8 @@ RSpec.describe Transfer::TaskList do
         :closure_or_transfer_declaration,
         :conditions_met,
         :confirm_incoming_trust_has_completed_all_actions,
-        :rpa_policy
+        :rpa_policy,
+        :redact_and_send_documents
       ]
 
       expect(described_class.identifiers).to eql transfer_task_list_identifiers
@@ -36,7 +37,7 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.sections.count).to eql 3
+      expect(task_list.sections.count).to eql 4
     end
   end
 
@@ -46,9 +47,9 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 18
+      expect(task_list.tasks.count).to eql 19
       expect(task_list.tasks.first).to be_a Transfer::Task::HandoverTaskForm
-      expect(task_list.tasks.last).to be_a Transfer::Task::RpaPolicyTaskForm
+      expect(task_list.tasks.last).to be_a Transfer::Task::RedactAndSendDocumentsTaskForm
     end
   end
 end
