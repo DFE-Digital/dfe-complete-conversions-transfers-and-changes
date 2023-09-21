@@ -59,6 +59,10 @@ importer will assume, changing the encoding by opening and saving in
 applications such as MS Excel is not recommended and may cause the importer to
 fail.
 
+If you are a developer reading this, a
+[file is available](/doc/seeding-the-database.md#seed-files) to seed your local
+database.
+
 ## About the importer
 
 The importer assumes the following:
