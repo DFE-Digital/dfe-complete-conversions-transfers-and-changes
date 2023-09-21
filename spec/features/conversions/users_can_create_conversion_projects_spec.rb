@@ -24,7 +24,7 @@ RSpec.feature "Users can create new conversion projects" do
       expect(page).to have_content("Project kick-off")
       expect(page).to have_content("Handover with regional delivery officer")
 
-      click_on("Project information")
+      click_on("About the project")
 
       expect(page).to have_content(two_weeks_ago.to_formatted_s(:govuk))
     end

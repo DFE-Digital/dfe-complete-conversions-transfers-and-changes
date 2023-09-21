@@ -23,7 +23,7 @@ RSpec.feature "Users can view a transfer" do
 
     expect(page).to have_content(transfer_project.urn)
     expect(page).to have_link("Task list")
-    expect(page).to have_link("Project information")
+    expect(page).to have_link("About the project")
     expect(page).to have_link("Notes")
     expect(page).to have_link("External contacts")
     expect(page).to have_link("Internal contacts")
