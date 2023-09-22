@@ -61,12 +61,15 @@ en:
           it can take one day for the data to be syncronised
         rows:
           urn: Academy URN (unique reference number)
-          academy_name: Academy name
+          academy_name: Name
           address: Address
-          school_type: Academy type
+          school_type: Type
           age_range: Age range
-          school_phase: School phase
+          school_phase: Phase
           region: Region
+          sharepoint_folder: SharePoint folder
+        values:
+          sharepoint_folder: View the academy SharePoint folder (opens in a new tab)
       trust_details:
         rows:
           view_in_gias: View the trust information in GIAS (opens in new tab)
@@ -85,11 +88,14 @@ en:
       outgoing_trust_details:
         title: Outgoing trust details
         rows:
-          outgoing_trust_name: Incoming trust name
+          outgoing_trust_name: Name
           address: Address
-          ukprn: UK Provider Reference Number
-          group_identifier: Group identifier (ID)
+          ukprn: UKPRN (UK provider reference number)
+          group_identifier: Group ID (identifier)
           companies_house_number: Companies House number
+          sharepoint_folder: SharePoint folder
+        values:
+          sharepoint_folder: View the trust SharePoint folder (opens in a new tab)
       local_authority_details:
         title: Local authority details
         rows:

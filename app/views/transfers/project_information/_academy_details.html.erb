@@ -6,10 +6,6 @@
           row.value { (academy.name + "<br/>" + link_to_school_on_gias(academy.urn)).html_safe }
         end
         summary_list.row do |row|
-          row.key { t("project_information.show.academy_details.rows.address") }
-          row.value { address_markup(academy.address) }
-        end
-        summary_list.row do |row|
           row.key { t("project_information.show.academy_details.rows.urn") }
           row.value { academy.urn.to_s }
         end
@@ -26,8 +22,8 @@
           row.value { academy.phase }
         end
         summary_list.row do |row|
-          row.key { t("project_information.show.academy_details.rows.region") }
-          row.value { academy.region_name }
+          row.key { t("project_information.show.academy_details.rows.sharepoint_folder") }
+          row.value { safe_link_to(t("project_information.show.academy_details.values.sharepoint_folder"), project.establishment_sharepoint_link) }
         end
       end %>
 </div>
