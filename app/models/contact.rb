@@ -17,4 +17,8 @@ class Contact < ApplicationRecord
   }
 
   scope :by_name, -> { order(:name) }
+
+  def editable?
+    true
+  end
 end

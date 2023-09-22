@@ -10,4 +10,8 @@ class Contact::DirectorOfChildServices < Contact
   def organisation_name
     local_authority.name
   end
+
+  def editable?
+    false
+  end
 end
