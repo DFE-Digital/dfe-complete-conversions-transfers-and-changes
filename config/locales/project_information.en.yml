@@ -11,6 +11,15 @@ en:
           unassigned: Not yet assigned
           establishment_sharepoint_link: School or academy SharePoint folder
           trust_sharepoint_link: Trust SharePoint folder
+          type: Type
+          date:
+            conversion_project: Conversion date
+            transfer_project: Transfer date
+          local_authority: Local authority
+          region: Region
+        values:
+          conversion_project: Conversion
+          transfer_project: Transfer
       reasons_for:
         conversion:
           title: Reasons for the conversion

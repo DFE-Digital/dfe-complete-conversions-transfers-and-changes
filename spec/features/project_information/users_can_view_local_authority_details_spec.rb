@@ -13,15 +13,8 @@ RSpec.feature "Users can view local authority details" do
     end
 
     scenario "they can view the name" do
-      within("#localAuthorityDetails") do
+      within("#projectDetails") do
         expect(page).to have_content(project.establishment.local_authority_name)
-      end
-    end
-
-    scenario "they can view the address" do
-      within("#localAuthorityDetails") do
-        expect(page).to have_content(local_authority.address_1)
-        expect(page).to have_content(local_authority.address_postcode)
       end
     end
   end
@@ -45,7 +38,7 @@ RSpec.feature "Users can view local authority details" do
     end
 
     scenario "they can view the name (from the establishment)" do
-      within("#localAuthorityDetails") do
+      within("#projectDetails") do
         expect(page).to have_content(project.establishment.local_authority_name)
       end
     end
