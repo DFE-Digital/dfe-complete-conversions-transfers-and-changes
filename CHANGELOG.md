@@ -35,6 +35,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   column or region column depending on whether the current user is a regional
   delivery officer or a regional case worker
 - Rework the project summary to contain more concise information.
+- Rework the Project information (now called "About the project") tab. Change
+  order of some of the information, remove some fields, add 50px spacing between
+  each block.
 
 ## [Release 39][release-39]
 
