@@ -6,15 +6,7 @@
           row.value { (establishment.name + "<br/>" + link_to_school_on_gias(establishment.urn)).html_safe }
         end
         summary_list.row do |row|
-          row.key { t("project_information.show.school_details.rows.address") }
-          row.value { address_markup(establishment.address) }
-        end
-        summary_list.row do |row|
-          row.key { t("project_information.show.school_details.rows.dfe_number") }
-          row.value { establishment.dfe_number }
-        end
-        summary_list.row do |row|
-          row.key { t("project_information.show.school_details.rows.old_urn") }
+          row.key { t("project_information.show.school_details.rows.urn") }
           row.value { establishment.urn.to_s }
         end
         summary_list.row do |row|
@@ -30,8 +22,12 @@
           row.value { establishment.phase }
         end
         summary_list.row do |row|
-          row.key { t("project_information.show.school_details.rows.region") }
-          row.value { establishment.region_name }
+          row.key { t("project_information.show.school_details.rows.address") }
+          row.value { address_markup(establishment.address) }
+        end
+        summary_list.row do |row|
+          row.key { t("project_information.show.school_details.rows.sharepoint_folder") }
+          row.value { safe_link_to(t("project_information.show.school_details.values.sharepoint_folder"), project.establishment_sharepoint_link) }
         end
       end %>
 </div>

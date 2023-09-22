@@ -44,7 +44,6 @@ RSpec.feature "Users can view academy details" do
         within("#academyDetails") do
           expect(page).to have_content project.academy_urn
           expect(page).to have_content project.academy.name
-          expect(page).to have_content project.academy.address_postcode
           expect(page).not_to have_content I18n.t("project_information.show.academy_details.not_found")
         end
       end

@@ -41,25 +41,29 @@ en:
       school_details:
         title: School details
         rows:
-          original_school_name: Original school name
+          original_school_name: Name
+          urn: URN (unique reference number)
           view_in_gias: View the school's information in GIAS (opens in new tab)
           address: Address
           dfe_number: DfE number
           old_urn: Old Unique Reference Number
-          school_type: School type
-          age_range: Age range
-          school_phase: School phase
+          school_type: Type
+          age_range: Range
+          school_phase: Phase
           region: Region
+          sharepoint_folder: SharePoint folder
+        values:
+          sharepoint_folder: View the school SharePoint folder (opens in a new tab)
       academy_details:
         title: Academy details
         empty: Academy URN has not been provided
         not_found: The academy details could not be found in the Get information about schools data,
           it can take one day for the data to be syncronised
         rows:
-          urn: Unique reference number (URN)
+          urn: Academy URN (unique reference number)
           academy_name: Academy name
           address: Address
-          school_type: School type
+          school_type: Academy type
           age_range: Age range
           school_phase: School phase
           region: Region
@@ -70,11 +74,14 @@ en:
       incoming_trust_details:
         title: Incoming trust details
         rows:
-          incoming_trust_name: Incoming trust name
+          incoming_trust_name: Name
           address: Address
-          ukprn: UK Provider Reference Number
-          group_identifier: Group identifier (ID)
+          ukprn: UKPRN (UK provider reference number)
+          group_identifier: Group ID (identifier)
           companies_house_number: Companies House number
+          sharepoint_folder: SharePoint folder
+        values:
+          sharepoint_folder: View the trust SharePoint folder (opens in a new tab)
       outgoing_trust_details:
         title: Outgoing trust details
         rows:

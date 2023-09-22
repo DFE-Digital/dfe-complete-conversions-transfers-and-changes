@@ -6,8 +6,8 @@
 
 <%= render partial: "shared/project_information/advisory_board_details", locals: { project: @project } %>
 
-<%= render partial: "school_details", locals: { establishment: @project.establishment } %>
+<%= render partial: "school_details", locals: { establishment: @project.establishment, project: @project } %>
 
 <%= render partial: "academy_details", locals: { project: @project } %>
 
-<%= render partial: "shared/project_information/incoming_trust_details", locals: { incoming_trust: @project.incoming_trust } %>
+<%= render partial: "shared/project_information/incoming_trust_details", locals: { incoming_trust: @project.incoming_trust, project: @project } %>
