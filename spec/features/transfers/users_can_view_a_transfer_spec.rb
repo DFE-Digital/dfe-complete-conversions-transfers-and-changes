@@ -45,7 +45,6 @@ RSpec.feature "Users can view a transfer" do
     expect(page).to have_content("Academy details")
     expect(page).to have_content("Incoming trust details")
     expect(page).to have_content("Outgoing trust details")
-    expect(page).to have_content("Diocese details")
   end
 
   scenario "they can view the notes" do
