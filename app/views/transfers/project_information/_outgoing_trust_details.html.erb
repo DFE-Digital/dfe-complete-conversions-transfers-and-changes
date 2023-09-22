@@ -6,7 +6,7 @@
           row.value { (outgoing_trust.name + "<br/>" + link_to_trust_on_gias(outgoing_trust.ukprn)).html_safe }
         end
         summary_list.row do |row|
-          row.key { t("project_information.show.outgoining_trust_details.rows.address") }
+          row.key { t("project_information.show.outgoing_trust_details.rows.address") }
           row.value { address_markup(outgoing_trust.address) }
         end
         summary_list.row do |row|
