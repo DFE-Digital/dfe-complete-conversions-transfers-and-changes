@@ -24,11 +24,6 @@ RSpec.describe Contact::Project do
 
       expect(contact.establishment_main_contact).to be false
     end
-
-    it "returns false if the contact does not have a project" do
-      contact = create(:project_contact, project_id: nil)
-      expect(contact.establishment_main_contact).to be false
-    end
   end
 
   describe "#incoming_trust_main_contact" do
@@ -51,11 +46,6 @@ RSpec.describe Contact::Project do
 
       expect(contact.incoming_trust_main_contact).to be false
     end
-
-    it "returns false if the contact does not have a project" do
-      contact = create(:project_contact, project_id: nil)
-      expect(contact.incoming_trust_main_contact).to be false
-    end
   end
 
   describe "#outgoing_trust_main_contact" do
@@ -76,11 +66,6 @@ RSpec.describe Contact::Project do
       project = create(:conversion_project, outgoing_trust_main_contact_id: SecureRandom.uuid)
       contact = create(:project_contact, project: project)
 
-      expect(contact.outgoing_trust_main_contact).to be false
-    end
-
-    it "returns false if the contact does not have a project" do
-      contact = create(:project_contact, project_id: nil)
       expect(contact.outgoing_trust_main_contact).to be false
     end
   end

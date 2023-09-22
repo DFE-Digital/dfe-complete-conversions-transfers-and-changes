@@ -3,23 +3,17 @@ class Contact::Project < Contact
     ContactPolicy
   end
 
-  belongs_to :project, optional: true
+  belongs_to :project, class_name: "::Project"
 
   def establishment_main_contact
-    return false unless project_id
-    project = ::Project.find(project_id)
-    project&.establishment_main_contact_id.eql?(id)
+    project.establishment_main_contact_id == id
   end
 
   def incoming_trust_main_contact
-    return false unless project_id
-    project = ::Project.find(project_id)
-    project&.incoming_trust_main_contact_id.eql?(id)
+    project.incoming_trust_main_contact_id == id
   end
 
   def outgoing_trust_main_contact
-    return false unless project_id
-    project = ::Project.find(project_id)
-    project&.outgoing_trust_main_contact_id.eql?(id)
+    project.outgoing_trust_main_contact_id == id
   end
 end

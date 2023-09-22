@@ -40,19 +40,19 @@
             row.value { t("yes") }
           end
         end
-        if @project.establishment_main_contact_id == contact.id
+        if contact.establishment_main_contact
           summary_list.row do |row|
             row.key { t("contact.details.establishment_main_contact") }
             row.value { t("yes") }
           end
         end
-        if @project.incoming_trust_main_contact_id == contact.id
+        if contact.incoming_trust_main_contact
           summary_list.row do |row|
             row.key { t("contact.details.incoming_trust_main_contact") }
             row.value { t("yes") }
           end
         end
-        if @project.outgoing_trust_main_contact_id == contact.id
+        if contact.outgoing_trust_main_contact
           summary_list.row do |row|
             row.key { t("contact.details.outgoing_trust_main_contact") }
             row.value { t("yes") }
