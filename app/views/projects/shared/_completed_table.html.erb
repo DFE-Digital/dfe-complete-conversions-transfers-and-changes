@@ -7,7 +7,10 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_name") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.local_authority_name") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.team") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.type") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_or_transfer_date") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.completed_at") %></th>
       </tr>
     </thead>
@@ -18,7 +21,10 @@
           <%= link_to project.establishment.name, project_path(project), class: "govuk-link govuk-link--no-visited-state" %>
         </td>
         <td class="govuk-table__cell"><%= project.urn %></td>
+        <td class="govuk-table__cell"><%= project.establishment.local_authority_name %></td>
+        <td class="govuk-table__cell"><%= t("teams.#{project.team}") %></td>
         <td class="govuk-table__cell"><%= project.type.humanize.split("::")[0] %></td>
+        <td class="govuk-table__cell"><%= project.significant_date.to_formatted_s(:significant_date) %></td>
         <td class="govuk-table__cell"><%= project.completed_at.to_formatted_s(:govuk_date_time_date_only) %></td>
       </tr>
     <% end %>

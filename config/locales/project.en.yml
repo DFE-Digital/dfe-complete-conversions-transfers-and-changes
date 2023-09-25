@@ -161,7 +161,7 @@ en:
         school_name: School or academy
         school_urn: URN
         type: Type of project
-        completed_at: Completed at
+        completed_at: Project completion date
         assigned_to: Assigned to
         view: View project
         assign: Assign project

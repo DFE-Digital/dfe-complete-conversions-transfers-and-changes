@@ -38,6 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Rework the Project information (now called "About the project") tab. Change
   order of some of the information, remove some fields, add 50px spacing between
   each block.
+- Update the Your team projects Completed table
 
 ## [Release 39][release-39]
 
