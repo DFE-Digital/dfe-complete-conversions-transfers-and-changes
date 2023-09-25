@@ -7,12 +7,12 @@ class ExternalContactsController < ApplicationController
 
   def new
     authorize @project, :new_contact?
-    @contact = Contact::CreateProjectContactForm.new({}, @project)
+    @contact = Contact::CreateProjectContactForm.new(contact: Contact::Project.new, project: @project)
   end
 
   def create
     authorize @project, :new_contact?
-    @contact = Contact::CreateProjectContactForm.new(contact_params, @project)
+    @contact = Contact::CreateProjectContactForm.new(contact: Contact::Project.new, project: @project, args: contact_params)
 
     if @contact.save
       redirect_to project_contacts_path(@project), notice: I18n.t("contact.create.success")
@@ -25,15 +25,14 @@ class ExternalContactsController < ApplicationController
     @existing_contact = Contact.find(params[:id])
     authorize @existing_contact
 
-    @contact = Contact::CreateProjectContactForm.new_from_contact({}, @project, @existing_contact)
-    @users = User.all
+    @contact = Contact::CreateProjectContactForm.new(contact: @existing_contact, project: @project)
   end
 
   def update
     @existing_contact = Contact.find(params[:id])
     authorize @existing_contact
 
-    @contact = Contact::CreateProjectContactForm.new(contact_params, @project, @existing_contact)
+    @contact = Contact::CreateProjectContactForm.new(contact: @existing_contact, project: @project, args: contact_params)
 
     if @contact.save
       redirect_to project_contacts_path(@project), notice: I18n.t("contact.update.success")
@@ -57,6 +56,6 @@ class ExternalContactsController < ApplicationController
   end
 
   private def contact_params
-    params.require(:contact_create_project_contact_form).permit(:name, :organisation_name, :title, :category, :email, :phone, :establishment_main_contact, :incoming_trust_main_contact, :outgoing_trust_main_contact)
+    params.require(:contact_create_project_contact_form).permit(:name, :organisation_name, :title, :category, :email, :phone, :primary_contact_for_category)
   end
 end

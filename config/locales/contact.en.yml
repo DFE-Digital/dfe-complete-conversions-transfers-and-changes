@@ -18,9 +18,9 @@ en:
       edit_link: Change
       funding_agreement_letters: This person will receive the funding agreement letters.
       main_contact: Project main contact
-      establishment_main_contact: Is this the main contact for the school or academy?
-      incoming_trust_main_contact: Is this the main contact for the incoming trust?
-      outgoing_trust_main_contact: Is this the main contact for the outgoing trust?
+      establishment_main_contact: Primary contact for school or academy?
+      incoming_trust_main_contact: Primary contact for incoming trust?
+      outgoing_trust_main_contact: Primary contact for outgoing trust?
     new:
       title: Add contact
       save_contact_button: Add contact
@@ -52,9 +52,6 @@ en:
         organisation_name: Organisation
         email: Email
         phone: Phone
-        establishment_main_contact: Is this the main contact for the school or academy?
-        incoming_trust_main_contact: Is this the main contact for the incoming trust?
-        outgoing_trust_main_contact: Is this the main contact for the outgoing trust?
       contact_create_project_contact_form:
         category: Contact for
         title: Role
@@ -62,16 +59,14 @@ en:
         organisation_name: Organisation
         email: Email
         phone: Phone
-        establishment_main_contact: Is this the main contact for the school or academy?
-        incoming_trust_main_contact: Is this the main contact for the incoming trust?
-        outgoing_trust_main_contact: Is this the main contact for the outgoing trust?
+        primary_contact_for_category: Primary contact
+    hint:
+      contact_create_project_contact_form:
+        primary_contact_for_category: The primary contact for this category, this is not the overall contact for the project itself.
+
   errors:
     attributes:
       category:
         blank: Choose a category
-      establishment_main_contact:
-        invalid: You can only select a School or academy contact as the school or academy's main contact
-      incoming_trust_main_contact:
-        invalid: You can only select an Incoming trust contact as the incoming trust's main contact
-      outgoing_trust_main_contact:
-        invalid: You can only select an Outgoing trust contact as the outgoing trust's main contact
+      primary_contact_for_category:
+        category: Only the incoming trust, outgoing trust and school or academy categories can have a primary contact

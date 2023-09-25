@@ -3,56 +3,48 @@ class Contact::CreateProjectContactForm
   include ActiveModel::Attributes
   include ActiveRecord::AttributeAssignment
 
+  CATEGORIES_WITH_PRIMARY_CONTACT = [
+    "school_or_academy",
+    "incoming_trust",
+    "outgoing_trust"
+  ].freeze
+
   attribute :category
   attribute :name
   attribute :title
   attribute :organisation_name
   attribute :email
   attribute :phone
-  attribute :establishment_main_contact
-  attribute :incoming_trust_main_contact
-  attribute :outgoing_trust_main_contact
-  attribute :project_id
+  attribute :primary_contact_for_category, :boolean
+
   attr_accessor :category,
     :name,
     :title,
     :organisation_name,
     :email,
-    :phone,
-    :establishment_main_contact,
-    :incoming_trust_main_contact,
-    :outgoing_trust_main_contact,
-    :project_id
+    :phone
 
-  validate :establishment_main_contact_for_school_only, if: -> { establishment_main_contact.eql?("1") }
-  validate :incoming_trust_main_contact_for_incoming_trust_only, if: -> { incoming_trust_main_contact.eql?("1") }
-  validate :outgoing_trust_main_contact_for_outgoing_trust_only, if: -> { outgoing_trust_main_contact.eql?("1") }
+  validate :category_with_primary_contact
 
-  def initialize(args = {}, project = nil, contact = nil)
+  def initialize(contact:, project:, args: {})
     @project = project
     @contact = contact
     super(args)
-  end
 
-  def self.new_from_contact(args = {}, project, contact)
-    @project = project
-    @contact = contact
-
-    new({category: contact.category,
-         name: contact.name,
-         title: contact.title,
-         organisation_name: contact.organisation_name,
-         email: contact.email,
-         phone: contact.phone,
-         establishment_main_contact: contact.establishment_main_contact,
-         incoming_trust_main_contact: contact.incoming_trust_main_contact,
-         outgoing_trust_main_contact: contact.outgoing_trust_main_contact},
-      @project,
-      @contact)
+    if args.empty?
+      self.primary_contact_for_category = is_primary_contact_for_category?
+      assign_attributes(
+        category: @contact.category,
+        name: @contact.name,
+        title: @contact.title,
+        organisation_name: @contact.organisation_name,
+        email: @contact.email,
+        phone: @contact.phone
+      )
+    end
   end
 
   def save
-    @contact ||= Contact::Project.new
     @contact.assign_attributes(category: category,
       name: name,
       title: title,
@@ -63,10 +55,9 @@ class Contact::CreateProjectContactForm
 
     if valid? && @contact.valid?
       ActiveRecord::Base.transaction do
-        @contact.save
-        set_establishment_main_contact
-        set_incoming_trust_main_contact
-        set_outgoing_trust_main_contact
+        @contact.save!
+        update_project_contact_associations
+        @project.save!
       end
     else
       errors.merge!(@contact.errors)
@@ -74,48 +65,31 @@ class Contact::CreateProjectContactForm
     end
   end
 
-  private def establishment_main_contact_for_school_only
-    return true if category.eql?("school_or_academy")
-    errors.add(:establishment_main_contact, :invalid)
+  private def category_with_primary_contact
+    return unless primary_contact_for_category
+
+    errors.add(:primary_contact_for_category, :category) unless CATEGORIES_WITH_PRIMARY_CONTACT.include?(category)
   end
 
-  private def incoming_trust_main_contact_for_incoming_trust_only
-    return true if category.eql?("incoming_trust")
-    errors.add(:incoming_trust_main_contact, :invalid)
-  end
-
-  private def outgoing_trust_main_contact_for_outgoing_trust_only
-    return true if category.eql?("outgoing_trust")
-    errors.add(:outgoing_trust_main_contact, :invalid)
-  end
-
-  private def set_establishment_main_contact
-    project = @project || Project.find(@contact.project_id)
-
-    if establishment_main_contact == "1"
-      project.update!(establishment_main_contact_id: @contact.id)
-    else
-      project.update!(establishment_main_contact_id: nil)
+  private def is_primary_contact_for_category?
+    case @contact.category
+    when "school_or_academy"
+      @contact.establishment_main_contact
+    when "incoming_trust"
+      @contact.incoming_trust_main_contact
+    when "outgoing_trust"
+      @contact.outgoing_trust_main_contact
     end
   end
 
-  private def set_incoming_trust_main_contact
-    project = @project || Project.find(@contact.project_id)
-
-    if incoming_trust_main_contact == "1"
-      project.update!(incoming_trust_main_contact_id: @contact.id)
-    else
-      project.update!(incoming_trust_main_contact_id: nil)
-    end
-  end
-
-  private def set_outgoing_trust_main_contact
-    project = @project || Project.find(@contact.project_id)
-
-    if outgoing_trust_main_contact == "1"
-      project.update!(outgoing_trust_main_contact_id: @contact.id)
-    else
-      project.update!(outgoing_trust_main_contact_id: nil)
+  private def update_project_contact_associations
+    case category
+    when "school_or_academy"
+      @project.establishment_main_contact_id = primary_contact_for_category ? @contact.id : nil
+    when "incoming_trust"
+      @project.incoming_trust_main_contact_id = primary_contact_for_category ? @contact.id : nil
+    when "outgoing_trust"
+      @project.outgoing_trust_main_contact_id = primary_contact_for_category ? @contact.id : nil
     end
   end
 end
