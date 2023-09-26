@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add Closure or transfer declaration task to transfers
 - Add "Confirm incoming trust has completed all actions" task to transfers
 - Add "Redact and send documents" task to transfers
+- Add "Request new URN and record" task to transfers
 
 ### Changed
 

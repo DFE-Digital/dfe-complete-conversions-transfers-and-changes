@@ -30,6 +30,7 @@ RSpec.feature "Users can complete transfer tasks" do
     master_funding_agreement
     deed_of_termination_for_the_master_funding_agreement
     closure_or_transfer_declaration
+    request_new_urn_and_record
   ]
 
   tasks_with_collected_data = %w[

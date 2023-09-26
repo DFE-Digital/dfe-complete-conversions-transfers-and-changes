@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_20_093557) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_142942) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -354,6 +354,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_093557) do
     t.boolean "redact_and_send_documents_saved"
     t.boolean "redact_and_send_documents_send_to_funding_team"
     t.boolean "redact_and_send_documents_send_to_solicitors"
+    t.boolean "request_new_urn_and_record_not_applicable"
+    t.boolean "request_new_urn_and_record_complete"
+    t.boolean "request_new_urn_and_record_receive"
+    t.boolean "request_new_urn_and_record_give"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
