@@ -6,11 +6,13 @@
         summary_list.row do |row|
           row.key { t("contact.details.title") }
           row.value { contact.title }
-          row.action(
-            text: t("contact.details.edit_link"),
-            href: edit_project_contact_path(@project, contact),
-            visually_hidden_text: contact.name
-          )
+          if contact.editable?
+            row.action(
+              text: t("contact.details.edit_link"),
+              href: edit_project_contact_path(@project, contact),
+              visually_hidden_text: contact.name
+            )
+          end
         end
         summary_list.row do |row|
           row.key { t("contact.details.name") }
@@ -38,22 +40,24 @@
             row.value { t("yes") }
           end
         end
-        if @project.establishment_main_contact_id == contact.id
-          summary_list.row do |row|
-            row.key { t("contact.details.establishment_main_contact") }
-            row.value { t("yes") }
+        if contact.is_a?(Contact::Project)
+          if contact.establishment_main_contact
+            summary_list.row do |row|
+              row.key { t("contact.details.establishment_main_contact") }
+              row.value { t("yes") }
+            end
           end
-        end
-        if @project.incoming_trust_main_contact_id == contact.id
-          summary_list.row do |row|
-            row.key { t("contact.details.incoming_trust_main_contact") }
-            row.value { t("yes") }
+          if contact.incoming_trust_main_contact
+            summary_list.row do |row|
+              row.key { t("contact.details.incoming_trust_main_contact") }
+              row.value { t("yes") }
+            end
           end
-        end
-        if @project.outgoing_trust_main_contact_id == contact.id
-          summary_list.row do |row|
-            row.key { t("contact.details.outgoing_trust_main_contact") }
-            row.value { t("yes") }
+          if contact.outgoing_trust_main_contact
+            summary_list.row do |row|
+              row.key { t("contact.details.outgoing_trust_main_contact") }
+              row.value { t("yes") }
+            end
           end
         end
       end %>

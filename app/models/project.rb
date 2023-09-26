@@ -11,7 +11,7 @@ class Project < ApplicationRecord
   delegate :director_of_child_services, to: :local_authority
 
   has_many :notes, dependent: :destroy
-  has_many :contacts, dependent: :destroy, class_name: "Contact::Project"
+  has_many :contacts, class_name: "Contact::Project", inverse_of: :project, dependent: :destroy
 
   has_one :funding_agreement_contact, dependent: :destroy, class_name: "Contact::Project", required: false
   has_one :main_contact, dependent: :destroy, class_name: "Contact::Project", required: false

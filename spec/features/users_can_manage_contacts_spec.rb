@@ -120,7 +120,7 @@ RSpec.feature "Users can manage contacts" do
     fill_in "Organisation", with: "Trust Name"
     fill_in "Role", with: "Chief of Knowledge"
     fill_in "Email", with: "some@example.com"
-    check "contact_create_project_contact_form[establishment_main_contact]"
+    check "contact_create_project_contact_form[primary_contact_for_category]"
 
     click_button("Add contact")
 
@@ -132,7 +132,7 @@ RSpec.feature "Users can manage contacts" do
     contact = create(:project_contact, project: project, category: "school_or_academy")
 
     visit edit_project_contact_path(project, contact)
-    check "contact_create_project_contact_form[establishment_main_contact]"
+    check "contact_create_project_contact_form[primary_contact_for_category]"
 
     click_button("Save contact")
 
@@ -150,7 +150,7 @@ RSpec.feature "Users can manage contacts" do
     fill_in "Organisation", with: "Trust Name"
     fill_in "Role", with: "Chief of Knowledge"
     fill_in "Email", with: "some@example.com"
-    check "contact_create_project_contact_form[incoming_trust_main_contact]"
+    check "contact_create_project_contact_form[primary_contact_for_category]"
 
     click_button("Add contact")
 
@@ -168,7 +168,7 @@ RSpec.feature "Users can manage contacts" do
     fill_in "Organisation", with: "Trust Name"
     fill_in "Role", with: "Chief of Knowledge"
     fill_in "Email", with: "some@example.com"
-    check "contact_create_project_contact_form[outgoing_trust_main_contact]"
+    check "contact_create_project_contact_form[primary_contact_for_category]"
 
     click_button("Add contact")
 

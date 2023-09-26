@@ -6,13 +6,13 @@
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l"><%= t("contact.index.external_contacts") %></h2>
 
-    <% if @grouped_contacts.empty? %>
-      <%= govuk_inset_text(text: t("contact.index.no_contacts_yet")) %>
-    <% end %>
-
     <div class="govuk-!-margin-bottom-5">
       <%= govuk_button_link_to t("contact.index.add_contact_button"), new_project_contact_path(@project) %>
     </div>
+
+    <% if @grouped_contacts.empty? %>
+      <%= govuk_inset_text(text: t("contact.index.no_contacts_yet")) %>
+    <% end %>
 
     <% Contact.categories.keys.each do |category| %>
       <% if @grouped_contacts[category].present? %>

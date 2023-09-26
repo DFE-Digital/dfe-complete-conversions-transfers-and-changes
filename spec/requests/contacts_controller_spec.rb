@@ -28,16 +28,14 @@ RSpec.describe ExternalContactsController, type: :request do
     end
 
     context "when the project has a director of child services" do
-      let(:local_authority) { create(:local_authority) }
-
-      before do
-        create(:director_of_child_services, local_authority: local_authority)
-        allow_any_instance_of(Api::AcademiesApi::Establishment).to receive(:local_authority).and_return(local_authority)
-      end
-
       it "includes the director of child services in the response" do
-        director = local_authority.director_of_child_services
-        expect(subject.body).to include(director.name)
+        project = create(:conversion_project)
+        director_of_child_services_contact = create(:director_of_child_services)
+        allow_any_instance_of(Project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
+
+        get project_contacts_path(project)
+
+        expect(response.body).to include(director_of_child_services_contact.name)
       end
     end
   end
@@ -139,7 +137,7 @@ RSpec.describe ExternalContactsController, type: :request do
     let(:new_contact_title) { "Headteacher" }
 
     subject(:perform_request) do
-      put project_contact_path(project_id, contact_id), params: {contact_create_project_contact_form: {name: new_contact_name, title: new_contact_title, category: "other"}}
+      put project_contact_path(project_id, contact_id), params: {contact_create_project_contact_form: {name: new_contact_name, title: new_contact_title, category: "school_or_academy"}}
       response
     end
 

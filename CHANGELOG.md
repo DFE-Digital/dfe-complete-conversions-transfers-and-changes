@@ -41,6 +41,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   each block.
 - Update the Your team projects Completed table
 
+### Fixed
+
+- the director of child services is now shown on the external contacts view as
+  long as one is available, it is centrall managed and cannot be edited.
+
 ## [Release 39][release-39]
 
 ### Added

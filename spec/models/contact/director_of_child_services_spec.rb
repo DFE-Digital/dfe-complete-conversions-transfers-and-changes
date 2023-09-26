@@ -27,4 +27,13 @@ RSpec.describe Contact::DirectorOfChildServices, type: :model do
       expect(described_class.policy_class).to eql(LocalAuthorityPolicy)
     end
   end
+
+  describe "#editable" do
+    it "always returns false" do
+      local_authority = create(:local_authority)
+      director = create(:director_of_child_services, local_authority: local_authority)
+
+      expect(director.editable?).to be false
+    end
+  end
 end

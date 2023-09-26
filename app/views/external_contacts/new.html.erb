@@ -20,20 +20,15 @@
         <% end %>
       <% end %>
 
+      <%= form.govuk_check_boxes_fieldset :primary_contact_for_category, multiple: false, legend: nil, hint: nil do %>
+        <%= form.govuk_check_box :primary_contact_for_category, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.contact_create_project_contact_form.primary_contact_for_category")}, hint: {text: t("helpers.hint.contact_create_project_contact_form.primary_contact_for_category")} %>
+      <% end %>
+
       <%= form.govuk_text_field :title, width: 20 %>
       <%= form.govuk_text_field :name %>
       <%= form.govuk_text_field :organisation_name %>
       <%= form.govuk_email_field :email %>
       <%= form.govuk_phone_field :phone, width: 10 %>
-      <%= form.govuk_check_boxes_fieldset :establishment_main_contact, multiple: false, legend: {text: t("helpers.label.contact_project.establishment_main_contact"), size: "s"} do %>
-        <%= form.govuk_check_box :establishment_main_contact, 1, 0, multiple: false, link_errors: true, label: {text: t("yes")} %>
-      <% end %>
-      <%= form.govuk_check_boxes_fieldset :incoming_trust_main_contact, multiple: false, legend: {text: t("helpers.label.contact_project.incoming_trust_main_contact"), size: "s"} do %>
-        <%= form.govuk_check_box :incoming_trust_main_contact, 1, 0, multiple: false, link_errors: true, label: {text: t("yes")} %>
-      <% end %>
-      <%= form.govuk_check_boxes_fieldset :outgoing_trust_main_contact, multiple: false, legend: {text: t("helpers.label.contact_project.outgoing_trust_main_contact"), size: "s"} do %>
-        <%= form.govuk_check_box :outgoing_trust_main_contact, 1, 0, multiple: false, link_errors: true, label: {text: t("yes")} %>
-      <% end %>
 
       <%= form.govuk_submit t("contact.new.save_contact_button") do %>
         <%= govuk_link_to "Cancel", project_contacts_path(@project) %>
