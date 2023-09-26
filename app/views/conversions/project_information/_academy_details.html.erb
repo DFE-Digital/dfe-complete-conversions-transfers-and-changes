@@ -1,5 +1,5 @@
-<div id="academyDetails">
-  <h2 class="govuk-heading-l"><%= t("project_information.show.academy_details.title") %></h2>
+<div id="academyDetails" class="project-information-block">
+  <h3 class="govuk-heading-m"><%= t("project_information.show.academy_details.title") %></h3>
 
   <% if project.academy_urn.nil? %>
     <%= govuk_inset_text(text: t("project_information.show.academy_details.empty")) %>
@@ -12,10 +12,6 @@
               row.value { (project.academy.name + "<br/>" + link_to_school_on_gias(project.academy_urn)).html_safe }
             end
             summary_list.row do |row|
-              row.key { t("project_information.show.academy_details.rows.address") }
-              row.value { address_markup(project.academy.address) }
-            end
-            summary_list.row do |row|
               row.key { t("project_information.show.academy_details.rows.urn") }
               row.value { project.academy_urn.to_s }
             end
@@ -23,20 +19,7 @@
               row.key { t("project_information.show.academy_details.rows.school_type") }
               row.value { project.academy.type }
             end
-            summary_list.row do |row|
-              row.key { t("project_information.show.academy_details.rows.age_range") }
-              row.value { age_range(project.academy) }
-            end
-            summary_list.row do |row|
-              row.key { t("project_information.show.academy_details.rows.school_phase") }
-              row.value { project.academy.phase }
-            end
-            summary_list.row do |row|
-              row.key { t("project_information.show.academy_details.rows.region") }
-              row.value { project.academy.region_name }
-            end
           end %>
-
     <% else %>
 
       <%= govuk_summary_list(actions: false) do |summary_list|

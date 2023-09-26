@@ -11,7 +11,7 @@ RSpec.feature "Users can view school diocese details" do
   end
 
   scenario "the diocese details" do
-    within("#dioceseDetails") do
+    within("#projectDetails") do
       expect(page).to have_content(project.establishment.diocese_name)
     end
   end

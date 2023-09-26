@@ -1,9 +1,0 @@
-<div id="dioceseDetails">
-  <h2 class="govuk-heading-l"><%= t("project_information.show.diocese_details.title") %></h2>
-  <%= govuk_summary_list(actions: false) do |summary_list|
-        summary_list.row do |row|
-          row.key { t("project_information.show.diocese_details.rows.diocese") }
-          row.value { establishment.diocese_name }
-        end
-      end %>
-</div>

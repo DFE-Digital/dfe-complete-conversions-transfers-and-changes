@@ -4,8 +4,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-l">URN <%= @project.urn %></span>
-    <h1 class="govuk-heading-l"><%= @project.establishment.name %></h1>
+    <span class="govuk-caption-l">
+      <%= t("project.summary.heading.transfer", urn: @project.urn) %>
+      <%= govuk_tag(text: t("project.summary.type.transfer"), colour: "purple") %>
+    </span>
+    <h1 class="govuk-heading-xl"><%= @project.establishment.name %></h1>
   </div>
 </div>
 
@@ -15,32 +18,24 @@
   <div class="govuk-grid-column-three-quarters">
     <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary"}) do |summary_list|
           summary_list.row do |row|
-            row.key { t("project.summary.type.title") }
-            row.value { t("project.summary.type.transfer") }
-          end
-          summary_list.row do |row|
             row.key { t("project.summary.transfer_date.title") }
             row.value { significant_date(@project) }
+          end
+          summary_list.row do |row|
+            row.key { t("project.summary.outgoing_trust.title") }
+            row.value { @project.outgoing_trust.name }
           end
           summary_list.row do |row|
             row.key { t("project.summary.incoming_trust.title") }
             row.value { @project.incoming_trust.name }
           end
           summary_list.row do |row|
-            row.key { t("project.summary.region.title") }
-            row.value { @project.establishment.region_name }
+            row.key { t("project.summary.la_and_region.title") }
+            row.value { "#{@project.establishment.local_authority_name}, #{@project.establishment.region_name}" }
           end
           summary_list.row do |row|
-            row.key { t("project.summary.establishment_sharepoint_link.title") }
-            row.value { safe_link_to(t("project.summary.establishment_sharepoint_link.value"), @project.establishment_sharepoint_link) }
-          end
-          summary_list.row do |row|
-            row.key { t("project.summary.incoming_trust_sharepoint_link.title") }
-            row.value { safe_link_to(t("project.summary.incoming_trust_sharepoint_link.value"), @project.incoming_trust_sharepoint_link) }
-          end
-          summary_list.row do |row|
-            row.key { t("project.summary.outgoing_trust_sharepoint_link.title") }
-            row.value { safe_link_to(t("project.summary.outgoing_trust_sharepoint_link.value"), @project.outgoing_trust_sharepoint_link) }
+            row.key { t("project.summary.sharepoint_link.title") }
+            row.value { safe_link_to(t("project.summary.academy_sharepoint_link.title"), @project.establishment_sharepoint_link) }
           end
           if @project.completed?
             summary_list.row do |row|

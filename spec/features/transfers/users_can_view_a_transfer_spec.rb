@@ -15,9 +15,7 @@ RSpec.feature "Users can view a transfer" do
     expect(page).to have_content(transfer_project.urn)
     expect(page).to have_content("transfer")
     expect(page).to have_content("West Midlands")
-    expect(page).to have_link("SharePoint folder in a new tab", href: "https://educationgovuk-my.sharepoint.com/establishment-folder")
-    expect(page).to have_link("SharePoint folder in a new tab", href: "https://educationgovuk-my.sharepoint.com/incoming-trust-folder")
-    expect(page).to have_link("SharePoint folder in a new tab", href: "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder")
+    expect(page).to have_link("Academy folder (opens in new tab)", href: "https://educationgovuk-my.sharepoint.com/establishment-folder")
   end
 
   scenario "they can navigate the sub sections" do
@@ -25,7 +23,7 @@ RSpec.feature "Users can view a transfer" do
 
     expect(page).to have_content(transfer_project.urn)
     expect(page).to have_link("Task list")
-    expect(page).to have_link("Project information")
+    expect(page).to have_link("About the project")
     expect(page).to have_link("Notes")
     expect(page).to have_link("External contacts")
     expect(page).to have_link("Internal contacts")
@@ -47,7 +45,6 @@ RSpec.feature "Users can view a transfer" do
     expect(page).to have_content("Academy details")
     expect(page).to have_content("Incoming trust details")
     expect(page).to have_content("Outgoing trust details")
-    expect(page).to have_content("Diocese details")
   end
 
   scenario "they can view the notes" do
