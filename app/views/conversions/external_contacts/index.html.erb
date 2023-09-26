@@ -15,41 +15,19 @@
       </p>
     </div>
 
-    <% if @grouped_contacts.empty? && !@project.director_of_child_services %>
-      <%= govuk_inset_text(text: t("contact.index.no_contacts_yet")) %>
-    <% end %>
-
     <div class="govuk-!-margin-bottom-5">
       <%= govuk_button_link_to t("contact.index.add_contact_button"), new_project_contact_path(@project) %>
     </div>
 
-    <% Contact.categories.keys.each do |category| %>
-      <% if @grouped_contacts[category].present? %>
-        <%= render partial: "contact_group", locals: {category: category, contacts: @grouped_contacts[category]} %>
+    <% if @grouped_contacts.empty? %>
+      <%= govuk_inset_text(text: t("contact.index.no_contacts_yet")) %>
+    <% else %>
+
+      <% Contact.categories.keys.each do |category| %>
+        <% if @grouped_contacts[category].present? %>
+          <%= render partial: "contact_group", locals: {category: category, contacts: @grouped_contacts[category]} %>
+        <% end %>
       <% end %>
     <% end %>
-
-    <% if @project.director_of_child_services %>
-      <h3 class="govuk-heading-m"><%= t("project_information.show.director_of_child_services.title") %></h3>
-      <%= govuk_summary_list(actions: false) do |summary_list|
-            summary_list.row do |row|
-              row.key { t("project_information.show.director_of_child_services.rows.title") }
-              row.value { @project.director_of_child_services.title }
-            end
-            summary_list.row do |row|
-              row.key { t("project_information.show.director_of_child_services.rows.name") }
-              row.value { @project.director_of_child_services.name }
-            end
-            summary_list.row do |row|
-              row.key { t("project_information.show.director_of_child_services.rows.email") }
-              row.value { @project.director_of_child_services.email }
-            end
-            summary_list.row do |row|
-              row.key { t("project_information.show.director_of_child_services.rows.phone") }
-              row.value { @project.director_of_child_services.phone }
-            end
-          end %>
-    <% end %>
-
   </div>
 </div>

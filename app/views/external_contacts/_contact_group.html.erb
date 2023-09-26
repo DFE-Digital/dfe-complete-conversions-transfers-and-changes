@@ -40,22 +40,24 @@
             row.value { t("yes") }
           end
         end
-        if contact.establishment_main_contact
-          summary_list.row do |row|
-            row.key { t("contact.details.establishment_main_contact") }
-            row.value { t("yes") }
+        if contact.is_a?(Contact::Project)
+          if contact.establishment_main_contact
+            summary_list.row do |row|
+              row.key { t("contact.details.establishment_main_contact") }
+              row.value { t("yes") }
+            end
           end
-        end
-        if contact.incoming_trust_main_contact
-          summary_list.row do |row|
-            row.key { t("contact.details.incoming_trust_main_contact") }
-            row.value { t("yes") }
+          if contact.incoming_trust_main_contact
+            summary_list.row do |row|
+              row.key { t("contact.details.incoming_trust_main_contact") }
+              row.value { t("yes") }
+            end
           end
-        end
-        if contact.outgoing_trust_main_contact
-          summary_list.row do |row|
-            row.key { t("contact.details.outgoing_trust_main_contact") }
-            row.value { t("yes") }
+          if contact.outgoing_trust_main_contact
+            summary_list.row do |row|
+              row.key { t("contact.details.outgoing_trust_main_contact") }
+              row.value { t("yes") }
+            end
           end
         end
       end %>

@@ -2,7 +2,7 @@ class ExternalContactsController < ApplicationController
   include Projectable
 
   def index
-    @grouped_contacts = @project.contacts.by_name.group_by(&:category).with_indifferent_access
+    @grouped_contacts = ContactsFetcherService.new.all_project_contacts(@project)
   end
 
   def new
