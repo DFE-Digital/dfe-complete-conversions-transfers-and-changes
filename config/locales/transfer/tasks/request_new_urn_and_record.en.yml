@@ -1,0 +1,33 @@
+en:
+  transfer:
+    task:
+      request_new_urn_and_record:
+        title: Request a new URN and record for the academy
+        hint:
+          html:
+            <p>A transferring academy may need a new URN and record in Get Information About Schools. You may hear these academies described as "Fresh starts".</p>
+            <p>This happens when an academy is transferring and is currently rated by Ofsted as inadequate, or has been given it at least 2 requires improvement ratings.</p>
+            <p>There is <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/WorkplaceDocuments/ARDG%20Internal%20Guidance/6.%20Taking%20action%20with%20underperforming%20open%20academies%20and%20free%20schools/Academy%20transfer/Academy%20Transfer%20Project/Issuing_a_new_URN-policy_and%20guidance.docx?d=w60605f0926bc439d8c442258b6bc83c1&csf=1&web=1&e=WO1DHR" target="_blank">policy guidance for this process (opens in new tab)</a>.</p>
+        not_applicable:
+          title: Not applicable
+        complete:
+          title: Complete the Fresh starts, transfers and changes for open academies form
+          hint:
+            html:
+              <p>You can <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-dJ_O8-9VV1BnQY39ulYBOhUNkw4NU9aTEVaQzRBMjA1MFpIMURQOTlXVyQlQCN0PWcu" target="_blank">access the form through Microsoft Forms (opens in new tab)</a>. Choose the "Fresh start" category and provide the information the form asks for.</p>
+          guidance_link: Help with this form
+          guidance:
+            html:
+              <p>There is <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/_layouts/15/Doc.aspx?sourcedoc=%7BDF0B0DB4-EFAF-4C4B-BC0A-94DC4DA0EEEB%7D&file=Notification%20form%20to%20create%20a%20new%20school%20record.docx&action=default&mobileredirect=true&ovuser=fad277c9-c60a-4da1-b5f3-b3b8b34a82f9%2CJoanna.EVANS%40EDUCATION.GOV.UK&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIxNDE1LzIzMDgwNDA4NjM2IiwiSGFzRmVkZXJhdGVkVXNlciI6ZmFsc2V9" target="_blank">guidance in a Microsoft Word document to help you complete the form (opens in new tab)</a>. That guidance explains what to include in some of the more complicated form sections.</p>
+        receive:
+          title: Receive the new record information
+          hint:
+            html:
+              <p>he Business Support team will send you the URN and LAESTAB numbers once they have been created.</p>
+          guidance_link: Understanding the DfE and LAESTAB numbers
+          guidance:
+            html
+              <p>The Business Support team and the academy may only know the LAESTAB number as the DfE number. These 2 names refer to the same number.</p>
+              <p>You should use whatever term the Business Support team, academy or trust understand in your communications with them.</p>
+        give:
+          title: Give the new URN and LAESTAB information to the academy and incoming trust

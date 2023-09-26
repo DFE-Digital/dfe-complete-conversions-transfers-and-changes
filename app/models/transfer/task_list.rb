@@ -6,7 +6,8 @@ class Transfer::TaskList < ::BaseTaskList
         tasks: [
           Transfer::Task::HandoverTaskForm,
           Transfer::Task::StakeholderKickOffTaskForm,
-          Transfer::Task::MainContactTaskForm
+          Transfer::Task::MainContactTaskForm,
+          Transfer::Task::RequestNewUrnAndRecordTaskForm
         ]
       },
       {
