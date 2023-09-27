@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [Release 40][release-40]
+
+### Added
+
 - Add the Main contact task to the Conversion project task list
 - Add the Main contact task to the Transfer project task list
 - Show the main contact for a project in the project CSV exports
@@ -1299,7 +1307,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-39...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-40...HEAD
+[release-40]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-39...release-40
 [release-39]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-38...release-39
 [release-38]:
