@@ -49,9 +49,9 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result[:total]).to eql(2)
-      expect(result[:new]).to eql(1)
-      expect(result[:changed]).to eql(1)
+      expect(result[:total_csv_rows]).to eql(2)
+      expect(result[:new_records]).to eql(1)
+      expect(result[:changed_records]).to eql(1)
       expect(result[:time]).to be_truthy
     end
 
