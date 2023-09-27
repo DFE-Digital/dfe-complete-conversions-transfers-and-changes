@@ -114,16 +114,17 @@ class Import::GiasEstablishmentCsvImporterService
   private def reset_import_stats
     @total = 0
     @changed_rows = {}
-    @current = Gias::Establishment.count
+    @current_records = Gias::Establishment.count
     @time = nil
     @errors = {}
   end
 
   private def import_result
+    records_after_import = Gias::Establishment.count
     {
-      total: @total,
-      new: @total - @current,
-      changed: @changed_rows.count - (@total - @current),
+      total_csv_rows: @total,
+      new_records: records_after_import - @current_records,
+      changed_records: @changed_rows.count - (records_after_import - @current_records),
       changes: @changed_rows,
       time: @time,
       errors: @errors
