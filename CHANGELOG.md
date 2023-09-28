@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Update the "main contact" task content for Conversion and Transfer projects
+
 ### Fixed
 
 ## [Release 41][release-41]

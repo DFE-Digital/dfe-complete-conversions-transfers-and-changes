@@ -151,7 +151,7 @@ RSpec.feature "Users can complete conversion tasks" do
 
       it "lets the user select an existing contact" do
         visit project_tasks_path(project)
-        click_on "Confirm who is the main contact for this conversion"
+        click_on "Confirm the main contact"
         choose contact.name
         click_on I18n.t("task_list.continue_button.text")
 
@@ -162,9 +162,9 @@ RSpec.feature "Users can complete conversion tasks" do
     context "when the project has no contacts" do
       it "directs the user to add contacts" do
         visit project_tasks_path(project)
-        click_on "Confirm who is the main contact for this conversion"
+        click_on "Confirm the main contact"
 
-        expect(page).to have_content("Add contacts")
+        expect(page).to have_content("Add a contact")
         click_link "add a contact"
         expect(page.current_path).to include("external-contacts")
       end

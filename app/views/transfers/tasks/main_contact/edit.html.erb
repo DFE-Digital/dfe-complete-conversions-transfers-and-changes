@@ -1,4 +1,20 @@
-<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l"><%= @project.establishment.name %></span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2"><%= t("conversion.task.main_contact.title") %></h1>
+
+    <% if @project.contacts.count > 0 %>
+      <div class="app-task-hint">
+        <%= t("transfer.task.main_contact.choose_a_contact.hint.html", add_contact_link: project_contacts_path(@project)) %>
+      </div>
+    <% else %>
+      <div class="app-task-hint">
+        <%= t("transfer.task.main_contact.no_contacts.hint.html", add_contact_link: project_contacts_path(@project)) %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
 
 <% content_for :pre_content_nav do %>
   <% render partial: "transfers/tasks/shared/back_link", locals: {project_id: @project.id} %>
