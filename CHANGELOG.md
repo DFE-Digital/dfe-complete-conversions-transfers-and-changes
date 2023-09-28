@@ -12,6 +12,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+## [Release 41][release-41]
+
+### Added
+
+### Changed
+
+### Fixed
+
+- Production container image switched to `ruby:3.1.4-bullseye` which is built
+  against OpenSSL 1.x
+
 ## [Release 40][release-40]
 
 ### Added
@@ -1307,7 +1318,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-40...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-41...HEAD
+[release-41]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-40...release-41
 [release-40]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-39...release-40
 [release-39]:
