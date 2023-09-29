@@ -151,10 +151,22 @@ RSpec.describe User do
 
             expect(user.assign_to_project).to be true
             expect(user.manage_team).to be false
-            expect(user.add_new_project).to be false
+            expect(user.add_new_project).to be true
             expect(user.manage_user_accounts).to be false
             expect(user.manage_local_authorities).to be false
             expect(user.manage_conversion_urns).to be false
+          end
+
+          it "still sets `add_new_project` to `false` in the database, even though the override method returns true" do
+            user_attributes = valid_user_attributes
+            user_attributes[:team] = "regional_casework_services"
+            user_attributes[:manage_team] = false
+
+            user = described_class.create!(user_attributes)
+
+            sql = "SELECT add_new_project FROM Users WHERE id = '#{user.id}'"
+            result = ActiveRecord::Base.connection.exec_query(sql)
+            expect(result.rows[0]).to eq([false])
           end
         end
 
@@ -358,6 +370,27 @@ RSpec.describe User do
 
       expect(rdo_user.is_regional_delivery_officer?).to be true
       expect(rdo_team_lead_user.is_regional_delivery_officer?).to be true
+    end
+  end
+
+  describe "#add_new_project" do
+    context "when the user is an RCS user" do
+      it "returns true" do
+        user = build(:regional_casework_services_user)
+        expect(user.add_new_project).to be true
+      end
+    end
+    context "when the user is an RDO user" do
+      it "returns true" do
+        user = build(:regional_delivery_officer_user)
+        expect(user.add_new_project).to be true
+      end
+    end
+    context "when the user is any other user" do
+      it "returns false" do
+        user = build(:service_support_user)
+        expect(user.add_new_project).to be false
+      end
     end
   end
 

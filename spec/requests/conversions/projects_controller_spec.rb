@@ -109,12 +109,9 @@ RSpec.describe Conversions::ProjectsController do
         sign_in_with(caseworker)
       end
 
-      it "does not create the project and shows an error message" do
+      it "creates the project" do
         perform_request
-        expect(response).not_to render_template(:edit)
-        expect(response).to redirect_to(root_path)
-        follow_redirect!
-        expect(flash.alert).to eq I18n.t("unauthorised_action.message")
+        expect(response).to redirect_to project_path(Project.last)
       end
     end
   end
