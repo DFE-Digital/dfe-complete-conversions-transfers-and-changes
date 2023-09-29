@@ -15,7 +15,7 @@ RSpec.feature "Users select a main contact for a conversion" do
 
     it "allows the user to select one of the existing contacts on the Main Contact task page" do
       visit project_tasks_path(project)
-      click_on "Confirm who is the main contact for this conversion"
+      click_on "Confirm the main contact"
       expect(page).to have_content(contact_1.name)
       expect(page).to have_content(contact_2.name)
 
@@ -23,7 +23,7 @@ RSpec.feature "Users select a main contact for a conversion" do
       click_button "Save and return"
 
       expect(project.reload.main_contact_id).to eq(contact_1.id)
-      expect(page.find("#confirm-who-is-the-main-contact-for-this-conversion-status").text).to eq("Completed")
+      expect(page.find("#confirm-the-main-contact-status").text).to eq("Completed")
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.feature "Users select a main contact for a conversion" do
 
     it "shows the contact as preselected on the Main Contact task page" do
       visit project_tasks_path(project)
-      click_on "Confirm who is the main contact for this conversion"
+      click_on "Confirm the main contact"
 
       expect(page).to have_checked_field(contact_2.name)
     end
@@ -45,7 +45,7 @@ RSpec.feature "Users select a main contact for a conversion" do
     context "and the main contact is changed" do
       it "switches the contact for the project" do
         visit project_tasks_path(project)
-        click_on "Confirm who is the main contact for this conversion"
+        click_on "Confirm the main contact"
 
         choose contact_1.name
         click_on "Save and return"
@@ -58,20 +58,20 @@ RSpec.feature "Users select a main contact for a conversion" do
   context "when the project does not have any contacts" do
     it "directs the user to the external contacts page" do
       visit project_tasks_path(project)
-      click_on "Confirm who is the main contact for this conversion"
+      click_on "Confirm the main contact"
 
-      expect(page).to have_content("Add contacts")
+      expect(page).to have_content("Add a contact")
       click_link "add a contact"
       expect(page.current_path).to include("external-contacts")
     end
 
     it "allows the user to go back to the task list without adding a user" do
       visit project_tasks_path(project)
-      click_on "Confirm who is the main contact for this conversion"
+      click_on "Confirm the main contact"
 
-      expect(page).to have_content("Add contacts")
+      expect(page).to have_content("Add a contact")
       click_link "Save and return"
-      expect(page.find("#confirm-who-is-the-main-contact-for-this-conversion-status").text).to eq("Not started")
+      expect(page.find("#confirm-the-main-contact-status").text).to eq("Not started")
     end
   end
 end

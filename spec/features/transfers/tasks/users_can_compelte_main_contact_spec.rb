@@ -17,7 +17,7 @@ RSpec.feature "Users can complete the main contact task" do
 
       it "lets the user select an existing contact" do
         visit project_tasks_path(project)
-        click_on "Confirm who is the main contact for this transfer"
+        click_on "Confirm the main contact"
         choose contact.name
         click_on I18n.t("task_list.continue_button.text")
 
@@ -28,7 +28,7 @@ RSpec.feature "Users can complete the main contact task" do
     context "when the project has no contacts" do
       it "directs the user to add contacts" do
         visit project_tasks_path(project)
-        click_on "Confirm who is the main contact for this transfer"
+        click_on "Confirm the main contact"
 
         expect(page).to have_content("Add contacts")
         click_link "add a contact"
