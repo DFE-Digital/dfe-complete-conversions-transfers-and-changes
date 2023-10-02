@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Add the "Add new transfer" button for users who can add new projects
+
 ### Changed
 
 - Update the "main contact" task content for Conversion and Transfer projects

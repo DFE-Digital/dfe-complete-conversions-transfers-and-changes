@@ -14,26 +14,25 @@ RSpec.describe "Project management" do
         expect(response).to render_template(:new)
       end
 
-      it "shows the new project button" do
+      it "shows the new project buttons" do
         get in_progress_your_projects_path
         expect(response.body).to include(I18n.t("conversion_project.new.title"))
+        expect(response.body).to include(I18n.t("transfer_project.new.title"))
       end
     end
 
     context "when a user is a caseworker" do
       let(:user) { create(:user, :caseworker) }
 
-      it "redirects to the root path and displays a not authorized message" do
+      it "allows the action and renders the new template" do
         get conversions_new_path
-        expect(response).not_to render_template(:new)
-        expect(response).to redirect_to(root_path)
-        follow_redirect!
-        expect(flash.alert).to eq I18n.t("unauthorised_action.message")
+        expect(response).to render_template(:new)
       end
 
-      it "does not show the new project button" do
+      it "shows the new project buttons" do
         get in_progress_your_projects_path
-        expect(response.body).not_to include(I18n.t("conversion_project.new.title"))
+        expect(response.body).to include(I18n.t("conversion_project.new.title"))
+        expect(response.body).to include(I18n.t("transfer_project.new.title"))
       end
     end
 
@@ -48,9 +47,10 @@ RSpec.describe "Project management" do
         expect(flash.alert).to eq I18n.t("unauthorised_action.message")
       end
 
-      it "does not show the new project button" do
+      it "does not show the new project buttons" do
         get in_progress_your_projects_path
         expect(response.body).not_to include(I18n.t("conversion_project.new.title"))
+        expect(response.body).not_to include(I18n.t("transfer_project.new.title"))
       end
     end
   end

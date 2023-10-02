@@ -12,9 +12,9 @@ RSpec.feature "The home page for a regional casework services user" do
     expect(page.current_path).to eql in_progress_your_projects_path
   end
 
-  scenario "does not show the added by you primary navigation" do
+  scenario "shows the added by you primary navigation" do
     visit root_path
 
-    expect(page).not_to have_link "Added by you"
+    expect(page).to have_link "Added by you"
   end
 end

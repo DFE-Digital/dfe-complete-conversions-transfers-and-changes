@@ -61,6 +61,11 @@ class User < ApplicationRecord
     end
   end
 
+  # Override the db column temporarily while we test adding Transfers
+  def add_new_project
+    is_regional_caseworker? || is_regional_delivery_officer?
+  end
+
   def team_options
     User.teams.keys.map { |team| OpenStruct.new(id: team, name: I18n.t("user.teams.#{team}")) }
   end
