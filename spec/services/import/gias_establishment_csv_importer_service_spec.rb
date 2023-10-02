@@ -91,6 +91,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       service = described_class.new(path)
 
       allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "144731").and_return(nil)
+      allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "144865").and_call_original
 
       result = service.import!
 
