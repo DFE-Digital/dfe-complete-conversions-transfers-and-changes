@@ -7,9 +7,9 @@ RSpec.feature "Environment banner" do
   end
 
   describe "environment banner" do
-    scenario "when the SETNRY_ENV is production cannot see the environment banner" do
+    scenario "when the USER_ENV is production cannot see the environment banner" do
       ClimateControl.modify(
-        SENTRY_ENV: "production"
+        USER_ENV: "production"
       ) do
         visit root_path
 
@@ -18,9 +18,9 @@ RSpec.feature "Environment banner" do
     end
   end
 
-  scenario "when the SENTRY_ENV is development can see the environment banner" do
+  scenario "when the USER_ENV is development can see the environment banner" do
     ClimateControl.modify(
-      SENTRY_ENV: "development"
+      USER_ENV: "development"
     ) do
       visit root_path
       within("#environment-banner") do

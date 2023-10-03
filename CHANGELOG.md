@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Update the "main contact" task content for Conversion and Transfer projects
+- Move the site banner environment variable away from sentry and replace with
+  our own definded environment variable.
 
 ### Fixed
 
