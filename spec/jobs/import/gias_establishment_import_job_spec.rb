@@ -8,6 +8,7 @@ RSpec.describe Import::GiasEstablishmentImportJob, type: :job do
 
     before do
       allow(Import::GiasEstablishmentCsvImporterService).to receive(:new).and_return(importer)
+      allow(File).to receive(:delete).and_return(true)
     end
 
     context "when the import succeeds" do
@@ -30,6 +31,14 @@ RSpec.describe Import::GiasEstablishmentImportJob, type: :job do
         subject.perform_now(file_path, user)
 
         expect(mock_mailer).to have_received(:deliver_later).exactly(1).time
+      end
+
+      it "deletes the file afterwards" do
+        mock_mailer = double(GiasEstablishmentImportMailer, deliver_later: true)
+        expect(GiasEstablishmentImportMailer).to receive(:import_notification).and_return(mock_mailer)
+
+        subject.perform_now(file_path, user)
+        expect(File).to have_received(:delete).with(file_path)
       end
     end
   end
