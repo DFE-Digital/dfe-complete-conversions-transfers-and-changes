@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 42][release-42]
+
 ### Added
 
 - Add the "Add new transfer" button for users who can add new projects
@@ -1322,7 +1324,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-41...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-42...HEAD
+[release-42]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-41...release-42
 [release-41]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-40...release-41
 [release-40]:
