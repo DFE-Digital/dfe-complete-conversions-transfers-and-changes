@@ -6,18 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 43][release-43]
+
 ### Fixed
 
 - Fix an error that meant outgoing trust UKPRNs were not being properly
   validated for Transfers. We were not checking the outgoing trust actually
   existed.
 
+### Added
+
+- setup a maintenance page
+
 ## [Release 42][release-42]
 
 ### Added
 
 - Add the "Add new transfer" button for users who can add new projects
-- setup a maintenance page
 
 ### Changed
 
@@ -1333,7 +1338,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-42...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-43...HEAD
+[release-43]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-42...release-43
 [release-42]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-41...release-42
 [release-41]:
