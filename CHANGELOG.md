@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Fix an error that meant outgoing trust UKPRNs were not being properly
+  validated for Transfers. We were not checking the outgoing trust actually
+  existed.
+
 ## [Release 42][release-42]
 
 ### Added

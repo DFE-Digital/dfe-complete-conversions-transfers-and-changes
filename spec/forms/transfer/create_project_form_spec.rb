@@ -177,7 +177,7 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     context "when no trust with that UKPRN exists in the API" do
       it "is invalid" do
         form = build(:create_transfer_project_form)
-        mock_trust_not_found(ukprn: form.incoming_trust_ukprn)
+        mock_trust_not_found(ukprn: form.outgoing_trust_ukprn)
 
         expect(form).to be_invalid
       end
