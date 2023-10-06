@@ -12,3 +12,12 @@ en:
         title: URNs added
       local_authorities:
         title: Local authorities
+  errors:
+    upload:
+      attributes:
+        uploaded_file:
+          file_size: Please upload a file smaller than 150Mb
+          empty_file: The file you have supplied is empty
+          no_file: Please upload a file
+          file_type: We can only accept CSV files
+          file_headers: The uploaded file does not contain the expected columns
