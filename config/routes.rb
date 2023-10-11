@@ -200,6 +200,15 @@ Rails.application.routes.draw do
     resources :local_authorities, path: "local-authorities", concerns: :has_destroy_confirmation
   end
 
+  namespace :service_support, path: "service-support" do
+    namespace :upload do
+      namespace :gias do
+        get "establishments/new", to: "establishments#new"
+        post "establishments/upload", to: "establishments#upload"
+      end
+    end
+  end
+
   scope :projects do
     namespace :transfers do
       get "new", to: "projects#new"

@@ -9,10 +9,10 @@ RSpec.describe GiasEstablishmentImportMailer do
                 new_records: 1,
                 changed_records: 2,
                 changes: 0,
-                time: Time.now,
+                time: DateTime.now,
                 errors: []}}
     end
-    let(:expected_personalisation) { {result: result} }
+    let(:expected_personalisation) { {result: "Total CSV rows: 10\nNew records: 1\nChanged records: 2\nTime: #{DateTime.now.strftime("%Y-%m-%d %H:%M")}\nErrors: 0\n"} }
 
     subject(:send_mail) { described_class.import_notification(user, result).deliver_now }
 

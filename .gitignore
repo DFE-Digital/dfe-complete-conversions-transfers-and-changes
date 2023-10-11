@@ -103,3 +103,8 @@ tmp/
 
 # Ignore Rspec persisted failure list
 /spec/examples.txt
+
+!/spec/fixtures/files/*.csv
+
+# Upload temp storage
+/storage/uploads/gias/establishments/*.csv
