@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class ServiceSupport::UsersController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       send_new_account_email(@user)
-      redirect_to users_path, notice: I18n.t("user.add.success", email: @user.email)
+      redirect_to service_support_users_path, notice: I18n.t("user.add.success", email: @user.email)
     else
       render :new
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     @user.assign_attributes(user_params)
     if @user.valid?
       @user.save!
-      redirect_to users_path, notice: I18n.t("user.edit.success", email: @user.email)
+      redirect_to service_support_users_path, notice: I18n.t("user.edit.success", email: @user.email)
     else
       render :edit
     end

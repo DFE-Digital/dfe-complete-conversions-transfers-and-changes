@@ -19,7 +19,7 @@
       <td class="govuk-table__cell"><%= t("user.table.body.team_lead.#{account.manage_team}") %></td>
       <td class="govuk-table__cell"><%= last_seen_datetime(account) %></td>
       <td class="govuk-table__cell">
-        <%= link_to t("user.table.body.edit_user_html", user: account.full_name), edit_user_path(account) %>
+        <%= link_to t("user.table.body.edit_user_html", user: account.full_name), edit_service_support_user_path(account) %>
       </td>
     </tr>
   <% end %>

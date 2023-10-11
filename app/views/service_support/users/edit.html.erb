@@ -6,7 +6,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l"><%= t("user.edit.title") %></h1>
 
-    <%= form_with model: @user do |form| %>
+    <%= form_with model: @user, url: service_support_user_path do |form| %>
 
       <%= form.govuk_error_summary %>
 
@@ -31,7 +31,7 @@
       </div>
 
       <%= form.govuk_submit t("user.edit.save.button") do %>
-        <%= link_to t("user.edit.cancel.button"), users_path, class: "govuk-button govuk-button--secondary" %>
+        <%= link_to t("user.edit.cancel.button"), service_support_users_path, class: "govuk-button govuk-button--secondary" %>
       <% end %>
 
     <% end %>
