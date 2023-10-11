@@ -30,9 +30,9 @@ class Transfer::TaskList < ::BaseTaskList
       {
         identifier: :get_ready_for_opening,
         tasks: [
-          Transfer::Task::ConditionsMetTaskForm,
+          Transfer::Task::RpaPolicyTaskForm,
           Transfer::Task::ConfirmIncomingTrustHasCompletedAllActionsTaskForm,
-          Transfer::Task::RpaPolicyTaskForm
+          Transfer::Task::ConditionsMetTaskForm
         ]
       },
       {
