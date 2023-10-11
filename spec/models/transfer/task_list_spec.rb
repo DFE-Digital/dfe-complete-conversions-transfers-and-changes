@@ -22,9 +22,9 @@ RSpec.describe Transfer::TaskList do
         :deed_termination_church_agreement,
         :commercial_transfer_agreement,
         :closure_or_transfer_declaration,
-        :conditions_met,
-        :confirm_incoming_trust_has_completed_all_actions,
         :rpa_policy,
+        :confirm_incoming_trust_has_completed_all_actions,
+        :conditions_met,
         :redact_and_send_documents
       ]
 

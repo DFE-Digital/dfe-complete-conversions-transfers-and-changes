@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Allow service support users to upload GIAS data for asynchronous ingestion
 
+### Changed
+
+- Reorder tasks in the "Get ready to transfer" section in the Transfer task
+  list.
+
 ## [Release 43][release-43]
 
 ### Fixed
