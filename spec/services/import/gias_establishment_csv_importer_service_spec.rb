@@ -50,8 +50,8 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       result = service.import!
 
       expect(result[:total_csv_rows]).to eql(2)
-      expect(result[:new_records]).to eql(1)
-      expect(result[:changed_records]).to eql(1)
+      expect(result[:new_establishment_records]).to eql(1)
+      expect(result[:changed_establishment_records]).to eql(1)
       expect(result[:time]).to be_truthy
     end
 
@@ -62,7 +62,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       service = described_class.new(path)
 
       result = service.import!
-      changes = result.dig(:changes, 144865)
+      changes = result.dig(:changes, :establishment, 144865)
 
       expect(changes.dig("name", :new_value)).to eql("Lightcliffe C of E Primary School")
       expect(changes.dig("name", :previous_value)).to eql("School name")
@@ -95,7 +95,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result.dig(:errors, :"144731")).to eq("Could not find or create a record for urn: 144731")
+      expect(result.dig(:errors, :establishment, "144731")).to eq("Could not find or create a record for urn: 144731")
     end
 
     it "returns a hash that includes an error if any row cannot be updated" do
@@ -106,7 +106,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result.dig(:errors, :"144731")).to eq("Could not update record for urn: 144731")
+      expect(result.dig(:errors, :establishment, "144731")).to eq("Could not update establishment record for urn: 144731")
     end
   end
 
@@ -133,7 +133,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
     end
   end
 
-  describe "#csv_row_attributes" do
+  describe "#establishment_csv_row_attributes" do
     it "returns the values that are required by the importer and nothing else" do
       row = CSV::Row.new(
         ["URN", "Other column"],
@@ -141,7 +141,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       )
 
       service = described_class.new("/path")
-      row_attributes = service.csv_row_attributes(row)
+      row_attributes = service.establishment_csv_row_attributes(row)
 
       expect(row_attributes["urn"]).to eql "123456"
       expect(row_attributes.keys).not_to include("Other column")
@@ -155,7 +155,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       )
 
       service = described_class.new("/path")
-      row_attributes = service.csv_row_attributes(row)
+      row_attributes = service.establishment_csv_row_attributes(row)
 
       expect(row_attributes.keys).to include("urn")
       expect(row_attributes.keys).to include("local_authority_code")

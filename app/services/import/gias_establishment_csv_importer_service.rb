@@ -2,7 +2,7 @@ class Import::GiasEstablishmentCsvImporterService
   require "csv"
   require "benchmark"
 
-  IMPORT_MAP = {
+  ESTABLISHMENT_IMPORT_MAP = {
     urn: "URN",
     local_authority_code: "LA (code)",
     local_authority_name: "LA (name)",
@@ -66,9 +66,9 @@ class Import::GiasEstablishmentCsvImporterService
     result
   end
 
-  def csv_row_attributes(row)
+  def establishment_csv_row_attributes(row)
     attributes = {}
-    IMPORT_MAP.each_pair do |key, value|
+    ESTABLISHMENT_IMPORT_MAP.each_pair do |key, value|
       attributes[key.to_s] = row.field(value)
     end
     attributes
@@ -79,7 +79,7 @@ class Import::GiasEstablishmentCsvImporterService
     headers = CSV.parse_line(file)
     return false if headers.nil?
 
-    IMPORT_MAP.values.to_set.subset?(headers.to_set)
+    ESTABLISHMENT_IMPORT_MAP.values.to_set.subset?(headers.to_set)
   end
 
   private def import_rows
@@ -89,19 +89,19 @@ class Import::GiasEstablishmentCsvImporterService
         establishment = Gias::Establishment.find_or_create_by(urn: urn)
 
         unless establishment
-          @errors[urn.to_sym] = "Could not find or create a record for urn: #{urn}"
+          @errors[:establishment][urn.to_sym] = "Could not find or create a record for urn: #{urn}"
           next
         end
 
-        csv_attributes = csv_row_attributes(row)
-        row_changes = changed_attributes(csv_attributes, establishment.attributes)
+        establishment_csv_attributes = establishment_csv_row_attributes(row)
+        establishment_row_changes = changed_attributes(establishment_csv_attributes, establishment.attributes)
 
-        if row_changes.any?
-          unless establishment.update(csv_attributes)
-            @errors[urn.to_sym] = "Could not update record for urn: #{urn}"
-            next
+        if establishment_row_changes.any?
+          unless establishment.update(establishment_csv_attributes)
+            @errors[:establishment][urn.to_sym] = "Could not update establishment record for urn: #{urn}"
+           next
           end
-          @changed_rows[establishment.urn] = row_changes
+          @changed_rows[:establishment][establishment.urn] = establishment_row_changes
         end
 
         @total += 1
@@ -113,18 +113,22 @@ class Import::GiasEstablishmentCsvImporterService
 
   private def reset_import_stats
     @total = 0
-    @changed_rows = {}
-    @current_records = Gias::Establishment.count
+    @changed_rows = {
+      establishment: {}
+    }
+    @current_establishment_records = Gias::Establishment.count
     @time = nil
-    @errors = {}
+    @errors = {
+      establishment: {}
+    }
   end
 
   private def import_result
-    records_after_import = Gias::Establishment.count
+    establishment_records_after_import = Gias::Establishment.count
     {
       total_csv_rows: @total,
-      new_records: records_after_import - @current_records,
-      changed_records: @changed_rows.count - (records_after_import - @current_records),
+      new_establishment_records: establishment_records_after_import - @current_establishment_records,
+      changed_establishment_records: @changed_rows[:establishment].count - (establishment_records_after_import - @current_establishment_records),
       changes: @changed_rows,
       time: @time,
       errors: @errors
