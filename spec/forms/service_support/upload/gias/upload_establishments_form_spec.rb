@@ -14,7 +14,7 @@ RSpec.describe ServiceSupport::Upload::Gias::UploadEstablishmentsForm do
   end
 
   it "generates a unique filename" do
-    expected_file_path = Rails.root.join("storage", "uploads", "gias", "establishments", "gias_establishments_#{DateTime.now.strftime("%Y-%m-%d-%H:%M:%s")}.csv")
+    expected_file_path = Rails.root.join("storage", "uploads", "gias", "establishments", "gias_establishments_#{DateTime.now.strftime("%Y-%m-%d-%H%M%S")}.csv")
     form = described_class.new(uploaded_file, user)
     expect(form.file_path).to eq(expected_file_path)
   end
