@@ -25,7 +25,7 @@ class ServiceSupport::Upload::Gias::UploadEstablishmentsForm
   end
 
   def file_path
-    Rails.root.join("storage", "uploads", "gias", "establishments", "gias_establishments_#{DateTime.now.strftime("%Y-%m-%d-%H:%M:%s")}.csv")
+    Rails.root.join("storage", "uploads", "gias", "establishments", "gias_establishments_#{DateTime.now.strftime("%Y-%m-%d-%H%M%S")}.csv")
   end
 
   private def file_present
