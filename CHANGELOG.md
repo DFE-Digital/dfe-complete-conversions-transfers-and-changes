@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Content: School becomes academy in master funding agreement and articles of association transfers tasks
 - Content: School becomes academy in deed of variation transfers task
 - Content: improve grammar in action text for deed of termination for MFA transfers task
+- Content: improve grammar in action text for deed of termination for CSA transfers task
 
 ## [Release 43][release-43]
 

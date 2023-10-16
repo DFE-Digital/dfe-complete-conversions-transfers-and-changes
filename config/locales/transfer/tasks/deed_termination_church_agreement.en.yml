@@ -33,7 +33,7 @@ en:
         signed_diocese:
           title: Signed by diocese
         saved:
-          title: Saved in academy and outgoing trust SharePoint folder
+          title: Saved in the academy and outgoing trust SharePoint folders
 
         sign_section:
           title: Signed by the Secretary of State
@@ -49,4 +49,4 @@ en:
         signed_secretary_state:
           title: Signed on behalf of Secretary of State
         saved_after_signing_by_secretary_state:
-          title: Saved in academy SharePoint folder
+          title: Saved in the academy SharePoint folder
