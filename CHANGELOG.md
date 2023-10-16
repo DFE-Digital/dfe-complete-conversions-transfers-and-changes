@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Move the Users admin section into the `service-support` namespace
 - Content: Transfers handover task tweaks
 - Content: Transfers stakeholder kick-off task tweaks
+- Content: Add missing T to content in new URN transfers task
 
 ## [Release 43][release-43]
 

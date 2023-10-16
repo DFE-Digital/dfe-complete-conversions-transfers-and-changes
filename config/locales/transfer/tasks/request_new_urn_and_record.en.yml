@@ -23,7 +23,7 @@ en:
           title: Receive the new record information
           hint:
             html:
-              <p>he Business Support team will send you the URN and LAESTAB numbers once they have been created.</p>
+              <p>The Business Support team will send you the URN and LAESTAB numbers once they have been created.</p>
           guidance_link: Understanding the DfE and LAESTAB numbers
           guidance:
             html
