@@ -14,7 +14,7 @@ en:
           guidance_link: Help checking and updating the master funding agreement
           guidance:
             html:
-              <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+              <p>Changes that personalise the model documents to an academy or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
               <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
               <h3>Changing an old master funding agreement</h3>
               <p>If the trust uses a master funding agreement from 2018 or earlier, they have two options.</p>
@@ -51,7 +51,7 @@ en:
         signed:
           title: Signed by incoming trust
         saved:
-          title: Saved in academy and incoming trust SharePoint folders
+          title: Saved in the academy and incoming trust SharePoint folders
         signed_secretary_state:
           title: Signed on behalf of Secretary of State
         not_applicable:
