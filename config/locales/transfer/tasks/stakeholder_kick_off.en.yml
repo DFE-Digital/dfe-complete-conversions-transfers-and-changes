@@ -48,7 +48,7 @@ en:
           hint:
             html:
               <p>Everyone should have agreed to and know the confirmed transfer date.</p>
-              <p>You only need to enter a month and year. All acadmies transfer on the first day of the month.</p>
+              <p>You only need to enter a month and year. All academies transfer on the first day of the month.</p>
           errors:
             format: Enter a valid confirmed transfer date
             in_the_future: Transfer date must be in the future

@@ -5,7 +5,7 @@ en:
         title: Church supplemental agreement
         hint:
           html:
-            <p>This document is only required for Church of England and Catholic acadmies.</p>
+            <p>This document is only required for Church of England and Catholic academies.</p>
             <p>Any existing church supplemetnal agreements should be terminated during a transfer and a new one written to replace it.</p>
             <p>This can be done by deed of termination or deed of novation and variation. The department prefers to use a deed of termination.</p>
         not_applicable:
@@ -41,4 +41,4 @@ en:
         signed_secretary_state:
           title: Signed on behalf of Secretary of State
         saved_after_signing_by_secretary_state:
-          title: Saved in academy SharePoint folder
+          title: Saved in the academy SharePoint folder
