@@ -95,7 +95,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result.dig(:errors, 144731)).to eq("Could not find or create a record for urn: 144731")
+      expect(result.dig(:errors, :"144731")).to eq("Could not find or create a record for urn: 144731")
     end
 
     it "returns a hash that includes an error if any row cannot be updated" do
@@ -106,7 +106,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result.dig(:errors, 144731)).to eq("Could not update record for urn: 144731")
+      expect(result.dig(:errors, :"144731")).to eq("Could not update record for urn: 144731")
     end
   end
 
