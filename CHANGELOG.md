@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Allow service support users to upload GIAS data for asynchronous ingestion
+- Content: Adding hint text to transfers supplemental funding task to match
+  conversions
 
 ### Changed
 
@@ -17,6 +19,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The file name used for the GIAS Establishment import data only includes the
   seconds this prevents naming errors.
 - Move the Users admin section into the `service-support` namespace
+- Content: Transfers handover task tweaks
+- Content: Transfers stakeholder kick-off task tweaks
+- Content: Add missing T to content in new URN transfers task
+- Content: Change to action text in Form M and Land consent letter transfers
+  tasks
+- Content: Correcting spelling mistake in deed of novation transfers task
+- Content: Fixed spelling error in church supplemental and kick-off transfers
+  tasks
+- Content: School becomes academy in master funding agreement and articles of
+  association transfers tasks
+- Content: School becomes academy in deed of variation transfers task
+- Content: improve grammar in action text for deed of termination for MFA
+  transfers task
+- Content: improve grammar in action text for deed of termination for CSA
+  transfers task
+- Content: change "may" to "might" in commercial transfer agreement transfers
+  task to improve clairty
+- Content: improve grammar in closure declaration transfer task
+- Content: correct casing for team names in transfers version of all condition
+  met task
+- Content: change main contact to primary contact in confirm incoming trusts has
+  completed actions transfers task
 
 ## [Release 43][release-43]
 

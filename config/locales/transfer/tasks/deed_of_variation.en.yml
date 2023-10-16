@@ -35,9 +35,9 @@ en:
         cleared:
           title: Cleared
         signed:
-          title: Signed by school or trust
+          title: Signed by academy or incoming trust
         saved:
-          title: Saved in the school's SharePoint folder
+          title: Saved in the academy SharePoint folder
         sent:
           title: Sent to team leader or deputy director
         signed_secretary_state:

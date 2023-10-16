@@ -19,7 +19,7 @@ en:
           guidance_link: Help checking for changes
           guidance:
             html:
-              <p>Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
+              <p>Changes that personalise the model documents to an academy or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
               <p>You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
 
         received:
@@ -27,8 +27,8 @@ en:
         cleared:
           title: Cleared
         signed:
-          title: Signed by school or trust
+          title: Signed by academy or incoming trust
         saved:
-          title: Saved in the school's SharePoint folder
+          title: Saved in the academy SharePoint folder
         not_applicable:
           title: Not applicable
