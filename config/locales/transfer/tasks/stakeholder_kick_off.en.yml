@@ -5,13 +5,13 @@ en:
         title: External stakeholder kick-off
         hint:
           html:
-            <p>This is where you make sure everyone involved in the transfer knows what they need to do, and when to do it, so the school can transfer on time.</p>
+            <p>This is where you make sure everyone involved in the transfer knows what they need to do, and when to do it, so the academy can transfer on time.</p>
             <p>This is also a good opportunity to talk about common problems and how to avoid them.</p>
 
         introductory_emails:
           title: Send introductory emails
           hint:
-            html: <p>Email the outgoing trust, the incoming trust and their solicitors. Email the diocese too if this is a faith school.</p>
+            html: <p>Email the outgoing trust, the incoming trust and their solicitors. Email the diocese too if this is a faith academy.</p>
           guidance_link: What to include in introductory emails
           guidance:
             html:
@@ -25,7 +25,7 @@ en:
               <li>agree ways of working</li>
               </ul>
               <p>You should aim to do this in the first week after you have been assigned the project.</p>
-              <p>Ideally the kick-off meeting should take place within the first two weeks.</p>
+              <p>Ideally the kick-off meeting should take place within the first 2 weeks.</p>
         setup_meeting:
           title: Send invites to the kick-off meeting or call
           hint:
