@@ -5,7 +5,7 @@ en:
         title: Confirm all conditions have been met
         hint:
           html:
-            The deadline for meeting all conditions is in the email you got from the AIOP (Academy intervention operational policy) team. All conditions must be met by the the deadline or the academy will not transfer on %{transfer_date}.
+            The deadline for meeting all conditions is in the email you got from the AIOP (Academy Intervention Operational Policy) team. All conditions must be met by the the deadline or the academy will not transfer on %{transfer_date}.
         guidance_link: How to check all conditions have been met
         guidance:
           html:
@@ -19,7 +19,7 @@ en:
           hint:
             html:
               <p>This will change the transfer's status on the By Month project list.</p>
-              <p>AIOP and ESFA (Educational and Skills Funding Agency) use it to prepare and send GAG (general annual grant) funding.</p>
+              <p>AIOP and ESFA (Education and Skills Funding Agency) use it to prepare and send GAG (general annual grant) funding.</p>
           guidance_link: What to do if conditions are not met
           guidance:
             html:
