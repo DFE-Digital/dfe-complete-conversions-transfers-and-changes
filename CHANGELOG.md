@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Content: School becomes academy in deed of variation transfers task
 - Content: improve grammar in action text for deed of termination for MFA transfers task
 - Content: improve grammar in action text for deed of termination for CSA transfers task
+- Content: change "may" to "might" in commercial transfer agreement transfers task to improve clairty
 
 ## [Release 43][release-43]
 
