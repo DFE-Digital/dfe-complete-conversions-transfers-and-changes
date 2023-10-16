@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Allow service support users to upload GIAS data for asynchronous ingestion
+- Content: Adding hint text to transfers supplemental funding task to match conversions
 
 ### Changed
 

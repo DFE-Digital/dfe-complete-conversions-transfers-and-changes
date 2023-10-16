@@ -3,6 +3,8 @@ en:
     task:
       supplemental_funding_agreement:
         title: Supplemental funding agreement
+        hint:
+          html: <p>Check the supplemental funding agreement for changes from the model documents.</p>
         clear_section:
           title: Check and clear the supplemental funding agreement
           hint:
