@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if registered_user
       create_session
 
-      return redirect_to users_team_path if current_user.team.nil?
+      return redirect_to service_support_users_team_path if current_user.team.nil?
 
       redirect_to root_path
     else

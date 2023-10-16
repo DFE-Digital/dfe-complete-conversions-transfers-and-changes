@@ -207,6 +207,12 @@ Rails.application.routes.draw do
         post "establishments/upload", to: "establishments#upload"
       end
     end
+    resources :users, only: %w[new create edit update]
+    get "users", to: redirect("service-support/users/active")
+    get "users/active", to: "users#index_active"
+    get "users/inactive", to: "users#index_inactive"
+    get "users/team", to: "users#set_team"
+    post "users/team", to: "users#update_team"
   end
 
   scope :projects do
@@ -215,13 +221,6 @@ Rails.application.routes.draw do
       post "/", to: "projects#create"
     end
   end
-
-  resources :users, only: %w[new create edit update]
-  get "users", to: redirect("users/active")
-  get "users/active", to: "users#index_active"
-  get "users/inactive", to: "users#index_inactive"
-  get "users/team", to: "users#set_team"
-  post "users/team", to: "users#update_team"
 
   # Defines the root path route ("/")
   root "root#home"

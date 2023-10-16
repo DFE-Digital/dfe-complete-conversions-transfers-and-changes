@@ -7,7 +7,7 @@
     <h1 class="govuk-heading-l"><%= t("user.set_team.title") %></h1>
     <%= t("user.set_team.hint_html") %>
 
-    <%= form_with model: @user, url: users_team_path, method: :post do |form| %>
+    <%= form_with model: @user, url: service_support_users_team_path, method: :post do |form| %>
       <%= form.govuk_error_summary %>
 
       <%= form.govuk_collection_radio_buttons :team,

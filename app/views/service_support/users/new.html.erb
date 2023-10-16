@@ -7,7 +7,7 @@
     <h1 class="govuk-heading-l"><%= t("user.add.title") %></h1>
     <%= t("user.add.hint_html") %>
 
-    <%= form_with model: @user do |form| %>
+    <%= form_with model: @user, url: service_support_users_path do |form| %>
 
       <%= form.govuk_error_summary %>
 
@@ -27,7 +27,7 @@
       </div>
 
       <%= form.govuk_submit t("user.add.save.button") do %>
-        <%= link_to t("user.add.cancel.button"), users_path, class: "govuk-button govuk-button--secondary" %>
+        <%= link_to t("user.add.cancel.button"), service_support_users_path, class: "govuk-button govuk-button--secondary" %>
       <% end %>
 
     <% end %>

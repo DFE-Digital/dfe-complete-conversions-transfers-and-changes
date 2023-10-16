@@ -10,7 +10,7 @@ RSpec.feature "Users can manage user accounts" do
   scenario "by viewing a list of the user accounts" do
     other_user = create(:user, first_name: "Other", last_name: "User", email: "other.user@education.gov.uk")
 
-    visit users_path
+    visit service_support_users_path
 
     within("tbody") do
       expect(page).to have_content(user.full_name)
@@ -21,7 +21,7 @@ RSpec.feature "Users can manage user accounts" do
   end
 
   scenario "new users can be added" do
-    visit users_path
+    visit service_support_users_path
 
     click_on "Add a new user"
     fill_in "First name", with: "First"
@@ -41,7 +41,7 @@ RSpec.feature "Users can manage user accounts" do
   end
 
   scenario "invalid users cannot be added" do
-    visit users_path
+    visit service_support_users_path
 
     click_on "Add a new user"
     fill_in "First name", with: "First"
@@ -58,7 +58,7 @@ RSpec.feature "Users can manage user accounts" do
   scenario "existing users can be edited" do
     existing_user = create(:user, :regional_delivery_officer, team: "london")
 
-    visit edit_user_path(existing_user)
+    visit edit_service_support_user_path(existing_user)
 
     choose "North East"
     click_on "Save user"
@@ -69,7 +69,7 @@ RSpec.feature "Users can manage user accounts" do
   scenario "exisiting users cannot be made invalid" do
     existing_user = create(:user, :regional_delivery_officer, team: "london")
 
-    visit edit_user_path(existing_user)
+    visit edit_service_support_user_path(existing_user)
 
     fill_in "First name", with: ""
     click_on "Save user"
@@ -80,7 +80,7 @@ RSpec.feature "Users can manage user accounts" do
   scenario "existing users can be deactivated" do
     existing_user = create(:user)
 
-    visit edit_user_path(existing_user)
+    visit edit_service_support_user_path(existing_user)
     uncheck "Active"
 
     click_on "Save user"
@@ -97,7 +97,7 @@ RSpec.feature "Users can manage user accounts" do
   scenario "inactive users can be activated" do
     existing_user = create(:inactive_user)
 
-    visit edit_user_path(existing_user)
+    visit edit_service_support_user_path(existing_user)
     check "Active"
 
     click_on "Save user"
@@ -123,7 +123,7 @@ RSpec.feature "Users can manage user accounts" do
 
       sign_in_with_user(user)
 
-      visit users_path
+      visit service_support_users_path
 
       within("tbody") do
         expect(page).to have_content("No team")
@@ -137,7 +137,7 @@ RSpec.feature "Users can manage user accounts" do
 
     sign_in_with_user(user)
 
-    visit users_path
+    visit service_support_users_path
 
     within("thead") do
       expect(page).to have_content("Last seen")

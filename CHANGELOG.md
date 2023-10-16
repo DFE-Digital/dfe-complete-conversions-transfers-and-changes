@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   list.
 - The file name used for the GIAS Establishment import data only includes the
   seconds this prevents naming errors.
+- Move the Users admin section into the `service-support` namespace
 
 ## [Release 43][release-43]
 
