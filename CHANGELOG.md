@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Content: Correcting spelling mistake in deed of novation transfers task
 - Content: Fixed spelling error in church supplemental and kick-off transfers tasks
 - Content: School becomes academy in master funding agreement and articles of association transfers tasks
+- Content: School becomes academy in deed of variation transfers task
 
 ## [Release 43][release-43]
 
