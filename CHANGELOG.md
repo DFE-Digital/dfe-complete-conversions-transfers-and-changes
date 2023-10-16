@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Content: change "may" to "might" in commercial transfer agreement transfers task to improve clairty
 - Content: improve grammar in closure declaration transfer task
 - Content: correct casing for team names in transfers version of all condition met task
+- Content: change main contact to primary contact in confirm incoming trusts has completed actions transfers task
 
 ## [Release 43][release-43]
 

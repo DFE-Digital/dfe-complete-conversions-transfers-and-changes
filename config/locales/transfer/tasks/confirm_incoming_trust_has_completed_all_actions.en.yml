@@ -6,7 +6,7 @@ en:
         hint:
           html: Contact the incoming trust to check they have completed all their tasks. Save their responses in the academy and incoming trust SharePoint folders.
         emailed:
-          title: Email the main contact for the transfer
+          title: Email the primary contact for the incoming trust
           guidance_link: How to structure your email
           guidance:
             html:
