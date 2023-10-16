@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Content: improve grammar in action text for deed of termination for MFA transfers task
 - Content: improve grammar in action text for deed of termination for CSA transfers task
 - Content: change "may" to "might" in commercial transfer agreement transfers task to improve clairty
+- Content: Improve grammar in closure declaration transfer task
 
 ## [Release 43][release-43]
 
