@@ -110,6 +110,7 @@ class Import::GiasEstablishmentCsvImporterService
       CSV.foreach(@path, headers: true, encoding: ENCODING) do |row|
         urn = row.fetch("URN")
         establishment = Gias::Establishment.find_or_create_by(urn: urn)
+        contact = Contact::Establishment.find_or_create_by(establishment_urn: urn)
 
         unless establishment
           @errors[:establishment][urn.to_sym] = "Could not find or create a record for urn: #{urn}"
@@ -119,12 +120,22 @@ class Import::GiasEstablishmentCsvImporterService
         establishment_csv_attributes = establishment_csv_row_attributes(row)
         establishment_row_changes = changed_attributes(establishment_csv_attributes, establishment.attributes)
 
+        contact_csv_attributes = contact_csv_row_attributes(row)
+        contact_row_changes = changed_attributes(contact_csv_attributes, contact.attributes)
+
         if establishment_row_changes.any?
           unless establishment.update(establishment_csv_attributes)
             @errors[:establishment][urn.to_sym] = "Could not update establishment record for urn: #{urn}"
-           next
+            next
           end
           @changed_rows[:establishment][establishment.urn] = establishment_row_changes
+
+          if contact_row_changes.any?
+            unless contact.update(contact_csv_attributes)
+              @errors[:contact][urn.to_sym] = "Could not update contact record for establishment_urn: #{urn}"
+            end
+            @changed_rows[:contact][contact.establishment_urn] = contact_row_changes
+          end
         end
 
         @total += 1
@@ -137,21 +148,27 @@ class Import::GiasEstablishmentCsvImporterService
   private def reset_import_stats
     @total = 0
     @changed_rows = {
-      establishment: {}
+      establishment: {},
+      contact: {}
     }
     @current_establishment_records = Gias::Establishment.count
+    @current_contact_records = Contact::Establishment.count
     @time = nil
     @errors = {
-      establishment: {}
+      establishment: {},
+      contact: {}
     }
   end
 
   private def import_result
     establishment_records_after_import = Gias::Establishment.count
+    contact_records_after_import = Contact::Establishment.count
     {
       total_csv_rows: @total,
       new_establishment_records: establishment_records_after_import - @current_establishment_records,
+      new_contact_records: contact_records_after_import - @current_contact_records,
       changed_establishment_records: @changed_rows[:establishment].count - (establishment_records_after_import - @current_establishment_records),
+      changed_contact_records: @changed_rows[:contact].count - (contact_records_after_import - @current_contact_records),
       changes: @changed_rows,
       time: @time,
       errors: @errors
