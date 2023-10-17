@@ -11,11 +11,11 @@ class GiasEstablishmentImportMailer < ApplicationMailer
 
   private def format_result(result)
     <<~TEXT
-      Total CSV rows: #{result[:result][:total_csv_rows]}
-      New records: #{result[:result][:new_records]}
-      Changed records: #{result[:result][:changed_records]}
-      Time: #{result[:result][:time].strftime("%Y-%m-%d %H:%M")}
-      Errors: #{result[:result][:errors].count}
+      Total CSV rows: #{result[:total_csv_rows]}
+      New records: #{result[:new_records]}
+      Changed records: #{result[:changed_records]}
+      Time: #{result[:time]}
+      Errors: #{result[:errors].count}
     TEXT
   end
 end

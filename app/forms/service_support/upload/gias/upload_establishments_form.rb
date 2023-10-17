@@ -19,9 +19,10 @@ class ServiceSupport::Upload::Gias::UploadEstablishmentsForm
   end
 
   def save
-    FileUtils.copy_file(@uploaded_file.path, file_path)
+    file_path_with_timestamp = file_path
+    FileUtils.copy_file(@uploaded_file.path, file_path_with_timestamp)
 
-    Import::GiasEstablishmentImportJob.set(wait_until: Date.tomorrow.in_time_zone.change(hour: IMPORT_TIME)).perform_later(file_path.to_s, @user)
+    Import::GiasEstablishmentImportJob.set(wait_until: Date.tomorrow.in_time_zone.change(hour: IMPORT_TIME)).perform_later(file_path_with_timestamp.to_s, @user)
   end
 
   def file_path

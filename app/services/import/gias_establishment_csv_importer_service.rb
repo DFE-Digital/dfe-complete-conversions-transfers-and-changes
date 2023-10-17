@@ -89,7 +89,7 @@ class Import::GiasEstablishmentCsvImporterService
         establishment = Gias::Establishment.find_or_create_by(urn: urn)
 
         unless establishment
-          @errors[urn.to_i] = "Could not find or create a record for urn: #{urn}"
+          @errors[urn.to_sym] = "Could not find or create a record for urn: #{urn}"
           next
         end
 
@@ -98,7 +98,7 @@ class Import::GiasEstablishmentCsvImporterService
 
         if row_changes.any?
           unless establishment.update(csv_attributes)
-            @errors[urn.to_i] = "Could not update record for urn: #{urn}"
+            @errors[urn.to_sym] = "Could not update record for urn: #{urn}"
             next
           end
           @changed_rows[establishment.urn] = row_changes
