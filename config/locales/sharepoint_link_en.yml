@@ -1,0 +1,8 @@
+en:
+  project:
+    edit:
+      labels:
+        school_sharepoint_link: School SharePoint folder link
+        incoming_trust_sharepoint_link: Incoming trust SharePoint folder link
+      update:
+        success: SharePoint link has been updated
