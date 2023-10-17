@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Allow service support users to upload GIAS data for asynchronous ingestion
 - Content: Adding hint text to transfers supplemental funding task to match
   conversions
+- Content: Bullet point guidance to conversion handover notes on add a
+  conversion page about SFSO lead's name
 
 ### Changed
 

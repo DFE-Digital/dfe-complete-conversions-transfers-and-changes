@@ -66,12 +66,13 @@ en:
     new:
       handover_comments_label: Handover comments
       handover_comments_hint:
-        <p class="govuk-body">You should give a brief overview of how the project has progressed so far, including any issues or concerns.</p>
-        <p class="govuk-body">Include information about whether the:</p>
+        <p class="govuk-body">You must describe how the project has progressed so far and highlight any issues or concerns.</p>
+        <p class="govuk-body">Include information about:</p>
               <ul class="govuk-list govuk-list--bullet">
-                <li>provisional conversion date has been discussed with the local authority</li>
-                <li>local authority proforma has been received or requested</li>
-                <li>introduction and next steps email has been sent to external stakeholders</li>
+                <li>whether the provisional conversion date has been discussed with the local authority</li>
+                <li>if the local authority proforma has been received or requested</li>
+                <li>who the Schools Financial Support and Oversight lead is</li>
+                <li>if the introduction and next steps email has been sent to external stakeholders</li>
               </ul>
     academy_urn:
       title: Create academy URN for %{school_name} conversion
