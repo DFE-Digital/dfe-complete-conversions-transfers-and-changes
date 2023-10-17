@@ -30,6 +30,15 @@ class Import::GiasEstablishmentCsvImporterService
     parliamentary_constituency_name: "ParliamentaryConstituency (name)"
   }.freeze
 
+  CONTACT_IMPORT_MAP = {
+    title: "HeadPreferredJobTitle",
+    first_name: "HeadFirstName",
+    last_name: "HeadLastName",
+    email: "HeadEmail",
+    establishment_urn: "URN",
+    organisation_name: "EstablishmentName"
+  }.freeze
+
   ENCODING = "ISO-8859-1"
 
   def initialize(path)
@@ -71,6 +80,20 @@ class Import::GiasEstablishmentCsvImporterService
     ESTABLISHMENT_IMPORT_MAP.each_pair do |key, value|
       attributes[key.to_s] = row.field(value)
     end
+    attributes
+  end
+
+  def contact_csv_row_attributes(row)
+    attributes = {}
+    CONTACT_IMPORT_MAP.each_pair do |key, value|
+      next if key.to_s == "first_name"
+      if key.to_s == "last_name"
+        attributes["name"] = "#{row.field("HeadFirstName")} #{row.field("HeadLastName")}"
+      else
+        attributes[key.to_s] = row.field(value)
+      end
+    end
+    attributes["category"] = "school_or_academy"
     attributes
   end
 

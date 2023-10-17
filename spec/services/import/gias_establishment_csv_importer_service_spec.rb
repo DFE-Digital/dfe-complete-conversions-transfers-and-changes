@@ -162,6 +162,36 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
     end
   end
 
+  describe "#contact_csv_row_attributes" do
+    it "returns the values that are required by the importer and nothing else" do
+      row = CSV::Row.new(
+        ["URN", "Other column"],
+        ["123456", "not interested"]
+      )
+
+      service = described_class.new("/path")
+      row_attributes = service.contact_csv_row_attributes(row)
+
+      expect(row_attributes["establishment_urn"]).to eql "123456"
+      expect(row_attributes.keys).not_to include("Other column")
+      expect(row_attributes.values).not_to include("not interested")
+    end
+
+    it "maps the csv headers to the attributes used by the model" do
+      row = CSV::Row.new(
+        ["URN", "HeadFirstName", "HeadLastName", "HeadEmail"],
+        ["123456", "Bob", "Smith", "bob.smith@school.sch.uk"]
+      )
+
+      service = described_class.new("/path")
+      row_attributes = service.contact_csv_row_attributes(row)
+
+      expect(row_attributes.keys).to include("establishment_urn")
+      expect(row_attributes.keys).to include("name")
+      expect(row_attributes.values).to include("Bob Smith")
+    end
+  end
+
   describe "#changed_attributes" do
     it "returns empty when there is no change" do
       model_attributes = {urn: 123456, name: "A school name"}
