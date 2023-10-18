@@ -18,7 +18,7 @@ must be handled as such!
 
 ## User account
 
-Read the advice in the [user accounts](/doc/user-accounts/md)
+Read the advice in the [user accounts](/doc/user-accounts.md)
 
 With a DfE Active Directory account setup, you will need to create that user in
 the local database in order to authorise the account:
