@@ -48,10 +48,6 @@ gem "govuk_markdown"
 
 gem "faraday"
 
-# sentry.io error reporting 
-gem "sentry-ruby"
-gem "sentry-rails"
-
 # postcode validator
 gem "uk_postcode", "~> 2.1.0"
 
