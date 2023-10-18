@@ -34,20 +34,6 @@ hostname, see:
 
 https://guides.rubyonrails.org/configuring.html#actiondispatch-hostauthorization
 
-`SENTRY_ENV`
-
-This is the environment name that will appear in Sentry, so one of development,
-test or production.
-
-See: https://docs.sentry.io/product/sentry-basics/environments/
-
-`SENTRY_DSN`
-
-This is the 'Client Keys' for the project in Sentry UI, it is a url starting
-https://
-
-See: https://docs.sentry.io/product/sentry-basics/dsn-explainer/
-
 `NO_COVERAGE`
 
 Set this to `true` to stop Simplecov generating coverage reports.

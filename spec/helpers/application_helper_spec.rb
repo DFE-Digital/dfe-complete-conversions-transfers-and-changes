@@ -96,7 +96,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "when not in production" do
       it "returns false" do
         ClimateControl.modify(
-          SENTRY_ENV: "development",
+          USER_ENV: "development",
           GOOGLE_TAG_MANAGER_ID: ""
         ) do
           cookies[:ACCEPT_OPTIONAL_COOKIES] = true
@@ -109,7 +109,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "when there is no tag manager id" do
       it "returns false" do
         ClimateControl.modify(
-          SENTRY_ENV: "production",
+          USER_ENV: "production",
           GOOGLE_TAG_MANAGER_ID: ""
         ) do
           cookies[:ACCEPT_OPTIONAL_COOKIES] = true
@@ -122,7 +122,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "when the user has rejected cookies" do
       it "returns false" do
         ClimateControl.modify(
-          SENTRY_ENV: "production",
+          USER_ENV: "production",
           GOOGLE_TAG_MANAGER_ID: "THISISANID"
         ) do
           cookies[:ACCEPT_OPTIONAL_COOKIES] = false
@@ -135,7 +135,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "when the user has accepted cookies" do
       it "returns true" do
         ClimateControl.modify(
-          SENTRY_ENV: "production",
+          USER_ENV: "production",
           GOOGLE_TAG_MANAGER_ID: "THISISANID"
         ) do
           cookies[:ACCEPT_OPTIONAL_COOKIES] = "true"

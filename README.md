@@ -49,10 +49,6 @@ environment has a dashboard:
 - [test dashboard](https://portal.azure.com/#@platform.education.gov.uk/dashboard/arm/subscriptions/8e6b3792-ae2c-4424-9815-19d6a77b0600/resourcegroups/s184t01-comp/providers/microsoft.portal/dashboards/5918b480-2d54-4540-94c8-bfd73dc3befe-dashboard)
 - [production dashboard](https://portal.azure.com/#@platform.education.gov.uk/dashboard/arm/subscriptions/e8bc9314-d27f-403a-bbe0-6b189d2efad2/resourcegroups/s184p01-comp/providers/microsoft.portal/dashboards/b473541d-3b3b-45d5-b025-97974730e369-dashboard)
 
-Historically we used
-[sentry.io](https://sentry.io/organizations/sdd-n7/projects/complete-conversions-transfers-and-changes/?project=6684508)
-which may still be available.
-
 ## Architecture decision records
 
 You can find the ADRs for this project in [doc/decisions](/doc/decisions).

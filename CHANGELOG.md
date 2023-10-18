@@ -43,6 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   met task
 - Content: change main contact to primary contact in confirm incoming trusts has
   completed actions transfers task
+- Removed any references to Sentry.io
 
 ## [Release 43][release-43]
 
