@@ -5,13 +5,13 @@
 
     <% if @hint %>
       <div class="app-task-hint">
-        <%= @hint %>
+        <%= @hint.html_safe %>
       </div>
     <% end %>
 
     <% if @guidance %>
       <%= govuk_details(summary_text: @guidance_link) do %>
-        <%= @guidance %>
+        <%= @guidance.html_safe %>
       <% end %>
     <% end %>
   </div>
