@@ -50,11 +50,9 @@ RSpec.feature "Users can complete conversion tasks" do
 
         click_on "External stakeholder kick-off"
         page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
-        within(".app-confirmed-conversion-date") do
-          completion_date = Date.today + 1.year
-          fill_in "Month", with: completion_date.month
-          fill_in "Year", with: completion_date.year
-        end
+        completion_date = Date.today + 1.year
+        fill_in "Month", with: completion_date.month
+        fill_in "Year", with: completion_date.year
         click_on I18n.t("task_list.continue_button.text")
         table_row = page.find("li.app-task-list__item", text: "External stakeholder kick-off")
         expect(table_row).to have_content("Completed")
