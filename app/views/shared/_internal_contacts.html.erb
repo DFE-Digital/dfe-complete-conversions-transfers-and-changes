@@ -2,31 +2,31 @@
   <div class="govuk-grid-column-three-quarters" id="projectInternalContacts">
     <h2 class="govuk-heading-l"><%= t("contact.index.internal_contacts") %></h2>
     <%= govuk_summary_list do |summary_list|
-          summary_list.row do |row|
-            row.key { t("contact.internal_contacts.assigned_to") }
-            row.value { display_name(project.assigned_to) }
+          summary_list.with_row do |row|
+            row.with_key { t("contact.internal_contacts.assigned_to") }
+            row.with_value { display_name(project.assigned_to) }
             if project.assigned_to.present?
-              row.action(text: "Email", href: mail_to_path(project.assigned_to.email), visually_hidden_text: "assigned to")
+              row.with_action(text: "Email", href: mail_to_path(project.assigned_to.email), visually_hidden_text: "assigned to")
             end
             if policy(:assignment).assign_assigned_to?
-              row.action(href: project_assign_assigned_to_path(project), visually_hidden_text: "assigned to")
+              row.with_action(href: project_assign_assigned_to_path(project), visually_hidden_text: "assigned to")
             end
           end
-          summary_list.row do |row|
-            row.key { t("contact.internal_contacts.assigned_to_team") }
-            row.value { t("teams.#{project.team}") }
+          summary_list.with_row do |row|
+            row.with_key { t("contact.internal_contacts.assigned_to_team") }
+            row.with_value { t("teams.#{project.team}") }
             if policy(:assignment).assign_assigned_to?
-              row.action(href: project_assign_team_path(project), visually_hidden_text: "assigned to team")
+              row.with_action(href: project_assign_team_path(project), visually_hidden_text: "assigned to team")
             end
           end
-          summary_list.row do |row|
-            row.key { t("contact.internal_contacts.added_by") }
-            row.value { display_name(project.regional_delivery_officer) }
+          summary_list.with_row do |row|
+            row.with_key { t("contact.internal_contacts.added_by") }
+            row.with_value { display_name(project.regional_delivery_officer) }
             if project.regional_delivery_officer.present?
-              row.action(text: "Email", href: mail_to_path(project.regional_delivery_officer.email), visually_hidden_text: "regional delivery officer")
+              row.with_action(text: "Email", href: mail_to_path(project.regional_delivery_officer.email), visually_hidden_text: "regional delivery officer")
             end
             if policy(:assignment).assign_regional_delivery_officer?
-              row.action(href: project_assign_regional_delivery_officer_path(project), visually_hidden_text: "regional delivery officer")
+              row.with_action(href: project_assign_regional_delivery_officer_path(project), visually_hidden_text: "regional delivery officer")
             end
           end
         end %>

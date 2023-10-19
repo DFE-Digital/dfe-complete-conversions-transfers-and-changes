@@ -1,13 +1,13 @@
 <div id="advisoryBoardDetails" class="project-information-block">
   <h3 class="govuk-heading-m"><%= t("project_information.show.advisory_board_details.title") %></h3>
   <%= govuk_summary_list do |summary_list|
-        summary_list.row do |row|
-          row.key { t("project_information.show.advisory_board_details.rows.advisory_board_date") }
-          row.value { project.advisory_board_date.to_date.to_formatted_s(:govuk) }
+        summary_list.with_row do |row|
+          row.with_key { t("project_information.show.advisory_board_details.rows.advisory_board_date") }
+          row.with_value { project.advisory_board_date.to_date.to_formatted_s(:govuk) }
         end
-        summary_list.row do |row|
-          row.key { t("project_information.show.advisory_board_details.rows.advisory_board_conditions") }
-          row.value { simple_format(project.advisory_board_conditions, class: "govuk-body") }
+        summary_list.with_row do |row|
+          row.with_key { t("project_information.show.advisory_board_details.rows.advisory_board_conditions") }
+          row.with_value { simple_format(project.advisory_board_conditions, class: "govuk-body") }
         end
       end %>
 </div>

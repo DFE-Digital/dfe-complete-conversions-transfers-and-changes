@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
   def update_team_leader
     @project.update(team_leader_params)
 
-    redirect_to project_internal_contacts_path(@project), notice: t("project.assign.team_leader.success")
+    redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.team_leader.success")
   end
 
   def assign_regional_delivery_officer
@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
     authorize @project, :update_regional_delivery_officer?
     @project.update(regional_delivery_officer_params)
 
-    redirect_to project_internal_contacts_path(@project), notice: t("project.assign.regional_delivery_officer.success")
+    redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.regional_delivery_officer.success")
   end
 
   def assign_assigned_to
@@ -38,7 +38,7 @@ class AssignmentsController < ApplicationController
 
     return_to = assigned_to_params[:return_to] || project_internal_contacts_path(@project)
 
-    redirect_to return_to, notice: t("project.assign.assigned_to.success")
+    redirect_to return_to, notice: I18n.t("project.assign.assigned_to.success")
   end
 
   def assign_team
@@ -48,7 +48,7 @@ class AssignmentsController < ApplicationController
     authorize @project, :update_assigned_to?
 
     @project.update(assigned_to_team_params)
-    redirect_to project_internal_contacts_path(@project), notice: t("project.assign.assigned_to_team.success")
+    redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.assigned_to_team.success")
   end
 
   private def authorize_user

@@ -23,7 +23,7 @@ class TasksController < ApplicationController
 
     if @task.valid?
       @task.save
-      redirect_to project_tasks_path(@project), notice: t("task_list.save.success")
+      redirect_to project_tasks_path(@project), notice: I18n.t("task_list.save.success")
     else
       render task_view
     end

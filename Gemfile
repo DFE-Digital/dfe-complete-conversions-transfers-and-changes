@@ -40,8 +40,8 @@ gem "omniauth-azure-activedirectory-v2"
 gem "pundit", "~> 2.2"
 
 # Use DfE's design component libraries
-gem "govuk-components", "~> 3.1"
-gem "govuk_design_system_formbuilder", "~> 3.1"
+gem "govuk-components", "~> 4.1", ">= 4.1.1"
+gem "govuk_design_system_formbuilder", "~> 4.1", ">= 4.1.1"
 
 # Use govuk_markdown to transform Markdown into GOV.UK Frontend-compliant HTML
 gem "govuk_markdown"

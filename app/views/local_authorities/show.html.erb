@@ -13,34 +13,34 @@
     </h1>
 
     <%= govuk_summary_list(actions: false) do |summary_list|
-          summary_list.row do |row|
-            row.key { t("local_authority.show.code") }
-            row.value { @local_authority.code }
+          summary_list.with_row do |row|
+            row.with_key { t("local_authority.show.code") }
+            row.with_value { @local_authority.code }
           end
-          summary_list.row do |row|
-            row.key { t("local_authority.show.address") }
-            row.value { address_markup(@local_authority.address) }
+          summary_list.with_row do |row|
+            row.with_key { t("local_authority.show.address") }
+            row.with_value { address_markup(@local_authority.address) }
           end
         end %>
 
     <% if @director_of_child_services %>
       <h2 class="govuk-heading-l"><%= t("local_authority.show.director_of_child_services.heading") %></h2>
       <%= govuk_summary_list(actions: false) do |summary_list|
-            summary_list.row do |row|
-              row.key { t("local_authority.show.director_of_child_services.title") }
-              row.value { @director_of_child_services.title }
+            summary_list.with_row do |row|
+              row.with_key { t("local_authority.show.director_of_child_services.title") }
+              row.with_value { @director_of_child_services.title }
             end
-            summary_list.row do |row|
-              row.key { t("local_authority.show.director_of_child_services.name") }
-              row.value { @director_of_child_services.name }
+            summary_list.with_row do |row|
+              row.with_key { t("local_authority.show.director_of_child_services.name") }
+              row.with_value { @director_of_child_services.name }
             end
-            summary_list.row do |row|
-              row.key { t("local_authority.show.director_of_child_services.email") }
-              row.value { @director_of_child_services.email }
+            summary_list.with_row do |row|
+              row.with_key { t("local_authority.show.director_of_child_services.email") }
+              row.with_value { @director_of_child_services.email }
             end
-            summary_list.row do |row|
-              row.key { t("local_authority.show.director_of_child_services.phone") }
-              row.value { @director_of_child_services.phone }
+            summary_list.with_row do |row|
+              row.with_key { t("local_authority.show.director_of_child_services.phone") }
+              row.with_value { @director_of_child_services.phone }
             end
           end %>
     <% end %>

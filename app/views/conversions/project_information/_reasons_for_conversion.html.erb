@@ -1,15 +1,15 @@
 <div id="reasonsFor" class="project-information-block">
   <h3 class="govuk-heading-m"><%= t("project_information.show.reasons_for.conversion.title") %></h3>
   <%= govuk_summary_list do |summary_list|
-        summary_list.row do |row|
-          row.key { t("project_information.show.reasons_for.directive_academy_order.title") }
-          row.value { t("project_information.show.reasons_for.directive_academy_order.#{project.directive_academy_order}") }
+        summary_list.with_row do |row|
+          row.with_key { t("project_information.show.reasons_for.directive_academy_order.title") }
+          row.with_value { t("project_information.show.reasons_for.directive_academy_order.#{project.directive_academy_order}") }
         end
       end %>
   <%= govuk_summary_list do |summary_list|
-        summary_list.row do |row|
-          row.key { t("project_information.show.reasons_for.two_requires_improvement.conversion_project.title") }
-          row.value { t("project_information.show.reasons_for.two_requires_improvement.#{project.two_requires_improvement}") }
+        summary_list.with_row do |row|
+          row.with_key { t("project_information.show.reasons_for.two_requires_improvement.conversion_project.title") }
+          row.with_value { t("project_information.show.reasons_for.two_requires_improvement.#{project.two_requires_improvement}") }
         end
       end %>
 </div>
