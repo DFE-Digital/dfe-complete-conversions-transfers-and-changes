@@ -39,6 +39,7 @@ code straight forward for those that would like to use them.
 - [Environment variables](/doc/environment-variables.md)
 - [Infrastructure and Terraform](/doc/infrastructure-and-terraform.md)
 - [Developer scripts](/doc/developer-scripts.md)
+- [GOV.UK Notify](/doc/govuk-notify.md)
 
 ## Errors and monitoring
 
