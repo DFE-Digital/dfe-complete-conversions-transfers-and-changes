@@ -96,7 +96,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       service = described_class.new(path)
 
       result = service.import!
-      changes = result.dig(:changes, :establishment, 144865)
+      changes = result.dig(:changes, :establishment, "144865")
 
       expect(changes.dig("name", :new_value)).to eql("Lightcliffe C of E Primary School")
       expect(changes.dig("name", :previous_value)).to eql("School name")
@@ -129,7 +129,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result.dig(:errors, :establishment, :"144731")).to eq("Could not find or create a record for urn: 144731")
+      expect(result.dig(:errors, :establishment, "144731")).to eq("Could not find or create a record for urn: 144731")
     end
 
     it "returns a hash that includes an error if any establishment row data cannot be updated" do
@@ -140,7 +140,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result.dig(:errors, :establishment, :"144731")).to eq("Could not update establishment record for urn: 144731")
+      expect(result.dig(:errors, :establishment, "144731")).to eq("Could not update establishment record for urn: 144731")
     end
 
     it "returns a hash that includes an error if any contact row data cannot be updated" do
@@ -151,7 +151,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result.dig(:errors, :contact, :"144731")).to eq("Could not update contact record for establishment_urn: 144731")
+      expect(result.dig(:errors, :contact, "144731")).to eq("Could not update contact record for establishment_urn: 144731")
     end
 
     it "does not update an establishment contact if the establishment could not be updated" do
