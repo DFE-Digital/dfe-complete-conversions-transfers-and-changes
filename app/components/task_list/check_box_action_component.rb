@@ -4,10 +4,10 @@ class TaskList::CheckBoxActionComponent < ViewComponent::Base
 
     @task = task
     @attribute = attribute
-    @label = t("#{locales_path}.#{attribute}.title")
-    @hint = t("#{locales_path}.#{attribute}.hint.html", default: nil)
-    @guidance_link = t("#{locales_path}.#{attribute}.guidance_link", default: nil)
-    @guidance = t("#{locales_path}.#{attribute}.guidance.html", default: nil)
+    @label = I18n.t("#{locales_path}.#{attribute}.title")
+    @hint = I18n.t("#{locales_path}.#{attribute}.hint.html", default: nil)
+    @guidance_link = I18n.t("#{locales_path}.#{attribute}.guidance_link", default: nil)
+    @guidance = I18n.t("#{locales_path}.#{attribute}.guidance.html", default: nil)
     @action_id = "#{task.class.name.underscore.tr("/", "_")}[#{attribute}]"
   end
 

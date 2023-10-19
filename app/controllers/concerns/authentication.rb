@@ -8,7 +8,7 @@ module Authentication
   end
 
   private def redirect_unauthenticated_user
-    redirect_to sign_in_path, notice: t("sign_in.message.unauthenticated") unless user_authenticated?
+    redirect_to sign_in_path, notice: I18n.t("sign_in.message.unauthenticated") unless user_authenticated?
   end
 
   private def current_user
