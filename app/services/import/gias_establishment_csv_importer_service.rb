@@ -113,7 +113,7 @@ class Import::GiasEstablishmentCsvImporterService
         contact = Contact::Establishment.find_or_create_by(establishment_urn: urn)
 
         unless establishment
-          @errors[:establishment][urn.to_sym] = "Could not find or create a record for urn: #{urn}"
+          @errors[:establishment][urn.to_s] = "Could not find or create a record for urn: #{urn}"
           next
         end
 
@@ -125,16 +125,16 @@ class Import::GiasEstablishmentCsvImporterService
 
         if establishment_row_changes.any?
           unless establishment.update(establishment_csv_attributes)
-            @errors[:establishment][urn.to_sym] = "Could not update establishment record for urn: #{urn}"
+            @errors[:establishment][urn.to_s] = "Could not update establishment record for urn: #{urn}"
             next
           end
-          @changed_rows[:establishment][establishment.urn] = establishment_row_changes
+          @changed_rows[:establishment][establishment.urn.to_s] = establishment_row_changes
 
           if contact_row_changes.any?
             unless contact.update(contact_csv_attributes)
-              @errors[:contact][urn.to_sym] = "Could not update contact record for establishment_urn: #{urn}"
+              @errors[:contact][urn.to_s] = "Could not update contact record for establishment_urn: #{urn}"
             end
-            @changed_rows[:contact][contact.establishment_urn] = contact_row_changes
+            @changed_rows[:contact][contact.establishment_urn.to_s] = contact_row_changes
           end
         end
 
