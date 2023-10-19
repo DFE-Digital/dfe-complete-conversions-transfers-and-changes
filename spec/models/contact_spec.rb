@@ -7,6 +7,7 @@ RSpec.describe Contact do
     it { is_expected.to have_db_column(:phone).of_type :string }
     it { is_expected.to have_db_column(:organisation_name).of_type :string }
     it { is_expected.to have_db_column(:type).of_type :string }
+    it { is_expected.to have_db_column(:establishment_urn).of_type :integer }
   end
 
   describe "Validations" do

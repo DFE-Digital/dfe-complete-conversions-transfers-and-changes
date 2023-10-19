@@ -7,14 +7,19 @@ RSpec.describe ContactsFetcherService do
     it "returns the contacts for a given project" do
       project = create(:transfer_project)
       project_contact = create(:project_contact, project: project, category: "school_or_academy")
+
       director_of_child_services_contact = create(:director_of_child_services)
       allow(project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
+
+      establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
 
       service = described_class.new
       result = service.all_project_contacts(project)
 
       expect(result.count).to eql(2)
+      expect(result["school_or_academy"].count).to eql(2)
       expect(result["school_or_academy"]).to include(project_contact)
+      expect(result["school_or_academy"]).to include(establishment_contact)
       expect(result["local_authority"]).to include(director_of_child_services_contact)
     end
 
@@ -33,7 +38,20 @@ RSpec.describe ContactsFetcherService do
         end
       end
 
-      context "and there is not a director of child services" do
+      context "and there is an establishment contact" do
+        it "returns the establishment contact" do
+          project = create(:transfer_project)
+          establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
+
+          service = described_class.new
+          result = service.all_project_contacts(project)
+
+          expect(result.values.flatten.count).to eql(1)
+          expect(result.values.flatten.first).to eq(establishment_contact)
+        end
+      end
+
+      context "and there is not a director of child services or an establishment contact" do
         it "returns empty" do
           project = create(:transfer_project)
           allow(project).to receive(:director_of_child_services).and_return(nil)

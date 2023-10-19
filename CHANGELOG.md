@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   conversions
 - Content: Bullet point guidance to conversion handover notes on add a
   conversion page about SFSO lead's name
+- New contacts are imported from the GIAS Establishment data if the required
+  fields are present.
 
 ### Changed
 
