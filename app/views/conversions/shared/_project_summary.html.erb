@@ -17,26 +17,26 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary"}) do |summary_list|
-          summary_list.row do |row|
-            row.key { t("project.summary.converting_on.title") }
-            row.value { significant_date(@project) }
+          summary_list.with_row do |row|
+            row.with_key { t("project.summary.converting_on.title") }
+            row.with_value { significant_date(@project) }
           end
-          summary_list.row do |row|
-            row.key { t("project.summary.incoming_trust.title") }
-            row.value { @project.incoming_trust.name }
+          summary_list.with_row do |row|
+            row.with_key { t("project.summary.incoming_trust.title") }
+            row.with_value { @project.incoming_trust.name }
           end
-          summary_list.row do |row|
-            row.key { t("project.summary.la_and_region.title") }
-            row.value { "#{@project.establishment.local_authority_name}, #{@project.establishment.region_name}" }
+          summary_list.with_row do |row|
+            row.with_key { t("project.summary.la_and_region.title") }
+            row.with_value { "#{@project.establishment.local_authority_name}, #{@project.establishment.region_name}" }
           end
-          summary_list.row do |row|
-            row.key { t("project.summary.sharepoint_links.title") }
-            row.value { [safe_link_to(t("project.summary.school_sharepoint_link.title"), @project.establishment_sharepoint_link), safe_link_to(t("project.summary.trust_sharepoint_link.title"), @project.incoming_trust_sharepoint_link)].join(" | ").html_safe }
+          summary_list.with_row do |row|
+            row.with_key { t("project.summary.sharepoint_links.title") }
+            row.with_value { [safe_link_to(t("project.summary.school_sharepoint_link.title"), @project.establishment_sharepoint_link), safe_link_to(t("project.summary.trust_sharepoint_link.title"), @project.incoming_trust_sharepoint_link)].join(" | ").html_safe }
           end
           if @project.completed?
-            summary_list.row do |row|
-              row.key { t("project.summary.completed_at") }
-              row.value { @project.completed_at.to_formatted_s(:govuk_date_time_date_only) }
+            summary_list.with_row do |row|
+              row.with_key { t("project.summary.completed_at") }
+              row.with_value { @project.completed_at.to_formatted_s(:govuk_date_time_date_only) }
             end
           end
         end %>

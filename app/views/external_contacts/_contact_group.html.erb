@@ -3,60 +3,60 @@
   <% contacts.each do |contact| %>
 
   <%= govuk_summary_list do |summary_list|
-        summary_list.row do |row|
-          row.key { t("contact.details.title") }
-          row.value { contact.title }
+        summary_list.with_row do |row|
+          row.with_key { t("contact.details.title") }
+          row.with_value { contact.title }
           if contact.editable?
-            row.action(
+            row.with_action(
               text: t("contact.details.edit_link"),
               href: edit_project_contact_path(@project, contact),
               visually_hidden_text: contact.name
             )
           end
         end
-        summary_list.row do |row|
-          row.key { t("contact.details.name") }
-          row.value { contact.name }
+        summary_list.with_row do |row|
+          row.with_key { t("contact.details.name") }
+          row.with_value { contact.name }
         end
-        summary_list.row do |row|
-          row.key { t("contact.details.organisation_name") }
-          row.value { contact.organisation_name }
+        summary_list.with_row do |row|
+          row.with_key { t("contact.details.organisation_name") }
+          row.with_value { contact.organisation_name }
         end
         if contact.email.present?
-          summary_list.row do |row|
-            row.key { t("contact.details.email") }
-            row.value { contact.email }
+          summary_list.with_row do |row|
+            row.with_key { t("contact.details.email") }
+            row.with_value { contact.email }
           end
         end
         if contact.phone.present?
-          summary_list.row do |row|
-            row.key { t("contact.details.phone") }
-            row.value { contact.phone }
+          summary_list.with_row do |row|
+            row.with_key { t("contact.details.phone") }
+            row.with_value { contact.phone }
           end
         end
         if @project.main_contact_id == contact.id
-          summary_list.row do |row|
-            row.key { t("contact.details.main_contact") }
-            row.value { t("yes") }
+          summary_list.with_row do |row|
+            row.with_key { t("contact.details.main_contact") }
+            row.with_value { t("yes") }
           end
         end
         if contact.is_a?(Contact::Project)
           if contact.establishment_main_contact
-            summary_list.row do |row|
-              row.key { t("contact.details.establishment_main_contact") }
-              row.value { t("yes") }
+            summary_list.with_row do |row|
+              row.with_key { t("contact.details.establishment_main_contact") }
+              row.with_value { t("yes") }
             end
           end
           if contact.incoming_trust_main_contact
-            summary_list.row do |row|
-              row.key { t("contact.details.incoming_trust_main_contact") }
-              row.value { t("yes") }
+            summary_list.with_row do |row|
+              row.with_key { t("contact.details.incoming_trust_main_contact") }
+              row.with_value { t("yes") }
             end
           end
           if contact.outgoing_trust_main_contact
-            summary_list.row do |row|
-              row.key { t("contact.details.outgoing_trust_main_contact") }
-              row.value { t("yes") }
+            summary_list.with_row do |row|
+              row.with_key { t("contact.details.outgoing_trust_main_contact") }
+              row.with_value { t("yes") }
             end
           end
         end
