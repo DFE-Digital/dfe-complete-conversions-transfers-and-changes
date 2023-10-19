@@ -53,11 +53,16 @@ To get console access to the running application:
 
 ## Log access
 
-The only logs we have right now are streamed out of the running container, we
-expect this to change soon.
+We have two options to view logs:
+
+- log stream: live logs coming out of the current running container
+- logs: database of all logs
+
+### Log stream
 
 To access the log stream:
 
+- open a PIM for the appropriate environment
 - visit the [Azure Portal](https://portal.azure.com) and ensure you are in the
   `DfE Platform Identity`
 - Locate the `Container Apps` module
@@ -68,3 +73,37 @@ To access the log stream:
 - Click on the appropriate container
 - Click on `Log stream`
 - An interactive log stream will start
+
+### Logs
+
+To access logs:
+
+- open a PIM for the appropriate environment
+- visit the [Azure Portal](https://portal.azure.com) and ensure you are in the
+  `DfE Platform Identity`
+- Locate the `Container Apps` module
+- Locate the container you want, be careful as the names are very similar:
+  - `s184d01-comp-complete-app` > development
+  - `s184t01-comp-complete-app` > test
+  - `s184p01-comp-complete-app` > production
+- Click on the appropriate container
+- Click on `Logs`
+
+Logs are in an SQL like database, you can manipulate them however you choose, as
+a starter:
+
+```
+ContainerAppConsoleLogs_CL
+| project TimeGenerated, Log_s, RevisionName_s
+| where RevisionName_s == "<revision name>" and Log_s !has "INFO"
+| order by TimeGenerated
+```
+
+This snippet will get you all the logs that are not 'INFO' for the specified
+time period.
+
+The `<revision name>` is the name of the revision you wish to search, this would
+usually be the current revusion found in the _Revisions_ link under
+_Applicaiton_ and looks like `s184d01-comp-complete-app--1j9hcz0`.
+
+You can save queries for frequent use.
