@@ -134,6 +134,7 @@ COPY config ${APP_HOME}/config
 COPY lib ${APP_HOME}/lib
 COPY db ${APP_HOME}/db
 COPY app ${APP_HOME}/app
+COPY doc ${APP_HOME}/doc
 # End
 
 # Copy specs

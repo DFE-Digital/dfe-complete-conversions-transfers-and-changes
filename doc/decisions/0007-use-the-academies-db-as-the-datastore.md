@@ -4,7 +4,8 @@ Date: 2022-07-14
 
 ## Status
 
-Superceded by [21. Use a seperate database server instance](0021-use-a-seperate-database-server-instance.md)
+Superceded by
+[21. Use a seperate database server instance](0021-use-a-seperate-database-server-instance.md)
 
 ## Summary
 
