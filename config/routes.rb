@@ -92,6 +92,8 @@ Rails.application.routes.draw do
     namespace :transfers do
       get "new", to: "projects#new"
       post "/", to: "projects#create"
+      get ":id", to: "projects#edit", as: :edit
+      post ":id", to: "projects#update", as: :update
     end
   end
 
