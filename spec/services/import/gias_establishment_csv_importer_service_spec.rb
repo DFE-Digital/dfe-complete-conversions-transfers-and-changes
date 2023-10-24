@@ -7,12 +7,12 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       service = described_class.new(path)
 
       expect { service.import! }.to change { Gias::Establishment.count }
-      expect(Gias::Establishment.count).to eql(2)
+      expect(Gias::Establishment.count).to eql(3)
 
       imported_records = Gias::Establishment.order(:urn)
 
-      expect(imported_records.first.name).to eql("The Lanes Primary School")
-      expect(imported_records.first.urn).to eql(144731)
+      expect(imported_records.first.name).to eql("Roecliffe Church of England Primary School")
+      expect(imported_records.first.urn).to eql(121583)
 
       expect(imported_records.last.name).to eql("Lightcliffe C of E Primary School")
       expect(imported_records.last.urn).to eql(144865)
@@ -53,6 +53,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
     it "does not create duplicate establishment records based on the urn, updating instead" do
       establishment = create(:gias_establishment, urn: 144731, name: "School name")
       create(:gias_establishment, urn: 144865)
+      create(:gias_establishment, urn: 121583)
 
       path = file_fixture("gias_establishment_data_good.csv")
       service = described_class.new(path)
@@ -81,11 +82,11 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       result = service.import!
 
-      expect(result[:total_csv_rows]).to eql(2)
-      expect(result[:new_establishment_records]).to eql(1)
+      expect(result[:total_csv_rows]).to eql(3)
+      expect(result[:new_establishment_records]).to eql(2)
       expect(result[:new_contact_records]).to eql(1)
       expect(result[:changed_establishment_records]).to eql(1)
-      expect(result[:changed_contact_records]).to eql(1)
+      expect(result[:changed_contact_records]).to eql(2)
       expect(result[:time]).to be_truthy
     end
 
@@ -126,6 +127,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
 
       allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "144731").and_return(nil)
       allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "144865").and_call_original
+      allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "121583").and_call_original
 
       result = service.import!
 
