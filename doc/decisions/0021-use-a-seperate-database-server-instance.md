@@ -6,7 +6,8 @@ Date: 2023-10-18
 
 Accepted
 
-Supercedes [7. Use the Academies DB as the datastore](0007-use-the-academies-db-as-the-datastore.md)
+Supercedes
+[7. Use the Academies DB as the datastore](0007-use-the-academies-db-as-the-datastore.md)
 
 ## Context
 
