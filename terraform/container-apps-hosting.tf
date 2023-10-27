@@ -1,5 +1,5 @@
 module "azure_container_apps_hosting" {
-  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.2.0"
+  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.2.1"
 
   environment    = local.environment
   project_name   = local.project_name
@@ -57,4 +57,8 @@ module "azure_container_apps_hosting" {
   existing_logic_app_workflow                  = local.existing_logic_app_workflow
   existing_network_watcher_name                = local.existing_network_watcher_name
   existing_network_watcher_resource_group_name = local.existing_network_watcher_resource_group_name
+
+  enable_container_app_file_share       = local.enable_container_app_file_share
+  storage_account_ipv4_allow_list       = local.storage_account_ipv4_allow_list
+  storage_account_public_access_enabled = local.storage_account_public_access_enabled
 }
