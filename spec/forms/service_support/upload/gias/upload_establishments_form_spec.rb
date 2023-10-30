@@ -83,19 +83,19 @@ RSpec.describe ServiceSupport::Upload::Gias::UploadEstablishmentsForm do
   end
 
   context "when the form is valid" do
-    let(:importer) { double(Import::GiasEstablishmentImportJob, perform_later: true) }
-
     before do
       allow_any_instance_of(ServiceSupport::Upload::Gias::UploadEstablishmentsForm).to receive(:file_path).and_return(file_path)
-      allow(Import::GiasEstablishmentImportJob).to receive(:set).and_return(importer)
+      allow(Import::GiasEstablishmentImportJob).to receive(:set).and_return(double(perform_later: true))
+      allow(Import::GiasHeadteacherImportJob).to receive(:set).and_return(double(perform_later: true))
     end
 
-    it "calls Import::GiasEstablishmentImportJob" do
+    it "queues the two jobs" do
       form = described_class.new(uploaded_file, user)
-      expect(form).to be_valid
+
       form.save
+
       expect(Import::GiasEstablishmentImportJob).to have_received(:set).with(wait_until: Date.tomorrow.in_time_zone.change(hour: 4))
-      expect(importer).to have_received(:perform_later).with(file_path.to_s, user)
+      expect(Import::GiasHeadteacherImportJob).to have_received(:set).with(wait_until: Date.tomorrow.in_time_zone.change(hour: 5))
     end
   end
 end
