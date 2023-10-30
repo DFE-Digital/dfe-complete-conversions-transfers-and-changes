@@ -140,6 +140,18 @@ RSpec.describe Api::MembersApi::Client do
         expect(subject.error.message).to eq(I18n.t("members_api.errors.multiple", search_term: "St A"))
       end
     end
+
+    context "when there are no results" do
+      subject { client.member_id("Mars") }
+
+      let(:fake_response) { [200, nil, {items: []}.to_json] }
+
+      it "returns a NotFoundError" do
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(Api::MembersApi::Client::NotFoundError)
+        expect(subject.error.message).to eq(I18n.t("members_api.errors.search_term_not_found", constituency: "Mars"))
+      end
+    end
   end
 
   describe "#member_name" do
