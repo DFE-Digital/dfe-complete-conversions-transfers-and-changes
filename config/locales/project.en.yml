@@ -56,7 +56,7 @@ en:
           title: Regional completed projects for %{region}
     user:
       in_progress:
-        title: In progress
+        title: Your projects in progress
       completed:
         title: Completed
       added_by:
@@ -190,6 +190,8 @@ en:
         revised: Revised
         export: Export
         team: Team
+        incoming_trust: Incoming trust
+        outgoing_trust: Outgoing trust
       body:
         type_name:
           conversion_project: Conversion

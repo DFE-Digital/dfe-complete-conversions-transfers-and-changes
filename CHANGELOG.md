@@ -46,6 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Content: change main contact to primary contact in confirm incoming trusts has
   completed actions transfers task
 - Removed any references to Sentry.io
+- Changed the "Your projects in progress" page to a table layout
 
 ## [Release 43][release-43]
 

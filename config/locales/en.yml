@@ -38,6 +38,7 @@ en:
   cancel: Cancel
   edit: Edit
   delete: Delete
+  none: None
   phase_banner:
     phase: Beta
     phase_notice:
