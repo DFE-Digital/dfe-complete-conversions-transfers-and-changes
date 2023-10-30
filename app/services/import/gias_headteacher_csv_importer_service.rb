@@ -90,10 +90,9 @@ class Import::GiasHeadteacherCsvImporterService
   end
 
   def import_row(row)
+    @csv_rows += 1
     urn = row.field("URN")
     establishment = Gias::Establishment.find_by_urn(urn)
-
-    @csv_rows += 1
 
     unless establishment
       Rails.logger.info "[IMPORT][GIAS][HEADTEACHER] Could not find an establishment with the URN: #{urn} - skipping row."
@@ -115,6 +114,8 @@ class Import::GiasHeadteacherCsvImporterService
       return false
     end
 
+    @csv_rows_with_contact += 1
+
     Rails.logger.info "[IMPORT][GIAS][HEADTEACHER] Contact found or created for establishment with URN: #{urn}."
 
     contact_csv_attributes = contact_csv_row_attributes(row)
@@ -126,13 +127,13 @@ class Import::GiasHeadteacherCsvImporterService
         @changed_rows[contact.establishment_urn.to_s] = contact_row_changes
       else
         Rails.logger.info "[IMPORT][GIAS][HEADTEACHER] Could not update contact for establishment with URN: #{urn}."
+        return false
       end
     else
       Rails.logger.info "[IMPORT][GIAS][HEADTEACHER] No changes to contact for establishment with URN: #{urn}."
       @no_changes += 1
     end
 
-    @csv_rows_with_contact += 1
     true
   end
 

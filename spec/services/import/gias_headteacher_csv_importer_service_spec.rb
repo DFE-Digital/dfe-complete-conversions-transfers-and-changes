@@ -254,7 +254,7 @@ RSpec.describe Import::GiasHeadteacherCsvImporterService do
 
         service = described_class.new("/fake/path")
 
-        expect(service.import_row(row)).to be true
+        expect(service.import_row(row)).to be false
         expect(contact.reload.email).not_to eql("j.wilkins@school.ac.uk")
         expect(logger).to have_received(:info).with("[IMPORT][GIAS][HEADTEACHER] Could not update contact for establishment with URN: 144731.")
       end
