@@ -11,7 +11,7 @@ class ServiceSupport::Upload::Gias::EstablishmentsController < ApplicationContro
     @upload_form = ServiceSupport::Upload::Gias::UploadEstablishmentsForm.new(uploaded_file, current_user)
     if @upload_form.valid?
       @upload_form.save
-      time = ENV.fetch("GIAS_IMPORT_TIME", 4)
+      time = @upload_form.class::IMPORT_TIME
       redirect_to service_support_upload_gias_establishments_new_path, notice: I18n.t("service_support.import.gias_establishments.success", time: "#{sprintf("%02d", time)}00")
     else
       render :new

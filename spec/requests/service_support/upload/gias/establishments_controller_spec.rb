@@ -51,7 +51,7 @@ RSpec.describe ServiceSupport::Upload::Gias::EstablishmentsController, type: :re
 
         expect(response).to redirect_to(service_support_upload_gias_establishments_new_path)
         follow_redirect!
-        expect(response.body).to include(I18n.t("service_support.import.gias_establishments.success", time: "0400"))
+        expect(response.body).to include(I18n.t("service_support.import.gias_establishments.success", time: "0100"))
       end
     end
 

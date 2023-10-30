@@ -10,7 +10,7 @@ class ServiceSupport::Upload::Gias::UploadEstablishmentsForm
   validate :file_size
   validate :file_headers
 
-  IMPORT_TIME = ENV.fetch("GIAS_IMPORT_TIME", 4)
+  IMPORT_TIME = ENV.fetch("GIAS_IMPORT_TIME", 1)
 
   def initialize(uploaded_file, user)
     @uploaded_file = uploaded_file

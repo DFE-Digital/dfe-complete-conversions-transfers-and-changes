@@ -94,8 +94,8 @@ RSpec.describe ServiceSupport::Upload::Gias::UploadEstablishmentsForm do
 
       form.save
 
-      expect(Import::GiasEstablishmentImportJob).to have_received(:set).with(wait_until: Date.tomorrow.in_time_zone.change(hour: 4))
-      expect(Import::GiasHeadteacherImportJob).to have_received(:set).with(wait_until: Date.tomorrow.in_time_zone.change(hour: 5))
+      expect(Import::GiasEstablishmentImportJob).to have_received(:set).with(wait_until: Date.tomorrow.in_time_zone.change(hour: 1))
+      expect(Import::GiasHeadteacherImportJob).to have_received(:set).with(wait_until: Date.tomorrow.in_time_zone.change(hour: 2))
     end
   end
 end
