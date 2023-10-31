@@ -49,6 +49,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   completed actions transfers task
 - Removed any references to Sentry.io
 - Changed the "Your projects in progress" page to a table layout
+- Change project summary information styling to be consistent across
+  applications within the service
 
 ## [Release 43][release-43]
 
