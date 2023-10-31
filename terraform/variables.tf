@@ -43,6 +43,24 @@ variable "enable_container_registry" {
   type        = bool
 }
 
+variable "enable_container_app_file_share" {
+  description = "Create an Azure Storage Account and File Share to be mounted to the Container Apps"
+  type        = bool
+  default     = false
+}
+
+variable "storage_account_ipv4_allow_list" {
+  description = "A list of public IPv4 address to grant access to the Storage Account"
+  type        = list(string)
+  default     = []
+}
+
+variable "storage_account_public_access_enabled" {
+  description = "Should the Azure Storage Account have Public visibility?"
+  type        = bool
+  default     = false
+}
+
 variable "image_name" {
   description = "Image name"
   type        = string
