@@ -44,7 +44,9 @@ class Api::MembersApi::Client
     constituency_data = constituency(search_term)
     raise constituency_data.error if constituency_data.error.present?
 
-    if constituency_data.object["items"].count > 1
+    if constituency_data.object["items"].count == 0
+      Result.new(nil, NotFoundError.new(NotFoundError.new(I18n.t("members_api.errors.search_term_not_found", constituency: search_term))))
+    elsif constituency_data.object["items"].count > 1
       Result.new(nil, MultipleResultsError.new(I18n.t("members_api.errors.multiple", search_term: search_term)))
     else
       Result.new(member_id_from_constituency(constituency_data), nil)
