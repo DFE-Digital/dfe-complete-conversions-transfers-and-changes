@@ -22,6 +22,33 @@ class Conversions::ProjectsController < ProjectsController
     end
   end
 
+  def edit
+    authorize project
+    @project_form = Conversion::EditProjectSharepointLinkForm.new(project: project)
+  end
+
+  def update
+    authorize project
+    @project_form = Conversion::EditProjectSharepointLinkForm.new(project: project, args: sharepoint_link_params)
+
+    if @project_form.save
+      redirect_to project_information_path(project), notice: I18n.t("project.update.success")
+    else
+      render :edit
+    end
+  end
+
+  private def project
+    @project ||= Project.find(params[:id])
+  end
+
+  private def sharepoint_link_params
+    params.require(:conversion_edit_project_sharepoint_link_form).permit(
+      :establishment_sharepoint_link,
+      :incoming_trust_sharepoint_link
+    )
+  end
+
   private def project_params
     params.require(:conversion_create_project_form).permit(
       :urn,

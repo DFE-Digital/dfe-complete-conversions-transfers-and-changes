@@ -1,0 +1,15 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @project_form, url: conversions_update_path(@project), method: :post do |form| %>
+      <%= form.govuk_error_summary %>
+      <%= form.govuk_text_field :establishment_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>
+      <%= form.govuk_text_field :incoming_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
+
+      <%= form.govuk_submit do %>
+        <%= govuk_link_to "Cancel", project_information_path(@project) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: "shared/autocomplete", locals: {selector: ".accessible-autocomplete-target"} %>

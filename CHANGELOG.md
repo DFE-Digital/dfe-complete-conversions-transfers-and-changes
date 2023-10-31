@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   conversion page about SFSO lead's name
 - New contacts are imported from the GIAS Establishment data if the required
   fields are present.
+- Allow sharepoint links for conversion and transfer projects to be updated and
+  changed
 
 ### Changed
 
