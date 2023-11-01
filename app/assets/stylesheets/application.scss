@@ -32,6 +32,8 @@ $govuk-button-background-colour: $dfe-blue;
 @import "components/notification-banner";
 @import "components/app-content";
 
+@import "patterns/project-summary";
+
 // The accessible autocomplete component does not use
 // GOV.UK fonts by default for suggestions.
 .autocomplete__wrapper * {

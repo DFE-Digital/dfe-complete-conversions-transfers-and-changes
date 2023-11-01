@@ -1,0 +1,16 @@
+.dfe-summary-list--project-summary {
+  @include govuk-responsive-padding(0, "bottom");
+
+  .govuk-summary-list__row {
+    display: block;
+    border: 0;
+  }
+
+  .govuk-summary-list__key,
+  .govuk-summary-list__value {
+    width: auto;
+    @include govuk-responsive-padding(0, "bottom");
+    @include govuk-responsive-padding(2, "top");
+    @include govuk-responsive-padding(2, "right");
+  }
+}
