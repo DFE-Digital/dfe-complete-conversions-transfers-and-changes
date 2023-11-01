@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Fix govuk class name for your projects table view from
+  `govuk-grid-column-full-width` to `govuk-grid-column-full`
+
 ### Added
 
 - Allow service support users to upload GIAS data for asynchronous ingestion
