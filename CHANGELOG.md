@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-44][release-44]
+
 ### Fixed
 
 - Fix govuk class name for your projects table view from
@@ -1389,7 +1391,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-43...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-44...HEAD
+[release-44]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-43...release-44
 [release-43]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-42...release-43
 [release-42]:
