@@ -7,31 +7,15 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       service = described_class.new(path)
 
       expect { service.import! }.to change { Gias::Establishment.count }
-      expect(Gias::Establishment.count).to eql(2)
+      expect(Gias::Establishment.count).to eql(3)
 
       imported_records = Gias::Establishment.order(:urn)
 
-      expect(imported_records.first.name).to eql("The Lanes Primary School")
-      expect(imported_records.first.urn).to eql(144731)
+      expect(imported_records.first.name).to eql("Roecliffe Church of England Primary School")
+      expect(imported_records.first.urn).to eql(121583)
 
       expect(imported_records.last.name).to eql("Lightcliffe C of E Primary School")
       expect(imported_records.last.urn).to eql(144865)
-    end
-
-    it "takes a csv file and imports the head teacher contact details it contains" do
-      path = file_fixture("gias_establishment_data_good.csv")
-      service = described_class.new(path)
-
-      expect { service.import! }.to change { Contact::Establishment.count }
-      expect(Contact::Establishment.count).to eql(2)
-
-      imported_records = Contact::Establishment.order(:establishment_urn)
-
-      expect(imported_records.first.name).to eql("Jane Brown")
-      expect(imported_records.first.establishment_urn).to eql(144731)
-
-      expect(imported_records.last.name).to eql("Bob Smith")
-      expect(imported_records.last.establishment_urn).to eql(144865)
     end
 
     it "it skips row when there is no change for the record" do
@@ -40,19 +24,16 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       service.import!
 
       establishment_record = Gias::Establishment.last
-      contact_record = Contact::Establishment.last
       allow(establishment_record).to receive(:update!)
-      allow(contact_record).to receive(:update!)
 
       expect { service.import! }.not_to change { Gias::Establishment.count }
-      expect { service.import! }.not_to change { Contact::Establishment.count }
       expect(establishment_record).not_to have_received(:update!)
-      expect(contact_record).not_to have_received(:update!)
     end
 
     it "does not create duplicate establishment records based on the urn, updating instead" do
       establishment = create(:gias_establishment, urn: 144731, name: "School name")
       create(:gias_establishment, urn: 144865)
+      create(:gias_establishment, urn: 121583)
 
       path = file_fixture("gias_establishment_data_good.csv")
       service = described_class.new(path)
@@ -61,138 +42,193 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       expect(establishment.reload.name).to eql("The Lanes Primary School")
     end
 
-    it "does not create duplicate contact records based on the urn, updating instead" do
-      contact = create(:establishment_contact, establishment_urn: 144731, name: "Jane Brown")
-      create(:establishment_contact, establishment_urn: 144865)
-
-      path = file_fixture("gias_establishment_data_good.csv")
-      service = described_class.new(path)
-
-      expect { service.import! }.not_to change { Contact::Establishment.count }
-      expect(contact.reload.name).to eql("Jane Brown")
-    end
-
-    it "returns a hash of statistics for the import" do
-      create(:gias_establishment, urn: 144865, name: "School name")
-      create(:establishment_contact, establishment_urn: 144865, name: "Bob Smith")
-
-      path = file_fixture("gias_establishment_data_good.csv")
-      service = described_class.new(path)
-
-      result = service.import!
-
-      expect(result[:total_csv_rows]).to eql(2)
-      expect(result[:new_establishment_records]).to eql(1)
-      expect(result[:new_contact_records]).to eql(1)
-      expect(result[:changed_establishment_records]).to eql(1)
-      expect(result[:changed_contact_records]).to eql(1)
-      expect(result[:time]).to be_truthy
-    end
-
-    it "returns a hash that includes the changes" do
+    it "returns a hash of results from the import" do
       create(:gias_establishment, urn: 144865, name: "School name")
 
       path = file_fixture("gias_establishment_data_good.csv")
       service = described_class.new(path)
 
       result = service.import!
-      changes = result.dig(:changes, :establishment, "144865")
 
-      expect(changes.dig("name", :new_value)).to eql("Lightcliffe C of E Primary School")
-      expect(changes.dig("name", :previous_value)).to eql("School name")
+      expect(result[:total_csv_rows]).to eql(3)
+      expect(result[:new]).to eql(2)
+      expect(result[:changed]).to eql(1)
+      expect(result[:time_taken]).to be_truthy
     end
 
-    it "returns a hash that includes an error when the file is not found" do
-      path = "not/a/path.csv"
-      service = described_class.new(path)
+    describe "the results hash" do
+      it "includes the number of skipped rows" do
+        path = file_fixture("gias_establishment_data_good_with_bad_row.csv")
+        service = described_class.new(path)
 
-      result = service.import!
+        result = service.import!
 
-      expect(result.dig(:errors, :file)).to eq("The source file at not/a/path.csv could not be found.")
+        expect(result[:skipped_csv_rows]).to eql(1)
+      end
+
+      it "includes the number of new establishments created" do
+        path = file_fixture("gias_establishment_data_good_with_bad_row.csv")
+        service = described_class.new(path)
+
+        result = service.import!
+
+        expect(result[:new]).to eql(2)
+      end
+
+      it "includes the number of changed establishments" do
+        create(:gias_establishment, urn: 144865)
+        path = file_fixture("gias_establishment_data_good_with_bad_row.csv")
+        service = described_class.new(path)
+
+        result = service.import!
+
+        expect(result[:changed]).to eql(1)
+      end
+
+      it "includes the number of establishments that did not change" do
+        path = file_fixture("gias_establishment_data_good_with_bad_row.csv")
+        service = described_class.new(path)
+
+        service.import!
+
+        result = service.import!
+
+        expect(result[:no_changes]).to eql(2)
+      end
+
+      it "includes the changes" do
+        path = file_fixture("gias_establishment_data_good_with_bad_row.csv")
+        service = described_class.new(path)
+
+        service.import!
+
+        Gias::Establishment.find_by_urn(144731).update!(name: "This should change")
+
+        result = service.import!
+
+        changes = result.dig(:changes, "144731")
+
+        expect(changes.dig("name", :new_value)).to eql("The Lanes Primary School")
+        expect(changes.dig("name", :previous_value)).to eql("This should change")
+      end
     end
 
-    it "returns a hash that includes an error when the file does not have the correct headers" do
-      path = file_fixture("gias_establishment_data_bad.csv")
-      service = described_class.new(path)
+    describe "file errors" do
+      it "does nothing and logs when the file is not found" do
+        path = "not/a/path.csv"
+        service = described_class.new(path)
+        logger = double(info: true)
+        allow(Rails).to receive(:logger).and_return(logger)
 
-      result = service.import!
+        result = service.import!
 
-      expect(result.dig(:errors, :headers)).to eq("The source file at spec/fixtures/files/gias_establishment_data_bad.csv does not contain all the required headers.")
+        expect(result[:total_csv_rows]).to be_zero
+        expect(logger).to have_received(:info).with("[IMPORT][GIAS][ESTABLISHMENT] Source file not/a/path.csv could not be found.")
+      end
+
+      it "does nothing and logs when the file does not have the correct headers" do
+        path = file_fixture("gias_establishment_data_bad.csv")
+        service = described_class.new(path)
+        logger = double(info: true)
+        allow(Rails).to receive(:logger).and_return(logger)
+
+        result = service.import!
+
+        expect(result[:total_csv_rows]).to be_zero
+        expect(logger).to have_received(:info).with("[IMPORT][GIAS][ESTABLISHMENT] Source file spec/fixtures/files/gias_establishment_data_bad.csv does not contain the required headers.")
+      end
     end
 
-    it "returns a hash that includes an error if any row cannot be found or created" do
-      path = file_fixture("gias_establishment_data_good.csv")
-      service = described_class.new(path)
+    describe "row errors" do
+      it "skips the row and logs the error when the establishment cannot be found or a new one created" do
+        row = CSV::Row.new(["URN"], ["123456"])
+        logger = double(info: true)
+        allow(Rails).to receive(:logger).and_return(logger)
+        allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "123456").and_return(nil)
 
-      allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "144731").and_return(nil)
-      allow(Gias::Establishment).to receive(:find_or_create_by).with(urn: "144865").and_call_original
+        service = described_class.new("/fake/path")
 
-      result = service.import!
+        expect(service.import_row(row)).to be false
+        expect(logger).to have_received(:info).with("[IMPORT][GIAS][ESTABLISHMENT] Could not find or create an establishment with the URN: 123456 - skipping row.")
+      end
 
-      expect(result.dig(:errors, :establishment, "144731")).to eq("Could not find or create a record for urn: 144731")
-    end
+      it "skips the row and logs the error when the required values are not in the row" do
+        invalid_row = CSV::Row.new(
+          ["URN"],
+          [""]
+        )
+        logger = double(info: true)
+        allow(Rails).to receive(:logger).and_return(logger)
 
-    it "returns a hash that includes an error if any establishment row data cannot be updated" do
-      path = file_fixture("gias_establishment_data_good.csv")
-      service = described_class.new(path)
+        service = described_class.new("/fake/path")
 
-      allow_any_instance_of(Gias::Establishment).to receive(:update).and_return(false)
+        expect(service.import_row(invalid_row)).to be false
+        expect(logger).to have_received(:info).with("[IMPORT][GIAS][ESTABLISHMENT] The required values are not present in row 1 - skipping row.")
+      end
 
-      result = service.import!
+      it "logs when the establishment is found" do
+        create(:gias_establishment, urn: 123456)
+        row = CSV::Row.new(["URN"], ["123456"])
+        logger = double(info: true)
+        allow(Rails).to receive(:logger).and_return(logger)
 
-      expect(result.dig(:errors, :establishment, "144731")).to eq("Could not update establishment record for urn: 144731")
-    end
+        service = described_class.new("/fake/path")
 
-    it "returns a hash that includes an error if any contact row data cannot be updated" do
-      path = file_fixture("gias_establishment_data_good.csv")
-      service = described_class.new(path)
+        expect(service.import_row(row)).to be true
+        expect(logger).to have_received(:info).with("[IMPORT][GIAS][ESTABLISHMENT] Establishment found or created with URN: 123456.")
+      end
 
-      allow_any_instance_of(Contact::Establishment).to receive(:update).and_return(false)
+      it "logs when the establishment is created" do
+        row = CSV::Row.new(["URN"], ["123456"])
+        logger = double(info: true)
+        allow(Rails).to receive(:logger).and_return(logger)
 
-      result = service.import!
+        service = described_class.new("/fake/path")
 
-      expect(result.dig(:errors, :contact, "144731")).to eq("Could not update contact record for establishment_urn: 144731")
-    end
+        expect(service.import_row(row)).to be true
+        expect(logger).to have_received(:info).with("[IMPORT][GIAS][ESTABLISHMENT] Establishment found or created with URN: 123456.")
+      end
 
-    it "does not update an establishment contact if the establishment could not be updated" do
-      contact = create(:establishment_contact, establishment_urn: 144731, name: "Jane Brown")
+      it "logs when updating the establishment fails" do
+        establishment = create(:gias_establishment, urn: 123456)
+        row = CSV::Row.new(["URN"], ["123456"])
+        logger = double(info: true)
+        allow(Rails).to receive(:logger).and_return(logger)
+        allow(establishment).to receive(:update).and_return(false)
+        allow(Gias::Establishment).to receive(:find_or_create_by).and_return(establishment)
 
-      path = file_fixture("gias_establishment_data_good.csv")
-      service = described_class.new(path)
+        service = described_class.new("/fake/path")
 
-      allow_any_instance_of(Gias::Establishment).to receive(:update).and_return(false)
-      allow(contact).to receive(:update!)
-
-      service.import!
-
-      expect(contact).not_to have_received(:update!)
+        expect(service.import_row(row)).to be false
+        expect(logger).to have_received(:info).with("[IMPORT][GIAS][ESTABLISHMENT] Could not update establishment with URN: 123456.")
+      end
     end
   end
 
-  describe "#required_columns_present?" do
+  describe "#required_column_headers_present?" do
     it "returns true when all required column headers are in the file" do
       path = file_fixture("gias_establishment_data_good.csv")
       service = described_class.new(path)
 
-      expect(service.required_columns_present?).to be true
+      expect(service.required_column_headers_present?).to be true
     end
 
     it "returns false when not all required headers are in the file" do
       path = file_fixture("gias_establishment_data_bad.csv")
       service = described_class.new(path)
 
-      expect(service.required_columns_present?).to be false
+      expect(service.required_column_headers_present?).to be false
     end
 
     it "returns false when there are no headers i.e. the file is empty" do
       path = file_fixture("gias_establishment_data_empty.csv")
       service = described_class.new(path)
 
-      expect(service.required_columns_present?).to be false
+      expect(service.required_column_headers_present?).to be false
     end
   end
 
-  describe "#establishment_csv_row_attributes" do
+  describe "#csv_row_attributes" do
     it "returns the values that are required by the importer and nothing else" do
       row = CSV::Row.new(
         ["URN", "Other column"],
@@ -200,7 +236,7 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       )
 
       service = described_class.new("/path")
-      row_attributes = service.establishment_csv_row_attributes(row)
+      row_attributes = service.csv_row_attributes(row)
 
       expect(row_attributes["urn"]).to eql "123456"
       expect(row_attributes.keys).not_to include("Other column")
@@ -214,40 +250,10 @@ RSpec.describe Import::GiasEstablishmentCsvImporterService do
       )
 
       service = described_class.new("/path")
-      row_attributes = service.establishment_csv_row_attributes(row)
+      row_attributes = service.csv_row_attributes(row)
 
       expect(row_attributes.keys).to include("urn")
       expect(row_attributes.keys).to include("local_authority_code")
-    end
-  end
-
-  describe "#contact_csv_row_attributes" do
-    it "returns the values that are required by the importer and nothing else" do
-      row = CSV::Row.new(
-        ["URN", "Other column"],
-        ["123456", "not interested"]
-      )
-
-      service = described_class.new("/path")
-      row_attributes = service.contact_csv_row_attributes(row)
-
-      expect(row_attributes["establishment_urn"]).to eql "123456"
-      expect(row_attributes.keys).not_to include("Other column")
-      expect(row_attributes.values).not_to include("not interested")
-    end
-
-    it "maps the csv headers to the attributes used by the model" do
-      row = CSV::Row.new(
-        ["URN", "HeadFirstName", "HeadLastName", "HeadEmail"],
-        ["123456", "Bob", "Smith", "bob.smith@school.sch.uk"]
-      )
-
-      service = described_class.new("/path")
-      row_attributes = service.contact_csv_row_attributes(row)
-
-      expect(row_attributes.keys).to include("establishment_urn")
-      expect(row_attributes.keys).to include("name")
-      expect(row_attributes.values).to include("Bob Smith")
     end
   end
 

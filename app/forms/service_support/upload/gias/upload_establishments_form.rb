@@ -10,7 +10,7 @@ class ServiceSupport::Upload::Gias::UploadEstablishmentsForm
   validate :file_size
   validate :file_headers
 
-  IMPORT_TIME = ENV.fetch("GIAS_IMPORT_TIME", 4)
+  IMPORT_TIME = ENV.fetch("GIAS_IMPORT_TIME", 1)
 
   def initialize(uploaded_file, user)
     @uploaded_file = uploaded_file
@@ -23,6 +23,7 @@ class ServiceSupport::Upload::Gias::UploadEstablishmentsForm
     FileUtils.copy_file(@uploaded_file.path, file_path_with_timestamp)
 
     Import::GiasEstablishmentImportJob.set(wait_until: Date.tomorrow.in_time_zone.change(hour: IMPORT_TIME)).perform_later(file_path_with_timestamp.to_s, @user)
+    Import::GiasHeadteacherImportJob.set(wait_until: Date.tomorrow.in_time_zone.change(hour: IMPORT_TIME + 1)).perform_later(file_path_with_timestamp.to_s, @user)
   end
 
   def file_path
@@ -38,7 +39,7 @@ class ServiceSupport::Upload::Gias::UploadEstablishmentsForm
   private def file_headers
     return unless @uploaded_file.present?
 
-    unless Import::GiasEstablishmentCsvImporterService.new(@uploaded_file.path).required_columns_present?
+    unless Import::GiasEstablishmentCsvImporterService.new(@uploaded_file.path).required_column_headers_present?
       errors.add(:uploaded_file, message: I18n.t("errors.upload.attributes.uploaded_file.file_headers"))
     end
   end

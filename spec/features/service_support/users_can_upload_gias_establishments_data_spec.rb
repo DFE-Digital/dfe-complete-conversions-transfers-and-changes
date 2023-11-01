@@ -12,7 +12,7 @@ RSpec.feature "Service support users can upload GIAS data" do
 
     attach_file(I18n.t("service_support.import.gias_establishments.upload_form.label"), Rails.root + "spec/fixtures/files/gias_establishment_data_good.csv")
     click_on "Continue"
-    expect(page).to have_content(I18n.t("service_support.import.gias_establishments.success", time: "0400"))
+    expect(page).to have_content(I18n.t("service_support.import.gias_establishments.success", time: "0100"))
   end
 
   scenario "a service support user sees an error message after uploading an invalid file" do
