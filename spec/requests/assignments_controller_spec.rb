@@ -200,6 +200,19 @@ RSpec.describe AssignmentsController, type: :request do
         end
       end
 
+      context "the assigned_to person is nil" do
+        subject(:perform_request) do
+          post project_assign_assigned_to_path(project_id), params: {conversion_project: {assigned_to_id: nil}}
+          response
+        end
+
+        it "does not attempt to send a notification" do
+          perform_request
+
+          expect(ActionMailer::MailDeliveryJob).to_not(have_been_enqueued.on_queue("default"))
+        end
+      end
+
       it "sets the `assigned_at` date value" do
         perform_request
 
