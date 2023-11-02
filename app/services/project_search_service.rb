@@ -25,6 +25,6 @@ class ProjectSearchService
   end
 
   private def ukprn_pattern(query)
-    query.match?(/\d{8}$/)
+    query.match?(/^\d{8}$/)
   end
 end
