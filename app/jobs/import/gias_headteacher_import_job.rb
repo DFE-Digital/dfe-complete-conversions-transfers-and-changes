@@ -2,7 +2,9 @@ class Import::GiasHeadteacherImportJob < ApplicationJob
   queue_as :default
 
   def perform(file_path, user)
-    Import::GiasHeadteacherCsvImporterService.new(file_path).import!
+    result = Import::GiasHeadteacherCsvImporterService.new(file_path).import!
+
+    GiasHeadteacherImportMailer.import_notification(user, result).deliver_later
 
     delete_file(file_path)
   end
