@@ -147,6 +147,12 @@ variable "worker_container_command" {
   type        = list(string)
 }
 
+variable "worker_container_max_replicas" {
+  description = "Worker container max replicas"
+  type        = number
+  default     = 1
+}
+
 variable "enable_cdn_frontdoor" {
   description = "Enable Azure CDN FrontDoor. This will use the Container Apps endpoint as the origin."
   type        = bool

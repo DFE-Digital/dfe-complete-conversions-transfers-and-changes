@@ -14,8 +14,9 @@ module "azure_container_apps_hosting" {
   container_command                      = local.container_command
   container_secret_environment_variables = local.container_secret_environment_variables
 
-  enable_worker_container  = local.enable_worker_container
-  worker_container_command = local.worker_container_command
+  enable_worker_container       = local.enable_worker_container
+  worker_container_command      = local.worker_container_command
+  worker_container_max_replicas = local.worker_container_max_replicas
 
   enable_event_hub                          = local.enable_event_hub
   enable_logstash_consumer                  = local.enable_logstash_consumer
