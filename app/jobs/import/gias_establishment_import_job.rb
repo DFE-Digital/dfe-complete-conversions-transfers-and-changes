@@ -5,6 +5,10 @@ class Import::GiasEstablishmentImportJob < ApplicationJob
     importer = Import::GiasEstablishmentCsvImporterService.new(file_path)
     result = importer.import!
 
-    GiasEstablishmentImportMailer.import_notification(user, result).deliver_later
+    GiasEstablishmentImportMailer.import_notification(user, emailable_result(result)).deliver_later
+  end
+
+  def emailable_result(result)
+    result.delete(:changes)
   end
 end
