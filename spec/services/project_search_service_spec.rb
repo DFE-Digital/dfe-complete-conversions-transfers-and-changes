@@ -51,34 +51,56 @@ RSpec.describe ProjectSearchService do
     end
   end
 
-  describe "#search_by_urn" do
-    context "when a match is found" do
-      it "returns an array with the matches" do
-        matching_project = create(:conversion_project, urn: 100000)
-        another_matching_project = create(:transfer_project, urn: 100000)
-        not_matching_project = create(:conversion_project, urn: 123456)
+  describe "#search_by_urns" do
+    context "when one urn is passed" do
+      context "when a match is found" do
+        it "returns an array with the matches" do
+          matching_project = create(:conversion_project, urn: 100000)
+          another_matching_project = create(:transfer_project, urn: 100000)
+          not_matching_project = create(:conversion_project, urn: 123456)
 
-        service = described_class.new
-        result = service.search_by_urn("100000")
+          service = described_class.new
+          result = service.search_by_urns("100000")
 
-        expect(result.count).to eql 2
+          expect(result.count).to eql 2
 
-        expect(result).to include(matching_project)
-        expect(result).to include(another_matching_project)
+          expect(result).to include(matching_project)
+          expect(result).to include(another_matching_project)
 
-        expect(result).not_to include(not_matching_project)
+          expect(result).not_to include(not_matching_project)
+        end
+      end
+
+      context "when a match is not found" do
+        it "returns an empty result" do
+          create(:conversion_project, urn: 100000)
+          create(:transfer_project, urn: 100000)
+
+          service = described_class.new
+          result = service.search_by_urns("123456")
+
+          expect(result.count).to be_zero
+        end
       end
     end
 
-    context "when a match is not found" do
-      it "returns an empty result" do
-        create(:conversion_project, urn: 100000)
-        create(:transfer_project, urn: 100000)
+    context "when an array of urns is passed" do
+      context "when matches are found" do
+        it "returns an array with the matches" do
+          matching_project = create(:conversion_project, urn: 100000)
+          another_matching_project = create(:transfer_project, urn: 999999)
+          not_matching_project = create(:conversion_project, urn: 123456)
 
-        service = described_class.new
-        result = service.search_by_urn("123456")
+          service = described_class.new
+          result = service.search_by_urns(["100000", "999999"])
 
-        expect(result.count).to be_zero
+          expect(result.count).to eql 2
+
+          expect(result).to include(matching_project)
+          expect(result).to include(another_matching_project)
+
+          expect(result).not_to include(not_matching_project)
+        end
       end
     end
   end

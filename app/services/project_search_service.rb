@@ -1,7 +1,7 @@
 class ProjectSearchService
   def search(query)
     if urn_pattern(query)
-      return search_by_urn(query)
+      return search_by_urns(query)
     end
 
     if ukprn_pattern(query)
@@ -11,8 +11,8 @@ class ProjectSearchService
     []
   end
 
-  def search_by_urn(urn)
-    Project.where("urn = ?", urn)
+  def search_by_urns(urns)
+    Project.where(urn: urns)
   end
 
   def search_by_ukprn(ukprn)
