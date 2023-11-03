@@ -4,7 +4,7 @@ RSpec.describe Import::GiasEstablishmentImportJob, type: :job do
   describe "#perform" do
     let(:user) { create(:user, :service_support) }
     let(:file_path) { "gias_establishment_data_good.csv" }
-    let(:importer) { double(Import::GiasEstablishmentCsvImporterService, import!: true) }
+    let(:importer) { double(Import::GiasEstablishmentCsvImporterService, import!: {}) }
     subject { described_class }
 
     before do
@@ -28,6 +28,17 @@ RSpec.describe Import::GiasEstablishmentImportJob, type: :job do
       subject.perform_now(file_path, user)
 
       expect(mock_mailer).to have_received(:deliver_later).exactly(1).time
+    end
+  end
+
+  describe "#emailable_result" do
+    it "removes the changes from the result as the hash can be too large to queue with Sidekiq" do
+      test_result = {
+        included: 0,
+        changes: {}
+      }
+
+      expect(subject.emailable_result(test_result).has_key?(:changes)).to be false
     end
   end
 end
