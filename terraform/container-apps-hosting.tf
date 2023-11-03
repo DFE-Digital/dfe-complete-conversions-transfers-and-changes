@@ -1,5 +1,5 @@
 module "azure_container_apps_hosting" {
-  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.2.1"
+  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.3.1"
 
   environment    = local.environment
   project_name   = local.project_name
@@ -31,6 +31,8 @@ module "azure_container_apps_hosting" {
   mssql_server_public_access_enabled = local.mssql_server_public_access_enabled
 
   enable_redis_cache = local.enable_redis_cache
+  redis_config       = local.redis_config
+  redis_cache_sku    = local.redis_cache_sku
 
   enable_cdn_frontdoor                      = local.enable_cdn_frontdoor
   enable_cdn_frontdoor_health_probe         = local.enable_cdn_frontdoor_health_probe

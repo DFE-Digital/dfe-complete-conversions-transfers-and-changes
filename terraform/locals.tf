@@ -22,6 +22,8 @@ locals {
   mssql_firewall_ipv4_allow_list               = var.mssql_firewall_ipv4_allow_list
   mssql_server_public_access_enabled           = var.mssql_server_public_access_enabled
   enable_redis_cache                           = var.enable_redis_cache
+  redis_config                                 = var.redis_config
+  redis_cache_sku                              = var.redis_cache_sku
   enable_cdn_frontdoor                         = var.enable_cdn_frontdoor
   enable_event_hub                             = var.enable_event_hub
   enable_logstash_consumer                     = var.enable_logstash_consumer
