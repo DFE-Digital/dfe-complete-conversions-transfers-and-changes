@@ -57,11 +57,36 @@ RSpec.describe ProjectSearchService do
       end
     end
 
+    context "when passed an establishment number" do
+      it "returns the match by establishment number" do
+        _matching_establishment = create(:gias_establishment, urn: 100000, establishment_number: "1234")
+        _non_matching_establishment = create(:gias_establishment, urn: 999999, establishment_number: "1000")
+
+        matching_project = create(:transfer_project, urn: 100000)
+        non_matching_project = create(:conversion_project, urn: 999999)
+
+        service = described_class.new
+        result = service.search("1234")
+
+        expect(result).to include(matching_project)
+        expect(result).not_to include(non_matching_project)
+      end
+    end
+
     context "when passed anything that does not match the recognized patterns" do
       context "a too-long number" do
         it "returns an empty result" do
           service = described_class.new
           result = service.search("999999999999")
+
+          expect(result.count).to be_zero
+        end
+      end
+
+      context "a too-short number" do
+        it "returns an empty result" do
+          service = described_class.new
+          result = service.search("1")
 
           expect(result.count).to be_zero
         end
@@ -191,6 +216,33 @@ RSpec.describe ProjectSearchService do
       it "returns an empty result" do
         service = described_class.new
         result = service.search_by_words("st albans")
+
+        expect(result.count).to be_zero
+      end
+    end
+  end
+
+  describe "#search_by_establishment_number" do
+    context "when matches are found" do
+      it "returns an array with the matches" do
+        _matching_establishment = create(:gias_establishment, urn: 100000, establishment_number: 1234)
+        _non_matching_establishment = create(:gias_establishment, urn: 999999, establishment_number: 1000)
+
+        matching_project = create(:transfer_project, urn: 100000)
+        non_matching_project = create(:conversion_project, urn: 999999)
+
+        service = described_class.new
+        result = service.search_by_establishment_number("1234")
+
+        expect(result).to include(matching_project)
+        expect(result).not_to include(non_matching_project)
+      end
+    end
+
+    context "when no matches are found" do
+      it "returns an empty result" do
+        service = described_class.new
+        result = service.search_by_establishment_number("1234")
 
         expect(result.count).to be_zero
       end

@@ -12,6 +12,10 @@ class ProjectSearchService
       return search_by_words(query)
     end
 
+    if establishment_number_pattern(query)
+      return search_by_establishment_number(query)
+    end
+
     []
   end
 
@@ -36,6 +40,18 @@ class ProjectSearchService
     Gias::Establishment.where("LOWER(name) LIKE ?", "%#{query.downcase}%")
   end
 
+  def search_by_establishment_number(query)
+    establishment_results = search_establishments_by_establishment_number(query)
+    return [] if establishment_results.empty?
+
+    urns = establishment_results.pluck(:urn)
+    search_by_urns(urns)
+  end
+
+  private def search_establishments_by_establishment_number(query)
+    Gias::Establishment.where(establishment_number: query)
+  end
+
   private def urn_pattern(query)
     query.match?(/^\d{6}$/)
   end
@@ -46,5 +62,9 @@ class ProjectSearchService
 
   private def word_pattern(query)
     query.match?(/\D/)
+  end
+
+  private def establishment_number_pattern(query)
+    query.match?(/^\d{4}$/)
   end
 end
