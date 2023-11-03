@@ -1,7 +1,7 @@
 class GiasHeadteacherImportMailer < ApplicationMailer
   def import_notification(user, result)
     template_mail(
-      "316ef413-5e53-48e4-8a78-2aeaa9b98114",
+      "6d4ea487-3d6f-4043-b7dc-2388ed373fbc",
       to: user.email,
       personalisation: {
         result: format_result(result)
