@@ -1,22 +1,14 @@
 class ProjectSearchService
   def search(query)
     if urn_pattern(query)
-      return search_by_urns(query)
+      search_by_urns(query)
+    elsif ukprn_pattern(query)
+      search_by_ukprn(query)
+    elsif establishment_number_pattern(query)
+      search_by_establishment_number(query)
+    else
+      search_by_words(query)
     end
-
-    if ukprn_pattern(query)
-      return search_by_ukprn(query)
-    end
-
-    if word_pattern(query)
-      return search_by_words(query)
-    end
-
-    if establishment_number_pattern(query)
-      return search_by_establishment_number(query)
-    end
-
-    []
   end
 
   def search_by_urns(urns)
@@ -58,10 +50,6 @@ class ProjectSearchService
 
   private def ukprn_pattern(query)
     query.match?(/^\d{8}$/)
-  end
-
-  private def word_pattern(query)
-    query.match?(/\D/)
   end
 
   private def establishment_number_pattern(query)
