@@ -120,6 +120,23 @@ variable "enable_redis_cache" {
   type        = bool
 }
 
+variable "redis_config" {
+  description = "Overrides for Redis Cache Configuration options"
+  type = object({
+    maxmemory_reserved : optional(number),
+    maxmemory_delta : optional(number),
+    maxfragmentationmemory_reserved : optional(number),
+    maxmemory_policy : optional(string),
+  })
+  default = {}
+}
+
+variable "redis_cache_sku" {
+  description = "Redis Cache SKU"
+  type        = string
+  default     = "Basic"
+}
+
 variable "enable_event_hub" {
   description = "Send Azure Container App logs to an Event Hub sink"
   type        = bool
