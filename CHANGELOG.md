@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-45][release-45]
+
 ### Added
 
 - Allow search by words (establishment name)
@@ -1396,7 +1398,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-44...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-45...HEAD
+[release-45]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-44...release-45
 [release-44]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-43...release-44
 [release-43]:
