@@ -1,0 +1,18 @@
+
+<% content_for :page_title do %>
+  <%= page_title(t("search.page_title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <% if @query %>
+      <h1 class="govuk-heading-l">
+        <%= t("search.title", search_term: @query) %>
+      </h1>
+
+      <%= render partial: "results_table", locals: {results: @results, pager: @pager, query: @query, count: @count} %>
+    <% else %>
+      <p class="govuk-body"><%= t("search.enter_search_term") %></p>
+    <% end %>
+  </div>
+</div>
