@@ -11,6 +11,7 @@ class Import::GiasHeadteacherImportJob < ApplicationJob
 
   def emailable_result(result)
     result.delete(:changes)
+    result
   end
 
   private def delete_file(file_path)

@@ -10,5 +10,6 @@ class Import::GiasEstablishmentImportJob < ApplicationJob
 
   def emailable_result(result)
     result.delete(:changes)
+    result
   end
 end
