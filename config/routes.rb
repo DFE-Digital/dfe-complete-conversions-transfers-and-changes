@@ -150,7 +150,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #  Your team projects
+  #  Your team projects
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index] do
       collection do
@@ -225,6 +225,9 @@ Rails.application.routes.draw do
       post "/", to: "projects#create"
     end
   end
+
+  # Search
+  get "search", to: "search#results"
 
   # Defines the root path route ("/")
   root "root#home"

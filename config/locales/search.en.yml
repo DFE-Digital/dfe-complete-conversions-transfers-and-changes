@@ -1,0 +1,22 @@
+en:
+  search:
+    search: Search
+    placeholder: Search projects
+    search_this_website: Search this website
+    close_search: Close search
+    page_title: Search results
+    title: Search results for "%{search_term}"
+    result_count:
+      zero: No results found
+      one: "1 result found"
+      other: "%{count} results found"
+    no_results:
+      html:
+        <p>Your search - %{search_term} - had no matching results.</p>
+        <p>Improve your search results by:</p>
+        <ul>
+        <li>double-checking your spelling</li>
+        <li>using fewer keywords</li>
+        <li>searching for something less specific</li>
+        </ul>
+    enter_search_term: Please enter a search term

@@ -12,12 +12,12 @@ class ProjectSearchService
   end
 
   def search_by_urns(urns)
-    Project.where(urn: urns)
+    Project.where(urn: urns).includes(:assigned_to)
   end
 
   def search_by_ukprn(ukprn)
     Project.where("incoming_trust_ukprn = ?", ukprn)
-      .or(Project.where("outgoing_trust_ukprn = ?", ukprn))
+      .or(Project.where("outgoing_trust_ukprn = ?", ukprn)).includes(:assigned_to)
   end
 
   def search_by_words(query)

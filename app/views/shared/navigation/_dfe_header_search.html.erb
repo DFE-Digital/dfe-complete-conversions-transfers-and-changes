@@ -1,0 +1,26 @@
+<div class="dfe-header__search">
+  <button class="dfe-header__search-toggle" id="toggle-search" aria-controls="search" aria-label="Open search">
+    <svg class="dfe-icon dfe-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+      <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+    </svg>
+    <span class="govuk-visually-hidden"><%= t("search.search") %></span>
+  </button>
+  <div class="dfe-header__search-wrap" id="wrap-search">
+    <%= form_with method: :get, url: "/search", html: {class: "dfe-header__search-form", role: "search"} do |form| %>
+      <%= form.label :query, t("search.search_this_website"), class: "govuk-visually-hidden" %>
+      <%= form.text_field :query, class: "dfe-search__input", id: "searchterm", type: "search", placeholder: @query || t("search.placeholder"), autocomplete: "off" %>
+      <button class="dfe-search__submit" type="submit">
+        <svg class="dfe-icon dfe-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+          <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+        </svg>
+        <span class="govuk-visually-hidden"><%= t("search.search") %></span>
+      </button>
+      <button class="dfe-search__close" id="close-search">
+        <svg class="dfe-icon dfe-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="27" height="27">
+          <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+        </svg>
+        <span class="govuk-visually-hidden"><%= t("search.close_search") %></span>
+      </button>
+    <% end %>
+  </div>
+</div>
