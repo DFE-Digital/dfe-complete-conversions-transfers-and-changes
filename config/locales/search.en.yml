@@ -1,5 +1,9 @@
 en:
   search:
+    search: Search
+    placeholder: Search projects
+    search_this_website: Search this website
+    close_search: Close search
     page_title: Search results
     title: Search results for "%{search_term}"
     result_count:

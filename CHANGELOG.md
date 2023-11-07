@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Enable Search in the UI, add a search box in the header and search results
+  view. We can search by:
+  - school/academy name
+  - school/academy URN
+  - incoming trust by UKPRN
+  - outgoing trust by UKPRN
+
 ## [Release-45][release-45]
 
 ### Added
