@@ -159,6 +159,7 @@ Rails.application.routes.draw do
           get "completed", to: "projects#completed"
           get "unassigned", to: "projects#unassigned"
           get "handed-over", to: "projects#handed_over"
+          get "new", to: "projects#new"
           namespace :users do
             get "/", to: "projects#index"
             get "/:user_id", to: "projects#show", as: :by_user

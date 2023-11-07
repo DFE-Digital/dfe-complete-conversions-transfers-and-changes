@@ -3,6 +3,18 @@ class ByTeamProjectFetcherService
     @team = team
   end
 
+  def new
+    return [] if @team.nil?
+
+    projects = if @team.eql?("regional_casework_services")
+      Project.assigned_to_regional_caseworker_team.in_progress.includes(:assigned_to).ordered_by_created_at_date
+    else
+      Project.by_region(@team).in_progress.includes(:assigned_to).ordered_by_created_at_date
+    end
+
+    AcademiesApiPreFetcherService.new.call!(projects)
+  end
+
   def in_progress
     return [] if @team.nil?
 

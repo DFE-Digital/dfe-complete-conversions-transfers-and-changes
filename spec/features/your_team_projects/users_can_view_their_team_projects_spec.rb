@@ -35,4 +35,18 @@ RSpec.feature "Users can view their team's projects" do
       end
     end
   end
+
+  context "within the new tab" do
+    let(:user) { create(:regional_delivery_officer_user, team: :london) }
+    scenario "they can navigate to the new page and see projects listed in created at date order" do
+      project_newest = create(:conversion_project, team: "regional_casework_services", conversion_date: Date.today.at_beginning_of_month + 1.month, created_at: DateTime.now)
+      project_oldest = create(:conversion_project, team: "regional_casework_services", conversion_date: Date.today.at_beginning_of_month + 1.month, created_at: DateTime.now)
+
+      visit team_projects_path
+
+      expect(page).to have_content("New")
+      expect(page).to have_content(project_newest.urn)
+      expect(page).to have_content(project_oldest.urn)
+    end
+  end
 end

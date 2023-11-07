@@ -54,6 +54,8 @@ class Project < ApplicationRecord
   scope :assigned_to_users, ->(users) { where(assigned_to_id: [users]) }
   scope :added_by, ->(user) { where(regional_delivery_officer: user) }
 
+  scope :ordered_by_created_at_date, -> { order(created_at: :asc) }
+
   scope :by_region, ->(region) { where(region: region) }
 
   scope :by_trust_ukprn, ->(ukprn) { where(incoming_trust_ukprn: ukprn) }

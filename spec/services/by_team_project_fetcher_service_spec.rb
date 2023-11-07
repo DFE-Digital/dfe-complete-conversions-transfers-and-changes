@@ -49,6 +49,62 @@ RSpec.describe ByTeamProjectFetcherService do
     end
   end
 
+  describe "#new" do
+    before do
+      freeze_time
+      mock_all_academies_api_responses
+    end
+
+    after do
+      unfreeze_time
+    end
+
+    let!(:conversion_project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", conversion_date: Date.today.at_beginning_of_month + 1.month, created_at: DateTime.now) }
+    let!(:conversion_project_london) { create(:conversion_project, team: "regional_casework_services", region: "london", created_at: DateTime.now - 1.day) }
+    let!(:transfer_project_rcs) { create(:transfer_project, team: "regional_casework_services", region: "north_east", transfer_date: Date.today.at_beginning_of_month + 1.month, created_at: DateTime.now - 2.day) }
+    let!(:transfer_project_london) { create(:transfer_project, team: "regional_casework_services", region: "london", transfer_date: Date.today.at_beginning_of_month + 2.years, created_at: DateTime.now - 3.day) }
+
+    context "when the user is in the 'regional_casework_services' team" do
+      let!(:project_rcs_2) { create(:conversion_project, team: "regional_casework_services", region: "north_east", conversion_date: (Date.today + 1.month).at_beginning_of_month) }
+
+      it "returns all projects where the project's team is regional_casework_services" do
+        user = build(:user, team: "regional_casework_services")
+
+        result = described_class.new(user.team).new
+        expect(result).to include(conversion_project_rcs, conversion_project_london, transfer_project_rcs, transfer_project_london)
+      end
+
+      it "orders projects by created_at date" do
+        user = build(:user, team: "regional_casework_services")
+
+        result = described_class.new(user.team).new
+
+        expect(result.first.created_at).to eq(DateTime.now - 3.day)
+        expect(result.last.created_at).to eq(DateTime.now)
+      end
+    end
+
+    context "when the user's team is a region" do
+      it "returns all projects where the project's region is the same as the user's team" do
+        user = build(:user, team: "london")
+
+        result = described_class.new(user.team).new
+        expect(result).to include(conversion_project_london, transfer_project_london)
+        expect(result).to_not include(conversion_project_rcs, transfer_project_rcs)
+      end
+    end
+
+    it "returns an empty array when the user's team is nil" do
+      user = build(:user, team: nil)
+      expect(described_class.new(user.team).new).to eq([])
+    end
+
+    it "returns an empty array when the user's team is not RCS or a region" do
+      user = create(:user, team: "service_support")
+      expect(described_class.new(user.team).new).to eq([])
+    end
+  end
+
   describe "#completed" do
     before { mock_all_academies_api_responses }
 
