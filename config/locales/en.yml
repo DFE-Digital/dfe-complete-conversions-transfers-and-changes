@@ -146,6 +146,7 @@ en:
         exports: Exports
       team_projects:
         in_progress: In progress
+        new: New
         unassigned: Unassigned
         completed: Completed
         by_user: By user

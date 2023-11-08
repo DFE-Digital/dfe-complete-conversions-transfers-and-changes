@@ -2,6 +2,11 @@ class Team::ProjectsController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
+  def new
+    authorize Project, :index?
+    @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).new)
+  end
+
   def in_progress
     authorize Project, :index?
     @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).in_progress)

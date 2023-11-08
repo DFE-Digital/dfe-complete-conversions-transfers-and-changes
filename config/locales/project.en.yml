@@ -36,6 +36,8 @@ en:
     team:
       in_progress:
         title: In progress
+      new:
+        title: New
       completed:
         title: Completed
       unassigned:
@@ -169,6 +171,7 @@ en:
         added_by: Added by
         conversion_date: Conversion date
         conversion_or_transfer_date: Conversion or transfer date
+        created_at: Created at date
         revised_conversion_date: Revised conversion date
         route: Route
         school_phase: School phase
