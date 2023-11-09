@@ -79,8 +79,8 @@ RSpec.describe ByTeamProjectFetcherService do
 
         result = described_class.new(user.team).new
 
-        expect(result.first.created_at).to eq(DateTime.now - 3.day)
-        expect(result.last.created_at).to eq(DateTime.now)
+        expect(result.first.created_at).to eq(DateTime.now)
+        expect(result.last.created_at).to eq(DateTime.now - 3.day)
       end
     end
 
