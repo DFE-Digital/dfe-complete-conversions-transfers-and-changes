@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-46][release-46]
+
 ### Added
 
 - Enable Search in the UI, add a search box in the header and search results
@@ -14,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - school/academy URN
   - incoming trust by UKPRN
   - outgoing trust by UKPRN
+- Add `New` project table view for your team projects
 
 ## [Release-45][release-45]
 
@@ -21,7 +24,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Allow search by words (establishment name)
 - Allow search by GIAS establishment number
-- Add `New` project table view for your team projects
 
 ## [Release-44][release-44]
 
@@ -1408,7 +1410,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-45...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-46...HEAD
+[release-46]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-45...release-46
 [release-45]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-44...release-45
 [release-44]:
