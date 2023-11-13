@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Import GIAS groups from csv data
+
 ## [Release-46][release-46]
 
 ### Added
