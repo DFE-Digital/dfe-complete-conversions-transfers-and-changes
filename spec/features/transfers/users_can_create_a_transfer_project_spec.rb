@@ -62,6 +62,10 @@ RSpec.feature "Users can create new conversion projects" do
       choose "No"
     end
 
+    within("#outgoing-trust-to-close") do
+      choose "No"
+    end
+
     fill_in "Handover comments", with: "This is a handover note."
 
     within("#provisional-transfer-date") do

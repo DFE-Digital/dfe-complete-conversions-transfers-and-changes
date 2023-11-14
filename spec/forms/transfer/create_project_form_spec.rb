@@ -117,6 +117,14 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         expect(form).to be_invalid
       end
     end
+
+    describe "Outgoing trust to close" do
+      it "cannot be blank" do
+        form = build(:create_transfer_project_form, outgoing_trust_to_close: "")
+
+        expect(form).to be_invalid
+      end
+    end
   end
 
   describe "urn" do
@@ -281,13 +289,15 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
       it "updates the tasks data with the other values" do
         form = build(
           :create_transfer_project_form, inadequate_ofsted: true,
-          financial_safeguarding_governance_issues: true
+          financial_safeguarding_governance_issues: true,
+          outgoing_trust_to_close: true
         )
         form.save
 
         expect(Transfer::TasksData.count).to be 1
         expect(Transfer::TasksData.first.inadequate_ofsted).to be true
         expect(Transfer::TasksData.first.financial_safeguarding_governance_issues).to be true
+        expect(Transfer::TasksData.first.outgoing_trust_to_close).to be true
       end
     end
 

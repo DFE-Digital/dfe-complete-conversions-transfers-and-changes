@@ -1,6 +1,8 @@
 en:
   project_information:
     show:
+      "true": "Yes"
+      "false": "No"
       side_navigation:
         title: Jump to section
       project_details:
@@ -21,8 +23,6 @@ en:
           conversion_project: Conversion
           transfer_project: Transfer
       reasons_for:
-        "true": "Yes"
-        "false": "No"
         conversion:
           title: Reasons for the conversion
         transfer:
@@ -101,6 +101,7 @@ en:
       outgoing_trust_details:
         title: Outgoing trust details
         rows:
+          outgoing_trust_to_close: Will the outgoing trust close once this transfer is completed?
           outgoing_trust_name: Name
           address: Address
           ukprn: UKPRN (UK provider reference number)

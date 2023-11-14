@@ -13,5 +13,6 @@ FactoryBot.define do
     two_requires_improvement { false }
     inadequate_ofsted { false }
     financial_safeguarding_governance_issues { false }
+    outgoing_trust_to_close { false }
   end
 end
