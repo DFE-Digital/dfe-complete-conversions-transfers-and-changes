@@ -1,4 +1,4 @@
-class Import::GiasHeadteacherCsvImporterService
+class Import::GiasHeadteacherCsvImporterService < Import::GiasCsvImporterService
   require "csv"
 
   IMPORT_MAP = {
@@ -16,8 +16,6 @@ class Import::GiasHeadteacherCsvImporterService
     :email,
     :establishment_urn
   ].freeze
-
-  ENCODING = "ISO-8859-1"
 
   def initialize(path)
     @path = path
@@ -50,28 +48,7 @@ class Import::GiasHeadteacherCsvImporterService
     import_result
   end
 
-  def required_column_headers_present?
-    file = File.open(@path, encoding: ENCODING)
-    headers = CSV.parse_line(file)
-    return false if headers.nil?
-
-    IMPORT_MAP.values.to_set.subset?(headers.to_set)
-  end
-
-  def changed_attributes(csv_attributes, model_attributes)
-    model_attribute_strings = model_attributes.transform_values(&:to_s)
-    csv_attribute_strings = csv_attributes.transform_values(&:to_s)
-
-    result = {}
-    csv_attribute_strings.each_pair do |key, value|
-      unless model_attribute_strings[key] == value
-        result[key] = {previous_value: model_attribute_strings[key], new_value: value}
-      end
-    end
-    result
-  end
-
-  def contact_csv_row_attributes(row)
+  def csv_row_attributes(row)
     attributes = {}
     IMPORT_MAP.each_pair do |key, value|
       case key.to_s
@@ -118,7 +95,7 @@ class Import::GiasHeadteacherCsvImporterService
 
     Rails.logger.info "[IMPORT][GIAS][HEADTEACHER] Contact found or created for establishment with URN: #{urn}."
 
-    contact_csv_attributes = contact_csv_row_attributes(row)
+    contact_csv_attributes = csv_row_attributes(row)
     contact_row_changes = changed_attributes(contact_csv_attributes, contact.attributes)
 
     if contact_row_changes.any?
@@ -135,13 +112,6 @@ class Import::GiasHeadteacherCsvImporterService
     end
 
     true
-  end
-
-  private def required_values_empty?(row)
-    values = REQUIRED_VALUES.map do |value|
-      row.field(IMPORT_MAP[value]).blank?
-    end
-    values.none?
   end
 
   private def initialize_import_result
