@@ -5,5 +5,9 @@
           row.with_key { t("project_information.show.reasons_for.two_requires_improvement.transfer_project.title") }
           row.with_value { t("project_information.show.reasons_for.two_requires_improvement.#{project.two_requires_improvement}") }
         end
+        summary_list.with_row do |row|
+          row.with_key { t("project_information.show.reasons_for.inadequate_ofsted.transfer_project.title") }
+          row.with_value { t("project_information.show.reasons_for.inadequate_ofsted.#{project.tasks_data.inadequate_ofsted}") }
+        end
       end %>
 </div>

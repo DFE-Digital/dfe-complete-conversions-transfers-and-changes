@@ -58,7 +58,8 @@ class Transfers::ProjectsController < ApplicationController
       :outgoing_trust_sharepoint_link,
       :assigned_to_regional_caseworker_team,
       :handover_note_body,
-      :two_requires_improvement
+      :two_requires_improvement,
+      :inadequate_ofsted
     )
   end
 end

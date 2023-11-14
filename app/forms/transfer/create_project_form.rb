@@ -3,11 +3,13 @@ class Transfer::CreateProjectForm < CreateProjectForm
 
   attribute :outgoing_trust_sharepoint_link
   attribute :two_requires_improvement, :boolean
+  attribute :inadequate_ofsted, :boolean
 
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
   validates :provisional_transfer_date, presence: true
   validates :provisional_transfer_date, date_in_the_future: true, first_day_of_month: true
   validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.two_requires_improvement.inclusion")}
+  validates :inadequate_ofsted, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.inadequate_ofsted.inclusion")}
 
   validate :urn_unique_for_in_progress_transfers, if: -> { urn.present? }
 
@@ -46,6 +48,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
     ActiveRecord::Base.transaction do
       @project.save
       @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
+      @project.tasks_data.update!(inadequate_ofsted: inadequate_ofsted)
     end
 
     @project
@@ -63,8 +66,8 @@ class Transfer::CreateProjectForm < CreateProjectForm
     errors.add(:incoming_trust_ukprn, I18n.t("errors.attributes.incoming_trust_ukprn.ukprns_must_not_match")) if incoming_trust_ukprn == outgoing_trust_ukprn
   end
 
-  def two_requires_improvement_responses
-    @two_requires_improvement_responses ||= [
+  def yes_no_responses
+    @yes_no_responses ||= [
       OpenStruct.new(id: true, name: I18n.t("yes")),
       OpenStruct.new(id: false, name: I18n.t("no"))
     ]

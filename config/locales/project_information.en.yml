@@ -38,6 +38,12 @@ en:
             title: Is this transfer due to 2RI?
           "true": "Yes"
           "false": "No"
+        inadequate_ofsted:
+          transfer_project:
+            title: Is this transfer due to an inadequate Ofsted rating?
+          "true": "Yes"
+          "false": "No"
+        nil: Unconfirmed
       advisory_board_details:
         title: Advisory board details
         rows:

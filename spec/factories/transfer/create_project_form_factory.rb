@@ -11,5 +11,6 @@ FactoryBot.define do
     user { association :user, :regional_delivery_officer }
     handover_note_body { "This is a handover note." }
     two_requires_improvement { false }
+    inadequate_ofsted { false }
   end
 end
