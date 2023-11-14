@@ -109,6 +109,14 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         expect(form).to be_invalid
       end
     end
+
+    describe "financial, safeguarding or governance issues" do
+      it "cannot be blank" do
+        form = build(:create_transfer_project_form, financial_safeguarding_governance_issues: "")
+
+        expect(form).to be_invalid
+      end
+    end
   end
 
   describe "urn" do
@@ -271,11 +279,15 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
       end
 
       it "updates the tasks data with the other values" do
-        form = build(:create_transfer_project_form, inadequate_ofsted: true)
+        form = build(
+          :create_transfer_project_form, inadequate_ofsted: true,
+          financial_safeguarding_governance_issues: true
+        )
         form.save
 
         expect(Transfer::TasksData.count).to be 1
         expect(Transfer::TasksData.first.inadequate_ofsted).to be true
+        expect(Transfer::TasksData.first.financial_safeguarding_governance_issues).to be true
       end
     end
 

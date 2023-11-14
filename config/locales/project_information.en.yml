@@ -21,6 +21,8 @@ en:
           conversion_project: Conversion
           transfer_project: Transfer
       reasons_for:
+        "true": "Yes"
+        "false": "No"
         conversion:
           title: Reasons for the conversion
         transfer:
@@ -36,13 +38,12 @@ en:
           "false": "No"
           transfer_project:
             title: Is this transfer due to 2RI?
-          "true": "Yes"
-          "false": "No"
         inadequate_ofsted:
           transfer_project:
             title: Is this transfer due to an inadequate Ofsted rating?
-          "true": "Yes"
-          "false": "No"
+        financial_safeguarding_governance_issues:
+          transfer_project:
+            title: Is this transfer due to financial, safeguarding or governance issues?
         nil: Unconfirmed
       advisory_board_details:
         title: Advisory board details

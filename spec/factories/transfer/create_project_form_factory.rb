@@ -12,5 +12,6 @@ FactoryBot.define do
     handover_note_body { "This is a handover note." }
     two_requires_improvement { false }
     inadequate_ofsted { false }
+    financial_safeguarding_governance_issues { false }
   end
 end

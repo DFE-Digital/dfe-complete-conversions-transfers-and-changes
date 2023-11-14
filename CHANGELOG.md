@@ -15,6 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   information on the about the project tab
 - transfer projects now collect if they are the result of an inadequate Ofsted
   inspection and show this information on the about the project tab
+- transfer projects now collect if they are the result of financial,
+  safeguarding or governance issues and who this information on the about
+  project tab
 
 ## [Release-46][release-46]
 

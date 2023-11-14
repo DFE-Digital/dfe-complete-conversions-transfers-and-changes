@@ -48,6 +48,12 @@
               :id,
               :name,
               form_group: {id: "inadequate-ofsted"} %>
+
+        <%= form.govuk_collection_radio_buttons :financial_safeguarding_governance_issues,
+              @project.yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "financial-safeguarding-governance-issues"} %>
       </div>
 
       <div class="govuk-form-group">

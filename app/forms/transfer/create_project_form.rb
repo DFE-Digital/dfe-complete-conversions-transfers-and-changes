@@ -4,12 +4,14 @@ class Transfer::CreateProjectForm < CreateProjectForm
   attribute :outgoing_trust_sharepoint_link
   attribute :two_requires_improvement, :boolean
   attribute :inadequate_ofsted, :boolean
+  attribute :financial_safeguarding_governance_issues, :boolean
 
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
   validates :provisional_transfer_date, presence: true
   validates :provisional_transfer_date, date_in_the_future: true, first_day_of_month: true
   validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.two_requires_improvement.inclusion")}
   validates :inadequate_ofsted, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.inadequate_ofsted.inclusion")}
+  validates :financial_safeguarding_governance_issues, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.financial_safeguarding_governance_issues.inclusion")}
 
   validate :urn_unique_for_in_progress_transfers, if: -> { urn.present? }
 
@@ -48,7 +50,10 @@ class Transfer::CreateProjectForm < CreateProjectForm
     ActiveRecord::Base.transaction do
       @project.save
       @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
-      @project.tasks_data.update!(inadequate_ofsted: inadequate_ofsted)
+      @project.tasks_data.update!(
+        inadequate_ofsted: inadequate_ofsted,
+        financial_safeguarding_governance_issues: financial_safeguarding_governance_issues
+      )
     end
 
     @project

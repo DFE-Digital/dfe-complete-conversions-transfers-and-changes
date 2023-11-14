@@ -59,7 +59,8 @@ class Transfers::ProjectsController < ApplicationController
       :assigned_to_regional_caseworker_team,
       :handover_note_body,
       :two_requires_improvement,
-      :inadequate_ofsted
+      :inadequate_ofsted,
+      :financial_safeguarding_governance_issues
     )
   end
 end
