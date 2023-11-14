@@ -2,10 +2,12 @@ class Transfer::CreateProjectForm < CreateProjectForm
   attr_reader :provisional_transfer_date
 
   attribute :outgoing_trust_sharepoint_link
+  attribute :two_requires_improvement, :boolean
 
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
   validates :provisional_transfer_date, presence: true
   validates :provisional_transfer_date, date_in_the_future: true, first_day_of_month: true
+  validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.two_requires_improvement.inclusion")}
 
   validate :urn_unique_for_in_progress_transfers, if: -> { urn.present? }
 
@@ -30,6 +32,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       advisory_board_date: advisory_board_date,
       advisory_board_conditions: advisory_board_conditions,
       transfer_date: provisional_transfer_date,
+      two_requires_improvement: two_requires_improvement,
       regional_delivery_officer_id: user.id,
       team: user.team,
       assigned_to: user,
@@ -58,6 +61,13 @@ class Transfer::CreateProjectForm < CreateProjectForm
 
   def check_incoming_trust_and_outgoing_trust
     errors.add(:incoming_trust_ukprn, I18n.t("errors.attributes.incoming_trust_ukprn.ukprns_must_not_match")) if incoming_trust_ukprn == outgoing_trust_ukprn
+  end
+
+  def two_requires_improvement_responses
+    @two_requires_improvement_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("yes")),
+      OpenStruct.new(id: false, name: I18n.t("no"))
+    ]
   end
 
   private def outgoing_trust_exists

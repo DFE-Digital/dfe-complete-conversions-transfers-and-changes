@@ -36,6 +36,15 @@
       </div>
 
       <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :two_requires_improvement,
+              @project.two_requires_improvement_responses,
+              :id,
+              :name,
+              form_group: {id: "two-requires-improvement"},
+              hint: {text: t("helpers.hint.transfer_project.two_requires_improvement")} %>
+      </div>
+
+      <div class="govuk-form-group">
         <%= form.govuk_collection_radio_buttons :assigned_to_regional_caseworker_team,
               @project.assigned_to_regional_caseworker_team_responses,
               :id,

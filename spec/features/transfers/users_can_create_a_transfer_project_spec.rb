@@ -50,6 +50,10 @@ RSpec.feature "Users can create new conversion projects" do
       fill_in "Year", with: two_weeks_ago.year
     end
 
+    within("#two-requires-improvement") do
+      choose "No"
+    end
+
     fill_in "Handover comments", with: "This is a handover note."
 
     within("#provisional-transfer-date") do

@@ -23,6 +23,8 @@ en:
       reasons_for:
         conversion:
           title: Reasons for the conversion
+        transfer:
+          title: Reasons for the transfer
         directive_academy_order:
           title: Has a directive academy order been issued?
           "true": "Yes"
@@ -30,6 +32,10 @@ en:
         two_requires_improvement:
           conversion_project:
             title: Is this conversion due to intervention following 2RI?
+          "true": "Yes"
+          "false": "No"
+          transfer_project:
+            title: Is this transfer due to 2RI?
           "true": "Yes"
           "false": "No"
       advisory_board_details:

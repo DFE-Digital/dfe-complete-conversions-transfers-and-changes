@@ -1,0 +1,9 @@
+<div id="reasonsfor" class="project-information-block">
+  <h3 class="govuk-heading-m"><%= t("project_information.show.reasons_for.transfer.title") %></h3>
+  <%= govuk_summary_list do |summary_list|
+        summary_list.with_row do |row|
+          row.with_key { t("project_information.show.reasons_for.two_requires_improvement.transfer_project.title") }
+          row.with_value { t("project_information.show.reasons_for.two_requires_improvement.#{project.two_requires_improvement}") }
+        end
+      end %>
+</div>

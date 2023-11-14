@@ -184,6 +184,14 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     end
   end
 
+  describe "two requires improvement" do
+    it "cannot be blank" do
+      form = build(:create_transfer_project_form, two_requires_improvement: "")
+
+      expect(form).to be_invalid
+    end
+  end
+
   describe "region" do
     it "sets the region code from the establishment" do
       project = build(:create_transfer_project_form).save

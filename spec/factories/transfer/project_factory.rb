@@ -14,5 +14,6 @@ FactoryBot.define do
     regional_delivery_officer { association :user, :regional_delivery_officer }
     tasks_data { association :transfer_tasks_data }
     outgoing_trust_ukprn { 10059062 }
+    two_requires_improvement { false }
   end
 end
