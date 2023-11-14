@@ -2,7 +2,7 @@ class Import::GiasHeadteacherImportJob < ApplicationJob
   queue_as :default
 
   def perform(file_path, user)
-    result = Import::GiasHeadteacherCsvImporterService.new(file_path).import!
+    result = Import::Gias::HeadteacherCsvImporterService.new(file_path).import!
 
     GiasHeadteacherImportMailer.import_notification(user, emailable_result(result)).deliver_later
 

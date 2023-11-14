@@ -1,4 +1,4 @@
-class Import::GiasEstablishmentCsvImporterService < Import::GiasCsvImporterService
+class Import::Gias::EstablishmentCsvImporterService < Import::Gias::CsvImporterService
   require "csv"
   require "benchmark"
 

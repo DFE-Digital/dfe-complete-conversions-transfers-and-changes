@@ -4,11 +4,11 @@ RSpec.describe Import::GiasEstablishmentImportJob, type: :job do
   describe "#perform" do
     let(:user) { create(:user, :service_support) }
     let(:file_path) { "gias_establishment_data_good.csv" }
-    let(:importer) { double(Import::GiasEstablishmentCsvImporterService, import!: {}) }
+    let(:importer) { double(Import::Gias::EstablishmentCsvImporterService, import!: {}) }
     subject { described_class }
 
     before do
-      allow(Import::GiasEstablishmentCsvImporterService).to receive(:new).and_return(importer)
+      allow(Import::Gias::EstablishmentCsvImporterService).to receive(:new).and_return(importer)
     end
 
     it "queues the job" do

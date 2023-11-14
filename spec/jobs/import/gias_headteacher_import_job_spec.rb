@@ -3,11 +3,11 @@ require "rails_helper"
 RSpec.describe Import::GiasHeadteacherImportJob, type: :job do
   describe "#perform" do
     let(:user) { create(:user, :service_support) }
-    let(:importer) { double(Import::GiasHeadteacherCsvImporterService, import!: {}) }
+    let(:importer) { double(Import::Gias::HeadteacherCsvImporterService, import!: {}) }
     subject { described_class }
 
     before do
-      allow(Import::GiasHeadteacherCsvImporterService).to receive(:new).and_return(importer)
+      allow(Import::Gias::HeadteacherCsvImporterService).to receive(:new).and_return(importer)
       allow(File).to receive(:delete).and_return(true)
     end
 

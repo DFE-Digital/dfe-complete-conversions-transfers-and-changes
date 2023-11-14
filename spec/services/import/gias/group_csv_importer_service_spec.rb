@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Import::GiasGroupCsvImporterService do
+RSpec.describe Import::Gias::GroupCsvImporterService do
   describe "#import!" do
     it "takes a csv file and imports the GIAS groups it contains" do
       path = file_fixture("gias_groups_data_good.csv")

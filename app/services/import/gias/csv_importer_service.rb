@@ -1,8 +1,12 @@
-class Import::GiasCsvImporterService
+class Import::Gias::CsvImporterService
   require "csv"
   require "benchmark"
 
   ENCODING = "ISO-8859-1"
+
+  def initialize
+    raise NotImplementedError, "You need to instantiate this from a subclass to indicate which type of GIAS data you are importing"
+  end
 
   def changed_attributes(csv_attributes, model_attributes)
     model_attribute_strings = model_attributes.transform_values(&:to_s)

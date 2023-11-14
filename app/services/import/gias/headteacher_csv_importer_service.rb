@@ -1,4 +1,4 @@
-class Import::GiasHeadteacherCsvImporterService < Import::GiasCsvImporterService
+class Import::Gias::HeadteacherCsvImporterService < Import::Gias::CsvImporterService
   require "csv"
 
   IMPORT_MAP = {

@@ -1,4 +1,4 @@
-class Import::GiasGroupCsvImporterService < Import::GiasCsvImporterService
+class Import::Gias::GroupCsvImporterService < Import::Gias::CsvImporterService
   require "csv"
 
   IMPORT_MAP = {
@@ -58,7 +58,6 @@ class Import::GiasGroupCsvImporterService < Import::GiasCsvImporterService
     Rails.logger.info "[IMPORT][GIAS][GROUP] Finished import from file #{@path}"
     import_result
   end
-
 
   def import_row(row)
     @csv_rows += 1

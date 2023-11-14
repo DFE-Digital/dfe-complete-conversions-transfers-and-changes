@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Import::GiasHeadteacherCsvImporterService do
+RSpec.describe Import::Gias::HeadteacherCsvImporterService do
   describe "#import!" do
     it "takes a csv file and imports the head teacher contact details it contains" do
       create(:gias_establishment, urn: 144731)
