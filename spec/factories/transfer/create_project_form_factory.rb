@@ -14,5 +14,6 @@ FactoryBot.define do
     inadequate_ofsted { false }
     financial_safeguarding_governance_issues { false }
     outgoing_trust_to_close { false }
+    assigned_to_regional_caseworker_team { false }
   end
 end

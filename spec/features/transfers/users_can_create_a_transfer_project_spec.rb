@@ -72,5 +72,9 @@ RSpec.feature "Users can create new conversion projects" do
       fill_in "Month", with: two_months_time.month
       fill_in "Year", with: two_months_time.year
     end
+
+    within "#assigned-to-regional-caseworker-team" do
+      choose "No"
+    end
   end
 end

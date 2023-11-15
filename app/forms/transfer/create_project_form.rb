@@ -10,6 +10,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
   validates :provisional_transfer_date, presence: true
   validates :provisional_transfer_date, date_in_the_future: true, first_day_of_month: true
+  validates :assigned_to_regional_caseworker_team, inclusion: {in: [true, false]}
   validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.two_requires_improvement.inclusion")}
   validates :inadequate_ofsted, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.inadequate_ofsted.inclusion")}
   validates :financial_safeguarding_governance_issues, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.financial_safeguarding_governance_issues.inclusion")}
