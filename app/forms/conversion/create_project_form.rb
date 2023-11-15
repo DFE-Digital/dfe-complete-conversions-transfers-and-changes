@@ -47,13 +47,6 @@ class Conversion::CreateProjectForm < CreateProjectForm
     ]
   end
 
-  def two_requires_improvement_responses
-    @two_requires_improvement_responses ||= [
-      OpenStruct.new(id: true, name: I18n.t("yes")),
-      OpenStruct.new(id: false, name: I18n.t("no"))
-    ]
-  end
-
   def save
     assigned_to = assigned_to_regional_caseworker_team ? nil : user
     assigned_at = assigned_to_regional_caseworker_team ? nil : DateTime.now

@@ -64,7 +64,7 @@
 
       <div class="govuk-form-group">
         <%= form.govuk_collection_radio_buttons :assigned_to_regional_caseworker_team,
-              @project.assigned_to_regional_caseworker_team_responses,
+              @project.yes_no_responses,
               :id,
               :name,
               form_group: {id: "assigned-to-regional-caseworker-team"},

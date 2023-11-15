@@ -74,13 +74,6 @@ class Transfer::CreateProjectForm < CreateProjectForm
     errors.add(:incoming_trust_ukprn, I18n.t("errors.attributes.incoming_trust_ukprn.ukprns_must_not_match")) if incoming_trust_ukprn == outgoing_trust_ukprn
   end
 
-  def yes_no_responses
-    @yes_no_responses ||= [
-      OpenStruct.new(id: true, name: I18n.t("yes")),
-      OpenStruct.new(id: false, name: I18n.t("no"))
-    ]
-  end
-
   private def outgoing_trust_exists
     result = Api::AcademiesApi::Client.new.get_trust(outgoing_trust_ukprn)
     raise result.error if result.error.present?
