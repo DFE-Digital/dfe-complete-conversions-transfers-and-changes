@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Import::GiasHeadteacherCsvImporterService do
+RSpec.describe Import::Gias::HeadteacherCsvImporterService do
   describe "#import!" do
     it "takes a csv file and imports the head teacher contact details it contains" do
       create(:gias_establishment, urn: 144731)
@@ -297,7 +297,7 @@ RSpec.describe Import::GiasHeadteacherCsvImporterService do
     end
   end
 
-  describe "#contact_csv_row_attributes" do
+  describe "#csv_row_attributes" do
     it "returns the values that are required by the importer and nothing else" do
       row = CSV::Row.new(
         ["URN", "Other column"],
@@ -305,7 +305,7 @@ RSpec.describe Import::GiasHeadteacherCsvImporterService do
       )
 
       service = described_class.new("/path")
-      row_attributes = service.contact_csv_row_attributes(row)
+      row_attributes = service.csv_row_attributes(row)
 
       expect(row_attributes["establishment_urn"]).to eql "123456"
       expect(row_attributes.keys).not_to include("Other column")
@@ -319,7 +319,7 @@ RSpec.describe Import::GiasHeadteacherCsvImporterService do
       )
 
       service = described_class.new("/path")
-      row_attributes = service.contact_csv_row_attributes(row)
+      row_attributes = service.csv_row_attributes(row)
 
       expect(row_attributes.keys).to include("establishment_urn")
       expect(row_attributes.keys).to include("name")

@@ -39,7 +39,7 @@ class ServiceSupport::Upload::Gias::UploadEstablishmentsForm
   private def file_headers
     return unless @uploaded_file.present?
 
-    unless Import::GiasEstablishmentCsvImporterService.new(@uploaded_file.path).required_column_headers_present?
+    unless Import::Gias::EstablishmentCsvImporterService.new(@uploaded_file.path).required_column_headers_present?
       errors.add(:uploaded_file, message: I18n.t("errors.upload.attributes.uploaded_file.file_headers"))
     end
   end

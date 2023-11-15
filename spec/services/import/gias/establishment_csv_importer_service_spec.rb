@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Import::GiasEstablishmentCsvImporterService do
+RSpec.describe Import::Gias::EstablishmentCsvImporterService do
   describe "#import!" do
     it "takes a csv file and imports the GIAS establishment it contains" do
       path = file_fixture("gias_establishment_data_good.csv")
