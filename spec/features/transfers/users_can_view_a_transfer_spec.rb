@@ -41,6 +41,7 @@ RSpec.feature "Users can view a transfer" do
 
     expect(page).to have_content(transfer_project.urn)
     expect(page).to have_content("Project details")
+    expect(page).to have_content("Reasons for the transfer")
     expect(page).to have_content("Advisory board details")
     expect(page).to have_content("Academy details")
     expect(page).to have_content("Incoming trust details")

@@ -2,10 +2,19 @@ class Transfer::CreateProjectForm < CreateProjectForm
   attr_reader :provisional_transfer_date
 
   attribute :outgoing_trust_sharepoint_link
+  attribute :two_requires_improvement, :boolean
+  attribute :inadequate_ofsted, :boolean
+  attribute :financial_safeguarding_governance_issues, :boolean
+  attribute :outgoing_trust_to_close, :boolean
 
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
   validates :provisional_transfer_date, presence: true
   validates :provisional_transfer_date, date_in_the_future: true, first_day_of_month: true
+  validates :assigned_to_regional_caseworker_team, inclusion: {in: [true, false]}
+  validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.two_requires_improvement.inclusion")}
+  validates :inadequate_ofsted, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.inadequate_ofsted.inclusion")}
+  validates :financial_safeguarding_governance_issues, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.financial_safeguarding_governance_issues.inclusion")}
+  validates :outgoing_trust_to_close, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.outgoing_trust_to_close.inclusion")}
 
   validate :urn_unique_for_in_progress_transfers, if: -> { urn.present? }
 
@@ -30,6 +39,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       advisory_board_date: advisory_board_date,
       advisory_board_conditions: advisory_board_conditions,
       transfer_date: provisional_transfer_date,
+      two_requires_improvement: two_requires_improvement,
       regional_delivery_officer_id: user.id,
       team: user.team,
       assigned_to: user,
@@ -43,6 +53,11 @@ class Transfer::CreateProjectForm < CreateProjectForm
     ActiveRecord::Base.transaction do
       @project.save
       @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
+      @project.tasks_data.update!(
+        inadequate_ofsted: inadequate_ofsted,
+        financial_safeguarding_governance_issues: financial_safeguarding_governance_issues,
+        outgoing_trust_to_close: outgoing_trust_to_close
+      )
     end
 
     @project

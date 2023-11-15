@@ -98,3 +98,7 @@ en:
       provisional_conversion_date:
         blank: Enter a month and year for the provisional conversion date, like 9 2023
         must_be_in_the_future: Provisional conversion date must be in the future
+    conversion_project:
+      attributes:
+        two_requires_improvement:
+          inclusion: State if the conversion is due to 2RI. Choose yes or no

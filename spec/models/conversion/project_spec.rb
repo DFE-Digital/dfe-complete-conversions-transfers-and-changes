@@ -44,14 +44,6 @@ RSpec.describe Conversion::Project do
       it { is_expected.to allow_value(true).for(:two_requires_improvement) }
       it { is_expected.to allow_value(false).for(:two_requires_improvement) }
       it { is_expected.to_not allow_value(nil).for(:two_requires_improvement) }
-
-      context "error messages" do
-        it "adds an appropriate error message if the value is nil" do
-          subject.assign_attributes(two_requires_improvement: nil)
-          subject.valid?
-          expect(subject.errors[:two_requires_improvement]).to include("Select yes or no")
-        end
-      end
     end
   end
 

@@ -39,6 +39,11 @@ en:
         advisory_board_date: Date of advisory board
         provisional_transfer_date: Provisional transfer date
         assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
+      transfer_create_project_form:
+        two_requires_improvement: Is this a transfer due to 2RI?
+        inadequate_ofsted: Is this transfer due to an inadequate Ofsted rating?
+        financial_safeguarding_governance_issues: Is this transfer due to financial, safeguarding or governance issues?
+        outgoing_trust_to_close: Will the outgoing trust close once this transfer is completed?
     hint:
       transfer_project:
         urn:
@@ -63,13 +68,25 @@ en:
             <li>who the Schools Financial Support and Oversight lead is</li>
             <li>any finanical package that has been finalised and agreed</li>
           </ul>
+        two_requires_improvement: If an academy receives 2 or more requires improvement ratings (2RI) from Ofsted, it can be transferred to a different trust to improve performance.
   errors:
     attributes:
       provisional_transfer_date:
         blank: Enter a month and year for the provisional transfer date, like 9 2023
         must_be_in_the_future: Provisional transfer date must be in the future
+        invalid: Enter a month and year for the provisional transfer date, like 9 2023
       outgoing_trust_sharepoint_link:
         blank: Enter an outgoing trust SharePoint link
         invalid: Enter a outgoing trust SharePoint link in the correct format
         https_only: The outgoing trust SharePoint link must have the https scheme
         host_not_allowed: Enter an outgoing trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+    transfer_project:
+      attributes:
+        two_requires_improvement:
+          inclusion: State if the transfer is due to 2RI. Choose yes or no
+        inadequate_ofsted:
+          inclusion: State if the transfer is due to an inadequate Ofsted rating. Choose yes or no
+        financial_safeguarding_governance_issues:
+          inclusion: State if the transfer is due to financial, safeguarding or governance issues. Choose yes or no
+        outgoing_trust_to_close:
+          inclusion: State if the outgoing trust will close once this transfer is completed. Choose yes or no

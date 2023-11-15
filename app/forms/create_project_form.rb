@@ -45,8 +45,8 @@ class CreateProjectForm
     @attributes_with_invalid_values << :advisory_board_date
   end
 
-  def assigned_to_regional_caseworker_team_responses
-    @assigned_to_regional_caseworker_team_responses ||= [
+  def yes_no_responses
+    @yes_no_responses ||= [
       OpenStruct.new(id: true, name: I18n.t("yes")),
       OpenStruct.new(id: false, name: I18n.t("no"))
     ]

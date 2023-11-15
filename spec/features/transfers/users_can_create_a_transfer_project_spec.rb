@@ -50,11 +50,31 @@ RSpec.feature "Users can create new conversion projects" do
       fill_in "Year", with: two_weeks_ago.year
     end
 
+    within("#two-requires-improvement") do
+      choose "No"
+    end
+
+    within("#inadequate-ofsted") do
+      choose "No"
+    end
+
+    within("#financial-safeguarding-governance-issues") do
+      choose "No"
+    end
+
+    within("#outgoing-trust-to-close") do
+      choose "No"
+    end
+
     fill_in "Handover comments", with: "This is a handover note."
 
     within("#provisional-transfer-date") do
       fill_in "Month", with: two_months_time.month
       fill_in "Year", with: two_months_time.year
+    end
+
+    within "#assigned-to-regional-caseworker-team" do
+      choose "No"
     end
   end
 end

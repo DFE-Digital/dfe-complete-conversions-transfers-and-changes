@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_08_110923) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_14_112915) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -363,13 +363,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_110923) do
     t.boolean "deed_termination_church_agreement_signed_secretary_state"
     t.boolean "deed_termination_church_agreement_saved_after_signing_by_secretary_state"
     t.boolean "deed_termination_church_agreement_not_applicable"
+    t.boolean "confirm_incoming_trust_has_completed_all_actions_emailed"
+    t.boolean "confirm_incoming_trust_has_completed_all_actions_saved"
     t.boolean "closure_or_transfer_declaration_not_applicable"
     t.boolean "closure_or_transfer_declaration_received"
     t.boolean "closure_or_transfer_declaration_cleared"
     t.boolean "closure_or_transfer_declaration_saved"
     t.boolean "closure_or_transfer_declaration_sent"
-    t.boolean "confirm_incoming_trust_has_completed_all_actions_emailed"
-    t.boolean "confirm_incoming_trust_has_completed_all_actions_saved"
     t.boolean "redact_and_send_documents_send_to_esfa"
     t.boolean "redact_and_send_documents_redact"
     t.boolean "redact_and_send_documents_saved"
@@ -379,6 +379,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_110923) do
     t.boolean "request_new_urn_and_record_complete"
     t.boolean "request_new_urn_and_record_receive"
     t.boolean "request_new_urn_and_record_give"
+    t.boolean "inadequate_ofsted", default: false
+    t.boolean "financial_safeguarding_governance_issues", default: false
+    t.boolean "outgoing_trust_to_close", default: false
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

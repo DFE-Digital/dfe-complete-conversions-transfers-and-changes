@@ -290,6 +290,18 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         end
       end
     end
+
+    describe "two requires improvement" do
+      it "cannot be empty" do
+        form = build(
+          form_factory.to_sym,
+          two_requires_improvement: ""
+        )
+
+        expect(form).to be_invalid
+        expect(form.errors[:two_requires_improvement]).to include("State if the conversion is due to 2RI. Choose yes or no")
+      end
+    end
   end
 
   describe "urn" do

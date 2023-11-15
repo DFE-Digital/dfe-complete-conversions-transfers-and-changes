@@ -10,9 +10,8 @@ class Conversion::CreateProjectForm < CreateProjectForm
 
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }
 
-  validates :directive_academy_order,
-    :assigned_to_regional_caseworker_team,
-    :two_requires_improvement, inclusion: {in: [true, false]}
+  validates :directive_academy_order, :assigned_to_regional_caseworker_team, inclusion: {in: [true, false]}
+  validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.conversion_project.attributes.two_requires_improvement.inclusion")}
 
   def initialize(params = {})
     @attributes_with_invalid_values = []
@@ -45,13 +44,6 @@ class Conversion::CreateProjectForm < CreateProjectForm
     @directive_academy_order_responses ||= [
       OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")),
       OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))
-    ]
-  end
-
-  def two_requires_improvement_responses
-    @two_requires_improvement_responses ||= [
-      OpenStruct.new(id: true, name: I18n.t("yes")),
-      OpenStruct.new(id: false, name: I18n.t("no"))
     ]
   end
 

@@ -10,5 +10,10 @@ FactoryBot.define do
     outgoing_trust_sharepoint_link { "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder" }
     user { association :user, :regional_delivery_officer }
     handover_note_body { "This is a handover note." }
+    two_requires_improvement { false }
+    inadequate_ofsted { false }
+    financial_safeguarding_governance_issues { false }
+    outgoing_trust_to_close { false }
+    assigned_to_regional_caseworker_team { false }
   end
 end
