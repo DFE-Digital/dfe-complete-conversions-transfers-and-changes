@@ -14,8 +14,3 @@ en:
           guidance:
             html:
               <p>You should ask the school to send the certificate. You must record the date each time you contact them in <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank">the support grant assurance report (opens in new tab)</a>.</p>
-
-        update_kim:
-          title: Update KIM with date certificate is received
-          hint:
-            html: <p>Find this information in the ESFA handover section in KIM.</p>

@@ -108,9 +108,7 @@ RSpec.describe Conversion::Project do
 
     context "when the ReceiveGrantPaymentCertificateTaskForm is NOT completed" do
       let(:tasks_data) {
-        create(:conversion_tasks_data,
-          receive_grant_payment_certificate_check_and_save: nil,
-          receive_grant_payment_certificate_update_kim: nil)
+        create(:conversion_tasks_data, receive_grant_payment_certificate_check_and_save: nil)
       }
 
       it "returns false" do
@@ -120,9 +118,7 @@ RSpec.describe Conversion::Project do
 
     context "when the ReceiveGrantPaymentCertificateTaskForm is completed" do
       let(:tasks_data) {
-        create(:conversion_tasks_data,
-          receive_grant_payment_certificate_check_and_save: true,
-          receive_grant_payment_certificate_update_kim: true)
+        create(:conversion_tasks_data, receive_grant_payment_certificate_check_and_save: true)
       }
 
       it "returns true" do
