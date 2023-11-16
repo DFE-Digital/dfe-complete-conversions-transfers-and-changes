@@ -1,0 +1,12 @@
+en:
+  export:
+    grant_management_and_finance_unit:
+      conversions:
+        index:
+          title: Grant management and finance unit exports
+          body: Conversions by Advisory board date
+      show:
+        title: "%{date} grant management and funding unit export"
+        body_html:
+          <p>Export downloads can take time to prepare, please be patient.</p>
+        button: Download csv file

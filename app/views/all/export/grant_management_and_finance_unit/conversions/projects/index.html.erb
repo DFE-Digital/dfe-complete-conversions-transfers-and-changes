@@ -1,0 +1,25 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
+<h2 class="govuk-heading-l"><%= t("export.grant_management_and_finance_unit.conversions.index.title") %></h2>
+<p class="govuk-body"><%= t("export.grant_management_and_finance_unit.conversions.index.body") %></p>
+
+<table class="govuk-table" name="projects_table" aria-label="Grant management and finance unit exports">
+  <thead class="govuk-table__head">
+  <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col"><%= t("project.table.headers.date") %></th>
+    <th class="govuk-table__header" scope="col"><%= t("project.table.headers.export") %></th>
+  </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+  <% @months.each do |month| %>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__header govuk-table__cell"><%= month.to_fs(:govuk_month) %></td>
+      <td class="govuk-table__cell">
+        <%= link_to t("project.table.body.export_for_html", date: month.to_fs(:govuk_month)), csv_all_export_grant_management_and_finance_unit_conversions_projects_path(month.month, month.year) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
