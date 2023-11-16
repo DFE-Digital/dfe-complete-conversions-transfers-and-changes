@@ -62,6 +62,9 @@ en:
           main_contact_name: Main contact name
           main_contact_email: Main contact email
           main_contact_title: Main contact role
+          school_phase: School phase
+          link_to_project: Link to project
+          region: Region
         values:
           project_type:
             conversion: Conversion
