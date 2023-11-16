@@ -50,6 +50,20 @@ RSpec.describe ProjectsForExportService do
     end
   end
 
+  describe "#grant_management_and_finance_unit_projects" do
+    it "returns only projects with an advisory board date of the supplied month and year" do
+      mock_academies_api_client_get_establishments_and_trusts
+
+      matching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
+      mismatching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
+
+      projects_for_export = described_class.new.grant_management_and_finance_unit_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(matching_project)
+      expect(projects_for_export).not_to include(mismatching_project)
+    end
+  end
+
   def mock_academies_api_client_get_establishments_and_trusts
     api_client = Api::AcademiesApi::Client.new
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(api_client)
