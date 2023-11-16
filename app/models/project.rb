@@ -60,6 +60,8 @@ class Project < ApplicationRecord
 
   scope :by_trust_ukprn, ->(ukprn) { where(incoming_trust_ukprn: ukprn) }
 
+  scope :filtered_by_advisory_board_date, ->(month, year) { where("MONTH(advisory_board_date) = ?", month).and(where("YEAR(advisory_board_date) = ?", year)) }
+
   enum :region, {
     london: "H",
     south_east: "J",
