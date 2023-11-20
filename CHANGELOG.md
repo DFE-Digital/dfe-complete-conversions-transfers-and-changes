@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - transfer projects now collect if the outgoing trust is expected to close once
   the transfer is completed and this is shown on the about the project tab
 
+### Changed
+
+- Users are not directed to update KIM for the 'Receive grant payment
+  certificate' task
+
 ## [Release-46][release-46]
 
 ### Added

@@ -15,7 +15,6 @@
 
       <div class="govuk-form-group">
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_and_save)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :update_kim)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
