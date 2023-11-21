@@ -1,0 +1,43 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: project_tasks_path(@project)} %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("conversion.task.proposed_capacity_of_the_academy.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: project_edit_task_path(@project, @task.class.identifier), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-l"><%= t("conversion.task.proposed_capacity_of_the_academy.text_field_section.title") %></h2>
+        <div class="app-task-section__hint">
+          <%= t("conversion.task.proposed_capacity_of_the_academy.text_field_section.hint.html") %>
+        </div>
+
+        <%= govuk_details(
+              summary_text: t("conversion.task.proposed_capacity_of_the_academy.text_field_section.guidance_link"),
+              text: t("conversion.task.proposed_capacity_of_the_academy.text_field_section.guidance.html")
+            ) %>
+
+        <%= form.govuk_text_field :reception_to_six_years, label: {text: t("conversion.task.proposed_capacity_of_the_academy.reception_to_six_years.title.html")}, hint: {text: t("conversion.task.proposed_capacity_of_the_academy.text_field.hint.html")}, class: "govuk-input govuk-!-width-one-quarter", inputmode: "numeric" %>
+        <%= form.govuk_text_field :seven_to_eleven_years, label: {text: t("conversion.task.proposed_capacity_of_the_academy.seven_to_eleven_years.title.html")}, hint: {text: t("conversion.task.proposed_capacity_of_the_academy.text_field.hint.html")}, class: "govuk-input govuk-!-width-one-quarter", inputmode: "numeric" %>
+        <%= form.govuk_text_field :twelve_or_above_years, label: {text: t("conversion.task.proposed_capacity_of_the_academy.twelve_or_above_years.title.html")}, hint: {text: t("conversion.task.proposed_capacity_of_the_academy.text_field.hint.html")}, class: "govuk-input govuk-!-width-one-quarter", inputmode: "numeric" %>
+      </div>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "shared/tasks/task_notes" %>
+  </div>
+</div>

@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add a page to allow Grant management and finance unit members to download
   conversion projects by their Advisory board dates. This page is not currently
   linked in the application.
+- Add proposed capacity of the academy task to Conversion projects
 
 ### Changed
 
