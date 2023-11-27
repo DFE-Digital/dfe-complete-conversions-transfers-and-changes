@@ -31,6 +31,7 @@ RSpec.feature "Users can complete conversion tasks" do
     sponsored_support_grant
     conditions_met
     main_contact
+    proposed_capacity_of_the_academy
   ]
 
   it "confirms we are checking all tasks" do

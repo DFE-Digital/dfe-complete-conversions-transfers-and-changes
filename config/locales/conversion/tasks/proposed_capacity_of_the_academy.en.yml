@@ -1,0 +1,56 @@
+en:
+  conversion:
+    task:
+      proposed_capacity_of_the_academy:
+        title: Confirm the proposed capacity of the academy
+        hint:
+          html:
+            <p>You only need to complete this task if the new academy will get the full sponsored grant.</p>
+            <p>Give the maximum number of pupils the new academy will be able to teach.</p>
+        guidance_link: Why pupil capacity is needed
+        guidance:
+          html:
+            <p>Pupil capacity numbers enable the ESFA (Education and Skills Funding Agency) to calculate how much SUG (start-up grant) funding is needed in the GAG (general annual grant) payment the new academy will receive.</p>
+        not_applicable:
+          title: Not applicable
+        text_field_section:
+          title: Proposed capacity of the academy
+          hint:
+            html:
+              <p>Ask the school to confirm what the proposed pupil capacity of the new academy will be on the day it opens.</p>
+              <p>The amount of funding the academy gets depends on the amount of pupils and students it can teach in each age group.</p>
+          guidance_link: Help confirming the academy's proposed capacity
+          guidance:
+            html:
+              <p>The proposed capacity is the maximum number of pupils and students the academy can teach.</p>
+              <p>The capacity should show the maximum number of pupils and students in primary, secondary and further education. </p>
+              <p>It is broken down into 3 categories:</p>
+              <ul>
+                <li>reception to year 6, also known as the "primary" age range or school phase</li>
+                <li>years 7 to year 11, also known as the "secondary" age range or school phase</li>
+                <li>years 12 and above, also known as "post-16" age range or school phase</li>
+              </ul>
+              <p>If you need help with the proposed capacity, email <a href="mailto:academy.openers@education.gov.uk" class="govuk-link" target="_blank">academy.openers@education.gov.uk</a>.</p>
+        text_field:
+          hint:
+            html: <p>Enter 0 if the academy will not teach pupils in this age group.</p>
+        reception_to_six_years:
+          title:
+            html: <strong>What is the proposed capacity for pupils in reception to year 6?</strong>
+        seven_to_eleven_years:
+          title:
+            html: <strong>What is the proposed capacity for pupils in years 7 to 11?</strong>
+        twelve_or_above_years:
+          title:
+            html: <strong>What is the proposed capacity for students in year 12 or above?</strong>
+  errors:
+    attributes:
+      reception_to_six_years:
+        not_a_number: Proposed capacity must be a number, like 345
+        blank: Enter the proposed capacity for pupils in reception to year 6
+      seven_to_eleven_years:
+        not_a_number: Proposed capacity must be a number, like 345
+        blank: Enter the proposed capacity for pupils in years 7 to 11
+      twelve_or_above_years:
+        not_a_number: Proposed capacity must be a number, like 345
+        blank: Enter the proposed capacity for students in year 12 or above
