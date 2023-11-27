@@ -535,6 +535,18 @@ RSpec.describe Project, type: :model do
         expect(Project.by_trust_ukprn(trust_ukprn)).to_not include(project_three)
       end
     end
+
+    describe "filtered_by_advisory_board_date scope" do
+      it "returns only projects which have an advisory board date of the chosen month & year" do
+        mock_successful_api_response_to_create_any_project
+        project_one = create(:conversion_project, advisory_board_date: Date.parse("2023-1-10"))
+        project_two = create(:conversion_project, advisory_board_date: Date.parse("2023-1-27"))
+        project_three = create(:conversion_project, advisory_board_date: Date.parse("2023-5-12"))
+
+        expect(Project.filtered_by_advisory_board_date(1, 2023)).to include(project_one, project_two)
+        expect(Project.filtered_by_advisory_board_date(1, 2023)).to_not include(project_three)
+      end
+    end
   end
 
   describe "region" do

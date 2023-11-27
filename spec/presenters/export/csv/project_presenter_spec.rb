@@ -227,6 +227,36 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.main_contact_title).to be_nil
   end
 
+  it "presents the school phase" do
+    mock_successful_api_response_to_create_any_project
+    project = build(:conversion_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.school_phase).to eql "Secondary"
+  end
+
+  it "presents the link to the project" do
+    ClimateControl.modify(
+      HOSTNAME: "www.complete.education.gov.uk"
+    ) do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.link_to_project).to eql "https://www.complete.education.gov.uk/projects/#{project.id}"
+    end
+  end
+
+  it "presents the project region" do
+    project = build(:conversion_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.region).to eql "London"
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 

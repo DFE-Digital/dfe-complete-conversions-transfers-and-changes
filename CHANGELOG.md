@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project tab
 - transfer projects now collect if the outgoing trust is expected to close once
   the transfer is completed and this is shown on the about the project tab
+- Add a page to allow Grant management and finance unit members to download
+  conversion projects by their Advisory board dates. This page is not currently
+  linked in the application.
 
 ### Changed
 

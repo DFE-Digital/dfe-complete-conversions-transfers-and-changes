@@ -82,4 +82,16 @@ class Export::Csv::ProjectPresenter
   def main_contact_title
     @project.main_contact&.title
   end
+
+  def region
+    I18n.t("project.region.#{@project.region}")
+  end
+
+  def school_phase
+    @project.establishment&.phase
+  end
+
+  def link_to_project
+    "https://#{ENV.fetch("HOSTNAME", "localhost:3000")}/projects/#{@project.id}"
+  end
 end
