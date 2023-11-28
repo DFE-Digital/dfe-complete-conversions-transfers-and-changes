@@ -23,6 +23,7 @@ RSpec.describe Transfer::TaskList do
         :commercial_transfer_agreement,
         :closure_or_transfer_declaration,
         :rpa_policy,
+        :bank_details_changing,
         :confirm_incoming_trust_has_completed_all_actions,
         :conditions_met,
         :redact_and_send_documents
@@ -48,7 +49,7 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 20
+      expect(task_list.tasks.count).to eql 21
       expect(task_list.tasks.first).to be_a Transfer::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Transfer::Task::RedactAndSendDocumentsTaskForm
     end
