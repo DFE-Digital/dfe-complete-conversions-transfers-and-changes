@@ -59,9 +59,9 @@
   integrity sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==
 
 "@ministryofjustice/frontend@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@ministryofjustice/frontend/-/frontend-1.8.0.tgz#2d1372c689e6da95efe07a11d5ff99d83be2f445"
-  integrity sha512-N4791HcFoqJNLNrK6EN4oMaTJjeFp9ileavCpXkda3qvpEWQByxZUsOd6sDA69FuLRpB6jBFL2C2bqfYbcTdqg==
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@ministryofjustice/frontend/-/frontend-1.8.1.tgz#6bac39524ba406533d1ce51c55d4c8ff96ad358e"
+  integrity sha512-HNl8XXbNje/NtQRlGM57CTLlAGBTW+ziGTBkxXHDn7VauKNz418PnErDlKRWeaHIyc6V9twI5EbOj4lFCsvasw==
   dependencies:
     govuk-frontend "^3.0.0 || ^4.0.0"
     moment "^2.27.0"
@@ -515,7 +515,7 @@ minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
 
 moment@^2.27.0:
   version "2.29.4"
-  resolved "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 ms@2.1.2:
