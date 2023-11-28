@@ -10,6 +10,21 @@ class Export::Csv::ProjectPresenter
     @project = project
   end
 
+  def reception_to_six_years
+    return "Not applicable" if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
+    @project.tasks_data.proposed_capacity_of_the_academy_reception_to_six_years
+  end
+
+  def seven_to_eleven_years
+    return "Not applicable" if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
+    @project.tasks_data.proposed_capacity_of_the_academy_seven_to_eleven_years
+  end
+
+  def twelve_or_above_years
+    return "Not applicable" if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
+    @project.tasks_data.proposed_capacity_of_the_academy_twelve_or_above_years
+  end
+
   def project_type
     return I18n.t("export.csv.project.values.project_type.conversion") if @project.is_a?(Conversion::Project)
     I18n.t("export.csv.project.values.project_type.transfer") if @project.is_a?(Transfer::Project)

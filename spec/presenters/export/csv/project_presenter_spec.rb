@@ -257,6 +257,32 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.region).to eql "London"
   end
 
+  context "when the proposed capacity of the academy is not applicable" do
+    it "returns not applicable" do
+      tasks_data = build(:conversion_tasks_data, proposed_capacity_of_the_academy_not_applicable: true)
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.reception_to_six_years).to eql("Not applicable")
+      expect(presenter.seven_to_eleven_years).to eql("Not applicable")
+      expect(presenter.twelve_or_above_years).to eql("Not applicable")
+    end
+  end
+
+  context "when the proposed capacity of the academy is added" do
+    it "presents the proposed capacity of the academy" do
+      tasks_data = build(:conversion_tasks_data, proposed_capacity_of_the_academy_reception_to_six_years: 345, proposed_capacity_of_the_academy_seven_to_eleven_years: 500, proposed_capacity_of_the_academy_twelve_or_above_years: 400)
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.reception_to_six_years).to eql("345")
+      expect(presenter.seven_to_eleven_years).to eql("500")
+      expect(presenter.twelve_or_above_years).to eql("400")
+    end
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 
