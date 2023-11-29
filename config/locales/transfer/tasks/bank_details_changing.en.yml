@@ -1,0 +1,21 @@
+en:
+  transfer:
+    task:
+      bank_details_changing:
+        title: Confirm if the bank details for the general annual grant payment need to change
+        subtitle: Do the bank details need to be updated?
+        hint:
+          html:
+            <p>Bank details must be updated if the:</p>
+            <ul>
+            <li>outgoing trust currently receives the general annual grant</li>
+            <li>incoming trust or academy want to change their bank details</li>
+            <li>neither the incoming trust nor the academy have a vendor account</li>
+            </ul>
+        yesno:
+          hint:
+            html:
+              <p>Tell the academy or incoming trust to <a href="https://form.education.gov.uk/service/Provide-information-about-your-banking-and-payments-to-DfE" target="_blank">complete the Provide information about your banking and payments to DfE form (opens in new tab)</a>. Ask them to tell you when they have submitted this form.</p>
+              <p>This must contain the bank details of the organisation that will receive the general annual grant once the academy transfers to the incoming trust.</p>
+              <p>If this is not completed the general annual grant might get sent to the outgoing trust.</p>
+              <p>The organisation receiving the general annual grant payment must have a vendor account. You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00083/SitePages/Set-up-and-mainta.aspx" target="_blank">check if they have a vendor account (opens in new tab)</a> on SharePoint.</p>

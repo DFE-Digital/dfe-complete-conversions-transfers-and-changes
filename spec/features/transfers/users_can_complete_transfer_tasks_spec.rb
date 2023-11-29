@@ -37,6 +37,7 @@ RSpec.feature "Users can complete transfer tasks" do
     stakeholder_kick_off
     conditions_met
     main_contact
+    bank_details_changing
   ]
 
   it "confirms that all tasks are tested here" do
