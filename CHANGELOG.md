@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-47][release-47]
+
 ### Added
 
 - Add ability to import GIAS groups from csv data
@@ -1437,7 +1439,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-46...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-47...HEAD
+[release-47]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-46...release-47
 [release-46]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-45...release-46
 [release-45]:
