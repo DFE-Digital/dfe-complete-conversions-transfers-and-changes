@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add proposed capacity of the academy task to Conversion projects
 - Add "Confirm if the bank details for the general annual grant payment to need
   to change" task to Transfer projects
+- Add proposed capacity of the academy to the csv export service
 
 ### Changed
 
