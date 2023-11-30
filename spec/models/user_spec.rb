@@ -259,11 +259,11 @@ RSpec.describe User do
     it "returns the correct team options for a user" do
       options = described_class.new.team_options
 
-      expect(options.count).to eql 13
+      expect(options.count).to eql 14
       expect(options.first.id).to eql "london"
       expect(options.first.name).to eql "London"
-      expect(options.last.id).to eql "education_and_skills_funding_agency"
-      expect(options.last.name).to eql "ESFA (Education and Skills Funding Agency)"
+      expect(options.last.id).to eql "business_support"
+      expect(options.last.name).to eql "Business support"
     end
   end
 
@@ -303,7 +303,7 @@ RSpec.describe User do
     end
 
     it "has the expected enum values" do
-      expect(User.teams.count).to eq(13)
+      expect(User.teams.count).to eq(14)
     end
   end
 
