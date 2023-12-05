@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Add "Business support" as a team option for users.
+
 ## [Release-47][release-47]
 
 ### Added
