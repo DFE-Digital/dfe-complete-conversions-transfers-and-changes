@@ -140,6 +140,7 @@ variable "redis_cache_sku" {
 variable "enable_event_hub" {
   description = "Send Azure Container App logs to an Event Hub sink"
   type        = bool
+  default     = false
 }
 
 variable "enable_logstash_consumer" {
