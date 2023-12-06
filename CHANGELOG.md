@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Move the existing exports into a `conversions` namespace (the urls for these
   pages will now include `conversions` and the downloaded file name will contain
   the word `conversions`)
+- Change langauge for `by month` view for all projects to reflect transfers as
+  well as conversions.
 
 ## [Release-47][release-47]
 

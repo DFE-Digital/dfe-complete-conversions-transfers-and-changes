@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "Viewing projects with a revised conversion date" do
-  scenario "Users can view the projects that were due to convert for a given month and year" do
+RSpec.feature "Viewing projects with a revised conversion or transfer date" do
+  scenario "Users can view the projects that were due to convert or transfer for a given month and year" do
     user = create(:user)
 
     sign_in_with_user(user)
@@ -19,7 +19,7 @@ RSpec.feature "Viewing projects with a revised conversion date" do
 
     visit "/projects/all/by-month/revised/#{(Date.today + 3.months).month}/#{(Date.today + 3.months).year}"
 
-    expect(page).to have_content I18n.t("project.revised_conversion_date.title", date: (Date.today + 3.months).to_fs(:govuk_month))
+    expect(page).to have_content I18n.t("project.revised_date.title", date: (Date.today + 3.months).to_fs(:govuk_month))
     expect(page).to have_content project_with_matching_date.urn
     expect(page).not_to have_content project_with_confirmed_date.urn
     expect(page).not_to have_content project_with_other_date.urn
