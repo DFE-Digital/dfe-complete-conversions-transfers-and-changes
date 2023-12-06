@@ -135,14 +135,18 @@ Rails.application.routes.draw do
           end
           namespace :export do
             namespace :funding_agreement_letters, path: "funding-agreement-letters" do
-              get "/", to: "projects#index"
-              get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-              get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+              namespace :conversions do
+                get "/", to: "projects#index"
+                get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
+                get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+              end
             end
             namespace :education_and_skills_funding_agency, path: "esfa" do
-              get "/", to: "projects#index"
-              get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-              get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+              namespace :conversions do
+                get "/", to: "projects#index"
+                get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
+                get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+              end
             end
             namespace :grant_management_and_finance_unit, path: "grant-management-and-finance-unit" do
               namespace :conversions do

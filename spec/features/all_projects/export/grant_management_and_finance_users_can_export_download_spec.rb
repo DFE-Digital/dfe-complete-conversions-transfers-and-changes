@@ -21,6 +21,6 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
     expect(page).to have_link("Export for #{(Date.today - 11.months).to_fs(:govuk_month)}")
 
     click_on "Export for #{Date.today.to_fs(:govuk_month)}"
-    expect(page.response_headers["Content-Disposition"]).to include("#{Date.today.year}-#{Date.today.month}_grant_management_and_finance_unit_export.csv")
+    expect(page.response_headers["Content-Disposition"]).to include("#{Date.today.year}-#{Date.today.month}_grant_management_and_finance_unit_conversions_export.csv")
   end
 end

@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Add "Business support" as a team option for users.
 
+### Changed
+
+- Move the existing exports into a `conversions` namespace (the urls for these
+  pages will now include `conversions` and the downloaded file name will contain
+  the word `conversions`)
+
 ## [Release-47][release-47]
 
 ### Added

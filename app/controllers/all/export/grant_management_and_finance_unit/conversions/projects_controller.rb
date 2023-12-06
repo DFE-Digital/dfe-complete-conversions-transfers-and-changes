@@ -11,7 +11,7 @@ class All::Export::GrantManagementAndFinanceUnit::Conversions::ProjectsControlle
     projects = ProjectsForExportService.new.grant_management_and_finance_unit_projects(month: month, year: year)
     csv = Export::GrantManagementAndFinanceUnitCsvExportService.new(projects).call
 
-    send_data csv, filename: "#{year}-#{month}_grant_management_and_finance_unit_export.csv", type: :csv, disposition: "attachment"
+    send_data csv, filename: "#{year}-#{month}_grant_management_and_finance_unit_conversions_export.csv", type: :csv, disposition: "attachment"
   end
 
   private def month
