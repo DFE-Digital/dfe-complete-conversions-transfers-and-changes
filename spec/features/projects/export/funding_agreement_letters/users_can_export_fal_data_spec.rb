@@ -11,7 +11,7 @@ RSpec.feature "Users can export funding agreement lettes data" do
     last_month = Date.today.last_month.at_beginning_of_month
     create(:conversion_project, conversion_date: last_month, conversion_date_provisional: false)
 
-    visit "/projects/all/export/funding-agreement-letters/"
+    visit "/projects/all/export/funding-agreement-letters/conversions/"
 
     expect(page).to have_content(last_month.to_fs(:govuk_month))
     expect(page).to have_link("Export")
@@ -22,7 +22,7 @@ RSpec.feature "Users can export funding agreement lettes data" do
     this_month = Date.today.at_beginning_of_month
     create(:conversion_project, conversion_date: this_month, conversion_date_provisional: false)
 
-    visit "/projects/all/export/funding-agreement-letters/"
+    visit "/projects/all/export/funding-agreement-letters/conversions/"
 
     expect(page).to have_content(this_month.to_fs(:govuk_month))
     expect(page).to have_link("Export")
@@ -33,7 +33,7 @@ RSpec.feature "Users can export funding agreement lettes data" do
     four_months_time = (Date.today + 4.months).at_beginning_of_month
     create(:conversion_project, conversion_date: four_months_time, conversion_date_provisional: false)
 
-    visit "/projects/all/export/funding-agreement-letters/"
+    visit "/projects/all/export/funding-agreement-letters/conversions/"
 
     expect(page).to have_content(four_months_time.to_fs(:govuk_month))
     expect(page).to have_link("Export")
@@ -44,9 +44,9 @@ RSpec.feature "Users can export funding agreement lettes data" do
     this_month = Date.today.at_beginning_of_month
     create(:conversion_project, conversion_date: this_month, conversion_date_provisional: false)
 
-    visit "/projects/all/export/funding-agreement-letters/#{this_month.month}/#{this_month.year}"
+    visit "/projects/all/export/funding-agreement-letters/conversions/#{this_month.month}/#{this_month.year}"
 
     expect(page).to have_content(this_month.to_fs(:govuk_month))
-    expect(page).to have_link("Download", href: "/projects/all/export/funding-agreement-letters/#{this_month.month}/#{this_month.year}/csv")
+    expect(page).to have_link("Download", href: "/projects/all/export/funding-agreement-letters/conversions/#{this_month.month}/#{this_month.year}/csv")
   end
 end

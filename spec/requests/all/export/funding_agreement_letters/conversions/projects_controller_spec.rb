@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe All::Export::FundingAgreementLetters::ProjectsController, type: :request do
+RSpec.describe All::Export::FundingAgreementLetters::Conversions::ProjectsController, type: :request do
   let(:team_leader) { create(:user, :team_leader) }
 
   before do
@@ -14,14 +14,14 @@ RSpec.describe All::Export::FundingAgreementLetters::ProjectsController, type: :
     before { mock_successful_member_details }
 
     it "returns the csv with a successful response" do
-      get csv_all_export_funding_agreement_letters_projects_path(5, 2025)
+      get csv_all_export_funding_agreement_letters_conversions_projects_path(5, 2025)
       expect(response.body).to include(project.urn.to_s)
       expect(response).to have_http_status(:success)
     end
 
     it "formats the csv filename with the month & year" do
-      get csv_all_export_funding_agreement_letters_projects_path(5, 2025)
-      expect(response.header["Content-Disposition"]).to include("2025-5_funding_agreement_letters_export.csv")
+      get csv_all_export_funding_agreement_letters_conversions_projects_path(5, 2025)
+      expect(response.header["Content-Disposition"]).to include("2025-5_funding_agreement_letters_conversions_export.csv")
     end
   end
 end

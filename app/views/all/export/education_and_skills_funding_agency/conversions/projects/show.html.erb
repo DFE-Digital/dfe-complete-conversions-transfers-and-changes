@@ -8,13 +8,13 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= govuk_back_link(href: all_export_education_and_skills_funding_agency_projects_path) %>
+    <%= govuk_back_link(href: all_export_education_and_skills_funding_agency_conversions_projects_path) %>
     <h1 class="govuk-heading-xl"><%= t("export.education_and_skills_funding_agency.show.title", date: @month.to_fs(:govuk_month)) %></h1>
     <div class="govuk-body">
       <%= t("export.education_and_skills_funding_agency.show.body_html") %>
     </div>
     <div class="govuk-form-group">
-      <%= govuk_button_link_to t("export.education_and_skills_funding_agency.show.button"), "/projects/all/export/esfa/#{@month.month}/#{@month.year}/csv" %>
+      <%= govuk_button_link_to t("export.education_and_skills_funding_agency.show.button"), "/projects/all/export/esfa/conversions/#{@month.month}/#{@month.year}/csv" %>
     </div>
   </div>
 </div>

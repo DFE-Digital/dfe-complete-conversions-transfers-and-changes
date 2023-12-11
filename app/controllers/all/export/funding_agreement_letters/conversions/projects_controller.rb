@@ -1,4 +1,4 @@
-class All::Export::FundingAgreementLetters::ProjectsController < ApplicationController
+class All::Export::FundingAgreementLetters::Conversions::ProjectsController < ApplicationController
   def index
     authorize Project, :index?
 
@@ -15,7 +15,7 @@ class All::Export::FundingAgreementLetters::ProjectsController < ApplicationCont
     projects = ProjectsForExportService.new.funding_agreement_letters_projects(month: month, year: year)
     csv = Export::FundingAgreementLettersCsvExporterService.new(projects).call
 
-    send_data csv, filename: "#{year}-#{month}_funding_agreement_letters_export.csv", type: :csv, disposition: "attachment"
+    send_data csv, filename: "#{year}-#{month}_funding_agreement_letters_conversions_export.csv", type: :csv, disposition: "attachment"
   end
 
   private def month
