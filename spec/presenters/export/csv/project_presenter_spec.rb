@@ -50,7 +50,94 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the two requires improvement value for a transfer" do
-    not_applicable_for_a_transfer
+    project = build(:transfer_project, two_requires_improvement: true)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.two_requires_improvement).to eql "yes"
+
+    project = build(:transfer_project, two_requires_improvement: false)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.two_requires_improvement).to eql "no"
+  end
+
+  it "presents inadequate_ofsted value for a transfer" do
+    tasks_data = double(Transfer::TasksData, inadequate_ofsted: true)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.inadequate_ofsted).to eql "yes"
+
+    tasks_data = double(Transfer::TasksData, inadequate_ofsted: false)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.inadequate_ofsted).to eql "no"
+  end
+
+  it "presents financial_safeguarding_governance_issues value for a transfer" do
+    tasks_data = double(Transfer::TasksData, financial_safeguarding_governance_issues: true)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.financial_safeguarding_governance_issues).to eql "yes"
+
+    tasks_data = double(Transfer::TasksData, financial_safeguarding_governance_issues: false)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.financial_safeguarding_governance_issues).to eql "no"
+  end
+
+  it "presents outgoing_trust_to_close value for a transfer" do
+    tasks_data = double(Transfer::TasksData, outgoing_trust_to_close: true)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.outgoing_trust_to_close).to eql "yes"
+
+    tasks_data = double(Transfer::TasksData, outgoing_trust_to_close: false)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.outgoing_trust_to_close).to eql "no"
+  end
+
+  it "presents request_new_urn_and_record value for a transfer" do
+    tasks_data = double(Transfer::TasksData,
+      request_new_urn_and_record_complete: true,
+      request_new_urn_and_record_receive: true,
+      request_new_urn_and_record_give: true,
+      request_new_urn_and_record_not_applicable: false)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.request_new_urn_and_record).to eql "confirmed"
+
+    tasks_data = double(Transfer::TasksData,
+      request_new_urn_and_record_complete: false,
+      request_new_urn_and_record_receive: false,
+      request_new_urn_and_record_give: false,
+      request_new_urn_and_record_not_applicable: false)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.request_new_urn_and_record).to eql "unconfirmed"
+
+    tasks_data = double(Transfer::TasksData,
+      request_new_urn_and_record_complete: false,
+      request_new_urn_and_record_receive: false,
+      request_new_urn_and_record_give: false,
+      request_new_urn_and_record_not_applicable: true)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.request_new_urn_and_record).to eql "not applicable"
+  end
+
+  it "presents bank_details_changing value for a transfer" do
+    tasks_data = double(Transfer::TasksData, bank_details_changing_yes_no: true)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.bank_details_changing).to eql "yes"
+
+    tasks_data = double(Transfer::TasksData, bank_details_changing_yes_no: false)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+    expect(presenter.bank_details_changing).to eql "no"
   end
 
   it "presents the sponsored grant type" do
@@ -110,6 +197,22 @@ RSpec.describe Export::Csv::ProjectPresenter do
     presenter = described_class.new(project)
 
     expect(presenter.conversion_date).to eql "unconfirmed"
+  end
+
+  it "presents the significant date (as transfer date)" do
+    project = double(Transfer::Project, significant_date: Date.parse("2023-1-1"), significant_date_provisional?: false)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.transfer_date).to eql "2023-01-01"
+  end
+
+  it "presents unconfirmed when the significant date is provisional" do
+    project = double(Transfer::Project, significant_date: Date.parse("2023-1-1"), significant_date_provisional?: true)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.transfer_date).to eql "unconfirmed"
   end
 
   it "presents all conditions met" do
