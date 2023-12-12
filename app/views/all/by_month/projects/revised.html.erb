@@ -3,15 +3,16 @@
 <% end %>
 
 <% content_for :page_title do %>
-  <%= page_title(t("project.revised_conversion_date.title", date: @date)) %>
+  <%= page_title(t("project.revised_date.title", date: @date)) %>
 <% end %>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">
-      <%= t("project.revised_conversion_date.title", date: @date) %>
+      <%= t("project.revised_date.title", date: @date) %>
     </h1>
+    <p><%= t("project.revised_date.subtitle") %></p>
 
     <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
       <ul class="moj-sub-navigation__list">

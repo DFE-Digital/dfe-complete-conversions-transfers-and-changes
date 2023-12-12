@@ -1,12 +1,12 @@
 <% if projects.empty? %>
-  <%= govuk_inset_text(text: t("project.revised_conversion_date.empty_html")) %>
+  <%= govuk_inset_text(text: t("project.revised_date.empty_html")) %>
 <% else %>
   <table class="govuk-table" name="projects_table" aria-label="Projects table">
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_name") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
-        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.revised_conversion_date") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.revised_date") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.view") %></th>
       </tr>
     </thead>

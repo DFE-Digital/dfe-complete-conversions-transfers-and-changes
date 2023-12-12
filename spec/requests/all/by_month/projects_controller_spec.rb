@@ -55,7 +55,7 @@ RSpec.describe All::ByMonth::ProjectsController, type: :request do
         it "shows a page title with the month & year" do
           get "/projects/all/by-month/confirmed/1/2022"
 
-          expect(response.body).to include("Academies opening in January 2022")
+          expect(response.body).to include("Academies opening or transferring in January 2022")
         end
 
         it "returns project details in table form" do
