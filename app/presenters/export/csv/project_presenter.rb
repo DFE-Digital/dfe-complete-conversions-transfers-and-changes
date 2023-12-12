@@ -3,6 +3,7 @@ class Export::Csv::ProjectPresenter
   include Export::Csv::AcademyPresenterModule
   include Export::Csv::DirectorOfChildServicesPresenterModule
   include Export::Csv::IncomingTrustPresenterModule
+  include Export::Csv::OutgoingTrustPresenterModule
   include Export::Csv::LocalAuthorityPresenterModule
   include Export::Csv::MpPresenterModule
 
