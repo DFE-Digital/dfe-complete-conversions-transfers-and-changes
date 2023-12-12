@@ -3,6 +3,7 @@ class Export::Csv::ProjectPresenter
   include Export::Csv::AcademyPresenterModule
   include Export::Csv::DirectorOfChildServicesPresenterModule
   include Export::Csv::IncomingTrustPresenterModule
+  include Export::Csv::OutgoingTrustPresenterModule
   include Export::Csv::LocalAuthorityPresenterModule
   include Export::Csv::MpPresenterModule
 
@@ -36,6 +37,12 @@ class Export::Csv::ProjectPresenter
     @project.conversion_date.to_fs(:csv)
   end
 
+  def transfer_date
+    return I18n.t("export.csv.project.values.unconfirmed") if @project.significant_date_provisional?
+
+    @project.significant_date.to_fs(:csv)
+  end
+
   def all_conditions_met
     if @project.all_conditions_met.nil?
       return I18n.t("export.csv.project.values.no")
@@ -64,10 +71,52 @@ class Export::Csv::ProjectPresenter
   end
 
   def two_requires_improvement
-    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
     return I18n.t("export.csv.project.values.yes") if @project.two_requires_improvement?
 
     I18n.t("export.csv.project.values.no")
+  end
+
+  def financial_safeguarding_governance_issues
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Conversion::Project)
+
+    return I18n.t("export.csv.project.values.yes") if @project.tasks_data.financial_safeguarding_governance_issues
+
+    I18n.t("export.csv.project.values.no")
+  end
+
+  def inadequate_ofsted
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Conversion::Project)
+
+    return I18n.t("export.csv.project.values.yes") if @project.tasks_data.inadequate_ofsted
+
+    I18n.t("export.csv.project.values.no")
+  end
+
+  def outgoing_trust_to_close
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Conversion::Project)
+
+    return I18n.t("export.csv.project.values.yes") if @project.tasks_data.outgoing_trust_to_close
+
+    I18n.t("export.csv.project.values.no")
+  end
+
+  def bank_details_changing
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Conversion::Project)
+
+    return I18n.t("export.csv.project.values.yes") if @project.tasks_data.bank_details_changing_yes_no
+
+    I18n.t("export.csv.project.values.no")
+  end
+
+  def request_new_urn_and_record
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Conversion::Project)
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.request_new_urn_and_record_not_applicable
+
+    if @project.tasks_data.request_new_urn_and_record_complete && @project.tasks_data.request_new_urn_and_record_receive && @project.tasks_data.request_new_urn_and_record_give
+      I18n.t("export.csv.project.values.confirmed")
+    else
+      I18n.t("export.csv.project.values.unconfirmed")
+    end
   end
 
   def sponsored_grant_type

@@ -8,6 +8,10 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
     expect(subject.incoming_trust_identifier).to eql "TR03819"
   end
 
+  it "presents the ukprn" do
+    expect(subject.incoming_trust_ukprn).to eql "121813"
+  end
+
   it "presents the companies house number" do
     expect(subject.incoming_trust_companies_house_number).to eql "10768218"
   end

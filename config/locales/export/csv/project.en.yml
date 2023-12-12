@@ -68,6 +68,16 @@ en:
           school_phase: School phase
           link_to_project: Link to project
           region: Region
+          outgoing_trust_name: Outgoing trust name
+          outgoing_trust_companies_house_number: Outgoing trust companies house number
+          outgoing_trust_ukprn: Outgoing trust UKPRN
+          incoming_trust_ukprn: Incoming trust UKPRN
+          inadequate_ofsted: Transfer due to inadequate
+          financial_safeguarding_governance_issues: Transfer due to financial, safeguarding or governance
+          outgoing_trust_to_close: Outgoing trust to close
+          request_new_urn_and_record: New URN/record requested
+          bank_details_changing: Bank details changing
+          transfer_date: Transfer date
         values:
           project_type:
             conversion: Conversion
@@ -77,6 +87,7 @@ en:
             intermidiate: intermidiate
             sponsored: sponsored
           unconfirmed: unconfirmed
+          confirmed: confirmed
           not_applicable: not applicable
           "yes": "yes"
           "no": "no"

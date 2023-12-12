@@ -5,6 +5,12 @@ module Export::Csv::IncomingTrustPresenterModule
     @project.incoming_trust.group_identifier.to_s
   end
 
+  def incoming_trust_ukprn
+    return unless @project.incoming_trust_ukprn.present?
+
+    @project.incoming_trust_ukprn.to_s
+  end
+
   def incoming_trust_companies_house_number
     return unless @project.incoming_trust.present?
 
