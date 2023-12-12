@@ -14,7 +14,7 @@ class All::Export::EducationAndSkillsFundingAgency::Conversions::ProjectsControl
     authorize Project, :index?
 
     projects = ProjectsForExportService.new.risk_protection_arrangement_projects(month: month, year: year)
-    csv = Export::EducationAndSkillsFundingAgencyCsvExportService.new(projects).call
+    csv = Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService.new(projects).call
 
     send_data csv, filename: "#{year}-#{month}_risk_protection_arrangement_conversions_export.csv", type: :csv, disposition: "attachment"
   end

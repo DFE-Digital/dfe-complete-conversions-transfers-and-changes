@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Export::EducationAndSkillsFundingAgencyCsvExportService do
+RSpec.describe Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService do
   describe "#call" do
     it "returns only the headers when there are no projects" do
       projects = []

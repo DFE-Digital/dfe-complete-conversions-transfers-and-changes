@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the word `conversions`)
 - Change langauge for `by month` view for all projects to reflect transfers as
   well as conversions.
+- Move existing export services into a conversions namespace
 
 ## [Release-47][release-47]
 
