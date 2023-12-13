@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add "Business support" as a team option for users.
 - Add a CSV export for Academies due to transfer in a time period (this work is
   not publicly viewable)
+- Add reduced support service banner to the service for the christmas period
 
 ### Changed
 
