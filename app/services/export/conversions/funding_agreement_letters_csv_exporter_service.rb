@@ -1,4 +1,4 @@
-class Export::FundingAgreementLettersCsvExporterService
+class Export::Conversions::FundingAgreementLettersCsvExporterService
   require "csv"
 
   COLUMN_HEADERS = %i[
