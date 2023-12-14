@@ -1,0 +1,22 @@
+en:
+  export:
+    by_month:
+      transfers:
+        index:
+          title: Academies due to transfer
+          body_html:
+            <p class="govuk-body">A list of academies due to transfer over the next 6 months.</p>
+            <p class="govuk-body">This information is also available as a spreadsheet. You can download the spreadsheet version of each month's list.</p>
+            <p class="govuk-body">The spreadsheet includes information about whether the academy needs a new URN and if bank details for funding payments need to change.</p>
+        show:
+          title: Details of academies due to transfer in %{month} %{year}
+          body_html:
+            <p class="govuk-body">This .CSV spreadsheet shows you academies that will:</p>
+            <ul>
+            <li>transfer in %{month} %{year}</li>
+            <li>need a new URN</li>
+            <li>change bank details</li>
+            <li>no longer transfer in %{month} %{year}</li>
+            </ul>
+            <p class="govuk-body">It can take a little time to create these files. Thank you for your patience.</p>
+          button: Download .CSV file

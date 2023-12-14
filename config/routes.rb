@@ -155,6 +155,13 @@ Rails.application.routes.draw do
                 get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
               end
             end
+            namespace :by_month, path: "by-month" do
+              namespace :transfers do
+                get "/", to: "projects#index"
+                get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
+                get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+              end
+            end
           end
         end
       end
