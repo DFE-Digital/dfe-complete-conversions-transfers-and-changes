@@ -14,6 +14,15 @@ class ProjectsForExportService
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
+  def transfer_by_month_projects(month:, year:)
+    projects = transfer_projects_by_month_and_year(month, year)
+    AcademiesApiPreFetcherService.new.call!(projects)
+  end
+
+  private def transfer_projects_by_month_and_year(month, year)
+    Transfer::Project.confirmed.filtered_by_significant_date(month, year)
+  end
+
   private def conversion_projects_by_month_and_year(month, year)
     Conversion::Project.confirmed.filtered_by_significant_date(month, year)
   end
