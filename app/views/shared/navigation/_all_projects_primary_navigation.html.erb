@@ -24,7 +24,7 @@
 
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.statistics"), path: all_statistics_projects_path, namespace: "/projects/all/statistics"} %>
 
-          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.exports"), path: all_export_education_and_skills_funding_agency_conversions_projects_path, namespace: "/projects/all/export"} if policy(:export).index? %>
+          <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.exports"), path: all_export_projects_path, namespace: "/projects/all/export"} if policy(:export).index? %>
 
         </ul>
 

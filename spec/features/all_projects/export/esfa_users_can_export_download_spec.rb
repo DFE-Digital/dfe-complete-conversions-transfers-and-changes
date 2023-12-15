@@ -27,6 +27,8 @@ RSpec.feature "ESFA users can export" do
 
     click_on "Exports"
 
+    click_on "check details about schools' risk protection arrangements and start-up grant funding"
+
     expect(page).to have_link(Date.today.to_fs(:govuk_month))
     expect(page).to have_link(Date.today.next_month.to_fs(:govuk_month))
   end
@@ -38,6 +40,8 @@ RSpec.feature "ESFA users can export" do
     visit all_in_progress_projects_path
 
     click_on "Exports"
+
+    click_on "check details about schools' risk protection arrangements and start-up grant funding"
 
     click_on "Export for #{Date.today.to_fs(:govuk_month)}"
 
