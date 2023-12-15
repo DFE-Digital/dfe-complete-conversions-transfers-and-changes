@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- An email is now sent to team leaders when a transfer project is created and
+  handed over to Regional casework services
+
 ## [Release-49][release-49]
 
 ### Changed
