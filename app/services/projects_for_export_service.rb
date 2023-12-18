@@ -1,24 +1,33 @@
 class ProjectsForExportService
   def risk_protection_arrangement_projects(month:, year:)
-    projects = projects_by_month_and_year(month, year)
+    projects = conversion_projects_by_month_and_year(month, year)
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
   def funding_agreement_letters_projects(month:, year:)
-    projects = projects_by_month_and_year(month, year)
+    projects = conversion_projects_by_month_and_year(month, year)
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
   def grant_management_and_finance_unit_projects(month:, year:)
-    projects = projects_by_advisory_board_date(month, year)
+    projects = conversion_projects_by_advisory_board_date(month, year)
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
-  private def projects_by_month_and_year(month, year)
+  def transfer_by_month_projects(month:, year:)
+    projects = transfer_projects_by_month_and_year(month, year)
+    AcademiesApiPreFetcherService.new.call!(projects)
+  end
+
+  private def transfer_projects_by_month_and_year(month, year)
+    Transfer::Project.confirmed.filtered_by_significant_date(month, year)
+  end
+
+  private def conversion_projects_by_month_and_year(month, year)
     Conversion::Project.confirmed.filtered_by_significant_date(month, year)
   end
 
-  private def projects_by_advisory_board_date(month, year)
+  private def conversion_projects_by_advisory_board_date(month, year)
     Conversion::Project.confirmed.filtered_by_advisory_board_date(month, year)
   end
 end

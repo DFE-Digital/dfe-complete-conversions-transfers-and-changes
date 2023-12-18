@@ -64,6 +64,22 @@ RSpec.describe ProjectsForExportService do
     end
   end
 
+  describe "#transfer_by_month_projects" do
+    it "returns only transfer projects transferring in the supplied month & year" do
+      mock_academies_api_client_get_establishments_and_trusts
+
+      matching_project_1 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+      matching_project_2 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+      mismatching_project_1 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-2-1"))
+      mismatching_project_2 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.transfer_by_month_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(matching_project_1, matching_project_2)
+      expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
+    end
+  end
+
   def mock_academies_api_client_get_establishments_and_trusts
     api_client = Api::AcademiesApi::Client.new
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(api_client)

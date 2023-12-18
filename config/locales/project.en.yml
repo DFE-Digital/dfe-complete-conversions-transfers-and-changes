@@ -195,6 +195,9 @@ en:
         team: Team
         incoming_trust: Incoming trust
         outgoing_trust: Outgoing trust
+        confirmed_transfer_date: Confirmed transfer date
+        revised_transfer_date: Revised transfer date
+        all_transfers: All transfers
       body:
         type_name:
           conversion_project: Conversion
@@ -206,6 +209,9 @@ en:
         view_projects_for_local_authority_html: View projects<span class="govuk-visually-hidden"> for %{local_authority_name}</span>
         view_projects_for_html: View projects<span class="govuk-visually-hidden"> for %{entity}</span>
         export_for_html: Export<span class="govuk-visually-hidden"> for %{date}</span>
+        view_confirmed_transfer_projects_for: View %{date}'s confirmed transfers
+        view_revised_transfer_projects_for: View %{date}'s revised transfers
+        download_transfer_projects_for: Download %{date}'s transfers
       empty:
         projects: There are no projects
       in_progress:
