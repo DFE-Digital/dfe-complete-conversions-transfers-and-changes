@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-48][release-48]
+
 ### Added
 
 - Add "Business support" as a team option for users.
@@ -1458,7 +1460,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-47...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-48...HEAD
+[release-48]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-47...release-48
 [release-47]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-46...release-47
 [release-46]:
