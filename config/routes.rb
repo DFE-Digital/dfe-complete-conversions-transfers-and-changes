@@ -134,6 +134,7 @@ Rails.application.routes.draw do
             get ":user_id", to: "projects#show", as: :by_user, constraints: {user_id: VALID_UUID_REGEX}
           end
           namespace :export do
+            get "/", to: "projects#index"
             namespace :funding_agreement_letters, path: "funding-agreement-letters" do
               namespace :conversions do
                 get "/", to: "projects#index"

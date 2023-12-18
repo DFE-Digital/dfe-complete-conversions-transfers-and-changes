@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   not publicly viewable)
 - Add reduced support service banner to the service for the christmas period
 - Build the export journey for Academies due to transfer in a time period
+- Build a landing page for all exports, under the Exports tab. This page is
+  viewable by all teams who have access to exports.
 
 ### Changed
 
