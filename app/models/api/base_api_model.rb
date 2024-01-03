@@ -14,7 +14,7 @@ class Api::BaseApiModel
       value = hash.with_indifferent_access.dig(*split_access_path)
       next if value.nil?
 
-      send("#{attribute_name}=", value)
+      send(:"#{attribute_name}=", value)
     end
   end
 
