@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   handed over to Regional casework services
 - Fix Conversion project incoming sharepoint link edit view to not display
   outgoing trust sharepoint link field.
+- Fix statistics page to show accurate data for Transfer's `by region` table.
 
 ## [Release-49][release-49]
 
