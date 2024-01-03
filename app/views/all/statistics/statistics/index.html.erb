@@ -185,7 +185,7 @@
           </thead>
           <tbody class="govuk-table__body">
           <% Project.regions.keys.each do |region| %>
-            <% statistics = @project_statistics.conversion_project_statistics_for_region(region) %>
+            <% statistics = @project_statistics.transfer_project_statistics_for_region(region) %>
             <tr class="govuk-table__row" id="<%= region.dasherize %>">
               <th scope="row" class="govuk-table__cell"><%= t("project.region.#{region}") %></th>
               <td class="govuk-table__cell govuk-table__cell--numeric"><%= statistics.in_progress %></td>
