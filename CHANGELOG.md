@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - An email is now sent to team leaders when a transfer project is created and
   handed over to Regional casework services
+- Fix Conversion project incoming sharepoint link edit view to not display
+  outgoing trust sharepoint link field.
 
 ## [Release-49][release-49]
 
