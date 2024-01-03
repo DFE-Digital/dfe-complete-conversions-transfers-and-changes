@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-49][release-49]
+
 ### Changed
 
 - Removed reduced support service banner to the service for the christmas period
@@ -1464,7 +1466,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-48...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-49...HEAD
+[release-49]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-48...release-49
 [release-48]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-47...release-48
 [release-47]:
