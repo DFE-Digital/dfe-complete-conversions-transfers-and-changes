@@ -360,6 +360,15 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.region).to eql "London"
   end
 
+  it "presents who the project was added by (the Regional delivery officer)" do
+    rdo = build(:regional_delivery_officer_user)
+    project = build(:conversion_project, regional_delivery_officer: rdo)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.added_by_email).to eql rdo.email
+  end
+
   context "when the proposed capacity of the academy is not applicable" do
     it "returns not applicable" do
       tasks_data = build(:conversion_tasks_data, proposed_capacity_of_the_academy_not_applicable: true)

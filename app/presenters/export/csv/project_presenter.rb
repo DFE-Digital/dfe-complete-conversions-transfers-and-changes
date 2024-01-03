@@ -158,4 +158,8 @@ class Export::Csv::ProjectPresenter
   def link_to_project
     "https://#{ENV.fetch("HOSTNAME", "localhost:3000")}/projects/#{@project.id}"
   end
+
+  def added_by_email
+    @project.regional_delivery_officer&.email
+  end
 end
