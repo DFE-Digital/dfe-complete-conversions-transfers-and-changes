@@ -22,10 +22,10 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
 
         expect(ActionMailer::MailDeliveryJob)
           .to(have_been_enqueued.on_queue("default")
-                                .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [team_leader, project]))
+                                .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
         expect(ActionMailer::MailDeliveryJob)
           .to(have_been_enqueued.on_queue("default")
-                                .with("TeamLeaderMailer", "new_project_created", "deliver_now", args: [another_team_leader, project]))
+                                .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [another_team_leader, project]))
       end
 
       context "if a team leader is deactivated" do
