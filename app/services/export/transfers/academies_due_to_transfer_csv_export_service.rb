@@ -1,6 +1,4 @@
-class Export::Transfers::AcademiesDueToTransferCsvExportService
-  require "csv"
-
+class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExportService
   COLUMN_HEADERS = %i[
     school_name
     school_urn
@@ -25,30 +23,5 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService
 
   def initialize(projects)
     @projects = projects
-  end
-
-  def call
-    @csv = CSV.generate("\uFEFF", headers: true, encoding: "UTF-8") do |csv|
-      csv << headers
-      if @projects.any?
-        @projects.each do |project|
-          csv << row(project)
-        end
-      end
-    end
-  end
-
-  private def headers
-    COLUMN_HEADERS.map do |column|
-      I18n.t("export.csv.project.headers.#{column}")
-    end
-  end
-
-  private def row(project)
-    presenter = Export::Csv::ProjectPresenter.new(project)
-
-    COLUMN_HEADERS.map do |column|
-      presenter.public_send(column)
-    end
   end
 end
