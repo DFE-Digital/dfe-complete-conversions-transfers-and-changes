@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Removed reduced support service banner to the service for the christmas period
+
 ## [Release-48][release-48]
 
 ### Added
