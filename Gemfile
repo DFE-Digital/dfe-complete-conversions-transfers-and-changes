@@ -82,7 +82,7 @@ group :test do
   gem "climate_control"
   gem "simplecov", "~> 0.22.0"
   gem "selenium-webdriver"
-  gem "shoulda-matchers", "~> 5.1"
+  gem "shoulda-matchers", "~> 6.0"
   gem "webmock", "~> 3.17"
   gem "bullet"
 end
