@@ -2,7 +2,17 @@ class All::Export::GrantManagementAndFinanceUnit::Conversions::ProjectsControlle
   def index
     authorize Project, :index?
 
-    @months = export_months
+    @data = export_months.map do |month|
+      {
+        month: month,
+        count: ProjectsForExportService.new.grant_management_and_finance_unit_conversion_projects(month: month.month, year: month.year).count
+      }
+    end
+  end
+
+  def show
+    authorize Project, :show?
+    @month = Date.new(year, month)
   end
 
   def csv
@@ -15,11 +25,11 @@ class All::Export::GrantManagementAndFinanceUnit::Conversions::ProjectsControlle
   end
 
   private def month
-    params[:month]
+    params[:month].to_i
   end
 
   private def year
-    params[:year]
+    params[:year].to_i
   end
 
   private def export_months

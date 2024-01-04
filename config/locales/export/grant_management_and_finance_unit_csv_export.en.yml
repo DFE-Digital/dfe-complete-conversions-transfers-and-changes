@@ -4,7 +4,29 @@ en:
       conversions:
         index:
           title: Grant management and finance unit exports
-          body: Conversions by Advisory board date
+          body: Check which projects were approved at each advisory board meeting.
+        show:
+          title: "%{date} Grants Management and Finance Unit export"
+          body_html:
+            <p>This export contains data to help you process pre-opening grants for new academies, including:</p>
+            <ul>
+            <li>converter grant</li>
+            <li>sponsored grant (fast track, intermediate or full sponsored)</li>
+            </ul>
+            <p>It can take a little time to create these files. Thank you for your patience.</p>
+      transfers:
+        index:
+          title: Grant management and finance unit exports
+          body: Check which projects were approved at each advisory board meeting.
+        show:
+          title: "%{date} Grants Management and Finance Unit export"
+          body_html:
+            <p>This export contains data to help you process pre-opening grants for transferring academies, including:</p>
+            <ul>
+            <li>standard transfer support grant element</li>
+            <li>academy transfer grant fund (fast track, intermediate or full sponsored)</li>
+            </ul>
+            <p>It can take a little time to create these files. Thank you for your patience.</p>
       show:
         title: "%{date} grant management and funding unit export"
         body_html:

@@ -13,3 +13,4 @@ en:
         title: Transfer project data
         body: View tables and download spreadsheets that show information about transfers.
         academies_due_to_transfer_html: You can <a href="%{link}">check which academies are due to transfer in an particular month</a>.
+        grant_management_html: You can <a href="%{link}">get information pre-opening grants for transferring academies</a>.
