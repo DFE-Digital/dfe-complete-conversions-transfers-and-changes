@@ -64,6 +64,21 @@ RSpec.describe ProjectsForExportService do
     end
   end
 
+  describe "#grant_management_and_finance_unit_transfer_projects" do
+    it "returns only transfer projects with an advisory board date of the supplied month and year" do
+      mock_academies_api_client_get_establishments_and_trusts
+
+      matching_project = create(:transfer_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
+      mismatching_project_1 = create(:conversion_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
+      mismatching_project_2 = create(:transfer_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
+
+      projects_for_export = described_class.new.grant_management_and_finance_unit_transfer_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(matching_project)
+      expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
+    end
+  end
+
   describe "#transfer_by_month_projects" do
     it "returns only transfer projects transferring in the supplied month & year" do
       mock_academies_api_client_get_establishments_and_trusts
