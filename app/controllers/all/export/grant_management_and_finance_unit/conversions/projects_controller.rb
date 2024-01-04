@@ -8,7 +8,7 @@ class All::Export::GrantManagementAndFinanceUnit::Conversions::ProjectsControlle
   def csv
     authorize Project, :index?
 
-    projects = ProjectsForExportService.new.grant_management_and_finance_unit_projects(month: month, year: year)
+    projects = ProjectsForExportService.new.grant_management_and_finance_unit_conversion_projects(month: month, year: year)
     csv = Export::Conversions::GrantManagementAndFinanceUnitCsvExportService.new(projects).call
 
     send_data csv, filename: "#{year}-#{month}_grant_management_and_finance_unit_conversions_export.csv", type: :csv, disposition: "attachment"

@@ -9,7 +9,7 @@ class ProjectsForExportService
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
-  def grant_management_and_finance_unit_projects(month:, year:)
+  def grant_management_and_finance_unit_conversion_projects(month:, year:)
     projects = conversion_projects_by_advisory_board_date(month, year)
     AcademiesApiPreFetcherService.new.call!(projects)
   end
