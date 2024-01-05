@@ -9,8 +9,13 @@ class ProjectsForExportService
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
-  def grant_management_and_finance_unit_projects(month:, year:)
+  def grant_management_and_finance_unit_conversion_projects(month:, year:)
     projects = conversion_projects_by_advisory_board_date(month, year)
+    AcademiesApiPreFetcherService.new.call!(projects)
+  end
+
+  def grant_management_and_finance_unit_transfer_projects(month:, year:)
+    projects = transfer_projects_by_advisory_board_date(month, year)
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
@@ -29,5 +34,9 @@ class ProjectsForExportService
 
   private def conversion_projects_by_advisory_board_date(month, year)
     Conversion::Project.confirmed.filtered_by_advisory_board_date(month, year)
+  end
+
+  private def transfer_projects_by_advisory_board_date(month, year)
+    Transfer::Project.confirmed.filtered_by_advisory_board_date(month, year)
   end
 end

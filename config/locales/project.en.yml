@@ -198,6 +198,8 @@ en:
         confirmed_transfer_date: Confirmed transfer date
         revised_transfer_date: Revised transfer date
         all_transfers: All transfers
+        number_of_conversions: Number of conversions
+        number_of_transfers: Number of transfers
       body:
         type_name:
           conversion_project: Conversion

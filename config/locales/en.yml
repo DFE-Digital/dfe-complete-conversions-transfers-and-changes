@@ -101,6 +101,8 @@ en:
     revised: Revised date
     active_users: Active users
     inactive_users: Inactive users
+    conversions: Conversions
+    transfers: Transfers
   pages:
     academies_api_client_timeout:
       title: Sorry, there was a problem
