@@ -14,3 +14,11 @@ en:
           guidance:
             html:
               <p>You should ask the school to send the certificate. You must record the date each time you contact them in <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&amp;file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank">the support grant assurance report (opens in new tab)</a>.</p>
+        date_received:
+          title: Enter the date you received the grant payment certificate
+          hint:
+            html: <p>For example, 27 5 2007</p>
+          received_info:
+            html: DfE received the grant payment certificate on %{date}.
+          errors:
+            format: Please enter a valid date

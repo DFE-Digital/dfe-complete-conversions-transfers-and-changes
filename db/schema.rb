@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_28_152937) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_08_113131) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -146,6 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_152937) do
     t.string "proposed_capacity_of_the_academy_reception_to_six_years"
     t.string "proposed_capacity_of_the_academy_seven_to_eleven_years"
     t.string "proposed_capacity_of_the_academy_twelve_or_above_years"
+    t.date "receive_grant_payment_certificate_date_received"
   end
 
   create_table "events", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

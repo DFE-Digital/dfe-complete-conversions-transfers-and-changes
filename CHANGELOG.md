@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Add the ability to download Transfer projects for the Grant management and
   finance team
+- Added a field to enter the date a grant payment certificate was received to
+  the Conversions Receive grant payment certificate task.
 
 ### Changed
 
