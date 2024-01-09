@@ -4,8 +4,12 @@ en:
       receive_grant_payment_certificate:
         title: Receive grant payment certificate
         hint:
-          html: <p>You should already have sent a copy of the <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">grant payment certificate (opens in new tab)</a> when confirming the academy's opening date.</p>
-
+          html: <p>Remind the school and trust to complete the grant payment certificate.</p>
+        guidance_link: What to do if you have not received the grant payment certificate
+        guidance:
+          html:
+            <p>If you do not recieve the grant certificate, you should keep reminding the school and trust to send it to you.</p>
+            <p>Regional Casework Services must also <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&action=default&mobileredirect=true" target="_blank">update the support grant assurance report spreadsheet (opens in new tab)</a>. Do not update this grant assurance report spreadsheet if you work in a team in one of the Regions.</p>
         check_certificate:
           title: Check the grant payment certificate is correct
           hint:
