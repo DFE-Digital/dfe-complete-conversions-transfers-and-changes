@@ -33,7 +33,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "project completed page" do
-    tasks_data = create(:conversion_tasks_data, receive_grant_payment_certificate_check_and_save: true, receive_grant_payment_certificate_date_received: Date.today)
+    tasks_data = create(:conversion_tasks_data, receive_grant_payment_certificate_check_certificate: true, receive_grant_payment_certificate_save_certificate: true, receive_grant_payment_certificate_date_received: Date.today)
     project = create(:conversion_project,
       regional_delivery_officer: user,
       assigned_to: user,

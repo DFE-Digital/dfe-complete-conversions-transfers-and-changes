@@ -1,5 +1,6 @@
 class Conversion::Task::ReceiveGrantPaymentCertificateTaskForm < BaseTaskForm
-  attribute :check_and_save, :boolean
+  attribute :check_certificate, :boolean
+  attribute :save_certificate, :boolean
   attribute "date_received(1i)"
   attribute "date_received(2i)"
   attribute "date_received(3i)"
@@ -19,7 +20,8 @@ class Conversion::Task::ReceiveGrantPaymentCertificateTaskForm < BaseTaskForm
   def save
     @tasks_data.assign_attributes(
       receive_grant_payment_certificate_date_received: formatted_date_received,
-      receive_grant_payment_certificate_check_and_save: check_and_save
+      receive_grant_payment_certificate_check_certificate: check_certificate,
+      receive_grant_payment_certificate_save_certificate: save_certificate
     )
     @tasks_data.save!
   end

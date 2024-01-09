@@ -10,7 +10,7 @@ RSpec.feature "Users can complete a conversion project" do
 
   context "when all conditions have been met and the academy has opened" do
     let(:tasks_data) {
-      create(:conversion_tasks_data, receive_grant_payment_certificate_check_and_save: true, receive_grant_payment_certificate_date_received: Date.today)
+      create(:conversion_tasks_data, receive_grant_payment_certificate_check_certificate: true, receive_grant_payment_certificate_save_certificate: true, receive_grant_payment_certificate_date_received: Date.today)
     }
     let(:project) {
       create(:conversion_project,
