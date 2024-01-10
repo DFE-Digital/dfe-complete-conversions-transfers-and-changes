@@ -18,12 +18,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Add the ability to download Transfer projects for the Grant management and
   finance team
+- Added a field to enter the date a grant payment certificate was received to
+  the Conversions Receive grant payment certificate task.
 
 ### Changed
 
 - Changed the existing Grant management and finance team Conversions download
   page to include an information page about the download, and a tabbed view on
   the index page to switch between Transfers and Conversions
+- Split the "Check and save" action in the Conversions Receive grant payment
+  certificate task. The actions are now "Check" and "Save" separately.
 
 ## [Release-49][release-49]
 

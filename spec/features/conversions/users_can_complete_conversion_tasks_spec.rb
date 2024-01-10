@@ -14,7 +14,7 @@ RSpec.feature "Users can complete conversion tasks" do
     check_accuracy_of_higher_needs
     commercial_transfer_agreement
     land_questionnaire land_registry
-    receive_grant_payment_certificate redact_and_send
+    redact_and_send
     school_completed share_information single_worksheet
     supplemental_funding_agreement update_esfa
   ]
@@ -32,6 +32,7 @@ RSpec.feature "Users can complete conversion tasks" do
     conditions_met
     main_contact
     proposed_capacity_of_the_academy
+    receive_grant_payment_certificate
   ]
 
   it "confirms we are checking all tasks" do
@@ -244,6 +245,36 @@ RSpec.feature "Users can complete conversion tasks" do
       click_on I18n.t("task_list.continue_button.text")
 
       expect(project.reload.all_conditions_met).to be true
+    end
+  end
+
+  describe "the receive grant payment certificate task" do
+    let(:project) { create(:conversion_project, assigned_to: user) }
+
+    context "when the task does not have a date" do
+      scenario "they can add a date" do
+        visit project_tasks_path(project)
+        click_on "Receive grant payment certificate"
+        page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "1"
+        fill_in "Year", with: "2024"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.receive_grant_payment_certificate_date_received).to eq Date.new(2024, 1, 1)
+      end
+    end
+
+    context "when the task has a date" do
+      let(:tasks_data) { create(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1)) }
+      let(:project) { create(:conversion_project, assigned_to: user, tasks_data: tasks_data) }
+
+      scenario "they see the date on the page but cannot add a new one" do
+        visit project_tasks_path(project)
+        click_on "Receive grant payment certificate"
+        expect(page).to have_content("DfE received the grant payment certificate on 1 January 2024.")
+        expect(page).to_not have_content("Enter the date you received the grant payment certificate")
+      end
     end
   end
 

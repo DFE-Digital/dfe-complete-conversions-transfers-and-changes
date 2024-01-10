@@ -14,7 +14,22 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_and_save)) %>
+        <% if @project.tasks_data.receive_grant_payment_certificate_date_received.nil? %>
+          <%= form.govuk_date_field :date_received,
+                legend: {text: t("conversion.task.receive_grant_payment_certificate.date_received.title"), size: "s"} do %>
+            <div class="govuk-hint"><%= t("conversion.task.receive_grant_payment_certificate.date_received.hint.html") %></div>
+          <% end %>
+        <% else %>
+          <div class="govuk-details__text">
+            <p><%= t("conversion.task.receive_grant_payment_certificate.date_received.received_info.html", date: @project.tasks_data.receive_grant_payment_certificate_date_received.to_fs(:govuk)) %></p>
+          </div>
+        <% end %>
+
+      </div>
+
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_certificate)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_certificate)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
