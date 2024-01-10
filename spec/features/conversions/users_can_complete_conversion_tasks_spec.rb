@@ -233,6 +233,25 @@ RSpec.feature "Users can complete conversion tasks" do
 
       expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "full_sponsored"
     end
+
+    scenario "the task can be completed" do
+      choose "Full sponsored"
+      page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
+      # uncheck the Not applicable box
+      page.find(".govuk-checkboxes__label", text: "Not applicable").click
+      click_on I18n.t("task_list.continue_button.text")
+
+      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.task.sponsored_support_grant.title"))
+      expect(table_row).to have_content("Completed")
+    end
+
+    scenario "the task can be marked as Not applicable" do
+      page.find(".govuk-checkboxes__label", text: "Not applicable").click
+      click_on I18n.t("task_list.continue_button.text")
+
+      table_row = page.find("li.app-task-list__item", text: I18n.t("conversion.task.sponsored_support_grant.title"))
+      expect(table_row).to have_content("Not applicable")
+    end
   end
 
   describe "the confirm all conditions met task" do
