@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_09_143032) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_10_145231) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -126,7 +126,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_09_143032) do
     t.boolean "trust_modification_order_not_applicable"
     t.boolean "stakeholder_kick_off_check_provisional_conversion_date"
     t.boolean "conversion_grant_not_applicable"
-    t.boolean "sponsored_support_grant_eligibility"
     t.boolean "sponsored_support_grant_payment_amount"
     t.boolean "sponsored_support_grant_payment_form"
     t.boolean "sponsored_support_grant_send_information"

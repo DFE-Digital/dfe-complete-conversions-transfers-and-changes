@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Fix Conversion project incoming sharepoint link edit view to not display
   outgoing trust sharepoint link field.
 - Fix statistics page to show accurate data for Transfer's `by region` table.
+- The Sponsored support grant task in Conversions was not completable - fixed
 
 ### Added
 
