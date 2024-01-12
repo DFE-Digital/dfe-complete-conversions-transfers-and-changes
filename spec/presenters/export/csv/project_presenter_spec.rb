@@ -395,6 +395,30 @@ RSpec.describe Export::Csv::ProjectPresenter do
     end
   end
 
+  it "presents the Academy surplus/deficit financial information" do
+    tasks_data = build(:transfer_tasks_data, check_and_confirm_financial_information_academy_surplus_deficit: "surplus")
+    project = build(:transfer_project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+    expect(presenter.academy_surplus_deficit).to eq("surplus")
+  end
+
+  it "presents the Trust surplus/deficit financial information" do
+    tasks_data = build(:transfer_tasks_data, check_and_confirm_financial_information_trust_surplus_deficit: "deficit")
+    project = build(:transfer_project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+    expect(presenter.trust_surplus_deficit).to eq("deficit")
+  end
+
+  it "presents Not applicable when the surplus/deficit financial information in not applicable" do
+    tasks_data = build(:transfer_tasks_data, check_and_confirm_financial_information_not_applicable: true)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+    expect(presenter.academy_surplus_deficit).to eq("not applicable")
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 
