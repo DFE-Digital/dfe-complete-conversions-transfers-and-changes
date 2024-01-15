@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-50][release-50]
+
 ### Fixed
 
 - An email is now sent to team leaders when a transfer project is created and
@@ -1495,7 +1497,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-49...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-50...HEAD
+[release-50]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-49...release-50
 [release-49]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-48...release-49
 [release-48]:
