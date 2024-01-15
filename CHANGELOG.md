@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the Conversions Receive grant payment certificate task.
 - Script to backfill dates in the Conversions Receive grant payment certificate
   task
+- Add Transfer Check and confirm financial information task
 
 ### Changed
 

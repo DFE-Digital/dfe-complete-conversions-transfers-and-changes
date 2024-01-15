@@ -38,6 +38,7 @@ RSpec.feature "Users can complete transfer tasks" do
     conditions_met
     main_contact
     bank_details_changing
+    check_and_confirm_financial_information
   ]
 
   it "confirms that all tasks are tested here" do
@@ -81,6 +82,66 @@ RSpec.feature "Users can complete transfer tasks" do
 
         click_on I18n.t("task_list.continue_button.text")
         table_row = page.find("li.app-task-list__item", text: I18n.t("transfer.task.#{task}.title"))
+
+        expect(table_row).to have_content("Completed")
+      end
+    end
+  end
+
+  describe "tasks with collected data" do
+    describe "the check_and_confirm_financial_information task" do
+      before do
+        visit project_tasks_path(project)
+        click_on "Check and confirm academy and trust financial information"
+      end
+
+      it "can collect surplus for academy and trust finances" do
+        within_fieldset("Is the academy in surplus or deficit?") do
+          choose "Surplus"
+        end
+
+        within_fieldset("Is the incoming trust in surplus or deficit?") do
+          choose "Surplus"
+        end
+
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.check_and_confirm_financial_information_academy_surplus_deficit).to eq "surplus"
+        expect(project.reload.tasks_data.check_and_confirm_financial_information_trust_surplus_deficit).to eq "surplus"
+      end
+
+      it "can collect deficit for academy and trust finances" do
+        within_fieldset("Is the academy in surplus or deficit?") do
+          choose "Deficit"
+        end
+
+        within_fieldset("Is the incoming trust in surplus or deficit?") do
+          choose "Deficit"
+        end
+
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.check_and_confirm_financial_information_academy_surplus_deficit).to eq "deficit"
+        expect(project.reload.tasks_data.check_and_confirm_financial_information_trust_surplus_deficit).to eq "deficit"
+      end
+
+      it "can be not applicable" do
+        click_not_applicable(page)
+        click_on I18n.t("task_list.continue_button.text")
+        expect(project.reload.tasks_data.check_and_confirm_financial_information_not_applicable).to be true
+      end
+
+      it "can be completed" do
+        within_fieldset("Is the academy in surplus or deficit?") do
+          choose "Surplus"
+        end
+
+        within_fieldset("Is the incoming trust in surplus or deficit?") do
+          choose "Deficit"
+        end
+
+        click_on I18n.t("task_list.continue_button.text")
+        table_row = page.find("li.app-task-list__item", text: I18n.t("transfer.task.check_and_confirm_financial_information.title"))
 
         expect(table_row).to have_content("Completed")
       end

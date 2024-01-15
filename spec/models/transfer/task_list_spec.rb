@@ -10,6 +10,7 @@ RSpec.describe Transfer::TaskList do
         :stakeholder_kick_off,
         :main_contact,
         :request_new_urn_and_record,
+        :check_and_confirm_financial_information,
         :form_m,
         :land_consent_letter,
         :supplemental_funding_agreement,
@@ -49,7 +50,7 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 21
+      expect(task_list.tasks.count).to eql 22
       expect(task_list.tasks.first).to be_a Transfer::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Transfer::Task::RedactAndSendDocumentsTaskForm
     end

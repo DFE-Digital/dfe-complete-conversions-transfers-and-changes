@@ -1,0 +1,26 @@
+en:
+  transfer:
+    task:
+      check_and_confirm_financial_information:
+        title: Check and confirm academy and trust financial information
+        hint:
+          html:
+            <p>The academy or incoming trust must use any budget surplus they have to fund the transfer.
+            <p>If the cost of the transfer exceeds their budget surplus, they may be eligible for a transfer grant.</p>
+            <p>These grants are available to help with the costs of an academy transfer. They can also fund some academy improvements.</p>
+            <p>Mark this task as not applicable if no transfer grant will be used.</p>
+        not_applicable:
+          title: Not applicable
+        academy_surplus_deficit:
+          title: Is the academy in surplus or deficit?
+          hint:
+            html:
+              <p>Ask the academy for this information if you don't have it already. </p>
+        trust_surplus_deficit:
+          title: Is the incoming trust in surplus or deficit?
+          hint:
+            html:
+              <p>You should work with SFSO (Schools Finance and Support Oversight) to ask the trust for this information if you don't have it already.</p>
+        options:
+          surplus: Surplus
+          deficit: Deficit
