@@ -10,6 +10,8 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
     two_requires_improvement
     financial_safeguarding_governance_issues
     outgoing_trust_to_close
+    academy_surplus_deficit
+    trust_surplus_deficit
     advisory_board_date
     transfer_date
     added_by_email

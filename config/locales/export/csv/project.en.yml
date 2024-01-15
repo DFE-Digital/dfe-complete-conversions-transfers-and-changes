@@ -79,6 +79,8 @@ en:
           bank_details_changing: Bank details changing
           transfer_date: Transfer date
           added_by_email: Added by email
+          academy_surplus_deficit: Is the academy in surplus or deficit?
+          trust_surplus_deficit: Is the incoming trust in surplus or deficit?
         values:
           project_type:
             conversion: Conversion

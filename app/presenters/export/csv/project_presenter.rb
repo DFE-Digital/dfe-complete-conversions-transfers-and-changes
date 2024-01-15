@@ -162,4 +162,16 @@ class Export::Csv::ProjectPresenter
   def added_by_email
     @project.regional_delivery_officer&.email
   end
+
+  def academy_surplus_deficit
+    return if @project.is_a?(Conversion::Project)
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.check_and_confirm_financial_information_not_applicable?
+    @project.tasks_data.check_and_confirm_financial_information_academy_surplus_deficit
+  end
+
+  def trust_surplus_deficit
+    return if @project.is_a?(Conversion::Project)
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.check_and_confirm_financial_information_not_applicable?
+    @project.tasks_data.check_and_confirm_financial_information_trust_surplus_deficit
+  end
 end
