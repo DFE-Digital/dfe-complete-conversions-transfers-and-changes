@@ -33,3 +33,4 @@ lib/generators/*/USAGE
 *.csv
 /.github/
 app/assets/stylesheets/dfe_frontend.css
+.eslintrc.json
