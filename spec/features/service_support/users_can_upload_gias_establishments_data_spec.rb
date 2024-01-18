@@ -7,6 +7,16 @@ RSpec.feature "Service support users can upload GIAS data" do
     sign_in_with_user(user)
   end
 
+  scenario "a service support user can see the upload page" do
+    expect(page).to have_content(I18n.t("navigation.primary.service_support.upload_gias_data"))
+  end
+
+  scenario "a non service support user cannot see the upload page" do
+    sign_in_with_user(create(:regional_delivery_officer_user))
+
+    expect(page).to_not have_content(I18n.t("navigation.primary.service_support.upload_gias_data"))
+  end
+
   scenario "a service support user can successfully upload GIAS data for ingestion" do
     visit service_support_upload_gias_establishments_new_path
 
