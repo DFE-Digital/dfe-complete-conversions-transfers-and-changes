@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Service support users can navigate to the GIAS data upload page
+
 ## [Release-50][release-50]
 
 ### Fixed
