@@ -36,6 +36,13 @@ RSpec.describe Gias::Establishment do
     end
   end
 
+  describe "type" do
+    it "returns the type_name" do
+      establishment = create(:gias_establishment, urn: 123456, type_name: "Community school")
+      expect(establishment.type).to eq("Community school")
+    end
+  end
+
   describe "dfe_number" do
     it "returns the local authority code and establishment number, formatted as a dfe_number" do
       establishment = create(:gias_establishment, urn: 123456, local_authority_code: 123, establishment_number: 456)

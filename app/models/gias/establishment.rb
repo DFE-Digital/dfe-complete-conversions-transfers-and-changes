@@ -4,6 +4,7 @@ class Gias::Establishment < ApplicationRecord
   validates :urn, presence: true
 
   alias_attribute :phase, :phase_name
+  alias_attribute :type, :type_name
 
   DIOCESE_NOT_APPLICABLE_CODE = "0000"
 
