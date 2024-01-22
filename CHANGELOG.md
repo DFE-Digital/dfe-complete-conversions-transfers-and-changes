@@ -15,6 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - When service support adds a new academy URN to a conversion project, the urn
   is now checked against our local record of Establishments, and not the
   Academies API records (which do not contain details for unopened academies)
+- Fetch academy details for Conversions from local Gias::Establishment records
+  instead of the Academies API. This means we can show details for academies
+  which have not opened yet.
 
 ## [Release-50][release-50]
 

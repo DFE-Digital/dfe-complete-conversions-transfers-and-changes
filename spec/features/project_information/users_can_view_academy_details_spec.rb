@@ -25,8 +25,6 @@ RSpec.feature "Users can view academy details" do
     let(:project) { create(:conversion_project, assigned_to: user, academy_urn: 149061) }
 
     context "and the details are not found" do
-      before { mock_establishment_not_found(urn: project.academy_urn) }
-
       scenario "they see the academy urn and a helpful message" do
         visit project_information_path(project)
 
@@ -38,6 +36,8 @@ RSpec.feature "Users can view academy details" do
     end
 
     context "and the details can be found" do
+      let!(:establishment) { create(:gias_establishment, urn: 149061) }
+
       scenario "they see the academy details" do
         visit project_information_path(project)
 

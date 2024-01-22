@@ -128,12 +128,14 @@ RSpec.describe Conversion::Project do
   end
 
   describe "#academy" do
-    it "returns an establishment object when the urn can be found" do
+    it "returns an establishment when there is a matching Gias::Establishment record" do
       mock_successful_api_response_to_create_any_project
+      establishment = create(:gias_establishment, urn: 123456)
 
       project = build(:conversion_project, academy_urn: 123456)
 
-      expect(project.academy).to be_a(Api::AcademiesApi::Establishment)
+      expect(project.academy).to be_a(Gias::Establishment)
+      expect(project.academy).to eq(establishment)
     end
 
     it "returns nil when the urn cannot be found" do
@@ -151,6 +153,7 @@ RSpec.describe Conversion::Project do
 
     it "returns true when the academy can be found" do
       project = build(:conversion_project, academy_urn: 123456)
+      _establishment = create(:gias_establishment, urn: 123456)
 
       expect(project.academy_found?).to eql true
     end

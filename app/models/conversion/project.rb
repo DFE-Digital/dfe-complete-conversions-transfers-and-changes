@@ -26,7 +26,7 @@ class Conversion::Project < Project
   end
 
   def academy
-    @academy ||= fetch_academy(academy_urn).object
+    @academy ||= fetch_academy(academy_urn)
   end
 
   def academy_found?
@@ -44,6 +44,6 @@ class Conversion::Project < Project
   end
 
   private def fetch_academy(urn)
-    Api::AcademiesApi::Client.new.get_establishment(urn)
+    Gias::Establishment.find_by(urn: urn)
   end
 end

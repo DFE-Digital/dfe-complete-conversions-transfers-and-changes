@@ -18,7 +18,7 @@
         <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
         <td class="govuk-table__cell"><%= project.urn %></td>
         <td class="govuk-table__cell"><%= project.conversion_date.to_formatted_s(:significant_date) %></td>
-        <td class="govuk-table__cell"><%= project.academy.name %></td>
+        <td class="govuk-table__cell"><%= project.academy&.name %></td>
         <td class="govuk-table__cell"><%= project.academy_urn %></td>
         <td class="govuk-table__cell">
           <a href="<%= project_path(project) %>">
