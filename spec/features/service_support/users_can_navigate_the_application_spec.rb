@@ -24,7 +24,17 @@ RSpec.feature "Service support users can navigate the application" do
     expect(page).to have_content(project.urn)
   end
 
-  scenario "they can view the projects that have a record on GIAS" do
+  scenario "they can view the projects that have a GIAS Establishment record" do
+    project = create(:conversion_project, academy_urn: 149061)
+    _establishment = create(:gias_establishment, urn: 149061)
+
+    click_link("URNs added")
+
+    expect(page).to have_content("URNs added")
+    expect(page).to have_content(project.academy_urn)
+  end
+
+  scenario "they can view the projects that have an academy URN but we don't yet have a local GIAS Establishment record for" do
     project = create(:conversion_project, academy_urn: 149061)
 
     click_link("URNs added")
