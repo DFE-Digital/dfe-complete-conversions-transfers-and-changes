@@ -49,6 +49,7 @@ RSpec.feature "Users can edit the Academy URN" do
     context "when the Academy URN is correct" do
       scenario "the user can save the Academy URN on the project" do
         project = create(:conversion_project, assigned_to: user, academy_urn: nil, urn: 111111)
+        _academy = create(:gias_establishment, urn: 123456)
         visit without_academy_urn_service_support_projects_path
 
         click_on "Create academy URN"
@@ -64,6 +65,7 @@ RSpec.feature "Users can edit the Academy URN" do
     context "when the Academy URN is incorrect" do
       scenario "the user can go back to the list by clicking Cancel" do
         project = create(:conversion_project, assigned_to: user, academy_urn: nil)
+        _academy = create(:gias_establishment, urn: 123456)
         visit without_academy_urn_service_support_projects_path
 
         click_on "Create academy URN"
@@ -82,7 +84,6 @@ RSpec.feature "Users can edit the Academy URN" do
     before do
       mock_successful_api_trust_response(ukprn: any_args)
       mock_successful_api_establishment_response(urn: 111111)
-      mock_establishment_not_found(urn: 123456)
     end
 
     scenario "the user sees a helpful message and can go back and search again" do
@@ -97,25 +98,6 @@ RSpec.feature "Users can edit the Academy URN" do
 
       click_on "Enter URN again"
       expect(page).to have_content("Create academy URN for #{project.establishment.name} conversion")
-    end
-  end
-
-  context "when the Academies API returns an error" do
-    before do
-      mock_successful_api_trust_response(ukprn: any_args)
-      mock_successful_api_establishment_response(urn: 111111)
-      mock_timeout_api_establishment_response(urn: 123456)
-    end
-
-    scenario "the user sees a helpful message" do
-      _project = create(:conversion_project, assigned_to: user, academy_urn: nil, urn: 111111)
-      visit without_academy_urn_service_support_projects_path
-
-      click_on "Create academy URN"
-      fill_in "conversion_project[academy_urn]", with: 123456
-
-      click_on "Save and return"
-      expect(page).to have_content("The service timed out when getting the details of the school or trust.")
     end
   end
 end

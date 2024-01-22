@@ -1,5 +1,5 @@
 class Conversions::AcademyUrnController < ApplicationController
-  rescue_from Api::AcademiesApi::Client::NotFoundError, with: :not_found_error
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
   def edit
     @project = Project.find(params[:project_id])
@@ -46,10 +46,7 @@ class Conversions::AcademyUrnController < ApplicationController
   end
 
   private def fetch_academy_details(academy_urn)
-    client = Api::AcademiesApi::Client.new
-    result = client.get_establishment(academy_urn.to_i)
-    raise result.error if result.error
-    result.object
+    Gias::Establishment.find_by!(urn: academy_urn)
   end
 
   private def academy_urn

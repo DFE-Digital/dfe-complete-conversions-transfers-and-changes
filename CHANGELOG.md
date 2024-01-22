@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Service support users can navigate to the GIAS data upload page
 
+### Changed
+
+- When service support adds a new academy URN to a conversion project, the urn
+  is now checked against our local record of Establishments, and not the
+  Academies API records (which do not contain details for unopened academies)
+
 ## [Release-50][release-50]
 
 ### Fixed
