@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-51][release-51]
+
 ### Added
 
 - Service support users can navigate to the GIAS data upload page
@@ -1510,7 +1512,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-50...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-51...HEAD
+[release-51]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-50...release-51
 [release-50]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-49...release-50
 [release-49]:
