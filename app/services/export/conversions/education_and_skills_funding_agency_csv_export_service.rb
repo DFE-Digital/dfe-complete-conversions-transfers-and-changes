@@ -2,6 +2,11 @@ class Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService < Exp
   COLUMN_HEADERS = %i[
     school_urn
     school_name
+    school_type
+    school_phase
+    local_authority_name
+    region
+    advisory_board_date
     academy_urn
     academy_name
     reception_to_six_years
