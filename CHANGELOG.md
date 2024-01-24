@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Service support users can navigate to the GIAS data upload page
+- Add additional columns to the ESFA report
 
 ### Changed
 
