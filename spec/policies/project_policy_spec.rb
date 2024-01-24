@@ -5,10 +5,15 @@ RSpec.describe ProjectPolicy do
   before { mock_successful_api_response_to_create_any_project }
 
   let(:application_user) { build(:user, :caseworker, email: "application.user@education.gov.uk") }
+  let(:service_support_user) { build(:user, :service_support) }
 
   permissions :update? do
     it "grants access if project is assigned to the same user" do
       expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
+    end
+
+    it "grants access if the user is service support but assigned to a different user" do
+      expect(subject).to permit(service_support_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
     end
 
     it "denies access if the project is assigned to another user" do

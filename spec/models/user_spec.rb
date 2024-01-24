@@ -295,6 +295,14 @@ RSpec.describe User do
     end
   end
 
+  describe "#is_service_support?" do
+    it "returns true when the user is in the service support team" do
+      user = create(:user, team: "service_support")
+
+      expect(user.is_service_support?).to be true
+    end
+  end
+
   describe "#team" do
     it "uses the enum suffix as expected" do
       user = create(:user, team: "london")
