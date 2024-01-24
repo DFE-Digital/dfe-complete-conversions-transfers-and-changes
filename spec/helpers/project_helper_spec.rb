@@ -210,7 +210,17 @@ RSpec.describe ProjectHelper, type: :helper do
         end
       end
 
-      context "when the project is not assigned to the user" do
+      context "when the project is not assigned to the user but the user is service support" do
+        it "does nothing" do
+          user = build(:user)
+          service_support_user = build(:user, :service_support)
+          project = build(:conversion_project, completed_at: nil, assigned_to: user)
+
+          expect(project_notification_banner(project, service_support_user)).to be_nil
+        end
+      end
+
+      context "when the project is not assigned to the user and the user is not service support" do
         it "renders a notification banner" do
           user = build(:user)
           other_user = build(:user, email: "other.user@education.gov.uk")

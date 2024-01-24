@@ -58,7 +58,7 @@ module ProjectHelper
     if project.completed?
       render NotificationBanner
         .new(message: t("project.notifications.completed_html", date: project.completed_at.to_formatted_s(:govuk_date_time_date_only)))
-    elsif project.assigned_to != user || project.assigned_to.nil?
+    elsif (project.assigned_to != user && !user.is_service_support?) || project.assigned_to.nil?
       render NotificationBanner
         .new(message: t("project.notifications.not_assigned_html"))
     end
