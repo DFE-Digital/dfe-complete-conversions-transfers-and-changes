@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Extend validation on Advisory board date to make sure the date is not too far
+  in the past
+
 ## [Release-51][release-51]
 
 ### Added
