@@ -29,4 +29,18 @@ RSpec.describe DateInThePastValidator do
       expect(subject).to be_valid
     end
   end
+
+  context "when the date is in 2010" do
+    it "is valid" do
+      subject.date = Date.parse("2010-01-31")
+      expect(subject).to be_valid
+    end
+  end
+
+  context "when the date is before 2010" do
+    it "is invalid" do
+      subject.date = Date.parse("2009-12-31")
+      expect(subject).to be_invalid
+    end
+  end
 end

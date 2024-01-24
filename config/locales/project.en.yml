@@ -358,6 +358,7 @@ en:
       advisory_board_date:
         blank: Enter a date for the advisory board, like 01 04 2023
         must_be_in_the_past: The advisory board date must be in the past
+        must_be_within_parameters: The advisory board date cannot be before 2010
       establishment_sharepoint_link:
         blank: Enter a school SharePoint link
         invalid: Enter a school SharePoint link in the correct format
