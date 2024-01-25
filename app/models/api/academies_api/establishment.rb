@@ -1,5 +1,6 @@
 class Api::AcademiesApi::Establishment < Api::BaseApiModel
   DIOCESE_NOT_APPLICABLE_CODE = "0000"
+  ACADEMY_CODES = %w[46 45 42 43 34 44 33 28 57]
 
   attr_accessor(
     :urn,
@@ -72,5 +73,9 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
 
   def has_diocese?
     diocese_code != DIOCESE_NOT_APPLICABLE_CODE
+  end
+
+  def is_academy?
+    ACADEMY_CODES.include?(type_code.to_s)
   end
 end

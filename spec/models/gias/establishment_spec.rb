@@ -69,4 +69,16 @@ RSpec.describe Gias::Establishment do
       expect(establishment.has_diocese?).to be false
     end
   end
+
+  describe "is_academy?" do
+    it "returns true if the establishment has one of the 'academy like' codes" do
+      establishment = create(:gias_establishment, type_code: "42")
+      expect(establishment.is_academy?).to be true
+    end
+
+    it "returns false if the establishment does not have one of the 'academy like' codes" do
+      establishment = create(:gias_establishment, type_code: "02")
+      expect(establishment.is_academy?).to be false
+    end
+  end
 end
