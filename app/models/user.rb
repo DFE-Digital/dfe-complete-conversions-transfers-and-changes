@@ -41,6 +41,10 @@ class User < ApplicationRecord
     false
   end
 
+  def is_service_support?
+    team == "service_support"
+  end
+
   def is_regional_caseworker?
     team == "regional_casework_services" && manage_team == false
   end

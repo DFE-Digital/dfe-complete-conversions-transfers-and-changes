@@ -5,6 +5,7 @@ RSpec.describe TaskListPolicy do
   before { mock_successful_api_response_to_create_any_project }
 
   let(:application_user) { build(:user, email: "application.user@education.gov.uk") }
+  let(:service_support_user) { build(:user, :service_support) }
 
   permissions :edit? do
     it "grants access if project is assigned to the same user" do
@@ -28,6 +29,11 @@ RSpec.describe TaskListPolicy do
       it "grants access if project is assigned to the same user" do
         task_list = create(:conversion_project, assigned_to: application_user).tasks_data
         expect(subject).to permit(application_user, task_list)
+      end
+
+      it "grants access if the user is service support and the project is assigned to a different user" do
+        task_list = create(:conversion_project, assigned_to: application_user).tasks_data
+        expect(subject).to permit(service_support_user, task_list)
       end
 
       it "denies access if project is assigned to a different user" do

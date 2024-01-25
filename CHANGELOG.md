@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Service support users can navigate to the GIAS data upload page
 - Add additional columns to the ESFA report
+- Service support users can now update projects which are assigned to other
+  users
 
 ### Changed
 
