@@ -11,6 +11,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Extend validation on Advisory board date to make sure the date is not too far
   in the past
 
+### Added
+
+- Add a validator to the Conversion project form to ensure the URN of an
+  existing academy is not used to start a new Conversion project
+
 ## [Release-51][release-51]
 
 ### Added
