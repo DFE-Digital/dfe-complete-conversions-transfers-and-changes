@@ -54,7 +54,7 @@ GEM
     activerecord (7.0.8)
       activemodel (= 7.0.8)
       activesupport (= 7.0.8)
-    activerecord-sqlserver-adapter (7.0.5.1)
+    activerecord-sqlserver-adapter (7.0.6)
       activerecord (~> 7.0.0)
       tiny_tds
     activestorage (7.0.8)
@@ -395,7 +395,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.11)
     timeout (0.3.2)
-    tiny_tds (2.1.5)
+    tiny_tds (2.1.7)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uk_postcode (2.1.8)
