@@ -223,20 +223,28 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.all_conditions_met).to eql "yes"
   end
 
-  it "presents all conditions met when it has not been met (nil)" do
-    project = double(Conversion::Project, all_conditions_met: nil)
+  it "presents authority to proceed, which is the name for 'all conditions met' for Transfer projects" do
+    project = double(Transfer::Project, all_conditions_met: true)
 
     presenter = described_class.new(project)
 
-    expect(presenter.all_conditions_met).to eql "no"
+    expect(presenter.authority_to_proceed).to eql "yes"
   end
 
-  it "presents all conditions met when it has not been met (false)" do
-    project = double(Conversion::Project, all_conditions_met: false)
+  it "presents authority to proceed (all conditions met for Transfer projects) when it has not been met (nil)" do
+    project = double(Transfer::Project, all_conditions_met: nil)
 
     presenter = described_class.new(project)
 
-    expect(presenter.all_conditions_met).to eql "no"
+    expect(presenter.authority_to_proceed).to eql "no"
+  end
+
+  it "presents authority to proceed (all conditions met for Transfer projects) when it has not been met (false)" do
+    project = double(Transfer::Project, all_conditions_met: false)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.authority_to_proceed).to eql "no"
   end
 
   it "presents all risk protection arrangement when it is standard" do

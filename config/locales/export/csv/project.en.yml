@@ -81,6 +81,7 @@ en:
           added_by_email: Added by email
           academy_surplus_deficit: Is the academy in surplus or deficit?
           trust_surplus_deficit: Is the incoming trust in surplus or deficit?
+          authority_to_proceed: Authority to proceed?
         values:
           project_type:
             conversion: Conversion
