@@ -78,13 +78,11 @@ en:
             outgoing_trust_to_close: Outgoing trust to close
             request_new_urn_and_record: New URN/record requested
             bank_details_changing: Bank details changing
-            transfer_date: Transfer date
             added_by_email: Added by email
             academy_surplus_deficit: Is the academy in surplus or deficit?
             trust_surplus_deficit: Is the incoming trust in surplus or deficit?
           transfer:
             project_type: Project type
-            conversion_date: Conversion date
             all_conditions_met: Authority to proceed
             risk_protection_arrangement: Risk protection arrangement
             advisory_board_date: Advisory board date
@@ -167,7 +165,7 @@ en:
             transfer: Transfer
           sponsored_grant_type:
             fast_track: fast track
-            intermidiate: intermidiate
+            intermediate: intermediate
             sponsored: sponsored
           unconfirmed: unconfirmed
           confirmed: confirmed
