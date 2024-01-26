@@ -155,12 +155,12 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
     expect(presenter.sponsored_grant_type).to eql "fast track"
 
-    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :intermidiate, sponsored_support_grant_not_applicable?: false)
+    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :intermediate, sponsored_support_grant_not_applicable?: false)
     project = double(Conversion::Project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
-    expect(presenter.sponsored_grant_type).to eql "intermidiate"
+    expect(presenter.sponsored_grant_type).to eql "intermediate"
 
     tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :sponsored, sponsored_support_grant_not_applicable?: false)
     project = double(Conversion::Project, tasks_data: tasks_data)
