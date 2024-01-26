@@ -18,7 +18,7 @@ class Export::CsvExportService
 
   private def headers
     self.class::COLUMN_HEADERS.map do |column|
-      I18n.t("export.csv.project.headers.#{column}")
+      I18n.t("export.csv.project.headers.#{@project_type}.#{column}")
     end
   end
 

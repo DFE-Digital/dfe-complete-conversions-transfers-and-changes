@@ -30,5 +30,6 @@ class Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService < Exp
 
   def initialize(projects)
     @projects = projects
+    @project_type = :conversion
   end
 end

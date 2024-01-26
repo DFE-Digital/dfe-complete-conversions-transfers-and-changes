@@ -60,5 +60,6 @@ class Export::Conversions::FundingAgreementLettersCsvExporterService < Export::C
 
   def initialize(projects)
     @projects = projects
+    @project_type = :conversion
   end
 end

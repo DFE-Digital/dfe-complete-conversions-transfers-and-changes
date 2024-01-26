@@ -23,5 +23,6 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
 
   def initialize(projects)
     @projects = projects
+    @project_type = :transfer
   end
 end

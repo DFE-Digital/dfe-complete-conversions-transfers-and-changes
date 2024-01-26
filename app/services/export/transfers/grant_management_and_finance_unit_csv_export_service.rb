@@ -21,5 +21,6 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
 
   def initialize(projects)
     @projects = projects
+    @project_type = :transfer
   end
 end

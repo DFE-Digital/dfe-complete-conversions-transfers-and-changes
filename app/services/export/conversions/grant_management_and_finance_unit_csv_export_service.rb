@@ -20,5 +20,6 @@ class Export::Conversions::GrantManagementAndFinanceUnitCsvExportService < Expor
 
   def initialize(projects)
     @projects = projects
+    @project_type = :conversion
   end
 end
