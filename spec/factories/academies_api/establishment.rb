@@ -6,6 +6,7 @@ FactoryBot.define do
     local_authority_name { "West Placefield Council" }
     local_authority_code { "894" }
     type { "Academy converter" }
+    type_code { 34 }
     age_range_lower { 11 }
     age_range_upper { 18 }
     phase { "Secondary" }

@@ -1,5 +1,6 @@
 class Api::AcademiesApi::Establishment < Api::BaseApiModel
   DIOCESE_NOT_APPLICABLE_CODE = "0000"
+  ACADEMY_CODES = %w[46 45 42 43 34 44 33 28 57]
 
   attr_accessor(
     :urn,
@@ -8,6 +9,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
     :local_authority_name,
     :local_authority_code,
     :type,
+    :type_code,
     :age_range_lower,
     :age_range_upper,
     :phase,
@@ -32,6 +34,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
       local_authority_name: "localAuthorityName",
       local_authority_code: "localAuthorityCode",
       type: "establishmentType.name",
+      type_code: "establishmentType.code",
       age_range_lower: "statutoryLowAge",
       age_range_upper: "statutoryHighAge",
       phase: "phaseOfEducation.name",
@@ -70,5 +73,9 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
 
   def has_diocese?
     diocese_code != DIOCESE_NOT_APPLICABLE_CODE
+  end
+
+  def is_academy?
+    ACADEMY_CODES.include?(type_code.to_s)
   end
 end
