@@ -18,7 +18,7 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
     region
     assigned_to_email
     transfer_date
-    all_conditions_met
+    authority_to_proceed
   ]
 
   def initialize(projects)

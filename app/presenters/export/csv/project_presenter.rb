@@ -51,6 +51,8 @@ class Export::Csv::ProjectPresenter
     I18n.t("export.csv.project.values.#{@project.all_conditions_met}")
   end
 
+  alias_method :authority_to_proceed, :all_conditions_met
+
   def risk_protection_arrangement
     if @project.tasks_data.risk_protection_arrangement_option.nil?
       return I18n.t("export.csv.project.values.unconfirmed")
