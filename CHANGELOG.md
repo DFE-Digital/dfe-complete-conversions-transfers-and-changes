@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-52][release-52]
+
 ### Changed
 
 - Extend validation on Advisory board date to make sure the date is not too far
@@ -1527,7 +1529,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-51...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-52...HEAD
+[release-52]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-51...release-52
 [release-51]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-50...release-51
 [release-50]:
