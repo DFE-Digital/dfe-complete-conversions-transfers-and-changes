@@ -11,6 +11,7 @@ locals {
   image_name                                   = var.image_name
   container_command                            = var.container_command
   container_secret_environment_variables       = var.container_secret_environment_variables
+  container_scale_http_concurrency             = var.container_scale_http_concurrency
   enable_container_app_file_share              = var.enable_container_app_file_share
   storage_account_ipv4_allow_list              = var.storage_account_ipv4_allow_list
   storage_account_public_access_enabled        = var.storage_account_public_access_enabled
