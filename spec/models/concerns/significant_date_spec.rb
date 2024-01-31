@@ -117,6 +117,34 @@ RSpec.describe SignificantDate do
         expect(scoped_projects).to_not include(other_project)
       end
     end
+
+    describe ".significant_date_in_range" do
+      it "only returns projects with a confirmed significant date within the given range of dates" do
+        january = Date.parse("2023-1-1")
+        february = Date.parse("2023-2-1")
+        march = Date.parse("2023-3-1")
+        october = Date.parse("2023-10-1")
+
+        matching_project_1 = create(:conversion_project, significant_date: january, significant_date_provisional: false)
+        create(:date_history, project: matching_project_1, previous_date: january, revised_date: february)
+
+        matching_project_2 = create(:conversion_project, significant_date: february, significant_date_provisional: false)
+        create(:date_history, project: matching_project_2, previous_date: february, revised_date: february)
+
+        matching_project_3 = create(:transfer_project, significant_date: january, significant_date_provisional: false)
+        create(:date_history, project: matching_project_3, previous_date: january, revised_date: march)
+
+        other_project = create(:conversion_project, significant_date: october, significant_date_provisional: false)
+        create(:date_history, project: other_project, previous_date: october, revised_date: october)
+
+        unconfirmed_project = create(:transfer_project, significant_date: january, significant_date_provisional: true)
+
+        scoped_projects = Project.significant_date_in_range("2023-1-1", "2023-3-1")
+
+        expect(scoped_projects).to include(matching_project_1, matching_project_2, matching_project_3)
+        expect(scoped_projects).to_not include(other_project, unconfirmed_project)
+      end
+    end
   end
 
   describe "#provisional_date" do
@@ -140,7 +168,7 @@ RSpec.describe SignificantDate do
   end
 
   describe "#confirmed_date_and_in_the_past?" do
-    it "returns true when the significant date is confiremd and in the past" do
+    it "returns true when the significant date is confirmed and in the past" do
       matching_project = build(:conversion_project, conversion_date: Date.today.at_beginning_of_month - 1.month, conversion_date_provisional: false)
       not_past_project = build(:conversion_project, conversion_date: Date.today.at_beginning_of_month + 1.month, conversion_date_provisional: false)
       not_confirmed_project = build(:conversion_project, conversion_date: Date.today.at_beginning_of_month - 2.months, conversion_date_provisional: true)
