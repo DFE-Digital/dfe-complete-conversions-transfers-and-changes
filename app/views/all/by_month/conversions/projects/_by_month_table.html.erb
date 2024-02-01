@@ -1,0 +1,33 @@
+<% if projects.empty? %>
+  <%= govuk_inset_text(text: t("project.table.by_month.date_range.conversions.empty", from_date: Date.parse(from_date).to_fs(:govuk_month), to_date: Date.parse(to_date).to_fs(:govuk_month))) %>
+<% else %>
+  <table class="govuk-table" name="projects_table" aria-label="Projects table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_and_urn") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.region") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.local_authority_name") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.incoming_trust") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.all_conditions_met") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.confirmed_date_original_date") %></th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <% projects.each do |project| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-table__cell">
+          <%= link_to project.establishment.name, project_path(project), class: "govuk-link govuk-link--no-visited-state" %>
+          <%= project.urn %>
+        </td>
+        <td class="govuk-table__cell"><%= t("project.region.#{project.region}") %></td>
+        <td class="govuk-table__cell"><%= project.establishment.local_authority_name %></td>
+        <td class="govuk-table__cell"><%= project.incoming_trust.name %></td>
+        <td class="govuk-table__cell"><%= all_conditions_met_value(project) %></td>
+        <td class="govuk-table__cell"><%= confirmed_date_original_date(project) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= govuk_pagination(pagy: pager) %>
