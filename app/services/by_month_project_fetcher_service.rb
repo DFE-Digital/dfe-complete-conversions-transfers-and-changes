@@ -39,6 +39,18 @@ class ByMonthProjectFetcherService
     sort_by_conditions_met_and_name(projects)
   end
 
+  def conversion_projects_by_date_range(from_date, to_date)
+    projects = Project.conversions.significant_date_in_range(from_date, to_date)
+
+    AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
+  end
+
+  def transfer_projects_by_date_range(from_date, to_date)
+    projects = Project.transfers.significant_date_in_range(from_date, to_date)
+
+    AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
+  end
+
   private def sort_by_conditions_met_and_name(projects)
     projects.sort_by { |p| [p.all_conditions_met? ? 0 : 1, p.establishment.name] }
   end

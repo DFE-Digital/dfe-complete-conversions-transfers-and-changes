@@ -37,6 +37,7 @@ class Project < ApplicationRecord
   belongs_to :assigned_to, class_name: "User", optional: true
 
   scope :conversions, -> { where(type: "Conversion::Project") }
+  scope :transfers, -> { where(type: "Transfer::Project") }
 
   scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
   scope :not_completed, -> { where(completed_at: nil) }

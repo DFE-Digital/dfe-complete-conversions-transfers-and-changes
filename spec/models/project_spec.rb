@@ -310,14 +310,28 @@ RSpec.describe Project, type: :model do
     describe "conversions" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "only returns conversions projects" do
+      it "only returns conversion projects" do
         conversion_project = create(:conversion_project)
-        transfer_project = create(:conversion_project, type: "Transfer::Project")
+        transfer_project = create(:transfer_project)
 
         projects = Project.conversions
 
         expect(projects).to include(conversion_project)
         expect(projects).to_not include(transfer_project)
+      end
+    end
+
+    describe "transfers" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns transfer projects" do
+        transfer_project = create(:transfer_project)
+        conversion_project = create(:conversion_project)
+
+        projects = Project.transfers
+
+        expect(projects).to include(transfer_project)
+        expect(projects).to_not include(conversion_project)
       end
     end
 
