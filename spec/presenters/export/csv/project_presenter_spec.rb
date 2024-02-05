@@ -302,8 +302,9 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the main contact email" do
-    user = double(Contact::Project, email: "main.contact@education.gov.uk")
-    project = double(Conversion::Project, main_contact: user)
+    mock_successful_api_response_to_create_any_project
+    user = create(:project_contact, email: "main.contact@education.gov.uk")
+    project = create(:conversion_project, main_contact_id: user.id)
 
     presenter = described_class.new(project)
 
@@ -311,8 +312,9 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the main contact name" do
-    user = double(Contact::Project, name: "Bob Robertson")
-    project = double(Conversion::Project, main_contact: user)
+    mock_successful_api_response_to_create_any_project
+    user = create(:project_contact, name: "Bob Robertson")
+    project = create(:conversion_project, main_contact_id: user.id)
 
     presenter = described_class.new(project)
 
@@ -320,8 +322,9 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the main contact title" do
-    user = double(Contact::Project, title: "Very important person")
-    project = double(Conversion::Project, main_contact: user)
+    mock_successful_api_response_to_create_any_project
+    user = create(:project_contact, title: "Very important person")
+    project = create(:conversion_project, main_contact_id: user.id)
 
     presenter = described_class.new(project)
 
@@ -329,7 +332,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "handles a project without a main contact" do
-    project = double(Conversion::Project, main_contact: nil)
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project, main_contact: nil)
 
     presenter = described_class.new(project)
 
