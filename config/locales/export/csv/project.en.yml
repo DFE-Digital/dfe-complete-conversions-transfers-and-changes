@@ -17,7 +17,7 @@ en:
           assigned_to_name: Assigned to name
           assigned_to_email: Assigned to email
           school_urn: School URN
-          school_dfe_number: DfE number
+          school_dfe_number: DfE number/LAESTAB
           school_name: School name
           school_type: School type
           school_phase: School phase
@@ -36,6 +36,8 @@ en:
           academy_address_town: Academy town
           academy_address_county: Academy county
           academy_address_postcode: Academy postcode
+          academy_dfe_number: Academy DfE number/LAESTAB
+          academy_ukprn: Academy UKPRN
           director_of_child_services_name: Director of child services name
           director_of_child_services_role: Director of child services role
           director_of_child_services_email: Director of child services email
