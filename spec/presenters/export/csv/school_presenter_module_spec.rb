@@ -20,6 +20,14 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     expect(subject.school_type).to eql "Community school"
   end
 
+  it "presents the school phase" do
+    expect(subject.school_phase).to eql "Secondary"
+  end
+
+  it "presents the school age range" do
+    expect(subject.school_age_range).to eql "5 - 16"
+  end
+
   it "presents the school address" do
     expect(subject.school_address_1).to eql "The Green"
     expect(subject.school_address_2).to eql "Deanshanger"
@@ -34,6 +42,7 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
       Api::AcademiesApi::Establishment,
       urn: 121813,
       name: "Deanshanger Primary School",
+      phase: "Secondary",
       dfe_number: "941/2025",
       type: "Community school",
       address_street: "The Green",
@@ -41,7 +50,9 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
       address_additional: "Deanshanger Primary School, the Green, Deanshanger",
       address_town: "Milton Keynes",
       address_county: "Buckinghamshire",
-      address_postcode: "MK19 6HJ"
+      address_postcode: "MK19 6HJ",
+      age_range_lower: 5,
+      age_range_upper: 16
     )
   end
 end

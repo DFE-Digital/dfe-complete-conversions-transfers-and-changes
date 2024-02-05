@@ -20,6 +20,8 @@ en:
           school_dfe_number: DfE number
           school_name: School name
           school_type: School type
+          school_phase: School phase
+          school_age_range: School age range
           school_address_1: School address 1
           school_address_2: School address 2
           school_address_3: School address 3
@@ -65,7 +67,6 @@ en:
           main_contact_name: Main contact name
           main_contact_email: Main contact email
           main_contact_title: Main contact role
-          school_phase: School phase
           link_to_project: Link to project
           region: Region
           outgoing_trust_name: Outgoing trust name
