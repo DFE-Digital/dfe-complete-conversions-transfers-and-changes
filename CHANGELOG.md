@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Add missing string for "full sponsored" support grant type in the Conversions
+  CSV export
+
 ## [Release-52][release-52]
 
 ### Changed

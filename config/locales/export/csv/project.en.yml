@@ -87,6 +87,7 @@ en:
             conversion: Conversion
             transfer: Transfer
           sponsored_grant_type:
+            full_sponsored: full sponsored
             fast_track: fast track
             intermediate: intermediate
             sponsored: sponsored
