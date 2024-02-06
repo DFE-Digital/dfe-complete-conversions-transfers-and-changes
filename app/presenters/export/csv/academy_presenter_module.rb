@@ -7,6 +7,14 @@ module Export::Csv::AcademyPresenterModule
     @project.academy_urn.to_s
   end
 
+  def academy_ukprn
+    if @project.academy_urn.nil?
+      return I18n.t("export.csv.project.values.unconfirmed")
+    end
+
+    @project.academy.ukprn.to_s
+  end
+
   def academy_name
     if @project.academy_urn.nil? || @project.academy.name.nil?
       return I18n.t("export.csv.project.values.unconfirmed")

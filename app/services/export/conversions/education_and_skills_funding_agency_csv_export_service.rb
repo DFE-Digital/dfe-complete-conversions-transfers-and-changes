@@ -4,11 +4,14 @@ class Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService < Exp
     school_name
     school_type
     school_phase
+    school_dfe_number
     local_authority_name
     region
     advisory_board_date
     academy_urn
+    academy_ukprn
     academy_name
+    academy_dfe_number
     reception_to_six_years
     seven_to_eleven_years
     twelve_or_above_years

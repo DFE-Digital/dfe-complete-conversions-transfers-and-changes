@@ -1,11 +1,15 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::AcademyPresenterModule do
-  let(:project) { build(:conversion_project, academy_urn: 149061, academy: known_establishment) }
+  let(:project) { build(:conversion_project, academy_urn: 149061, academy: gias_establishment) }
   subject { AcademyPresenterModuleTestClass.new(project) }
 
   it "presents the academy urn" do
     expect(subject.academy_urn).to eql "149061"
+  end
+
+  it "presents the academy ukprn" do
+    expect(subject.academy_ukprn).to eql "10065250"
   end
 
   it "presents the academy DfE number" do
@@ -29,20 +33,20 @@ RSpec.describe Export::Csv::AcademyPresenterModule do
     expect(subject.academy_address_postcode).to eql "MK19 6HJ"
   end
 
-  def known_establishment
-    double(
-      Api::AcademiesApi::Establishment,
+  def gias_establishment
+    build(:gias_establishment,
       urn: 149061,
+      ukprn: 10065250,
       name: "Deanshanger Primary School",
-      dfe_number: "941/2025",
+      establishment_number: "2025",
+      local_authority_code: "941",
       type: "Academy converter",
       address_street: "The Green",
       address_locality: "Deanshanger",
       address_additional: "Deanshanger Primary School, the Green, Deanshanger",
       address_town: "Milton Keynes",
       address_county: "Buckinghamshire",
-      address_postcode: "MK19 6HJ"
-    )
+      address_postcode: "MK19 6HJ")
   end
 end
 

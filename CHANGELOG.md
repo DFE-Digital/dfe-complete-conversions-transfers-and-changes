@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Add more columns to the Academies due to transfer export: School phase, school
   age range, main contact details, school type
+- Add Academy UKPRN, School LAESTAB (DfE number) and Academy LAESTAB (DfE
+  number) to the Funding agreement letters export
 
 ## [Release-52][release-52]
 
