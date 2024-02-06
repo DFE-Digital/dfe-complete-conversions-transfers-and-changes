@@ -2,6 +2,8 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
   COLUMN_HEADERS = %i[
     school_name
     school_urn
+    school_phase
+    school_age_range
     local_authority_name
     outgoing_trust_name
     outgoing_trust_companies_house_number
@@ -19,6 +21,9 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
     assigned_to_email
     transfer_date
     authority_to_proceed
+    main_contact_name
+    main_contact_email
+    main_contact_title
   ]
 
   def initialize(projects)

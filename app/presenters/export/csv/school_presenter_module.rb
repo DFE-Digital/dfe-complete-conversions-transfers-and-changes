@@ -15,6 +15,12 @@ module Export::Csv::SchoolPresenterModule
     @project.establishment.type
   end
 
+  def school_phase
+    return unless @project.establishment.present?
+
+    @project.establishment.phase
+  end
+
   def school_dfe_number
     return unless @project.establishment.present?
 
@@ -55,5 +61,11 @@ module Export::Csv::SchoolPresenterModule
     return unless @project.establishment.present?
 
     @project.establishment.address_postcode
+  end
+
+  def school_age_range
+    return unless @project.establishment.present?
+
+    "#{@project.establishment.age_range_lower} - #{@project.establishment.age_range_upper}"
   end
 end
