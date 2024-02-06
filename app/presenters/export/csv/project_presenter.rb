@@ -138,15 +138,21 @@ class Export::Csv::ProjectPresenter
   end
 
   def main_contact_name
-    @project.main_contact&.name
+    return unless @project.main_contact_id
+    contact = Contact::Project.find(@project.main_contact_id)
+    contact&.name
   end
 
   def main_contact_email
-    @project.main_contact&.email
+    return unless @project.main_contact_id
+    contact = Contact::Project.find(@project.main_contact_id)
+    contact&.email
   end
 
   def main_contact_title
-    @project.main_contact&.title
+    return unless @project.main_contact_id
+    contact = Contact::Project.find(@project.main_contact_id)
+    contact&.title
   end
 
   def region
