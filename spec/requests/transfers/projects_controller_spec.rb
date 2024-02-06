@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Transfers::ProjectsController do
+RSpec.describe All::ByMonth::Transfers::ProjectsController do
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
   let(:project_form) { build(:create_transfer_project_form) }
   let(:project_form_params) {
