@@ -195,4 +195,21 @@ RSpec.describe ByMonthProjectFetcherService do
       end
     end
   end
+
+  describe "#conversion_projects_by_date" do
+    context "with prefetching disabled for this test" do
+      it "returns conversion projects and orders by all conditions met & establishment name" do
+        project_one = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "Y school"))
+        project_two = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "B school"))
+        project_three = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "A school"))
+        project_four = double(Conversion::Project, all_conditions_met?: true, establishment: double("Establishment", name: "Z school"))
+
+        allow(Project).to receive(:filtered_by_significant_date).and_return([project_one, project_two, project_three, project_four])
+
+        projects = described_class.new(pre_fetch_academies_api: false).conversion_projects_by_date(1, 2025)
+
+        expect(projects).to eq [project_four, project_three, project_two, project_one]
+      end
+    end
+  end
 end
