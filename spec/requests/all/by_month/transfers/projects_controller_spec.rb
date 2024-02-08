@@ -46,4 +46,30 @@ RSpec.describe All::ByMonth::Transfers::ProjectsController, type: :request do
       end
     end
   end
+
+  describe "#next_month" do
+    it "redirects to the next upcoming month and year" do
+      get next_month_all_by_month_transfers_projects_path
+      follow_redirect!
+
+      expect(response).to have_http_status(:success)
+      expect(request.params.fetch(:month)).to eq (Date.today + 1.month).month.to_s
+      expect(request.params.fetch(:year)).to eq (Date.today + 1.month).year.to_s
+    end
+  end
+
+  describe "#single_month" do
+    it "shows the date in the page text" do
+      get "/projects/all/by-month/transfers/1/2023"
+      expect(response.body).to include "January 2023"
+    end
+
+    it "shows details of any matching projects" do
+      project = create(:transfer_project, significant_date_provisional: false, significant_date: Date.new(2023, 2, 1))
+
+      get "/projects/all/by-month/transfers/2/2023"
+      expect(response.body).to include(project.establishment.name)
+      expect(response.body).to include(project.urn.to_s)
+    end
+  end
 end

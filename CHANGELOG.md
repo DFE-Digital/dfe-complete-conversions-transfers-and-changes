@@ -27,6 +27,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add new By Month view for non-data-consumer users. This view shows the next
   (upcoming) month only, and the table has the same columns as the date range
   view described above.
+- Add new By Month view for non-data-consumer users. This view shows transfers
+  transferring in the next (upcoming) month only, and the table has the same
+  columns as the date range view described above.
 
 ### Changed
 

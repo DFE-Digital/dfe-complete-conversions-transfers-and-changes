@@ -35,6 +35,22 @@ class All::ByMonth::Transfers::ProjectsController < ApplicationController
     redirect_to action: "date_range", from_month: from_month, from_year: from_year, to_month: to_month, to_year: to_year
   end
 
+  def next_month
+    authorize Project, :index?
+
+    redirect_to action: "single_month", month: (Date.today + 1.month).month, year: (Date.today + 1.month).year
+  end
+
+  def single_month
+    authorize Project, :index?
+
+    @month = month
+    @year = year
+    @date = "#{year}-#{month}-1"
+
+    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.transfer_projects_by_date(month, year))
+  end
+
   private def redirect_if_dates_incorrect
     redirect_to date_range_this_month_all_by_month_transfers_projects_path, alert: I18n.t("project.date_range.date_form.from_date_before_to_date")
   end
@@ -61,5 +77,13 @@ class All::ByMonth::Transfers::ProjectsController < ApplicationController
 
   private def to_date
     params[:to_date].to_s
+  end
+
+  private def month
+    params[:month]
+  end
+
+  private def year
+    params[:year]
   end
 end
