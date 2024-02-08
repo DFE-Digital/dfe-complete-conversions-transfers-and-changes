@@ -205,7 +205,7 @@ RSpec.describe ByMonthProjectFetcherService do
         project_four = double(Conversion::Project, all_conditions_met?: true, establishment: double("Establishment", name: "Z school"))
 
         allow(Project).to receive(:filtered_by_significant_date).and_return([project_one, project_two, project_three, project_four])
-        
+
         projects = described_class.new(pre_fetch_academies_api: false).conversion_projects_by_date(1, 2025)
 
         expect(projects).to eq [project_four, project_three, project_two, project_one]
