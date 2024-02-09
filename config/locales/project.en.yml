@@ -317,7 +317,7 @@ en:
       subtitle: Academies opening or transferring
       body_html:
         <p>Schools that will become academies, and academies that will move to a different trust.</p>
-        <p>You can also download a more detailed version of the data as a CSV file.</p>
+        <p>You can also <a href="%{csv_link}">download a more detailed version of the data as a CSV file</a>.</p>
       date_form:
         label: Date range
         from: from
@@ -333,7 +333,7 @@ en:
       subtitle: Academies opening or transferring
       body_html:
         <p>Schools that will become academies, and academies that will move to a different trust.</p>
-        <p>You can also download a more detailed version of the data as a CSV file.</p>
+        <p>You can also <a href="%{csv_link}">download a more detailed version of the data as a CSV file</a>.</p>
       tabs:
         conversions: Conversions
         transfers: Transfers

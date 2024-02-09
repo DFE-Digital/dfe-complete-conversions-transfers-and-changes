@@ -32,6 +32,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   columns as the date range view described above.
 - Create a By Month CSV export for Conversions
 - Create a By Month CSV export for Transfers
+- Link the By Month CSV downloads from their respective pages in the UI: By
+  Month Conversions & Transfers for data consumers, and By Month Conversions &
+  Transfers for non-data consumers
 
 ### Changed
 

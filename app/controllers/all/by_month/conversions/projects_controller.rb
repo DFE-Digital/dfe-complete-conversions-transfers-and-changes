@@ -51,6 +51,28 @@ class All::ByMonth::Conversions::ProjectsController < ApplicationController
     @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.conversion_projects_by_date(month, year))
   end
 
+  def date_range_csv
+    authorize Project, :index?
+
+    from_date = "#{from_year}-#{from_month}-1"
+    to_date = "#{to_year}-#{to_month}-1"
+    return redirect_if_dates_incorrect if Date.parse(to_date) < Date.parse(from_date)
+
+    projects = ByMonthProjectFetcherService.new.conversion_projects_by_date_range(from_date, to_date)
+    csv = Export::Conversions::ByMonthCsvExportService.new(projects).call
+
+    send_data csv, filename: "#{from_date}-#{to_date}_schools_due_to_convert.csv", type: :csv, disposition: "attachment"
+  end
+
+  def single_month_csv
+    authorize Project, :index?
+
+    projects = ByMonthProjectFetcherService.new.conversion_projects_by_date(month, year)
+    csv = Export::Conversions::ByMonthCsvExportService.new(projects).call
+
+    send_data csv, filename: "#{month}-#{year}_schools_due_to_convert.csv", type: :csv, disposition: "attachment"
+  end
+
   private def redirect_if_dates_incorrect
     redirect_to date_range_this_month_all_by_month_conversions_projects_path, alert: I18n.t("project.date_range.date_form.from_date_before_to_date")
   end

@@ -117,14 +117,18 @@ Rails.application.routes.draw do
               get "from/to", to: "projects#date_range_this_month", as: :date_range_this_month
               post "from/to", to: "projects#date_range_select", as: :date_range_select
               get "from/:from_month/:from_year/to/:to_month/:to_year", to: "projects#date_range", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range
+              get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
               get ":month/:year", to: "projects#single_month", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month
+              get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
               get "/", to: "projects#next_month", as: :next_month
             end
             namespace :transfers do
               get "from/to", to: "projects#date_range_this_month", as: :date_range_this_month
               post "from/to", to: "projects#date_range_select", as: :date_range_select
               get "from/:from_month/:from_year/to/:to_month/:to_year", to: "projects#date_range", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range
+              get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
               get ":month/:year", to: "projects#single_month", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month
+              get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
               get "/", to: "projects#next_month", as: :next_month
             end
           end
