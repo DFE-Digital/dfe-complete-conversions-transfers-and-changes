@@ -24,6 +24,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   range of dates and see Conversion projects due to convert in that date range
 - Add Transfers to the new By Month view for export/data consumer users. This
   view shares the date picker functionality in the change above.
+- Add new By Month view for non-data-consumer users. This view shows the next
+  (upcoming) month only, and the table has the same columns as the date range
+  view described above.
 
 ### Changed
 

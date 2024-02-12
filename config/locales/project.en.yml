@@ -248,7 +248,10 @@ en:
         caption: Table of users who have in-progress projects
       by_month:
         single_month:
-          empty: There are no projects due to convert or transfer in %{date}
+          conversions:
+            empty: There are no projects due to convert in %{date}
+          transfers:
+            empty: There are no projects due to transfer in %{date}
         date_range:
           transfers:
             empty: There are no projects due to transfer between %{from_date} and %{to_date}
@@ -321,6 +324,16 @@ en:
         to: to
         apply: Apply
         from_date_before_to_date: "The 'from' date cannot be after the 'to' date"
+      tabs:
+        conversions: Conversions
+        transfers: Transfers
+    single_month:
+      page_title: Academies opening or transferring, %{date}
+      title: "%{date}"
+      subtitle: Academies opening or transferring
+      body_html:
+        <p>Schools that will become academies, and academies that will move to a different trust.</p>
+        <p>You can also download a more detailed version of the data as a CSV file.</p>
       tabs:
         conversions: Conversions
         transfers: Transfers
