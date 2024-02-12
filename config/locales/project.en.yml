@@ -203,6 +203,7 @@ en:
         school_and_urn: School and URN
         confirmed_date_original_date: Confirmed date (Original date)
         all_conditions_met: All conditions met
+        authority_to_proceed: Authority to proceed
       body:
         type_name:
           conversion_project: Conversion
@@ -249,6 +250,8 @@ en:
         single_month:
           empty: There are no projects due to convert or transfer in %{date}
         date_range:
+          transfers:
+            empty: There are no projects due to transfer between %{from_date} and %{to_date}
           conversions:
             empty: There are no projects due to convert between %{from_date} and %{to_date}
     openers:
