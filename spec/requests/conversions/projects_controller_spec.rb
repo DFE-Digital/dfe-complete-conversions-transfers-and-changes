@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Conversions::ProjectsController do
+RSpec.describe All::ByMonth::Conversions::ProjectsController do
   let(:user) { create(:user, :caseworker) }
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
   let(:form_class) { Conversion::CreateProjectForm }

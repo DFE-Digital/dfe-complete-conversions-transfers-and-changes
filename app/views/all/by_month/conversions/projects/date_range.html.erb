@@ -1,0 +1,32 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("project.date_range.page_title", date_from: Date.parse(@from_date).to_fs(:govuk_month), date_to: Date.parse(@to_date).to_fs(:govuk_month))) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <span class="govuk-caption-l"><%= t("project.date_range.subtitle") %></span>
+    <h1 class="govuk-heading-l">
+      <%= t("project.date_range.title", date_from: Date.parse(@from_date).to_fs(:govuk_month), date_to: Date.parse(@to_date).to_fs(:govuk_month)) %>
+    </h1>
+    <%= t("project.date_range.body_html") %>
+
+    <%= render partial: "shared/date_range", locals: {from_date: @from_date, to_date: @to_date, action: date_range_select_all_by_month_conversions_projects_path} %>
+
+    <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
+      <ul class="moj-sub-navigation__list">
+        <%= render partial: "shared/sub_navigation_item",
+              locals: {name: t("project.date_range.tabs.conversions"),
+                       path: "/projects/all/by-month/conversions/from/#{@from_month}/#{@from_year}/to/#{@to_month}/#{@to_year}"} %>
+        <%= render partial: "shared/sub_navigation_item",
+              locals: {name: t("project.date_range.tabs.transfers"),
+                       path: "/projects/all/by-month/transfers/from/#{@from_month}/#{@from_year}/to/#{@to_month}/#{@to_year}"} %>
+      </ul>
+    </nav>
+
+    <%= render partial: "by_month_table", locals: {projects: @projects, from_date: @from_date, to_date: @to_date, pager: @pager} %>
+  </div>
+</div>

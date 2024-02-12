@@ -285,4 +285,33 @@ RSpec.describe ProjectHelper, type: :helper do
       expect(helper.academy_name(project)).to include("grey", "Unconfirmed")
     end
   end
+
+  describe "#confirmed_date_original_date" do
+    before { mock_all_academies_api_responses }
+
+    context "when the project's significant date is not confirmed" do
+      it "returns nil" do
+        project = build(:conversion_project, significant_date_provisional: true)
+        expect(helper.confirmed_date_original_date(project)).to eq(nil)
+      end
+    end
+
+    context "when the project's significant date is confirmed" do
+      context "and the project has no date histories (this should not happen!)" do
+        it "returns the significant date only, formatted correctly" do
+          project = build(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: false)
+          expect(helper.confirmed_date_original_date(project)).to eq("Jan 2024")
+        end
+      end
+
+      context "and the project has date histories" do
+        it "returns the significant date and the most recent revised date, formatted correctly" do
+          project = create(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: false)
+          create(:date_history, project: project, previous_date: Date.new(2024, 1, 1), revised_date: Date.new(2024, 4, 1))
+
+          expect(helper.confirmed_date_original_date(project)).to eq("Apr 2024 (Jan 2024)")
+        end
+      end
+    end
+  end
 end

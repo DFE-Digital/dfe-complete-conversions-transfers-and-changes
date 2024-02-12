@@ -19,6 +19,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   age range, main contact details, school type
 - Add Academy UKPRN, School LAESTAB (DfE number) and Academy LAESTAB (DfE
   number) to the Funding agreement letters export
+- Add a new By Month view for export/data consumer users. When a user with this
+  role clicks on "By Month", they will see a new view with the ability to pick a
+  range of dates and see Conversion projects due to convert in that date range
+
+### Changed
+
+- The "By Month" view for data consumers is now a tabbed view of Conversions &
+  Transfers (currently only showing Conversions), with different columns in the
+  table. There is also a date picker to allow users to choose a date range to
+  view.
 
 ## [Release-52][release-52]
 

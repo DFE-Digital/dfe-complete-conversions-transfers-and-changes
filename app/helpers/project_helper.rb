@@ -69,4 +69,13 @@ module ProjectHelper
 
     project.tasks_data.academy_details_name
   end
+
+  def confirmed_date_original_date(project)
+    return if project.significant_date_provisional
+    return project.significant_date.to_fs(:govuk_short_month) if project.significant_dates.empty?
+
+    confirmed_date = project.significant_dates.order(:created_at).first.revised_date
+    original_date = project.significant_date
+    "#{confirmed_date.to_fs(:govuk_short_month)} (#{original_date.to_fs(:govuk_short_month)})"
+  end
 end
