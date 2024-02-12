@@ -1,5 +1,9 @@
 <% if projects.empty? %>
-  <%= govuk_inset_text(text: t("project.table.by_month.date_range.transfers.empty", from_date: Date.parse(from_date).to_fs(:govuk_month), to_date: Date.parse(to_date).to_fs(:govuk_month))) %>
+  <% if @from_date && @to_date %>
+    <%= govuk_inset_text(text: t("project.table.by_month.date_range.transfers.empty", from_date: Date.parse(@from_date).to_fs(:govuk_month), to_date: Date.parse(@to_date).to_fs(:govuk_month))) %>
+  <% else %>
+    <%= govuk_inset_text(text: t("project.table.by_month.single_month.transfers.empty", date: Date.parse(@date).to_fs(:govuk_month))) %>
+  <% end %>
 <% else %>
   <table class="govuk-table" name="projects_table" aria-label="Projects table">
     <thead class="govuk-table__head">

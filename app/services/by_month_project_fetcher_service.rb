@@ -58,6 +58,13 @@ class ByMonthProjectFetcherService
     sort_by_conditions_met_and_name(projects)
   end
 
+  def transfer_projects_by_date(month, year)
+    projects = Project.transfers.confirmed.filtered_by_significant_date(month, year)
+
+    AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
+    sort_by_conditions_met_and_name(projects)
+  end
+
   private def sort_by_conditions_met_and_name(projects)
     projects.sort_by { |p| [p.all_conditions_met? ? 0 : 1, p.establishment.name] }
   end
