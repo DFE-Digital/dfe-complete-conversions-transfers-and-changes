@@ -53,6 +53,8 @@ en:
           incoming_trust_address_postcode: Incoming trust address postcode
           local_authority_code: Local authority code
           local_authority_name: Local authority
+          local_authority_contact_name: Local authority contact name
+          local_authority_contact_email: Local authority contact email
           local_authority_address_1: Local authority address 1
           local_authority_address_2: Local authority address 2
           local_authority_address_3: Local authority address 3
