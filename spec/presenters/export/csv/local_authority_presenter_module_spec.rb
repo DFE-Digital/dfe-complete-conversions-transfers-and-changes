@@ -1,12 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::LocalAuthorityPresenterModule do
-  let(:project) { build(:conversion_project) }
-  subject { LocalAuthorityPresenterModuleTestClass.new(project) }
-
   before do
+    mock_successful_api_response_to_create_any_project
     allow(project).to receive(:local_authority).and_return known_local_authority
   end
+
+  let(:project) { create(:conversion_project) }
+  let!(:local_authority_main_contact) { create(:project_contact, category: "local_authority", name: "contact name", email: "local_authority_contact@email.com", project: project) }
+  subject { LocalAuthorityPresenterModuleTestClass.new(project) }
 
   it "presents the code" do
     expect(subject.local_authority_code).to eql "100"
@@ -23,6 +25,14 @@ RSpec.describe Export::Csv::LocalAuthorityPresenterModule do
     expect(subject.local_authority_address_town).to eql nil
     expect(subject.local_authority_address_county).to eql "Northampton"
     expect(subject.local_authority_address_postcode).to eql "NN1 1ED"
+  end
+
+  it "presents the local authority contact name" do
+    expect(subject.local_authority_contact_name).to eql "contact name"
+  end
+
+  it "presents the local authority contact email" do
+    expect(subject.local_authority_contact_email).to eql "local_authority_contact@email.com"
   end
 
   def known_local_authority
