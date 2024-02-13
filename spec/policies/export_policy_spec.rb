@@ -6,11 +6,13 @@ RSpec.describe ExportPolicy do
   let(:rdo_user) { build(:regional_delivery_officer_user) }
   let(:rcs_user) { build(:regional_casework_services_user) }
   let(:service_support_user) { build(:service_support_user) }
+  let(:business_support_user) { build(:user, team: :business_support) }
 
   permissions :index? do
     it "grants access if the user is in one of the correct teams" do
       expect(described_class).to permit(esfa_user)
       expect(described_class).to permit(aopu_user)
+      expect(described_class).to permit(business_support_user)
       expect(described_class).not_to permit(rdo_user)
       expect(described_class).not_to permit(rcs_user)
       expect(described_class).not_to permit(service_support_user)
@@ -21,6 +23,7 @@ RSpec.describe ExportPolicy do
     it "grants access if the user is in one of the correct teams" do
       expect(described_class).to permit(esfa_user)
       expect(described_class).to permit(aopu_user)
+      expect(described_class).to permit(business_support_user)
       expect(described_class).not_to permit(rdo_user)
       expect(described_class).not_to permit(rcs_user)
       expect(described_class).not_to permit(service_support_user)
@@ -31,6 +34,7 @@ RSpec.describe ExportPolicy do
     it "grants access if the user is in one of the correct teams" do
       expect(described_class).to permit(esfa_user)
       expect(described_class).to permit(aopu_user)
+      expect(described_class).to permit(business_support_user)
       expect(described_class).not_to permit(rdo_user)
       expect(described_class).not_to permit(rcs_user)
       expect(described_class).not_to permit(service_support_user)

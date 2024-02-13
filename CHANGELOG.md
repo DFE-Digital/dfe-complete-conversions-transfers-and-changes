@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Transfers (currently only showing Conversions), with different columns in the
   table. There is also a date picker to allow users to choose a date range to
   view.
+- Give business support users the ability to view export pages
 
 ## [Release-52][release-52]
 
