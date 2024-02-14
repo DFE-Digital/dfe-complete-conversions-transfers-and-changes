@@ -490,6 +490,37 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.completed_grant_payment_certificate_received).to eql("2024-01-01")
   end
 
+  it "presents the solicitor contact name" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "solicitor", name: "solicitor contact name", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.solicitor_contact_name).to eql("solicitor contact name")
+  end
+
+  it "presents the solicitor contact email" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "solicitor", email: "solicitor_contact@email.com", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.solicitor_contact_email).to eql("solicitor_contact@email.com")
+  end
+
+  context "when there is no solicitor contact" do
+    it "returns nil" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.solicitor_contact_name).to be_nil
+    end
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 
