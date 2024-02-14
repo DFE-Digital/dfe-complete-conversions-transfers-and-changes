@@ -16,4 +16,18 @@ module Export::Csv::OutgoingTrustPresenterModule
 
     @project.outgoing_trust.name
   end
+
+  def outgoing_trust_main_contact_name
+    return unless @project.outgoing_trust_main_contact_id.present?
+
+    contact = @project.outgoing_trust_main_contact_id
+    Contact::Project.find_by(id: contact)&.name
+  end
+
+  def outgoing_trust_main_contact_email
+    return unless @project.outgoing_trust_main_contact_id.present?
+
+    contact = @project.outgoing_trust_main_contact_id
+    Contact::Project.find_by(id: contact)&.email
+  end
 end

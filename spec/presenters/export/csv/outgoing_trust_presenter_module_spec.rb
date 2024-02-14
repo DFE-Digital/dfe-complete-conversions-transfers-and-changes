@@ -1,7 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
-  let(:project) { build(:transfer_project, outgoing_trust_ukprn: 121813) }
+  let(:outgoing_trust_main_contact) do
+    mock_successful_api_response_to_create_any_project
+    create(:project_contact, category: "outgoing_trust")
+  end
+  let(:project) { build(:transfer_project, outgoing_trust_ukprn: 121813, outgoing_trust_main_contact_id: outgoing_trust_main_contact.id) }
   subject { OutgoingTrustPresenterModuleTestClass.new(project) }
 
   before do
@@ -18,6 +22,14 @@ RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
 
   it "presents the name" do
     expect(subject.outgoing_trust_name).to eql "The Grand Union Partnership"
+  end
+
+  it "presents the main contact name" do
+    expect(subject.outgoing_trust_main_contact_name).to eql "Jo Example"
+  end
+
+  it "presents the main contact email" do
+    expect(subject.outgoing_trust_main_contact_email).to eql "jo@example.com"
   end
 
   def known_trust
