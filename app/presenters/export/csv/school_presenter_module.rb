@@ -68,4 +68,10 @@ module Export::Csv::SchoolPresenterModule
 
     "#{@project.establishment.age_range_lower} - #{@project.establishment.age_range_upper}"
   end
+
+  def school_sharepoint_folder
+    return unless @project.establishment_sharepoint_link.present?
+
+    @project.establishment_sharepoint_link
+  end
 end
