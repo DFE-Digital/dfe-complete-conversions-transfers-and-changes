@@ -90,6 +90,7 @@ en:
           diocese_name: Diocese
           diocese_contact_name: Diocese contact name
           diocese_contact_email: Diocese contact email
+          advisory_board_conditions: Advisory board conditions
         values:
           project_type:
             conversion: Conversion
