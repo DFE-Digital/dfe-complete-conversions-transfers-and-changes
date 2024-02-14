@@ -220,4 +220,14 @@ class Export::Csv::ProjectPresenter
 
     @project.contacts.where(category: "solicitor").pluck(:email).join(", ")
   end
+
+  def project_created_by_name
+    user_id = @project.regional_delivery_officer_id
+    User.find_by(id: user_id)&.full_name
+  end
+
+  def project_created_by_email
+    user_id = @project.regional_delivery_officer_id
+    User.find_by(id: user_id)&.email
+  end
 end
