@@ -86,6 +86,17 @@ RSpec.describe Project, type: :model do
     end
 
     describe "#incoming_trust_ukprn" do
+      context "when the project does not have a new_trust_reference_number" do
+        it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }
+      end
+
+      context "when the project has a new_trust_reference_number" do
+        it "does not validate the present of the ukprn" do
+          project = build(:conversion_project, incoming_trust_ukprn: nil, new_trust_reference_number: "TR01234")
+          expect(project).to be_valid
+        end
+      end
+
       context "when no trust with that UKPRN exists in the API and the UKPRN is present" do
         let(:no_trust_found_result) do
           Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
