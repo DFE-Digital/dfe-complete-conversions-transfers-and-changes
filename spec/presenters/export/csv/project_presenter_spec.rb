@@ -541,6 +541,16 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.project_created_by_email).to eql("joe.bloggs@education.gov.uk")
   end
 
+  it "presents the team managing the project" do
+    mock_successful_api_response_to_create_any_project
+    user = create(:user, team: "london")
+    project = create(:conversion_project, assigned_to_id: user)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.team_managing_the_project).to eql("London")
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 

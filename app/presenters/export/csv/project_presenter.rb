@@ -230,4 +230,8 @@ class Export::Csv::ProjectPresenter
     user_id = @project.regional_delivery_officer_id
     User.find_by(id: user_id)&.email
   end
+
+  def team_managing_the_project
+    I18n.t("teams.#{@project.team}")
+  end
 end

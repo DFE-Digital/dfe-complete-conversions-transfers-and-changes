@@ -94,6 +94,7 @@ en:
           completed_grant_payment_certificate_received: Completed grant payment certificate received
           project_created_by_name: Project created by name
           project_created_by_email: Project created by email address
+          team_managing_the_project: Team managing the project
           solicitor_contact_name: Solicitor contact name
           solicitor_contact_email: Solicitor contact email
         values:
