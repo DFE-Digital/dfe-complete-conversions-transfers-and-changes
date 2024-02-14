@@ -431,6 +431,46 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.academy_surplus_deficit).to eq("not applicable")
   end
 
+  it "presents the diocese name" do
+    mock_successful_api_response_to_create_any_project
+    project = build(:conversion_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.diocese_name).to eql("Diocese of West Placefield")
+  end
+
+  it "presents the diocese contact name" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "diocese", name: "contact name", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.diocese_contact_name).to eql("contact name")
+  end
+
+  it "presents the diocese contact email" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "diocese", email: "diocese_contact@email.com", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.diocese_contact_email).to eql("diocese_contact@email.com")
+  end
+
+  context "when there is no diocese contact" do
+    it "returns nil" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.diocese_contact_name).to be_nil
+    end
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 

@@ -182,4 +182,20 @@ class Export::Csv::ProjectPresenter
     return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.check_and_confirm_financial_information_not_applicable?
     @project.tasks_data.check_and_confirm_financial_information_trust_surplus_deficit
   end
+
+  def diocese_name
+    @project.establishment.diocese_name
+  end
+
+  def diocese_contact_name
+    return if @project.contacts.where(category: "diocese").blank?
+
+    @project.contacts.where(category: "diocese").pluck(:name).join(", ")
+  end
+
+  def diocese_contact_email
+    return if @project.contacts.where(category: "diocese").blank?
+
+    @project.contacts.where(category: "diocese").pluck(:email).join(", ")
+  end
 end
