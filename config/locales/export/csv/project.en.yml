@@ -87,6 +87,9 @@ en:
           academy_surplus_deficit: Is the academy in surplus or deficit?
           trust_surplus_deficit: Is the incoming trust in surplus or deficit?
           authority_to_proceed: Authority to proceed?
+          diocese_name: Diocese
+          diocese_contact_name: Diocese contact name
+          diocese_contact_email: Diocese contact email
         values:
           project_type:
             conversion: Conversion
