@@ -204,4 +204,8 @@ class Export::Csv::ProjectPresenter
 
     @project.advisory_board_conditions
   end
+
+  def completed_grant_payment_certificate_received
+    @project.tasks_data.receive_grant_payment_certificate_date_received.to_fs(:csv) if @project.tasks_data.receive_grant_payment_certificate_date_received.present?
+  end
 end
