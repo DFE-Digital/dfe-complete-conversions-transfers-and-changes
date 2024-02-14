@@ -480,6 +480,16 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.advisory_board_conditions).to eql("These are the conditions.")
   end
 
+  it "presents the completed grant payment certificate received" do
+    mock_successful_api_response_to_create_any_project
+    tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1))
+    project = create(:conversion_project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.completed_grant_payment_certificate_received).to eql(tasks_data.receive_grant_payment_certificate_date_received)
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 
