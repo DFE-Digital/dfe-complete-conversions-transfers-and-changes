@@ -471,6 +471,15 @@ RSpec.describe Export::Csv::ProjectPresenter do
     end
   end
 
+  it "presents the advisory board conditions" do
+    mock_successful_api_response_to_create_any_project
+    project = build(:conversion_project, advisory_board_conditions: "These are the conditions.")
+
+    presenter = described_class.new(project)
+
+    expect(presenter.advisory_board_conditions).to eql("These are the conditions.")
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 

@@ -198,4 +198,10 @@ class Export::Csv::ProjectPresenter
 
     @project.contacts.where(category: "diocese").pluck(:email).join(", ")
   end
+
+  def advisory_board_conditions
+    return if @project.advisory_board_conditions.blank?
+
+    @project.advisory_board_conditions
+  end
 end
