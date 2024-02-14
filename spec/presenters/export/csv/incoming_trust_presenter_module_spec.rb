@@ -1,7 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::IncomingTrustPresenterModule do
-  let(:project) { build(:conversion_project, incoming_trust_ukprn: 121813, incoming_trust: known_trust) }
+  let(:incoming_trust_main_contact) do
+    mock_successful_api_response_to_create_any_project
+    create(:project_contact, category: "incoming_trust")
+  end
+  let(:project) { build(:conversion_project, incoming_trust_ukprn: 121813, incoming_trust: known_trust, incoming_trust_main_contact_id: incoming_trust_main_contact.id) }
   subject { IncomingTrustPresenterModuleTestClass.new(project) }
 
   it "presents the identifier" do
@@ -43,6 +47,18 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
       address_county: nil,
       address_postcode: "MK13 0BQ"
     )
+  end
+
+  it "presents the main contact name" do
+    expect(subject.incoming_trust_main_contact_name).to eql "Jo Example"
+  end
+
+  it "presents the main contact email" do
+    expect(subject.incoming_trust_main_contact_email).to eql "jo@example.com"
+  end
+
+  it "presents the sharepoint link" do
+    expect(subject.incoming_trust_sharepoint_link).to eql "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"
   end
 end
 

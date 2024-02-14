@@ -58,4 +58,24 @@ module Export::Csv::IncomingTrustPresenterModule
 
     @project.incoming_trust.address_postcode
   end
+
+  def incoming_trust_main_contact_name
+    return unless @project.incoming_trust_main_contact_id.present?
+
+    contact = @project.incoming_trust_main_contact_id
+    Contact::Project.find_by(id: contact)&.name
+  end
+
+  def incoming_trust_main_contact_email
+    return unless @project.incoming_trust_main_contact_id.present?
+
+    contact = @project.incoming_trust_main_contact_id
+    Contact::Project.find_by(id: contact)&.email
+  end
+
+  def incoming_trust_sharepoint_link
+    return unless @project.incoming_trust_sharepoint_link.present?
+
+    @project.incoming_trust_sharepoint_link
+  end
 end

@@ -45,6 +45,9 @@ en:
           incoming_trust_identifier: Incoming trust group identifier
           incoming_trust_companies_house_number: Incoming trust companies house number
           incoming_trust_name: Incoming trust name
+          incoming_trust_main_contact_name: Incoming trust main contact name
+          incoming_trust_main_contact_email: Incoming trust main contact email
+          incoming_trust_sharepoint_link: Incoming trust sharepoint link
           incoming_trust_address_1: Incoming trust address 1
           incoming_trust_address_2: Incoming trust address 2
           incoming_trust_address_3: Incoming trust address 3
