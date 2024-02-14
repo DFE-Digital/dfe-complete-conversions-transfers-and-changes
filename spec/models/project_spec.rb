@@ -123,6 +123,18 @@ RSpec.describe Project, type: :model do
     describe "#incoming_trust_sharepoint_link" do
       it { is_expected.to validate_presence_of :incoming_trust_sharepoint_link }
     end
+
+    describe "#new_trust_reference_number" do
+      context "when the new trust reference number is present" do
+        it "validates the format of the new trust reference number" do
+          project = build(:conversion_project, new_trust_reference_number: "TR01234", incoming_trust_ukprn: nil)
+          expect(project).to be_valid
+
+          project = build(:conversion_project, new_trust_reference_number: "012345", incoming_trust_ukprn: nil)
+          expect(project).to_not be_valid
+        end
+      end
+    end
   end
 
   describe "#establishment" do

@@ -28,6 +28,8 @@ class Project < ApplicationRecord
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
 
+  validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
+
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
 
