@@ -208,4 +208,16 @@ class Export::Csv::ProjectPresenter
   def completed_grant_payment_certificate_received
     @project.tasks_data.receive_grant_payment_certificate_date_received if @project.tasks_data.receive_grant_payment_certificate_date_received.present?
   end
+
+  def solicitor_contact_name
+    return if @project.contacts.where(category: "solicitor").blank?
+
+    @project.contacts.where(category: "solicitor").pluck(:name).join(", ")
+  end
+
+  def solicitor_contact_email
+    return if @project.contacts.where(category: "solicitor").blank?
+
+    @project.contacts.where(category: "solicitor").pluck(:email).join(", ")
+  end
 end
