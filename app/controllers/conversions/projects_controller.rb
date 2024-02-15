@@ -4,6 +4,8 @@ class Conversions::ProjectsController < ProjectsController
     @project = Conversion::CreateProjectForm.new
   end
 
+  alias_method :new_mat, :new
+
   def create
     authorize Conversion::Project
     @project = Conversion::CreateProjectForm.new(**project_params, user: current_user)
@@ -19,6 +21,24 @@ class Conversions::ProjectsController < ProjectsController
       end
     else
       render :new
+    end
+  end
+
+  def create_mat
+    authorize Conversion::Project
+    @project = Conversion::CreateProjectForm.new(**project_params, user: current_user)
+
+    if @project.valid?
+      @created_project = @project.save
+
+      if project_params["assigned_to_regional_caseworker_team"].eql?("true")
+        @project = @created_project
+        render "created"
+      else
+        redirect_to project_path(@created_project), notice: I18n.t("conversion_project.create.assigned_to_regional_delivery_officer.html")
+      end
+    else
+      render :new_mat
     end
   end
 
@@ -61,7 +81,9 @@ class Conversions::ProjectsController < ProjectsController
       :handover_note_body,
       :assigned_to_regional_caseworker_team,
       :directive_academy_order,
-      :two_requires_improvement
+      :two_requires_improvement,
+      :new_trust_name,
+      :new_trust_reference_number
     )
   end
 end

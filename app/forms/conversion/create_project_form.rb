@@ -69,7 +69,9 @@ class Conversion::CreateProjectForm < CreateProjectForm
       directive_academy_order: directive_academy_order,
       two_requires_improvement: two_requires_improvement,
       region: region,
-      tasks_data: new_tasks_data
+      tasks_data: new_tasks_data,
+      new_trust_reference_number: new_trust_reference_number,
+      new_trust_name: new_trust_name
     )
 
     return nil unless valid?

@@ -1,26 +1,26 @@
 require "rails_helper"
 
-RSpec.describe All::ByMonth::Conversions::ProjectsController do
+RSpec.describe Conversions::ProjectsController do
   let(:user) { create(:user, :caseworker) }
   let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
   let(:form_class) { Conversion::CreateProjectForm }
   let(:project_form) { build(:create_project_form) }
-  let(:project_form_params) {
-    attributes_for(:create_project_form,
-      "provisional_conversion_date(3i)": "1",
-      "provisional_conversion_date(2i)": "1",
-      "provisional_conversion_date(1i)": "2030",
-      "advisory_board_date(3i)": "1",
-      "advisory_board_date(2i)": "1",
-      "advisory_board_date(1i)": "2022",
-      regional_delivery_officer: nil,
-      directive_academy_order: "false",
-      two_requires_improvement: "false")
-  }
 
   describe "#create" do
     let(:project) { build(:conversion_project) }
     let!(:team_leader) { create(:user, :team_leader) }
+    let(:project_form_params) {
+      attributes_for(:create_project_form,
+        "provisional_conversion_date(3i)": "1",
+        "provisional_conversion_date(2i)": "1",
+        "provisional_conversion_date(1i)": "2030",
+        "advisory_board_date(3i)": "1",
+        "advisory_board_date(2i)": "1",
+        "advisory_board_date(1i)": "2022",
+        regional_delivery_officer: nil,
+        directive_academy_order: "false",
+        two_requires_improvement: "false")
+    }
 
     before do
       establishment = build(:academies_api_establishment, name: "Converting School")
@@ -116,43 +116,148 @@ RSpec.describe All::ByMonth::Conversions::ProjectsController do
     end
   end
 
+  describe "#create_mat" do
+    let(:project) { build(:form_a_mat_conversion_project) }
+    let!(:team_leader) { create(:user, :team_leader) }
+    let(:project_form_params) {
+      attributes_for(:create_project_form,
+        "provisional_conversion_date(3i)": "1",
+        "provisional_conversion_date(2i)": "1",
+        "provisional_conversion_date(1i)": "2030",
+        "advisory_board_date(3i)": "1",
+        "advisory_board_date(2i)": "1",
+        "advisory_board_date(1i)": "2022",
+        regional_delivery_officer: nil,
+        directive_academy_order: "false",
+        two_requires_improvement: "false",
+        new_trust_reference_number: "TR12345",
+        new_trust_name: "The New Trust")
+    }
+
+    before do
+      mock_all_academies_api_responses
+      sign_in_with(regional_delivery_officer)
+    end
+
+    subject(:perform_request) do
+      post conversions_create_mat_path, params: {conversion_create_project_form: {**project_form_params}}
+      response
+    end
+
+    before do
+      mock_successful_api_responses(urn: any_args, ukprn: any_args)
+    end
+
+    context "when the project is not valid" do
+      before do
+        allow(form_class).to receive(:new).and_return(project_form)
+        allow(project_form).to receive(:valid?).and_return false
+      end
+
+      it "re-renders the new_mat template" do
+        expect(perform_request).to render_template :new_mat
+      end
+    end
+
+    context "when the project is valid" do
+      let(:new_project_record) { Project.last }
+
+      before do
+        mock_all_academies_api_responses
+        perform_request
+      end
+
+      it "assigns the regional delivery officer" do
+        expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
+      end
+
+      it "saves the Trust reference number and Trust name" do
+        expect(new_project_record.new_trust_reference_number).to eq("TR12345")
+        expect(new_project_record.new_trust_name).to eq("The New Trust")
+      end
+
+      it "creates a new project and note" do
+        expect(Project.count).to be 1
+        expect(Note.count).to be 1
+        expect(Note.last.user).to eq regional_delivery_officer
+      end
+    end
+  end
+
   describe "after a project is created" do
     before do
       mock_all_academies_api_responses
       sign_in_with(regional_delivery_officer)
     end
 
-    context "when the project is not assigned to regional casework services" do
-      before { project_form_params["assigned_to_regional_caseworker_team"] = "false" }
+    let(:project_form_params) {
+      attributes_for(:create_project_form,
+        "provisional_conversion_date(3i)": "1",
+        "provisional_conversion_date(2i)": "1",
+        "provisional_conversion_date(1i)": "2030",
+        "advisory_board_date(3i)": "1",
+        "advisory_board_date(2i)": "1",
+        "advisory_board_date(1i)": "2022",
+        regional_delivery_officer: nil,
+        directive_academy_order: "false",
+        two_requires_improvement: "false")
+    }
 
-      it "redirects to the project view" do
-        post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+    context "a regular conversion project" do
+      context "when the project is not assigned to regional casework services" do
+        before { project_form_params["assigned_to_regional_caseworker_team"] = "false" }
 
-        expect(response).to redirect_to project_path(Project.last)
+        it "redirects to the project view" do
+          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+
+          expect(response).to redirect_to project_path(Project.last)
+        end
+
+        it "assigns the regional delivery officer" do
+          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+
+          project = Project.last
+          expect(project.assigned_to).to eql regional_delivery_officer
+        end
       end
 
-      it "assigns the regional delivery officer" do
-        post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+      context "when the project is assigned to regional casework services" do
+        before { project_form_params["assigned_to_regional_caseworker_team"] = "true" }
 
-        project = Project.last
-        expect(project.assigned_to).to eql regional_delivery_officer
+        it "renders the created view" do
+          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+
+          expect(response).to render_template("created")
+        end
+
+        it "does not assign the regional delivery officer" do
+          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+
+          project = Project.last
+          expect(project.assigned_to).to be_nil
+        end
       end
     end
 
-    context "when the project is assigned to regional casework services" do
-      before { project_form_params["assigned_to_regional_caseworker_team"] = "true" }
+    context "a form a MAT conversion project" do
+      context "when the project is not assigned to regional casework services" do
+        before { project_form_params["assigned_to_regional_caseworker_team"] = "false" }
 
-      it "renders the created view" do
-        post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+        it "redirects to the project view" do
+          post conversions_create_mat_path, params: {conversion_create_project_form: {**project_form_params}}
 
-        expect(response).to render_template("created")
+          expect(response).to redirect_to project_path(Project.last)
+        end
       end
 
-      it "does not assign the regional delivery officer" do
-        post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+      context "when the project is assigned to regional casework services" do
+        before { project_form_params["assigned_to_regional_caseworker_team"] = "true" }
 
-        project = Project.last
-        expect(project.assigned_to).to be_nil
+        it "renders the created view" do
+          post conversions_create_mat_path, params: {conversion_create_project_form: {**project_form_params}}
+
+          expect(response).to render_template("created")
+        end
       end
     end
   end
