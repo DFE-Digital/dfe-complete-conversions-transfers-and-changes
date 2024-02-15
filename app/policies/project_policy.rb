@@ -40,6 +40,14 @@ class ProjectPolicy
     create?
   end
 
+  def new_mat?
+    new?
+  end
+
+  def create_mat?
+    create?
+  end
+
   def update?
     return false if @record.completed?
 

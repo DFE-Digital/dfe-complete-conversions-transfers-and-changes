@@ -135,4 +135,10 @@ RSpec.describe ProjectPolicy do
       expect(subject).to permit(build(:user, :regional_delivery_officer))
     end
   end
+
+  permissions :new_mat?, :create_mat? do
+    it "grants access if the user can add a new project" do
+      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user))
+    end
+  end
 end
