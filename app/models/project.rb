@@ -112,6 +112,11 @@ class Project < ApplicationRecord
     :not_applicable
   end
 
+  def form_a_mat?
+    return true if (new_trust_reference_number && new_trust_name) && !incoming_trust_ukprn
+    false
+  end
+
   private def fetch_member_of_parliament
     Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
   end

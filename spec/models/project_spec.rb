@@ -659,6 +659,26 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#form_a_mat?" do
+    it "returns true if the project has a TRN and new trust name" do
+      project = build(:conversion_project,
+        new_trust_reference_number: "TR12345",
+        new_trust_name: "New Trust Company",
+        incoming_trust_ukprn: nil)
+
+      expect(project.form_a_mat?).to be true
+    end
+
+    it "returns false if the project has not TRN and new trust name, and has an incoming trust UKPRN" do
+      project = build(:conversion_project,
+        new_trust_reference_number: nil,
+        new_trust_name: nil,
+        incoming_trust_ukprn: 12345678)
+
+      expect(project.form_a_mat?).to be false
+    end
+  end
+
   describe "delegation" do
     it "delegates local_authority to establishment" do
       local_authotity = double(code: 100)
