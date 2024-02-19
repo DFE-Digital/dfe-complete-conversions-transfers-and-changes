@@ -104,6 +104,7 @@ en:
           team_managing_the_project: Team managing the project
           solicitor_contact_name: Solicitor contact name
           solicitor_contact_email: Solicitor contact email
+          school_urn_with_academy_label: Academy URN
         values:
           project_type:
             conversion: Conversion

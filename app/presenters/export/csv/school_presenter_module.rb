@@ -3,6 +3,8 @@ module Export::Csv::SchoolPresenterModule
     @project.urn.to_s
   end
 
+  alias_method :school_urn_with_academy_label, :school_urn
+
   def school_name
     return unless @project.establishment.present?
 
