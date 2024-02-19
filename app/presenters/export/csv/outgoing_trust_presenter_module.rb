@@ -30,4 +30,8 @@ module Export::Csv::OutgoingTrustPresenterModule
 
     Contact::Project.find_by(id: contact)&.email
   end
+
+  def outgoing_trust_identifier
+    @project.outgoing_trust.group_identifier.to_s
+  end
 end

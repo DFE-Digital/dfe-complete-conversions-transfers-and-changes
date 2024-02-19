@@ -32,6 +32,10 @@ RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
     expect(subject.outgoing_trust_main_contact_email).to eql "jo@example.com"
   end
 
+  it "presents the outgoing trust identifier" do
+    expect(subject.outgoing_trust_identifier).to eql "TR03819"
+  end
+
   def known_trust
     double(
       Api::AcademiesApi::Trust,

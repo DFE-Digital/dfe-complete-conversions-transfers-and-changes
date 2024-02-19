@@ -77,6 +77,7 @@ en:
           link_to_project: Link to project
           region: Region
           outgoing_trust_name: Outgoing trust name
+          outgoing_trust_identifier: Outgoing trust group identifier
           outgoing_trust_companies_house_number: Outgoing trust companies house number
           outgoing_trust_ukprn: Outgoing trust UKPRN
           outgoing_trust_main_contact_name: Outgoing trust main contact name
