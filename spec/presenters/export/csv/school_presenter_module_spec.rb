@@ -41,6 +41,13 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     expect(subject.school_sharepoint_folder).to eql "https://educationgovuk-my.sharepoint.com/establishment-folder"
   end
 
+  context "when a school method has an alternative label" do
+    it "presents the project URN" do
+      expect(subject.school_urn_with_academy_label).to eql "121813"
+    end
+  end
+
+
   def known_establishment
     double(
       Api::AcademiesApi::Establishment,
