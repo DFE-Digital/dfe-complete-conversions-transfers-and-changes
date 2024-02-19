@@ -113,6 +113,8 @@ en:
           solicitor_contact_name: Solicitor contact name
           solicitor_contact_email: Solicitor contact email
           school_urn_with_academy_label: Academy URN
+          academy_contact_name: Academy contact name
+          academy_contact_email: Academt contact email
         values:
           project_type:
             conversion: Conversion
