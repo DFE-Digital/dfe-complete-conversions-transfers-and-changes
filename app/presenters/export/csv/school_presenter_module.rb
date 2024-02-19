@@ -76,4 +76,6 @@ module Export::Csv::SchoolPresenterModule
 
     @project.establishment_sharepoint_link
   end
+
+  alias_method :school_sharepoint_link_with_academy_label, :school_sharepoint_folder
 end
