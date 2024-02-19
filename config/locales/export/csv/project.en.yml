@@ -80,6 +80,7 @@ en:
           outgoing_trust_identifier: Outgoing trust group identifier
           outgoing_trust_companies_house_number: Outgoing trust companies house number
           outgoing_trust_ukprn: Outgoing trust UKPRN
+          outgoing_trust_sharepoint_link: Outgoing trust sharepoint link
           outgoing_trust_address_1: Outgoing trust address 1
           outgoing_trust_address_2: Outgoing trust address 2
           outgoing_trust_address_3: Outgoing trust address 3

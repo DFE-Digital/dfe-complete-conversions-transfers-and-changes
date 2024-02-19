@@ -45,6 +45,10 @@ RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
     expect(subject.outgoing_trust_address_postcode).to eql "MK13 0BQ"
   end
 
+  it "presents the sharepoint link" do
+    expect(subject.outgoing_trust_sharepoint_link).to eql "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder"
+  end
+
   def known_trust
     double(
       Api::AcademiesApi::Trust,
