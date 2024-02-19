@@ -80,6 +80,12 @@ en:
           outgoing_trust_identifier: Outgoing trust group identifier
           outgoing_trust_companies_house_number: Outgoing trust companies house number
           outgoing_trust_ukprn: Outgoing trust UKPRN
+          outgoing_trust_address_1: Outgoing trust address 1
+          outgoing_trust_address_2: Outgoing trust address 2
+          outgoing_trust_address_3: Outgoing trust address 3
+          outgoing_trust_address_town: Outgoing trust address town
+          outgoing_trust_address_county: Outgoing trust address county
+          outgoing_trust_address_postcode: Outgoing trust address postcode
           outgoing_trust_main_contact_name: Outgoing trust main contact name
           outgoing_trust_main_contact_email: Outgoing trust main contact email
           incoming_trust_ukprn: Incoming trust UKPRN

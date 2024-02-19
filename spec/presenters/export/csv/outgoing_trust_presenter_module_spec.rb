@@ -36,6 +36,15 @@ RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
     expect(subject.outgoing_trust_identifier).to eql "TR03819"
   end
 
+  it "presents the outgoing trusts address" do
+    expect(subject.outgoing_trust_address_1).to eql "New Bradwell County Combined School"
+    expect(subject.outgoing_trust_address_2).to eql "Bounty Street"
+    expect(subject.outgoing_trust_address_3).to be_nil
+    expect(subject.outgoing_trust_address_town).to eql "Milton Keynes"
+    expect(subject.outgoing_trust_address_county).to be_nil
+    expect(subject.outgoing_trust_address_postcode).to eql "MK13 0BQ"
+  end
+
   def known_trust
     double(
       Api::AcademiesApi::Trust,
