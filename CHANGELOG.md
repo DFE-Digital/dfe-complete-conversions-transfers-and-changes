@@ -31,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   transferring in the next (upcoming) month only, and the table has the same
   columns as the date range view described above.
 - Create a By Month CSV export for Conversions
+- Create a By Month CSV export for Transfers
 
 ### Changed
 
