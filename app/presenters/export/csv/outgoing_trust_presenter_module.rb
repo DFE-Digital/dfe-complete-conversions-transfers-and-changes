@@ -70,4 +70,10 @@ module Export::Csv::OutgoingTrustPresenterModule
 
     @project.outgoing_trust.address_postcode
   end
+
+  def outgoing_trust_sharepoint_link
+    return unless @project.outgoing_trust_sharepoint_link.present?
+
+    @project.outgoing_trust_sharepoint_link
+  end
 end
