@@ -62,6 +62,10 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
       expect(subject.school_address_county_with_academy_label).to eql "Buckinghamshire"
       expect(subject.school_address_postcode_with_academy_label).to eql "MK19 6HJ"
     end
+
+    it "presents the academy name" do
+      expect(subject.school_name_with_academy_label).to eql "Deanshanger Primary School"
+    end
   end
 
   def known_establishment

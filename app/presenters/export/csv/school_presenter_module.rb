@@ -11,6 +11,8 @@ module Export::Csv::SchoolPresenterModule
     @project.establishment.name
   end
 
+  alias_method :school_name_with_academy_label, :school_name
+
   def school_type
     return unless @project.establishment.present?
 
