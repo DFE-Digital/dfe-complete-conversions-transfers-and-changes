@@ -182,4 +182,56 @@ class Export::Csv::ProjectPresenter
     return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.check_and_confirm_financial_information_not_applicable?
     @project.tasks_data.check_and_confirm_financial_information_trust_surplus_deficit
   end
+
+  def diocese_name
+    @project.establishment.diocese_name
+  end
+
+  def diocese_contact_name
+    return if @project.contacts.where(category: "diocese").blank?
+
+    @project.contacts.where(category: "diocese").pluck(:name).join(", ")
+  end
+
+  def diocese_contact_email
+    return if @project.contacts.where(category: "diocese").blank?
+
+    @project.contacts.where(category: "diocese").pluck(:email).join(", ")
+  end
+
+  def advisory_board_conditions
+    return if @project.advisory_board_conditions.blank?
+
+    @project.advisory_board_conditions
+  end
+
+  def completed_grant_payment_certificate_received
+    @project.tasks_data.receive_grant_payment_certificate_date_received.to_fs(:csv) if @project.tasks_data.receive_grant_payment_certificate_date_received.present?
+  end
+
+  def solicitor_contact_name
+    return if @project.contacts.where(category: "solicitor").blank?
+
+    @project.contacts.where(category: "solicitor").pluck(:name).join(", ")
+  end
+
+  def solicitor_contact_email
+    return if @project.contacts.where(category: "solicitor").blank?
+
+    @project.contacts.where(category: "solicitor").pluck(:email).join(", ")
+  end
+
+  def project_created_by_name
+    user_id = @project.regional_delivery_officer_id
+    User.find_by(id: user_id)&.full_name
+  end
+
+  def project_created_by_email
+    user_id = @project.regional_delivery_officer_id
+    User.find_by(id: user_id)&.email
+  end
+
+  def team_managing_the_project
+    I18n.t("teams.#{@project.team}")
+  end
 end

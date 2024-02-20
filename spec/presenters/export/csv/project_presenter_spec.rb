@@ -431,6 +431,126 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.academy_surplus_deficit).to eq("not applicable")
   end
 
+  it "presents the diocese name" do
+    mock_successful_api_response_to_create_any_project
+    project = build(:conversion_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.diocese_name).to eql("Diocese of West Placefield")
+  end
+
+  it "presents the diocese contact name" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "diocese", name: "contact name", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.diocese_contact_name).to eql("contact name")
+  end
+
+  it "presents the diocese contact email" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "diocese", email: "diocese_contact@email.com", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.diocese_contact_email).to eql("diocese_contact@email.com")
+  end
+
+  context "when there is no diocese contact" do
+    it "returns nil" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.diocese_contact_name).to be_nil
+    end
+  end
+
+  it "presents the advisory board conditions" do
+    mock_successful_api_response_to_create_any_project
+    project = build(:conversion_project, advisory_board_conditions: "These are the conditions.")
+
+    presenter = described_class.new(project)
+
+    expect(presenter.advisory_board_conditions).to eql("These are the conditions.")
+  end
+
+  it "presents the completed grant payment certificate received" do
+    mock_successful_api_response_to_create_any_project
+    tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1))
+    project = create(:conversion_project, tasks_data: tasks_data)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.completed_grant_payment_certificate_received).to eql("2024-01-01")
+  end
+
+  it "presents the solicitor contact name" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "solicitor", name: "solicitor contact name", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.solicitor_contact_name).to eql("solicitor contact name")
+  end
+
+  it "presents the solicitor contact email" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    create(:project_contact, category: "solicitor", email: "solicitor_contact@email.com", project: project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.solicitor_contact_email).to eql("solicitor_contact@email.com")
+  end
+
+  context "when there is no solicitor contact" do
+    it "returns nil" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.solicitor_contact_name).to be_nil
+    end
+  end
+
+  it "presents the project created by name" do
+    mock_successful_api_response_to_create_any_project
+    user = create(:regional_delivery_officer_user, first_name: "Joe", last_name: "Bloggs")
+    project = create(:conversion_project, regional_delivery_officer: user)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.project_created_by_name).to eql("Joe Bloggs")
+  end
+
+  it "presents the project created by email" do
+    mock_successful_api_response_to_create_any_project
+    user = create(:regional_delivery_officer_user, email: "joe.bloggs@education.gov.uk")
+    project = create(:conversion_project, regional_delivery_officer: user)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.project_created_by_email).to eql("joe.bloggs@education.gov.uk")
+  end
+
+  it "presents the team managing the project" do
+    mock_successful_api_response_to_create_any_project
+    user = create(:user, team: "london")
+    project = create(:conversion_project, assigned_to_id: user)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.team_managing_the_project).to eql("London")
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 

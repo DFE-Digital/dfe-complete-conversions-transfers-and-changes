@@ -45,6 +45,9 @@ en:
           incoming_trust_identifier: Incoming trust group identifier
           incoming_trust_companies_house_number: Incoming trust companies house number
           incoming_trust_name: Incoming trust name
+          incoming_trust_main_contact_name: Incoming trust main contact name
+          incoming_trust_main_contact_email: Incoming trust main contact email
+          incoming_trust_sharepoint_link: Incoming trust sharepoint link
           incoming_trust_address_1: Incoming trust address 1
           incoming_trust_address_2: Incoming trust address 2
           incoming_trust_address_3: Incoming trust address 3
@@ -53,6 +56,8 @@ en:
           incoming_trust_address_postcode: Incoming trust address postcode
           local_authority_code: Local authority code
           local_authority_name: Local authority
+          local_authority_contact_name: Local authority contact name
+          local_authority_contact_email: Local authority contact email
           local_authority_address_1: Local authority address 1
           local_authority_address_2: Local authority address 2
           local_authority_address_3: Local authority address 3
@@ -74,6 +79,8 @@ en:
           outgoing_trust_name: Outgoing trust name
           outgoing_trust_companies_house_number: Outgoing trust companies house number
           outgoing_trust_ukprn: Outgoing trust UKPRN
+          outgoing_trust_main_contact_name: Outgoing trust main contact name
+          outgoing_trust_main_contact_email: Outgoing trust main contact email
           incoming_trust_ukprn: Incoming trust UKPRN
           inadequate_ofsted: Transfer due to inadequate
           financial_safeguarding_governance_issues: Transfer due to financial, safeguarding or governance
@@ -85,6 +92,18 @@ en:
           academy_surplus_deficit: Is the academy in surplus or deficit?
           trust_surplus_deficit: Is the incoming trust in surplus or deficit?
           authority_to_proceed: Authority to proceed?
+          diocese_name: Diocese
+          diocese_contact_name: Diocese contact name
+          diocese_contact_email: Diocese contact email
+          advisory_board_conditions: Advisory board conditions
+          completed_grant_payment_certificate_received: Completed grant payment certificate received
+          school_age_range: Pupil age range
+          school_sharepoint_folder: School sharepoint folder
+          project_created_by_name: Project created by name
+          project_created_by_email: Project created by email address
+          team_managing_the_project: Team managing the project
+          solicitor_contact_name: Solicitor contact name
+          solicitor_contact_email: Solicitor contact email
         values:
           project_type:
             conversion: Conversion
