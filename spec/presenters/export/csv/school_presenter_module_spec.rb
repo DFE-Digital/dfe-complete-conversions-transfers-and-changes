@@ -49,8 +49,11 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     it "presents the academy sharepoint link" do
       expect(subject.school_sharepoint_link_with_academy_label).to eql "https://educationgovuk-my.sharepoint.com/establishment-folder"
     end
-  end
 
+    it "presents the academy type" do
+      expect(subject.school_type_with_academy_label).to eql "Community school"
+    end
+  end
 
   def known_establishment
     double(
