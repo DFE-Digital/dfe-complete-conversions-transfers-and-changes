@@ -54,5 +54,13 @@ RSpec.feature "Viewing all in-progress projects" do
 
       expect(page).to have_css(".govuk-pagination")
     end
+
+    scenario "the projects show if they are 'Form a MAT' or not" do
+      _project = create(:conversion_project, urn: 115652, new_trust_reference_number: "TR12345", new_trust_name: "New Trust", incoming_trust_ukprn: nil)
+
+      visit all_in_progress_projects_path
+      expect(page).to have_content("Form a MAT project?")
+      expect(page).to have_content("Yes")
+    end
   end
 end

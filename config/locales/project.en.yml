@@ -204,6 +204,7 @@ en:
         confirmed_date_original_date: Confirmed date (Original date)
         all_conditions_met: All conditions met
         authority_to_proceed: Authority to proceed
+        form_a_mat: Form a MAT project?
       body:
         type_name:
           conversion_project: Conversion

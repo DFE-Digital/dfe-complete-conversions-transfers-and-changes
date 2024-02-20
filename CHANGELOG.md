@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add new Conversion "Form a MAT" creation form, as a first pass
+- Add a Yes/No column in the "In progress" listing pages to show if a project is
+  "Form a MAT" or not.
 
 ## [Release-53][release-53]
 
