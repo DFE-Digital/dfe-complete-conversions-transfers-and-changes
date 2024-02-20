@@ -37,11 +37,15 @@ module Export::Csv::SchoolPresenterModule
     @project.establishment.address_street
   end
 
+  alias_method :school_address_1_with_academy_label, :school_address_1
+
   def school_address_2
     return unless @project.establishment.present?
 
     @project.establishment.address_locality
   end
+
+  alias_method :school_address_2_with_academy_label, :school_address_2
 
   def school_address_3
     return unless @project.establishment.present?
@@ -49,11 +53,15 @@ module Export::Csv::SchoolPresenterModule
     @project.establishment.address_additional
   end
 
+  alias_method :school_address_3_with_academy_label, :school_address_3
+
   def school_address_town
     return unless @project.establishment.present?
 
     @project.establishment.address_town
   end
+
+  alias_method :school_address_town_with_academy_label, :school_address_town
 
   def school_address_county
     return unless @project.establishment.present?
@@ -61,11 +69,15 @@ module Export::Csv::SchoolPresenterModule
     @project.establishment.address_county
   end
 
+  alias_method :school_address_county_with_academy_label, :school_address_county
+
   def school_address_postcode
     return unless @project.establishment.present?
 
     @project.establishment.address_postcode
   end
+
+  alias_method :school_address_postcode_with_academy_label, :school_address_postcode
 
   def school_age_range
     return unless @project.establishment.present?

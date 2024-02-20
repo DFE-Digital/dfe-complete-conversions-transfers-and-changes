@@ -117,6 +117,12 @@ en:
           academy_contact_email: Academt contact email
           school_sharepoint_link_with_academy_label: Academy sharepoint link
           school_type_with_academy_label: Academy type
+          school_address_1_with_academy_label: Academy address 1
+          school_address_2_with_academy_label: Academy address 2
+          school_address_3_with_academy_label: Academy address 3
+          school_address_town_with_academy_label: Academy town
+          school_address_county_with_academy_label: Academy county
+          school_address_postcode_with_academy_label: Academy postcode
         values:
           project_type:
             conversion: Conversion
