@@ -116,6 +116,7 @@ en:
           academy_contact_name: Academy contact name
           academy_contact_email: Academt contact email
           academy_sharepoint_link: Academy sharepoint link
+          academy_type: Academy type
         values:
           project_type:
             conversion: Conversion
