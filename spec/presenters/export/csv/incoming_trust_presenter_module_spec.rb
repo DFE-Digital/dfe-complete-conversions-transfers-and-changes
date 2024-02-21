@@ -1,19 +1,21 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::IncomingTrustPresenterModule do
-  let(:incoming_trust_main_contact) do
-    mock_successful_api_response_to_create_any_project
-    create(:project_contact, category: "incoming_trust")
-  end
-  let(:project) { build(:conversion_project, incoming_trust_ukprn: 121813, incoming_trust: known_trust, incoming_trust_main_contact_id: incoming_trust_main_contact.id) }
+  let(:project) { create(:conversion_project, incoming_trust_ukprn: 12345678, incoming_trust: known_trust) }
+  let(:incoming_trust_main_contact) { create(:project_contact, category: "incoming_trust", project: project) }
   subject { IncomingTrustPresenterModuleTestClass.new(project) }
+
+  before do
+    mock_successful_api_response_to_create_any_project
+    allow(project).to receive(:incoming_trust_main_contact_id).and_return(incoming_trust_main_contact.id)
+  end
 
   it "presents the identifier" do
     expect(subject.incoming_trust_identifier).to eql "TR03819"
   end
 
   it "presents the ukprn" do
-    expect(subject.incoming_trust_ukprn).to eql "121813"
+    expect(subject.incoming_trust_ukprn).to eql "12345678"
   end
 
   it "presents the companies house number" do
