@@ -31,4 +31,15 @@ RSpec.feature "Export users can see the exports landing page" do
     expect(page).to have_content("You can check details about schools' risk protection arrangements and start-up grant funding.")
     expect(page).to have_content("You can get information pre-opening grants for schools becoming academies.")
   end
+
+  scenario "a business support user can see the exports landing page" do
+    user = create(:user, team: :business_support)
+
+    sign_in_with_user(user)
+    click_on "Exports"
+
+    expect(page).to have_content("You can find out who should be sent the funding agreement letters.")
+    expect(page).to have_content("You can check details about schools' risk protection arrangements and start-up grant funding.")
+    expect(page).to have_content("You can get information pre-opening grants for schools becoming academies.")
+  end
 end
