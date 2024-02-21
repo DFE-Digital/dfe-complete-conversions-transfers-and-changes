@@ -12,7 +12,7 @@
     <h1 class="govuk-heading-l">
       <%= t("project.date_range.title", date_from: Date.parse(@from_date).to_fs(:govuk_month), date_to: Date.parse(@to_date).to_fs(:govuk_month)) %>
     </h1>
-    <%= t("project.date_range.body_html") %>
+    <%= t("project.date_range.body_html", csv_link: date_range_csv_all_by_month_conversions_projects_path(@from_month, @from_year, @to_month, @to_year)) %>
 
     <%= render partial: "shared/date_range", locals: {from_date: @from_date, to_date: @to_date, action: date_range_select_all_by_month_conversions_projects_path} %>
 

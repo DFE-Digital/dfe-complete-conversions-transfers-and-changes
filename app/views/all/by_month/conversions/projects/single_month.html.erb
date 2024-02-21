@@ -12,7 +12,7 @@
     <h1 class="govuk-heading-l">
       <%= t("project.single_month.title", date: Date.parse(@date).to_fs(:govuk_month)) %>
     </h1>
-    <%= t("project.single_month.body_html") %>
+    <%= t("project.single_month.body_html", csv_link: single_month_csv_all_by_month_conversions_projects_path(@month, @year)) %>
 
     <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
       <ul class="moj-sub-navigation__list">
