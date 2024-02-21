@@ -12,15 +12,17 @@ module Export::Csv::LocalAuthorityPresenterModule
   end
 
   def local_authority_contact_name
-    return if @project.contacts.where(category: "local_authority").blank?
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["local_authority"].blank?
 
-    @project.contacts.where(category: "local_authority").pluck(:name).join(", ")
+    contacts["local_authority"].pluck(:name).join(",")
   end
 
   def local_authority_contact_email
-    return if @project.contacts.where(category: "local_authority").blank?
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["local_authority"].blank?
 
-    @project.contacts.where(category: "local_authority").pluck(:email).join(", ")
+    contacts["local_authority"].pluck(:email).join(",")
   end
 
   def local_authority_address_1
