@@ -188,15 +188,17 @@ class Export::Csv::ProjectPresenter
   end
 
   def diocese_contact_name
-    return if @project.contacts.where(category: "diocese").blank?
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["diocese"].blank?
 
-    @project.contacts.where(category: "diocese").pluck(:name).join(", ")
+    contacts["diocese"].pluck(:name).join(",")
   end
 
   def diocese_contact_email
-    return if @project.contacts.where(category: "diocese").blank?
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["diocese"].blank?
 
-    @project.contacts.where(category: "diocese").pluck(:email).join(", ")
+    contacts["diocese"].pluck(:email).join(",")
   end
 
   def advisory_board_conditions
@@ -210,15 +212,17 @@ class Export::Csv::ProjectPresenter
   end
 
   def solicitor_contact_name
-    return if @project.contacts.where(category: "solicitor").blank?
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["solicitor"].blank?
 
-    @project.contacts.where(category: "solicitor").pluck(:name).join(", ")
+    contacts["solicitor"].pluck(:name).join(",")
   end
 
   def solicitor_contact_email
-    return if @project.contacts.where(category: "solicitor").blank?
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["solicitor"].blank?
 
-    @project.contacts.where(category: "solicitor").pluck(:email).join(", ")
+    contacts["solicitor"].pluck(:email).join(",")
   end
 
   def project_created_by_name

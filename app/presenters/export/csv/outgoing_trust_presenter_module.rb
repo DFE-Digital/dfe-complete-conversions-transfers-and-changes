@@ -20,15 +20,21 @@ module Export::Csv::OutgoingTrustPresenterModule
   def outgoing_trust_main_contact_name
     return unless @project.outgoing_trust_main_contact_id.present?
 
-    contact = @project.outgoing_trust_main_contact_id
-    Contact::Project.find_by(id: contact)&.name
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["outgoing_trust"].blank?
+
+    contact = contacts["outgoing_trust"].find { |c| c.id == @project.outgoing_trust_main_contact_id }
+    contact&.name
   end
 
   def outgoing_trust_main_contact_email
     return unless @project.outgoing_trust_main_contact_id.present?
 
-    contact = @project.outgoing_trust_main_contact_id
-    Contact::Project.find_by(id: contact)&.email
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["outgoing_trust"].blank?
+
+    contact = contacts["outgoing_trust"].find { |c| c.id == @project.outgoing_trust_main_contact_id }
+    contact&.email
   end
 
   def outgoing_trust_identifier
