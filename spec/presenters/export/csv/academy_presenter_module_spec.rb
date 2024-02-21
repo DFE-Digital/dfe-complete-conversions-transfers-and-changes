@@ -33,6 +33,24 @@ RSpec.describe Export::Csv::AcademyPresenterModule do
       expect(subject.academy_address_county).to eql "Buckinghamshire"
       expect(subject.academy_address_postcode).to eql "MK19 6HJ"
     end
+
+    context "when the project has more than one school or academy contact" do
+      it "presents the academy contact names" do
+        mock_successful_api_response_to_create_any_project
+        create(:project_contact, category: "school_or_academy", name: "academy contact name", project: project)
+        create(:establishment_contact, establishment_urn: project.urn, name: "establishment contact name")
+
+        expect(subject.academy_contact_name).to eql("academy contact name,establishment contact name")
+      end
+
+      it "presents the academy contact emails" do
+        mock_successful_api_response_to_create_any_project
+        create(:project_contact, category: "school_or_academy", email: "academy_contact@email.com", project: project)
+        create(:establishment_contact, establishment_urn: project.urn, email: "establishment_contact@email.com")
+
+        expect(subject.academy_contact_email).to eql("academy_contact@email.com,establishment_contact@email.com")
+      end
+    end
   end
 
   context "when a project is a transfer project" do

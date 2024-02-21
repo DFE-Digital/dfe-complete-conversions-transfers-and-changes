@@ -4,10 +4,12 @@ RSpec.describe Export::Csv::LocalAuthorityPresenterModule do
   before do
     mock_successful_api_response_to_create_any_project
     allow(project).to receive(:local_authority).and_return known_local_authority
+    allow(project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
   end
 
   let(:project) { create(:conversion_project) }
-  let!(:local_authority_main_contact) { create(:project_contact, category: "local_authority", name: "contact name", email: "local_authority_contact@email.com", project: project) }
+  let(:director_of_child_services_contact) { create(:director_of_child_services, name: "Jake Example") }
+
   subject { LocalAuthorityPresenterModuleTestClass.new(project) }
 
   it "presents the code" do
@@ -28,11 +30,23 @@ RSpec.describe Export::Csv::LocalAuthorityPresenterModule do
   end
 
   it "presents the local authority contact name" do
-    expect(subject.local_authority_contact_name).to eql "contact name"
+    expect(subject.local_authority_contact_name).to eql "Jake Example"
   end
 
   it "presents the local authority contact email" do
-    expect(subject.local_authority_contact_email).to eql "local_authority_contact@email.com"
+    expect(subject.local_authority_contact_email).to eql "jake@example.com"
+  end
+
+  context "when there is more than one local authority contact" do
+    let!(:local_authority_main_contact) { create(:project_contact, category: "local_authority", name: "Bob Contact", email: "local_authority_contact@email.com", project: project) }
+
+    it "presents the local authority contact names" do
+      expect(subject.local_authority_contact_name).to eql "Bob Contact,Jake Example"
+    end
+
+    it "presents the local authority contact emails" do
+      expect(subject.local_authority_contact_email).to eql "local_authority_contact@email.com,jake@example.com"
+    end
   end
 
   def known_local_authority
