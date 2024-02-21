@@ -70,4 +70,16 @@ module Export::Csv::AcademyPresenterModule
 
     @project.academy.address_postcode
   end
+
+  def academy_contact_name
+    return if @project.contacts.where(category: "school_or_academy").blank?
+
+    @project.contacts.where(category: "school_or_academy").pluck(:name).join(", ")
+  end
+
+  def academy_contact_email
+    return if @project.contacts.where(category: "school_or_academy").blank?
+
+    @project.contacts.where(category: "school_or_academy").pluck(:email).join(", ")
+  end
 end

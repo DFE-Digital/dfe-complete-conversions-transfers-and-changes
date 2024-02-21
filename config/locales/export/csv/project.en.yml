@@ -77,8 +77,16 @@ en:
           link_to_project: Link to project
           region: Region
           outgoing_trust_name: Outgoing trust name
+          outgoing_trust_identifier: Outgoing trust group identifier
           outgoing_trust_companies_house_number: Outgoing trust companies house number
           outgoing_trust_ukprn: Outgoing trust UKPRN
+          outgoing_trust_sharepoint_link: Outgoing trust sharepoint link
+          outgoing_trust_address_1: Outgoing trust address 1
+          outgoing_trust_address_2: Outgoing trust address 2
+          outgoing_trust_address_3: Outgoing trust address 3
+          outgoing_trust_address_town: Outgoing trust address town
+          outgoing_trust_address_county: Outgoing trust address county
+          outgoing_trust_address_postcode: Outgoing trust address postcode
           outgoing_trust_main_contact_name: Outgoing trust main contact name
           outgoing_trust_main_contact_email: Outgoing trust main contact email
           incoming_trust_ukprn: Incoming trust UKPRN
@@ -104,6 +112,18 @@ en:
           team_managing_the_project: Team managing the project
           solicitor_contact_name: Solicitor contact name
           solicitor_contact_email: Solicitor contact email
+          school_urn_with_academy_label: Academy URN
+          academy_contact_name: Academy contact name
+          academy_contact_email: Academt contact email
+          school_sharepoint_link_with_academy_label: Academy sharepoint link
+          school_type_with_academy_label: Academy type
+          school_address_1_with_academy_label: Academy address 1
+          school_address_2_with_academy_label: Academy address 2
+          school_address_3_with_academy_label: Academy address 3
+          school_address_town_with_academy_label: Academy town
+          school_address_county_with_academy_label: Academy county
+          school_address_postcode_with_academy_label: Academy postcode
+          school_name_with_academy_label: Academy name
         values:
           project_type:
             conversion: Conversion

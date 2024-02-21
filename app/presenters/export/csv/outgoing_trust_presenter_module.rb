@@ -30,4 +30,50 @@ module Export::Csv::OutgoingTrustPresenterModule
     contact = @project.outgoing_trust_main_contact_id
     Contact::Project.find_by(id: contact)&.email
   end
+
+  def outgoing_trust_identifier
+    @project.outgoing_trust.group_identifier.to_s
+  end
+
+  def outgoing_trust_address_1
+    return unless @project.outgoing_trust.present?
+
+    @project.outgoing_trust.address_street
+  end
+
+  def outgoing_trust_address_2
+    return unless @project.outgoing_trust.present?
+
+    @project.outgoing_trust.address_locality
+  end
+
+  def outgoing_trust_address_3
+    return unless @project.outgoing_trust.present?
+
+    @project.outgoing_trust.address_additional
+  end
+
+  def outgoing_trust_address_town
+    return unless @project.outgoing_trust.present?
+
+    @project.outgoing_trust.address_town
+  end
+
+  def outgoing_trust_address_county
+    return unless @project.outgoing_trust.present?
+
+    @project.outgoing_trust.address_county
+  end
+
+  def outgoing_trust_address_postcode
+    return unless @project.outgoing_trust.present?
+
+    @project.outgoing_trust.address_postcode
+  end
+
+  def outgoing_trust_sharepoint_link
+    return unless @project.outgoing_trust_sharepoint_link.present?
+
+    @project.outgoing_trust_sharepoint_link
+  end
 end
