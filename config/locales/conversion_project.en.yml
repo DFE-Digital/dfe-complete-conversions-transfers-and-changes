@@ -50,6 +50,10 @@ en:
         <li>The confirm all conditions have been met task is completed</li>
         <li>The receive grant payment certificate task is completed</li>
         </ul>
+    form_a_mat:
+      new:
+        title: Add a form a MAT conversion
+        hint_html: <p class="govuk-body">Enter information about the school, the new MAT (multi-academy trust) and the advisory board's decision about this school's conversion.</p><p class="govuk-body">This will create a new conversion project.</p>
   helpers:
     label:
       conversion_create_project_form:
@@ -57,6 +61,8 @@ en:
         incoming_trust_ukprn: Incoming trust UKPRN (UK Provider Reference Number)
         establishment_sharepoint_link: School or academy SharePoint link
         incoming_trust_sharepoint_link: Incoming trust SharePoint link
+        new_trust_reference_number: Trust reference number (TRN)
+        new_trust_name: Trust name
       conversion_project:
         caseworker_id: Caseworker
         regional_delivery_officer_id: Regional delivery officer
@@ -79,6 +85,9 @@ en:
           <p>A UKPRN is an 8-digit number that always starts with a 1.</p>
           <p><a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in a new tab)</a>.</p>
         caseworker_id: The caseworker responsible for this project
+        new_trust_name: Enter the proposed name for the new trust. This can be changed later on if necessary.
+        new_trust_reference_number_html:
+          <p>You can find the TRN in the <a href="https://educationgovuk.sharepoint.com/:x:/s/TrustandAcademyManagementServiceTRAMSPrivateBeta/ETyRXN0eIYxOmCVHTqWxSLYBQvHdfWicu7NybUaDeiz88g">new trusts spreadsheet (opens in new tab)</a>.</p>
       conversion_project:
         provisional_conversion_date: You can find this in the advisory board template.
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
@@ -97,6 +106,7 @@ en:
         must_be_in_the_future: Provisional conversion date must be in the future
       provisional_conversion_date:
         blank: Enter a month and year for the provisional conversion date, like 9 2023
+        invalid: Enter a month and year for the provisional conversion date, like 9 2023
         must_be_in_the_future: Provisional conversion date must be in the future
     conversion_project:
       attributes:

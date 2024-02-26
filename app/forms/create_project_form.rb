@@ -14,11 +14,13 @@ class CreateProjectForm
   attribute :advisory_board_conditions
   attribute :handover_note_body
   attribute :assigned_to_regional_caseworker_team, :boolean
+  attribute :new_trust_reference_number
+  attribute :new_trust_name
 
   attr_reader :advisory_board_date
 
   validates :urn, presence: true, urn: true
-  validates :incoming_trust_ukprn, presence: true, ukprn: true
+  validates :incoming_trust_ukprn, presence: true, ukprn: true, unless: -> { new_trust_reference_number.present? }
 
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
@@ -32,6 +34,10 @@ class CreateProjectForm
   validate :incoming_trust_exists, if: -> { incoming_trust_ukprn.present? }
 
   validate :multiparameter_date_attributes_values
+
+  validates :new_trust_reference_number, presence: true, unless: -> { incoming_trust_ukprn.present? }
+  validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
+  validates :new_trust_name, presence: true, unless: -> { incoming_trust_ukprn.present? }
 
   def region
     @region = establishment.region_code

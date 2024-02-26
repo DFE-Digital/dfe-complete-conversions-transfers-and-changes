@@ -21,12 +21,14 @@ class Project < ApplicationRecord
 
   validates :urn, presence: true
   validates :urn, urn: true
-  validates :incoming_trust_ukprn, presence: true
-  validates :incoming_trust_ukprn, ukprn: true
+  validates :incoming_trust_ukprn, presence: true, unless: -> { new_trust_reference_number.present? }
+  validates :incoming_trust_ukprn, ukprn: true, unless: -> { new_trust_reference_number.present? }
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
+
+  validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
 
   validate :establishment_exists, if: -> { urn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }

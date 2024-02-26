@@ -422,3 +422,8 @@ en:
         invalid_urn: Please enter a valid URN. The URN must be 6 digits long. For example, 123456.
       handover_note_body:
         blank: Enter handover notes
+      new_trust_reference_number:
+        blank: Enter a Trust reference number (TRN)
+        invalid_trust_reference_number: The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234
+      new_trust_name:
+        blank: Enter a Trust name
