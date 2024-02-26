@@ -15,6 +15,7 @@
         <% end %>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.assigned_to") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.summary.type.title") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.form_a_mat") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_or_transfer_date") %></th>
       </tr>
     </thead>
@@ -34,6 +35,7 @@
         <% end %>
         <td class="govuk-table__cell"><%= display_name(project.assigned_to) %></td>
         <td class="govuk-table__cell"><%= t("project.table.body.type_name.#{project.type_locale}") %></td>
+        <td class="govuk-table__cell"><%= project.form_a_mat? ? t("yes") : t("no") %></td>
         <td class="govuk-table__cell"><%= project.significant_date.to_formatted_s(:significant_date) %></td>
       </tr>
     <% end %>

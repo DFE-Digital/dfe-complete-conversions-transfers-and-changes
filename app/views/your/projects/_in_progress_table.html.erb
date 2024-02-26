@@ -7,6 +7,7 @@
       <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_name") %></th>
       <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
       <th class="govuk-table__header" scope="col"><%= t("project.table.headers.type") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.form_a_mat") %></th>
       <th class="govuk-table__header" scope="col"><%= t("project.table.headers.incoming_trust") %></th>
       <th class="govuk-table__header" scope="col"><%= t("project.table.headers.outgoing_trust") %></th>
       <th class="govuk-table__header" scope="col"><%= t("project.table.headers.local_authority_name") %></th>
@@ -21,6 +22,7 @@
         </td>
         <td class="govuk-table__cell"><%= project.urn %></td>
         <td class="govuk-table__cell"><%= t("project.table.body.type_name.#{project.type_locale}") %></td>
+        <td class="govuk-table__cell"><%= project.form_a_mat? ? t("yes") : t("no") %></td>
         <td class="govuk-table__cell"><%= project.incoming_trust.name %></td>
         <td class="govuk-table__cell">
           <% if project.type_locale == "transfer_project" %>
