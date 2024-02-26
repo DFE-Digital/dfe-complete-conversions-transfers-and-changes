@@ -32,5 +32,5 @@
 lib/generators/*/USAGE
 *.csv
 /.github/
-app/assets/stylesheets/dfe_frontend.css
+app/assets/stylesheets/dfefrontend.css
 .eslintrc.json
