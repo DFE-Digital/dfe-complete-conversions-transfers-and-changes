@@ -33,10 +33,10 @@ class ProjectsForExportService
   end
 
   private def conversion_projects_by_advisory_board_date(month, year)
-    Conversion::Project.confirmed.filtered_by_advisory_board_date(month, year)
+    Conversion::Project.filtered_by_advisory_board_date(month, year)
   end
 
   private def transfer_projects_by_advisory_board_date(month, year)
-    Transfer::Project.confirmed.filtered_by_advisory_board_date(month, year)
+    Transfer::Project.filtered_by_advisory_board_date(month, year)
   end
 end
