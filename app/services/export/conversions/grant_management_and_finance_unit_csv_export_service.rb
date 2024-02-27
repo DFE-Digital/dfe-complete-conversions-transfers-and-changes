@@ -9,6 +9,7 @@ class Export::Conversions::GrantManagementAndFinanceUnitCsvExportService < Expor
     incoming_trust_name
     incoming_trust_identifier
     advisory_board_date
+    provisional_date
     conversion_date
     academy_order_type
     two_requires_improvement

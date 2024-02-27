@@ -4,6 +4,7 @@ en:
       project:
         headers:
           project_type: Project type
+          provisional_date: Provisional date
           conversion_date: Conversion date
           all_conditions_met: All conditions met
           risk_protection_arrangement: Risk protection arrangement
