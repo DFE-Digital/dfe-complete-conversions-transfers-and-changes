@@ -13,6 +13,7 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
     academy_surplus_deficit
     trust_surplus_deficit
     advisory_board_date
+    provisional_date
     transfer_date
     added_by_email
     assigned_to_email

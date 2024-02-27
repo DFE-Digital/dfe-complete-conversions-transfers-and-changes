@@ -11,6 +11,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add new Conversion "Form a MAT" creation form, as a first pass
 - Add a Yes/No column in the "In progress" listing pages to show if a project is
   "Form a MAT" or not.
+- the provisional date column is now included in the Grant management and
+  finance unit csv export
+
+### Changed
+
+- the Grant management and finance unit csv exports now include both provisional
+  and confirmed projects
 
 ## [Release-53][release-53]
 

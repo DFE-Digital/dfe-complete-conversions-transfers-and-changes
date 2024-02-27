@@ -183,6 +183,14 @@ RSpec.describe Export::Csv::ProjectPresenter do
     not_applicable_for_a_transfer
   end
 
+  it "presents the provisional date" do
+    conversion_project = double(Conversion::Project, provisional_date: Date.parse("2024-1-1"), conversion_date_provisional?: true)
+
+    conversion_presenter = described_class.new(conversion_project)
+
+    expect(conversion_presenter.provisional_date).to eql "2024-01-01"
+  end
+
   it "presents the conversion date" do
     project = double(Conversion::Project, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional?: false)
 

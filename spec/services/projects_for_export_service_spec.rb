@@ -62,6 +62,18 @@ RSpec.describe ProjectsForExportService do
       expect(projects_for_export).to include(matching_project)
       expect(projects_for_export).not_to include(mismatching_project)
     end
+
+    it "includes both provisional and confirmed projects" do
+      mock_academies_api_client_get_establishments_and_trusts
+
+      confirmed_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
+      provisional_project = create(:conversion_project, conversion_date_provisional: true, advisory_board_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.grant_management_and_finance_unit_conversion_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(confirmed_project)
+      expect(projects_for_export).to include(provisional_project)
+    end
   end
 
   describe "#grant_management_and_finance_unit_transfer_projects" do
@@ -76,6 +88,18 @@ RSpec.describe ProjectsForExportService do
 
       expect(projects_for_export).to include(matching_project)
       expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
+    end
+
+    it "includes both provisional and confirmed projects" do
+      mock_academies_api_client_get_establishments_and_trusts
+
+      confirmed_project = create(:transfer_project, transfer_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
+      provisional_project = create(:transfer_project, transfer_date_provisional: true, advisory_board_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.grant_management_and_finance_unit_transfer_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(confirmed_project)
+      expect(projects_for_export).to include(provisional_project)
     end
   end
 
