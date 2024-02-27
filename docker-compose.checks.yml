@@ -25,6 +25,10 @@ services:
       CI: "true"
       USER_ENV: test
       REDIS_URL: redis://test-redis:6379
+    volumes:
+      - type: bind
+        source: ./coverage
+        target: /srv/app/coverage
     networks:
       - test-ci
 
