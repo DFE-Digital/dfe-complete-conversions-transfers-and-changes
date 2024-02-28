@@ -396,9 +396,9 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
       presenter = described_class.new(project)
 
-      expect(presenter.reception_to_six_years).to eql("Not applicable")
-      expect(presenter.seven_to_eleven_years).to eql("Not applicable")
-      expect(presenter.twelve_or_above_years).to eql("Not applicable")
+      expect(presenter.reception_to_six_years).to eql("not applicable")
+      expect(presenter.seven_to_eleven_years).to eql("not applicable")
+      expect(presenter.twelve_or_above_years).to eql("not applicable")
     end
   end
 
