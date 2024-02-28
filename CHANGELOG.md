@@ -19,6 +19,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the Grant management and finance unit csv exports now include both provisional
   and confirmed projects
 
+### Fixed
+
+- the Confirmed/Original date column values are now displayed correctly, with
+  the currently confirmed date and the original provisional date shown as
+  available
+
 ## [Release-53][release-53]
 
 ### Fixed

@@ -289,27 +289,68 @@ RSpec.describe ProjectHelper, type: :helper do
   describe "#confirmed_date_original_date" do
     before { mock_all_academies_api_responses }
 
-    context "when the project's significant date is not confirmed" do
+    context "when the project date is provisional" do
       it "returns nil" do
-        project = build(:conversion_project, significant_date_provisional: true)
+        project = build(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: true)
+
         expect(helper.confirmed_date_original_date(project)).to eq(nil)
       end
     end
 
-    context "when the project's significant date is confirmed" do
-      context "and the project has no date histories (this should not happen!)" do
-        it "returns the significant date only, formatted correctly" do
-          project = build(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: false)
-          expect(helper.confirmed_date_original_date(project)).to eq("Jan 2024")
-        end
+    context "when the project date is confirmed and has never changed" do
+      it "returns the two dates correctly" do
+        project = build(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: false)
+        create(:date_history, project: project, previous_date: Date.new(2024, 1, 1), revised_date: Date.new(2024, 1, 1))
+
+        expect(helper.confirmed_date_original_date(project)).to eq("Jan 2024 (Jan 2024)")
       end
+    end
 
-      context "and the project has date histories" do
-        it "returns the significant date and the most recent revised date, formatted correctly" do
-          project = create(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: false)
-          create(:date_history, project: project, previous_date: Date.new(2024, 1, 1), revised_date: Date.new(2024, 4, 1))
+    context "when the project date is confirmed and has changed" do
+      it "returns the two dates correctly" do
+        project = build(:conversion_project, significant_date: Date.new(2024, 5, 1), significant_date_provisional: false)
+        create(:date_history, project: project, previous_date: Date.new(2024, 9, 1), revised_date: Date.new(2024, 5, 1))
 
-          expect(helper.confirmed_date_original_date(project)).to eq("Apr 2024 (Jan 2024)")
+        expect(helper.confirmed_date_original_date(project)).to eq("May 2024 (Sep 2024)")
+      end
+    end
+
+    context "when the project date is confirmed and has changed over time" do
+      it "returns the two dates correctly" do
+        project = build(:conversion_project, significant_date: Date.new(2023, 7, 1), significant_date_provisional: false)
+
+        _provisional_date = create(
+          :date_history,
+          project: project,
+          previous_date: Date.new(2023, 2, 1),
+          revised_date: Date.new(2023, 5, 1),
+          created_at: Date.new(2023, 1, 1)
+        )
+        _first_revision = create(
+          :date_history,
+          project: project,
+          previous_date: Date.new(2023, 5, 1),
+          revised_date: Date.new(2023, 8, 1),
+          created_at: Date.new(2023, 4, 1)
+        )
+        _second_revision = create(
+          :date_history,
+          project: project,
+          previous_date: Date.new(2023, 8, 1),
+          revised_date: Date.new(2023, 7, 1),
+          created_at: Date.new(2023, 6, 1)
+        )
+
+        expect(helper.confirmed_date_original_date(project)).to eq("Jul 2023 (Feb 2023)")
+      end
+    end
+
+    context "when the project's significant date is confirmed" do
+      context "and unexpectedly has no date history" do
+        it "returns the two dates correctly" do
+          project = build(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: false)
+
+          expect(helper.confirmed_date_original_date(project)).to eq("Jan 2024 (Jan 2024)")
         end
       end
     end
