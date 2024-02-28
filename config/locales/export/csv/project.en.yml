@@ -136,6 +136,7 @@ en:
             sponsored: sponsored
           unconfirmed: unconfirmed
           confirmed: confirmed
+          unassigned: unassigned
           not_applicable: not applicable
           "yes": "yes"
           "no": "no"

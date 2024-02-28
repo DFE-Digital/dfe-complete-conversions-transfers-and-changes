@@ -134,10 +134,14 @@ class Export::Csv::ProjectPresenter
   end
 
   def assigned_to_name
+    return I18n.t("export.csv.project.values.unassigned") unless @project.assigned_to.present?
+
     @project.assigned_to.full_name
   end
 
   def assigned_to_email
+    return I18n.t("export.csv.project.values.unassigned") unless @project.assigned_to.present?
+
     @project.assigned_to.email
   end
 

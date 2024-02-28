@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the Confirmed/Original date column values are now displayed correctly, with
   the currently confirmed date and the original provisional date shown as
   available
+- unassigned projects can now be rendered as csv
 
 ## [Release-53][release-53]
 
