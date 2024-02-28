@@ -15,11 +15,17 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "simplecov"
+require "simplecov_json_formatter"
+
 SimpleCov.minimum_coverage 100
 unless ENV.fetch("NO_COVERAGE", false) == "true"
   SimpleCov.start "rails" do
     add_filter "lib/generators/"
     add_filter "app/forms/conversion/task/funding_agreement_contact_task_form.rb"
+    formatter SimpleCov::Formatter::MultiFormatter.new([
+      SimpleCov::Formatter::JSONFormatter,
+      SimpleCov::Formatter::HTMLFormatter
+    ])
   end
 end
 

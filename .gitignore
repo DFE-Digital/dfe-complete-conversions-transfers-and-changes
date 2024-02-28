@@ -80,7 +80,7 @@ backend.vars
 /vendor/bundle/
 
 ## Temporary files
-/coverage/
+/coverage/*
 /log/
 tmp/
 
