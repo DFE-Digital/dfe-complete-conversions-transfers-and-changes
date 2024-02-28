@@ -291,6 +291,50 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.risk_protection_arrangement).to eql "unconfirmed"
   end
 
+  describe "#assigned_to_name" do
+    context "when the project is assigned to a user" do
+      it "returns the name of the user the project is assigned to" do
+        user = double(User, full_name: "Assigned User")
+        project = double(Conversion::Project, assigned_to: user)
+
+        presenter = described_class.new(project)
+
+        expect(presenter.assigned_to_name).to eql "Assigned User"
+      end
+    end
+    context "when the project is unassigned" do
+      it "returns 'unassigned'" do
+        project = double(Conversion::Project, assigned_to: nil)
+
+        presenter = described_class.new(project)
+
+        expect(presenter.assigned_to_name).to eql "unassigned"
+      end
+    end
+  end
+
+  describe "#assigned_to_email" do
+    context "when the project is assigned to a user" do
+      it "returns the email address of the user the project is assigned to" do
+        user = double(User, email: "assigned.user@education.gov.uk")
+        project = double(Conversion::Project, assigned_to: user)
+
+        presenter = described_class.new(project)
+
+        expect(presenter.assigned_to_email).to eql "assigned.user@education.gov.uk"
+      end
+    end
+    context "when the project is unassigned" do
+      it "returns 'unassigned'" do
+        project = double(Conversion::Project, assigned_to: nil)
+
+        presenter = described_class.new(project)
+
+        expect(presenter.assigned_to_email).to eql "unassigned"
+      end
+    end
+  end
+
   it "presents the assigned to name" do
     user = double(User, full_name: "Assigned User")
     project = double(Conversion::Project, assigned_to: user)
