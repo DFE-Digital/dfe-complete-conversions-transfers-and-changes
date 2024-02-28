@@ -12,17 +12,17 @@ class Export::Csv::ProjectPresenter
   end
 
   def reception_to_six_years
-    return "Not applicable" if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
     @project.tasks_data.proposed_capacity_of_the_academy_reception_to_six_years
   end
 
   def seven_to_eleven_years
-    return "Not applicable" if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
     @project.tasks_data.proposed_capacity_of_the_academy_seven_to_eleven_years
   end
 
   def twelve_or_above_years
-    return "Not applicable" if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.proposed_capacity_of_the_academy_not_applicable
     @project.tasks_data.proposed_capacity_of_the_academy_twelve_or_above_years
   end
 
