@@ -12,6 +12,10 @@ RSpec.feature "Users can view a project" do
   scenario "they can view a summary of the project details" do
     visit project_path(project)
 
+    within(".govuk-caption-l .govuk-tag--purple") do
+      expect(page).to have_content("Conversion")
+    end
+
     within("#project-summary") do
       expect(page).to have_content(project.incoming_trust.name)
       expect(page).to have_content(project.conversion_date.to_formatted_s(:govuk))
@@ -20,6 +24,18 @@ RSpec.feature "Users can view a project" do
       expect(page).to have_content(project.establishment.region_name)
       expect(page).to have_link(I18n.t("project.summary.school_sharepoint_link.title"), href: project.establishment_sharepoint_link)
       expect(page).to have_link(I18n.t("project.summary.trust_sharepoint_link.title"), href: project.incoming_trust_sharepoint_link)
+    end
+  end
+
+  context "when the project is a Form a MAT conversion" do
+    let(:project) { create(:conversion_project, caseworker: user, incoming_trust_ukprn: nil, new_trust_name: "The New Trust", new_trust_reference_number: "TR12345") }
+
+    scenario "they can see a Form a MAT label" do
+      visit project_path(project)
+
+      within(".govuk-caption-l .govuk-tag--pink") do
+        expect(page).to have_content("Form a MAT")
+      end
     end
   end
 end
