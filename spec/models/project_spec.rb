@@ -196,55 +196,67 @@ RSpec.describe Project, type: :model do
 
   describe "#incoming_trust" do
     let(:urn) { 1234567 }
-    let(:ukprn) { 10061021 }
     let(:trust) { build(:academies_api_trust) }
 
-    subject { described_class.new(incoming_trust_ukprn: ukprn) }
+    context "when the project is NOT form a MAT" do
+      let(:ukprn) { 10061021 }
+      subject { described_class.new(incoming_trust_ukprn: ukprn) }
 
-    context "when the API returns a successful response" do
-      before { mock_successful_api_trust_response(ukprn: ukprn, trust: trust) }
+      context "when the API returns a successful response" do
+        before { mock_successful_api_trust_response(ukprn: ukprn, trust: trust) }
 
-      it "retreives conversion_project data from the Academies API" do
-        expect(subject.incoming_trust).to eq trust
+        it "retreives conversion_project data from the Academies API" do
+          expect(subject.incoming_trust).to eq trust
+        end
+
+        it "caches the response" do
+          academies_api_client = double(Api::AcademiesApi::Client, get_trust: Api::AcademiesApi::Client::Result.new(double, nil))
+          allow(Api::AcademiesApi::Client).to receive(:new).and_return(academies_api_client)
+          project = described_class.new(urn: urn, incoming_trust_ukprn: ukprn)
+
+          project.incoming_trust
+          project.incoming_trust
+
+          expect(academies_api_client).to have_received(:get_trust).with(ukprn).once
+        end
       end
 
-      it "caches the response" do
-        academies_api_client = double(Api::AcademiesApi::Client, get_trust: Api::AcademiesApi::Client::Result.new(double, nil))
-        allow(Api::AcademiesApi::Client).to receive(:new).and_return(academies_api_client)
-        project = described_class.new(urn: urn, incoming_trust_ukprn: ukprn)
+      context "when the Academies API client returns a #{Api::AcademiesApi::Client::NotFoundError}" do
+        let(:error_message) { "Could not find trust for UKPRN 10061021" }
+        let(:error) { Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(error_message)) }
 
-        project.incoming_trust
-        project.incoming_trust
+        before do
+          allow_any_instance_of(Api::AcademiesApi::Client).to \
+            receive(:get_trust).with(ukprn) { error }
+        end
 
-        expect(academies_api_client).to have_received(:get_trust).with(ukprn).once
+        it "raises the error" do
+          expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
+        end
+      end
+
+      context "when the Academies API client returns a #{Api::AcademiesApi::Client::Error}" do
+        let(:error_message) { "There was an error connecting to the Academies API, could not fetch trust with UKPRN 10061021" }
+        let(:error) { Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::Error.new(error_message)) }
+
+        before do
+          allow_any_instance_of(Api::AcademiesApi::Client).to \
+            receive(:get_trust).with(ukprn) { error }
+        end
+
+        it "raises the error" do
+          expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::Error, error_message)
+        end
       end
     end
 
-    context "when the Academies API client returns a #{Api::AcademiesApi::Client::NotFoundError}" do
-      let(:error_message) { "Could not find trust for UKPRN 10061021" }
-      let(:error) { Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(error_message)) }
+    context "when the project is form a MAT" do
+      subject { described_class.new(incoming_trust_ukprn: nil, new_trust_reference_number: "TR12345", new_trust_name: "The New Trust") }
 
-      before do
-        allow_any_instance_of(Api::AcademiesApi::Client).to \
-          receive(:get_trust).with(ukprn) { error }
-      end
-
-      it "raises the error" do
-        expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
-      end
-    end
-
-    context "when the Academies API client returns a #{Api::AcademiesApi::Client::Error}" do
-      let(:error_message) { "There was an error connecting to the Academies API, could not fetch trust with UKPRN 10061021" }
-      let(:error) { Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::Error.new(error_message)) }
-
-      before do
-        allow_any_instance_of(Api::AcademiesApi::Client).to \
-          receive(:get_trust).with(ukprn) { error }
-      end
-
-      it "raises the error" do
-        expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::Error, error_message)
+      it "builds an object with the new trust UKPRN and name" do
+        expect(subject.incoming_trust).to be_a(Api::AcademiesApi::Trust)
+        expect(subject.incoming_trust.name).to eq "The New Trust"
+        expect(subject.incoming_trust.group_identifier).to eq "TR12345"
       end
     end
   end
