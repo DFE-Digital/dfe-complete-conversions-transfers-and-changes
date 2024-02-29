@@ -52,7 +52,7 @@ RUN ./configure --prefix=/usr/local --with-tdsver=7.3
 RUN make
 RUN make install
 
-# Intstall Geckodriver
+# Install Geckodriver
 #
 # default Geckodriver version
 ARG gecko_driver_version=0.32.0
