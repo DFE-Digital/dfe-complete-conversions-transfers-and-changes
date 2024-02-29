@@ -38,9 +38,11 @@ jobs:
           INPUT=${{ github.event.inputs.environment }}
           ENVIRONMENT=${INPUT:-"development"}
           CHECKED_OUT_SHA="$(git log -1 '--format=format:%H')"
+          TIME="$(date)"
           echo "environment=${ENVIRONMENT,,}" >> $GITHUB_OUTPUT
           echo "branch=$GIT_BRANCH" >> $GITHUB_OUTPUT
           echo "checked-out-sha=${CHECKED_OUT_SHA}" >> $GITHUB_OUTPUT
+          echo "date=${TIME}" >> $GITHUB_OUTPUT
 
   build-and-push-image:
     name: Build and push to ACR
@@ -70,6 +72,8 @@ jobs:
           file: ./Dockerfile
           build-args: |
             RAILS_ENV=development
+            CURRENT_GIT_SHA="${{ needs.set-env.outputs.checked-out-sha }}"
+            TIME_OF_BUILD="${{ needs.set-env.outputs.date }}"
           tags: |
             ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:${{ needs.set-env.outputs.branch }}
             ${{ secrets.AZURE_ACR_URL }}/${{ env.DOCKER_IMAGE }}:sha-${{ needs.set-env.outputs.checked-out-sha }}
