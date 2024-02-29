@@ -84,7 +84,12 @@ class Project < ApplicationRecord
   end
 
   def incoming_trust
+    return new_trust_object if form_a_mat?
     @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
+  end
+
+  def new_trust_object
+    Api::AcademiesApi::Trust.new.from_hash({giasData: {groupId: new_trust_reference_number, groupName: new_trust_name}})
   end
 
   def member_of_parliament

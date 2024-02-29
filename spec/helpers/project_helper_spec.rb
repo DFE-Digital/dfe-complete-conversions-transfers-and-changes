@@ -125,8 +125,8 @@ RSpec.describe ProjectHelper, type: :helper do
     context "when a ukprn is not provided" do
       let(:ukprn) { nil }
 
-      it "returns an argument error" do
-        expect { link_to_trust_on_gias(ukprn) }.to raise_error(ArgumentError)
+      it "returns an empty string (for Form a MAT projects)" do
+        expect(link_to_trust_on_gias(ukprn)).to eq("")
       end
     end
   end

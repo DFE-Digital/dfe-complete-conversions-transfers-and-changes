@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   "Form a MAT" or not.
 - the provisional date column is now included in the Grant management and
   finance unit csv export
+- Show a pink "Form a MAT" label on the project details page for Form a MAT
+  conversions
 
 ### Changed
 
