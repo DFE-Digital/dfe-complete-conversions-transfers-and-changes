@@ -35,7 +35,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_one(:funding_agreement_contact).required(false) }
     it { is_expected.to belong_to(:establishment_main_contact).optional(true) }
     it { is_expected.to belong_to(:incoming_trust_main_contact).optional(true) }
-    it { is_expected.to have_one(:outgoing_trust_main_contact).required(false) }
+    it { is_expected.to belong_to(:outgoing_trust_main_contact).optional(true) }
 
     describe "delete related entities" do
       context "when the project is deleted" do
@@ -107,6 +107,24 @@ RSpec.describe Project, type: :model do
         project.update(incoming_trust_main_contact: incoming_trust_main_contact)
 
         expect(project.incoming_trust_main_contact).to eql(incoming_trust_main_contact)
+      end
+    end
+
+    describe "#outgoing_trust_main_contact" do
+      it "returns nil when no association exists, but there are project contacts" do
+        project = create(:conversion_project)
+        create_list(:project_contact, 3, project: project)
+
+        expect(project.outgoing_trust_main_contact).to be_nil
+      end
+
+      it "returns the contact when one is set" do
+        project = create(:conversion_project)
+        outgoing_trust_main_contact = create(:project_contact)
+
+        project.update(outgoing_trust_main_contact: outgoing_trust_main_contact)
+
+        expect(project.outgoing_trust_main_contact).to eql(outgoing_trust_main_contact)
       end
     end
   end
