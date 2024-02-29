@@ -8,6 +8,7 @@ class Contact::Project < Contact
   has_one :main_contact_for_establishment, class_name: "::Project", inverse_of: :establishment_main_contact
   has_one :main_contact_for_incoming_trust, class_name: "::Project", inverse_of: :incoming_trust_main_contact
   has_one :main_contact_for_outgoing_trust, class_name: "::Project", inverse_of: :outgoing_trust_main_contact
+  has_one :main_contact_for_funding_agreement, class_name: "::Project", inverse_of: :funding_agreement_contact
 
   def establishment_main_contact
     project.establishment_main_contact_id == id
