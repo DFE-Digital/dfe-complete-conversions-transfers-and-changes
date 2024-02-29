@@ -3,6 +3,10 @@
 # ------------------------------------------------------------------------------
 FROM ruby:3.1.4-bullseye AS base
 
+ENV USER rails
+ENV UID 1000
+ENV GID 1000
+
 # setup env
 ENV APP_ROOT /srv/
 ENV APP_HOME ${APP_ROOT}app
@@ -12,6 +16,10 @@ ENV DEPS_HOME /deps
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-production}
 ENV NODE_ENV ${RAILS_ENV:-production}
+
+# Set up non-root user for running the service
+RUN groupadd --system --gid ${UID} ${USER} && \
+    useradd rails --uid ${UID} --gid ${UID} --create-home --shell /bin/bash
 
 # Install basics
 #
@@ -80,6 +88,8 @@ RUN apt-get clean && rm -rf /var/cache/apt/archives
 FROM base AS dependencies
 
 WORKDIR ${DEPS_HOME}
+RUN chown -R ${UID}:${GID} ${DEPS_HOME}
+USER ${UID}:${GID}
 
 # Install Ruby dependencies
 ENV BUNDLE_GEM_GROUPS ${RAILS_ENV}
@@ -107,6 +117,7 @@ RUN \
   else \
     yarn install --frozen-lockfile; \
   fi
+USER root
 # End
 
 # ------------------------------------------------------------------------------
@@ -129,6 +140,7 @@ COPY --from=dependencies ${DEPS_HOME}/node_modules ${APP_HOME}/node_modules
 # Copy app code (sorted by vague frequency of change for caching)
 RUN mkdir -p ${APP_HOME}/log
 RUN mkdir -p ${APP_HOME}/tmp
+RUN mkdir -p ${APP_HOME}/coverage
 
 COPY .irbrc ${APP_HOME}/.irbrc
 COPY config.ru ${APP_HOME}/config.ru
@@ -183,19 +195,8 @@ RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Run and own only the runtime files as a non-root user for security
-RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails ${APP_ROOT}
-
-# Ensure permissions are set correctly
-# Granting 755 permissions to folders and 644 to files, also ensures that some
-# special files inside the 'bin/' folder will receive special 755 permissions
-# (bundle, rails, rake and spring)
-RUN find ${APP_HOME} -type f -exec chmod 644 {} \;
-RUN find ${APP_HOME}/bin -type f -exec chmod 755 {} \;
-RUN find ${APP_HOME} -type d -exec chmod 755 {} \;
-
-USER 1000:1000
+RUN chown -R ${UID}:${GID} ${APP_ROOT}
+USER ${UID}:${GID}
 
 EXPOSE 3000
 
