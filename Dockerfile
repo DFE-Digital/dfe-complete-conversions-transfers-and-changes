@@ -160,7 +160,6 @@ RUN \
   bundle exec rake assets:precompile; \
   fi
 
-# TODO:
 # In order to expose the current git sha & time of build in the /healthcheck
 # endpoint, pass these values into your deployment script, for example:
 # --build-arg CURRENT_GIT_SHA="$GITHUB_SHA" \
