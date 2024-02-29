@@ -55,13 +55,13 @@ RUN make install
 # Install Geckodriver
 #
 # default Geckodriver version
-ARG gecko_driver_version=0.32.0
+ARG gecko_driver_version=0.34.0
 
 RUN \
   if [ "${RAILS_ENV}" = "test" ]; then \
-    wget https://github.com/mozilla/geckodriver/releases/download/v$gecko_driver_version/geckodriver-v$gecko_driver_version-linux64.tar.gz && \
-    tar -xvzf  geckodriver-v$gecko_driver_version-linux64.tar.gz && \
-    rm geckodriver-v$gecko_driver_version-linux64.tar.gz && \
+    wget https://github.com/mozilla/geckodriver/releases/download/v$gecko_driver_version/geckodriver-v${gecko_driver_version}-linux64.tar.gz && \
+    tar -xvzf  geckodriver-v${gecko_driver_version}-linux64.tar.gz && \
+    rm geckodriver-v${gecko_driver_version}-linux64.tar.gz && \
     chmod +x geckodriver && \
     mv geckodriver* /usr/local/bin; \
   fi
