@@ -4,7 +4,8 @@
 FROM ruby:3.1.4-bullseye AS base
 
 # setup env
-ENV APP_HOME /srv/app
+ENV APP_ROOT /srv/
+ENV APP_HOME ${APP_ROOT}app
 ENV DEPS_HOME /deps
 
 # RAILS_ENV defaults to production
@@ -180,7 +181,7 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails ${APP_HOME}
+    chown -R rails:rails ${APP_ROOT}
 USER 1000:1000
 
 EXPOSE 3000
