@@ -33,7 +33,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:tasks_data).required(true) }
     it { is_expected.to belong_to(:main_contact).optional(true) }
     it { is_expected.to have_one(:funding_agreement_contact).required(false) }
-    it { is_expected.to have_one(:establishment_main_contact).required(false) }
+    it { is_expected.to belong_to(:establishment_main_contact).optional(true) }
     it { is_expected.to have_one(:incoming_trust_main_contact).required(false) }
     it { is_expected.to have_one(:outgoing_trust_main_contact).required(false) }
 
@@ -70,6 +70,25 @@ RSpec.describe Project, type: :model do
         project.update(main_contact: main_contact)
 
         expect(project.main_contact).to eql(main_contact)
+      end
+    end
+
+    describe "#establishment_main_contact" do
+      it "returns nil when no association exists, but there are project contacts" do
+        project = create(:conversion_project)
+        create_list(:project_contact, 3, project: project)
+
+        expect(project.establishment_main_contact).to be_nil
+      end
+
+      it "returns the contact when one is set" do
+        project = create(:conversion_project)
+        create(:project_contact, project: project)
+        establishment_main_contact = create(:project_contact)
+
+        project.update(establishment_main_contact: establishment_main_contact)
+
+        expect(project.establishment_main_contact).to eql(establishment_main_contact)
       end
     end
   end
