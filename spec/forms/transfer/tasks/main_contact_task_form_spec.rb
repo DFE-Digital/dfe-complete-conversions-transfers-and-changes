@@ -14,7 +14,7 @@ RSpec.describe Transfer::Task::MainContactTaskForm do
       form.assign_attributes(main_contact_id: contact.id)
       form.save
 
-      expect(project.main_contact).to eq(contact)
+      expect(project.reload.main_contact).to eq(contact)
     end
   end
 end
