@@ -18,6 +18,14 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
     expect(subject.incoming_trust_ukprn).to eql "12345678"
   end
 
+  context "when there is no incoming_trust_ukprn" do
+    let(:project) { create(:conversion_project, incoming_trust_ukprn: nil, new_trust_name: "The New Trust", new_trust_reference_number: "TR12345") }
+
+    it "returns nil for the incoming_trust_ukprn" do
+      expect(subject.incoming_trust_ukprn).to be_nil
+    end
+  end
+
   it "presents the companies house number" do
     expect(subject.incoming_trust_companies_house_number).to eql "10768218"
   end
