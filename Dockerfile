@@ -43,13 +43,15 @@ RUN \
 
 # Install FreeTDS
 # https://github.com/rails-sqlserver/tiny_tds#install
-#
-RUN curl http://www.freetds.org/files/stable/freetds-1.1.24.tar.gz --output freetds-1.1.24.tar.gz
-RUN tar -xzf freetds-1.1.24.tar.gz
-WORKDIR freetds-1.1.24
-RUN ./configure --prefix=/usr/local --with-tdsver=7.3
-RUN make
-RUN make install
+# default FreeTDS version
+ARG freetds_version=1.1.24
+RUN \
+  curl --tlsv1.2 -sSf "http://www.freetds.org/files/stable/freetds-${freetds_version}.tar.gz" --output "freetds-${freetds_version}.tar.gz" && \
+  tar -xvzf "freetds-${freetds_version}.tar.gz" && \
+  rm "freetds-${freetds_version}.tar.gz" && \
+  cd "freetds-${freetds_version}" && \
+  ./configure --prefix=/usr/local --with-tdsver=7.3 && \
+  make && make install
 
 # Install Geckodriver
 #
