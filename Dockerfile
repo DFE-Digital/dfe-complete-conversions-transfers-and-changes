@@ -51,6 +51,8 @@ RUN \
     apt-get install --no-install-recommends -y firefox-esr shellcheck; \
   fi
 
+RUN apt-get clean && rm -rf /var/cache/apt/archives && rm -rf /var/cache/apt/lists
+
 # Install FreeTDS
 # https://github.com/rails-sqlserver/tiny_tds#install
 # default FreeTDS version
@@ -80,8 +82,6 @@ RUN \
     chmod +x geckodriver && \
     mv geckodriver* /usr/local/bin; \
   fi
-
-RUN apt-get clean && rm -rf /var/cache/apt/archives && rm -rf /var/cache/apt/lists
 
 # ------------------------------------------------------------------------------
 # Dependencies stage
