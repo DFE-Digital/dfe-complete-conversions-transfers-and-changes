@@ -95,9 +95,9 @@ COPY package.json ${DEPS_HOME}/package.json
 
 RUN \
   if [ "${RAILS_ENV}" = "production" ]; then \
-  yarn install --frozen-lockfile --production; \
+    yarn install --frozen-lockfile --production; \
   else \
-  yarn install --frozen-lockfile; \
+    yarn install --frozen-lockfile; \
   fi
 # End
 
@@ -156,8 +156,8 @@ RUN mkdir -p tmp/pids
 
 RUN \
   if [ "$RAILS_ENV" = "production" ]; then \
-  SECRET_KEY_BASE="secret" \
-  bundle exec rake assets:precompile; \
+    SECRET_KEY_BASE="secret" \
+    bundle exec rake assets:precompile; \
   fi
 
 # In order to expose the current git sha & time of build in the /healthcheck
