@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-54][release-54]
+
 ### Added
 
 - Add new Conversion "Form a MAT" creation form, as a first pass
@@ -1591,7 +1593,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-53...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-54...HEAD
+[release-54]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-53...release-54
 [release-53]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-52...release-53
 [release-52]:
