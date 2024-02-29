@@ -32,7 +32,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 # Setup Yarn installation
 # https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable
 #
-RUN curl --tlsv1.2 -sSf "https://dl.yarnpkg.com/debian/pubkey.gpg" | apt-key add -
+RUN curl --proto "=https" --tlsv1.2 -sSf "https://dl.yarnpkg.com/debian/pubkey.gpg" | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install --no-install-recommends -y nodejs yarn
 
@@ -47,7 +47,9 @@ RUN \
 # default FreeTDS version
 ARG freetds_version=1.1.24
 RUN \
-  curl --tlsv1.2 -sSf "http://www.freetds.org/files/stable/freetds-${freetds_version}.tar.gz" --output "freetds-${freetds_version}.tar.gz" && \
+  curl --proto "=https" --tlsv1.2 -sSf \
+    "https://www.freetds.org/files/stable/freetds-${freetds_version}.tar.gz" \
+    --output "freetds-${freetds_version}.tar.gz" && \
   tar -xvzf "freetds-${freetds_version}.tar.gz" && \
   rm "freetds-${freetds_version}.tar.gz" && \
   cd "freetds-${freetds_version}" && \
@@ -57,13 +59,15 @@ RUN \
 # Install Geckodriver
 # https://github.com/mozilla/geckodriver/releases
 # default Geckodriver version
-ARG gecko_driver_version=0.34.0
+ARG geckodriver_version=0.34.0
 
 RUN \
   if [ "${RAILS_ENV}" = "test" ]; then \
-    wget --secure-protocol=TLSv1_2 --max-redirect=1 "https://github.com/mozilla/geckodriver/releases/download/v${gecko_driver_version}/geckodriver-v${gecko_driver_version}-linux64.tar.gz" && \
-    tar -xvzf "geckodriver-v${gecko_driver_version}-linux64.tar.gz" && \
-    rm "geckodriver-v${gecko_driver_version}-linux64.tar.gz" && \
+    curl --proto "=https" --tlsv1.2 -sSf -L \
+      "https://github.com/mozilla/geckodriver/releases/download/v${geckodriver_version}/geckodriver-v${geckodriver_version}-linux64.tar.gz" \
+      --output "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
+    tar -xvzf "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
+    rm "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
     chmod +x geckodriver && \
     mv geckodriver* /usr/local/bin; \
   fi
