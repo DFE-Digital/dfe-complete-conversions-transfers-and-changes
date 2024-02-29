@@ -186,6 +186,15 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails ${APP_ROOT}
+
+# Ensure permissions are set correctly
+# Granting 755 permissions to folders and 644 to files, also ensures that some
+# special files inside the 'bin/' folder will receive special 755 permissions
+# (bundle, rails, rake and spring)
+RUN find ${APP_HOME} -type f -exec chmod 644 {} \;
+RUN find ${APP_HOME}/bin -type f -exec chmod 755 {} \;
+RUN find ${APP_HOME} -type d -exec chmod 755 {} \;
+
 USER 1000:1000
 
 EXPOSE 3000
