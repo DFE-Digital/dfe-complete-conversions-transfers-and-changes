@@ -80,7 +80,7 @@ RUN \
     mv geckodriver* /usr/local/bin; \
   fi
 
-RUN apt-get clean && rm -rf /var/cache/apt/archives
+RUN apt-get clean && rm -rf /var/cache/apt/archives && rm -rf /var/cache/apt/lists
 
 # ------------------------------------------------------------------------------
 # Dependencies stage
