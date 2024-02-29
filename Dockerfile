@@ -14,7 +14,7 @@ ENV NODE_ENV ${RAILS_ENV:-production}
 
 # Install basics
 #
-RUN apt-get update && apt-get install -y build-essential libpq-dev ca-certificates curl gnupg
+RUN apt-get update && apt-get install --no-install-recommends -y build-essential libpq-dev ca-certificates curl gnupg
 
 # Setup Node installation
 # https://github.com/nodesource/distributions#installation-instructions
@@ -34,12 +34,12 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# Install system dependancies
+RUN apt-get update && apt-get install --no-install-recommends -y nodejs yarn
+
+# Install 'test' dependencies
 RUN \
   if [ "${RAILS_ENV}" = "test" ]; then \
-    apt-get update && apt-get install -y nodejs yarn firefox-esr shellcheck; \
-  else \
-    apt-get update && apt-get install -y nodejs yarn; \
+    apt-get install --no-install-recommends -y firefox-esr shellcheck; \
   fi
 
 # Install FreeTDS
