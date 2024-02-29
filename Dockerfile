@@ -175,6 +175,12 @@ COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
+# Run and own only the runtime files as a non-root user for security
+RUN groupadd --system --gid 1000 rails && \
+    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+    chown -R rails:rails ${APP_HOME}
+USER 1000:1000
+
 EXPOSE 3000
 
 CMD ["bundle", "exec", "rails", "server"]
