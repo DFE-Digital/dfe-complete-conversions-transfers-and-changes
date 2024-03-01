@@ -603,6 +603,30 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.team_managing_the_project).to eql("London")
   end
 
+  it "presents the single converter conversion type" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+
+    presenter = described_class.new(project)
+    expect(presenter.conversion_type).to eq("single converter")
+  end
+
+  it "presents the form a MAT conversion type" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project, incoming_trust_ukprn: nil, new_trust_name: "New Trust", new_trust_reference_number: "TR12345")
+
+    presenter = described_class.new(project)
+    expect(presenter.conversion_type).to eq("form a MAT")
+  end
+
+  it "does not present a conversion type for transfer projects" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:transfer_project)
+
+    presenter = described_class.new(project)
+    expect(presenter.conversion_type).to be_nil
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 
