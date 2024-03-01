@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   management and By Month exports, and ensure Form a MAT projects are correctly
   displayed in the export
 
+### Changed
+
+- Academies due to transfer csv export now includes both provisional and
+  confirmed projects
+- Funding agreement letter csv export now includes both provisional and
+  confirmed projects
+- ESFA csv export now includes both the provisional and confirmed projects
+
 ## [Release-54][release-54]
 
 ### Added
