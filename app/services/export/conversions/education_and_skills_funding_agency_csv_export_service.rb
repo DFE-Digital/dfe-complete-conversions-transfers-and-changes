@@ -15,6 +15,7 @@ class Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService < Exp
     reception_to_six_years
     seven_to_eleven_years
     twelve_or_above_years
+    conversion_type
     incoming_trust_identifier
     incoming_trust_companies_house_number
     incoming_trust_name

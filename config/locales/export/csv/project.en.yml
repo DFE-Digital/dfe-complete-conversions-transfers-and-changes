@@ -125,6 +125,7 @@ en:
           school_address_county_with_academy_label: Academy county
           school_address_postcode_with_academy_label: Academy postcode
           school_name_with_academy_label: Academy name
+          conversion_type: Conversion type
         values:
           project_type:
             conversion: Conversion

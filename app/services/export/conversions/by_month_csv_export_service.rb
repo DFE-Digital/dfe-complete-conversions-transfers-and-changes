@@ -29,6 +29,7 @@ class Export::Conversions::ByMonthCsvExportService < Export::CsvExportService
     school_address_county
     school_address_postcode
     school_sharepoint_folder
+    conversion_type
     incoming_trust_ukprn
     incoming_trust_identifier
     incoming_trust_companies_house_number

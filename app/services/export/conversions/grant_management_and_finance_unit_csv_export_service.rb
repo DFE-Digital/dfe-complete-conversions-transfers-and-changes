@@ -6,6 +6,7 @@ class Export::Conversions::GrantManagementAndFinanceUnitCsvExportService < Expor
     school_phase
     local_authority_name
     region
+    conversion_type
     incoming_trust_name
     incoming_trust_identifier
     advisory_board_date
