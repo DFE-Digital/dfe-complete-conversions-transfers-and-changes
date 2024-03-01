@@ -14,7 +14,7 @@ RSpec.describe Conversion::Task::FundingAgreementContactTaskForm do
       form.assign_attributes(funding_agreement_contact_id: contact.id)
       form.save
 
-      expect(project.funding_agreement_contact).to eq(contact)
+      expect(project.reload.funding_agreement_contact).to eq(contact)
     end
   end
 end
