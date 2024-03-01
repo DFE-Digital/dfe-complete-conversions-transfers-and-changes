@@ -613,7 +613,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
   it "presents the form a MAT conversion type" do
     mock_successful_api_response_to_create_any_project
-    project = create(:conversion_project, incoming_trust_ukprn: nil, new_trust_name: "New Trust", new_trust_reference_number: "TR12345")
+    project = create(:conversion_project, :form_a_mat)
 
     presenter = described_class.new(project)
     expect(presenter.conversion_type).to eq("form a MAT")

@@ -184,7 +184,7 @@ RSpec.describe Project, type: :model do
 
       context "when the project has a new_trust_reference_number" do
         it "does not validate the present of the ukprn" do
-          project = build(:conversion_project, incoming_trust_ukprn: nil, new_trust_reference_number: "TR01234")
+          project = build(:conversion_project, :form_a_mat)
           expect(project).to be_valid
         end
       end
@@ -219,7 +219,7 @@ RSpec.describe Project, type: :model do
     describe "#new_trust_reference_number" do
       context "when the new trust reference number is present" do
         it "validates the format of the new trust reference number" do
-          project = build(:conversion_project, new_trust_reference_number: "TR01234", incoming_trust_ukprn: nil)
+          project = build(:conversion_project, :form_a_mat)
           expect(project).to be_valid
 
           project = build(:conversion_project, new_trust_reference_number: "012345", incoming_trust_ukprn: nil)
