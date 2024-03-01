@@ -19,6 +19,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Funding agreement letter csv export now includes both provisional and
   confirmed projects
 - ESFA csv export now includes both the provisional and confirmed projects
+- Academies due to transfer csv export now includes a provisional date column
+- Funding agreement letter csv export now includes a provisional date column
+- ESFA csv export now includes a provisional date column
 
 ## [Release-54][release-54]
 

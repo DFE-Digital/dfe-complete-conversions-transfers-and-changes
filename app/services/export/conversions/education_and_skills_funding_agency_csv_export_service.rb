@@ -19,6 +19,7 @@ class Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService < Exp
     incoming_trust_identifier
     incoming_trust_companies_house_number
     incoming_trust_name
+    provisional_date
     conversion_date
     all_conditions_met
     risk_protection_arrangement
