@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Academies due to transfer csv export now includes a provisional date column
 - Funding agreement letter csv export now includes a provisional date column
 - ESFA csv export now includes a provisional date column
+- when the grant payment certificate has not been received, 'unconfirmed' is
+ shown in the csv exports that include it, rather than a empty cell
 
 ## [Release-54][release-54]
 

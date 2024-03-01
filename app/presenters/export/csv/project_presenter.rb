@@ -216,7 +216,9 @@ class Export::Csv::ProjectPresenter
   end
 
   def completed_grant_payment_certificate_received
-    @project.tasks_data.receive_grant_payment_certificate_date_received.to_fs(:csv) if @project.tasks_data.receive_grant_payment_certificate_date_received.present?
+    return I18n.t("export.csv.project.values.unconfirmed") unless @project.tasks_data.receive_grant_payment_certificate_date_received.present?
+
+    @project.tasks_data.receive_grant_payment_certificate_date_received.to_fs(:csv)
   end
 
   def solicitor_contact_name
