@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the Update ESFA data in KIM task no longer mentions KIM, asking users to add a
   task note instead.
+- the Add notes for ESFA task can only be completed by providing at least one
+  task note and checking the task off.
 
 ## [Release-54][release-54]
 
