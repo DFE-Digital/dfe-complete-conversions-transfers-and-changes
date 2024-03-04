@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   displayed in the export
 - the Grant management and Finance Unit conversion csv export now includes the
   grant payment certificate has not been received column
+- Add maintenance banner for Wednesday 6th March 2024 maintenance
 
 ### Changed
 
