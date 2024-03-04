@@ -31,6 +31,7 @@ class Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService < Exp
     main_contact_name
     main_contact_email
     main_contact_title
+    esfa_notes
   ]
 
   def initialize(projects)

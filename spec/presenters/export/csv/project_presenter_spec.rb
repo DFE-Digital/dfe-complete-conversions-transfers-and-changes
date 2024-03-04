@@ -646,4 +646,49 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
     expect(presenter.academy_order_type).to eql "not applicable"
   end
+
+  describe "#esfa_notes" do
+    context "when there are no notes" do
+      it "returns 'none'" do
+        project = build(:conversion_project)
+        project_note = build(:note, body: "This is a project note")
+        allow(project).to receive(:notes).and_return([project_note])
+
+        presenter = described_class.new(project)
+
+        expect(presenter.esfa_notes).to eql("none")
+      end
+    end
+
+    context "when there is one note" do
+      it "returns the note body" do
+        project = build(:conversion_project)
+        project_note = build(:note, body: "This is a project note")
+        note = build(:note, task_identifier: "update_esfa")
+
+        allow(project).to receive(:notes).and_return([project_note, note])
+
+        presenter = described_class.new(project)
+
+        expect(presenter.esfa_notes).to eql(note.body)
+      end
+    end
+
+    context "when there is more than one note" do
+      it "returns the bodies of the notes in a single value" do
+        project = build(:conversion_project)
+        project_note = build(:note, body: "This is a project note")
+        note = build(:note, task_identifier: "update_esfa")
+        another_note = build(:note, body: "This is a note to give to the ESFA", task_identifier: "update_esfa")
+
+        allow(project).to receive(:notes).and_return([note, project_note, another_note])
+
+        presenter = described_class.new(project)
+
+        expect(presenter.esfa_notes).to include(note.body)
+        expect(presenter.esfa_notes).to include(another_note.body)
+        expect(presenter.esfa_notes).not_to include(project_note.body)
+      end
+    end
+  end
 end

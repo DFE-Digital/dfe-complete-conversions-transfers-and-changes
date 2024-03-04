@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ESFA csv export now includes a provisional date column
 - when the grant payment certificate has not been received, 'unconfirmed' is
   shown in the csv exports that include it, rather than a empty cell
+- The ESFA csv export now includes the 'Add notes for ESFA' notes.
 
 ### Changed
 

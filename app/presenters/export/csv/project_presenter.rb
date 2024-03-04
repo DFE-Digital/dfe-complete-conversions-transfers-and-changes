@@ -254,4 +254,14 @@ class Export::Csv::ProjectPresenter
     return I18n.t("export.csv.project.values.form_a_mat") if @project.form_a_mat?
     I18n.t("export.csv.project.values.single_converter")
   end
+
+  def esfa_notes
+    notes = @project.notes.select do |note|
+      note.task_identifier.eql?("update_esfa")
+    end
+
+    return I18n.t("export.csv.project.values.none") unless notes.any?
+
+    notes.map(&:body).join("\n\n")
+  end
 end
