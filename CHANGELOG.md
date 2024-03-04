@@ -12,6 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   management and By Month exports, and ensure Form a MAT projects are correctly
   displayed in the export
 
+### Changed
+
+- the Update ESFA data in KIM task no longer mentions KIM, asking users to add a
+  task note instead.
+
 ## [Release-54][release-54]
 
 ### Added

@@ -2,12 +2,14 @@ en:
   conversion:
     task:
       update_esfa:
-        title: Update ESFA data in KIM
+        title: Add notes for ESFA
         hint:
           html: <p>Carry out final checks and update project information if necessary so the ESFA (Education and Skills Funding Agency) can issue the funding when the project is handed over.</p>
 
         update:
-          title: Update any ESFA fields in KIM and add notes if necessary
+          title: Add notes to this task
+          hint:
+            html: <p>Notes you add here will appear in the ESFA export.</p>
           guidance_link: Things you may want to write notes about
           guidance:
             html:
