@@ -13,6 +13,7 @@ class Export::Conversions::GrantManagementAndFinanceUnitCsvExportService < Expor
     provisional_date
     conversion_date
     academy_order_type
+    completed_grant_payment_certificate_received
     two_requires_improvement
     sponsored_grant_type
     assigned_to_name

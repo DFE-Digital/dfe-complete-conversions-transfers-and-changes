@@ -532,14 +532,26 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.advisory_board_conditions).to eql("These are the conditions.")
   end
 
-  it "presents the completed grant payment certificate received" do
-    mock_successful_api_response_to_create_any_project
-    tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1))
-    project = build(:conversion_project, tasks_data: tasks_data)
+  describe "#completed_grant_payment_certificate_received" do
+    it "presents the completed grant payment certificate received" do
+      mock_successful_api_response_to_create_any_project
+      tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1))
+      project = build(:conversion_project, tasks_data: tasks_data)
 
-    presenter = described_class.new(project)
+      presenter = described_class.new(project)
 
-    expect(presenter.completed_grant_payment_certificate_received).to eql("2024-01-01")
+      expect(presenter.completed_grant_payment_certificate_received).to eql("2024-01-01")
+    end
+
+    it "presents unconfirmed when there is no date" do
+      mock_successful_api_response_to_create_any_project
+      tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: nil)
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.completed_grant_payment_certificate_received).to eql("unconfirmed")
+    end
   end
 
   it "presents the solicitor contact name" do
