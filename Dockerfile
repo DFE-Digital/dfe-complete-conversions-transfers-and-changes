@@ -3,8 +3,13 @@
 # ------------------------------------------------------------------------------
 FROM ruby:3.1.4-bullseye AS base
 
+ENV USER rails
+ENV UID 1000
+ENV GID 1000
+
 # setup env
-ENV APP_HOME /srv/app
+ENV APP_ROOT /srv/
+ENV APP_HOME ${APP_ROOT}app
 ENV DEPS_HOME /deps
 
 # RAILS_ENV defaults to production
@@ -12,56 +17,68 @@ ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV:-production}
 ENV NODE_ENV ${RAILS_ENV:-production}
 
+# Set up non-root user for running the service
+RUN groupadd --system --gid ${UID} ${USER} && \
+    useradd rails --uid ${UID} --gid ${UID} --create-home --shell /bin/bash
+
 # Install basics
 #
-RUN apt-get update && apt-get install -y build-essential libpq-dev ca-certificates curl gnupg
+RUN apt-get update && apt-get install --no-install-recommends -y build-essential libpq-dev ca-certificates curl gnupg
 
 # Setup Node installation
 # https://github.com/nodesource/distributions#installation-instructions
 #
-# depdends on ca-certificates, curl and gnupg
+# depends on ca-certificates, curl and gnupg
 #
 ENV NODE_MAJOR=18
 
-RUN mkdir -p /etc/apt/keyrings/ && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+RUN mkdir -p /etc/apt/keyrings/ && curl --tlsv1.2 -sSf "https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key" \
+  | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 
 RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" \
-| tee /etc/apt/sources.list.d/nodesource.list
+  | tee /etc/apt/sources.list.d/nodesource.list
 
 # Setup Yarn installation
 # https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable
 #
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN curl --proto "=https" --tlsv1.2 -sSf "https://dl.yarnpkg.com/debian/pubkey.gpg" | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install --no-install-recommends -y nodejs yarn
 
-# Install system dependancies
+# Install 'test' dependencies
 RUN \
   if [ "${RAILS_ENV}" = "test" ]; then \
-    apt-get update && apt-get install -y nodejs yarn firefox-esr shellcheck; \
-  else \
-    apt-get update && apt-get install -y nodejs yarn; \
+    apt-get install --no-install-recommends -y firefox-esr shellcheck; \
   fi
+
+RUN apt-get clean && rm -rf /var/cache/apt/archives && rm -rf /var/cache/apt/lists
 
 # Install FreeTDS
 # https://github.com/rails-sqlserver/tiny_tds#install
-#
-RUN curl http://www.freetds.org/files/stable/freetds-1.1.24.tar.gz --output freetds-1.1.24.tar.gz
-RUN tar -xzf freetds-1.1.24.tar.gz
-WORKDIR freetds-1.1.24
-RUN ./configure --prefix=/usr/local --with-tdsver=7.3
-RUN make
-RUN make install
+# default FreeTDS version
+ARG freetds_version=1.1.24
+RUN \
+  curl --proto "=https" --tlsv1.2 -sSf \
+    "https://www.freetds.org/files/stable/freetds-${freetds_version}.tar.gz" \
+    --output "freetds-${freetds_version}.tar.gz" && \
+  tar -xvzf "freetds-${freetds_version}.tar.gz" && \
+  rm "freetds-${freetds_version}.tar.gz" && \
+  cd "freetds-${freetds_version}" && \
+  ./configure --prefix=/usr/local --with-tdsver=7.3 && \
+  make && make install
 
-# Intstall Geckodriver
-#
+# Install Geckodriver
+# https://github.com/mozilla/geckodriver/releases
 # default Geckodriver version
-ARG gecko_driver_version=0.32.0
+ARG geckodriver_version=0.34.0
 
 RUN \
   if [ "${RAILS_ENV}" = "test" ]; then \
-    wget https://github.com/mozilla/geckodriver/releases/download/v$gecko_driver_version/geckodriver-v$gecko_driver_version-linux64.tar.gz && \
-    tar -xvzf  geckodriver-v$gecko_driver_version-linux64.tar.gz && \
-    rm geckodriver-v$gecko_driver_version-linux64.tar.gz && \
+    curl --proto "=https" --tlsv1.2 -sSf -L \
+      "https://github.com/mozilla/geckodriver/releases/download/v${geckodriver_version}/geckodriver-v${geckodriver_version}-linux64.tar.gz" \
+      --output "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
+    tar -xvzf "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
+    rm "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
     chmod +x geckodriver && \
     mv geckodriver* /usr/local/bin; \
   fi
@@ -72,6 +89,8 @@ RUN \
 FROM base AS dependencies
 
 WORKDIR ${DEPS_HOME}
+RUN chown -R ${UID}:${GID} ${DEPS_HOME}
+USER ${UID}:${GID}
 
 # Install Ruby dependencies
 ENV BUNDLE_GEM_GROUPS ${RAILS_ENV}
@@ -82,7 +101,7 @@ COPY Gemfile.lock ${DEPS_HOME}/Gemfile.lock
 # We pin versions because Docker will cache this layer anyway, the only way to update
 # is to modify these versions
 RUN gem update --system 3.3.26
-RUN gem install bundler --version 2.3.26
+RUN gem install bundler --version 2.3.23
 RUN bundle config set frozen "true"
 RUN bundle config set no-cache "true"
 RUN bundle config set with "${BUNDLE_GEM_GROUPS}"
@@ -95,9 +114,9 @@ COPY package.json ${DEPS_HOME}/package.json
 
 RUN \
   if [ "${RAILS_ENV}" = "production" ]; then \
-  yarn install --frozen-lockfile --production; \
+    yarn install --frozen-lockfile --production; \
   else \
-  yarn install --frozen-lockfile; \
+    yarn install --frozen-lockfile; \
   fi
 # End
 
@@ -121,6 +140,7 @@ COPY --from=dependencies ${DEPS_HOME}/node_modules ${APP_HOME}/node_modules
 # Copy app code (sorted by vague frequency of change for caching)
 RUN mkdir -p ${APP_HOME}/log
 RUN mkdir -p ${APP_HOME}/tmp
+RUN mkdir -p ${APP_HOME}/coverage
 
 COPY .irbrc ${APP_HOME}/.irbrc
 COPY config.ru ${APP_HOME}/config.ru
@@ -156,11 +176,10 @@ RUN mkdir -p tmp/pids
 
 RUN \
   if [ "$RAILS_ENV" = "production" ]; then \
-  SECRET_KEY_BASE="secret" \
-  bundle exec rake assets:precompile; \
+    SECRET_KEY_BASE="secret" \
+    bundle exec rake assets:precompile; \
   fi
 
-# TODO:
 # In order to expose the current git sha & time of build in the /healthcheck
 # endpoint, pass these values into your deployment script, for example:
 # --build-arg CURRENT_GIT_SHA="$GITHUB_SHA" \
@@ -174,6 +193,10 @@ ENV TIME_OF_BUILD ${TIME_OF_BUILD}
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+# Run and own only the runtime files as a non-root user for security
+RUN chown -R ${UID}:${GID} ${APP_ROOT}
+USER ${UID}:${GID}
 
 EXPOSE 3000
 
