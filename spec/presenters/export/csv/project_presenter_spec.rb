@@ -385,7 +385,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
   it "handles a project without a main contact" do
     mock_successful_api_response_to_create_any_project
-    project = create(:conversion_project, main_contact: nil)
+    project = build(:conversion_project, main_contact: nil)
 
     presenter = described_class.new(project)
 
@@ -408,7 +408,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
       HOSTNAME: "www.complete.education.gov.uk"
     ) do
       mock_successful_api_response_to_create_any_project
-      project = create(:conversion_project)
+      project = build(:conversion_project)
 
       presenter = described_class.new(project)
 
@@ -515,7 +515,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   context "when there is no diocese contact" do
     it "returns nil" do
       mock_successful_api_response_to_create_any_project
-      project = create(:conversion_project)
+      project = build(:conversion_project)
 
       presenter = described_class.new(project)
 
@@ -535,7 +535,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   it "presents the completed grant payment certificate received" do
     mock_successful_api_response_to_create_any_project
     tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1))
-    project = create(:conversion_project, tasks_data: tasks_data)
+    project = build(:conversion_project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
@@ -565,7 +565,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   context "when there is no solicitor contact" do
     it "returns nil" do
       mock_successful_api_response_to_create_any_project
-      project = create(:conversion_project)
+      project = build(:conversion_project)
 
       presenter = described_class.new(project)
 
@@ -605,7 +605,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
   it "presents the single converter conversion type" do
     mock_successful_api_response_to_create_any_project
-    project = create(:conversion_project)
+    project = build(:conversion_project)
 
     presenter = described_class.new(project)
     expect(presenter.conversion_type).to eq("single converter")
@@ -613,7 +613,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
   it "presents the form a MAT conversion type" do
     mock_successful_api_response_to_create_any_project
-    project = create(:conversion_project, :form_a_mat)
+    project = build(:conversion_project, :form_a_mat)
 
     presenter = described_class.new(project)
     expect(presenter.conversion_type).to eq("form a MAT")
@@ -621,7 +621,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
   it "does not present a conversion type for transfer projects" do
     mock_successful_api_response_to_create_any_project
-    project = create(:transfer_project)
+    project = build(:transfer_project)
 
     presenter = described_class.new(project)
     expect(presenter.conversion_type).to be_nil
