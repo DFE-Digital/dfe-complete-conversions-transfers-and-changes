@@ -16,7 +16,7 @@ RSpec.feature "Users can complete conversion tasks" do
     land_questionnaire land_registry
     redact_and_send
     school_completed share_information single_worksheet
-    supplemental_funding_agreement update_esfa
+    supplemental_funding_agreement
   ]
 
   optional_tasks = %w[handover articles_of_association church_supplemental_agreement
@@ -33,6 +33,7 @@ RSpec.feature "Users can complete conversion tasks" do
     main_contact
     proposed_capacity_of_the_academy
     receive_grant_payment_certificate
+    update_esfa
   ]
 
   it "confirms we are checking all tasks" do
@@ -294,6 +295,25 @@ RSpec.feature "Users can complete conversion tasks" do
         expect(page).to have_content("DfE received the grant payment certificate on 1 January 2024.")
         expect(page).to_not have_content("Enter the date you received the grant payment certificate")
       end
+    end
+  end
+
+  describe "the update ESFA task" do
+    let(:project) { create(:conversion_project, assigned_to: user) }
+
+    scenario "they can compelte the task" do
+      visit project_tasks_path(project)
+      click_on "Add notes for ESFA"
+
+      click_on "Add a new task note"
+      fill_in "Enter note", with: "These are my handover notes for the ESFA"
+      click_on "Add note"
+
+      check "Add notes to this task"
+      click_on "Save and return"
+
+      task_status = find("#add-notes-for-esfa-status")
+      expect(task_status).to have_content("Completed")
     end
   end
 
