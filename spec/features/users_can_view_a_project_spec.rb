@@ -28,7 +28,7 @@ RSpec.feature "Users can view a project" do
   end
 
   context "when the project is a Form a MAT conversion" do
-    let(:project) { create(:conversion_project, caseworker: user, incoming_trust_ukprn: nil, new_trust_name: "The New Trust", new_trust_reference_number: "TR12345") }
+    let(:project) { create(:conversion_project, :form_a_mat, caseworker: user) }
 
     scenario "they can see a Form a MAT label" do
       visit project_path(project)

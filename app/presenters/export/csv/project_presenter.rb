@@ -246,4 +246,10 @@ class Export::Csv::ProjectPresenter
   def team_managing_the_project
     I18n.t("teams.#{@project.team}")
   end
+
+  def conversion_type
+    return if @project.type == "Transfer::Project"
+    return I18n.t("export.csv.project.values.form_a_mat") if @project.form_a_mat?
+    I18n.t("export.csv.project.values.single_converter")
+  end
 end

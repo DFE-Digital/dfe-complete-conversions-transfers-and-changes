@@ -38,5 +38,11 @@ FactoryBot.define do
     trait :sponsored do
       directive_academy_order { true }
     end
+
+    trait :form_a_mat do
+      incoming_trust_ukprn { nil }
+      new_trust_name { "The New Trust" }
+      new_trust_reference_number { "TR12345" }
+    end
   end
 end

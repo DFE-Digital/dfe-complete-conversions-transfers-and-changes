@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Show Conversion type (single converter/form a MAT) in the ESFA, Grant
+  management and By Month exports, and ensure Form a MAT projects are correctly
+  displayed in the export
+
 ## [Release-54][release-54]
 
 ### Added

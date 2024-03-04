@@ -14,16 +14,48 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
     expect(subject.incoming_trust_identifier).to eql "TR03819"
   end
 
+  context "when the project is a form a MAT project" do
+    let(:project) { create(:conversion_project, :form_a_mat) }
+
+    it "presents the identifier" do
+      expect(subject.incoming_trust_identifier).to eql "TR12345"
+    end
+  end
+
   it "presents the ukprn" do
     expect(subject.incoming_trust_ukprn).to eql "12345678"
+  end
+
+  context "when there is no incoming_trust_ukprn" do
+    let(:project) { create(:conversion_project, :form_a_mat) }
+
+    it "returns nil for the incoming_trust_ukprn" do
+      expect(subject.incoming_trust_ukprn).to be_nil
+    end
   end
 
   it "presents the companies house number" do
     expect(subject.incoming_trust_companies_house_number).to eql "10768218"
   end
 
+  context "when the project is a form a MAT project" do
+    let(:project) { create(:conversion_project, :form_a_mat) }
+
+    it "returns nil for the companies house number" do
+      expect(subject.incoming_trust_companies_house_number).to eq("")
+    end
+  end
+
   it "presents the name" do
     expect(subject.incoming_trust_name).to eql "The Grand Union Partnership"
+  end
+
+  context "when the project is a form a MAT project" do
+    let(:project) { create(:conversion_project, :form_a_mat, new_trust_name: "New Trust") }
+
+    it "returns the new trust name" do
+      expect(subject.incoming_trust_name).to eq("New Trust")
+    end
   end
 
   it "presents the school address" do
