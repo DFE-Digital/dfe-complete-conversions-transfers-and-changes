@@ -50,6 +50,7 @@ class Export::Conversions::FundingAgreementLettersCsvExporterService < Export::C
     academy_order_type
     two_requires_improvement
     sponsored_grant_type
+    provisional_date
     conversion_date
     assigned_to_name
     assigned_to_email

@@ -1,10 +1,12 @@
 require "rails_helper"
 
 RSpec.describe ProjectsForExportService do
+  before do
+    mock_academies_api_client_get_establishments_and_trusts
+  end
+
   describe "#risk_protection_arrangement_projects" do
     it "returns only conversion projects" do
-      mock_academies_api_client_get_establishments_and_trusts
-
       transfer_project = create(:transfer_project, transfer_date_provisional: false, transfer_date: Date.parse("2025-1-1"))
       conversion_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
 
@@ -14,21 +16,17 @@ RSpec.describe ProjectsForExportService do
       expect(projects_for_export).not_to include(transfer_project)
     end
 
-    it "returns only confirmed projects" do
-      mock_academies_api_client_get_establishments_and_trusts
-
+    it "returns both confirmed and provisional projects" do
       confirmed_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
-      unconfirmed_project = create(:conversion_project, conversion_date_provisional: true, conversion_date: Date.parse("2025-1-1"))
+      provisional_project = create(:conversion_project, conversion_date_provisional: true, conversion_date: Date.parse("2025-1-1"))
 
       projects_for_export = described_class.new.risk_protection_arrangement_projects(month: 1, year: 2025)
 
       expect(projects_for_export).to include(confirmed_project)
-      expect(projects_for_export).not_to include(unconfirmed_project)
+      expect(projects_for_export).to include(provisional_project)
     end
 
-    it "returns only projects opening on the supplied month and year" do
-      mock_academies_api_client_get_establishments_and_trusts
-
+    it "returns projects with a conversion date in the supplied month and year" do
       matching_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
       mismatching_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2026-2-1"))
 
@@ -39,8 +37,6 @@ RSpec.describe ProjectsForExportService do
     end
 
     it "prefetches entities" do
-      mock_academies_api_client_get_establishments_and_trusts
-
       create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
 
       projects_for_export = described_class.new.risk_protection_arrangement_projects(month: 1, year: 2025)
@@ -52,8 +48,6 @@ RSpec.describe ProjectsForExportService do
 
   describe "#grant_management_and_finance_unit_conversion_projects" do
     it "returns only conversion projects with an advisory board date of the supplied month and year" do
-      mock_academies_api_client_get_establishments_and_trusts
-
       matching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       mismatching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
 
@@ -78,8 +72,6 @@ RSpec.describe ProjectsForExportService do
 
   describe "#grant_management_and_finance_unit_transfer_projects" do
     it "returns only transfer projects with an advisory board date of the supplied month and year" do
-      mock_academies_api_client_get_establishments_and_trusts
-
       matching_project = create(:transfer_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       mismatching_project_1 = create(:conversion_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
       mismatching_project_2 = create(:transfer_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
@@ -91,8 +83,6 @@ RSpec.describe ProjectsForExportService do
     end
 
     it "includes both provisional and confirmed projects" do
-      mock_academies_api_client_get_establishments_and_trusts
-
       confirmed_project = create(:transfer_project, transfer_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       provisional_project = create(:transfer_project, transfer_date_provisional: true, advisory_board_date: Date.parse("2023-1-1"))
 
@@ -105,8 +95,6 @@ RSpec.describe ProjectsForExportService do
 
   describe "#transfer_by_month_projects" do
     it "returns only transfer projects transferring in the supplied month & year" do
-      mock_academies_api_client_get_establishments_and_trusts
-
       matching_project_1 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
       matching_project_2 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
       mismatching_project_1 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-2-1"))
@@ -116,6 +104,57 @@ RSpec.describe ProjectsForExportService do
 
       expect(projects_for_export).to include(matching_project_1, matching_project_2)
       expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
+    end
+
+    it "includes both provisional and confirmed projects" do
+      confirmed_project = create(:transfer_project, transfer_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+      provisional_project = create(:transfer_project, transfer_date_provisional: true, significant_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.transfer_by_month_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(confirmed_project)
+      expect(projects_for_export).to include(provisional_project)
+    end
+  end
+
+  describe "#funding_agreement_letters_projects" do
+    it "returns only conversion projects" do
+      transfer_project = create(:transfer_project, transfer_date_provisional: false, transfer_date: Date.parse("2025-1-1"))
+      conversion_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
+
+      projects_for_export = described_class.new.funding_agreement_letters_projects(month: 1, year: 2025)
+
+      expect(projects_for_export).to include(conversion_project)
+      expect(projects_for_export).not_to include(transfer_project)
+    end
+
+    it "returns both confirmed and provisional projects" do
+      confirmed_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
+      provisional_project = create(:conversion_project, conversion_date_provisional: true, conversion_date: Date.parse("2025-1-1"))
+
+      projects_for_export = described_class.new.funding_agreement_letters_projects(month: 1, year: 2025)
+
+      expect(projects_for_export).to include(confirmed_project)
+      expect(projects_for_export).to include(provisional_project)
+    end
+
+    it "returns projects with a conversion date in the supplied month and year" do
+      matching_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
+      mismatching_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2026-2-1"))
+
+      projects_for_export = described_class.new.funding_agreement_letters_projects(month: 1, year: 2025)
+
+      expect(projects_for_export).to include(matching_project)
+      expect(projects_for_export).not_to include(mismatching_project)
+    end
+
+    it "prefetches entities" do
+      create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
+
+      projects_for_export = described_class.new.funding_agreement_letters_projects(month: 1, year: 2025)
+
+      expect(projects_for_export.first.establishment).not_to be_nil
+      expect(projects_for_export.first.incoming_trust).not_to be_nil
     end
   end
 
