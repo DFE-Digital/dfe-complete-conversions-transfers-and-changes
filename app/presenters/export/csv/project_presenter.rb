@@ -264,4 +264,28 @@ class Export::Csv::ProjectPresenter
 
     notes.map(&:body).join("\n\n")
   end
+
+  def other_contact_name
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["other"].blank?
+
+    contact = contacts["other"].first
+    contact&.name
+  end
+
+  def other_contact_email
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["other"].blank?
+
+    contact = contacts["other"].first
+    contact&.email
+  end
+
+  def other_contact_role
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["other"].blank?
+
+    contact = contacts["other"].first
+    contact&.title
+  end
 end
