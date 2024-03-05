@@ -25,15 +25,11 @@ class ProjectPolicy
   end
 
   def check?
-    return false if @record.completed?
-
-    true
+    edit?
   end
 
   def update_academy_urn?
-    return false if @record.completed?
-
-    true
+    edit?
   end
 
   def new?

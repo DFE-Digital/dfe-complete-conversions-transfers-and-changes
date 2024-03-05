@@ -19,10 +19,7 @@ class ContactPolicy
   end
 
   def destroy?
-    return false if @project&.completed?
-    return false unless @user.has_role?
-
-    true
+    edit?
   end
 
   def confirm_destroy?
