@@ -71,6 +71,18 @@ module Export::Csv::IncomingTrustPresenterModule
     contact&.name
   end
 
+  def incoming_trust_main_contact_role
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["incoming_trust"].blank?
+
+    contact = if @project.incoming_trust_main_contact_id.present?
+      contacts["incoming_trust"].find { |c| c.id == @project.incoming_trust_main_contact_id }
+    else
+      contacts["incoming_trust"].first
+    end
+    contact&.title
+  end
+
   def incoming_trust_main_contact_email
     contacts = ContactsFetcherService.new.all_project_contacts(@project)
     return if contacts["incoming_trust"].blank?
