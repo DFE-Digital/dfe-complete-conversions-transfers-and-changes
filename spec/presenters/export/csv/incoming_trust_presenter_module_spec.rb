@@ -67,6 +67,32 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
     expect(subject.incoming_trust_address_postcode).to eql "MK13 0BQ"
   end
 
+  it "presents the main contact name" do
+    expect(subject.incoming_trust_main_contact_name).to eql "Jo Example"
+  end
+
+  it "presents the main contact email" do
+    expect(subject.incoming_trust_main_contact_email).to eql "jo@example.com"
+  end
+
+  context "when there is no main contact ID" do
+    before do
+      allow(project).to receive(:incoming_trust_main_contact_id).and_return(nil)
+    end
+
+    it "presents the next incoming trust contact name" do
+      expect(subject.incoming_trust_main_contact_name).to eql "Jo Example"
+    end
+
+    it "presents the next incoming trust contact email" do
+      expect(subject.incoming_trust_main_contact_email).to eql "jo@example.com"
+    end
+  end
+
+  it "presents the sharepoint link" do
+    expect(subject.incoming_trust_sharepoint_link).to eql "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"
+  end
+
   def known_trust
     double(
       Api::AcademiesApi::Trust,
@@ -81,18 +107,6 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
       address_county: nil,
       address_postcode: "MK13 0BQ"
     )
-  end
-
-  it "presents the main contact name" do
-    expect(subject.incoming_trust_main_contact_name).to eql "Jo Example"
-  end
-
-  it "presents the main contact email" do
-    expect(subject.incoming_trust_main_contact_email).to eql "jo@example.com"
-  end
-
-  it "presents the sharepoint link" do
-    expect(subject.incoming_trust_sharepoint_link).to eql "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"
   end
 end
 
