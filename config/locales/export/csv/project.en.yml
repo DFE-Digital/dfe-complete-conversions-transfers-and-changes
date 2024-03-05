@@ -126,6 +126,7 @@ en:
           school_address_postcode_with_academy_label: Academy postcode
           school_name_with_academy_label: Academy name
           conversion_type: Conversion type
+          esfa_notes: ESFA notes
         values:
           project_type:
             conversion: Conversion
@@ -150,3 +151,4 @@ en:
           commercial: commercial
           single_converter: single converter
           form_a_mat: form a MAT
+          none: none
