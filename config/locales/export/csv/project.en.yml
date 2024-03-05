@@ -48,6 +48,7 @@ en:
           incoming_trust_name: Incoming trust name
           incoming_trust_main_contact_name: Incoming trust main contact name
           incoming_trust_main_contact_email: Incoming trust main contact email
+          incoming_trust_main_contact_role: Incoming trust main contact role
           incoming_trust_sharepoint_link: Incoming trust sharepoint link
           incoming_trust_address_1: Incoming trust address 1
           incoming_trust_address_2: Incoming trust address 2
@@ -127,6 +128,12 @@ en:
           school_name_with_academy_label: Academy name
           conversion_type: Conversion type
           esfa_notes: ESFA notes
+          school_main_contact_email: School contact email
+          school_main_contact_name: School contact name
+          school_main_contact_role: School contact role
+          other_contact_name: Other contact name
+          other_contact_email: Other contact email
+          other_contact_role: Other contact role
         values:
           project_type:
             conversion: Conversion
