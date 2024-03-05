@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add a new Form a MAT Transfer create project form
 - Show a pink "Form a MAT" label on the project details page if a transfer
   project is a form a MAT project
+- A new confirm the date the academy opened task has been added to the
+  conversion task list.
 
 ## [Release-56][release-56]
 
