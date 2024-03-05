@@ -62,6 +62,12 @@ variable "enable_container_app_file_share" {
   default     = false
 }
 
+variable "container_port" {
+  description = "Container port"
+  type        = number
+  default     = 3000
+}
+
 variable "storage_account_ipv4_allow_list" {
   description = "A list of public IPv4 address to grant access to the Storage Account"
   type        = list(string)

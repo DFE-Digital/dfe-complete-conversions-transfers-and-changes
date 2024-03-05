@@ -10,6 +10,7 @@ locals {
   registry_managed_identity_assign_role        = var.registry_managed_identity_assign_role
   image_name                                   = var.image_name
   container_command                            = var.container_command
+  container_port                               = var.container_port
   container_secret_environment_variables       = var.container_secret_environment_variables
   container_scale_http_concurrency             = var.container_scale_http_concurrency
   enable_container_app_file_share              = var.enable_container_app_file_share
