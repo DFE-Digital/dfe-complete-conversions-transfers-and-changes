@@ -94,4 +94,40 @@ module Export::Csv::SchoolPresenterModule
   end
 
   alias_method :school_sharepoint_link_with_academy_label, :school_sharepoint_folder
+
+  def school_main_contact_name
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["school_or_academy"].blank?
+
+    contact = if @project.establishment_main_contact_id.present?
+      contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
+    else
+      contacts["school_or_academy"].first
+    end
+    contact&.name
+  end
+
+  def school_main_contact_email
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["school_or_academy"].blank?
+
+    contact = if @project.establishment_main_contact_id.present?
+      contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
+    else
+      contacts["school_or_academy"].first
+    end
+    contact&.email
+  end
+
+  def school_main_contact_role
+    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    return if contacts["school_or_academy"].blank?
+
+    contact = if @project.establishment_main_contact_id.present?
+      contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
+    else
+      contacts["school_or_academy"].first
+    end
+    contact&.title
+  end
 end
