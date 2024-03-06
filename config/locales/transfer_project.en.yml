@@ -21,6 +21,12 @@ en:
       outgoing_trust: Outgoing trust
       transfer_date: Transfer date
       region: Region
+    form_a_mat:
+      new:
+        title: Add a form a MAT transfer
+        hint_html: <p class="govuk-body">Enter information about the academy, the new MAT (multi-academy trust) and the advisory board's decision about this academy's transfer.</p><p class="govuk-body">This will create a new transfer project.</p>
+      created:
+        success: Form a MAT transfer project successfully created
   helpers:
     label:
       transfer_project:
@@ -34,6 +40,9 @@ en:
         incoming_trust_sharepoint_link: Incoming trust SharePoint link
         outgoing_trust_sharepoint_link: Outgoing trust SharePoint link
         handover_note_body: Handover comments
+      transfer_create_project_form:
+        new_trust_reference_number: Trust reference number (TRN)
+        new_trust_name: Trust name
     legend:
       transfer_project:
         advisory_board_date: Date of advisory board
@@ -69,6 +78,23 @@ en:
             <li>any finanical package that has been finalised and agreed</li>
           </ul>
         two_requires_improvement: If an academy receives 2 or more requires improvement ratings (2RI) from Ofsted, it can be transferred to a different trust to improve performance.
+      transfer_create_project_form:
+        new_trust_name: Enter the proposed name for the new trust. This can be changed later on if necessary.
+        new_trust_reference_number_html:
+          <p>You can find the TRN in the <a href="https://educationgovuk.sharepoint.com/:x:/s/TrustandAcademyManagementServiceTRAMSPrivateBeta/ETyRXN0eIYxOmCVHTqWxSLYBQvHdfWicu7NybUaDeiz88g">new trusts spreadsheet (opens in new tab)</a>.</p>
+        establishment_sharepoint_link: Provide a link to the SharePoint folder for this academy. This is where you save all the relevant academy documents.
+        incoming_trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
+        outgoing_trust_sharepoint_link: Provide a link to the SharePoint folder for the outgoing trust. This is where you save all the relevant trust documents.
+        advisory_board_conditions: Enter details of conditions that must be met before the school or academy can transfer.
+        handover_note_body_html:
+          <p>You must describe how the project has progressed so far and highlight any issues or concerns.</p>
+          <p>Include information about:</p>
+          <ul>
+          <li>which version of the master funding agreement the incoming trust uses</li>
+          <li>if the introduction and next steps email been sent to the trusts</li>
+          <li>who the Schools Financial Support and Oversight lead is</li>
+          <li>any finanical package that has been finalised and agreed</li>
+          </ul>
   errors:
     attributes:
       provisional_transfer_date:

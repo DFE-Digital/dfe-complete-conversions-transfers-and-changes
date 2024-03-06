@@ -4,6 +4,8 @@ class Transfers::ProjectsController < ApplicationController
     @project = Transfer::CreateProjectForm.new
   end
 
+  alias_method :new_mat, :new
+
   def create
     authorize Transfer::Project
     @project = Transfer::CreateProjectForm.new(**project_params, user: current_user)
@@ -14,6 +16,19 @@ class Transfers::ProjectsController < ApplicationController
       redirect_to project_path(@created_project), notice: I18n.t("transfer_project.created.success")
     else
       render :new
+    end
+  end
+
+  def create_mat
+    authorize Transfer::Project
+    @project = Transfer::CreateProjectForm.new(**project_params, user: current_user)
+
+    if @project.valid?
+      @created_project = @project.save
+
+      redirect_to project_path(@created_project), notice: I18n.t("transfer_project.form_a_mat.created.success")
+    else
+      render :new_mat
     end
   end
 
@@ -61,7 +76,9 @@ class Transfers::ProjectsController < ApplicationController
       :two_requires_improvement,
       :inadequate_ofsted,
       :financial_safeguarding_governance_issues,
-      :outgoing_trust_to_close
+      :outgoing_trust_to_close,
+      :new_trust_name,
+      :new_trust_reference_number
     )
   end
 end
