@@ -40,6 +40,7 @@ class Transfer::TaskList < ::BaseTaskList
       {
         identifier: :after_transfer,
         tasks: [
+          Transfer::Task::ConfirmDateAcademyTransferredTaskForm,
           Transfer::Task::RedactAndSendDocumentsTaskForm
         ]
       }

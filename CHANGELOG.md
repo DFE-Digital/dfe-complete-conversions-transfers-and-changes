@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project is a form a MAT project
 - A new confirm the date the academy opened task has been added to the
   conversion task list.
+- A new confirm the date the academy transferred task has been added to the
+  transfer task list.
 
 ## [Release-56][release-56]
 

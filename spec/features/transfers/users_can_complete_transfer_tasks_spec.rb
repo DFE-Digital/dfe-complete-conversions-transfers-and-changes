@@ -39,6 +39,7 @@ RSpec.feature "Users can complete transfer tasks" do
     main_contact
     bank_details_changing
     check_and_confirm_financial_information
+    confirm_date_academy_transferred
   ]
 
   it "confirms that all tasks are tested here" do
@@ -144,6 +145,23 @@ RSpec.feature "Users can complete transfer tasks" do
         table_row = page.find("li.app-task-list__item", text: I18n.t("transfer.task.check_and_confirm_financial_information.title"))
 
         expect(table_row).to have_content("Completed")
+      end
+    end
+  end
+
+  describe "the confirm date academy transferred task" do
+    let(:project) { create(:transfer_project, assigned_to: user) }
+
+    context "when the task does not have a date" do
+      scenario "they can add a date" do
+        visit project_tasks_path(project)
+        click_on "Confirm the date the academy transferred"
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "1"
+        fill_in "Year", with: "2024"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.confirm_date_academy_transferred_date_transferred).to eq Date.new(2024, 1, 1)
       end
     end
   end

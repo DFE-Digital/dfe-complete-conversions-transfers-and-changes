@@ -27,6 +27,7 @@ RSpec.describe Transfer::TaskList do
         :bank_details_changing,
         :confirm_incoming_trust_has_completed_all_actions,
         :conditions_met,
+        :confirm_date_academy_transferred,
         :redact_and_send_documents
       ]
 
@@ -50,7 +51,7 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 22
+      expect(task_list.tasks.count).to eql 23
       expect(task_list.tasks.first).to be_a Transfer::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Transfer::Task::RedactAndSendDocumentsTaskForm
     end

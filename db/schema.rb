@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_28_171427) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_06_112000) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -393,6 +393,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_28_171427) do
     t.boolean "check_and_confirm_financial_information_not_applicable"
     t.string "check_and_confirm_financial_information_academy_surplus_deficit"
     t.string "check_and_confirm_financial_information_trust_surplus_deficit"
+    t.date "confirm_date_academy_transferred_date_transferred"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
