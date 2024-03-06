@@ -68,4 +68,16 @@ RSpec.feature "Users can view a transfer" do
     expect(page).to have_content(transfer_project.urn)
     expect(page).to have_content("Internal contacts")
   end
+
+  context "when the project is a Form a MAT conversion" do
+    let(:project) { create(:transfer_project, :form_a_mat) }
+
+    scenario "they can see a Form a MAT label" do
+      visit project_path(project)
+
+      within(".govuk-caption-l .govuk-tag--pink") do
+        expect(page).to have_content("Form a MAT")
+      end
+    end
+  end
 end

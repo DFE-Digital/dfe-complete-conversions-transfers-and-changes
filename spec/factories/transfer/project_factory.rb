@@ -15,5 +15,11 @@ FactoryBot.define do
     tasks_data { association :transfer_tasks_data }
     outgoing_trust_ukprn { 10059062 }
     two_requires_improvement { false }
+
+    trait :form_a_mat do
+      incoming_trust_ukprn { nil }
+      new_trust_name { "The New Trust" }
+      new_trust_reference_number { "TR12345" }
+    end
   end
 end
