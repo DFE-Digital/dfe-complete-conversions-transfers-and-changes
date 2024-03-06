@@ -6,7 +6,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
   attr_reader :provisional_conversion_date
 
   validates :provisional_conversion_date, presence: true
-  validates :provisional_conversion_date, date_in_the_future: true, first_day_of_month: true
+  validates :provisional_conversion_date, first_day_of_month: true
 
   validates :urn, presence: true, existing_academy: true
   validate :urn_unique_for_in_progress_conversions, if: -> { urn.present? }

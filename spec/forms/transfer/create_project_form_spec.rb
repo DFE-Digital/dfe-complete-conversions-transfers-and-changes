@@ -82,14 +82,6 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
 
     describe "#provisional_transfer_date" do
       it { is_expected.to validate_presence_of(:provisional_transfer_date) }
-
-      it "must be in the future" do
-        form = build(:create_transfer_project_form, provisional_transfer_date: {3 => 1, 2 => 1, 1 => 2030})
-        expect(form).to be_valid
-
-        form.provisional_transfer_date = {3 => 1, 2 => 1, 1 => 2020}
-        expect(form).to be_invalid
-      end
     end
 
     describe "#check_incoming_trust_and_outgoing_trust" do

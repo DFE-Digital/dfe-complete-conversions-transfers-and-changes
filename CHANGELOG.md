@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Remove maintenance banner for Wednesday 6th March 2024 maintenance
+- Temporarily remove the future date validation for the provisional conversion/
+  transfer date on project creation
 
 ### Fixed
 
