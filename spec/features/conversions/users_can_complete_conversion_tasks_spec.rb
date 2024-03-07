@@ -34,6 +34,7 @@ RSpec.feature "Users can complete conversion tasks" do
     proposed_capacity_of_the_academy
     receive_grant_payment_certificate
     update_esfa
+    confirm_date_academy_opened
   ]
 
   it "confirms we are checking all tasks" do
@@ -314,6 +315,23 @@ RSpec.feature "Users can complete conversion tasks" do
 
       task_status = find("#add-notes-for-esfa-status")
       expect(task_status).to have_content("Completed")
+    end
+  end
+
+  describe "the confirm date academy opened task" do
+    let(:project) { create(:conversion_project, assigned_to: user) }
+
+    context "when the task does not have a date" do
+      scenario "they can add a date" do
+        visit project_tasks_path(project)
+        click_on "Confirm the date the academy opened"
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "1"
+        fill_in "Year", with: "2024"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.confirm_date_academy_opened_date_opened).to eq Date.new(2024, 1, 1)
+      end
     end
   end
 

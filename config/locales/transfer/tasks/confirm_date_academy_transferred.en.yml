@@ -1,0 +1,13 @@
+en:
+  transfer:
+    task:
+      confirm_date_academy_transferred:
+        title: Confirm the date the academy transferred
+        hint:
+          html: <p>Funding teams need to know when the academy transferred so they can make payments and changes related to any Risk Protection Agreement.</p>
+        date:
+          title: Enter the date the academy transferred
+          hint:
+            html: <p>For example, 1 3 2023</p>
+        errors:
+          format: Please enter a valid date

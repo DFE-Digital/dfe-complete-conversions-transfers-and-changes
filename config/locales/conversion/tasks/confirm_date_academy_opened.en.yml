@@ -1,0 +1,13 @@
+en:
+  conversion:
+    task:
+      confirm_date_academy_opened:
+        title: Confirm the date the academy opened
+        hint:
+          html: <p>Funding teams need to know when the academy opened so they can make payments related to any Risk Protection Agreements.</p>
+        date:
+          title: Enter the date the academy opened
+          hint:
+            html: <p>For example, 1 3 2023</p>
+        errors:
+          format: Please enter a valid date

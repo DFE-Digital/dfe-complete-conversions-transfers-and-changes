@@ -46,6 +46,7 @@ class Conversion::TaskList < ::BaseTaskList
       {
         identifier: :after_opening,
         tasks: [
+          Conversion::Task::ConfirmDateAcademyOpenedTaskForm,
           Conversion::Task::RedactAndSendTaskForm,
           Conversion::Task::UpdateEsfaTaskForm,
           Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
