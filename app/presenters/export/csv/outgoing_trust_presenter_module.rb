@@ -18,27 +18,11 @@ module Export::Csv::OutgoingTrustPresenterModule
   end
 
   def outgoing_trust_main_contact_name
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["outgoing_trust"].blank?
-
-    contact = if @project.outgoing_trust_main_contact_id.present?
-      contacts["outgoing_trust"].find { |c| c.id == @project.outgoing_trust_main_contact_id }
-    else
-      contacts["outgoing_trust"].first
-    end
-    contact&.name
+    outgoing_trust_contact&.name
   end
 
   def outgoing_trust_main_contact_email
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["outgoing_trust"].blank?
-
-    contact = if @project.outgoing_trust_main_contact_id.present?
-      contacts["outgoing_trust"].find { |c| c.id == @project.outgoing_trust_main_contact_id }
-    else
-      contacts["outgoing_trust"].first
-    end
-    contact&.email
+    outgoing_trust_contact&.email
   end
 
   def outgoing_trust_identifier
@@ -85,5 +69,9 @@ module Export::Csv::OutgoingTrustPresenterModule
     return unless @project.outgoing_trust_sharepoint_link.present?
 
     @project.outgoing_trust_sharepoint_link
+  end
+
+  private def outgoing_trust_contact
+    @outgoing_trust_contact || ContactsFetcherService.new.outgoing_trust_contact(@project)
   end
 end

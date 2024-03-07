@@ -88,22 +88,6 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     expect(subject.school_main_contact_role).to eq("CEO of Learning")
   end
 
-  context "when there is no main contact selected" do
-    before { allow(project).to receive(:establishment_main_contact_id).and_return(nil) }
-
-    it "presents the next school contact name" do
-      expect(subject.school_main_contact_name).to eq("Jo Example")
-    end
-
-    it "presents the next school contact email" do
-      expect(subject.school_main_contact_email).to eq("jo@example.com")
-    end
-
-    it "presents the next school contact role" do
-      expect(subject.school_main_contact_role).to eq("CEO of Learning")
-    end
-  end
-
   def known_establishment
     double(
       Api::AcademiesApi::Establishment,

@@ -96,38 +96,18 @@ module Export::Csv::SchoolPresenterModule
   alias_method :school_sharepoint_link_with_academy_label, :school_sharepoint_folder
 
   def school_main_contact_name
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["school_or_academy"].blank?
-
-    contact = if @project.establishment_main_contact_id.present?
-      contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
-    else
-      contacts["school_or_academy"].first
-    end
-    contact&.name
+    school_or_academy_contact&.name
   end
 
   def school_main_contact_email
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["school_or_academy"].blank?
-
-    contact = if @project.establishment_main_contact_id.present?
-      contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
-    else
-      contacts["school_or_academy"].first
-    end
-    contact&.email
+    school_or_academy_contact&.email
   end
 
   def school_main_contact_role
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["school_or_academy"].blank?
+    school_or_academy_contact&.title
+  end
 
-    contact = if @project.establishment_main_contact_id.present?
-      contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
-    else
-      contacts["school_or_academy"].first
-    end
-    contact&.title
+  private def school_or_academy_contact
+    @school_or_academy_contact || ContactsFetcherService.new.school_or_academy_contact(@project)
   end
 end

@@ -2,10 +2,11 @@ require "rails_helper"
 
 RSpec.describe ContactsFetcherService do
   before { mock_all_academies_api_responses }
+  let(:project) { create(:transfer_project) }
+  subject { described_class.new }
 
   describe "#all_project_contacts" do
     it "returns the contacts for a given project" do
-      project = create(:transfer_project)
       project_contact = create(:project_contact, project: project, category: "school_or_academy")
 
       director_of_child_services_contact = create(:director_of_child_services)
@@ -13,8 +14,7 @@ RSpec.describe ContactsFetcherService do
 
       establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
 
-      service = described_class.new
-      result = service.all_project_contacts(project)
+      result = subject.all_project_contacts(project)
 
       expect(result.count).to eql(2)
       expect(result["school_or_academy"].count).to eql(2)
@@ -62,6 +62,74 @@ RSpec.describe ContactsFetcherService do
           expect(result).to be_empty
         end
       end
+    end
+  end
+
+  describe "#school_or_academy_contact" do
+    let!(:contact) { create(:project_contact, project: project, category: "school_or_academy") }
+
+    context "when there is an establishment_main_contact_id" do
+      before { allow(project).to receive(:establishment_main_contact_id).and_return(contact.id) }
+
+      it "returns the contact with that id" do
+        expect(subject.school_or_academy_contact(project)).to eq(contact)
+      end
+    end
+
+    context "when there is NOT an establishment_main_contact_id" do
+      before { allow(project).to receive(:establishment_main_contact_id).and_return(nil) }
+
+      it "returns the next matching contact" do
+        expect(subject.school_or_academy_contact(project)).to eq(contact)
+      end
+    end
+  end
+
+  describe "#outgoing_trust_contact" do
+    let!(:contact) { create(:project_contact, project: project, category: "outgoing_trust") }
+
+    context "when there is an outgoing_trust_main_contact_id" do
+      before { allow(project).to receive(:outgoing_trust_main_contact_id).and_return(contact.id) }
+
+      it "returns the contact with that id" do
+        expect(subject.outgoing_trust_contact(project)).to eq(contact)
+      end
+    end
+
+    context "when there is NOT an outgoing_trust_main_contact_id" do
+      before { allow(project).to receive(:outgoing_trust_main_contact_id).and_return(nil) }
+
+      it "returns the next matching contact" do
+        expect(subject.outgoing_trust_contact(project)).to eq(contact)
+      end
+    end
+  end
+
+  describe "#incoming_trust_contact" do
+    let!(:contact) { create(:project_contact, project: project, category: "incoming_trust") }
+
+    context "when there is an incoming_trust_main_contact_id" do
+      before { allow(project).to receive(:incoming_trust_main_contact_id).and_return(contact.id) }
+
+      it "returns the contact with that id" do
+        expect(subject.incoming_trust_contact(project)).to eq(contact)
+      end
+    end
+
+    context "when there is NOT an incoming_trust_main_contact_id" do
+      before { allow(project).to receive(:incoming_trust_main_contact_id).and_return(nil) }
+
+      it "returns the next matching contact" do
+        expect(subject.incoming_trust_contact(project)).to eq(contact)
+      end
+    end
+  end
+
+  describe "#other_contact" do
+    let!(:contact) { create(:project_contact, project: project, category: "other") }
+
+    it "returns the first 'other' contact" do
+      expect(subject.other_contact(project)).to eq(contact)
     end
   end
 end

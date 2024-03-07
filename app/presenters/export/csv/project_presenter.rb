@@ -266,26 +266,18 @@ class Export::Csv::ProjectPresenter
   end
 
   def other_contact_name
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["other"].blank?
-
-    contact = contacts["other"].first
-    contact&.name
+    other_contact&.name
   end
 
   def other_contact_email
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["other"].blank?
-
-    contact = contacts["other"].first
-    contact&.email
+    other_contact&.email
   end
 
   def other_contact_role
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
-    return if contacts["other"].blank?
+    other_contact&.title
+  end
 
-    contact = contacts["other"].first
-    contact&.title
+  private def other_contact
+    @other_contact || ContactsFetcherService.new.other_contact(@project)
   end
 end
