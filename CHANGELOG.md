@@ -6,11 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-56][release-56]
+
+### Added
+
+- The ESFA csv export now includes the 'Add notes for ESFA' notes.
+
 ### Changed
 
 - Remove maintenance banner for Wednesday 6th March 2024 maintenance
 - Temporarily remove the future date validation for the provisional conversion/
   transfer date on project creation
+- the Update ESFA data in KIM task no longer mentions KIM, asking users to add a
+  task note instead.
+- the Add notes for ESFA task can only be completed by providing at least one
+  task note and checking the task off.
 
 ### Fixed
 
@@ -40,14 +50,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - ESFA csv export now includes a provisional date column
 - when the grant payment certificate has not been received, 'unconfirmed' is
   shown in the csv exports that include it, rather than a empty cell
-- The ESFA csv export now includes the 'Add notes for ESFA' notes.
 
 ### Changed
-
-- the Update ESFA data in KIM task no longer mentions KIM, asking users to add a
-  task note instead.
-- the Add notes for ESFA task can only be completed by providing at least one
-  task note and checking the task off.
 
 ## [Release-54][release-54]
 
@@ -1636,7 +1640,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-55...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-56...HEAD
+[release-56]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-55...release-56
 [release-55]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-54...release-55
 [release-54]:
