@@ -93,7 +93,7 @@ jobs:
           creds: ${{ secrets.AZURE_ACA_CREDENTIALS }}
 
       - name: Update Azure Container Apps Revision
-        uses: azure/CLI@v1
+        uses: azure/CLI@v2
         with:
           azcliversion: ${{ env.AZ_CLI_VER }}
           inlineScript: |
@@ -110,7 +110,7 @@ jobs:
           creds: ${{ secrets.AZURE_ACA_WORKER_CREDENTIALS }}
 
       - name: Update Azure Container Apps Worker Revision
-        uses: azure/CLI@v1
+        uses: azure/CLI@v2
         with:
           azcliversion: ${{ env.AZ_CLI_VER }}
           inlineScript: |
