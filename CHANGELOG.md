@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- GUard against incomplete MP details from the Members API (bugfix from
+  production)
+
 ## [Release-55][release-55]
 
 ### Added
