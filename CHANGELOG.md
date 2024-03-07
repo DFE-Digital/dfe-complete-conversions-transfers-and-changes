@@ -6,9 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Remove maintenance banner for Wednesday 6th March 2024 maintenance
+
 ### Fixed
 
-- GUard against incomplete MP details from the Members API (bugfix from
+- Guard against incomplete MP details from the Members API (bugfix from
   production)
 
 ## [Release-55][release-55]
