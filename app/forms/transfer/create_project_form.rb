@@ -45,7 +45,9 @@ class Transfer::CreateProjectForm < CreateProjectForm
       assigned_to: user,
       assigned_at: DateTime.now,
       region: region,
-      tasks_data: Transfer::TasksData.new
+      tasks_data: Transfer::TasksData.new,
+      new_trust_reference_number: new_trust_reference_number,
+      new_trust_name: new_trust_name
     )
 
     return nil unless valid?
