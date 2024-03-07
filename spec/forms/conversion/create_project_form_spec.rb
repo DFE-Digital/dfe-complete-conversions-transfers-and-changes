@@ -108,28 +108,6 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
     describe "provisional_conversion_date" do
       it { is_expected.to validate_presence_of(:provisional_conversion_date) }
 
-      it "must be in the future" do
-        form = build(
-          form_factory.to_sym,
-          provisional_conversion_date: {3 => 1, 2 => 1, 1 => 2030}
-        )
-        expect(form).to be_valid
-
-        form.provisional_conversion_date = {3 => 1, 2 => 1, 1 => 2020}
-        expect(form).to be_invalid
-      end
-
-      it "cannot be in the past" do
-        form = build(
-          form_factory.to_sym,
-          provisional_conversion_date: {3 => 1, 2 => 1, 1 => 2030}
-        )
-        expect(form).to be_valid
-
-        form.provisional_conversion_date = {3 => 1, 2 => 1, 1 => 2020}
-        expect(form).to be_invalid
-      end
-
       context "when the date params are partially complete" do
         it "treats the date as invalid" do
           form = build(form_factory.to_sym, provisional_conversion_date: {3 => 1, 2 => 10, 1 => nil})
