@@ -27,6 +27,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Guard against incomplete MP details from the Members API (bugfix from
   production)
 
+### Added
+
+- Add more contact details to the Funding agreement letters export: School
+  contact, Incoming trust contact and "Other" contact
+
 ## [Release-55][release-55]
 
 ### Added

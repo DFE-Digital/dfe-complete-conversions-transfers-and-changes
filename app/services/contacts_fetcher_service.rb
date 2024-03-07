@@ -13,4 +13,44 @@ class ContactsFetcherService
 
     all_contacts.sort_by(&:name).group_by(&:category)
   end
+
+  def school_or_academy_contact(project)
+    contacts = ContactsFetcherService.new.all_project_contacts(project)
+    return if contacts["school_or_academy"].blank?
+
+    if project.establishment_main_contact_id.present?
+      contacts["school_or_academy"].find { |c| c.id == project.establishment_main_contact_id }
+    else
+      contacts["school_or_academy"].first
+    end
+  end
+
+  def outgoing_trust_contact(project)
+    contacts = ContactsFetcherService.new.all_project_contacts(project)
+    return if contacts["outgoing_trust"].blank?
+
+    if project.outgoing_trust_main_contact_id.present?
+      contacts["outgoing_trust"].find { |c| c.id == project.outgoing_trust_main_contact_id }
+    else
+      contacts["outgoing_trust"].first
+    end
+  end
+
+  def incoming_trust_contact(project)
+    contacts = ContactsFetcherService.new.all_project_contacts(project)
+    return if contacts["incoming_trust"].blank?
+
+    if project.incoming_trust_main_contact_id.present?
+      contacts["incoming_trust"].find { |c| c.id == project.incoming_trust_main_contact_id }
+    else
+      contacts["incoming_trust"].first
+    end
+  end
+
+  def other_contact(project)
+    contacts = ContactsFetcherService.new.all_project_contacts(project)
+    return if contacts["other"].blank?
+
+    contacts["other"].first
+  end
 end

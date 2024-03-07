@@ -94,4 +94,20 @@ module Export::Csv::SchoolPresenterModule
   end
 
   alias_method :school_sharepoint_link_with_academy_label, :school_sharepoint_folder
+
+  def school_main_contact_name
+    school_or_academy_contact&.name
+  end
+
+  def school_main_contact_email
+    school_or_academy_contact&.email
+  end
+
+  def school_main_contact_role
+    school_or_academy_contact&.title
+  end
+
+  private def school_or_academy_contact
+    @school_or_academy_contact || ContactsFetcherService.new.school_or_academy_contact(@project)
+  end
 end

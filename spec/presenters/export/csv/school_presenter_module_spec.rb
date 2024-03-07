@@ -1,8 +1,16 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::SchoolPresenterModule do
-  let(:project) { build(:conversion_project, urn: 121813, establishment: known_establishment) }
+  let(:project) { create(:conversion_project, urn: 121813, establishment: known_establishment) }
+  let(:contact) { create(:project_contact, category: "school_or_academy", project: project) }
+  let(:director_of_child_services) { build(:director_of_child_services) }
   subject { SchoolPresenterModuleTestClass.new(project) }
+
+  before do
+    mock_successful_api_response_to_create_any_project
+    allow(project).to receive(:establishment_main_contact_id).and_return(contact.id)
+    allow(project).to receive(:director_of_child_services).and_return(director_of_child_services)
+  end
 
   it "presents the school urn" do
     expect(subject.school_urn).to eql "121813"
@@ -66,6 +74,18 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     it "presents the academy name" do
       expect(subject.school_name_with_academy_label).to eql "Deanshanger Primary School"
     end
+  end
+
+  it "presents the school main contact name" do
+    expect(subject.school_main_contact_name).to eq("Jo Example")
+  end
+
+  it "presents the school main contact email" do
+    expect(subject.school_main_contact_email).to eq("jo@example.com")
+  end
+
+  it "presents the school main contact role" do
+    expect(subject.school_main_contact_role).to eq("CEO of Learning")
   end
 
   def known_establishment

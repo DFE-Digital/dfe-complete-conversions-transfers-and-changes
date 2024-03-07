@@ -75,18 +75,8 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
     expect(subject.incoming_trust_main_contact_email).to eql "jo@example.com"
   end
 
-  context "when there is no main contact ID" do
-    before do
-      allow(project).to receive(:incoming_trust_main_contact_id).and_return(nil)
-    end
-
-    it "presents the next incoming trust contact name" do
-      expect(subject.incoming_trust_main_contact_name).to eql "Jo Example"
-    end
-
-    it "presents the next incoming trust contact email" do
-      expect(subject.incoming_trust_main_contact_email).to eql "jo@example.com"
-    end
+  it "presents the main contact role" do
+    expect(subject.incoming_trust_main_contact_role).to eql "CEO of Learning"
   end
 
   it "presents the sharepoint link" do

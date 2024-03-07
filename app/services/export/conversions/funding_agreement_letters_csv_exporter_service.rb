@@ -10,6 +10,9 @@ class Export::Conversions::FundingAgreementLettersCsvExporterService < Export::C
     school_address_town
     school_address_county
     school_address_postcode
+    school_main_contact_name
+    school_main_contact_email
+    school_main_contact_role
     academy_urn
     academy_name
     academy_address_1
@@ -21,6 +24,9 @@ class Export::Conversions::FundingAgreementLettersCsvExporterService < Export::C
     incoming_trust_identifier
     incoming_trust_companies_house_number
     incoming_trust_name
+    incoming_trust_main_contact_name
+    incoming_trust_main_contact_email
+    incoming_trust_main_contact_role
     incoming_trust_address_1
     incoming_trust_address_2
     incoming_trust_address_3
@@ -57,6 +63,9 @@ class Export::Conversions::FundingAgreementLettersCsvExporterService < Export::C
     main_contact_name
     main_contact_email
     main_contact_title
+    other_contact_name
+    other_contact_email
+    other_contact_role
   ]
 
   def initialize(projects)

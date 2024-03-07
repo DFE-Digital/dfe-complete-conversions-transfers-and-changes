@@ -639,6 +639,33 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.conversion_type).to be_nil
   end
 
+  it "presents the first 'other' contact name" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    _contact = create(:project_contact, category: "other", project: project)
+
+    presenter = described_class.new(project)
+    expect(presenter.other_contact_name).to eq("Jo Example")
+  end
+
+  it "presents the first 'other' contact email" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    _contact = create(:project_contact, category: "other", project: project)
+
+    presenter = described_class.new(project)
+    expect(presenter.other_contact_email).to eq("jo@example.com")
+  end
+
+  it "presents the first 'other' contact role" do
+    mock_successful_api_response_to_create_any_project
+    project = create(:conversion_project)
+    _contact = create(:project_contact, category: "other", project: project)
+
+    presenter = described_class.new(project)
+    expect(presenter.other_contact_role).to eq("CEO of Learning")
+  end
+
   def not_applicable_for_a_transfer
     project = build(:transfer_project)
 

@@ -264,4 +264,20 @@ class Export::Csv::ProjectPresenter
 
     notes.map(&:body).join("\n\n")
   end
+
+  def other_contact_name
+    other_contact&.name
+  end
+
+  def other_contact_email
+    other_contact&.email
+  end
+
+  def other_contact_role
+    other_contact&.title
+  end
+
+  private def other_contact
+    @other_contact || ContactsFetcherService.new.other_contact(@project)
+  end
 end
