@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   transfer task list.
 - Add more contact details to the Funding agreement letters export: School
   contact, Incoming trust contact and "Other" contact
+- Show `Form a MAT` or `single transfer` in the exports for Transfer projects
 
 ## [Release-56][release-56]
 

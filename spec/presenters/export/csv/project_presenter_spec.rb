@@ -631,12 +631,20 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.conversion_type).to eq("form a MAT")
   end
 
-  it "does not present a conversion type for transfer projects" do
+  it "presents the single transfer transfer type" do
     mock_successful_api_response_to_create_any_project
     project = build(:transfer_project)
 
     presenter = described_class.new(project)
-    expect(presenter.conversion_type).to be_nil
+    expect(presenter.transfer_type).to eq("single transfer")
+  end
+
+  it "presents the form a MAT transfer type" do
+    mock_successful_api_response_to_create_any_project
+    project = build(:transfer_project, :form_a_mat)
+
+    presenter = described_class.new(project)
+    expect(presenter.transfer_type).to eq("form a MAT")
   end
 
   it "presents the first 'other' contact name" do
