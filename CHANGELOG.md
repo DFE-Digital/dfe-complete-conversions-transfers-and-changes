@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   contact, Incoming trust contact and "Other" contact
 - Show `Form a MAT` or `single transfer` in the exports for Transfer projects
 - Add button to allow users to create form a MAT transfer projects
+- Show the date a transfer happened in the Grant management export
 
 ## [Release-56][release-56]
 

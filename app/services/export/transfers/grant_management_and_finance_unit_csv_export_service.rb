@@ -16,6 +16,7 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
     advisory_board_date
     provisional_date
     transfer_date
+    date_academy_transferred
     added_by_email
     assigned_to_email
     link_to_project

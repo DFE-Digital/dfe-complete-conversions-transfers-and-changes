@@ -223,6 +223,22 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.transfer_date).to eql "unconfirmed"
   end
 
+  it "presents the actual transfer date" do
+    tasks_data = double(Transfer::TasksData, confirm_date_academy_transferred_date_transferred: Date.parse("2023-1-1"))
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+
+    expect(presenter.date_academy_transferred).to eq("2023-01-01")
+  end
+
+  it "presents unconfirmed when the project doesn't have an actual transfer date" do
+    tasks_data = double(Transfer::TasksData, confirm_date_academy_transferred_date_transferred: nil)
+    project = double(Transfer::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+
+    expect(presenter.date_academy_transferred).to eq(I18n.t("export.csv.project.values.unconfirmed"))
+  end
+
   it "presents all conditions met" do
     project = double(Conversion::Project, all_conditions_met: true)
 
