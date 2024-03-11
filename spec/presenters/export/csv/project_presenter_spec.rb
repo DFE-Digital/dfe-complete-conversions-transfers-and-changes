@@ -239,6 +239,22 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.date_academy_transferred).to eq(I18n.t("export.csv.project.values.unconfirmed"))
   end
 
+  it "presents the actual conversion date" do
+    tasks_data = double(Conversion::TasksData, confirm_date_academy_opened_date_opened: Date.parse("2024-1-1"))
+    project = double(Conversion::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+
+    expect(presenter.date_academy_opened).to eq("2024-01-01")
+  end
+
+  it "presents unconfirmed when the project doesn't have an actual conversion date" do
+    tasks_data = double(Conversion::TasksData, confirm_date_academy_opened_date_opened: nil)
+    project = double(Conversion::Project, tasks_data: tasks_data)
+    presenter = described_class.new(project)
+
+    expect(presenter.date_academy_opened).to eq(I18n.t("export.csv.project.values.unconfirmed"))
+  end
+
   it "presents all conditions met" do
     project = double(Conversion::Project, all_conditions_met: true)
 

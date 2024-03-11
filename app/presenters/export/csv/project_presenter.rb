@@ -54,6 +54,13 @@ class Export::Csv::ProjectPresenter
     @project.tasks_data.confirm_date_academy_transferred_date_transferred.to_fs(:csv)
   end
 
+  def date_academy_opened
+    return nil if @project.is_a?(Transfer::Project)
+    return I18n.t("export.csv.project.values.unconfirmed") if @project.tasks_data.confirm_date_academy_opened_date_opened.nil?
+
+    @project.tasks_data.confirm_date_academy_opened_date_opened.to_fs(:csv)
+  end
+
   def all_conditions_met
     if @project.all_conditions_met.nil?
       return I18n.t("export.csv.project.values.no")
