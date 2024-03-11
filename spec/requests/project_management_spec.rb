@@ -19,6 +19,7 @@ RSpec.describe "Project management" do
         expect(response.body).to include(I18n.t("conversion_project.new.title"))
         expect(response.body).to include(I18n.t("conversion_project.form_a_mat.new.title"))
         expect(response.body).to include(I18n.t("transfer_project.new.title"))
+        expect(response.body).to include(I18n.t("transfer_project.form_a_mat.new.title"))
       end
     end
 
@@ -35,6 +36,7 @@ RSpec.describe "Project management" do
         expect(response.body).to include(I18n.t("conversion_project.new.title"))
         expect(response.body).to include(I18n.t("conversion_project.form_a_mat.new.title"))
         expect(response.body).to include(I18n.t("transfer_project.new.title"))
+        expect(response.body).to include(I18n.t("transfer_project.form_a_mat.new.title"))
       end
     end
 
@@ -54,6 +56,7 @@ RSpec.describe "Project management" do
         expect(response.body).not_to include(I18n.t("conversion_project.new.title"))
         expect(response.body).not_to include(I18n.t("conversion_project.form_a_mat.new.title"))
         expect(response.body).not_to include(I18n.t("transfer_project.new.title"))
+        expect(response.body).not_to include(I18n.t("transfer_project.form_a_mat.new.title"))
       end
     end
   end

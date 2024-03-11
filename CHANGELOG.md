@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- Add button to allow users to create form a MAT projects
+- Add button to allow users to create form a MAT conversion projects
 - Add a new Form a MAT Transfer create project form
 - Show a pink "Form a MAT" label on the project details page if a transfer
   project is a form a MAT project
@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add more contact details to the Funding agreement letters export: School
   contact, Incoming trust contact and "Other" contact
 - Show `Form a MAT` or `single transfer` in the exports for Transfer projects
+- Add button to allow users to create form a MAT transfer projects
 
 ## [Release-56][release-56]
 
