@@ -75,7 +75,7 @@ en:
             <li>which version of the master funding agreement the incoming trust uses</li>
             <li>if the introduction and next steps email been sent to the trusts</li>
             <li>who the Schools Financial Support and Oversight lead is</li>
-            <li>any finanical package that has been finalised and agreed</li>
+            <li>any financial package that has been finalised and agreed</li>
           </ul>
         two_requires_improvement: If an academy receives 2 or more requires improvement ratings (2RI) from Ofsted, it can be transferred to a different trust to improve performance.
       transfer_create_project_form:
@@ -93,7 +93,7 @@ en:
           <li>which version of the master funding agreement the incoming trust uses</li>
           <li>if the introduction and next steps email been sent to the trusts</li>
           <li>who the Schools Financial Support and Oversight lead is</li>
-          <li>any finanical package that has been finalised and agreed</li>
+          <li>any financial package that has been finalised and agreed</li>
           </ul>
   errors:
     attributes:
