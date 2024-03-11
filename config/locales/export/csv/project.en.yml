@@ -5,7 +5,7 @@ en:
         headers:
           project_type: Project type
           provisional_date: Provisional date
-          conversion_date: Conversion date
+          conversion_date: Confirmed conversion date
           all_conditions_met: All conditions met
           risk_protection_arrangement: Risk protection arrangement
           advisory_board_date: Advisory board date
@@ -98,7 +98,7 @@ en:
           outgoing_trust_to_close: Outgoing trust to close
           request_new_urn_and_record: New URN/record requested
           bank_details_changing: Bank details changing
-          transfer_date: Transfer date
+          transfer_date: Confirmed transfer date
           added_by_email: Added by email
           academy_surplus_deficit: Is the academy in surplus or deficit?
           trust_surplus_deficit: Is the incoming trust in surplus or deficit?
