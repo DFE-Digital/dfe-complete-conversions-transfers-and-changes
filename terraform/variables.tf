@@ -146,6 +146,12 @@ variable "mssql_managed_identity_assign_role" {
   default     = false
 }
 
+variable "mssql_sku_name" {
+  description = "Specifies the name of the SKU used by the database"
+  type        = string
+  default     = "Basic"
+}
+
 variable "enable_redis_cache" {
   description = "Set to true to create a Redis Cache"
   type        = bool
