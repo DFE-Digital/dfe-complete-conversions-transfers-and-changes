@@ -68,6 +68,14 @@ RSpec.describe ProjectsForExportService do
       expect(projects_for_export).to include(confirmed_project)
       expect(projects_for_export).to include(provisional_project)
     end
+
+    it "includes Form a MAT conversions" do
+      project = create(:conversion_project, :form_a_mat, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.grant_management_and_finance_unit_conversion_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(project)
+    end
   end
 
   describe "#grant_management_and_finance_unit_transfer_projects" do
@@ -90,6 +98,14 @@ RSpec.describe ProjectsForExportService do
 
       expect(projects_for_export).to include(confirmed_project)
       expect(projects_for_export).to include(provisional_project)
+    end
+
+    it "includes Form a MAT transfers" do
+      project = create(:transfer_project, :form_a_mat, significant_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.grant_management_and_finance_unit_transfer_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(project)
     end
   end
 
@@ -114,6 +130,14 @@ RSpec.describe ProjectsForExportService do
 
       expect(projects_for_export).to include(confirmed_project)
       expect(projects_for_export).to include(provisional_project)
+    end
+
+    it "includes Form a MAT transfers" do
+      project = create(:transfer_project, :form_a_mat, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.transfer_by_month_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(project)
     end
   end
 
@@ -155,6 +179,14 @@ RSpec.describe ProjectsForExportService do
 
       expect(projects_for_export.first.establishment).not_to be_nil
       expect(projects_for_export.first.incoming_trust).not_to be_nil
+    end
+
+    it "includes Form a MAT projects" do
+      project = create(:conversion_project, :form_a_mat, conversion_date_provisional: false, conversion_date: Date.parse("2025-1-1"))
+
+      projects_for_export = described_class.new.funding_agreement_letters_projects(month: 1, year: 2025)
+
+      expect(projects_for_export).to include(project)
     end
   end
 

@@ -5,6 +5,7 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
     school_phase
     school_age_range
     local_authority_name
+    transfer_type
     outgoing_trust_name
     outgoing_trust_companies_house_number
     outgoing_trust_ukprn

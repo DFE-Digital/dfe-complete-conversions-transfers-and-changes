@@ -26,6 +26,7 @@ class Export::Transfers::ByMonthCsvExportService < Export::CsvExportService
     school_address_county_with_academy_label
     school_address_postcode_with_academy_label
     school_sharepoint_link_with_academy_label
+    transfer_type
     incoming_trust_ukprn
     incoming_trust_identifier
     incoming_trust_companies_house_number

@@ -2,6 +2,7 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
   COLUMN_HEADERS = %i[
     academy_name
     academy_urn
+    transfer_type
     outgoing_trust_name
     outgoing_trust_ukprn
     incoming_trust_name
