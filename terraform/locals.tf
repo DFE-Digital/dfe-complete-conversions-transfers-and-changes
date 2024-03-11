@@ -27,6 +27,7 @@ locals {
   mssql_firewall_ipv4_allow_list               = var.mssql_firewall_ipv4_allow_list
   mssql_server_public_access_enabled           = var.mssql_server_public_access_enabled
   mssql_managed_identity_assign_role           = var.mssql_managed_identity_assign_role
+  mssql_sku_name                               = var.mssql_sku_name
   enable_redis_cache                           = var.enable_redis_cache
   redis_config                                 = var.redis_config
   redis_cache_sku                              = var.redis_cache_sku

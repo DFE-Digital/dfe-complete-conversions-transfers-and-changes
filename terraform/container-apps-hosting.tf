@@ -36,6 +36,7 @@ module "azure_container_apps_hosting" {
   mssql_firewall_ipv4_allow_list     = local.mssql_firewall_ipv4_allow_list
   mssql_server_public_access_enabled = local.mssql_server_public_access_enabled
   mssql_managed_identity_assign_role = local.mssql_managed_identity_assign_role
+  mssql_sku_name                     = local.mssql_sku_name
 
   enable_redis_cache = local.enable_redis_cache
   redis_config       = local.redis_config
