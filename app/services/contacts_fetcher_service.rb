@@ -1,12 +1,18 @@
 class ContactsFetcherService
-  def all_project_contacts(project)
-    project_contacts = project.contacts
-    all_contacts = project_contacts.to_a
+  def initialize(project)
+    @project = project
+    @project_contacts = @project.contacts
+    @establishment_contacts = Contact::Establishment.find_by(establishment_urn: @project.urn)
+    @all_contacts = all_project_contacts
+  end
 
-    director_of_child_services = project.director_of_child_services
+  def all_project_contacts
+    all_contacts = @project_contacts.to_a
+
+    director_of_child_services = @project.director_of_child_services
     all_contacts << director_of_child_services unless director_of_child_services.nil?
 
-    establishment_contacts = Contact::Establishment.find_by(establishment_urn: project.urn)
+    establishment_contacts = @establishment_contacts
     all_contacts << establishment_contacts unless establishment_contacts.nil?
 
     return {} unless all_contacts.any?
@@ -14,43 +20,39 @@ class ContactsFetcherService
     all_contacts.sort_by(&:name).group_by(&:category)
   end
 
-  def school_or_academy_contact(project)
-    contacts = ContactsFetcherService.new.all_project_contacts(project)
-    return if contacts["school_or_academy"].blank?
+  def school_or_academy_contact
+    return if @all_contacts["school_or_academy"].nil?
 
-    if project.establishment_main_contact_id.present?
-      contacts["school_or_academy"].find { |c| c.id == project.establishment_main_contact_id }
+    if @project.establishment_main_contact_id.present?
+      @all_contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
     else
-      contacts["school_or_academy"].first
+      @all_contacts["school_or_academy"].first
     end
   end
 
-  def outgoing_trust_contact(project)
-    contacts = ContactsFetcherService.new.all_project_contacts(project)
-    return if contacts["outgoing_trust"].blank?
+  def outgoing_trust_contact
+    return if @all_contacts["outgoing_trust"].nil?
 
-    if project.outgoing_trust_main_contact_id.present?
-      contacts["outgoing_trust"].find { |c| c.id == project.outgoing_trust_main_contact_id }
+    if @project.outgoing_trust_main_contact_id.present?
+      @all_contacts["outgoing_trust"].find { |c| c.id == @project.outgoing_trust_main_contact_id }
     else
-      contacts["outgoing_trust"].first
+      @all_contacts["outgoing_trust"].first
     end
   end
 
-  def incoming_trust_contact(project)
-    contacts = ContactsFetcherService.new.all_project_contacts(project)
-    return if contacts["incoming_trust"].blank?
+  def incoming_trust_contact
+    return if @all_contacts["incoming_trust"].nil?
 
-    if project.incoming_trust_main_contact_id.present?
-      contacts["incoming_trust"].find { |c| c.id == project.incoming_trust_main_contact_id }
+    if @project.incoming_trust_main_contact_id.present?
+      @all_contacts["incoming_trust"].find { |c| c.id == @project.incoming_trust_main_contact_id }
     else
-      contacts["incoming_trust"].first
+      @all_contacts["incoming_trust"].first
     end
   end
 
-  def other_contact(project)
-    contacts = ContactsFetcherService.new.all_project_contacts(project)
-    return if contacts["other"].blank?
+  def other_contact
+    return if @all_contacts["other"].nil?
 
-    contacts["other"].first
+    @all_contacts["other"].first
   end
 end

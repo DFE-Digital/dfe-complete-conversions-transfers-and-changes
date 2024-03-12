@@ -108,6 +108,6 @@ module Export::Csv::SchoolPresenterModule
   end
 
   private def school_or_academy_contact
-    @school_or_academy_contact || ContactsFetcherService.new.school_or_academy_contact(@project)
+    @contacts_fetcher.school_or_academy_contact
   end
 end

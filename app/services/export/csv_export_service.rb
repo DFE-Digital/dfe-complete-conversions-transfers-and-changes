@@ -10,6 +10,7 @@ class Export::CsvExportService
       csv << headers
       if @projects.any?
         @projects.each do |project|
+          Rails.logger.debug("--> Creating csv row for project #{project.id}")
           csv << row(project)
         end
       end

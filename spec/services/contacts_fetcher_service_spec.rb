@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe ContactsFetcherService do
   before { mock_all_academies_api_responses }
   let(:project) { create(:transfer_project) }
-  subject { described_class.new }
 
   describe "#all_project_contacts" do
     it "returns the contacts for a given project" do
@@ -14,7 +13,7 @@ RSpec.describe ContactsFetcherService do
 
       establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
 
-      result = subject.all_project_contacts(project)
+      result = described_class.new(project).all_project_contacts
 
       expect(result.count).to eql(2)
       expect(result["school_or_academy"].count).to eql(2)
@@ -30,8 +29,7 @@ RSpec.describe ContactsFetcherService do
           director_of_child_services = create(:director_of_child_services)
           allow(project).to receive(:director_of_child_services).and_return(director_of_child_services)
 
-          service = described_class.new
-          result = service.all_project_contacts(project)
+          result = described_class.new(project).all_project_contacts
 
           expect(result.values.flatten.count).to eql(1)
           expect(result.values.flatten.first).to be(director_of_child_services)
@@ -43,8 +41,7 @@ RSpec.describe ContactsFetcherService do
           project = create(:transfer_project)
           establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
 
-          service = described_class.new
-          result = service.all_project_contacts(project)
+          result = described_class.new(project).all_project_contacts
 
           expect(result.values.flatten.count).to eql(1)
           expect(result.values.flatten.first).to eq(establishment_contact)
@@ -56,8 +53,7 @@ RSpec.describe ContactsFetcherService do
           project = create(:transfer_project)
           allow(project).to receive(:director_of_child_services).and_return(nil)
 
-          service = described_class.new
-          result = service.all_project_contacts(project)
+          result = described_class.new(project).all_project_contacts
 
           expect(result).to be_empty
         end
@@ -72,7 +68,7 @@ RSpec.describe ContactsFetcherService do
       before { allow(project).to receive(:establishment_main_contact_id).and_return(contact.id) }
 
       it "returns the contact with that id" do
-        expect(subject.school_or_academy_contact(project)).to eq(contact)
+        expect(described_class.new(project).school_or_academy_contact).to eq(contact)
       end
     end
 
@@ -80,7 +76,7 @@ RSpec.describe ContactsFetcherService do
       before { allow(project).to receive(:establishment_main_contact_id).and_return(nil) }
 
       it "returns the next matching contact" do
-        expect(subject.school_or_academy_contact(project)).to eq(contact)
+        expect(described_class.new(project).school_or_academy_contact).to eq(contact)
       end
     end
   end
@@ -92,7 +88,7 @@ RSpec.describe ContactsFetcherService do
       before { allow(project).to receive(:outgoing_trust_main_contact_id).and_return(contact.id) }
 
       it "returns the contact with that id" do
-        expect(subject.outgoing_trust_contact(project)).to eq(contact)
+        expect(described_class.new(project).outgoing_trust_contact).to eq(contact)
       end
     end
 
@@ -100,7 +96,7 @@ RSpec.describe ContactsFetcherService do
       before { allow(project).to receive(:outgoing_trust_main_contact_id).and_return(nil) }
 
       it "returns the next matching contact" do
-        expect(subject.outgoing_trust_contact(project)).to eq(contact)
+        expect(described_class.new(project).outgoing_trust_contact).to eq(contact)
       end
     end
   end
@@ -112,7 +108,7 @@ RSpec.describe ContactsFetcherService do
       before { allow(project).to receive(:incoming_trust_main_contact_id).and_return(contact.id) }
 
       it "returns the contact with that id" do
-        expect(subject.incoming_trust_contact(project)).to eq(contact)
+        expect(described_class.new(project).incoming_trust_contact).to eq(contact)
       end
     end
 
@@ -120,7 +116,7 @@ RSpec.describe ContactsFetcherService do
       before { allow(project).to receive(:incoming_trust_main_contact_id).and_return(nil) }
 
       it "returns the next matching contact" do
-        expect(subject.incoming_trust_contact(project)).to eq(contact)
+        expect(described_class.new(project).incoming_trust_contact).to eq(contact)
       end
     end
   end
@@ -129,7 +125,7 @@ RSpec.describe ContactsFetcherService do
     let!(:contact) { create(:project_contact, project: project, category: "other") }
 
     it "returns the first 'other' contact" do
-      expect(subject.other_contact(project)).to eq(contact)
+      expect(described_class.new(project).other_contact).to eq(contact)
     end
   end
 end
