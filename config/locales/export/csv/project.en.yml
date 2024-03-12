@@ -136,6 +136,7 @@ en:
           other_contact_email: Other contact email
           other_contact_role: Other contact role
           date_academy_transferred: Date the transfer happened
+          date_academy_opened: Date the conversion happened
         values:
           project_type:
             conversion: Conversion

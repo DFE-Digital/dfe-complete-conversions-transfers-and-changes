@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Show the date a conversion happened in the ESFA export
+
 ## [Release-57][release-57]
 
 ### Added
