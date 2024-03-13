@@ -97,5 +97,6 @@ class AcademyPresenterModuleTestClass
   def initialize(project)
     @project = project
     @contacts_fetcher = ContactsFetcherService.new(@project)
+    @academy = @project.academy if @project.academy_urn.present?
   end
 end
