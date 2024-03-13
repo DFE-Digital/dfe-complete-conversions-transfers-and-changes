@@ -1,0 +1,67 @@
+en:
+  transfer:
+    task:
+      sponsored_support_grant:
+        title: Confirm transfer grant funding level
+        hint:
+          html:
+            <p>Transfer funding grants are only usually available in intervention cases.</p>
+            <p>This includes transfers due to:</p>
+            <ul>
+              <li>an inadequate rating in an Ofsted inspection</li>
+              <li>intervention by DfE following at least 2 requires improvement ratings in Ofsted inspections</li>
+              <li>intervention due to financial, governance or safeguarding concerns</li>
+            </ul>
+            <p>Others transferring for other reasons may also be able to access this funding. This is judged on a case-by-case basis.</p>
+        guidance_link: Grant amounts, eligibility and guidance
+        guidance:
+          html:
+            <p>Each eligible transfer will get £25,000 as a standard level of funding.</p>
+            <p>This is adjusted if the academy transferring has a budget surplus. The incoming trust must use bugdet surplus to pay for transfer costs before using transfer grant funding.</p>
+            <p>In some circumstances, they might be entitled to a larger grant. There are 3 levels of funding money that can be added to the transfer grant:</p>
+            <ul>
+              <li>fast track</li>
+              <li>intermediate</li>
+              <li>full sponsored</li>
+            </ul>
+            <p>The following amounts all include the £25,000 basic level of transfer grant funding.</p>
+            <p>Fast track grant amounts are:</p>
+            <ul>
+              <li>£70,000 for primary and special academies</li>
+              <li>£80,000 for secondary and all through academies</li>
+            </ul>
+            <p>Intermediate grant amounts are:</p>
+            <ul>
+              <li>£90,000 for primary and special academies</li>
+              <li>£115,000 for secondary and all-through academies</li>
+            </ul>
+            <p>Full sponsored grant amounts are:</p>
+            <ul>
+              <li>£110,000 for primary and special academies</li>
+              <li>£150,000 secondary and all-through academies</li>
+            </ul>
+            <p>Any funding up to £100,000 must be approved by the director of the National Directorate.</p>
+            <p>Any funding of £100,000 or more must be approved by the Director General for Regions Group.</p>
+            <p>You can <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/WorkplaceDocuments/ARDG%20Internal%20Guidance/6.%20Taking%20action%20with%20underperforming%20open%20academies%20and%20free%20schools/Academy%20transfer/Academy%20Transfer%20Project/Academy%20Transfer%20Grant%20Funding%20.docx?d=w622ba523f15d429695bc8c2950091ea0&csf=1&web=1&e=rENLif" target="_blank">read the transfer grant funding guidance Word document (opens in new tab)</a> for more in-depth advice and support.</p>
+        not_applicable:
+          title: Not applicable
+        type_of_grant:
+          radio_buttons:
+            title: What level of transfer grant funding is required?
+            hint:
+              html:
+                <p>Confirm if the incoming trust will receive the standard transfer grant funding amout, or a higher level of fast track, intermediate or full sponsored grant.</p>
+                <p>This can be changed later on if the trust finds they need more money.</p>
+            guidance_link: Changing the grant amount if the trust needs more funding later
+            guidance:
+              html:
+                <p>Trusts can discover new information that means they might need more funding than they first thought they would.</p>
+                <p>When this happens, speak to your regional director. They will need to approve the new grant amount. You may need to write a business case for the additional funding.</p>
+                <p>When the new funding is agreed and approved, the trust will need to complete a new grant claim form and send it to the grants team.</p>
+                <p>You can then come back to this task and update the grant type information.</p>
+            responses:
+              standard: Standard transfer grant
+              fast_track: Fast track
+              intermediate: Intermediate
+              full_sponsored: Full sponsored
+            guidance_link: Changing the grant amount if the trust needs more funding later
