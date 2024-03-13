@@ -105,5 +105,6 @@ class IncomingTrustPresenterModuleTestClass
 
   def initialize(project)
     @project = project
+    @contacts_fetcher = ContactsFetcherService.new(@project)
   end
 end

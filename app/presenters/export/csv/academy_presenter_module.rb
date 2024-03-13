@@ -72,14 +72,14 @@ module Export::Csv::AcademyPresenterModule
   end
 
   def academy_contact_name
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["school_or_academy"].blank?
 
     contacts["school_or_academy"].pluck(:name).join(",")
   end
 
   def academy_contact_email
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["school_or_academy"].blank?
 
     contacts["school_or_academy"].pluck(:email).join(",")

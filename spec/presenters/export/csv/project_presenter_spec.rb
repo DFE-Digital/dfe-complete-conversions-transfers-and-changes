@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::ProjectPresenter do
+  before do
+    mock_successful_api_response_to_create_any_project
+  end
+
   it "presents the project type when the project is a conversion" do
     project = build(:conversion_project)
 
@@ -64,78 +68,96 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents inadequate_ofsted value for a transfer" do
-    tasks_data = double(Transfer::TasksData, inadequate_ofsted: true)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, inadequate_ofsted: true)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.inadequate_ofsted).to eql "yes"
 
-    tasks_data = double(Transfer::TasksData, inadequate_ofsted: false)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, inadequate_ofsted: false)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.inadequate_ofsted).to eql "no"
   end
 
   it "presents financial_safeguarding_governance_issues value for a transfer" do
-    tasks_data = double(Transfer::TasksData, financial_safeguarding_governance_issues: true)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, financial_safeguarding_governance_issues: true)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.financial_safeguarding_governance_issues).to eql "yes"
 
-    tasks_data = double(Transfer::TasksData, financial_safeguarding_governance_issues: false)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, financial_safeguarding_governance_issues: false)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.financial_safeguarding_governance_issues).to eql "no"
   end
 
   it "presents outgoing_trust_to_close value for a transfer" do
-    tasks_data = double(Transfer::TasksData, outgoing_trust_to_close: true)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, outgoing_trust_to_close: true)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.outgoing_trust_to_close).to eql "yes"
 
-    tasks_data = double(Transfer::TasksData, outgoing_trust_to_close: false)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, outgoing_trust_to_close: false)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.outgoing_trust_to_close).to eql "no"
   end
 
   it "presents request_new_urn_and_record value for a transfer" do
-    tasks_data = double(Transfer::TasksData,
+    tasks_data = build(:transfer_tasks_data,
       request_new_urn_and_record_complete: true,
       request_new_urn_and_record_receive: true,
       request_new_urn_and_record_give: true,
       request_new_urn_and_record_not_applicable: false)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.request_new_urn_and_record).to eql "confirmed"
 
-    tasks_data = double(Transfer::TasksData,
+    tasks_data = build(:transfer_tasks_data,
       request_new_urn_and_record_complete: false,
       request_new_urn_and_record_receive: false,
       request_new_urn_and_record_give: false,
       request_new_urn_and_record_not_applicable: false)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.request_new_urn_and_record).to eql "unconfirmed"
 
-    tasks_data = double(Transfer::TasksData,
+    tasks_data = build(:transfer_tasks_data,
       request_new_urn_and_record_complete: false,
       request_new_urn_and_record_receive: false,
       request_new_urn_and_record_give: false,
       request_new_urn_and_record_not_applicable: true)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    project = build(:transfer_project, tasks_data: tasks_data)
+
     presenter = described_class.new(project)
+
     expect(presenter.request_new_urn_and_record).to eql "not applicable"
   end
 
   it "presents bank_details_changing value for a transfer" do
-    tasks_data = double(Transfer::TasksData, bank_details_changing_yes_no: true)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, bank_details_changing_yes_no: true)
+    project = build(:transfer_project, tasks_data: tasks_data)
     presenter = described_class.new(project)
     expect(presenter.bank_details_changing).to eql "yes"
 
-    tasks_data = double(Transfer::TasksData, bank_details_changing_yes_no: false)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, bank_details_changing_yes_no: false)
+    project = build(:transfer_project, tasks_data: tasks_data)
     presenter = described_class.new(project)
     expect(presenter.bank_details_changing).to eql "no"
   end
@@ -197,7 +219,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   describe "#transfer_grant_level" do
-    it "handles a transfer" do
+    it "handles a conversion" do
       tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: :fast_track, sponsored_support_grant_not_applicable: false)
       project = build(:conversion_project, tasks_data: tasks_data)
 
@@ -266,7 +288,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the provisional date" do
-    conversion_project = double(Conversion::Project, provisional_date: Date.parse("2024-1-1"), conversion_date_provisional?: true)
+    conversion_project = build(:conversion_project, conversion_date: Date.parse("2024-1-1"), conversion_date_provisional: true)
 
     conversion_presenter = described_class.new(conversion_project)
 
@@ -274,7 +296,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the conversion date" do
-    project = double(Conversion::Project, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional?: false)
+    project = build(:conversion_project, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional: false)
 
     presenter = described_class.new(project)
 
@@ -282,7 +304,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents unconfirmed when the conversion date is provisional" do
-    project = double(Conversion::Project, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional?: true)
+    project = build(:conversion_project, conversion_date: Date.parse("2023-1-1"), conversion_date_provisional: true)
 
     presenter = described_class.new(project)
 
@@ -290,7 +312,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the significant date (as transfer date)" do
-    project = double(Transfer::Project, significant_date: Date.parse("2023-1-1"), significant_date_provisional?: false)
+    project = build(:conversion_project, significant_date: Date.parse("2023-1-1"), significant_date_provisional: false)
 
     presenter = described_class.new(project)
 
@@ -298,7 +320,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents unconfirmed when the significant date is provisional" do
-    project = double(Transfer::Project, significant_date: Date.parse("2023-1-1"), significant_date_provisional?: true)
+    project = build(:transfer_project, significant_date: Date.parse("2023-1-1"), significant_date_provisional: true)
 
     presenter = described_class.new(project)
 
@@ -306,39 +328,39 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the actual transfer date" do
-    tasks_data = double(Transfer::TasksData, confirm_date_academy_transferred_date_transferred: Date.parse("2023-1-1"))
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, confirm_date_academy_transferred_date_transferred: Date.parse("2023-1-1"))
+    project = build(:transfer_project, tasks_data: tasks_data)
     presenter = described_class.new(project)
 
     expect(presenter.date_academy_transferred).to eq("2023-01-01")
   end
 
   it "presents unconfirmed when the project doesn't have an actual transfer date" do
-    tasks_data = double(Transfer::TasksData, confirm_date_academy_transferred_date_transferred: nil)
-    project = double(Transfer::Project, tasks_data: tasks_data)
+    tasks_data = build(:transfer_tasks_data, confirm_date_academy_transferred_date_transferred: nil)
+    project = build(:transfer_project, tasks_data: tasks_data)
     presenter = described_class.new(project)
 
     expect(presenter.date_academy_transferred).to eq(I18n.t("export.csv.project.values.unconfirmed"))
   end
 
   it "presents the actual conversion date" do
-    tasks_data = double(Conversion::TasksData, confirm_date_academy_opened_date_opened: Date.parse("2024-1-1"))
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    tasks_data = build(:conversion_tasks_data, confirm_date_academy_opened_date_opened: Date.parse("2024-1-1"))
+    project = build(:conversion_project, tasks_data: tasks_data)
     presenter = described_class.new(project)
 
     expect(presenter.date_academy_opened).to eq("2024-01-01")
   end
 
   it "presents unconfirmed when the project doesn't have an actual conversion date" do
-    tasks_data = double(Conversion::TasksData, confirm_date_academy_opened_date_opened: nil)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    tasks_data = build(:conversion_tasks_data, confirm_date_academy_opened_date_opened: nil)
+    project = build(:conversion_project, tasks_data: tasks_data)
     presenter = described_class.new(project)
 
     expect(presenter.date_academy_opened).to eq(I18n.t("export.csv.project.values.unconfirmed"))
   end
 
   it "presents all conditions met" do
-    project = double(Conversion::Project, all_conditions_met: true)
+    project = build(:conversion_project, all_conditions_met: true)
 
     presenter = described_class.new(project)
 
@@ -346,7 +368,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents authority to proceed, which is the name for 'all conditions met' for Transfer projects" do
-    project = double(Transfer::Project, all_conditions_met: true)
+    project = build(:transfer_project, all_conditions_met: true)
 
     presenter = described_class.new(project)
 
@@ -354,7 +376,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents authority to proceed (all conditions met for Transfer projects) when it has not been met (nil)" do
-    project = double(Transfer::Project, all_conditions_met: nil)
+    project = build(:transfer_project, all_conditions_met: nil)
 
     presenter = described_class.new(project)
 
@@ -362,7 +384,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents authority to proceed (all conditions met for Transfer projects) when it has not been met (false)" do
-    project = double(Transfer::Project, all_conditions_met: false)
+    project = build(:transfer_project, all_conditions_met: false)
 
     presenter = described_class.new(project)
 
@@ -370,8 +392,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents all risk protection arrangement when it is standard" do
-    tasks_data = double(Conversion::TasksData, risk_protection_arrangement_option: :standard)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: :standard)
+    project = build(:conversion_project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
@@ -379,8 +401,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents all risk protection arrangement when it is church/trust" do
-    tasks_data = double(Conversion::TasksData, risk_protection_arrangement_option: :church_or_trust)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: :church_or_trust)
+    project = build(:conversion_project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
@@ -388,8 +410,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents all risk protection arrangement when it is commercial" do
-    tasks_data = double(Conversion::TasksData, risk_protection_arrangement_option: :commercial)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: :commercial)
+    project = build(:conversion_project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
@@ -397,8 +419,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents all risk protection arrangement when it is not yet confirmed" do
-    tasks_data = double(Conversion::TasksData, risk_protection_arrangement_option: nil)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: nil)
+    project = build(:conversion_project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
@@ -408,8 +430,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   describe "#assigned_to_name" do
     context "when the project is assigned to a user" do
       it "returns the name of the user the project is assigned to" do
-        user = double(User, full_name: "Assigned User")
-        project = double(Conversion::Project, assigned_to: user)
+        user = build(:user, first_name: "Assigned", last_name: "User")
+        project = build(:conversion_project, assigned_to: user)
 
         presenter = described_class.new(project)
 
@@ -418,7 +440,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
     end
     context "when the project is unassigned" do
       it "returns 'unassigned'" do
-        project = double(Conversion::Project, assigned_to: nil)
+        project = build(:conversion_project, assigned_to: nil)
 
         presenter = described_class.new(project)
 
@@ -430,8 +452,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   describe "#assigned_to_email" do
     context "when the project is assigned to a user" do
       it "returns the email address of the user the project is assigned to" do
-        user = double(User, email: "assigned.user@education.gov.uk")
-        project = double(Conversion::Project, assigned_to: user)
+        user = build(:user, email: "assigned.user@education.gov.uk")
+        project = build(:conversion_project, assigned_to: user)
 
         presenter = described_class.new(project)
 
@@ -440,7 +462,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
     end
     context "when the project is unassigned" do
       it "returns 'unassigned'" do
-        project = double(Conversion::Project, assigned_to: nil)
+        project = build(:conversion_project, assigned_to: nil)
 
         presenter = described_class.new(project)
 
@@ -450,8 +472,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the assigned to name" do
-    user = double(User, full_name: "Assigned User")
-    project = double(Conversion::Project, assigned_to: user)
+    user = build(:user, first_name: "Assigned", last_name: "User")
+    project = build(:conversion_project, assigned_to: user)
 
     presenter = described_class.new(project)
 
@@ -459,8 +481,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the assigned to email" do
-    user = double(User, email: "assigned.user@education.gov.uk")
-    project = double(Conversion::Project, assigned_to: user)
+    user = build(:user, email: "assigned.user@education.gov.uk")
+    project = build(:conversion_project, assigned_to: user)
 
     presenter = described_class.new(project)
 

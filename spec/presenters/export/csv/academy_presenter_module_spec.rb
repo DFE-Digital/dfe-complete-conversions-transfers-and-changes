@@ -5,6 +5,8 @@ RSpec.describe Export::Csv::AcademyPresenterModule do
     let(:project) { build(:conversion_project, academy_urn: 149061, academy: gias_establishment) }
     subject { AcademyPresenterModuleTestClass.new(project) }
 
+    before { mock_successful_api_response_to_create_any_project }
+
     it "presents the academy urn" do
       expect(subject.academy_urn).to eql "149061"
     end
@@ -94,5 +96,6 @@ class AcademyPresenterModuleTestClass
 
   def initialize(project)
     @project = project
+    @contacts_fetcher = ContactsFetcherService.new(@project)
   end
 end

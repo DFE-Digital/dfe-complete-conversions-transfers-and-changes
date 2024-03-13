@@ -12,14 +12,14 @@ module Export::Csv::LocalAuthorityPresenterModule
   end
 
   def local_authority_contact_name
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["local_authority"].blank?
 
     contacts["local_authority"].pluck(:name).join(",")
   end
 
   def local_authority_contact_email
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["local_authority"].blank?
 
     contacts["local_authority"].pluck(:email).join(",")

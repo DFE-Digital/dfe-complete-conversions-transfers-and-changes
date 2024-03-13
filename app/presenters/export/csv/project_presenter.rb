@@ -9,6 +9,7 @@ class Export::Csv::ProjectPresenter
 
   def initialize(project)
     @project = project
+    @contacts_fetcher = ContactsFetcherService.new(@project)
   end
 
   def reception_to_six_years
@@ -218,14 +219,14 @@ class Export::Csv::ProjectPresenter
   end
 
   def diocese_contact_name
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["diocese"].blank?
 
     contacts["diocese"].pluck(:name).join(",")
   end
 
   def diocese_contact_email
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["diocese"].blank?
 
     contacts["diocese"].pluck(:email).join(",")
@@ -244,14 +245,14 @@ class Export::Csv::ProjectPresenter
   end
 
   def solicitor_contact_name
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["solicitor"].blank?
 
     contacts["solicitor"].pluck(:name).join(",")
   end
 
   def solicitor_contact_email
-    contacts = ContactsFetcherService.new.all_project_contacts(@project)
+    contacts = @contacts_fetcher.all_project_contacts
     return if contacts["solicitor"].blank?
 
     contacts["solicitor"].pluck(:email).join(",")
@@ -306,6 +307,6 @@ class Export::Csv::ProjectPresenter
   end
 
   private def other_contact
-    @other_contact || ContactsFetcherService.new.other_contact(@project)
+    @contacts_fetcher.other_contact
   end
 end

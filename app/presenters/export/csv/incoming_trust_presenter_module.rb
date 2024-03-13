@@ -78,6 +78,6 @@ module Export::Csv::IncomingTrustPresenterModule
   end
 
   private def incoming_trust_contact
-    @incoming_trust_contact || ContactsFetcherService.new.incoming_trust_contact(@project)
+    @contacts_fetcher.incoming_trust_contact
   end
 end
