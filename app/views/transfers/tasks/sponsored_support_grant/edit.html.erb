@@ -1,0 +1,44 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "transfers/tasks/shared/back_link", locals: {project_id: @project.id} %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("transfer.task.sponsored_support_grant.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: project_edit_task_path(@project, @task.class.identifier), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+
+      <div class="govuk-form-group govuk-!-margin-bottom-9">
+        <%= form.govuk_radio_buttons_fieldset(:type, legend: {size: "l", text: t("transfer.task.sponsored_support_grant.type_of_grant.radio_buttons.title")}) do %>
+          <div class="app-task-section__hint">
+            <%= t("transfer.task.sponsored_support_grant.type_of_grant.radio_buttons.hint.html") %>
+          </div>
+          <%= govuk_details(
+                summary_text: t("transfer.task.sponsored_support_grant.type_of_grant.radio_buttons.guidance_link"),
+                text: t("transfer.task.sponsored_support_grant.type_of_grant.radio_buttons.guidance.html")
+              ) %>
+        <% @task.type_options.each do |option| %>
+          <%= form.govuk_radio_button :type,
+                option,
+                label: {text: t("transfer.task.sponsored_support_grant.type_of_grant.radio_buttons.responses.#{option}")} %>
+        <% end %>
+      <% end %>
+      </div>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "shared/tasks/task_notes" %>
+  </div>
+</div>

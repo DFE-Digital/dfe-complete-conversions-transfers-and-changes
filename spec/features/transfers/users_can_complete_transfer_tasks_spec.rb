@@ -40,6 +40,7 @@ RSpec.feature "Users can complete transfer tasks" do
     bank_details_changing
     check_and_confirm_financial_information
     confirm_date_academy_transferred
+    sponsored_grant_type
   ]
 
   it "confirms that all tasks are tested here" do
@@ -90,6 +91,60 @@ RSpec.feature "Users can complete transfer tasks" do
   end
 
   describe "tasks with collected data" do
+    describe "the sponsored support grant task" do
+      before do
+        visit project_tasks_path(project)
+        click_on "Confirm transfer grant funding level"
+      end
+
+      scenario "the response can be standard" do
+        choose "Standard transfer grant"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "standard"
+      end
+
+      scenario "the response can be fast track" do
+        choose "Fast track"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "fast_track"
+      end
+
+      scenario "the response can be intermediate" do
+        choose "Intermediate"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "intermediate"
+      end
+
+      scenario "the response can be full sponsored" do
+        choose "Full sponsored"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.sponsored_support_grant_type).to eq "full_sponsored"
+      end
+
+      scenario "the task can be completed" do
+        choose "Full sponsored"
+        page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
+        # uncheck the Not applicable box
+        page.find(".govuk-checkboxes__label", text: "Not applicable").click
+        click_on I18n.t("task_list.continue_button.text")
+
+        table_row = page.find("li.app-task-list__item", text: I18n.t("transfer.task.sponsored_support_grant.title"))
+        expect(table_row).to have_content("Completed")
+      end
+
+      scenario "the task can be marked as Not applicable" do
+        page.find(".govuk-checkboxes__label", text: "Not applicable").click
+        click_on I18n.t("task_list.continue_button.text")
+
+        table_row = page.find("li.app-task-list__item", text: I18n.t("transfer.task.sponsored_support_grant.title"))
+        expect(table_row).to have_content("Not applicable")
+      end
+    end
+
     describe "the check_and_confirm_financial_information task" do
       before do
         visit project_tasks_path(project)
