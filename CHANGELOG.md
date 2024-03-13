@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Show the date a conversion happened in the ESFA export
 
+### Changed
+
+- where used, the GOV.UK crown has been updated.
+
 ### Fixed
 
 - Get the By Trusts page working again by excluding Form a MAT projects from it.
