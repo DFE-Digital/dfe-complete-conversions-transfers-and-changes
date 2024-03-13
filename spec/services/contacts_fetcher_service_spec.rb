@@ -4,6 +4,25 @@ RSpec.describe ContactsFetcherService do
   before { mock_all_academies_api_responses }
   let(:project) { create(:transfer_project) }
 
+  describe "#director_of_child_services" do
+    it "returns the contact when there is one" do
+      director_of_child_services_contact = create(:director_of_child_services)
+      allow(project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
+
+      result = described_class.new(project)
+
+      expect(result.director_of_child_services).to eql(director_of_child_services_contact)
+    end
+
+    it "returns nil when there is not one" do
+      allow(project).to receive(:director_of_child_services).and_return(nil)
+
+      result = described_class.new(project)
+
+      expect(result.director_of_child_services).to be_nil
+    end
+  end
+
   describe "#all_project_contacts" do
     it "returns the contacts for a given project" do
       project_contact = create(:project_contact, project: project, category: "school_or_academy")
