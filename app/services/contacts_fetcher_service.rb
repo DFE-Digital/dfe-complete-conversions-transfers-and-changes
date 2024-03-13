@@ -1,16 +1,18 @@
 class ContactsFetcherService
+  attr_reader :director_of_child_services
+
   def initialize(project)
     @project = project
     @project_contacts = @project.contacts
     @establishment_contacts = Contact::Establishment.find_by(establishment_urn: @project.urn)
     @all_contacts = all_project_contacts
+    @director_of_child_services = @project.director_of_child_services
   end
 
   def all_project_contacts
     all_contacts = @project_contacts.to_a
 
-    director_of_child_services = @project.director_of_child_services
-    all_contacts << director_of_child_services unless director_of_child_services.nil?
+    all_contacts << @director_of_child_services unless @director_of_child_services.nil?
 
     establishment_contacts = @establishment_contacts
     all_contacts << establishment_contacts unless establishment_contacts.nil?

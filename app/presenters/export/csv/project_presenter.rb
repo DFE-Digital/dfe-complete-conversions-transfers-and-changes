@@ -12,6 +12,7 @@ class Export::Csv::ProjectPresenter
     @contacts_fetcher = ContactsFetcherService.new(@project)
     @local_authority = @project.local_authority
     @academy = @project.academy if @project.academy_urn.present?
+    @director_of_child_services = @contacts_fetcher.director_of_child_services
   end
 
   def reception_to_six_years

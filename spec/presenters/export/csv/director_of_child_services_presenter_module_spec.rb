@@ -35,5 +35,6 @@ class DirectorOfChildServicesPresenterModuleTestClass
 
   def initialize(project)
     @project = project
+    @director_of_child_services = @project.director_of_child_services
   end
 end
