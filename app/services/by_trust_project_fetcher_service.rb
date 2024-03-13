@@ -12,7 +12,7 @@ class ByTrustProjectFetcherService
   end
 
   private def projects_by_trust
-    projects = Project.not_completed
+    projects = Project.not_form_a_mat.not_completed
     return false unless projects.any?
 
     projects.group_by(&:incoming_trust_ukprn)
