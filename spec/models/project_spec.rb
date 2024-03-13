@@ -688,6 +688,18 @@ RSpec.describe Project, type: :model do
         expect(Project.filtered_by_advisory_board_date(1, 2023)).to_not include(project_three)
       end
     end
+
+    describe "not_form_a_mat scope" do
+      it "returns only NON form a MAT projects" do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+
+        form_a_mat_project = create(:conversion_project, :form_a_mat)
+        single_converter_project = create(:conversion_project)
+
+        expect(Project.not_form_a_mat).not_to include(form_a_mat_project)
+        expect(Project.not_form_a_mat).to include(single_converter_project)
+      end
+    end
   end
 
   describe "region" do
