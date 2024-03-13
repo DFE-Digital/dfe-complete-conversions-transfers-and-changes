@@ -140,43 +140,125 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.bank_details_changing).to eql "no"
   end
 
-  it "presents the sponsored grant type" do
-    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: nil, sponsored_support_grant_not_applicable?: false)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+  describe "#sponsored_grant_type" do
+    it "handles a transfer" do
+      tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: :fast_track, sponsored_support_grant_not_applicable: false)
+      project = build(:transfer_project, tasks_data: tasks_data)
 
-    presenter = described_class.new(project)
+      presenter = described_class.new(project)
 
-    expect(presenter.sponsored_grant_type).to eql "unconfirmed"
+      expect(presenter.sponsored_grant_type).to eql "not applicable"
+    end
 
-    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :fast_track, sponsored_support_grant_not_applicable?: false)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    it "presnets nil values as unconfirmed" do
+      tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: nil, sponsored_support_grant_not_applicable: false)
+      project = build(:conversion_project, tasks_data: tasks_data)
 
-    presenter = described_class.new(project)
+      presenter = described_class.new(project)
 
-    expect(presenter.sponsored_grant_type).to eql "fast track"
+      expect(presenter.sponsored_grant_type).to eql "unconfirmed"
+    end
 
-    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :intermediate, sponsored_support_grant_not_applicable?: false)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    it "presents fast track" do
+      tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: :fast_track, sponsored_support_grant_not_applicable: false)
+      project = build(:conversion_project, tasks_data: tasks_data)
 
-    presenter = described_class.new(project)
+      presenter = described_class.new(project)
 
-    expect(presenter.sponsored_grant_type).to eql "intermediate"
+      expect(presenter.sponsored_grant_type).to eql "fast track"
+    end
 
-    tasks_data = double(Conversion::TasksData, sponsored_support_grant_type: :sponsored, sponsored_support_grant_not_applicable?: false)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+    it "presents intermediate" do
+      tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: :intermediate, sponsored_support_grant_not_applicable: false)
+      project = build(:conversion_project, tasks_data: tasks_data)
 
-    presenter = described_class.new(project)
+      presenter = described_class.new(project)
 
-    expect(presenter.sponsored_grant_type).to eql "sponsored"
+      expect(presenter.sponsored_grant_type).to eql "intermediate"
+    end
+
+    it "presents full sponsored" do
+      tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: :full_sponsored, sponsored_support_grant_not_applicable: false)
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.sponsored_grant_type).to eql "full sponsored"
+    end
+
+    it "presents not applicable" do
+      tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: nil, sponsored_support_grant_not_applicable: true)
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.sponsored_grant_type).to eql "not applicable"
+    end
   end
 
-  it "presents the sponsored grant type value when it does not apply" do
-    tasks_data = double(Conversion::TasksData, sponsored_support_grant_not_applicable?: true)
-    project = double(Conversion::Project, tasks_data: tasks_data)
+  describe "#transfer_grant_level" do
+    it "handles a transfer" do
+      tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: :fast_track, sponsored_support_grant_not_applicable: false)
+      project = build(:conversion_project, tasks_data: tasks_data)
 
-    presenter = described_class.new(project)
+      presenter = described_class.new(project)
 
-    expect(presenter.sponsored_grant_type).to eql "not applicable"
+      expect(presenter.transfer_grant_level).to eql "not applicable"
+    end
+
+    it "presents nil values as unconfirmed" do
+      tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: nil, sponsored_support_grant_not_applicable: false)
+      project = build(:transfer_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.transfer_grant_level).to eql "unconfirmed"
+    end
+
+    it "presents stanadard values" do
+      tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: :standard, sponsored_support_grant_not_applicable: false)
+      project = build(:transfer_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.transfer_grant_level).to eql "standard transfer grant"
+    end
+
+    it "presents fast track" do
+      tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: :fast_track, sponsored_support_grant_not_applicable: false)
+      project = build(:transfer_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.transfer_grant_level).to eql "fast track"
+    end
+
+    it "presents intermediate" do
+      tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: :intermediate, sponsored_support_grant_not_applicable: false)
+      project = build(:transfer_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.transfer_grant_level).to eql "intermediate"
+    end
+
+    it "presents full sponsored" do
+      tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: :full_sponsored, sponsored_support_grant_not_applicable: false)
+      project = build(:transfer_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.transfer_grant_level).to eql "full sponsored"
+    end
+
+    it "presents not applicable" do
+      tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: nil, sponsored_support_grant_not_applicable: true)
+      project = build(:transfer_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.transfer_grant_level).to eql "not applicable"
+    end
   end
 
   it "presents the sponsored grant type value for a transfer" do

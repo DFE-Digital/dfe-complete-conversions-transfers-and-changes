@@ -15,6 +15,7 @@ en:
           twelve_or_above_years: Proposed capacity for students in year 12 or above
           two_requires_improvement: 2RI (Two Requires Improvement)
           sponsored_grant_type: Sponsored Grant Type
+          transfer_grant_level: Transfer grant level
           assigned_to_name: Assigned to name
           assigned_to_email: Assigned to email
           school_urn: School URN
@@ -142,6 +143,7 @@ en:
             conversion: Conversion
             transfer: Transfer
           sponsored_grant_type:
+            standard: standard transfer grant
             full_sponsored: full sponsored
             fast_track: fast track
             intermediate: intermediate

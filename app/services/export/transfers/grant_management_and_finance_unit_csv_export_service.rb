@@ -13,6 +13,7 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
     outgoing_trust_to_close
     academy_surplus_deficit
     trust_surplus_deficit
+    transfer_grant_level
     advisory_board_date
     provisional_date
     transfer_date

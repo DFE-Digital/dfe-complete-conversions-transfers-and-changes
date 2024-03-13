@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Show the date a transfer happened in the Grant management export
 - The Confirm transfer grant funding level task has been added to transfer
   project task lists
+- The Confirm transfer grant funding level value is included in the Grant
+  management and finance unit export
 
 ## [Release-56][release-56]
 

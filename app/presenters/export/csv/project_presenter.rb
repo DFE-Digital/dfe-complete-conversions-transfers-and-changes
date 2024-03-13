@@ -147,6 +147,14 @@ class Export::Csv::ProjectPresenter
     I18n.t("export.csv.project.values.sponsored_grant_type.#{@project.tasks_data.sponsored_support_grant_type}")
   end
 
+  def transfer_grant_level
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Conversion::Project)
+    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.sponsored_support_grant_not_applicable?
+    return I18n.t("export.csv.project.values.unconfirmed") if @project.tasks_data.sponsored_support_grant_type.nil?
+
+    I18n.t("export.csv.project.values.sponsored_grant_type.#{@project.tasks_data.sponsored_support_grant_type}")
+  end
+
   def assigned_to_name
     return I18n.t("export.csv.project.values.unassigned") unless @project.assigned_to.present?
 
