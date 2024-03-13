@@ -22,6 +22,7 @@ class Export::Conversions::EducationAndSkillsFundingAgencyCsvExportService < Exp
     provisional_date
     conversion_date
     all_conditions_met
+    date_academy_opened
     risk_protection_arrangement
     academy_order_type
     two_requires_improvement
