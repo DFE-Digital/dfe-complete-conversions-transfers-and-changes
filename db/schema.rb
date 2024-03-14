@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_11_084953) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_14_083733) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -228,6 +228,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_084953) do
     t.string "address_postcode", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_local_authorities_on_code"
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -282,6 +283,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_084953) do
     t.index ["incoming_trust_ukprn"], name: "index_projects_on_incoming_trust_ukprn"
     t.index ["outgoing_trust_ukprn"], name: "index_projects_on_outgoing_trust_ukprn"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
+    t.index ["tasks_data_id"], name: "index_projects_on_tasks_data_id"
+    t.index ["tasks_data_type"], name: "index_projects_on_tasks_data_type"
     t.index ["team_leader_id"], name: "index_projects_on_team_leader_id"
     t.index ["urn"], name: "index_projects_on_urn"
   end
@@ -292,6 +295,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_084953) do
     t.uuid "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_significant_date_histories_on_project_id"
   end
 
   create_table "transfer_tasks_data", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
