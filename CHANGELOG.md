@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Add UI for "schools due to convert" export, which is replacing ESFA & Grant
+  management and finance exports
+
 ### Changed
 
 - link to TRN spreadsheet in add Form a MAT converversion form opens in new tab
