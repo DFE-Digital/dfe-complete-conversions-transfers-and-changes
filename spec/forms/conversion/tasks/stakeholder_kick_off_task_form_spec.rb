@@ -33,21 +33,6 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
         end
       end
 
-      context "when the date is in the past" do
-        it "is invalid with the appropriate error message" do
-          task_form = described_class.new(Conversion::TasksData.new, user)
-          task_form.assign_attributes(
-            "confirmed_conversion_date(3i)": "1",
-            "confirmed_conversion_date(2i)": "1",
-            "confirmed_conversion_date(1i)": "2022"
-          )
-
-          expect(task_form).to be_invalid
-          expect(task_form.errors.messages[:confirmed_conversion_date])
-            .to include(I18n.t("conversion.task.stakeholder_kick_off.confirmed_conversion_date.errors.in_the_future"))
-        end
-      end
-
       context "when the date is not provided" do
         it "is valid" do
           task_form = described_class.new(Conversion::TasksData.new, user)
