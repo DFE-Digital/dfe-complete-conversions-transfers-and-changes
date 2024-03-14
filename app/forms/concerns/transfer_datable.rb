@@ -7,7 +7,6 @@ module TransferDatable
     attribute "confirmed_transfer_date(3i)"
 
     validate :transfer_date_format
-    validate :transfer_date_in_the_future, if: -> { valid_month? && valid_year? }
   end
 
   def confirmed_transfer_date
@@ -22,11 +21,6 @@ module TransferDatable
     errors.add(:confirmed_transfer_date, format_error) if month.blank? || year.blank?
     errors.add(:confirmed_transfer_date, format_error) unless valid_month?
     errors.add(:confirmed_transfer_date, format_error) unless valid_year?
-  end
-
-  private def transfer_date_in_the_future
-    in_the_future_error = I18n.t("transfer.task.stakeholder_kick_off.confirmed_transfer_date.errors.in_the_future")
-    errors.add(:confirmed_transfer_date, in_the_future_error) unless Date.new(year, month, 1).future?
   end
 
   private def month

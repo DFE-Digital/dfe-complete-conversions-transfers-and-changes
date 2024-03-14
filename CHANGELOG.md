@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - link to TRN spreadsheet in add Form a MAT converversion form opens in new tab
 - link to TRN spreadsheet in add Form a MAT transfer form opens in new tab
+- Temporarily remove the future date validation for confirmed significant dates
 
 ### Fixed
 

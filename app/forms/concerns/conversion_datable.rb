@@ -7,7 +7,6 @@ module ConversionDatable
     attribute "confirmed_conversion_date(3i)"
 
     validate :conversion_date_format
-    validate :conversion_date_in_the_future, if: -> { valid_month? && valid_year? }
   end
 
   def confirmed_conversion_date
@@ -22,11 +21,6 @@ module ConversionDatable
     errors.add(:confirmed_conversion_date, format_error) if month.blank? || year.blank?
     errors.add(:confirmed_conversion_date, format_error) unless valid_month?
     errors.add(:confirmed_conversion_date, format_error) unless valid_year?
-  end
-
-  private def conversion_date_in_the_future
-    in_the_future_error = I18n.t("conversion.task.stakeholder_kick_off.confirmed_conversion_date.errors.in_the_future")
-    errors.add(:confirmed_conversion_date, in_the_future_error) unless Date.new(year, month, 1).future?
   end
 
   private def month
