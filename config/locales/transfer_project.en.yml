@@ -81,7 +81,7 @@ en:
       transfer_create_project_form:
         new_trust_name: Enter the proposed name for the new trust. This can be changed later on if necessary.
         new_trust_reference_number_html:
-          <p>You can find the TRN in the <a href="https://educationgovuk.sharepoint.com/:x:/s/TrustandAcademyManagementServiceTRAMSPrivateBeta/ETyRXN0eIYxOmCVHTqWxSLYBQvHdfWicu7NybUaDeiz88g">new trusts spreadsheet (opens in new tab)</a>.</p>
+          <p>You can find the TRN in the <a href="https://educationgovuk.sharepoint.com/:x:/s/TrustandAcademyManagementServiceTRAMSPrivateBeta/ETyRXN0eIYxOmCVHTqWxSLYBQvHdfWicu7NybUaDeiz88g" class="govuk-link" rel="noreferrer noopener" target="_blank">new trusts spreadsheet (opens in new tab)</a>.</p>
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this academy. This is where you save all the relevant academy documents.
         incoming_trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         outgoing_trust_sharepoint_link: Provide a link to the SharePoint folder for the outgoing trust. This is where you save all the relevant trust documents.
