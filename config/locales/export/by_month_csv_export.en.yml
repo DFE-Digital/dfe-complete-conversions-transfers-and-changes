@@ -11,7 +11,7 @@ en:
         show:
           title: Details of academies due to transfer in %{month} %{year}
           body_html:
-            <p class="govuk-body">This .CSV spreadsheet shows you academies that will:</p>
+            <p class="govuk-body">This CSV spreadsheet shows you academies that will:</p>
             <ul>
             <li>transfer in %{month} %{year}</li>
             <li>need a new URN</li>

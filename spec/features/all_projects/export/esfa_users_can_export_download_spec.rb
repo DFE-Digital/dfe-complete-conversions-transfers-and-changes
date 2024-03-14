@@ -45,6 +45,6 @@ RSpec.feature "ESFA users can export" do
 
     click_on "Export for #{Date.today.to_fs(:govuk_month)}"
 
-    expect(page).to have_link("Download csv file")
+    expect(page).to have_link("Download CSV file")
   end
 end

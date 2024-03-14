@@ -2,7 +2,7 @@ en:
   export:
     landing_page:
       title: Exports
-      body: Check tables that show the progress of projects that will convert or transfer soon. You can also download .CSV file spreadsheets of the data.
+      body: Check tables that show the progress of projects that will convert or transfer soon. You can also download CSV file spreadsheets of the data.
       conversions:
         title: Conversion project data
         body: View tables and download spreadsheets that show information about conversions.

@@ -7,4 +7,4 @@ en:
         title: "%{date} funding agreement letter export"
         body_html:
           <p>Export downloads can take time to prepare, please be patient.</p>
-        button: Download csv file
+        button: Download CSV file
