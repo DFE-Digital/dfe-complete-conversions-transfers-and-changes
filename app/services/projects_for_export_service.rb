@@ -1,14 +1,4 @@
 class ProjectsForExportService
-  def risk_protection_arrangement_projects(month:, year:)
-    projects = conversion_projects_by_month_and_year(month, year)
-    AcademiesApiPreFetcherService.new.call!(projects)
-  end
-
-  def funding_agreement_letters_projects(month:, year:)
-    projects = conversion_projects_by_month_and_year(month, year)
-    AcademiesApiPreFetcherService.new.call!(projects)
-  end
-
   def grant_management_and_finance_unit_conversion_projects(month:, year:)
     projects = conversion_projects_by_advisory_board_date(month, year)
     AcademiesApiPreFetcherService.new.call!(projects)
@@ -28,6 +18,9 @@ class ProjectsForExportService
     projects = conversion_projects_by_month_and_year(month, year)
     AcademiesApiPreFetcherService.new.call!(projects)
   end
+
+  alias_method :risk_protection_arrangement_projects, :conversion_by_month_projects
+  alias_method :funding_agreement_letters_projects, :conversion_by_month_projects
 
   private def transfer_projects_by_month_and_year(month, year)
     Transfer::Project.filtered_by_significant_date(month, year)
