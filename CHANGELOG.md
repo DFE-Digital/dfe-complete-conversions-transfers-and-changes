@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-- typo in Receive grant payment certificate task action fixed - certifcate becomes certificate
+- typo in Receive grant payment cert task action - certifcate to certificate
 
 ## [Release-58][release-58]
 
