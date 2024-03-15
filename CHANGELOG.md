@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Add UI for "schools due to convert" export, which is replacing ESFA & Grant
   management and finance exports
+- Add the new "declaration of expenditure certificate task" to the transfers
+  task list
 
 ### Changed
 

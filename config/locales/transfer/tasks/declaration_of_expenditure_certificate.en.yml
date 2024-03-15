@@ -1,0 +1,33 @@
+en:
+  transfer:
+    task:
+      declaration_of_expenditure_certificate:
+        title: Receive declaration of expenditure certificate
+        hint:
+          html:
+            <p>Only do this task if the incoming trust got academy transfer grant funding.</p>
+            <p>3 months after the transfer date, remind the trust to complete and return the declaration of expenditure certificate.</p>
+        guidance_link: What to do if you have not received the certificate
+        guidance:
+          html:
+            <p>The incoming trust should send the certificate back to you within 10 days of the first reminder.</p>
+            <p>If they do not, send them another reminder.</p>
+            <p>Remind them every 10 days until they send it back.</p>
+        not_applicable:
+          title: Not applicable
+        date_received:
+          title: Enter the date you received the declaration of expenditure certificate
+          hint:
+            html: For example 27 5 2007
+        correct:
+          title: Check the declaration of expenditure certificate is correct
+          hint:
+            html:
+              <p>Make sure the amounts mentioned are accurate. You also need to make sure the grant has been used for allowable expenses and that there is no missing information.</p>
+              <p>Email <a href="mailto:cfugrantpayments.regionsgroup@education.gov.uk">cfugrantpayments.regionsgroup@education.gov.uk</a> if there are any issues.</p>
+          guidance_link: How to check the declaration of expenditure certificate
+          guidance:
+            html:
+              <p>You can read <a href="https://educationgovuk.sharepoint.com/:w:/r/sites/lvedfe00116/WorkplaceDocuments/ARDG%20Internal%20Guidance/6.%20Taking%20action%20with%20underperforming%20open%20academies%20and%20free%20schools/Academy%20transfer/Academy%20Transfer%20Project/Academy%20Transfer%20Grant%20Funding%20.docx?d=w622ba523f15d429695bc8c2950091ea0&csf=1&web=1&e=oBNhwq" target="_blank">guidance on how to process and check the declaration of expenditure certificate (opens in new tab)</a> on SharePoint.</p>
+        saved:
+          title: Save the declaration of expenditure certificate in the academy's SharePoint folder

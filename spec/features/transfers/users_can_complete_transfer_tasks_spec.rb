@@ -41,6 +41,7 @@ RSpec.feature "Users can complete transfer tasks" do
     check_and_confirm_financial_information
     confirm_date_academy_transferred
     sponsored_grant_type
+    declaration_of_expenditure_certificate
   ]
 
   it "confirms that all tasks are tested here" do
@@ -217,6 +218,80 @@ RSpec.feature "Users can complete transfer tasks" do
         click_on I18n.t("task_list.continue_button.text")
 
         expect(project.reload.tasks_data.confirm_date_academy_transferred_date_transferred).to eq Date.new(2024, 1, 1)
+      end
+    end
+
+    describe "the declaration of expenditure certificate task" do
+      scenario "can be not applicable" do
+        visit project_tasks_path(project)
+        click_on "Receive declaration of expenditure certificate"
+        click_not_applicable(page)
+        click_on I18n.t("task_list.continue_button.text")
+
+        table_row = page.find("li.app-task-list__item", text: "Receive declaration of expenditure certificate")
+
+        expect(table_row).to have_content("Not applicable")
+      end
+
+      scenario "can be in progress" do
+        visit project_tasks_path(project)
+        click_on "Receive declaration of expenditure certificate"
+        check "Check the declaration of expenditure certificate is correct"
+        click_on I18n.t("task_list.continue_button.text")
+
+        table_row = page.find("li.app-task-list__item", text: "Receive declaration of expenditure certificate")
+        expect(table_row).to have_content("In progress")
+
+        click_on "Receive declaration of expenditure certificate"
+        check "Save the declaration of expenditure certificate in the academy's SharePoint folder"
+        click_on I18n.t("task_list.continue_button.text")
+
+        table_row = page.find("li.app-task-list__item", text: "Receive declaration of expenditure certificate")
+        expect(table_row).to have_content("In progress")
+
+        click_on "Receive declaration of expenditure certificate"
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "1"
+        fill_in "Year", with: "2024"
+        click_on I18n.t("task_list.continue_button.text")
+
+        table_row = page.find("li.app-task-list__item", text: "Receive declaration of expenditure certificate")
+        expect(table_row).to have_content("Complete")
+      end
+      scenario "can be completed" do
+        visit project_tasks_path(project)
+        click_on "Receive declaration of expenditure certificate"
+        check "Check the declaration of expenditure certificate is correct"
+        check "Save the declaration of expenditure certificate in the academy's SharePoint folder"
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "1"
+        fill_in "Year", with: "2024"
+        click_on I18n.t("task_list.continue_button.text")
+
+        table_row = page.find("li.app-task-list__item", text: "Receive declaration of expenditure certificate")
+        expect(table_row).to have_content("Complete")
+      end
+
+      scenario "records the date" do
+        visit project_tasks_path(project)
+        click_on "Receive declaration of expenditure certificate"
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "1"
+        fill_in "Year", with: "2024"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.declaration_of_expenditure_certificate_date_received).to eql(Date.new(2024, 1, 1))
+      end
+
+      scenario "shows an error when the date is not valid" do
+        visit project_tasks_path(project)
+        click_on "Receive declaration of expenditure certificate"
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "24"
+        fill_in "Year", with: "2024"
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(page).to have_content("Please enter a valid date")
       end
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_14_083733) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_15_085020) do
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.uuid "project_id"
     t.string "name", null: false
@@ -400,6 +400,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_083733) do
     t.date "confirm_date_academy_transferred_date_transferred"
     t.boolean "sponsored_support_grant_not_applicable", default: false
     t.string "sponsored_support_grant_type"
+    t.date "declaration_of_expenditure_certificate_date_received"
+    t.boolean "declaration_of_expenditure_certificate_correct", default: false
+    t.boolean "declaration_of_expenditure_certificate_saved", default: false
+    t.boolean "declaration_of_expenditure_certificate_not_applicable", default: false
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

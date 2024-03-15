@@ -29,7 +29,8 @@ RSpec.describe Transfer::TaskList do
         :confirm_incoming_trust_has_completed_all_actions,
         :conditions_met,
         :confirm_date_academy_transferred,
-        :redact_and_send_documents
+        :redact_and_send_documents,
+        :declaration_of_expenditure_certificate
       ]
 
       expect(described_class.identifiers).to eql transfer_task_list_identifiers
@@ -52,9 +53,9 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 24
+      expect(task_list.tasks.count).to eql 25
       expect(task_list.tasks.first).to be_a Transfer::Task::HandoverTaskForm
-      expect(task_list.tasks.last).to be_a Transfer::Task::RedactAndSendDocumentsTaskForm
+      expect(task_list.tasks.last).to be_a Transfer::Task::DeclarationOfExpenditureCertificateTaskForm
     end
   end
 end
