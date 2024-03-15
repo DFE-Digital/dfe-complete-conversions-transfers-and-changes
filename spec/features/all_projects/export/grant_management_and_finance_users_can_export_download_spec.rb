@@ -51,7 +51,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
       click_on "Export for #{Date.today.to_fs(:govuk_month)}"
       expect(page).to have_content("#{Date.today.to_fs(:govuk_month)} Grants Management and Finance Unit export")
 
-      click_on "Download csv file"
+      click_on "Download CSV file"
       expect(page.response_headers["Content-Disposition"]).to include("#{Date.today.year}-#{Date.today.month}_grant_management_and_finance_unit_conversions_export.csv")
     end
   end
@@ -88,7 +88,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
       click_on "Export for #{Date.today.to_fs(:govuk_month)}"
       expect(page).to have_content("#{Date.today.to_fs(:govuk_month)} Grants Management and Finance Unit export")
 
-      click_on "Download csv file"
+      click_on "Download CSV file"
       expect(page.response_headers["Content-Disposition"]).to include("#{Date.today.year}-#{Date.today.month}_grant_management_and_finance_unit_transfers_export.csv")
     end
   end

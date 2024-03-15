@@ -31,4 +31,4 @@ en:
         title: "%{date} grant management and funding unit export"
         body_html:
           <p>Export downloads can take time to prepare, please be patient.</p>
-        button: Download csv file
+        button: Download CSV file

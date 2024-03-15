@@ -220,6 +220,9 @@ en:
         view_confirmed_transfer_projects_for: View %{date}'s confirmed transfers
         view_revised_transfer_projects_for: View %{date}'s revised transfers
         download_transfer_projects_for: Download %{date}'s transfers
+        export_link: Export
+        export_link_title_conversions_html: Download the funding export for %{date} conversions
+        conversion_project_count_html: "%{count} <span class='govuk-visually-hidden'>school(s) converting in %{date}</span>"
       empty:
         projects: There are no projects
       in_progress:

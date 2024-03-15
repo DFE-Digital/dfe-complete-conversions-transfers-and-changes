@@ -141,6 +141,38 @@ RSpec.describe ProjectsForExportService do
     end
   end
 
+  describe "#conversion_by_month_projects" do
+    it "returns only conversion projects converting in the supplied month & year" do
+      matching_project_1 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+      matching_project_2 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+      mismatching_project_1 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-2-1"))
+      mismatching_project_2 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.conversion_by_month_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(matching_project_1, matching_project_2)
+      expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
+    end
+
+    it "includes both provisional and confirmed projects" do
+      confirmed_project = create(:conversion_project, conversion_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+      provisional_project = create(:conversion_project, conversion_date_provisional: true, significant_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.conversion_by_month_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(confirmed_project)
+      expect(projects_for_export).to include(provisional_project)
+    end
+
+    it "includes Form a MAT transfers" do
+      project = create(:conversion_project, :form_a_mat, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
+
+      projects_for_export = described_class.new.conversion_by_month_projects(month: 1, year: 2023)
+
+      expect(projects_for_export).to include(project)
+    end
+  end
+
   describe "#funding_agreement_letters_projects" do
     it "returns only conversion projects" do
       transfer_project = create(:transfer_project, transfer_date_provisional: false, transfer_date: Date.parse("2025-1-1"))
