@@ -862,4 +862,48 @@ RSpec.describe Export::Csv::ProjectPresenter do
       end
     end
   end
+
+  describe "#declaration_of_expenditure_certificate_date_received_date_received" do
+    context "when project is a conversion" do
+      it "presents not applicable" do
+        project = build(:conversion_project)
+
+        presenter = described_class.new(project)
+
+        expect(presenter.declaration_of_expenditure_certificate_date_received).to eql "not applicable"
+      end
+    end
+
+    context "when the project is a transfer" do
+      context "and the date is nil" do
+        it "presents unconfirmed" do
+          project = build(:transfer_project)
+          build(
+            :transfer_tasks_data,
+            declaration_of_expenditure_certificate_date_received: nil,
+            project: project
+          )
+
+          presenter = described_class.new(project)
+
+          expect(presenter.declaration_of_expenditure_certificate_date_received).to eql "unconfirmed"
+        end
+      end
+
+      context "and the date is present" do
+        it "presents the date" do
+          project = build(:transfer_project)
+          build(
+            :transfer_tasks_data,
+            declaration_of_expenditure_certificate_date_received: Date.new(2024, 1, 1),
+            project: project
+          )
+
+          presenter = described_class.new(project)
+
+          expect(presenter.declaration_of_expenditure_certificate_date_received).to eql "2024-01-01"
+        end
+      end
+    end
+  end
 end
