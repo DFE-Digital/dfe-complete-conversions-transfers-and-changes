@@ -138,6 +138,7 @@ en:
           date_academy_transferred: Date the transfer happened
           date_academy_opened: Date the conversion happened
           declaration_of_expenditure_certificate_date_received: Date the declaration of expenditure certificate was received
+          assigned_to_team: Team managing the project
         values:
           project_type:
             conversion: Conversion
@@ -165,3 +166,14 @@ en:
           single_transfer: single transfer
           form_a_mat: form a MAT
           none: none
+          team:
+            london: London
+            south_east: South East
+            yorkshire_and_the_humber: Yorkshire and the Humber
+            north_west: North West
+            east_of_england: East of England
+            west_midlands: West Midlands
+            north_east: North East
+            south_west: South West
+            east_midlands: East Midlands
+            regional_casework_services: Regional Casework Services

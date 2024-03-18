@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   task list
 - The "declaration of expenditure certificate date received" is included in the
   "Grant management and finance unit" csv export
+- The team a project is assigned to is now included in the 'academies due to
+  transfer over the next 6 months' export
 
 ### Changed
 
