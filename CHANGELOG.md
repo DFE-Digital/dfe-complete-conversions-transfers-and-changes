@@ -13,9 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- link to TRN spreadsheet in add Form a MAT converversion form opens in new tab
+- link to TRN spreadsheet in add Form a MAT conversion form opens in new tab
 - link to TRN spreadsheet in add Form a MAT transfer form opens in new tab
 - Temporarily remove the future date validation for confirmed significant dates
+- Change the export landing page to only show 4 expots (2 each for Conversions
+  and Transfers)
 
 ### Fixed
 

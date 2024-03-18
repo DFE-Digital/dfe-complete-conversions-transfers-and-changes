@@ -4,13 +4,12 @@ en:
       title: Exports
       body: Check tables that show the progress of projects that will convert or transfer soon. You can also download CSV file spreadsheets of the data.
       conversions:
-        title: Conversion project data
-        body: View tables and download spreadsheets that show information about conversions.
-        funding_agreement_letters_html: You can <a href="%{link}">find out who should be sent the funding agreement letters</a>.
-        risk_protection_arrangements_html: You can <a href="%{link}">check details about schools' risk protection arrangements and start-up grant funding</a>.
-        grant_management_html: You can <a href="%{link}">get information pre-opening grants for schools becoming academies</a>.
+        title: Conversions
+        body: View tables and download CSV files that show information about conversions.
+        grant_management: pre-opening grants for schools becoming academies
+        schools_due_to_convert: funding agreement letter contacts, RPA and start-up grants
       transfers:
-        title: Transfer project data
-        body: View tables and download spreadsheets that show information about transfers.
-        academies_due_to_transfer_html: You can <a href="%{link}">check which academies are due to transfer in an particular month</a>.
-        grant_management_html: You can <a href="%{link}">get information pre-opening grants for transferring academies</a>.
+        title: Transfers
+        body: View tables and download CSV files that show information about transfers.
+        academies_due_to_transfer: academies due to transfer over the next 6 months
+        grant_management: pre-transfer grants for academies joining a different trust

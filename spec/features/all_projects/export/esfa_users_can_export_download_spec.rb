@@ -27,7 +27,7 @@ RSpec.feature "ESFA users can export" do
 
     click_on "Exports"
 
-    click_on "check details about schools' risk protection arrangements and start-up grant funding"
+    click_on "funding agreement letter contacts, RPA and start-up grants"
 
     expect(page).to have_link(Date.today.to_fs(:govuk_month))
     expect(page).to have_link(Date.today.next_month.to_fs(:govuk_month))
@@ -41,9 +41,11 @@ RSpec.feature "ESFA users can export" do
 
     click_on "Exports"
 
-    click_on "check details about schools' risk protection arrangements and start-up grant funding"
+    click_on "funding agreement letter contacts, RPA and start-up grants"
 
-    click_on "Export for #{Date.today.to_fs(:govuk_month)}"
+    within("tr.govuk-table__row:contains('#{Date.today.to_fs(:govuk_month)}')") do
+      click_on "Export"
+    end
 
     expect(page).to have_link("Download CSV file")
   end
