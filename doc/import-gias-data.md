@@ -99,7 +99,7 @@ To import:
 - obtain the correct file
 - open a Rails console
 - initialise a new importer with the path to the file:
-  `importer = Import::GiasEstablishmentCsvImporterService.new("/path/to/file.csv")`
+  `importer = Import::Gias::EstablishmentCsvImporterService.new("/path/to/file.csv")`
 - run the import: `importer.import!`
 
 Be aware, importing the entire dataset with empty tables will take ~8 minutes
