@@ -18,6 +18,7 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
     provisional_date
     transfer_date
     date_academy_transferred
+    declaration_of_expenditure_certificate_date_received
     added_by_email
     assigned_to_email
     link_to_project

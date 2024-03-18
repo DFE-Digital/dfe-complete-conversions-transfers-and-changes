@@ -309,6 +309,13 @@ class Export::Csv::ProjectPresenter
     other_contact&.title
   end
 
+  def declaration_of_expenditure_certificate_date_received
+    return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Conversion::Project)
+    return I18n.t("export.csv.project.values.unconfirmed") unless @project.tasks_data.declaration_of_expenditure_certificate_date_received.present?
+
+    @project.tasks_data.declaration_of_expenditure_certificate_date_received.to_fs(:csv)
+  end
+
   private def other_contact
     @contacts_fetcher.other_contact
   end
