@@ -17,9 +17,10 @@
   <div class="govuk-grid-column-two-thirds">
     <h4 class="govuk-heading-m"><%= t("export.landing_page.conversions.title") %></h4>
     <p class="govuk-body"><%= t("export.landing_page.conversions.body") %></p>
-    <p class="govuk-body"><%= t("export.landing_page.conversions.funding_agreement_letters_html", link: all_export_funding_agreement_letters_conversions_projects_path) %></p>
-    <p class="govuk-body"><%= t("export.landing_page.conversions.risk_protection_arrangements_html", link: all_export_education_and_skills_funding_agency_conversions_projects_path) %></p>
-    <p class="govuk-body"><%= t("export.landing_page.conversions.grant_management_html", link: all_export_grant_management_and_finance_unit_conversions_projects_path) %></p>
+    <ul>
+      <li><%= link_to t("export.landing_page.conversions.schools_due_to_convert"), all_export_by_month_conversions_projects_path %></li>
+      <li><%= link_to t("export.landing_page.conversions.grant_management"), all_export_grant_management_and_finance_unit_conversions_projects_path %></li>
+    </ul>
   </div>
 </div>
 
@@ -27,7 +28,9 @@
   <div class="govuk-grid-column-two-thirds">
     <h4 class="govuk-heading-m"><%= t("export.landing_page.transfers.title") %></h4>
     <p class="govuk-body"><%= t("export.landing_page.transfers.body") %></p>
-    <p class="govuk-body"><%= t("export.landing_page.transfers.academies_due_to_transfer_html", link: all_export_by_month_transfers_projects_path) %></p>
-    <p class="govuk-body"><%= t("export.landing_page.transfers.grant_management_html", link: all_export_grant_management_and_finance_unit_transfers_projects_path) %></p>
+    <ul>
+      <li><%= link_to t("export.landing_page.transfers.academies_due_to_transfer"), all_export_by_month_transfers_projects_path %></li>
+      <li><%= link_to t("export.landing_page.transfers.grant_management"), all_export_grant_management_and_finance_unit_transfers_projects_path %></li>
+    </ul>
   </div>
 </div>

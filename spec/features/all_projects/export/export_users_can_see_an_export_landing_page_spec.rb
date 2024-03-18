@@ -16,9 +16,10 @@ RSpec.feature "Export users can see the exports landing page" do
     sign_in_with_user(user)
     click_on "Exports"
 
-    expect(page).to have_content("You can find out who should be sent the funding agreement letters.")
-    expect(page).to have_content("You can check details about schools' risk protection arrangements and start-up grant funding.")
-    expect(page).to have_content("You can get information pre-opening grants for schools becoming academies.")
+    expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
+    expect(page).to have_content("pre-opening grants for schools becoming academies")
+    expect(page).to have_content("academies due to transfer over the next 6 months")
+    expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 
   scenario "an AOPU user can see the exports landing page" do
@@ -27,9 +28,10 @@ RSpec.feature "Export users can see the exports landing page" do
     sign_in_with_user(user)
     click_on "Exports"
 
-    expect(page).to have_content("You can find out who should be sent the funding agreement letters.")
-    expect(page).to have_content("You can check details about schools' risk protection arrangements and start-up grant funding.")
-    expect(page).to have_content("You can get information pre-opening grants for schools becoming academies.")
+    expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
+    expect(page).to have_content("pre-opening grants for schools becoming academies")
+    expect(page).to have_content("academies due to transfer over the next 6 months")
+    expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 
   scenario "a business support user can see the exports landing page" do
@@ -38,8 +40,9 @@ RSpec.feature "Export users can see the exports landing page" do
     sign_in_with_user(user)
     click_on "Exports"
 
-    expect(page).to have_content("You can find out who should be sent the funding agreement letters.")
-    expect(page).to have_content("You can check details about schools' risk protection arrangements and start-up grant funding.")
-    expect(page).to have_content("You can get information pre-opening grants for schools becoming academies.")
+    expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
+    expect(page).to have_content("pre-opening grants for schools becoming academies")
+    expect(page).to have_content("academies due to transfer over the next 6 months")
+    expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 end
