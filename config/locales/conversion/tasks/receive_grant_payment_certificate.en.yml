@@ -20,7 +20,7 @@ en:
               <p>If the school only recieved the £25,000 converter grant, they need to download and <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">complete the academy conversions, support grant certificate (opens in new tab)</a>.</p>
               <p>If the school or trust received a sponsored grant, they need to <a href="https://www.gov.uk/government/publications/sponsored-academies-funding-guidance-for-sponsors" target="_blank">complete the certificate in Annex 2 of the Sponsored academies funding - advice for sponsors PDF (opens in a new tab)</a>.</p>
         save_certificate:
-          title: Save the grant payment certifcate in the academy's SharePoint folder
+          title: Save the grant payment certificate in the academy's SharePoint folder
         date_received:
           title: Enter the date you received the grant payment certificate
           hint:
