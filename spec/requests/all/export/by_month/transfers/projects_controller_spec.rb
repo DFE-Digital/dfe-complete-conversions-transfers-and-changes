@@ -9,7 +9,7 @@ RSpec.describe All::Export::ByMonth::Transfers::ProjectsController, type: :reque
   end
 
   describe "#index" do
-    it "shows the next 6 months and links to Academies transferring in those months" do
+    it "shows the next 6 months and links to exports for those months" do
       travel_to Date.new(2023, 1, 1) do
         get all_export_by_month_transfers_projects_path
         expect(response.body).to include(
@@ -21,9 +21,12 @@ RSpec.describe All::Export::ByMonth::Transfers::ProjectsController, type: :reque
           "June 2023"
         )
         expect(response.body).to include(
-          "View January&#39;s confirmed transfers",
-          "View January&#39;s revised transfers",
-          "Download January&#39;s transfers"
+          "/projects/all/export/by-month/transfers/1/2023",
+          "/projects/all/export/by-month/transfers/2/2023",
+          "/projects/all/export/by-month/transfers/3/2023",
+          "/projects/all/export/by-month/transfers/4/2023",
+          "/projects/all/export/by-month/transfers/5/2023",
+          "/projects/all/export/by-month/transfers/6/2023"
         )
       end
     end

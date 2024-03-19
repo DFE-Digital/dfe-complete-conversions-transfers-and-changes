@@ -2,30 +2,25 @@
   <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
 <% end %>
 
-<table class="govuk-table" name="projects_table" aria-label="Education and Skills Funding Agency exports">
-  <caption class="govuk-table__caption govuk-table__caption--l"><%= t("export.education_and_skills_funding_agency.index.title") %></caption>
+<table class="govuk-table" name="projects_table" aria-label="Conversions by month exports">
   <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.date") %></th>
-      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.confirmed") %></th>
-      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.revised") %></th>
-      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.export") %></th>
-    </tr>
+  <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col"><%= t("project.table.headers.date") %></th>
+    <th class="govuk-table__header" scope="col"><%= t("project.table.headers.number_of_conversions") %></th>
+    <th class="govuk-table__header" scope="col"><%= t("project.table.headers.export") %></th>
+  </tr>
   </thead>
   <tbody class="govuk-table__body">
-    <% @months.each do |month| %>
-      <tr class="govuk-table__row">
-        <td class="govuk-table__header govuk-table__cell"><%= month.to_fs(:govuk_month) %></td>
-        <td class="govuk-table__cell">
-          <%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/by-month/confirmed/#{month.month}/#{month.year}" %>
-        </td>
-        <td class="govuk-table__cell">
-          <%= link_to t("project.table.body.view_projects_for_html", entity: month.to_fs(:govuk_month)), "/projects/all/by-month/revised/#{month.month}/#{month.year}" %>
-        </td>
-        <td class="govuk-table__cell">
-          <%= link_to t("project.table.body.export_for_html", date: month.to_fs(:govuk_month)), show_all_export_education_and_skills_funding_agency_conversions_projects_path(month.month, month.year) %>
-        </td>
-      </tr>
-    <% end %>
+  <% @data.each do |item| %>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__header govuk-table__cell"><%= item[:month].to_fs(:govuk_month) %></td>
+      <td class="govuk-table__cell"><%= t("project.table.body.conversion_project_count_html", count: item[:count], date: item[:month].to_fs(:govuk_month)) %></td>
+      <td class="govuk-table__cell">
+        <%= link_to(t("project.table.body.export_link"),
+              show_all_export_by_month_conversions_projects_path(item[:month].month, item[:month].year),
+              title: t("project.table.body.export_link_title_conversions_html", date: item[:month].to_fs(:govuk_month))) %>
+      </td>
+    </tr>
+  <% end %>
   </tbody>
 </table>

@@ -1,7 +1,13 @@
 class All::Export::ByMonth::Transfers::ProjectsController < ApplicationController
   def index
     authorize :export
-    @months = export_months
+    service = ProjectsForExportService.new
+    @data = export_months.map do |month|
+      {
+        month: month,
+        count: service.conversion_by_month_projects(month: month.month, year: month.year).count
+      }
+    end
   end
 
   def show
