@@ -20,6 +20,7 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
     bank_details_changing
     region
     assigned_to_email
+    assigned_to_team
     provisional_date
     transfer_date
     authority_to_proceed

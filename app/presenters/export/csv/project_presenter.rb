@@ -171,6 +171,12 @@ class Export::Csv::ProjectPresenter
     @project.assigned_to.email
   end
 
+  def assigned_to_team
+    return I18n.t("export.csv.project.values.unassigned") unless @project.team.present?
+
+    I18n.t("export.csv.project.values.team.#{@project.team}")
+  end
+
   def main_contact_name
     return unless @project.main_contact.present?
 

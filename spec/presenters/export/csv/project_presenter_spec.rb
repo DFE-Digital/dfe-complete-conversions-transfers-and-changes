@@ -489,6 +489,32 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.assigned_to_email).to eql "assigned.user@education.gov.uk"
   end
 
+  describe "#assigned_to_team" do
+    it "presents unassigned when there is no team" do
+      project = build(:conversion_project, team: nil)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.assigned_to_team).to eql "unassigned"
+    end
+
+    it "presents the region of the regional team when assigned" do
+      project = build(:conversion_project, team: :london)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.assigned_to_team).to eql "London"
+    end
+
+    it "presents RCS when assigned" do
+      project = build(:conversion_project, team: :regional_casework_services)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.assigned_to_team).to eql "Regional Casework Services"
+    end
+  end
+
   it "presents the main contact email" do
     mock_successful_api_response_to_create_any_project
     user = create(:project_contact, email: "main.contact@education.gov.uk")
