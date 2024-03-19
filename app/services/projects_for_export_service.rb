@@ -19,9 +19,6 @@ class ProjectsForExportService
     AcademiesApiPreFetcherService.new.call!(projects)
   end
 
-  alias_method :risk_protection_arrangement_projects, :conversion_by_month_projects
-  alias_method :funding_agreement_letters_projects, :conversion_by_month_projects
-
   private def transfer_projects_by_month_and_year(month, year)
     Transfer::Project.filtered_by_significant_date(month, year)
   end

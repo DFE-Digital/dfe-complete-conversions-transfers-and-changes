@@ -12,7 +12,7 @@
     <h1 class="govuk-heading-l"><%= t("export.grant_management_and_finance_unit.conversions.show.title", date: @month.to_fs(:govuk_month)) %></h1>
     <%= t("export.grant_management_and_finance_unit.conversions.show.body_html") %>
     <div class="govuk-form-group">
-      <%= govuk_button_link_to t("export.funding_agreement_letters.show.button"), "/projects/all/export/grant-management-and-finance-unit/conversions/#{@month.month}/#{@month.year}/csv" %>
+      <%= govuk_button_link_to t("export.grant_management_and_finance_unit.conversions.show.button"), "/projects/all/export/grant-management-and-finance-unit/conversions/#{@month.month}/#{@month.year}/csv" %>
     </div>
   </div>
 </div>

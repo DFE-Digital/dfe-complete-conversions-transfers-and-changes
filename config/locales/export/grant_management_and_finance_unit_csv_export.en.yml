@@ -14,6 +14,7 @@ en:
             <li>sponsored grant (fast track, intermediate or full sponsored)</li>
             </ul>
             <p>It can take a little time to create these files. Thank you for your patience.</p>
+          button: Download CSV file
       transfers:
         index:
           title: Grant management and finance unit exports
@@ -27,6 +28,7 @@ en:
             <li>academy transfer grant fund (fast track, intermediate or full sponsored)</li>
             </ul>
             <p>It can take a little time to create these files. Thank you for your patience.</p>
+          button: Download CSV file
       show:
         title: "%{date} grant management and funding unit export"
         body_html:
