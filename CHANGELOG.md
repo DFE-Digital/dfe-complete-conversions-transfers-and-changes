@@ -6,28 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
-### Added
+## [Release-59][release-59]
 
-- Add UI for "schools due to convert" export, which is replacing ESFA & Grant
+### added
+
+- add ui for "schools due to convert" export, which is replacing esfa & grant
   management and finance exports
-- Add the new "declaration of expenditure certificate task" to the transfers
+- add the new "declaration of expenditure certificate task" to the transfers
   task list
-- The "declaration of expenditure certificate date received" is included in the
-  "Grant management and finance unit" csv export
-- The team a project is assigned to is now included in the 'academies due to
+- the "declaration of expenditure certificate date received" is included in the
+  "grant management and finance unit" csv export
+- the team a project is assigned to is now included in the 'academies due to
   transfer over the next 6 months' export
 
-### Changed
+### changed
 
-- link to TRN spreadsheet in add Form a MAT conversion form opens in new tab
-- link to TRN spreadsheet in add Form a MAT transfer form opens in new tab
-- Temporarily remove the future date validation for confirmed significant dates
-- Change the export landing page to only show 4 expots (2 each for Conversions
-  and Transfers)
+- link to trn spreadsheet in add form a mat conversion form opens in new tab
+- link to trn spreadsheet in add form a mat transfer form opens in new tab
+- temporarily remove the future date validation for confirmed significant dates
+- change the export landing page to only show 4 exports (2 each for conversions
+  and transfers)
 
-### Fixed
+### fixed
 
-- typo in Receive grant payment certificate task action fixed - certifcate
+- typo in receive grant payment certificate task action fixed - certifcate
   becomes certificate
 
 ## [Release-58][release-58]
@@ -1700,7 +1702,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-58...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-59...HEAD
+[release-59]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-58...release-59
 [release-58]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-57...release-58
 [release-57]:
