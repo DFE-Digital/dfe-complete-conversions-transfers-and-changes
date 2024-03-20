@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Allow service support users to be able to access all exports
+
 ## [Release-60][release-60]
 
 ### Changed
