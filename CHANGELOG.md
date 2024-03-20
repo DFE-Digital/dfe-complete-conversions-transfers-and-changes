@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-60][release-60]
+
+### Changed
+
+- the 'academies due to transfer over the next 6 months' export month view has
+  been updated inline with the other export views, this also resolve an issue
+  where links to the confirmed projects would incorrectly contain conversions
+
 ## [Release-59][release-59]
 
 ### added
@@ -1702,7 +1710,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-59...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-60...HEAD
+[release-60]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-59...release-60
 [release-59]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-58...release-59
 [release-58]:
