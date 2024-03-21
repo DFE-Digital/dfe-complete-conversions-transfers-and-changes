@@ -55,6 +55,10 @@ RSpec.describe ProjectPolicy do
         expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
       end
 
+      it "grants access if the user is service support" do
+        expect(subject).to permit(build(:user, :service_support), build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
+      end
+
       it "denies access if the project is assigned to another user" do
         expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: build(:user), conversion_date_provisional: false))
       end

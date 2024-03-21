@@ -53,6 +53,7 @@ class ProjectPolicy
 
   def change_significant_date?
     return false if @record.significant_date_provisional?
+    return true if @user.is_service_support?
 
     project_assigned_to_user?
   end
