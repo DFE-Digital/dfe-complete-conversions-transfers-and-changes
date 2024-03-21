@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Allow service support users to be able to access all exports
 
+### Changed
+
+- Service Support users can now change any of the assignments for a project
+
 ## [Release-60][release-60]
 
 ### Changed

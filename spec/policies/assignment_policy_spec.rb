@@ -9,6 +9,11 @@ RSpec.describe AssignmentPolicy do
       expect(subject).to permit(user)
     end
 
+    it "grants access when the user is service support" do
+      user = build(:user, :service_support)
+      expect(subject).to permit(user)
+    end
+
     it "denies access when the user is not a team lead" do
       user = build(:user)
       expect(subject).not_to permit(user)
@@ -21,6 +26,11 @@ RSpec.describe AssignmentPolicy do
       expect(subject).to permit(user)
     end
 
+    it "grants access when the user is service support" do
+      user = build(:user, :service_support)
+      expect(subject).to permit(user)
+    end
+
     it "denies access when the user is not a team lead" do
       user = build(:user)
       expect(subject).not_to permit(user)
@@ -30,6 +40,11 @@ RSpec.describe AssignmentPolicy do
   permissions :assign_assigned_to?, :update_assigned_to? do
     it "grants access when the user is a team lead" do
       user = build(:user, :caseworker)
+      expect(subject).to permit(user)
+    end
+
+    it "grants access when the user is service support" do
+      user = build(:user, :service_support)
       expect(subject).to permit(user)
     end
 
