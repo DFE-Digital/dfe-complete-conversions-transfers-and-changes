@@ -13,9 +13,9 @@ RSpec.describe ExportPolicy do
       expect(described_class).to permit(esfa_user)
       expect(described_class).to permit(aopu_user)
       expect(described_class).to permit(business_support_user)
+      expect(described_class).to permit(service_support_user)
       expect(described_class).not_to permit(rdo_user)
       expect(described_class).not_to permit(rcs_user)
-      expect(described_class).not_to permit(service_support_user)
     end
   end
 
@@ -24,9 +24,9 @@ RSpec.describe ExportPolicy do
       expect(described_class).to permit(esfa_user)
       expect(described_class).to permit(aopu_user)
       expect(described_class).to permit(business_support_user)
+      expect(described_class).to permit(service_support_user)
       expect(described_class).not_to permit(rdo_user)
       expect(described_class).not_to permit(rcs_user)
-      expect(described_class).not_to permit(service_support_user)
     end
   end
 
@@ -35,9 +35,20 @@ RSpec.describe ExportPolicy do
       expect(described_class).to permit(esfa_user)
       expect(described_class).to permit(aopu_user)
       expect(described_class).to permit(business_support_user)
+      expect(described_class).to permit(service_support_user)
       expect(described_class).not_to permit(rdo_user)
       expect(described_class).not_to permit(rcs_user)
-      expect(described_class).not_to permit(service_support_user)
+    end
+  end
+
+  permissions :service_support? do
+    it "grants access if the user is a service support user" do
+      expect(described_class).to permit(service_support_user)
+      expect(described_class).not_to permit(esfa_user)
+      expect(described_class).not_to permit(aopu_user)
+      expect(described_class).not_to permit(business_support_user)
+      expect(described_class).not_to permit(rdo_user)
+      expect(described_class).not_to permit(rcs_user)
     end
   end
 end
