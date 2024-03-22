@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Allow service support users to be able to access all exports
+- Added guidance to action to send redacts documents to GOV.UK in Redact and
+  send documents task for conversions and transfers
 
 ## [Release-60][release-60]
 

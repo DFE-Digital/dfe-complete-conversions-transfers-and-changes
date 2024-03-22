@@ -37,10 +37,20 @@ en:
         saved:
           title: Save documents in the relevant academy, incoming trust or outgoing trust SharePoint folders
         send_to_funding_team:
-          title: Send the redacted documents to the funding team to be published on GOV.UK
-          hint:
+          title: Send the redacted documents to the funding agreements mailbox to be published on GOV.UK
+          guidance_link: Help sending documents
+          guidance:
             html:
-              <p>Email the documents to <a href="mailto:fundingagreements.converters@education.gov.uk">fundingagreements.converters@education.gov.uk</a>.</p>
+              <p>Email the documents to <a href="mailto:fundingagreements.converters@education.gov.uk" target="_blank">fundingagreements.converters@education.gov.uk</a>.</p>
+              <p>You must use the correct file name format when you save the files.</p>
+              <p>The file name must include the:</p>
+              <ul>
+                <li>academy URN</li>
+                <li>academy name</li>
+                <li>local authority name</li>
+                <li>document name</li>
+              </ul>
+              <p>It must be written as AcademyURN_AcademyName_LA_DocumentName_Redacted</p>
         send_to_solicitors:
           title: Send the redacted and unredacted versions of documents to the solicitors
           hint:
