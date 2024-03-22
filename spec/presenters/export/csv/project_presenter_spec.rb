@@ -36,7 +36,11 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the academy order type for a transfer" do
-    not_applicable_for_a_transfer
+    project = build(:transfer_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.academy_order_type).to eql "not applicable"
   end
 
   it "presents the two requires improvement value" do
@@ -237,7 +241,7 @@ RSpec.describe Export::Csv::ProjectPresenter do
       expect(presenter.transfer_grant_level).to eql "unconfirmed"
     end
 
-    it "presents stanadard values" do
+    it "presents standard values" do
       tasks_data = build(:transfer_tasks_data, sponsored_support_grant_type: :standard, sponsored_support_grant_not_applicable: false)
       project = build(:transfer_project, tasks_data: tasks_data)
 
@@ -284,7 +288,11 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the sponsored grant type value for a transfer" do
-    not_applicable_for_a_transfer
+    project = build(:transfer_project)
+
+    presenter = described_class.new(project)
+
+    expect(presenter.sponsored_grant_type).to eql "not applicable"
   end
 
   it "presents the provisional date" do
@@ -810,14 +818,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
     presenter = described_class.new(project)
     expect(presenter.other_contact_role).to eq("CEO of Learning")
-  end
-
-  def not_applicable_for_a_transfer
-    project = build(:transfer_project)
-
-    presenter = described_class.new(project)
-
-    expect(presenter.academy_order_type).to eql "not applicable"
   end
 
   describe "#esfa_notes" do
