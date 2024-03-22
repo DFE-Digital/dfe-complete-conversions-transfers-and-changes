@@ -17,7 +17,7 @@ RSpec.describe Contact::DirectorOfChildServices, type: :model do
   describe "#organisation_name" do
     it "returns the organisation name" do
       local_authority = create(:local_authority, name: "Bumbletown Council")
-      director = create(:director_of_child_services, local_authority: local_authority)
+      director = build(:director_of_child_services, local_authority: local_authority)
       expect(director.organisation_name).to eq(local_authority.name)
     end
   end
@@ -31,7 +31,7 @@ RSpec.describe Contact::DirectorOfChildServices, type: :model do
   describe "#editable" do
     it "always returns false" do
       local_authority = create(:local_authority)
-      director = create(:director_of_child_services, local_authority: local_authority)
+      director = build(:director_of_child_services, local_authority: local_authority)
 
       expect(director.editable?).to be false
     end

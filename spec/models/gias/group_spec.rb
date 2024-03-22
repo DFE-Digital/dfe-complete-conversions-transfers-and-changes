@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Gias::Group do
   describe "the basics" do
     it "can create instances" do
-      establishment = create(:gias_group, ukprn: 12345678, original_name: "A test trust")
+      establishment = build(:gias_group, ukprn: 12345678, original_name: "A test trust")
 
       expect(establishment.ukprn).to eql 12345678
       expect(establishment.original_name).to eql "A test trust"

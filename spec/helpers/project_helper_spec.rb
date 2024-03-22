@@ -300,7 +300,7 @@ RSpec.describe ProjectHelper, type: :helper do
     context "when the project date is confirmed and has never changed" do
       it "returns the two dates correctly" do
         project = build(:conversion_project, significant_date: Date.new(2024, 1, 1), significant_date_provisional: false)
-        create(:date_history, project: project, previous_date: Date.new(2024, 1, 1), revised_date: Date.new(2024, 1, 1))
+        build(:date_history, project: project, previous_date: Date.new(2024, 1, 1), revised_date: Date.new(2024, 1, 1))
 
         expect(helper.confirmed_date_original_date(project)).to eq("Jan 2024 (Jan 2024)")
       end

@@ -15,7 +15,7 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
   end
 
   context "when the project is a form a MAT project" do
-    let(:project) { create(:conversion_project, :form_a_mat) }
+    let(:project) { build(:conversion_project, :form_a_mat) }
 
     it "presents the identifier" do
       expect(subject.incoming_trust_identifier).to eql "TR12345"

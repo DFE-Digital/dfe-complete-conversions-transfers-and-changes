@@ -516,9 +516,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the main contact email" do
-    mock_successful_api_response_to_create_any_project
     user = create(:project_contact, email: "main.contact@education.gov.uk")
-    project = create(:conversion_project, main_contact_id: user.id)
+    project = build(:conversion_project, main_contact_id: user.id)
 
     presenter = described_class.new(project)
 
@@ -526,9 +525,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the main contact name" do
-    mock_successful_api_response_to_create_any_project
     user = create(:project_contact, name: "Bob Robertson")
-    project = create(:conversion_project, main_contact_id: user.id)
+    project = build(:conversion_project, main_contact_id: user.id)
 
     presenter = described_class.new(project)
 
@@ -536,9 +534,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the main contact title" do
-    mock_successful_api_response_to_create_any_project
     user = create(:project_contact, title: "Very important person")
-    project = create(:conversion_project, main_contact_id: user.id)
+    project = build(:conversion_project, main_contact_id: user.id)
 
     presenter = described_class.new(project)
 
@@ -546,7 +543,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "handles a project without a main contact" do
-    mock_successful_api_response_to_create_any_project
     project = build(:conversion_project, main_contact: nil)
 
     presenter = described_class.new(project)
@@ -557,7 +553,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the school phase" do
-    mock_successful_api_response_to_create_any_project
     project = build(:conversion_project)
 
     presenter = described_class.new(project)
@@ -646,7 +641,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the diocese name" do
-    mock_successful_api_response_to_create_any_project
     project = build(:conversion_project)
 
     presenter = described_class.new(project)
@@ -655,7 +649,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the diocese contact name" do
-    mock_successful_api_response_to_create_any_project
     project = create(:conversion_project)
     create(:project_contact, category: "diocese", name: "contact name", project: project)
 
@@ -665,7 +658,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the diocese contact email" do
-    mock_successful_api_response_to_create_any_project
     project = create(:conversion_project)
     create(:project_contact, category: "diocese", email: "diocese_contact@email.com", project: project)
 
@@ -686,7 +678,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the advisory board conditions" do
-    mock_successful_api_response_to_create_any_project
     project = build(:conversion_project, advisory_board_conditions: "These are the conditions.")
 
     presenter = described_class.new(project)
@@ -696,7 +687,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
   describe "#completed_grant_payment_certificate_received" do
     it "presents the completed grant payment certificate received" do
-      mock_successful_api_response_to_create_any_project
       tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1))
       project = build(:conversion_project, tasks_data: tasks_data)
 
@@ -706,7 +696,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
     end
 
     it "presents unconfirmed when there is no date" do
-      mock_successful_api_response_to_create_any_project
       tasks_data = build(:conversion_tasks_data, receive_grant_payment_certificate_date_received: nil)
       project = build(:conversion_project, tasks_data: tasks_data)
 
@@ -717,7 +706,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the solicitor contact name" do
-    mock_successful_api_response_to_create_any_project
     project = create(:conversion_project)
     create(:project_contact, category: "solicitor", name: "solicitor contact name", project: project)
 
@@ -727,7 +715,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the solicitor contact email" do
-    mock_successful_api_response_to_create_any_project
     project = create(:conversion_project)
     create(:project_contact, category: "solicitor", email: "solicitor_contact@email.com", project: project)
 
@@ -738,7 +725,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
   context "when there is no solicitor contact" do
     it "returns nil" do
-      mock_successful_api_response_to_create_any_project
       project = build(:conversion_project)
 
       presenter = described_class.new(project)
@@ -748,9 +734,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the project created by name" do
-    mock_successful_api_response_to_create_any_project
     user = create(:regional_delivery_officer_user, first_name: "Joe", last_name: "Bloggs")
-    project = create(:conversion_project, regional_delivery_officer: user)
+    project = build(:conversion_project, regional_delivery_officer: user)
 
     presenter = described_class.new(project)
 
@@ -758,9 +743,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the project created by email" do
-    mock_successful_api_response_to_create_any_project
     user = create(:regional_delivery_officer_user, email: "joe.bloggs@education.gov.uk")
-    project = create(:conversion_project, regional_delivery_officer: user)
+    project = build(:conversion_project, regional_delivery_officer: user)
 
     presenter = described_class.new(project)
 
@@ -768,9 +752,8 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the team managing the project" do
-    mock_successful_api_response_to_create_any_project
     user = create(:user, team: "london")
-    project = create(:conversion_project, assigned_to_id: user)
+    project = build(:conversion_project, assigned_to_id: user)
 
     presenter = described_class.new(project)
 
@@ -778,7 +761,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the single converter conversion type" do
-    mock_successful_api_response_to_create_any_project
     project = build(:conversion_project)
 
     presenter = described_class.new(project)
@@ -786,7 +768,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the form a MAT conversion type" do
-    mock_successful_api_response_to_create_any_project
     project = build(:conversion_project, :form_a_mat)
 
     presenter = described_class.new(project)
@@ -794,7 +775,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the single transfer transfer type" do
-    mock_successful_api_response_to_create_any_project
     project = build(:transfer_project)
 
     presenter = described_class.new(project)
@@ -802,7 +782,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the form a MAT transfer type" do
-    mock_successful_api_response_to_create_any_project
     project = build(:transfer_project, :form_a_mat)
 
     presenter = described_class.new(project)
@@ -810,7 +789,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the first 'other' contact name" do
-    mock_successful_api_response_to_create_any_project
     project = create(:conversion_project)
     _contact = create(:project_contact, category: "other", project: project)
 
@@ -819,7 +797,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the first 'other' contact email" do
-    mock_successful_api_response_to_create_any_project
     project = create(:conversion_project)
     _contact = create(:project_contact, category: "other", project: project)
 
@@ -828,7 +805,6 @@ RSpec.describe Export::Csv::ProjectPresenter do
   end
 
   it "presents the first 'other' contact role" do
-    mock_successful_api_response_to_create_any_project
     project = create(:conversion_project)
     _contact = create(:project_contact, category: "other", project: project)
 
