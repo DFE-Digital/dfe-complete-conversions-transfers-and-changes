@@ -41,18 +41,9 @@ module SignificantDate
     end
 
     def significant_date_in_range(from_date, to_date)
-      projects = in_progress.confirmed
-
-      latest_date_histories = SignificantDateHistory.group(:project_id).maximum(:created_at)
-
-      matching_date_histories = SignificantDateHistory
-        .where(project_id: latest_date_histories.keys)
-        .where(created_at: latest_date_histories.values)
-        .to_sql
-
-      projects.joins("INNER JOIN (#{matching_date_histories}) AS date_history ON date_history.project_id = projects.id")
-        .where("date_history.revised_date >= ?", Date.parse(from_date).at_beginning_of_month)
-        .where("date_history.revised_date <= ?", Date.parse(to_date).at_end_of_month)
+      in_progress.confirmed
+        .where("significant_date >= ?", Date.parse(from_date).at_beginning_of_month)
+        .where("significant_date <= ?", Date.parse(to_date).at_end_of_month)
         .ordered_by_significant_date
     end
   end
