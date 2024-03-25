@@ -56,14 +56,14 @@ RUN apt-get clean && rm -rf /var/cache/apt/archives && rm -rf /var/cache/apt/lis
 # Install FreeTDS
 # https://github.com/rails-sqlserver/tiny_tds#install
 # default FreeTDS version
-ARG freetds_version=1.1.24
+ARG FREETDS_VERSION=1.4.10
 RUN \
   curl --proto "=https" --tlsv1.2 -sSf \
-    "https://www.freetds.org/files/stable/freetds-${freetds_version}.tar.gz" \
-    --output "freetds-${freetds_version}.tar.gz" && \
-  tar -xvzf "freetds-${freetds_version}.tar.gz" && \
-  rm "freetds-${freetds_version}.tar.gz" && \
-  cd "freetds-${freetds_version}" && \
+    "https://www.freetds.org/files/stable/freetds-${FREETDS_VERSION}.tar.gz" \
+    --output "freetds-${FREETDS_VERSION}.tar.gz" && \
+  tar -xvzf "freetds-${FREETDS_VERSION}.tar.gz" && \
+  rm "freetds-${FREETDS_VERSION}.tar.gz" && \
+  cd "freetds-${FREETDS_VERSION}" && \
   ./configure --prefix=/usr/local --with-tdsver=7.3 && \
   make && make install
 
