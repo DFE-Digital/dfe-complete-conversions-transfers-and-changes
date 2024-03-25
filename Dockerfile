@@ -57,6 +57,7 @@ RUN apt-get clean && rm -rf /var/cache/apt/archives && rm -rf /var/cache/apt/lis
 # https://github.com/rails-sqlserver/tiny_tds#install
 # default FreeTDS version
 ARG FREETDS_VERSION=1.4.10
+ARG TDS_VERSION=7.3
 RUN \
   curl --proto "=https" --tlsv1.2 -sSf \
     "https://www.freetds.org/files/stable/freetds-${FREETDS_VERSION}.tar.gz" \
@@ -64,7 +65,7 @@ RUN \
   tar -xvzf "freetds-${FREETDS_VERSION}.tar.gz" && \
   rm "freetds-${FREETDS_VERSION}.tar.gz" && \
   cd "freetds-${FREETDS_VERSION}" && \
-  ./configure --prefix=/usr/local --with-tdsver=7.3 && \
+  ./configure --prefix=/usr/local --with-tdsver=${TDS_VERSION} && \
   make && make install
 
 # Install Geckodriver
