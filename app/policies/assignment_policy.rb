@@ -6,6 +6,8 @@ class AssignmentPolicy
   end
 
   def assign_team_leader?
+    return true if @user.is_service_support?
+
     @user.manage_team?
   end
 
@@ -14,6 +16,8 @@ class AssignmentPolicy
   end
 
   def assign_regional_delivery_officer?
+    return true if @user.is_service_support?
+
     @user.manage_team?
   end
 
@@ -22,6 +26,8 @@ class AssignmentPolicy
   end
 
   def assign_assigned_to?
+    return true if @user.is_service_support?
+
     @user.has_role?
   end
 
@@ -30,10 +36,12 @@ class AssignmentPolicy
   end
 
   def assign_team?
+    return true if @user.is_service_support?
+
     @user.has_role?
   end
 
   def update_team?
-    @user.has_role?
+    assign_team?
   end
 end

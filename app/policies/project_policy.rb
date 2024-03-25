@@ -46,12 +46,14 @@ class ProjectPolicy
 
   def update?
     return false if @record.completed?
+    return true if @user.is_service_support?
 
     project_assigned_to_user?
   end
 
   def change_significant_date?
     return false if @record.significant_date_provisional?
+    return true if @user.is_service_support?
 
     project_assigned_to_user?
   end
@@ -93,7 +95,7 @@ class ProjectPolicy
   end
 
   private def project_assigned_to_user?
-    @record.assigned_to == @user || @user.is_service_support?
+    @record.assigned_to == @user
   end
 
   private def edit_project_closed?

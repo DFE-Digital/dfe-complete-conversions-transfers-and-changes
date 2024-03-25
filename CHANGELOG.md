@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added guidance to action to send redacts documents to GOV.UK in Redact and
   send documents task for conversions and transfers
 
+### Changed
+
+- Service Support users can now change any of the assignments for a project
+
 ## [Release-60][release-60]
 
 ### Changed
