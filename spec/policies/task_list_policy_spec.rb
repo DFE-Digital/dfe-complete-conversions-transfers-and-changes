@@ -9,17 +9,17 @@ RSpec.describe TaskListPolicy do
 
   permissions :edit? do
     it "grants access if project is assigned to the same user" do
-      task_list = create(:conversion_project, assigned_to: application_user).tasks_data
+      task_list = build(:conversion_project, assigned_to: application_user).tasks_data
       expect(subject).to permit(application_user, task_list)
     end
 
     it "grants access if project is assigned to a different user" do
-      task_list = create(:conversion_project, assigned_to: build(:user)).tasks_data
+      task_list = build(:conversion_project, assigned_to: build(:user)).tasks_data
       expect(subject).to permit(application_user, task_list)
     end
 
     it "grants access if project is assigned to nil" do
-      task_list = create(:conversion_project, assigned_to: nil).tasks_data
+      task_list = build(:conversion_project, assigned_to: nil).tasks_data
       expect(subject).to permit(create(:user), task_list)
     end
   end

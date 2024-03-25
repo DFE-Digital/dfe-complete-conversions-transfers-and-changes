@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::AcademyPresenterModule do
+  before { mock_successful_api_response_to_create_any_project }
+
   context "when a project is a conversion project" do
     let(:project) { build(:conversion_project, academy_urn: 149061, academy: gias_establishment) }
     subject { AcademyPresenterModuleTestClass.new(project) }
-
-    before { mock_successful_api_response_to_create_any_project }
 
     it "presents the academy urn" do
       expect(subject.academy_urn).to eql "149061"
@@ -38,7 +38,6 @@ RSpec.describe Export::Csv::AcademyPresenterModule do
 
     context "when the project has more than one school or academy contact" do
       it "presents the academy contact names" do
-        mock_successful_api_response_to_create_any_project
         create(:project_contact, category: "school_or_academy", name: "academy contact name", project: project)
         create(:establishment_contact, establishment_urn: project.urn, name: "establishment contact name")
 
@@ -46,7 +45,6 @@ RSpec.describe Export::Csv::AcademyPresenterModule do
       end
 
       it "presents the academy contact emails" do
-        mock_successful_api_response_to_create_any_project
         create(:project_contact, category: "school_or_academy", email: "academy_contact@email.com", project: project)
         create(:establishment_contact, establishment_urn: project.urn, email: "establishment_contact@email.com")
 
@@ -60,14 +58,12 @@ RSpec.describe Export::Csv::AcademyPresenterModule do
     subject { AcademyPresenterModuleTestClass.new(transfer_project) }
 
     it "presents the academy contact name" do
-      mock_successful_api_response_to_create_any_project
       create(:project_contact, category: "school_or_academy", name: "academy contact name", project: transfer_project)
 
       expect(subject.academy_contact_name).to eql("academy contact name")
     end
 
     it "presents the academy contact email" do
-      mock_successful_api_response_to_create_any_project
       create(:project_contact, category: "school_or_academy", email: "academy_contact@email.com", project: transfer_project)
 
       expect(subject.academy_contact_email).to eql("academy_contact@email.com")

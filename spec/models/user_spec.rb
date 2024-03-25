@@ -289,7 +289,7 @@ RSpec.describe User do
     end
 
     it "returns false when the user has no set role" do
-      user = create(:user, team: "education_and_skills_funding_agency")
+      user = build(:user, team: "education_and_skills_funding_agency")
 
       expect(user.has_role?).to be false
     end
@@ -297,7 +297,7 @@ RSpec.describe User do
 
   describe "#is_service_support?" do
     it "returns true when the user is in the service support team" do
-      user = create(:user, team: "service_support")
+      user = build(:user, team: "service_support")
 
       expect(user.is_service_support?).to be true
     end
@@ -305,7 +305,7 @@ RSpec.describe User do
 
   describe "#team" do
     it "uses the enum suffix as expected" do
-      user = create(:user, team: "london")
+      user = build(:user, team: "london")
 
       expect(user.london_team?).to be true
     end

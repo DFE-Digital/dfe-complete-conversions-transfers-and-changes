@@ -2,10 +2,11 @@ class All::Export::GrantManagementAndFinanceUnit::Conversions::ProjectsControlle
   def index
     authorize Project, :index?
 
+    service = ProjectsForExportService.new
     @data = export_months.map do |month|
       {
         month: month,
-        count: ProjectsForExportService.new.grant_management_and_finance_unit_conversion_projects(month: month.month, year: month.year).count
+        count: service.grant_management_and_finance_unit_conversion_projects(month: month.month, year: month.year).count
       }
     end
   end
