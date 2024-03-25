@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Service Support users can now change any of the assignments for a project
+- the by month exports now include the provisional conversion and transfer date
+  where applicable
 
 ## [Release-60][release-60]
 

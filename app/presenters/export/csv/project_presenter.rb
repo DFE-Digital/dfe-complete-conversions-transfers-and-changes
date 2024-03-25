@@ -38,6 +38,8 @@ class Export::Csv::ProjectPresenter
   def provisional_date
     @project.provisional_date.to_fs(:csv)
   end
+  alias_method :provisional_conversion_date, :provisional_date
+  alias_method :provisional_transfer_date, :provisional_date
 
   def conversion_date
     return I18n.t("export.csv.project.values.unconfirmed") if @project.conversion_date_provisional?
