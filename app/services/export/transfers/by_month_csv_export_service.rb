@@ -8,6 +8,7 @@ class Export::Transfers::ByMonthCsvExportService < Export::CsvExportService
     local_authority_name
     region
     diocese_name
+    provisional_transfer_date
     transfer_date
     two_requires_improvement
     inadequate_ofsted

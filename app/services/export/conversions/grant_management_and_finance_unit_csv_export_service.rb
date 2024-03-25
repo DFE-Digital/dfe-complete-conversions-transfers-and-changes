@@ -10,7 +10,7 @@ class Export::Conversions::GrantManagementAndFinanceUnitCsvExportService < Expor
     incoming_trust_name
     incoming_trust_identifier
     advisory_board_date
-    provisional_date
+    provisional_conversion_date
     conversion_date
     academy_order_type
     completed_grant_payment_certificate_received

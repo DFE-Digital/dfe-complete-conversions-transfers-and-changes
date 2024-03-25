@@ -21,7 +21,7 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
     region
     assigned_to_email
     assigned_to_team
-    provisional_date
+    provisional_transfer_date
     transfer_date
     authority_to_proceed
     main_contact_name

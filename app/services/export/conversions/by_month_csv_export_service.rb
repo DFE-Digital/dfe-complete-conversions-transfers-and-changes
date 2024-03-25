@@ -8,6 +8,7 @@ class Export::Conversions::ByMonthCsvExportService < Export::CsvExportService
     local_authority_name
     region
     diocese_name
+    provisional_conversion_date
     conversion_date
     academy_order_type
     two_requires_improvement
