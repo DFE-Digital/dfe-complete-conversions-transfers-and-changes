@@ -15,7 +15,7 @@ class Export::Transfers::GrantManagementAndFinanceUnitCsvExportService < Export:
     trust_surplus_deficit
     transfer_grant_level
     advisory_board_date
-    provisional_date
+    provisional_transfer_date
     transfer_date
     date_academy_transferred
     declaration_of_expenditure_certificate_date_received
