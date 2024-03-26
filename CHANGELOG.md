@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-61][release-61]
+
 ### Added
 
 - Allow service support users to be able to access all exports
@@ -1727,7 +1729,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-60...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-61...HEAD
+[release-61]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-60...release-61
 [release-60]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-59...release-60
 [release-59]:
