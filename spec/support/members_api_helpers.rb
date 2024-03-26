@@ -57,7 +57,9 @@ module MembersApiHelpers
       email: "member.parliament@parliament.uk",
       address: address
     )
-    members_client = double(Api::MembersApi::Client, member_for_constituency: member_details)
+    result = Api::MembersApi::Client::Result.new(member_details, nil)
+
+    members_client = double(Api::MembersApi::Client, member_for_constituency: result)
     allow(Api::MembersApi::Client).to receive(:new).and_return(members_client)
     members_client
   end
@@ -92,7 +94,8 @@ module MembersApiHelpers
 
   def mock_nil_member_for_constituency_response
     test_client = Api::MembersApi::Client.new
-    allow(test_client).to receive(:member_for_constituency).and_return(nil)
+    empty_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError)
+    allow(test_client).to receive(:member_for_constituency).and_return(empty_result)
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
   end
 

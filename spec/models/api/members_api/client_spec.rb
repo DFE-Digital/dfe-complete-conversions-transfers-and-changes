@@ -60,7 +60,7 @@ RSpec.describe Api::MembersApi::Client do
       fake_contact_details = double(find: Api::MembersApi::MemberContactDetails.new.from_hash({email: "joe.bloggs@email.com", line1: "Houses of Parliment", postcode: "SW1A 0AA"}))
       allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(fake_contact_details, nil))
 
-      response = fake_client.member_for_constituency("St Albans")
+      response = fake_client.member_for_constituency("St Albans").object
 
       expect(response.name).to eq("Joe Bloggs")
       expect(response.email).to eq("joe.bloggs@email.com")

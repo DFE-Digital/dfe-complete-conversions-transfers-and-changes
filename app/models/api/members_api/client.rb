@@ -35,7 +35,7 @@ class Api::MembersApi::Client
     member_name = member_name(member_id).object
     contact_details = member_contact_details(member_id).object.find { |details| details.type_id == 1 }
 
-    Api::MembersApi::MemberDetails.new(member_name, contact_details)
+    Result.new(Api::MembersApi::MemberDetails.new(member_name, contact_details), nil)
   rescue NoMethodError
     Result.new(nil, Error.new(I18n.t("members_api.errors.contact_details_not_found", member_id: member_id)))
   end

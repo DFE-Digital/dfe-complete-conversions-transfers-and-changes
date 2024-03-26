@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Clear any radio button values in the Sponsored support grant type task if the
   task is later saved as "Not applicable"
+- for some projects, an MP name could not be located which caused some views and
+  exports to fail, this has been resolved
 
 ## [Release-61][release-61]
 

@@ -125,7 +125,11 @@ class Project < ApplicationRecord
   end
 
   private def fetch_member_of_parliament
-    Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
+    result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
+
+    return nil if result.error.present?
+
+    result.object
   end
 
   private def fetch_establishment(urn)
