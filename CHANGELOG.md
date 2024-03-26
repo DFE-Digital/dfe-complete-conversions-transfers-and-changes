@@ -19,6 +19,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   where applicable
 - all exports now show provisional conversion or transfer date as applicable
   instead of 'provisional date'
+- the projects shown in the 'by month' views and exports no longer contain those
+  that were due to convert or transfer in the date range, but are no longer
+  going to
 
 ## [Release-60][release-60]
 
