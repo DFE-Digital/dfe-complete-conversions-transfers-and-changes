@@ -1,4 +1,6 @@
 class Api::MembersApi::Client
+  include ApplicationInsightsEventTrackable
+
   class Error < StandardError; end
 
   class MultipleResultsError < StandardError; end
@@ -27,7 +29,7 @@ class Api::MembersApi::Client
     member = member_id(constituency)
 
     if member.error.present?
-      track_error(member.error.message)
+      track_event(member.error.message)
       return nil
     end
 
@@ -116,14 +118,6 @@ class Api::MembersApi::Client
         "Content-Type": "application/json"
       }
     )
-  end
-
-  private def track_error(error_message)
-    if ENV.fetch("APPLICATION_INSIGHTS_KEY", nil)
-      tc = ApplicationInsights::TelemetryClient.new(ENV.fetch("APPLICATION_INSIGHTS_KEY"))
-      tc.track_event(error_message)
-      tc.flush
-    end
   end
 
   class Result
