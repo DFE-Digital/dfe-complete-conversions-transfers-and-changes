@@ -269,6 +269,16 @@ RSpec.describe Project, type: :model do
       it "raises the error" do
         expect { subject.establishment }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
       end
+
+      it "sends the event to Application Insights" do
+        ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
+          telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
+          allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
+
+          expect { subject.establishment }.to raise_error(Api::AcademiesApi::Client::NotFoundError)
+          expect(telemetry_client).to have_received(:track_event)
+        end
+      end
     end
 
     context "when the Academies API client returns a #{Api::AcademiesApi::Client::Error}" do
@@ -324,6 +334,16 @@ RSpec.describe Project, type: :model do
 
         it "raises the error" do
           expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
+        end
+
+        it "sends the event to Application Insights" do
+          ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
+            telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
+            allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
+
+            expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError)
+            expect(telemetry_client).to have_received(:track_event)
+          end
         end
       end
 

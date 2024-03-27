@@ -137,14 +137,22 @@ class Project < ApplicationRecord
 
   private def fetch_establishment(urn)
     result = Api::AcademiesApi::Client.new.get_establishment(urn)
-    raise result.error if result.error.present?
+
+    if result.error.present?
+      track_event(result.error.message)
+      raise result.error
+    end
 
     result.object
   end
 
   private def fetch_trust(ukprn)
     result = Api::AcademiesApi::Client.new.get_trust(ukprn)
-    raise result.error if result.error.present?
+
+    if result.error.present?
+      track_event(result.error.message)
+      raise result.error
+    end
 
     result.object
   end
