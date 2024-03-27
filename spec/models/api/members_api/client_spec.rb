@@ -1,12 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Api::MembersApi::Client do
-  let(:telemetry_client) { double(ApplicationInsights::TelemetryClient, track_event: true, flush: true) }
-
-  before do
-    allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
-  end
-
   it "uses the environment variables to build the connection" do
     ClimateControl.modify(
       MEMBERS_API_HOST: "https://members-api.test"
@@ -88,12 +82,11 @@ RSpec.describe Api::MembersApi::Client do
       ) do
         fake_client = Api::MembersApi::Client.new
         allow(fake_client).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::MultipleResultsError.new(I18n.t("members_api.errors.multiple", search_term: "St Albans"))))
-        allow(fake_client).to receive(:member_name).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error))
-        allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error))
+        allow(fake_client).to receive(:member_name).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error.new))
+        allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error.new))
 
         response = fake_client.member_for_constituency("St Albans")
-        expect(response).to be_nil
-        expect(telemetry_client).to have_received(:track_event).with(I18n.t("members_api.errors.multiple", search_term: "St Albans"))
+        expect(response.object).to be_nil
       end
     end
   end

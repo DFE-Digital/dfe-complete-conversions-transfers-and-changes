@@ -1,6 +1,4 @@
 class Api::MembersApi::Client
-  include ApplicationInsightsEventTrackable
-
   class Error < StandardError; end
 
   class MultipleResultsError < StandardError; end
@@ -28,10 +26,7 @@ class Api::MembersApi::Client
   def member_for_constituency(constituency)
     member = member_id(constituency)
 
-    if member.error.present?
-      track_event(member.error.message)
-      return nil
-    end
+    return Result.new(nil, member.error) if member.error.present?
 
     member_id = member.object
     member_name = member_name(member_id).object

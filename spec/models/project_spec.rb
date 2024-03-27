@@ -389,6 +389,21 @@ RSpec.describe Project, type: :model do
 
       expect(member_of_parliament).to be nil
     end
+
+    it "sends Applications Instights an event when the API call fails" do
+      ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
+        telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
+        allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
+
+        mock_nil_member_for_constituency_response
+
+        project = build(:conversion_project)
+        allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+        project.member_of_parliament
+
+        expect(telemetry_client).to have_received(:track_event)
+      end
+    end
   end
 
   describe "#completed?" do

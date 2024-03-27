@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   include Teamable
   include Eventable
   include SignificantDate
+  include ApplicationInsightsEventTrackable
 
   attr_writer :establishment, :incoming_trust, :member_of_parliament
 
@@ -127,9 +128,11 @@ class Project < ApplicationRecord
   private def fetch_member_of_parliament
     result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
 
-    return nil if result.error.present?
-
-    result.object
+    if result.error.present?
+      track_event(result.error.message)
+    else
+      result.object
+    end
   end
 
   private def fetch_establishment(urn)
