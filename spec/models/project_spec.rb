@@ -269,6 +269,16 @@ RSpec.describe Project, type: :model do
       it "raises the error" do
         expect { subject.establishment }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
       end
+
+      it "sends the event to Application Insights" do
+        ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
+          telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
+          allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
+
+          expect { subject.establishment }.to raise_error(Api::AcademiesApi::Client::NotFoundError)
+          expect(telemetry_client).to have_received(:track_event)
+        end
+      end
     end
 
     context "when the Academies API client returns a #{Api::AcademiesApi::Client::Error}" do
@@ -324,6 +334,16 @@ RSpec.describe Project, type: :model do
 
         it "raises the error" do
           expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
+        end
+
+        it "sends the event to Application Insights" do
+          ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
+            telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
+            allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
+
+            expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError)
+            expect(telemetry_client).to have_received(:track_event)
+          end
         end
       end
 
@@ -388,6 +408,21 @@ RSpec.describe Project, type: :model do
       member_of_parliament = project.member_of_parliament
 
       expect(member_of_parliament).to be nil
+    end
+
+    it "sends Applications Instights an event when the API call fails" do
+      ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
+        telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
+        allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
+
+        mock_nil_member_for_constituency_response
+
+        project = build(:conversion_project)
+        allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+        project.member_of_parliament
+
+        expect(telemetry_client).to have_received(:track_event)
+      end
     end
   end
 

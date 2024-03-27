@@ -57,7 +57,9 @@ module MembersApiHelpers
       email: "member.parliament@parliament.uk",
       address: address
     )
-    members_client = double(Api::MembersApi::Client, member_for_constituency: member_details)
+    result = Api::MembersApi::Client::Result.new(member_details, nil)
+
+    members_client = double(Api::MembersApi::Client, member_for_constituency: result)
     allow(Api::MembersApi::Client).to receive(:new).and_return(members_client)
     members_client
   end
@@ -77,14 +79,14 @@ module MembersApiHelpers
 
   def mock_member_not_found_response
     test_client = Api::MembersApi::Client.new
-    not_found_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError)
+    not_found_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError.new)
     allow(test_client).to receive(:member_name).and_return(not_found_result)
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
   end
 
   def mock_contact_details_not_found_response
     test_client = Api::MembersApi::Client.new
-    not_found_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError)
+    not_found_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError.new)
 
     allow(test_client).to receive(:member_contact_details).and_return(not_found_result)
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
@@ -92,13 +94,14 @@ module MembersApiHelpers
 
   def mock_nil_member_for_constituency_response
     test_client = Api::MembersApi::Client.new
-    allow(test_client).to receive(:member_for_constituency).and_return(nil)
+    empty_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError.new)
+    allow(test_client).to receive(:member_for_constituency).and_return(empty_result)
     allow(Api::MembersApi::Client).to receive(:new).and_return(test_client)
   end
 
   def mock_members_api_unavailable_response
     test_client = Api::MembersApi::Client.new
-    error_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error)
+    error_result = Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error.new)
     allow(test_client).to receive(:constituency).and_return(error_result)
     allow(test_client).to receive(:member_name).and_return(error_result)
     allow(test_client).to receive(:member_contact_details).and_return(error_result)

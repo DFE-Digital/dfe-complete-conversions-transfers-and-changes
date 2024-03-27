@@ -42,7 +42,7 @@ RSpec.describe Contact::Parliament do
   context "when the Member of Parliament is not found" do
     before do
       allow(client).to receive(:new).and_return(client_instance)
-      allow(client_instance).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError))
+      allow(client_instance).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::NotFoundError.new))
     end
 
     it "raises a not found error" do
@@ -53,7 +53,7 @@ RSpec.describe Contact::Parliament do
   context "when the Members API returns multiple results for the constituency" do
     before do
       allow(client).to receive(:new).and_return(client_instance)
-      allow(client_instance).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::MultipleResultsError))
+      allow(client_instance).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::MultipleResultsError.new))
     end
 
     it "raises a a multiple results error" do
@@ -64,7 +64,7 @@ RSpec.describe Contact::Parliament do
   context "when the Members API returns an error response" do
     before do
       allow(client).to receive(:new).and_return(client_instance)
-      allow(client_instance).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error))
+      allow(client_instance).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(nil, Api::MembersApi::Client::Error.new))
     end
 
     it "raises a generic error" do
