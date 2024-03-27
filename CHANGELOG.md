@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - for some projects, an MP name could not be located which caused some views and
   exports to fail, this has been resolved
 
+### Changed
+
+- the maintenance banner has been repurposed as a more generic information
+  banner that can be switched on and off.
+
 ## [Release-61][release-61]
 
 ### Added
