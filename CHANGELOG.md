@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Clear any radio button values in the Sponsored support grant type task if the
+  task is later saved as "Not applicable"
+
 ## [Release-61][release-61]
 
 ### Added
