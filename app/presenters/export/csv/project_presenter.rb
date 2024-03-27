@@ -286,13 +286,13 @@ class Export::Csv::ProjectPresenter
   def conversion_type
     return if @project.type == "Transfer::Project"
     return I18n.t("export.csv.project.values.form_a_mat") if @project.form_a_mat?
-    I18n.t("export.csv.project.values.single_converter")
+    I18n.t("export.csv.project.values.join_a_mat")
   end
 
   def transfer_type
     return if @project.type == "Conversion::Project"
     return I18n.t("export.csv.project.values.form_a_mat") if @project.form_a_mat?
-    I18n.t("export.csv.project.values.single_transfer")
+    I18n.t("export.csv.project.values.join_a_mat")
   end
 
   def esfa_notes

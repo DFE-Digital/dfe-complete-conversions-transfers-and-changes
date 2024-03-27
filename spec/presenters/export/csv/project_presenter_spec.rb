@@ -768,11 +768,11 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.team_managing_the_project).to eql("London")
   end
 
-  it "presents the single converter conversion type" do
+  it "presents the join a MAT conversion type" do
     project = build(:conversion_project)
 
     presenter = described_class.new(project)
-    expect(presenter.conversion_type).to eq("single converter")
+    expect(presenter.conversion_type).to eq("join a MAT")
   end
 
   it "presents the form a MAT conversion type" do
@@ -782,11 +782,11 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.conversion_type).to eq("form a MAT")
   end
 
-  it "presents the single transfer transfer type" do
+  it "presents the join a MAT transfer type" do
     project = build(:transfer_project)
 
     presenter = described_class.new(project)
-    expect(presenter.transfer_type).to eq("single transfer")
+    expect(presenter.transfer_type).to eq("join a MAT")
   end
 
   it "presents the form a MAT transfer type" do
