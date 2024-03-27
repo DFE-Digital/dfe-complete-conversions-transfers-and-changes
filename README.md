@@ -40,6 +40,7 @@ code straight forward for those that would like to use them.
 - [Infrastructure and Terraform](/doc/infrastructure-and-terraform.md)
 - [Developer scripts](/doc/developer-scripts.md)
 - [GOV.UK Notify](/doc/govuk-notify.md)
+- [Information banner](/doc/information-banner.md)
 
 ## Errors and monitoring
 

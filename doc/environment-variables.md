@@ -54,3 +54,8 @@ the `/healthcheck` endpoint to confirm the app is up & running.
 `APPLICATION_INSIGHTS_KEY`
 
 The instrumentation key for Microsoft Application Insights.
+
+`SHOW_INFORMATION_BANNER`
+
+Turns the [information banner](./information_banner.md) on across the
+application.
