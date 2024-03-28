@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- a new Chair of governors task has been added to the conversion project task
+  list, this tasks ensures the contact details are collected
+
 ## [Release-62][release-62]
 
 ### Fixed
