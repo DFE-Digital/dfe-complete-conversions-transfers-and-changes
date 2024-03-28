@@ -2,6 +2,7 @@ require "rails_helper"
 RSpec.describe Contact::Project do
   describe "Relationships" do
     it { is_expected.to belong_to(:project) }
+    it { is_expected.to have_one(:contact_for_chair_of_governors) }
   end
 
   describe "#establishment_main_contact" do
