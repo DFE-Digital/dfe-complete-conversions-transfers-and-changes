@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe Conversion::EditProjectSharepointLinkForm, type: :model do
-  let(:project) { build(:conversion_project, assigned_to: user) }
+RSpec.describe Transfer::EditProjectForm, type: :model do
+  let(:project) { build(:transfer_project, assigned_to: user) }
   let(:user) { build(:user, :caseworker) }
 
   before do
@@ -11,7 +11,7 @@ RSpec.describe Conversion::EditProjectSharepointLinkForm, type: :model do
   describe "#save" do
     context "when the form is valid" do
       it "updates an exsiting sharepoint link" do
-        sharepoint_link_form = Conversion::EditProjectSharepointLinkForm.new(project: project, args: {establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment-folder", incoming_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"})
+        sharepoint_link_form = Transfer::EditProjectForm.new(project: project, args: { establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment-folder", incoming_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"})
         sharepoint_link_form.establishment_sharepoint_link = "https://educationgovuk-my.sharepoint.com/establishment-folder-updated-link"
         sharepoint_link_form.incoming_trust_sharepoint_link = "https://educationgovuk-my.sharepoint.com/incoming-trust-folder-updated-link"
         sharepoint_link_form.save

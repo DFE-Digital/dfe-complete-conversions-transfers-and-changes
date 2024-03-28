@@ -1,4 +1,4 @@
-class Conversion::EditProjectSharepointLinkForm
+class Conversion::EditProjectForm
   include ActiveModel::Model
   include ActiveModel::Attributes
   include ActiveRecord::AttributeAssignment

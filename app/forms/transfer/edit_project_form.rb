@@ -1,4 +1,4 @@
-class Transfer::EditProjectSharepointLinkForm
+class Transfer::EditProjectForm
   include ActiveModel::Model
   include ActiveModel::Attributes
   include ActiveRecord::AttributeAssignment
