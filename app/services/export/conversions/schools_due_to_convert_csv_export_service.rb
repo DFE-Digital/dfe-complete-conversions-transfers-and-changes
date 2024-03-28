@@ -14,9 +14,8 @@ class Export::Conversions::SchoolsDueToConvertCsvExportService < Export::CsvExpo
     school_main_contact_name
     school_main_contact_role
     school_main_contact_email
-    other_contact_name
-    other_contact_role
-    other_contact_email
+    chair_of_governors_name
+    chair_of_governors_email
     academy_urn
     academy_ukprn
     academy_name
