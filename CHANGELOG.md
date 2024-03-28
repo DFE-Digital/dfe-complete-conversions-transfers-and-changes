@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - a new Chair of governors task has been added to the conversion project task
   list, this tasks ensures the contact details are collected
+- the chair of governors name and email address are now included in the csv
+  export when available
 
 ## [Release-62][release-62]
 
