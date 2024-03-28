@@ -1,0 +1,20 @@
+en:
+  conversion:
+    task:
+      chair_of_governors_contact:
+        title: Add chair of governors' contact details
+        hint:
+          html:
+            <p>Enter the chair of governors' name and email address. This is so they can receive their funding agreement letters.</p>
+        name:
+          title: Name
+        email:
+          title: Email
+        phone:
+          title: Phone
+        errors:
+          email:
+            format: Enter a valid email address
+            presence: Enter an email address
+          name:
+            presence: Enter a name
