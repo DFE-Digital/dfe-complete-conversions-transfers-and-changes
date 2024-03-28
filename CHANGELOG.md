@@ -6,9 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
-### Changed
-
-- Replace conversion/transfer type wording to be `join a MAT`.
+## [Release-62][release-62]
 
 ### Fixed
 
@@ -21,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the maintenance banner has been repurposed as a more generic information
   banner that can be switched on and off.
+- Replace conversion/transfer type wording to be `join a MAT`.
 
 ## [Release-61][release-61]
 
@@ -1745,7 +1744,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-61...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-62...HEAD
+[release-62]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-61...release-62
 [release-61]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-60...release-61
 [release-60]:
