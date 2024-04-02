@@ -12,6 +12,7 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::SponsoredSupportGrantTaskForm,
           Conversion::Task::AcademyDetailsTaskForm,
           Conversion::Task::MainContactTaskForm,
+          Conversion::Task::ChairOfGovernorsContactTaskForm,
           Conversion::Task::ProposedCapacityOfTheAcademyTaskForm
         ]
       },
