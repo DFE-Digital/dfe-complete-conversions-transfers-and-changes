@@ -120,7 +120,7 @@ GEM
       rexml
     crass (1.0.6)
     date (3.3.3)
-    debug (1.9.1)
+    debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
     descendants_tracker (0.0.4)
@@ -303,7 +303,7 @@ GEM
     redcarpet (3.5.1)
     redis (4.8.1)
     regexp_parser (2.9.0)
-    reline (0.4.1)
+    reline (0.4.3)
       io-console (~> 0.5)
     rexml (3.2.6)
     rspec-core (3.12.3)
