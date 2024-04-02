@@ -6,6 +6,7 @@ class Export::Csv::ProjectPresenter
   include Export::Csv::OutgoingTrustPresenterModule
   include Export::Csv::LocalAuthorityPresenterModule
   include Export::Csv::MpPresenterModule
+  include Export::Csv::ChairOfGovernorsPresenterModule
 
   def initialize(project)
     @project = project
