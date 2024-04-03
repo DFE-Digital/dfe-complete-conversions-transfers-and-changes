@@ -56,6 +56,8 @@ en:
         hint_html: <p class="govuk-body">Enter information about the school, the new MAT (multi-academy trust) and the advisory board's decision about this school's conversion.</p><p class="govuk-body">This will create a new conversion project.</p>
   helpers:
     label:
+      conversion_edit_project_form:
+        incoming_trust_ukprn: Incoming trust UKPRN (UK Provider Reference Number)
       conversion_create_project_form:
         urn: School URN (Unique Reference Number)
         incoming_trust_ukprn: Incoming trust UKPRN (UK Provider Reference Number)
@@ -74,6 +76,10 @@ en:
         directive_academy_order: What kind of academy order has been used?
         two_requires_improvement: Is this conversion due to intervention following 2RI?
     hint:
+      conversion_edit_project_form:
+        incoming_trust_ukprn_html:
+          <p>A UKPRN is an 8-digit number that always starts with a 1.</p>
+          <p><a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in a new tab)</a>.</p>
       conversion_create_project_form:
         establishment_sharepoint_link_html:
           <p>If the school applied to convert, you must save the application form in the Schools' SharePoint folder.</p>

@@ -5,9 +5,13 @@ class Conversion::EditProjectForm
 
   attribute :establishment_sharepoint_link
   attribute :incoming_trust_sharepoint_link
+  attribute :incoming_trust_ukprn
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
+  validates :incoming_trust_ukprn, presence: true, ukprn: true
+
+  validates :incoming_trust_ukprn, trust_exists: true, if: -> { incoming_trust_ukprn.present? }
 
   def initialize(project:, args: {})
     @project = project
@@ -16,7 +20,8 @@ class Conversion::EditProjectForm
     if args.empty?
       assign_attributes(
         establishment_sharepoint_link: @project.establishment_sharepoint_link,
-        incoming_trust_sharepoint_link: @project.incoming_trust_sharepoint_link
+        incoming_trust_sharepoint_link: @project.incoming_trust_sharepoint_link,
+        incoming_trust_ukprn: @project.incoming_trust_ukprn
       )
     end
   end
@@ -24,7 +29,8 @@ class Conversion::EditProjectForm
   def save
     @project.assign_attributes(
       establishment_sharepoint_link: establishment_sharepoint_link,
-      incoming_trust_sharepoint_link: incoming_trust_sharepoint_link
+      incoming_trust_sharepoint_link: incoming_trust_sharepoint_link,
+      incoming_trust_ukprn: incoming_trust_ukprn
     )
     if valid?
       @project.save

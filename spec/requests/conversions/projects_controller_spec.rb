@@ -261,4 +261,19 @@ RSpec.describe Conversions::ProjectsController do
       end
     end
   end
+
+  describe "#update" do
+    before do
+      sign_in_with(user)
+    end
+
+    it "shows an error when the change is invalid" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project, assigned_to: user)
+
+      post conversions_update_path(project), params: {conversion_edit_project_form: {incoming_trust_ukprn: ""}}
+
+      expect(response).to render_template(:edit)
+    end
+  end
 end
