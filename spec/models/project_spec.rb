@@ -736,6 +736,27 @@ RSpec.describe Project, type: :model do
         expect(Project.not_form_a_mat).to include(single_converter_project)
       end
     end
+
+    describe "deleted scope" do
+      it "returns projects where `deleted` is true" do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+        _project_1 = create(:conversion_project, deleted: false)
+        project_2 = create(:conversion_project, deleted: true)
+
+        expect(Project.deleted).to eq([project_2])
+      end
+    end
+
+    describe "default_scope" do
+      it "always returns non-deleted projects by default" do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+        project_1 = create(:conversion_project, deleted: false)
+        project_2 = create(:conversion_project, deleted: true)
+
+        expect(Project.all).to_not include(project_2)
+        expect(Project.all).to include(project_1)
+      end
+    end
   end
 
   describe "region" do

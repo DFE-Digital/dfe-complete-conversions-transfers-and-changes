@@ -68,6 +68,9 @@ class Project < ApplicationRecord
 
   scope :not_form_a_mat, -> { where.not(incoming_trust_ukprn: nil) }
 
+  default_scope { where.not(deleted: true) }
+  scope :deleted, -> { unscope(where: :deleted).where(deleted: true) }
+
   enum :region, {
     london: "H",
     south_east: "J",
