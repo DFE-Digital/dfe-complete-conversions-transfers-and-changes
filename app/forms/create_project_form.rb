@@ -76,7 +76,7 @@ class CreateProjectForm
   end
 
   private def urn_unique_for_in_progress_transfers
-    errors.add(:urn, :duplicate) if Transfer::Project.not_completed.where(urn: urn).any?
+    errors.add(:urn, :duplicate) if Transfer::Project.active.where(urn: urn).any?
   end
 
   private def value_at_position(hash, position)

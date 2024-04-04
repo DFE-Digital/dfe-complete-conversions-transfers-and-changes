@@ -531,7 +531,7 @@ RSpec.describe Project, type: :model do
       end
     end
 
-    describe "not_completed scope" do
+    describe "active scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "only returns projects where state = 0" do
@@ -539,7 +539,7 @@ RSpec.describe Project, type: :model do
         in_progress_project_1 = create(:conversion_project, completed_at: nil, state: 0)
         in_progress_project_2 = create(:conversion_project, completed_at: nil, state: 0)
 
-        projects = Project.not_completed
+        projects = Project.active
 
         expect(projects).to include(in_progress_project_1, in_progress_project_2)
         expect(projects).to_not include(completed_project)
