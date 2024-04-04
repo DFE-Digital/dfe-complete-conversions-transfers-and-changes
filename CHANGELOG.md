@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   list, this tasks ensures the contact details are collected
 - the chair of governors name and email address are now included in the csv
   export when available
+- users can now change the incoming trust UKPRN on a conversion project, this
+  allows mistakes to be corrected.
 
 ## [Release-62][release-62]
 

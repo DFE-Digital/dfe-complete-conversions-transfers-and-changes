@@ -88,8 +88,8 @@ Rails.application.routes.draw do
       get "new_mat", to: "projects#new_mat"
       post "/", to: "projects#create"
       post "new_mat", to: "projects#create_mat", as: :create_mat
-      get ":id", to: "projects#edit", as: :edit
-      post ":id", to: "projects#update", as: :update
+      get ":id/edit", to: "projects#edit", as: :edit
+      post ":id/edit", to: "projects#update", as: :update
     end
     namespace :transfers do
       get "new", to: "projects#new"
