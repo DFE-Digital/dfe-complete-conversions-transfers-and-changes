@@ -27,4 +27,32 @@ RSpec.describe ProjectsController, type: :request do
       expect(response).to redirect_to(in_progress_your_projects_path)
     end
   end
+
+  describe "#confirm_destroy" do
+    context "with a non-service support user" do
+      let(:user) { create(:regional_casework_services_user) }
+
+      it "returns unauthorised" do
+        project = create(:conversion_project)
+
+        get confirm_delete_project_path(project)
+        expect(response).not_to render_template(:confirm_delete)
+        expect(response).to redirect_to(root_path)
+        follow_redirect!
+        expect(flash.alert).to eq I18n.t("unauthorised_action.message")
+      end
+    end
+
+    context "with a service support user" do
+      let(:user) { create(:service_support_user) }
+
+      it "returns success" do
+        project = create(:conversion_project)
+
+        get confirm_delete_project_path(project)
+        expect(response).to render_template(:confirm_delete)
+        expect(response).to have_http_status(:success)
+      end
+    end
+  end
 end

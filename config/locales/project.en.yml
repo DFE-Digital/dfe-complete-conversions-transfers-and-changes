@@ -342,6 +342,18 @@ en:
       tabs:
         conversions: Conversions
         transfers: Transfers
+    delete:
+      title: Delete %{establishment_name}
+      conversion_project:
+        urn: "School URN %{urn}"
+      transfer_project:
+        urn: "Academy URN %{urn}"
+      confirmation_html:
+        <p>You are about to delete this project.</p>
+        <p>It will no longer appear in the application or in exports, and will not be counted in project statistics.</p>
+        <p>Only delete this project if you are sure you want to proceed.</p>
+      success: The project was deleted.
+      button: Delete project
   member_of_parliament:
     show:
       title: Member of Parliament details

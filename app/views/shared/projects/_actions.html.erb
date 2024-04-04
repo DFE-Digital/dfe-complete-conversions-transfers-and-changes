@@ -9,3 +9,7 @@
         project_change_date_path(@project),
         secondary: true
     end %>
+
+<%= if policy(@project).delete?
+      govuk_button_link_to t("project.delete.button"), confirm_delete_project_path(@project), warning: true
+    end %>

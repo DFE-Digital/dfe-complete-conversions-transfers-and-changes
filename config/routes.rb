@@ -79,6 +79,10 @@ Rails.application.routes.draw do
         memberable
         academy_urn_updateable
       ]
+    resources :projects, except: :destroy do
+      get "confirm_delete", on: :member, action: :confirm_delete, as: :confirm_delete
+      patch "/", on: :member, action: :delete, as: :delete
+    end
   end
 
   # New projects by type

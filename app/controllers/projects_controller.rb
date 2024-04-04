@@ -14,4 +14,18 @@ class ProjectsController < ApplicationController
 
     redirect_to in_progress_your_projects_path
   end
+
+  def confirm_delete
+    authorize Project, :delete?
+
+    @project = Project.find(params[:id])
+  end
+
+  def delete
+    authorize Project, :delete?
+
+    @project = Project.find(params[:id])
+    @project.update(state: :deleted)
+    redirect_to all_in_progress_projects_path, notice: I18n.t("project.delete.success")
+  end
 end
