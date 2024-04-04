@@ -108,10 +108,10 @@ RSpec.describe ByTeamProjectFetcherService do
   describe "#completed" do
     before { mock_all_academies_api_responses }
 
-    let!(:conversion_project_rcs) { create(:conversion_project, team: "regional_casework_services", region: "north_east", completed_at: Date.yesterday) }
-    let!(:conversion_project_london) { create(:conversion_project, team: "regional_casework_services", region: "london", completed_at: Date.yesterday) }
-    let!(:transfer_project_rcs) { create(:transfer_project, team: "regional_casework_services", region: "north_east", completed_at: Date.yesterday) }
-    let!(:transfer_project_london) { create(:transfer_project, team: "regional_casework_services", region: "london", completed_at: Date.yesterday) }
+    let!(:conversion_project_rcs) { create(:conversion_project, :completed, team: "regional_casework_services", region: "north_east", completed_at: Date.yesterday) }
+    let!(:conversion_project_london) { create(:conversion_project, :completed, team: "regional_casework_services", region: "london", completed_at: Date.yesterday) }
+    let!(:transfer_project_rcs) { create(:transfer_project, :completed, team: "regional_casework_services", region: "north_east", completed_at: Date.yesterday) }
+    let!(:transfer_project_london) { create(:transfer_project, :completed, team: "regional_casework_services", region: "london", completed_at: Date.yesterday) }
 
     context "when the user is in the 'regional_casework_services' team" do
       it "returns all completed projects where the project's team is regional_casework_services" do
@@ -204,7 +204,7 @@ RSpec.describe ByTeamProjectFetcherService do
     it "only returns in_progress projects" do
       user = create(:user, :caseworker, team: "regional_casework_services", first_name: "Abbie")
       _project_1 = create(:conversion_project, assigned_to: user)
-      _project_2 = create(:conversion_project, assigned_to: user, completed_at: Date.yesterday)
+      _project_2 = create(:conversion_project, :completed, assigned_to: user, completed_at: Date.yesterday)
 
       result = described_class.new(user.team).users
       expect(result[0].name).to eq("Abbie Doe")

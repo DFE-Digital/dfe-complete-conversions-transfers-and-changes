@@ -16,9 +16,9 @@ RSpec.feature "Viewing all completed projects" do
   end
 
   context "when there are projects" do
-    let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday) }
-    let!(:sponsored_completed_project) { create(:conversion_project, urn: 121102, completed_at: Date.yesterday, directive_academy_order: true) }
-    let!(:voluntary_completed_project) { create(:conversion_project, urn: 114067, completed_at: Date.yesterday, directive_academy_order: false) }
+    let!(:completed_project) { create(:conversion_project, :completed, urn: 121583, completed_at: Date.yesterday) }
+    let!(:sponsored_completed_project) { create(:conversion_project, :completed, urn: 121102, completed_at: Date.yesterday, directive_academy_order: true) }
+    let!(:voluntary_completed_project) { create(:conversion_project, :completed, urn: 114067, completed_at: Date.yesterday, directive_academy_order: false) }
     let!(:in_progress_project) { create(:conversion_project, urn: 115652) }
 
     scenario "they can view all completed projects" do
@@ -35,7 +35,7 @@ RSpec.feature "Viewing all completed projects" do
 
     scenario "when there are enough projects to page they see a pager" do
       21.times do
-        create(:conversion_project, completed_at: Date.today)
+        create(:conversion_project, :completed, completed_at: Date.today)
       end
 
       visit all_completed_projects_path

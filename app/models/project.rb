@@ -42,9 +42,8 @@ class Project < ApplicationRecord
   scope :conversions, -> { where(type: "Conversion::Project") }
   scope :transfers, -> { where(type: "Transfer::Project") }
 
-  scope :completed, -> { where.not(completed_at: nil).order(completed_at: :desc) }
-  scope :not_completed, -> { where(completed_at: nil) }
-  scope :in_progress, -> { where(completed_at: nil).assigned }
+  scope :ordered_by_completed_date, -> { completed.order(completed_at: :desc) }
+  scope :in_progress, -> { where(state: 0).assigned }
 
   scope :assigned, -> { where.not(assigned_to: nil) }
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
@@ -81,6 +80,11 @@ class Project < ApplicationRecord
   }, suffix: true
 
   enum :team, PROJECT_TEAMS, suffix: true
+
+  enum :state, {
+    active: 0,
+    completed: 1
+  }
 
   def establishment
     @establishment ||= fetch_establishment(urn)

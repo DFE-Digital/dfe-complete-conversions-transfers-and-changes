@@ -15,6 +15,11 @@ FactoryBot.define do
     tasks_data { association :transfer_tasks_data }
     outgoing_trust_ukprn { 10059062 }
     two_requires_improvement { false }
+    state { 0 }
+
+    trait :completed do
+      state { 1 }
+    end
 
     trait :form_a_mat do
       incoming_trust_ukprn { nil }

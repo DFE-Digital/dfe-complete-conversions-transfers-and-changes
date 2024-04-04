@@ -16,7 +16,7 @@ class ProjectsCompleteController < ApplicationController
   private def set_project_completed_at
     return if @project.completed?
 
-    @project.update!(completed_at: DateTime.now)
+    @project.update!(completed_at: DateTime.now, state: 1)
   end
 
   private def project_id

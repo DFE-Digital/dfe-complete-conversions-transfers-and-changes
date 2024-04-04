@@ -8,10 +8,10 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
     before do
       create_list(:conversion_project, 2, assigned_to: nil)
       create(:conversion_project)
-      create(:conversion_project, completed_at: Date.today)
+      create(:conversion_project, :completed, completed_at: Date.today)
       create_list(:transfer_project, 2, assigned_to: nil)
       create(:transfer_project)
-      create(:transfer_project, completed_at: Date.today)
+      create(:transfer_project, :completed, completed_at: Date.today)
     end
 
     describe "#total_number_of_conversion_projects" do
@@ -66,12 +66,12 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
   describe "Regional casework services projects" do
     before do
       create(:conversion_project, team: :regional_casework_services, completed_at: nil)
-      create(:conversion_project, team: :regional_casework_services, completed_at: Date.today + 2.years)
+      create(:conversion_project, :completed, team: :regional_casework_services, completed_at: Date.today + 2.years)
       create(:conversion_project, team: :regional_casework_services, assigned_to: nil)
       create(:conversion_project, team: :north_west, assigned_to: nil)
 
       create(:transfer_project, team: :regional_casework_services, completed_at: nil)
-      create(:transfer_project, team: :regional_casework_services, completed_at: Date.today + 2.years)
+      create(:transfer_project, :completed, team: :regional_casework_services, completed_at: Date.today + 2.years)
       create(:transfer_project, team: :regional_casework_services, assigned_to: nil)
       create(:transfer_project, team: :north_west, assigned_to: nil)
     end
@@ -128,15 +128,15 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
   describe "Regional projects that are not with regional casework services" do
     before do
       create(:conversion_project, team: "london", completed_at: nil)
-      create(:conversion_project, team: "london", completed_at: Date.today + 2.years)
+      create(:conversion_project, :completed, team: "london", completed_at: Date.today + 2.years)
       create(:conversion_project, team: "london", completed_at: nil, directive_academy_order: true)
-      create(:conversion_project, team: "london", completed_at: Date.today + 2.years, directive_academy_order: true)
+      create(:conversion_project, :completed, team: "london", completed_at: Date.today + 2.years, directive_academy_order: true)
       create(:conversion_project, team: "london", assigned_to: nil)
 
       create(:transfer_project, team: "london", completed_at: nil)
-      create(:transfer_project, team: "london", completed_at: Date.today + 2.years)
+      create(:transfer_project, :completed, team: "london", completed_at: Date.today + 2.years)
       create(:transfer_project, team: "london", completed_at: nil, directive_academy_order: true)
-      create(:transfer_project, team: "london", completed_at: Date.today + 2.years, directive_academy_order: true)
+      create(:transfer_project, :completed, team: "london", completed_at: Date.today + 2.years, directive_academy_order: true)
       create(:transfer_project, team: "london", assigned_to: nil)
     end
 
@@ -186,16 +186,16 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
   describe "projects per region" do
     before do
       create(:conversion_project, region: :london, completed_at: nil)
-      create(:conversion_project, region: :london, completed_at: Date.today + 2.years)
+      create(:conversion_project, :completed, region: :london, completed_at: Date.today + 2.years)
       create(:conversion_project, region: :south_east)
-      create(:conversion_project, region: :london, completed_at: Date.today + 2.years, directive_academy_order: true)
+      create(:conversion_project, :completed, region: :london, completed_at: Date.today + 2.years, directive_academy_order: true)
       create(:conversion_project, region: :london, completed_at: nil, directive_academy_order: true)
       create(:conversion_project, region: :london, assigned_to: nil)
 
       create(:transfer_project, region: :london, completed_at: nil)
-      create(:transfer_project, region: :london, completed_at: Date.today + 2.years)
+      create(:transfer_project, :completed, region: :london, completed_at: Date.today + 2.years)
       create(:transfer_project, region: :west_midlands)
-      create(:transfer_project, region: :london, completed_at: Date.today + 2.years, directive_academy_order: true)
+      create(:transfer_project, :completed, region: :london, completed_at: Date.today + 2.years, directive_academy_order: true)
       create(:transfer_project, region: :london, completed_at: nil, directive_academy_order: true)
       create(:transfer_project, region: :london, assigned_to: nil)
     end

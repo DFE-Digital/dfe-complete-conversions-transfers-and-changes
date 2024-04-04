@@ -20,7 +20,7 @@ RSpec.feature "Your projects", driver: :headless_firefox, accessibility: true do
   end
 
   scenario "> Completed" do
-    project = create(:conversion_project, assigned_to: user, completed_at: Date.yesterday, urn: 123434)
+    project = create(:conversion_project, :completed, assigned_to: user, completed_at: Date.yesterday, urn: 123434)
 
     visit completed_your_projects_path
 

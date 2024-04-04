@@ -21,6 +21,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:academy_urn).of_type :integer }
     it { is_expected.to have_db_column(:team).of_type :string }
     it { is_expected.to have_db_column(:all_conditions_met).of_type :boolean }
+    it { is_expected.to have_db_column(:state).of_type :integer }
   end
 
   describe "Relationships" do
@@ -427,16 +428,16 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#completed?" do
-    context "when the completed_at is nil, i.e. the project is active" do
+    context "when the project is active (state 0)" do
       it "returns false" do
-        project = build(:conversion_project, completed_at: nil)
+        project = build(:conversion_project, completed_at: nil, state: 0)
         expect(project.completed?).to eq false
       end
     end
 
-    context "when the completed_at is set, i.e. the project is completed" do
+    context "when the project is completed (state 1)" do
       it "returns true" do
-        project = build(:conversion_project, completed_at: DateTime.now)
+        project = build(:conversion_project, completed_at: DateTime.now, state: 1)
         expect(project.completed?).to eq true
       end
     end
@@ -500,12 +501,28 @@ RSpec.describe Project, type: :model do
     describe "completed scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "only returns completed projects ordered by completed at date" do
-        completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year)
-        completed_project_2 = create(:conversion_project, completed_at: Date.today - 6.months)
-        in_progress_project = create(:conversion_project, completed_at: nil)
+      it "only returns completed projects (state 1)" do
+        completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
+        completed_project_2 = create(:conversion_project, completed_at: Date.today - 6.months, state: 1)
+        in_progress_project = create(:conversion_project, completed_at: nil, state: 0)
 
         projects = Project.completed
+
+        expect(projects).to include(completed_project_1, completed_project_2)
+
+        expect(projects).to_not include(in_progress_project)
+      end
+    end
+
+    describe "ordered_by_completed_date scope" do
+      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+
+      it "only returns completed projects (state 1) ordered by completed date" do
+        completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
+        completed_project_2 = create(:conversion_project, completed_at: Date.today - 6.months, state: 1)
+        in_progress_project = create(:conversion_project, completed_at: nil, state: 0)
+
+        projects = Project.ordered_by_completed_date
 
         expect(projects.first).to eql completed_project_2
         expect(projects.last).to eql completed_project_1
@@ -517,10 +534,10 @@ RSpec.describe Project, type: :model do
     describe "not_completed scope" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-      it "only returns projects where completed_at is nil" do
-        completed_project = create(:conversion_project, completed_at: Date.today - 1.year)
-        in_progress_project_1 = create(:conversion_project, completed_at: nil)
-        in_progress_project_2 = create(:conversion_project, completed_at: nil)
+      it "only returns projects where state = 0" do
+        completed_project = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
+        in_progress_project_1 = create(:conversion_project, completed_at: nil, state: 0)
+        in_progress_project_2 = create(:conversion_project, completed_at: nil, state: 0)
 
         projects = Project.not_completed
 
@@ -546,9 +563,9 @@ RSpec.describe Project, type: :model do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
       it "only returns open projects" do
-        completed_project = create(:conversion_project, completed_at: Date.today - 1.year)
-        open_project_1 = create(:conversion_project, completed_at: nil)
-        open_project_2 = create(:conversion_project, completed_at: nil)
+        completed_project = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
+        open_project_1 = create(:conversion_project, completed_at: nil, state: 0)
+        open_project_2 = create(:conversion_project, completed_at: nil, state: 0)
 
         projects = Project.in_progress
 

@@ -17,7 +17,7 @@ RSpec.feature "Viewing all in-progress projects" do
 
   context "when there are projects in progress" do
     scenario "they can view all in progress projects" do
-      completed_project = create(:conversion_project, urn: 121583, completed_at: Date.yesterday)
+      completed_project = create(:conversion_project, :completed, urn: 121583, completed_at: Date.yesterday)
       in_progress_project = create(:conversion_project, urn: 115652)
 
       visit all_in_progress_projects_path

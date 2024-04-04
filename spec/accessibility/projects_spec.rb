@@ -18,7 +18,7 @@ RSpec.feature "Test projects accessibility", driver: :headless_firefox, accessib
   end
 
   scenario "completed projects page" do
-    completed_project = create(:conversion_project, assigned_to: user, completed_at: Date.today)
+    completed_project = create(:conversion_project, :completed, assigned_to: user, completed_at: Date.today)
     visit completed_your_projects_path
 
     expect(page).to have_content(completed_project.urn)
