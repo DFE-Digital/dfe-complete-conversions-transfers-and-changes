@@ -61,6 +61,21 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
         expect(subject.total_number_of_completed_transfer_projects).to eql(1)
       end
     end
+
+    context "when there are deleted projects" do
+      before do
+        create(:transfer_project, :deleted)
+        create(:conversion_project, :deleted)
+      end
+
+      it "returns the same number of conversion projects as before" do
+        expect(subject.total_number_of_conversion_projects).to eql(4)
+      end
+
+      it "returns the same number of transfer projects as before" do
+        expect(subject.total_number_of_transfer_projects).to eql(4)
+      end
+    end
   end
 
   describe "Regional casework services projects" do
