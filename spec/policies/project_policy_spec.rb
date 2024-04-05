@@ -7,6 +7,18 @@ RSpec.describe ProjectPolicy do
   let(:application_user) { build(:user, :caseworker, email: "application.user@education.gov.uk") }
   let(:service_support_user) { build(:user, :service_support) }
 
+  permissions :show? do
+    it "grants access" do
+      expect(subject).to permit(application_user, build(:conversion_project))
+    end
+
+    context "if the project is 'soft deleted'" do
+      it "denies access" do
+        expect(subject).to_not permit(application_user, build(:conversion_project, :deleted))
+      end
+    end
+  end
+
   permissions :update? do
     it "grants access if project is assigned to the same user" do
       expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
@@ -45,6 +57,11 @@ RSpec.describe ProjectPolicy do
 
     it "denies access if the project is completed" do
       project = build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false, completed_at: Date.yesterday)
+      expect(subject).not_to permit(application_user, project)
+    end
+
+    it "denies access if the project is deleted" do
+      project = build(:conversion_project, :deleted, assigned_to: application_user)
       expect(subject).not_to permit(application_user, project)
     end
   end
