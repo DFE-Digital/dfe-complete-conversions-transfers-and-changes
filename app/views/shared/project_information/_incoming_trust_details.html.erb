@@ -8,7 +8,9 @@
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.incoming_trust_details.rows.ukprn") }
           row.with_value { incoming_trust.ukprn.to_s }
-          row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the incoming trust UKPRN")
+          if project.type == "Conversion::Project"
+            row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the incoming trust UKPRN")
+          end
         end
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.incoming_trust_details.rows.group_identifier") }
