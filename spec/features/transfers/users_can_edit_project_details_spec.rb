@@ -16,6 +16,23 @@ RSpec.feature "Users can edit transfer project details" do
     mock_api_for_editing
   end
 
+  scenario "they can change the outgoing trust UKPRN" do
+    visit project_information_path(project)
+
+    row = find("#outgoingTrustDetails .govuk-summary-list__row:nth-child(2)")
+
+    within(row) do
+      click_link "Change"
+    end
+
+    fill_in "Outgoing trust UKPRN (UK Provider Reference Number)", with: "10058882"
+    click_button "Continue"
+
+    within(row) do
+      expect(page).to have_content "10058882"
+    end
+  end
+
   scenario "they can change the sharepoint link for an establishment" do
     visit project_information_path(project)
 

@@ -56,7 +56,8 @@ class Transfers::ProjectsController < ApplicationController
     params.require(:transfer_edit_project_form).permit(
       :establishment_sharepoint_link,
       :incoming_trust_sharepoint_link,
-      :outgoing_trust_sharepoint_link
+      :outgoing_trust_sharepoint_link,
+      :outgoing_trust_ukprn
     )
   end
 

@@ -1,7 +1,13 @@
 require "rails_helper"
 
 RSpec.describe Transfer::EditProjectForm, type: :model do
-  let(:project) { build(:transfer_project, assigned_to: user) }
+  let(:project) do
+    build(
+      :transfer_project,
+      outgoing_trust_ukprn: 10059062,
+      assigned_to: user
+    )
+  end
   let(:user) { build(:user, :caseworker) }
 
   subject { Transfer::EditProjectForm.new_from_project(project) }
@@ -11,6 +17,32 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
   end
 
   describe "#update" do
+    describe "the outgoing trust UKPRN" do
+      it "can be changed" do
+        updated_params = {outgoing_trust_ukprn: "12345678"}
+
+        subject.update(updated_params)
+
+        expect(project.outgoing_trust_ukprn).to eql 12345678
+      end
+
+      it "cannot be invalid" do
+        updated_params = {outgoing_trust_ukprn: "2461810"}
+
+        expect(subject.update(updated_params)).to be false
+        expect(project.outgoing_trust_ukprn).to eql 10059062
+      end
+
+      it "the trust must exist" do
+        mock_trust_not_found(ukprn: 12345678)
+
+        updated_params = {outgoing_trust_ukprn: "12345678"}
+
+        expect(subject.update(updated_params)).to be false
+        expect(project.outgoing_trust_ukprn).to eql 10059062
+      end
+    end
+
     describe "Establishment SharePoint link" do
       it "can be changed" do
         updated_params = {establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment-folder-updated-link"}

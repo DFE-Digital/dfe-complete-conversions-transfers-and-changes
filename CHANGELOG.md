@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - users can now change the conversion due to intervention following 2RI response
   for a conversion project.
 - RCS acronym to handover question on add project pages
+- Users can now change the outgoing trust UKPRN for a transfer project.
 
 ## [Release-62][release-62]
 

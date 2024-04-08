@@ -2,6 +2,11 @@
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @project_form, url: transfers_update_path(@project), method: :post do |form| %>
       <%= form.govuk_error_summary %>
+
+      <div class="govuk-form-group" id="outgoing-trust-ukprn">
+        <%= form.govuk_text_field :outgoing_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.outgoing_trust_ukprn").html_safe}, width: 10 %>
+      </div>
+
       <%= form.govuk_text_field :establishment_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>
       <%= form.govuk_text_field :incoming_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
       <%= form.govuk_text_field :outgoing_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.outgoing_trust_sharepoint_link")} %>

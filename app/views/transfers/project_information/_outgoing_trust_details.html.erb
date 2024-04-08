@@ -8,6 +8,7 @@
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.outgoing_trust_details.rows.ukprn") }
           row.with_value { outgoing_trust.ukprn.to_s }
+          row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "#outgoing-trust-ukprn"), visually_hidden_text: "the outgoing trust UKPRN")
         end
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.outgoing_trust_details.rows.group_identifier") }
