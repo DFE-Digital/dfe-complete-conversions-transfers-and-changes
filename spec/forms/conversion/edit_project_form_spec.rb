@@ -132,5 +132,21 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
         expect(project.directive_academy_order).to be false
       end
     end
+
+    describe "two requires improvement" do
+      it "can be changed" do
+        updated_params = {two_requires_improvement: "true"}
+
+        subject.update(updated_params)
+
+        expect(project.two_requires_improvement).to be true
+
+        updated_params = {two_requires_improvement: "false"}
+
+        subject.update(updated_params)
+
+        expect(project.two_requires_improvement).to be false
+      end
+    end
   end
 end

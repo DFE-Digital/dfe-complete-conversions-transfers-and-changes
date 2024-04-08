@@ -37,26 +37,26 @@
 
       <div class="govuk-form-group">
         <%= form.govuk_collection_radio_buttons :two_requires_improvement,
-              @project.yes_no_responses,
+              yes_no_responses,
               :id,
               :name,
               form_group: {id: "two-requires-improvement"},
               hint: {text: t("helpers.hint.transfer_project.two_requires_improvement")} %>
 
         <%= form.govuk_collection_radio_buttons :inadequate_ofsted,
-              @project.yes_no_responses,
+              yes_no_responses,
               :id,
               :name,
               form_group: {id: "inadequate-ofsted"} %>
 
         <%= form.govuk_collection_radio_buttons :financial_safeguarding_governance_issues,
-              @project.yes_no_responses,
+              yes_no_responses,
               :id,
               :name,
               form_group: {id: "financial-safeguarding-governance-issues"} %>
 
         <%= form.govuk_collection_radio_buttons :outgoing_trust_to_close,
-              @project.yes_no_responses,
+              yes_no_responses,
               :id,
               :name,
               form_group: {id: "outgoing-trust-to-close"} %>
@@ -64,7 +64,7 @@
 
       <div class="govuk-form-group">
         <%= form.govuk_collection_radio_buttons :assigned_to_regional_caseworker_team,
-              @project.yes_no_responses,
+              yes_no_responses,
               :id,
               :name,
               form_group: {id: "assigned-to-regional-caseworker-team"},

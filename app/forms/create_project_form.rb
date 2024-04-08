@@ -51,13 +51,6 @@ class CreateProjectForm
     @attributes_with_invalid_values << :advisory_board_date
   end
 
-  def yes_no_responses
-    @yes_no_responses ||= [
-      OpenStruct.new(id: true, name: I18n.t("yes")),
-      OpenStruct.new(id: false, name: I18n.t("no"))
-    ]
-  end
-
   private def establishment
     @establishment || fetch_establishment(urn)
   end

@@ -26,6 +26,16 @@
               form_group: {id: "directive-academy-order"} %>
       </div>
 
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :two_requires_improvement,
+              yes_no_responses,
+              :id,
+              :name,
+              legend: {text: t("helpers.legend.conversion_project.two_requires_improvement")},
+              hint: {text: t("helpers.hint.conversion_project.two_requires_improvement")},
+              form_group: {id: "two-requires-improvement"} %>
+      </div>
+
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", project_information_path(@project) %>
       <% end %>

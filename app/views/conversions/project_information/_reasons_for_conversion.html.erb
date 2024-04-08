@@ -9,6 +9,7 @@
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.reasons_for.two_requires_improvement.conversion_project.title") }
           row.with_value { t("project_information.show.reasons_for.two_requires_improvement.#{project.two_requires_improvement}") }
+          row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "two-requires-improvement"), visually_hidden_text: "the conversion due to two requires improvement")
         end
       end %>
 </div>

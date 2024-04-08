@@ -138,6 +138,41 @@ RSpec.feature "Users can edit project details" do
       expect(page).to have_content("No")
     end
   end
+
+  scenario "they can change the two requires improvement response" do
+    visit project_information_path(project)
+
+    row = find("#reasonsFor .govuk-summary-list__row:nth-child(2)")
+
+    within(row) do
+      expect(page).to have_content("No")
+      click_link "Change"
+    end
+
+    within("#two-requires-improvement") do
+      choose("Yes")
+    end
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("Yes")
+    end
+
+    within(row) do
+      click_link "Change"
+    end
+
+    within("#two-requires-improvement") do
+      choose("No")
+    end
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("No")
+    end
+  end
 end
 
 def mock_api_for_editing

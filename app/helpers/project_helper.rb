@@ -84,4 +84,11 @@ module ProjectHelper
       OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))
     ]
   end
+
+  def yes_no_responses
+    @yes_no_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("yes")),
+      OpenStruct.new(id: false, name: I18n.t("no"))
+    ]
+  end
 end
