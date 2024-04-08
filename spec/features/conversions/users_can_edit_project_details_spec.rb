@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can edit project details" do
+RSpec.feature "Users can edit conversion project details" do
   let(:user) { create(:user, :caseworker) }
   let(:project) { create(:conversion_project, incoming_trust_ukprn: 10059151, assigned_to: user) }
 

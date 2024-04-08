@@ -34,14 +34,14 @@ class Transfers::ProjectsController < ApplicationController
 
   def edit
     authorize project
-    @project_form = Transfer::EditProjectForm.new(project: project)
+    @project_form = Transfer::EditProjectForm.new_from_project(project)
   end
 
   def update
     authorize project
-    @project_form = Transfer::EditProjectForm.new(project: project, args: sharepoint_link_params)
+    @project_form = Transfer::EditProjectForm.new_from_project(project)
 
-    if @project_form.save
+    if @project_form.update(edit_project_params)
       redirect_to project_information_path(project), notice: I18n.t("project.update.success")
     else
       render :edit
@@ -52,7 +52,7 @@ class Transfers::ProjectsController < ApplicationController
     @project ||= Project.find(params[:id])
   end
 
-  private def sharepoint_link_params
+  private def edit_project_params
     params.require(:transfer_edit_project_form).permit(
       :establishment_sharepoint_link,
       :incoming_trust_sharepoint_link,
