@@ -41,13 +41,6 @@ class Conversion::CreateProjectForm < CreateProjectForm
     errors.add(:urn, :duplicate) if Conversion::Project.active.where(urn: urn).any?
   end
 
-  def directive_academy_order_responses
-    @directive_academy_order_responses ||= [
-      OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")),
-      OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))
-    ]
-  end
-
   def save
     assigned_to = assigned_to_regional_caseworker_team ? nil : user
     assigned_at = assigned_to_regional_caseworker_team ? nil : DateTime.now

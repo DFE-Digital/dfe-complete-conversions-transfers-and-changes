@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   allows mistakes to be corrected.
 - users can now change the advisory board date and any conditions on a
   conversion project.
+- users can now change the academy order type for a conversion project.
 
 ## [Release-62][release-62]
 

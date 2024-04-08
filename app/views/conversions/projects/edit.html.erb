@@ -17,6 +17,15 @@
         <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
       </div>
 
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :directive_academy_order,
+              directive_academy_order_responses,
+              :id,
+              :name,
+              legend: {text: t("helpers.legend.conversion_project.directive_academy_order")},
+              form_group: {id: "directive-academy-order"} %>
+      </div>
+
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", project_information_path(@project) %>
       <% end %>

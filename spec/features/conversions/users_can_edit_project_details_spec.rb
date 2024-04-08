@@ -103,6 +103,41 @@ RSpec.feature "Users can edit project details" do
     expect(page).to have_link "View the trust SharePoint folder (opens in a new tab)",
       href: "https://educationgovuk-my.sharepoint.com/incoming-trust-folder-updated-link"
   end
+
+  scenario "they can change the kind of academy order" do
+    visit project_information_path(project)
+
+    row = find("#reasonsFor .govuk-summary-list__row:nth-child(1)")
+
+    within(row) do
+      expect(page).to have_content("No")
+      click_link "Change"
+    end
+
+    within("#directive-academy-order") do
+      choose("Directive academy order")
+    end
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("Yes")
+    end
+
+    within(row) do
+      click_link "Change"
+    end
+
+    within("#directive-academy-order") do
+      choose("Academy order")
+    end
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("No")
+    end
+  end
 end
 
 def mock_api_for_editing
