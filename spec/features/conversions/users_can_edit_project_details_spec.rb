@@ -174,23 +174,3 @@ RSpec.feature "Users can edit project details" do
     end
   end
 end
-
-def mock_api_for_editing
-  establishment = build(:academies_api_establishment)
-  local_authority = build(:local_authority)
-  allow(establishment).to receive(:local_authority).and_return(local_authority)
-
-  mock_establishment = Api::AcademiesApi::Client::Result.new(establishment, nil)
-
-  trust = build(:academies_api_trust, ukprn: 10059151)
-  mock_before_trust = Api::AcademiesApi::Client::Result.new(trust, nil)
-
-  trust = build(:academies_api_trust, ukprn: 10058882)
-  mock_after_trust = Api::AcademiesApi::Client::Result.new(trust, nil)
-
-  test_client = Api::AcademiesApi::Client.new
-  allow(test_client).to receive(:get_establishment).with(123456).and_return(mock_establishment)
-  allow(test_client).to receive(:get_trust).with(10059151).and_return(mock_before_trust)
-  allow(test_client).to receive(:get_trust).with(10058882).and_return(mock_after_trust)
-  allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
-end
