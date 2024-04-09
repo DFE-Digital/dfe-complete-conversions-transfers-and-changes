@@ -15,6 +15,7 @@ class Transfer::EditProjectForm
   attribute :two_requires_improvement, :boolean
   attribute :inadequate_ofsted, :boolean
   attribute :financial_safeguarding_governance_issues, :boolean
+  attribute :outgoing_trust_to_close, :boolean
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
@@ -35,6 +36,8 @@ class Transfer::EditProjectForm
 
   validates :inadequate_ofsted, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.inadequate_ofsted.inclusion")}
 
+  validates :outgoing_trust_to_close, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.outgoing_trust_to_close.inclusion")}
+
   def self.new_from_project(project)
     new(
       project: project,
@@ -47,7 +50,8 @@ class Transfer::EditProjectForm
       advisory_board_conditions: project.advisory_board_conditions,
       two_requires_improvement: project.two_requires_improvement,
       inadequate_ofsted: project.tasks_data.inadequate_ofsted,
-      financial_safeguarding_governance_issues: project.tasks_data.financial_safeguarding_governance_issues
+      financial_safeguarding_governance_issues: project.tasks_data.financial_safeguarding_governance_issues,
+      outgoing_trust_to_close: project.tasks_data.outgoing_trust_to_close
     )
   end
 
@@ -74,7 +78,8 @@ class Transfer::EditProjectForm
 
     project.tasks_data.assign_attributes(
       inadequate_ofsted: inadequate_ofsted,
-      financial_safeguarding_governance_issues: financial_safeguarding_governance_issues
+      financial_safeguarding_governance_issues: financial_safeguarding_governance_issues,
+      outgoing_trust_to_close: outgoing_trust_to_close
     )
 
     if valid?

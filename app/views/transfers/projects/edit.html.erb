@@ -39,6 +39,12 @@
               :id,
               :name,
               form_group: {id: "financial-safeguarding-governance-issues"} %>
+
+        <%= form.govuk_collection_radio_buttons :outgoing_trust_to_close,
+              yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "outgoing-trust-to-close"} %>
       </div>
 
       <%= form.govuk_submit do %>

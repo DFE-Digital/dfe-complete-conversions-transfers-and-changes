@@ -57,6 +57,7 @@ en:
         two_requires_improvement: Is this a transfer due to 2RI?
         inadequate_ofsted: Is this transfer due to an inadequate Ofsted rating?
         financial_safeguarding_governance_issues: Is this transfer due to financial, safeguarding or governance issues?
+        outgoing_trust_to_close: Will the outgoing trust close once this transfer is completed?
     hint:
       transfer_project:
         urn:

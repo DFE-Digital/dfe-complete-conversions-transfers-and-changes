@@ -263,5 +263,21 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
         expect(project.tasks_data.financial_safeguarding_governance_issues).to be false
       end
     end
+
+    describe "outgoing trust close once this transfer is completed" do
+      it "can be changed" do
+        updated_params = {outgoing_trust_to_close: "true"}
+
+        subject.update(updated_params)
+
+        expect(project.tasks_data.outgoing_trust_to_close).to be true
+
+        updated_params = {outgoing_trust_to_close: "false"}
+
+        subject.update(updated_params)
+
+        expect(project.tasks_data.outgoing_trust_to_close).to be false
+      end
+    end
   end
 end

@@ -63,7 +63,8 @@ class Transfers::ProjectsController < ApplicationController
       :advisory_board_conditions,
       :two_requires_improvement,
       :inadequate_ofsted,
-      :financial_safeguarding_governance_issues
+      :financial_safeguarding_governance_issues,
+      :outgoing_trust_to_close
     )
   end
 
