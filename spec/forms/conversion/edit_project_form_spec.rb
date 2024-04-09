@@ -69,6 +69,24 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
       end
     end
 
+    describe "advisory board conditions" do
+      it "can be changed" do
+        updated_params = {advisory_board_conditions: "Some conditions."}
+
+        subject.update(updated_params)
+
+        expect(project.advisory_board_conditions).to eql "Some conditions."
+      end
+
+      it "can be blank, which clears the value" do
+        updated_params = {advisory_board_conditions: ""}
+
+        subject.update(updated_params)
+
+        expect(project.advisory_board_conditions).to eql ""
+      end
+    end
+
     describe "Establishment SharePoint link" do
       it "can be changed" do
         updated_params = {establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment-folder-updated-link"}

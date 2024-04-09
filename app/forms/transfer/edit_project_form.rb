@@ -11,6 +11,7 @@ class Transfer::EditProjectForm
   attribute :outgoing_trust_ukprn
   attribute :incoming_trust_ukprn
   attribute :advisory_board_date, :date
+  attribute :advisory_board_conditions
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
@@ -35,7 +36,8 @@ class Transfer::EditProjectForm
       outgoing_trust_sharepoint_link: project.outgoing_trust_sharepoint_link,
       outgoing_trust_ukprn: project.outgoing_trust_ukprn,
       incoming_trust_ukprn: project.incoming_trust_ukprn,
-      advisory_board_date: project.advisory_board_date
+      advisory_board_date: project.advisory_board_date,
+      advisory_board_conditions: project.advisory_board_conditions
     )
   end
 
@@ -55,7 +57,8 @@ class Transfer::EditProjectForm
       outgoing_trust_sharepoint_link: outgoing_trust_sharepoint_link,
       outgoing_trust_ukprn: outgoing_trust_ukprn,
       incoming_trust_ukprn: incoming_trust_ukprn,
-      advisory_board_date: advisory_board_date
+      advisory_board_date: advisory_board_date,
+      advisory_board_conditions: advisory_board_conditions
     )
     if valid?
       project.save

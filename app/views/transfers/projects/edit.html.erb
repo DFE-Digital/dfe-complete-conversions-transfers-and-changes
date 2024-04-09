@@ -13,6 +13,7 @@
 
       <div class="govuk-form-group">
         <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.transfer_project.advisory_board_date")}, form_group: {id: "advisory-board-date"}, hint: {text: t("helpers.hint.project.advisory_board_date").html_safe} %>
+        <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.transfer_project.advisory_board_conditions")} %>
       </div>
 
       <%= form.govuk_text_field :establishment_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>

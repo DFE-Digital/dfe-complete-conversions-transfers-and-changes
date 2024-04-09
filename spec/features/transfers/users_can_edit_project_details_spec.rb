@@ -72,6 +72,26 @@ RSpec.feature "Users can edit transfer project details" do
     end
   end
 
+  scenario "they can change the advisory board conditions" do
+    visit project_information_path(project)
+
+    row = find("#advisoryBoardDetails .govuk-summary-list__row:nth-child(2)")
+
+    within(row) do
+      click_link "Change"
+    end
+
+    text_value = "These are the conditions for the conversion."
+
+    fill_in "Advisory board conditions", with: text_value
+
+    click_button "Continue"
+
+    within(row) do
+      expect(page).to have_content text_value
+    end
+  end
+
   scenario "they can change the sharepoint link for an establishment" do
     visit project_information_path(project)
 
