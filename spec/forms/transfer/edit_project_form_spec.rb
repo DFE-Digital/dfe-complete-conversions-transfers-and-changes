@@ -127,7 +127,6 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
       end
     end
 
-
     describe "Establishment SharePoint link" do
       it "can be changed" do
         updated_params = {establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment-folder-updated-link"}
@@ -197,6 +196,22 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
 
         expect(subject.update(updated_params)).to be false
         expect(project.outgoing_trust_sharepoint_link).to eql("https://educationgovuk-my.sharepoint.com/outgoing-trust-folder")
+      end
+    end
+
+    describe "two requires improvement" do
+      it "can be changed" do
+        updated_params = {two_requires_improvement: "true"}
+
+        subject.update(updated_params)
+
+        expect(project.two_requires_improvement).to be true
+
+        updated_params = {two_requires_improvement: "false"}
+
+        subject.update(updated_params)
+
+        expect(project.two_requires_improvement).to be false
       end
     end
   end

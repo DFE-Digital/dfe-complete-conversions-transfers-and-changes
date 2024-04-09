@@ -20,6 +20,15 @@
       <%= form.govuk_text_field :incoming_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
       <%= form.govuk_text_field :outgoing_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.outgoing_trust_sharepoint_link")} %>
 
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :two_requires_improvement,
+              yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "two-requires-improvement"},
+              hint: {text: t("helpers.hint.transfer_project.two_requires_improvement")} %>
+      </div>
+
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", project_information_path(@project) %>
       <% end %>

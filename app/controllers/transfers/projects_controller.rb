@@ -60,7 +60,8 @@ class Transfers::ProjectsController < ApplicationController
       :outgoing_trust_ukprn,
       :incoming_trust_ukprn,
       :advisory_board_date,
-      :advisory_board_conditions
+      :advisory_board_conditions,
+      :two_requires_improvement
     )
   end
 

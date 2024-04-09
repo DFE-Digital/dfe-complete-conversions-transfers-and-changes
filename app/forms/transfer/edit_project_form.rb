@@ -12,6 +12,7 @@ class Transfer::EditProjectForm
   attribute :incoming_trust_ukprn
   attribute :advisory_board_date, :date
   attribute :advisory_board_conditions
+  attribute :two_requires_improvement, :boolean
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
@@ -28,6 +29,8 @@ class Transfer::EditProjectForm
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
 
+  validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.conversion_project.attributes.two_requires_improvement.inclusion")}
+
   def self.new_from_project(project)
     new(
       project: project,
@@ -37,7 +40,8 @@ class Transfer::EditProjectForm
       outgoing_trust_ukprn: project.outgoing_trust_ukprn,
       incoming_trust_ukprn: project.incoming_trust_ukprn,
       advisory_board_date: project.advisory_board_date,
-      advisory_board_conditions: project.advisory_board_conditions
+      advisory_board_conditions: project.advisory_board_conditions,
+      two_requires_improvement: project.two_requires_improvement
     )
   end
 
@@ -58,7 +62,8 @@ class Transfer::EditProjectForm
       outgoing_trust_ukprn: outgoing_trust_ukprn,
       incoming_trust_ukprn: incoming_trust_ukprn,
       advisory_board_date: advisory_board_date,
-      advisory_board_conditions: advisory_board_conditions
+      advisory_board_conditions: advisory_board_conditions,
+      two_requires_improvement: two_requires_improvement
     )
     if valid?
       project.save
