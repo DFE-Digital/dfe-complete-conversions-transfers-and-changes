@@ -13,6 +13,7 @@ class Transfer::EditProjectForm
   attribute :advisory_board_date, :date
   attribute :advisory_board_conditions
   attribute :two_requires_improvement, :boolean
+  attribute :inadequate_ofsted, :boolean
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
@@ -31,6 +32,8 @@ class Transfer::EditProjectForm
 
   validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.conversion_project.attributes.two_requires_improvement.inclusion")}
 
+  validates :inadequate_ofsted, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.inadequate_ofsted.inclusion")}
+
   def self.new_from_project(project)
     new(
       project: project,
@@ -41,7 +44,8 @@ class Transfer::EditProjectForm
       incoming_trust_ukprn: project.incoming_trust_ukprn,
       advisory_board_date: project.advisory_board_date,
       advisory_board_conditions: project.advisory_board_conditions,
-      two_requires_improvement: project.two_requires_improvement
+      two_requires_improvement: project.two_requires_improvement,
+      inadequate_ofsted: project.tasks_data.inadequate_ofsted
     )
   end
 
@@ -65,8 +69,14 @@ class Transfer::EditProjectForm
       advisory_board_conditions: advisory_board_conditions,
       two_requires_improvement: two_requires_improvement
     )
+
+    project.tasks_data.assign_attributes(
+      inadequate_ofsted: inadequate_ofsted
+    )
+
     if valid?
-      project.save
+      project.save!
+      project.tasks_data.save!
     end
   end
 end

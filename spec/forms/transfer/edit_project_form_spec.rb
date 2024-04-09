@@ -214,5 +214,38 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
         expect(project.two_requires_improvement).to be false
       end
     end
+
+    describe "due to an inadequate Ofsted rating" do
+      it "can be changed" do
+        updated_params = {inadequate_ofsted: "true"}
+
+        subject.update(updated_params)
+
+        expect(project.tasks_data.inadequate_ofsted).to be true
+
+        updated_params = {inadequate_ofsted: "false"}
+
+        subject.update(updated_params)
+
+        expect(project.tasks_data.inadequate_ofsted).to be false
+      end
+
+      it "raises an error if the project cannot be saved" do
+        tasks_data = create(:transfer_tasks_data, inadequate_ofsted: false)
+        project = create(:transfer_project, outgoing_trust_ukprn: 10059062, tasks_data: tasks_data)
+        allow(project).to receive(:save!).and_raise(ActiveRecord::RecordNotSaved)
+
+        subject = described_class.new_from_project(project)
+
+        updated_params = {outgoing_trust_ukprn: "12345678", inadequate_ofsted: "true"}
+
+        expect { subject.update(updated_params) }.to raise_error(ActiveRecord::RecordNotSaved)
+
+        project.reload
+
+        expect(project.outgoing_trust_ukprn).to be 10059062
+        expect(project.tasks_data.inadequate_ofsted).to be false
+      end
+    end
   end
 end

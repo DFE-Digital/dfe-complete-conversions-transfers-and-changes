@@ -61,7 +61,8 @@ class Transfers::ProjectsController < ApplicationController
       :incoming_trust_ukprn,
       :advisory_board_date,
       :advisory_board_conditions,
-      :two_requires_improvement
+      :two_requires_improvement,
+      :inadequate_ofsted
     )
   end
 

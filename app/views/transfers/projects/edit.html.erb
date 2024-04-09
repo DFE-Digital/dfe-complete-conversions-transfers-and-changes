@@ -27,6 +27,12 @@
               :name,
               form_group: {id: "two-requires-improvement"},
               hint: {text: t("helpers.hint.transfer_project.two_requires_improvement")} %>
+
+        <%= form.govuk_collection_radio_buttons :inadequate_ofsted,
+              yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "inadequate-ofsted"} %>
       </div>
 
       <%= form.govuk_submit do %>

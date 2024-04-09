@@ -55,6 +55,7 @@ en:
         outgoing_trust_to_close: Will the outgoing trust close once this transfer is completed?
       transfer_edit_project_form:
         two_requires_improvement: Is this a transfer due to 2RI?
+        inadequate_ofsted: Is this transfer due to an inadequate Ofsted rating?
     hint:
       transfer_project:
         urn:
