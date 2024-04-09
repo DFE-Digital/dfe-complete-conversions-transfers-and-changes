@@ -50,6 +50,28 @@ RSpec.feature "Users can edit transfer project details" do
     end
   end
 
+  scenario "they can change the advisory board date" do
+    visit project_information_path(project)
+
+    row = find("#advisoryBoardDetails .govuk-summary-list__row:nth-child(1)")
+
+    within(row) do
+      click_link "Change"
+    end
+
+    date_value = Date.yesterday
+
+    fill_in "Day", with: date_value.day
+    fill_in "Month", with: date_value.month
+    fill_in "Year", with: date_value.year
+
+    click_button "Continue"
+
+    within(row) do
+      expect(page).to have_content date_value.to_fs(:govuk)
+    end
+  end
+
   scenario "they can change the sharepoint link for an establishment" do
     visit project_information_path(project)
 

@@ -11,6 +11,10 @@
         <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10 %>
       </div>
 
+      <div class="govuk-form-group">
+        <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.transfer_project.advisory_board_date")}, form_group: {id: "advisory-board-date"}, hint: {text: t("helpers.hint.project.advisory_board_date").html_safe} %>
+      </div>
+
       <%= form.govuk_text_field :establishment_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>
       <%= form.govuk_text_field :incoming_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
       <%= form.govuk_text_field :outgoing_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.outgoing_trust_sharepoint_link")} %>
@@ -21,5 +25,3 @@
     <% end %>
   </div>
 </div>
-
-<%= render partial: "shared/autocomplete", locals: {selector: ".accessible-autocomplete-target"} %>

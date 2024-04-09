@@ -6,6 +6,8 @@
           row.with_value { project.advisory_board_date.to_date.to_formatted_s(:govuk) }
           if project.type == "Conversion::Project"
             row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "advisory-board"), visually_hidden_text: "the advisory board date")
+          else
+            row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "advisory-board"), visually_hidden_text: "the advisory board date")
           end
         end
         summary_list.with_row do |row|

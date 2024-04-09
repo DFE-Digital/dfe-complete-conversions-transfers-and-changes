@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - RCS acronym to handover question on add project pages
 - Users can now change the outgoing trust UKPRN for a transfer project.
 - Users can now change the incoming trust UKPRN for a transfer project.
+- Users can now change the advisory board date for a transfer project.
 
 ## [Release-62][release-62]
 

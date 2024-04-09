@@ -84,6 +84,31 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
       end
     end
 
+    describe "the advisory board date" do
+      it "can be changed" do
+        updated_params = {
+          "advisory_board_date(3i)" => "1",
+          "advisory_board_date(2i)" => "1",
+          "advisory_board_date(1i)" => "2024"
+        }
+
+        subject.update(updated_params)
+
+        expect(project.advisory_board_date).to eql Date.new(2024, 1, 1)
+      end
+
+      it "cannot be invalid" do
+        updated_params = {
+          "advisory_board_date(3i)" => "32",
+          "advisory_board_date(2i)" => "1",
+          "advisory_board_date(1i)" => "2024"
+        }
+
+        expect(subject.update(updated_params)).to be false
+        expect(project.advisory_board_date).to eql project.advisory_board_date
+      end
+    end
+
     describe "Establishment SharePoint link" do
       it "can be changed" do
         updated_params = {establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment-folder-updated-link"}

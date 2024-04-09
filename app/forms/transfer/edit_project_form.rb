@@ -10,6 +10,7 @@ class Transfer::EditProjectForm
   attribute :incoming_trust_sharepoint_link
   attribute :outgoing_trust_ukprn
   attribute :incoming_trust_ukprn
+  attribute :advisory_board_date, :date
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
@@ -23,6 +24,9 @@ class Transfer::EditProjectForm
 
   validates_with OutgoingIncomingTrustsUkprnValidator
 
+  validates :advisory_board_date, presence: true
+  validates :advisory_board_date, date_in_the_past: true
+
   def self.new_from_project(project)
     new(
       project: project,
@@ -30,11 +34,17 @@ class Transfer::EditProjectForm
       incoming_trust_sharepoint_link: project.incoming_trust_sharepoint_link,
       outgoing_trust_sharepoint_link: project.outgoing_trust_sharepoint_link,
       outgoing_trust_ukprn: project.outgoing_trust_ukprn,
-      incoming_trust_ukprn: project.incoming_trust_ukprn
+      incoming_trust_ukprn: project.incoming_trust_ukprn,
+      advisory_board_date: project.advisory_board_date
     )
   end
 
   def update(params)
+    if GovukDateFieldParameters.new(:advisory_board_date, params).invalid?
+      errors.add(:advisory_board_date, :invalid)
+      return false
+    end
+
     assign_attributes(params)
 
     return false unless valid?
@@ -44,7 +54,8 @@ class Transfer::EditProjectForm
       incoming_trust_sharepoint_link: incoming_trust_sharepoint_link,
       outgoing_trust_sharepoint_link: outgoing_trust_sharepoint_link,
       outgoing_trust_ukprn: outgoing_trust_ukprn,
-      incoming_trust_ukprn: incoming_trust_ukprn
+      incoming_trust_ukprn: incoming_trust_ukprn,
+      advisory_board_date: advisory_board_date
     )
     if valid?
       project.save
