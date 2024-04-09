@@ -4,7 +4,7 @@ class All::Completed::ProjectsController < ApplicationController
 
   def index
     authorize Project, :index?
-    @pager, @projects = pagy(Project.completed)
+    @pager, @projects = pagy(Project.completed.ordered_by_completed_date)
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end

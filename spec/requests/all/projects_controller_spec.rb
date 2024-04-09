@@ -6,7 +6,7 @@ RSpec.describe ServiceSupport::ProjectsController, type: :request do
     mock_all_academies_api_responses
   end
 
-  let!(:completed_project) { create(:conversion_project, completed_at: Date.today, urn: 165432) }
+  let!(:completed_project) { create(:conversion_project, :completed, completed_at: Date.today, urn: 165432) }
   let!(:project_without_urn) { create(:conversion_project, academy_urn: nil, urn: 132342) }
   let!(:project_with_urn) { create(:conversion_project, academy_urn: 123456, urn: 154232) }
   let(:establishment) { create(:gias_establishment, urn: 123456) }

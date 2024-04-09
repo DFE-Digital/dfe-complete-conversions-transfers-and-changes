@@ -12,7 +12,7 @@ class All::Regions::ProjectsController < ApplicationController
     return not_found_error unless Project.regions.include?(region)
 
     @region = region
-    @pager, @projects = pagy(Project.not_completed.by_region(region).ordered_by_significant_date.includes(:assigned_to))
+    @pager, @projects = pagy(Project.active.by_region(region).ordered_by_significant_date.includes(:assigned_to))
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
 

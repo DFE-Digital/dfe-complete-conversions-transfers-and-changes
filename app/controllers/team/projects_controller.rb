@@ -14,7 +14,7 @@ class Team::ProjectsController < ApplicationController
 
   def completed
     authorize Project, :index?
-    @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).completed)
+    @pager, @projects = pagy_array(ByTeamProjectFetcherService.new(current_user.team).completed.ordered_by_completed_date)
   end
 
   def unassigned

@@ -14,6 +14,11 @@ FactoryBot.define do
     tasks_data { association :conversion_tasks_data }
     team { Project.teams["london"] }
     all_conditions_met { nil }
+    state { 0 }
+
+    trait :completed do
+      state { 1 }
+    end
 
     trait :with_conditions do
       advisory_board_conditions { "The following must be met:\n 1. Must be red\n2. Must be blue\n" }

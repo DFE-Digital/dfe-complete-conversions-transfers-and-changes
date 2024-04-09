@@ -11,7 +11,7 @@ class All::Trusts::ProjectsController < ApplicationController
     authorize Project, :index?
 
     @trust = Api::AcademiesApi::Client.new.get_trust(incoming_trust_ukprn).object
-    @pager, @projects = pagy(Project.not_completed.by_trust_ukprn(@trust.ukprn).ordered_by_significant_date.includes(:assigned_to))
+    @pager, @projects = pagy(Project.active.by_trust_ukprn(@trust.ukprn).ordered_by_significant_date.includes(:assigned_to))
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end

@@ -4,14 +4,14 @@ class ServiceSupport::ProjectsController < ApplicationController
 
   def without_academy_urn
     authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.not_completed.no_academy_urn.by_conversion_date)
+    @pager, @projects = pagy(Conversion::Project.active.no_academy_urn.by_conversion_date)
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
 
   def with_academy_urn
     authorize Project, :index?
-    @pager, @projects = pagy(Conversion::Project.not_completed.with_academy_urn.by_conversion_date)
+    @pager, @projects = pagy(Conversion::Project.active.with_academy_urn.by_conversion_date)
 
     AcademiesApiPreFetcherService.new.call!(@projects)
   end

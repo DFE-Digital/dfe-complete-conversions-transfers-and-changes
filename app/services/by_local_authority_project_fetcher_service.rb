@@ -10,14 +10,14 @@ class ByLocalAuthorityProjectFetcherService
   end
 
   def projects_for_local_authority(local_authority_code)
-    all_projects = Project.not_completed.select(:id, :urn, :incoming_trust_ukprn)
+    all_projects = Project.active.select(:id, :urn, :incoming_trust_ukprn)
     projects_for_local_authority = all_projects.select { |p| p.establishment.local_authority_code == local_authority_code }
 
     Project.where(id: projects_for_local_authority.pluck(:id)).includes(:assigned_to).ordered_by_significant_date
   end
 
   private def projects_by_local_authority
-    projects = Project.not_completed.select(:id, :urn, :incoming_trust_ukprn, :type)
+    projects = Project.active.select(:id, :urn, :incoming_trust_ukprn, :type)
 
     AcademiesApiPreFetcherService.new.call!(projects)
 

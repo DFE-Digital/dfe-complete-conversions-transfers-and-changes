@@ -11,7 +11,7 @@ RSpec.feature "Users can view a list of projects for a given region" do
   context "when a region has a project" do
     scenario "they see the project listed" do
       project = create(:conversion_project, region: "london", urn: 103835)
-      completed_project = create(:conversion_project, completed_at: Date.today, region: "london", urn: 121813)
+      completed_project = create(:conversion_project, :completed, completed_at: Date.today, region: "london", urn: 121813)
 
       visit by_region_all_regions_projects_path("london")
 
@@ -43,7 +43,7 @@ RSpec.feature "Users can view a list of projects for a given region" do
 
   context "when there are no projects for the region" do
     scenario "they see an helpful message" do
-      create(:conversion_project, completed_at: Date.today, region: "london", urn: 121813)
+      create(:conversion_project, :completed, completed_at: Date.today, region: "london", urn: 121813)
 
       visit by_region_all_regions_projects_path("london")
 

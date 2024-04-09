@@ -22,7 +22,7 @@ RSpec.feature "Viewing all projects a user has added" do
       mock_all_academies_api_responses
     end
 
-    let!(:completed_project) { create(:conversion_project, urn: 121583, completed_at: Date.yesterday, regional_delivery_officer: user) }
+    let!(:completed_project) { create(:conversion_project, :completed, urn: 121583, completed_at: Date.yesterday, regional_delivery_officer: user) }
     let!(:in_progress_project) { create(:conversion_project, urn: 115652, regional_delivery_officer: user) }
     let!(:sponsored_in_progress_project) { create(:conversion_project, urn: 112209, directive_academy_order: true, regional_delivery_officer: user) }
     let!(:voluntary_in_progress_project) { create(:conversion_project, urn: 103835, directive_academy_order: false, regional_delivery_officer: user) }

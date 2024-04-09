@@ -14,7 +14,7 @@ class ByRegionProjectFetcherService
   end
 
   private def projects_by_region
-    projects = Project.not_completed
+    projects = Project.active
     return false unless projects.any?
 
     projects.group_by(&:region)

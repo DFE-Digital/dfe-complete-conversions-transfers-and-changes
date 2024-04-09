@@ -38,7 +38,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
   end
 
   private def urn_unique_for_in_progress_conversions
-    errors.add(:urn, :duplicate) if Conversion::Project.not_completed.where(urn: urn).any?
+    errors.add(:urn, :duplicate) if Conversion::Project.active.where(urn: urn).any?
   end
 
   def directive_academy_order_responses
