@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   task is later saved as "Not applicable"
 - for some projects, an MP name could not be located which caused some views and
   exports to fail, this has been resolved
+- typo "receive" replaces 3 instances of "recieve"
 
 ### Changed
 

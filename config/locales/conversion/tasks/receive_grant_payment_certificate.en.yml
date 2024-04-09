@@ -8,7 +8,7 @@ en:
         guidance_link: What to do if you have not received the grant payment certificate
         guidance:
           html:
-            <p>If you do not recieve the grant certificate, you should keep reminding the school and trust to send it to you.</p>
+            <p>If you do not receive the grant certificate, you should keep reminding the school and trust to send it to you.</p>
             <p>Regional Casework Services must also <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&action=default&mobileredirect=true" target="_blank">update the support grant assurance report spreadsheet (opens in new tab)</a>. Do not update this grant assurance report spreadsheet if you work in a team in one of the Regions.</p>
         check_certificate:
           title: Check the grant payment certificate is correct
@@ -17,7 +17,7 @@ en:
           guidance_link: Using the right certificate
           guidance:
             html:
-              <p>If the school only recieved the £25,000 converter grant, they need to download and <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">complete the academy conversions, support grant certificate (opens in new tab)</a>.</p>
+              <p>If the school only received the £25,000 converter grant, they need to download and <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">complete the academy conversions, support grant certificate (opens in new tab)</a>.</p>
               <p>If the school or trust received a sponsored grant, they need to <a href="https://www.gov.uk/government/publications/sponsored-academies-funding-guidance-for-sponsors" target="_blank">complete the certificate in Annex 2 of the Sponsored academies funding - advice for sponsors PDF (opens in a new tab)</a>.</p>
         save_certificate:
           title: Save the grant payment certificate in the academy's SharePoint folder
