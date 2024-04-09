@@ -16,9 +16,11 @@
         <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.transfer_project.advisory_board_conditions")} %>
       </div>
 
-      <%= form.govuk_text_field :establishment_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>
-      <%= form.govuk_text_field :incoming_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
-      <%= form.govuk_text_field :outgoing_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.outgoing_trust_sharepoint_link")} %>
+      <div class="govuk-form-group" id="sharepoint-folder-links">
+        <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>
+        <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
+        <%= form.govuk_text_field :outgoing_trust_sharepoint_link, label: {size: "m", text: t("project.edit.labels.outgoing_trust_sharepoint_link")} %>
+      </div>
 
       <div class="govuk-form-group">
         <%= form.govuk_collection_radio_buttons :two_requires_improvement,
