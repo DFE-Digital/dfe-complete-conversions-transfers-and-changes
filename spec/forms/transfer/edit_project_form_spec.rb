@@ -5,6 +5,7 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
     build(
       :transfer_project,
       outgoing_trust_ukprn: 10059062,
+      incoming_trust_ukprn: 10059151,
       assigned_to: user
     )
   end
@@ -40,6 +41,46 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
 
         expect(subject.update(updated_params)).to be false
         expect(project.outgoing_trust_ukprn).to eql 10059062
+      end
+
+      it "cannot be the same as the incoming trust UKPRN" do
+        updated_params = {outgoing_trust_ukprn: "12345678", incoming_trust_ukprn: "12345678"}
+
+        expect(subject.update(updated_params)).to be false
+        expect(project.outgoing_trust_ukprn).to eql 10059062
+      end
+    end
+
+    describe "the incoming trust UKPRN" do
+      it "can be changed" do
+        updated_params = {incoming_trust_ukprn: "12345678"}
+
+        subject.update(updated_params)
+
+        expect(project.incoming_trust_ukprn).to eql 12345678
+      end
+
+      it "cannot be invalid" do
+        updated_params = {incoming_trust_ukprn: "2461810"}
+
+        expect(subject.update(updated_params)).to be false
+        expect(project.incoming_trust_ukprn).to eql 10059151
+      end
+
+      it "the trust must exist" do
+        mock_trust_not_found(ukprn: 12345678)
+
+        updated_params = {incoming_trust_ukprn: "12345678"}
+
+        expect(subject.update(updated_params)).to be false
+        expect(project.incoming_trust_ukprn).to eql 10059151
+      end
+
+      it "cannot be the same as the incoming trust UKPRN" do
+        updated_params = {outgoing_trust_ukprn: "12345678", incoming_trust_ukprn: "12345678"}
+
+        expect(subject.update(updated_params)).to be false
+        expect(project.incoming_trust_ukprn).to eql 10059151
       end
     end
 

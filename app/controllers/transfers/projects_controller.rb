@@ -57,7 +57,8 @@ class Transfers::ProjectsController < ApplicationController
       :establishment_sharepoint_link,
       :incoming_trust_sharepoint_link,
       :outgoing_trust_sharepoint_link,
-      :outgoing_trust_ukprn
+      :outgoing_trust_ukprn,
+      :incoming_trust_ukprn
     )
   end
 
