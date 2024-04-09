@@ -44,14 +44,14 @@ class Conversions::ProjectsController < ProjectsController
 
   def edit
     authorize project
-    @project_form = Conversion::EditProjectForm.new(project: project)
+    @project_form = Conversion::EditProjectForm.new_from_project(project)
   end
 
   def update
     authorize project
-    @project_form = Conversion::EditProjectForm.new(project: project, args: edit_project_params)
+    @project_form = Conversion::EditProjectForm.new_from_project(project)
 
-    if @project_form.save
+    if @project_form.update(edit_project_params)
       redirect_to project_information_path(project), notice: I18n.t("project.update.success")
     else
       render :edit
@@ -66,7 +66,9 @@ class Conversions::ProjectsController < ProjectsController
     params.require(:conversion_edit_project_form).permit(
       :establishment_sharepoint_link,
       :incoming_trust_sharepoint_link,
-      :incoming_trust_ukprn
+      :incoming_trust_ukprn,
+      :advisory_board_date,
+      :advisory_board_conditions
     )
   end
 

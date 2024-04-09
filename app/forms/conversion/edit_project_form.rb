@@ -3,37 +3,52 @@ class Conversion::EditProjectForm
   include ActiveModel::Attributes
   include ActiveRecord::AttributeAssignment
 
+  attr_accessor :project
+
   attribute :establishment_sharepoint_link
   attribute :incoming_trust_sharepoint_link
   attribute :incoming_trust_ukprn
+  attribute :advisory_board_date, :date
+  attribute :advisory_board_conditions
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
-  validates :incoming_trust_ukprn, presence: true, ukprn: true
 
+  validates :incoming_trust_ukprn, presence: true, ukprn: true
   validates :incoming_trust_ukprn, trust_exists: true, if: -> { incoming_trust_ukprn.present? }
 
-  def initialize(project:, args: {})
-    @project = project
-    super(args)
+  validates :advisory_board_date, presence: true
+  validates :advisory_board_date, date_in_the_past: true
 
-    if args.empty?
-      assign_attributes(
-        establishment_sharepoint_link: @project.establishment_sharepoint_link,
-        incoming_trust_sharepoint_link: @project.incoming_trust_sharepoint_link,
-        incoming_trust_ukprn: @project.incoming_trust_ukprn
-      )
-    end
+  def self.new_from_project(project)
+    new(
+      project: project,
+      establishment_sharepoint_link: project.establishment_sharepoint_link,
+      incoming_trust_sharepoint_link: project.incoming_trust_sharepoint_link,
+      incoming_trust_ukprn: project.incoming_trust_ukprn,
+      advisory_board_date: project.advisory_board_date,
+      advisory_board_conditions: project.advisory_board_conditions
+    )
   end
 
-  def save
-    @project.assign_attributes(
+  def update(params)
+    if GovukDateFieldParameters.new(:advisory_board_date, params).invalid?
+      errors.add(:advisory_board_date, :invalid)
+      return false
+    end
+
+    assign_attributes(params)
+
+    return false unless valid?
+
+    project.assign_attributes(
       establishment_sharepoint_link: establishment_sharepoint_link,
       incoming_trust_sharepoint_link: incoming_trust_sharepoint_link,
-      incoming_trust_ukprn: incoming_trust_ukprn
+      incoming_trust_ukprn: incoming_trust_ukprn,
+      advisory_board_date: advisory_board_date,
+      advisory_board_conditions: advisory_board_conditions
     )
-    if valid?
-      @project.save
-    end
+
+    project.save!
   end
 end
