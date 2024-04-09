@@ -14,6 +14,11 @@
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.reasons_for.financial_safeguarding_governance_issues.transfer_project.title") }
           row.with_value { t("project_information.show.#{project.tasks_data.financial_safeguarding_governance_issues}") }
+          row.with_action(
+            text: "Change",
+            href: transfers_edit_path(@project, anchor: "financial-safeguarding-governance-issues"),
+            visually_hidden_text: "Is this transfer due to financial, safeguarding or governance issues response"
+          )
         end
       end %>
 </div>

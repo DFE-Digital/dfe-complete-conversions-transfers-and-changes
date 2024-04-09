@@ -27,6 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project.
 - Users can now change the due to inadequate Ofsted response for a transfer
   project.
+- Users can now change the due to financial, safeguarding or governance issues
+  response for a transfer project.
 
 ## [Release-62][release-62]
 

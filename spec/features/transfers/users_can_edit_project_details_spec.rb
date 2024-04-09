@@ -219,4 +219,39 @@ RSpec.feature "Users can edit transfer project details" do
       expect(page).to have_content("No")
     end
   end
+
+  scenario "they can change the due due to kfinancial, safeguarding or governance issues response" do
+    visit project_information_path(project)
+
+    row = find("#reasonsFor .govuk-summary-list__row:nth-child(3)")
+
+    within(row) do
+      expect(page).to have_content("No")
+      click_link "Change"
+    end
+
+    within("#financial-safeguarding-governance-issues") do
+      choose("Yes")
+    end
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("Yes")
+    end
+
+    within(row) do
+      click_link "Change"
+    end
+
+    within("#financial-safeguarding-governance-issues") do
+      choose("No")
+    end
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("No")
+    end
+  end
 end

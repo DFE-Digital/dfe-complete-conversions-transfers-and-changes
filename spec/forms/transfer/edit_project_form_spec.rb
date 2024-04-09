@@ -18,6 +18,23 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
   end
 
   describe "#update" do
+    it "raises an error if the project cannot be saved" do
+      tasks_data = create(:transfer_tasks_data, inadequate_ofsted: false)
+      project = create(:transfer_project, outgoing_trust_ukprn: 10059062, tasks_data: tasks_data)
+      allow(project).to receive(:save!).and_raise(ActiveRecord::RecordNotSaved)
+
+      subject = described_class.new_from_project(project)
+
+      updated_params = {outgoing_trust_ukprn: "12345678", inadequate_ofsted: "true"}
+
+      expect { subject.update(updated_params) }.to raise_error(ActiveRecord::RecordNotSaved)
+
+      project.reload
+
+      expect(project.outgoing_trust_ukprn).to be 10059062
+      expect(project.tasks_data.inadequate_ofsted).to be false
+    end
+
     describe "the outgoing trust UKPRN" do
       it "can be changed" do
         updated_params = {outgoing_trust_ukprn: "12345678"}
@@ -229,22 +246,21 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
 
         expect(project.tasks_data.inadequate_ofsted).to be false
       end
+    end
 
-      it "raises an error if the project cannot be saved" do
-        tasks_data = create(:transfer_tasks_data, inadequate_ofsted: false)
-        project = create(:transfer_project, outgoing_trust_ukprn: 10059062, tasks_data: tasks_data)
-        allow(project).to receive(:save!).and_raise(ActiveRecord::RecordNotSaved)
+    describe "due to financial, safeguarding or governance issues" do
+      it "can be changed" do
+        updated_params = {financial_safeguarding_governance_issues: "true"}
 
-        subject = described_class.new_from_project(project)
+        subject.update(updated_params)
 
-        updated_params = {outgoing_trust_ukprn: "12345678", inadequate_ofsted: "true"}
+        expect(project.tasks_data.financial_safeguarding_governance_issues).to be true
 
-        expect { subject.update(updated_params) }.to raise_error(ActiveRecord::RecordNotSaved)
+        updated_params = {financial_safeguarding_governance_issues: "false"}
 
-        project.reload
+        subject.update(updated_params)
 
-        expect(project.outgoing_trust_ukprn).to be 10059062
-        expect(project.tasks_data.inadequate_ofsted).to be false
+        expect(project.tasks_data.financial_safeguarding_governance_issues).to be false
       end
     end
   end

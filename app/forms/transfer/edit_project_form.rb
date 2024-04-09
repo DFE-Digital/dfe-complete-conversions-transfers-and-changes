@@ -14,6 +14,7 @@ class Transfer::EditProjectForm
   attribute :advisory_board_conditions
   attribute :two_requires_improvement, :boolean
   attribute :inadequate_ofsted, :boolean
+  attribute :financial_safeguarding_governance_issues, :boolean
 
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
@@ -45,7 +46,8 @@ class Transfer::EditProjectForm
       advisory_board_date: project.advisory_board_date,
       advisory_board_conditions: project.advisory_board_conditions,
       two_requires_improvement: project.two_requires_improvement,
-      inadequate_ofsted: project.tasks_data.inadequate_ofsted
+      inadequate_ofsted: project.tasks_data.inadequate_ofsted,
+      financial_safeguarding_governance_issues: project.tasks_data.financial_safeguarding_governance_issues
     )
   end
 
@@ -71,7 +73,8 @@ class Transfer::EditProjectForm
     )
 
     project.tasks_data.assign_attributes(
-      inadequate_ofsted: inadequate_ofsted
+      inadequate_ofsted: inadequate_ofsted,
+      financial_safeguarding_governance_issues: financial_safeguarding_governance_issues
     )
 
     if valid?
