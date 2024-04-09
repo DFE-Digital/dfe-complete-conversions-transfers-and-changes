@@ -106,6 +106,10 @@ en:
         invalid: Enter a outgoing trust SharePoint link in the correct format
         https_only: The outgoing trust SharePoint link must have the https scheme
         host_not_allowed: Enter an outgoing trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+      outgoing_trust_ukprn:
+        matching: The outgoing and incoming trust cannot be the same
+      incoming_trust_ukprn:
+        matching: The incoming and outgoing trust cannot be the same
     transfer_project:
       attributes:
         two_requires_improvement:
