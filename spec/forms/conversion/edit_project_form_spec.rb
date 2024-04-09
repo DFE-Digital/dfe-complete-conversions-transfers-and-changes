@@ -1,7 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Conversion::EditProjectForm, type: :model do
-  let(:project) { build(:conversion_project, assigned_to: user, advisory_board_date: Date.new(2023, 12, 1)) }
+  let(:project) {
+    build(
+      :conversion_project,
+      assigned_to: user,
+      advisory_board_date: Date.new(2023, 12, 1),
+      directive_academy_order: false
+    )
+  }
   let(:user) { build(:user, :caseworker) }
 
   subject { Conversion::EditProjectForm.new_from_project(project) }
@@ -107,6 +114,38 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
 
         expect(subject.update(updated_params)).to be false
         expect(project.incoming_trust_sharepoint_link).to eql("https://educationgovuk-my.sharepoint.com/incoming-trust-folder")
+      end
+    end
+
+    describe "Directive academy order" do
+      it "can be changed" do
+        updated_params = {directive_academy_order: "true"}
+
+        subject.update(updated_params)
+
+        expect(project.directive_academy_order).to be true
+
+        updated_params = {directive_academy_order: "false"}
+
+        subject.update(updated_params)
+
+        expect(project.directive_academy_order).to be false
+      end
+    end
+
+    describe "two requires improvement" do
+      it "can be changed" do
+        updated_params = {two_requires_improvement: "true"}
+
+        subject.update(updated_params)
+
+        expect(project.two_requires_improvement).to be true
+
+        updated_params = {two_requires_improvement: "false"}
+
+        subject.update(updated_params)
+
+        expect(project.two_requires_improvement).to be false
       end
     end
   end

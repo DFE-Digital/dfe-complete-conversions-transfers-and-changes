@@ -4,12 +4,16 @@
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.advisory_board_details.rows.advisory_board_date") }
           row.with_value { project.advisory_board_date.to_date.to_formatted_s(:govuk) }
-          row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "advisory-board"), visually_hidden_text: "the advisory board date")
+          if project.type == "Conversion::Project"
+            row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "advisory-board"), visually_hidden_text: "the advisory board date")
+          end
         end
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.advisory_board_details.rows.advisory_board_conditions") }
           row.with_value { simple_format(project.advisory_board_conditions, class: "govuk-body") }
-          row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "advisory-board"), visually_hidden_text: "the advisory board conditions")
+          if project.type == "Conversion::Project"
+            row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "advisory-board"), visually_hidden_text: "the advisory board conditions")
+          end
         end
       end %>
 </div>

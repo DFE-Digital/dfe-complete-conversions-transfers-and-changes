@@ -77,4 +77,18 @@ module ProjectHelper
     original_date = project.provisional_date
     "#{confirmed_date.to_fs(:govuk_short_month)} (#{original_date.to_fs(:govuk_short_month)})"
   end
+
+  def directive_academy_order_responses
+    @directive_academy_order_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.yes")),
+      OpenStruct.new(id: false, name: I18n.t("helpers.responses.conversion_project.directive_academy_order.no"))
+    ]
+  end
+
+  def yes_no_responses
+    @yes_no_responses ||= [
+      OpenStruct.new(id: true, name: I18n.t("yes")),
+      OpenStruct.new(id: false, name: I18n.t("no"))
+    ]
+  end
 end

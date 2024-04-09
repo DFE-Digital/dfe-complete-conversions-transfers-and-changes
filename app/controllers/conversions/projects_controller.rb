@@ -68,7 +68,9 @@ class Conversions::ProjectsController < ProjectsController
       :incoming_trust_sharepoint_link,
       :incoming_trust_ukprn,
       :advisory_board_date,
-      :advisory_board_conditions
+      :advisory_board_conditions,
+      :directive_academy_order,
+      :two_requires_improvement
     )
   end
 
