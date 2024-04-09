@@ -359,7 +359,7 @@ RSpec.feature "Users can complete conversion tasks" do
     end
 
     scenario "updates an existing chair of governors contact" do
-      chair_of_governors = create(:project_contact)
+      chair_of_governors = create(:project_contact, project: project)
       project.update(chair_of_governors_contact: chair_of_governors)
 
       visit project_tasks_path(project)
