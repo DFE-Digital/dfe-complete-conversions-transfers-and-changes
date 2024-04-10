@@ -97,7 +97,7 @@ en:
       conversion_project:
         provisional_conversion_date: You can find this in the advisory board template.
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.
-        assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
+        assigned_to_regional_caseworker_team: Are you handing this project over to RCS (Regional Casework Services)?
         two_requires_improvement: A 2RI conversion is when a local authority maintained school becomes an academy after getting at least 2 overall Requires Improvement ratings from Ofsted.
     responses:
       conversion_project:

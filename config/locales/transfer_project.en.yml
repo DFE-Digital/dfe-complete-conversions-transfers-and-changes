@@ -47,7 +47,7 @@ en:
       transfer_project:
         advisory_board_date: Date of advisory board
         provisional_transfer_date: Provisional transfer date
-        assigned_to_regional_caseworker_team: Are you handing this project over to Regional Casework Services?
+        assigned_to_regional_caseworker_team: Are you handing this project over to RCS (Regional Casework Services)?
       transfer_create_project_form:
         two_requires_improvement: Is this a transfer due to 2RI?
         inadequate_ofsted: Is this transfer due to an inadequate Ofsted rating?
