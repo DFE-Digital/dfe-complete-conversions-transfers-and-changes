@@ -32,6 +32,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Users can now change the outgoing trust close once this transfer is completed
   response for a transfer project.
 
+### Changed
+
+- all primary buttons are now green instead of blue
+
 ## [Release-62][release-62]
 
 ### Fixed
