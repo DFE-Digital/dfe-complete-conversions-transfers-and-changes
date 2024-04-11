@@ -10,6 +10,8 @@
           row.with_value { incoming_trust.ukprn.to_s }
           if project.type == "Conversion::Project"
             row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the incoming trust UKPRN")
+          else
+            row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the outgoing trust UKPRN")
           end
         end
         summary_list.with_row do |row|

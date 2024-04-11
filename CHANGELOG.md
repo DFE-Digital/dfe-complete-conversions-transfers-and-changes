@@ -20,6 +20,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - users can now change the conversion due to intervention following 2RI response
   for a conversion project.
 - RCS acronym to handover question on add project pages
+- Users can now change the outgoing trust UKPRN for a transfer project.
+- Users can now change the incoming trust UKPRN for a transfer project.
+- Users can now change the advisory board date for a transfer project.
+- Users can now change the requires two improvement response for a transfer
+  project.
+- Users can now change the due to inadequate Ofsted response for a transfer
+  project.
+- Users can now change the due to financial, safeguarding or governance issues
+  response for a transfer project.
+- Users can now change the outgoing trust close once this transfer is completed
+  response for a transfer project.
 
 ## [Release-62][release-62]
 

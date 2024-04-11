@@ -2,9 +2,52 @@
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @project_form, url: transfers_update_path(@project), method: :post do |form| %>
       <%= form.govuk_error_summary %>
-      <%= form.govuk_text_field :establishment_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>
-      <%= form.govuk_text_field :incoming_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
-      <%= form.govuk_text_field :outgoing_trust_sharepoint_link, width: 20, label: {size: "m", text: t("project.edit.labels.outgoing_trust_sharepoint_link")} %>
+
+      <div class="govuk-form-group" id="outgoing-trust-ukprn">
+        <%= form.govuk_text_field :outgoing_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.outgoing_trust_ukprn").html_safe}, width: 10 %>
+      </div>
+
+      <div class="govuk-form-group" id="incoming-trust-ukprn">
+        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10 %>
+      </div>
+
+      <div class="govuk-form-group">
+        <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.transfer_project.advisory_board_date")}, form_group: {id: "advisory-board-date"}, hint: {text: t("helpers.hint.project.advisory_board_date").html_safe} %>
+        <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.transfer_project.advisory_board_conditions")} %>
+      </div>
+
+      <div class="govuk-form-group" id="sharepoint-folder-links">
+        <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("project.edit.labels.school_sharepoint_link")} %>
+        <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("project.edit.labels.incoming_trust_sharepoint_link")} %>
+        <%= form.govuk_text_field :outgoing_trust_sharepoint_link, label: {size: "m", text: t("project.edit.labels.outgoing_trust_sharepoint_link")} %>
+      </div>
+
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :two_requires_improvement,
+              yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "two-requires-improvement"},
+              hint: {text: t("helpers.hint.transfer_project.two_requires_improvement")} %>
+
+        <%= form.govuk_collection_radio_buttons :inadequate_ofsted,
+              yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "inadequate-ofsted"} %>
+
+        <%= form.govuk_collection_radio_buttons :financial_safeguarding_governance_issues,
+              yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "financial-safeguarding-governance-issues"} %>
+
+        <%= form.govuk_collection_radio_buttons :outgoing_trust_to_close,
+              yes_no_responses,
+              :id,
+              :name,
+              form_group: {id: "outgoing-trust-to-close"} %>
+      </div>
 
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", project_information_path(@project) %>
@@ -12,5 +55,3 @@
     <% end %>
   </div>
 </div>
-
-<%= render partial: "shared/autocomplete", locals: {selector: ".accessible-autocomplete-target"} %>

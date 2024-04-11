@@ -53,6 +53,11 @@ en:
         inadequate_ofsted: Is this transfer due to an inadequate Ofsted rating?
         financial_safeguarding_governance_issues: Is this transfer due to financial, safeguarding or governance issues?
         outgoing_trust_to_close: Will the outgoing trust close once this transfer is completed?
+      transfer_edit_project_form:
+        two_requires_improvement: Is this a transfer due to 2RI?
+        inadequate_ofsted: Is this transfer due to an inadequate Ofsted rating?
+        financial_safeguarding_governance_issues: Is this transfer due to financial, safeguarding or governance issues?
+        outgoing_trust_to_close: Will the outgoing trust close once this transfer is completed?
     hint:
       transfer_project:
         urn:
@@ -106,6 +111,10 @@ en:
         invalid: Enter a outgoing trust SharePoint link in the correct format
         https_only: The outgoing trust SharePoint link must have the https scheme
         host_not_allowed: Enter an outgoing trust sharepoint link in the correct format. SharePoint links start with 'https://educationgovuk.sharepoint.com' or 'https://educationgovuk-my.sharepoint.com/'
+      outgoing_trust_ukprn:
+        matching: The outgoing and incoming trust cannot be the same
+      incoming_trust_ukprn:
+        matching: The incoming and outgoing trust cannot be the same
     transfer_project:
       attributes:
         two_requires_improvement:

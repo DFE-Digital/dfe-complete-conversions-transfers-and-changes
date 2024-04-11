@@ -85,12 +85,12 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     end
 
     describe "#check_incoming_trust_and_outgoing_trust" do
-      it "throws an error when the incoming trust and outgoing trust are the same" do
+      it "is invalid with an error when the outgoing and incoming trust UKPRN are the same" do
         form = build(:create_transfer_project_form, incoming_trust_ukprn: 10061021)
         form.outgoing_trust_ukprn = 10061021
 
         expect(form).to be_invalid
-        expect(form.errors.messages[:incoming_trust_ukprn]).to include I18n.t("errors.attributes.incoming_trust_ukprn.ukprns_must_not_match")
+        expect(form.errors.messages[:incoming_trust_ukprn]).to include "The incoming and outgoing trust cannot be the same"
       end
     end
 

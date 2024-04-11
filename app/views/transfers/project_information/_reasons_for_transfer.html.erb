@@ -1,17 +1,24 @@
-<div id="reasonsfor" class="project-information-block">
+<div id="reasonsFor" class="project-information-block">
   <h3 class="govuk-heading-m"><%= t("project_information.show.reasons_for.transfer.title") %></h3>
   <%= govuk_summary_list do |summary_list|
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.reasons_for.two_requires_improvement.transfer_project.title") }
           row.with_value { t("project_information.show.#{project.two_requires_improvement}") }
+          row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "two-requires-improvement"), visually_hidden_text: "the two requires improvement response")
         end
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.reasons_for.inadequate_ofsted.transfer_project.title") }
           row.with_value { t("project_information.show.#{project.tasks_data.inadequate_ofsted}") }
+          row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "inadequate-ofsted"), visually_hidden_text: "the inadequate ofsted response")
         end
         summary_list.with_row do |row|
           row.with_key { t("project_information.show.reasons_for.financial_safeguarding_governance_issues.transfer_project.title") }
           row.with_value { t("project_information.show.#{project.tasks_data.financial_safeguarding_governance_issues}") }
+          row.with_action(
+            text: "Change",
+            href: transfers_edit_path(@project, anchor: "financial-safeguarding-governance-issues"),
+            visually_hidden_text: "Is this transfer due to financial, safeguarding or governance issues response"
+          )
         end
       end %>
 </div>

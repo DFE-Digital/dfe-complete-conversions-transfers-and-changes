@@ -35,4 +35,19 @@ RSpec.describe All::ByMonth::Transfers::ProjectsController do
       end
     end
   end
+
+  describe "#update" do
+    before do
+      sign_in_with(regional_delivery_officer)
+    end
+
+    it "shows an error when the change is invalid" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:transfer_project, assigned_to: regional_delivery_officer)
+
+      post transfers_update_path(project), params: {transfer_edit_project_form: {establishment_sharepoint_link: ""}}
+
+      expect(response).to render_template(:edit)
+    end
+  end
 end
