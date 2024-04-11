@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- The 'Add notes for ESFA task' has been disabled as there is evidence that the
+  data is never used.
+
 ## [Release-63][release-63]
 
 ### Added
