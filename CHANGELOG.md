@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   for a conversion project.
 - RCS acronym to handover question on add project pages
 
+### Changed
+
+- all primary buttons are now green instead of blue
+
 ## [Release-62][release-62]
 
 ### Fixed

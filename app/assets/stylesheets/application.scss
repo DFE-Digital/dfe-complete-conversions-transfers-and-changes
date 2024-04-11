@@ -10,9 +10,7 @@ $moj-page-width: $govuk-page-width;
 $govuk-font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
   Cantarell, "Helvetica Neue", sans-serif;
 
-// DfE blue buttons
 $dfe-blue: #003a69;
-$govuk-button-background-colour: $dfe-blue;
 
 @import "govuk-frontend/govuk/all";
 @import "accessible-autocomplete/src/autocomplete";
