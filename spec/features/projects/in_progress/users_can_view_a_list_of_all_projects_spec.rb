@@ -62,5 +62,15 @@ RSpec.feature "Viewing all in-progress projects" do
       expect(page).to have_content("Form a MAT project?")
       expect(page).to have_content("Yes")
     end
+
+    scenario "deleted projects are not shown" do
+      deleted_project = create(:conversion_project, :deleted, urn: 121583)
+      in_progress_project = create(:conversion_project, urn: 115652)
+
+      visit all_in_progress_projects_path
+
+      expect(page).to_not have_content(deleted_project.urn.to_s)
+      expect(page).to have_content(in_progress_project.urn.to_s)
+    end
   end
 end

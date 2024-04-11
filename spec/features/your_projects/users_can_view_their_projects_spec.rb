@@ -30,6 +30,15 @@ RSpec.feature "Users can view their projects" do
     expect(page).to have_content(project.outgoing_trust.name)
   end
 
+  scenario "they do not see deleted projects" do
+    project = create(:transfer_project, :deleted, assigned_to: user)
+
+    visit in_progress_your_projects_path
+
+    expect(page).to_not have_content(project.establishment.name)
+    expect(page).to_not have_content(project.urn)
+  end
+
   context "when they are NOT in the Regional casework services team" do
     let(:user) { create(:regional_delivery_officer_user) }
 

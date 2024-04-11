@@ -11,6 +11,8 @@ class ProjectPolicy
   end
 
   def show?
+    return false if @record.deleted?
+
     true
   end
 
@@ -20,6 +22,7 @@ class ProjectPolicy
 
   def edit?
     return false if @record.completed?
+    return false if @record.deleted?
 
     true
   end

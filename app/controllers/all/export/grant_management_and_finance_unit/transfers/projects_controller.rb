@@ -12,7 +12,7 @@ class All::Export::GrantManagementAndFinanceUnit::Transfers::ProjectsController 
   end
 
   def show
-    authorize Project, :show?
+    authorize Project, :index?
     @month = Date.new(year, month)
   end
 
