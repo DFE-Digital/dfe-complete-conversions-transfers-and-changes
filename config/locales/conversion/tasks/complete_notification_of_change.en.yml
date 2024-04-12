@@ -2,10 +2,10 @@ en:
   conversion:
     task:
       complete_notification_of_change:
-        title: Complete a notification of change document
+        title: Complete a notification of changes to funded high needs places form
         hint:
           html:
-            <p>The local authority must complete a notification of change document if the section 251 spreadsheet is incorrect.</p>
+            <p>The local authority must complete a notification of changes to funded high needs places form if the section 251 spreadsheet is incorrect.</p>
         guidance_link: When to use the notification of change document
         guidance:
           html:
