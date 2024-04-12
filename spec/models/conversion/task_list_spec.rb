@@ -36,7 +36,6 @@ RSpec.describe Conversion::TaskList do
         :share_information,
         :confirm_date_academy_opened,
         :redact_and_send,
-        :update_esfa,
         :receive_grant_payment_certificate
       ]
 
@@ -97,7 +96,6 @@ RSpec.describe Conversion::TaskList do
             tasks: [
               Conversion::Task::ConfirmDateAcademyOpenedTaskForm,
               Conversion::Task::RedactAndSendTaskForm,
-              Conversion::Task::UpdateEsfaTaskForm,
               Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
             ]
           }
@@ -122,7 +120,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 32
+      expect(task_list.tasks.count).to eql 31
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
     end

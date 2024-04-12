@@ -49,7 +49,6 @@ class Conversion::TaskList < ::BaseTaskList
         tasks: [
           Conversion::Task::ConfirmDateAcademyOpenedTaskForm,
           Conversion::Task::RedactAndSendTaskForm,
-          Conversion::Task::UpdateEsfaTaskForm,
           Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
         ]
       }

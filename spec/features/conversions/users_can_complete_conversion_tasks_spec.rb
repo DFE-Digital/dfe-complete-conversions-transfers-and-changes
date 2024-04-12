@@ -33,7 +33,6 @@ RSpec.feature "Users can complete conversion tasks" do
     main_contact
     proposed_capacity_of_the_academy
     receive_grant_payment_certificate
-    update_esfa
     confirm_date_academy_opened
     chair_of_governors_contact
   ]
@@ -276,6 +275,7 @@ RSpec.feature "Users can complete conversion tasks" do
     let(:project) { create(:conversion_project, assigned_to: user) }
 
     scenario "they can compelte the task" do
+      skip("task is disabled for now")
       visit project_tasks_path(project)
       click_on "Add notes for ESFA"
 
