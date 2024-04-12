@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The 'Add notes for ESFA task' has been disabled as there is evidence that the
   data is never used.
 - come tweaks to content in the high needs places tasks to use the correct name
-for the notification of changes to funded high needs places form
+  for the notification of changes to funded high needs places form
 
 ## [Release-63][release-63]
 
