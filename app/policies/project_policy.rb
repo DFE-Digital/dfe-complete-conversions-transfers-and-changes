@@ -97,6 +97,10 @@ class ProjectPolicy
     @user.team != "regional_casework_services"
   end
 
+  def delete?
+    @user.is_service_support?
+  end
+
   private def project_assigned_to_user?
     @record.assigned_to == @user
   end
