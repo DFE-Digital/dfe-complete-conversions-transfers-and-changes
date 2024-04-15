@@ -72,4 +72,51 @@ RSpec.feature "Users can change the conversion date" do
       expect(page).not_to have_link(I18n.t("conversion_new_date_history_form.new"))
     end
   end
+
+  scenario "they can view all of the changes to the conversion date" do
+    provisional_date = Date.today.at_beginning_of_month
+    confirmed_date = provisional_date
+    first_revised_date = confirmed_date + 1.month
+    second_revised_date = first_revised_date + 2.months
+
+    project = create(:conversion_project, conversion_date: provisional_date, conversion_date_provisional: true, assigned_to: user)
+
+    visit project_dates_path(project)
+
+    expect(page).to have_content "Conversion date history"
+    expect(page).to have_content "No date history"
+
+    SignificantDateCreatorService.new(project: project, revised_date: confirmed_date, note_body: "confirmed date", user: user).update!
+
+    visit project_dates_path(project)
+
+    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+      expect(page).to have_content user.email
+      expect(page).to have_content provisional_date.to_fs(:govuk_month)
+      expect(page).to have_content confirmed_date.to_fs(:govuk_month)
+      expect(page).to have_content "confirmed date"
+    end
+
+    SignificantDateCreatorService.new(project: project, revised_date: first_revised_date, note_body: "first revised date", user: user).update!
+
+    visit project_dates_path(project)
+
+    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+      expect(page).to have_content user.email
+      expect(page).to have_content confirmed_date.to_fs(:govuk_month)
+      expect(page).to have_content first_revised_date.to_fs(:govuk_month)
+      expect(page).to have_content "first revised date"
+    end
+
+    SignificantDateCreatorService.new(project: project, revised_date: second_revised_date, note_body: "second revised date", user: user).update!
+
+    visit project_dates_path(project)
+
+    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+      expect(page).to have_content user.email
+      expect(page).to have_content first_revised_date.to_fs(:govuk_month)
+      expect(page).to have_content second_revised_date.to_fs(:govuk_month)
+      expect(page).to have_content "second revised date"
+    end
+  end
 end
