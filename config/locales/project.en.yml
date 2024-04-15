@@ -450,3 +450,4 @@ en:
         invalid_trust_reference_number: The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234
       new_trust_name:
         blank: Enter a Trust name
+        not_matching: A trust with this TRN already exists. It is called %{trust_name}. Check the trust name you have entered for this conversion/transfer
