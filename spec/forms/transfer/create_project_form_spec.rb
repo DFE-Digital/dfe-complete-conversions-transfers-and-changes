@@ -117,6 +117,40 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         expect(form).to be_invalid
       end
     end
+
+    describe "new trust reference number" do
+      it "is required when there is no incoming trust UKPRN" do
+        form = build(:create_transfer_project_form, incoming_trust_ukprn: nil)
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:new_trust_reference_number].first).to eql "Enter a Trust reference number (TRN)"
+      end
+
+      it "is a valid reference number" do
+        form = build(:create_transfer_project_form, incoming_trust_ukprn: nil, new_trust_reference_number: "12345")
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:new_trust_reference_number].first).to include "Trust reference number must be 'TR'"
+      end
+    end
+
+    describe "new trust name" do
+      it "is required when there is no incoming trust UKPRN" do
+        form = build(:create_transfer_project_form, incoming_trust_ukprn: nil)
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:new_trust_name].first).to eql "Enter a Trust name"
+      end
+
+      it "must match the value from any other project with the same reference number" do
+        create(:transfer_project, new_trust_reference_number: "TR12345", new_trust_name: "The big trust")
+        form = build(:create_transfer_project_form, incoming_trust_ukprn: nil, new_trust_reference_number: "TR12345", new_trust_name: "The little trust")
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:new_trust_name].first).to include "A trust with this TRN already exists"
+        expect(form.errors.messages[:new_trust_name].first).to include "The big trust"
+      end
+    end
   end
 
   describe "urn" do

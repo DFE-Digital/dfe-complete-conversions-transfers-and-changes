@@ -14,6 +14,8 @@ class Conversion::CreateProjectForm < CreateProjectForm
   validates :directive_academy_order, :assigned_to_regional_caseworker_team, inclusion: {in: [true, false]}
   validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.conversion_project.attributes.two_requires_improvement.inclusion")}
 
+  validates_with FormAMultiAcademyTrustNameValidator
+
   def initialize(params = {})
     @attributes_with_invalid_values = []
     super(params)
