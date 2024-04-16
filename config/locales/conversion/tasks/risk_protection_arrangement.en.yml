@@ -20,3 +20,9 @@ en:
               hint_html:
                 <p>If they do not join the RPA the academy must buy commercial insurance no later than 11.59pm the day before it opens.</p>
                 <p>Any commercial insurance policy must begin to cover the academy no later than midnight on the day the academy opens.</p>
+        reason:
+          title: Why has the academy chosen commercial insurance?
+          hint:
+            html: <p>Summarise the academy's decision to buy commercial insurance</p>
+          errors:
+            blank: Enter the summary

@@ -167,11 +167,13 @@ RSpec.feature "Users can complete conversion tasks" do
 
     scenario "the response can be commercial" do
       choose "No, buying commercial insurance"
+      fill_in "Why has the academy chosen commercial insurance?", with: "This is the reason."
       expect(page).to have_content("insurance no later than 11.59pm")
 
       click_on I18n.t("task_list.continue_button.text")
 
       expect(project.reload.tasks_data.risk_protection_arrangement_option).to eq "commercial"
+      expect(project.reload.tasks_data.risk_protection_arrangement_reason).to eq "This is the reason."
     end
 
     scenario "the response can be blank" do
