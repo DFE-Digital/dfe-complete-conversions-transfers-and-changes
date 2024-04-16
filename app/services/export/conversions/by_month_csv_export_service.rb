@@ -15,6 +15,7 @@ class Export::Conversions::ByMonthCsvExportService < Export::CsvExportService
     advisory_board_date
     advisory_board_conditions
     risk_protection_arrangement
+    risk_protection_arrangement_reason
     all_conditions_met
     completed_grant_payment_certificate_received
     school_type
