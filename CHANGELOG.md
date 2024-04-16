@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   match any existing values with the same new trust reference number
 - The 'confirm the academy's risk protection arrangement' task now includes
   additional guidance about auto enrollment.
+- When the 'Confirm the academy's risk protection arrangements' task value is
+  exported it is set to 'standard' when the task is incomplete.
 
 ## [Release-63][release-63]
 
