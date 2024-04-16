@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   data is never used.
 - some tweaks to content in the high needs places tasks to use the correct name
   for the notification of changes to funded high needs places form
+- new form a multi-academy trust projects now require the new trust name to
+  match any existing values with the same new trust reference number
 
 ## [Release-63][release-63]
 

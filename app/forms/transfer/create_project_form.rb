@@ -24,6 +24,8 @@ class Transfer::CreateProjectForm < CreateProjectForm
 
   validates_with OutgoingIncomingTrustsUkprnValidator
 
+  validates_with FormAMultiAcademyTrustNameValidator
+
   def initialize(params = {})
     @attributes_with_invalid_values = []
     super(params)
