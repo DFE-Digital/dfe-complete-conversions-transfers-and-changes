@@ -1,6 +1,10 @@
 class DateHistoriesController < ApplicationController
   include Projectable
 
+  def index
+    @dates = @project.date_history.includes([note: [:user]]).order(created_at: :desc)
+  end
+
   def new
     authorize(@project, :change_significant_date?)
     @form = NewDateHistoryForm.new

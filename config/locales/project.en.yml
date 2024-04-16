@@ -206,6 +206,11 @@ en:
         all_conditions_met: All conditions met
         authority_to_proceed: Authority to proceed
         form_a_mat: Form a MAT project?
+        date_and_time: Date and time
+        changed_by: Changed by
+        previous_date: Previous date
+        revised_date: Revised date
+        note: Note
       body:
         type_name:
           conversion_project: Conversion

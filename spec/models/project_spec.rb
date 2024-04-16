@@ -27,6 +27,7 @@ RSpec.describe Project, type: :model do
   describe "Relationships" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
+    it { is_expected.to have_many(:date_history).dependent(:destroy) }
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:team_leader).required(false) }
