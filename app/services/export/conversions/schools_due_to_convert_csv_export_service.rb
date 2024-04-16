@@ -66,6 +66,7 @@ class Export::Conversions::SchoolsDueToConvertCsvExportService < Export::CsvExpo
     two_requires_improvement
     sponsored_grant_type
     risk_protection_arrangement
+    risk_protection_arrangement_reason
     provisional_conversion_date
     conversion_date
     all_conditions_met

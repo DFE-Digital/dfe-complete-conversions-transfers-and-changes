@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- The reason an academy has taken out commercial risk protection arrangement is
+  now included in the exports if available and applicable.
+
 ## [Release-64][release-64]
 
 ### Added
