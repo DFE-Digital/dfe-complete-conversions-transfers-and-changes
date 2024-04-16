@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-64][release-64]
+
 ### Added
 
 - Service support users can "soft delete" a project
@@ -1794,7 +1796,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-63...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-64...HEAD
+[release-64]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-63...release-64
 [release-63]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-62...release-63
 [release-62]:
