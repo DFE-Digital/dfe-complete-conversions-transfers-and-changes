@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   for the notification of changes to funded high needs places form
 - new form a multi-academy trust projects now require the new trust name to
   match any existing values with the same new trust reference number
+- The 'confirm the academy's risk protection arrangement' task now includes
+  additional guidance about auto enrollment.
 
 ## [Release-63][release-63]
 

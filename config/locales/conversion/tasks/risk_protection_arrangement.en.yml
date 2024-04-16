@@ -9,6 +9,9 @@ en:
 
         option:
           title: Is the academy joining the RPA?
+          hint:
+            html: <p>Ask the academy what they would like to do about risk protection. The academy will be automatically enrolled in the
+                  standard RPA unless they say otherwise.</p>
           responses:
             standard: Yes, joining standard RPA
             church_or_trust: Yes, joining church or trust RPA
