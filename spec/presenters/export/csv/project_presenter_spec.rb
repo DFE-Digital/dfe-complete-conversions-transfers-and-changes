@@ -435,6 +435,52 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.risk_protection_arrangement).to eql "standard"
   end
 
+  describe "#risk_protection_arrangement_reason" do
+    it "presents not applicable unless the project is a conversion" do
+      project = build(:transfer_project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.risk_protection_arrangement_reason).to eql "not applicable"
+    end
+
+    it "presents not applicable when the option is set to nil" do
+      tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: nil)
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.risk_protection_arrangement_reason).to eql "not applicable"
+    end
+
+    it "presents not applicable when the option is set to standard" do
+      tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: "standard")
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.risk_protection_arrangement_reason).to eql "not applicable"
+    end
+
+    it "presents not applicable when the option is set to church or trust" do
+      tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: "church_or_trust")
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.risk_protection_arrangement_reason).to eql "not applicable"
+    end
+
+    it "presents the reason when the option is set to commercial" do
+      tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: "commercial", risk_protection_arrangement_reason: "This is the reason.")
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.risk_protection_arrangement_reason).to eql "This is the reason."
+    end
+  end
+
   describe "#assigned_to_name" do
     context "when the project is assigned to a user" do
       it "returns the name of the user the project is assigned to" do
