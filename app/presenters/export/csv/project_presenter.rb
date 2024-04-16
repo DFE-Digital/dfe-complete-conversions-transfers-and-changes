@@ -80,7 +80,7 @@ class Export::Csv::ProjectPresenter
 
   def risk_protection_arrangement
     if @project.tasks_data.risk_protection_arrangement_option.nil?
-      return I18n.t("export.csv.project.values.unconfirmed")
+      return I18n.t("export.csv.project.values.standard")
     end
 
     I18n.t("export.csv.project.values.#{@project.tasks_data.risk_protection_arrangement_option}")

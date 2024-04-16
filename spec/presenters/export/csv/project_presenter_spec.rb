@@ -426,13 +426,13 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.risk_protection_arrangement).to eql "commercial"
   end
 
-  it "presents all risk protection arrangement when it is not yet confirmed" do
+  it "presents all risk protection arrangement as 'standard' when it is not yet confirmed" do
     tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: nil)
     project = build(:conversion_project, tasks_data: tasks_data)
 
     presenter = described_class.new(project)
 
-    expect(presenter.risk_protection_arrangement).to eql "unconfirmed"
+    expect(presenter.risk_protection_arrangement).to eql "standard"
   end
 
   describe "#assigned_to_name" do
