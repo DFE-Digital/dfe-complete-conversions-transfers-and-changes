@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-66][release-66]
+
 ### Changed
 
 - Any project that has a risk protection arrangement of 'commercial' will move
@@ -1808,7 +1810,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-65...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-66...HEAD
+[release-66]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-65...release-66
 [release-65]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-64...release-65
 [release-64]:
