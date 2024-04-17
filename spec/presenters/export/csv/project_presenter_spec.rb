@@ -479,6 +479,15 @@ RSpec.describe Export::Csv::ProjectPresenter do
 
       expect(presenter.risk_protection_arrangement_reason).to eql "This is the reason."
     end
+
+    it "presents nothing when an project has no reason but was set to commercial before the reason was added" do
+      tasks_data = build(:conversion_tasks_data, risk_protection_arrangement_option: "commercial", risk_protection_arrangement_reason: nil)
+      project = build(:conversion_project, tasks_data: tasks_data)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.risk_protection_arrangement_reason).to be_nil
+    end
   end
 
   describe "#assigned_to_name" do

@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Any project that has a risk protection arrangement of 'commercial' will move
+  to in progress until a reason is provided.
+
 ## [Release-65][release-65]
 
 ### Added
