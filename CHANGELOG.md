@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - Broken link to SharePoint guidance in footer and sign-in page now correct
+- The margin beneath the sub navigation items is now rendered correctly.
 
 ## [Release-66][release-66]
 
