@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- the all in progress projects table has been moved into a tab
+
 ### Fixed
 
 - Broken link to SharePoint guidance in footer and sign-in page now correct

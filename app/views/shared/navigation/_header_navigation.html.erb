@@ -15,7 +15,7 @@
 
       <%= if policy(:navigation).show_all_projects_header_navigation?
             render partial: "shared/navigation/header_navigation_item",
-              locals: {name: t("navigation.header.all_projects"), path: all_in_progress_projects_path, namespace: "/projects/all/"}
+              locals: {name: t("navigation.header.all_projects"), path: all_all_in_progress_projects_path, namespace: "/projects/all/"}
           end %>
 
       <%= if policy(:navigation).show_service_support_header_navigation?

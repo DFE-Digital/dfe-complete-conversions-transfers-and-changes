@@ -5,7 +5,7 @@ RSpec.feature "Export users can see the exports landing page" do
     user = create(:regional_delivery_officer_user)
 
     sign_in_with_user(user)
-    visit all_in_progress_projects_path
+    visit all_all_in_progress_projects_path
 
     expect(page).not_to have_link("Exports")
   end

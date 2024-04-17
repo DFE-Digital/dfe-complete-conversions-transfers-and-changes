@@ -2,7 +2,7 @@ class All::InProgress::ProjectsController < ApplicationController
   after_action :verify_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
 
-  def index
+  def all_index
     authorize Project, :index?
 
     @pager, @projects = pagy(Project.in_progress.includes(:assigned_to).ordered_by_significant_date)

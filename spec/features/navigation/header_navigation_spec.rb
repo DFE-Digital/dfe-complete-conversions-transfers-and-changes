@@ -16,8 +16,10 @@ RSpec.feature "Header navigation" do
       sign_in_with_user(user)
       visit root_path
 
-      expect(page).not_to have_link "All projects"
-      expect(page).not_to have_css ".dfe-header__navigation"
+      within("header") do
+        expect(page).not_to have_link "All projects"
+        expect(page).not_to have_css ".dfe-header__navigation"
+      end
     end
   end
 

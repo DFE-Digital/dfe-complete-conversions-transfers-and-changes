@@ -17,6 +17,7 @@ en:
     all:
       in_progress:
         title: All projects in progress
+        tab: All projects
       by_trust:
         title: All projects by trust
       completed:
