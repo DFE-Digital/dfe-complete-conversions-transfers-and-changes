@@ -25,4 +25,13 @@ RSpec.feature "Users can view all in progress projects by type" do
     expect(page).to have_content conversion_project.urn
     expect(page).not_to have_content transfer_project.urn
   end
+
+  scenario "view all transfer projects in a table" do
+    visit all_all_in_progress_projects_path
+
+    click_on "Transfers"
+
+    expect(page).to have_content transfer_project.urn
+    expect(page).not_to have_content conversion_project.urn
+  end
 end
