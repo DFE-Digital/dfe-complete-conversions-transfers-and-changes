@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-65][release-65]
+
 ### Added
 
 - The reason an academy has taken out commercial risk protection arrangement is
@@ -1801,7 +1803,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-64...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-65...HEAD
+[release-65]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-64...release-65
 [release-64]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-63...release-64
 [release-63]:
