@@ -89,7 +89,7 @@ class Export::Csv::ProjectPresenter
   def risk_protection_arrangement_reason
     return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
 
-    option = @project.tasks_data.risk_protection_arrangement_reason
+    option = @project.tasks_data.risk_protection_arrangement_option
     return I18n.t("export.csv.project.values.not_applicable") if option.nil? ||
       option.eql?("standard") ||
       option.eql?("church_or_trust")
