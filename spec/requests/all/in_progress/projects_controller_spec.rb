@@ -14,4 +14,14 @@ RSpec.describe All::InProgress::ProjectsController, type: :request do
       end
     end
   end
+
+  describe "#conversions_index" do
+    context "when there are no projects" do
+      it "shows a helpful message" do
+        get conversions_all_in_progress_projects_path
+
+        expect(response.body).to include "There are no in-progress conversion projects"
+      end
+    end
+  end
 end

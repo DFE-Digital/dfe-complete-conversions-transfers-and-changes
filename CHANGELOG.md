@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- All in progress projects now includes at tab to view only conversion projects.
+
 ### Changed
 
 - the all in progress projects table has been moved into a tab

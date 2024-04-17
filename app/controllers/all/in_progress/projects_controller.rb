@@ -8,4 +8,11 @@ class All::InProgress::ProjectsController < ApplicationController
     @pager, @projects = pagy(Project.in_progress.includes(:assigned_to).ordered_by_significant_date)
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
+
+  def conversions_index
+    authorize Project, :index?
+
+    @pager, @projects = pagy(Project.conversions.in_progress.includes(:assigned_to).ordered_by_significant_date)
+    AcademiesApiPreFetcherService.new.call!(@projects)
+  end
 end

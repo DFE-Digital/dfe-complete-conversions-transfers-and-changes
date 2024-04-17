@@ -112,6 +112,7 @@ Rails.application.routes.draw do
       namespace :all do
         namespace :in_progress, path: "in-progress" do
           get "all", to: "projects#all_index"
+          get "conversions", to: "projects#conversions_index"
         end
       end
     end
