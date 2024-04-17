@@ -15,10 +15,21 @@ control of what code is deployed where.
 The `development` environment tracks the `main` branch, with the other
 environments have specific releases base on tags.
 
+## Product reviews
+
+We like to review a release with our product owner and anyone else on the team
+before we release and deploy. This is a great opportunity to ensure the quality
+of our work, the features meet expectations and that we haven't missed anything,
+it is also a great time to come together and look at what we are building!
+
+Product reviews are not required, but strongly encouraged and should be done
+before we tag the release, doing so allows us time to fix any issues highlighted
+in the review.
+
 ## Releases
 
-Changes are together in a sequentially numbered release that can then be
-deployed to one of our environments.
+Changes are collected together in a sequentially numbered release that can then
+be deployed to one of our environments.
 
 We should aim to create a new release at least once per sprint, but we have the
 flexibility to release as often as needed.
@@ -47,8 +58,8 @@ flexibility to release as often as needed.
 - Push the tag with `git push --tags`
 - Create a new
   [Release in GitHub](https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/releases/new),
-  reference the release tag and paste in the changes from `CHANGELOG.md`
-  included in the release.
+  reference the release tag and paste in the changes from `CHANGELOG.md` into
+  the release.
 
 ## Deployments
 
@@ -71,6 +82,9 @@ the following options:
   - Select the dropdown, then click 'Tags' and select your 'release-x' tag.
 - **Choose an environment to deploy to:**
   - Select 'test' or 'production' as appropriate
+
+Note: you must do these steps in order to prevent the environment defaulting
+back to 'development'!
 
 Clicking the 'Run workflow' button will kick-off a deployment with your
 specified options.
