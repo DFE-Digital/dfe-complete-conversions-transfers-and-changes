@@ -29,6 +29,16 @@ RSpec.describe FormAMultiAcademyTrust::ProjectGroup do
     end
   end
 
+  describe "#region" do
+    it "returns the region region from the first project" do
+      project = create(:conversion_project, :form_a_mat)
+
+      subject = described_class.new(trn: project.new_trust_reference_number)
+
+      expect(subject.region).to eql project.region
+    end
+  end
+
   describe "#projects" do
     it "returns the projects that make the TRN" do
       conversion_project = create(:conversion_project, :form_a_mat, new_trust_reference_number: "TR12345")
