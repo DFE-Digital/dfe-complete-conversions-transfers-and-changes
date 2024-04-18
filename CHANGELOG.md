@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - All in progress projects now includes at tab to view only conversion projects.
 - All in progress projects now includes at tab to view only transfer projects.
+- All projects in a form a multi academy trust can now be viewed at
+  /form-a-multi-academy-trust/<TRN>
 
 ### Changed
 
