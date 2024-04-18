@@ -1,0 +1,13 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <nav class="moj-sub-navigation" aria-label="Project sub-navigation">
+      <ul class="moj-sub-navigation__list">
+
+        <%= render partial: "shared/sub_navigation_item", locals: {name: t("project.all.in_progress.tab"), path: all_all_in_progress_projects_path} %>
+        <%= render partial: "shared/sub_navigation_item", locals: {name: t("project.all.in_progress.conversions.tab"), path: conversions_all_in_progress_projects_path} %>
+        <%= render partial: "shared/sub_navigation_item", locals: {name: t("project.all.in_progress.transfers.tab"), path: transfers_all_in_progress_projects_path} %>
+
+      </ul>
+    </nav>
+  </div>
+</div>

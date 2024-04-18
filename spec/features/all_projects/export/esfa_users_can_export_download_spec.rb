@@ -5,7 +5,7 @@ RSpec.feature "ESFA users can export" do
     user = create(:regional_delivery_officer_user)
 
     sign_in_with_user(user)
-    visit all_in_progress_projects_path
+    visit all_all_in_progress_projects_path
 
     expect(page).not_to have_link("Exports")
   end
@@ -14,7 +14,7 @@ RSpec.feature "ESFA users can export" do
     user = create(:user, team: :education_and_skills_funding_agency)
 
     sign_in_with_user(user)
-    visit all_in_progress_projects_path
+    visit all_all_in_progress_projects_path
 
     expect(page).to have_link("Exports")
   end
@@ -23,7 +23,7 @@ RSpec.feature "ESFA users can export" do
     user = create(:user, team: :education_and_skills_funding_agency)
 
     sign_in_with_user(user)
-    visit all_in_progress_projects_path
+    visit all_all_in_progress_projects_path
 
     click_on "Exports"
 
@@ -37,7 +37,7 @@ RSpec.feature "ESFA users can export" do
     user = create(:user, team: :education_and_skills_funding_agency)
 
     sign_in_with_user(user)
-    visit all_in_progress_projects_path
+    visit all_all_in_progress_projects_path
 
     click_on "Exports"
 

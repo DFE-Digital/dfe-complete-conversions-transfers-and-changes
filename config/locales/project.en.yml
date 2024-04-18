@@ -17,6 +17,13 @@ en:
     all:
       in_progress:
         title: All projects in progress
+        tab: All projects
+        conversions:
+          title: All conversions in progress
+          tab: Conversions
+        transfers:
+          title: All transfers in progress
+          tab: Transfers
       by_trust:
         title: All projects by trust
       completed:
@@ -232,6 +239,10 @@ en:
         projects: There are no projects
       in_progress:
         empty: There are no projects in progress.
+        conversions:
+          empty: There are no in-progress conversion projects
+        transfers:
+          empty: There are no in-progress transfer projects
       completed:
         empty: There are no completed projects.
       unassigned:

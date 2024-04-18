@@ -6,6 +6,6 @@ class RootController < ApplicationController
 
     return redirect_to in_progress_your_projects_path if current_user.assign_to_project? || current_user.add_new_project?
 
-    redirect_to all_in_progress_projects_path
+    redirect_to all_all_in_progress_projects_path
   end
 end

@@ -6,9 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- All in progress projects now includes at tab to view only conversion projects.
+- All in progress projects now includes at tab to view only transfer projects.
+
+### Changed
+
+- the all in progress projects table has been moved into a tab
+
 ### Fixed
 
 - Broken link to SharePoint guidance in footer and sign-in page now correct
+- The margin beneath the sub navigation items is now rendered correctly.
 
 ## [Release-66][release-66]
 

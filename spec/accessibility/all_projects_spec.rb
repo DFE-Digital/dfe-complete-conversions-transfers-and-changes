@@ -12,7 +12,7 @@ RSpec.feature "All projects", driver: :headless_firefox, accessibility: true do
   scenario "> In progress" do
     project = create(:conversion_project, assigned_to: user, urn: 123456)
 
-    visit all_in_progress_projects_path
+    visit all_all_in_progress_projects_path
 
     expect(page).to have_content(project.urn)
     expect(page).to have_link("In progress")

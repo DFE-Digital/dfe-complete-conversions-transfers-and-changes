@@ -107,13 +107,22 @@ Rails.application.routes.draw do
   end
 
   # All projects
+  resources :projects, only: %i[index] do
+    collection do
+      namespace :all do
+        namespace :in_progress, path: "in-progress" do
+          get "all", to: "projects#all_index"
+          get "conversions", to: "projects#conversions_index"
+          get "transfers", to: "projects#transfers_index"
+        end
+      end
+    end
+  end
+
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index] do
       collection do
         namespace :all do
-          namespace :in_progress, path: "in-progress" do
-            get "/", to: "projects#index"
-          end
           namespace :completed do
             get "/", to: "projects#index"
           end

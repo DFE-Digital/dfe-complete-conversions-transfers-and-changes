@@ -10,6 +10,6 @@ RSpec.feature "The home page for a user without a role" do
     visit root_path
     click_on "In progress"
 
-    expect(page.current_path).to eql all_in_progress_projects_path
+    expect(page.current_path).to eql all_all_in_progress_projects_path
   end
 end

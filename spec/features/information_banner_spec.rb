@@ -14,7 +14,7 @@ RSpec.feature "Users can see an information banner" do
 
         expect(page).to have_selector("#information-banner")
 
-        visit all_in_progress_projects_path
+        visit all_all_in_progress_projects_path
 
         expect(page).to have_selector("#information-banner")
       end

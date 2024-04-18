@@ -26,6 +26,6 @@ class ProjectsController < ApplicationController
 
     @project = Project.find(params[:id])
     @project.update(state: :deleted)
-    redirect_to all_in_progress_projects_path, notice: I18n.t("project.delete.success")
+    redirect_to all_all_in_progress_projects_path, notice: I18n.t("project.delete.success")
   end
 end
