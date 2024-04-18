@@ -86,6 +86,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # A single form a multi academy trust project group
+  namespace :form_a_multi_academy_trust, path: "form-a-multi-academy-trust" do
+    get "/:trn", to: "project_groups#show"
+  end
+
   # New projects by type
   scope :projects do
     namespace :conversions do
