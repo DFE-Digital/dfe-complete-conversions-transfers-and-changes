@@ -201,4 +201,6 @@ USER ${UID}:${GID}
 
 EXPOSE 3000
 
+LABEL org.opencontainers.image.source=https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes
+
 CMD ["bundle", "exec", "rails", "server"]
