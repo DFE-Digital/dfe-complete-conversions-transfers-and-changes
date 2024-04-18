@@ -6,7 +6,7 @@ class FormAMultiAcademyTrust::ProjectGroup
   class NoProjectsFoundError < StandardError
   end
 
-  attr_accessor :trn, :name, :projects, :region
+  attr_accessor :trn, :name, :projects, :region, :assigned_to
 
   def initialize(trn:)
     @trn = trn
@@ -16,10 +16,15 @@ class FormAMultiAcademyTrust::ProjectGroup
 
     @name = fetch_trust_name
     @region = fetch_region
+    @assigned_to = fetch_assigned_to
   end
 
   def deleted?
     false
+  end
+
+  private def fetch_assigned_to
+    @projects.order(:created_at).first.assigned_to
   end
 
   private def fetch_region

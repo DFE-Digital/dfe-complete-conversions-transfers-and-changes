@@ -39,6 +39,16 @@ RSpec.describe FormAMultiAcademyTrust::ProjectGroup do
     end
   end
 
+  describe "#assigned_to" do
+    it "returns the name of the user from the first project" do
+      project = create(:conversion_project, :form_a_mat)
+
+      subject = described_class.new(trn: project.new_trust_reference_number)
+
+      expect(subject.assigned_to).to eql project.assigned_to
+    end
+  end
+
   describe "#projects" do
     it "returns the projects that make the TRN" do
       conversion_project = create(:conversion_project, :form_a_mat, new_trust_reference_number: "TR12345")
