@@ -22,4 +22,10 @@ class All::InProgress::ProjectsController < ApplicationController
     @pager, @projects = pagy(Project.transfers.in_progress.includes(:assigned_to).ordered_by_significant_date)
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
+
+  def form_a_multi_academy_trust_index
+    authorize Project, :index?
+
+    @pager, @project_groups = pagy_array(FormAMultiAcademyTrust::ProjectGroupFetcherService.new.call)
+  end
 end
