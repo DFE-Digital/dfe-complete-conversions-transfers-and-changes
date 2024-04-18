@@ -12,7 +12,7 @@ on:
         required: true
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.inputs.environment }}
+  group: ${{ github.workflow }}-${{ github.event.inputs.environment }}-${{ github.run_number }}
 
 jobs:
   set-env:
