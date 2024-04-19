@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "@ministryofjustice/frontend": "^1.8.0",
-    "accessible-autocomplete": "^2.0.4"
+    "accessible-autocomplete": "^3.0.0"
   }
 }
