@@ -1,4 +1,4 @@
-class Conversion::Task::ConfirmDateAcademyOpenedTaskForm < BaseOptionalTaskForm
+class Conversion::Task::ConfirmDateAcademyOpenedTaskForm < BaseTaskForm
   attribute :date_opened, :date
   attribute "date_opened(1i)"
   attribute "date_opened(2i)"

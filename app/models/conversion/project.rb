@@ -22,6 +22,13 @@ class Conversion::Project < Project
   scope :with_academy_urn, -> { where.not(academy_urn: nil) }
   scope :by_conversion_date, -> { ordered_by_significant_date }
 
+  MANDATORY_CONDITIONS = [
+    :all_conditions_met?,
+    :confirmed_date_and_in_the_past?,
+    :grant_payment_certificate_received?,
+    :date_academy_opened_present?
+  ]
+
   def grant_payment_certificate_received?
     user = assigned_to
     tasks = Conversion::Task::ReceiveGrantPaymentCertificateTaskForm.new(tasks_data, user)
@@ -43,7 +50,11 @@ class Conversion::Project < Project
   end
 
   def completable?
-    return true if all_conditions_met? && confirmed_date_and_in_the_past? && grant_payment_certificate_received?
+    MANDATORY_CONDITIONS.all? { |task| send(task) }
+  end
+
+  def date_academy_opened_present?
+    return true if tasks_data.confirm_date_academy_opened_date_opened.present?
     false
   end
 

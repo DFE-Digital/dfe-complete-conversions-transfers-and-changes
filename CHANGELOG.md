@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - the all in progress projects table has been moved into a tab
+- the "Date the academy opened" task is now mandatory in Conversion projects
 
 ### Fixed
 

@@ -10,13 +10,16 @@ class Transfer::Project < Project
   validates :outgoing_trust_ukprn, ukprn: true
   validate :outgoing_trust_exists, if: -> { outgoing_trust_ukprn.present? }
 
+  MANDATORY_CONDITIONS = [
+    :confirmed_date_and_in_the_past?
+  ]
+
   def outgoing_trust
     @outgoing_trust ||= fetch_trust(outgoing_trust_ukprn)
   end
 
   def completable?
-    return true if confirmed_date_and_in_the_past?
-    false
+    MANDATORY_CONDITIONS.all? { |task| send(task) }
   end
 
   private def outgoing_trust_exists
