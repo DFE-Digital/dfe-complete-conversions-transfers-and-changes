@@ -25,7 +25,8 @@ class Conversion::Project < Project
   MANDATORY_CONDITIONS = [
     :all_conditions_met?,
     :confirmed_date_and_in_the_past?,
-    :grant_payment_certificate_received?
+    :grant_payment_certificate_received?,
+    :date_academy_opened_present?
   ]
 
   def grant_payment_certificate_received?
@@ -50,6 +51,11 @@ class Conversion::Project < Project
 
   def completable?
     MANDATORY_CONDITIONS.all? { |task| send(task) }
+  end
+
+  def date_academy_opened_present?
+    return true if tasks_data.confirm_date_academy_opened_date_opened.present?
+    false
   end
 
   private def fetch_academy(urn)

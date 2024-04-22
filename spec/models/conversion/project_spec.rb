@@ -191,7 +191,8 @@ RSpec.describe Conversion::Project do
 
   describe "#completable?" do
     it "returns true when all the mandatory conditions are completed" do
-      project = create(:conversion_project, all_conditions_met: true)
+      tasks_data = create(:conversion_tasks_data, confirm_date_academy_opened_date_opened: Date.yesterday)
+      project = create(:conversion_project, all_conditions_met: true, tasks_data: tasks_data)
       allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(true)
       allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
 
@@ -199,11 +200,28 @@ RSpec.describe Conversion::Project do
     end
 
     it "returns false if any of the mandatory conditions are not completed" do
-      project = create(:conversion_project, all_conditions_met: true)
+      tasks_data = create(:conversion_tasks_data, confirm_date_academy_opened_date_opened: nil)
+      project = create(:conversion_project, all_conditions_met: true, tasks_data: tasks_data)
       allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(false)
       allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
 
       expect(project.completable?).to eq false
+    end
+  end
+
+  describe "#date_academy_opened_present?" do
+    it "returns true if date_academy_opened is present in the tasks data" do
+      tasks_data = create(:conversion_tasks_data, confirm_date_academy_opened_date_opened: Date.yesterday)
+      project = create(:conversion_project, tasks_data: tasks_data)
+
+      expect(project.date_academy_opened_present?).to eq true
+    end
+
+    it "returns true if date_academy_opened is nil in the tasks data" do
+      tasks_data = create(:conversion_tasks_data, confirm_date_academy_opened_date_opened: nil)
+      project = create(:conversion_project, tasks_data: tasks_data)
+
+      expect(project.date_academy_opened_present?).to eq false
     end
   end
 end
