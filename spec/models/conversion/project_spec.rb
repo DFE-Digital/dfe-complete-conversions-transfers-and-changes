@@ -188,4 +188,22 @@ RSpec.describe Conversion::Project do
       end
     end
   end
+
+  describe "#completable?" do
+    it "returns true when all the mandatory conditions are completed" do
+      project = create(:conversion_project, all_conditions_met: true)
+      allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(true)
+      allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
+
+      expect(project.completable?).to eq true
+    end
+
+    it "returns false if any of the mandatory conditions are not completed" do
+      project = create(:conversion_project, all_conditions_met: true)
+      allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(false)
+      allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
+
+      expect(project.completable?).to eq false
+    end
+  end
 end

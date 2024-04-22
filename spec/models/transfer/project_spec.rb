@@ -39,4 +39,22 @@ RSpec.describe Transfer::Project do
       end
     end
   end
+
+  describe "#completable?" do
+    before { mock_successful_api_response_to_create_any_project }
+
+    it "returns true when all the mandatory conditions are completed" do
+      project = create(:transfer_project)
+      allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(true)
+
+      expect(project.completable?).to eq true
+    end
+
+    it "returns false if any of the mandatory conditions are not completed" do
+      project = create(:transfer_project)
+      allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(false)
+
+      expect(project.completable?).to eq false
+    end
+  end
 end
