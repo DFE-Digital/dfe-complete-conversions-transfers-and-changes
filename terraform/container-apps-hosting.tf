@@ -58,6 +58,7 @@ module "azure_container_apps_hosting" {
   dns_zone_domain_name = local.dns_zone_domain_name
   dns_ns_records       = local.dns_ns_records
   dns_txt_records      = local.dns_txt_records
+  dns_mx_records       = local.dns_mx_records
 
   enable_monitoring               = local.enable_monitoring
   monitor_email_receivers         = local.monitor_email_receivers
