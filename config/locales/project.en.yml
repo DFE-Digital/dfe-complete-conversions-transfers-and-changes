@@ -24,6 +24,9 @@ en:
         transfers:
           title: All transfers in progress
           tab: Transfers
+        form_a_multi_academy_trust:
+          title: All form a MAT projects in progress
+          tab: Form a MAT
       by_trust:
         title: All projects by trust
       completed:
@@ -243,6 +246,8 @@ en:
           empty: There are no in-progress conversion projects
         transfers:
           empty: There are no in-progress transfer projects
+        form_a_multi_academy_trust:
+          empty: There are no form a MAT projects
       completed:
         empty: There are no completed projects.
       unassigned:

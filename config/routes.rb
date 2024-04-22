@@ -119,6 +119,7 @@ Rails.application.routes.draw do
           get "all", to: "projects#all_index"
           get "conversions", to: "projects#conversions_index"
           get "transfers", to: "projects#transfers_index"
+          get "form-a-multi-academy-trust", to: "projects#form_a_multi_academy_trust_index"
         end
       end
     end

@@ -34,4 +34,14 @@ RSpec.describe All::InProgress::ProjectsController, type: :request do
       end
     end
   end
+
+  describe "#form_a_multi_academy_trust_index" do
+    context "when there are no projects to group into a form a mat" do
+      it "shows a helpful message" do
+        get form_a_multi_academy_trust_all_in_progress_projects_path
+
+        expect(response.body).to include "There are no form a MAT projects"
+      end
+    end
+  end
 end
