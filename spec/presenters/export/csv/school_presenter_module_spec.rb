@@ -32,6 +32,15 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     expect(subject.school_phase).to eql "Secondary"
   end
 
+  context "when a school is a PRU or special school and has a school phase of Not applicable" do
+    let(:project) { create(:conversion_project, establishment: special_establishment) }
+    subject { SchoolPresenterModuleTestClass.new(project) }
+
+    it "presents the school type instead" do
+      expect(subject.school_phase).to eql "Community school"
+    end
+  end
+
   it "presents the school age range" do
     expect(subject.school_age_range).to eql "5 - 16"
   end
@@ -104,6 +113,14 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
       address_postcode: "MK19 6HJ",
       age_range_lower: 5,
       age_range_upper: 16
+    )
+  end
+
+  def special_establishment
+    double(
+      Api::AcademiesApi::Establishment,
+      phase: "Not applicable",
+      type: "Community school"
     )
   end
 end
