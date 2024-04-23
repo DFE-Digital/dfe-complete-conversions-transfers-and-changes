@@ -24,7 +24,8 @@ module Export::Csv::SchoolPresenterModule
   def school_phase
     return unless @project.establishment.present?
 
-    @project.establishment.phase
+    return school_type if @project.establishment&.phase == "Not applicable"
+    @project.establishment&.phase
   end
 
   def school_dfe_number
