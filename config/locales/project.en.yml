@@ -221,6 +221,7 @@ en:
         previous_date: Previous date
         revised_date: Revised date
         note: Note
+        trn: TRN
       body:
         type_name:
           conversion_project: Conversion
