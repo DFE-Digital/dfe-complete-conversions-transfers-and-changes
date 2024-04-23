@@ -6,9 +6,7 @@
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.trust_name") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.trn") %></th>
-        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.region") %></th>
         <th class="govuk-table__header" scope="col"><%= t("project.table.headers.schools_included") %></th>
-        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.assigned_to") %></th>
       </tr>
     </thead>
     <tbody class="govuk-table__body">
@@ -18,9 +16,7 @@
           <%= link_to project_group.name, form_a_multi_academy_trust_path(project_group.trn) %>
         </td>
         <td class="govuk-table__cell"><%= project_group.trn %></td>
-        <td class="govuk-table__cell"><%= t("project.region.#{project_group.region}") %></td>
         <td class="govuk-table__cell"><%= projects_establishment_name_list(project_group) %></td>
-        <td class="govuk-table__cell"><%= display_name(project_group.assigned_to) %></td>
       </tr>
     <% end %>
     </tbody>
