@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-67][release-67]
+
 ### Added
 
 - All in progress projects now includes at tab to view only conversion projects.
@@ -1831,7 +1833,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-66...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-67...HEAD
+[release-67]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-66...release-67
 [release-66]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-65...release-66
 [release-65]:
