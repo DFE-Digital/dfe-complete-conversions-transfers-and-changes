@@ -22,18 +22,14 @@ jobs:
       environment: ${{ steps.var.outputs.environment }}
       branch: ${{ steps.var.outputs.branch }}
       checked-out-sha: ${{ steps.var.outputs.checked-out-sha }}
+      date: ${{ steps.var.outputs.date }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get branch name for push/dispatch event
-        run: |
-          GIT_REF=${{ github.ref_name }}
-          echo "branch_ref=${GIT_REF}" >> $GITHUB_ENV
-
       - id: var
         run: |
-          GIT_REF=${{ env.branch_ref }}
+          GIT_REF=${{ github.ref_name }}
           GIT_BRANCH=${GIT_REF##*/}
           INPUT=${{ github.event.inputs.environment }}
           ENVIRONMENT=${INPUT:-"development"}
@@ -69,9 +65,8 @@ jobs:
         CURRENT_GIT_SHA="${{ needs.set-env.outputs.checked-out-sha }}"
         TIME_OF_BUILD="${{ needs.set-env.outputs.date }}"
     secrets:
-      azure-acr-client-id: ${{ secrets.AZURE_ACR_CLIENTID }}
-      azure-acr-secret: ${{ secrets.AZURE_ACR_SECRET }}
-      azure-acr-url: ${{ secrets.AZURE_ACR_URL }}
+      azure-acr-credentials: ${{ secrets.ACR_CREDENTIALS }}
+      azure-acr-name: ${{ secrets.ACR_NAME }}
       azure-aca-credentials: ${{ secrets[matrix.aca_credential_secret_name] }}
       azure-aca-name: ${{ secrets.AZURE_ACA_NAME }}${{ matrix.suffix }}
       azure-aca-resource-group: ${{ secrets.AZURE_ACA_RESOURCE_GROUP }}
