@@ -36,6 +36,7 @@ variable "virtual_network_address_space" {
 variable "enable_container_registry" {
   description = "Set to true to create a container registry"
   type        = bool
+  default     = false
 }
 
 variable "registry_admin_enabled" {
