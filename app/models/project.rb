@@ -107,10 +107,6 @@ class Project < ApplicationRecord
     @member_of_parliament ||= fetch_member_of_parliament
   end
 
-  def completed?
-    completed_at.present?
-  end
-
   def unassigned_to_user?
     assigned_to.nil?
   end

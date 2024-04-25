@@ -250,7 +250,7 @@ RSpec.describe ProjectHelper, type: :helper do
           user = build(:user)
           other_user = build(:user, email: "other.user@education.gov.uk")
 
-          project = build(:conversion_project, completed_at: Date.today - 3.months, assigned_to: other_user)
+          project = build(:conversion_project, :completed, assigned_to: other_user)
 
           expect(project_notification_banner(project, user))
             .to include("Project completed")
@@ -262,7 +262,7 @@ RSpec.describe ProjectHelper, type: :helper do
           user = build(:user)
           other_user = build(:user, email: "other.user@education.gov.uk")
 
-          project = build(:conversion_project, completed_at: Date.today - 3.months, assigned_to: other_user)
+          project = build(:conversion_project, :completed, assigned_to: other_user)
 
           expect(project_notification_banner(project, user))
             .to include("Project completed")

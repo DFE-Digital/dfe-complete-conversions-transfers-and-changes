@@ -14,7 +14,7 @@ RSpec.describe NotePolicy do
       end
 
       it "denies access if project is completed" do
-        project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
+        project = build(:conversion_project, :completed, assigned_to: application_user)
         expect(subject).not_to permit(application_user, build(:note, project: project, user: application_user))
       end
     end

@@ -18,6 +18,7 @@ FactoryBot.define do
 
     trait :completed do
       state { 1 }
+      completed_at { Date.yesterday }
     end
 
     trait :deleted do
