@@ -177,7 +177,7 @@ Rails.application.routes.draw do
           end
           namespace :export do
             get "/", to: "projects#index"
-            namespace :grant_management_and_finance_unit, path: "grant-management-and-finance-unit" do
+            namespace :by_advisory_board_date, path: "by-advisory-board-date" do
               namespace :conversions do
                 get "/", to: "projects#index"
                 get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show

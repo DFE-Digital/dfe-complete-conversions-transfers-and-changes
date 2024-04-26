@@ -1,4 +1,4 @@
-class All::Export::GrantManagementAndFinanceUnit::Transfers::ProjectsController < ApplicationController
+class All::Export::ByAdvisoryBoardDate::Transfers::ProjectsController < ApplicationController
   def index
     authorize Project, :index?
 

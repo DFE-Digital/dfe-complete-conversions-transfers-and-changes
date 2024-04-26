@@ -9,7 +9,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
 
   context "conversions" do
     scenario "they can view the last year in months" do
-      visit all_export_grant_management_and_finance_unit_conversions_projects_path
+      visit all_export_by_advisory_board_date_conversions_projects_path
 
       expect(page).to have_content(Date.today.to_fs(:govuk_month))
       expect(page).to have_content((Date.today - 1.month).to_fs(:govuk_month))
@@ -19,7 +19,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
     scenario "the list of months still works on a leap year & in February" do
       travel_to(Time.zone.local(2024, 3, 1, 1, 0, 0))
 
-      visit all_export_grant_management_and_finance_unit_conversions_projects_path
+      visit all_export_by_advisory_board_date_conversions_projects_path
 
       expect(page).to have_content("March 2024")
       expect(page).to have_content("February 2024")
@@ -32,7 +32,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
       _this_month_project = create(:conversion_project, advisory_board_date: Date.today.at_beginning_of_month, significant_date_provisional: false)
       _last_month_project = create(:conversion_project, advisory_board_date: (Date.today - 1.month).at_beginning_of_month, significant_date_provisional: false)
 
-      visit all_export_grant_management_and_finance_unit_conversions_projects_path
+      visit all_export_by_advisory_board_date_conversions_projects_path
 
       this_month_row = page.find("##{Date.today.at_beginning_of_month.to_fs(:govuk_month).tr(" ", "_")}")
       expect(this_month_row).to have_css("td.govuk-table__cell", text: "1")
@@ -42,7 +42,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
     end
 
     scenario "they can download a CSV for each month of the last year" do
-      visit all_export_grant_management_and_finance_unit_conversions_projects_path
+      visit all_export_by_advisory_board_date_conversions_projects_path
 
       expect(page).to have_link("Export for #{Date.today.to_fs(:govuk_month)}")
       expect(page).to have_link("Export for #{(Date.today - 1.month).to_fs(:govuk_month)}")
@@ -58,7 +58,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
 
   context "transfers" do
     scenario "they can view the last year in months" do
-      visit all_export_grant_management_and_finance_unit_transfers_projects_path
+      visit all_export_by_advisory_board_date_transfers_projects_path
 
       expect(page).to have_content(Date.today.to_fs(:govuk_month))
       expect(page).to have_content((Date.today - 1.month).to_fs(:govuk_month))
@@ -69,7 +69,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
       _this_month_project = create(:transfer_project, advisory_board_date: Date.today.at_beginning_of_month, significant_date_provisional: false)
       _last_month_project = create(:transfer_project, advisory_board_date: (Date.today - 1.month).at_beginning_of_month, significant_date_provisional: false)
 
-      visit all_export_grant_management_and_finance_unit_transfers_projects_path
+      visit all_export_by_advisory_board_date_transfers_projects_path
 
       this_month_row = page.find("##{Date.today.at_beginning_of_month.to_fs(:govuk_month).tr(" ", "_")}")
       expect(this_month_row).to have_css("td.govuk-table__cell", text: "1")
@@ -79,7 +79,7 @@ RSpec.feature "Grant management and finance unit users can export projects by Ad
     end
 
     scenario "they can download a CSV for each month of the last year" do
-      visit all_export_grant_management_and_finance_unit_transfers_projects_path
+      visit all_export_by_advisory_board_date_transfers_projects_path
 
       expect(page).to have_link("Export for #{Date.today.to_fs(:govuk_month)}")
       expect(page).to have_link("Export for #{(Date.today - 1.month).to_fs(:govuk_month)}")

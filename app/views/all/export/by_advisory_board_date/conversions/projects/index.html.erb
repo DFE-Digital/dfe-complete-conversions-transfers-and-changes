@@ -18,10 +18,10 @@
       <ul class="moj-sub-navigation__list">
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("subnavigation.conversions"),
-                       path: all_export_grant_management_and_finance_unit_conversions_projects_path} %>
+                       path: all_export_by_advisory_board_date_conversions_projects_path} %>
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("subnavigation.transfers"),
-                       path: all_export_grant_management_and_finance_unit_transfers_projects_path} %>
+                       path: all_export_by_advisory_board_date_transfers_projects_path} %>
       </ul>
     </nav>
 
@@ -39,7 +39,7 @@
           <td class="govuk-table__header govuk-table__cell"><%= month[:month].to_fs(:govuk_month) %></td>
           <td class="govuk-table__cell"><%= month[:count] %></td>
           <td class="govuk-table__cell">
-            <%= link_to t("project.table.body.export_for_html", date: month[:month].to_fs(:govuk_month)), show_all_export_grant_management_and_finance_unit_conversions_projects_path(month[:month].month, month[:month].year) %>
+            <%= link_to t("project.table.body.export_for_html", date: month[:month].to_fs(:govuk_month)), show_all_export_by_advisory_board_date_conversions_projects_path(month[:month].month, month[:month].year) %>
           </td>
         </tr>
       <% end %>
