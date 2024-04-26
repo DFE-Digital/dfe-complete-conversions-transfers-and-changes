@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Viewing completed projects" do
   let(:user) { create(:user, :caseworker) }
-  let(:project) { create(:conversion_project, completed_at: Date.today - 3.months, assigned_to: user) }
+  let(:project) { create(:conversion_project, :completed, assigned_to: user) }
 
   before do
     mock_successful_api_response_to_create_any_project

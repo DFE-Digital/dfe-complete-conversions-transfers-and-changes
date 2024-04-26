@@ -49,17 +49,17 @@ RSpec.describe TaskListPolicy do
 
     context "when the project is completed" do
       it "denies access if project is assigned to the same user" do
-        task_list = create(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday).tasks_data
+        task_list = create(:conversion_project, :completed, assigned_to: application_user).tasks_data
         expect(subject).not_to permit(application_user, task_list)
       end
 
       it "denies access if project is assigned to a different user" do
-        task_list = create(:conversion_project, assigned_to: build(:user), completed_at: Date.yesterday).tasks_data
+        task_list = create(:conversion_project, :completed, assigned_to: build(:user)).tasks_data
         expect(subject).not_to permit(application_user, task_list)
       end
 
       it "denies access if project is assigned to nil" do
-        task_list = create(:conversion_project, assigned_to: nil, completed_at: Date.yesterday).tasks_data
+        task_list = create(:conversion_project, :completed, assigned_to: nil).tasks_data
         expect(subject).not_to permit(application_user, task_list)
       end
     end

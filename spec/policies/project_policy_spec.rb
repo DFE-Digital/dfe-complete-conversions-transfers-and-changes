@@ -37,7 +37,7 @@ RSpec.describe ProjectPolicy do
     end
 
     it "denies access if the project is completed" do
-      project = build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false, completed_at: Date.yesterday)
+      project = build(:conversion_project, :completed, assigned_to: application_user, conversion_date_provisional: false)
       expect(subject).not_to permit(application_user, project)
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe ProjectPolicy do
     end
 
     it "denies access if the project is completed" do
-      project = build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false, completed_at: Date.yesterday)
+      project = build(:conversion_project, :completed, assigned_to: application_user, conversion_date_provisional: false)
       expect(subject).not_to permit(application_user, project)
     end
 
@@ -102,12 +102,12 @@ RSpec.describe ProjectPolicy do
 
   permissions :new_note?, :new_contact? do
     it "grants access if project is not completed" do
-      project = build(:conversion_project, assigned_to: application_user, completed_at: nil)
+      project = build(:conversion_project, assigned_to: application_user)
       expect(subject).to permit(application_user, project)
     end
 
     it "denies access if project is completed" do
-      project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
+      project = build(:conversion_project, :completed, assigned_to: application_user)
       expect(subject).not_to permit(application_user, project)
     end
 
@@ -121,24 +121,24 @@ RSpec.describe ProjectPolicy do
 
   permissions :update_assigned_to? do
     it "grants access if project is not completed" do
-      project = build(:conversion_project, assigned_to: application_user, completed_at: nil)
+      project = build(:conversion_project, assigned_to: application_user)
       expect(subject).to permit(application_user, project)
     end
 
     it "denies access if project is completed" do
-      project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
+      project = build(:conversion_project, :completed, assigned_to: application_user)
       expect(subject).not_to permit(application_user, project)
     end
   end
 
   permissions :update_regional_delivery_officer? do
     it "grants access if project is not completed" do
-      project = build(:conversion_project, assigned_to: application_user, completed_at: nil)
+      project = build(:conversion_project, assigned_to: application_user)
       expect(subject).to permit(application_user, project)
     end
 
     it "denies access if project is completed" do
-      project = build(:conversion_project, assigned_to: application_user, completed_at: Date.yesterday)
+      project = build(:conversion_project, :completed, assigned_to: application_user)
       expect(subject).not_to permit(application_user, project)
     end
   end
