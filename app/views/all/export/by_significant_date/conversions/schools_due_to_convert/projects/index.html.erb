@@ -28,7 +28,7 @@
       <td class="govuk-table__cell"><%= t("project.table.body.conversion_project_count_html", count: item[:count], date: item[:month].to_fs(:govuk_month)) %></td>
       <td class="govuk-table__cell">
         <%= link_to(t("project.table.body.export_link"),
-              show_all_export_by_month_conversions_projects_path(item[:month].month, item[:month].year),
+              show_all_export_by_significant_date_conversions_schools_due_to_convert_projects_path(item[:month].month, item[:month].year),
               title: t("project.table.body.export_link_title_conversions_html", date: item[:month].to_fs(:govuk_month))) %>
       </td>
     </tr>

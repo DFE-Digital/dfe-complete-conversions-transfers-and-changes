@@ -12,6 +12,6 @@
     <%= t("export.by_month.transfers.show.body_html", month: @month.to_fs(:govuk_month_only), year: @month.year) %>
   </div>
   <div class="govuk-grid-column-two-thirds">
-    <%= govuk_button_link_to t("export.by_month.transfers.show.button"), csv_all_export_by_month_transfers_projects_path(@month.month, @month.year) %>
+    <%= govuk_button_link_to t("export.by_month.transfers.show.button"), csv_all_export_by_significant_date_transfers_academies_due_to_transfer_projects_path(@month.month, @month.year) %>
   </div>
 </div>

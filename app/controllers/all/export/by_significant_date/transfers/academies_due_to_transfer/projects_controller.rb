@@ -1,4 +1,4 @@
-class All::Export::ByMonth::Transfers::ProjectsController < ApplicationController
+class All::Export::BySignificantDate::Transfers::AcademiesDueToTransfer::ProjectsController < ApplicationController
   def index
     authorize :export
     service = ProjectsForExportService.new

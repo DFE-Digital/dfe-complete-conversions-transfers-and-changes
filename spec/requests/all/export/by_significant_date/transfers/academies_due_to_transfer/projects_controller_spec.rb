@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe All::Export::ByMonth::Transfers::ProjectsController, type: :request do
+RSpec.describe All::Export::BySignificantDate::Transfers::AcademiesDueToTransfer::ProjectsController, type: :request do
   let(:user) { create(:user, team: :education_and_skills_funding_agency) }
 
   before do
@@ -11,7 +11,7 @@ RSpec.describe All::Export::ByMonth::Transfers::ProjectsController, type: :reque
   describe "#index" do
     it "shows the next 6 months and links to exports for those months" do
       travel_to Date.new(2023, 1, 1) do
-        get all_export_by_month_transfers_projects_path
+        get all_export_by_significant_date_transfers_academies_due_to_transfer_projects_path
         expect(response.body).to include(
           "January 2023",
           "February 2023",
@@ -21,12 +21,12 @@ RSpec.describe All::Export::ByMonth::Transfers::ProjectsController, type: :reque
           "June 2023"
         )
         expect(response.body).to include(
-          "/projects/all/export/by-month/transfers/1/2023",
-          "/projects/all/export/by-month/transfers/2/2023",
-          "/projects/all/export/by-month/transfers/3/2023",
-          "/projects/all/export/by-month/transfers/4/2023",
-          "/projects/all/export/by-month/transfers/5/2023",
-          "/projects/all/export/by-month/transfers/6/2023"
+          "/projects/all/export/by-significant-date/transfers/academies-due-to-transfer/1/2023",
+          "/projects/all/export/by-significant-date/transfers/academies-due-to-transfer/2/2023",
+          "/projects/all/export/by-significant-date/transfers/academies-due-to-transfer/3/2023",
+          "/projects/all/export/by-significant-date/transfers/academies-due-to-transfer/4/2023",
+          "/projects/all/export/by-significant-date/transfers/academies-due-to-transfer/5/2023",
+          "/projects/all/export/by-significant-date/transfers/academies-due-to-transfer/6/2023"
         )
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe All::Export::ByMonth::Transfers::ProjectsController, type: :reque
 
   describe "#show" do
     it "shows the info page for the CSV download" do
-      get show_all_export_by_month_transfers_projects_path(5, 2025)
+      get show_all_export_by_significant_date_transfers_academies_due_to_transfer_projects_path(5, 2025)
       expect(response.body).to include("Details of academies due to transfer in May 2025")
     end
   end
@@ -43,13 +43,13 @@ RSpec.describe All::Export::ByMonth::Transfers::ProjectsController, type: :reque
     let!(:project) { create(:transfer_project, significant_date: Date.new(2025, 5, 1), significant_date_provisional: false) }
 
     it "returns the csv with a successful response" do
-      get csv_all_export_by_month_transfers_projects_path(5, 2025)
+      get csv_all_export_by_significant_date_transfers_academies_due_to_transfer_projects_path(5, 2025)
       expect(response.body).to include(project.urn.to_s)
       expect(response).to have_http_status(:success)
     end
 
     it "formats the csv filename with the month & year" do
-      get csv_all_export_by_month_transfers_projects_path(5, 2025)
+      get csv_all_export_by_significant_date_transfers_academies_due_to_transfer_projects_path(5, 2025)
       expect(response.header["Content-Disposition"]).to include("2025-5_academies_due_to_transfer.csv")
     end
   end
