@@ -34,3 +34,4 @@ lib/generators/*/USAGE
 /.github/
 app/assets/stylesheets/dfefrontend.css
 .eslintrc.json
+.ruby-lsp/
