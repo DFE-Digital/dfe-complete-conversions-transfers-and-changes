@@ -5,7 +5,7 @@ class All::Export::BySignificantDate::Conversions::SchoolsDueToConvert::Projects
     @data = export_months.map do |month|
       {
         month: month,
-        count: service.conversion_by_month_projects(month: month.month, year: month.year).count
+        count: service.conversion_projects_by_significant_date(month: month.month, year: month.year).count
       }
     end
   end
@@ -18,7 +18,7 @@ class All::Export::BySignificantDate::Conversions::SchoolsDueToConvert::Projects
   def csv
     authorize :export
 
-    projects = ProjectsForExportService.new.conversion_by_month_projects(month: month, year: year)
+    projects = ProjectsForExportService.new.conversion_projects_by_significant_date(month: month, year: year)
     csv = Export::Conversions::SchoolsDueToConvertCsvExportService.new(projects).call
 
     send_data csv, filename: "#{year}-#{month}_schools_due_to_convert.csv", type: :csv, disposition: "attachment"

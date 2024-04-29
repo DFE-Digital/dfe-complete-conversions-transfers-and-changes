@@ -10,7 +10,7 @@ RSpec.describe ProjectsForExportService do
       matching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       mismatching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_conversion_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(matching_project)
       expect(projects_for_export).not_to include(mismatching_project)
@@ -22,7 +22,7 @@ RSpec.describe ProjectsForExportService do
       confirmed_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       provisional_project = create(:conversion_project, conversion_date_provisional: true, advisory_board_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_conversion_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(confirmed_project)
       expect(projects_for_export).to include(provisional_project)
@@ -31,7 +31,7 @@ RSpec.describe ProjectsForExportService do
     it "includes Form a MAT conversions" do
       project = create(:conversion_project, :form_a_mat, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_conversion_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(project)
     end
@@ -39,7 +39,7 @@ RSpec.describe ProjectsForExportService do
     it "does not include deleted projects" do
       project = create(:conversion_project, :deleted, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_conversion_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to_not include(project)
     end
@@ -51,7 +51,7 @@ RSpec.describe ProjectsForExportService do
       mismatching_project_1 = create(:conversion_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
       mismatching_project_2 = create(:transfer_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_transfer_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(matching_project)
       expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
@@ -61,7 +61,7 @@ RSpec.describe ProjectsForExportService do
       confirmed_project = create(:transfer_project, transfer_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       provisional_project = create(:transfer_project, transfer_date_provisional: true, advisory_board_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_transfer_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(confirmed_project)
       expect(projects_for_export).to include(provisional_project)
@@ -70,7 +70,7 @@ RSpec.describe ProjectsForExportService do
     it "includes Form a MAT transfers" do
       project = create(:transfer_project, :form_a_mat, significant_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_transfer_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(project)
     end
@@ -78,7 +78,7 @@ RSpec.describe ProjectsForExportService do
     it "does not include deleted projects" do
       project = create(:transfer_project, :deleted, significant_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.grant_management_and_finance_unit_transfer_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_advisory_board_date(month: 1, year: 2023)
 
       expect(projects_for_export).to_not include(project)
     end
@@ -91,7 +91,7 @@ RSpec.describe ProjectsForExportService do
       mismatching_project_1 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-2-1"))
       mismatching_project_2 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.transfer_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(matching_project_1, matching_project_2)
       expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
@@ -101,7 +101,7 @@ RSpec.describe ProjectsForExportService do
       confirmed_project = create(:transfer_project, transfer_date_provisional: false, significant_date: Date.parse("2023-1-1"))
       provisional_project = create(:transfer_project, transfer_date_provisional: true, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.transfer_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(confirmed_project)
       expect(projects_for_export).to include(provisional_project)
@@ -110,7 +110,7 @@ RSpec.describe ProjectsForExportService do
     it "includes Form a MAT transfers" do
       project = create(:transfer_project, :form_a_mat, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.transfer_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(project)
     end
@@ -118,7 +118,7 @@ RSpec.describe ProjectsForExportService do
     it "does not include deleted projects" do
       project = create(:transfer_project, :deleted, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.transfer_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.transfer_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to_not include(project)
     end
@@ -131,7 +131,7 @@ RSpec.describe ProjectsForExportService do
       mismatching_project_1 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-2-1"))
       mismatching_project_2 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.conversion_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(matching_project_1, matching_project_2)
       expect(projects_for_export).not_to include(mismatching_project_1, mismatching_project_2)
@@ -141,7 +141,7 @@ RSpec.describe ProjectsForExportService do
       confirmed_project = create(:conversion_project, conversion_date_provisional: false, significant_date: Date.parse("2023-1-1"))
       provisional_project = create(:conversion_project, conversion_date_provisional: true, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.conversion_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(confirmed_project)
       expect(projects_for_export).to include(provisional_project)
@@ -150,7 +150,7 @@ RSpec.describe ProjectsForExportService do
     it "includes Form a MAT conversions" do
       project = create(:conversion_project, :form_a_mat, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.conversion_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to include(project)
     end
@@ -158,7 +158,7 @@ RSpec.describe ProjectsForExportService do
     it "does not include deleted projects" do
       project = create(:conversion_project, :deleted, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
 
-      projects_for_export = described_class.new.conversion_by_month_projects(month: 1, year: 2023)
+      projects_for_export = described_class.new.conversion_projects_by_significant_date(month: 1, year: 2023)
 
       expect(projects_for_export).to_not include(project)
     end

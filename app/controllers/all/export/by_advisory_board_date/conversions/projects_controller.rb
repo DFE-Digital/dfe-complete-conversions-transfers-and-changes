@@ -6,7 +6,7 @@ class All::Export::ByAdvisoryBoardDate::Conversions::ProjectsController < Applic
     @data = export_months.map do |month|
       {
         month: month,
-        count: service.grant_management_and_finance_unit_conversion_projects(month: month.month, year: month.year).count
+        count: service.conversion_projects_by_advisory_board_date(month: month.month, year: month.year).count
       }
     end
   end
@@ -19,7 +19,7 @@ class All::Export::ByAdvisoryBoardDate::Conversions::ProjectsController < Applic
   def csv
     authorize Project, :index?
 
-    projects = ProjectsForExportService.new.grant_management_and_finance_unit_conversion_projects(month: month, year: year)
+    projects = ProjectsForExportService.new.conversion_projects_by_advisory_board_date(month: month, year: year)
     csv = Export::Conversions::GrantManagementAndFinanceUnitCsvExportService.new(projects).call
 
     send_data csv, filename: "#{year}-#{month}_grant_management_and_finance_unit_conversions_export.csv", type: :csv, disposition: "attachment"
