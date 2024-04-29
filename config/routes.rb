@@ -34,6 +34,10 @@ Rails.application.routes.draw do
       get "team", action: :assign_team
       post "team", action: :update_team
     end
+    namespace :internal_contacts, path: "internal-contacts" do
+      get "assigned-user/edit", action: :edit_assigned_user
+      put "assigned-user/", action: :update_assigned_user
+    end
   end
 
   concern :informationable do

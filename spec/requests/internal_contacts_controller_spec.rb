@@ -25,7 +25,7 @@ RSpec.describe AssignmentsController, type: :request do
       context "when team leader" do
         it "has regional delivery officer and assign_to links" do
           expect(subject).to include(project_assign_regional_delivery_officer_path(project))
-          expect(subject).to include(project_assign_assigned_to_path(project))
+          expect(subject).to include(project_internal_contacts_assigned_user_edit_path(project))
         end
       end
 
@@ -34,7 +34,7 @@ RSpec.describe AssignmentsController, type: :request do
 
         it "does not have regional delivery officer link but does have assign_to link" do
           expect(subject).to_not include(project_assign_regional_delivery_officer_path(project))
-          expect(subject).to include(project_assign_assigned_to_path(project))
+          expect(subject).to include(project_internal_contacts_assigned_user_edit_path(project))
         end
       end
 
@@ -43,7 +43,7 @@ RSpec.describe AssignmentsController, type: :request do
 
         it "does not have regional delivery officer link but does have assign_to link" do
           expect(subject).to_not include(project_assign_regional_delivery_officer_path(project))
-          expect(subject).to include(project_assign_assigned_to_path(project))
+          expect(subject).to include(project_internal_contacts_assigned_user_edit_path(project))
         end
       end
     end

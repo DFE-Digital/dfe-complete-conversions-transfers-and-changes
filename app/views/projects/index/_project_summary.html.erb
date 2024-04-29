@@ -20,7 +20,7 @@
 
   <% if project.unassigned_to_user? && policy(:assignment).assign_assigned_to? && current_page?("/projects/unassigned") %>
     <%= link_to t("conversion_project.summary.assign"),
-          project_assign_assigned_to_path(project),
+          project_internal_contacts_assigned_user_edit_path(project),
           class: "govuk-button govuk-button--secondary",
           data: {module: "govuk-button"} %>
   <% end %>

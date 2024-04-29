@@ -46,9 +46,9 @@ RSpec.feature "Team leaders can assign users to project roles" do
       click_on "Change"
     end
 
-    expect(page).to have_current_path(project_assign_assigned_to_path(project))
+    expect(page).to have_current_path(project_internal_contacts_assigned_user_edit_path(project))
 
-    select caseworker.full_name, from: I18n.t("assignment.assign_assigned_to.title", school_name: project.establishment.name)
+    fill_in "Email of person", with: caseworker.email
 
     click_on "Continue"
 

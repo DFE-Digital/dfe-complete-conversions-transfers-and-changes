@@ -5,6 +5,16 @@ class AssignmentPolicy
     @user = user
   end
 
+  def edit_assigned_user?
+    return true if @user.is_service_support?
+
+    @user.has_role?
+  end
+
+  def update_assigned_user?
+    edit_assigned_user?
+  end
+
   def assign_team_leader?
     return true if @user.is_service_support?
 
@@ -26,13 +36,11 @@ class AssignmentPolicy
   end
 
   def assign_assigned_to?
-    return true if @user.is_service_support?
-
-    @user.has_role?
+    edit_assigned_user?
   end
 
   def update_assigned_to?
-    assign_assigned_to?
+    edit_assigned_user?
   end
 
   def assign_team?

@@ -6,10 +6,10 @@
             row.with_key { t("contact.internal_contacts.assigned_to") }
             row.with_value { display_name(project.assigned_to) }
             if project.assigned_to.present?
-              row.with_action(text: "Email", href: mail_to_path(project.assigned_to.email), visually_hidden_text: "assigned to")
+              row.with_action(text: "Email", href: mail_to_path(project.assigned_to.email), visually_hidden_text: "assigned to user")
             end
             if policy(:assignment).assign_assigned_to?
-              row.with_action(href: project_assign_assigned_to_path(project), visually_hidden_text: "assigned to")
+              row.with_action(href: project_internal_contacts_assigned_user_edit_path(project), visually_hidden_text: "assigned to user")
             end
           end
           summary_list.with_row do |row|

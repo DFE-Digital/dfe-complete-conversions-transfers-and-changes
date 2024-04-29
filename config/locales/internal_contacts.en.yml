@@ -1,0 +1,14 @@
+en:
+  internal_contacts:
+    edit_assigned_user_form:
+      title: Change assigned person for %{school_name}
+      email:
+        title: Email of person
+
+  activemodel:
+    errors:
+      models:
+        internal_contacts/edit_assigned_user_form:
+          attributes:
+            email:
+              not_assignable: Email is not assignable

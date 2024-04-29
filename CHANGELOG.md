@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Remove the "By month" view under Teams (viewable to users in a regional team
   or RCS only)
+- The no JavaScript fallback for assigning a user to a project no longer uses a
+  select, instead an email address must be entered.
 
 ## [Release-67][release-67]
 

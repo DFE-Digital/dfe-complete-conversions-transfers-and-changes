@@ -26,7 +26,7 @@
         <td class="govuk-table__cell"><%= t("project.table.body.type_name.#{project.type_locale}") %></td>
         <td class="govuk-table__cell"><%= project.establishment.region_name %></td>
         <td class="govuk-table__cell">
-          <%= link_to t("project.table.body.assign_html", school_name: project.establishment.name), project_assign_assigned_to_path(project) %>
+          <%= link_to t("project.table.body.assign_html", school_name: project.establishment.name), project_internal_contacts_assigned_user_edit_path(project) %>
         </td>
       </tr>
     <% end %>
