@@ -1,4 +1,4 @@
-class Export::Transfers::ByMonthCsvExportService < Export::CsvExportService
+class Export::Transfers::AllDataCsvExportService < Export::CsvExportService
   COLUMN_HEADERS = %i[
     school_name_with_academy_label
     school_urn_with_academy_label

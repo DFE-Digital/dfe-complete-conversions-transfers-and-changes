@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Export::Transfers::ByMonthCsvExportService do
+RSpec.describe Export::Transfers::AllDataCsvExportService do
   describe "#call" do
     before do
       mock_all_academies_api_responses
