@@ -155,7 +155,6 @@ en:
         unassigned: Unassigned
         completed: Completed
         by_user: By user
-        by_month: By month
         handed_over: Handed over
       your_projects:
         in_progress: In progress

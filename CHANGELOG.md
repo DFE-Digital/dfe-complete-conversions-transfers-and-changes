@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Remove the "By month" view under Teams (viewable to users in a regional team
+  or RCS only)
+
 ## [Release-67][release-67]
 
 ### Added
