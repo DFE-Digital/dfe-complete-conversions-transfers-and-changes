@@ -133,10 +133,6 @@ Rails.application.routes.draw do
             get "/", to: "projects#index"
           end
           namespace :by_month, path: "by-month" do
-            get "confirmed/", to: "projects#confirmed_next_month"
-            get "confirmed/:month/:year", to: "projects#confirmed", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
-            get "revised/:month/:year", to: "projects#revised", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}
-            get "revised/", to: "projects#revised_next_month"
             namespace :conversions do
               get "from/to", to: "projects#date_range_this_month", as: :date_range_this_month
               post "from/to", to: "projects#date_range_select", as: :date_range_select
