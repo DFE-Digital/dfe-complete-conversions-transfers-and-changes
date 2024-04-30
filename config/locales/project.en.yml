@@ -219,7 +219,6 @@ en:
         date_and_time: Date and time
         changed_by: Changed by
         previous_date: Previous date
-        revised_date: Revised date
         note: Note
         trn: TRN
       body:
