@@ -159,9 +159,6 @@ COPY doc ${APP_HOME}/doc
 # End
 
 # Copy specs
-COPY .eslintignore ${APP_HOME}/.eslintignore
-COPY .eslintrc.json ${APP_HOME}/.eslintrc.json
-COPY .prettierignore ${APP_HOME}/.prettierignore
 COPY .prettierrc ${APP_HOME}/.prettierrc
 COPY .rspec ${APP_HOME}/.rspec
 COPY spec ${APP_HOME}/spec
