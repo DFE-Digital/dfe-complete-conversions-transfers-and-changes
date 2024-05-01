@@ -286,6 +286,7 @@ Rails.application.routes.draw do
 
   # Search
   get "search", to: "search#results"
+  get "search/user/", to: "search#user"
 
   # Defines the root path route ("/")
   root "root#home"

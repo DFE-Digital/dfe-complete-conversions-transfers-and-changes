@@ -62,4 +62,94 @@ RSpec.describe SearchController, type: :request do
       end
     end
   end
+
+  describe "#user" do
+    let!(:active_user) { create(:user, team: :regional_casework_services, active: true, first_name: "First", last_name: "Last", email: "first.last@education.gov.uk") }
+    let!(:inactive_user) { create(:user, team: :regional_casework_services, active: false, email: "inactive.user@education.gov.uk") }
+    let!(:assignable_user) { create(:user, team: :regional_casework_services, active: true, assign_to_project: true, email: "assignable.user@education.gov.uk") }
+    let!(:unassignable_user) { create(:user, team: :service_support, active: true, assign_to_project: false, email: "unassignable.user@education.gov.uk") }
+
+    it "can search by first name" do
+      get "/search/user?query=first"
+
+      result = JSON.parse(response.body)
+
+      expect(result.count).to be 1
+      expect(result.first).to include active_user.email
+    end
+
+    it "can search by last name" do
+      get "/search/user?query=last"
+
+      result = JSON.parse(response.body)
+
+      expect(result.count).to be 1
+      expect(result.first).to include active_user.email
+    end
+
+    it "can search by email address" do
+      get "/search/user?query=first.last@education.gov.uk"
+
+      result = JSON.parse(response.body)
+
+      expect(result.count).to be 1
+      expect(result.first).to include active_user.email
+    end
+
+    it "returns all active users by default" do
+      get "/search/user?query=education.gov.uk"
+
+      expect(response.body).to include active_user.email
+      expect(response.body).to include assignable_user.email
+      expect(response.body).to include unassignable_user.email
+    end
+
+    it "returns only active users" do
+      get "/search/user?query=education.gov.uk"
+
+      expect(response.body).not_to include inactive_user.email
+    end
+
+    context "with the type set to assignable" do
+      it "returns only assignable users" do
+        get "/search/user?type=assignable&query=education.gov.uk"
+
+        expect(response.body).to include assignable_user.email
+        expect(response.body).not_to include unassignable_user.email
+      end
+    end
+
+    context "when there is no match" do
+      it "returns an empty set and success" do
+        get "/search/user?query=not-a-match"
+
+        result = JSON.parse(response.body)
+
+        expect(response.status).to be 200
+        expect(result).to eql([])
+      end
+    end
+
+    context "when the query is empty" do
+      it "returns an emmpty set and success" do
+        get "/search/user?query="
+
+        result = JSON.parse(response.body)
+
+        expect(response.status).to be 200
+        expect(result).to eql([])
+      end
+    end
+
+    context "when the query is not present" do
+      it "returns an emmpty set and success" do
+        get "/search/user"
+
+        result = JSON.parse(response.body)
+
+        expect(response.status).to be 200
+        expect(result).to eql([])
+      end
+    end
+  end
 end
