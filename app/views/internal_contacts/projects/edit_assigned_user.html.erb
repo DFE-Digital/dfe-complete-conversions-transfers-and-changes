@@ -9,7 +9,9 @@
 
       <%= form.govuk_error_summary %>
 
-      <%= form.govuk_text_field :email, label: {size: "m", text: t("internal_contacts.edit_assigned_user_form.email.title")}, width: 20 %>
+      <div id="assignment-form-group">
+        <%= form.govuk_text_field :email, label: {size: "m", text: t("internal_contacts.edit_assigned_user_form.email.title")}, width: 20 %>
+      </div>
 
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", @return_url %>
