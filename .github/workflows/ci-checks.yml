@@ -55,7 +55,7 @@ jobs:
       -
         name: Run linters and formaters
         run: |
-          docker run --rm complete-app:latest sh -c "bin/standardrb -f simple && bin/erblint --lint-all \
+          docker run --rm complete-app:latest /bin/bash -c "bin/standardrb -f simple && bin/erblint --lint-all \
           && yarn run lint:format && yarn run lint:js"
 
   static-analysis:
@@ -84,7 +84,7 @@ jobs:
       -
         name: Run Brakeman
         run: |
-          docker run --rm complete-app:latest bin/brakeman
+          docker run --rm complete-app:latest /bin/bash -c "bin/brakeman"
 
   specs:
     name: Specs and coverage
@@ -113,7 +113,7 @@ jobs:
         name: Run RSpec and Simplecov
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
-            run --name complete-app test bin/rspec
+            run --name complete-app test /bin/bash -c "bin/rails spec"
       -
         name: Grab coverage report from container
         run:
@@ -151,10 +151,14 @@ jobs:
           tags: complete-app:latest
           cache-from: type=gha
       -
-        name: Run RSpec AXE tests
+        name: Run RSpec Accessibility checks
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
-          run -e NO_COVERAGE=true --rm test bin/rspec --tag accessibility spec/accessibility
+          run -e NO_COVERAGE=true --rm test /bin/bash -c "bin/rails javascript:build && bin/rspec --tag accessibility"
+      -
+        name: Shutdown containers
+        run: docker compose -p complete-app down && docker compose -p complete-app rm
+
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest

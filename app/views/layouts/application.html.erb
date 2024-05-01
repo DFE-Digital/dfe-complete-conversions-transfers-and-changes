@@ -20,8 +20,10 @@
 
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "govuk-frontend/govuk/all" %>
+    <%= javascript_include_tag "dfefrontend" %>
 
     <%= render partial: "shared/google_tag_manager" if enable_google_tag_manager? %>
+    <%= javascript_include_tag "application", type: "module" %>
   </head>
 
   <body class="govuk-template__body ">
@@ -58,6 +60,5 @@
 
     <%= render partial: "shared/dfe_footer" %>
   </body>
-  <%= javascript_include_tag "application" %>
   <%= yield :footer_post_js %>
 </html>
