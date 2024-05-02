@@ -1,0 +1,76 @@
+class Export::Transfers::AllDataCsvExportService < Export::CsvExportService
+  COLUMN_HEADERS = %i[
+    school_name_with_academy_label
+    school_urn_with_academy_label
+    project_type
+    incoming_trust_name
+    outgoing_trust_name
+    local_authority_name
+    region
+    diocese_name
+    provisional_transfer_date
+    transfer_date
+    two_requires_improvement
+    inadequate_ofsted
+    financial_safeguarding_governance_issues
+    outgoing_trust_to_close
+    advisory_board_date
+    advisory_board_conditions
+    authority_to_proceed
+    school_type_with_academy_label
+    school_age_range
+    school_phase
+    school_address_1_with_academy_label
+    school_address_2_with_academy_label
+    school_address_3_with_academy_label
+    school_address_town_with_academy_label
+    school_address_county_with_academy_label
+    school_address_postcode_with_academy_label
+    school_sharepoint_link_with_academy_label
+    transfer_type
+    incoming_trust_ukprn
+    incoming_trust_identifier
+    incoming_trust_companies_house_number
+    incoming_trust_address_1
+    incoming_trust_address_2
+    incoming_trust_address_3
+    incoming_trust_address_town
+    incoming_trust_address_county
+    incoming_trust_address_postcode
+    incoming_trust_sharepoint_link
+    outgoing_trust_ukprn
+    outgoing_trust_identifier
+    outgoing_trust_companies_house_number
+    outgoing_trust_address_1
+    outgoing_trust_address_2
+    outgoing_trust_address_3
+    outgoing_trust_address_town
+    outgoing_trust_address_county
+    outgoing_trust_address_postcode
+    outgoing_trust_sharepoint_link
+    project_created_by_name
+    project_created_by_email
+    assigned_to_name
+    assigned_to_email
+    team_managing_the_project
+    academy_contact_name
+    academy_contact_email
+    local_authority_contact_name
+    local_authority_contact_email
+    incoming_trust_main_contact_name
+    incoming_trust_main_contact_email
+    outgoing_trust_main_contact_name
+    outgoing_trust_main_contact_email
+    solicitor_contact_name
+    solicitor_contact_email
+    diocese_contact_name
+    diocese_contact_email
+    director_of_child_services_name
+    director_of_child_services_email
+    director_of_child_services_role
+  ]
+
+  def initialize(projects)
+    @projects = projects
+  end
+end

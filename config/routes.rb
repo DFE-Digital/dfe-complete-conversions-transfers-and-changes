@@ -141,18 +141,14 @@ Rails.application.routes.draw do
               get "from/to", to: "projects#date_range_this_month", as: :date_range_this_month
               post "from/to", to: "projects#date_range_select", as: :date_range_select
               get "from/:from_month/:from_year/to/:to_month/:to_year", to: "projects#date_range", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range
-              get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
               get ":month/:year", to: "projects#single_month", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month
-              get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
               get "/", to: "projects#next_month", as: :next_month
             end
             namespace :transfers do
               get "from/to", to: "projects#date_range_this_month", as: :date_range_this_month
               post "from/to", to: "projects#date_range_select", as: :date_range_select
               get "from/:from_month/:from_year/to/:to_month/:to_year", to: "projects#date_range", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range
-              get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
               get ":month/:year", to: "projects#single_month", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month
-              get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
               get "/", to: "projects#next_month", as: :next_month
             end
           end
@@ -177,7 +173,7 @@ Rails.application.routes.draw do
           end
           namespace :export do
             get "/", to: "projects#index"
-            namespace :grant_management_and_finance_unit, path: "grant-management-and-finance-unit" do
+            namespace :by_advisory_board_date, path: "by-advisory-board-date" do
               namespace :conversions do
                 get "/", to: "projects#index"
                 get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
@@ -189,16 +185,28 @@ Rails.application.routes.draw do
                 get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
               end
             end
-            namespace :by_month, path: "by-month" do
+            namespace :by_significant_date, path: "by-significant-date" do
               namespace :transfers do
-                get "/", to: "projects#index"
-                get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-                get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+                namespace :all_data, path: "all-data" do
+                  get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
+                  get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
+                end
+                namespace :academies_due_to_transfer, path: "academies-due-to-transfer" do
+                  get "/", to: "projects#index"
+                  get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
+                  get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+                end
               end
               namespace :conversions do
-                get "/", to: "projects#index"
-                get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-                get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+                namespace :all_data, path: "all-data" do
+                  get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
+                  get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
+                end
+                namespace :schools_due_to_convert, path: "schools-due-to-convert" do
+                  get "/", to: "projects#index"
+                  get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
+                  get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
+                end
               end
             end
           end
