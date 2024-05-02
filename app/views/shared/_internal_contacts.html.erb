@@ -8,14 +8,14 @@
             if project.assigned_to.present?
               row.with_action(text: "Email", href: mail_to_path(project.assigned_to.email), visually_hidden_text: "assigned to user")
             end
-            if policy(:assignment).assign_assigned_to?
+            if policy(:assignment).edit_assigned_user?
               row.with_action(href: project_internal_contacts_assigned_user_edit_path(project), visually_hidden_text: "assigned to user")
             end
           end
           summary_list.with_row do |row|
             row.with_key { t("contact.internal_contacts.assigned_to_team") }
             row.with_value { t("teams.#{project.team}") }
-            if policy(:assignment).assign_assigned_to?
+            if policy(:assignment).edit_assigned_user?
               row.with_action(href: project_assign_team_path(project), visually_hidden_text: "assigned to team")
             end
           end
