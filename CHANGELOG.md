@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-68][release-68]
+
 ### Changed
 
 - Remove the "By month" view under Teams (viewable to users in a regional team
@@ -1838,7 +1840,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-67...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-68...HEAD
+[release-68]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-67...release-68
 [release-67]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-66...release-67
 [release-66]:
