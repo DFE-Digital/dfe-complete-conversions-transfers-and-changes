@@ -17,6 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The autocomplete for assigning a user to a project no longer loads all users
   onto the page, instead it fetches the users as they are typed.
 
+### Fixed
+
+- The assigned user autocomplete now works as expected when the project is not
+  assigned to a user.
+
 ## [Release-67][release-67]
 
 ### Added

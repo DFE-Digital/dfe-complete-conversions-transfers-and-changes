@@ -68,6 +68,8 @@ export class AssignUserAutocomplete {
   // when we load the form and switch to the autocomplete we only have the email address, this method
   // turns that into a user and returns a formatted value
   emailToUser = async (email) => {
+    if (!email) return
+
     const response = await fetch('/search/user?query=' + email)
     const results = await response.json()
     const user = results[0]
