@@ -4,8 +4,8 @@ import accessibleAutocomplete from 'accessible-autocomplete'
 // Use:
 //
 // autocomplete = new AssignUserAutocomplete
-// autocomplete.init('#id-of-outer-div')
-export class AssignUserAutocomplete {
+// autocomplete.init('#id-of-outer-div', 'form_and_email_field_name', 'Label for the field')
+export class UserAutocomplete {
   constructor () {
     this.initialEmail = ''
   }
@@ -16,7 +16,7 @@ export class AssignUserAutocomplete {
 
   // removes the fallback field, grabbing the value from it first and then creates and adds the
   // autocomplete
-  switchToAutocomplete = (element) => {
+  switchToAutocomplete = (element, field, label) => {
     // get the initial email address
     this.initialEmail = document.querySelector(`#${element} > div > input`).value
 
@@ -27,12 +27,12 @@ export class AssignUserAutocomplete {
     // add the autocomplete elements
     container.innerHTML += '<div class="govuk-form-group"></div>'
     const formGroup = document.querySelector('.govuk-form-group')
-    formGroup.innerHTML += '<label for="assign-user-autocomplete" class="govuk-label govuk-label--m">Assign to</label>'
-    formGroup.innerHTML += '<div id="assign-user-autocomplete-target" class="govuk-!-width-three-quarters"></div>'
+    formGroup.innerHTML += `<label for="user-autocomplete" class="govuk-label govuk-label--m">${label}</label>`
+    formGroup.innerHTML += '<div id="user-autocomplete-target" class="govuk-!-width-three-quarters"></div>'
 
     // we have to include a hidden field to actually submit the email
     // this hidden field has to conform to Rails conventions
-    formGroup.innerHTML += '<input type="hidden" name="internal_contacts_edit_assigned_user_form[email]" id="new-email-value">'
+    formGroup.innerHTML += `<input type="hidden" name="${field}" id="new-email-value">`
   }
 
   // return a formatted suggestion
@@ -87,12 +87,12 @@ export class AssignUserAutocomplete {
   }
 
   // main initialisation of the object, switches the form element to the autocomplete
-  init = async (element) => {
-    this.switchToAutocomplete(element)
+  init = async (element, field, label) => {
+    this.switchToAutocomplete(element, field, label)
 
     accessibleAutocomplete({
-      element: document.querySelector('#assign-user-autocomplete-target'),
-      id: 'assign-user-autocomplete',
+      element: document.querySelector('#user-autocomplete-target'),
+      id: 'user-autocomplete',
       source: this.suggest,
       minLength: 3,
       onConfirm: this.updateSubmittingValue,

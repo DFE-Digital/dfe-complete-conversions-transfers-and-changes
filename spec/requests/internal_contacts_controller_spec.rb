@@ -23,8 +23,8 @@ RSpec.describe AssignmentsController, type: :request do
       subject { response.body }
 
       context "when team leader" do
-        it "has regional delivery officer and assign_to links" do
-          expect(subject).to include(project_assign_regional_delivery_officer_path(project))
+        it "has added by and assign_to links" do
+          expect(subject).to include(project_internal_contacts_added_by_user_edit_path(project))
           expect(subject).to include(project_internal_contacts_assigned_user_edit_path(project))
         end
       end
@@ -32,8 +32,8 @@ RSpec.describe AssignmentsController, type: :request do
       context "when regional delivery officer" do
         let(:user) { create(:user, :regional_delivery_officer) }
 
-        it "does not have regional delivery officer link but does have assign_to link" do
-          expect(subject).to_not include(project_assign_regional_delivery_officer_path(project))
+        it "does not have added by link but does have assign_to link" do
+          expect(subject).to_not include(project_internal_contacts_added_by_user_edit_path(project))
           expect(subject).to include(project_internal_contacts_assigned_user_edit_path(project))
         end
       end
@@ -41,8 +41,8 @@ RSpec.describe AssignmentsController, type: :request do
       context "when caseworker" do
         let(:user) { create(:user, :caseworker) }
 
-        it "does not have regional delivery officer link but does have assign_to link" do
-          expect(subject).to_not include(project_assign_regional_delivery_officer_path(project))
+        it "does not have added by but does have assign_to link" do
+          expect(subject).to_not include(project_internal_contacts_added_by_user_edit_path(project))
           expect(subject).to include(project_internal_contacts_assigned_user_edit_path(project))
         end
       end
