@@ -13,14 +13,6 @@ class AssignmentPolicy
     edit_assigned_user?
   end
 
-  def assign_team_leader?
-    team_lead_or_service_support?
-  end
-
-  def update_team_leader?
-    assign_team_leader?
-  end
-
   def edit_added_by_user?
     team_lead_or_service_support?
   end

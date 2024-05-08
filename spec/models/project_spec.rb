@@ -7,7 +7,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:outgoing_trust_ukprn).of_type :integer }
     it { is_expected.to have_db_column(:significant_date).of_type :date }
     it { is_expected.to have_db_column(:caseworker_id).of_type :uuid }
-    it { is_expected.to have_db_column(:team_leader_id).of_type :uuid }
     it { is_expected.to have_db_column(:assigned_to_id).of_type :uuid }
     it { is_expected.to have_db_column(:assigned_at).of_type :datetime }
     it { is_expected.to have_db_column(:advisory_board_date).of_type :date }
@@ -30,7 +29,6 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:date_history).dependent(:destroy) }
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
-    it { is_expected.to belong_to(:team_leader).required(false) }
     it { is_expected.to belong_to(:assigned_to).required(false) }
     it { is_expected.to belong_to(:tasks_data).required(true) }
     it { is_expected.to belong_to(:main_contact).optional(true) }

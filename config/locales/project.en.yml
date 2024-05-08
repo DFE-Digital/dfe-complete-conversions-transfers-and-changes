@@ -164,8 +164,6 @@ en:
     assign:
       assigned_to:
         success: Project has been assigned successfully
-      team_leader:
-        success: Team leader has been assigned
       assigned_to_team:
         success: Project has been assigned to team successfully
     edit:

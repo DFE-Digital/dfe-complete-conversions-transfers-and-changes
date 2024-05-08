@@ -30,15 +30,9 @@ FactoryBot.define do
     end
 
     trait :without_any_assigned_roles do
-      team_leader { nil }
       regional_delivery_officer { nil }
       caseworker { nil }
       assigned_to { nil }
-    end
-
-    trait :with_team_lead_and_regional_delivery_officer_assigned do
-      team_leader { association :user, :team_leader }
-      regional_delivery_officer { association :user, :regional_delivery_officer }
     end
 
     trait :unassigned do
