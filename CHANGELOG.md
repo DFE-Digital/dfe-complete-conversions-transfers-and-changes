@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Add the Grape gem and demonstrate a simple Api endpoint in the application
+
 ## [Release-69][release-69]
 
 ### Changed

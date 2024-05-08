@@ -83,6 +83,9 @@ RSpec.configure do |config|
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
 
+  # Api specs are request specs
+  config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: /spec\/api/
+
   # cleanup Omniauth after each example
   config.after(:each) do |example|
     OmniAuth.config.mock_auth[:azure_activedirectory_v2] = nil
