@@ -146,6 +146,21 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
         expect(page).to have_content("No results found")
       end
     end
+
+    it "shows nothing when the project is not assigned" do
+      project = create(:conversion_project, assigned_to: nil)
+      visit project_path(project)
+      click_on "Internal contacts"
+      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+        click_on "Change"
+      end
+
+      fill_in "Assign to", with: user.email
+
+      within(autocomplete_first_suggestion) do
+        expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
+      end
+    end
   end
 
   def autocomplete_first_suggestion
