@@ -12,20 +12,20 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
     sleep(0.4)
   end
 
-  let(:project) { create(:conversion_project, assigned_to: user) }
+  let(:project) { create(:conversion_project, regional_delivery_officer: user) }
 
-  context "when they are a caseworker" do
-    let(:user) { create(:user, :caseworker) }
+  context "when they are service support" do
+    let(:user) { create(:user, :service_support) }
 
     scenario "by navigating to a project" do
       other_user = create(:user, :caseworker, email: "other.user@education.gov.uk")
 
       visit project_path(project)
       click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         click_on "Change"
       end
-      fill_in "Assign to", with: other_user.email
+      fill_in "Added by", with: other_user.email
 
       within("ul.autocomplete__menu") do
         expect(page).to have_content("#{other_user.first_name} #{other_user.last_name} (#{other_user.email})")
@@ -33,9 +33,8 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
       end
       click_button "Continue"
 
-      expect(page).to have_content("Project has been assigned successfully")
-      expect(page).to have_content("Not assigned to project")
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      expect(page).to have_content("Project has been updated successfully")
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         expect(page).to have_content(other_user.first_name)
       end
     end
@@ -49,10 +48,10 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
 
       visit project_path(project)
       click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         click_on "Change"
       end
-      fill_in "Assign to", with: other_user.email
+      fill_in "Added by", with: other_user.email
 
       within("ul.autocomplete__menu") do
         expect(page).to have_content("#{other_user.first_name} #{other_user.last_name} (#{other_user.email})")
@@ -60,16 +59,15 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
       end
       click_button "Continue"
 
-      expect(page).to have_content("Project has been assigned successfully")
-      expect(page).to have_content("Not assigned to project")
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      expect(page).to have_content("Project has been updated successfully")
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         expect(page).to have_content(other_user.first_name)
       end
     end
   end
 
   describe "autocompletion" do
-    let(:user) do
+    let(:user) {
       create(
         :user,
         :caseworker,
@@ -77,12 +75,18 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
         last_name: "Caseworker",
         email: "regional.caseworker@education.gov.uk"
       )
+    }
+
+    let(:operating_user) { create(:user, :team_leader) }
+
+    before do
+      sign_in_with_user(operating_user)
     end
 
     it "shows the current user" do
       visit project_path(project)
       click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         click_on "Change"
       end
 
@@ -94,11 +98,11 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
     it "searches by first name" do
       visit project_path(project)
       click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         click_on "Change"
       end
 
-      fill_in "Assign to", with: user.first_name
+      fill_in "Added by", with: user.first_name
 
       within(autocomplete_first_suggestion) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
@@ -108,11 +112,11 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
     it "searches by last name" do
       visit project_path(project)
       click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         click_on "Change"
       end
 
-      fill_in "Assign to", with: user.last_name
+      fill_in "Added by", with: user.last_name
 
       within(autocomplete_first_suggestion) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
@@ -122,11 +126,11 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
     it "searches by email address" do
       visit project_path(project)
       click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         click_on "Change"
       end
 
-      fill_in "Assign to", with: user.email
+      fill_in "Added by", with: user.email
 
       within(autocomplete_first_suggestion) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
@@ -136,29 +140,14 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
     it "shows no results found when there is no match" do
       visit project_path(project)
       click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
+      within("#projectInternalContacts dl.govuk-summary-list div:last-of-type") do
         click_on "Change"
       end
 
-      fill_in "Assign to", with: "Jane"
+      fill_in "Added by", with: "Jane"
 
       within(autocomplete_no_results) do
         expect(page).to have_content("No results found")
-      end
-    end
-
-    it "shows nothing when the project is not assigned" do
-      project = create(:conversion_project, assigned_to: nil)
-      visit project_path(project)
-      click_on "Internal contacts"
-      within("#projectInternalContacts dl.govuk-summary-list div:first-of-type") do
-        click_on "Change"
-      end
-
-      fill_in "Assign to", with: user.email
-
-      within(autocomplete_first_suggestion) do
-        expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
       end
     end
   end
