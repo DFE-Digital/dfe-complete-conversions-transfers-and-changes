@@ -4,6 +4,10 @@ en:
       title: Change assigned person for %{school_name}
       email:
         title: Email of person
+    edit_added_by_user_form:
+      title: Who added this project?
+      email:
+        title: Email of person
 
   activemodel:
     errors:
@@ -12,3 +16,7 @@ en:
           attributes:
             email:
               not_assignable: Email is not assignable
+        internal_contacts/edit_added_by_user_form:
+          attributes:
+            email:
+              not_assignable: User with this email cannot have added a project

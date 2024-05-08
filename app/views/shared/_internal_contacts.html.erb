@@ -23,10 +23,10 @@
             row.with_key { t("contact.internal_contacts.added_by") }
             row.with_value { display_name(project.regional_delivery_officer) }
             if project.regional_delivery_officer.present?
-              row.with_action(text: "Email", href: mail_to_path(project.regional_delivery_officer.email), visually_hidden_text: "regional delivery officer")
+              row.with_action(text: "Email", href: mail_to_path(project.regional_delivery_officer.email), visually_hidden_text: "added by user")
             end
-            if policy(:assignment).assign_regional_delivery_officer?
-              row.with_action(href: project_assign_regional_delivery_officer_path(project), visually_hidden_text: "regional delivery officer")
+            if policy(:assignment).edit_added_by_user?
+              row.with_action(href: project_internal_contacts_added_by_user_edit_path(project), visually_hidden_text: "added by user")
             end
           end
         end %>

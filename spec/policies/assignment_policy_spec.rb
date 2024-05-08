@@ -20,7 +20,7 @@ RSpec.describe AssignmentPolicy do
     end
   end
 
-  permissions :assign_regional_delivery_officer?, :update_regional_delivery_officer? do
+  permissions :edit_added_by_user?, :update_added_by_user? do
     it "grants access when the user is a team lead" do
       user = build(:user, :team_leader)
       expect(subject).to permit(user)

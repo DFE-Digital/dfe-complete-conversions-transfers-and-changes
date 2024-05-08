@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   select, instead an email address must be entered.
 - The autocomplete for assigning a user to a project no longer loads all users
   onto the page, instead it fetches the users as they are typed.
+- The no JavaScript fallback for editing the user who added a project no longer
+  uses a select, instead an email address must be entered.
 
 ### Fixed
 

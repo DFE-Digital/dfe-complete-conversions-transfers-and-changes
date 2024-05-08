@@ -18,9 +18,9 @@ RSpec.feature "Test assignment accessibility", driver: :headless_firefox, access
   end
 
   scenario "test change regional delivery officer for project page" do
-    visit project_assign_regional_delivery_officer_path(project)
+    visit project_internal_contacts_added_by_user_edit_path(project)
 
-    expect(page).to have_content("Change regional delivery officer")
+    expect(page).to have_content("Who added this project?")
     check_accessibility(page)
   end
 end

@@ -162,14 +162,15 @@ en:
       transfer_date:
         title: Transfer date
     assign:
-      regional_delivery_officer:
-        success: Regional delivery officer has been assigned
       assigned_to:
         success: Project has been assigned successfully
       team_leader:
         success: Team leader has been assigned
       assigned_to_team:
         success: Project has been assigned to team successfully
+    edit:
+      added_by:
+        success: Project has been updated successfully
     table:
       headers:
         school_name: School or academy

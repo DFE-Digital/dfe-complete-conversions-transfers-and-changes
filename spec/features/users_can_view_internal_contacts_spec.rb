@@ -22,7 +22,7 @@ RSpec.feature "Users can view internal contacts for a project" do
         expect(page).to have_link("Email assigned to", href: "mailto:#{project.assigned_to.email}")
 
         expect(page).to have_content(project.regional_delivery_officer.full_name)
-        expect(page).to have_link("Email regional delivery officer", href: "mailto:#{project.regional_delivery_officer.email}")
+        expect(page).to have_link("Email added by", href: "mailto:#{project.regional_delivery_officer.email}")
       end
     end
 

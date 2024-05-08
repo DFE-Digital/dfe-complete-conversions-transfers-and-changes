@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     namespace :internal_contacts, path: "internal-contacts" do
       get "assigned-user/edit", action: :edit_assigned_user
       put "assigned-user/", action: :update_assigned_user
+      get "added-by-user/edit", action: :edit_added_by_user
+      put "added-by-user/", action: :update_added_by_user
     end
   end
 

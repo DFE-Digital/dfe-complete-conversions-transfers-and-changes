@@ -8,46 +8,59 @@ RSpec.describe InternalContacts::ProjectsController, type: :request do
     mock_all_academies_api_responses
   end
 
-  it "redirects back from the internals contact tab" do
-    assignee = create(:user, :caseworker)
-    project = create(:conversion_project)
-    mock_session_with_return_url(project_internal_contacts_path(project))
+  describe "editing the assigned to user" do
+    it "redirects back from the internals contact tab" do
+      assignee = create(:user, :caseworker)
+      project = create(:conversion_project)
+      mock_session_with_return_url(project_internal_contacts_path(project))
 
-    put project_internal_contacts_assigned_user_path(project),
-      params: {internal_contacts_edit_assigned_user_form: {email: assignee.email}}
+      put project_internal_contacts_assigned_user_path(project),
+        params: {internal_contacts_edit_assigned_user_form: {email: assignee.email}}
 
-    expect(response).to redirect_to(project_internal_contacts_path(project))
+      expect(response).to redirect_to(project_internal_contacts_path(project))
+    end
+
+    it "redirects back from the unassigned projects view" do
+      assignee = create(:user, :caseworker)
+      project = create(:conversion_project)
+      mock_session_with_return_url(unassigned_team_projects_url)
+
+      put project_internal_contacts_assigned_user_path(project),
+        params: {internal_contacts_edit_assigned_user_form: {email: assignee.email}}
+
+      expect(response).to redirect_to(unassigned_team_projects_url)
+    end
+
+    it "does not redirect to paths not on the application host, defaulting back to internal contacts instead" do
+      assignee = create(:user, :caseworker)
+      project = create(:conversion_project)
+      mock_session_with_return_url("https://evil.com/hack")
+
+      put project_internal_contacts_assigned_user_path(project),
+        params: {internal_contacts_edit_assigned_user_form: {email: assignee.email}}
+
+      expect(response).to redirect_to(project_internal_contacts_path(project))
+    end
+
+    it "shows the edit form when invalid" do
+      project = create(:conversion_project)
+
+      put project_internal_contacts_assigned_user_path(project),
+        params: {internal_contacts_edit_assigned_user_form: {email: "not.valid@other-domain.com"}}
+
+      expect(response).to render_template(:edit_assigned_user)
+    end
   end
 
-  it "redirects back from the unassigned projects view" do
-    assignee = create(:user, :caseworker)
-    project = create(:conversion_project)
-    mock_session_with_return_url(unassigned_team_projects_url)
+  describe "editing the added by user" do
+    it "shows the edit form when invalid" do
+      project = create(:conversion_project)
 
-    put project_internal_contacts_assigned_user_path(project),
-      params: {internal_contacts_edit_assigned_user_form: {email: assignee.email}}
+      put project_internal_contacts_added_by_user_path(project),
+        params: {internal_contacts_edit_added_by_user_form: {email: "not.valid@other-domain.com"}}
 
-    expect(response).to redirect_to(unassigned_team_projects_url)
-  end
-
-  it "does not redirect to paths not on the application host, defaulting back to internal contacts instead" do
-    assignee = create(:user, :caseworker)
-    project = create(:conversion_project)
-    mock_session_with_return_url("https://evil.com/hack")
-
-    put project_internal_contacts_assigned_user_path(project),
-      params: {internal_contacts_edit_assigned_user_form: {email: assignee.email}}
-
-    expect(response).to redirect_to(project_internal_contacts_path(project))
-  end
-
-  it "shows the edit form when invalid" do
-    project = create(:conversion_project)
-
-    put project_internal_contacts_assigned_user_path(project),
-      params: {internal_contacts_edit_assigned_user_form: {email: "not.valid@other-domain.com"}}
-
-    expect(response).to render_template(:edit_assigned_user)
+      expect(response).to render_template(:edit_added_by_user)
+    end
   end
 
   def mock_session_with_return_url(url)
