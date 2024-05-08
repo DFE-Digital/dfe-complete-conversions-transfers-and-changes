@@ -27,8 +27,6 @@ Rails.application.routes.draw do
     namespace :assign, controller: "/assignments" do
       get "team-lead", action: :assign_team_leader
       post "team-lead", action: :update_team_leader
-      get "regional-delivery-officer", action: :assign_regional_delivery_officer
-      post "regional-delivery-officer", action: :update_regional_delivery_officer
       get "team", action: :assign_team
       post "team", action: :update_team
     end

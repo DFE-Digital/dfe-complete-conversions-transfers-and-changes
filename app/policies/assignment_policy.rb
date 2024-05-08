@@ -31,14 +31,6 @@ class AssignmentPolicy
     edit_added_by_user?
   end
 
-  def assign_regional_delivery_officer?
-    edit_added_by_user?
-  end
-
-  def update_regional_delivery_officer?
-    edit_added_by_user?
-  end
-
   def assign_team?
     return true if @user.is_service_support?
 
