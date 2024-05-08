@@ -34,6 +34,14 @@ class InternalContacts::ProjectsController < ApplicationController
     end
   end
 
+  def edit_team
+  end
+
+  def update_team
+    @project.update(edit_team_params)
+    redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.assigned_to_team.success")
+  end
+
   private def set_return_url
     @return_url = url_from(session[:return_url]) || project_internal_contacts_path(@project)
   end
@@ -44,6 +52,10 @@ class InternalContacts::ProjectsController < ApplicationController
 
   private def edit_added_by_user_params
     params.require(:internal_contacts_edit_added_by_user_form).permit(:email)
+  end
+
+  private def edit_team_params
+    params.require(:conversion_project).permit(:team) || params.require(:transfer_project).permit(:team)
   end
 
   private def find_project
