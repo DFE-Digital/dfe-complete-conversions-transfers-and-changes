@@ -25,9 +25,9 @@ if [ -n "$AUTO_FIX" ]; then
   yarn run lint:format:fix
   echo "==> finished Prettier"
 
-  echo "==> running eslint"
+  echo "==> running StandardJS"
   yarn run lint:js:fix
-  echo "==> finished eslint"
+  echo "==> finished StandardJS"
 
 else
   echo "--> Auto fixing is disabled"
@@ -44,9 +44,9 @@ else
   yarn run lint:format
   echo "==> finished Prettier"
 
-  echo "==> running eslint"
+  echo "==> running StandardJS"
   yarn run lint:js
-  echo "==> finished eslint"
+  echo "==> finished StandardJS"
 
 fi
 

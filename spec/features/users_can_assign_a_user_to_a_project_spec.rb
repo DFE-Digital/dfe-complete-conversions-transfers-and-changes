@@ -53,7 +53,7 @@ RSpec.feature "Any user can assign any other user to a project" do
       click_on "Change"
     end
 
-    select another_user.full_name
+    fill_in "Email of person", with: another_user.email
     click_on "Continue"
 
     expect(page).to have_content("Project has been assigned successfully")
@@ -65,7 +65,7 @@ RSpec.feature "Any user can assign any other user to a project" do
     expect(page).to have_content(project.urn)
     click_on "Assign #{project.establishment.name} project"
 
-    select another_user.full_name
+    fill_in "Email of person", with: another_user.email
     click_on "Continue"
 
     expect(page).to have_content("Project has been assigned successfully")

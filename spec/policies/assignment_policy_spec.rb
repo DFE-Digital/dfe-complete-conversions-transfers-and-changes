@@ -37,7 +37,7 @@ RSpec.describe AssignmentPolicy do
     end
   end
 
-  permissions :assign_assigned_to?, :update_assigned_to? do
+  permissions :edit_assigned_user?, :update_assigned_user? do
     it "grants access when the user is a team lead" do
       user = build(:user, :caseworker)
       expect(subject).to permit(user)

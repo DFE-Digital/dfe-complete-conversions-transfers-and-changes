@@ -4,6 +4,10 @@ module SignInHelpers
     allow_any_instance_of(ApplicationController).to receive(:current_user_id).and_return(user.id)
   end
 
+  def sign_out
+    visit "/sign-out"
+  end
+
   def mock_successful_authentication(email_address, groups = nil)
     test_groups = groups || ["test-group-id-one", "test-group-id-two"]
 

@@ -24,23 +24,6 @@ class AssignmentsController < ApplicationController
     redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.regional_delivery_officer.success")
   end
 
-  def assign_assigned_to
-    @all_assignable_users = User.assignable
-  end
-
-  def update_assigned_to
-    authorize @project, :update_assigned_to?
-    @project.update(assigned_to_params.except(:return_to))
-    @project.update(assigned_at: DateTime.now) if @project.assigned_at.nil?
-
-    assignee = @project.assigned_to
-    AssignedToMailer.assigned_notification(assignee, @project).deliver_later if assignee&.active
-
-    return_to = assigned_to_params[:return_to] || project_internal_contacts_path(@project)
-
-    redirect_to return_to, notice: I18n.t("project.assign.assigned_to.success")
-  end
-
   def assign_team
   end
 
@@ -63,11 +46,6 @@ class AssignmentsController < ApplicationController
   private def regional_delivery_officer_params
     return params.require(:conversion_project).permit(:regional_delivery_officer_id) if params[:conversion_project].present?
     params.require(:transfer_project).permit(:regional_delivery_officer_id) if params[:transfer_project].present?
-  end
-
-  private def assigned_to_params
-    return params.require(:conversion_project).permit(:assigned_to_id, :return_to) if params[:conversion_project].present?
-    params.require(:transfer_project).permit(:assigned_to_id, :return_to) if params[:transfer_project].present?
   end
 
   private def assigned_to_team_params

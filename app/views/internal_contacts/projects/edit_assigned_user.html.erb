@@ -1,0 +1,21 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">URN <%= @project.urn %></span>
+    <h1 class="govuk-heading-xl">
+      <%= t("internal_contacts.edit_assigned_user_form.title", school_name: @project.establishment.name) %>
+    </h1>
+
+    <%= form_with model: @edit_form, url: project_internal_contacts_assigned_user_path(@project), method: :put do |form| %>
+
+      <%= form.govuk_error_summary %>
+
+      <div id="assignment-form-group">
+        <%= form.govuk_text_field :email, label: {size: "m", text: t("internal_contacts.edit_assigned_user_form.email.title")}, width: 20 %>
+      </div>
+
+      <%= form.govuk_submit do %>
+        <%= govuk_link_to "Cancel", @return_url %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

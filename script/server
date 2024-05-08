@@ -7,4 +7,4 @@
 script/start_backing_services
 
 # run the applcation
-bin/rails server
+bin/dev
