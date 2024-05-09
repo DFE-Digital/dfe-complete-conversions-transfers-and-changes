@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add the Grape gem and demonstrate a simple Api endpoint in the application
+- Add simple authentication to the Api endpoints using an Api key
 
 ## [Release-69][release-69]
 
