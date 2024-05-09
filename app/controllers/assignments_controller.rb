@@ -13,16 +13,6 @@ class AssignmentsController < ApplicationController
     redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.team_leader.success")
   end
 
-  def assign_team
-  end
-
-  def update_team
-    authorize @project, :update_assigned_to?
-
-    @project.update(assigned_to_team_params)
-    redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.assigned_to_team.success")
-  end
-
   private def authorize_user
     authorize :assignment
   end
@@ -30,11 +20,6 @@ class AssignmentsController < ApplicationController
   private def team_leader_params
     return params.require(:conversion_project).permit(:team_leader_id) if params[:conversion_project].present?
     params.require(:transfer_project).permit(:team_leader_id) if params[:transfer_project].present?
-  end
-
-  private def assigned_to_team_params
-    return params.require(:transfer_project).permit(:team) if params[:transfer_project].present?
-    params.require(:conversion_project).permit(:team) if params[:conversion_project].present?
   end
 
   private def find_project

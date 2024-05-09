@@ -15,8 +15,8 @@
           summary_list.with_row do |row|
             row.with_key { t("contact.internal_contacts.assigned_to_team") }
             row.with_value { t("teams.#{project.team}") }
-            if policy(:assignment).edit_assigned_user?
-              row.with_action(href: project_assign_team_path(project), visually_hidden_text: "assigned to team")
+            if policy(:assignment).edit_team?
+              row.with_action(href: project_internal_contacts_team_edit_path(project), visually_hidden_text: "assigned to team")
             end
           end
           summary_list.with_row do |row|
