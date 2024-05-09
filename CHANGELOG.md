@@ -6,12 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
-## [Release-68][release-68]
+## [Release-69][release-69]
 
 ### Changed
 
-- Remove the "By month" view under Teams (viewable to users in a regional team
-  or RCS only)
 - The no JavaScript fallback for assigning a user to a project no longer uses a
   select, instead an email address must be entered.
 - The autocomplete for assigning a user to a project no longer loads all users
@@ -29,6 +27,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   assigned to a user.
 - The edit project team now works for transfer projects as well as conversion
   projects.
+
+## [Release-68][release-68]
+
+### Changed
+
+- Remove the "By month" view under Teams (viewable to users in a regional team
+  or RCS only)
 
 ## [Release-67][release-67]
 
@@ -1857,7 +1862,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-68...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-69...HEAD
+[release-69]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-68...release-69
 [release-68]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-67...release-68
 [release-67]:
