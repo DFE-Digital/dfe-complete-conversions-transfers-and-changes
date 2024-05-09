@@ -38,7 +38,7 @@ class InternalContacts::ProjectsController < ApplicationController
   end
 
   def update_team
-    @project.update(edit_team_params)
+    @project.update(edit_conversion_team_params || edit_transfer_team_params)
     redirect_to project_internal_contacts_path(@project), notice: I18n.t("project.assign.assigned_to_team.success")
   end
 
@@ -54,8 +54,12 @@ class InternalContacts::ProjectsController < ApplicationController
     params.require(:internal_contacts_edit_added_by_user_form).permit(:email)
   end
 
-  private def edit_team_params
-    params.require(:conversion_project).permit(:team) || params.require(:transfer_project).permit(:team)
+  private def edit_conversion_team_params
+    params.require(:conversion_project).permit(:team) if params[:conversion_project].present?
+  end
+
+  private def edit_transfer_team_params
+    params.require(:transfer_project).permit(:team) if params[:transfer_project].present?
   end
 
   private def find_project
