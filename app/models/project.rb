@@ -36,7 +36,6 @@ class Project < ApplicationRecord
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
 
   belongs_to :caseworker, class_name: "User", optional: true
-  belongs_to :team_leader, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
   belongs_to :assigned_to, class_name: "User", optional: true
 

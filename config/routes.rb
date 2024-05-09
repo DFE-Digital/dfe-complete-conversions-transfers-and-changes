@@ -24,10 +24,6 @@ Rails.application.routes.draw do
   end
 
   concern :assignable do
-    namespace :assign, controller: "/assignments" do
-      get "team-lead", action: :assign_team_leader
-      post "team-lead", action: :update_team_leader
-    end
     namespace :internal_contacts, path: "internal-contacts" do
       get "assigned-user/edit", action: :edit_assigned_user
       put "assigned-user/", action: :update_assigned_user
