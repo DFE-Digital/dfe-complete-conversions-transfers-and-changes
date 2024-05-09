@@ -10,7 +10,7 @@
   "devDependencies": {
     "prettier": "^3.0.2",
     "standard": "^17.1.0",
-    "esbuild": "^0.20.2"
+    "esbuild": "^0.21.0"
   },
   "dependencies": {
     "@ministryofjustice/frontend": "^1.8.0",
