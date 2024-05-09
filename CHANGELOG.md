@@ -27,6 +27,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The assigned user autocomplete now works as expected when the project is not
   assigned to a user.
+- The edit project team now works for transfer projects as well as conversion
+  projects.
 
 ## [Release-67][release-67]
 

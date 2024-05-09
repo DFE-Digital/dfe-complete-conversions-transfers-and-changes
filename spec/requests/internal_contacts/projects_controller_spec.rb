@@ -63,6 +63,24 @@ RSpec.describe InternalContacts::ProjectsController, type: :request do
     end
   end
 
+  describe "editing the team" do
+    it "handles both conversions and transfers" do
+      transfer_project = create(:transfer_project)
+
+      put project_internal_contacts_team_path(transfer_project),
+        params: {transfer_project: {team: "regional_casework_services"}}
+
+      expect(response).to redirect_to(project_internal_contacts_path(transfer_project))
+
+      conversion_project = create(:conversion_project)
+
+      put project_internal_contacts_team_path(conversion_project),
+        params: {conversion_project: {team: "regional_casework_services"}}
+
+      expect(response).to redirect_to(project_internal_contacts_path(conversion_project))
+    end
+  end
+
   def mock_session_with_return_url(url)
     fake_session = double("session")
     allow(fake_session).to receive(:[]).with(:return_url).and_return(url)
