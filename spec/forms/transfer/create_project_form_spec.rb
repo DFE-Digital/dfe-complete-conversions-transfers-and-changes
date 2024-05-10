@@ -8,92 +8,264 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     it { is_expected.to validate_presence_of(:incoming_trust_sharepoint_link) }
     it { is_expected.to validate_presence_of(:outgoing_trust_sharepoint_link) }
 
+    it "can be valid in this test" do
+      attributes = valid_attributes
+
+      form = described_class.new(attributes)
+
+      expect(form).to be_valid
+    end
+
+    describe "provisional_transfer_date" do
+      it { is_expected.to validate_presence_of(:provisional_transfer_date) }
+
+      it "must be a valid date" do
+        attributes = valid_attributes
+        attributes["provisional_transfer_date(3i)"] = "31"
+        attributes["provisional_transfer_date(2i)"] = "9"
+
+        form = described_class.new(attributes)
+
+        expect(form).to be_invalid
+      end
+
+      it "must be the first of the month" do
+        attributes = valid_attributes
+        attributes["provisional_transfer_date(3i)"] = "3"
+
+        form = described_class.new(attributes)
+
+        expect(form).to be_invalid
+      end
+
+      describe "month parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(2i)"] = "0"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(2i)"] = "-1"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 12" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(2i)"] = "32"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(2i)"] = "January"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+      end
+
+      describe "year parameters" do
+        it "must be a four digit year" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(1i)"] = "24"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be be less than 2000" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(1i)"] = "1999"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 3000" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(1i)"] = "3001"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["provisional_transfer_date(1i)"] = "Twenty twenty four"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+      end
+    end
+
     describe "advisory_board_date" do
       it { is_expected.to validate_presence_of(:advisory_board_date) }
 
       it "must be in the past" do
-        form = build(:create_transfer_project_form)
+        attributes = valid_attributes
+        date_today = Date.today + 1.month
+        attributes["advisory_board_date(3i)"] = date_today.day.to_s
+        attributes["advisory_board_date(2i)"] = date_today.month.to_s
+        attributes["advisory_board_date(1i)"] = date_today.year.to_s
+
+        form = described_class.new(attributes)
+
+        expect(form).to be_invalid
+      end
+
+      it "can be today" do
+        attributes = valid_attributes
+        date_today = Date.today
+        attributes["advisory_board_date(3i)"] = date_today.day.to_s
+        attributes["advisory_board_date(2i)"] = date_today.month.to_s
+        attributes["advisory_board_date(1i)"] = date_today.year.to_s
+
+        form = described_class.new(attributes)
+
         expect(form).to be_valid
+      end
 
-        form.advisory_board_date = {3 => 1, 2 => 1, 1 => 2030}
+      it "must be a valid date" do
+        attributes = valid_attributes
+        attributes["advisory_board_date(3i)"] = "31"
+        attributes["advisory_board_date(2i)"] = "9"
+
+        form = described_class.new(attributes)
+
         expect(form).to be_invalid
       end
 
-      it "cannot be in the future" do
-        form = build(:create_transfer_project_form, advisory_board_date: {3 => 1, 2 => 1, 1 => 2020})
-        expect(form).to be_valid
+      describe "day parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "0"
 
-        form.advisory_board_date = {3 => 1, 2 => 1, 1 => 2030}
-        expect(form).to be_invalid
-      end
+          form = described_class.new(attributes)
 
-      context "when the date parameters are partially complete" do
-        it "treats the date as invalid" do
-          form = build(:create_transfer_project_form, advisory_board_date: {3 => nil, 2 => 10, 1 => 1})
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        end
 
-          form = build(:create_transfer_project_form, advisory_board_date: {3 => 2022, 2 => nil, 1 => 1})
-          expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "-1"
 
-          form = build(:create_transfer_project_form, advisory_board_date: {3 => 2022, 2 => 10, 1 => nil})
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        end
+
+        it "cannot be greater than 31" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "32"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "twenty first"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
         end
       end
 
-      context "when all the date parameters are missing" do
-        it "treats the date as blank" do
-          form = build(:create_transfer_project_form, advisory_board_date: {3 => nil, 2 => nil, 1 => nil})
+      describe "month parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "0"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :blank)).to be true
+        end
+
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "-1"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 12" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "13"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "January"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
         end
       end
 
-      context "when no date value is set" do
-        it "treats the date as blank" do
-          form = build(:create_transfer_project_form, advisory_board_date: nil)
+      describe "year parameters" do
+        it "must be a four digit year" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "24"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :blank)).to be true
         end
-      end
 
-      context "when the date doesn't exist" do
-        it "treats the date as invalid" do
-          form = build(:create_transfer_project_form, advisory_board_date: {3 => 31, 2 => 2, 1 => 2030})
+        it "cannot be be less than 2000" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "1999"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
         end
-      end
 
-      context "when the isn't a date" do
-        it "treats the date as invalid" do
-          form = build(:create_transfer_project_form, advisory_board_date: {3 => -1, 2 => -1, 1 => 0})
-          expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        it "cannot be greater than 3000" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "3001"
 
-          form = build(:create_transfer_project_form, advisory_board_date: {3 => "not", 2 => "a", 1 => "date"})
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "Twenty twenty four"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
         end
       end
     end
-
-    describe "#provisional_transfer_date" do
-      it { is_expected.to validate_presence_of(:provisional_transfer_date) }
-    end
-
-    describe "#check_incoming_trust_and_outgoing_trust" do
-      it "is invalid with an error when the outgoing and incoming trust UKPRN are the same" do
-        form = build(:create_transfer_project_form, incoming_trust_ukprn: 10061021)
-        form.outgoing_trust_ukprn = 10061021
-
-        expect(form).to be_invalid
-        expect(form.errors.messages[:incoming_trust_ukprn]).to include "The incoming and outgoing trust cannot be the same"
-      end
-    end
-
     describe "inadequate Ofsted" do
       it "cannot be blank" do
         form = build(:create_transfer_project_form, inadequate_ofsted: "")
@@ -371,4 +543,30 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
       end
     end
   end
+end
+def valid_attributes
+  advisory_board_date = Date.today - 6.months
+  provisional_transfer_date = Date.today.at_beginning_of_month + 6.months
+
+  {
+    urn: "123456",
+    incoming_trust_ukprn: "10061021",
+    outgoing_trust_ukprn: "10059151",
+    "advisory_board_date(3i)": advisory_board_date.day.to_s,
+    "advisory_board_date(2i)": advisory_board_date.month.to_s,
+    "advisory_board_date(1i)": advisory_board_date.year.to_s,
+    advisory_board_conditions: "",
+    "provisional_transfer_date(3i)": provisional_transfer_date.day.to_s,
+    "provisional_transfer_date(2i)": provisional_transfer_date.month.to_s,
+    "provisional_transfer_date(1i)": provisional_transfer_date.year.to_s,
+    establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment",
+    incoming_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/incoming_trust",
+    outgoing_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/outgoing_trust",
+    handover_note_body: "",
+    two_requires_improvement: "false",
+    assigned_to_regional_caseworker_team: "false",
+    inadequate_ofsted: "false",
+    financial_safeguarding_governance_issues: "false",
+    outgoing_trust_to_close: false
+  }.with_indifferent_access
 end

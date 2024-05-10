@@ -1,6 +1,5 @@
 class Transfer::CreateProjectForm < CreateProjectForm
-  attr_reader :provisional_transfer_date
-
+  attribute :provisional_transfer_date, :date
   attribute :outgoing_trust_sharepoint_link
   attribute :two_requires_improvement, :boolean
   attribute :inadequate_ofsted, :boolean
@@ -26,9 +25,16 @@ class Transfer::CreateProjectForm < CreateProjectForm
 
   validates_with FormAMultiAcademyTrustNameValidator
 
-  def initialize(params = {})
-    @attributes_with_invalid_values = []
-    super(params)
+  def initialize(attributes = {})
+    # if any of the three date fields are invalid, clear them all to prevent multiparameter
+    # assignment errors, this essential makes the provisonal date nil, but is the best we can do
+    if GovukDateFieldParameters.new(:provisional_transfer_date, attributes).invalid?
+      attributes[:"provisional_transfer_date(3i)"] = ""
+      attributes[:"provisional_transfer_date(2i)"] = ""
+      attributes[:"provisional_transfer_date(1i)"] = ""
+    end
+
+    super(attributes)
   end
 
   def save
@@ -67,14 +73,6 @@ class Transfer::CreateProjectForm < CreateProjectForm
     end
 
     @project
-  end
-
-  def provisional_transfer_date=(hash)
-    @provisional_transfer_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
-  rescue NoMethodError
-    nil
-  rescue TypeError, Date::Error, NegativeValueError
-    @attributes_with_invalid_values << :provisional_transfer_date
   end
 
   private def notify_team_leaders(project)
