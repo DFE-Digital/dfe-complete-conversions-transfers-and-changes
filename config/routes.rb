@@ -4,6 +4,7 @@ YEAR_2000_2499_REGEX = /(?:(?:20|21|23|24)[0-9]{2})/
 
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  mount Api => "/"
 
   concern :has_destroy_confirmation do
     get "/delete", action: :confirm_destroy
