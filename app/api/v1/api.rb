@@ -4,5 +4,6 @@ module V1
 
     mount Auth
     mount Healthcheck
+    mount Conversions
   end
 end
