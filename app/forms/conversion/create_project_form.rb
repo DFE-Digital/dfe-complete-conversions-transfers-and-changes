@@ -1,9 +1,7 @@
 class Conversion::CreateProjectForm < CreateProjectForm
   attribute :directive_academy_order, :boolean
-  attribute :region
   attribute :two_requires_improvement, :boolean
-
-  attr_reader :provisional_conversion_date
+  attribute :provisional_conversion_date, :date
 
   validates :provisional_conversion_date, presence: true
   validates :provisional_conversion_date, first_day_of_month: true
@@ -16,21 +14,16 @@ class Conversion::CreateProjectForm < CreateProjectForm
 
   validates_with FormAMultiAcademyTrustNameValidator
 
-  def initialize(params = {})
-    @attributes_with_invalid_values = []
-    super(params)
-  end
+  def initialize(attributes = {})
+    # if any of the three date fields are invalid, clear them all to prevent multiparameter
+    # assignment errors, this essential makes the provisonal date nil, but is the best we can do
+    if GovukDateFieldParameters.new(:provisional_conversion_date, attributes).invalid?
+      attributes[:"provisional_conversion_date(3i)"] = ""
+      attributes[:"provisional_conversion_date(2i)"] = ""
+      attributes[:"provisional_conversion_date(1i)"] = ""
+    end
 
-  def provisional_conversion_date=(hash)
-    @provisional_conversion_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
-  rescue NoMethodError
-    nil
-  rescue TypeError, Date::Error
-    @attributes_with_invalid_values << :provisional_conversion_date
-  end
-
-  def region
-    @region = establishment.region_code
+    super(attributes)
   end
 
   private def notify_team_leaders(project)

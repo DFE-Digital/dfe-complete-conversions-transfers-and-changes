@@ -12,6 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add simple authentication to the Api endpoints using an Api key
 - Add a task to generate Api keys, along with documentation
 
+### Fixed
+
+- When creating a new project, two digit dates are no longer accepted which
+  means incorrect dates cannot be submitted.
+
 ## [Release-69][release-69]
 
 ### Changed

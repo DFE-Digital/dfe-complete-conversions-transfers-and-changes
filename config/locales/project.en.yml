@@ -435,7 +435,7 @@ en:
       regional_delivery_officer_id:
         blank: Choose a regional delivery officer
       advisory_board_date:
-        blank: Enter a date for the advisory board, like 01 04 2023
+        blank: Enter a date for the advisory board, like 1 4 2023
         must_be_in_the_past: The advisory board date must be in the past
         must_be_within_parameters: The advisory board date cannot be before 2010
         invalid: Enter a valid date, like 1 4 2023

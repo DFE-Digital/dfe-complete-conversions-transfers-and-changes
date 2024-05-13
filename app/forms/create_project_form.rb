@@ -16,8 +16,7 @@ class CreateProjectForm
   attribute :assigned_to_regional_caseworker_team, :boolean
   attribute :new_trust_reference_number
   attribute :new_trust_name
-
-  attr_reader :advisory_board_date
+  attribute :advisory_board_date, :date
 
   validates :urn, presence: true, urn: true
   validates :incoming_trust_ukprn, presence: true, ukprn: true, unless: -> { new_trust_reference_number.present? }
@@ -33,22 +32,24 @@ class CreateProjectForm
 
   validate :establishment_exists, if: -> { urn.present? }
 
-  validate :multiparameter_date_attributes_values
-
   validates :new_trust_reference_number, presence: true, unless: -> { incoming_trust_ukprn.present? }
   validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
   validates :new_trust_name, presence: true, unless: -> { incoming_trust_ukprn.present? }
 
-  def region
-    @region = establishment.region_code
+  def initialize(attributes = {})
+    # if any of the three date fields are invalid, clear them all to prevent multiparameter
+    # assignment errors
+    if GovukDateFieldParameters.new(:advisory_board_date, attributes).invalid?
+      attributes[:"advisory_board_date(3i)"] = ""
+      attributes[:"advisory_board_date(2i)"] = ""
+      attributes[:"advisory_board_date(1i)"] = ""
+    end
+
+    super(attributes)
   end
 
-  def advisory_board_date=(hash)
-    @advisory_board_date = Date.new(value_at_position(hash, 1), value_at_position(hash, 2), value_at_position(hash, 3))
-  rescue NoMethodError
-    nil
-  rescue TypeError, Date::Error, NegativeValueError
-    @attributes_with_invalid_values << :advisory_board_date
+  def region
+    @region = establishment.region_code
   end
 
   private def establishment
@@ -70,16 +71,5 @@ class CreateProjectForm
 
   private def urn_unique_for_in_progress_transfers
     errors.add(:urn, :duplicate) if Transfer::Project.active.where(urn: urn).any?
-  end
-
-  private def value_at_position(hash, position)
-    value = hash[position]
-    return NegativeValueError if value.to_i < 0
-    value
-  end
-
-  private def multiparameter_date_attributes_values
-    return if @attributes_with_invalid_values.empty?
-    @attributes_with_invalid_values.each { |attribute| errors.add(attribute, :invalid) }
   end
 end

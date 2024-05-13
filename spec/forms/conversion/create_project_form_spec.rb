@@ -105,54 +105,109 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
     it { is_expected.to validate_presence_of(:incoming_trust_sharepoint_link) }
 
+    it "can be valid in this test" do
+      attributes = valid_attributes
+
+      form = described_class.new(attributes)
+
+      expect(form).to be_valid
+    end
+
     describe "provisional_conversion_date" do
       it { is_expected.to validate_presence_of(:provisional_conversion_date) }
 
-      context "when the date params are partially complete" do
-        it "treats the date as invalid" do
-          form = build(form_factory.to_sym, provisional_conversion_date: {3 => 1, 2 => 10, 1 => nil})
-          expect(form).to be_invalid
-          expect(form.errors.of_kind?(:provisional_conversion_date, :invalid)).to be true
+      it "must be a valid date" do
+        attributes = valid_attributes
+        attributes["provisional_conversion_date(3i)"] = "31"
+        attributes["provisional_conversion_date(2i)"] = "9"
 
-          form = build(form_factory.to_sym, provisional_conversion_date: {3 => 1, 2 => nil, 1 => 2022})
+        form = described_class.new(attributes)
+
+        expect(form).to be_invalid
+      end
+
+      it "must be the first of the month" do
+        attributes = valid_attributes
+        attributes["provisional_conversion_date(3i)"] = "3"
+
+        form = described_class.new(attributes)
+
+        expect(form).to be_invalid
+      end
+
+      describe "month parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(2i)"] = "0"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:provisional_conversion_date, :invalid)).to be true
+        end
+
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(2i)"] = "-1"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 12" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(2i)"] = "32"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(2i)"] = "January"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
         end
       end
 
-      context "when the month and year are missing" do
-        it "treats the date as blank" do
-          form = build(form_factory.to_sym, provisional_conversion_date: {3 => 1, 2 => nil, 1 => nil})
+      describe "year parameters" do
+        it "must be a four digit year" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(1i)"] = "24"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:provisional_conversion_date, :blank)).to be true
         end
-      end
 
-      context "when all the date parameters are missing" do
-        it "treats the date as blank" do
-          form = build(form_factory.to_sym, provisional_conversion_date: {3 => nil, 2 => nil, 1 => nil})
+        it "cannot be be less than 2000" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(1i)"] = "1999"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:provisional_conversion_date, :blank)).to be true
         end
-      end
 
-      context "when the date doesn't exist" do
-        it "treats the date as invalid" do
-          form = build(form_factory.to_sym, provisional_conversion_date: {3 => 31, 2 => 2, 1 => 2030})
+        it "cannot be greater than 3000" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(1i)"] = "3001"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:provisional_conversion_date, :invalid)).to be true
         end
-      end
 
-      context "when the isn't a date" do
-        it "treats the date as invalid" do
-          form = build(form_factory.to_sym, provisional_conversion_date: {3 => -1, 2 => -1, 1 => 0})
-          expect(form).to be_invalid
-          expect(form.errors.of_kind?(:provisional_conversion_date, :invalid)).to be true
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["provisional_conversion_date(1i)"] = "Twenty twenty four"
 
-          form = build(form_factory.to_sym, provisional_conversion_date: {3 => "not", 2 => "a", 1 => "date"})
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:provisional_conversion_date, :invalid)).to be true
         end
       end
     end
@@ -161,76 +216,150 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
       it { is_expected.to validate_presence_of(:advisory_board_date) }
 
       it "must be in the past" do
-        form = build(
-          form_factory.to_sym,
-          advisory_board_date: {3 => 1, 2 => 1, 1 => 2020}
-        )
-        expect(form).to be_valid
+        attributes = valid_attributes
+        date_today = Date.today + 1.month
+        attributes["advisory_board_date(3i)"] = date_today.day.to_s
+        attributes["advisory_board_date(2i)"] = date_today.month.to_s
+        attributes["advisory_board_date(1i)"] = date_today.year.to_s
 
-        form.advisory_board_date = {3 => 1, 2 => 1, 1 => 2030}
+        form = described_class.new(attributes)
+
         expect(form).to be_invalid
       end
 
-      it "cannot be in the future" do
-        form = build(
-          form_factory.to_sym,
-          advisory_board_date: {3 => 1, 2 => 1, 1 => 2020}
-        )
-        expect(form).to be_valid
+      it "can be today" do
+        attributes = valid_attributes
+        date_today = Date.today
+        attributes["advisory_board_date(3i)"] = date_today.day.to_s
+        attributes["advisory_board_date(2i)"] = date_today.month.to_s
+        attributes["advisory_board_date(1i)"] = date_today.year.to_s
 
-        form.advisory_board_date = {3 => 1, 2 => 1, 1 => 2030}
+        form = described_class.new(attributes)
+
+        expect(form).to be_valid
+      end
+
+      it "must be a valid date" do
+        attributes = valid_attributes
+        attributes["advisory_board_date(3i)"] = "31"
+        attributes["advisory_board_date(2i)"] = "9"
+
+        form = described_class.new(attributes)
+
         expect(form).to be_invalid
       end
 
-      context "when the date parameters are partially complete" do
-        it "treats the date as invalid" do
-          form = build(form_factory.to_sym, advisory_board_date: {3 => nil, 2 => 10, 1 => 1})
-          expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+      describe "day parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "0"
 
-          form = build(form_factory.to_sym, advisory_board_date: {3 => 2022, 2 => nil, 1 => 1})
-          expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+          form = described_class.new(attributes)
 
-          form = build(form_factory.to_sym, advisory_board_date: {3 => 2022, 2 => 10, 1 => nil})
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        end
+
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "-1"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 31" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "32"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(3i)"] = "twenty first"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
         end
       end
 
-      context "when all the date parameters are missing" do
-        it "treats the date as blank" do
-          form = build(form_factory.to_sym, advisory_board_date: {3 => nil, 2 => nil, 1 => nil})
+      describe "month parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "0"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :blank)).to be true
+        end
+
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "-1"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 12" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "13"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(2i)"] = "January"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
         end
       end
 
-      context "when no date value is set" do
-        it "treats the date as blank" do
-          form = build(form_factory.to_sym, advisory_board_date: nil)
+      describe "year parameters" do
+        it "must be a four digit year" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "24"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :blank)).to be true
         end
-      end
 
-      context "when the date doesn't exist" do
-        it "treats the date as invalid" do
-          form = build(form_factory.to_sym, advisory_board_date: {3 => 31, 2 => 2, 1 => 2030})
+        it "cannot be be less than 2000" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "1999"
+
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
         end
-      end
 
-      context "when the isn't a date" do
-        it "treats the date as invalid" do
-          form = build(form_factory.to_sym, advisory_board_date: {3 => -1, 2 => -1, 1 => 0})
-          expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        it "cannot be greater than 3000" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "3001"
 
-          form = build(form_factory.to_sym, advisory_board_date: {3 => "not", 2 => "a", 1 => "date"})
+          form = described_class.new(attributes)
+
           expect(form).to be_invalid
-          expect(form.errors.of_kind?(:advisory_board_date, :invalid)).to be true
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["advisory_board_date(1i)"] = "Twenty twenty four"
+
+          form = described_class.new(attributes)
+
+          expect(form).to be_invalid
         end
       end
     end
@@ -463,5 +592,28 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(build(form_factory.to_sym, urn: nil).save).to be_nil
       end
     end
+  end
+
+  def valid_attributes
+    advisory_board_date = Date.today - 6.months
+    provisional_conversion_date = Date.today.at_beginning_of_month + 6.months
+
+    {
+      urn: "123456",
+      incoming_trust_ukprn: "10061021",
+      "advisory_board_date(3i)": advisory_board_date.day.to_s,
+      "advisory_board_date(2i)": advisory_board_date.month.to_s,
+      "advisory_board_date(1i)": advisory_board_date.year.to_s,
+      advisory_board_conditions: "",
+      "provisional_conversion_date(3i)": provisional_conversion_date.day.to_s,
+      "provisional_conversion_date(2i)": provisional_conversion_date.month.to_s,
+      "provisional_conversion_date(1i)": provisional_conversion_date.year.to_s,
+      establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment",
+      incoming_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/incoming_trust",
+      handover_note_body: "",
+      directive_academy_order: "false",
+      two_requires_improvement: "false",
+      assigned_to_regional_caseworker_team: "false"
+    }.with_indifferent_access
   end
 end
