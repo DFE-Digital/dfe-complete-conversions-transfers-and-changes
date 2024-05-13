@@ -106,6 +106,8 @@ en:
         blank: Enter a month and year for the provisional transfer date, like 9 2023
         must_be_in_the_future: Provisional transfer date must be in the future
         invalid: Enter a month and year for the provisional transfer date, like 9 2023
+      confirmed_transfer_date:
+        invalid: Enter a valid month and year for the confirmed transfer date, like 9 2023
       outgoing_trust_sharepoint_link:
         blank: Enter an outgoing trust SharePoint link
         invalid: Enter a outgoing trust SharePoint link in the correct format

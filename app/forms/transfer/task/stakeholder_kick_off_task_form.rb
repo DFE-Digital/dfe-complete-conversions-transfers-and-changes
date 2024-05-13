@@ -1,15 +1,35 @@
 class Transfer::Task::StakeholderKickOffTaskForm < BaseTaskForm
-  include TransferDatable
+  include ActiveRecord::AttributeAssignment
 
   attribute :introductory_emails, :boolean
   attribute :setup_meeting, :boolean
   attribute :meeting, :boolean
+  attribute :confirmed_transfer_date, :date
 
   def initialize(tasks_data, user)
+    @date_param_errors = ActiveModel::Errors.new(self)
     @tasks_data = tasks_data
     @user = user
     @project = @tasks_data.project
     super(@tasks_data, @user)
+  end
+
+  def assign_attributes(attributes)
+    if GovukDateFieldParameters.new(:confirmed_transfer_date, attributes, without_day: true).invalid?
+      @date_param_errors.add(:confirmed_transfer_date, :invalid)
+
+      attributes.delete("confirmed_transfer_date(3i)")
+      attributes.delete("confirmed_transfer_date(2i)")
+      attributes.delete("confirmed_transfer_date(1i)")
+    end
+
+    super(attributes)
+  end
+
+  def valid?(context = nil)
+    super(context)
+    errors.merge!(@date_param_errors)
+    errors.empty?
   end
 
   def save
@@ -32,11 +52,7 @@ class Transfer::Task::StakeholderKickOffTaskForm < BaseTaskForm
   end
 
   def completed?
-    attributes.except(
-      "confirmed_transfer_date(3i)",
-      "confirmed_transfer_date(2i)",
-      "confirmed_transfer_date(1i)"
-    ).values.all?(&:present?) && @project.transfer_date_provisional? == false
+    attributes.except("confirmed_transfer_date").values.all?(&:present?) && @project.transfer_date_provisional? == false
   end
 
   def in_progress?
