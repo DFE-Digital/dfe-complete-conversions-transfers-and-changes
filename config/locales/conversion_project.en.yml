@@ -111,6 +111,8 @@ en:
         blank: Enter a month and year for the provisional conversion date, like 9 2023
         must_be_first_of_the_month: Provisional conversion date must be on the first day of the month
         must_be_in_the_future: Provisional conversion date must be in the future
+      confirmed_conversion_date:
+        invalid: Enter a valid month and year for the confirmed conversion date, like 9 2023
       provisional_conversion_date:
         blank: Enter a month and year for the provisional conversion date, like 9 2023
         invalid: Enter a month and year for the provisional conversion date, like 9 2023

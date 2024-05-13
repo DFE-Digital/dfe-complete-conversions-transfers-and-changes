@@ -2,47 +2,128 @@ require "rails_helper"
 
 RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
   let(:user) { create(:user) }
+  let(:project) { create(:conversion_project) }
+  let(:form) { described_class.new(project.tasks_data, user) }
+
+  before do
+    mock_all_academies_api_responses
+  end
+
+  def valid_attributes
+    confirmed_conversion_date = Date.today.at_beginning_of_month + 6.months
+    {
+      "confirmed_conversion_date(3i)": confirmed_conversion_date.day.to_s,
+      "confirmed_conversion_date(2i)": confirmed_conversion_date.month.to_s,
+      "confirmed_conversion_date(1i)": confirmed_conversion_date.year.to_s
+    }.with_indifferent_access
+  end
 
   describe "validations" do
-    describe "date values" do
-      context "when the month is invalid" do
-        it "adds the appropriate error" do
-          task_form = described_class.new(Conversion::TasksData.new, user)
-          task_form.assign_attributes(
-            "confirmed_conversion_date(2i)": "not a month",
-            "confirmed_conversion_date(1i)": "2023"
-          )
+    it "can be valid in this test" do
+      attributes = valid_attributes
 
-          expect(task_form).to be_invalid
-          expect(task_form.errors.messages[:confirmed_conversion_date])
-            .to include(I18n.t("conversion.task.stakeholder_kick_off.confirmed_conversion_date.errors.format"))
+      form.assign_attributes(attributes)
+
+      expect(form).to be_valid
+    end
+
+    describe "confirmed conversion date" do
+      it "shows a helpful error message when invalid" do
+        attributes = valid_attributes
+        attributes["confirmed_conversion_date(1i)"] = "13"
+
+        form.assign_attributes(attributes)
+
+        expect(form).to be_invalid
+        expect(form.errors.messages_for(:confirmed_conversion_date)).to include(
+          "Enter a valid month and year for the confirmed conversion date, like 9 2023"
+        )
+      end
+
+      it "can be empty, but the day is always 1" do
+        attributes = valid_attributes
+        attributes["confirmed_conversion_date(3i)"] = "1"
+        attributes["confirmed_conversion_date(2i)"] = ""
+        attributes["confirmed_conversion_date(1i)"] = ""
+
+        form.assign_attributes(attributes)
+
+        expect(form).to be_valid
+      end
+
+      describe "month params" do
+        it "cannot be 0" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(2i)"] = "0"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be less than 0" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(2i)"] = "-1"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be more than 12" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(2i)"] = "13"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(2i)"] = "fourth"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
         end
       end
 
-      context "when the year is invalid" do
-        it "adds the appropriate error" do
-          task_form = described_class.new(Conversion::TasksData.new, user)
-          task_form.assign_attributes(
-            "confirmed_conversion_date(2i)": "12",
-            "confirmed_conversion_date(1i)": "not a year"
-          )
+      describe "year params" do
+        it "must be four digits" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(1i)"] = "25"
 
-          expect(task_form).to be_invalid
-          expect(task_form.errors.messages[:confirmed_conversion_date])
-            .to include(I18n.t("conversion.task.stakeholder_kick_off.confirmed_conversion_date.errors.format"))
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
         end
-      end
 
-      context "when the date is not provided" do
-        it "is valid" do
-          task_form = described_class.new(Conversion::TasksData.new, user)
-          task_form.assign_attributes(
-            "confirmed_conversion_date(3i)": "",
-            "confirmed_conversion_date(2i)": "",
-            "confirmed_conversion_date(1i)": ""
-          )
+        it "cannot be less than 2000" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(1i)"] = "1999"
 
-          expect(task_form).to be_valid
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be more than 3000" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(1i)"] = "3001"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(2i)"] = "twenty twenty five"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
         end
       end
     end
@@ -56,38 +137,33 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
 
   describe "#identifier" do
     it "returns the class name without 'TaskForm' as a symbol" do
-      task_form = described_class.new(Conversion::TasksData.new, user)
+      form = described_class.new(Conversion::TasksData.new, user)
 
-      expect(task_form.identifier).to eql :stakeholder_kick_off
+      expect(form.identifier).to eql :stakeholder_kick_off
     end
   end
 
   describe "#save" do
-    before { mock_successful_api_response_to_create_any_project }
-
-    let(:project) { create(:conversion_project) }
-    let(:tasks_data) { project.tasks_data }
-    let(:task_form) { described_class.new(tasks_data, user) }
-
     context "when the form is valid" do
       it "updates the task list data" do
-        task_form.introductory_emails = true
+        form.introductory_emails = true
 
-        task_form.save
+        form.save
 
-        expect(tasks_data.stakeholder_kick_off_introductory_emails).to eql true
+        expect(project.tasks_data.stakeholder_kick_off_introductory_emails).to eql true
       end
 
       context "and the confirmed conversion date is submitted" do
         let(:project) { create(:conversion_project, conversion_date_provisional: true) }
 
         it "creates a new date history" do
-          task_form.assign_attributes(
-            "confirmed_conversion_date(2i)": "1",
-            "confirmed_conversion_date(1i)": "2022"
-          )
+          attributes = valid_attributes
+          attributes["confirmed_conversion_date(1i)"] = "2025"
+          attributes["confirmed_conversion_date(2i)"] = "1"
 
-          expect { task_form.save }.to change { SignificantDateHistory.count }.by(1)
+          form.assign_attributes(attributes)
+
+          expect { form.save }.to change { SignificantDateHistory.count }.by(1)
           expect(project.reload.conversion_date_provisional?).to be false
         end
       end
@@ -96,9 +172,9 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
         let(:project) { create(:conversion_project, conversion_date_provisional: true) }
 
         it "does not create a new date history" do
-          task_form.introductory_emails = true
+          form.introductory_emails = true
 
-          expect { task_form.save }.not_to change { SignificantDateHistory.count }
+          expect { form.save }.not_to change { SignificantDateHistory.count }
           expect(project.reload.conversion_date_provisional?).to be true
         end
       end
@@ -107,13 +183,12 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
         let(:project) { create(:conversion_project, conversion_date_provisional: false) }
 
         it "does not create a new date history" do
-          task_form.introductory_emails = true
-          task_form.assign_attributes(
-            "confirmed_conversion_date(2i)": "1",
-            "confirmed_conversion_date(1i)": "2022"
-          )
+          attributes = valid_attributes
+          attributes["introductory_emails"] = "true"
 
-          expect { task_form.save }.not_to change { SignificantDateHistory.count }
+          form.assign_attributes(attributes)
+
+          expect { form.save }.not_to change { SignificantDateHistory.count }
           expect(project.reload.conversion_date_provisional?).to be false
         end
       end
@@ -123,43 +198,40 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
       it "raises error" do
         project = create(:conversion_project)
         task_data = project.tasks_data
-        task_form = described_class.new(task_data, user)
+        form = described_class.new(task_data, user)
         allow(task_data).to receive(:valid?).and_return(false)
 
-        expect { task_form.save }.to raise_error(ActiveRecord::RecordInvalid)
+        expect { form.save }.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
   end
 
   describe "#status" do
-    before { mock_successful_api_response_to_create_any_project }
-    let(:project) { create(:conversion_project, conversion_date_provisional: true) }
     let(:tasks_data) { project.tasks_data }
-    let(:task_form) { described_class.new(tasks_data, user) }
 
     context "when the task has no completed actions" do
       it "returns :not_started" do
-        expect(task_form.status).to eql :not_started
+        expect(form.status).to eql :not_started
       end
     end
 
     context "when the task has some completed actions" do
       it "returns :in_progress" do
-        task_form.introductory_emails = true
+        form.introductory_emails = true
 
-        expect(task_form.status).to eql :in_progress
+        expect(form.status).to eql :in_progress
       end
     end
 
     context "when the tasks are all complete but the conversion date is not confirmed" do
       it "returns :in_progress" do
-        task_form.introductory_emails = true
-        task_form.local_authority_proforma = true
-        task_form.setup_meeting = true
-        task_form.meeting = true
-        task_form.check_provisional_conversion_date = true
+        form.introductory_emails = true
+        form.local_authority_proforma = true
+        form.setup_meeting = true
+        form.meeting = true
+        form.check_provisional_conversion_date = true
 
-        expect(task_form.status).to eql :in_progress
+        expect(form.status).to eql :in_progress
       end
     end
 
@@ -167,30 +239,30 @@ RSpec.describe Conversion::Task::StakeholderKickOffTaskForm do
       let(:project) { create(:conversion_project, conversion_date_provisional: false) }
 
       it "returns :in_progress" do
-        expect(task_form.status).to eql :in_progress
+        expect(form.status).to eql :in_progress
       end
     end
 
-    context "when the task has all completed actions and confirmed the converison date" do
+    context "when the task has all completed actions and confirmed the conversion date" do
       let(:project) { create(:conversion_project, conversion_date_provisional: false) }
 
       it "returns :completed" do
-        task_form.introductory_emails = true
-        task_form.local_authority_proforma = true
-        task_form.setup_meeting = true
-        task_form.meeting = true
-        task_form.check_provisional_conversion_date = true
+        form.introductory_emails = true
+        form.local_authority_proforma = true
+        form.setup_meeting = true
+        form.meeting = true
+        form.check_provisional_conversion_date = true
 
-        expect(task_form.status).to eql :completed
+        expect(form.status).to eql :completed
       end
     end
   end
 
   describe "#locales_path" do
     it "returns the task path without 'TaskForm' as a dot list" do
-      task_form = described_class.new(Conversion::TasksData.new, user)
+      form = described_class.new(Conversion::TasksData.new, user)
 
-      expect(task_form.locales_path).to eql "conversion.task.stakeholder_kick_off"
+      expect(form.locales_path).to eql "conversion.task.stakeholder_kick_off"
     end
   end
 end

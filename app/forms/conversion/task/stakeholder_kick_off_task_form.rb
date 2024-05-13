@@ -1,17 +1,36 @@
 class Conversion::Task::StakeholderKickOffTaskForm < ::BaseTaskForm
-  include ConversionDatable
-
+  include ActiveRecord::AttributeAssignment
   attribute :introductory_emails, :boolean
   attribute :local_authority_proforma, :boolean
   attribute :setup_meeting, :boolean
   attribute :meeting, :boolean
   attribute :check_provisional_conversion_date, :boolean
+  attribute :confirmed_conversion_date, :date
 
   def initialize(tasks_data, user)
+    @date_param_errors = ActiveModel::Errors.new(self)
     @tasks_data = tasks_data
     @user = user
     @project = @tasks_data.project
     super(@tasks_data, @user)
+  end
+
+  def assign_attributes(attributes)
+    if GovukDateFieldParameters.new(:confirmed_conversion_date, attributes, without_day: true).invalid?
+      @date_param_errors.add(:confirmed_conversion_date, :invalid)
+
+      attributes.delete("confirmed_conversion_date(3i)")
+      attributes.delete("confirmed_conversion_date(2i)")
+      attributes.delete("confirmed_conversion_date(1i)")
+    end
+
+    super(attributes)
+  end
+
+  def valid?(context = nil)
+    super(context)
+    errors.merge!(@date_param_errors)
+    errors.empty?
   end
 
   def save
@@ -35,11 +54,7 @@ class Conversion::Task::StakeholderKickOffTaskForm < ::BaseTaskForm
   end
 
   def completed?
-    attributes.except(
-      "confirmed_conversion_date(3i)",
-      "confirmed_conversion_date(2i)",
-      "confirmed_conversion_date(1i)"
-    ).values.all?(&:present?) && @project.conversion_date_provisional? == false
+    attributes.except("confirmed_conversion_date").values.all?(&:present?) && @project.conversion_date_provisional? == false
   end
 
   def in_progress?
