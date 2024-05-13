@@ -25,6 +25,20 @@ RSpec.describe GovukDateFieldParameters do
     expect(subject.invalid?).to be false
   end
 
+  it "is valid when the parameters are present and and the day is not exposed. i.e. set to 1" do
+    params = {
+      "test_date_attribute(1i)" => "",
+      "test_date_attribute(2i)" => "",
+      "test_date_attribute(3i)" => "1"
+    }
+    attribute_name = :test_date_attribute
+
+    subject = described_class.new(attribute_name, params, without_day: true)
+
+    expect(subject.valid?).to be true
+    expect(subject.invalid?).to be false
+  end
+
   it "is valid when the parameters are present and acceptable" do
     params = {
       "test_date_attribute(1i)" => "2024",
@@ -76,7 +90,7 @@ RSpec.describe GovukDateFieldParameters do
       }
       attribute_name = :test_date_attribute
 
-      subject = described_class.new(attribute_name, params, (2000..4000))
+      subject = described_class.new(attribute_name, params, years_range: 2000..4000)
 
       expect(subject.valid?).to be true
       expect(subject.invalid?).to be false
