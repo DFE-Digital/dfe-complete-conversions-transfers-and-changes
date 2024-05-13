@@ -12,7 +12,7 @@ class DateHistoriesController < ApplicationController
 
   def create
     authorize(@project, :change_significant_date?)
-    @form = NewDateHistoryForm.new(**new_date_history_form, project: @project, user: current_user)
+    @form = NewDateHistoryForm.new(**date_history_params, project: @project, user: current_user)
 
     if @form.save
       @project.reload
@@ -22,7 +22,7 @@ class DateHistoriesController < ApplicationController
     end
   end
 
-  private def new_date_history_form
+  private def date_history_params
     params.require(:new_date_history_form).permit(:revised_date, :note_body)
   end
 end

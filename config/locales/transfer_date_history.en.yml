@@ -22,7 +22,8 @@ en:
     attributes:
       revised_date:
         format: Enter a valid month and year
-        transaction: Conversion date could not be saved
+        transaction: Revised date could not be saved
+        blank: Enter a valid month and year for the revised date, like 9 2024
       note_body:
         blank: Enter a reason
   helpers:
