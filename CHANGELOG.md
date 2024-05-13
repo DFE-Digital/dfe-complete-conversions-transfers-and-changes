@@ -17,6 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - When creating a new project, two digit dates are no longer accepted which
   means incorrect dates cannot be submitted.
 
+### Changed
+
+- URLs pointing links in content to SharePoint guidance updated to new guidance
+  pages
+
 ## [Release-69][release-69]
 
 ### Changed
