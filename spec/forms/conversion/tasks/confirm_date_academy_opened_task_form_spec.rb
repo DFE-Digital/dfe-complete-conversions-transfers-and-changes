@@ -5,78 +5,141 @@ RSpec.describe Conversion::Task::ConfirmDateAcademyOpenedTaskForm do
   let(:project) { create(:conversion_project) }
   let(:form) { described_class.new(project.tasks_data, user) }
 
-  before { mock_successful_api_response_to_create_any_project }
+  before { mock_all_academies_api_responses }
+
+  def valid_attributes
+    date_opened = Date.today - 1.months
+    {
+      "date_opened(3i)": date_opened.day.to_s,
+      "date_opened(2i)": date_opened.month.to_s,
+      "date_opened(1i)": date_opened.year.to_s
+    }.with_indifferent_access
+  end
 
   describe "validations" do
-    describe "day" do
-      it "when the value is 3rd, it is invalid" do
-        form.assign_attributes("date_opened(1i)": "2024", "date_opened(2i)": "1", "date_opened(3i)": "3rd")
+    describe "date_opened" do
+      it "must be a valid date" do
+        attributes = valid_attributes
+        attributes["date_opened(3i)"] = "31"
+        attributes["date_opened(2i)"] = "9"
 
-        expect(form).to be_valid
-      end
-
-      it "when the value is not in the range of 1..31, it is invalid" do
-        form.assign_attributes("date_opened(1i)": "2024", "date_opened(2i)": "1", "date_opened(3i)": "40")
+        form.assign_attributes(attributes)
 
         expect(form).to be_invalid
       end
 
-      it "when the value is not a number, it is invalid" do
-        form.assign_attributes("date_opened(1i)": "2024", "date_opened(2i)": "1", "date_opened(3i)": "not a number")
+      describe "day parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["date_opened(3i)"] = "0"
 
-        expect(form).to be_invalid
-      end
-    end
+          form.assign_attributes(attributes)
 
-    describe "month" do
-      it "when the value is not in the range of 1..12, it is invalid" do
-        form.assign_attributes("date_opened(1i)": "2024", "date_opened(2i)": "20", "date_opened(3i)": "20")
+          expect(form).to be_invalid
+        end
 
-        expect(form).to be_invalid
-      end
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["date_opened(3i)"] = "-1"
 
-      it "when the value is not a number, it is invalid" do
-        form.assign_attributes("date_opened(1i)": "2024", "date_opened(2i)": "January", "date_opened(3i)": "20")
+          form.assign_attributes(attributes)
 
-        expect(form).to be_invalid
-      end
-    end
+          expect(form).to be_invalid
+        end
 
-    describe "year" do
-      it "when the value is not in the range of 1900..3000, it is invalid" do
-        form.assign_attributes("date_opened(1i)": "800", "date_opened(2i)": "2", "date_opened(3i)": "20")
+        it "cannot be greater than 31" do
+          attributes = valid_attributes
+          attributes["date_opened(3i)"] = "32"
 
-        expect(form).to be_invalid
-      end
+          form.assign_attributes(attributes)
 
-      it "when the value is not a number, it is invalid" do
-        form.assign_attributes("date_opened(1i)": "Nineteen hundred", "date_opened(2i)": "1", "date_opened(3i)": "20")
+          expect(form).to be_invalid
+        end
 
-        expect(form).to be_invalid
-      end
-    end
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["date_opened(3i)"] = "twenty first"
 
-    describe "the conversion to a date" do
-      context "when the values form a date that is incorrect" do
-        it "is invalid" do
-          form.assign_attributes("date_opened(1i)": "30", "date_opened(2i)": "2", "date_opened(3i)": "2024")
+          form.assign_attributes(attributes)
 
           expect(form).to be_invalid
         end
       end
-    end
 
-    describe "submitting nothing" do
-      it "when a user submits nothing, its valid" do
-        form.assign_attributes("date_opened(1i)": "", "date_opened(2i)": "", "date_opened(3i)": "")
+      describe "month parameters" do
+        it "cannot be be 0" do
+          attributes = valid_attributes
+          attributes["date_opened(2i)"] = "0"
 
-        expect(form).to be_valid
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be be less than 0" do
+          attributes = valid_attributes
+          attributes["date_opened(2i)"] = "-1"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 12" do
+          attributes = valid_attributes
+          attributes["date_opened(2i)"] = "13"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["date_opened(2i)"] = "January"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
       end
 
-      it "when a user submits spaces, its valid" do
-        form.assign_attributes("date_opened(1i)": "  ", "date_opened(2i)": "  ", "date_opened(3i)": "   ")
+      describe "year parameters" do
+        it "must be a four digit year" do
+          attributes = valid_attributes
+          attributes["date_opened(1i)"] = "24"
 
-        expect(form).to be_valid
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be be less than 2000" do
+          attributes = valid_attributes
+          attributes["date_opened(1i)"] = "1999"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be greater than 3000" do
+          attributes = valid_attributes
+          attributes["date_opened(1i)"] = "3001"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["date_opened(1i)"] = "Twenty twenty four"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
       end
     end
   end
@@ -84,8 +147,13 @@ RSpec.describe Conversion::Task::ConfirmDateAcademyOpenedTaskForm do
   describe "#save" do
     context "when the form is valid" do
       it "saves the task" do
-        form.assign_attributes("date_opened(1i)": "2024", "date_opened(2i)": "1", "date_opened(3i)": "1")
+        attributes = valid_attributes
+        attributes["date_opened(3i)"] = "1"
+        attributes["date_opened(2i)"] = "1"
+        attributes["date_opened(1i)"] = "2024"
 
+        form.assign_attributes(attributes)
+        form.valid?
         form.save
 
         expect(project.tasks_data.reload.confirm_date_academy_opened_date_opened).to eq(Date.new(2024, 1, 1))
@@ -93,13 +161,18 @@ RSpec.describe Conversion::Task::ConfirmDateAcademyOpenedTaskForm do
     end
 
     context "when the form is invalid" do
-      it "shows the error" do
-        form.assign_attributes("date_opened(1i)": "2024", "date_opened(2i)": "January", "date_opened(3i)": "4")
+      it "shows a helpful error" do
+        attributes = valid_attributes
+        attributes["date_opened(3i)"] = "1"
+        attributes["date_opened(2i)"] = "Jan"
+        attributes["date_opened(1i)"] = "2024"
 
+        form.assign_attributes(attributes)
+        form.valid?
         form.save
 
-        expect(form.errors.messages[:date_opened])
-          .to include(I18n.t("conversion.task.confirm_date_academy_opened.errors.format"))
+        expect(form.errors.messages_for(:date_opened))
+          .to include("Enter a valid date, like 1 2 2024")
       end
     end
   end

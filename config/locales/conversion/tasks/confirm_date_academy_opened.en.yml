@@ -10,4 +10,5 @@ en:
           hint:
             html: <p>For example, 1 3 2023</p>
         errors:
-          format: Please enter a valid date
+          opened_date:
+            invalid: Enter a valid date, like 1 2 2024
