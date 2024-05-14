@@ -19,6 +19,8 @@ en:
           title: Enter the date you received the declaration of expenditure certificate
           hint:
             html: For example 27 5 2007
+          errors:
+            invalid: Enter a valid date, like 1 1 2025
         correct:
           title: Check the declaration of expenditure certificate is correct
           hint:
