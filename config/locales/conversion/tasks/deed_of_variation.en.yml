@@ -9,12 +9,12 @@ en:
         clear_section:
           title: Check and clear the deed of variation
           hint:
-            html: <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Academy-Funding-Agreement-Guidance.aspx" target="_blank">find the right deed of variation to use (opens in new tab)</a> on SharePoint.</p>
+            html: <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvewp00030/SitePages/3-Conversion%20Process/Funding%20Agreement/Funding-Agreement.aspx" target="_blank">find the right deed of variation to use (opens in new tab)</a> on SharePoint.</p>
           guidance_link: Help checking for changes
           guidance:
             html:
               <p class="govuk-body-m">Changes that personalise the model documents to a school or trust, and remove or add optional clauses, are expected. The wording of clauses should not change.</p>
-              <p class="govuk-body-m">You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvedfe00116/SitePages/Commissioning%20Form.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
+              <p class="govuk-body-m">You'll need to <a href="https://educationgovuk.sharepoint.com/sites/lvewp00030/SitePages/Resources/Request%20for%20advice%20from%20the%20AOPU.aspx" class="govuk-link" target="_blank">contact the policy team (opens in new tab)</a> about changes to clause text.</p>
 
         sign_section:
           title: Signed by the Secretary of State
