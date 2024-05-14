@@ -2,47 +2,128 @@ require "rails_helper"
 
 RSpec.describe Transfer::Task::StakeholderKickOffTaskForm do
   let(:user) { create(:user) }
+  let(:project) { create(:transfer_project) }
+  let(:form) { described_class.new(project.tasks_data, user) }
+
+  before do
+    mock_all_academies_api_responses
+  end
+
+  def valid_attributes
+    confirmed_transfer_date = Date.today.at_beginning_of_month + 6.months
+    {
+      "confirmed_transfer_date(3i)": confirmed_transfer_date.day.to_s,
+      "confirmed_transfer_date(2i)": confirmed_transfer_date.month.to_s,
+      "confirmed_transfer_date(1i)": confirmed_transfer_date.year.to_s
+    }.with_indifferent_access
+  end
 
   describe "validations" do
-    describe "date values" do
-      context "when the month is invalid" do
-        it "adds the appropriate error" do
-          task_form = described_class.new(Transfer::TasksData.new, user)
-          task_form.assign_attributes(
-            "confirmed_transfer_date(2i)": "not a month",
-            "confirmed_transfer_date(1i)": "2023"
-          )
+    it "can be valid in this test" do
+      attributes = valid_attributes
 
-          expect(task_form).to be_invalid
-          expect(task_form.errors.messages[:confirmed_transfer_date])
-            .to include(I18n.t("transfer.task.stakeholder_kick_off.confirmed_transfer_date.errors.format"))
+      form.assign_attributes(attributes)
+
+      expect(form).to be_valid
+    end
+
+    describe "confirmed conversion date" do
+      it "shows a helpful error message when invalid" do
+        attributes = valid_attributes
+        attributes["confirmed_transfer_date(1i)"] = "13"
+
+        form.assign_attributes(attributes)
+
+        expect(form).to be_invalid
+        expect(form.errors.messages_for(:confirmed_transfer_date)).to include(
+          "Enter a valid month and year for the confirmed transfer date, like 9 2023"
+        )
+      end
+
+      it "can be empty, but the day is always 1" do
+        attributes = valid_attributes
+        attributes["confirmed_transfer_date(3i)"] = "1"
+        attributes["confirmed_transfer_date(2i)"] = ""
+        attributes["confirmed_transfer_date(1i)"] = ""
+
+        form.assign_attributes(attributes)
+
+        expect(form).to be_valid
+      end
+
+      describe "month params" do
+        it "cannot be 0" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(2i)"] = "0"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be less than 0" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(2i)"] = "-1"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be more than 12" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(2i)"] = "13"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(2i)"] = "fourth"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
         end
       end
 
-      context "when the year is invalid" do
-        it "adds the appropriate error" do
-          task_form = described_class.new(Transfer::TasksData.new, user)
-          task_form.assign_attributes(
-            "confirmed_transfer_date(2i)": "12",
-            "confirmed_transfer_date(1i)": "not a year"
-          )
+      describe "year params" do
+        it "must be four digits" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(1i)"] = "25"
 
-          expect(task_form).to be_invalid
-          expect(task_form.errors.messages[:confirmed_transfer_date])
-            .to include(I18n.t("transfer.task.stakeholder_kick_off.confirmed_transfer_date.errors.format"))
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
         end
-      end
 
-      context "when the date is not provided" do
-        it "is valid" do
-          task_form = described_class.new(Transfer::TasksData.new, user)
-          task_form.assign_attributes(
-            "confirmed_transfer_date(3i)": "",
-            "confirmed_transfer_date(2i)": "",
-            "confirmed_transfer_date(1i)": ""
-          )
+        it "cannot be less than 2000" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(1i)"] = "1999"
 
-          expect(task_form).to be_valid
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "cannot be more than 3000" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(1i)"] = "3001"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
+        end
+
+        it "must be a number" do
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(2i)"] = "twenty twenty five"
+
+          form.assign_attributes(attributes)
+
+          expect(form).to be_invalid
         end
       end
     end
@@ -63,23 +144,26 @@ RSpec.describe Transfer::Task::StakeholderKickOffTaskForm do
   end
 
   describe "#save" do
-    before { mock_successful_api_response_to_create_any_project }
-
-    let(:project) { create(:transfer_project) }
-    let(:tasks_data) { project.tasks_data }
-    let(:task_form) { described_class.new(tasks_data, user) }
-
     context "when the form is valid" do
+      it "updates the tasks list data" do
+        form.introductory_emails = true
+
+        form.save
+
+        expect(project.tasks_data.stakeholder_kick_off_introductory_emails).to eql true
+      end
+
       context "and the confirmed transfer date is submitted" do
         let(:project) { create(:transfer_project, transfer_date_provisional: true) }
 
         it "creates a new date history" do
-          task_form.assign_attributes(
-            "confirmed_transfer_date(2i)": "1",
-            "confirmed_transfer_date(1i)": "2022"
-          )
+          attributes = valid_attributes
+          attributes["confirmed_transfer_date(2i)"] = "1"
+          attributes["confirmed_transfer_date(1i)"] = "2025"
 
-          expect { task_form.save }.to change { SignificantDateHistory.count }.by(1)
+          form.assign_attributes(attributes)
+
+          expect { form.save }.to change { SignificantDateHistory.count }.by(1)
           expect(project.reload.transfer_date_provisional?).to be false
         end
       end
@@ -88,7 +172,9 @@ RSpec.describe Transfer::Task::StakeholderKickOffTaskForm do
         let(:project) { create(:transfer_project, transfer_date_provisional: true) }
 
         it "does not create a new date history" do
-          expect { task_form.save }.not_to change { SignificantDateHistory.count }
+          form.introductory_emails = true
+
+          expect { form.save }.not_to change { SignificantDateHistory.count }
           expect(project.reload.transfer_date_provisional?).to be true
         end
       end
@@ -97,12 +183,12 @@ RSpec.describe Transfer::Task::StakeholderKickOffTaskForm do
         let(:project) { create(:transfer_project, transfer_date_provisional: false) }
 
         it "does not create a new date history" do
-          task_form.assign_attributes(
-            "confirmed_transfer_date(2i)": "1",
-            "confirmed_transfer_date(1i)": "2022"
-          )
+          attributes = valid_attributes
+          attributes["introductory_emails"] = "true"
 
-          expect { task_form.save }.not_to change { SignificantDateHistory.count }
+          form.assign_attributes(attributes)
+
+          expect { form.save }.not_to change { SignificantDateHistory.count }
           expect(project.reload.transfer_date_provisional?).to be false
         end
       end

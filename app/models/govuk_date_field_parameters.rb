@@ -6,10 +6,11 @@ class GovukDateFieldParameters
   # want the range consistent across the application.
   YEARS_RANGE = (2000..3000)
 
-  def initialize(attribute_name, params, years_range = YEARS_RANGE)
+  def initialize(attribute_name, params, **options)
     @params = params
     @attribute_name = attribute_name.to_sym
-    @years_range = years_range
+    @years_range = options[:years_range] || YEARS_RANGE
+    @without_day = options[:without_day] || false
   end
 
   def valid?
@@ -39,7 +40,11 @@ class GovukDateFieldParameters
   # empty, this allows the form to be submitted with blank values, Rails presence
   # validation can be used later if you do not want nil dates
   private def values_empty?
-    year_value.blank? && month_value.blank? && day_value.blank?
+    if @without_day
+      day_value.eql?("1") && month_value.blank? && year_value.blank?
+    else
+      year_value.blank? && month_value.blank? && day_value.blank?
+    end
   end
 
   # Ruby Dates are very flexible and accept many values that would confuse users,
