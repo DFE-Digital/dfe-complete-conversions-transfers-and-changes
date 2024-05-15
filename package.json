@@ -8,13 +8,14 @@
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --target=chrome61,edge79,firefox60,safari11 --outdir=app/assets/builds --public-path=/assets"
   },
   "devDependencies": {
+    "esbuild": "^0.21.0",
     "prettier": "^3.0.2",
-    "standard": "^17.1.0",
-    "esbuild": "^0.21.0"
+    "standard": "^17.1.0"
   },
   "dependencies": {
     "@ministryofjustice/frontend": "^1.8.0",
+    "accessible-autocomplete": "^3.0.0",
     "govuk-frontend": "^4.7.0",
-    "accessible-autocomplete": "^3.0.0"
+    "swagger-ui-dist": "^5.17.9"
   }
 }

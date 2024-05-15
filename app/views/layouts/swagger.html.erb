@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Swagger UI - <%= t("service_name") %></title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "swagger-ui.css" %>
+    <%= stylesheet_link_tag "index.css" %>
+
+    <%= javascript_include_tag "swagger-ui-bundle.js" %>
+    <%= javascript_include_tag "swagger-ui-standalone-preset.js" %>
+    <%= javascript_include_tag "swagger-initializer.js" %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

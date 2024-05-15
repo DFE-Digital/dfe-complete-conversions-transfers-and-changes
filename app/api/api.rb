@@ -9,5 +9,6 @@ class Api < Grape::API
     info: {
       title: "Complete conversions, transfers and changes API"
     },
-    mount_path: "/swagger"
+    mount_path: "/swagger",
+    version: "0.0.1" # the semversion of the API
 end

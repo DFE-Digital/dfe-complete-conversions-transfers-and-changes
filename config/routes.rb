@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   mount Api => "/"
 
+  # Swagger UI
+  get "api/docs", to: "swagger#show"
+
   concern :has_destroy_confirmation do
     get "/delete", action: :confirm_destroy
   end
