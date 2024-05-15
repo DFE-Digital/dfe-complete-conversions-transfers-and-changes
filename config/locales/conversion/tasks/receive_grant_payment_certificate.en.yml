@@ -28,4 +28,4 @@ en:
           received_info:
             html: DfE received the grant payment certificate on %{date}.
           errors:
-            format: Please enter a valid date
+            invalid: Enter a valid date, like 1 1 2025
