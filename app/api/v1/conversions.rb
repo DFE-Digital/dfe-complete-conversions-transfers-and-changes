@@ -3,8 +3,8 @@ class V1::Conversions < Grape::API
     resource :conversions do
       params do
         requires :conversion_project, type: Hash do
-          requires :urn, type: Integer
-          requires :incoming_trust_ukprn, type: String
+          requires :urn, type: Integer, regexp: /^[0-9]{6}$/
+          requires :incoming_trust_ukprn, type: String, regexp: /^1[0-9]{7}$/
           requires :advisory_board_date, type: Date
           requires :advisory_board_conditions, type: String
           requires :provisional_conversion_date, type: Date

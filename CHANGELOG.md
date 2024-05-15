@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add a task to generate Api keys, along with documentation
 - A simple POST Api endpoint to create a Conversion project
 - API documentation is now available at /api/docs
+- The API does basic validation of URN and UKPRN, checks length and that they
+  are numbers
 
 ### Fixed
 

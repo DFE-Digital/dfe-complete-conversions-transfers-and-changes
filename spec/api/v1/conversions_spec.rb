@@ -51,7 +51,7 @@ RSpec.describe V1::Conversions do
             post "/api/v1/projects/conversions",
               params: {
                 conversion_project: {
-                  urn: 12345,
+                  urn: 123456,
                   incoming_trust_ukprn: 10066123,
                   advisory_board_date: "2024-1-1",
                   advisory_board_conditions: "Some conditions",
@@ -65,7 +65,7 @@ RSpec.describe V1::Conversions do
               as: :json,
               headers: {Apikey: "testkey"}
 
-            expect(response.body).to eq({error: "Project could not be created via API, urn: 12345"}.to_json)
+            expect(response.body).to eq({error: "Project could not be created via API, urn: 123456"}.to_json)
           end
         end
 
@@ -89,6 +89,29 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "Failed to save user during API project creation, email: nobody@school.gov.uk"}.to_json)
+          end
+        end
+
+        context "but the urn and ukprn are not valid" do
+          it "returns validation errors" do
+            post "/api/v1/projects/conversions",
+              params: {
+                conversion_project: {
+                  urn: 123,
+                  incoming_trust_ukprn: 123,
+                  advisory_board_date: "2024-1-1",
+                  advisory_board_conditions: "Some conditions",
+                  provisional_conversion_date: "2025-1-1",
+                  directive_academy_order: true,
+                  created_by_email: regional_delivery_officer.email,
+                  created_by_first_name: regional_delivery_officer.first_name,
+                  created_by_last_name: regional_delivery_officer.last_name
+                }
+              },
+              as: :json,
+              headers: {Apikey: "testkey"}
+
+            expect(response.body).to eq({error: "conversion_project[urn] is invalid, conversion_project[incoming_trust_ukprn] is invalid"}.to_json)
           end
         end
       end
