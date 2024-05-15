@@ -9,6 +9,7 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules")
 Rails.application.config.assets.paths << Rails.root.join("node_modules", "govuk-frontend", "govuk", "assets", "fonts")
 Rails.application.config.assets.paths << Rails.root.join("node_modules", "govuk-frontend", "govuk", "assets", "images")
 Rails.application.config.assets.paths << Rails.root.join("node_modules", "@ministryofjustice", "frontend", "moj", "assets", "images")
+Rails.application.config.assets.paths << Rails.root.join("node_modules", "swagger-ui-dist")
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

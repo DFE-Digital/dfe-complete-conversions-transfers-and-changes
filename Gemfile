@@ -107,3 +107,5 @@ group :development do
 end
 
 gem "jsbundling-rails", "~> 1.3"
+
+gem "grape-swagger", "~> 2.1"
