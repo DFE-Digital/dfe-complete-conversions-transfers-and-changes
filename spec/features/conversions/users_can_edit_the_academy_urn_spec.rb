@@ -65,11 +65,11 @@ RSpec.feature "Users can edit the Academy URN" do
     context "when the Academy URN is incorrect" do
       scenario "the user can go back to the list by clicking Cancel" do
         project = create(:conversion_project, assigned_to: user, academy_urn: nil)
-        _academy = create(:gias_establishment, urn: 123456)
+        _academy = create(:gias_establishment, urn: 165432)
         visit without_academy_urn_service_support_projects_path
 
         click_on "Create academy URN"
-        fill_in "conversion_project[academy_urn]", with: 123456
+        fill_in "conversion_project[academy_urn]", with: 165432
 
         click_on "Save and return"
         expect(page).to have_content("Are these details correct?")

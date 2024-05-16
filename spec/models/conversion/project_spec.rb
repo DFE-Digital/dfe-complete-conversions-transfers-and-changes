@@ -25,10 +25,17 @@ RSpec.describe Conversion::Project do
 
           expect(project).to be_invalid
 
-          project = build(:conversion_project, academy_urn: 123456)
+          project = build(:conversion_project, academy_urn: 165432)
 
           expect(project).to be_valid
         end
+      end
+
+      it "cannot be the same as the school URN" do
+        project = build(:conversion_project, urn: 123456, academy_urn: 123456)
+
+        expect(project).to be_invalid
+        expect(project.errors.messages_for(:academy_urn)).to include("Academy URN cannot be the same as the school URN")
       end
     end
 
