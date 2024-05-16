@@ -66,7 +66,7 @@ class Api::AcademiesApi::Client
 
     case response.status
     when 200
-      trusts = JSON.parse(response.body)["data"].map do |trust|
+      trusts = JSON.parse(response.body).map do |trust|
         Api::AcademiesApi::Trust.new.from_hash(trust)
       end
       Result.new(trusts, nil)
@@ -80,7 +80,7 @@ class Api::AcademiesApi::Client
   private def fetch_establishments(urns)
     Rails.logger.info("Academies API: fetching establishments: #{urns}")
 
-    @connection.get("/establishments/bulk", {urn: urns})
+    @connection.get("/v4/establishments/bulk", {request: urns})
   rescue Faraday::Error => error
     raise Error.new(error)
   end
@@ -88,7 +88,7 @@ class Api::AcademiesApi::Client
   private def fetch_trusts(ukprns)
     Rails.logger.info("Academies API: fetching trusts: #{ukprns}")
 
-    @connection.get("/v2/trusts/bulk", {ukprn: ukprns, establishments: false})
+    @connection.get("/v4/trusts/bulk", {ukprns: ukprns})
   rescue Faraday::Error => error
     raise Error.new(error)
   end
@@ -98,7 +98,7 @@ class Api::AcademiesApi::Client
   end
 
   private def single_trust_from_bulk(response)
-    JSON.parse(response.body)["data"][0]
+    JSON.parse(response.body)[0]
   end
 
   private def default_connection

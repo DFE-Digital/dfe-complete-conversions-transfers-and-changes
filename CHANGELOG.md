@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - URLs pointing links in content to SharePoint guidance updated to new guidance
   pages
+- The application fetches establishment and trust data from the new v4 Academies
+  API endpoints which should improve performance.
 
 ## [Release-69][release-69]
 

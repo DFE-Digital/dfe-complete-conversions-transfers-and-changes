@@ -29,7 +29,7 @@ class Api::AcademiesApi::Establishment < Api::BaseApiModel
   def self.attribute_map
     {
       urn: "urn",
-      name: "establishmentName",
+      name: "name",
       establishment_number: "establishmentNumber",
       local_authority_name: "localAuthorityName",
       local_authority_code: "localAuthorityCode",

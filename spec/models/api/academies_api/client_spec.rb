@@ -22,7 +22,7 @@ RSpec.describe Api::AcademiesApi::Client do
     subject { client.get_establishment(urn) }
 
     context "when the establishment can be found" do
-      let(:fake_response) { [200, nil, [{establishmentName: "Establishment Name"}].to_json] }
+      let(:fake_response) { [200, nil, [{name: "Establishment Name"}].to_json] }
 
       it "returns a Result with the establishment and no error" do
         expect(subject.object.name).to eql("Establishment Name")
@@ -75,7 +75,7 @@ RSpec.describe Api::AcademiesApi::Client do
     subject { client.get_establishments(urns) }
 
     context "when establishments can be found" do
-      let(:fake_response) { [200, nil, [{establishmentName: "Establishment Name"}].to_json] }
+      let(:fake_response) { [200, nil, [{name: "Establishment Name"}].to_json] }
 
       it "returns a Result with the establishments and no error" do
         expect(subject.object[0].name).to eql("Establishment Name")
@@ -123,7 +123,7 @@ RSpec.describe Api::AcademiesApi::Client do
   def fake_successful_establishment_connection(response)
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/establishments/bulk") do |_env|
+        stub.get("/v4/establishments/bulk") do |_env|
           response
         end
       end
@@ -133,7 +133,7 @@ RSpec.describe Api::AcademiesApi::Client do
   def fake_failed_establishment_connection
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/establishments/bulk") do |_env|
+        stub.get("/v4/establishments/bulk") do |_env|
           raise Faraday::Error
         end
       end
@@ -147,7 +147,7 @@ RSpec.describe Api::AcademiesApi::Client do
     subject { client.get_trust(ukprn) }
 
     context "when the trust can be found" do
-      let(:fake_response) { [200, nil, {data: [{giasData: {groupName: "THE ROMERO CATHOLIC ACADEMY"}}]}.to_json] }
+      let(:fake_response) { [200, nil, [{name: "THE ROMERO CATHOLIC ACADEMY"}].to_json] }
 
       it "returns a Result with the establishment and no error" do
         expect(subject.object.original_name).to eql("THE ROMERO CATHOLIC ACADEMY")
@@ -196,10 +196,10 @@ RSpec.describe Api::AcademiesApi::Client do
     subject { client.get_trusts(ukprns) }
 
     context "when the trust can be found" do
-      let(:fake_response) { [200, nil, {data: [{giasData: {groupName: "THE ROMERO CATHOLIC ACADEMY"}}]}.to_json] }
+      let(:fake_response) { [200, nil, [{name: "THE ROMERO CATHOLIC ACADEMY"}].to_json] }
 
       it "returns a Result with the establishment and no error" do
-        expect(subject.object[0].original_name).to eql("THE ROMERO CATHOLIC ACADEMY")
+        expect(subject.object[0].name).to eql("The Romero Catholic Academy")
         expect(subject.error).to be_nil
       end
 
@@ -240,7 +240,7 @@ RSpec.describe Api::AcademiesApi::Client do
   def fake_successful_trust_connection(response)
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/v2/trusts/bulk") do |_env|
+        stub.get("/v4/trusts/bulk") do |_env|
           response
         end
       end
@@ -250,7 +250,7 @@ RSpec.describe Api::AcademiesApi::Client do
   def fake_failed_trust_connection
     Faraday.new do |builder|
       builder.adapter :test do |stub|
-        stub.get("/v2/trusts/bulk") do |_env|
+        stub.get("/v4/trusts/bulk") do |_env|
           raise Faraday::Error
         end
       end
