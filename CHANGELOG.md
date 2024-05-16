@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - API documentation is now available at /api/docs
 - Validation on the new Academy URN so that it cannot be the same as the school
   URN has been added.
+- The API does validation of URN and UKPRN on project creation
 
 ### Fixed
 

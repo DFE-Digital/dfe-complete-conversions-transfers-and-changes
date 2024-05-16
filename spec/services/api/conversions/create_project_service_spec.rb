@@ -70,11 +70,35 @@ RSpec.describe Api::Conversions::CreateProjectService do
     }
 
     it "returns an error" do
-      expect { described_class.new(params).call }.to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError)
+      expect { described_class.new(params).call }
+        .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          "Failed to save user during API project creation, urn: 123456")
     end
   end
 
-  context "when the project save fails" do
+  context "when the URN or UKPRN are not valid" do
+    let(:params) {
+      {
+        urn: 123,
+        incoming_trust_ukprn: 100,
+        advisory_board_date: "2024-1-1",
+        advisory_board_conditions: "Some conditions",
+        provisional_conversion_date: "2025-1-1",
+        directive_academy_order: true,
+        created_by_email: "bob@education.gov.uk",
+        created_by_first_name: "Bob",
+        created_by_last_name: "Teacher"
+      }
+    }
+
+    it "returns validation errors" do
+      expect { described_class.new(params).call }
+        .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678.")
+    end
+  end
+
+  context "when the project save fails for an unknown reason" do
     before do
       allow_any_instance_of(Conversion::Project).to receive(:save).and_return(nil)
     end
@@ -95,7 +119,9 @@ RSpec.describe Api::Conversions::CreateProjectService do
     }
 
     it "returns an error" do
-      expect { described_class.new(params).call }.to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError)
+      expect { described_class.new(params).call }
+        .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          "Project could not be created via API, urn: 123456")
     end
   end
 end
