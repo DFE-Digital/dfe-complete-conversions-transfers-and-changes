@@ -29,7 +29,7 @@ RSpec.describe Import::AcademyOpenDateImporterService do
   context "when a project with the two urns does not exist" do
     it "returns a result with success set to false" do
       tasks_data = create(:conversion_tasks_data, confirm_date_academy_opened_date_opened: nil)
-      project = create(:conversion_project, tasks_data: tasks_data, urn: 120685, academy_urn: 120685)
+      project = create(:conversion_project, tasks_data: tasks_data, urn: 120685, academy_urn: 120684)
 
       expect(subject.first[:success]).to be false
       expect(project.reload.tasks_data.confirm_date_academy_opened_date_opened).to be_nil

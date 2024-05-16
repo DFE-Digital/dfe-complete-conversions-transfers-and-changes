@@ -13,6 +13,7 @@ class Conversion::Project < Project
   alias_attribute :conversion_date_provisional, :significant_date_provisional
 
   validates :academy_urn, urn: true, if: -> { academy_urn.present? }
+  validate :school_and_academy_urn_must_not_match
   validates :directive_academy_order, inclusion: {in: [true, false]}
   validates :two_requires_improvement, inclusion: {in: [true, false]}
   validates :conversion_date, presence: true
@@ -60,5 +61,9 @@ class Conversion::Project < Project
 
   private def fetch_academy(urn)
     Gias::Establishment.find_by(urn: urn)
+  end
+
+  private def school_and_academy_urn_must_not_match
+    errors.add(:academy_urn, :matching_school_urn) if urn == academy_urn
   end
 end

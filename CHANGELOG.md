@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add a task to generate Api keys, along with documentation
 - A simple POST Api endpoint to create a Conversion project
 - API documentation is now available at /api/docs
+- Validation on the new Academy URN so that it cannot be the same as the school
+  URN has been added.
 
 ### Fixed
 
