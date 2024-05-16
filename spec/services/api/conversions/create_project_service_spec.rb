@@ -27,6 +27,14 @@ RSpec.describe Api::Conversions::CreateProjectService do
       expect(result).to be_a(Conversion::Project)
       expect(result.id).to eq(Conversion::Project.last.id)
     end
+
+    it "creates a TasksData and assigns it to the project" do
+      result = described_class.new(params).call
+      tasks_data = Conversion::TasksData.last
+
+      expect(result).to be_a(Conversion::Project)
+      expect(result.tasks_data).to eq(tasks_data)
+    end
   end
 
   context "when the params contain details for an unknown user" do

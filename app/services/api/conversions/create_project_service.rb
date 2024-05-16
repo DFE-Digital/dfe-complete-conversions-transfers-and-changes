@@ -26,6 +26,8 @@ class Api::Conversions::CreateProjectService
     user = find_or_create_user
 
     if valid?
+      tasks_data = Conversion::TasksData.new
+
       project = Conversion::Project.new(
         urn: urn,
         incoming_trust_ukprn: incoming_trust_ukprn,
@@ -33,7 +35,8 @@ class Api::Conversions::CreateProjectService
         advisory_board_date: advisory_board_date,
         advisory_board_conditions: advisory_board_conditions,
         directive_academy_order: directive_academy_order,
-        regional_delivery_officer_id: user.id
+        regional_delivery_officer_id: user.id,
+        tasks_data: tasks_data
       )
 
       if project.save(validate: false)
