@@ -99,7 +99,7 @@ class Project < ApplicationRecord
   end
 
   def new_trust_object
-    Api::AcademiesApi::Trust.new.from_hash({giasData: {groupId: new_trust_reference_number, groupName: new_trust_name}})
+    Api::AcademiesApi::Trust.new.from_hash({referenceNumber: new_trust_reference_number, name: new_trust_name})
   end
 
   def member_of_parliament
