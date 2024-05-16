@@ -4,7 +4,7 @@ class V1::Conversions < Grape::API
       params do
         requires :conversion_project, type: Hash do
           requires :urn, type: Integer
-          requires :incoming_trust_ukprn, type: String
+          requires :incoming_trust_ukprn, type: Integer
           requires :advisory_board_date, type: Date
           requires :advisory_board_conditions, type: String
           requires :provisional_conversion_date, type: Date
