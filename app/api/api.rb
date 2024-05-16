@@ -10,5 +10,12 @@ class Api < Grape::API
       title: "Complete conversions, transfers and changes API"
     },
     mount_path: "/swagger",
-    version: "0.0.1" # the semversion of the API
+    version: "0.0.1", # the semversion of the API
+    security_definitions: {
+      api_key: {
+        type: "apiKey",
+        name: "Apikey",
+        in: "header"
+      }
+    }
 end
