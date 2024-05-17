@@ -11,7 +11,6 @@
 //= link govuk-frontend/govuk/assets/images/govuk-opengraph-image.png
 //= link "@ministryofjustice/frontend/moj/assets/images/moj-logotype-crest.png"
 //= link dfefrontend.js
-//= link accessible-autocomplete/dist/accessible-autocomplete.min.js
 //= link swagger-ui-dist/swagger-ui-bundle.js
 //= link swagger-ui-dist/swagger-ui-standalone-preset.js
 //= link swagger-ui-dist/swagger-ui.css
