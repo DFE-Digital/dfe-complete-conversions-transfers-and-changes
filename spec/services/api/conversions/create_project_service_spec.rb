@@ -18,7 +18,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: user.email,
           created_by_first_name: user.first_name,
-          created_by_last_name: user.last_name
+          created_by_last_name: user.last_name,
+          prepare_id: 123456
         }
       }
 
@@ -42,6 +43,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect(result.region).to eq("west_midlands")
       end
+
+      it "saves the Prepare ID on the project" do
+        result = described_class.new(params).call
+
+        expect(result.prepare_id).to eq(123456)
+      end
     end
 
     context "when the params contain details for an unknown user" do
@@ -55,7 +62,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: "bob@education.gov.uk",
           created_by_first_name: "Bob",
-          created_by_last_name: "Governor"
+          created_by_last_name: "Governor",
+          prepare_id: 123456
         }
       }
 
@@ -87,7 +95,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: "bob@school.gov.uk",
           created_by_first_name: "Bob",
-          created_by_last_name: "Teacher"
+          created_by_last_name: "Teacher",
+          prepare_id: 123456
         }
       }
 
@@ -109,7 +118,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: "bob@education.gov.uk",
           created_by_first_name: "Bob",
-          created_by_last_name: "Teacher"
+          created_by_last_name: "Teacher",
+          prepare_id: 123456
         }
       }
 
@@ -117,6 +127,28 @@ RSpec.describe Api::Conversions::CreateProjectService do
         expect { described_class.new(params).call }
           .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
             "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678.")
+      end
+    end
+
+    context "when the Prepare ID is missing" do
+      let(:params) {
+        {
+          urn: 123456,
+          incoming_trust_ukprn: 10000001,
+          advisory_board_date: "2024-1-1",
+          advisory_board_conditions: "Some conditions",
+          provisional_conversion_date: "2025-1-1",
+          directive_academy_order: true,
+          created_by_email: "bob@education.gov.uk",
+          created_by_first_name: "Bob",
+          created_by_last_name: "Teacher"
+        }
+      }
+
+      it "returns validation errors" do
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+            "Prepare You must supply a Prepare ID when creating a project via the API")
       end
     end
 
@@ -132,7 +164,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: user.email,
           created_by_first_name: user.first_name,
-          created_by_last_name: user.last_name
+          created_by_last_name: user.last_name,
+          prepare_id: 123456
         }
       }
 
@@ -163,7 +196,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: user.email,
           created_by_first_name: user.first_name,
-          created_by_last_name: user.last_name
+          created_by_last_name: user.last_name,
+          prepare_id: 123456
         }
       }
 
@@ -189,7 +223,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: user.email,
           created_by_first_name: user.first_name,
-          created_by_last_name: user.last_name
+          created_by_last_name: user.last_name,
+          prepare_id: 123456
         }
       }
 
@@ -219,7 +254,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
           directive_academy_order: true,
           created_by_email: "bob@education.gov.uk",
           created_by_first_name: "Bob",
-          created_by_last_name: "Teacher"
+          created_by_last_name: "Teacher",
+          prepare_id: 123456
         }
       }
 

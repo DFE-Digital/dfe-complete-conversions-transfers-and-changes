@@ -16,11 +16,13 @@ class Api::Conversions::CreateProjectService
   attribute :created_by_last_name
   attribute :new_trust_reference_number
   attribute :new_trust_name
+  attribute :prepare_id
 
   validates :urn, presence: true, urn: true
   validates :incoming_trust_ukprn, ukprn: true, if: -> { incoming_trust_ukprn.present? }
   validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
   validates :new_trust_name, presence: true, if: -> { new_trust_reference_number.present? }
+  validates :prepare_id, presence: true
 
   def initialize(project_params)
     super(project_params)
@@ -43,7 +45,8 @@ class Api::Conversions::CreateProjectService
         directive_academy_order: directive_academy_order,
         regional_delivery_officer_id: user.id,
         tasks_data: tasks_data,
-        region: establishment.region_code
+        region: establishment.region_code,
+        prepare_id: prepare_id
       )
 
       if project.save(validate: false)
