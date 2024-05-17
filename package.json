@@ -5,7 +5,7 @@
     "lint:format:fix": "prettier --write doc/**/* README.md CHANGELOG.md",
     "lint:js": "standard app/javascript/**/*.js",
     "lint:js:fix": "yarn run lint:js --fix",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --target=chrome61,edge79,firefox60,safari11 --outdir=app/assets/builds --public-path=/assets"
+    "build": "esbuild app/javascript/*.js --bundle --sourcemap --format=esm --platform=browser --target=chrome61,edge79,firefox60,safari11 --outdir=app/assets/builds --public-path=/assets"
   },
   "devDependencies": {
     "esbuild": "^0.21.0",
