@@ -36,7 +36,8 @@ class Api::Conversions::CreateProjectService
         advisory_board_conditions: advisory_board_conditions,
         directive_academy_order: directive_academy_order,
         regional_delivery_officer_id: user.id,
-        tasks_data: tasks_data
+        tasks_data: tasks_data,
+        region: establishment.region_code
       )
 
       if project.save(validate: false)
@@ -57,5 +58,12 @@ class Api::Conversions::CreateProjectService
     user
   rescue ActiveRecord::RecordInvalid
     raise ProjectCreationError.new("Failed to save user during API project creation, urn: #{urn}")
+  end
+
+  private def establishment
+    result = Api::AcademiesApi::Client.new.get_establishment(urn)
+    raise ProjectCreationError.new("Failed to fetch establishment from Academies API during project creation, urn: #{urn}") if result.error.present?
+
+    result.object
   end
 end
