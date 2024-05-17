@@ -21,9 +21,9 @@
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "govuk-frontend/govuk/all" %>
     <%= javascript_include_tag "dfefrontend" %>
+    <%= javascript_include_tag "application", defer: true %>
 
     <%= render partial: "shared/google_tag_manager" if enable_google_tag_manager? %>
-    <%= javascript_include_tag "application", type: "module" %>
   </head>
 
   <body class="govuk-template__body ">

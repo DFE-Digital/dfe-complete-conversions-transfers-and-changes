@@ -1,7 +1,5 @@
 import { UserAutocomplete } from './user_autocomplete.js'
 
-// Entry point for the build script in your package.json
-//
 const govukInitialiser = window.GOVUKFrontend.initAll
 govukInitialiser()
 
