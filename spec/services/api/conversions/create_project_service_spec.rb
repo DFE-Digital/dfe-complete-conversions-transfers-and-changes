@@ -41,6 +41,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       expect(result.region).to eq("west_midlands")
     end
+
+    it "sets the project state to `api_new`" do
+      result = described_class.new(params).call
+
+      expect(result.state).to eq("api_new")
+    end
   end
 
   context "when the params contain details for an unknown user" do

@@ -86,7 +86,8 @@ class Project < ApplicationRecord
   enum :state, {
     active: 0,
     completed: 1,
-    deleted: 2
+    deleted: 2,
+    api_new: 3
   }
 
   def establishment

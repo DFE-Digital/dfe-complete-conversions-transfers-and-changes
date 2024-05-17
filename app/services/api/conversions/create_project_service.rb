@@ -37,7 +37,8 @@ class Api::Conversions::CreateProjectService
         directive_academy_order: directive_academy_order,
         regional_delivery_officer_id: user.id,
         tasks_data: tasks_data,
-        region: establishment.region_code
+        region: establishment.region_code,
+        state: :api_new
       )
 
       if project.save(validate: false)
