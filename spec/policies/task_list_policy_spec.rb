@@ -31,6 +31,11 @@ RSpec.describe TaskListPolicy do
         expect(subject).to permit(application_user, task_list)
       end
 
+      it "grants access if the project is completed and the user is service support" do
+        task_list = create(:conversion_project, completed_at: Date.yesterday, assigned_to: application_user).tasks_data
+        expect(subject).to permit(service_support_user, task_list)
+      end
+
       it "grants access if the user is service support and the project is assigned to a different user" do
         task_list = create(:conversion_project, assigned_to: application_user).tasks_data
         expect(subject).to permit(service_support_user, task_list)

@@ -321,7 +321,11 @@ en:
             html:
               Open <span class="govuk-visually-hidden">%{school_name}</span> project
     notifications:
-      completed_html: <h3>Project completed<h3><p>This project was completed on %{date} and cannot be changed.</p>
+      completed_html:
+        <h3>Project completed<h3>
+        <p>This project was completed on %{date}.</p>
+        <p>Only Service Support team members can make changes to this project.</p>
+
       not_assigned_html: <h3>Not assigned to project</h3><p>This project is not assigned to you and cannot be changed, you can add notes or contacts if required.</p>
     region:
       london: London

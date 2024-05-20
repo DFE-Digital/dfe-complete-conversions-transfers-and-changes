@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   pages
 - The application fetches establishment and trust data from the new v4 Academies
   API endpoints which should improve performance.
+- Service Support users can now update project details and tasks even after the
+  project is complete.
 
 ## [Release-69][release-69]
 

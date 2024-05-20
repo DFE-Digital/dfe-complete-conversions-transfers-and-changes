@@ -12,6 +12,7 @@ class TaskListPolicy
   end
 
   def update?
+    return true if @user.is_service_support?
     return false if @project.completed?
 
     @task_list.project.assigned_to == @user || @user.is_service_support?

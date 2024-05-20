@@ -18,7 +18,17 @@ RSpec.describe "Completing projects", type: :request do
     end
   end
 
-  describe "completing an already completed project" do
+  context "when a project is already completed" do
+    it "shows a helpful banner" do
+      project = create(:conversion_project, state: :completed, completed_at: Date.yesterday, assigned_to: user)
+
+      get project_path(project)
+
+      follow_redirect!
+
+      expect(response.body).to include "Only Service Support team members can make changes to this project."
+    end
+
     it "does not update the value of completed_at" do
       completed_date = DateTime.now
       project = create(:conversion_project, completed_at: completed_date)
