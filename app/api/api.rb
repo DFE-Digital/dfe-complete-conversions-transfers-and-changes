@@ -7,9 +7,14 @@ class Api < Grape::API
 
   add_swagger_documentation \
     info: {
-      title: "Complete conversions, transfers and changes API"
+      title: "Complete conversions, transfers and changes API",
+      description: "API to for the complete conversions, transfers and changes application.",
+      contact_name: "Service Support",
+      contact_email: "regionalservices.rg@education.gov.uk"
     },
+    base_path: "/api",
     mount_path: "/swagger",
+    host: proc { |request| request.host_with_port.to_s },
     version: "0.0.1", # the semversion of the API
     security_definitions: {
       api_key: {
@@ -17,5 +22,7 @@ class Api < Grape::API
         name: "Apikey",
         in: "header"
       }
-    }
+    },
+    consumes: ["application/json"],
+    produces: ["application/json"]
 end
