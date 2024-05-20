@@ -1,11 +1,9 @@
 import { UserAutocomplete } from './user_autocomplete.js'
 
-// Entry point for the build script in your package.json
-//
 const govukInitialiser = window.GOVUKFrontend.initAll
 govukInitialiser()
 
-// check for the appropriate element and progressively enchance to a autocomplete when
+// check for the appropriate element and progressively enhance to a autocomplete when
 // found
 const assignToTarget = document.getElementById('assignment-form-group')
 if (assignToTarget) {
