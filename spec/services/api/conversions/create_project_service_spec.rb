@@ -35,6 +35,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
       expect(result).to be_a(Conversion::Project)
       expect(result.tasks_data).to eq(tasks_data)
     end
+
+    it "sets the project region to be the same as the establishment region" do
+      result = described_class.new(params).call
+
+      expect(result.region).to eq("west_midlands")
+    end
   end
 
   context "when the params contain details for an unknown user" do
@@ -103,6 +109,33 @@ RSpec.describe Api::Conversions::CreateProjectService do
       expect { described_class.new(params).call }
         .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
           "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678.")
+    end
+  end
+
+  context "when the Academies API returns an error on fetching the establishment" do
+    let(:user) { create(:regional_casework_services_user) }
+    let(:params) {
+      {
+        urn: 123456,
+        incoming_trust_ukprn: 10066123,
+        advisory_board_date: "2024-1-1",
+        advisory_board_conditions: "Some conditions",
+        provisional_conversion_date: "2025-1-1",
+        directive_academy_order: true,
+        created_by_email: user.email,
+        created_by_first_name: user.first_name,
+        created_by_last_name: user.last_name
+      }
+    }
+
+    before do
+      mock_establishment_not_found(urn: 123456)
+    end
+
+    it "returns an error" do
+      expect { described_class.new(params).call }
+        .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          "Failed to fetch establishment from Academies API during project creation, urn: 123456")
     end
   end
 
