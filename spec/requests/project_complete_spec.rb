@@ -10,11 +10,33 @@ RSpec.describe "Completing projects", type: :request do
 
   describe "the complete project button" do
     it "is not shown on a completed project" do
-      project = create(:conversion_project, completed_at: DateTime.now)
+      project = create(:conversion_project, state: :completed, completed_at: DateTime.now)
 
       get project_path(project)
 
-      expect(response).not_to render_template "projects/show/_complete"
+      follow_redirect!
+
+      expect(response.body).not_to include project_complete_path(project)
+    end
+
+    it "is not shown for a user that is not assigned to the project" do
+      project = create(:conversion_project, completed_at: nil, assigned_to: build(:user))
+
+      get project_path(project)
+
+      follow_redirect!
+
+      expect(response.body).not_to include project_complete_path(project)
+    end
+
+    it "is shown to a user that is assigned to an active project" do
+      project = create(:conversion_project, state: :active, completed_at: nil, assigned_to: user)
+
+      get project_path(project)
+
+      follow_redirect!
+
+      expect(response.body).to include project_complete_path(project)
     end
   end
 
