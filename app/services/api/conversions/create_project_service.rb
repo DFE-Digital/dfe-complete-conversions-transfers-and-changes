@@ -52,8 +52,9 @@ class Api::Conversions::CreateProjectService
 
   private def find_or_create_user
     user = User.find_or_create_by(email: created_by_email)
+    establishment_region = Project.regions.key(establishment.region_code)
     unless user.persisted?
-      user.update!(first_name: created_by_first_name, last_name: created_by_last_name, team: :regional_casework_services)
+      user.update!(first_name: created_by_first_name, last_name: created_by_last_name, team: establishment_region)
     end
     user
   rescue ActiveRecord::RecordInvalid

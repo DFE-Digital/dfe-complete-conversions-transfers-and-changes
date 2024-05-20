@@ -66,6 +66,13 @@ RSpec.describe Api::Conversions::CreateProjectService do
       expect(result.id).to eq(Conversion::Project.last.id)
       expect(result.regional_delivery_officer_id).to eq(new_user.id)
     end
+
+    it "puts the new user in the same regional team as the establishment" do
+      project = described_class.new(params).call
+      new_user = User.find_by(email: "bob@education.gov.uk")
+
+      expect(new_user.team).to eq(project.region)
+    end
   end
 
   context "when the user's email is not valid" do
