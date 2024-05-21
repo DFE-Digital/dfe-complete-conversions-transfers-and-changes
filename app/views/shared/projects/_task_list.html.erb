@@ -40,7 +40,7 @@
         </ol>
       </div>
       <div class="govuk-grid-row">
-        <%= render "projects/show/complete" if policy(@project).update? %>
+        <%= render "projects/show/complete" if @project.active? && policy(@project).update? %>
       </div>
     </div>
   </div>
