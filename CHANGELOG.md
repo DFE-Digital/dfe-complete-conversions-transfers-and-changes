@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-70][Release-70]
+
 ### Added
 
 - Add the Grape gem and demonstrate a simple Api endpoint in the application
@@ -1888,7 +1890,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-69...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-70...HEAD
+[release-70]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-69...release-70
 [release-69]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-68...release-69
 [release-68]:
