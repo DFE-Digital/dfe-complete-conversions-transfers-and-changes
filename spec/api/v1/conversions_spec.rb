@@ -114,6 +114,33 @@ RSpec.describe V1::Conversions do
             expect(response.body).to eq({error: "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."}.to_json)
           end
         end
+
+        context "but the Academies API is not responding" do
+          before do
+            mock_establishment_not_found(urn: 121813)
+          end
+
+          it "returns an error" do
+            post "/api/v1/projects/conversions",
+              params: {
+                conversion_project: {
+                  urn: 121813,
+                  incoming_trust_ukprn: 10066123,
+                  advisory_board_date: "2024-1-1",
+                  advisory_board_conditions: "Some conditions",
+                  provisional_conversion_date: "2025-1-1",
+                  directive_academy_order: true,
+                  created_by_email: regional_delivery_officer.email,
+                  created_by_first_name: regional_delivery_officer.first_name,
+                  created_by_last_name: regional_delivery_officer.last_name
+                }
+              },
+              as: :json,
+              headers: {Apikey: "testkey"}
+
+            expect(response.body).to eq({error: "Failed to fetch establishment from Academies API during project creation, urn: 121813"}.to_json)
+          end
+        end
       end
 
       context "when any required params are missing" do
