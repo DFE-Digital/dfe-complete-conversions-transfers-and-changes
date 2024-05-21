@@ -14,9 +14,13 @@ class Api::Conversions::CreateProjectService
   attribute :created_by_email
   attribute :created_by_first_name
   attribute :created_by_last_name
+  attribute :new_trust_reference_number
+  attribute :new_trust_name
 
   validates :urn, presence: true, urn: true
-  validates :incoming_trust_ukprn, presence: true, ukprn: true
+  validates :incoming_trust_ukprn, ukprn: true, if: -> { incoming_trust_ukprn.present? }
+  validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
+  validates :new_trust_name, presence: true, if: -> { new_trust_reference_number.present? }
 
   def initialize(project_params)
     super(project_params)
@@ -31,6 +35,8 @@ class Api::Conversions::CreateProjectService
       project = Conversion::Project.new(
         urn: urn,
         incoming_trust_ukprn: incoming_trust_ukprn,
+        new_trust_reference_number: new_trust_reference_number,
+        new_trust_name: new_trust_name,
         conversion_date: provisional_conversion_date,
         advisory_board_date: advisory_board_date,
         advisory_board_conditions: advisory_board_conditions,
