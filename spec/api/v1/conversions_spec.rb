@@ -2,13 +2,69 @@ require "rails_helper"
 
 RSpec.describe V1::Conversions do
   describe "get /" do
-    it "returns an error" do
-      get "/api/v1/projects/conversions"
-      expect(response.body).to eq({error: "405 Not Allowed"}.to_json)
+    context "when there is no api key in the header" do
+      it "returns an Unauthorized error" do
+        get "/api/v1/projects/conversions"
+        expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+      end
+    end
+
+    context "when there is an invalid api key in the header" do
+      it "returns an Unauthorized error" do
+        get "/api/v1/projects/conversions", headers: {ApiKey: "unknownkey"}
+        expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+      end
+    end
+
+    context "when there is an expired api key in the header" do
+      before do
+        ApiKey.create(api_key: "testkey", expires_at: Date.yesterday)
+      end
+
+      it "returns an Unauthorized error" do
+        get "/api/v1/projects/conversions", headers: {ApiKey: "testkey"}
+        expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+      end
+    end
+
+    context "when there is a valid api key in the header" do
+      before do
+        ApiKey.create(api_key: "testkey", expires_at: Date.tomorrow)
+      end
+
+      it "returns Not Allowed" do
+        get "/api/v1/projects/conversions", headers: {Apikey: "testkey"}
+        expect(response.body).to eq({error: "405 Not Allowed"}.to_json)
+      end
     end
   end
 
   describe "post /" do
+    context "when there is no api key in the header" do
+      it "returns an error" do
+        post "/api/v1/projects/conversions"
+        expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+      end
+    end
+
+    context "when there is an invalid api key in the header" do
+      it "returns an Unauthorized error" do
+        post "/api/v1/projects/conversions", headers: {ApiKey: "unknownkey"}
+        expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+      end
+    end
+
+    context "when there is an expired api key in the header" do
+      before do
+        ApiKey.create(api_key: "testkey", expires_at: Date.yesterday)
+      end
+
+      it "returns an Unauthorized error" do
+        post "/api/v1/projects/conversions", headers: {ApiKey: "testkey"}
+        expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+      end
+    end
+
     context "when there is a valid api key in the header" do
       before do
         ApiKey.create(api_key: "testkey", expires_at: Date.tomorrow)

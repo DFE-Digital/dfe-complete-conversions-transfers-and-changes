@@ -1,4 +1,8 @@
 class V1::Conversions < Grape::API
+  before do
+    authenticate!
+  end
+
   resource :projects do
     params do
       requires :urn, type: Integer
@@ -18,8 +22,6 @@ class V1::Conversions < Grape::API
 
       desc "Create a conversion project"
       post "/" do
-        authenticate!
-
         project_params = declared(params)
 
         service = Api::Conversions::CreateProjectService.new(project_params)
@@ -38,8 +40,6 @@ class V1::Conversions < Grape::API
 
         desc "Create a form a MAT conversion project"
         post "/" do
-          authenticate!
-
           project_params = declared(params)
 
           service = Api::Conversions::CreateProjectService.new(project_params)
