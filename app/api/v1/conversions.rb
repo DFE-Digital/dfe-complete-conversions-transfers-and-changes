@@ -25,7 +25,7 @@ class V1::Conversions < Grape::API
         service = Api::Conversions::CreateProjectService.new(project_params)
         project = service.call
 
-        {conversion_project: Rails.application.routes.url_helpers.project_information_path(project)}
+        {conversion_project_id: project.id}
       rescue Api::Conversions::CreateProjectService::ProjectCreationError => e
         {error: e.message}
       end
@@ -45,7 +45,7 @@ class V1::Conversions < Grape::API
           service = Api::Conversions::CreateProjectService.new(project_params)
           project = service.call
 
-          {conversion_project: Rails.application.routes.url_helpers.project_information_path(project)}
+          {conversion_project_id: project.id}
         rescue Api::Conversions::CreateProjectService::ProjectCreationError => e
           {error: e.message}
         end

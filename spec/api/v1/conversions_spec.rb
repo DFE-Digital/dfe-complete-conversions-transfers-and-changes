@@ -36,7 +36,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             project = Project.last
-            expect(response.body).to eq({conversion_project: "/projects/#{project.id}/information"}.to_json)
+            expect(response.body).to eq({conversion_project_id: project.id}.to_json)
           end
         end
 
@@ -171,7 +171,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             project = Project.last
-            expect(response.body).to eq({conversion_project: "/projects/#{project.id}/information"}.to_json)
+            expect(response.body).to eq({conversion_project_id: project.id}.to_json)
           end
         end
 
