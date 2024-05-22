@@ -22,17 +22,15 @@ RSpec.describe V1::Conversions do
           it "creates a new project" do
             post "/api/v1/projects/conversions",
               params: {
-                conversion_project: {
-                  urn: 121813,
-                  incoming_trust_ukprn: 10066123,
-                  advisory_board_date: "2024-1-1",
-                  advisory_board_conditions: "Some conditions",
-                  provisional_conversion_date: "2025-1-1",
-                  directive_academy_order: true,
-                  created_by_email: regional_delivery_officer.email,
-                  created_by_first_name: regional_delivery_officer.first_name,
-                  created_by_last_name: regional_delivery_officer.last_name
-                }
+                urn: 121813,
+                incoming_trust_ukprn: 10066123,
+                advisory_board_date: "2024-1-1",
+                advisory_board_conditions: "Some conditions",
+                provisional_conversion_date: "2025-1-1",
+                directive_academy_order: true,
+                created_by_email: regional_delivery_officer.email,
+                created_by_first_name: regional_delivery_officer.first_name,
+                created_by_last_name: regional_delivery_officer.last_name
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -50,17 +48,15 @@ RSpec.describe V1::Conversions do
           it "returns an error" do
             post "/api/v1/projects/conversions",
               params: {
-                conversion_project: {
-                  urn: 123456,
-                  incoming_trust_ukprn: 10066123,
-                  advisory_board_date: "2024-1-1",
-                  advisory_board_conditions: "Some conditions",
-                  provisional_conversion_date: "2025-1-1",
-                  directive_academy_order: true,
-                  created_by_email: regional_delivery_officer.email,
-                  created_by_first_name: regional_delivery_officer.first_name,
-                  created_by_last_name: regional_delivery_officer.last_name
-                }
+                urn: 123456,
+                incoming_trust_ukprn: 10066123,
+                advisory_board_date: "2024-1-1",
+                advisory_board_conditions: "Some conditions",
+                provisional_conversion_date: "2025-1-1",
+                directive_academy_order: true,
+                created_by_email: regional_delivery_officer.email,
+                created_by_first_name: regional_delivery_officer.first_name,
+                created_by_last_name: regional_delivery_officer.last_name
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -73,17 +69,15 @@ RSpec.describe V1::Conversions do
           it "returns an error" do
             post "/api/v1/projects/conversions",
               params: {
-                conversion_project: {
-                  urn: 121813,
-                  incoming_trust_ukprn: 10066123,
-                  advisory_board_date: "2024-1-1",
-                  advisory_board_conditions: "Some conditions",
-                  provisional_conversion_date: "2025-1-1",
-                  directive_academy_order: true,
-                  created_by_email: "nobody@school.gov.uk",
-                  created_by_first_name: "Jane",
-                  created_by_last_name: "Unknown"
-                }
+                urn: 121813,
+                incoming_trust_ukprn: 10066123,
+                advisory_board_date: "2024-1-1",
+                advisory_board_conditions: "Some conditions",
+                provisional_conversion_date: "2025-1-1",
+                directive_academy_order: true,
+                created_by_email: "nobody@school.gov.uk",
+                created_by_first_name: "Jane",
+                created_by_last_name: "Unknown"
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -96,17 +90,15 @@ RSpec.describe V1::Conversions do
           it "creates a new project" do
             post "/api/v1/projects/conversions",
               params: {
-                conversion_project: {
-                  urn: 123,
-                  incoming_trust_ukprn: 123,
-                  advisory_board_date: "2024-1-1",
-                  advisory_board_conditions: "Some conditions",
-                  provisional_conversion_date: "2025-1-1",
-                  directive_academy_order: true,
-                  created_by_email: regional_delivery_officer.email,
-                  created_by_first_name: regional_delivery_officer.first_name,
-                  created_by_last_name: regional_delivery_officer.last_name
-                }
+                urn: 123,
+                incoming_trust_ukprn: 123,
+                advisory_board_date: "2024-1-1",
+                advisory_board_conditions: "Some conditions",
+                provisional_conversion_date: "2025-1-1",
+                directive_academy_order: true,
+                created_by_email: regional_delivery_officer.email,
+                created_by_first_name: regional_delivery_officer.first_name,
+                created_by_last_name: regional_delivery_officer.last_name
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -123,17 +115,15 @@ RSpec.describe V1::Conversions do
           it "returns an error" do
             post "/api/v1/projects/conversions",
               params: {
-                conversion_project: {
-                  urn: 121813,
-                  incoming_trust_ukprn: 10066123,
-                  advisory_board_date: "2024-1-1",
-                  advisory_board_conditions: "Some conditions",
-                  provisional_conversion_date: "2025-1-1",
-                  directive_academy_order: true,
-                  created_by_email: regional_delivery_officer.email,
-                  created_by_first_name: regional_delivery_officer.first_name,
-                  created_by_last_name: regional_delivery_officer.last_name
-                }
+                urn: 121813,
+                incoming_trust_ukprn: 10066123,
+                advisory_board_date: "2024-1-1",
+                advisory_board_conditions: "Some conditions",
+                provisional_conversion_date: "2025-1-1",
+                directive_academy_order: true,
+                created_by_email: regional_delivery_officer.email,
+                created_by_first_name: regional_delivery_officer.first_name,
+                created_by_last_name: regional_delivery_officer.last_name
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -146,7 +136,7 @@ RSpec.describe V1::Conversions do
       context "when any required params are missing" do
         it "returns an error" do
           post "/api/v1/projects/conversions", headers: {Apikey: "testkey"}
-          expect(response.body).to include("conversion_project is missing")
+          expect(response.body).to include("urn is missing, advisory_board_date is missing, advisory_board_conditions is missing")
         end
       end
     end
@@ -166,18 +156,16 @@ RSpec.describe V1::Conversions do
           it "creates a new Form a MAT project" do
             post "/api/v1/projects/conversions/form-a-mat",
               params: {
-                conversion_project: {
-                  urn: 121813,
-                  new_trust_reference_number: "TR12345",
-                  new_trust_name: "The New Trust",
-                  advisory_board_date: "2024-1-1",
-                  advisory_board_conditions: "Some conditions",
-                  provisional_conversion_date: "2025-1-1",
-                  directive_academy_order: true,
-                  created_by_email: regional_delivery_officer.email,
-                  created_by_first_name: regional_delivery_officer.first_name,
-                  created_by_last_name: regional_delivery_officer.last_name
-                }
+                urn: 121813,
+                new_trust_reference_number: "TR12345",
+                new_trust_name: "The New Trust",
+                advisory_board_date: "2024-1-1",
+                advisory_board_conditions: "Some conditions",
+                provisional_conversion_date: "2025-1-1",
+                directive_academy_order: true,
+                created_by_email: regional_delivery_officer.email,
+                created_by_first_name: regional_delivery_officer.first_name,
+                created_by_last_name: regional_delivery_officer.last_name
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -191,18 +179,16 @@ RSpec.describe V1::Conversions do
           it "returns an error" do
             post "/api/v1/projects/conversions/form-a-mat",
               params: {
-                conversion_project: {
-                  urn: 121813,
-                  new_trust_reference_number: "12345",
-                  new_trust_name: "The New Trust",
-                  advisory_board_date: "2024-1-1",
-                  advisory_board_conditions: "Some conditions",
-                  provisional_conversion_date: "2025-1-1",
-                  directive_academy_order: true,
-                  created_by_email: regional_delivery_officer.email,
-                  created_by_first_name: regional_delivery_officer.first_name,
-                  created_by_last_name: regional_delivery_officer.last_name
-                }
+                urn: 121813,
+                new_trust_reference_number: "12345",
+                new_trust_name: "The New Trust",
+                advisory_board_date: "2024-1-1",
+                advisory_board_conditions: "Some conditions",
+                provisional_conversion_date: "2025-1-1",
+                directive_academy_order: true,
+                created_by_email: regional_delivery_officer.email,
+                created_by_first_name: regional_delivery_officer.first_name,
+                created_by_last_name: regional_delivery_officer.last_name
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -215,7 +201,7 @@ RSpec.describe V1::Conversions do
       context "when any required params are missing" do
         it "returns an error" do
           post "/api/v1/projects/conversions/form-a-mat", headers: {Apikey: "testkey"}
-          expect(response.body).to include("conversion_project is missing")
+          expect(response.body).to include("urn is missing, advisory_board_date is missing, advisory_board_conditions is missing")
         end
       end
 
@@ -223,22 +209,20 @@ RSpec.describe V1::Conversions do
         it "returns an error" do
           post "/api/v1/projects/conversions/form-a-mat",
             params: {
-              conversion_project: {
-                urn: 121813,
-                incoming_trust_ukprn: 10066123,
-                advisory_board_date: "2024-1-1",
-                advisory_board_conditions: "Some conditions",
-                provisional_conversion_date: "2025-1-1",
-                directive_academy_order: true,
-                created_by_email: regional_delivery_officer.email,
-                created_by_first_name: regional_delivery_officer.first_name,
-                created_by_last_name: regional_delivery_officer.last_name
-              }
+              urn: 121813,
+              incoming_trust_ukprn: 10066123,
+              advisory_board_date: "2024-1-1",
+              advisory_board_conditions: "Some conditions",
+              provisional_conversion_date: "2025-1-1",
+              directive_academy_order: true,
+              created_by_email: regional_delivery_officer.email,
+              created_by_first_name: regional_delivery_officer.first_name,
+              created_by_last_name: regional_delivery_officer.last_name
             },
             as: :json,
             headers: {Apikey: "testkey"}
 
-          expect(response.body).to eq({error: "conversion_project[new_trust_reference_number] is missing, conversion_project[new_trust_name] is missing"}.to_json)
+          expect(response.body).to eq({error: "new_trust_reference_number is missing, new_trust_name is missing"}.to_json)
         end
       end
     end
