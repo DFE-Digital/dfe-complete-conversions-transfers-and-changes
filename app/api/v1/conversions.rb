@@ -29,7 +29,7 @@ class V1::Conversions < Grape::API
 
         {conversion_project_id: project.id}
       rescue Api::Conversions::CreateProjectService::ProjectCreationError => e
-        {error: e.message}
+        error!(e.message)
       end
 
       resource "form-a-mat" do
@@ -47,7 +47,7 @@ class V1::Conversions < Grape::API
 
           {conversion_project_id: project.id}
         rescue Api::Conversions::CreateProjectService::ProjectCreationError => e
-          {error: e.message}
+          error!(e.message)
         end
       end
     end

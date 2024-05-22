@@ -6,6 +6,7 @@ RSpec.describe V1::Conversions do
       it "returns an Unauthorized error" do
         get "/api/v1/projects/conversions"
         expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+        expect(response.status).to eq(401)
       end
     end
 
@@ -13,6 +14,7 @@ RSpec.describe V1::Conversions do
       it "returns an Unauthorized error" do
         get "/api/v1/projects/conversions", headers: {ApiKey: "unknownkey"}
         expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+        expect(response.status).to eq(401)
       end
     end
 
@@ -24,6 +26,7 @@ RSpec.describe V1::Conversions do
       it "returns an Unauthorized error" do
         get "/api/v1/projects/conversions", headers: {ApiKey: "testkey"}
         expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+        expect(response.status).to eq(401)
       end
     end
 
@@ -35,6 +38,7 @@ RSpec.describe V1::Conversions do
       it "returns Not Allowed" do
         get "/api/v1/projects/conversions", headers: {Apikey: "testkey"}
         expect(response.body).to eq({error: "405 Not Allowed"}.to_json)
+        expect(response.status).to eq(405)
       end
     end
   end
@@ -44,6 +48,7 @@ RSpec.describe V1::Conversions do
       it "returns an error" do
         post "/api/v1/projects/conversions"
         expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+        expect(response.status).to eq(401)
       end
     end
 
@@ -51,6 +56,7 @@ RSpec.describe V1::Conversions do
       it "returns an Unauthorized error" do
         post "/api/v1/projects/conversions", headers: {ApiKey: "unknownkey"}
         expect(response.body).to eq({error: "Unauthorized. Invalid or expired token."}.to_json)
+        expect(response.status).to eq(401)
       end
     end
 
@@ -93,6 +99,7 @@ RSpec.describe V1::Conversions do
 
             project = Project.last
             expect(response.body).to eq({conversion_project_id: project.id}.to_json)
+            expect(response.status).to eq(201)
           end
         end
 
@@ -118,6 +125,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "Project could not be created via API, urn: 123456"}.to_json)
+            expect(response.status).to eq(500)
           end
         end
 
@@ -139,6 +147,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "Failed to save user during API project creation, urn: 121813"}.to_json)
+            expect(response.status).to eq(500)
           end
         end
 
@@ -160,6 +169,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."}.to_json)
+            expect(response.status).to eq(500)
           end
         end
 
@@ -185,6 +195,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "Failed to fetch establishment from Academies API during project creation, urn: 121813"}.to_json)
+            expect(response.status).to eq(500)
           end
         end
       end
@@ -193,6 +204,7 @@ RSpec.describe V1::Conversions do
         it "returns an error" do
           post "/api/v1/projects/conversions", headers: {Apikey: "testkey"}
           expect(response.body).to include("urn is missing, advisory_board_date is missing, advisory_board_conditions is missing")
+          expect(response.status).to eq(400)
         end
       end
     end
@@ -228,6 +240,7 @@ RSpec.describe V1::Conversions do
 
             project = Project.last
             expect(response.body).to eq({conversion_project_id: project.id}.to_json)
+            expect(response.status).to eq(201)
           end
         end
 
@@ -250,6 +263,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "New trust reference number The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234"}.to_json)
+            expect(response.status).to eq(500)
           end
         end
       end
@@ -279,6 +293,7 @@ RSpec.describe V1::Conversions do
             headers: {Apikey: "testkey"}
 
           expect(response.body).to eq({error: "new_trust_reference_number is missing, new_trust_name is missing"}.to_json)
+          expect(response.status).to eq(400)
         end
       end
     end
