@@ -92,7 +92,8 @@ RSpec.describe V1::Conversions do
                 directive_academy_order: true,
                 created_by_email: regional_delivery_officer.email,
                 created_by_first_name: regional_delivery_officer.first_name,
-                created_by_last_name: regional_delivery_officer.last_name
+                created_by_last_name: regional_delivery_officer.last_name,
+                prepare_id: 12345
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -119,7 +120,8 @@ RSpec.describe V1::Conversions do
                 directive_academy_order: true,
                 created_by_email: regional_delivery_officer.email,
                 created_by_first_name: regional_delivery_officer.first_name,
-                created_by_last_name: regional_delivery_officer.last_name
+                created_by_last_name: regional_delivery_officer.last_name,
+                prepare_id: 12345
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -141,7 +143,8 @@ RSpec.describe V1::Conversions do
                 directive_academy_order: true,
                 created_by_email: "nobody@school.gov.uk",
                 created_by_first_name: "Jane",
-                created_by_last_name: "Unknown"
+                created_by_last_name: "Unknown",
+                prepare_id: 12345
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -163,7 +166,8 @@ RSpec.describe V1::Conversions do
                 directive_academy_order: true,
                 created_by_email: regional_delivery_officer.email,
                 created_by_first_name: regional_delivery_officer.first_name,
-                created_by_last_name: regional_delivery_officer.last_name
+                created_by_last_name: regional_delivery_officer.last_name,
+                prepare_id: 12345
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -189,7 +193,8 @@ RSpec.describe V1::Conversions do
                 directive_academy_order: true,
                 created_by_email: regional_delivery_officer.email,
                 created_by_first_name: regional_delivery_officer.first_name,
-                created_by_last_name: regional_delivery_officer.last_name
+                created_by_last_name: regional_delivery_officer.last_name,
+                prepare_id: 12345
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -233,7 +238,8 @@ RSpec.describe V1::Conversions do
                 directive_academy_order: true,
                 created_by_email: regional_delivery_officer.email,
                 created_by_first_name: regional_delivery_officer.first_name,
-                created_by_last_name: regional_delivery_officer.last_name
+                created_by_last_name: regional_delivery_officer.last_name,
+                prepare_id: 12345
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -257,7 +263,8 @@ RSpec.describe V1::Conversions do
                 directive_academy_order: true,
                 created_by_email: regional_delivery_officer.email,
                 created_by_first_name: regional_delivery_officer.first_name,
-                created_by_last_name: regional_delivery_officer.last_name
+                created_by_last_name: regional_delivery_officer.last_name,
+                prepare_id: 12345
               },
               as: :json,
               headers: {Apikey: "testkey"}
@@ -287,7 +294,8 @@ RSpec.describe V1::Conversions do
               directive_academy_order: true,
               created_by_email: regional_delivery_officer.email,
               created_by_first_name: regional_delivery_officer.first_name,
-              created_by_last_name: regional_delivery_officer.last_name
+              created_by_last_name: regional_delivery_officer.last_name,
+              prepare_id: 12345
             },
             as: :json,
             headers: {Apikey: "testkey"}

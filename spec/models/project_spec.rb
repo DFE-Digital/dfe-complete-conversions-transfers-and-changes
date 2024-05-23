@@ -21,6 +21,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_db_column(:team).of_type :string }
     it { is_expected.to have_db_column(:all_conditions_met).of_type :boolean }
     it { is_expected.to have_db_column(:state).of_type :integer }
+    it { is_expected.to have_db_column(:prepare_id).of_type :integer }
   end
 
   describe "Relationships" do
