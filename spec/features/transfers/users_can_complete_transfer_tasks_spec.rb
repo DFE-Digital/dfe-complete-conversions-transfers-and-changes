@@ -13,7 +13,6 @@ RSpec.feature "Users can complete transfer tasks" do
   mandatory_tasks = %w[
     deed_of_novation_and_variation
     commercial_transfer_agreement
-    form_m
     rpa_policy
     supplemental_funding_agreement
     confirm_incoming_trust_has_completed_all_actions
@@ -25,6 +24,7 @@ RSpec.feature "Users can complete transfer tasks" do
     deed_of_variation
     articles_of_association
     land_consent_letter
+    form_m
     church_supplemental_agreement
     deed_termination_church_agreement
     master_funding_agreement

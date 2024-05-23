@@ -14,6 +14,10 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+
+      <div class="govuk-form-group">
         <h2 class="govuk-heading-l"><%= t("transfer.task.form_m.clear_section.title") %></h2>
         <div class="app-task-section__hint">
           <%= t("transfer.task.form_m.clear_section.hint.html") %>
