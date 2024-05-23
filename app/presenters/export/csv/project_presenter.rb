@@ -159,7 +159,7 @@ class Export::Csv::ProjectPresenter
 
   def sponsored_grant_type
     return I18n.t("export.csv.project.values.not_applicable") if @project.is_a?(Transfer::Project)
-    return I18n.t("export.csv.project.values.not_applicable") if @project.tasks_data.sponsored_support_grant_not_applicable?
+    return I18n.t("export.csv.project.values.sponsored_grant_type.not_eligible") if @project.tasks_data.sponsored_support_grant_not_applicable?
     return I18n.t("export.csv.project.values.unconfirmed") if @project.tasks_data.sponsored_support_grant_type.nil?
 
     I18n.t("export.csv.project.values.sponsored_grant_type.#{@project.tasks_data.sponsored_support_grant_type}")

@@ -13,6 +13,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Changed the "All conditions met" task for Transfers to "Authority to proceed"
+- The sponsored grant type column in CSV exports is now labelled 'Project route
+  and sponsored grant type' and the value for 'not applicable is now 'Voluntary
+  converter - not eligible'.
 
 ## [Release-70][Release-70]
 
