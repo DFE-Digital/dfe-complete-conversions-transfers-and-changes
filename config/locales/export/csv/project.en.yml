@@ -16,7 +16,7 @@ en:
           seven_to_eleven_years: Proposed capacity for pupils in years 7 to 11
           twelve_or_above_years: Proposed capacity for students in year 12 or above
           two_requires_improvement: 2RI (Two Requires Improvement)
-          sponsored_grant_type: Sponsored Grant Type
+          sponsored_grant_type: Project route and sponsored grant type
           transfer_grant_level: Transfer grant level
           assigned_to_name: Assigned to name
           assigned_to_email: Assigned to email
@@ -153,6 +153,7 @@ en:
             fast_track: fast track
             intermediate: intermediate
             sponsored: sponsored
+            not_eligible: Voluntary converter - not eligible
           unconfirmed: unconfirmed
           confirmed: confirmed
           unassigned: unassigned
