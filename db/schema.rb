@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_17_100215) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_23_104451) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -414,6 +414,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_100215) do
     t.boolean "declaration_of_expenditure_certificate_correct", default: false
     t.boolean "declaration_of_expenditure_certificate_saved", default: false
     t.boolean "declaration_of_expenditure_certificate_not_applicable", default: false
+    t.boolean "conditions_met_check_any_information_changed"
+    t.boolean "conditions_met_baseline_sheet_approved"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
