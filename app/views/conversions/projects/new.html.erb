@@ -15,8 +15,8 @@
       <%= t("conversion_project.new.hint_html") %>
 
       <div class="govuk-form-group">
-        <%= form.govuk_text_field :urn, label: {size: "m"}, width: 10 %>
-        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m"}, width: 10 %>
+        <%= form.govuk_text_field :urn, label: {size: "m"}, width: 10, autocomplete: :off %>
+        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m"}, width: 10, autocomplete: :off %>
       </div>
 
       <div class="govuk-form-group">
