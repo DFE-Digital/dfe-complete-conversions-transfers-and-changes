@@ -11,5 +11,11 @@ FactoryBot.define do
     directive_academy_order { false }
     assigned_to_regional_caseworker_team { false }
     two_requires_improvement { false }
+
+    trait :form_a_mat do
+      incoming_trust_ukprn { nil }
+      new_trust_reference_number { "TR12345" }
+      new_trust_name { "Brand new trust" }
+    end
   end
 end
