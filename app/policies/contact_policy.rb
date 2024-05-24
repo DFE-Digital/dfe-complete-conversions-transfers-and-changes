@@ -8,6 +8,7 @@ class ContactPolicy
   end
 
   def edit?
+    return true if @user.is_service_support?
     return false if @project&.completed?
     return false unless @user.has_role?
 
