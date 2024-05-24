@@ -212,13 +212,13 @@ RSpec.describe Export::Csv::ProjectPresenter do
       expect(presenter.sponsored_grant_type).to eql "full sponsored"
     end
 
-    it "presents not applicable" do
+    it "presents not Voluntary converter - not eligible" do
       tasks_data = build(:conversion_tasks_data, sponsored_support_grant_type: nil, sponsored_support_grant_not_applicable: true)
       project = build(:conversion_project, tasks_data: tasks_data)
 
       presenter = described_class.new(project)
 
-      expect(presenter.sponsored_grant_type).to eql "not applicable"
+      expect(presenter.sponsored_grant_type).to eql "Voluntary converter - not eligible"
     end
   end
 
