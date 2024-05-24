@@ -1,53 +1,129 @@
 require "rails_helper"
 
-RSpec.describe All::ByMonth::Transfers::ProjectsController do
-  let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
-  let(:project_form) { build(:create_transfer_project_form) }
-  let(:project_form_params) {
-    attributes_for(:create_project_form,
-      "advisory_board_date(3i)": "1",
-      "advisory_board_date(2i)": "1",
-      "advisory_board_date(1i)": "2022",
-      regional_delivery_officer: nil)
-  }
+RSpec.describe Transfers::ProjectsController do
+  let(:user) { create(:user, :caseworker) }
 
-  describe "#create" do
-    let(:project) { build(:transfer_project) }
+  before do
+    mock_all_academies_api_responses
+    sign_in_with(user)
+  end
 
-    before do
-      mock_all_academies_api_responses
-      sign_in_with(regional_delivery_officer)
-    end
+  describe "academies API behaviour" do
+    context "when the API times out" do
+      before { mock_timeout_api_responses(urn: 123456, ukprn: 10061021) }
 
-    subject(:perform_request) do
-      post transfers_path, params: {transfer_create_project_form: {**project_form_params}}
-      response
-    end
+      it "renders the API time out page" do
+        post transfers_path, params: {transfer_create_project_form: {urn: "123456"}}
 
-    context "when the project is not valid" do
-      before do
-        allow(Transfer::CreateProjectForm).to receive(:new).and_return(project_form)
-        allow(project_form).to receive(:valid?).and_return false
+        expect(response).to render_template("pages/academies_api_client_timeout")
       end
+    end
 
-      it "re-renders the new template" do
-        expect(perform_request).to render_template :new
+    context "when the API is not authenticated" do
+      before { mock_unauthorised_api_responses(urn: 123456, ukprn: 10061021) }
+
+      it "renders the API not authorised page" do
+        post transfers_path, params: {transfer_create_project_form: {urn: "123456"}}
+
+        expect(response).to render_template("pages/academies_api_client_unauthorised")
       end
     end
   end
 
-  describe "#update" do
-    before do
-      sign_in_with(regional_delivery_officer)
+  describe "creating a transfer project for an existing trust" do
+    context "when the attributes are invalid" do
+      it "renders the new form view" do
+        post transfers_path, params: {transfer_create_project_form: {urn: "123456"}}
+
+        expect(response).to render_template(:new)
+      end
+
+      context "when the attributes are valid" do
+        it "renders the new project show view" do
+          params = valid_params_existing_trust
+          params["transfer_create_project_form"]["assigned_to_regional_caseworker_team"] = "false"
+
+          post transfers_path, params: params
+
+          expect(response).to redirect_to(project_path(Project.last))
+        end
+      end
     end
+  end
 
-    it "shows an error when the change is invalid" do
-      mock_successful_api_response_to_create_any_project
-      project = create(:transfer_project, assigned_to: regional_delivery_officer)
+  describe "creating a transfer  project to form a new trust" do
+    context "when the attributes are invalid" do
+      it "renders the new form view" do
+        post transfers_create_mat_path, params: {transfer_create_project_form: {urn: "123456"}}
 
-      post transfers_update_path(project), params: {transfer_edit_project_form: {establishment_sharepoint_link: ""}}
+        expect(response).to render_template(:new_mat)
+      end
 
-      expect(response).to render_template(:edit)
+      context "when the attributes are valid" do
+        it "renders the new project show view" do
+          params = valid_params_form_a_mat
+          params["transfer_create_project_form"]["assigned_to_regional_caseworker_team"] = "false"
+
+          post transfers_create_mat_path, params: params
+
+          expect(response).to redirect_to(project_path(Project.last))
+        end
+      end
     end
+  end
+
+  describe "updating an existing project" do
+    context "when the attributes are valid" do
+      it "renders the project view" do
+        project = create(:transfer_project, assigned_to: user)
+
+        post transfers_update_path(project), params: {transfer_edit_project_form: {incoming_trust_ukprn: "10061021"}}
+
+        expect(response).to redirect_to(project_information_path(project))
+      end
+    end
+    context "when the attributes are invalid" do
+      it "renders the new form view" do
+        project = create(:transfer_project, assigned_to: user)
+
+        post transfers_update_path(project), params: {transfer_edit_project_form: {incoming_trust_ukprn: ""}}
+
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
+
+  def valid_params_existing_trust
+    provisional_transfer = Date.today.at_beginning_of_month + 1.year
+    advisory_board_date = Date.yesterday
+
+    {transfer_create_project_form: {
+      urn: "123456",
+      incoming_trust_ukprn: "10061021",
+      outgoing_trust_ukprn: "10061022",
+      "provisional_transfer_date(3i)": provisional_transfer.day.to_s,
+      "provisional_transfer_date(2i)": provisional_transfer.month.to_s,
+      "provisional_transfer_date(1i)": provisional_transfer.year.to_s,
+      "advisory_board_date(3i)": advisory_board_date.day.to_s,
+      "advisory_board_date(2i)": advisory_board_date.month.to_s,
+      "advisory_board_date(1i)": advisory_board_date.year.to_s,
+      advisory_board_conditions: "",
+      two_requires_improvement: "false",
+      establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment",
+      incoming_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/incoming_trust",
+      outgoing_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/outgoing_trust",
+      handover_note_body: "Handover notes.",
+      assigned_to_regional_caseworker_team: "true",
+      inadequate_ofsted: "false",
+      financial_safeguarding_governance_issues: "false",
+      outgoing_trust_to_close: "false"
+    }}.with_indifferent_access
+  end
+
+  def valid_params_form_a_mat
+    params = valid_params_existing_trust.except(:incoming_trust_ukprn)
+    params[:transfer_create_project_form][:new_trust_name] = "Brand new trust"
+    params[:transfer_create_project_form][:new_trust_reference_number] = "TR12345"
+    params.with_indifferent_access
   end
 end
