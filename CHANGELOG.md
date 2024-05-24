@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The transfer project Form M task is now optional and can be marked as not
   applicable.
 
+### Fixed
+
+- The skip to content link is now underlined.
+
 ## [Release-70][Release-70]
 
 ### Added

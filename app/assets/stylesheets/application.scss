@@ -103,3 +103,6 @@ address.govuk-address {
 .moj-sub-navigation__item {
   margin-bottom: 0px;
 }
+
+// force skip link to be underline
+.govuk-skip-link { text-decoration: underline !important; }
