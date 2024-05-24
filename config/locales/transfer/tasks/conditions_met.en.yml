@@ -2,25 +2,36 @@ en:
   transfer:
     task:
       conditions_met:
-        title: Confirm all conditions have been met
+        title: Confirm this transfer has authority to proceed
         hint:
           html:
-            The deadline for meeting all conditions is in the email you got from the AIOP (Academy Intervention Operational Policy) team. All conditions must be met by the the deadline or the academy will not transfer on %{transfer_date}.
-        guidance_link: How to check all conditions have been met
+            The deadline for getting authority to proceed is in the email you got from AOPU (Academy Operational Practice Unit). The project must have authority to proceed by the deadline or the academy will not transfer on %{transfer_date}.
+        guidance_link: How to check the transfer has authority to proceed
         guidance:
           html:
-            <p>You need to check that:</p>
+            <p>The transfer cannot proceed until:</p>
             <ul>
-            <li>legal documents are cleared</li>
-            <li>legal documents are signed by the necessary people</li>
+            <li>legal documents are cleared and signed</li>
             <li>the academy have confirmed all of their actions are complete</li>
+            <li>information in the baseline spreadsheet is correct and approved</li>
+            </ul>
+        check_any_information_changed:
+          title: Check if any information has changed from the first baseline
+          hint:
+            html:
+              <p>You must update any changed information in this month's <a href="https://educationgovuk.sharepoint.com/sites/ag/WorkplaceDocuments/Forms/AllItems.aspx?id=%2Fsites%2Fag%2FWorkplaceDocuments%2FADG%20Knowledge%2FAcademy%5FInternal%5FGuidance%2F04%5FOpen%2F02%5FRebrokerage%2FMonthly%20Rebrokerage%20Documents&viewid=193ea09b%2D5b14%2D45d5%2D89ea%2D4d688b0440f2&OR=Teams%2DHL&CT=1702652013687&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyOC8yMzExMDIyNDcwNSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D">second baseline spreadsheet (opens in new tab)</a>.</p>
+        baseline_sheet_approved:
+          title: Baseline spreadsheet approved
+          hint:
+            html:
+              <p>A Deputy Director, or a Grade 6 civil servant with delegated authority, must sign-off on this month's transfers.</p>
         confirm_all_conditions_met:
-          title: Confirm all conditions are met
+          title: Confirm the project has authority to proceed
           hint:
             html:
               <p>This will change the transfer's status on the By Month project list.</p>
-              <p>AIOP and ESFA (Education and Skills Funding Agency) use it to prepare and send GAG (general annual grant) funding.</p>
-          guidance_link: What to do if conditions are not met
+              <p>AOPU and ESFA (Education and Skills Funding Agency) use it to prepare and send the GAG (general annual grant) funding.</p>
+          guidance_link: What to do if the transfer does not have authority to proceed
           guidance:
             html:
               You must agree a new transfer date with all stakeholders, then change the transfer date for this project.

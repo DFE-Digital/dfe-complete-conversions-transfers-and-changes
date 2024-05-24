@@ -27,6 +27,8 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_any_information_changed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :baseline_sheet_approved)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :confirm_all_conditions_met)) %>
       </div>
 

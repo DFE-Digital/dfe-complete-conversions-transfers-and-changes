@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - A simple POST Api endpoint to create a Form a MAT Conversion project
 
+### Changed
+
+- Changed the "All conditions met" task for Transfers to "Authority to proceed"
+
 ## [Release-70][Release-70]
 
 ### Added

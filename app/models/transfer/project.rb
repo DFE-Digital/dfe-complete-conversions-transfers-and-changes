@@ -14,6 +14,8 @@ class Transfer::Project < Project
     :confirmed_date_and_in_the_past?
   ]
 
+  alias_attribute :authority_to_proceed, :all_conditions_met
+
   def outgoing_trust
     @outgoing_trust ||= fetch_trust(outgoing_trust_ukprn)
   end
