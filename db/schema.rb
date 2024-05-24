@@ -416,6 +416,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_23_125015) do
     t.boolean "declaration_of_expenditure_certificate_not_applicable", default: false
     t.boolean "conditions_met_check_any_information_changed"
     t.boolean "conditions_met_baseline_sheet_approved"
+    t.boolean "form_m_not_applicable"
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

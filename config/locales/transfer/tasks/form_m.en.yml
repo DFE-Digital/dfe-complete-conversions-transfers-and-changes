@@ -25,3 +25,5 @@ en:
           title: Signed by outgoing trust
         saved:
           title: Saved in the academy SharePoint folder
+        not_applicable:
+          title: Not applicable

@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The sponsored grant type column in CSV exports is now labelled 'Project route
   and sponsored grant type' and the value for 'not applicable is now 'Voluntary
   converter - not eligible'.
+- The transfer project Form M task is now optional and can be marked as not
+  applicable.
 
 ## [Release-70][Release-70]
 
