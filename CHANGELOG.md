@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - The skip to content link is now underlined.
+- Service support users can now edit all contacts.
 
 ## [Release-70][Release-70]
 
