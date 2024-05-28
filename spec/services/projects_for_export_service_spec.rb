@@ -5,7 +5,7 @@ RSpec.describe ProjectsForExportService do
     mock_academies_api_client_get_establishments_and_trusts
   end
 
-  describe "#grant_management_and_finance_unit_conversion_projects" do
+  describe "#conversion_projects_by_advisory_board_date" do
     it "returns only conversion projects with an advisory board date of the supplied month and year" do
       matching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       mismatching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
@@ -45,7 +45,7 @@ RSpec.describe ProjectsForExportService do
     end
   end
 
-  describe "#grant_management_and_finance_unit_transfer_projects" do
+  describe "#transfer_projects_by_advisory_board_date" do
     it "returns only transfer projects with an advisory board date of the supplied month and year" do
       matching_project = create(:transfer_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
       mismatching_project_1 = create(:conversion_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
@@ -84,7 +84,7 @@ RSpec.describe ProjectsForExportService do
     end
   end
 
-  describe "#transfer_by_month_projects" do
+  describe "#transfer_projects_by_significant_date" do
     it "returns only transfer projects transferring in the supplied month & year" do
       matching_project_1 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
       matching_project_2 = create(:transfer_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
@@ -124,7 +124,7 @@ RSpec.describe ProjectsForExportService do
     end
   end
 
-  describe "#conversion_by_month_projects" do
+  describe "#conversion_projects_by_significant_date" do
     it "returns only conversion projects converting in the supplied month & year" do
       matching_project_1 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
       matching_project_2 = create(:conversion_project, significant_date_provisional: false, significant_date: Date.parse("2023-1-1"))
