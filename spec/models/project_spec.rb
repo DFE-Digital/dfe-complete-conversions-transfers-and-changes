@@ -740,6 +740,20 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "advisory_board_date_in_range scope" do
+      it "returns only project where the advisory board date falls within the specified range" do
+        mock_successful_api_response_to_create_any_project
+        project_one = create(:conversion_project, advisory_board_date: Date.parse("2023-1-10"))
+        project_two = create(:conversion_project, advisory_board_date: Date.parse("2023-2-20"))
+        project_three = create(:conversion_project, advisory_board_date: Date.parse("2023-5-12"))
+
+        scoped_projects = Project.advisory_board_date_in_range("2023-1-1", "2023-3-31")
+
+        expect(scoped_projects).to include(project_one, project_two)
+        expect(scoped_projects).to_not include(project_three)
+      end
+    end
+
     describe "not_form_a_mat scope" do
       it "returns only NON form a MAT projects" do
         mock_successful_api_responses(urn: any_args, ukprn: any_args)
