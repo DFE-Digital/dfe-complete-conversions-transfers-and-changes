@@ -37,7 +37,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
     super(attributes)
   end
 
-  def save
+  def save(context = nil)
     @project = Transfer::Project.new(
       urn: urn,
       incoming_trust_ukprn: incoming_trust_ukprn,
@@ -59,7 +59,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       new_trust_name: new_trust_name
     )
 
-    return nil unless valid?
+    return nil unless valid?(context)
 
     ActiveRecord::Base.transaction do
       @project.save

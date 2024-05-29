@@ -121,6 +121,7 @@ RSpec.describe Conversions::ProjectsController do
     let!(:team_leader) { create(:user, :team_leader) }
     let(:project_form_params) {
       attributes_for(:create_project_form,
+        :form_a_mat,
         "provisional_conversion_date(3i)": "1",
         "provisional_conversion_date(2i)": "1",
         "provisional_conversion_date(1i)": "2030",
@@ -190,20 +191,20 @@ RSpec.describe Conversions::ProjectsController do
       sign_in_with(regional_delivery_officer)
     end
 
-    let(:project_form_params) {
-      attributes_for(:create_project_form,
-        "provisional_conversion_date(3i)": "1",
-        "provisional_conversion_date(2i)": "1",
-        "provisional_conversion_date(1i)": "2030",
-        "advisory_board_date(3i)": "1",
-        "advisory_board_date(2i)": "1",
-        "advisory_board_date(1i)": "2022",
-        regional_delivery_officer: nil,
-        directive_academy_order: "false",
-        two_requires_improvement: "false")
-    }
-
     context "a regular conversion project" do
+      let(:project_form_params) {
+        attributes_for(:create_project_form,
+          "provisional_conversion_date(3i)": "1",
+          "provisional_conversion_date(2i)": "1",
+          "provisional_conversion_date(1i)": "2030",
+          "advisory_board_date(3i)": "1",
+          "advisory_board_date(2i)": "1",
+          "advisory_board_date(1i)": "2022",
+          regional_delivery_officer: nil,
+          directive_academy_order: "false",
+          two_requires_improvement: "false")
+      }
+
       context "when the project is not assigned to regional casework services" do
         before { project_form_params["assigned_to_regional_caseworker_team"] = "false" }
 
@@ -240,6 +241,19 @@ RSpec.describe Conversions::ProjectsController do
     end
 
     context "a form a MAT conversion project" do
+      let(:project_form_params) {
+        attributes_for(:create_project_form,
+          :form_a_mat,
+          "provisional_conversion_date(3i)": "1",
+          "provisional_conversion_date(2i)": "1",
+          "provisional_conversion_date(1i)": "2030",
+          "advisory_board_date(3i)": "1",
+          "advisory_board_date(2i)": "1",
+          "advisory_board_date(1i)": "2022",
+          regional_delivery_officer: nil,
+          directive_academy_order: "false",
+          two_requires_improvement: "false")
+      }
       context "when the project is not assigned to regional casework services" do
         before { project_form_params["assigned_to_regional_caseworker_team"] = "false" }
 

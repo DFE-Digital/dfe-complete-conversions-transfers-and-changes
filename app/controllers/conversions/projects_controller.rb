@@ -10,8 +10,8 @@ class Conversions::ProjectsController < ProjectsController
     authorize Conversion::Project
     @project = Conversion::CreateProjectForm.new(**project_params, user: current_user)
 
-    if @project.valid?
-      @created_project = @project.save
+    if @project.valid?(:existing_trust)
+      @created_project = @project.save(:existing_trust)
 
       if project_params["assigned_to_regional_caseworker_team"].eql?("true")
         @project = @created_project
@@ -28,8 +28,8 @@ class Conversions::ProjectsController < ProjectsController
     authorize Conversion::Project
     @project = Conversion::CreateProjectForm.new(**project_params, user: current_user)
 
-    if @project.valid?
-      @created_project = @project.save
+    if @project.valid?(:form_a_mat)
+      @created_project = @project.save(:form_a_mat)
 
       if project_params["assigned_to_regional_caseworker_team"].eql?("true")
         @project = @created_project

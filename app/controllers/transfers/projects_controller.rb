@@ -10,8 +10,8 @@ class Transfers::ProjectsController < ApplicationController
     authorize Transfer::Project
     @project = Transfer::CreateProjectForm.new(**project_params, user: current_user)
 
-    if @project.valid?
-      @created_project = @project.save
+    if @project.valid?(:existing_trust)
+      @created_project = @project.save(:existing_trust)
 
       redirect_to project_path(@created_project), notice: I18n.t("transfer_project.created.success")
     else
@@ -23,8 +23,8 @@ class Transfers::ProjectsController < ApplicationController
     authorize Transfer::Project
     @project = Transfer::CreateProjectForm.new(**project_params, user: current_user)
 
-    if @project.valid?
-      @created_project = @project.save
+    if @project.valid?(:form_a_mat)
+      @created_project = @project.save(:form_a_mat)
 
       redirect_to project_path(@created_project), notice: I18n.t("transfer_project.form_a_mat.created.success")
     else
