@@ -414,14 +414,14 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
       it "is required when there is no incoming trust UKPRN" do
         form = build(:create_project_form, incoming_trust_ukprn: nil)
 
-        expect(form).to be_invalid
+        expect(form).to be_invalid(:form_a_mat)
         expect(form.errors.messages[:new_trust_reference_number].first).to eql "Enter a Trust reference number (TRN)"
       end
 
       it "is a valid reference number" do
         form = build(:create_project_form, incoming_trust_ukprn: nil, new_trust_reference_number: "12345")
 
-        expect(form).to be_invalid
+        expect(form).to be_invalid(:form_a_mat)
         expect(form.errors.messages[:new_trust_reference_number].first).to include "Trust reference number must be 'TR'"
       end
     end
@@ -430,7 +430,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
       it "is required when there is no incoming trust UKPRN" do
         form = build(:create_project_form, incoming_trust_ukprn: nil)
 
-        expect(form).to be_invalid
+        expect(form).to be_invalid(:form_a_mat)
         expect(form.errors.messages[:new_trust_name].first).to eql "Enter a Trust name"
       end
 
@@ -504,7 +504,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
   describe "incoming_trust_ukprn" do
     before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 
-    it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }
+    it { is_expected.to validate_presence_of(:incoming_trust_ukprn).on(:existing_trust) }
 
     context "when no trust with that UKPRN exists in the API" do
       let(:no_trust_found_result) do
@@ -518,7 +518,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
 
       it "is invalid" do
         form = build(form_factory.to_sym)
-        expect(form).to be_invalid
+        expect(form).to be_invalid(:existing_trust)
       end
     end
   end

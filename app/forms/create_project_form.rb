@@ -19,8 +19,8 @@ class CreateProjectForm
   attribute :advisory_board_date, :date
 
   validates :urn, presence: true, urn: true
-  validates :incoming_trust_ukprn, presence: true, ukprn: true, unless: -> { new_trust_reference_number.present? }
-  validates :incoming_trust_ukprn, trust_exists: true, if: -> { incoming_trust_ukprn.present? }
+  validates :incoming_trust_ukprn, presence: true, ukprn: true, on: :existing_trust
+  validates :incoming_trust_ukprn, trust_exists: true, on: :existing_trust, if: -> { incoming_trust_ukprn.present? }
 
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
@@ -32,9 +32,9 @@ class CreateProjectForm
 
   validate :establishment_exists, if: -> { urn.present? }
 
-  validates :new_trust_reference_number, presence: true, unless: -> { incoming_trust_ukprn.present? }
-  validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
-  validates :new_trust_name, presence: true, unless: -> { incoming_trust_ukprn.present? }
+  validates :new_trust_reference_number, presence: true, on: :form_a_mat
+  validates :new_trust_reference_number, trust_reference_number: true, on: :form_a_mat
+  validates :new_trust_name, presence: true, on: :form_a_mat
 
   def initialize(attributes = {})
     # if any of the three date fields are invalid, clear them all to prevent multiparameter

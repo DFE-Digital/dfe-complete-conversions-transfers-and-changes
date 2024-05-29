@@ -36,7 +36,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
     errors.add(:urn, :duplicate) if Conversion::Project.active.where(urn: urn).any?
   end
 
-  def save
+  def save(context = nil)
     assigned_to = assigned_to_regional_caseworker_team ? nil : user
     assigned_at = assigned_to_regional_caseworker_team ? nil : DateTime.now
 
@@ -62,7 +62,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
       new_trust_name: new_trust_name
     )
 
-    return nil unless valid?
+    return nil unless valid?(context)
 
     ActiveRecord::Base.transaction do
       @project.save

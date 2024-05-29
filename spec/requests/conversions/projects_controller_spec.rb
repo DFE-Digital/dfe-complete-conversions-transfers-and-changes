@@ -2,278 +2,148 @@ require "rails_helper"
 
 RSpec.describe Conversions::ProjectsController do
   let(:user) { create(:user, :caseworker) }
-  let(:regional_delivery_officer) { create(:user, :regional_delivery_officer) }
-  let(:form_class) { Conversion::CreateProjectForm }
-  let(:project_form) { build(:create_project_form) }
 
-  describe "#create" do
-    let(:project) { build(:conversion_project) }
-    let!(:team_leader) { create(:user, :team_leader) }
-    let(:project_form_params) {
-      attributes_for(:create_project_form,
-        "provisional_conversion_date(3i)": "1",
-        "provisional_conversion_date(2i)": "1",
-        "provisional_conversion_date(1i)": "2030",
-        "advisory_board_date(3i)": "1",
-        "advisory_board_date(2i)": "1",
-        "advisory_board_date(1i)": "2022",
-        regional_delivery_officer: nil,
-        directive_academy_order: "false",
-        two_requires_improvement: "false")
-    }
+  before do
+    mock_all_academies_api_responses
+    sign_in_with(user)
+  end
 
-    before do
-      establishment = build(:academies_api_establishment, name: "Converting School")
-      trust = build(:academies_api_trust, original_name: "Convertor trust")
+  describe "academies API behaviour" do
+    context "when the API times out" do
+      before { mock_timeout_api_responses(urn: 123456, ukprn: 10061021) }
 
-      mock_successful_api_calls(establishment: establishment, trust: trust)
-      sign_in_with(regional_delivery_officer)
-    end
+      it "renders the API time out page" do
+        post conversions_path, params: {conversion_create_project_form: {urn: "123456"}}
 
-    subject(:perform_request) do
-      post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
-      response
-    end
-
-    before do
-      mock_successful_api_responses(urn: any_args, ukprn: any_args)
-    end
-
-    context "when the project is not valid" do
-      before do
-        allow(form_class).to receive(:new).and_return(project_form)
-        allow(project_form).to receive(:valid?).and_return false
-      end
-
-      it "re-renders the new template" do
-        expect(perform_request).to render_template :new
+        expect(response).to render_template("pages/academies_api_client_timeout")
       end
     end
 
-    context "when the project is valid" do
-      let(:new_project_record) { Project.last }
+    context "when the API is not authenticated" do
+      before { mock_unauthorised_api_responses(urn: 123456, ukprn: 10061021) }
 
-      before do
-        mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+      it "renders the API not authorised page" do
+        post conversions_path, params: {conversion_create_project_form: {urn: "123456"}}
 
-        perform_request
-      end
-
-      it "assigns the regional delivery officer" do
-        expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
-      end
-
-      it "creates a new project and note" do
-        expect(Project.count).to be 1
-        expect(Note.count).to be 1
-        expect(Note.last.user).to eq regional_delivery_officer
-      end
-
-      context "when the note body is empty" do
-        subject(:perform_request) do
-          post conversions_path, params: {conversion_create_project_form: {**project_form_params, handover_note_body: ""}}
-
-          response
-        end
-
-        it "does not create a new note" do
-          expect(Note.count).to be 0
-        end
-      end
-    end
-
-    context "when the Academies API times out" do
-      before do
-        mock_timeout_api_responses(urn: 123456, ukprn: 10061021)
-      end
-
-      it "redirects to an informational client timeout page" do
-        expect(perform_request).to render_template("pages/academies_api_client_timeout")
-      end
-    end
-
-    context "when the Academies API returns an unauthorised error" do
-      before do
-        mock_unauthorised_api_responses(urn: 123456, ukprn: 10061021)
-      end
-
-      it "redirects to an informational client unauthorised page" do
-        expect(perform_request).to render_template("pages/academies_api_client_unauthorised")
-      end
-    end
-
-    context "when the creating user is not a regional delivery officer" do
-      let(:caseworker) { create(:user, :caseworker) }
-
-      before do
-        sign_in_with(caseworker)
-      end
-
-      it "creates the project" do
-        perform_request
-        expect(response).to redirect_to project_path(Project.last)
+        expect(response).to render_template("pages/academies_api_client_unauthorised")
       end
     end
   end
 
-  describe "#create_mat" do
-    let(:project) { build(:form_a_mat_conversion_project) }
-    let!(:team_leader) { create(:user, :team_leader) }
-    let(:project_form_params) {
-      attributes_for(:create_project_form,
-        "provisional_conversion_date(3i)": "1",
-        "provisional_conversion_date(2i)": "1",
-        "provisional_conversion_date(1i)": "2030",
-        "advisory_board_date(3i)": "1",
-        "advisory_board_date(2i)": "1",
-        "advisory_board_date(1i)": "2022",
-        regional_delivery_officer: nil,
-        directive_academy_order: "false",
-        two_requires_improvement: "false",
-        new_trust_reference_number: "TR12345",
-        new_trust_name: "The New Trust")
-    }
+  describe "creating a conversion project for an existing trust" do
+    context "when the attributes are invalid" do
+      it "renders the new form view" do
+        post conversions_path, params: {conversion_create_project_form: {urn: "123456"}}
 
-    before do
-      mock_all_academies_api_responses
-      sign_in_with(regional_delivery_officer)
-    end
-
-    subject(:perform_request) do
-      post conversions_create_mat_path, params: {conversion_create_project_form: {**project_form_params}}
-      response
-    end
-
-    before do
-      mock_successful_api_responses(urn: any_args, ukprn: any_args)
-    end
-
-    context "when the project is not valid" do
-      before do
-        allow(form_class).to receive(:new).and_return(project_form)
-        allow(project_form).to receive(:valid?).and_return false
+        expect(response).to render_template(:new)
       end
 
-      it "re-renders the new_mat template" do
-        expect(perform_request).to render_template :new_mat
-      end
-    end
+      describe "project user assignment" do
+        context "when the project is not being handed over" do
+          it "renders the new project show view" do
+            params = valid_params_existing_trust
+            params["conversion_create_project_form"]["assigned_to_regional_caseworker_team"] = "false"
 
-    context "when the project is valid" do
-      let(:new_project_record) { Project.last }
+            post conversions_path, params: params
 
-      before do
-        mock_all_academies_api_responses
-        perform_request
-      end
-
-      it "assigns the regional delivery officer" do
-        expect(new_project_record.regional_delivery_officer).to eq regional_delivery_officer
-      end
-
-      it "saves the Trust reference number and Trust name" do
-        expect(new_project_record.new_trust_reference_number).to eq("TR12345")
-        expect(new_project_record.new_trust_name).to eq("The New Trust")
-      end
-
-      it "creates a new project and note" do
-        expect(Project.count).to be 1
-        expect(Note.count).to be 1
-        expect(Note.last.user).to eq regional_delivery_officer
-      end
-    end
-  end
-
-  describe "after a project is created" do
-    before do
-      mock_all_academies_api_responses
-      sign_in_with(regional_delivery_officer)
-    end
-
-    let(:project_form_params) {
-      attributes_for(:create_project_form,
-        "provisional_conversion_date(3i)": "1",
-        "provisional_conversion_date(2i)": "1",
-        "provisional_conversion_date(1i)": "2030",
-        "advisory_board_date(3i)": "1",
-        "advisory_board_date(2i)": "1",
-        "advisory_board_date(1i)": "2022",
-        regional_delivery_officer: nil,
-        directive_academy_order: "false",
-        two_requires_improvement: "false")
-    }
-
-    context "a regular conversion project" do
-      context "when the project is not assigned to regional casework services" do
-        before { project_form_params["assigned_to_regional_caseworker_team"] = "false" }
-
-        it "redirects to the project view" do
-          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
-
-          expect(response).to redirect_to project_path(Project.last)
+            expect(response).to redirect_to(project_path(Project.last))
+          end
         end
+        context "when the project is being handed over" do
+          it "renders the what next view" do
+            params = valid_params_existing_trust
+            params["conversion_create_project_form"]["assigned_to_regional_caseworker_team"] = "true"
 
-        it "assigns the regional delivery officer" do
-          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
+            post conversions_path, params: params
 
-          project = Project.last
-          expect(project.assigned_to).to eql regional_delivery_officer
-        end
-      end
-
-      context "when the project is assigned to regional casework services" do
-        before { project_form_params["assigned_to_regional_caseworker_team"] = "true" }
-
-        it "renders the created view" do
-          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
-
-          expect(response).to render_template("created")
-        end
-
-        it "does not assign the regional delivery officer" do
-          post conversions_path, params: {conversion_create_project_form: {**project_form_params}}
-
-          project = Project.last
-          expect(project.assigned_to).to be_nil
-        end
-      end
-    end
-
-    context "a form a MAT conversion project" do
-      context "when the project is not assigned to regional casework services" do
-        before { project_form_params["assigned_to_regional_caseworker_team"] = "false" }
-
-        it "redirects to the project view" do
-          post conversions_create_mat_path, params: {conversion_create_project_form: {**project_form_params}}
-
-          expect(response).to redirect_to project_path(Project.last)
-        end
-      end
-
-      context "when the project is assigned to regional casework services" do
-        before { project_form_params["assigned_to_regional_caseworker_team"] = "true" }
-
-        it "renders the created view" do
-          post conversions_create_mat_path, params: {conversion_create_project_form: {**project_form_params}}
-
-          expect(response).to render_template("created")
+            expect(response).to render_template("created")
+          end
         end
       end
     end
   end
 
-  describe "#update" do
-    before do
-      sign_in_with(user)
+  describe "creating a conversion project to form a new trust" do
+    context "when the attributes are invalid" do
+      it "renders the new form view" do
+        post conversions_create_mat_path, params: {conversion_create_project_form: {urn: "123456"}}
+
+        expect(response).to render_template(:new_mat)
+      end
+
+      describe "project user assignment" do
+        context "when the project is not being handed over" do
+          it "renders the new project show view" do
+            params = valid_params_form_a_mat
+            params["conversion_create_project_form"]["assigned_to_regional_caseworker_team"] = "false"
+
+            post conversions_create_mat_path, params: params
+
+            expect(response).to redirect_to(project_path(Project.last))
+          end
+        end
+        context "when the project is being handed over" do
+          it "renders the what next view" do
+            params = valid_params_form_a_mat
+            params["conversion_create_project_form"]["assigned_to_regional_caseworker_team"] = "true"
+
+            post conversions_create_mat_path, params: params
+
+            expect(response).to render_template("created")
+          end
+        end
+      end
     end
+  end
 
-    it "shows an error when the change is invalid" do
-      mock_successful_api_response_to_create_any_project
-      project = create(:conversion_project, assigned_to: user)
+  describe "updating an existing project" do
+    context "when the attributes are valid" do
+      it "renders the project view" do
+        project = create(:conversion_project, assigned_to: user)
 
-      post conversions_update_path(project), params: {conversion_edit_project_form: {incoming_trust_ukprn: ""}}
+        post conversions_update_path(project), params: {conversion_edit_project_form: {incoming_trust_ukprn: "10061021"}}
 
-      expect(response).to render_template(:edit)
+        expect(response).to redirect_to(project_information_path(project))
+      end
     end
+    context "when the attributes are invalid" do
+      it "renders the new form view" do
+        project = create(:conversion_project, assigned_to: user)
+
+        post conversions_update_path(project), params: {conversion_edit_project_form: {incoming_trust_ukprn: ""}}
+
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
+
+  def valid_params_existing_trust
+    provisional_conversion_date = Date.today.at_beginning_of_month + 1.year
+    advisory_board_date = Date.yesterday
+
+    {conversion_create_project_form: {
+      urn: "123456",
+      incoming_trust_ukprn: "10061021",
+      "provisional_conversion_date(3i)": provisional_conversion_date.day.to_s,
+      "provisional_conversion_date(2i)": provisional_conversion_date.month.to_s,
+      "provisional_conversion_date(1i)": provisional_conversion_date.year.to_s,
+      "advisory_board_date(3i)": advisory_board_date.day.to_s,
+      "advisory_board_date(2i)": advisory_board_date.month.to_s,
+      "advisory_board_date(1i)": advisory_board_date.year.to_s,
+      advisory_board_conditions: "",
+      directive_academy_order: "false",
+      two_requires_improvement: "false",
+      establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/establishment",
+      incoming_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/incoming_trust",
+      handover_note_body: "Handover notes.",
+      assigned_to_regional_caseworker_team: "true"
+    }}.with_indifferent_access
+  end
+
+  def valid_params_form_a_mat
+    params = valid_params_existing_trust.except(:incoming_trust_ukprn)
+    params[:conversion_create_project_form][:new_trust_name] = "Brand new trust"
+    params[:conversion_create_project_form][:new_trust_reference_number] = "TR12345"
+    params.with_indifferent_access
   end
 end
