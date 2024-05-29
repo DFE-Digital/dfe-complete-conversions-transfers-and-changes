@@ -4,11 +4,11 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group" id="outgoing-trust-ukprn">
-        <%= form.govuk_text_field :outgoing_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.outgoing_trust_ukprn").html_safe}, width: 10 %>
+        <%= form.govuk_text_field :outgoing_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.outgoing_trust_ukprn").html_safe}, width: 10, autocomplete: :off %>
       </div>
 
       <div class="govuk-form-group" id="incoming-trust-ukprn">
-        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10 %>
+        <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10, autocomplete: :off %>
       </div>
 
       <div class="govuk-form-group">

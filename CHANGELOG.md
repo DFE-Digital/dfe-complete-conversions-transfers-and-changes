@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The skip to content link is now underlined.
 - Service support users can now edit all contacts.
+- URN and UKPRN fields no longer autocomplete.
 
 ## [Release-70][Release-70]
 

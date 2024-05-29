@@ -15,11 +15,11 @@
       <%= t("conversion_project.form_a_mat.new.hint_html") %>
 
       <div class="govuk-form-group">
-        <%= form.govuk_text_field :urn, label: {size: "m"}, width: 10 %>
+        <%= form.govuk_text_field :urn, label: {size: "m"}, width: 10, autocomplete: :off %>
       </div>
 
       <div class="govuk-form-group">
-        <%= form.govuk_text_field :new_trust_reference_number, label: {size: "m"}, width: 10 %>
+        <%= form.govuk_text_field :new_trust_reference_number, label: {size: "m"}, width: 10, autocomplete: :off %>
         <%= form.govuk_text_field :new_trust_name, label: {size: "m"} %>
       </div>
 
