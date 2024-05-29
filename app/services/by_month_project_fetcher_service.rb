@@ -4,13 +4,13 @@ class ByMonthProjectFetcherService
   end
 
   def conversion_projects_by_date_range(from_date, to_date)
-    projects = Project.conversions.significant_date_in_range(from_date, to_date)
+    projects = Project.conversions.in_progress.confirmed.significant_date_in_range(from_date, to_date)
 
     AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
   end
 
   def transfer_projects_by_date_range(from_date, to_date)
-    projects = Project.transfers.significant_date_in_range(from_date, to_date)
+    projects = Project.transfers.in_progress.confirmed.significant_date_in_range(from_date, to_date)
 
     AcademiesApiPreFetcherService.new.call!(projects) if @pre_fetch_academies_api
   end

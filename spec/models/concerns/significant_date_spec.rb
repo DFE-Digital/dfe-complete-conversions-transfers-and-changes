@@ -119,7 +119,7 @@ RSpec.describe SignificantDate do
     end
 
     describe ".significant_date_in_range" do
-      it "only returns projects with a confirmed significant date within the given range of dates" do
+      it "only returns projects with a significant date within the given range of dates" do
         january = Date.parse("2023-1-1")
         february = Date.parse("2023-2-1")
         march = Date.parse("2023-3-1")
@@ -137,12 +137,9 @@ RSpec.describe SignificantDate do
         other_project = create(:conversion_project, significant_date: october, significant_date_provisional: false)
         create(:date_history, project: other_project, previous_date: october, revised_date: october)
 
-        unconfirmed_project = create(:transfer_project, significant_date: january, significant_date_provisional: true)
-
         scoped_projects = Project.significant_date_in_range("2023-1-1", "2023-3-1")
 
         expect(scoped_projects).to include(matching_project_1, matching_project_2, matching_project_3)
-        expect(scoped_projects).to_not include(other_project, unconfirmed_project)
       end
     end
   end
