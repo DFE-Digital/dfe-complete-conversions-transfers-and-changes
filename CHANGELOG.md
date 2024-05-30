@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-71][Release-71]
+
 ### Added
 
 - A simple POST Api endpoint to create a Form a MAT Conversion project
@@ -1913,7 +1915,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-70...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-71...HEAD
+[release-71]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-70...release-71
 [release-70]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-69...release-70
 [release-69]:
