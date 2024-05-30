@@ -41,8 +41,7 @@ module SignificantDate
     end
 
     def significant_date_in_range(from_date, to_date)
-      in_progress.confirmed
-        .where("significant_date >= ?", Date.parse(from_date).at_beginning_of_month)
+      where("significant_date >= ?", Date.parse(from_date).at_beginning_of_month)
         .where("significant_date <= ?", Date.parse(to_date).at_end_of_month)
         .ordered_by_significant_date
     end
