@@ -1,4 +1,6 @@
 class AcademiesApiPreFetcherService
+  include ApplicationInsightsEventTrackable
+
   def call!(projects)
     @projects = projects
     pre_fetch_academies_api_entities
@@ -57,7 +59,8 @@ class AcademiesApiPreFetcherService
     if response.error.nil?
       trusts.concat(response.object)
     else
-      raise Api::AcademiesApi::Client::Error.new
+      track_event(response.error.message)
+      trusts.concat([])
     end
     trusts
   end
