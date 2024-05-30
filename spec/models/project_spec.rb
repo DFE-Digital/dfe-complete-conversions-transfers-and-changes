@@ -315,8 +315,9 @@ RSpec.describe Project, type: :model do
             receive(:get_trust).with(ukprn) { error }
         end
 
-        it "raises the error" do
-          expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
+        it "returns a 'not found' Trust object" do
+          expect(subject.incoming_trust).to be_a(Api::AcademiesApi::Trust)
+          expect(subject.incoming_trust.name).to eq("Could Not Find Trust For Ukprn 10061021")
         end
 
         it "sends the event to Application Insights" do
@@ -324,7 +325,7 @@ RSpec.describe Project, type: :model do
             telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
             allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
 
-            expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError)
+            subject.incoming_trust
             expect(telemetry_client).to have_received(:track_event)
           end
         end
@@ -339,8 +340,9 @@ RSpec.describe Project, type: :model do
             receive(:get_trust).with(ukprn) { error }
         end
 
-        it "raises the error" do
-          expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::Error, error_message)
+        it "returns a 'could not connect' Trust object" do
+          expect(subject.incoming_trust).to be_a(Api::AcademiesApi::Trust)
+          expect(subject.incoming_trust.name).to eq("There Was An Error Connecting To The Academies Api, Could Not Fetch Trust With Ukprn 10061021")
         end
       end
     end

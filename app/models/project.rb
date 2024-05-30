@@ -153,7 +153,7 @@ class Project < ApplicationRecord
 
     if result.error.present?
       track_event(result.error.message)
-      raise result.error
+      return Api::AcademiesApi::Trust.new.from_hash({referenceNumber: "", name: result.error.message})
     end
 
     result.object

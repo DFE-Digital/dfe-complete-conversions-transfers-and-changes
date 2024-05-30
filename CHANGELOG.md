@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - URN and UKPRN fields no longer autocomplete.
 - When creating a new project and submitting an empty form, the errors are now
   shown correctly.
+- If a UKPRN is changed in the Academies DB, handle the exception so that the
+  application remains usable for end users
 
 ## [Release-70][Release-70]
 
