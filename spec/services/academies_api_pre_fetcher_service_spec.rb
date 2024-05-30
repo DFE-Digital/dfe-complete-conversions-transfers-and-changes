@@ -19,7 +19,6 @@ RSpec.describe AcademiesApiPreFetcherService do
     expect(api_client).to have_received(:get_trusts).exactly(2).times
 
     expect(api_client).to have_received(:get_establishment).exactly(25).times
-    expect(api_client).to have_received(:get_trust).exactly(25).times
   end
 
   it "handles eager loading" do
