@@ -33,7 +33,6 @@ class Project < ApplicationRecord
   validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
 
   validate :establishment_exists, if: -> { urn.present? }
-  validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
 
   belongs_to :caseworker, class_name: "User", optional: true
   belongs_to :regional_delivery_officer, class_name: "User", optional: true
@@ -154,7 +153,7 @@ class Project < ApplicationRecord
 
     if result.error.present?
       track_event(result.error.message)
-      raise result.error
+      return Api::AcademiesApi::Trust.new.from_hash({referenceNumber: "", name: result.error.message})
     end
 
     result.object
@@ -164,11 +163,5 @@ class Project < ApplicationRecord
     establishment
   rescue Api::AcademiesApi::Client::NotFoundError
     errors.add(:urn, :no_establishment_found)
-  end
-
-  private def trust_exists
-    incoming_trust
-  rescue Api::AcademiesApi::Client::NotFoundError
-    errors.add(:incoming_trust_ukprn, :no_trust_found)
   end
 end

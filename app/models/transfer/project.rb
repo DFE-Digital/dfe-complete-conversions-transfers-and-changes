@@ -8,7 +8,6 @@ class Transfer::Project < Project
 
   validates :outgoing_trust_ukprn, presence: true
   validates :outgoing_trust_ukprn, ukprn: true
-  validate :outgoing_trust_exists, if: -> { outgoing_trust_ukprn.present? }
 
   MANDATORY_CONDITIONS = [
     :confirmed_date_and_in_the_past?
@@ -22,11 +21,5 @@ class Transfer::Project < Project
 
   def completable?
     MANDATORY_CONDITIONS.all? { |task| send(task) }
-  end
-
-  private def outgoing_trust_exists
-    outgoing_trust
-  rescue Api::AcademiesApi::Client::NotFoundError
-    errors.add(:outgoing_trust_ukprn, :no_trust_found)
   end
 end

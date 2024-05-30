@@ -19,7 +19,6 @@ RSpec.describe AcademiesApiPreFetcherService do
     expect(api_client).to have_received(:get_trusts).exactly(2).times
 
     expect(api_client).to have_received(:get_establishment).exactly(25).times
-    expect(api_client).to have_received(:get_trust).exactly(25).times
   end
 
   it "handles eager loading" do
@@ -35,7 +34,7 @@ RSpec.describe AcademiesApiPreFetcherService do
     expect(projects.last.all_conditions_met?).to be false
   end
 
-  it "raises and Academies API error if the establishments requests fail" do
+  it "raises an Academies API error if the establishments requests fail" do
     mock_academies_api_client_get_establishments_and_trusts_failure
 
     10.times do
@@ -47,18 +46,24 @@ RSpec.describe AcademiesApiPreFetcherService do
     expect { AcademiesApiPreFetcherService.new.call!(projects) }.to raise_error(Api::AcademiesApi::Client::Error)
   end
 
-  it "raises and Academies API error if the trusts requests fail" do
-    establishment = double("Establishment", name: "Establishment Name", urn: "123456")
-    api_client = mock_academies_api_client_get_establishments_and_trusts_failure
-    allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new([establishment], nil))
+  it "tracks the Academies API error if the trusts requests fail but does not raise" do
+    ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
+      telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
+      allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
 
-    10.times do
-      create(:conversion_project, urn: 123456, incoming_trust_ukprn: 10010010)
+      establishment = double("Establishment", name: "Establishment Name", urn: "123456")
+      api_client = mock_academies_api_client_get_establishments_and_trusts_failure
+      allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new([establishment], nil))
+
+      10.times do
+        create(:conversion_project, urn: 123456, incoming_trust_ukprn: 10010010)
+      end
+
+      projects = Project.all
+      AcademiesApiPreFetcherService.new.call!(projects)
+
+      expect(telemetry_client).to have_received(:track_event)
     end
-
-    projects = Project.all
-
-    expect { AcademiesApiPreFetcherService.new.call!(projects) }.to raise_error(Api::AcademiesApi::Client::Error)
   end
 
   def mock_academies_api_client_get_establishments_and_trusts

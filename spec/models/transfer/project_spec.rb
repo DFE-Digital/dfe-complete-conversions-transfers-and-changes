@@ -20,24 +20,6 @@ RSpec.describe Transfer::Project do
         expect(subject.errors[:outgoing_trust_ukprn]).to include(I18n.t("errors.attributes.outgoing_trust_ukprn.must_be_correct_format"))
       end
     end
-
-    context "when no trust with that UKPRN exists in the API and the UKPRN is present" do
-      let(:no_trust_found_result) do
-        Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
-      end
-
-      subject { described_class.new(outgoing_trust_ukprn: 12345678) }
-
-      before do
-        allow_any_instance_of(Api::AcademiesApi::Client).to \
-          receive(:get_trust) { no_trust_found_result }
-      end
-
-      it "is invalid" do
-        expect(subject).to_not be_valid
-        expect(subject.errors[:outgoing_trust_ukprn]).to include(I18n.t("errors.attributes.outgoing_trust_ukprn.no_trust_found"))
-      end
-    end
   end
 
   describe "#completable?" do

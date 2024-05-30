@@ -189,24 +189,6 @@ RSpec.describe Project, type: :model do
           expect(project).to be_valid
         end
       end
-
-      context "when no trust with that UKPRN exists in the API and the UKPRN is present" do
-        let(:no_trust_found_result) do
-          Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("No trust found with that UKPRN. Enter a valid UKPRN."))
-        end
-
-        before do
-          allow_any_instance_of(Api::AcademiesApi::Client).to \
-            receive(:get_trust) { no_trust_found_result }
-
-          subject.assign_attributes(incoming_trust_ukprn: 12345678)
-        end
-
-        it "is invalid" do
-          expect(subject).to_not be_valid
-          expect(subject.errors[:incoming_trust_ukprn]).to include(I18n.t("errors.attributes.incoming_trust_ukprn.no_trust_found"))
-        end
-      end
     end
 
     describe "#establishment_sharepoint_link" do
@@ -333,8 +315,9 @@ RSpec.describe Project, type: :model do
             receive(:get_trust).with(ukprn) { error }
         end
 
-        it "raises the error" do
-          expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError, error_message)
+        it "returns a 'not found' Trust object" do
+          expect(subject.incoming_trust).to be_a(Api::AcademiesApi::Trust)
+          expect(subject.incoming_trust.name).to eq("Could Not Find Trust For Ukprn 10061021")
         end
 
         it "sends the event to Application Insights" do
@@ -342,7 +325,7 @@ RSpec.describe Project, type: :model do
             telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
             allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
 
-            expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::NotFoundError)
+            subject.incoming_trust
             expect(telemetry_client).to have_received(:track_event)
           end
         end
@@ -357,8 +340,9 @@ RSpec.describe Project, type: :model do
             receive(:get_trust).with(ukprn) { error }
         end
 
-        it "raises the error" do
-          expect { subject.incoming_trust }.to raise_error(Api::AcademiesApi::Client::Error, error_message)
+        it "returns a 'could not connect' Trust object" do
+          expect(subject.incoming_trust).to be_a(Api::AcademiesApi::Trust)
+          expect(subject.incoming_trust.name).to eq("There Was An Error Connecting To The Academies Api, Could Not Fetch Trust With Ukprn 10061021")
         end
       end
     end
