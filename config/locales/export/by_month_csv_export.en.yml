@@ -30,14 +30,3 @@ en:
             <li>start-up grant (SUG)</li>
             <li>contacts for the funding agreement letters</li>
             </ul>
-        show:
-          title: RPA, SUG and FA letters export for %{date}
-          body_html:
-            <p class="govuk-body">Download CSV files containing information about a converting school's:</p>
-            <ul>
-            <li>risk protection arrangements (RPA)</li>
-            <li>start-up grant (SUG)</li>
-            <li>contacts for the funding agreement letters</li>
-            </ul>
-            <p class="govuk-body">These files can be large and could take a few minutes to download.</p>
-          button: Download CSV file

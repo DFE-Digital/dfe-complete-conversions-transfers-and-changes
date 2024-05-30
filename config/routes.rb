@@ -170,6 +170,8 @@ Rails.application.routes.draw do
             get ":user_id", to: "projects#show", as: :by_user, constraints: {user_id: VALID_UUID_REGEX}
           end
           namespace :export do
+            resource :rpa_sug_and_fa_letters, only: %w[new create], path: "rpa-sug-and-fa-letters"
+
             get "/", to: "projects#index"
             namespace :by_advisory_board_date, path: "by-advisory-board-date" do
               namespace :conversions do

@@ -1,0 +1,45 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("views.export_rpa_sug_and_fa_letters_form.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @form, url: all_export_rpa_sug_and_fa_letters_path do |form| %>
+      <h3 class="govuk-heading-l"><%= t("views.export_rpa_sug_and_fa_letters_form.title") %></h3>
+      <%= form.govuk_error_summary %>
+      <%= t("views.export_rpa_sug_and_fa_letters_form.body_html") %>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-full-width">
+    <div class="date-range">
+      <%= form.govuk_fieldset legend: {text: "Date range", size: "s"} do %>
+
+        <div class="govuk-form-group">
+          <%= form.label :from_date, {class: "govuk-label"} %>
+          <%= form.select :from_date,
+                options_from_collection_for_select(export_from_date_range, :id, :name, @form.from_date.to_s),
+                {},
+                {class: "govuk-select"} %>
+        </div>
+
+        <div class="govuk-form-group">
+          <%= form.label :to_date, {class: "govuk-label"} %>
+          <%= form.select :to_date,
+                options_from_collection_for_select(export_to_date_range, :id, :name, @form.to_date.to_s),
+                {},
+                {class: "govuk-select"} %>
+        </div>
+
+        <%= form.govuk_submit "Download CSV file" %>
+      <% end %>
+
+    </div>
+  <% end %>
+  </div>
+</div>
