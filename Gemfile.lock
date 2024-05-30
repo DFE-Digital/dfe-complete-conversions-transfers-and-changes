@@ -118,7 +118,8 @@ GEM
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.2.3)
     connection_pool (2.3.0)
-    crack (0.4.5)
+    crack (0.4.6)
+      bigdecimal
       rexml
     crass (1.0.6)
     date (3.3.4)
@@ -192,7 +193,7 @@ GEM
     grape-swagger (2.1.0)
       grape (>= 1.7, < 3.0)
       rack-test (~> 2)
-    hashdiff (1.0.1)
+    hashdiff (1.1.0)
     hashie (5.0.0)
     high_voltage (3.1.2)
     html-attributes-utils (1.0.2)
@@ -458,7 +459,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webmock (3.19.1)
+    webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
