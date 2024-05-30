@@ -2,12 +2,16 @@ class All::Export::RpaSugAndFaLettersController < ApplicationController
   EXPORT_FILE_NAME_SUFFIX = "rpa_sug_and_fa_letters"
 
   def new
+    authorize :export
+
     default_from_date = Date.today.at_beginning_of_month
     default_to_date = Date.today.at_end_of_month
     @form = Export::NewRpaSugAndFaLettersForm.new(from_date: default_from_date, to_date: default_to_date)
   end
 
   def create
+    authorize :export
+
     @form = Export::NewRpaSugAndFaLettersForm.new(export_params)
 
     if @form.valid?
