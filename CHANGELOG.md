@@ -32,6 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   shown correctly.
 - If a UKPRN is changed in the Academies DB, handle the exception so that the
   application remains usable for end users
+- The academies due to transfer over the next 6 months export index now counts
+  transfer projects correctly.
 
 ## [Release-70][Release-70]
 

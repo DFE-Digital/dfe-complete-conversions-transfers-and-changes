@@ -5,7 +5,7 @@ class All::Export::BySignificantDate::Transfers::AcademiesDueToTransfer::Project
     @data = export_months.map do |month|
       {
         month: month,
-        count: service.conversion_projects_by_significant_date(month: month.month, year: month.year).count
+        count: service.transfer_projects_by_significant_date(month: month.month, year: month.year).count
       }
     end
   end
