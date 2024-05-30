@@ -151,4 +151,42 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.page_title("A page")).to eq("A page - #{t("service_name")}")
     end
   end
+
+  describe "#export_from_date_range" do
+    it "returns an array of options for the from date picker, all are on the first of the month" do
+      current_date = Date.new(2024, 1, 1)
+      first_date = Date.new(2022, 1, 1)
+      last_date = Date.new(2026, 12, 1)
+
+      travel_to current_date do
+        options = helper.export_from_date_range
+
+        expect(options.count).to be 60
+
+        expect(options.first.id).to eql first_date
+        expect(options.first.name).to eql "Jan 2022"
+        expect(options.last.id).to eql last_date
+        expect(options.last.name).to eql "Dec 2026"
+      end
+    end
+  end
+
+  describe "#export_to_date_range" do
+    it "returns an array of options for the from date date picker, all are on the last of the month" do
+      current_date = Date.new(2024, 1, 1)
+      first_date = Date.new(2022, 1, 31)
+      last_date = Date.new(2026, 12, 31)
+
+      travel_to current_date do
+        options = helper.export_to_date_range
+
+        expect(options.count).to be 60
+
+        expect(options.first.id).to eql first_date
+        expect(options.first.name).to eql "Jan 2022"
+        expect(options.last.id).to eql last_date
+        expect(options.last.name).to eql "Dec 2026"
+      end
+    end
+  end
 end
