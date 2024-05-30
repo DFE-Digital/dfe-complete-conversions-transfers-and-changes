@@ -202,11 +202,6 @@ Rails.application.routes.draw do
                   get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
                   get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
                 end
-                namespace :schools_due_to_convert, path: "schools-due-to-convert" do
-                  get "/", to: "projects#index"
-                  get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-                  get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
-                end
               end
             end
           end
