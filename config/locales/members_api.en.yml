@@ -1,7 +1,7 @@
 en:
   members_api:
     errors:
-      other: "[MEMBERS API] There was an error connecting to the Members API"
+      other: "[MEMBERS API] There was an error connecting to the Members API, status: %{status}, search_term: %{search_term}"
       multiple: "[MEMBERS API] Multiple results found for search term: %{search_term}"
       search_term_not_found: "[MEMBERS_API] Constituency not found: %{constituency}"
       member_not_found: "[MEMBERS API] Member not found: %{member_id}"

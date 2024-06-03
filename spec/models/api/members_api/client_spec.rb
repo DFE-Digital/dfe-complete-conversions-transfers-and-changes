@@ -32,7 +32,7 @@ RSpec.describe Api::MembersApi::Client do
       it "returns a Result with an Error" do
         expect(subject.object).to be_nil
         expect(subject.error).to be_a(Api::MembersApi::Client::Error)
-        expect(subject.error.message).to eq(I18n.t("members_api.errors.other"))
+        expect(subject.error.message).to eq(I18n.t("members_api.errors.other", search_term: "St Albans", status: 500))
       end
     end
 
@@ -143,6 +143,18 @@ RSpec.describe Api::MembersApi::Client do
         expect(subject.object).to be_nil
         expect(subject.error).to be_a(Api::MembersApi::Client::NotFoundError)
         expect(subject.error.message).to eq(I18n.t("members_api.errors.search_term_not_found", constituency: "Mars"))
+      end
+    end
+
+    context "when there is any other error" do
+      subject { client.member_id("nonexistent place") }
+
+      let(:fake_response) { [404, nil] }
+
+      it "returns an Error" do
+        expect(subject.object).to be_nil
+        expect(subject.error).to be_a(Api::MembersApi::Client::Error)
+        expect(subject.error.message).to eq(I18n.t("members_api.errors.other", search_term: "nonexistent place", status: 404))
       end
     end
   end
