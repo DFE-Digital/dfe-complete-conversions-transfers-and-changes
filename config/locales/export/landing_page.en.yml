@@ -11,5 +11,5 @@ en:
       transfers:
         title: Transfers
         body: View tables and download CSV files that show information about transfers.
-        academies_due_to_transfer: academies due to transfer over the next 6 months
+        academies_due_to_transfer: academies due to transfer in a date range
         grant_management: pre-transfer grants for academies joining a different trust

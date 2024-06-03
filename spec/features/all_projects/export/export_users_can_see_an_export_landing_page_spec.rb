@@ -18,7 +18,7 @@ RSpec.feature "Export users can see the exports landing page" do
 
     expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
     expect(page).to have_content("pre-opening grants for schools becoming academies")
-    expect(page).to have_content("academies due to transfer over the next 6 months")
+    expect(page).to have_content("academies due to transfer in a date range")
     expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 
@@ -30,7 +30,7 @@ RSpec.feature "Export users can see the exports landing page" do
 
     expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
     expect(page).to have_content("pre-opening grants for schools becoming academies")
-    expect(page).to have_content("academies due to transfer over the next 6 months")
+    expect(page).to have_content("academies due to transfer in a date range")
     expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 
@@ -42,7 +42,7 @@ RSpec.feature "Export users can see the exports landing page" do
 
     expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
     expect(page).to have_content("pre-opening grants for schools becoming academies")
-    expect(page).to have_content("academies due to transfer over the next 6 months")
+    expect(page).to have_content("academies due to transfer in a date range")
     expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 
@@ -54,7 +54,7 @@ RSpec.feature "Export users can see the exports landing page" do
 
     expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
     expect(page).to have_content("pre-opening grants for schools becoming academies")
-    expect(page).to have_content("academies due to transfer over the next 6 months")
+    expect(page).to have_content("academies due to transfer in a date range")
     expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 end
