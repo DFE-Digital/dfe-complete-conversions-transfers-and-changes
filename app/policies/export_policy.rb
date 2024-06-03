@@ -13,6 +13,14 @@ class ExportPolicy
     csv?
   end
 
+  def new?
+    csv?
+  end
+
+  def create?
+    csv?
+  end
+
   def csv?
     return true if @user.education_and_skills_funding_agency_team?
     return true if @user.academies_operational_practice_unit_team?

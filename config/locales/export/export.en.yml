@@ -1,0 +1,7 @@
+en:
+  errors:
+    attributes:
+      from_date:
+        order: From date must be before to date
+      to_date:
+        order: To date must be after from date

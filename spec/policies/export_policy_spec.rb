@@ -8,29 +8,7 @@ RSpec.describe ExportPolicy do
   let(:service_support_user) { build(:service_support_user) }
   let(:business_support_user) { build(:user, team: :business_support) }
 
-  permissions :index? do
-    it "grants access if the user is in one of the correct teams" do
-      expect(described_class).to permit(esfa_user)
-      expect(described_class).to permit(aopu_user)
-      expect(described_class).to permit(business_support_user)
-      expect(described_class).to permit(service_support_user)
-      expect(described_class).not_to permit(rdo_user)
-      expect(described_class).not_to permit(rcs_user)
-    end
-  end
-
-  permissions :show? do
-    it "grants access if the user is in one of the correct teams" do
-      expect(described_class).to permit(esfa_user)
-      expect(described_class).to permit(aopu_user)
-      expect(described_class).to permit(business_support_user)
-      expect(described_class).to permit(service_support_user)
-      expect(described_class).not_to permit(rdo_user)
-      expect(described_class).not_to permit(rcs_user)
-    end
-  end
-
-  permissions :csv? do
+  permissions :index?, :show?, :new?, :create?, :csv? do
     it "grants access if the user is in one of the correct teams" do
       expect(described_class).to permit(esfa_user)
       expect(described_class).to permit(aopu_user)

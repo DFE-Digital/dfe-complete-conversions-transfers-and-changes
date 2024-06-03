@@ -40,4 +40,30 @@ module ApplicationHelper
   def page_title(title)
     "#{title} - #{I18n.t("service_name")}"
   end
+
+  def export_from_date_range
+    start_year = (Date.today - 2.years).year
+    end_year = (Date.today + 2.years).year
+
+    options = (start_year..end_year).map do |year|
+      (1..12).map do |month|
+        date = Date.new(year, month, 1).at_beginning_of_month
+        OpenStruct.new(id: date, name: date.to_fs(:govuk_short_month))
+      end
+    end
+    options.flatten
+  end
+
+  def export_to_date_range
+    start_year = (Date.today - 2.years).year
+    end_year = (Date.today + 2.years).year
+
+    options = (start_year..end_year).map do |year|
+      (1..12).map do |month|
+        date = Date.new(year, month, 1).at_end_of_month
+        OpenStruct.new(id: date, name: date.to_fs(:govuk_short_month))
+      end
+    end
+    options.flatten
+  end
 end
