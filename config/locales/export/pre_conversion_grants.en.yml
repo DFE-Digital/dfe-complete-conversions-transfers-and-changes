@@ -1,0 +1,17 @@
+en:
+  views:
+    export_pre_conversion_grants_form:
+      title: "Pre conversion grants export"
+      body_html:
+        <p>This export contains data to help you process pre-opening grants for new academies, including:</p>
+        <ul>
+        <li>converter grant</li>
+        <li>sponsored grant (fast track, intermediate or full sponsored)</li>
+        </ul>
+        <p>It can take a little time to create these files. Thank you for your patience.</p>
+      button: Download CSV file
+  helpers:
+    label:
+      export_new_pre_conversion_grants_form:
+        from_date: from
+        to_date: to

@@ -5,46 +5,6 @@ RSpec.describe ProjectsForExportService do
     mock_academies_api_client_get_establishments_and_trusts
   end
 
-  describe "#grant_management_and_finance_unit_conversion_projects" do
-    it "returns only conversion projects with an advisory board date of the supplied month and year" do
-      matching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
-      mismatching_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-2-1"))
-
-      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
-
-      expect(projects_for_export).to include(matching_project)
-      expect(projects_for_export).not_to include(mismatching_project)
-    end
-
-    it "includes both provisional and confirmed projects" do
-      mock_academies_api_client_get_establishments_and_trusts
-
-      confirmed_project = create(:conversion_project, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
-      provisional_project = create(:conversion_project, conversion_date_provisional: true, advisory_board_date: Date.parse("2023-1-1"))
-
-      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
-
-      expect(projects_for_export).to include(confirmed_project)
-      expect(projects_for_export).to include(provisional_project)
-    end
-
-    it "includes Form a MAT conversions" do
-      project = create(:conversion_project, :form_a_mat, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
-
-      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
-
-      expect(projects_for_export).to include(project)
-    end
-
-    it "does not include deleted projects" do
-      project = create(:conversion_project, :deleted, conversion_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
-
-      projects_for_export = described_class.new.conversion_projects_by_advisory_board_date(month: 1, year: 2023)
-
-      expect(projects_for_export).to_not include(project)
-    end
-  end
-
   describe "#grant_management_and_finance_unit_transfer_projects" do
     it "returns only transfer projects with an advisory board date of the supplied month and year" do
       matching_project = create(:transfer_project, significant_date_provisional: false, advisory_board_date: Date.parse("2023-1-1"))
