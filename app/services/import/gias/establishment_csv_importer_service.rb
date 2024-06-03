@@ -27,7 +27,9 @@ class Import::Gias::EstablishmentCsvImporterService < Import::Gias::CsvImporterS
     region_code: "GOR (code)",
     region_name: "GOR (name)",
     parliamentary_constituency_code: "ParliamentaryConstituency (code)",
-    parliamentary_constituency_name: "ParliamentaryConstituency (name)"
+    parliamentary_constituency_name: "ParliamentaryConstituency (name)",
+    open_date: "OpenDate",
+    status_name: "EstablishmentStatus (name)"
   }.freeze
 
   REQUIRED_VALUES = [

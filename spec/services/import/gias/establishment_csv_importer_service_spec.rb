@@ -13,9 +13,13 @@ RSpec.describe Import::Gias::EstablishmentCsvImporterService do
 
       expect(imported_records.first.name).to eql("Roecliffe Church of England Primary School")
       expect(imported_records.first.urn).to eql(121583)
+      expect(imported_records.first.open_date).to eql(Date.new(2020, 1, 1))
+      expect(imported_records.first.status).to eql("Open")
 
       expect(imported_records.last.name).to eql("Lightcliffe C of E Primary School")
       expect(imported_records.last.urn).to eql(144865)
+      expect(imported_records.last.open_date).to eql(Date.new(2021, 1, 1))
+      expect(imported_records.last.status).to eql("Closed")
     end
 
     it "it skips row when there is no change for the record" do
