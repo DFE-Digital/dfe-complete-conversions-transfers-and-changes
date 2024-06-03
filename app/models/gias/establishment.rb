@@ -5,6 +5,7 @@ class Gias::Establishment < ApplicationRecord
 
   alias_attribute :phase, :phase_name
   alias_attribute :type, :type_name
+  alias_attribute :status, :status_name
 
   DIOCESE_NOT_APPLICABLE_CODE = "0000"
   ACADEMY_CODES = %w[46 45 42 43 34 44 33 28 57]

@@ -25,6 +25,8 @@ FactoryBot.define do
     address_county { "Nottinghamshire" }
     address_postcode { "NG9 4BB" }
     url { "www.thelanes.notts.sch.uk" }
+    status { "open" }
+    open_date { Date.new(1999, 1, 1) }
 
     trait :with_diocese do
       urn { 142323 }
