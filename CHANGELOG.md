@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-72][release-72]
+
 ### Fixed
 
 - Do not raise an exception in reports when an establishment is in an unknown
@@ -15,14 +17,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Ingest two additional fields into Gias::Establishments for PowerBI reporting
   `open_date` and `status_name`
+- The RPA, SUG and FA letters export now includes the projects for a supplied
+  date range.
 
 ## [Release-71][Release-71]
 
 ### Added
 
 - A simple POST Api endpoint to create a Form a MAT Conversion project
-- The RPA, SUG and FA letters export now includes the projects for a supplied
-  date range.
 
 ### Changed
 
@@ -1929,7 +1931,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-71...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-72...HEAD
+[release-72]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-71...release-72
 [release-71]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-70...release-71
 [release-70]:
