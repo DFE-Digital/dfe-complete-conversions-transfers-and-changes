@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Turn off Parliamentary Members API, do not show any MP details for any
+  projects
+
 ## [Release-72][release-72]
 
 ### Fixed
