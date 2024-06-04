@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_23_125015) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_03_102728) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -200,6 +200,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_23_125015) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "open_date"
+    t.string "status_name"
     t.index ["establishment_number"], name: "index_gias_establishments_on_establishment_number"
     t.index ["local_authority_code"], name: "index_gias_establishments_on_local_authority_code"
     t.index ["name"], name: "index_gias_establishments_on_name"

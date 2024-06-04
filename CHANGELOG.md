@@ -11,6 +11,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Do not raise an exception in reports when an establishment is in an unknown
   constituency and the MP details cannot be found.
 
+### Changed
+
+- Ingest two additional fields into Gias::Establishments for PowerBI reporting
+  `open_date` and `status_name`
+
 ## [Release-71][Release-71]
 
 ### Added

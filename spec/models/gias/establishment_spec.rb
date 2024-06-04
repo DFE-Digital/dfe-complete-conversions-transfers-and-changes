@@ -43,6 +43,13 @@ RSpec.describe Gias::Establishment do
     end
   end
 
+  describe "status" do
+    it "returns the status_name" do
+      establishment = build(:gias_establishment, urn: 123456, status_name: "Closed")
+      expect(establishment.status).to eq("Closed")
+    end
+  end
+
   describe "dfe_number" do
     it "returns the local authority code and establishment number, formatted as a dfe_number" do
       establishment = build(:gias_establishment, urn: 123456, local_authority_code: 123, establishment_number: 456)
