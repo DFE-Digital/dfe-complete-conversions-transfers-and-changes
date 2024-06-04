@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Turn off Parliamentary Members API, do not show any MP details for any
   projects
+- The pre conversion grants export now include the projects for a supplied date
+  range.
 
 ## [Release-72][release-72]
 
