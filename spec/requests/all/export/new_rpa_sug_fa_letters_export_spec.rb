@@ -23,7 +23,7 @@ RSpec.describe All::Export::RpaSugAndFaLettersController, type: :request do
 
         expect(response.status).to be 200
         expect(response.headers["Content-type"]).to eql "text/csv"
-        expect(response.headers["Content-disposition"]).to include "rpa_sug_and_fa_letters"
+        expect(response.headers["Content-disposition"]).to include "rpa_sug_and_fa_letters.csv"
       end
     end
 
