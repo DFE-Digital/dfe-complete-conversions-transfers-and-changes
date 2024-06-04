@@ -1,5 +1,5 @@
 class All::Export::RpaSugAndFaLettersController < ApplicationController
-  EXPORT_FILE_NAME_SUFFIX = "rpa_sug_and_fa_letters"
+  EXPORT_FILE_NAME_SUFFIX = "rpa_sug_and_fa_letters.csv"
 
   def new
     authorize :export
