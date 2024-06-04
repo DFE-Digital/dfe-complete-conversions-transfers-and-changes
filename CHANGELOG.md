@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Do not raise an exception in reports when an establishment is in an unknown
+  constituency and the MP details cannot be found.
+
 ## [Release-71][Release-71]
 
 ### Added

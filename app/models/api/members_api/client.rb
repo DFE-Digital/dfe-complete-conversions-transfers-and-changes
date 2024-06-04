@@ -19,7 +19,7 @@ class Api::MembersApi::Client
       body = JSON.parse(response.body)
       Result.new(body, nil)
     else
-      Result.new(nil, Error.new(I18n.t("members_api.errors.other")))
+      Result.new(nil, Error.new(I18n.t("members_api.errors.other", search_term: search_term, status: response.status)))
     end
   end
 
@@ -39,7 +39,9 @@ class Api::MembersApi::Client
 
   def member_id(search_term)
     constituency_data = constituency(search_term)
-    raise constituency_data.error if constituency_data.error.present?
+    if constituency_data.error.present?
+      return Result.new(nil, constituency_data.error)
+    end
 
     if constituency_data.object["items"].count == 0
       Result.new(nil, NotFoundError.new(NotFoundError.new(I18n.t("members_api.errors.search_term_not_found", constituency: search_term))))
