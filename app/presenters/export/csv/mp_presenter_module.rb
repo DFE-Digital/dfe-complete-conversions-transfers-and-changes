@@ -1,3 +1,4 @@
+# :nocov:
 module Export::Csv::MpPresenterModule
   def mp_name
     return if @project.member_of_parliament.nil?
@@ -41,3 +42,4 @@ module Export::Csv::MpPresenterModule
     @project.member_of_parliament.address.postcode
   end
 end
+# :nocov:

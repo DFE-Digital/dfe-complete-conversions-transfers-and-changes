@@ -107,7 +107,7 @@ class Project < ApplicationRecord
   end
 
   def member_of_parliament
-    @member_of_parliament ||= fetch_member_of_parliament
+    nil
   end
 
   def unassigned_to_user?
@@ -132,6 +132,7 @@ class Project < ApplicationRecord
     false
   end
 
+  # :nocov:
   private def fetch_member_of_parliament
     result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
 
@@ -141,6 +142,7 @@ class Project < ApplicationRecord
       result.object
     end
   end
+  # :nocov:
 
   private def fetch_establishment(urn)
     result = Api::AcademiesApi::Client.new.get_establishment(urn)

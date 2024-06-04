@@ -360,6 +360,7 @@ RSpec.describe Project, type: :model do
 
   describe "#member_of_parliament" do
     it "returns the details of the MP for the projects establishment constituency" do
+      skip "The Parliamentary Members API is not currently efficient enough to use"
       mock_successful_member_details
 
       project = build(:conversion_project)
@@ -373,6 +374,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "only goes to the API once per instance of Project" do
+      skip "The Parliamentary Members API is not currently efficient enough to use"
       mock_api_client = mock_successful_member_details
 
       project = build(:conversion_project)
@@ -396,6 +398,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "sends Applications Insights an event when the API call fails" do
+      skip "The Parliamentary Members API is not currently efficient enough to use"
       ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
         telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
         allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
@@ -417,6 +420,12 @@ RSpec.describe Project, type: :model do
       allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
       member_of_parliament = project.member_of_parliament
 
+      expect(member_of_parliament).to be_nil
+    end
+
+    it "returns nil for member_of_parliament due to the Parliamentary Members API not being useable" do
+      project = build(:conversion_project)
+      member_of_parliament = project.member_of_parliament
       expect(member_of_parliament).to be_nil
     end
   end

@@ -10,18 +10,22 @@ RSpec.describe Export::Csv::MpPresenterModule do
   subject { MpPresenterModuleTestClass.new(project) }
 
   it "presents the name" do
+    skip "The Parliamentary Members API is not currently efficient enough to use"
     expect(subject.mp_name).to eql "First Last"
   end
 
   it "presents the email" do
+    skip "The Parliamentary Members API is not currently efficient enough to use"
     expect(subject.mp_email).to eql "first.last.mp@parliament.uk"
   end
 
   it "presents the constituency" do
+    skip "The Parliamentary Members API is not currently efficient enough to use"
     expect(subject.mp_constituency).to eql "Constituency"
   end
 
   it "presents the address" do
+    skip "The Parliamentary Members API is not currently efficient enough to use"
     expect(subject.mp_address_1).to eql "House of Commons"
     expect(subject.mp_address_2).to eql ""
     expect(subject.mp_address_3).to eql "London"
