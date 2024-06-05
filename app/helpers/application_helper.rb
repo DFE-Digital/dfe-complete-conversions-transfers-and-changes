@@ -37,6 +37,13 @@ module ApplicationHelper
     true
   end
 
+  def enable_application_insights?
+    return false unless ENV["USER_ENV"] == "production"
+    return false unless ENV["APPLICATION_INSIGHTS_KEY"].present?
+    return false unless cookies[:ACCEPT_OPTIONAL_COOKIES] == "true"
+    true
+  end
+
   def page_title(title)
     "#{title} - #{I18n.t("service_name")}"
   end
