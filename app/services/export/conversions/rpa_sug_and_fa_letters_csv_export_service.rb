@@ -1,4 +1,4 @@
-class Export::Conversions::SchoolsDueToConvertCsvExportService < Export::CsvExportService
+class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExportService
   COLUMN_HEADERS = %i[
     school_urn
     school_name

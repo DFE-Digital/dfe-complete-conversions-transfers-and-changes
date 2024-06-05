@@ -37,11 +37,11 @@ RSpec.describe Export::NewRpaSugAndFaLettersForm, type: :model do
       form = described_class.new(from_date: from_date, to_date: to_date)
       fake_csv_export_service = double(call: [])
 
-      allow(Export::Conversions::SchoolsDueToConvertCsvExportService).to receive(:new).and_return(fake_csv_export_service)
+      allow(Export::Conversions::RpaSugAndFaLettersCsvExportService).to receive(:new).and_return(fake_csv_export_service)
 
       form.export
 
-      expect(Export::Conversions::SchoolsDueToConvertCsvExportService).to have_received(:new).once
+      expect(Export::Conversions::RpaSugAndFaLettersCsvExportService).to have_received(:new).once
       expect(fake_csv_export_service).to have_received(:call).once
     end
   end
