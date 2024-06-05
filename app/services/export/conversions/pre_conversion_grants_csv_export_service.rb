@@ -1,4 +1,4 @@
-class Export::Conversions::GrantManagementAndFinanceUnitCsvExportService < Export::CsvExportService
+class Export::Conversions::PreConversionGrantsCsvExportService < Export::CsvExportService
   COLUMN_HEADERS = %i[
     school_urn
     school_name
