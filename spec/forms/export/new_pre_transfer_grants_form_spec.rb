@@ -37,11 +37,11 @@ RSpec.describe Export::NewPreTransferGrantsForm, type: :model do
       form = described_class.new(from_date: from_date, to_date: to_date)
       fake_csv_export_service = double(call: [])
 
-      allow(Export::Transfers::GrantManagementAndFinanceUnitCsvExportService).to receive(:new).and_return(fake_csv_export_service)
+      allow(Export::Transfers::PreTransferGrantsCsvExportService).to receive(:new).and_return(fake_csv_export_service)
 
       form.export
 
-      expect(Export::Transfers::GrantManagementAndFinanceUnitCsvExportService).to have_received(:new).once
+      expect(Export::Transfers::PreTransferGrantsCsvExportService).to have_received(:new).once
       expect(fake_csv_export_service).to have_received(:call).once
     end
   end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Export::Transfers::GrantManagementAndFinanceUnitCsvExportService do
+RSpec.describe Export::Transfers::PreTransferGrantsCsvExportService do
   describe "#call" do
     before do
       mock_successful_api_response_to_create_any_project
@@ -12,7 +12,7 @@ RSpec.describe Export::Transfers::GrantManagementAndFinanceUnitCsvExportService 
       rdo = build(:regional_delivery_officer_user, email: "rdo.name@education.gov.uk")
       project = build(:transfer_project, urn: 123456, assigned_to: user, regional_delivery_officer: rdo)
 
-      csv_export = Export::Transfers::GrantManagementAndFinanceUnitCsvExportService.new([project]).call
+      csv_export = Export::Transfers::PreTransferGrantsCsvExportService.new([project]).call
 
       expect(csv_export).to include("Added by email")
       expect(csv_export).to include("rdo.name@education.gov.uk")
