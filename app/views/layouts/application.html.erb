@@ -24,6 +24,7 @@
     <%= javascript_include_tag "application", defer: true %>
 
     <%= render partial: "shared/google_tag_manager" if enable_google_tag_manager? %>
+    <%= render partial: "shared/application_insights" if enable_application_insights? %>
   </head>
 
   <body class="govuk-template__body ">
