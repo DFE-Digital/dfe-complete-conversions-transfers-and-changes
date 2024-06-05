@@ -1,0 +1,19 @@
+en:
+  views:
+    export_academies_due_to_transfer_form:
+      title: Academies due to transfer export
+      body_html:
+        <p class="govuk-body">This CSV spreadsheet shows you academies that will:</p>
+        <ul>
+        <li>transfer in the date range</li>
+        <li>need a new URN</li>
+        <li>change bank details</li>
+        <li>no longer transfer in the date range</li>
+        </ul>
+        <p class="govuk-body">It can take a little time to create these files. Thank you for your patience.</p>
+      button: Download CSV file
+  helpers:
+    label:
+      export_new_academies_due_to_transfer_form:
+        from_date: from
+        to_date: to

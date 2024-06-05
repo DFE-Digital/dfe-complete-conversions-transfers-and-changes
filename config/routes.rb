@@ -172,6 +172,7 @@ Rails.application.routes.draw do
           namespace :export do
             resource :rpa_sug_and_fa_letters, only: %w[new create], path: "rpa-sug-and-fa-letters"
             resource :pre_conversion_grants, only: %w[new create], path: "pre-conversion-grants"
+            resource :academies_due_to_transfer, only: %w[new create], path: "academies-due-to-transfer"
 
             get "/", to: "projects#index"
             namespace :by_advisory_board_date, path: "by-advisory-board-date" do

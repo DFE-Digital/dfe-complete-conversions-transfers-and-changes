@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- The academies due to convert export now includes the projects for a supplied
+  date range.
+
 ## [Release-73][release-73]
 
 ### Changed
