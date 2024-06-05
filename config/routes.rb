@@ -176,28 +176,11 @@ Rails.application.routes.draw do
             resource :pre_transfer_grants, only: %w[new create], path: "pre-transfer-grants"
 
             get "/", to: "projects#index"
-            namespace :by_advisory_board_date, path: "by-advisory-board-date" do
-              namespace :conversions do
-                get "/", to: "projects#index"
-                get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-                get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
-              end
-              namespace :transfers do
-                get "/", to: "projects#index"
-                get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-                get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
-              end
-            end
             namespace :by_significant_date, path: "by-significant-date" do
               namespace :transfers do
                 namespace :all_data, path: "all-data" do
                   get "from/:from_month/:from_year/to/:to_month/:to_year/csv", to: "projects#date_range_csv", constraints: {from_month: MONTH_1_12_REGEX, from_year: YEAR_2000_2499_REGEX, to_month: MONTH_1_12_REGEX, to_year: YEAR_2000_2499_REGEX}, as: :date_range_csv
                   get ":month/:year/csv", to: "projects#single_month_csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :single_month_csv
-                end
-                namespace :academies_due_to_transfer, path: "academies-due-to-transfer" do
-                  get "/", to: "projects#index"
-                  get ":month/:year", to: "projects#show", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :show
-                  get ":month/:year/csv", to: "projects#csv", constraints: {month: MONTH_1_12_REGEX, year: YEAR_2000_2499_REGEX}, as: :csv
                 end
               end
               namespace :conversions do
