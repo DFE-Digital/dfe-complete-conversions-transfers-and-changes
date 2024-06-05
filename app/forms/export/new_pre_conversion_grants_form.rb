@@ -3,6 +3,6 @@ class Export::NewPreConversionGrantsForm < Export::BaseForm
     projects = Project.conversions.advisory_board_date_in_range(from_date.to_s, to_date.to_s)
     pre_fetched_projects = AcademiesApiPreFetcherService.new.call!(projects)
 
-    Export::Conversions::GrantManagementAndFinanceUnitCsvExportService.new(pre_fetched_projects).call
+    Export::Conversions::PreConversionGrantsCsvExportService.new(pre_fetched_projects).call
   end
 end
