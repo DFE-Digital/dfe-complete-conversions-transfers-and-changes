@@ -10,9 +10,7 @@ class All::LocalAuthorities::ProjectsController < ApplicationController
   def show
     authorize Project, :index?
     @local_authority = LocalAuthority.find_by!(code: local_authority_code)
-    @pager, @projects = pagy(ByLocalAuthorityProjectFetcherService.new.projects_for_local_authority(@local_authority.code))
-
-    AcademiesApiPreFetcherService.new.call!(@projects)
+    @pager, @projects = pagy_array(ByLocalAuthorityProjectFetcherService.new.projects_for_local_authority(@local_authority.code))
   end
 
   private def local_authority_code
