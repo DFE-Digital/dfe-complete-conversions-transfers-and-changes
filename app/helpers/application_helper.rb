@@ -39,7 +39,7 @@ module ApplicationHelper
 
   def enable_application_insights?
     return false unless ENV["USER_ENV"] == "production"
-    return false unless ENV["APPLICATION_INSIGHTS_KEY"].present?
+    return false unless ENV["ApplicationInsights__ConnectionString"].present?
     return false unless cookies[:ACCEPT_OPTIONAL_COOKIES] == "true"
     true
   end
