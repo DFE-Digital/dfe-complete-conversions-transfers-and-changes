@@ -5,11 +5,11 @@ en:
       body: Check tables that show the progress of projects that will convert or transfer soon. You can also download CSV file spreadsheets of the data.
       conversions:
         title: Conversions
-        body: View tables and download CSV files that show information about conversions.
+        body: Download CSV files that show information about conversions.
         grant_management: pre-opening grants for schools becoming academies
         schools_due_to_convert: funding agreement letter contacts, RPA and start-up grants
       transfers:
         title: Transfers
-        body: View tables and download CSV files that show information about transfers.
+        body: Download CSV files that show information about transfers.
         academies_due_to_transfer: academies due to transfer in a date range
         grant_management: pre-transfer grants for academies joining a different trust

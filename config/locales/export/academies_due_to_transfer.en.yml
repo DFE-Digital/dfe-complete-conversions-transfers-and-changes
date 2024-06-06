@@ -3,14 +3,13 @@ en:
     export_academies_due_to_transfer_form:
       title: Academies due to transfer export
       body_html:
-        <p class="govuk-body">This CSV spreadsheet shows you academies that will:</p>
+        <p class="govuk-body">Download data about academies transferring in a particular date range as a CSV file.</p>
+        <p class="govuk-body">The file will contain information including:</p>
         <ul>
-        <li>transfer in the date range</li>
-        <li>need a new URN</li>
-        <li>change bank details</li>
-        <li>no longer transfer in the date range</li>
+        <li>which academies need new URNs</li>
+        <li>changes bank details</li>
         </ul>
-        <p class="govuk-body">It can take a little time to create these files. Thank you for your patience.</p>
+        <p class="govuk-body">These files can be large and could take a few minutes to download.</p>
       button: Download CSV file
   helpers:
     label:
