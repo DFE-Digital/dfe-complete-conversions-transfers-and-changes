@@ -20,6 +20,8 @@
     <meta property="og:image" content="<%= image_url("govuk-frontend/govuk/assets/images/govuk-opengraph-image.png") %>">
 
     <%= stylesheet_link_tag "application" %>
+
+    <%= javascript_include_tag "application-insights" if enable_application_insights? %>
     <%= javascript_include_tag "govuk-frontend/govuk/all" %>
     <%= javascript_include_tag "dfefrontend" %>
     <%= javascript_include_tag "application", defer: true %>

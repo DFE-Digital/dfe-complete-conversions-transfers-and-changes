@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Microsoft Application Insights browser tracking has been added to the
+  application and will only be enabled for users who have opted in to optional
+  cookies.
+
 ### Changed
 
 - The academies due to convert export now includes the projects for a supplied
