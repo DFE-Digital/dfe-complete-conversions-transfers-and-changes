@@ -5,6 +5,7 @@
     <title><%= content_for?(:page_title) ? yield(:page_title) : t("service_name") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#0b0c0c">
+    <%= tag :meta, name: "application-insights-connection", content: ENV["ApplicationInsights__ConnectionString"] if enable_application_insights? %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
