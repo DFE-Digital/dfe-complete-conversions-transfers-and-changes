@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Microsoft Application Insights browser tracking has been added to the
   application and will only be enabled for users who have opted in to optional
   cookies.
+- The by month conversions export now includes the Academy URN and DfE/LAEST
+  number.
 
 ### Changed
 

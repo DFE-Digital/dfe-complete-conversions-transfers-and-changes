@@ -4,6 +4,8 @@ class Export::Conversions::AllDataCsvExportService < Export::CsvExportService
     school_urn
     project_type
     academy_name
+    academy_urn
+    academy_dfe_number
     incoming_trust_name
     local_authority_name
     region
