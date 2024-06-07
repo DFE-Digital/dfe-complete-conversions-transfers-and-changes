@@ -92,6 +92,51 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#enable_application_insights?" do
+    it "returns true when all the variables are set" do
+      ClimateControl.modify(
+        RAILS_ENV: "production",
+        ApplicationInsights__ConnectionString: "test"
+      ) do
+        cookies[:ACCEPT_OPTIONAL_COOKIES] = "true"
+
+        expect(enable_application_insights?).to eq(true)
+      end
+    end
+
+    it "returns false when the user is not opted in to optional cookies" do
+      ClimateControl.modify(
+        RAILS_ENV: "production",
+        ApplicationInsights__ConnectionString: "test"
+      ) do
+        cookies[:ACCEPT_OPTIONAL_COOKIES] = "false"
+
+        expect(enable_application_insights?).to eq(false)
+      end
+    end
+
+    it "returns false when not running in one of the 'production' environments" do
+      ClimateControl.modify(
+        RAILS_ENV: "development",
+        ApplicationInsights__ConnectionString: "test"
+      ) do
+        cookies[:ACCEPT_OPTIONAL_COOKIES] = "true"
+
+        expect(enable_application_insights?).to eq(false)
+      end
+    end
+
+    it "returns false when the connection string is not set" do
+      ClimateControl.modify(
+        RAILS_ENV: "production"
+      ) do
+        cookies[:ACCEPT_OPTIONAL_COOKIES] = "true"
+
+        expect(enable_application_insights?).to eq(false)
+      end
+    end
+  end
+
   describe "#enable_google_tag_manager?" do
     context "when not in production" do
       it "returns false" do

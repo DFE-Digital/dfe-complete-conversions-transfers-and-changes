@@ -30,6 +30,13 @@ module ApplicationHelper
     cookies[:ACCEPT_OPTIONAL_COOKIES].present?
   end
 
+  def enable_application_insights?
+    return false if ENV["ApplicationInsights__ConnectionString"].blank?
+    return false unless ENV["RAILS_ENV"] == "production"
+    return false unless cookies[:ACCEPT_OPTIONAL_COOKIES] == "true"
+    true
+  end
+
   def enable_google_tag_manager?
     return false unless ENV["USER_ENV"] == "production"
     return false unless ENV["GOOGLE_TAG_MANAGER_ID"].present?
