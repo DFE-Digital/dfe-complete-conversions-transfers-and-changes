@@ -1,12 +1,38 @@
-<footer class="govuk-footer " role="contentinfo">
-  <div class="govuk-width-container ">
+<footer class="govuk-footer" role="contentinfo">
+  <div class="govuk-width-container">
+    <div class="govuk-footer__navigation">
+      <div class="govuk-footer__section govuk-grid-column-two-thirds">
+        <h2 class="govuk-footer__heading govuk-heading-m">Get help</h2>
+        <ul class="govuk-footer__list govuk-footer__list--column-1">
+          <li class="govuk-footer__list-item">
+            <%= link_to "Email Service Support for help with using this system", "mailto:#{Rails.application.config.support_email}", class: "govuk-footer__link" %>
+            <p>We aim to respond within 5 working days, or one working day for more urgent queries.</p>
+          </li>
+          <li class="govuk-footer__list-item">
+            <%= link_to "How to use this system (opens in a new tab)",
+                  "https://educationgovuk.sharepoint.com/sites/lvewp00299/SitePages/complete-conversions-transfers-and-changes.aspx",
+                  class: "govuk-footer__link",
+                  target: "_blank" %>
+          </li>
+        </ul>
+      </div>
+      <div class="govuk-footer__section govuk-grid-column-one-third">
+        <h2 class="govuk-footer__heading govuk-heading-m">Give feedback</h2>
+        <ul class="govuk-footer__list">
+          <li class="govuk-footer__list-item">
+            <%= link_to "Give feedback (opens in a new tab)",
+                  "https://forms.office.com/r/47n7Q6nynQ",
+                  class: "govuk-footer__link",
+                  target: "_blank" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="govuk-footer__section-break">
     <div class="govuk-footer__meta">
-      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow dfe-footer__meta-item--grow">
         <h2 class="govuk-visually-hidden">Support links</h2>
         <ul class="govuk-footer__inline-list">
-          <li class="govuk-footer__inline-list-item">
-            <%= link_to "Privacy notice", page_path(id: "privacy"), class: "govuk-footer__link" %>
-          </li>
           <li class="govuk-footer__inline-list-item">
             <%= link_to "Accessibility Statement", page_path(id: "accessibility"), class: "govuk-footer__link" %>
           </li>
@@ -14,15 +40,12 @@
             <%= link_to "Cookies", page_path(id: "cookies"), class: "govuk-footer__link" %>
           </li>
           <li class="govuk-footer__inline-list-item">
-            <%= link_to "How to use this service (opens in new tab)",
-                  "https://educationgovuk.sharepoint.com/sites/lvewp00299/SitePages/complete-conversions-transfers-and-changes.aspx",
-                  class: "govuk-footer__link",
-                  target: "_blank" %>
-          </li>
-          <li class="govuk-footer__inline-list-item">
-            <%= link_to "Email support", "mailto:#{Rails.application.config.support_email}", class: "govuk-footer__link" %>
+            <%= link_to "Privacy notice", page_path(id: "privacy"), class: "govuk-footer__link" %>
           </li>
         </ul>
+      </div>
+      <div class="govuk-footer__meta-item">
+        <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
       </div>
     </div>
   </div>
