@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_03_102728) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_06_152236) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -250,6 +250,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_03_102728) do
     t.datetime "updated_at", null: false
     t.string "task_identifier"
     t.uuid "significant_date_history_id"
+    t.uuid "significant_date_history_reason_id"
     t.index ["project_id"], name: "index_notes_on_project_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
@@ -308,6 +309,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_03_102728) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_significant_date_histories_on_project_id"
+  end
+
+  create_table "significant_date_history_reasons", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "reason_type"
+    t.uuid "significant_date_history_id"
+    t.index ["reason_type"], name: "index_significant_date_history_reasons_on_reason_type"
   end
 
   create_table "transfer_tasks_data", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
