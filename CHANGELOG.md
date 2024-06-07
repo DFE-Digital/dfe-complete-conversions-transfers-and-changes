@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The loading time of the by local authority view has been improved, it has to
   load all projects so is still a slow view.
 - Content updates to export pages following date picker additions
+- The application footer now uses the programme wide layout.
 
 ## [Release-73][release-73]
 
