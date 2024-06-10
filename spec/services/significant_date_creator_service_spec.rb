@@ -94,17 +94,16 @@ RSpec.describe SignificantDateCreatorService do
       expect {
         described_class.new(project: project, revised_date: revised_date, user: user, reasons: [invalid_reason]).update!
       }.to raise_error(ArgumentError)
-
     end
 
-    it "raises an error when there is an invalid reason value" do
+    it "returns false with a invalid reason type because the reason will not be saved" do
       project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month)
       revised_date = project.conversion_date + 2.months
       invalid_reason = {type: "", note_text: "This is not valid"}
 
-      expect {
-        described_class.new(project: project, revised_date: revised_date, user: user, reasons: [invalid_reason]).update!
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      result = described_class.new(project: project, revised_date: revised_date, user: user, reasons: [invalid_reason]).update!
+
+      expect(result).to be false
     end
   end
 end
