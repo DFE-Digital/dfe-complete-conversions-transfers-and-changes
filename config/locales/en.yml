@@ -102,6 +102,9 @@ en:
     inactive_users: Inactive users
     conversions: Conversions
     transfers: Transfers
+    date_history:
+      conversion: Conversion date history
+      transfer: Transfer date history
   pages:
     academies_api_client_timeout:
       title: Sorry, there was a problem
