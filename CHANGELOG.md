@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   load all projects so is still a slow view.
 - Content updates to export pages following date picker additions
 - The application footer now uses the programme wide layout.
+- The project date history view (hidden) now uses a 'card' view.
 
 ## [Release-73][release-73]
 

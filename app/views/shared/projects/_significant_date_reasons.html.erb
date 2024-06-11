@@ -1,0 +1,4 @@
+<% reasons.each do |reason| %>
+  <h5 class="govuk-heading-xs"><%= t("significant_dates.type.#{reason.reason_type}") if reason.reason_type.present? %></h5>
+  <%= reason.note.body %>
+<% end %>

@@ -93,10 +93,11 @@ RSpec.feature "Users can change the conversion date" do
 
     visit project_dates_path(project)
 
-    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+    within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
       expect(page).to have_content provisional_date.to_fs(:govuk_month)
       expect(page).to have_content confirmed_date.to_fs(:govuk_month)
+      expect(page).to have_content "Legacy reason, see note"
       expect(page).to have_content "This is the first test reason note."
     end
 
@@ -104,10 +105,11 @@ RSpec.feature "Users can change the conversion date" do
 
     visit project_dates_path(project)
 
-    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+    within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
       expect(page).to have_content confirmed_date.to_fs(:govuk_month)
       expect(page).to have_content first_revised_date.to_fs(:govuk_month)
+      expect(page).to have_content "Legacy reason, see note"
       expect(page).to have_content "This is the second test reason note."
     end
 
@@ -115,10 +117,11 @@ RSpec.feature "Users can change the conversion date" do
 
     visit project_dates_path(project)
 
-    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+    within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
       expect(page).to have_content first_revised_date.to_fs(:govuk_month)
       expect(page).to have_content second_revised_date.to_fs(:govuk_month)
+      expect(page).to have_content "Legacy reason, see note"
       expect(page).to have_content "This is the third test reason note."
     end
   end
