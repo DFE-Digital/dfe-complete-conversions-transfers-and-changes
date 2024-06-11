@@ -6,4 +6,10 @@ FactoryBot.define do
     revised_date { previous_date + 2.months }
     note { association :note }
   end
+
+  factory :date_history_reason, class: SignificantDateHistoryReason do
+    significant_date_history { association :conversion_date_history }
+    reason_type { :legacy_reason }
+    note { association :note }
+  end
 end
