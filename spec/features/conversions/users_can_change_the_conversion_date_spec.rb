@@ -84,14 +84,14 @@ RSpec.feature "Users can change the conversion date" do
 
     project = create(:conversion_project, conversion_date: provisional_date, conversion_date_provisional: true, assigned_to: user)
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
     expect(page).to have_content "Conversion date history"
     expect(page).to have_content "No date history"
 
     SignificantDateCreatorService.new(project: project, revised_date: confirmed_date, reasons: first_reason, user: user).update!
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
     within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
@@ -103,7 +103,7 @@ RSpec.feature "Users can change the conversion date" do
 
     SignificantDateCreatorService.new(project: project, revised_date: first_revised_date, reasons: second_reason, user: user).update!
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
     within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
@@ -115,7 +115,7 @@ RSpec.feature "Users can change the conversion date" do
 
     SignificantDateCreatorService.new(project: project, revised_date: second_revised_date, reasons: third_reason, user: user).update!
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
     within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email

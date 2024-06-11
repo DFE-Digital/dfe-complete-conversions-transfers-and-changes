@@ -2,7 +2,8 @@ class DateHistoriesController < ApplicationController
   include Projectable
 
   def index
-    @dates = @project.date_history.includes([reasons: [:note]]).order(created_at: :desc)
+    dates = @project.date_history.includes([:user, reasons: [:note]]).order(created_at: :desc)
+    @dates = dates.map { |date| SignificantDatePresenter.new(date) }
   end
 
   def new

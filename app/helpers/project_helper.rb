@@ -91,4 +91,8 @@ module ProjectHelper
       OpenStruct.new(id: false, name: I18n.t("no"))
     ]
   end
+
+  def project_type_as_string(project)
+    ActiveSupport::Inflector.deconstantize(project.type).downcase
+  end
 end

@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   concern :significant_date_historyable do
     get "change-date", to: "date_histories#new"
     post "change-date", to: "date_histories#create"
-    get "dates", to: "date_histories#index"
+    get "date-history", to: "date_histories#index"
   end
 
   concern :academy_urn_updateable do

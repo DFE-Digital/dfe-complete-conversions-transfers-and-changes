@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   cookies.
 - The by month conversions export now includes the Academy URN and DfE/LAEST
   number.
+- The project date history view is now available from the project
+  sub-navigation.
 
 ### Changed
 
