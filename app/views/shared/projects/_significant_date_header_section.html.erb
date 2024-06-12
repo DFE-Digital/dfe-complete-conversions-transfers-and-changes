@@ -1,0 +1,9 @@
+<section>
+  <% if @project.significant_date_provisional? %>
+    <h2><%= t("significant_dates.index.header.proposed.#{project_type_as_string(@project)}.heading") %></h2>
+    <%= t("significant_dates.index.header.proposed.#{project_type_as_string(@project)}.body_html", date: @project.significant_date.to_fs(:govuk)) %>
+  <% else %>
+    <h2><%= t("significant_dates.index.header.confirmed.#{project_type_as_string(@project)}.heading") %></h2>
+    <%= t("significant_dates.index.header.confirmed.#{project_type_as_string(@project)}.body_html", date: @project.significant_date.to_fs(:govuk)) %>
+  <% end %>
+</section>
