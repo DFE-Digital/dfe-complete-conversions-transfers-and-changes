@@ -73,6 +73,20 @@ RSpec.feature "Users can change the conversion date" do
     end
   end
 
+  scenario "the proposed or confirmed conversion date is clearly shown" do
+    proposed_project = create(:conversion_project, conversion_date_provisional: true, conversion_date: Date.new(2026, 6, 1))
+
+    visit project_date_history_path(proposed_project)
+
+    expect(page).to have_content "The current proposed conversion date is 1 June 2026"
+
+    confirmed_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.new(2026, 6, 1))
+
+    visit project_date_history_path(confirmed_project)
+
+    expect(page).to have_content "The current confirmed conversion date is 1 June 2026"
+  end
+
   scenario "they can view all of the changes to the conversion date" do
     provisional_date = Date.today.at_beginning_of_month
     confirmed_date = provisional_date

@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   number.
 - The project date history view is now available from the project
   sub-navigation.
+- The project date history view now includes a section with the current proposed
+  or confirmed date called out.
 
 ### Changed
 

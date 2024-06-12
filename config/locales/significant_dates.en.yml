@@ -3,3 +3,19 @@ en:
     type:
       legacy_reason: Legacy reason, see note
       stakeholder_kick_off: Confirmed as part of the stakeholder kick off task
+    index:
+      header:
+        proposed:
+          conversion:
+            heading: Current proposed conversion date
+            body_html: <p class="govuk-!-margin-bottom-8">The current proposed conversion date is <strong>%{date}</strong></p>
+          transfer:
+            heading: Current proposed transfer date
+            body_html: <p class="govuk-!-margin-bottom-8">The current proposed transfer date is <strong>%{date}</strong></p>
+        confirmed:
+          conversion:
+            heading: Current confirmed conversion date
+            body_html: <p class="govuk-!-margin-bottom-8">The current confirmed conversion date is <strong>%{date}</strong></p>
+          transfer:
+            heading: Current confirmed transfer date
+            body_html: <p class="govuk-!-margin-bottom-8">The current confirmed transfer date is <strong>%{date}</strong></p>
