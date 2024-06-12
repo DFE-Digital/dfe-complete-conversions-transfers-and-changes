@@ -24,11 +24,11 @@ class Conversion::Task::StakeholderKickOffTaskForm < ::BaseTaskForm
       attributes.delete("confirmed_conversion_date(1i)")
     end
 
-    super(attributes)
+    super
   end
 
   def valid?(context = nil)
-    super(context)
+    super
     errors.merge!(@date_param_errors)
     errors.empty?
   end

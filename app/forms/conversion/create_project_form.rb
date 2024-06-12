@@ -23,7 +23,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
       attributes[:"provisional_conversion_date(1i)"] = ""
     end
 
-    super(attributes)
+    super
   end
 
   private def notify_team_leaders(project)
