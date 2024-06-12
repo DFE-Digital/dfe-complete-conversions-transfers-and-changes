@@ -22,11 +22,11 @@ class Conversion::Task::ConfirmDateAcademyOpenedTaskForm < BaseTaskForm
       attributes.delete("date_opened(1i)")
     end
 
-    super(attributes)
+    super
   end
 
   def valid?(context = nil)
-    super(context)
+    super
     errors.merge!(@date_param_errors)
     errors.empty?
   end

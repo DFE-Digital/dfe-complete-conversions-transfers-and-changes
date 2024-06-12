@@ -17,7 +17,7 @@ class NewDateHistoryForm
       attributes.delete("revised_date(1i)")
     end
 
-    super(attributes)
+    super
   end
 
   def save

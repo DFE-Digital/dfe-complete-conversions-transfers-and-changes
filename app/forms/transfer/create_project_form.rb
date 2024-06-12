@@ -34,7 +34,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       attributes[:"provisional_transfer_date(1i)"] = ""
     end
 
-    super(attributes)
+    super
   end
 
   def save(context = nil)

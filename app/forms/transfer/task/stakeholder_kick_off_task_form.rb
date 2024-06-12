@@ -23,11 +23,11 @@ class Transfer::Task::StakeholderKickOffTaskForm < BaseTaskForm
       attributes.delete("confirmed_transfer_date(1i)")
     end
 
-    super(attributes)
+    super
   end
 
   def valid?(context = nil)
-    super(context)
+    super
     errors.merge!(@date_param_errors)
     errors.empty?
   end

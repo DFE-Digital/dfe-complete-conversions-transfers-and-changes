@@ -18,7 +18,7 @@ class InternalContacts::EditAddedByUserForm
   end
 
   def initialize(attrs = {})
-    super(attrs)
+    super
     self.user = User.assignable.find_by_email(email)
   end
 

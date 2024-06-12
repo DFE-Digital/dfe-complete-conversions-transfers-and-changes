@@ -25,7 +25,7 @@ class Api::Conversions::CreateProjectService
   validates :prepare_id, presence: true
 
   def initialize(project_params)
-    super(project_params)
+    super
   end
 
   def call

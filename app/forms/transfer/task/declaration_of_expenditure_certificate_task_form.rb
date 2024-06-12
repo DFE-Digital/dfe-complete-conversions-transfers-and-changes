@@ -27,11 +27,11 @@ class Transfer::Task::DeclarationOfExpenditureCertificateTaskForm < BaseOptional
       attributes.delete("date_received(1i)")
     end
 
-    super(attributes)
+    super
   end
 
   def valid?(context = nil)
-    super(context)
+    super
     errors.merge!(@date_param_errors)
     errors.empty?
   end

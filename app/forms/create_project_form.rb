@@ -45,7 +45,7 @@ class CreateProjectForm
       attributes[:"advisory_board_date(1i)"] = ""
     end
 
-    super(attributes)
+    super
   end
 
   def region
