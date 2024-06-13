@@ -1,12 +1,12 @@
 <%= if policy(@project).change_conversion_date?
       govuk_button_link_to t("conversion_new_date_history_form.new"),
-        project_change_date_path(@project),
+        new_project_date_history_path(@project),
         secondary: true
     end %>
 
 <%= if policy(@project).change_transfer_date?
       govuk_button_link_to "Change transfer date",
-        project_change_date_path(@project),
+        new_project_date_history_path(@project),
         secondary: true
     end %>
 

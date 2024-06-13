@@ -1,4 +1,4 @@
-class DateHistoriesController < ApplicationController
+class DateHistoryController < ApplicationController
   include Projectable
 
   def index
