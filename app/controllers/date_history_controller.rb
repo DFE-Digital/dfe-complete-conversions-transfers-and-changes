@@ -15,7 +15,7 @@ class DateHistoryController < ApplicationController
     authorize(@project, :change_significant_date?)
     @form = NewDateHistoryForm.new(**date_history_params, project: @project, user: current_user)
 
-    if @form.save
+    if @form.valid?
       @project.reload
       render "confirm_new"
     else

@@ -1,6 +1,6 @@
 <div class="govuk-button-group">
 <%= if policy(@project).change_conversion_date?
-      govuk_button_link_to t("conversion_new_date_history_form.new"),
+      govuk_button_link_to "Change conversion date",
         new_project_date_history_path(@project),
         secondary: true
     end %>

@@ -1,9 +1,19 @@
 en:
   conversion_new_date_history_form:
-    title: Change conversion date for %{school_name}, URN%{urn}, from %{conversion_date}
-    new: Change conversion date
-    cancel: Cancel
-    submit: Confirm new conversion date
+    title: Conversion Date
+    current_date_html: <p>The current conversion date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
+    form:
+      legend: Enter new conversion date
+      hint_html: <p>You may need to change the conversion date if there are delays or complications with the project.</p>
+      summary_text: Changing the conversion date
+      text_html:
+        <p>You can change the conversion date at any time during the project. Any new date must be agreed with the school and all other stakeholders.</p>
+        <p>You should change the conversion date if there are delays or complications that mean it is likely the current date will not be met.</p>
+        <p>It is essential you enter a new date if it changes. This information is used by funding teams to prepare and organise grant payments.</p>
+        <p>If you do not update this information, academies may not get their funding on time.</p>
+      date_hint: "You only need to enter a month and year as all schools convert on the first day of the month. For example, 3 2021"
+      cancel: Cancel
+      submit: Save and continue
     success:
       panel:
         title: Conversion date changed
@@ -24,15 +34,3 @@ en:
         format: Enter a valid month and year
         transaction: Revised date could not be saved
         blank: Enter a valid month and year for the revised date, like 9 2024
-      note_body:
-        blank: Enter a reason
-  helpers:
-    label:
-      conversion_new_date_history_form:
-        note_body: Why is a new conversion date needed?
-    legend:
-      conversion_new_date_history_form:
-        revised_date: Enter new conversion date
-    hint:
-      conversion_new_date_history_form:
-        revised_date: You should agree the new conversion date with relevant parties. You only need to enter a month and year as all schools convert on the first day of the month.
