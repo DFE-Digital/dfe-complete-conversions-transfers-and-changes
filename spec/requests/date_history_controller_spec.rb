@@ -9,7 +9,7 @@ RSpec.describe DateHistoryController do
       project = create(:conversion_project, conversion_date: Date.today.at_beginning_of_month, conversion_date_provisional: false, assigned_to: user)
       mock_successful_api_establishment_response(urn: project.urn)
 
-      post project_date_history_path(project), params: {new_date_history_form: {revised_date: nil, note_body: nil}}
+      post project_date_history_path(project), params: {new_date_history_form: {revised_date: nil}}
 
       expect(response).to render_template :new
     end

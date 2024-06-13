@@ -1,9 +1,19 @@
 en:
   transfer_new_date_history_form:
-    title: Change transfer date for %{school_name}, URN%{urn}, from %{transfer_date}
-    new: Change transfer date
-    cancel: Cancel
-    submit: Confirm new transfer date
+    title: Transfer Date
+    current_date_html: <p>The current transfer date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
+    form:
+      legend: Enter new transfer  date
+      hint_html: <p>You may need to change the transfer date if there are delays or complications with the project.</p>
+      summary_text: Changing the transfer date
+      text_html:
+        <p>You can change the transfer date at any time during the project. Any new date must be agreed with the school and all other stakeholders.</p>
+        <p>You should change the transfer date if there are delays or complications that mean it is likely the current date will not be met.</p>
+        <p>It is essential you enter a new date if it changes. This information is used by funding teams to prepare and organise grant payments.</p>
+        <p>If you do not update this information, academies may not get their funding on time.</p>
+      date_hint: You only need to enter a month and year as all schools transfer on the first day of the month. For example, 3 2021
+      cancel: Cancel
+      submit: Save and continue
     success:
       panel:
         title: Transfer date changed
@@ -26,13 +36,3 @@ en:
         blank: Enter a valid month and year for the revised date, like 9 2024
       note_body:
         blank: Enter a reason
-  helpers:
-    label:
-      transfer_new_date_history_form:
-        note_body: Why is a new transfer date needed?
-    legend:
-      transfer_new_date_history_form:
-        revised_date: Enter new transfer date
-    hint:
-      transfer_new_date_history_form:
-        revised_date: You should agree the new transfer date with relevant parties. You only need to enter a month and year as all schools transfer on the first day of the month.

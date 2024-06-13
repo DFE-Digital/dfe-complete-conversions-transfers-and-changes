@@ -1,41 +1,28 @@
 <% content_for :page_title do %>
-  <%= page_title(t(
-        "conversion_new_date_history_form.title",
-        school_name: @project.establishment.name,
-        urn: @project.urn, conversion_date:
-                     @project.conversion_date.to_formatted_s(:govuk)
-      )) %>
+  <%= page_title(t("conversion_new_date_history_form.form.legend")) %>
 <% end %>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl"><%= @project.establishment.name %></span>
+    <h1 class="govuk-heading-xl"><%= t("conversion_new_date_history_form.title") %></h1>
+
+    <%= t("conversion_new_date_history_form.current_date_html", date: @project.conversion_date.to_fs(:govuk)) %>
+
     <%= form_with model: @form, url: project_date_history_path(@project) do |form| %>
       <%= form.govuk_error_summary %>
 
-      <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">
-            <%= t(
-                  "conversion_new_date_history_form.title",
-                  school_name: @project.establishment.name,
-                  urn: @project.urn, conversion_date:
-              @project.conversion_date.to_formatted_s(:govuk)
-                ) %>
-          </h1>
-        </legend>
+      <%= form.govuk_fieldset legend: {text: t("conversion_new_date_history_form.form.legend"), size: "l"} do %>
+        <%= t("conversion_new_date_history_form.form.hint_html") %>
+        <%= govuk_details(summary_text: t("conversion_new_date_history_form.form.summary_text"), text: t("conversion_new_date_history_form.form.text_html")) %>
+        <%= form.govuk_date_field :revised_date, omit_day: true, legend: nil, hint: {text: t("conversion_new_date_history_form.form.date_hint")} %>
+      <% end %>
 
-        <%= form.govuk_date_field :revised_date,
-              omit_day: true,
-              legend: {text: t("helpers.legend.conversion_new_date_history_form.revised_date")},
-              hint: {text: t("helpers.hint.conversion_new_date_history_form.revised_date")} %>
+      <div class="govuk-button-group">
+        <%= form.govuk_submit(t("conversion_new_date_history_form.form.submit")) %>
+        <%= govuk_link_to(t("conversion_new_date_history_form.form.cancel"), project_path(@project)) %>
+      </div>
 
-        <%= form.govuk_text_area :note_body, label: {text: t("helpers.label.conversion_new_date_history_form.note_body"), size: "m"} %>
-
-        <div class="govuk-button-group">
-          <%= form.govuk_submit(t("conversion_new_date_history_form.submit")) %>
-          <%= govuk_link_to(t("conversion_new_date_history_form.cancel"), project_path(@project)) %>
-        </div>
-      </fieldset>
     <% end %>
   </div>
 </div>

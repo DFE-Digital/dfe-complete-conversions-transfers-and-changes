@@ -13,7 +13,6 @@ RSpec.describe NewDateHistoryForm, type: :model do
       "revised_date(3i)": revised_date.day.to_s,
       "revised_date(2i)": revised_date.month.to_s,
       "revised_date(1i)": revised_date.year.to_s,
-      note_body: "Test note body.",
       user: user,
       project: project
     }.with_indifferent_access
@@ -128,15 +127,6 @@ RSpec.describe NewDateHistoryForm, type: :model do
         end
       end
 
-      it "requires the note body" do
-        attributes = valid_attributes
-        attributes["note_body"] = ""
-
-        form.assign_attributes(attributes)
-
-        expect(form).to be_invalid
-      end
-
       it "requires the project" do
         attributes = valid_attributes
         attributes["project"] = ""
@@ -154,58 +144,6 @@ RSpec.describe NewDateHistoryForm, type: :model do
 
         expect(form).to be_invalid
       end
-    end
-  end
-
-  describe "#save" do
-    it "returns true when successful" do
-      attributes = valid_attributes
-
-      form.assign_attributes(attributes)
-
-      expect(form.save).to be true
-    end
-
-    it "adds an error and returns false if unsuccessful" do
-      attributes = valid_attributes
-      attributes["note_body"] = ""
-
-      form.assign_attributes(attributes)
-
-      expect(form.save).to eq false
-      expect(form.errors.messages_for(:note_body)).to include("Enter a reason")
-    end
-
-    it "adds an error and returns false if the data cannot be saved" do
-      attributes = valid_attributes
-      allow_any_instance_of(SignificantDateCreatorService).to receive("update!").and_return(false)
-
-      form.assign_attributes(attributes)
-
-      expect(form.save).to eq false
-      expect(form.errors.messages_for(:revised_date)).to include("Revised date could not be saved")
-    end
-  end
-
-  describe "works for transfers" do
-    let(:project) { create(:transfer_project, transfer_date: Date.today.at_beginning_of_month) }
-
-    it "returns true when successful" do
-      attributes = valid_attributes
-
-      form.assign_attributes(attributes)
-
-      expect(form.save).to be true
-    end
-
-    it "adds an error and returns false if unsuccessful" do
-      attributes = valid_attributes
-      attributes["note_body"] = ""
-
-      form.assign_attributes(attributes)
-
-      expect(form.save).to eq false
-      expect(form.errors.messages_for(:note_body)).to include("Enter a reason")
     end
   end
 end
