@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-74][release-74]
+
 ### Added
 
 - Microsoft Application Insights browser tracking has been added to the
@@ -14,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The by month conversions export now includes the Academy URN and DfE/LAEST
   number.
 
-### Changed
+### Changed
 
 - The academies due to convert export now includes the projects for a supplied
   date range.
@@ -1959,7 +1961,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-73...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-74...HEAD
+[release-74]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-73...release-74
 [release-73]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-72...release-73
 [release-72]:
