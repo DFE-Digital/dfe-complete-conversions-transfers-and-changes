@@ -3,4 +3,9 @@ class SignificantDateHistoryReason < ApplicationRecord
   has_one :note, required: true, dependent: :destroy, foreign_key: :significant_date_history_reason_id
 
   validates :reason_type, presence: true
+
+  enum :reason_type, {
+    legacy_reason: "legacy_reason",
+    stakeholder_kick_off: "stakeholder_kick_off"
+  }
 end

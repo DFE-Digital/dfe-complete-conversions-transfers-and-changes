@@ -38,8 +38,8 @@ class Conversion::Task::StakeholderKickOffTaskForm < ::BaseTaskForm
       ::SignificantDateCreatorService.new(
         project: @project,
         revised_date: confirmed_conversion_date,
-        note_body: "Conversion date confirmed as part of the External stakeholder kick off task.",
-        user: @user
+        user: @user,
+        reasons: stakeholder_kick_off_reason
       ).update!
     end
 
@@ -59,5 +59,9 @@ class Conversion::Task::StakeholderKickOffTaskForm < ::BaseTaskForm
 
   def in_progress?
     attributes.values.any?(&:present?) || @project.conversion_date_provisional? == false
+  end
+
+  private def stakeholder_kick_off_reason
+    [{type: :stakeholder_kick_off, note_text: "Conversion date confirmed as part of the External stakeholder kick off task."}]
   end
 end

@@ -23,11 +23,20 @@ class NewDateHistoryForm
   def save
     return false unless valid?
 
-    if SignificantDateCreatorService.new(project: project, revised_date: revised_date, note_body: note_body, user: user).update!
+    if SignificantDateCreatorService.new(
+      project: project,
+      revised_date: revised_date,
+      user: user,
+      reasons: change_reason
+    ).update!
       true
     else
       errors.add(:revised_date, :transaction)
       false
     end
+  end
+
+  private def change_reason
+    [{type: :legacy_reason, note_text: note_body}]
   end
 end

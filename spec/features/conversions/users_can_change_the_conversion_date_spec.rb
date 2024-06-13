@@ -78,6 +78,9 @@ RSpec.feature "Users can change the conversion date" do
     confirmed_date = provisional_date
     first_revised_date = confirmed_date + 1.month
     second_revised_date = first_revised_date + 2.months
+    first_reason = [{type: :legacy_reason, note_text: "This is the first test reason note."}]
+    second_reason = [{type: :legacy_reason, note_text: "This is the second test reason note."}]
+    third_reason = [{type: :legacy_reason, note_text: "This is the third test reason note."}]
 
     project = create(:conversion_project, conversion_date: provisional_date, conversion_date_provisional: true, assigned_to: user)
 
@@ -86,7 +89,7 @@ RSpec.feature "Users can change the conversion date" do
     expect(page).to have_content "Conversion date history"
     expect(page).to have_content "No date history"
 
-    SignificantDateCreatorService.new(project: project, revised_date: confirmed_date, note_body: "confirmed date", user: user).update!
+    SignificantDateCreatorService.new(project: project, revised_date: confirmed_date, reasons: first_reason, user: user).update!
 
     visit project_dates_path(project)
 
@@ -94,10 +97,10 @@ RSpec.feature "Users can change the conversion date" do
       expect(page).to have_content user.email
       expect(page).to have_content provisional_date.to_fs(:govuk_month)
       expect(page).to have_content confirmed_date.to_fs(:govuk_month)
-      expect(page).to have_content "confirmed date"
+      expect(page).to have_content "This is the first test reason note."
     end
 
-    SignificantDateCreatorService.new(project: project, revised_date: first_revised_date, note_body: "first revised date", user: user).update!
+    SignificantDateCreatorService.new(project: project, revised_date: first_revised_date, reasons: second_reason, user: user).update!
 
     visit project_dates_path(project)
 
@@ -105,10 +108,10 @@ RSpec.feature "Users can change the conversion date" do
       expect(page).to have_content user.email
       expect(page).to have_content confirmed_date.to_fs(:govuk_month)
       expect(page).to have_content first_revised_date.to_fs(:govuk_month)
-      expect(page).to have_content "first revised date"
+      expect(page).to have_content "This is the second test reason note."
     end
 
-    SignificantDateCreatorService.new(project: project, revised_date: second_revised_date, note_body: "second revised date", user: user).update!
+    SignificantDateCreatorService.new(project: project, revised_date: second_revised_date, reasons: third_reason, user: user).update!
 
     visit project_dates_path(project)
 
@@ -116,7 +119,7 @@ RSpec.feature "Users can change the conversion date" do
       expect(page).to have_content user.email
       expect(page).to have_content first_revised_date.to_fs(:govuk_month)
       expect(page).to have_content second_revised_date.to_fs(:govuk_month)
-      expect(page).to have_content "second revised date"
+      expect(page).to have_content "This is the third test reason note."
     end
   end
 end
