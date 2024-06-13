@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Base stage
 # ------------------------------------------------------------------------------
-FROM ruby:3.3.3-bullseye AS base
+FROM ruby:3.3.3-bookworm AS base
 
 ENV USER rails
 ENV UID 1000
@@ -100,8 +100,8 @@ COPY Gemfile ${DEPS_HOME}/Gemfile
 COPY Gemfile.lock ${DEPS_HOME}/Gemfile.lock
 
 # We pin versions because Docker will cache this layer anyway, the only way to update
-# is to modify these versions
-RUN gem update --system 3.3.26
+# is to modify these versions
+RUN gem update --system 3.3.3
 RUN gem install bundler --version 2.3.23
 RUN bundle config set frozen "true"
 RUN bundle config set no-cache "true"
