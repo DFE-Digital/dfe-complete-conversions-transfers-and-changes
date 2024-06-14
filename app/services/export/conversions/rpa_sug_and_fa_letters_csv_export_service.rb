@@ -30,6 +30,7 @@ class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExpor
     seven_to_eleven_years
     twelve_or_above_years
     incoming_trust_identifier
+    incoming_trust_ukprn
     incoming_trust_name
     incoming_trust_companies_house_number
     incoming_trust_address_1
