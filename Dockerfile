@@ -100,12 +100,16 @@ COPY Gemfile ${DEPS_HOME}/Gemfile
 COPY Gemfile.lock ${DEPS_HOME}/Gemfile.lock
 
 # We pin versions because Docker will cache this layer anyway, the only way to update
-# is to modify these versions
+# is to modify these versions
 RUN gem update --system 3.3.26
 RUN gem install bundler --version 2.3.23
 RUN bundle config set frozen "true"
 RUN bundle config set no-cache "true"
 RUN bundle config set with "${BUNDLE_GEM_GROUPS}"
+RUN \
+    if [ "${RAILS_ENV}" = "production" ]; then \
+        bundle config set without "linting"; \
+    fi
 RUN bundle install --retry=10 --jobs=4
 # End
 
