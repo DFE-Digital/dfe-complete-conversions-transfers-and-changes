@@ -64,6 +64,7 @@ jobs:
         RAILS_ENV=development
         CURRENT_GIT_SHA="${{ needs.set-env.outputs.checked-out-sha }}"
         TIME_OF_BUILD="${{ needs.set-env.outputs.date }}"
+      annotate-release: ${{ needs.set-env.outputs.environment == 'development' && matrix.suffix == '' }}
     secrets:
       azure-acr-credentials: ${{ secrets.ACR_CREDENTIALS }}
       azure-acr-name: ${{ secrets.ACR_NAME }}
