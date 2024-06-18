@@ -37,6 +37,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to belong_to(:establishment_main_contact).optional(true) }
     it { is_expected.to belong_to(:incoming_trust_main_contact).optional(true) }
     it { is_expected.to belong_to(:outgoing_trust_main_contact).optional(true) }
+    it { is_expected.to have_one(:dao_revocation).dependent(:destroy) }
 
     describe "delete related entities" do
       context "when the project is deleted" do
