@@ -355,4 +355,14 @@ RSpec.describe ProjectHelper, type: :helper do
       end
     end
   end
+
+  describe "#project_type_as_string" do
+    it "returns conversion or transfer" do
+      conversion = build(:conversion_project)
+      transfer = build(:transfer_project)
+
+      expect(helper.project_type_as_string(conversion)).to eql "conversion"
+      expect(helper.project_type_as_string(transfer)).to eql "transfer"
+    end
+  end
 end

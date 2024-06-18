@@ -13,6 +13,8 @@
 
         <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.internal_contacts"), path: project_internal_contacts_path(@project)} %>
 
+        <%= render partial: "shared/sub_navigation_item", locals: {name: t("subnavigation.date_history.#{project_type_as_string(@project)}"), path: project_date_history_path(@project)} %>
+
       </ul>
     </nav>
   </div>

@@ -73,6 +73,20 @@ RSpec.feature "Users can change the conversion date" do
     end
   end
 
+  scenario "the proposed or confirmed conversion date is clearly shown" do
+    proposed_project = create(:conversion_project, conversion_date_provisional: true, conversion_date: Date.new(2026, 6, 1))
+
+    visit project_date_history_path(proposed_project)
+
+    expect(page).to have_content "The current proposed conversion date is 1 June 2026"
+
+    confirmed_project = create(:conversion_project, conversion_date_provisional: false, conversion_date: Date.new(2026, 6, 1))
+
+    visit project_date_history_path(confirmed_project)
+
+    expect(page).to have_content "The current confirmed conversion date is 1 June 2026"
+  end
+
   scenario "they can view all of the changes to the conversion date" do
     provisional_date = Date.today.at_beginning_of_month
     confirmed_date = provisional_date
@@ -84,41 +98,44 @@ RSpec.feature "Users can change the conversion date" do
 
     project = create(:conversion_project, conversion_date: provisional_date, conversion_date_provisional: true, assigned_to: user)
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
     expect(page).to have_content "Conversion date history"
     expect(page).to have_content "No date history"
 
     SignificantDateCreatorService.new(project: project, revised_date: confirmed_date, reasons: first_reason, user: user).update!
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
-    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+    within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
       expect(page).to have_content provisional_date.to_fs(:govuk_month)
       expect(page).to have_content confirmed_date.to_fs(:govuk_month)
+      expect(page).to have_content "Legacy reason, see note"
       expect(page).to have_content "This is the first test reason note."
     end
 
     SignificantDateCreatorService.new(project: project, revised_date: first_revised_date, reasons: second_reason, user: user).update!
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
-    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+    within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
       expect(page).to have_content confirmed_date.to_fs(:govuk_month)
       expect(page).to have_content first_revised_date.to_fs(:govuk_month)
+      expect(page).to have_content "Legacy reason, see note"
       expect(page).to have_content "This is the second test reason note."
     end
 
     SignificantDateCreatorService.new(project: project, revised_date: second_revised_date, reasons: third_reason, user: user).update!
 
-    visit project_dates_path(project)
+    visit project_date_history_path(project)
 
-    within(".govuk-table__body .govuk-table__row:nth-of-type(1)") do
+    within(".govuk-summary-card:nth-of-type(1)") do
       expect(page).to have_content user.email
       expect(page).to have_content first_revised_date.to_fs(:govuk_month)
       expect(page).to have_content second_revised_date.to_fs(:govuk_month)
+      expect(page).to have_content "Legacy reason, see note"
       expect(page).to have_content "This is the third test reason note."
     end
   end

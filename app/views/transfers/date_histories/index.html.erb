@@ -4,9 +4,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+    <%= render partial: "shared/projects/significant_date_header_section" %>
+
     <h2 class="govuk-heading-l">Transfer date history</h2>
 
-    <%= render partial: "shared/projects/significant_dates_table", locals: {dates: @dates} %>
+    <%= render partial: "shared/projects/significant_dates_cards", locals: {dates: @dates} %>
 
   </div>
 </div>
