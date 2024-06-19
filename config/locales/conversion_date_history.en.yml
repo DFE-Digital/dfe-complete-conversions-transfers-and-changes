@@ -2,6 +2,7 @@ en:
   conversion_new_date_history_form:
     title: Conversion Date
     current_date_html: <p>The current conversion date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
+    revised_date_html: <p>The new proposed conversion date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
     form:
       legend: Enter new conversion date
       hint_html: <p>You may need to change the conversion date if there are delays or complications with the project.</p>

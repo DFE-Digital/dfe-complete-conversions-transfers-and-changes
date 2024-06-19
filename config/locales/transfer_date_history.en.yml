@@ -2,6 +2,7 @@ en:
   transfer_new_date_history_form:
     title: Transfer Date
     current_date_html: <p>The current transfer date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
+    revised_date_html: <p>The new proposed transfer date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
     form:
       legend: Enter new transfer  date
       hint_html: <p>You may need to change the transfer date if there are delays or complications with the project.</p>

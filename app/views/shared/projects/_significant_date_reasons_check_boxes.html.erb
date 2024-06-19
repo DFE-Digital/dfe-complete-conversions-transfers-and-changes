@@ -1,0 +1,49 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="reasons-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h2 class="govuk-fieldset__heading">
+        Reasons for date change
+      </h2>
+    </legend>
+    <div id="reasons-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+      <% reasons.each do |reason| %>
+
+        <div class="govuk-checkboxes__item">
+          <%= form.check_box reason, class: "govuk-checkboxes__input", data: {aria_controls: "#{reason}_note"} %>
+          <%= form.label reason, t("helpers.label.#{form.id}.#{reason}"), class: "govuk-label govuk-checkboxes__label" %>
+        </div>
+
+        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="<%= "#{reason}_note" %>">
+          <% if form.object.errors.messages_for("#{reason}_note").any? %>
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <%= form.label "#{reason}_note", t("helpers.label.enter_details"), class: "govuk-label" %>
+
+            <p id="<%= ActiveSupport::Inflector.dasherize("#{form.id.delete_prefix("new_")}_#{reason}_note_field_error") %>" class="govuk-error-message">
+              <% form.object.errors.messages_for("#{reason}_note").each do |error| %>
+                <span class="govuk-visually-hidden">Error:</span> <%= error %>
+              <% end %>
+            </p>
+
+            <%= form.text_area "#{reason}_note", class: "govuk-textarea govuk-textarea--error" %>
+          </div>
+
+        <% else %>
+
+          <div class="govuk-form-group">
+            <%= form.label "#{reason}_note", t("helpers.label.enter_details"), class: "govuk-label" %>
+            <%= form.text_area "#{reason}_note", class: "govuk-textarea" %>
+          </div>
+
+        <% end %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </fieldset>
+</div>

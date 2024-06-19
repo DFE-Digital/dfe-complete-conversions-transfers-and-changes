@@ -16,8 +16,13 @@ class DateHistoryController < ApplicationController
     @form = NewDateHistoryForm.new(**date_history_params, project: @project, user: current_user)
 
     if @form.valid?
-      @project.reload
-      render "confirm_new"
+      if revised_date_earlier?
+        @reasons_form = DateHistory::Reasons::NewEarlierForm.new(@form.attributes)
+        render "date_history/reasons/earlier/new"
+      else
+        @reasons_form = DateHistory::Reasons::NewLaterForm.new(@form.attributes)
+        render "date_history/reasons/later/new"
+      end
     else
       render :new
     end
@@ -25,5 +30,9 @@ class DateHistoryController < ApplicationController
 
   private def date_history_params
     params.require(:new_date_history_form).permit(:revised_date, :note_body)
+  end
+
+  private def revised_date_earlier?
+    @form.revised_date < @project.significant_date
   end
 end
