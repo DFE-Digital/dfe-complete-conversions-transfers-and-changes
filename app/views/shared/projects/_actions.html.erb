@@ -1,3 +1,4 @@
+<div class="govuk-button-group">
 <%= if policy(@project).change_conversion_date?
       govuk_button_link_to t("conversion_new_date_history_form.new"),
         project_change_date_path(@project),
@@ -13,3 +14,4 @@
 <%= if policy(@project).delete?
       govuk_button_link_to t("project.delete.button"), confirm_delete_project_path(@project), warning: true
     end %>
+</div>
