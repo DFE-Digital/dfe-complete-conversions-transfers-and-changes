@@ -1,0 +1,22 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl"><%= @project.establishment.name %></span>
+    <h1 class="govuk-heading-xl">Reasons for conversion date change</h1>
+
+    <%= t("conversion_new_date_history_form.revised_date_html", date: @reasons_form.revised_date.to_fs(:govuk)) %>
+
+    <%= form_for @reasons_form, url: project_date_history_reasons_earlier_path(@project) do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= render partial: "shared/projects/significant_date_reasons_check_boxes", locals: {form: form, reasons: @reasons_form.reasons_list} %>
+
+      <%= form.hidden_field :revised_date %>
+
+      <div class="govuk-button-group">
+        <%= form.govuk_submit(t("transfer_new_date_history_form.form.submit")) %>
+        <%= govuk_link_to(t("transfer_new_date_history_form.form.cancel"), project_path(@project)) %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

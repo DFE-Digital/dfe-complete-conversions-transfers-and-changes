@@ -1,0 +1,28 @@
+<% content_for :page_title do %>
+  <%= page_title(t("conversion_new_date_history_form.form.legend")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl"><%= @project.establishment.name %></span>
+    <h1 class="govuk-heading-xl"><%= t("conversion_new_date_history_form.title") %></h1>
+
+    <%= t("conversion_new_date_history_form.current_date_html", date: @project.conversion_date.to_fs(:govuk)) %>
+
+    <%= form_with model: @form, url: project_date_history_path(@project) do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_fieldset legend: {text: t("conversion_new_date_history_form.form.legend"), size: "l"} do %>
+        <%= t("conversion_new_date_history_form.form.hint_html") %>
+        <%= govuk_details(summary_text: t("conversion_new_date_history_form.form.summary_text"), text: t("conversion_new_date_history_form.form.text_html")) %>
+        <%= form.govuk_date_field :revised_date, omit_day: true, legend: nil, hint: {text: t("conversion_new_date_history_form.form.date_hint")} %>
+      <% end %>
+
+      <div class="govuk-button-group">
+        <%= form.govuk_submit(t("conversion_new_date_history_form.form.submit")) %>
+        <%= govuk_link_to(t("conversion_new_date_history_form.form.cancel"), project_path(@project)) %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

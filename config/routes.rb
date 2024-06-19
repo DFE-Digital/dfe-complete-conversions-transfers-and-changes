@@ -55,9 +55,15 @@ Rails.application.routes.draw do
   end
 
   concern :significant_date_historyable do
-    get "change-date", to: "date_histories#new"
-    post "change-date", to: "date_histories#create"
-    get "date-history", to: "date_histories#index"
+    resource :date_history, path: "date-history", only: %i[new create], controller: :date_history
+    get "date-history", to: "date_history#index"
+
+    namespace :date_history, path: "date-history" do
+      namespace :reasons do
+        resource :earlier, only: %i[create], controller: :earlier
+        resource :later, only: %i[create], controller: :later
+      end
+    end
   end
 
   concern :academy_urn_updateable do

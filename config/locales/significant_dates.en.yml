@@ -1,8 +1,5 @@
 en:
   significant_dates:
-    type:
-      legacy_reason: Legacy reason, see note
-      stakeholder_kick_off: Confirmed as part of the stakeholder kick off task
     index:
       header:
         proposed:
@@ -19,3 +16,62 @@ en:
           transfer:
             heading: Current confirmed transfer date
             body_html: <p class="govuk-!-margin-bottom-8">The current confirmed transfer date is <strong>%{date}</strong></p>
+    type:
+      legacy_reason: Legacy reason, see note
+      stakeholder_kick_off: Confirmed as part of the stakeholder kick off task
+      progressing_faster_than_expected: Project is progressing faster than expected
+      correcting_an_error: Correcting an error
+      incoming_trust: Incoming trust
+      outgoing_trust: Outgoing trust
+      academy: Academy
+      school: School
+      local_authority: LA(local authority)
+      diocese: Diocese
+      tupe: TuPE (Transfer of Undertakings Protection Employment rights)
+      pensions: Pensions
+      union: Union
+      negative_press: Negative press coverage
+      governance: Governance
+      finance: Finance
+      viability: Viability
+      land: Land
+      buildings: Buildings
+      legal_documents: Legal Documents
+      commercial_transfer_agreement: Commercial transfer agreement
+      advisory_board_conditions: Advisory board conditions not met
+  helpers:
+    label:
+      enter_details: Enter details about the reason for the change.
+      new_date_history_reasons_new_later_form:
+        correcting_an_error: Correcting an error
+        incoming_trust: Incoming trust
+        outgoing_trust: Outgoing trust
+        academy: Academy
+        school: School
+        local_authority: LA(local authority)
+        diocese: Diocese
+        tupe: TuPE (Transfer of Undertakings Protection Employment rights)
+        pensions: Pensions
+        union: Union
+        negative_press: Negative press coverage
+        governance: Governance
+        finance: Finance
+        viability: Viability
+        land: Land
+        buildings: Buildings
+        legal_documents: Legal documents
+        commercial_transfer_agreement: Commercial transfer agreement
+        advisory_board_conditions: Advisory board conditions not met
+        voluntary_deferral: Voluntary deferral
+      new_date_history_reasons_new_earlier_form:
+        progressing_faster_than_expected: Project is progressing faster than expected
+        correcting_an_error: Correcting an error
+  errors:
+    attributes:
+      base:
+        at_least_one_reason: You must choose at least one reason
+        blank: You must provide details
+      revised_date:
+        format: Enter a valid month and year
+        transaction: Revised date could not be saved
+        blank: Enter a valid month and year for the revised date, like 9 2024

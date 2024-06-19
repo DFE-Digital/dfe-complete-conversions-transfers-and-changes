@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The project date history view (hidden) now uses a 'card' view.
 - Extra spacing has been added to the actions buttons for a project
+- Any change to the conversion or transfer date now requires a reason and
+  details to be provided.
 
 ### Fixed
 
