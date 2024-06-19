@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The project date history view (hidden) now uses a 'card' view.
 
+### Fixed
+
+- Service support users can edit completed projects
+
 ## [Release-74][release-74]
 
 ### Added
