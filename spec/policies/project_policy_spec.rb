@@ -68,6 +68,18 @@ RSpec.describe ProjectPolicy do
       project = build(:conversion_project, :deleted, assigned_to: application_user)
       expect(subject).not_to permit(application_user, project)
     end
+
+    context "when the user is service support" do
+      it "grants access if the project is completed" do
+        project = build(:conversion_project, :completed, assigned_to: application_user, conversion_date_provisional: false)
+        expect(subject).to permit(service_support_user, project)
+      end
+
+      it "denies access if the project is deleted" do
+        project = build(:conversion_project, :deleted, assigned_to: application_user)
+        expect(subject).not_to permit(service_support_user, project)
+      end
+    end
   end
 
   permissions :change_conversion_date? do

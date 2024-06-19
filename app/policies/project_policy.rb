@@ -21,8 +21,9 @@ class ProjectPolicy
   end
 
   def edit?
-    return false if @record.completed?
     return false if @record.deleted?
+    return true if @user.is_service_support?
+    return false if @record.completed?
 
     true
   end
