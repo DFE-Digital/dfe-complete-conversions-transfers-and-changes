@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Include incoming trust UKPRN in RPA/SUG report
+- The project date history view is now available from the project
+  sub-navigation.
+- The project date history view now includes a section with the current proposed
+  or confirmed date called out.
+
+### Changed
+
+- The project date history view (hidden) now uses a 'card' view.
 
 ## [Release-74][release-74]
 
@@ -19,10 +27,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   cookies.
 - The by month conversions export now includes the Academy URN and DfE/LAEST
   number.
-- The project date history view is now available from the project
-  sub-navigation.
-- The project date history view now includes a section with the current proposed
-  or confirmed date called out.
 
 ### Changed
 
@@ -34,7 +38,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   load all projects so is still a slow view.
 - Content updates to export pages following date picker additions
 - The application footer now uses the programme wide layout.
-- The project date history view (hidden) now uses a 'card' view.
 
 ## [Release-73][release-73]
 
