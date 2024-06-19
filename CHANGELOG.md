@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - The project date history view (hidden) now uses a 'card' view.
+- Extra spacing has been added to the actions buttons for a project
 
 ### Fixed
 
