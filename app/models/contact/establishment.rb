@@ -5,6 +5,8 @@ class Contact::Establishment < Contact
 
   validates :establishment_urn, presence: true
 
+  attribute :category, default: 1
+
   def establishment
     Gias::Establishment.find_by(urn: establishment_urn)
   end
