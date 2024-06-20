@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - Service support users can edit completed projects
+- The school or academy main contact should now attempt to fetch any
+  establishment contacts if the main school contact is not set
 
 ## [Release-74][release-74]
 

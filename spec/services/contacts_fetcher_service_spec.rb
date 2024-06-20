@@ -94,6 +94,14 @@ RSpec.describe ContactsFetcherService do
     context "when there is NOT an establishment_main_contact_id" do
       before { allow(project).to receive(:establishment_main_contact_id).and_return(nil) }
 
+      context "and there is an establishment contact (type = Contact::Establishment)" do
+        let!(:establishment_contact) { create(:establishment_contact, establishment_urn: project.urn) }
+
+        it "returns the establishment contact" do
+          expect(described_class.new(project).school_or_academy_contact).to eq(establishment_contact)
+        end
+      end
+
       it "returns the next matching contact" do
         expect(described_class.new(project).school_or_academy_contact).to eq(contact)
       end
