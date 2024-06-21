@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_12_105707) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_18_140233) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -157,6 +157,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_105707) do
     t.boolean "receive_grant_payment_certificate_check_certificate"
     t.date "confirm_date_academy_opened_date_opened"
     t.string "risk_protection_arrangement_reason"
+  end
+
+  create_table "dao_revocations", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date_of_decision"
+    t.string "decision_makers_name"
+    t.boolean "reason_school_closed"
+    t.boolean "reason_school_rating_improved"
+    t.boolean "reason_safeguarding_addressed"
+    t.uuid "project_id"
   end
 
   create_table "events", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

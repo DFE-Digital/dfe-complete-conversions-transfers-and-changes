@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :contacts, class_name: "Contact::Project", inverse_of: :project, dependent: :destroy
   has_many :date_history, class_name: "SignificantDateHistory", inverse_of: :project, dependent: :destroy
+  has_one :dao_revocation, class_name: "DaoRevocation", inverse_of: :project, dependent: :destroy
 
   belongs_to :main_contact, inverse_of: :main_contact_for_project, dependent: :destroy, class_name: "Contact::Project", optional: true
   belongs_to :establishment_main_contact, inverse_of: :main_contact_for_establishment, dependent: :destroy, class_name: "Contact::Project", optional: true
