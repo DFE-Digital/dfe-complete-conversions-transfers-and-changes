@@ -1,0 +1,42 @@
+<% content_for :page_title do %>
+  <%= page_title(t("dao_revocations.confirm.title")) %>
+<% end %>
+
+<% if @step_form.errors.any? %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_notification_banner title_text: t("dao_revocations.confirm.unconfirmed.title"),
+          text: t("dao_revocations.confirm.unconfirmed.body_html",
+            project_path: project_path(@project),
+            your_projects_path: in_progress_your_projects_path) %>
+  </div>
+</div>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl"><%= t("dao_revocations.confirm.caption") %></span>
+    <h1 class="govuk-heading-xl"><%= t("dao_revocations.confirm.title") %></h1>
+
+    <%= t("dao_revocations.confirm.body_html") %>
+
+    <%= form_for @step_form, url: project_dao_revocation_update_step_path(@project, :confirm), method: :post do |form| %>
+
+      <%= form.govuk_check_boxes_fieldset :confirm_minister_approved, multiple: false, legend: {text: t("helpers.legend.dao_revocation_stepped_form.confirm_minister_approved"), size: "l"} do %>
+        <%= form.govuk_check_box :confirm_minister_approved, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.confirm_minister_approved")} %>
+      <% end %>
+
+      <%= form.govuk_check_boxes_fieldset :confirm_letter_sent, multiple: false, legend: {text: t("helpers.legend.dao_revocation_stepped_form.confirm_letter_sent"), size: "l"} do %>
+        <%= form.govuk_check_box :confirm_letter_sent, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.confirm_letter_sent")} %>
+      <% end %>
+
+      <%= form.govuk_check_boxes_fieldset :confirm_letter_saved, multiple: false, legend: {text: t("helpers.legend.dao_revocation_stepped_form.confirm_letter_saved"), size: "l"} do %>
+        <%= form.govuk_check_box :confirm_letter_saved, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.confirm_letter_saved")} %>
+      <% end %>
+
+      <%= form.govuk_submit t("dao_revocations.confirm.button") %>
+
+    <% end %>
+
+  </div>
+</div>

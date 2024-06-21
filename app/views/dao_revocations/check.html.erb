@@ -1,0 +1,62 @@
+<% content_for :page_title do %>
+  <%= page_title(t("dao_revocations.check.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl"><%= t("dao_revocations.check.caption") %></span>
+    <h1 class="govuk-heading-xl"><%= t("dao_revocations.check.title") %></h1>
+
+    <%= form_for @step_form, url: project_dao_revocation_check_path(@project, :date), method: :post do |form| %>
+
+      <%= form.govuk_error_summary %>
+
+      <%= govuk_summary_list do |summary_list| %>
+
+        <%= summary_list.with_row do |row| %>
+          <%= row.with_key { t("dao_revocations.check.summary.title.decision") } %>
+          <%= row.with_value { tag.span t("dao_revocations.check.summary.value.decision"), class: ["govuk-tag", "govuk-tag--red"] } %>
+        <% end %>
+
+        <%= summary_list.with_row do |row| %>
+          <%= row.with_key { t("dao_revocations.check.summary.title.reasons") } %>
+          <% if @step_form.reasons_empty? %>
+            <%= row.with_value { govuk_link_to "Enter reasons", project_dao_revocation_change_step_path(@project, :reasons) } %>
+          <% else %>
+            <%= row.with_value { @step_form.reasons.map { |reason| t("dao_revocations.check.summary.value.reasons.#{reason}") }.join("; ") } %>
+            <%= row.with_action(text: t("dao_revocations.check.summary.change.reasons"), href: project_dao_revocation_change_step_path(@project, :reasons), visually_hidden_text: t("dao_revocations.check.summary.title.reasons")) %>
+          <% end %>
+        <% end %>
+
+        <%= summary_list.with_row do |row| %>
+          <%= row.with_key { t("dao_revocations.check.summary.title.role") } %>
+          <%= row.with_value { "Minister" } %>
+        <% end %>
+
+        <%= summary_list.with_row do |row| %>
+          <%= row.with_key { t("dao_revocations.check.summary.title.minister_name") } %>
+          <% if @step_form.minister_name.blank? %>
+            <%= row.with_value { govuk_link_to "Enter minister's name", project_dao_revocation_change_step_path(@project, :minister) } %>
+          <% else %>
+            <%= row.with_value { @step_form.minister_name } %>
+            <%= row.with_action(text: t("dao_revocations.check.summary.change.minister_name"), href: project_dao_revocation_change_step_path(@project, :minister), visually_hidden_text: t("dao_revocations.check.summary.title.minister_name")) %>
+          <% end %>
+        <% end %>
+
+        <%= summary_list.with_row do |row| %>
+          <%= row.with_key { t("dao_revocations.check.summary.title.date_of_decision") } %>
+          <% if @step_form.date_of_decision.blank? %>
+            <%= row.with_value { govuk_link_to "Enter date of decision", project_dao_revocation_change_step_path(@project, :date) } %>
+          <% else %>
+            <%= row.with_value { @step_form.date_of_decision.to_fs(:govuk) } %>
+            <%= row.with_action(text: t("dao_revocations.check.summary.change.date_of_decision"), href: project_dao_revocation_change_step_path(@project, :date), visually_hidden_text: t("dao_revocations.check.summary.title.date_of_decision")) %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    <%= form.govuk_submit t("dao_revocations.check.button") %>
+
+    <% end %>
+
+  </div>
+</div>

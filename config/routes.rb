@@ -72,6 +72,17 @@ Rails.application.routes.draw do
     patch "academy-urn", to: "conversions/academy_urn#update_academy_urn"
   end
 
+  concern :dao_revokable do
+    get "dao-revocation", to: "dao_revocations#start", as: :dao_revocation_start
+    get "dao-revocation/check", to: "dao_revocations#check", as: :dao_revocation_check
+    post "dao-revocation/check", to: "dao_revocations#save"
+
+    get "dao-revocation/:step", to: "dao_revocations#step", as: :dao_revocation_step
+    get "dao-revocation/:step/change", to: "dao_revocations#change_step", as: :dao_revocation_change_step
+    post "dao-revocation/:step", to: "dao_revocations#update_step", as: :dao_revocation_update_step
+    patch "dao-revocation/:step/change", to: "dao_revocations#update_change_step", as: :dao_revocation_update_change_step
+  end
+
   # A project
   constraints(id: VALID_UUID_REGEX) do
     resources :projects,
@@ -87,6 +98,7 @@ Rails.application.routes.draw do
         significant_date_historyable
         memberable
         academy_urn_updateable
+        dao_revokable
       ]
     resources :projects, except: :destroy do
       get "confirm_delete", on: :member, action: :confirm_delete, as: :confirm_delete
