@@ -27,4 +27,11 @@ RSpec.describe Contact::Establishment do
       expect(contact.editable?).to be false
     end
   end
+
+  describe "category" do
+    it "returns school_or_academy" do
+      contact = described_class.new
+      expect(contact.category).to eq("school_or_academy")
+    end
+  end
 end
