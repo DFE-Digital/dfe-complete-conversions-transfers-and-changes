@@ -390,6 +390,7 @@ en:
       rows:
         full_title: Full title
         email: Email address
+        parliamentary_office: Parliamentary office
   project_completed:
     title: Project completed
     subtitle: You have completed the project for %{school_name} %{urn}.

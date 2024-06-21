@@ -51,14 +51,14 @@ RSpec.describe Api::MembersApi::Client do
       allow(fake_client).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(4744, nil))
       fake_name = double(Api::MembersApi::MemberName, name_display_as: "Joe Bloggs")
       allow(fake_client).to receive(:member_name).and_return(Api::MembersApi::Client::Result.new(fake_name, nil))
-      fake_contact_details = double(find: Api::MembersApi::MemberContactDetails.new.from_hash({email: "joe.bloggs@email.com", line1: "Houses of Parliment", postcode: "SW1A 0AA"}))
+      fake_contact_details = double(find: Api::MembersApi::MemberContactDetails.new.from_hash({email: "joe.bloggs@email.com", line1: "House of Commons", postcode: "SW1A 0AA"}))
       allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(fake_contact_details, nil))
 
       response = fake_client.member_for_constituency("St Albans").object
 
       expect(response.name).to eq("Joe Bloggs")
       expect(response.email).to eq("joe.bloggs@email.com")
-      expect(response.address.line1).to eq("Houses of Parliment")
+      expect(response.address.line1).to eq("House of Commons")
       expect(response.address.postcode).to eq("SW1A 0AA")
     end
 
@@ -245,11 +245,11 @@ RSpec.describe Api::MembersApi::Client do
         }.to_json]
       end
 
-      it "returns a Result with the JSON response body and no error" do
-        expect(subject.object).to be_a(Array)
-        expect(subject.object[0]).to be_a(Api::MembersApi::MemberContactDetails)
-        expect(subject.object[0].line1).to eq("House of Commons")
-        expect(subject.object[0].postcode).to eq("SW1A 0AA")
+      it "returns a Result with the Parliamentary office details *only* and no error" do
+        expect(subject.object).to be_a(Api::MembersApi::MemberContactDetails)
+        expect(subject.object.line1).to eq("House of Commons")
+        expect(subject.object.postcode).to eq("SW1A 0AA")
+        expect(subject.object.email).to eq("daisy.cooper.mp@parliament.uk")
         expect(subject.error).to be_nil
       end
     end

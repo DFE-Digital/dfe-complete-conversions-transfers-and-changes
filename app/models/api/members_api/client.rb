@@ -71,10 +71,9 @@ class Api::MembersApi::Client
 
     case response.status
     when 200
-      contact_details = JSON.parse(response.body)["value"].map do |detail|
-        Api::MembersApi::MemberContactDetails.new.from_hash(detail)
-      end
-      Result.new(contact_details, nil)
+      contact_details = JSON.parse(response.body)["value"]
+      parliamentary_office = contact_details.find { |c| c["typeId"] == 1 }
+      Result.new(Api::MembersApi::MemberContactDetails.new.from_hash(parliamentary_office), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("members_api.errors.member_not_found", member_id: member_id)))
     else

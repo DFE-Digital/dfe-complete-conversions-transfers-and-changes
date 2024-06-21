@@ -19,7 +19,7 @@ RSpec.describe MemberOfParliamentController, type: :request do
 
     context "when the Member of Parliament is found" do
       before do
-        mock_successful_members_api_responses(member_name: member_name, member_contact_details: [member_parliamentary_office])
+        mock_successful_members_api_responses(member_name: member_name, member_contact_details: member_parliamentary_office)
         perform_request
       end
 
