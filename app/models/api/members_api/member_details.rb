@@ -16,7 +16,6 @@ class Api::MembersApi::MemberDetails
     OpenStruct.new(
       line1: address_lines[0],
       line2: address_lines[1],
-      line3: address_lines[2],
       postcode: address_postcode
     )
   end
@@ -24,10 +23,7 @@ class Api::MembersApi::MemberDetails
   private def address_lines
     all_address_lines = [
       @member_contact_details&.line1,
-      @member_contact_details&.line2,
-      @member_contact_details&.line3,
-      @member_contact_details&.line4,
-      @member_contact_details&.line5
+      @member_contact_details&.line2
     ]
 
     all_address_lines.compact_blank

@@ -51,14 +51,14 @@ RSpec.describe Api::MembersApi::Client do
       allow(fake_client).to receive(:member_id).and_return(Api::MembersApi::Client::Result.new(4744, nil))
       fake_name = double(Api::MembersApi::MemberName, name_display_as: "Joe Bloggs")
       allow(fake_client).to receive(:member_name).and_return(Api::MembersApi::Client::Result.new(fake_name, nil))
-      fake_contact_details = double(find: Api::MembersApi::MemberContactDetails.new.from_hash({email: "joe.bloggs@email.com", line1: "Houses of Parliment", postcode: "SW1A 0AA"}))
+      fake_contact_details = double(find: Api::MembersApi::MemberContactDetails.new.from_hash({email: "joe.bloggs@email.com", line1: "House of Commons", postcode: "SW1A 0AA"}))
       allow(fake_client).to receive(:member_contact_details).and_return(Api::MembersApi::Client::Result.new(fake_contact_details, nil))
 
       response = fake_client.member_for_constituency("St Albans").object
 
       expect(response.name).to eq("Joe Bloggs")
       expect(response.email).to eq("joe.bloggs@email.com")
-      expect(response.address.line1).to eq("Houses of Parliment")
+      expect(response.address.line1).to eq("House of Commons")
       expect(response.address.postcode).to eq("SW1A 0AA")
     end
 

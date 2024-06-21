@@ -6,8 +6,8 @@ class MemberOfParliamentController < ApplicationController
 
   def show
     @member_name = fetch_member_name
-    @parliamentary_office = find_contact_detail(type_id: 1)
-    @member_email = find_contact_detail(type_id: 1).email
+    @member_email = contact_details.email
+    @parliamentary_office = contact_details
   end
 
   private def client
@@ -44,8 +44,8 @@ class MemberOfParliamentController < ApplicationController
     result
   end
 
-  private def find_contact_detail(type_id:)
-    member_contact_details.object.find { |details| details.type_id == type_id }
+  private def contact_details
+    member_contact_details.object.first
   end
 
   private def find_project

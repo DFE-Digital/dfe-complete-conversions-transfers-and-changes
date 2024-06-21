@@ -52,30 +52,6 @@ RSpec.describe Api::MembersApi::MemberDetails do
         mp_contact_details = double(
           line1: "Houses of Parliment",
           line2: "London",
-          line3: "",
-          line4: "",
-          line5: "",
-          postcode: "SW1A 0AA"
-        )
-
-        member_details = described_class.new(mp_name, mp_contact_details)
-
-        expect(member_details.address.line1).to eql "Houses of Parliment"
-        expect(member_details.address.line2).to eql "London"
-        expect(member_details.address.line3).to be_nil
-        expect(member_details.address.postcode).to eql "SW1A 0AA"
-      end
-    end
-
-    context "when the address is across five lines" do
-      it "returns the MP address which is always the Houses of Parliment" do
-        mp_name = double
-        mp_contact_details = double(
-          line1: "Houses of Parliment",
-          line2: "",
-          line3: "",
-          line4: "",
-          line5: "London",
           postcode: "SW1A 0AA"
         )
 
@@ -97,7 +73,6 @@ RSpec.describe Api::MembersApi::MemberDetails do
 
         expect(member_details.address.line1).to be_nil
         expect(member_details.address.line2).to be_nil
-        expect(member_details.address.line3).to be_nil
         expect(member_details.address.postcode).to be_nil
       end
     end

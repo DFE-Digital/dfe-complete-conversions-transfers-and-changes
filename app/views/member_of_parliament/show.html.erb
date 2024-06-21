@@ -17,11 +17,9 @@
           row.with_key { t("member_of_parliament.show.rows.email") }
           row.with_value { mail_to(@member_email, @member_email) }
         end
-        if @parliamentary_office
-          summary_list.with_row do |row|
-            row.with_key { @parliamentary_office.type }
-            row.with_value { address_markup(@parliamentary_office.address) }
-          end
+        summary_list.with_row do |row|
+          row.with_key { t("member_of_parliament.show.rows.parliamentary_office") }
+          row.with_value { address_markup(@parliamentary_office.address) }
         end
       end %>
 </div>
