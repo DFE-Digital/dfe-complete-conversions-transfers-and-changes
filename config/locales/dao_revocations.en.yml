@@ -1,0 +1,14 @@
+en:
+  errors:
+    attributes:
+      base:
+        all_confirmed: You must complete all of the tasks
+        reason_required: You must select at least one reason
+        incorrect_project_type: A DAO revoked decision can only be recorded against a Conversion project with a Directive academy order
+        check_answers: Cannot record DAO revocation, check your answers
+      reasons:
+        at_least_one_reason: Select at least one reason
+      minister_name:
+        blank: Enter the name of the minister that approved the decision
+      date_of_decision:
+        blank: Enter a valid date the decision was made, like 27 3 2021

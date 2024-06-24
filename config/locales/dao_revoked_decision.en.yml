@@ -1,6 +1,0 @@
-en:
-  errors:
-    attributes:
-      base:
-        reason_required: You must select at least one reason
-        incorrect_project_type: A DAO revoked decision can only be recorded against a Conversion project with a Directive academy order
