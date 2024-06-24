@@ -9,7 +9,7 @@ class ContactsFetcherService
     @director_of_child_services = @project.director_of_child_services
   end
 
-  def all_project_contacts_grouped
+  def all_project_contacts
     all_contacts = @project_contacts.to_a
 
     all_contacts << @director_of_child_services unless @director_of_child_services.nil?
@@ -17,9 +17,13 @@ class ContactsFetcherService
     establishment_contacts = @establishment_contacts
     all_contacts << establishment_contacts unless establishment_contacts.nil?
 
-    return {} unless all_contacts.any?
+    all_contacts.sort_by(&:name)
+  end
 
-    all_contacts.sort_by(&:name).group_by(&:category)
+  def all_project_contacts_grouped
+    return {} unless all_project_contacts.any?
+
+    all_project_contacts.sort_by(&:name).group_by(&:category)
   end
 
   def school_or_academy_contact

@@ -23,6 +23,29 @@ RSpec.describe ContactsFetcherService do
     end
   end
 
+  describe "#all_project_contacts" do
+    it "returns the contacts for a given project in name order" do
+      project_contact = create(:project_contact, project: project, name: "Ann Altman")
+
+      director_of_child_services_contact = create(:director_of_child_services, name: "Bob Brown")
+      allow(project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
+
+      establishment_contact = create(:establishment_contact, establishment_urn: project.urn, name: "Chloe Christian")
+
+      result = described_class.new(project).all_project_contacts
+
+      expect(result.count).to eql(3)
+      expect(result.first).to eq(project_contact)
+      expect(result[1]).to eq(director_of_child_services_contact)
+      expect(result.last).to eq(establishment_contact)
+    end
+
+    it "returns an empty array when there are no contacts" do
+      result = described_class.new(project).all_project_contacts
+      expect(result).to eq([])
+    end
+  end
+
   describe "#all_project_contacts_grouped" do
     it "returns the contacts for a given project in groups" do
       project_contact = create(:project_contact, project: project, category: "school_or_academy")
