@@ -5,11 +5,11 @@ class ContactsFetcherService
     @project = project
     @project_contacts = @project.contacts
     @establishment_contacts = Contact::Establishment.find_by(establishment_urn: @project.urn)
-    @all_contacts = all_project_contacts
+    @all_contacts = all_project_contacts_grouped
     @director_of_child_services = @project.director_of_child_services
   end
 
-  def all_project_contacts
+  def all_project_contacts_grouped
     all_contacts = @project_contacts.to_a
 
     all_contacts << @director_of_child_services unless @director_of_child_services.nil?

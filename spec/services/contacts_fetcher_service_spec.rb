@@ -23,8 +23,8 @@ RSpec.describe ContactsFetcherService do
     end
   end
 
-  describe "#all_project_contacts" do
-    it "returns the contacts for a given project" do
+  describe "#all_project_contacts_grouped" do
+    it "returns the contacts for a given project in groups" do
       project_contact = create(:project_contact, project: project, category: "school_or_academy")
 
       director_of_child_services_contact = create(:director_of_child_services)
@@ -32,7 +32,7 @@ RSpec.describe ContactsFetcherService do
 
       establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
 
-      result = described_class.new(project).all_project_contacts
+      result = described_class.new(project).all_project_contacts_grouped
 
       expect(result.count).to eql(2)
       expect(result["school_or_academy"].count).to eql(2)
@@ -48,7 +48,7 @@ RSpec.describe ContactsFetcherService do
           director_of_child_services = create(:director_of_child_services)
           allow(project).to receive(:director_of_child_services).and_return(director_of_child_services)
 
-          result = described_class.new(project).all_project_contacts
+          result = described_class.new(project).all_project_contacts_grouped
 
           expect(result.values.flatten.count).to eql(1)
           expect(result.values.flatten.first).to be(director_of_child_services)
@@ -60,7 +60,7 @@ RSpec.describe ContactsFetcherService do
           project = create(:transfer_project)
           establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
 
-          result = described_class.new(project).all_project_contacts
+          result = described_class.new(project).all_project_contacts_grouped
 
           expect(result.values.flatten.count).to eql(1)
           expect(result.values.flatten.first).to eq(establishment_contact)
@@ -72,7 +72,7 @@ RSpec.describe ContactsFetcherService do
           project = create(:transfer_project)
           allow(project).to receive(:director_of_child_services).and_return(nil)
 
-          result = described_class.new(project).all_project_contacts
+          result = described_class.new(project).all_project_contacts_grouped
 
           expect(result).to be_empty
         end
