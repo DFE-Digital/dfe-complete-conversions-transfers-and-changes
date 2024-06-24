@@ -26,12 +26,12 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <% if @project.contacts.count > 0 %>
+    <% if @project.all_contacts.count > 0 %>
       <%= form_for @task, url: project_edit_task_path(@project, @task.identifier), method: :put do |form| %>
         <%= form.govuk_error_summary %>
 
         <%= form.govuk_collection_radio_buttons :main_contact_id,
-              @project.contacts,
+              @project.all_contacts,
               :id,
               :name,
               :title,

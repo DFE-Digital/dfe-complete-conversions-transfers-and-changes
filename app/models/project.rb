@@ -133,6 +133,10 @@ class Project < ApplicationRecord
     false
   end
 
+  def all_contacts
+    ContactsFetcherService.new(self).all_project_contacts
+  end
+
   # :nocov:
   private def fetch_member_of_parliament
     result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)

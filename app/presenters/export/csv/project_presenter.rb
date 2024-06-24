@@ -238,14 +238,14 @@ class Export::Csv::ProjectPresenter
   end
 
   def diocese_contact_name
-    contacts = @contacts_fetcher.all_project_contacts
+    contacts = @contacts_fetcher.all_project_contacts_grouped
     return if contacts["diocese"].blank?
 
     contacts["diocese"].pluck(:name).join(",")
   end
 
   def diocese_contact_email
-    contacts = @contacts_fetcher.all_project_contacts
+    contacts = @contacts_fetcher.all_project_contacts_grouped
     return if contacts["diocese"].blank?
 
     contacts["diocese"].pluck(:email).join(",")
@@ -264,14 +264,14 @@ class Export::Csv::ProjectPresenter
   end
 
   def solicitor_contact_name
-    contacts = @contacts_fetcher.all_project_contacts
+    contacts = @contacts_fetcher.all_project_contacts_grouped
     return if contacts["solicitor"].blank?
 
     contacts["solicitor"].pluck(:name).join(",")
   end
 
   def solicitor_contact_email
-    contacts = @contacts_fetcher.all_project_contacts
+    contacts = @contacts_fetcher.all_project_contacts_grouped
     return if contacts["solicitor"].blank?
 
     contacts["solicitor"].pluck(:email).join(",")
