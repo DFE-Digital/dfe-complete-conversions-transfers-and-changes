@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-75][release-75]
+
 ### Added
 
 - Include incoming trust UKPRN in RPA/SUG report
@@ -1982,7 +1984,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-74...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-75...HEAD
+[release-75]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-74...release-75
 [release-74]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-73...release-74
 [release-73]:
