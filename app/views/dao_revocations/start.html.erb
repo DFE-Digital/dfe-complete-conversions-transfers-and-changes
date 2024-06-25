@@ -1,0 +1,14 @@
+<% content_for :page_title do %>
+  <%= page_title(t("dao_revocations.start.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-xl"><%= @project.establishment.name %></span>
+    <h1 class="govuk-heading-xl"><%= t("dao_revocations.start.title") %></h1>
+
+    <%= t("dao_revocations.start.body_html") %>
+
+    <%= govuk_link_to t("dao_revocations.start.button"), project_dao_revocation_step_path(@project, :confirm), class: "govuk-button" %>
+  </div>
+</div>

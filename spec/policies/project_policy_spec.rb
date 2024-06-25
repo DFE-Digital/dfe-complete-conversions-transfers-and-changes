@@ -182,4 +182,14 @@ RSpec.describe ProjectPolicy do
       expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user))
     end
   end
+
+  permissions :dao_revocation? do
+    it "grants access if the user is assigned to the project" do
+      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user))
+    end
+
+    it "denies access if the user is not assigned to the project" do
+      expect(subject).not_to permit(application_user, build(:conversion_project))
+    end
+  end
 end

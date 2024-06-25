@@ -1,0 +1,26 @@
+<% content_for :page_title do %>
+  <%= page_title(t("dao_revocations.reasons.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <%= form_for @step_form, url: project_dao_revocation_update_step_path(@project, :reasons), method: :post do |form| %>
+
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_check_boxes_fieldset :reasons, multiple: false, legend: {size: "xl"}, caption: {size: "xl"} do %>
+        <%= form.govuk_check_box :reason_school_rating_improved, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.reason_school_rating_improved")} %>
+
+        <%= form.govuk_check_box :reason_safeguarding_addressed, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.reason_safeguarding_addressed")} %>
+
+        <%= form.govuk_check_box :reason_school_closed, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.reason_school_closed")} %>
+
+      <% end %>
+
+      <%= form.govuk_submit t("dao_revocations.reasons.button") %>
+
+    <% end %>
+
+  </div>
+</div>

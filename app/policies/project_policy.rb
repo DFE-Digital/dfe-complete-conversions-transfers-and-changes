@@ -28,6 +28,10 @@ class ProjectPolicy
     true
   end
 
+  def dao_revocation?
+    update?
+  end
+
   def check?
     edit?
   end

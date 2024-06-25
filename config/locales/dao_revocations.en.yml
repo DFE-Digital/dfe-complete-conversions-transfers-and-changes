@@ -1,0 +1,126 @@
+en:
+  dao_revocations:
+    start:
+      title: Record Directive Academy Order revocation
+      body_html:
+        <p>Revoking a DAO (Directive Academy Order) will end this conversion project.</p>
+        <p>This decision must be approved by a minister.</p>
+        <p>You must also send a letter confirming the decision to the school’s governing body, and save this in the school’s SharePoint folder.</p>
+        <p>If you choose to record the revocation of this project's Academy Order, you will need to enter information about:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>who made the decision</li>
+          <li>why they made the decision</li>
+          <li>when the decision was made</li>
+        </ul>
+      button: Continue
+
+    confirm:
+      title: Before you start
+      caption: Revoke Directive Academy Order
+      body_html:
+        <p>You cannot record a decision to revoke a DAO until you confirm that the following things have happened.</p>
+      button: Continue
+      unconfirmed:
+        title: Important
+        body_html:
+          <h2>You cannot record this decision yet</h2>
+          <p>Before you can record the decision to revoke an Academy Order:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a minister must approve the decision</li>
+            <li>you must have sent the letter confirming the decision to the school</li>
+            <li>you must have saved a copy of the letter in SharePoint</li>
+          </ul>
+          <p>You can
+          <a class="govuk-notification-banner__link" href="%{project_path}">go back to the task list</a>
+          and continue working on this project, or
+          <a class="govuk-notification-banner__link" href="%{your_projects_path}">choose another project from your project list.</a></p>
+        button: Continue
+
+    reasons:
+      title: Why was the DAO revoked?
+      button: Continue
+
+    minister:
+      title: Minister’s name
+      button: Continue
+
+    date:
+      title: Date of decision
+      button: Continue
+
+    check:
+      title: Check your answers before recording this decision
+      caption: Revoke Directive Academy Order
+      button: Record DAO revocation
+      summary:
+        title:
+          decision: Decision
+          reasons: Reasons
+          role: Decision maker’s role
+          minister_name: Minister’s name
+          date_of_decision: Date of decision
+        value:
+          decision: DAO revoked
+          role: Minister
+          reasons:
+            reason_school_closed: School closed or closing
+            reason_school_rating_improved: School rated good or outstanding
+            reason_safeguarding_addressed: Safeguarding concerns addressed
+        change:
+          reasons: Change
+          minister_name: Change
+          date_of_decision: Change
+        empty:
+          reasons: Enter the reasons
+          minister_name: Enter the minister's name
+          date_of_decision: Enter the date of decision
+      successful: DAO revocation recorded successfully
+
+  helpers:
+    legend:
+      dao_revocation_stepped_form:
+        confirm_minister_approved: A minister has approved this decision
+        confirm_letter_sent: You have sent a letter confirming the revocation decision
+        confirm_letter_saved: You have saved a copy of the letter
+        reasons: Why was the DAO revoked?
+        date_of_decision: Date of decision
+    caption:
+      dao_revocation_stepped_form:
+        reasons: Revoke Directive Academy Order
+        minister_name: Revoke Directive Academy Order
+        date_of_decision: Revoke Directive Academy Order
+    label:
+      dao_revocation_stepped_form:
+        confirm_minister_approved: I confirm a minister has approved this decision
+        confirm_letter_sent: I confirm I have sent the letter confirming the revocation decision
+        confirm_letter_saved: I confirm I have saved a copy of the letter to the school’s SharePoint folder
+        reason_school_closed: School closed or closing
+        reason_school_rating_improved: School rated good or outstanding
+        reason_safeguarding_addressed: Safeguarding concerns addressed
+        minister_name: Minister’s name
+    hint:
+      dao_revocation_stepped_form:
+        confirm_minister_approved_html:
+          <p>The revocation of a DAO (Directive Academy Order) must be signed off by a minister. It cannot proceed without ministerial approval.</p>
+        confirm_letter_sent_html:
+          <p>You must write and send a letter to the school’s governing body to confirm the minister’s decision.</p>
+          <p>Use the letter templates in the revocation guidance (opens in a new tab) to help you.</p>
+        confirm_letter_saved_html:
+          <p>You must save a copy of the letter in the school’s SharePoint folder.</p>
+        reasons: Select all that apply.
+        minister_name: Enter the name of the minister who made the decision.
+        date_of_decision: For example, 27 3 2021
+
+  errors:
+    attributes:
+      base:
+        all_confirmed: You must complete all of the tasks
+        reason_required: You must select at least one reason
+        incorrect_project_type: A DAO revoked decision can only be recorded against a Conversion project with a Directive academy order
+        check_answers: Cannot record DAO revocation, check your answers
+      reasons:
+        at_least_one_reason: Select at least one reason
+      minister_name:
+        blank: Enter the name of the minister that approved the decision
+      date_of_decision:
+        blank: Enter a valid date the decision was made, like 27 3 2021

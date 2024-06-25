@@ -1,0 +1,19 @@
+<% content_for :page_title do %>
+  <%= page_title(t("dao_revocations.minister.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <%= form_for @step_form, url: project_dao_revocation_update_change_step_path(@project, :minister), method: :patch do |form| %>
+
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_text_field :minister_name, label: {size: "xl"}, caption: {size: "xl"} %>
+
+      <%= form.govuk_submit t("dao_revocations.minister.button") %>
+
+    <% end %>
+
+  </div>
+</div>
