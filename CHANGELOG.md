@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- The task list includes a link to the completing a project section.
+
 ## [Release-75][release-75]
 
 ### Added

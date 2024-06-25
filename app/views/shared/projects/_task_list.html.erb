@@ -7,6 +7,10 @@
           <% @task_list.sections.each do |section| %>
             <%= render partial: "shared/side_navigation_item", locals: {name: t("#{section.locales_path}.title"), path: "##{section.identifier}"} %>
           <% end %>
+
+          <% unless @project.completed? %>
+            <li><%= link_to t("project.show.completing_a_project_link"), "#completing-a-project", class: "govuk-link govuk-link--no-visited-state" %></li>
+          <% end %>
         </ul>
       </nav>
     </div>
