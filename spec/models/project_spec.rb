@@ -895,6 +895,22 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#dao_revokable?" do
+    it "returns true when the project is a conversion with a DAO applied" do
+      project = build(:conversion_project, directive_academy_order: true)
+
+      expect(project.dao_revokable?).to be true
+    end
+
+    it "returns false when the project is not appropriate" do
+      conversion_project = build(:conversion_project, directive_academy_order: false)
+      transfer_project = build(:transfer_project)
+
+      expect(conversion_project.dao_revokable?).to be false
+      expect(transfer_project.dao_revokable?).to be false
+    end
+  end
+
   describe "delegation" do
     it "delegates local_authority to establishment" do
       local_authotity = double(code: 100)

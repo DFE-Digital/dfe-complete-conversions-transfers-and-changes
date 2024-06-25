@@ -138,6 +138,10 @@ class Project < ApplicationRecord
     ContactsFetcherService.new(self).all_project_contacts
   end
 
+  def dao_revokable?
+    is_a?(Conversion::Project) && directive_academy_order?
+  end
+
   # :nocov:
   private def fetch_member_of_parliament
     result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
