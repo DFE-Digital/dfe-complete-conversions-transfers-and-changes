@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The task list includes a link to the completing a project section.
 
+### Fixed
+
+- Corrected the note text created when a user confirms the Transfer date as part
+  of the stakeholder kick off task - it said "Conversion" when it should say
+  "Transfer"
+
 ## [Release-75][release-75]
 
 ### Added
