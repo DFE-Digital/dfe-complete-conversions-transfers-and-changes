@@ -14,6 +14,7 @@ en:
       title: Task list
       edit_button:
         text: Edit
+      completing_a_project_link: Completing a project
     all:
       in_progress:
         title: All projects in progress

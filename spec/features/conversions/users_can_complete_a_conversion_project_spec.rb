@@ -28,6 +28,8 @@ RSpec.feature "Users can complete a conversion project" do
     scenario "the project is completed successfully" do
       visit project_path(project)
 
+      click_on "Completing a project"
+
       click_on I18n.t("project.complete.submit_button")
 
       expect(page).to have_content("Project completed")

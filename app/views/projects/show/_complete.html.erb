@@ -1,7 +1,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <%= form_with url: project_complete_path(@project), method: :put do |form| %>
+    <%= form_with url: project_complete_path(@project), method: :put, id: "completing-a-project" do |form| %>
       <h3 class="govuk-heading-m"><%= t("project.complete.heading") %></h3>
       <p class="govuk-body"><%= t("project.complete.guidance.html") %></p>
 
