@@ -47,7 +47,7 @@ en:
           errors:
             format: Enter a valid confirmed conversion date
             in_the_future: Conversion date must be in the future
-          note: Conversion date confirmed as part of external stakeholder kick off task.
+          note: Conversion date confirmed as part of the external stakeholder kick off task.
         setup_meeting:
           title: Send invites to the kick-off meeting or call
           hint:

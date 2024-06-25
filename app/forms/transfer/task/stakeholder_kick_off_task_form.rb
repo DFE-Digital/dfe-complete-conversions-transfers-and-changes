@@ -60,6 +60,6 @@ class Transfer::Task::StakeholderKickOffTaskForm < BaseTaskForm
   end
 
   private def stakeholder_kick_off_reason
-    [{type: :stakeholder_kick_off, note_text: "Conversion date confirmed as part of the External stakeholder kick off task."}]
+    [{type: :stakeholder_kick_off, note_text: I18n.t("transfer.task.stakeholder_kick_off.confirmed_transfer_date.note")}]
   end
 end

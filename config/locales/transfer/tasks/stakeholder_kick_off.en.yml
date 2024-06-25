@@ -52,3 +52,4 @@ en:
           errors:
             format: Enter a valid confirmed transfer date
             in_the_future: Transfer date must be in the future
+          note: Transfer date confirmed as part of the external stakeholder kick off task.
