@@ -50,5 +50,14 @@ RSpec.feature "Users can view a project" do
         expect(page).to have_content("DAO revoked")
       end
     end
+
+    scenario "they can see the notification banner" do
+      visit project_path(project)
+
+      within("#notification-dao-revoked") do
+        expect(page).to have_content("This project’s Directive Academy Order was revoked on")
+        expect(page).to have_content(Date.today.to_fs(:govuk))
+      end
+    end
   end
 end

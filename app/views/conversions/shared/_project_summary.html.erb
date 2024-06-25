@@ -22,6 +22,18 @@
 
 <%= project_notification_banner(@project, current_user) %>
 
+<% if @project.dao_revoked? %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_notification_banner(
+          title_text: t("conversion_project.dao_revoked.notification.title"),
+          text: t("conversion_project.dao_revoked.notification.body_html", revocation_date: @project.dao_revocation.date_of_decision.to_fs(:govuk)),
+          html_attributes: {id: "notification-dao-revoked"}
+        ) %>
+  </div>
+</div>
+<% end %>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary", class: "dfe-summary-list--project-summary"}) do |summary_list|
