@@ -26,6 +26,13 @@ en:
           <p class="govuk-body">This will help the person continuing this project to organise the kick-off meeting.</p>
           <h2 class="govuk-heading-l">What happens next</h2>
           <p class="govuk-body">Another person will be assigned to this project.</p>
+    dao_revoked:
+      notification:
+        title: Important
+        body_html:
+          <p>This project’s Directive Academy Order was revoked on %{revocation_date}.</p>
+          <p>Only Service Support team members can make changes to this project.</p>
+
     summary_card:
       type: Type
       incoming_trust: Incoming trust

@@ -91,7 +91,8 @@ class Project < ApplicationRecord
   enum :state, {
     active: 0,
     completed: 1,
-    deleted: 2
+    deleted: 2,
+    dao_revoked: 3
   }
 
   def establishment
@@ -135,6 +136,10 @@ class Project < ApplicationRecord
 
   def all_contacts
     ContactsFetcherService.new(self).all_project_contacts
+  end
+
+  def dao_revokable?
+    is_a?(Conversion::Project) && directive_academy_order?
   end
 
   # :nocov:

@@ -7,8 +7,13 @@
     <span class="govuk-caption-l">
       <%= t("project.summary.heading.conversion", urn: @project.urn) %>
       <%= govuk_tag(text: t("project.summary.type.conversion"), colour: "purple") %>
+
       <% if @project.form_a_mat? %>
         <%= govuk_tag(text: t("project.summary.type.form_a_mat"), colour: "pink") %>
+      <% end %>
+
+      <% if @project.dao_revoked? %>
+        <%= govuk_tag(text: t("project.summary.type.dao_revoked"), colour: "red") %>
       <% end %>
     </span>
     <h1 class="govuk-heading-xl"><%= @project.establishment.name %></h1>
@@ -16,6 +21,18 @@
 </div>
 
 <%= project_notification_banner(@project, current_user) %>
+
+<% if @project.dao_revoked? %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_notification_banner(
+          title_text: t("conversion_project.dao_revoked.notification.title"),
+          text: t("conversion_project.dao_revoked.notification.body_html", revocation_date: @project.dao_revocation.date_of_decision.to_fs(:govuk)),
+          html_attributes: {id: "notification-dao-revoked"}
+        ) %>
+  </div>
+</div>
+<% end %>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">

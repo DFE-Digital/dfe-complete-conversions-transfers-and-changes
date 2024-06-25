@@ -38,4 +38,26 @@ RSpec.feature "Users can view a project" do
       end
     end
   end
+
+  context "when the project is a conversion with a DAO revocation" do
+    let(:project) { create(:conversion_project, state: :dao_revoked, directive_academy_order: true) }
+    let!(:dao_revocation) { DaoRevocation.create!(project_id: project.id, date_of_decision: Date.today, decision_makers_name: "Minister Name", reason_school_closed: true) }
+
+    scenario "they can see the tag in the summary" do
+      visit project_path(project)
+
+      within(".govuk-caption-l .govuk-tag--red") do
+        expect(page).to have_content("DAO revoked")
+      end
+    end
+
+    scenario "they can see the notification banner" do
+      visit project_path(project)
+
+      within("#notification-dao-revoked") do
+        expect(page).to have_content("This project’s Directive Academy Order was revoked on")
+        expect(page).to have_content(Date.today.to_fs(:govuk))
+      end
+    end
+  end
 end

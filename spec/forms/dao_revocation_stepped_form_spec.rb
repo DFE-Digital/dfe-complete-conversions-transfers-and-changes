@@ -301,6 +301,14 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
       expect(dao_revocation.date_of_decision).to eql Date.today
     end
 
+    it "updates the project state to dao_revoked" do
+      project = create(:conversion_project, directive_academy_order: true)
+
+      valid_form.save_to_project(project)
+
+      expect(project.reload.state).to eql "dao_revoked"
+    end
+
     it "returns false and adds an error when invalid" do
       project = create(:conversion_project, directive_academy_order: false)
 
