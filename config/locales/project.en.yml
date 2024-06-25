@@ -133,6 +133,7 @@ en:
         conversion: Conversion
         transfer: Transfer
         form_a_mat: Form a MAT
+        dao_revoked: DAO revoked
       incoming_trust:
         title: Incoming trust
       outgoing_trust:
