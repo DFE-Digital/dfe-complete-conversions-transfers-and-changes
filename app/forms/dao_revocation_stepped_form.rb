@@ -89,6 +89,7 @@ class DaoRevocationSteppedForm
 
     if revocation.valid?
       revocation.save!
+      project.update!(state: :dao_revoked)
       true
     else
       errors.add(:base, :check_answers)
