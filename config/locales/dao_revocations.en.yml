@@ -1,5 +1,6 @@
 en:
   dao_revocations:
+    project_not_revokable: Only conversion projects with a DAO (Directive Academy Order) can have the DAO revoked.
     start:
       title: Record Directive Academy Order revocation
       body_html:

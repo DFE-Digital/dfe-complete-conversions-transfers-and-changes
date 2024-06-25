@@ -1,6 +1,7 @@
 class DaoRevocationsController < ApplicationController
   include Projectable
 
+  before_action :redirect_if_not_revokable
   before_action :redirect_if_project_revoked
   before_action :redirect_if_invalid_step, only: %i[step update_step change_step update_change_step]
 
@@ -120,6 +121,10 @@ class DaoRevocationsController < ApplicationController
     next_index = steps.find_index(requested_step) + 1
 
     project_dao_revocation_step_path(@project, steps[next_index])
+  end
+
+  private def redirect_if_not_revokable
+    redirect_to project_path(@project), notice: I18n.t("dao_revocations.project_not_revokable") unless @project.dao_revokable?
   end
 
   private def redirect_if_project_revoked

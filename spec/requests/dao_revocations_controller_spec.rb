@@ -9,6 +9,36 @@ RSpec.describe DaoRevocationsController, type: :request do
     mock_all_academies_api_responses
   end
 
+  describe "only revokable projects" do
+    it "redirects to the project view unless the project is dao revokable" do
+      project = create(:conversion_project, directive_academy_order: false, assigned_to: user)
+
+      get project_dao_revocation_start_path(project)
+
+      expect(response).to redirect_to project_path(project)
+      follow_redirect!
+      follow_redirect!
+      expect(response.body).to include "Only conversion projects with a DAO"
+
+      project = create(:transfer_project, assigned_to: user)
+
+      get project_dao_revocation_start_path(project)
+
+      expect(response).to redirect_to project_path(project)
+      follow_redirect!
+      follow_redirect!
+      expect(response.body).to include "Only conversion projects with a DAO"
+    end
+
+    it "renders when the project is DAO revokable" do
+      project = create(:conversion_project, directive_academy_order: true, assigned_to: user)
+
+      get project_dao_revocation_start_path(project)
+
+      expect(response).to render_template "start"
+    end
+  end
+
   describe "#step" do
     it "renders the template for the step" do
       get project_dao_revocation_step_path(project, :reasons)
