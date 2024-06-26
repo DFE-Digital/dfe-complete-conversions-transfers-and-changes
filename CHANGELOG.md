@@ -15,6 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The RPA, SUG and FA letter export does not include conversion projects with a
   revoked DAO.
+- The by month exports do not include conversion projects with a revoked DAO.
+- The single by month view and export are now sorted by the conversion or
+  transfer date only.
 
 ## [Release-76][release-76]
 

@@ -7,6 +7,40 @@ RSpec.describe ByMonthProjectFetcherService do
         mock_all_academies_api_responses
       end
 
+      it "only includes active projects that are assigned to a user" do
+        significant_date = Date.parse("2023-1-1")
+        user = create(:user)
+        dao_project = create(
+          :conversion_project,
+          significant_date: significant_date,
+          significant_date_provisional: false,
+          directive_academy_order: true,
+          state: :dao_revoked,
+          assigned_to: user
+        )
+        create(:dao_revocation, project: dao_project)
+
+        _completed_project = create(
+          :conversion_project,
+          completed_at: Date.today,
+          state: :completed,
+          significant_date: significant_date,
+          significant_date_provisional: false,
+          assigned_to: user
+        )
+
+        _unassigned_project = create(
+          :conversion_project,
+          significant_date: significant_date,
+          significant_date_provisional: false,
+          assigned_to: nil
+        )
+
+        result = described_class.new.conversion_projects_by_date_range("2023-1-1", "2023-1-1")
+
+        expect(result).to be_empty
+      end
+
       it "returns all conversion projects with a confirmed date in the desired range, and orders by significant date" do
         january = Date.parse("2023-1-1")
         february = Date.parse("2023-2-1")
@@ -37,6 +71,31 @@ RSpec.describe ByMonthProjectFetcherService do
         mock_all_academies_api_responses
       end
 
+      it "only includes active projects that are assigned to a user" do
+        significant_date = Date.parse("2023-1-1")
+        user = create(:user)
+
+        _completed_project = create(
+          :transfer_project,
+          completed_at: Date.today,
+          state: :completed,
+          significant_date: significant_date,
+          significant_date_provisional: false,
+          assigned_to: user
+        )
+
+        _unassigned_project = create(
+          :transfer_project,
+          significant_date: significant_date,
+          significant_date_provisional: false,
+          assigned_to: nil
+        )
+
+        result = described_class.new.transfer_projects_by_date_range("2023-1-1", "2023-1-1")
+
+        expect(result).to be_empty
+      end
+
       it "returns all transfer projects with a confirmed date in the desired range, and orders by significant date" do
         january = Date.parse("2023-1-1")
         february = Date.parse("2023-2-1")
@@ -57,40 +116,6 @@ RSpec.describe ByMonthProjectFetcherService do
         expect(result).to eq([project_1, project_2, project_3])
         expect(result).not_to include(unconfirmed_project)
         expect(result).not_to include(completed_project)
-      end
-    end
-  end
-
-  describe "#conversion_projects_by_date" do
-    context "with prefetching disabled for this test" do
-      it "returns conversion projects and orders by all conditions met & establishment name" do
-        project_one = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "Y school"))
-        project_two = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "B school"))
-        project_three = double(Conversion::Project, all_conditions_met?: false, establishment: double("Establishment", name: "A school"))
-        project_four = double(Conversion::Project, all_conditions_met?: true, establishment: double("Establishment", name: "Z school"))
-
-        allow(Project).to receive(:filtered_by_significant_date).and_return([project_one, project_two, project_three, project_four])
-
-        projects = described_class.new(pre_fetch_academies_api: false).conversion_projects_by_date(1, 2025)
-
-        expect(projects).to eq [project_four, project_three, project_two, project_one]
-      end
-    end
-  end
-
-  describe "#transfer_projects_by_date" do
-    context "with prefetching disabled for this test" do
-      it "returns transfer projects and orders by all conditions met & establishment name" do
-        project_one = double(Transfer::Project, all_conditions_met?: false, establishment: double("Establishment", name: "Y school"))
-        project_two = double(Transfer::Project, all_conditions_met?: false, establishment: double("Establishment", name: "B school"))
-        project_three = double(Transfer::Project, all_conditions_met?: false, establishment: double("Establishment", name: "A school"))
-        project_four = double(Transfer::Project, all_conditions_met?: true, establishment: double("Establishment", name: "Z school"))
-
-        allow(Project).to receive(:filtered_by_significant_date).and_return([project_one, project_two, project_three, project_four])
-
-        projects = described_class.new(pre_fetch_academies_api: false).transfer_projects_by_date(1, 2025)
-
-        expect(projects).to eq [project_four, project_three, project_two, project_one]
       end
     end
   end
