@@ -22,6 +22,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   revocation state of a project as applicable.
 - Once a project has it's DAO revoked, it can no longer be edited, except by
   Service Support.
+- Conversion projects with a DAO (Directive Academy Order) can now be 'revoked'
+  from the task list.
+- DAO revocation is a stepped process which requires at least one reason,
+  minister name and date of decision.
+- Revoking DAO ends a project
 
 ## [Release-76][release-76]
 

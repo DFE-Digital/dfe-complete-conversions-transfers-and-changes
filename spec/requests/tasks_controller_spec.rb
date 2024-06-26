@@ -70,4 +70,136 @@ RSpec.describe TasksController do
       end
     end
   end
+
+  describe "side navigation" do
+    before do
+      mock_all_academies_api_responses
+    end
+
+    describe "link to completing the project" do
+      it "shows the link to complete a project" do
+        conversion_project = create(:conversion_project, assigned_to: user)
+        transfer_project = create(:transfer_project, assigned_to: user)
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).to include "#completing-a-project"
+
+        get project_tasks_path(transfer_project)
+
+        expect(response.body).to include "#completing-a-project"
+      end
+
+      it "does not show a link when the user is not authorised" do
+        conversion_project = create(:conversion_project, assigned_to: nil)
+        transfer_project = create(:transfer_project, assigned_to: nil)
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).not_to include "#completing-a-project"
+
+        get project_tasks_path(transfer_project)
+
+        expect(response.body).not_to include "#completing-a-project"
+      end
+
+      it "does not show a link when the project is complete" do
+        conversion_project = create(:conversion_project, assigned_to: user, state: :completed, completed_at: Date.today)
+        transfer_project = create(:transfer_project, assigned_to: user, state: :completed, completed_at: Date.today)
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).not_to include "#completing-a-project"
+
+        get project_tasks_path(transfer_project)
+
+        expect(response.body).not_to include "#completing-a-project"
+      end
+
+      it "does not show when the project is DAO revoked" do
+        conversion_project = create(:conversion_project, assigned_to: user, directive_academy_order: true, state: :dao_revoked)
+        create(:dao_revocation, project: conversion_project)
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).not_to include "#completing-a-project"
+      end
+    end
+
+    describe "link to DAO revocation" do
+      it "shows on conversions that have a DAO" do
+        conversion_project = create(
+          :conversion_project,
+          assigned_to: user,
+          directive_academy_order: true
+        )
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).to include "#dao-revocation"
+      end
+
+      it "does not show if the user is not authorised" do
+        conversion_project = create(
+          :conversion_project,
+          assigned_to: nil,
+          directive_academy_order: true
+        )
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).not_to include "#dao-revocation"
+      end
+
+      it "does not show on transfers" do
+        transfer_project = create(
+          :transfer_project,
+          assigned_to: user
+        )
+
+        get project_tasks_path(transfer_project)
+
+        expect(response.body).not_to include "#dao-revocation"
+      end
+
+      it "does not show on conversion without a DAO" do
+        conversion_project = create(
+          :conversion_project,
+          assigned_to: user,
+          directive_academy_order: false
+        )
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).not_to include "#dao-revocation"
+      end
+
+      it "does not show on projects that have already had the DAO revoked" do
+        conversion_project = create(
+          :conversion_project,
+          assigned_to: user,
+          directive_academy_order: true,
+          state: :dao_revoked
+        )
+        create(:dao_revocation, project: conversion_project)
+
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).not_to include "#dao-revocation"
+      end
+
+      it "does not show when the project is complete" do
+        conversion_project = create(
+          :conversion_project,
+          assigned_to: user,
+          state: :completed,
+          completed_at: Date.today,
+          directive_academy_order: true
+        )
+        get project_tasks_path(conversion_project)
+
+        expect(response.body).not_to include "#dao-revocation"
+      end
+    end
+  end
 end
