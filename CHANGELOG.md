@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Add the date an academy opened to the Grant management export for conversions
+
+## [Release-76][release-76]
+
+### Added
+
 - The task list includes a link to the completing a project section.
 
 ### Fixed

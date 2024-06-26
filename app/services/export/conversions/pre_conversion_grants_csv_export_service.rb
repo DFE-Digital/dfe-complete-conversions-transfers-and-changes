@@ -12,6 +12,7 @@ class Export::Conversions::PreConversionGrantsCsvExportService < Export::CsvExpo
     advisory_board_date
     provisional_conversion_date
     conversion_date
+    date_academy_opened
     academy_order_type
     completed_grant_payment_certificate_received
     two_requires_improvement
