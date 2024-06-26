@@ -74,6 +74,7 @@ class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExpor
     date_academy_opened
     assigned_to_name
     assigned_to_email
+    assigned_to_team
   ]
 
   def initialize(projects)
