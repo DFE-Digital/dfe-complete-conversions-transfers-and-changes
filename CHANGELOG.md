@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Add the date an academy opened to the Grant management export for conversions
+
 ## [Release-76][release-76]
 
 ### Added
