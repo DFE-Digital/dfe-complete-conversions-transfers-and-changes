@@ -955,4 +955,37 @@ RSpec.describe Export::Csv::ProjectPresenter do
       end
     end
   end
+
+  describe "#dao_revoked" do
+    it "presents not applicable when dao revocation does not apply" do
+      project = build(:transfer_project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.dao_revoked).to eql "not applicable"
+
+      project = build(:conversion_project, directive_academy_order: false)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.dao_revoked).to eql "not applicable"
+    end
+
+    it "presents 'no' when the dao has not be revoked" do
+      project = build(:conversion_project, directive_academy_order: true)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.dao_revoked).to eql "no"
+    end
+
+    it "presents the date of the decision to revoke when it has been" do
+      project = build(:conversion_project, directive_academy_order: true, state: :dao_revoked)
+      dao_revocation = create(:dao_revocation, project: project)
+
+      presenter = described_class.new(project)
+
+      expect(presenter.dao_revoked).to eql dao_revocation.date_of_decision.to_fs(:csv)
+    end
+  end
 end
