@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Corrected the note text created when a user confirms the Transfer date as part
   of the stakeholder kick off task - it said "Conversion" when it should say
   "Transfer"
+- Added 'voluntary deferral' to the list of allowed reasons for a change of
+  date.
 
 ## [Release-75][release-75]
 

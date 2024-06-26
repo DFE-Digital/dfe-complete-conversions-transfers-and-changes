@@ -26,6 +26,7 @@ class SignificantDateHistoryReason < ApplicationRecord
     buildings: "buildings",
     legal_documents: "legal_documents",
     commercial_transfer_agreement: "commercial_transfer_agreement",
-    advisory_board_conditions: "advisory_board_conditions"
+    advisory_board_conditions: "advisory_board_conditions",
+    voluntary_deferral: "voluntary_deferral"
   }
 end
