@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-76][release-76]
+
 ### Added
 
 - The task list includes a link to the completing a project section.
@@ -1996,7 +1998,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-75...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-76...HEAD
+[release-76]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-75...release-76
 [release-75]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-74...release-75
 [release-74]:
