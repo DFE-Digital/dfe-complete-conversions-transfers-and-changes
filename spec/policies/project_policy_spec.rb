@@ -19,7 +19,7 @@ RSpec.describe ProjectPolicy do
     end
   end
 
-  permissions :update? do
+  permissions :update?, :edit?, :check?, :update_academy_urn?, :dao_revocation? do
     it "grants access if project is assigned to the same user" do
       expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
     end
@@ -44,25 +44,6 @@ RSpec.describe ProjectPolicy do
       project = build(:conversion_project, :completed, assigned_to: application_user, conversion_date_provisional: false)
       expect(subject).not_to permit(application_user, project)
     end
-  end
-
-  permissions :edit?, :check?, :update_academy_urn? do
-    it "grants access if project is assigned to the same user" do
-      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
-    end
-
-    it "grants access if the project is assigned to another user" do
-      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: build(:user), conversion_date_provisional: false))
-    end
-
-    it "grants access if project is assigned to nil" do
-      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: nil, conversion_date_provisional: false))
-    end
-
-    it "denies access if the project is completed" do
-      project = build(:conversion_project, :completed, assigned_to: application_user, conversion_date_provisional: false)
-      expect(subject).not_to permit(application_user, project)
-    end
 
     it "denies access if the project is deleted" do
       project = build(:conversion_project, :deleted, assigned_to: application_user)
@@ -71,18 +52,23 @@ RSpec.describe ProjectPolicy do
 
     context "when the user is service support" do
       it "grants access if the project is completed" do
-        project = build(:conversion_project, :completed, assigned_to: application_user, conversion_date_provisional: false)
+        project = build(:conversion_project, :completed)
+        expect(subject).to permit(service_support_user, project)
+      end
+
+      it "grants access if the project is dao revoked" do
+        project = build(:conversion_project, state: :dao_revoked)
         expect(subject).to permit(service_support_user, project)
       end
 
       it "denies access if the project is deleted" do
-        project = build(:conversion_project, :deleted, assigned_to: application_user)
+        project = build(:conversion_project, :deleted)
         expect(subject).not_to permit(service_support_user, project)
       end
     end
   end
 
-  permissions :change_conversion_date? do
+  permissions :change_conversion_date?, :change_transfer_date? do
     context "when the conversion date is not provisional" do
       it "grants access if project is assigned to the same user" do
         expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
@@ -121,13 +107,23 @@ RSpec.describe ProjectPolicy do
   end
 
   permissions :new_note?, :new_contact? do
-    it "grants access if project is not completed" do
-      project = build(:conversion_project, assigned_to: application_user)
+    it "grants access if project is active" do
+      project = build(:conversion_project, state: :active, assigned_to: application_user)
       expect(subject).to permit(application_user, project)
     end
 
     it "denies access if project is completed" do
       project = build(:conversion_project, :completed, assigned_to: application_user)
+      expect(subject).not_to permit(application_user, project)
+    end
+
+    it "denies access if project has been dao revoked" do
+      project = build(:conversion_project, state: :dao_revoked, assigned_to: application_user)
+      expect(subject).not_to permit(application_user, project)
+    end
+
+    it "denies access if project is deleted" do
+      project = build(:conversion_project, state: :deleted, assigned_to: application_user)
       expect(subject).not_to permit(application_user, project)
     end
 
@@ -177,19 +173,13 @@ RSpec.describe ProjectPolicy do
     end
   end
 
-  permissions :new_mat?, :create_mat? do
+  permissions :new?, :create?, :new_mat?, :create_mat? do
     it "grants access if the user can add a new project" do
-      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user))
-    end
-  end
-
-  permissions :dao_revocation? do
-    it "grants access if the user is assigned to the project" do
-      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user))
+      expect(subject).to permit(application_user)
     end
 
-    it "denies access if the user is not assigned to the project" do
-      expect(subject).not_to permit(application_user, build(:conversion_project))
+    it "denies access if the user cannot add projects" do
+      expect(subject).not_to permit(create(:user))
     end
   end
 end
