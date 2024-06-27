@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Add the date an academy opened to the Grant management export for conversions
+- Add the team a project is assigned to to the RPA, SUG and FA letters export
 
 ## [Release-76][release-76]
 
