@@ -1,0 +1,33 @@
+
+<% if projects.empty? %>
+  <%= govuk_inset_text(text: t("project.table.dao_revoked.empty")) %>
+<% else %>
+  <table class="govuk-table" name="projects_table" aria-label="Projects table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_name") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.local_authority_name") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.team") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.conversion_date") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project.table.headers.dao_date_of_decision") %></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <% projects.each do |project| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-table__cell">
+          <%= link_to project.establishment.name, project_path(project), class: "govuk-link govuk-link--no-visited-state" %>
+        </td>
+        <td class="govuk-table__cell"><%= project.urn %></td>
+        <td class="govuk-table__cell"><%= project.establishment.local_authority_name %></td>
+        <td class="govuk-table__cell"><%= t("teams.#{project.team}") %></td>
+        <td class="govuk-table__cell"><%= project.significant_date.to_formatted_s(:significant_date) %></td>
+        <td class="govuk-table__cell"><%= project.dao_revocation.date_of_decision.to_fs(:govuk) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= govuk_pagination(pagy: pager) %>

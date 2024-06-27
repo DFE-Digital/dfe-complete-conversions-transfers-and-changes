@@ -1,0 +1,17 @@
+<% content_for :primary_navigation do %>
+  <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("project.all.dao_revoked.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">
+      <%= t("project.all.dao_revoked.title") %>
+    </h1>
+
+    <%= render partial: "/projects/shared/dao_revoked_table", locals: {projects: @projects, pager: @pager} %>
+  </div>
+</div>

@@ -30,6 +30,8 @@ en:
           tab: Form a MAT
       by_trust:
         title: All projects by trust
+      dao_revoked:
+        title: Conversions with a revoked DAO (Directive Academy Order)
       completed:
         title: All completed projects
       trust_ukprn:
@@ -177,6 +179,7 @@ en:
         school_urn: URN
         type: Type of project
         completed_at: Project completion date
+        dao_date_of_decision: Date of the decision to revoked the DAO
         assigned_to: Assigned to
         view: View project
         assign: Assign project
