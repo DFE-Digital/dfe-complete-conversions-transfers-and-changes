@@ -20,7 +20,7 @@ RSpec.feature "Users can view projects by month" do
       click_on "Apply"
 
       click_on "download a more detailed version of the data as a CSV file"
-      expect(page.response_headers["Content-Disposition"]).to include("2023-1-1-2023-12-1_schools_due_to_convert.csv")
+      expect(page.response_headers["Content-Disposition"]).to include("2023-01-01-2023-12-31_schools_due_to_convert.csv")
     end
 
     scenario "the user can download a CSV of transfer projects" do
@@ -33,7 +33,7 @@ RSpec.feature "Users can view projects by month" do
       click_on "Apply"
 
       click_on "download a more detailed version of the data as a CSV file"
-      expect(page.response_headers["Content-Disposition"]).to include("2023-1-1-2023-12-1_academies_due_to_transfer.csv")
+      expect(page.response_headers["Content-Disposition"]).to include("2023-01-01-2023-12-31_academies_due_to_transfer.csv")
     end
   end
 

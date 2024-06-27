@@ -332,6 +332,16 @@ class Export::Csv::ProjectPresenter
     @project.tasks_data.declaration_of_expenditure_certificate_date_received.to_fs(:csv)
   end
 
+  def dao_revoked
+    return I18n.t("export.csv.project.values.not_applicable") unless @project.dao_revokable?
+
+    if @project.dao_revoked?
+      @project.dao_revocation.date_of_decision.to_fs(:csv)
+    else
+      I18n.t("export.csv.project.values.no")
+    end
+  end
+
   private def other_contact
     @contacts_fetcher.other_contact
   end

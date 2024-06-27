@@ -11,6 +11,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Add the date an academy opened to the Grant management export for conversions
 - Add the team a project is assigned to to the RPA, SUG and FA letters export
 
+### Changed
+
+- The RPA, SUG and FA letter export does not include conversion projects with a
+  revoked DAO.
+- The by month exports do not include conversion projects with a revoked DAO.
+- The single by month view and export are now sorted by the conversion or
+  transfer date only.
+- The pre conversion grants export includes a new column that shows the DAO
+  revocation state of a project as applicable.
+
 ## [Release-76][release-76]
 
 ### Added

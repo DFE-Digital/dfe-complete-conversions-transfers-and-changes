@@ -48,7 +48,7 @@ class All::ByMonth::Conversions::ProjectsController < ApplicationController
     @year = year
     @date = "#{year}-#{month}-1"
 
-    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.conversion_projects_by_date(month, year))
+    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.conversion_projects_by_date_range(@date, @date))
   end
 
   private def redirect_if_dates_incorrect

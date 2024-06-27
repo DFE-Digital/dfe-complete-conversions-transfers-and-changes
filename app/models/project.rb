@@ -43,7 +43,7 @@ class Project < ApplicationRecord
   scope :transfers, -> { where(type: "Transfer::Project") }
 
   scope :ordered_by_completed_date, -> { completed.order(completed_at: :desc) }
-  scope :in_progress, -> { where(state: 0).assigned }
+  scope :in_progress, -> { where(state: :active).assigned }
 
   scope :assigned, -> { where.not(assigned_to: nil) }
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }

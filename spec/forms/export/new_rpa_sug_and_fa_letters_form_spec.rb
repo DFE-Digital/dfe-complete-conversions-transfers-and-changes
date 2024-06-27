@@ -22,11 +22,15 @@ RSpec.describe Export::NewRpaSugAndFaLettersForm, type: :model do
       to_date = Date.new(2024, 4, 1)
       form = described_class.new(from_date: from_date, to_date: to_date)
 
+      allow(Project).to receive(:active).and_call_original
+      allow(Project).to receive(:completed).and_call_original
       allow(Project).to receive(:conversions).and_call_original
       allow(Project).to receive(:significant_date_in_range).and_call_original
 
       form.export
 
+      expect(Project).to have_received(:active)
+      expect(Project).to have_received(:completed)
       expect(Project).to have_received(:conversions)
       expect(Project).to have_received(:significant_date_in_range).with(from_date.to_s, to_date.to_s)
     end

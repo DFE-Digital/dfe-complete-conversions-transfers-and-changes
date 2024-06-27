@@ -14,6 +14,7 @@ class Export::Conversions::PreConversionGrantsCsvExportService < Export::CsvExpo
     conversion_date
     date_academy_opened
     academy_order_type
+    dao_revoked
     completed_grant_payment_certificate_received
     two_requires_improvement
     sponsored_grant_type
