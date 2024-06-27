@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   transfer date only.
 - The pre conversion grants export includes a new column that shows the DAO
   revocation state of a project as applicable.
+- Once a project has it's DAO revoked, it can no longer be edited, except by
+  Service Support.
 
 ## [Release-76][release-76]
 

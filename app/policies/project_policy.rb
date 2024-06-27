@@ -3,7 +3,7 @@ class ProjectPolicy
 
   def initialize(user, project)
     @user = user
-    @record = project
+    @project = project
   end
 
   def index?
@@ -11,25 +11,44 @@ class ProjectPolicy
   end
 
   def show?
-    return false if @record.deleted?
+    return false if @project.deleted?
 
     true
   end
 
-  def create?
+  def new?
     user.add_new_project?
   end
 
-  def edit?
-    return false if @record.deleted?
-    return true if @user.is_service_support?
-    return false if @record.completed?
+  def create?
+    new?
+  end
 
-    true
+  def new_mat?
+    new?
+  end
+
+  def create_mat?
+    new?
+  end
+
+  def edit?
+    return false if @project.deleted?
+
+    return true if @user.is_service_support?
+
+    return false if @project.completed?
+    return false if @project.dao_revoked?
+
+    project_assigned_to_user?
+  end
+
+  def update?
+    edit?
   end
 
   def dao_revocation?
-    update?
+    edit?
   end
 
   def check?
@@ -40,78 +59,70 @@ class ProjectPolicy
     edit?
   end
 
-  def new?
-    create?
-  end
-
-  def new_mat?
-    new?
-  end
-
-  def create_mat?
-    create?
-  end
-
-  def update?
-    return true if @user.is_service_support?
-    return false if @record.completed?
-
-    project_assigned_to_user?
-  end
-
   def change_significant_date?
-    return true if @user.is_service_support?
-    return false if @record.significant_date_provisional?
+    return false if @project.significant_date_provisional?
 
-    project_assigned_to_user?
+    edit?
   end
 
   def change_conversion_date?
-    @record.is_a?(Conversion::Project) && change_significant_date?
+    change_significant_date?
   end
 
   def change_transfer_date?
-    @record.is_a?(Transfer::Project) && change_significant_date?
+    change_significant_date?
   end
 
   def new_note?
     return false unless @user.has_role?
+    return false if project_finished?
 
-    edit_project_closed?
+    true
   end
 
   def new_contact?
     return false unless @user.has_role?
+    return false if project_finished?
 
-    edit_project_closed?
+    true
   end
 
   def update_assigned_to?
-    edit_project_closed?
+    re_assignable?
   end
 
   def update_regional_delivery_officer?
-    edit_project_closed?
-  end
-
-  def unassigned?
-    @user.manage_team?
-  end
-
-  def handed_over?
-    @user.team != "regional_casework_services"
+    re_assignable?
   end
 
   def delete?
     @user.is_service_support?
   end
 
-  private def project_assigned_to_user?
-    @record.assigned_to == @user
+  # Unassigned action in Team::ProjectsController
+  def unassigned?
+    @user.manage_team?
   end
 
-  private def edit_project_closed?
-    return false if @record.completed?
+  # Handed over action in Team::ProjectsController
+  def handed_over?
+    @user.team != "regional_casework_services"
+  end
+
+  private def project_assigned_to_user?
+    @project.assigned_to == @user
+  end
+
+  private def project_finished?
+    return true if @project.completed?
+    return true if @project.deleted?
+    return true if @project.dao_revoked?
+
+    false
+  end
+
+  private def re_assignable?
+    return false if project_finished?
 
     true
   end
