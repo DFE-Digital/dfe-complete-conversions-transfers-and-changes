@@ -149,6 +149,9 @@ Rails.application.routes.draw do
     resources :projects, only: %i[index] do
       collection do
         namespace :all do
+          namespace :dao_revoked, path: "dao-revoked" do
+            get "/", to: "projects#index"
+          end
           namespace :completed do
             get "/", to: "projects#index"
           end
