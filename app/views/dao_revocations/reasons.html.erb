@@ -18,8 +18,10 @@
 
       <% end %>
 
-      <%= form.govuk_submit t("dao_revocations.reasons.button") %>
-
+      <div class="govuk-button-group">
+        <%= form.govuk_submit t("dao_revocations.reasons.button") %>
+        <%= govuk_link_to t("cancel"), project_path(@project) %>
+      </div>
     <% end %>
 
   </div>

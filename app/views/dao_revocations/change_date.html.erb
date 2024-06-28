@@ -11,7 +11,10 @@
 
       <%= form.govuk_date_field :date_of_decision, legend: {size: "xl"}, caption: {size: "xl"} %>
 
-      <%= form.govuk_submit t("dao_revocations.date.button") %>
+      <div class="govuk-button-group">
+        <%= form.govuk_submit t("dao_revocations.reasons.button") %>
+        <%= govuk_link_to t("cancel"), project_dao_revocation_check_path(@project) %>
+      </div>
 
     <% end %>
 
