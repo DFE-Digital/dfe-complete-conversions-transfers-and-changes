@@ -11,7 +11,13 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
   scenario "by providing all of the details correctly" do
     project = create(:conversion_project, directive_academy_order: true, assigned_to: user)
 
-    visit project_dao_revocation_start_path(project)
+    visit project_path(project)
+
+    click_on "Revoke a Directive Academy Order"
+
+    click_on "Record DAO revocation"
+
+    expect(page).to have_content "Record Directive Academy Order revocation"
 
     click_on "Continue"
 
@@ -45,7 +51,13 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
   scenario "they can change details before submitting" do
     project = create(:conversion_project, directive_academy_order: true, assigned_to: user)
 
-    visit project_dao_revocation_start_path(project)
+    visit project_path(project)
+
+    click_on "Revoke a Directive Academy Order"
+
+    click_on "Record DAO revocation"
+
+    expect(page).to have_content "Record Directive Academy Order revocation"
 
     click_on "Continue"
 

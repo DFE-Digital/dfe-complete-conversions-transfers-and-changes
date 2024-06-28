@@ -8,8 +8,12 @@
             <%= render partial: "shared/side_navigation_item", locals: {name: t("#{section.locales_path}.title"), path: "##{section.identifier}"} %>
           <% end %>
 
-          <% unless @project.completed? %>
+          <% if @project.active? && policy(@project).update? %>
             <li><%= link_to t("project.show.completing_a_project_link"), "#completing-a-project", class: "govuk-link govuk-link--no-visited-state" %></li>
+          <% end %>
+
+          <% if @project.active? && @project.dao_revokable? && policy(@project).update? %>
+            <li><%= link_to t("project.show.dao_revocation_link"), "#dao-revocation", class: "govuk-link govuk-link--no-visited-state" %></li>
           <% end %>
         </ul>
       </nav>
@@ -43,9 +47,15 @@
           <% end %>
         </ol>
       </div>
+
       <div class="govuk-grid-row">
         <%= render "projects/show/complete" if @project.active? && policy(@project).update? %>
       </div>
+
+      <div class="govuk-grid-row">
+        <%= render "projects/show/dao_revocation" if @project.active? && @project.dao_revokable? && policy(@project).update? %>
+      </div>
+
     </div>
   </div>
 </div>

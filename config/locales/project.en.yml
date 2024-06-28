@@ -15,6 +15,7 @@ en:
       edit_button:
         text: Edit
       completing_a_project_link: Completing a project
+      dao_revocation_link: Revoke a Directive Academy Order
     all:
       in_progress:
         title: All projects in progress
