@@ -68,41 +68,32 @@ RSpec.describe ProjectPolicy do
     end
   end
 
-  permissions :change_conversion_date?, :change_transfer_date? do
-    context "when the conversion date is not provisional" do
-      it "grants access if project is assigned to the same user" do
-        expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
-      end
+  permissions :change_significant_date? do
+    it "grants access when the significant date is not provisional" do
+      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
+    end
+    it "denies access when the significant date is provisional" do
+      expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: true))
+    end
+  end
 
-      it "grants access if the user is service support" do
-        expect(subject).to permit(build(:user, :service_support), build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
-      end
-
-      it "grants access if the project is complete and the user is service support" do
-        expect(subject).to permit(build(:user, :service_support), build(:conversion_project, completed_at: Date.yesterday, assigned_to: application_user, conversion_date_provisional: false))
-      end
-
-      it "denies access if the project is assigned to another user" do
-        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: build(:user), conversion_date_provisional: false))
-      end
-
-      it "denies access if project is assigned to nil" do
-        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: nil, conversion_date_provisional: false))
-      end
+  permissions :change_conversion_date? do
+    it "grants access when the project is a conversion" do
+      expect(subject).to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
     end
 
-    context "when the conversion date is provisional" do
-      it "denies access if project is assigned to the same user" do
-        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: true))
-      end
+    it "denies access when the project is a transfer" do
+      expect(subject).not_to permit(application_user, build(:transfer_project, assigned_to: application_user, transfer_date_provisional: false))
+    end
+  end
 
-      it "denies access if the project is assigned to another user" do
-        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: build(:user), conversion_date_provisional: true))
-      end
+  permissions :change_transfer_date? do
+    it "grants access when the project is a transfer" do
+      expect(subject).to permit(application_user, build(:transfer_project, assigned_to: application_user, transfer_date_provisional: false))
+    end
 
-      it "denies access if project is assigned to nil" do
-        expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: nil, conversion_date_provisional: true))
-      end
+    it "denies access when the project is a conversion" do
+      expect(subject).not_to permit(application_user, build(:conversion_project, assigned_to: application_user, conversion_date_provisional: false))
     end
   end
 

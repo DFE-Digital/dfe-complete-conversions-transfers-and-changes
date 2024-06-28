@@ -66,10 +66,14 @@ class ProjectPolicy
   end
 
   def change_conversion_date?
+    return false unless @project.is_a?(Conversion::Project)
+
     change_significant_date?
   end
 
   def change_transfer_date?
+    return false unless @project.is_a?(Transfer::Project)
+
     change_significant_date?
   end
 

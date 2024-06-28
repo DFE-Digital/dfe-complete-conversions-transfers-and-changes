@@ -28,6 +28,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   minister name and date of decision.
 - Revoking DAO ends a project
 
+### Fixed
+
+- The change conversion date and change transfer date buttons only appear on the
+  appropriate project type.
+
 ## [Release-76][release-76]
 
 ### Added
