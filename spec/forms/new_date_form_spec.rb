@@ -51,6 +51,16 @@ RSpec.describe NewDateHistoryForm, type: :model do
         expect(form).to be_invalid
       end
 
+      it "cannot be the same as the current date" do
+        attributes = valid_attributes
+        form.assign_attributes(attributes)
+        form.project = build(:conversion_project, significant_date: Date.today)
+        form.revised_date = Date.today
+
+        expect(form).to be_invalid
+        expect(form.errors.messages_for(:revised_date)).to include("The new date cannot be the same as the current date. Check you have entered the correct date.")
+      end
+
       describe "month params" do
         it "cannot be 0" do
           attributes = valid_attributes
