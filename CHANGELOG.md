@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-77][release-77]
+
 ### Added
 
 - Add the date an academy opened to the Grant management export for conversions
@@ -2025,7 +2027,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-76...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-77...HEAD
+[release-77]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-76...release-77
 [release-76]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-75...release-76
 [release-75]:
