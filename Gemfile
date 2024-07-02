@@ -54,7 +54,7 @@ gem "uk_postcode", "~> 2.1.0"
 # application insights
 gem "application_insights"
 
-gem "sidekiq", "< 7.0"
+gem "sidekiq", "< 7.3.1"
 
 gem "pagy"
 
