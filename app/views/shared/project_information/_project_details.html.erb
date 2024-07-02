@@ -1,25 +1,31 @@
-<div id="projectDetails" class="project-information-block">
-  <h3 class="govuk-heading-m"><%= t("project_information.show.project_details.title") %></h3>
-  <%= govuk_summary_list do |summary_list|
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.project_details.rows.type") }
-          row.with_value { t("project_information.show.project_details.values.#{project.type_locale}") }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.project_details.rows.date.#{project.type_locale}") }
-          row.with_value { significant_date(project) }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.project_details.rows.local_authority") }
-          row.with_value { project.establishment.local_authority_name }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.diocese_details.rows.diocese") }
-          row.with_value { project.establishment.diocese_name }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.project_details.rows.region") }
-          row.with_value { project.establishment.region_name }
-        end
-      end %>
+<div id="projectDetails" class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h3 class="govuk-summary-card__title">
+      <%= t("project_information.show.project_details.title") %>
+    </h3>
+  </div>
+  <div class="govuk-summary-card__content">
+    <%= govuk_summary_list do |summary_list|
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.project_details.rows.type") }
+            row.with_value { t("project_information.show.project_details.values.#{project.type_locale}") }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.project_details.rows.date.#{project.type_locale}") }
+            row.with_value { significant_date(project) }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.project_details.rows.local_authority") }
+            row.with_value { project.establishment.local_authority_name }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.diocese_details.rows.diocese") }
+            row.with_value { project.establishment.diocese_name }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.project_details.rows.region") }
+            row.with_value { project.establishment.region_name }
+          end
+        end %>
+  </div>
 </div>
