@@ -45,4 +45,15 @@ RSpec.describe DaoRevocation do
   describe "Associations" do
     it { is_expected.to belong_to(:project) }
   end
+
+  describe "Callbacks" do
+    it "updates the state of the associated project after destruction" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project, directive_academy_order: true, state: :dao_revoked)
+      decision = described_class.new(date_of_decision: Date.today, decision_makers_name: "Bob Smith", reason_school_closed: true, project: project)
+
+      decision.destroy!
+      expect(project.state).to eq("active")
+    end
+  end
 end

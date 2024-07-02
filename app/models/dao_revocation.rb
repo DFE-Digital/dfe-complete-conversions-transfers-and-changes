@@ -5,11 +5,17 @@ class DaoRevocation < ApplicationRecord
   validate :conversion_project_with_dao
   validate :at_least_one_reason
 
+  after_destroy :update_project_state
+
   private def at_least_one_reason
     errors.add(:base, :reason_required) unless reason_school_closed || reason_school_rating_improved || reason_safeguarding_addressed
   end
 
   private def conversion_project_with_dao
     errors.add(:base, :incorrect_project_type) unless project.is_a?(Conversion::Project) && project.directive_academy_order
+  end
+
+  private def update_project_state
+    project.update(state: :active)
   end
 end
