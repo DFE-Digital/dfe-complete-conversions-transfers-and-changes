@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   revised date cannot be the same as the current date.
 - the project information view now uses 'cards' to break the make the
   information clearer.
+- the external contacts are now shown as 'cards' to make them clearer.
 
 ## [Release-77][release-77]
 
