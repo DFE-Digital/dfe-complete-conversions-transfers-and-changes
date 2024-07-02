@@ -8,9 +8,9 @@
     "build": "esbuild app/javascript/*.js --bundle --sourcemap --format=esm --platform=browser --target=chrome61,edge79,firefox60,safari11 --outdir=app/assets/builds --public-path=/assets"
   },
   "devDependencies": {
-    "esbuild": "^0.21.0",
     "prettier": "^3.0.2",
-    "standard": "^17.1.0"
+    "standard": "^17.1.0",
+    "esbuild": "^0.21.5"
   },
   "dependencies": {
     "@microsoft/applicationinsights-clickanalytics-js": "^3.2.1",
