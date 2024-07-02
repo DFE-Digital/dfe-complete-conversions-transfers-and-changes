@@ -1,45 +1,51 @@
-<div id="incomingTrustDetails" class="project-information-block">
-  <h3 class="govuk-heading-m"><%= t("project_information.show.incoming_trust_details.title") %></h3>
-  <%= govuk_summary_list do |summary_list|
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.incoming_trust_details.rows.incoming_trust_name") }
-          row.with_value { (incoming_trust.name + "<br/>" + link_to_trust_on_gias(incoming_trust.ukprn)).html_safe }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.incoming_trust_details.rows.ukprn") }
-          row.with_value { incoming_trust.ukprn.to_s }
-          if project.type == "Conversion::Project"
-            row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the incoming trust UKPRN")
-          else
-            row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the outgoing trust UKPRN")
+<div id="incomingTrustDetails" class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h3 class="govuk-summary-card__title">
+      <%= t("project_information.show.incoming_trust_details.title") %>
+    </h3>
+  </div>
+  <div class="govuk-summary-card__content">
+    <%= govuk_summary_list do |summary_list|
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.incoming_trust_details.rows.incoming_trust_name") }
+            row.with_value { (incoming_trust.name + "<br/>" + link_to_trust_on_gias(incoming_trust.ukprn)).html_safe }
           end
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.incoming_trust_details.rows.group_identifier") }
-          row.with_value { incoming_trust.group_identifier.to_s }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.incoming_trust_details.rows.companies_house_number") }
-          row.with_value {
-            if incoming_trust.companies_house_number.present?
-              (incoming_trust.companies_house_number +
-               "<br/>" +
-               link_to_companies_house(incoming_trust.companies_house_number)).html_safe
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.incoming_trust_details.rows.ukprn") }
+            row.with_value { incoming_trust.ukprn.to_s }
+            if project.type == "Conversion::Project"
+              row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the incoming trust UKPRN")
+            else
+              row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "incoming-trust-ukprn"), visually_hidden_text: "the outgoing trust UKPRN")
             end
-          }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.incoming_trust_details.rows.address") }
-          row.with_value { address_markup(incoming_trust.address) }
-        end
-        summary_list.with_row do |row|
-          row.with_key { t("project_information.show.incoming_trust_details.rows.sharepoint_folder") }
-          row.with_value { safe_link_to(t("project_information.show.incoming_trust_details.values.sharepoint_folder"), project.incoming_trust_sharepoint_link) }
-          if project.type == "Conversion::Project"
-            row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "sharepoint-folder-links"), visually_hidden_text: "the sharepoint folder link")
-          else
-            row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "sharepoint-folder-links"), visually_hidden_text: "the sharepoint folder link")
           end
-        end
-      end %>
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.incoming_trust_details.rows.group_identifier") }
+            row.with_value { incoming_trust.group_identifier.to_s }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.incoming_trust_details.rows.companies_house_number") }
+            row.with_value {
+              if incoming_trust.companies_house_number.present?
+                (incoming_trust.companies_house_number +
+                 "<br/>" +
+                 link_to_companies_house(incoming_trust.companies_house_number)).html_safe
+              end
+            }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.incoming_trust_details.rows.address") }
+            row.with_value { address_markup(incoming_trust.address) }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.incoming_trust_details.rows.sharepoint_folder") }
+            row.with_value { safe_link_to(t("project_information.show.incoming_trust_details.values.sharepoint_folder"), project.incoming_trust_sharepoint_link) }
+            if project.type == "Conversion::Project"
+              row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "sharepoint-folder-links"), visually_hidden_text: "the sharepoint folder link")
+            else
+              row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "sharepoint-folder-links"), visually_hidden_text: "the sharepoint folder link")
+            end
+          end
+        end %>
+  </div>
 </div>
