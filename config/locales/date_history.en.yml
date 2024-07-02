@@ -1,0 +1,10 @@
+en:
+  errors:
+    attributes:
+      revised_date:
+        format: Enter a valid month and year
+        transaction: Revised date could not be saved
+        blank: Enter a valid month and year for the revised date, like 9 2024
+        same_as_previous_date: The new date cannot be the same as the current date. Check you have entered the correct date.
+      note_body:
+        blank: Enter a reason

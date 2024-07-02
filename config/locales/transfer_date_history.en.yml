@@ -1,6 +1,6 @@
 en:
   transfer_new_date_history_form:
-    title: Transfer Date
+    title: Transfer date
     current_date_html: <p>The current transfer date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
     revised_date_html: <p>The new proposed transfer date is <span class="govuk-body govuk-!-font-weight-bold">%{date}</span>.</p>
     form:
@@ -29,11 +29,3 @@ en:
         <p>You can change the transfer date as many times as you need to.</p>
         <p>Enter the transfer date again if this change was not right.</p>
         <p>You can alter the transfer date at any time if there are changes to the project in the future.</p>
-  errors:
-    attributes:
-      revised_date:
-        format: Enter a valid month and year
-        transaction: Revised date could not be saved
-        blank: Enter a valid month and year for the revised date, like 9 2024
-      note_body:
-        blank: Enter a reason

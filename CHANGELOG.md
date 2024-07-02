@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- when changing the significant date for a conversion or transfer project the
+  revised date cannot be the same as the current date.
+
 ## [Release-77][release-77]
 
 ### Added
