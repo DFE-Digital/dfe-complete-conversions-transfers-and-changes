@@ -89,7 +89,7 @@ RSpec.feature "Users can manage contacts" do
       phone: "01632 960123"
     )
 
-    click_link "Change"
+    click_link "Edit"
 
     click_link("Delete")
 

@@ -1,35 +1,55 @@
-<div id="academyDetails" class="project-information-block">
-  <h3 class="govuk-heading-m"><%= t("project_information.show.academy_details.title") %></h3>
-
-  <% if project.academy_urn.nil? %>
-    <%= govuk_inset_text(text: t("project_information.show.academy_details.empty")) %>
-  <% else %>
-
-    <% if project.academy_found? %>
-      <%= govuk_summary_list(actions: false) do |summary_list|
-            summary_list.with_row do |row|
-              row.with_key { t("project_information.show.academy_details.rows.academy_name") }
-              row.with_value { (project.academy.name + "<br/>" + link_to_school_on_gias(project.academy_urn)).html_safe }
-            end
-            summary_list.with_row do |row|
-              row.with_key { t("project_information.show.academy_details.rows.urn") }
-              row.with_value { project.academy_urn.to_s }
-            end
-            summary_list.with_row do |row|
-              row.with_key { t("project_information.show.academy_details.rows.school_type") }
-              row.with_value { project.academy.type }
-            end
-          end %>
+<div id="academyDetails" class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h3 class="govuk-summary-card__title">
+      <%= t("project_information.show.academy_details.title") %>
+    </h3>
+  </div>
+  <div class="govuk-summary-card__content">
+    <% if project.academy_urn.nil? %>
+      <%= govuk_inset_text(text: t("project_information.show.academy_details.empty")) %>
     <% else %>
 
-      <%= govuk_summary_list(actions: false) do |summary_list|
-            summary_list.with_row do |row|
-              row.with_key { t("project_information.show.academy_details.rows.urn") }
-              row.with_value { project.academy_urn.to_s }
-            end
-          end %>
-      <%= govuk_inset_text(text: t("project_information.show.academy_details.not_found")) %>
+      <% if project.academy_found? %>
 
+        <%= govuk_summary_list do |summary_list|
+              summary_list.with_row do |row|
+                row.with_key { t("project_information.show.academy_details.rows.academy_name") }
+                row.with_value { (project.academy.name + "<br/>" + link_to_school_on_gias(project.academy.urn)).html_safe }
+              end
+              summary_list.with_row do |row|
+                row.with_key { t("project_information.show.academy_details.rows.urn") }
+                row.with_value { project.academy.urn.to_s }
+              end
+              summary_list.with_row do |row|
+                row.with_key { t("project_information.show.academy_details.rows.school_type") }
+                row.with_value { project.academy.type }
+              end
+              summary_list.with_row do |row|
+                row.with_key { t("project_information.show.academy_details.rows.age_range") }
+                row.with_value { age_range(project.academy) }
+              end
+              summary_list.with_row do |row|
+                row.with_key { t("project_information.show.academy_details.rows.school_phase") }
+                row.with_value { project.academy.phase }
+              end
+              summary_list.with_row do |row|
+                row.with_key { t("project_information.show.academy_details.rows.sharepoint_folder") }
+                row.with_value { safe_link_to(t("project_information.show.academy_details.values.sharepoint_folder"), project.establishment_sharepoint_link) }
+                row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "sharepoint-folder-links"), visually_hidden_text: "edit sharepoint folder link")
+              end
+            end %>
+
+      <% else %>
+
+        <%= govuk_summary_list(actions: false) do |summary_list|
+              summary_list.with_row do |row|
+                row.with_key { t("project_information.show.academy_details.rows.urn") }
+                row.with_value { project.academy_urn.to_s }
+              end
+            end %>
+        <%= govuk_inset_text(text: t("project_information.show.academy_details.not_found")) %>
+
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
