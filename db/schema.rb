@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_03_133114) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_03_142240) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -302,6 +302,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_03_133114) do
     t.uuid "chair_of_governors_contact_id"
     t.integer "state", default: 0, null: false
     t.integer "prepare_id"
+    t.uuid "local_authority_main_contact_id"
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["incoming_trust_ukprn"], name: "index_projects_on_incoming_trust_ukprn"

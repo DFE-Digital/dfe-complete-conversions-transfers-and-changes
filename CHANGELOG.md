@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   information clearer.
 - the external contacts are now shown as 'cards' to make them clearer.
 
+### Added
+
+- Users can now indicate a local authority contact is the local authority main
+  contact for a project
+
 ## [Release-77][release-77]
 
 ### Added

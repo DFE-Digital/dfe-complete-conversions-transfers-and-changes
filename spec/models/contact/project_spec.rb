@@ -70,4 +70,26 @@ RSpec.describe Contact::Project do
       expect(contact.outgoing_trust_main_contact).to be false
     end
   end
+
+  describe "#local_authority_main_contact" do
+    before do
+      mock_successful_api_responses(urn: any_args, ukprn: any_args)
+    end
+
+    it "returns true if the contact is the local_authority_main_contact for its project" do
+      project = create(:conversion_project)
+      contact = create(:project_contact, project: project)
+      project.local_authority_main_contact_id = contact.id
+      project.save
+
+      expect(contact.reload.local_authority_main_contact).to be true
+    end
+
+    it "returns false if the contact is NOT the local_authority_main_contact for its project" do
+      project = create(:conversion_project, local_authority_main_contact_id: SecureRandom.uuid)
+      contact = create(:project_contact, project: project)
+
+      expect(contact.local_authority_main_contact).to be false
+    end
+  end
 end
