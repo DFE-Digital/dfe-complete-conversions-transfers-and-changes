@@ -6,7 +6,11 @@ class CookiesController < ApplicationController
 
   def update
     accept_optional_cookies = cookies_params[:accept_optional_cookies]
-    cookies[:ACCEPT_OPTIONAL_COOKIES] = {value: accept_optional_cookies, expires: 1.year} unless accept_optional_cookies.nil?
+
+    unless accept_optional_cookies.nil?
+      cookies[:ACCEPT_OPTIONAL_COOKIES] =
+        {value: accept_optional_cookies, expires: 1.year, httponly: true}
+    end
 
     redirect_back_or_to(cookies_path, notice: I18n.t("cookies.updated_message.#{accept_optional_cookies}"))
   end
