@@ -24,3 +24,6 @@ if (addedByTarget) {
     'Added by'
   )
 }
+
+// set the js-enabled class on the body if JS is enabled
+document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled')
