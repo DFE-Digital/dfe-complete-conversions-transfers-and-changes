@@ -67,6 +67,12 @@
                   row.with_value { t("yes") }
                 end
               end
+              if contact.local_authority_main_contact
+                summary_list.with_row do |row|
+                  row.with_key { t("contact.details.local_authority_main_contact") }
+                  row.with_value { t("yes") }
+                end
+              end
             end
           end %>
     </div>

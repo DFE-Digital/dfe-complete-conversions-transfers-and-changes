@@ -6,7 +6,8 @@ class Contact::CreateProjectContactForm
   CATEGORIES_WITH_PRIMARY_CONTACT = [
     "school_or_academy",
     "incoming_trust",
-    "outgoing_trust"
+    "outgoing_trust",
+    "local_authority"
   ].freeze
 
   attribute :category
@@ -79,6 +80,8 @@ class Contact::CreateProjectContactForm
       @contact.incoming_trust_main_contact
     when "outgoing_trust"
       @contact.outgoing_trust_main_contact
+    when "local_authority"
+      @contact.local_authority_main_contact
     end
   end
 
@@ -90,6 +93,8 @@ class Contact::CreateProjectContactForm
       @project.incoming_trust_main_contact_id = primary_contact_for_category ? @contact.id : nil
     when "outgoing_trust"
       @project.outgoing_trust_main_contact_id = primary_contact_for_category ? @contact.id : nil
+    when "local_authority"
+      @project.local_authority_main_contact_id = primary_contact_for_category ? @contact.id : nil
     end
   end
 end

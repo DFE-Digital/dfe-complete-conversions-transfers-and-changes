@@ -111,11 +111,24 @@ RSpec.describe Contact::CreateProjectContactForm do
         end
 
         context "and the category is local authority" do
-          it "is invalid" do
+          it "is valid" do
             contact_form.primary_contact_for_category = true
             contact_form.category = "local_authority"
 
-            expect(contact_form).to be_invalid
+            expect(contact_form).to be_valid
+          end
+
+          it "sets the contact as the local authority main contact" do
+            contact_form.primary_contact_for_category = true
+            contact_form.category = "local_authority"
+            contact_form.name = "New Contact"
+            contact_form.title = "Local councillor"
+            contact_form.organisation_name = "Council"
+
+            contact_form.save
+            contact = Contact::Project.last
+
+            expect(project.reload.local_authority_main_contact).to eq(contact)
           end
         end
 
@@ -253,6 +266,22 @@ RSpec.describe Contact::CreateProjectContactForm do
             contact_form.save
 
             expect(project.outgoing_trust_main_contact_id).to be_nil
+          end
+        end
+
+        context "and the contact is for the local authority category" do
+          let(:contact) { create(:project_contact, project: project, category: "local_authority") }
+
+          it "can be unset" do
+            project.update!(local_authority_main_contact_id: contact.id)
+            contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: project)
+            contact_form.primary_contact_for_category = false
+
+            expect(project.local_authority_main_contact_id).to eql(contact.id)
+
+            contact_form.save
+
+            expect(project.local_authority_main_contact_id).to be_nil
           end
         end
       end
