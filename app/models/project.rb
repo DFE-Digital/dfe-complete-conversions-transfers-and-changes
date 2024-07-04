@@ -20,7 +20,6 @@ class Project < ApplicationRecord
   belongs_to :establishment_main_contact, inverse_of: :main_contact_for_establishment, dependent: :destroy, class_name: "Contact::Project", optional: true
   belongs_to :incoming_trust_main_contact, inverse_of: :main_contact_for_incoming_trust, dependent: :destroy, class_name: "Contact::Project", optional: true
   belongs_to :outgoing_trust_main_contact, inverse_of: :main_contact_for_outgoing_trust, dependent: :destroy, class_name: "Contact::Project", optional: true
-  belongs_to :funding_agreement_contact, inverse_of: :main_contact_for_funding_agreement, dependent: :destroy, class_name: "Contact::Project", optional: true
 
   validates :urn, presence: true
   validates :urn, urn: true
