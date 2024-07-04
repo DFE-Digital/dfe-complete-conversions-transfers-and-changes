@@ -171,6 +171,26 @@ RSpec.describe ContactsFetcherService do
     end
   end
 
+  describe "#local_authority_contact" do
+    let!(:contact) { create(:project_contact, project: project, category: "local_authority") }
+
+    context "when there is a local_authority_main_contact_id" do
+      before { allow(project).to receive(:local_authority_main_contact_id).and_return(contact.id) }
+
+      it "returns the contact with that id" do
+        expect(described_class.new(project).local_authority_contact).to eq(contact)
+      end
+    end
+
+    context "when there is NOT a local_authority_main_contact_id" do
+      before { allow(project).to receive(:local_authority_main_contact_id).and_return(nil) }
+
+      it "returns the next matching contact" do
+        expect(described_class.new(project).local_authority_contact).to eq(contact)
+      end
+    end
+  end
+
   describe "#other_contact" do
     let!(:contact) { create(:project_contact, project: project, category: "other") }
 
