@@ -12,17 +12,11 @@ module Export::Csv::LocalAuthorityPresenterModule
   end
 
   def local_authority_contact_name
-    contacts = @contacts_fetcher.all_project_contacts_grouped
-    return if contacts["local_authority"].blank?
-
-    contacts["local_authority"].pluck(:name).join(",")
+    local_authority_contact&.name
   end
 
   def local_authority_contact_email
-    contacts = @contacts_fetcher.all_project_contacts_grouped
-    return if contacts["local_authority"].blank?
-
-    contacts["local_authority"].pluck(:email).join(",")
+    local_authority_contact&.email
   end
 
   def local_authority_address_1
@@ -59,5 +53,9 @@ module Export::Csv::LocalAuthorityPresenterModule
     return unless @local_authority.present?
 
     @local_authority.address_postcode
+  end
+
+  private def local_authority_contact
+    @contacts_fetcher.local_authority_contact
   end
 end

@@ -13,6 +13,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the project information view now uses 'cards' to break the make the
   information clearer.
 - the external contacts are now shown as 'cards' to make them clearer.
+- The local authority contact in exports is now the "main" contact as selected
+  in the UI. If none is selected, then the exported contact is the next contact
+  with the category of "local authority"
 
 ### Added
 
