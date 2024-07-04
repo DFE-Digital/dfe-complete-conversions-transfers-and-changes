@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#0b0c0c">
     <%= tag :meta, name: "application-insights-connection", content: ENV["ApplicationInsights__ConnectionString"] if enable_application_insights? %>
+    <%= tag :meta, name: "google-tag-manager-connection", content: ENV["GOOGLE_TAG_MANAGER_ID"] if enable_google_tag_manager? %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -22,11 +23,11 @@
     <%= stylesheet_link_tag "application" %>
 
     <%= javascript_include_tag "application-insights" if enable_application_insights? %>
+    <%= javascript_include_tag "google-tag-manager" if enable_google_tag_manager? %>
     <%= javascript_include_tag "govuk-frontend/govuk/all" %>
     <%= javascript_include_tag "dfefrontend" %>
     <%= javascript_include_tag "application", defer: true %>
 
-    <%= render partial: "shared/google_tag_manager" if enable_google_tag_manager? %>
   </head>
 
   <body class="govuk-template__body ">
