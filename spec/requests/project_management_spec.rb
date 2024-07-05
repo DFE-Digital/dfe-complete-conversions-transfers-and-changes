@@ -16,10 +16,7 @@ RSpec.describe "Project management" do
 
       it "shows the new project buttons" do
         get in_progress_your_projects_path
-        expect(response.body).to include(I18n.t("conversion_project.new.title"))
-        expect(response.body).to include(I18n.t("conversion_project.form_a_mat.new.title"))
-        expect(response.body).to include(I18n.t("transfer_project.new.title"))
-        expect(response.body).to include(I18n.t("transfer_project.form_a_mat.new.title"))
+        expect(response.body).to include(I18n.t("new_project_form.button"))
       end
     end
 
@@ -33,10 +30,7 @@ RSpec.describe "Project management" do
 
       it "shows the new project buttons" do
         get in_progress_your_projects_path
-        expect(response.body).to include(I18n.t("conversion_project.new.title"))
-        expect(response.body).to include(I18n.t("conversion_project.form_a_mat.new.title"))
-        expect(response.body).to include(I18n.t("transfer_project.new.title"))
-        expect(response.body).to include(I18n.t("transfer_project.form_a_mat.new.title"))
+        expect(response.body).to include(I18n.t("new_project_form.button"))
       end
     end
 
@@ -53,10 +47,7 @@ RSpec.describe "Project management" do
 
       it "does not show the new project buttons" do
         get in_progress_your_projects_path
-        expect(response.body).not_to include(I18n.t("conversion_project.new.title"))
-        expect(response.body).not_to include(I18n.t("conversion_project.form_a_mat.new.title"))
-        expect(response.body).not_to include(I18n.t("transfer_project.new.title"))
-        expect(response.body).not_to include(I18n.t("transfer_project.form_a_mat.new.title"))
+        expect(response.body).not_to include(I18n.t("new_project_form.button"))
       end
     end
   end

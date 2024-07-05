@@ -5,7 +5,6 @@ RSpec.feature "Users can create new conversion projects" do
 
   before do
     sign_in_with_user(regional_delivery_officer)
-    visit conversions_new_path
   end
 
   context "when the URN and UKPRN are valid" do
@@ -16,6 +15,10 @@ RSpec.feature "Users can create new conversion projects" do
     before { mock_successful_api_responses(urn: urn, ukprn: ukprn) }
 
     scenario "a new project is created" do
+      visit new_project_path
+      choose "Conversion"
+      click_button "Continue"
+
       fill_in_form
 
       click_button("Continue")
@@ -30,6 +33,10 @@ RSpec.feature "Users can create new conversion projects" do
     end
 
     scenario "there is an option to assign the project to the Regional Caseworker Team" do
+      visit new_project_path
+      choose "Conversion"
+      click_button "Continue"
+
       expect(page).to have_content(I18n.t("helpers.hint.conversion_project.assigned_to_regional_caseworker_team"))
     end
   end

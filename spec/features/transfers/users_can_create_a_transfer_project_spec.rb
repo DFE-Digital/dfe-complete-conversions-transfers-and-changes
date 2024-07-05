@@ -20,6 +20,10 @@ RSpec.feature "Users can create new transfer projects" do
       before { mock_all_academies_api_responses }
 
       scenario "a new project is created" do
+        visit new_project_path
+        choose "Transfer"
+        click_button "Continue"
+
         fill_in_form
 
         click_button("Continue")
@@ -31,6 +35,11 @@ RSpec.feature "Users can create new transfer projects" do
 
     context "when required values are not supplied" do
       scenario "error messages are shown to the user" do
+        visit new_project_path
+        choose "Transfer"
+
+        click_button "Continue"
+
         click_button("Continue")
 
         expect(page).to have_content("There is a problem")
@@ -55,6 +64,10 @@ RSpec.feature "Users can create new transfer projects" do
       before { mock_all_academies_api_responses }
 
       scenario "a new project is created" do
+        visit new_project_path
+        choose "Form a MAT transfer"
+        click_button "Continue"
+
         fill_in_form
 
         click_button("Continue")
@@ -66,6 +79,10 @@ RSpec.feature "Users can create new transfer projects" do
 
     context "when required values are not supplied" do
       scenario "error messages are shown to the user" do
+        visit new_project_path
+        choose "Form a MAT transfer"
+        click_button "Continue"
+
         click_button("Continue")
 
         expect(page).to have_content("There is a problem")
