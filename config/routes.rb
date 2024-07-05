@@ -86,7 +86,7 @@ Rails.application.routes.draw do
   # A project
   constraints(id: VALID_UUID_REGEX) do
     resources :projects,
-      only: %i[show],
+      only: %i[new create show],
       concerns: %i[
         taskable
         external_contactable

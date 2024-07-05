@@ -6,6 +6,16 @@ RSpec.describe ProjectsController, type: :request do
     sign_in_with(user)
   end
 
+  describe "#create" do
+    let(:user) { create(:user, :caseworker) }
+    it "returns 404 not found if the passed project type is unknown" do
+      post projects_path(params: {new_project_form: {project_type: "unknown"}})
+
+      expect(response).to render_template "pages/page_not_found"
+      expect(response).to have_http_status(:not_found)
+    end
+  end
+
   describe "#show" do
     let(:user) { create(:user, :team_leader) }
 
