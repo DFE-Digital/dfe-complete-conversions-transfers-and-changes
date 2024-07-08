@@ -9,6 +9,8 @@ Rails.application.configure do
     policy.default_src :self
     policy.script_src :self,
       "www.googletagmanager.com"
+    policy.img_src :self,
+      "www.googletagmanager.com"
     policy.connect_src :self,
       "region1.google-analytics.com",
       "https://js.monitor.azure.com",
