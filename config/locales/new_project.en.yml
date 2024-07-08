@@ -1,0 +1,19 @@
+en:
+  new_project_form:
+    title: New project
+    button: Add a project
+  helpers:
+    legend:
+      new_project_form:
+        project_type: Choose project type
+  project_types:
+    names:
+      conversion: Conversion
+      transfer: Transfer
+      form_a_mat_conversion: Form a MAT conversion
+      form_a_mat_transfer: Form a MAT transfer
+    descriptions:
+      conversion: A local authority school becomes an academy and joins an existing trust
+      transfer: An academy moves to a different trust that already exists
+      form_a_mat_conversion: A local authority school becomes an academy and joins a brand new multi-academy trust
+      form_a_mat_transfer: An academy moves from an existing trust to a brand new multi-academy trust

@@ -1,19 +1,7 @@
 <% if policy(:project).new? %>
   <div class="govuk-button-group">
-    <%= link_to t("conversion_project.new.title"),
-          conversions_new_path,
-          class: "govuk-button",
-          data: {module: "govuk-button"} %>
-    <%= link_to t("conversion_project.form_a_mat.new.title"),
-          conversions_new_mat_path,
-          class: "govuk-button",
-          data: {module: "govuk-button"} %>
-    <%= link_to t("transfer_project.new.title"),
-          transfers_new_path,
-          class: "govuk-button",
-          data: {module: "govuk-button"} %>
-    <%= link_to t("transfer_project.form_a_mat.new.title"),
-          transfers_new_mat_path,
+    <%= link_to t("new_project_form.button"),
+          new_project_path,
           class: "govuk-button",
           data: {module: "govuk-button"} %>
   </div>
