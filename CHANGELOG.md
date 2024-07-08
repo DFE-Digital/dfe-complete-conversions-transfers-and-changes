@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-78][release-78]
+
 ### Changed
 
 - when changing the significant date for a conversion or transfer project the
@@ -2045,7 +2047,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-77...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-78...HEAD
+[release-78]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-77...release-78
 [release-77]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-76...release-77
 [release-76]:
