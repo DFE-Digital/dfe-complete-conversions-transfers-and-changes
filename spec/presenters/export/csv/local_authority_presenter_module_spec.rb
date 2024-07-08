@@ -37,18 +37,6 @@ RSpec.describe Export::Csv::LocalAuthorityPresenterModule do
     expect(subject.local_authority_contact_email).to eql "jake@example.com"
   end
 
-  context "when there is more than one local authority contact" do
-    let!(:local_authority_main_contact) { create(:project_contact, category: "local_authority", name: "Bob Contact", email: "local_authority_contact@email.com", project: project) }
-
-    it "presents the local authority contact names" do
-      expect(subject.local_authority_contact_name).to eql "Bob Contact,Jake Example"
-    end
-
-    it "presents the local authority contact emails" do
-      expect(subject.local_authority_contact_email).to eql "local_authority_contact@email.com,jake@example.com"
-    end
-  end
-
   def known_local_authority
     double(
       LocalAuthority,

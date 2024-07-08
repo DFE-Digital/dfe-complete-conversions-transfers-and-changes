@@ -5,8 +5,8 @@ class ContactsFetcherService
     @project = project
     @project_contacts = @project.contacts
     @establishment_contacts = Contact::Establishment.find_by(establishment_urn: @project.urn)
-    @all_contacts = all_project_contacts_grouped
     @director_of_child_services = @project.director_of_child_services
+    @all_contacts = all_project_contacts_grouped
   end
 
   def all_project_contacts
@@ -53,6 +53,16 @@ class ContactsFetcherService
       @all_contacts["incoming_trust"].find { |c| c.id == @project.incoming_trust_main_contact_id }
     else
       @all_contacts["incoming_trust"].first
+    end
+  end
+
+  def local_authority_contact
+    return if @all_contacts["local_authority"].nil?
+
+    if @project.local_authority_main_contact_id.present?
+      @all_contacts["local_authority"].find { |c| c.id == @project.local_authority_main_contact_id }
+    else
+      @all_contacts["local_authority"].first
     end
   end
 
