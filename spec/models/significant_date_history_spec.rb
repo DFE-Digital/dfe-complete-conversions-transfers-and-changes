@@ -7,7 +7,6 @@ RSpec.describe SignificantDateHistory do
   end
 
   describe "Associations" do
-    it { is_expected.to have_one(:note).dependent(:destroy) }
     it { is_expected.to have_many(:reasons).order(:reason_type).dependent(:destroy).class_name("SignificantDateHistoryReason") }
     it { is_expected.to belong_to(:project).required(true) }
     it { is_expected.to belong_to(:user) }

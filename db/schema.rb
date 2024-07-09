@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_09_090855) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_09_115448) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -261,7 +261,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_09_090855) do
     t.datetime "updated_at", null: false
     t.string "task_identifier"
     t.uuid "notable_id"
-    t.uuid "significant_date_history_id"
     t.string "notable_type"
     t.index ["notable_id", "notable_type"], name: "index_notes_on_notable_id_and_notable_type"
     t.index ["project_id"], name: "index_notes_on_project_id"
