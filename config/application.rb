@@ -46,6 +46,6 @@ module DfeCompleteConversionsTransfersAndChanges
     # set the X-Frame-Options header
     config.action_dispatch.default_headers["X-Frame-Options"] = "DENY"
     # set the HSTS header
-    config.action_dispatch.default_headers["Strict-Transport-Security"] = "preload"
+    config.action_dispatch.default_headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
   end
 end
