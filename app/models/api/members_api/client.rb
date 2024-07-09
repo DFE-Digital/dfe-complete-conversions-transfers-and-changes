@@ -37,6 +37,31 @@ class Api::MembersApi::Client
     Result.new(nil, Error.new(I18n.t("members_api.errors.contact_details_not_found", member_id: member_id)))
   end
 
+  def member_for_postcode(postcode)
+    response = postcode_search(postcode)
+
+    case response.status
+    when 200
+      result = JSON.parse(response.body)["items"]
+
+      return Result.new(nil, MultipleResultsError.new(I18n.t("members_api.errors.multiple", search_term: postcode))) if result.count > 1
+      return Result.new(nil, NotFoundError.new(I18n.t("members_api.errors.postcode_not_found", postcode: postcode))) if result.count == 0
+
+      build_postcode_result(result)
+    when 404
+      Result.new(nil, NotFoundError.new(I18n.t("members_api.errors.postcode_not_found", postcode: postcode)))
+    else
+      Result.new(nil, Error.new(I18n.t("members_api.errors.other", status: response.status, search_term: postcode)))
+    end
+  end
+
+  private def build_postcode_result(result)
+    member_name = Api::MembersApi::MemberName.new.from_hash(result[0]["value"])
+    contact_details = member_contact_details(member_name.id).object
+
+    Result.new(Api::MembersApi::MemberDetails.new(member_name, contact_details), nil)
+  end
+
   def member_id(search_term)
     constituency_data = constituency(search_term)
     if constituency_data.error.present?
@@ -83,6 +108,12 @@ class Api::MembersApi::Client
 
   private def constituency_search(search_term)
     @connection.get("/api/Location/Constituency/Search", {searchText: search_term})
+  rescue Faraday::Error => error
+    raise Error.new(error)
+  end
+
+  private def postcode_search(search_term)
+    @connection.get("/api/Members/Search", {Location: search_term, House: 1, IsCurrentMember: true})
   rescue Faraday::Error => error
     raise Error.new(error)
   end
