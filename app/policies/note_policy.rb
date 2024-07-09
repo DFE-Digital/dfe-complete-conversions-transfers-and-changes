@@ -18,7 +18,7 @@ class NotePolicy
   end
 
   def destroy?
-    return false if @note.significant_date_history_id.present?
+    return false if @note.notable.present?
 
     edit?
   end

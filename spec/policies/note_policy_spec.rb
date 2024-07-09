@@ -35,8 +35,8 @@ RSpec.describe NotePolicy do
   context "when the note is from a conversion date history" do
     permissions :edit?, :update? do
       it "allows if the note is from a date history" do
-        note = build(:note, :for_significant_date_history, user: application_user)
-        allow(note).to receive(:significant_date_history_id).and_return("uuid")
+        note = build(:note, :for_significant_date_history_reason, user: application_user)
+        allow(note).to receive(:notable_id).and_return("uuid")
 
         expect(subject).to permit(application_user, note)
       end
@@ -44,8 +44,8 @@ RSpec.describe NotePolicy do
 
     permissions :destroy? do
       it "denies all actions if the note is from a date history" do
-        note = build(:note, :for_significant_date_history, user: application_user)
-        allow(note).to receive(:significant_date_history_id).and_return("uuid")
+        note = build(:note, :for_significant_date_history_reason, user: application_user)
+        allow(note).to receive(:notable_id).and_return("uuid")
 
         expect(subject).not_to permit(application_user, note)
       end

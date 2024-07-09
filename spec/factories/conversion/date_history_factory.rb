@@ -8,7 +8,7 @@ FactoryBot.define do
   end
 
   factory :date_history_reason, class: SignificantDateHistoryReason do
-    significant_date_history { association :conversion_date_history }
+    significant_date_history { association :date_history }
     reason_type { :legacy_reason }
     note { association :note }
   end
