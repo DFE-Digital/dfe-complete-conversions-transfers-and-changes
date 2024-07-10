@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_09_115448) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_09_143301) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -157,6 +157,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_09_115448) do
     t.boolean "receive_grant_payment_certificate_check_certificate"
     t.date "confirm_date_academy_opened_date_opened"
     t.string "risk_protection_arrangement_reason"
+  end
+
+  create_table "dao_revocation_reasons", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.uuid "dao_revocation_id"
+    t.string "reason_type"
+    t.index ["dao_revocation_id"], name: "index_dao_revocation_reasons_on_dao_revocation_id"
   end
 
   create_table "dao_revocations", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
