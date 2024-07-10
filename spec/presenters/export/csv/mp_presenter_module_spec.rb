@@ -33,7 +33,7 @@ RSpec.describe Export::Csv::MpPresenterModule do
   end
 
   it "presents nil values when there is no MP to show" do
-    mock_nil_member_for_constituency_response
+    mock_nil_member_for_postcode_response
     mock_all_academies_api_responses
 
     project = build(:conversion_project)

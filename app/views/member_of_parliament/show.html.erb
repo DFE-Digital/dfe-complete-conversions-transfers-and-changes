@@ -11,15 +11,15 @@
   <%= govuk_summary_list do |summary_list|
         summary_list.with_row do |row|
           row.with_key { t("member_of_parliament.show.rows.full_title") }
-          row.with_value { @member_name.object.name_full_title }
+          row.with_value { @member_of_parliament.name }
         end
         summary_list.with_row do |row|
           row.with_key { t("member_of_parliament.show.rows.email") }
-          row.with_value { mail_to(@member_email, @member_email) }
+          row.with_value { mail_to(@member_of_parliament.email, @member_of_parliament.email) }
         end
         summary_list.with_row do |row|
           row.with_key { t("member_of_parliament.show.rows.parliamentary_office") }
-          row.with_value { address_markup(@parliamentary_office.address) }
+          row.with_value { address_markup(@parliamentary_office) }
         end
       end %>
 </div>

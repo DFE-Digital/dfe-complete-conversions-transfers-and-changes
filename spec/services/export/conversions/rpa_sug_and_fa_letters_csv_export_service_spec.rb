@@ -13,7 +13,7 @@ RSpec.describe Export::Conversions::RpaSugAndFaLettersCsvExportService do
 
     it "returns a row of data" do
       mock_all_academies_api_responses
-      mock_successful_members_api_responses(member_name: build(:members_api_name), member_contact_details: [build(:members_api_contact_details)])
+      mock_successful_members_api_postcode_search_response(member_contact_details: nil, member_name: nil)
       project = build(:conversion_project)
       projects = [project]
 

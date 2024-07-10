@@ -19,28 +19,28 @@ RSpec.describe MemberOfParliamentController, type: :request do
 
     context "when the Member of Parliament is found" do
       before do
-        mock_successful_members_api_responses(member_name: member_name, member_contact_details: member_parliamentary_office)
+        mock_successful_members_api_postcode_search_response(member_name: member_name, member_contact_details: member_parliamentary_office)
         perform_request
       end
 
       subject { response.body }
 
       it "returns the MP's name" do
-        expect(subject).to include(member_name.name_full_title)
-      end
-
-      it "returns the MP's address formatted correctly" do
-        expect(subject).to include("#{member_parliamentary_office.line1}<br/>#{member_parliamentary_office.line2}<br/>#{member_parliamentary_office.postcode}")
+        expect(subject).to include(member_name.name_display_as)
       end
 
       it "returns the MP's email address as a mailto link" do
         expect(subject).to include('<a href="mailto:jane.smith.mp@parliament.uk">jane.smith.mp@parliament.uk</a>')
       end
+
+      it "returns the House of Commons address" do
+        expect(subject).to include("House of Commons<br/>London")
+      end
     end
 
-    context "when the constituency search returns multiple results" do
+    context "when the postcode search returns multiple results" do
       before do
-        mock_members_api_multiple_constituencies_response
+        mock_members_api_multiple_postcodes_response
         perform_request
       end
 
@@ -53,10 +53,7 @@ RSpec.describe MemberOfParliamentController, type: :request do
 
     context "when the Member of Parliament is not found" do
       before do
-        mock_successful_constituency_search_response
-        mock_successful_member_id_response
         mock_member_not_found_response
-        mock_contact_details_not_found_response
         perform_request
       end
 

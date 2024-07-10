@@ -388,7 +388,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "returns nil when the API returns nothing" do
-      mock_nil_member_for_constituency_response
+      mock_nil_member_for_postcode_response
 
       project = build(:conversion_project)
       allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
@@ -404,7 +404,7 @@ RSpec.describe Project, type: :model do
         telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
         allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
 
-        mock_nil_member_for_constituency_response
+        mock_nil_member_for_postcode_response
 
         project = build(:conversion_project)
         allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))

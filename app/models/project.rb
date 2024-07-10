@@ -144,7 +144,7 @@ class Project < ApplicationRecord
 
   # :nocov:
   private def fetch_member_of_parliament
-    result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
+    result = Api::MembersApi::Client.new.member_for_postcode(establishment.address_postcode)
 
     if result.error.present?
       track_event(result.error.message)

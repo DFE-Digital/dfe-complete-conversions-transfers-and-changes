@@ -5,47 +5,27 @@ class MemberOfParliamentController < ApplicationController
   rescue_from Api::MembersApi::Client::Error, with: :members_api_client_error
 
   def show
-    @member_name = fetch_member_name
-    @member_email = contact_details.email
-    @parliamentary_office = contact_details
+    @member_of_parliament = member_of_parliament
+    @parliamentary_office = parliamentary_office
+  end
+
+  private def postcode
+    @project.establishment.address_postcode
+  end
+
+  private def member_of_parliament
+    result = client.member_for_postcode(postcode)
+    raise result.error if result.error.present?
+
+    result.object
+  end
+
+  private def parliamentary_office
+    @member_of_parliament.address.to_h.map { |_k, value| value }
   end
 
   private def client
     @client ||= Api::MembersApi::Client.new
-  end
-
-  private def constituency
-    @constituency ||= @project.establishment.parliamentary_constituency
-  end
-
-  private def member_id
-    @member_id ||= fetch_member_id
-  end
-
-  private def member_contact_details
-    @member_contact_details ||= fetch_member_contact_details
-  end
-
-  private def fetch_member_id
-    result = client.member_id(constituency)
-    raise result.error if result.error.present?
-    result.object
-  end
-
-  private def fetch_member_name
-    result = client.member_name(member_id)
-    raise result.error if result.error.present?
-    result
-  end
-
-  private def fetch_member_contact_details
-    result = client.member_contact_details(member_id)
-    raise result.error if result.error.present?
-    result
-  end
-
-  private def contact_details
-    member_contact_details.object
   end
 
   private def find_project
