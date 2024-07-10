@@ -34,15 +34,4 @@ class Api::MembersApi::MemberContactDetails < Api::BaseApiModel
       email: "email"
     }
   end
-
-  def address
-    [
-      line1,
-      line2,
-      line3,
-      line4,
-      line5,
-      postcode
-    ]
-  end
 end
