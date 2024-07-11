@@ -103,6 +103,9 @@ en:
         reason_school_closed: School closed or closing
         reason_school_rating_improved: School rated good or outstanding
         reason_safeguarding_addressed: Safeguarding concerns addressed
+        reason_school_closed_note: Details
+        reason_school_rating_improved_note: Details
+        reason_safeguarding_addressed_note: Details
         minister_name: Minister’s name
     hint:
       dao_revocation_stepped_form:

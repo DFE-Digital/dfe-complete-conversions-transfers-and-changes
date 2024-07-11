@@ -1,15 +1,16 @@
 class DaoRevocation < ApplicationRecord
   belongs_to :project
+  has_many :reasons,
+    -> { order :reason_type },
+    foreign_key: :dao_revocation_id,
+    class_name: "DaoRevocationReason",
+    dependent: :destroy
+  has_many :notes, through: :reasons
 
   validates :date_of_decision, :decision_makers_name, presence: true
   validate :conversion_project_with_dao
-  validate :at_least_one_reason
 
   after_destroy :update_project_state
-
-  private def at_least_one_reason
-    errors.add(:base, :reason_required) unless reason_school_closed || reason_school_rating_improved || reason_safeguarding_addressed
-  end
 
   private def conversion_project_with_dao
     errors.add(:base, :incorrect_project_type) unless project.is_a?(Conversion::Project) && project.directive_academy_order

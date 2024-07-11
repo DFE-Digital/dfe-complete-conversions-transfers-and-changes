@@ -29,7 +29,15 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
     expect(page).to have_content "Why was the DAO revoked?"
 
     check "School closed or closing"
+    within "#dao-revocation-stepped-form-reason-school-closed-1-conditional" do
+      fill_in "Details", with: "Details of school closing."
+    end
+
     check "Safeguarding concerns addressed"
+    within "#dao-revocation-stepped-form-reason-safeguarding-addressed-1-conditional" do
+      fill_in "Details", with: "Details of safeguarding concerns addressed."
+    end
+
     click_button "Continue"
 
     expect(page).to have_content "Minister’s name"
@@ -69,7 +77,15 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
     expect(page).to have_content "Why was the DAO revoked?"
 
     check "School closed or closing"
+    within "#dao-revocation-stepped-form-reason-school-closed-1-conditional" do
+      fill_in "Details", with: "Details of school closing."
+    end
+
     check "Safeguarding concerns addressed"
+    within "#dao-revocation-stepped-form-reason-safeguarding-addressed-1-conditional" do
+      fill_in "Details", with: "Details of safeguarding concerns addressed."
+    end
+
     click_button "Continue"
 
     expect(page).to have_content "Minister’s name"
@@ -140,7 +156,15 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
     click_button "Continue"
 
     check "School closed or closing"
+    within "#dao-revocation-stepped-form-reason-school-closed-1-conditional" do
+      fill_in "Details", with: "Details of school closing."
+    end
+
     check "Safeguarding concerns addressed"
+    within "#dao-revocation-stepped-form-reason-safeguarding-addressed-1-conditional" do
+      fill_in "Details", with: "Details of safeguarding concerns addressed."
+    end
+
     click_button "Continue"
 
     expect(page).to have_content "Minister’s name"

@@ -72,7 +72,7 @@ class DaoRevocationsController < ApplicationController
     authorize @project, :dao_revocation?
     @step_form = DaoRevocationSteppedForm.new(get_store)
 
-    if @step_form.save_to_project(@project)
+    if @step_form.save(@project, current_user)
       delete_store
       redirect_to project_path(@project), notice: I18n.t("dao_revocations.check.successful")
     else
@@ -103,6 +103,9 @@ class DaoRevocationsController < ApplicationController
         :reason_school_closed,
         :reason_school_rating_improved,
         :reason_safeguarding_addressed,
+        :reason_school_closed_note,
+        :reason_school_rating_improved_note,
+        :reason_safeguarding_addressed_note,
         :minister_name,
         :date_of_decision,
         :confirm_minister_approved,

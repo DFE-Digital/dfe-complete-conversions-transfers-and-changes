@@ -5,9 +5,9 @@ RSpec.describe DaoRevocationReason do
     it do
       should define_enum_for(:reason_type)
         .with_values(
-          school_closed: "school_closed",
-          school_rating_improved: "school_rating_improved",
-          safeguarding_addressed: "safeguarding_addressed"
+          reason_school_closed: "school_closed",
+          reason_school_rating_improved: "school_rating_improved",
+          reason_safeguarding_addressed: "safeguarding_addressed"
         )
         .backed_by_column_of_type(:string)
     end

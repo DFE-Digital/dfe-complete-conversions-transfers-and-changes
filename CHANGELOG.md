@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- When revoking a DAO, details for each reason must now be supplied.
+
 ## [Release-78][release-78]
 
 ### Changed

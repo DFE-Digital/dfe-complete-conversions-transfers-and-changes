@@ -258,6 +258,9 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
         reason_school_closed: true,
         reason_school_rating_improved: false,
         reason_safeguarding_addressed: true,
+        reason_school_closed_note: "The reason the school is closing.",
+        reason_school_rating_improved_note: "The school rating improved because.",
+        reason_safeguarding_addressed_note: "The safeguarding concern has been addresses like this.",
         minister_name: "Minister Name",
         date_of_decision: Date.today
       )
@@ -266,37 +269,41 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
         reason_school_closed: "true",
         reason_school_rating_improved: "false",
         reason_safeguarding_addressed: "true",
+        reason_school_closed_note: "The reason the school is closing.",
+        reason_school_rating_improved_note: "The school rating improved because.",
+        reason_safeguarding_addressed_note: "The safeguarding concern has been addresses like this.",
         minister_name: "Minister Name",
         date_of_decision: Date.today.to_s
       })
     end
   end
 
-  describe "#save_to_project" do
+  describe "#save" do
     before do
       mock_all_academies_api_responses
     end
 
     let(:valid_form) do
       described_class.new(
-        reason_school_closed: true,
-        reason_school_rating_improved: false,
-        reason_safeguarding_addressed: true,
+        reason_school_closed_note: "The reason the school is closing.",
+        reason_school_rating_improved_note: "The school rating improved because.",
+        reason_safeguarding_addressed_note: "The safeguarding concern has been addresses like this.",
         minister_name: "Minister Name",
         date_of_decision: Date.today
       )
     end
 
+    let(:user) { create(:user) }
+
     it "creates the DaoRevocation and saves it to the project returning true" do
       project = create(:conversion_project, directive_academy_order: true)
 
-      result = valid_form.save_to_project(project)
+      result = valid_form.save(project, user)
 
       expect(result).to be true
       expect(DaoRevocation.count).to be 1
 
       dao_revocation = DaoRevocation.last
-      expect(dao_revocation.reason_school_closed).to be true
       expect(dao_revocation.decision_makers_name).to eql "Minister Name"
       expect(dao_revocation.date_of_decision).to eql Date.today
     end
@@ -304,7 +311,7 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
     it "updates the project state to dao_revoked" do
       project = create(:conversion_project, directive_academy_order: true)
 
-      valid_form.save_to_project(project)
+      valid_form.save(project, user)
 
       expect(project.reload.state).to eql "dao_revoked"
     end
@@ -312,7 +319,7 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
     it "returns false and adds an error when invalid" do
       project = create(:conversion_project, directive_academy_order: false)
 
-      result = valid_form.save_to_project(project)
+      result = valid_form.save(project, user)
 
       expect(result).to be false
       expect(valid_form.errors.messages_for(:base)).to include "Cannot record DAO revocation, check your answers"

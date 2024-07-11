@@ -6,8 +6,8 @@ class DaoRevocationReason < ApplicationRecord
   validates :reason_type, presence: true
 
   enum :reason_type, {
-    school_closed: "school_closed",
-    school_rating_improved: "school_rating_improved",
-    safeguarding_addressed: "safeguarding_addressed"
+    reason_school_closed: "school_closed",
+    reason_school_rating_improved: "school_rating_improved",
+    reason_safeguarding_addressed: "safeguarding_addressed"
   }
 end

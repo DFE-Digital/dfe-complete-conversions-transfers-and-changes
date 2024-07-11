@@ -13,18 +13,6 @@ RSpec.describe DaoRevocation do
     it { is_expected.to validate_presence_of(:date_of_decision) }
     it { is_expected.to validate_presence_of(:decision_makers_name) }
 
-    describe "#at_least_one_reason" do
-      it "validates that at least one reason is checked" do
-        project = build(:conversion_project, directive_academy_order: true)
-        decision = described_class.new(date_of_decision: Date.today, decision_makers_name: "Bob Smith", project: project)
-        expect(decision.valid?).to be false
-        expect(decision.errors[:base]).to include("You must select at least one reason")
-
-        decision = described_class.new(date_of_decision: Date.today, decision_makers_name: "Bob Smith", project: project, reason_school_closed: true)
-        expect(decision.valid?).to be true
-      end
-    end
-
     describe "#conversion_project_with_dao" do
       it "is invalid if it is associated with a transfer project" do
         project = build(:transfer_project)
@@ -44,6 +32,7 @@ RSpec.describe DaoRevocation do
 
   describe "Associations" do
     it { is_expected.to belong_to(:project) }
+    it { is_expected.to have_many(:reasons).order(:reason_type) }
   end
 
   describe "Callbacks" do
