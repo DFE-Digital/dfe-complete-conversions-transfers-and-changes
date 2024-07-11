@@ -13,6 +13,7 @@ class Contact < ApplicationRecord
     local_authority: 3,
     solicitor: 5,
     diocese: 4,
+    member_of_parliament: 7,
     other: 0
   }
 
