@@ -61,7 +61,7 @@ RSpec.describe Api::MembersApi::Client do
 
       it "does not try to get the contact details" do
         client.member_for_postcode("W1A1AA")
-        expect(client).to_not receive(:member_contact)
+        expect(client).to_not receive(:contact_details_search)
       end
     end
 

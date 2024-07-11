@@ -37,7 +37,7 @@ class Api::MembersApi::Client
   end
 
   def member_contact_details(member_id)
-    response = member_contact(member_id)
+    response = contact_details_search(member_id)
 
     case response.status
     when 200
@@ -57,7 +57,7 @@ class Api::MembersApi::Client
     raise Error.new(error)
   end
 
-  private def member_contact(member_id)
+  private def contact_details_search(member_id)
     @connection.get("/api/Members/#{member_id}/Contact")
   rescue Faraday::Error => error
     raise Error.new(error)
