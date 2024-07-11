@@ -5,6 +5,8 @@ class DaoRevocationsController < ApplicationController
   before_action :redirect_if_project_revoked
   before_action :redirect_if_invalid_step, only: %i[step update_step change_step update_change_step]
 
+  STEPPED_FORM_STORE_TIMEOUT = ENV.fetch("STEPPED_FORM_STORE_TIMEOUT", 1)
+
   def start
     authorize @project, :dao_revocation?
   end
@@ -12,7 +14,7 @@ class DaoRevocationsController < ApplicationController
   def step
     authorize @project, :dao_revocation?
     if requested_step.eql?(DaoRevocationSteppedForm.first_step)
-      delete_session
+      delete_store
     end
 
     @step_form = DaoRevocationSteppedForm.new
@@ -22,11 +24,11 @@ class DaoRevocationsController < ApplicationController
 
   def update_step
     authorize @project, :dao_revocation?
-    @step_form = DaoRevocationSteppedForm.new(get_session)
+    @step_form = DaoRevocationSteppedForm.new(get_store)
     @step_form.assign_attributes(dao_revocations_params.to_h)
 
     if @step_form.valid?(requested_step)
-      set_session(@step_form.to_h)
+      set_store(@step_form.to_h)
 
       if requested_step.eql?(DaoRevocationSteppedForm.last_step)
         redirect_to project_dao_revocation_check_path(@project)
@@ -40,18 +42,18 @@ class DaoRevocationsController < ApplicationController
 
   def change_step
     authorize @project, :dao_revocation?
-    @step_form = DaoRevocationSteppedForm.new(get_session)
+    @step_form = DaoRevocationSteppedForm.new(get_store)
 
     render "change_#{requested_step}"
   end
 
   def update_change_step
     authorize @project, :dao_revocation?
-    @step_form = DaoRevocationSteppedForm.new(get_session)
+    @step_form = DaoRevocationSteppedForm.new(get_store)
     @step_form.assign_attributes(dao_revocations_params.to_h)
 
     if @step_form.valid?(requested_step)
-      set_session(@step_form.to_h)
+      set_store(@step_form.to_h)
 
       redirect_to project_dao_revocation_check_path(@project)
     else
@@ -61,37 +63,37 @@ class DaoRevocationsController < ApplicationController
 
   def check
     authorize @project, :dao_revocation?
-    @step_form = DaoRevocationSteppedForm.new(get_session)
+    @step_form = DaoRevocationSteppedForm.new(get_store)
 
     redirect_to project_dao_revocation_start_path(@project) unless @step_form.checkable?
   end
 
   def save
     authorize @project, :dao_revocation?
-    @step_form = DaoRevocationSteppedForm.new(get_session)
+    @step_form = DaoRevocationSteppedForm.new(get_store)
 
     if @step_form.save_to_project(@project)
-      delete_session
+      delete_store
       redirect_to project_path(@project), notice: I18n.t("dao_revocations.check.successful")
     else
       render :check
     end
   end
 
-  private def set_session(values)
-    session[session_key] = values
+  private def set_store(values)
+    Rails.cache.write(store_key, values, expires_in: STEPPED_FORM_STORE_TIMEOUT.hour)
   end
 
-  private def get_session
-    session[session_key]
+  private def get_store
+    Rails.cache.read(store_key)
   end
 
-  private def delete_session
-    session.delete(session_key)
+  private def delete_store
+    Rails.cache.delete(store_key)
   end
 
-  private def session_key
-    "dao_revocation_#{@project.id}"
+  private def store_key
+    "dao_revocation:project_#{@project.id}:user_#{current_user.id}"
   end
 
   private def dao_revocations_params

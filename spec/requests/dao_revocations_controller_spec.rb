@@ -58,21 +58,21 @@ RSpec.describe DaoRevocationsController, type: :request do
 
       post project_dao_revocation_update_step_path(project, :minister, params: valid_params)
 
-      expect(session["dao_revocation_#{project.id}"]).to be_truthy
+      expect(cache_store_value(project, user)).to be_truthy
 
       get project_dao_revocation_step_path(project, :confirm)
 
-      expect(session["dao_revocation_#{project.id}"]).to be_nil
+      expect(cache_store_value(project, user)).to be_nil
     end
   end
 
   describe "#update_step" do
-    it "sets the values in the session when the form is valid" do
+    it "sets the values in the cache when the form is valid" do
       valid_params = {dao_revocation_stepped_form: {minister_name: "Minister Name"}}
 
       post project_dao_revocation_update_step_path(project, :minister, params: valid_params)
 
-      expect(session["dao_revocation_#{project.id}"]).to eql(
+      expect(cache_store_value(project, user)).to eql(
         {
           reason_school_closed: "",
           reason_school_rating_improved: "",
@@ -125,7 +125,7 @@ RSpec.describe DaoRevocationsController, type: :request do
   end
 
   describe "#update_change_step" do
-    it "sets the values in the session when the form is valid" do
+    it "sets the values in the cache when the form is valid" do
       valid_params = {dao_revocation_stepped_form: {minister_name: "Incorrect Name"}}
 
       post project_dao_revocation_update_step_path(project, :minister, params: valid_params)
@@ -134,7 +134,7 @@ RSpec.describe DaoRevocationsController, type: :request do
 
       patch project_dao_revocation_update_change_step_path(project, :minister, params: valid_params)
 
-      expect(session["dao_revocation_#{project.id}"]).to eql(
+      expect(cache_store_value(project, user)).to eql(
         {
           reason_school_closed: "",
           reason_school_rating_improved: "",
@@ -184,14 +184,14 @@ RSpec.describe DaoRevocationsController, type: :request do
     it "gets the stored values" do
       get project_dao_revocation_check_path(project)
 
-      expect(session["dao_revocation_#{project.id}"]).to eql(
+      expect(cache_store_value(project, user)).to eql(
         {
           reason_school_closed: "true",
           reason_school_rating_improved: "false",
           reason_safeguarding_addressed: "false",
           minister_name: "Minister Name",
           date_of_decision: "2024-01-01"
-        }.with_indifferent_access
+        }
       )
     end
 
@@ -239,7 +239,7 @@ RSpec.describe DaoRevocationsController, type: :request do
     it "deletes the stored values" do
       post project_dao_revocation_check_path(project)
 
-      expect(session["dao_revocation_#{project.id}"]).to be_nil
+      expect(cache_store_value(project, user)).to be_nil
     end
 
     it "redirects to the project task page" do
@@ -256,5 +256,9 @@ RSpec.describe DaoRevocationsController, type: :request do
       expect(response).to render_template "check"
       expect(response.body).to include "Cannot record DAO revocation, check your answers"
     end
+  end
+
+  def cache_store_value(project, user)
+    Rails.cache.read("dao_revocation:project_#{project.id}:user_#{user.id}")
   end
 end
