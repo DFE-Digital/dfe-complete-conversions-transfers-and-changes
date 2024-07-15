@@ -40,7 +40,10 @@ module DfeCompleteConversionsTransfersAndChanges
 
     config.support_email = "regionalservices.rg@education.gov.uk"
 
-    # use the cookie session and set the name of the cookie
+    # setup Redis cache in all environments
+    config.cache_store = :redis_cache_store, {url: ENV["REDIS_URL"]}
+
+    # use the cookies for the session and set the name of the cookie
     config.session_store :cookie_store, key: "SESSION"
 
     # set the X-Frame-Options header
