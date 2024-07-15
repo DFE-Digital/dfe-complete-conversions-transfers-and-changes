@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- If a project is not assigned to RCS on creation, the assigned user can edit
+  the project in the usual way and assign it to RCS, along with adding a
+  handover note
 - Use of ADOP change to AOPU
 
 ## [Release-79][release-79]

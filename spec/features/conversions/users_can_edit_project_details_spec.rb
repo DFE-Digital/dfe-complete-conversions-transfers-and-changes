@@ -173,4 +173,33 @@ RSpec.feature "Users can edit conversion project details" do
       expect(page).to have_content("No")
     end
   end
+
+  scenario "they can hand the project over to RCS" do
+    visit project_information_path(project)
+
+    row = find("#assignment .govuk-summary-list__row:nth-child(1)")
+
+    within(row) do
+      expect(page).to have_content("No")
+      click_link "Change"
+    end
+
+    within("#project-assignment") do
+      choose("Yes")
+    end
+
+    fill_in "Handover comments", with: "Handover reasons go here"
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("Yes")
+    end
+
+    expect(project.reload.assigned_to).to be_nil
+    expect(project.team).to eql("regional_casework_services")
+    expect(project.notes.find_by(task_identifier: :handover).body).to eq("Handover reasons go here")
+
+    expect(page).to have_content "Not assigned to project"
+  end
 end

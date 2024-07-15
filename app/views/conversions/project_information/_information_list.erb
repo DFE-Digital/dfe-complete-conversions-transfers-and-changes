@@ -2,6 +2,8 @@
 
 <%= render partial: "shared/project_information/project_details", locals: { project: @project } %>
 
+<%= render partial: "assignment", locals: { project: @project } %>
+
 <%= render partial: "reasons_for_conversion", locals: { project: @project } %>
 
 <%= render partial: "shared/project_information/advisory_board_details", locals: { project: @project } %>

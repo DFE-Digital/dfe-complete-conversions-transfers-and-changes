@@ -49,6 +49,17 @@
               form_group: {id: "outgoing-trust-to-close"} %>
       </div>
 
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :assigned_to_regional_caseworker_team,
+              yes_no_responses,
+              :id,
+              :name,
+              legend: {text: t("helpers.hint.conversion_project.assigned_to_regional_caseworker_team")},
+              form_group: {id: "project-assignment"} %>
+        <%= form.govuk_text_area :handover_note_body,
+              label: {text: t("project.new.handover_comments_label"), size: "m"} %>
+      </div>
+
       <%= form.govuk_submit do %>
         <%= govuk_link_to "Cancel", project_information_path(@project) %>
       <% end %>

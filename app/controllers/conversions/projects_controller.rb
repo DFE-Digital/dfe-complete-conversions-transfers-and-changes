@@ -44,12 +44,12 @@ class Conversions::ProjectsController < ProjectsController
 
   def edit
     authorize project
-    @project_form = Conversion::EditProjectForm.new_from_project(project)
+    @project_form = Conversion::EditProjectForm.new_from_project(project, current_user)
   end
 
   def update
     authorize project
-    @project_form = Conversion::EditProjectForm.new_from_project(project)
+    @project_form = Conversion::EditProjectForm.new_from_project(project, current_user)
 
     if @project_form.update(edit_project_params)
       redirect_to project_information_path(project), notice: I18n.t("project.update.success")
@@ -70,7 +70,9 @@ class Conversions::ProjectsController < ProjectsController
       :advisory_board_date,
       :advisory_board_conditions,
       :directive_academy_order,
-      :two_requires_improvement
+      :two_requires_improvement,
+      :assigned_to_regional_caseworker_team,
+      :handover_note_body
     )
   end
 

@@ -27,6 +27,12 @@ en:
           title: Reasons for the conversion
         transfer:
           title: Reasons for the transfer
+        handing_over:
+          title: Are you handing this project over to RCS (Regional Casework Services)?
+          "true": "Yes"
+          "false": "No"
+        assignment:
+          title: Project assignment
         directive_academy_order:
           title: Has a directive academy order been issued?
           "true": "Yes"
