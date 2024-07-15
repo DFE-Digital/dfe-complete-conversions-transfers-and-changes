@@ -142,6 +142,10 @@ class Project < ApplicationRecord
     is_a?(Conversion::Project) && directive_academy_order?
   end
 
+  def handover_note
+    notes.find_by(task_identifier: :handover)
+  end
+
   # :nocov:
   private def fetch_member_of_parliament
     result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
