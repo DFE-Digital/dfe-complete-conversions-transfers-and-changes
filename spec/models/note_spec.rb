@@ -9,7 +9,7 @@ RSpec.describe Note, type: :model do
   describe "Relationships" do
     it { is_expected.to belong_to(:project) }
     it { is_expected.to belong_to(:user) }
-    it { is_expected.to belong_to(:significant_date_history).optional(true) }
+    it { is_expected.to belong_to(:notable).optional(true) }
   end
 
   describe "Validations" do
