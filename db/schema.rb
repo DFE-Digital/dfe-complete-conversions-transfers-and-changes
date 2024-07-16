@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_09_143301) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_15_115518) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -170,9 +170,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_09_143301) do
     t.datetime "updated_at", null: false
     t.date "date_of_decision"
     t.string "decision_makers_name"
-    t.boolean "reason_school_closed"
-    t.boolean "reason_school_rating_improved"
-    t.boolean "reason_safeguarding_addressed"
     t.uuid "project_id"
   end
 

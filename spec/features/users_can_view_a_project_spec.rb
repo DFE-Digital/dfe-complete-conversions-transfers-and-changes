@@ -41,7 +41,7 @@ RSpec.feature "Users can view a project" do
 
   context "when the project is a conversion with a DAO revocation" do
     let(:project) { create(:conversion_project, state: :dao_revoked, directive_academy_order: true) }
-    let!(:dao_revocation) { DaoRevocation.create!(project_id: project.id, date_of_decision: Date.today, decision_makers_name: "Minister Name", reason_school_closed: true) }
+    let!(:dao_revocation) { DaoRevocation.create!(project_id: project.id, date_of_decision: Date.today, decision_makers_name: "Minister Name") }
 
     scenario "they can see the tag in the summary" do
       visit project_path(project)
