@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_09_115448) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_15_115518) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -159,14 +159,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_09_115448) do
     t.string "risk_protection_arrangement_reason"
   end
 
+  create_table "dao_revocation_reasons", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.uuid "dao_revocation_id"
+    t.string "reason_type"
+    t.index ["dao_revocation_id"], name: "index_dao_revocation_reasons_on_dao_revocation_id"
+  end
+
   create_table "dao_revocations", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date_of_decision"
     t.string "decision_makers_name"
-    t.boolean "reason_school_closed"
-    t.boolean "reason_school_rating_improved"
-    t.boolean "reason_safeguarding_addressed"
     t.uuid "project_id"
   end
 

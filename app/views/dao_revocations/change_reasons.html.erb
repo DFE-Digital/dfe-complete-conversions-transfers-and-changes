@@ -10,11 +10,30 @@
       <%= form.govuk_error_summary %>
 
       <%= form.govuk_check_boxes_fieldset :reasons, multiple: false, legend: {size: "xl"}, caption: {size: "xl"} do %>
-        <%= form.govuk_check_box :reason_school_rating_improved, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.reason_school_rating_improved")} %>
+        <%= form.govuk_check_box :reason_school_rating_improved,
+              1,
+              0,
+              multiple: false,
+              label: {text: t("helpers.label.dao_revocation_stepped_form.reason_school_rating_improved")} do %>
+              <%= form.govuk_text_area :reason_school_rating_improved_note %>
 
-        <%= form.govuk_check_box :reason_safeguarding_addressed, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.reason_safeguarding_addressed")} %>
+        <% end %>
 
-        <%= form.govuk_check_box :reason_school_closed, 1, 0, multiple: false, label: {text: t("helpers.label.dao_revocation_stepped_form.reason_school_closed")} %>
+        <%= form.govuk_check_box :reason_safeguarding_addressed,
+              1,
+              0,
+              multiple: false,
+              label: {text: t("helpers.label.dao_revocation_stepped_form.reason_safeguarding_addressed")} do %>
+              <%= form.govuk_text_area :reason_safeguarding_addressed_note %>
+            <% end %>
+
+        <%= form.govuk_check_box :reason_school_closed,
+              1,
+              0,
+              multiple: false,
+              label: {text: t("helpers.label.dao_revocation_stepped_form.reason_school_closed")} do %>
+              <%= form.govuk_text_area :reason_school_closed_note %>
+        <% end %>
 
       <% end %>
 

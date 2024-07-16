@@ -11,8 +11,11 @@ class DaoRevocationSteppedForm
   ]
 
   attribute :reason_school_closed, :boolean
+  attribute :reason_school_closed_note, :string
   attribute :reason_school_rating_improved, :boolean
+  attribute :reason_school_rating_improved_note, :string
   attribute :reason_safeguarding_addressed, :boolean
+  attribute :reason_safeguarding_addressed_note, :string
   attribute :minister_name, :string
   attribute :date_of_decision, :date
 
@@ -21,6 +24,19 @@ class DaoRevocationSteppedForm
   attribute :confirm_letter_saved, :boolean
 
   validate :at_least_one_reason, on: :reasons
+  validates :reason_school_closed_note,
+    presence: {message: I18n.t("errors.attributes.base.blank")},
+    if: -> { reason_school_closed.present? },
+    on: :reasons
+  validates :reason_school_rating_improved_note,
+    presence: {message: I18n.t("errors.attributes.base.blank")},
+    if: -> { reason_school_rating_improved.present? },
+    on: :reasons
+  validates :reason_safeguarding_addressed_note,
+    presence: {message: I18n.t("errors.attributes.base.blank")},
+    if: -> { reason_safeguarding_addressed.present? },
+    on: :reasons
+
   validates :minister_name, presence: true, on: :minister
   validates :date_of_decision, presence: true, on: :date
   validate :all_confirmed, on: :confirm
@@ -72,23 +88,27 @@ class DaoRevocationSteppedForm
       reason_school_closed: reason_school_closed.to_s,
       reason_school_rating_improved: reason_school_rating_improved.to_s,
       reason_safeguarding_addressed: reason_safeguarding_addressed.to_s,
+      reason_school_closed_note: reason_school_closed_note.to_s,
+      reason_school_rating_improved_note: reason_school_rating_improved_note.to_s,
+      reason_safeguarding_addressed_note: reason_safeguarding_addressed_note.to_s,
       minister_name: minister_name,
       date_of_decision: date_of_decision.to_s
     }
   end
 
-  def save_to_project(project)
-    revocation = DaoRevocation.new(
+  def save(project, user)
+    revocation = DaoRevocation.create(
       project_id: project.id,
-      reason_school_closed: reason_school_closed,
-      reason_school_rating_improved: reason_school_rating_improved,
-      reason_safeguarding_addressed: reason_safeguarding_addressed,
       decision_makers_name: minister_name,
       date_of_decision: date_of_decision
     )
 
-    if revocation.valid?
-      revocation.save!
+    if revocation.persisted?
+      reasons.each do |reason|
+        note = Note.create!(project: project, user: user, body: public_send(:"#{reason}_note"))
+        DaoRevocationReason.create!(dao_revocation: revocation, reason_type: reason, note: note)
+      end
+
       project.update!(state: :dao_revoked)
       true
     else

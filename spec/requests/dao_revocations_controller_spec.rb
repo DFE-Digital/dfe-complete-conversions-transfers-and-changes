@@ -75,8 +75,11 @@ RSpec.describe DaoRevocationsController, type: :request do
       expect(cache_store_value(project, user)).to eql(
         {
           reason_school_closed: "",
+          reason_school_closed_note: "",
           reason_school_rating_improved: "",
+          reason_school_rating_improved_note: "",
           reason_safeguarding_addressed: "",
+          reason_safeguarding_addressed_note: "",
           minister_name: "Minister Name",
           date_of_decision: ""
         }
@@ -137,8 +140,11 @@ RSpec.describe DaoRevocationsController, type: :request do
       expect(cache_store_value(project, user)).to eql(
         {
           reason_school_closed: "",
+          reason_school_closed_note: "",
           reason_school_rating_improved: "",
+          reason_school_rating_improved_note: "",
           reason_safeguarding_addressed: "",
+          reason_safeguarding_addressed_note: "",
           minister_name: "Minister Name",
           date_of_decision: ""
         }
@@ -170,8 +176,11 @@ RSpec.describe DaoRevocationsController, type: :request do
         {
           date_of_decision: "2024-01-01",
           reason_school_closed: "true",
+          reason_school_closed_note: "Details of the school closing.",
           reason_school_rating_improved: "false",
+          reason_school_rating_improved_note: nil,
           reason_safeguarding_addressed: "false",
+          reason_safeguarding_addressed_note: nil,
           minister_name: "Minister Name"
         }
       }
@@ -187,8 +196,11 @@ RSpec.describe DaoRevocationsController, type: :request do
       expect(cache_store_value(project, user)).to eql(
         {
           reason_school_closed: "true",
+          reason_school_closed_note: "Details of the school closing.",
           reason_school_rating_improved: "false",
+          reason_school_rating_improved_note: "",
           reason_safeguarding_addressed: "false",
+          reason_safeguarding_addressed_note: "",
           minister_name: "Minister Name",
           date_of_decision: "2024-01-01"
         }
@@ -220,8 +232,11 @@ RSpec.describe DaoRevocationsController, type: :request do
         dao_revocation_stepped_form:
         {
           reason_school_closed: "true",
+          reason_school_closed_note: "Details fo the schoool closing.",
           reason_school_rating_improved: "false",
+          reason_school_rating_improved_note: nil,
           reason_safeguarding_addressed: "false",
+          reason_safeguarding_addressed_note: nil,
           minister_name: "Minister Name",
           date_of_decision: "2024-1-1"
         }

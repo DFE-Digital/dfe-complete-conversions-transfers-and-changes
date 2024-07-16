@@ -23,7 +23,16 @@
           <% if @step_form.reasons_empty? %>
             <%= row.with_value { govuk_link_to "Enter reasons", project_dao_revocation_change_step_path(@project, :reasons) } %>
           <% else %>
-            <%= row.with_value { @step_form.reasons.map { |reason| t("dao_revocations.check.summary.value.reasons.#{reason}") }.join("; ") } %>
+            <%= row.with_value do %>
+              <% @step_form.reasons.each do |reason| %>
+                <div class="govuk-!-padding-bottom-3">
+                  <h6 class="govuk-heading-xxs"><%= t("dao_revocations.check.summary.value.reasons.#{reason}") %>:</h6>
+                  <div class="govuk-body">
+                    <%= simple_format(@step_form.public_send(:"#{reason}_note")) %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
             <%= row.with_action(text: t("dao_revocations.check.summary.change.reasons"), href: project_dao_revocation_change_step_path(@project, :reasons), visually_hidden_text: t("dao_revocations.check.summary.title.reasons")) %>
           <% end %>
         <% end %>
