@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Use of ADOP change to AOPU
+
 ## [Release-79][release-79]
 
 ### Added
