@@ -8,7 +8,8 @@ class AddNotableToNote < ActiveRecord::Migration[7.0]
 
     Note.all.each do |note|
       if note.notable_id.present?
-        note.update! notable_type: "SignificantDateHistoryReason"
+        note.notable_type = "SignificantDateHistoryReason"
+        note.save(validate: false)
       end
     end
   end
