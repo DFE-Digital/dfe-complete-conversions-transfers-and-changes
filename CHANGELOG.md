@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-79][release-79]
+
 ### Added
 
 - When revoking a DAO, details for each reason must now be supplied.
@@ -2051,7 +2053,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-78...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-79...HEAD
+[release-79]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-78...release-79
 [release-78]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-77...release-78
 [release-77]:
