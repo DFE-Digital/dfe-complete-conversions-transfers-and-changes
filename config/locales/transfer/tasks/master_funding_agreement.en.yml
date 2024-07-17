@@ -6,6 +6,12 @@ en:
         hint:
           html: <p>Update the master funding agreement to a new version if the incoming trust uses one from before 2018.</p>
                 <p>Use a deed of termination to end the master funding agreement for the outgoing trust if it will close after this transfer.</p>
+        guidance_link: When to sign a deed of termination
+        guidance:
+          html:      
+              <p>A deed of termination can only be signed when both the:</p>
+              <li>outgoing trust submit their financial accounts</li>
+              <li>finance reporting team confirm the master funding agreement can be terminated</li>
 
         clear_section:
           title: Check and clear the master funding agreement
