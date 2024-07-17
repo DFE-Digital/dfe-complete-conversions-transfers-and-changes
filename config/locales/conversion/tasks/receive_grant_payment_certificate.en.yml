@@ -2,30 +2,30 @@ en:
   conversion:
     task:
       receive_grant_payment_certificate:
-        title: Receive grant payment certificate
+        title: Receive declaration of expenditure certificate
         hint:
-          html: <p>Remind the school and trust to complete the grant payment certificate.</p>
-        guidance_link: What to do if you have not received the grant payment certificate
+          html: <p>Remind the school and trust to complete and return the declaration of expenditure certificate.</p>
+        guidance_link: Update the grant assurance spreadsheet
         guidance:
           html:
-            <p>If you do not receive the grant certificate, you should keep reminding the school and trust to send it to you.</p>
-            <p>Regional Casework Services must also <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&action=default&mobileredirect=true" target="_blank">update the support grant assurance report spreadsheet (opens in new tab)</a>. Do not update this grant assurance report spreadsheet if you work in a team in one of the Regions.</p>
+            <p>Regional Casework Services team members must <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&action=default&mobileredirect=true" target="_blank">update the support grant assurance report spreadsheet (opens in new tab)</a>.</p> 
+            <p>Do not update this grant assurance report spreadsheet if you work in a team in one of the Regions.</p>
         check_certificate:
-          title: Check the grant payment certificate is correct
+          title: Check the declaration of expenditure certificate is correct
           hint:
             html: <p>Once they have sent it to you, check they've used the right template and there is no missing information.</p>
           guidance_link: Using the right certificate
           guidance:
             html:
-              <p>If the school only received the £25,000 converter grant, they need to download and <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">complete the academy conversions, support grant certificate (opens in new tab)</a>.</p>
+              <p>If the school only received the £25,000 pre-opening support grant, they need to download and <a href="https://www.gov.uk/government/publications/academy-support-grant" target="_blank">complete the academy conversions, support grant certificate (opens in new tab)</a>.</p>
               <p>If the school or trust received a sponsored grant, they need to <a href="https://www.gov.uk/government/publications/sponsored-academies-funding-guidance-for-sponsors" target="_blank">complete the certificate in Annex 2 of the Sponsored academies funding - advice for sponsors PDF (opens in a new tab)</a>.</p>
         save_certificate:
-          title: Save the grant payment certificate in the academy's SharePoint folder
+          title: Save the declaration of expenditure certificate in the academy's SharePoint folder
         date_received:
-          title: Enter the date you received the grant payment certificate
+          title: Enter the date you received the declaration of expenditure certificate
           hint:
             html: <p>For example, 27 5 2007</p>
           received_info:
-            html: DfE received the grant payment certificate on %{date}.
+            html: DfE received the declaration of expenditure certificate on %{date}.
           errors:
             invalid: Enter a valid date, like 1 1 2025
