@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- details component and content to explain when to use a deed of termination to
+  end a master funding agreement in a transfer project
+
 ### Changed
 
 - If a project is not assigned to RCS on creation, the assigned user can edit
