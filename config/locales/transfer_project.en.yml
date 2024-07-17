@@ -13,7 +13,10 @@ en:
       unable_to_complete_html:
         <p>This project cannot be completed until:</p>
         <ul>
-        <li>The transfer date has been confirmed and is in the past</li>
+          <li>The transfer date has been confirmed and is in the past</li>
+          <li>The confirm this transfer has authority to proceed task is completed</li>
+          <li>The receive declaration of expenditure certificate task is completed</li>
+          <li>The confirm the date the academy transferred task is completed</li>
         </ul>
     summary_card:
       type: Type
