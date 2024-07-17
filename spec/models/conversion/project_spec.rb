@@ -117,25 +117,28 @@ RSpec.describe Conversion::Project do
 
   describe "#grant_payment_certificate_received?" do
     let(:user) { create(:user) }
-    let!(:project) { create(:conversion_project, tasks_data: tasks_data) }
+    let(:project) { create(:conversion_project, tasks_data: tasks_data) }
+    let(:tasks_data) {
+      create(:conversion_tasks_data,
+        receive_grant_payment_certificate_check_certificate: true,
+        receive_grant_payment_certificate_save_certificate: true,
+        receive_grant_payment_certificate_date_received: Date.today)
+    }
 
-    context "when the ReceiveGrantPaymentCertificateTaskForm is NOT completed" do
-      let(:tasks_data) {
-        create(:conversion_tasks_data, receive_grant_payment_certificate_check_certificate: nil, receive_grant_payment_certificate_save_certificate: nil, receive_grant_payment_certificate_date_received: nil)
-      }
-
-      it "returns false" do
-        expect(project.grant_payment_certificate_received?).to be false
+    context "when the ReceiveGrantPaymentCertificateTaskForm is completed" do
+      it "returns true" do
+        expect(project.grant_payment_certificate_received?).to be true
       end
     end
 
-    context "when the ReceiveGrantPaymentCertificateTaskForm is completed" do
-      let(:tasks_data) {
-        create(:conversion_tasks_data, receive_grant_payment_certificate_check_certificate: true, receive_grant_payment_certificate_save_certificate: true, receive_grant_payment_certificate_date_received: Date.today)
-      }
+    context "when the ReceiveGrantPaymentCertificateTaskForm is NOT completed" do
+      before do
+        allow(tasks_data).to receive(:receive_grant_payment_certificate_date_received)
+          .and_return(nil)
+      end
 
-      it "returns true" do
-        expect(project.grant_payment_certificate_received?).to be true
+      it "returns false" do
+        expect(project.grant_payment_certificate_received?).to be false
       end
     end
   end
@@ -197,20 +200,41 @@ RSpec.describe Conversion::Project do
   end
 
   describe "#completable?" do
-    it "returns true when all the mandatory conditions are completed" do
-      tasks_data = create(:conversion_tasks_data, confirm_date_academy_opened_date_opened: Date.yesterday)
-      project = create(:conversion_project, all_conditions_met: true, tasks_data: tasks_data)
-      allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(true)
-      allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
+    let(:project) { create(:conversion_project) }
 
+    before do
+      mock_successful_api_response_to_create_any_project
+
+      allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(true)
+      allow(project).to receive(:all_conditions_met?).and_return(true)
+      allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
+      allow(project).to receive(:date_academy_opened_present?).and_return(true)
+    end
+
+    it "returns true when all the mandatory conditions are completed" do
       expect(project.completable?).to eq true
     end
 
-    it "returns false if any of the mandatory conditions are not completed" do
-      tasks_data = create(:conversion_tasks_data, confirm_date_academy_opened_date_opened: nil)
-      project = create(:conversion_project, all_conditions_met: true, tasks_data: tasks_data)
+    it "returns false if the confirmed date is in the future" do
       allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(false)
-      allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
+
+      expect(project.completable?).to eq false
+    end
+
+    it "returns false if all conditions are not met" do
+      allow(project).to receive(:all_conditions_met?).and_return(false)
+
+      expect(project.completable?).to eq false
+    end
+
+    it "returns false the grant payment certificate task is incomplete" do
+      allow(project).to receive(:grant_payment_certificate_received?).and_return(false)
+
+      expect(project.completable?).to eq false
+    end
+
+    it "returns false the date the academy opened task is incomplete" do
+      allow(project).to receive(:date_academy_opened_present?).and_return(false)
 
       expect(project.completable?).to eq false
     end
