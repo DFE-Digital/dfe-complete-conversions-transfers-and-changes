@@ -11,7 +11,7 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
   end
   let(:user) { build(:user, :caseworker) }
 
-  subject { Transfer::EditProjectForm.new_from_project(project) }
+  subject { Transfer::EditProjectForm.new_from_project(project, user) }
 
   before do
     mock_successful_api_responses(urn: any_args, ukprn: any_args)
@@ -23,7 +23,7 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
       project = create(:transfer_project, outgoing_trust_ukprn: 10059062, tasks_data: tasks_data)
       allow(project).to receive(:save!).and_raise(ActiveRecord::RecordNotSaved)
 
-      subject = described_class.new_from_project(project)
+      subject = described_class.new_from_project(project, user)
 
       updated_params = {outgoing_trust_ukprn: "12345678", inadequate_ofsted: "true"}
 
@@ -277,6 +277,20 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
         subject.update(updated_params)
 
         expect(project.tasks_data.outgoing_trust_to_close).to be false
+      end
+    end
+
+    describe "hand over to RCS team" do
+      it "emails the RCS team leaders if the field is updated" do
+        team_leader = create(:user, :team_leader)
+
+        updated_params = {assigned_to_regional_caseworker_team: "true", handover_note_body: "Some notes"}
+
+        subject.update(updated_params)
+
+        expect(ActionMailer::MailDeliveryJob)
+          .to(have_been_enqueued.on_queue("default")
+                                .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
       end
     end
   end

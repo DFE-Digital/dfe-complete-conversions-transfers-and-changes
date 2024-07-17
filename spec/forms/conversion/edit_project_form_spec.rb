@@ -11,7 +11,7 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
   }
   let(:user) { build(:user, :caseworker) }
 
-  subject { Conversion::EditProjectForm.new_from_project(project) }
+  subject { Conversion::EditProjectForm.new_from_project(project, user) }
 
   before do
     mock_successful_api_responses(urn: any_args, ukprn: any_args)
@@ -164,6 +164,20 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
         subject.update(updated_params)
 
         expect(project.two_requires_improvement).to be false
+      end
+    end
+
+    describe "hand over to RCS team" do
+      it "emails the RCS team leaders if the field is updated" do
+        team_leader = create(:user, :team_leader)
+
+        updated_params = {assigned_to_regional_caseworker_team: "true", handover_note_body: "Some notes"}
+
+        subject.update(updated_params)
+
+        expect(ActionMailer::MailDeliveryJob)
+          .to(have_been_enqueued.on_queue("default")
+                                .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
       end
     end
   end

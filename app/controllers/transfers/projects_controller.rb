@@ -34,12 +34,12 @@ class Transfers::ProjectsController < ApplicationController
 
   def edit
     authorize project
-    @project_form = Transfer::EditProjectForm.new_from_project(project)
+    @project_form = Transfer::EditProjectForm.new_from_project(project, current_user)
   end
 
   def update
     authorize project
-    @project_form = Transfer::EditProjectForm.new_from_project(project)
+    @project_form = Transfer::EditProjectForm.new_from_project(project, current_user)
 
     if @project_form.update(edit_project_params)
       redirect_to project_information_path(project), notice: I18n.t("project.update.success")
@@ -64,7 +64,9 @@ class Transfers::ProjectsController < ApplicationController
       :two_requires_improvement,
       :inadequate_ofsted,
       :financial_safeguarding_governance_issues,
-      :outgoing_trust_to_close
+      :outgoing_trust_to_close,
+      :assigned_to_regional_caseworker_team,
+      :handover_note_body
     )
   end
 
