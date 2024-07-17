@@ -12,8 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the project in the usual way and assign it to RCS, along with adding a
   handover note
 - Use of ADOP change to AOPU
-- Corrected references in content to the grant payment certificate in conversions
-  to declaration of expenditure certificate
+- Corrected references in content to the grant payment certificate in
+  conversions to declaration of expenditure certificate
 
 ## [Release-79][release-79]
 
