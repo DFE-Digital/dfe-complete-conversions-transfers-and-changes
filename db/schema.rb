@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_25_110919) do
     t.string "type"
     t.uuid "local_authority_id"
     t.integer "establishment_urn"
+    t.string "parliamentary_constituency"
     t.index ["category"], name: "index_contacts_on_category"
     t.index ["establishment_urn"], name: "index_contacts_on_establishment_urn"
     t.index ["project_id"], name: "index_contacts_on_project_id"
