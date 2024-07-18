@@ -13,7 +13,8 @@ class Contact < ApplicationRecord
     local_authority: 3,
     solicitor: 5,
     diocese: 4,
-    other: 0
+    other: 0,
+    member_of_parliament: 7
   }
 
   scope :by_name, -> { order(:name) }
