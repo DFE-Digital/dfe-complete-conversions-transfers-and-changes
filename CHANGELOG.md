@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Use of ADOP change to AOPU
 - Corrected references in content to the grant payment certificate in
   conversions to declaration of expenditure certificate
+- To complete a transfer project users will have to ensure that the following:
+  - The transfer date has been confirmed and is in the past
+  - The confirm this transfer has authority to proceed task is completed
+  - The receive declaration of expenditure certificate task is completed
+  - The confirm the date the academy transferred task is completed
 
 ## [Release-79][release-79]
 

@@ -9,11 +9,20 @@ RSpec.feature "Users can complete a transfer project" do
   end
 
   context "when the academy has transferred" do
+    let(:tasks_data) {
+      create(:transfer_tasks_data,
+        declaration_of_expenditure_certificate_date_received: Date.today - 4.months,
+        declaration_of_expenditure_certificate_correct: true,
+        declaration_of_expenditure_certificate_saved: true,
+        confirm_date_academy_transferred_date_transferred: Date.today - 3.months)
+    }
     let(:project) {
       create(:transfer_project,
         assigned_to: user,
         significant_date: 2.months.ago.at_beginning_of_month,
-        significant_date_provisional: false)
+        significant_date_provisional: false,
+        authority_to_proceed: true,
+        tasks_data: tasks_data)
     }
 
     scenario "the project is completed successfully" do
