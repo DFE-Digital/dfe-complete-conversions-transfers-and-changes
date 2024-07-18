@@ -122,14 +122,17 @@ class Statistics::ProjectStatistics
     hash = {}
     (1..6).each do |i|
       date = Date.today + i.month
-      hash["#{date.month}/#{date.year}"] = {conversions: Conversion::Project.confirmed.filtered_by_significant_date(date.month, date.year).count, transfers: Transfer::Project.confirmed.filtered_by_significant_date(date.month, date.year).count}
+      hash["#{date.month}/#{date.year}"] = {
+        conversions: @conversion_projects.confirmed.filtered_by_significant_date(date.month, date.year).count,
+        transfers: @transfer_projects.confirmed.filtered_by_significant_date(date.month, date.year).count
+      }
     end
     hash
   end
 
   def new_projects_this_month
-    transfers_count = Transfer::Project.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
-    conversions_count = Conversion::Project.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
+    transfers_count = @transfer_projects.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
+    conversions_count = @conversion_projects.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
 
     OpenStruct.new(
       total: transfers_count + conversions_count,
