@@ -474,21 +474,6 @@ RSpec.describe Project, type: :model do
   end
 
   describe "Scopes" do
-    describe "default scope" do
-      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
-
-      it "does not return deleted (state = 2) projects by default" do
-        in_progress_project = create(:conversion_project, state: 0)
-        completed_project = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
-        deleted_project = create(:conversion_project, state: 2)
-
-        projects = Project.all
-
-        expect(projects).to include(in_progress_project, completed_project)
-        expect(projects).to_not include(deleted_project)
-      end
-    end
-
     describe "conversions" do
       before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
 

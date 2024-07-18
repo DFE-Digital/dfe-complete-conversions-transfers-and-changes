@@ -1,7 +1,7 @@
 class Statistics::ProjectStatistics
   def initialize
-    @conversion_projects = Conversion::Project.all
-    @transfer_projects = Transfer::Project.all
+    @conversion_projects = Conversion::Project.not_deleted
+    @transfer_projects = Transfer::Project.not_deleted
   end
 
   def total_number_of_conversion_projects
