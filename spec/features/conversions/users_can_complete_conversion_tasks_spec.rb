@@ -249,7 +249,7 @@ RSpec.feature "Users can complete conversion tasks" do
     context "when the task does not have a date" do
       scenario "they can add a date" do
         visit project_tasks_path(project)
-        click_on "Receive grant payment certificate"
+        click_on "Receive declaration of expenditure certificate"
         page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
         fill_in "Day", with: "1"
         fill_in "Month", with: "1"
@@ -266,9 +266,9 @@ RSpec.feature "Users can complete conversion tasks" do
 
       scenario "they see the date on the page but cannot add a new one" do
         visit project_tasks_path(project)
-        click_on "Receive grant payment certificate"
-        expect(page).to have_content("DfE received the grant payment certificate on 1 January 2024.")
-        expect(page).to_not have_content("Enter the date you received the grant payment certificate")
+        click_on "Receive declaration of expenditure certificate"
+        expect(page).to have_content("DfE received the declaration of expenditure certificate on 1 January 2024.")
+        expect(page).to_not have_content("Enter the date you received the declaration of expenditure certificate")
       end
     end
   end
