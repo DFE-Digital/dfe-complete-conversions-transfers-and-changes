@@ -7,7 +7,7 @@ class ByUserProjectFetcherService
   end
 
   private def projects_by_user
-    projects = Project.assigned.not_completed
+    projects = Project.assigned.active
     return false unless projects.any?
 
     projects.group_by(&:assigned_to_id)

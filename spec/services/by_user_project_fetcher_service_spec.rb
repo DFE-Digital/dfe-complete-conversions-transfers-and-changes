@@ -38,4 +38,42 @@ RSpec.describe ByUserProjectFetcherService do
   it "returns an empty array when there are no projects to source trusts" do
     expect(described_class.new.call).to eql []
   end
+
+  it "returns the expected count of active conversion projects" do
+    mock_all_academies_api_responses
+    user = create(:user)
+    _deleted_project = create(:conversion_project, :deleted, assigned_to: user)
+    _completed_project = create(:conversion_project, :completed, assigned_to: user)
+    _dao_revoked_project = create(:conversion_project, :dao_revoked, assigned_to: user)
+
+    result = described_class.new.call
+
+    expect(result).to be_empty
+
+    _active_project = create(:conversion_project, :active, assigned_to: user)
+
+    result = described_class.new.call
+
+    expect(result).not_to be_empty
+    expect(result.first.conversion_count).to be 1
+  end
+
+  it "returns the expected count of active transfer projects" do
+    mock_all_academies_api_responses
+    user = create(:user)
+    _deleted_project = create(:transfer_project, :deleted, assigned_to: user)
+    _completed_project = create(:transfer_project, :completed, assigned_to: user)
+    _dao_revoked_project = create(:transfer_project, :dao_revoked, assigned_to: user)
+
+    result = described_class.new.call
+
+    expect(result).to be_empty
+
+    _active_project = create(:transfer_project, :active, assigned_to: user)
+
+    result = described_class.new.call
+
+    expect(result).not_to be_empty
+    expect(result.first.transfer_count).to be 1
+  end
 end
