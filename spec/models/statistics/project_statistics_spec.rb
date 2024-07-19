@@ -62,6 +62,13 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
       end
     end
 
+    describe "#total_number_of_dao_revoked_conversion_projects" do
+      it "returns the total number of all dao revoked conversion projects" do
+        create(:conversion_project, :dao_revoked)
+        expect(subject.total_number_of_dao_revoked_conversion_projects).to eql(1)
+      end
+    end
+
     context "when there are deleted projects" do
       before do
         create(:transfer_project, :deleted)

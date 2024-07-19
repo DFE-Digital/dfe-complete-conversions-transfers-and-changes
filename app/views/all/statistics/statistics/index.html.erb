@@ -58,6 +58,11 @@
             <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_unassigned_conversion_projects %></td>
             <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_unassigned_transfer_projects %></td>
           </tr>
+          <tr class="govuk-table__row" id="dao_revoked">
+            <th scope="row" class="govuk-table__cell">DAO revoked projects</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_dao_revoked_conversion_projects %></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">NA</td>
+          </tr>
           <tr class="govuk-table__row" id="all_projects">
             <th scope="row" class="govuk-table__cell">All projects</th>
             <td class="govuk-table__cell govuk-table__cell--numeric"><%= @project_statistics.total_number_of_conversion_projects %></td>
