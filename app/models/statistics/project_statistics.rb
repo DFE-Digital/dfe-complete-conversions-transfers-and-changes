@@ -37,7 +37,7 @@ class Statistics::ProjectStatistics
   end
 
   def total_number_of_dao_revoked_conversion_projects
-    @projects.dao_revoked.count
+    @conversion_projects.dao_revoked.count
   end
 
   def total_conversion_projects_with_regional_casework_services
