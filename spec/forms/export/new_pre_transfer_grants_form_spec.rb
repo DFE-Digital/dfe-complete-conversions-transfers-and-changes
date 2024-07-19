@@ -22,11 +22,13 @@ RSpec.describe Export::NewPreTransferGrantsForm, type: :model do
       to_date = Date.new(2024, 4, 1)
       form = described_class.new(from_date: from_date, to_date: to_date)
 
+      allow(Project).to receive(:not_deleted).and_call_original
       allow(Project).to receive(:transfers).and_call_original
       allow(Project).to receive(:advisory_board_date_in_range).and_call_original
 
       form.export
 
+      expect(Project).to have_received(:not_deleted)
       expect(Project).to have_received(:transfers)
       expect(Project).to have_received(:advisory_board_date_in_range).with(from_date.to_s, to_date.to_s)
     end
@@ -43,6 +45,33 @@ RSpec.describe Export::NewPreTransferGrantsForm, type: :model do
 
       expect(Export::Transfers::PreTransferGrantsCsvExportService).to have_received(:new).once
       expect(fake_csv_export_service).to have_received(:call).once
+    end
+
+    describe "includes the right projects" do
+      before do
+        mock_all_academies_api_responses
+      end
+
+      let(:from_date) { Date.new(2024, 1, 1) }
+      let(:to_date) { Date.new(2024, 4, 1) }
+
+      let!(:active_project) { create(:transfer_project, :active, advisory_board_date: Date.new(2024, 2, 1)) }
+      let!(:completed_project) { create(:transfer_project, :completed, advisory_board_date: Date.new(2024, 1, 1)) }
+      let!(:deleted_project) { create(:transfer_project, :deleted, advisory_board_date: Date.new(2024, 2, 1)) }
+
+      subject { described_class.new(from_date: from_date, to_date: to_date).export }
+
+      it "includes active projects" do
+        expect(subject).to include active_project.id.to_s
+      end
+
+      it "includes completed projects" do
+        expect(subject).to include completed_project.id.to_s
+      end
+
+      it "does not include deleted projects" do
+        expect(subject).not_to include deleted_project.id.to_s
+      end
     end
   end
 end

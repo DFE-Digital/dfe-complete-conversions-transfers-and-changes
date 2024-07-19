@@ -10,7 +10,7 @@ class ByRegionProjectFetcherService
   end
 
   def regional_casework_services_projects(region)
-    Project.by_region(region).assigned_to_regional_caseworker_team.includes(:assigned_to).ordered_by_significant_date
+    Project.active.by_region(region).assigned_to_regional_caseworker_team.includes(:assigned_to).ordered_by_significant_date
   end
 
   private def projects_by_region

@@ -61,4 +61,28 @@ RSpec.describe ByTrustProjectFetcherService do
   it "returns an empty array when there are no projects to source trusts" do
     expect(described_class.new.call).to eql []
   end
+
+  it "returns the expected count of active conversion projects" do
+    mock_all_academies_api_responses
+    create(:conversion_project, :active)
+    create(:conversion_project, :deleted)
+    create(:conversion_project, :completed)
+    create(:conversion_project, :dao_revoked)
+
+    result = described_class.new.call.first
+
+    expect(result.conversion_count).to be 1
+  end
+
+  it "returns the expected count of active transfer projects" do
+    mock_all_academies_api_responses
+    create(:transfer_project, :active)
+    create(:transfer_project, :deleted)
+    create(:transfer_project, :completed)
+    create(:transfer_project, :dao_revoked)
+
+    result = described_class.new.call.first
+
+    expect(result.transfer_count).to be 1
+  end
 end

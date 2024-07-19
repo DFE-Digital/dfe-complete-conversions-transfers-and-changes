@@ -43,9 +43,9 @@ class ByTeamProjectFetcherService
     return [] if @team.nil?
 
     projects = if @team.eql?("regional_casework_services")
-      Project.assigned_to_regional_caseworker_team.unassigned_to_user.ordered_by_significant_date
+      Project.active.assigned_to_regional_caseworker_team.unassigned_to_user.ordered_by_significant_date
     else
-      Project.by_region(@team).unassigned_to_user.ordered_by_significant_date
+      Project.active.by_region(@team).unassigned_to_user.ordered_by_significant_date
     end
 
     AcademiesApiPreFetcherService.new.call!(projects)

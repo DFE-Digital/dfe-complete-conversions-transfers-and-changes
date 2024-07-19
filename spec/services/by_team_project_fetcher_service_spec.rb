@@ -153,6 +153,16 @@ RSpec.describe ByTeamProjectFetcherService do
         result = described_class.new(user.team).unassigned
         expect(result).to include(conversion_project_rcs, conversion_project_london, transfer_project_rcs, transfer_project_london)
       end
+
+      it "does not include completed, deleted or DAO revoked projects" do
+        user = build(:user, team: "regional_casework_services")
+        completed_project = create(:conversion_project, :completed, team: "regional_casework_services", assigned_to: nil)
+        deleted_project = create(:conversion_project, :deleted, team: "regional_casework_services", assigned_to: nil)
+        dao_revoked_project = create(:conversion_project, :dao_revoked, team: "regional_casework_services", assigned_to: nil)
+
+        result = described_class.new(user.team).unassigned
+        expect(result).not_to include(completed_project, deleted_project, dao_revoked_project)
+      end
     end
 
     context "when the user's team is a region" do

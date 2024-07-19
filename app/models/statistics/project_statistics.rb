@@ -1,11 +1,11 @@
 class Statistics::ProjectStatistics
   def initialize
-    @projects = Conversion::Project.all
-    @transfer_projects = Transfer::Project.all
+    @conversion_projects = Conversion::Project.not_deleted
+    @transfer_projects = Transfer::Project.not_deleted
   end
 
   def total_number_of_conversion_projects
-    @projects.count
+    @conversion_projects.count
   end
 
   def total_number_of_transfer_projects
@@ -13,7 +13,7 @@ class Statistics::ProjectStatistics
   end
 
   def total_number_of_in_progress_conversion_projects
-    @projects.in_progress.count
+    @conversion_projects.in_progress.count
   end
 
   def total_number_of_in_progress_transfer_projects
@@ -21,7 +21,7 @@ class Statistics::ProjectStatistics
   end
 
   def total_number_of_unassigned_conversion_projects
-    @projects.unassigned_to_user.count
+    @conversion_projects.unassigned_to_user.count
   end
 
   def total_number_of_unassigned_transfer_projects
@@ -29,7 +29,7 @@ class Statistics::ProjectStatistics
   end
 
   def total_number_of_completed_conversion_projects
-    @projects.completed.count
+    @conversion_projects.completed.count
   end
 
   def total_number_of_completed_transfer_projects
@@ -41,7 +41,7 @@ class Statistics::ProjectStatistics
   end
 
   def total_conversion_projects_with_regional_casework_services
-    @projects.assigned_to_regional_caseworker_team.count
+    @conversion_projects.assigned_to_regional_caseworker_team.count
   end
 
   def total_transfer_projects_with_regional_casework_services
@@ -49,7 +49,7 @@ class Statistics::ProjectStatistics
   end
 
   def in_progress_conversion_projects_with_regional_casework_services
-    @projects.assigned_to_regional_caseworker_team.in_progress.count
+    @conversion_projects.assigned_to_regional_caseworker_team.in_progress.count
   end
 
   def in_progress_transfer_projects_with_regional_casework_services
@@ -57,7 +57,7 @@ class Statistics::ProjectStatistics
   end
 
   def completed_conversion_projects_with_regional_casework_services
-    @projects.assigned_to_regional_caseworker_team.completed.count
+    @conversion_projects.assigned_to_regional_caseworker_team.completed.count
   end
 
   def completed_transfer_projects_with_regional_casework_services
@@ -65,7 +65,7 @@ class Statistics::ProjectStatistics
   end
 
   def unassigned_conversion_projects_with_regional_casework_services
-    @projects.assigned_to_regional_caseworker_team.unassigned_to_user.count
+    @conversion_projects.assigned_to_regional_caseworker_team.unassigned_to_user.count
   end
 
   def unassigned_transfer_projects_with_regional_casework_services
@@ -73,7 +73,7 @@ class Statistics::ProjectStatistics
   end
 
   def total_conversion_projects_not_with_regional_casework_services
-    @projects.not_assigned_to_regional_caseworker_team.count
+    @conversion_projects.not_assigned_to_regional_caseworker_team.count
   end
 
   def total_transfer_projects_not_with_regional_casework_services
@@ -81,7 +81,7 @@ class Statistics::ProjectStatistics
   end
 
   def in_progress_conversion_projects_not_with_regional_casework_services
-    @projects.not_assigned_to_regional_caseworker_team.in_progress.count
+    @conversion_projects.not_assigned_to_regional_caseworker_team.in_progress.count
   end
 
   def in_progress_transfer_projects_not_with_regional_casework_services
@@ -89,7 +89,7 @@ class Statistics::ProjectStatistics
   end
 
   def completed_conversion_projects_not_with_regional_casework_services
-    @projects.not_assigned_to_regional_caseworker_team.completed.count
+    @conversion_projects.not_assigned_to_regional_caseworker_team.completed.count
   end
 
   def completed_transfer_projects_not_with_regional_casework_services
@@ -97,7 +97,7 @@ class Statistics::ProjectStatistics
   end
 
   def unassigned_conversion_projects_not_with_regional_casework_services
-    @projects.not_assigned_to_regional_caseworker_team.unassigned_to_user.count
+    @conversion_projects.not_assigned_to_regional_caseworker_team.unassigned_to_user.count
   end
 
   def unassigned_transfer_projects_not_with_regional_casework_services
@@ -106,10 +106,10 @@ class Statistics::ProjectStatistics
 
   def conversion_project_statistics_for_region(region)
     OpenStruct.new(
-      total: @projects.by_region(region).count,
-      in_progress: @projects.by_region(region).in_progress.count,
-      completed: @projects.by_region(region).completed.count,
-      unassigned: @projects.by_region(region).unassigned_to_user.count
+      total: @conversion_projects.by_region(region).count,
+      in_progress: @conversion_projects.by_region(region).in_progress.count,
+      completed: @conversion_projects.by_region(region).completed.count,
+      unassigned: @conversion_projects.by_region(region).unassigned_to_user.count
     )
   end
 
@@ -126,14 +126,17 @@ class Statistics::ProjectStatistics
     hash = {}
     (1..6).each do |i|
       date = Date.today + i.month
-      hash["#{date.month}/#{date.year}"] = {conversions: Conversion::Project.confirmed.filtered_by_significant_date(date.month, date.year).count, transfers: Transfer::Project.confirmed.filtered_by_significant_date(date.month, date.year).count}
+      hash["#{date.month}/#{date.year}"] = {
+        conversions: @conversion_projects.confirmed.filtered_by_significant_date(date.month, date.year).count,
+        transfers: @transfer_projects.confirmed.filtered_by_significant_date(date.month, date.year).count
+      }
     end
     hash
   end
 
   def new_projects_this_month
-    transfers_count = Transfer::Project.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
-    conversions_count = Conversion::Project.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
+    transfers_count = @transfer_projects.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
+    conversions_count = @conversion_projects.where("created_at >= ?", Time.now.beginning_of_month).where("created_at <= ?", Time.now.end_of_month).count
 
     OpenStruct.new(
       total: transfers_count + conversions_count,

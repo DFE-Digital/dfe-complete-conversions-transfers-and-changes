@@ -43,7 +43,7 @@ class Project < ApplicationRecord
   scope :transfers, -> { where(type: "Transfer::Project") }
 
   scope :ordered_by_completed_date, -> { completed.order(completed_at: :desc) }
-  scope :in_progress, -> { where(state: :active).assigned }
+  scope :in_progress, -> { active.assigned }
 
   scope :assigned, -> { where.not(assigned_to: nil) }
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
@@ -71,8 +71,6 @@ class Project < ApplicationRecord
   }
 
   scope :not_form_a_mat, -> { where.not(incoming_trust_ukprn: nil) }
-
-  default_scope { where.not(state: :deleted) }
 
   enum :region, {
     london: "H",
