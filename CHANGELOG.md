@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - details component and content to explain when to use a deed of termination to
   end a master funding agreement in a transfer project
+- a count of the number of DAO conversion projects has been added to the
+  statistics page.
 
 ### Changed
 
