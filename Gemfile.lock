@@ -183,7 +183,7 @@ GEM
     govuk_markdown (1.0.0)
       activesupport
       redcarpet
-    grape (2.1.2)
+    grape (2.1.3)
       activesupport (>= 6)
       dry-types (>= 1.1)
       mustermann-grape (~> 1.1.0)
