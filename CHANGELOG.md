@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - The confirm this transfer has authority to proceed task is completed
   - The receive declaration of expenditure certificate task is completed
   - The confirm the date the academy transferred task is completed
+- Update the feedback form link in the footer
 
 ## [Release-79][release-79]
 
