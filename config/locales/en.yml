@@ -76,6 +76,9 @@ en:
     director_of_child_services_importer:
       import:
         error: You must provide a path, e.g. director_of_child_services:import[path/to/data.csv]
+    member_of_parliament_importer:
+      import:
+        error: You must provide a path, e.g. member_of_parliament:import[path/to/data.csv]
     grant_payment_certificate_importer:
       import:
         error: You must provide a path, e.g. project_data:grant_payment_certificate_dates[path/to/data.csv]
