@@ -15,4 +15,13 @@ class Contact::Parliament < Contact
   def title
     I18n.t("members_api.member.title", constituency: parliamentary_constituency&.titleize)
   end
+
+  def address
+    OpenStruct.new(
+      line1: "House of Commons",
+      line2: "",
+      line3: "London",
+      postcode: "SW1A 0AA"
+    )
+  end
 end

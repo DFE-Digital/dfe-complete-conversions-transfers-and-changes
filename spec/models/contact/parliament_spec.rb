@@ -39,4 +39,14 @@ RSpec.describe Contact::Parliament do
       expect(contact.organisation_name).to eq("HM Government")
     end
   end
+
+  describe "address" do
+    it "returns the House of Commons" do
+      contact = described_class.new
+      expect(contact.address.line1).to eq("House of Commons")
+      expect(contact.address.line2).to eq("")
+      expect(contact.address.line3).to eq("London")
+      expect(contact.address.postcode).to eq("SW1A 0AA")
+    end
+  end
 end

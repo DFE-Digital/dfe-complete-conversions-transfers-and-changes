@@ -107,7 +107,9 @@ class Project < ApplicationRecord
   end
 
   def member_of_parliament
-    nil
+    constituency = establishment.parliamentary_constituency
+
+    Contact::Parliament.find_by(parliamentary_constituency: constituency)
   end
 
   def unassigned_to_user?
@@ -143,18 +145,6 @@ class Project < ApplicationRecord
   def handover_note
     notes.find_by(task_identifier: :handover)
   end
-
-  # :nocov:
-  private def fetch_member_of_parliament
-    result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
-
-    if result.error.present?
-      track_event(result.error.message)
-    else
-      result.object
-    end
-  end
-  # :nocov:
 
   private def fetch_establishment(urn)
     result = Api::AcademiesApi::Client.new.get_establishment(urn)
