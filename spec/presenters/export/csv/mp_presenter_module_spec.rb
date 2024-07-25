@@ -1,31 +1,24 @@
 require "rails_helper"
 
 RSpec.describe Export::Csv::MpPresenterModule do
-  let(:project) do
-    build(:conversion_project,
-      member_of_parliament: known_member_of_parliament,
-      establishment: known_establishment)
-  end
+  let(:project) { build(:conversion_project, establishment: known_establishment) }
+  let!(:mp) { create(:member_of_parliament, parliamentary_constituency: "Constituency") }
 
   subject { MpPresenterModuleTestClass.new(project) }
 
   it "presents the name" do
-    skip "The Parliamentary Members API is not currently efficient enough to use"
-    expect(subject.mp_name).to eql "First Last"
+    expect(subject.mp_name).to eql "Member Parliament"
   end
 
   it "presents the email" do
-    skip "The Parliamentary Members API is not currently efficient enough to use"
-    expect(subject.mp_email).to eql "first.last.mp@parliament.uk"
+    expect(subject.mp_email).to eql "member.parliament@parliament.uk"
   end
 
   it "presents the constituency" do
-    skip "The Parliamentary Members API is not currently efficient enough to use"
     expect(subject.mp_constituency).to eql "Constituency"
   end
 
   it "presents the address" do
-    skip "The Parliamentary Members API is not currently efficient enough to use"
     expect(subject.mp_address_1).to eql "House of Commons"
     expect(subject.mp_address_2).to eql ""
     expect(subject.mp_address_3).to eql "London"
@@ -53,15 +46,6 @@ RSpec.describe Export::Csv::MpPresenterModule do
       line2: "",
       line3: "London",
       postcode: "SW1A 0AA"
-    )
-  end
-
-  def known_member_of_parliament
-    double(
-      Api::MembersApi::MemberDetails,
-      name: "First Last",
-      email: "first.last.mp@parliament.uk",
-      address: known_address
     )
   end
 
