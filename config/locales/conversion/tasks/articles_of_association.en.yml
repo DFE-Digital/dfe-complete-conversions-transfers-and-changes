@@ -30,6 +30,8 @@ en:
           title: Received
         cleared:
           title: Cleared
+        sent:
+          title: Sent cleared version to trust's solicitors
         signed:
           title: Checked with solicitors that incoming trust have signed the articles
           hint:

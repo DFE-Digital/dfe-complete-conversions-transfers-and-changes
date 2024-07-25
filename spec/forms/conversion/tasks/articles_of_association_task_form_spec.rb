@@ -86,6 +86,7 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
         task_form.saved = true
         task_form.cleared = true
         task_form.signed = true
+        task_form.sent = true
 
         expect(task_form.status).to eql :completed
       end
