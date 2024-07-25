@@ -19,8 +19,7 @@ class Contact::Parliament < Contact
   def address
     OpenStruct.new(
       line1: "House of Commons",
-      line2: "",
-      line3: "London",
+      line2: "London",
       postcode: "SW1A 0AA"
     )
   end

@@ -20,8 +20,7 @@ RSpec.describe Export::Csv::MpPresenterModule do
 
   it "presents the address" do
     expect(subject.mp_address_1).to eql "House of Commons"
-    expect(subject.mp_address_2).to eql ""
-    expect(subject.mp_address_3).to eql "London"
+    expect(subject.mp_address_2).to eql "London"
     expect(subject.mp_address_postcode).to eql "SW1A 0AA"
   end
 

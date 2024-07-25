@@ -59,7 +59,6 @@ class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExpor
     mp_email
     mp_address_1
     mp_address_2
-    mp_address_3
     mp_address_postcode
     advisory_board_date
     conversion_type

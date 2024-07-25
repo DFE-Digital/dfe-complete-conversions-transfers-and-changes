@@ -29,12 +29,6 @@ module Export::Csv::MpPresenterModule
     @project.member_of_parliament.address.line2
   end
 
-  def mp_address_3
-    return if @project.member_of_parliament.nil?
-
-    @project.member_of_parliament.address.line3
-  end
-
   def mp_address_postcode
     return if @project.member_of_parliament.nil?
 

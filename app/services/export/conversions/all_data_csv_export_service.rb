@@ -64,7 +64,6 @@ class Export::Conversions::AllDataCsvExportService < Export::CsvExportService
     mp_email
     mp_address_1
     mp_address_2
-    mp_address_3
     mp_address_postcode
     director_of_child_services_name
     director_of_child_services_email
