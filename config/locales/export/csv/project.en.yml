@@ -79,9 +79,9 @@ en:
           mp_address_2: MP address 2
           mp_address_3: MP address 3
           mp_address_postcode: MP postcode
-          main_contact_name: Main contact name
-          main_contact_email: Main contact email
-          main_contact_title: Main contact role
+          main_contact_name: Project main contact name
+          main_contact_email: Project main contact email
+          main_contact_title: Project main contact role
           link_to_project: Link to project
           region: Region
           outgoing_trust_name: Outgoing trust name

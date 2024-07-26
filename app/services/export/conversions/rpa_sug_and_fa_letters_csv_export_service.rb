@@ -42,6 +42,9 @@ class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExpor
     incoming_trust_main_contact_name
     incoming_trust_main_contact_role
     incoming_trust_main_contact_email
+    main_contact_name
+    main_contact_title
+    main_contact_email
     director_of_child_services_name
     director_of_child_services_role
     director_of_child_services_email
