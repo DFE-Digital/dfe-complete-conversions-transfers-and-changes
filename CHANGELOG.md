@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- The "project main contact" (selected via a task) is output to the RPA/SUG
+  export
+
 ## [Release-80][release-80]
 
 ### Added
