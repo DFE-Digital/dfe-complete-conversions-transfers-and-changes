@@ -4,7 +4,18 @@ en:
       articles_of_association:
         title: Articles of association
         hint:
-          html: <p>The articles of association must be updated if the trust currently uses a version from February 2016 or earlier.</p>
+          html:
+            <p>You must update the articles of association if any of the following statements are true:</p>
+            <ul>
+            <li>the trust currently uses a version from February 2016 or earlier</li>
+            <li>a different type of academy is joining the trust. For example, a faith school joining a trust containing only community academies</li>
+            <li>it is a condition of the advisory board's decision</li>
+            </ul>
+            <p>You do not always need to update the articles but it is strongly advised, even when not required.</p>
+        guidance_link: Partially updating articles of association
+        guidance:
+          html: <p>Trusts do not have to adopt the latest version of the articles entirely. Although this is DfE's preferred option.</p>
+                <p>They can choose to just add the missing clauses in their existing articles.</p>
         clear_section:
           title: Check and clear the articles of association
           hint:
@@ -19,9 +30,13 @@ en:
           title: Received
         cleared:
           title: Cleared
+        sent:
+          title: Sent cleared version to trust's solicitors
         signed:
-          title: Signed by school or trust
+          title: Checked with solicitors that incoming trust have signed the articles
+          hint:
+            html: <p>It can be helpful to check the <a href="https://find-and-update.company-information.service.gov.uk/" target="_blank">Companies House website (opens in a new tab)</a> to make sure the signed articles have been uploaded</p>
         saved:
-          title: Saved in the school's SharePoint folder
+          title: Saved copy of articles in the school and trust's SharePoint folders
         not_applicable:
           title: Not applicable

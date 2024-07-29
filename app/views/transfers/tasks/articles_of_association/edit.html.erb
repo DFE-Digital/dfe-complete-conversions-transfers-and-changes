@@ -30,6 +30,7 @@
 
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :received)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :cleared)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :sent)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
       </div>

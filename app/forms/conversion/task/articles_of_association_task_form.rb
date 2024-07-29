@@ -3,4 +3,5 @@ class Conversion::Task::ArticlesOfAssociationTaskForm < ::BaseOptionalTaskForm
   attribute :cleared, :boolean
   attribute :signed, :boolean
   attribute :saved, :boolean
+  attribute :sent, :boolean
 end

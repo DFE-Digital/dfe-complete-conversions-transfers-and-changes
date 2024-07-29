@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The "project main contact" (selected via a task) is output to the RPA/SUG
   export
 
+### Changed
+
+- content changes to articles of association task in conversions and transfers
+  to describe the process more accurately
+- addition of 1 checkbox to articles tasks in conversions and transfers
+
 ## [Release-80][release-80]
 
 ### Added
