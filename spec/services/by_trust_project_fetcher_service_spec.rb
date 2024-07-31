@@ -106,7 +106,6 @@ RSpec.describe ByTrustProjectFetcherService do
       expect(a_different_brand_new_trust.conversion_count).to be 1
       expect(a_different_brand_new_trust.transfer_count).to be 0
 
-
       expect(brand_new_trust.name).to eql "Brand New Trust"
       expect(brand_new_trust.group_id).to eql "TR12345"
       expect(brand_new_trust.conversion_count).to be 1

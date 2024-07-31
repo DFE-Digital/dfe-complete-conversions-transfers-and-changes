@@ -10,7 +10,7 @@ RSpec.feature "Users can view a list of projects for a given trust" do
 
   context "when a trust has no projects" do
     scenario "they see an empty message" do
-      visit by_trust_all_trusts_projects_path(10010010)
+      visit by_trust_ukprn_all_trusts_projects_path(10010010)
 
       expect(page).to have_content("Projects for Trust Name")
       expect(page).to have_content("There are no projects for Trust Name")
@@ -22,7 +22,7 @@ RSpec.feature "Users can view a list of projects for a given trust" do
       project = create(:conversion_project, incoming_trust_ukprn: 10010010, urn: 123456)
       completed_project = create(:conversion_project, :completed, completed_at: Date.today, incoming_trust_ukprn: 10010010, urn: 165432)
 
-      visit by_trust_all_trusts_projects_path(10010010)
+      visit by_trust_ukprn_all_trusts_projects_path(10010010)
 
       expect(page).to have_content("Projects for Trust Name")
       expect(page).to have_content(project.urn)
@@ -34,7 +34,7 @@ RSpec.feature "Users can view a list of projects for a given trust" do
     scenario "they see the project listed" do
       project = create(:conversion_project, incoming_trust_ukprn: 10010010, urn: 123456, assigned_to: nil)
 
-      visit by_trust_all_trusts_projects_path(10010010)
+      visit by_trust_ukprn_all_trusts_projects_path(10010010)
 
       expect(page).to have_content("Projects for Trust Name")
       expect(page).to have_content(project.urn)

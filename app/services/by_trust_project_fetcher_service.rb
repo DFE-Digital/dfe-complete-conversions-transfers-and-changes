@@ -26,10 +26,6 @@ class ByTrustProjectFetcherService
     @trusts + @form_a_mat_trusts
   end
 
-  private def all_projects_grouped_by_identifier
-    @all_projects_grouped_by_ukprn.merge(@all_projects_grouped_by_trust_reference_number)
-  end
-
   private def projects_grouped_by_ukprn
     Project.active.not_form_a_mat.group_by(&:incoming_trust_ukprn)
   end
