@@ -770,6 +770,18 @@ RSpec.describe Project, type: :model do
         expect(Project.not_form_a_mat).to include(single_converter_project)
       end
     end
+
+    describe "form_a_mat scope" do
+      it "returns only form a MAT projects" do
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+
+        form_a_mat_project = create(:conversion_project, :form_a_mat)
+        single_converter_project = create(:conversion_project)
+
+        expect(Project.form_a_mat).to include(form_a_mat_project)
+        expect(Project.form_a_mat).not_to include(single_converter_project)
+      end
+    end
   end
 
   describe "region" do
