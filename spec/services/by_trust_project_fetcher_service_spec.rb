@@ -85,4 +85,32 @@ RSpec.describe ByTrustProjectFetcherService do
 
     expect(result.transfer_count).to be 1
   end
+
+  describe "form a multi academy trust projects" do
+    it "includes a form a MAT trust with the correct counts and details" do
+      mock_successful_api_establishment_response(urn: 123456)
+
+      create(:transfer_project, :active, incoming_trust_ukprn: nil, new_trust_reference_number: "TR12345", new_trust_name: "BRAND NEW TRUST")
+      create(:conversion_project, :active, incoming_trust_ukprn: nil, new_trust_reference_number: "TR12345", new_trust_name: "BRAND NEW TRUST")
+      create(:conversion_project, :active, incoming_trust_ukprn: nil, new_trust_reference_number: "TR54321", new_trust_name: "A DIFFERENT BRAND NEW TRUST")
+
+      result = described_class.new.call
+
+      expect(result.count).to be 2
+
+      brand_new_trust = result.last
+      a_different_brand_new_trust = result.first
+
+      expect(a_different_brand_new_trust.name).to eql "A Different Brand New Trust"
+      expect(a_different_brand_new_trust.group_id).to eql "TR54321"
+      expect(a_different_brand_new_trust.conversion_count).to be 1
+      expect(a_different_brand_new_trust.transfer_count).to be 0
+
+
+      expect(brand_new_trust.name).to eql "Brand New Trust"
+      expect(brand_new_trust.group_id).to eql "TR12345"
+      expect(brand_new_trust.conversion_count).to be 1
+      expect(brand_new_trust.transfer_count).to be 1
+    end
+  end
 end
