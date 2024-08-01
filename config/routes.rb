@@ -176,7 +176,8 @@ Rails.application.routes.draw do
           end
           namespace :trusts do
             get "/", to: "projects#index"
-            get ":trust_ukprn", to: "projects#show", as: :by_trust
+            get "/ukprn/:trust_ukprn", to: "projects#show", as: :by_trust_ukprn
+            get "/reference/:trust_reference_number", to: "projects#show_by_reference", as: :by_trust_reference
           end
           namespace :local_authorities, path: "local-authorities" do
             get "/", to: "projects#index"

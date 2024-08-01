@@ -15,7 +15,11 @@
     <% trusts.each do |trust| %>
       <tr class="govuk-table__row">
         <td class="govuk-table__header govuk-table__cell">
-          <%= link_to trust.name, by_trust_all_trusts_projects_path(trust.ukprn), class: "govuk-link govuk-link--no-visited-state" %>
+          <% if trust.ukprn.present? %>
+            <%= link_to trust.name, by_trust_ukprn_all_trusts_projects_path(trust.ukprn), class: "govuk-link govuk-link--no-visited-state" %>
+          <% else %>
+            <%= link_to trust.name, by_trust_reference_all_trusts_projects_path(trust.group_id), class: "govuk-link govuk-link--no-visited-state" %>
+          <% end %>
         </td>
         <td class="govuk-table__cell"><%= trust.group_id %></td>
         <td class="govuk-table__cell"><%= trust.conversion_count %></td>

@@ -71,6 +71,7 @@ class Project < ApplicationRecord
   }
 
   scope :not_form_a_mat, -> { where.not(incoming_trust_ukprn: nil) }
+  scope :form_a_mat, -> { where(incoming_trust_ukprn: nil) }
 
   enum :region, {
     london: "H",
