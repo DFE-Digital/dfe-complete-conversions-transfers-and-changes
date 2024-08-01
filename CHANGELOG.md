@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-81][release-81]
+
 ### Added
 
 - The "project main contact" (selected via a task) is output to the RPA/SUG
@@ -2089,7 +2091,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-80...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-81...HEAD
+[release-81]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-80...release-81
 [release-80]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-79...release-80
 [release-79]:
