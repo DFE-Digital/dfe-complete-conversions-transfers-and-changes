@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_25_110919) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_01_080056) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -271,6 +271,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_25_110919) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
+  create_table "project_groups", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.string "group_identifier"
+    t.integer "trust_ukprn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_identifier"], name: "index_project_groups_on_group_identifier"
+    t.index ["trust_ukprn"], name: "index_project_groups_on_trust_ukprn"
+  end
+
   create_table "projects", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.integer "urn", null: false
     t.datetime "created_at", null: false
@@ -308,6 +317,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_25_110919) do
     t.integer "state", default: 0, null: false
     t.integer "prepare_id"
     t.uuid "local_authority_main_contact_id"
+    t.uuid "group_id"
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["incoming_trust_ukprn"], name: "index_projects_on_incoming_trust_ukprn"
