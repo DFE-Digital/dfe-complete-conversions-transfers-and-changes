@@ -21,4 +21,23 @@ RSpec.feature "Users can view project details" do
       expect(page).to have_content("Yes")
     end
   end
+
+  context "when the project is grouped with others" do
+    let(:group) { create(:project_group, group_identifier: "GRP_12345678") }
+    let(:project) { create(:conversion_project, group: group) }
+
+    scenario "they can see the group reference number" do
+      within "#projectDetails" do
+        expect(page).to have_content(group.group_identifier)
+      end
+    end
+  end
+
+  context "when the project is not grouped with others" do
+    scenario "they can see an indicator" do
+      within "#projectDetails" do
+        expect(page).to have_content("Not grouped")
+      end
+    end
+  end
 end

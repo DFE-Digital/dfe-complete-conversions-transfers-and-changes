@@ -19,9 +19,11 @@ en:
             transfer_project: Transfer date
           local_authority: Local authority
           region: Region
+          group: Group reference number
         values:
           conversion_project: Conversion
           transfer_project: Transfer
+          no_group: Not grouped
       reasons_for:
         conversion:
           title: Reasons for the conversion

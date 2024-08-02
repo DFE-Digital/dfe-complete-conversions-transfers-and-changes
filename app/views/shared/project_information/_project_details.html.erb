@@ -26,6 +26,14 @@
             row.with_key { t("project_information.show.project_details.rows.region") }
             row.with_value { project.establishment.region_name }
           end
+          summary_list.with_row do |row|
+            row.with_key { t("project_information.show.project_details.rows.group") }
+            if project.group.present?
+              row.with_value { project.group.group_identifier }
+            else
+              row.with_value { t("project_information.show.project_details.values.no_group") }
+            end
+          end
         end %>
   </div>
 </div>
