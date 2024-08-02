@@ -20,6 +20,10 @@
       </div>
 
       <div class="govuk-form-group">
+        <%= form.govuk_text_field :group_id, label: {size: "m"}, width: 10, autocomplete: :off %>
+      </div>
+
+      <div class="govuk-form-group">
         <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.project.advisory_board_date")}, form_group: {id: "advisory-board-date"}, hint: {text: t("helpers.hint.project.advisory_board_date").html_safe} %>
         <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.conversion_project.advisory_board_conditions")} %>
       </div>

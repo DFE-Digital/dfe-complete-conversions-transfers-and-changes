@@ -478,3 +478,6 @@ en:
         not_matching: A trust with this TRN already exists. It is called %{trust_name}. Check the trust name you have entered for this conversion/transfer
       prepare_id:
         blank: You must supply a Prepare ID when creating a project via the API
+      group_id:
+        invalid: A group group reference number must start GRP_ and contain 8 numbers, like GRP_00000001
+        trust_ukprn: The group reference number must be for the same trust as all other group members, check the group reference number and incoming trust UKPRN

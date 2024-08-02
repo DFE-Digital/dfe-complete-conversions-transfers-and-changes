@@ -65,7 +65,15 @@ class Conversion::CreateProjectForm < CreateProjectForm
     return nil unless valid?(context)
 
     ActiveRecord::Base.transaction do
+      if group_id.present?
+        @project.group = ProjectGroup.find_or_create_by(
+          group_identifier: group_id,
+          trust_ukprn: incoming_trust_ukprn
+        )
+      end
+
       @project.save
+
       @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
       notify_team_leaders(@project) if assigned_to_regional_caseworker_team
       Event.log(grouping: :project, user: user, with: @project, message: "Project created.")

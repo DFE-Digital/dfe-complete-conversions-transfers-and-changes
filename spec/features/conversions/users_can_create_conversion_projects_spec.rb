@@ -19,7 +19,7 @@ RSpec.feature "Users can create new conversion projects" do
       choose "Conversion"
       click_button "Continue"
 
-      fill_in_form
+      fill_in_new_conversion_project_form(urn, ukprn)
 
       click_button("Continue")
 
@@ -38,39 +38,6 @@ RSpec.feature "Users can create new conversion projects" do
       click_button "Continue"
 
       expect(page).to have_content(I18n.t("helpers.hint.conversion_project.assigned_to_regional_caseworker_team"))
-    end
-  end
-
-  def fill_in_form
-    fill_in "School URN", with: urn
-    fill_in "Incoming trust UKPRN (UK Provider Reference Number)", with: ukprn
-
-    within("#provisional-conversion-date") do
-      completion_date = Date.today + 1.year
-      fill_in "Month", with: completion_date.month
-      fill_in "Year", with: completion_date.year
-    end
-
-    fill_in "School or academy SharePoint link", with: "https://educationgovuk-my.sharepoint.com/school-folder"
-    fill_in "Incoming trust SharePoint link", with: "https://educationgovuk-my.sharepoint.com/trust-folder"
-
-    within("#advisory-board-date") do
-      fill_in "Day", with: two_weeks_ago.day
-      fill_in "Month", with: two_weeks_ago.month
-      fill_in "Year", with: two_weeks_ago.year
-    end
-
-    fill_in "Advisory board conditions", with: "This school must:\n1. Do this\n2. And that"
-
-    fill_in "Handover comments", with: "A new handover comment"
-    within("#assigned-to-regional-caseworker-team") do
-      choose("No")
-    end
-    within("#directive-academy-order") do
-      choose "Academy order"
-    end
-    within("#two-requires-improvement") do
-      choose "No"
     end
   end
 end

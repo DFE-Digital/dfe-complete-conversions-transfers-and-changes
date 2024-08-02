@@ -73,6 +73,7 @@ en:
         incoming_trust_sharepoint_link: Incoming trust SharePoint link
         new_trust_reference_number: Trust reference number (TRN)
         new_trust_name: Trust name
+        group_id: Group reference number
       conversion_project:
         caseworker_id: Caseworker
         regional_delivery_officer_id: Regional delivery officer
@@ -102,6 +103,9 @@ en:
         new_trust_name: Enter the proposed name for the new trust. This can be changed later on if necessary.
         new_trust_reference_number_html:
           <p>You can find the TRN in the <a href="https://educationgovuk.sharepoint.com/:x:/s/TrustandAcademyManagementServiceTRAMSPrivateBeta/ETyRXN0eIYxOmCVHTqWxSLYBQvHdfWicu7NybUaDeiz88g" class="govuk-link" rel="noreferrer noopener" target="_blank">new trusts spreadsheet (opens in new tab)</a>.</p>
+        group_id_html:
+          <p>If this school is converting as part of a group, enter the group reference number.</p>
+          <p>The reference number begins with the letters GRP and contains up to 8 numbers, like GRP_XXXXXXXX. You can find this on the group’s page in Prepare conversions and transfers.</p>
       conversion_project:
         provisional_conversion_date: You can find this in the advisory board template.
         advisory_board_conditions: Enter details of conditions that must be met before the school can convert.

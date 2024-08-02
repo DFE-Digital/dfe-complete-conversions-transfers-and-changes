@@ -88,7 +88,8 @@ class Transfers::ProjectsController < ApplicationController
       :financial_safeguarding_governance_issues,
       :outgoing_trust_to_close,
       :new_trust_name,
-      :new_trust_reference_number
+      :new_trust_reference_number,
+      :group_id
     )
   end
 end

@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- new conversion projects now collect the group reference number, used in the
+  Prepare application to group projects together for advisory board.
+- new transfer projects now collect the group reference number, used in the
+  Prepare application to group projects together for advisory board.
+
 ## [Release-81][release-81]
 
 ### Added

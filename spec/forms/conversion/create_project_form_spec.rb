@@ -443,6 +443,53 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(form.errors.messages[:new_trust_name].first).to include "The big trust"
       end
     end
+
+    describe "group id" do
+      it "must be in the correct format if present" do
+        form = build(:create_project_form, group_id: "12345678")
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:group_id].first)
+          .to eql "A group group reference number must start GRP_ and contain 8 numbers, like GRP_00000001"
+
+        form = build(:create_project_form, group_id: "GRP12345678")
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:group_id].first)
+          .to eql "A group group reference number must start GRP_ and contain 8 numbers, like GRP_00000001"
+
+        form = build(:create_project_form, group_id: "GRP_1234567")
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:group_id].first)
+          .to eql "A group group reference number must start GRP_ and contain 8 numbers, like GRP_00000001"
+
+        form = build(:create_project_form, group_id: "grp_1234567")
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:group_id].first)
+          .to eql "A group group reference number must start GRP_ and contain 8 numbers, like GRP_00000001"
+
+        form = build(:create_project_form, group_id: "GRP_12345678")
+
+        expect(form).to be_valid
+      end
+
+      it "must result in a matching trust UKPRN if present" do
+        ProjectGroup.create(group_identifier: "GRP_12345678", trust_ukprn: 10058884)
+        form = build(:create_project_form, group_id: "GRP_12345678", incoming_trust_ukprn: 10000000)
+
+        expect(form).to be_invalid
+        expect(form.errors.messages[:group_id].first)
+          .to eql "The group reference number must be for the same trust as all other group members, check the group reference number and incoming trust UKPRN"
+      end
+
+      it "is optional" do
+        form = build(:create_project_form)
+
+        expect(form).to be_valid
+      end
+    end
   end
 
   describe "urn" do
@@ -581,6 +628,39 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
           )
           project = form.save
           expect(project.directive_academy_order).to eq true
+        end
+      end
+
+      context "when there is a group reference number" do
+        context "when the group is a new one" do
+          it "creates the group and makes the association to the project" do
+            form = build(
+              :create_conversion_project_form,
+              group_id: "GRP_12345678"
+            )
+
+            project = form.save
+            expect(ProjectGroup.count).to be 1
+
+            group = ProjectGroup.first
+            expect(project.group).to eql(group)
+          end
+        end
+
+        context "when the group exists" do
+          it "makes the association to the project" do
+            group = create(:project_group, group_identifier: "GRP_12345678", trust_ukprn: 1234567)
+            form = build(
+              :create_conversion_project_form,
+              incoming_trust_ukprn: 1234567,
+              group_id: "GRP_12345678"
+            )
+
+            project = form.save
+            expect(ProjectGroup.count).to be 1
+
+            expect(project.group).to eql(group)
+          end
         end
       end
     end
