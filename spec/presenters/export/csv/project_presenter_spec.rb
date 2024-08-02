@@ -605,6 +605,18 @@ RSpec.describe Export::Csv::ProjectPresenter do
     expect(presenter.main_contact_title).to eql "Very important person"
   end
 
+  context "when the main contact is a Contact::Establishment" do
+    it "presents the main contact email" do
+      user = create(:establishment_contact, email: "establishment.contact@education.gov.uk")
+      project = build(:conversion_project, main_contact_id: user.id)
+      user.establishment_urn = project.urn
+
+      presenter = described_class.new(project)
+
+      expect(presenter.main_contact_email).to eql "establishment.contact@education.gov.uk"
+    end
+  end
+
   it "handles a project without a main contact" do
     project = build(:conversion_project, main_contact: nil)
 
