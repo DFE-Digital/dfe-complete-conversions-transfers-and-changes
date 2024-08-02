@@ -130,7 +130,3 @@ en:
         must_be_in_the_future: Provisional conversion date must be in the future
       academy_urn:
         matching_school_urn: Academy URN cannot be the same as the school URN
-    conversion_project:
-      attributes:
-        two_requires_improvement:
-          inclusion: State if the conversion is due to 2RI. Choose yes or no

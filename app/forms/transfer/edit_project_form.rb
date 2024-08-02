@@ -1,40 +1,16 @@
-class Transfer::EditProjectForm
-  include ActiveModel::Model
-  include ActiveModel::Attributes
-  include ActiveRecord::AttributeAssignment
-
-  attr_accessor :project, :user
-
-  attribute :establishment_sharepoint_link
+class Transfer::EditProjectForm < EditProjectForm
   attribute :outgoing_trust_sharepoint_link
-  attribute :incoming_trust_sharepoint_link
   attribute :outgoing_trust_ukprn
-  attribute :incoming_trust_ukprn
-  attribute :advisory_board_date, :date
-  attribute :advisory_board_conditions
-  attribute :two_requires_improvement, :boolean
   attribute :inadequate_ofsted, :boolean
   attribute :financial_safeguarding_governance_issues, :boolean
   attribute :outgoing_trust_to_close, :boolean
-  attribute :assigned_to_regional_caseworker_team, :boolean
-  attribute :handover_note_body
 
-  validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
-  validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
   validates :outgoing_trust_sharepoint_link, presence: true, sharepoint_url: true
 
   validates :outgoing_trust_ukprn, presence: true, ukprn: true
   validates :outgoing_trust_ukprn, trust_exists: true, if: -> { outgoing_trust_ukprn.present? }
 
-  validates :incoming_trust_ukprn, presence: true, ukprn: true
-  validates :incoming_trust_ukprn, trust_exists: true, if: -> { incoming_trust_ukprn.present? }
-
   validates_with OutgoingIncomingTrustsUkprnValidator
-
-  validates :advisory_board_date, presence: true
-  validates :advisory_board_date, date_in_the_past: true
-
-  validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.conversion_project.attributes.two_requires_improvement.inclusion")}
 
   validates :inadequate_ofsted, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.inadequate_ofsted.inclusion")}
 
@@ -102,16 +78,5 @@ class Transfer::EditProjectForm
     end
 
     project
-  end
-
-  private def update_handover_note
-    note = Note.find_or_initialize_by(project: project, task_identifier: :handover, user: user)
-    note.update!(body: handover_note_body)
-  end
-
-  private def notify_team_leaders(project)
-    User.team_leaders.each do |team_leader|
-      TeamLeaderMailer.new_conversion_project_created(team_leader, project).deliver_later if team_leader.active
-    end
   end
 end
