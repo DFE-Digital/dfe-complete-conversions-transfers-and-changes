@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the group reference number for a conversion or transfer can now be changed
   from the project information view.
 - show an indicator when a project is part of a group
+- a new index page listing all grouped projects
 
 ## [Release-81][release-81]
 
