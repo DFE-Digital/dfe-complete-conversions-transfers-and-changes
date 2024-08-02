@@ -26,8 +26,7 @@ class EditProjectForm
 
   validates :two_requires_improvement, inclusion: {in: [true, false], message: I18n.t("errors.attributes.two_requires_improvement.inclusion")}
 
-  validates :group_id, format: {with: /\AGRP_\d{8}\z/}, if: -> { group_id.present? }
-  validate :group_id_ukprn, if: -> { group_id.present? && incoming_trust_ukprn.present? }
+  validates_with GroupIdValidator
 
   private def update_handover_note
     note = Note.find_or_initialize_by(project: project, task_identifier: :handover, user: user)
@@ -38,12 +37,6 @@ class EditProjectForm
     User.team_leaders.each do |team_leader|
       TeamLeaderMailer.new_conversion_project_created(team_leader, project).deliver_later if team_leader.active
     end
-  end
-
-  private def group_id_ukprn
-    group = ProjectGroup.find_by_group_identifier(group_id)
-
-    errors.add(:group_id, :trust_ukprn) unless group.nil? || group.trust_ukprn.eql?(incoming_trust_ukprn)
   end
 
   private def group_id_to_group(group_id)
