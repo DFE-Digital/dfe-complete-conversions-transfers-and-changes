@@ -46,6 +46,7 @@ en:
       transfer_create_project_form:
         new_trust_reference_number: Trust reference number (TRN)
         new_trust_name: Trust name
+        group_id: Group reference number
     legend:
       transfer_project:
         advisory_board_date: Date of advisory board
@@ -93,6 +94,10 @@ en:
         establishment_sharepoint_link: Provide a link to the SharePoint folder for this academy. This is where you save all the relevant academy documents.
         incoming_trust_sharepoint_link: Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.
         outgoing_trust_sharepoint_link: Provide a link to the SharePoint folder for the outgoing trust. This is where you save all the relevant trust documents.
+        group_id_html:
+          <p>If this academy is transferring  as part of a group, enter the group reference number.</p>
+          <p>The reference number begins with the letters GRP and contains up to 8 numbers, like GRP_XXXXXXXX. You can find this on the group’s page in Prepare conversions and transfers.</p>
+
         advisory_board_conditions: Enter details of conditions that must be met before the school or academy can transfer.
         handover_note_body_html:
           <p>You must describe how the project has progressed so far and highlight any issues or concerns.</p>

@@ -323,6 +323,41 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
         expect(form.errors.messages[:new_trust_name].first).to include "The big trust"
       end
     end
+
+    describe "group id" do
+      context "when there is a group reference number" do
+        context "when the group is a new one" do
+          it "creates the group and makes the association to the project" do
+            form = build(
+              :create_transfer_project_form,
+              group_id: "GRP_12345678"
+            )
+
+            project = form.save
+            expect(ProjectGroup.count).to be 1
+
+            group = ProjectGroup.first
+            expect(project.group).to eql(group)
+          end
+        end
+
+        context "when the group exists" do
+          it "makes the association to the project" do
+            group = create(:project_group, group_identifier: "GRP_12345678", trust_ukprn: 1234567)
+            form = build(
+              :create_transfer_project_form,
+              incoming_trust_ukprn: 1234567,
+              group_id: "GRP_12345678"
+            )
+
+            project = form.save
+            expect(ProjectGroup.count).to be 1
+
+            expect(project.group).to eql(group)
+          end
+        end
+      end
+    end
   end
 
   describe "urn" do

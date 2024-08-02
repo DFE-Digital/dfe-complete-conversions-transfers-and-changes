@@ -21,6 +21,10 @@
       </div>
 
       <div class="govuk-form-group">
+        <%= form.govuk_text_field :group_id, label: {size: "m"}, width: 10, autocomplete: :off %>
+      </div>
+
+      <div class="govuk-form-group">
         <%= form.govuk_text_field :establishment_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.establishment_sharepoint_link")} %>
         <%= form.govuk_text_field :incoming_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_sharepoint_link")} %>
         <%= form.govuk_text_field :outgoing_trust_sharepoint_link, label: {size: "m", text: t("helpers.label.transfer_project.outgoing_trust_sharepoint_link")} %>

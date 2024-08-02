@@ -62,6 +62,13 @@ class Transfer::CreateProjectForm < CreateProjectForm
     return nil unless valid?(context)
 
     ActiveRecord::Base.transaction do
+      if group_id.present?
+        @project.group = ProjectGroup.find_or_create_by(
+          group_identifier: group_id,
+          trust_ukprn: incoming_trust_ukprn
+        )
+      end
+
       @project.save
       @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
       @project.tasks_data.update!(
