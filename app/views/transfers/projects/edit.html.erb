@@ -11,6 +11,10 @@
         <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10, autocomplete: :off %>
       </div>
 
+      <div class="govuk-form-group" id="group-reference-number">
+        <%= form.govuk_text_field :group_id, label: {size: "m"}, width: 10, autocomplete: :off %>
+      </div>
+
       <div class="govuk-form-group">
         <%= form.govuk_date_field :advisory_board_date, legend: {text: t("helpers.legend.transfer_project.advisory_board_date")}, form_group: {id: "advisory-board-date"}, hint: {text: t("helpers.hint.project.advisory_board_date").html_safe} %>
         <%= form.govuk_text_area :advisory_board_conditions, label: {size: "m", text: t("helpers.label.transfer_project.advisory_board_conditions")} %>

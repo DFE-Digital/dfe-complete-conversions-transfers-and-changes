@@ -59,6 +59,7 @@ class Transfers::ProjectsController < ApplicationController
       :outgoing_trust_sharepoint_link,
       :outgoing_trust_ukprn,
       :incoming_trust_ukprn,
+      :group_id,
       :advisory_board_date,
       :advisory_board_conditions,
       :two_requires_improvement,

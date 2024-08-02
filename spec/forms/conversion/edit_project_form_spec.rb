@@ -180,5 +180,35 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
                                 .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
       end
     end
+
+    describe "the group reference number" do
+      context "when the group does not exist" do
+        it "creates the group and associate the project" do
+          expect { subject.update({group_id: "GRP_12345678"}) }.to change { ProjectGroup.count }.by(1)
+
+          expect(project.group.group_identifier).to eql "GRP_12345678"
+        end
+      end
+
+      context "when the group exists" do
+        it "associates the project" do
+          create(:project_group, group_identifier: "GRP_12345678", trust_ukprn: project.incoming_trust_ukprn)
+
+          expect { subject.update({group_id: "GRP_12345678"}) }.not_to change { ProjectGroup.count }
+
+          expect(project.group.group_identifier).to eql "GRP_12345678"
+        end
+      end
+
+      context "when set to empty" do
+        it "un-sets the project association" do
+          create(:project_group, group_identifier: "GRP_12345678", trust_ukprn: project.incoming_trust_ukprn)
+
+          expect { subject.update({group_id: ""}) }.not_to change { ProjectGroup.count }
+
+          expect(project.group).to be_nil
+        end
+      end
+    end
   end
 end

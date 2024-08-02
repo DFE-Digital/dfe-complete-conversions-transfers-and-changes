@@ -22,8 +22,8 @@ class CreateProjectForm
   validates :urn, presence: true, urn: true
   validates :incoming_trust_ukprn, presence: true, ukprn: true, on: :existing_trust
   validates :incoming_trust_ukprn, trust_exists: true, on: :existing_trust, if: -> { incoming_trust_ukprn.present? }
-  validates :group_id, format: {with: /\AGRP_\d{8}\z/}, if: -> { group_id.present? }
-  validate :group_id_ukprn, if: -> { group_id.present? && incoming_trust_ukprn.present? }
+
+  validates_with GroupIdValidator
 
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
@@ -74,11 +74,5 @@ class CreateProjectForm
 
   private def urn_unique_for_in_progress_transfers
     errors.add(:urn, :duplicate) if Transfer::Project.active.where(urn: urn).any?
-  end
-
-  private def group_id_ukprn
-    group = ProjectGroup.find_by_group_identifier(group_id)
-
-    errors.add(:group_id, :trust_ukprn) unless group.nil? || group.trust_ukprn.eql?(incoming_trust_ukprn)
   end
 end

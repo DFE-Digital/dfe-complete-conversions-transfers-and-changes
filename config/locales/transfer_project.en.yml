@@ -47,6 +47,8 @@ en:
         new_trust_reference_number: Trust reference number (TRN)
         new_trust_name: Trust name
         group_id: Group reference number
+      transfer_edit_project_form:
+        group_id: Group reference number
     legend:
       transfer_project:
         advisory_board_date: Date of advisory board
@@ -87,6 +89,10 @@ en:
             <li>any financial package that has been finalised and agreed</li>
           </ul>
         two_requires_improvement: If an academy receives 2 or more requires improvement ratings (2RI) from Ofsted, it can be transferred to a different trust to improve performance.
+      transfer_edit_project_form:
+        group_id_html:
+          <p>If this academy is transfering  as part of a group, enter the group reference number.</p>
+          <p>The reference number begins with the letters GRP and contains up to 8 numbers, like GRP_XXXXXXXX. You can find this on the group’s page in Prepare conversions and transfers.</p>
       transfer_create_project_form:
         new_trust_name: Enter the proposed name for the new trust. This can be changed later on if necessary.
         new_trust_reference_number_html:
@@ -108,6 +114,9 @@ en:
           <li>who the Schools Financial Support and Oversight lead is</li>
           <li>any financial package that has been finalised and agreed</li>
           </ul>
+        group_id_html:
+          <p>If this academy is transfering  as part of a group, enter the group reference number.</p>
+          <p>The reference number begins with the letters GRP and contains up to 8 numbers, like GRP_XXXXXXXX. You can find this on the group’s page in Prepare conversions and transfers.</p>
   errors:
     attributes:
       provisional_transfer_date:

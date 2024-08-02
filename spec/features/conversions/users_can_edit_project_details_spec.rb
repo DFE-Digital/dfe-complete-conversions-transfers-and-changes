@@ -202,4 +202,36 @@ RSpec.feature "Users can edit conversion project details" do
 
     expect(page).to have_content "Not assigned to project"
   end
+
+  scenario "they can change and unset the group reference number" do
+    create(:project_group, group_identifier: "GRP_12345678", trust_ukprn: project.incoming_trust_ukprn)
+    visit project_information_path(project)
+
+    row = find("#projectDetails .govuk-summary-list__row:nth-child(6)")
+
+    within(row) do
+      expect(page).to have_content("Not grouped")
+      click_link "Change"
+    end
+
+    fill_in "Group reference number", with: "GRP_12345678"
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("GRP_12345678")
+    end
+
+    within(row) do
+      click_link "Change"
+    end
+
+    fill_in "Group reference number", with: ""
+
+    click_on "Continue"
+
+    within(row) do
+      expect(page).to have_content("Not grouped")
+    end
+  end
 end

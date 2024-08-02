@@ -481,3 +481,7 @@ en:
       group_id:
         invalid: A group group reference number must start GRP_ and contain 8 numbers, like GRP_00000001
         trust_ukprn: The group reference number must be for the same trust as all other group members, check the group reference number and incoming trust UKPRN
+    conversion_project:
+      attributes:
+        two_requires_improvement:
+          inclusion: State if the conversion is due to 2RI. Choose yes or no
