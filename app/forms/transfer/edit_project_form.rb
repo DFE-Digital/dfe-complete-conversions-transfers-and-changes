@@ -1,6 +1,6 @@
 class Transfer::EditProjectForm < EditProjectForm
-  attribute :outgoing_trust_sharepoint_link
-  attribute :outgoing_trust_ukprn
+  attribute :outgoing_trust_sharepoint_link, :string
+  attribute :outgoing_trust_ukprn, :integer
   attribute :inadequate_ofsted, :boolean
   attribute :financial_safeguarding_governance_issues, :boolean
   attribute :outgoing_trust_to_close, :boolean
@@ -24,6 +24,7 @@ class Transfer::EditProjectForm < EditProjectForm
       outgoing_trust_sharepoint_link: project.outgoing_trust_sharepoint_link,
       outgoing_trust_ukprn: project.outgoing_trust_ukprn,
       incoming_trust_ukprn: project.incoming_trust_ukprn,
+      group_id: project.group&.group_identifier,
       advisory_board_date: project.advisory_board_date,
       advisory_board_conditions: project.advisory_board_conditions,
       two_requires_improvement: project.two_requires_improvement,
@@ -71,6 +72,8 @@ class Transfer::EditProjectForm < EditProjectForm
     )
 
     ActiveRecord::Base.transaction do
+      project.group = group_id_to_group(group_id)
+
       project.save!
       project.tasks_data.save!
       update_handover_note if handover_note_body.present?

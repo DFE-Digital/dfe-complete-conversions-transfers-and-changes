@@ -9,6 +9,7 @@ class Conversion::EditProjectForm < EditProjectForm
       establishment_sharepoint_link: project.establishment_sharepoint_link,
       incoming_trust_sharepoint_link: project.incoming_trust_sharepoint_link,
       incoming_trust_ukprn: project.incoming_trust_ukprn,
+      group_id: project.group&.group_identifier,
       advisory_board_date: project.advisory_board_date,
       advisory_board_conditions: project.advisory_board_conditions,
       directive_academy_order: project.directive_academy_order,
@@ -47,6 +48,8 @@ class Conversion::EditProjectForm < EditProjectForm
     )
 
     ActiveRecord::Base.transaction do
+      project.group = group_id_to_group(group_id)
+
       project.save
       update_handover_note if handover_note_body.present?
       notify_team_leaders(project) if assigned_to_regional_caseworker_team

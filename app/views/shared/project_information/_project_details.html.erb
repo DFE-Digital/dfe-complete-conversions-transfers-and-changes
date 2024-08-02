@@ -33,6 +33,12 @@
             else
               row.with_value { t("project_information.show.project_details.values.no_group") }
             end
+            if project.is_a?(Transfer::Project)
+              row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "group-reference-number"), visually_hidden_text: "the group reference number")
+            end
+            if project.is_a?(Conversion::Project)
+              row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "group-reference-number"), visually_hidden_text: "the group reference number")
+            end
           end
         end %>
   </div>

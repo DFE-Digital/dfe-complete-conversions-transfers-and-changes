@@ -66,6 +66,7 @@ en:
     label:
       conversion_edit_project_form:
         incoming_trust_ukprn: Incoming trust UKPRN (UK Provider Reference Number)
+        group_id: Group reference number
       conversion_create_project_form:
         urn: School URN (Unique Reference Number)
         incoming_trust_ukprn: Incoming trust UKPRN (UK Provider Reference Number)
@@ -89,6 +90,9 @@ en:
         incoming_trust_ukprn_html:
           <p>A UKPRN is an 8-digit number that always starts with a 1.</p>
           <p><a href="https://www.get-information-schools.service.gov.uk/Search?SelectedTab=Groups" class="govuk-link" rel="noreferrer noopener" target="_blank">Search GIAS to find the incoming trust's UKPRN (opens in a new tab)</a>.</p>
+        group_id_html:
+          <p>If this school is converting as part of a group, enter the group reference number.</p>
+          <p>The reference number begins with the letters GRP and contains up to 8 numbers, like GRP_XXXXXXXX. You can find this on the group’s page in Prepare conversions and transfers.</p>
       conversion_create_project_form:
         establishment_sharepoint_link_html:
           <p>If the school applied to convert, you must save the application form in the Schools' SharePoint folder.</p>
