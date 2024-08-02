@@ -90,7 +90,8 @@ class Conversions::ProjectsController < ProjectsController
       :directive_academy_order,
       :two_requires_improvement,
       :new_trust_name,
-      :new_trust_reference_number
+      :new_trust_reference_number,
+      :group_id
     )
   end
 end
