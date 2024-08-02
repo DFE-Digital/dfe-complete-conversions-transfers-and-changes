@@ -136,6 +136,10 @@ class Project < ApplicationRecord
     false
   end
 
+  def grouped?
+    group.present?
+  end
+
   def all_contacts
     ContactsFetcherService.new(self).all_project_contacts
   end

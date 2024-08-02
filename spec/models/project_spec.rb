@@ -943,4 +943,19 @@ RSpec.describe Project, type: :model do
       expect(project.director_of_child_services.email).to eql "director.child@domain.com"
     end
   end
+
+  describe "#grouped?" do
+    it "returns true when the project has a group reference number" do
+      group = build(:project_group)
+      project = build(:conversion_project, group: group)
+
+      expect(project.grouped?).to be true
+    end
+
+    it "returns false when the project has a no group reference number" do
+      project = build(:conversion_project, group: nil)
+
+      expect(project.grouped?).to be false
+    end
+  end
 end

@@ -10,6 +10,10 @@
       <% if @project.form_a_mat? %>
         <%= govuk_tag(text: t("project.summary.type.form_a_mat"), colour: "pink") %>
       <% end %>
+
+      <% if @project.grouped? %>
+        <%= govuk_tag(text: t("project.summary.type.grouped"), colour: "turquoise") %>
+      <% end %>
     </span>
     <h1 class="govuk-heading-xl"><%= @project.establishment.name %></h1>
   </div>

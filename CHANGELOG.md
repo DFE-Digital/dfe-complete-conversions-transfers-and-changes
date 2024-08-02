@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Prepare application to group projects together for advisory board.
 - the group reference number for a conversion or transfer can now be changed
   from the project information view.
+- show an indicator when a project is part of a group
 
 ## [Release-81][release-81]
 

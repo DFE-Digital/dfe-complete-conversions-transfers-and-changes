@@ -137,6 +137,7 @@ en:
         transfer: Transfer
         form_a_mat: Form a MAT
         dao_revoked: DAO revoked
+        grouped: In a group
       incoming_trust:
         title: Incoming trust
       outgoing_trust:
