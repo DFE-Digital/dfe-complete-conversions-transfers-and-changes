@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   from the project information view.
 - show an indicator when a project is part of a group
 - a new index page listing all grouped projects
+- a list of the project groups is shown on the index page
 
 ## [Release-81][release-81]
 

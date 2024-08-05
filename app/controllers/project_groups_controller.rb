@@ -3,5 +3,7 @@ class ProjectGroupsController < ApplicationController
 
   def index
     authorize Project, :index?
+
+    @pager, @groups = pagy(ProjectGroup.all.includes(:projects).order(group_identifier: :desc))
   end
 end

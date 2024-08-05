@@ -71,7 +71,7 @@ module AcademiesApiHelpers
 
   def mock_trust_not_found(ukprn:)
     mock_client = Api::AcademiesApi::Client.new
-    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError)
+    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     allow(mock_client).to receive(:get_trust).with(ukprn).and_return(not_found_result)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
   end

@@ -253,7 +253,6 @@ Rails.application.routes.draw do
   # Project groups
   resources :groups, only: %i[index], controller: :project_groups, as: :project_groups
 
-
   # Service support projects
   constraints(id: VALID_UUID_REGEX) do
     resources :projects, only: %i[index] do
