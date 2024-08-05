@@ -95,4 +95,11 @@ module ProjectHelper
   def project_type_as_string(project)
     ActiveSupport::Inflector.deconstantize(project.type).downcase
   end
+
+  def projects_establishment_name_list(project_group)
+    name_list = project_group.projects.map do |project|
+      project.establishment.name
+    end
+    name_list.join("; ")
+  end
 end
