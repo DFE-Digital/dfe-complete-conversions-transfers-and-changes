@@ -3,6 +3,8 @@ class ProjectGroup < ApplicationRecord
 
   has_many :projects, foreign_key: :group_id
 
+  attr_writer :trust
+
   def trust
     @trust ||= fetch_trust_by_ukprn(trust_ukprn)
   end
