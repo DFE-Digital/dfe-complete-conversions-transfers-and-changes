@@ -27,5 +27,17 @@ RSpec.describe ProjectGroup, type: :model do
 
       expect(subject.trust.original_name).to eql "Could not find trust for UKPRN 1234567"
     end
+
+    it "only calls the API once" do
+      subject = build(:project_group)
+      trust = build(:academies_api_trust)
+
+      api_client = mock_successful_api_trust_response(ukprn: subject.trust_ukprn, trust: trust)
+
+      subject.trust
+      subject.trust
+
+      expect(api_client).to have_received(:get_trust).exactly(1).time
+    end
   end
 end
