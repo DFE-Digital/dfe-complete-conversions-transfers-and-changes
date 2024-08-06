@@ -28,7 +28,8 @@ RSpec.feature "Users can view a single project group" do
       :transfer_project,
       urn: 654321,
       group: project_group,
-      incoming_trust_ukprn: 12345678
+      incoming_trust_ukprn: 12345678,
+      outgoing_trust_ukprn: 18765432
     )
   }
 
@@ -54,6 +55,21 @@ RSpec.feature "Users can view a single project group" do
     end
   end
 
+  scenario "they can navigate from project to group and back again" do
+    visit project_path(conversion_project)
+    click_on "About the project"
+    click_on "GRP_12345678"
+
+    expect(current_url).to include project_group.id
+    expect(page).to have_content "Converting establishment"
+    expect(page).to have_content "Transferring establishment"
+
+    click_on "Transferring establishment"
+
+    expect(current_url).to include transfer_project.id
+    expect(page).to have_content "In a group"
+  end
+
   def mock_academies_api_for_test
     converting_establishment = build(:academies_api_establishment, urn: 123456, name: "Converting establishment")
     transferring_establishment = build(:academies_api_establishment, urn: 654321, name: "Transferring establishment")
@@ -77,6 +93,9 @@ RSpec.feature "Users can view a single project group" do
       Api::AcademiesApi::Client::Result.new(trusts, nil)
     )
     allow(fake_client).to receive(:get_trust).with(12345678).and_return(
+      Api::AcademiesApi::Client::Result.new(trust, nil)
+    )
+    allow(fake_client).to receive(:get_trust).with(18765432).and_return(
       Api::AcademiesApi::Client::Result.new(trust, nil)
     )
 
