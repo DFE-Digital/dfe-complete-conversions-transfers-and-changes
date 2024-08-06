@@ -5,19 +5,11 @@ class Import::GiasImportJob < ApplicationJob
     establishments_result = import_establishments(file_path)
     GiasEstablishmentImportMailer.import_notification(user, emailable_result(establishments_result)).deliver_later
 
-    headteachers_result = import_headteachers(file_path)
-    GiasHeadteacherImportMailer.import_notification(user, emailable_result(headteachers_result)).deliver_later
-
     delete_file(file_path)
   end
 
   def import_establishments(file_path)
     importer = Import::Gias::EstablishmentCsvImporterService.new(file_path)
-    importer.import!
-  end
-
-  def import_headteachers(file_path)
-    importer = Import::Gias::HeadteacherCsvImporterService.new(file_path)
     importer.import!
   end
 
