@@ -1,0 +1,31 @@
+<% projects.each do |project| %>
+
+  <div id="academyDetails" class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+      <h2 class="govuk-summary-card__title">
+        <%= link_to project.establishment.name, project_path(project), class: "govuk-link govuk-link--no-visited-state" %>
+      </h2>
+    </div>
+
+    <div class="govuk-summary-card__content">
+      <%= govuk_summary_list do |summary_list|
+            summary_list.with_row do |row|
+              row.with_key { t("project_groups.show.summary_card.urn") }
+              row.with_value { project.urn.to_s }
+            end
+            summary_list.with_row do |row|
+              row.with_key { t("project_groups.show.summary_card.project_type") }
+              row.with_value { project_type_as_string(project).humanize }
+            end
+            summary_list.with_row do |row|
+              row.with_key { t("project_groups.show.summary_card.local_authority") }
+              row.with_value { project.local_authority.name }
+            end
+            summary_list.with_row do |row|
+              row.with_key { t("project_groups.show.summary_card.region") }
+              row.with_value { project.establishment.region_name }
+            end
+          end %>
+    </div>
+  </div>
+<% end %>

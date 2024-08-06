@@ -12,3 +12,12 @@ en:
         group_reference_number: Group reference number
         trust_ukprn: Trust UKPRN
         establishment_names: Schools or academies included
+    show:
+      trust_reference_number: "Trust reference number: "
+      group_reference_number: "Group reference number: "
+      project_count: "Number in group: "
+      summary_card:
+        urn: URN
+        project_type: Project type
+        local_authority: Local authority
+        region: Region

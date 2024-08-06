@@ -13,7 +13,9 @@
     <tbody class="govuk-table__body">
     <% groups.each do |group| %>
       <tr class="govuk-table__row">
-        <td class="govuk-table__header govuk-table__cell"><%= group.trust.name %></td>
+        <td class="govuk-table__header govuk-table__cell">
+          <%= link_to group.trust.name, project_group_path(group), class: "govuk-link govuk-link--no-visited-state" %>
+        </td>
         <td class="govuk-table__cell"><%= group.group_identifier %></td>
         <td class="govuk-table__cell"><%= group.trust_ukprn %></td>
         <td class="govuk-table__cell"><%= projects_establishment_name_list(group) %></td>

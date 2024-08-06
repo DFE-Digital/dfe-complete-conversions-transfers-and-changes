@@ -8,4 +8,15 @@ class ProjectGroupsController < ApplicationController
 
     ProjectGroupPreFetchingService.new(@groups).pre_fetch!
   end
+
+  def show
+    authorize Project, :index?
+
+    @project_group = ProjectGroup.find(params[:id])
+
+    projects = @project_group.projects
+    AcademiesApiPreFetcherService.new.call!(projects)
+
+    @grouped_projects = projects.sort_by { |project| project.establishment.name }
+  end
 end
