@@ -3,12 +3,10 @@ require "rails_helper"
 RSpec.describe Import::GiasImportJob, type: :job do
   describe "#perform" do
     let(:user) { create(:user, :service_support) }
-    let(:headteacher_importer) { double(Import::Gias::HeadteacherCsvImporterService, import!: {}) }
     let(:establishment_importer) { double(Import::Gias::EstablishmentCsvImporterService, import!: {}) }
     subject { described_class }
 
     before do
-      allow(Import::Gias::HeadteacherCsvImporterService).to receive(:new).and_return(headteacher_importer)
       allow(Import::Gias::EstablishmentCsvImporterService).to receive(:new).and_return(establishment_importer)
       allow(File).to receive(:delete).and_return(true)
     end
@@ -23,18 +21,14 @@ RSpec.describe Import::GiasImportJob, type: :job do
     it "calls both the importer services" do
       subject.perform_now(file_path, user)
       expect(establishment_importer).to have_received(:import!)
-      expect(headteacher_importer).to have_received(:import!)
     end
 
     it "queues an email to the user with the import report" do
-      headteacher_mock_mailer = double(GiasHeadteacherImportMailer, deliver_later: true)
-      expect(GiasHeadteacherImportMailer).to receive(:import_notification).and_return(headteacher_mock_mailer)
       establishment_mock_mailer = double(GiasEstablishmentImportMailer, deliver_later: true)
       expect(GiasEstablishmentImportMailer).to receive(:import_notification).and_return(establishment_mock_mailer)
 
       subject.perform_now(file_path, user)
 
-      expect(headteacher_mock_mailer).to have_received(:deliver_later).exactly(1).time
       expect(establishment_mock_mailer).to have_received(:deliver_later).exactly(1).time
     end
 
