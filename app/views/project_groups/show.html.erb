@@ -1,0 +1,45 @@
+<% content_for :page_title do %>
+  <%= page_title("#{@project_group.trust.name} - #{ t("project_groups.index.title")}") %>
+<% end %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: project_groups_path} %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">
+      <%= t("project_groups.show.trust_reference_number") + @project_group.trust.group_identifier %>
+    </span>
+    <span class="govuk-caption-xl">
+       <%= t("project_groups.show.group_reference_number") + @project_group.group_identifier %>
+    </span>
+    <h1 class="govuk-heading-xl">
+      <%= @project_group.trust.name %>
+    </h1>
+
+    <p><strong><%= t("project_groups.show.project_count") %></strong> <%= @grouped_projects.count %></p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <nav class="moj-sub-navigation" aria-label="Project group sub-navigation">
+      <ul class="moj-sub-navigation__list">
+        <%= render partial: "/shared/sub_navigation_item", locals: {name: "Schools or academies in this group", path: project_group_path(@project_group)} %>
+      </ul>
+    </nav>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <%= render partial: "grouped_projects", locals: {projects: @grouped_projects} %>
+
+  </div>
+</div>

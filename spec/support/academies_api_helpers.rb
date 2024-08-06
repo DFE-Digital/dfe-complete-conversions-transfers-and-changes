@@ -23,6 +23,8 @@ module AcademiesApiHelpers
       get_trust: Api::AcademiesApi::Client::Result.new(trust, nil))
 
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(fake_client)
+
+    fake_client
   end
 
   def mock_successful_api_response_to_create_any_project
@@ -55,6 +57,8 @@ module AcademiesApiHelpers
 
     allow(test_client).to receive(:get_trust).with(ukprn).and_return(fake_result)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+
+    test_client
   end
 
   def mock_timeout_api_responses(urn:, ukprn:)
@@ -71,7 +75,7 @@ module AcademiesApiHelpers
 
   def mock_trust_not_found(ukprn:)
     mock_client = Api::AcademiesApi::Client.new
-    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError)
+    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     allow(mock_client).to receive(:get_trust).with(ukprn).and_return(not_found_result)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
   end
@@ -86,7 +90,7 @@ module AcademiesApiHelpers
   def mock_timeout_api_trust_response(ukprn:)
     test_client = Api::AcademiesApi::Client.new
 
-    allow(test_client).to receive(:get_trust).with(ukprn).and_raise(Api::AcademiesApi::Client::Error)
+    allow(test_client).to receive(:get_trust).with(ukprn).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new))
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 

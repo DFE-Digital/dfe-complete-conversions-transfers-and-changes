@@ -29,7 +29,7 @@
           summary_list.with_row do |row|
             row.with_key { t("project_information.show.project_details.rows.group") }
             if project.group.present?
-              row.with_value { project.group.group_identifier }
+              row.with_value { link_to project.group.group_identifier, project_group_path(project.group), class: "govuk-link govuk-link--no-visited-state" }
             else
               row.with_value { t("project_information.show.project_details.values.no_group") }
             end

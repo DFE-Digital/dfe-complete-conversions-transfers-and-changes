@@ -25,6 +25,11 @@
                     locals: {title: t("navigation.header.all_projects"), path: all_all_in_progress_projects_path, namespace: "/projects/all/"}
                 end %>
 
+            <%= if policy(:navigation).show_all_projects_header_navigation?
+                  render partial: "shared/navigation/dfe_header_navigation_item",
+                    locals: {title: t("navigation.header.project_groups"), path: project_groups_path, namespace: "/groups"}
+                end %>
+
             <%= if policy(:navigation).show_service_support_header_navigation?
                   render partial: "shared/navigation/dfe_header_navigation_item",
                     locals: {title: t("navigation.header.service_support"), path: without_academy_urn_service_support_projects_path, namespace: "/service-support/"}

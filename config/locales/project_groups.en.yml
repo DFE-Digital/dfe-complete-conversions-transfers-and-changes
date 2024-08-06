@@ -1,0 +1,23 @@
+en:
+  project_groups:
+    index:
+      title: Groups
+      body_html:
+        <p>Schools and academies joining an existing trust together.</p>
+        <p>Groups can include any type of conversion or transfer.</p>
+    table:
+      empty: No grouped projects have been added yet.
+      headers:
+        group: Group
+        group_reference_number: Group reference number
+        trust_ukprn: Trust UKPRN
+        establishment_names: Schools or academies included
+    show:
+      trust_reference_number: "Trust reference number: "
+      group_reference_number: "Group reference number: "
+      project_count: "Number in group: "
+      summary_card:
+        urn: URN
+        project_type: Project type
+        local_authority: Local authority
+        region: Region

@@ -15,6 +15,10 @@
       <% if @project.dao_revoked? %>
         <%= govuk_tag(text: t("project.summary.type.dao_revoked"), colour: "red") %>
       <% end %>
+
+      <% if @project.grouped? %>
+        <%= govuk_tag(text: t("project.summary.type.grouped"), colour: "turquoise") %>
+      <% end %>
     </span>
     <h1 class="govuk-heading-xl"><%= @project.establishment.name %></h1>
   </div>

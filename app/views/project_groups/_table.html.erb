@@ -1,0 +1,28 @@
+<% if groups.empty? %>
+  <%= govuk_inset_text(text: t("project_groups.table.empty")) %>
+<% else %>
+  <table class="govuk-table" name="project-groups-table" aria-label="Project groups table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col"><%= t("project_groups.table.headers.group") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project_groups.table.headers.group_reference_number") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project_groups.table.headers.trust_ukprn") %></th>
+        <th class="govuk-table__header" scope="col"><%= t("project_groups.table.headers.establishment_names") %></th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <% groups.each do |group| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header govuk-table__cell">
+          <%= link_to group.trust.name, project_group_path(group), class: "govuk-link govuk-link--no-visited-state" %>
+        </td>
+        <td class="govuk-table__cell"><%= group.group_identifier %></td>
+        <td class="govuk-table__cell"><%= group.trust_ukprn %></td>
+        <td class="govuk-table__cell"><%= projects_establishment_name_list(group) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= govuk_pagination(pagy: pager) %>
