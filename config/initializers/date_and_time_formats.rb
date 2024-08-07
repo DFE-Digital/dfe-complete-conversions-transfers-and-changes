@@ -11,3 +11,7 @@ Date::DATE_FORMATS[:significant_date] = "%b %Y"
 
 # date format for csv files
 Date::DATE_FORMATS[:csv] = "%Y-%m-%d"
+
+# Time only
+Time::DATE_FORMATS[:govuk_date_time] = "%-d %B %Y %H:%M"
+Time::DATE_FORMATS[:govuk_date_time_date_only] = "%-d %B %Y"
