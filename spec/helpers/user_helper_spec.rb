@@ -5,7 +5,7 @@ RSpec.describe UserHelper, type: :helper do
     context "with an active user" do
       it "shows the formatted latest_session date" do
         user = build(:user, latest_session: DateTime.new(2023, 1, 1, 10, 30, 0, 0))
-        expect(helper.last_seen_datetime(user)).to eq("1 January 2023 10:30")
+        expect(helper.last_seen_datetime(user)).to eq("1 January 2023 10:30am")
       end
     end
 

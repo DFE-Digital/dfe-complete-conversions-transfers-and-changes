@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - a list of the project groups is shown on the index page
 - individual project groups can now be viewed
 
+### Fixed
+
+- the time for a date history item is now shown in the London timezone
+
 ## [Release-81][release-81]
 
 ### Added
