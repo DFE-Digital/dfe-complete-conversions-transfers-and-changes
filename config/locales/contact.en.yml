@@ -71,3 +71,5 @@ en:
         blank: Choose a category
       primary_contact_for_category:
         category: Only the incoming trust, outgoing trust and school or academy categories can have a primary contact
+      base:
+        wrong_project_type_for_category: The selected category type is not supported by this project type
