@@ -7,11 +7,35 @@ RSpec.describe SignificantDatePresenter do
 
   describe "title" do
     it "presents the created at date and time in right format" do
-      date_history = create(:date_history, created_at: Time.zone.local(2024, 6, 1, 12, 0, 0))
+      date_history = create(:date_history, created_at: Time.zone.local(2024, 6, 1, 12, 0))
 
       presenter = described_class.new(date_history)
 
-      expect(presenter.title).to eql "1 June 2024 12:00"
+      expect(presenter.title).to eql "1 June 2024 12:00pm"
+    end
+
+    context "during GMT" do
+      it "handles the time difference" do
+        travel_to Time.zone.local(2024, 3, 1, 15, 0) do
+          date_history = create(:date_history)
+
+          presenter = described_class.new(date_history)
+
+          expect(presenter.title).to eql "1 March 2024  3:00pm"
+        end
+      end
+    end
+
+    context "during BST" do
+      it "handles the time difference" do
+        travel_to Time.zone.local(2024, 7, 1, 15, 0) do
+          date_history = create(:date_history)
+
+          presenter = described_class.new(date_history)
+
+          expect(presenter.title).to eql "1 July 2024  3:00pm"
+        end
+      end
     end
   end
 
