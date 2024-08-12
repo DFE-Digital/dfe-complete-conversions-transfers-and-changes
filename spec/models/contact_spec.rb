@@ -46,4 +46,12 @@ RSpec.describe Contact do
       expect(contact.editable?).to be true
     end
   end
+
+  describe "#email_and_phone" do
+    it "shows the email address and phone number separated by a comma" do
+      contact = described_class.new(email: "user.name@school.ac.uk", phone: "020 764 2939")
+
+      expect(contact.email_and_phone).to eql "user.name@school.ac.uk, 020 764 2939"
+    end
+  end
 end
