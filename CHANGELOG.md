@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-82][release-82]
+
 ### Added
 
 - new conversion projects now collect the group reference number, used in the
@@ -2113,7 +2115,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-81...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-82...HEAD
+[release-82]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-81...release-82
 [release-81]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-80...release-81
 [release-80]:
