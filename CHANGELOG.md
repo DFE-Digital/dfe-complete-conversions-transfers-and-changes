@@ -23,6 +23,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the time for a date history item is now shown in the London timezone
 
+### Changed
+
+- The feedback form link in the phase banner is now the same as the one in the
+  footer
+
 ## [Release-81][release-81]
 
 ### Added
