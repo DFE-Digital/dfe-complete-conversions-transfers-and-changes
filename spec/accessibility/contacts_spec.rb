@@ -21,7 +21,7 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
   scenario "new page" do
     visit new_project_contact_path(project)
 
-    expect(page).to have_content("Add contact")
+    expect(page).to have_content("Who do you want to add as a contact?")
     check_accessibility(page)
   end
 

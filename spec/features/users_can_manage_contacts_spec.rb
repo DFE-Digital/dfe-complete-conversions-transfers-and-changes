@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can manage contacts" do
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_successful_api_response_to_create_any_project
     sign_in_with_user(user)
   end
 
@@ -51,31 +51,185 @@ RSpec.feature "Users can manage contacts" do
     end
   end
 
-  scenario "they can add a new contact" do
-    visit project_contacts_path(project)
+  context "adding a new headteacher" do
+    scenario "a headteacher is added with the required defaults" do
+      visit project_contacts_path(project)
 
-    click_link "Add contact"
+      click_link "Add contact"
+      choose "Headteacher"
+      click_on "Save and continue"
+      expect(page).to have_content "Enter contact details"
 
-    expect(page).to have_select("Contact for", selected: "Choose category")
+      fill_in "Full name", with: "Jane Headteacher"
+      fill_in "Email", with: "some@example.com"
+      fill_in "Phone", with: "01632 960456"
 
-    select "Incoming trust", from: "Contact for"
-    fill_in "Name", with: "Some One"
-    fill_in "Organisation", with: "Trust Name"
-    fill_in "Role", with: "Chief of Knowledge"
-    fill_in "Email", with: "some@example.com"
-    fill_in "Phone", with: "01632 960456"
+      click_on "Save and continue"
 
-    click_button("Add contact")
+      expect(page).to have_content("School or academy contacts")
 
-    expect(page).to have_content("Incoming trust contacts")
+      expect_page_to_have_contact(
+        name: "Jane Headteacher",
+        title: "Headteacher",
+        organisation_name: project.establishment.name.to_s,
+        email: "some@example.com",
+        phone: "01632 960456"
+      )
+    end
 
-    expect_page_to_have_contact(
-      name: "Some One",
-      title: "Chief of Knowledge",
-      organisation_name: "Trust Name",
-      email: "some@example.com",
-      phone: "01632 960456"
-    )
+    scenario "they can set the contact as the establishment main contact" do
+      visit project_contacts_path(project)
+
+      click_link "Add contact"
+      choose "Headteacher"
+      click_on "Save and continue"
+
+      fill_in "Full name", with: "Jane Headteacher"
+      fill_in "Email", with: "some@example.com"
+      fill_in "Phone", with: "01632 960456"
+      within "#primary-contact-for-category" do
+        choose "Yes"
+      end
+
+      click_on "Save and continue"
+
+      expect(page).to have_content("School or academy contacts")
+      expect(page).to have_content(I18n.t("contact.details.establishment_main_contact"))
+    end
+  end
+
+  context "adding a new incoming trust CEO" do
+    scenario "a CEO is added with the required defaults" do
+      visit project_contacts_path(project)
+
+      click_link "Add contact"
+      choose "Incoming trust CEO (Chief executive officer)"
+      click_on "Save and continue"
+      expect(page).to have_content "Enter contact details"
+
+      fill_in "Full name", with: "Jane Finance"
+      fill_in "Email", with: "some@example.com"
+      fill_in "Phone", with: "01632 960456"
+
+      click_on "Save and continue"
+
+      expect(page).to have_content("Incoming trust contacts")
+
+      expect_page_to_have_contact(
+        name: "Jane Finance",
+        title: "CEO",
+        organisation_name: project.incoming_trust.name.to_s,
+        email: "some@example.com",
+        phone: "01632 960456"
+      )
+    end
+  end
+
+  context "adding a new outgoing trust CEO" do
+    let!(:project) { create(:transfer_project) }
+
+    scenario "a CEO is added with the required defaults" do
+      visit project_contacts_path(project)
+
+      click_link "Add contact"
+      choose "Outgoing trust CEO (Chief executive officer)"
+      click_on "Save and continue"
+      expect(page).to have_content "Enter contact details"
+
+      fill_in "Full name", with: "Bob Finance"
+      fill_in "Email", with: "some@example.com"
+      fill_in "Phone", with: "01632 960456"
+
+      click_on "Save and continue"
+
+      expect(page).to have_content("Outgoing trust contacts")
+
+      expect_page_to_have_contact(
+        name: "Bob Finance",
+        title: "CEO",
+        organisation_name: project.outgoing_trust.name.to_s,
+        email: "some@example.com",
+        phone: "01632 960456"
+      )
+    end
+
+    scenario "they can set the contact as the outgoing trust main contact" do
+      visit project_contacts_path(project)
+
+      click_link "Add contact"
+      choose "Outgoing trust CEO (Chief executive officer)"
+      click_on "Save and continue"
+
+      fill_in "Full name", with: "Bob Finance"
+      fill_in "Email", with: "some@example.com"
+      fill_in "Phone", with: "01632 960456"
+      within "#primary-contact-for-category" do
+        choose "Yes"
+      end
+
+      click_on "Save and continue"
+
+      expect(page).to have_content("Outgoing trust contacts")
+      expect(page).to have_content(I18n.t("contact.details.outgoing_trust_main_contact"))
+    end
+  end
+
+  context "adding a new chair of governors" do
+    scenario "a chair of governors is added with the required defaults" do
+      visit project_contacts_path(project)
+
+      click_link "Add contact"
+      choose "Chair of governors"
+      click_on "Save and continue"
+      expect(page).to have_content "Enter contact details"
+
+      fill_in "Full name", with: "Susan Chair"
+      fill_in "Email", with: "some@example.com"
+      fill_in "Phone", with: "01632 960456"
+
+      click_on "Save and continue"
+
+      expect(page).to have_content("School or academy contacts")
+
+      expect_page_to_have_contact(
+        name: "Susan Chair",
+        title: "Chair of governors",
+        organisation_name: project.establishment.name.to_s,
+        email: "some@example.com",
+        phone: "01632 960456"
+      )
+    end
+  end
+
+  context "adding a new other type of contact" do
+    scenario "another contact type allows the user to add role and organisation name" do
+      visit project_contacts_path(project)
+
+      click_link "Add contact"
+      choose "Someone else"
+      click_on "Save and continue"
+      expect(page).to have_content "Enter contact details"
+
+      fill_in "Full name", with: "Frank Random"
+      fill_in "Role", with: "Secretary"
+      fill_in "Email", with: "some@example.com"
+      fill_in "Phone", with: "01632 960456"
+      within "#other_organisation_name" do
+        fill_in "Enter the organisation this contact is for", with: "Another organisation"
+      end
+
+      click_on "Save and continue"
+
+      expect(page).to have_content("Other contacts")
+
+      expect_page_to_have_contact(
+        name: "Frank Random",
+        title: "Secretary",
+        organisation_name: "Another organisation",
+        email: "some@example.com",
+        phone: "01632 960456"
+      )
+    end
   end
 
   scenario "they can delete a contact" do
@@ -106,74 +260,6 @@ RSpec.feature "Users can manage contacts" do
 
     visit project_contacts_path(project)
     expect(page).to have_content(I18n.t("contact.details.main_contact"))
-  end
-
-  scenario "they can create a new contact and set it as the establishment main contact" do
-    visit project_contacts_path(project)
-
-    click_link "Add contact"
-
-    expect(page).to have_select("Contact for", selected: "Choose category")
-
-    select "School or academy", from: "Contact for"
-    fill_in "Name", with: "Some One"
-    fill_in "Organisation", with: "Trust Name"
-    fill_in "Role", with: "Chief of Knowledge"
-    fill_in "Email", with: "some@example.com"
-    check "contact_create_project_contact_form[primary_contact_for_category]"
-
-    click_button("Add contact")
-
-    expect(page).to have_content("School or academy contacts")
-    expect(page).to have_content(I18n.t("contact.details.establishment_main_contact"))
-  end
-
-  scenario "they can edit a contact and set it to be the establishment main contact" do
-    contact = create(:project_contact, project: project, category: "school_or_academy")
-
-    visit edit_project_contact_path(project, contact)
-    check "contact_create_project_contact_form[primary_contact_for_category]"
-
-    click_button("Save contact")
-
-    expect(project.reload.establishment_main_contact_id).to eq(contact.id)
-    expect(page).to have_content(I18n.t("contact.details.establishment_main_contact"))
-  end
-
-  scenario "they can create a new contact and set it as the incoming trust main contact" do
-    visit project_contacts_path(project)
-
-    click_link "Add contact"
-
-    select "Incoming trust", from: "Contact for"
-    fill_in "Name", with: "Some One"
-    fill_in "Organisation", with: "Trust Name"
-    fill_in "Role", with: "Chief of Knowledge"
-    fill_in "Email", with: "some@example.com"
-    check "contact_create_project_contact_form[primary_contact_for_category]"
-
-    click_button("Add contact")
-
-    expect(page).to have_content("Incoming trust contacts")
-    expect(page).to have_content(I18n.t("contact.details.incoming_trust_main_contact"))
-  end
-
-  scenario "they can create a new contact and set it as the outgoing trust main contact" do
-    visit project_contacts_path(project)
-
-    click_link "Add contact"
-
-    select "Outgoing trust", from: "Contact for"
-    fill_in "Name", with: "Some One"
-    fill_in "Organisation", with: "Trust Name"
-    fill_in "Role", with: "Chief of Knowledge"
-    fill_in "Email", with: "some@example.com"
-    check "contact_create_project_contact_form[primary_contact_for_category]"
-
-    click_button("Add contact")
-
-    expect(page).to have_content("Outgoing trust contacts")
-    expect(page).to have_content(I18n.t("contact.details.outgoing_trust_main_contact"))
   end
 
   private def expect_page_to_have_contact(name:, title:, organisation_name: nil, email: nil, phone: nil)

@@ -8,7 +8,7 @@ RSpec.describe Contact::CreateProjectContactForm do
   end
 
   describe "new contact" do
-    it "can add them" do
+    it "can add a school or academy contact" do
       contact = Contact::Project.new
       contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: project)
       contact_form.name = "Adifferent Name"
@@ -22,6 +22,88 @@ RSpec.describe Contact::CreateProjectContactForm do
 
       expect(contact.name).to eql("Adifferent Name")
       expect(contact.email).to eql("a.name@domain.com")
+      expect(contact.organisation_name).to eql(project.establishment.name)
+    end
+
+    it "can add an incoming trust contact" do
+      contact = Contact::Project.new
+      contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: project)
+      contact_form.name = "Adifferent Name"
+      contact_form.email = "a.name@domain.com"
+      contact_form.category = "incoming_trust"
+      contact_form.title = "Role"
+
+      contact_form.save
+
+      expect(Contact::Project.count).to eql 1
+
+      expect(contact.name).to eql("Adifferent Name")
+      expect(contact.organisation_name).to eql(project.incoming_trust.name)
+    end
+
+    it "can add an outgoing trust contact" do
+      transfer_project = create(:transfer_project)
+      contact = Contact::Project.new
+      contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: transfer_project)
+      contact_form.name = "Adifferent Name"
+      contact_form.email = "a.name@domain.com"
+      contact_form.category = "outgoing_trust"
+      contact_form.title = "Role"
+
+      contact_form.save
+
+      expect(Contact::Project.count).to eql 1
+
+      expect(contact.name).to eql("Adifferent Name")
+      expect(contact.organisation_name).to eql(transfer_project.outgoing_trust.name)
+    end
+
+    it "can add a local authority contact" do
+      contact = Contact::Project.new
+      contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: project)
+      contact_form.name = "Adifferent Name"
+      contact_form.email = "a.name@domain.com"
+      contact_form.category = "local_authority"
+      contact_form.title = "Role"
+
+      contact_form.save
+
+      expect(Contact::Project.count).to eql 1
+
+      expect(contact.name).to eql("Adifferent Name")
+      expect(contact.organisation_name).to eql(project.local_authority.name)
+    end
+
+    it "can add an 'other' contact with a custom organisation name" do
+      contact = Contact::Project.new
+      contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: project)
+      contact_form.name = "Adifferent Name"
+      contact_form.email = "a.name@domain.com"
+      contact_form.category = "other"
+      contact_form.organisation_name = "Another organisation"
+      contact_form.title = "Role"
+
+      contact_form.save
+
+      expect(Contact::Project.count).to eql 1
+
+      expect(contact.name).to eql("Adifferent Name")
+      expect(contact.organisation_name).to eql("Another organisation")
+    end
+
+    it "defaults to the 'other' category if none is supplied" do
+      contact = Contact::Project.new
+      contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: project)
+      contact_form.name = "Adifferent Name"
+      contact_form.email = "a.name@domain.com"
+      contact_form.title = "Role"
+
+      contact_form.save
+
+      expect(Contact::Project.count).to eql 1
+
+      expect(contact.category).to eq("other")
+      expect(contact.organisation_name).to be_nil
     end
   end
 

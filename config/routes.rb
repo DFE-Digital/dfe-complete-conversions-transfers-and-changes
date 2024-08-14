@@ -20,7 +20,15 @@ Rails.application.routes.draw do
   end
 
   concern :external_contactable do
-    resources :contacts, path: "external-contacts", except: %i[show], concerns: :has_destroy_confirmation, controller: :external_contacts, type: "Contact::Project"
+    resources :contacts, path: "external-contacts", except: %i[show], controller: :external_contacts, concerns: :has_destroy_confirmation, type: "Contact::Project"
+
+    namespace :external_contacts, path: "external-contacts" do
+      resource :headteacher, only: %i[create]
+      resource :chair_of_governors, only: %i[create]
+      resource :incoming_trust_ceo, only: %i[create]
+      resource :outgoing_trust_ceo, only: %i[create]
+      resource :other_contact, only: %i[create]
+    end
   end
 
   concern :notable do

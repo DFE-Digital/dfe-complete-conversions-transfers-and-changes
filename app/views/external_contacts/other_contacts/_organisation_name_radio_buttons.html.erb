@@ -1,0 +1,35 @@
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h2 class="govuk-fieldset__heading">
+        <%= t("helpers.label.new_contact_form.category") %>
+      </h2>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <% Contact.categories.each do |name, _id| %>
+        <% if %w[school_or_academy incoming_trust outgoing_trust local_authority].include?(name) %>
+
+          <div class="govuk-radios__item">
+            <%= form.radio_button :category, name, id: name.to_s, class: "govuk-radios__input" %>
+            <%= form.label :category, name.humanize, class: "govuk-label govuk-radios__label" %>
+          </div>
+
+        <% else %>
+
+          <div class="govuk-radios__item">
+            <%= form.radio_button :category, name, id: name.to_s, class: "govuk-radios__input", data: {aria_controls: "#{name}_organisation_name"} %>
+            <%= form.label :category, name.humanize, class: "govuk-label govuk-radios__label" %>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="<%= "#{name}_organisation_name" %>">
+            <div class="govuk-form-group">
+              <%= form.label :organisation_name, t("helpers.label.new_contact_form.enter_organisation"), class: "govuk-label" %>
+              <%= form.text_field :organisation_name, class: "govuk-input" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </fieldset>
+</div>

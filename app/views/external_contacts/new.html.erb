@@ -6,31 +6,20 @@
   <%= page_title(t("contact.new.title")) %>
 <% end %>
 
-<h1 class="govuk-heading-l"><%= t("contact.new.title") %></h1>
-
+<span class="govuk-caption-l"><%= t("helpers.label.new_contact_form.subtitle") %></span>
 <div class="govuk-grid-row govuk-body">
-  <div class="govuk-grid-column-two-thirds">
-    <%= form_for [@project, @contact], url: project_contacts_path(@project, @contact) do |form| %>
+  <div class="govuk-grid-column-full">
+    <%= form_with model: @contact_form, url: project_contacts_path(@project, @contact), method: :post do |form| %>
       <%= form.govuk_error_summary %>
 
-      <%= form.govuk_select(:category) do %>
-        <option selected="selected" value=""><%= t("contact.categories.choose") %></option>
-        <% Contact.categories.each do |name, _category| %>
-          <option value="<%= name %>"><%= name.humanize %></option>
-        <% end %>
-      <% end %>
+      <%= form.govuk_collection_radio_buttons :contact_type,
+            @contact_form.contact_types,
+            ->(option) { option },
+            ->(option) { I18n.t("helpers.contact_types." + option) },
+            legend: {text: I18n.t("helpers.label.new_contact_form.contact_type"), size: "xl"},
+            hint: {text: I18n.t("helpers.hint.new_contact_form.contact_type_html").html_safe} %>
 
-      <%= form.govuk_check_boxes_fieldset :primary_contact_for_category, multiple: false, legend: nil, hint: nil do %>
-        <%= form.govuk_check_box :primary_contact_for_category, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.contact_create_project_contact_form.primary_contact_for_category")}, hint: {text: t("helpers.hint.contact_create_project_contact_form.primary_contact_for_category")} %>
-      <% end %>
-
-      <%= form.govuk_text_field :title, width: 20 %>
-      <%= form.govuk_text_field :name %>
-      <%= form.govuk_text_field :organisation_name %>
-      <%= form.govuk_email_field :email %>
-      <%= form.govuk_phone_field :phone, width: 10 %>
-
-      <%= form.govuk_submit t("contact.new.save_contact_button") do %>
+      <%= form.govuk_submit "Save and continue" do %>
         <%= govuk_link_to "Cancel", project_contacts_path(@project) %>
       <% end %>
     <% end %>
