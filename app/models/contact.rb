@@ -28,4 +28,8 @@ class Contact < ApplicationRecord
   def editable?
     true
   end
+
+  def email_and_phone
+    "#{email}, #{phone}"
+  end
 end

@@ -11,6 +11,7 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::ConversionGrantTaskForm,
           Conversion::Task::SponsoredSupportGrantTaskForm,
           Conversion::Task::AcademyDetailsTaskForm,
+          Conversion::Task::ConfirmHeadteacherContactTaskForm,
           Conversion::Task::MainContactTaskForm,
           Conversion::Task::ChairOfGovernorsContactTaskForm,
           Conversion::Task::ProposedCapacityOfTheAcademyTaskForm
