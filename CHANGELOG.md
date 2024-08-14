@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - a new 'confirm the headteacher contact' task has been added, users need to
   choose the appropriate contact from those available to the project, they may
   also have to add it
+- transfer project also have a new 'confirm the headteacher contact' task that
+  works the same as for conversions.
 
 ## [Release-82][release-82]
 

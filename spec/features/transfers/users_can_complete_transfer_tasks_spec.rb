@@ -36,6 +36,7 @@ RSpec.feature "Users can complete transfer tasks" do
   tasks_with_collected_data = %w[
     stakeholder_kick_off
     conditions_met
+    confirm_headteacher_contact
     main_contact
     bank_details_changing
     check_and_confirm_financial_information
