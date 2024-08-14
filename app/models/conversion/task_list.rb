@@ -14,7 +14,6 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::ConfirmHeadteacherContactTaskForm,
           Conversion::Task::ConfirmChairOfGovernorsContactTaskForm,
           Conversion::Task::MainContactTaskForm,
-          Conversion::Task::ChairOfGovernorsContactTaskForm,
           Conversion::Task::ProposedCapacityOfTheAcademyTaskForm
         ]
       },

@@ -36,7 +36,6 @@ RSpec.feature "Users can complete conversion tasks" do
     proposed_capacity_of_the_academy
     receive_grant_payment_certificate
     confirm_date_academy_opened
-    chair_of_governors_contact
   ]
 
   it "confirms we are checking all tasks" do
@@ -309,81 +308,6 @@ RSpec.feature "Users can complete conversion tasks" do
 
         expect(project.reload.tasks_data.confirm_date_academy_opened_date_opened).to eq Date.new(2024, 1, 1)
       end
-    end
-  end
-
-  describe "the chair of governors contact task" do
-    let(:project) { create(:conversion_project, assigned_to: user) }
-
-    before do
-      visit project_tasks_path(project)
-      click_on "Add chair of governors' contact details"
-    end
-
-    scenario "can be submitted empty" do
-      click_on "Save and return"
-
-      expect(page).to have_selector "h2", text: "Task list"
-    end
-
-    scenario "validates that both name and email are supplied" do
-      fill_in "Name", with: "Jane Chair"
-      fill_in "Email", with: ""
-      click_on "Save and return"
-
-      expect(page).to have_content "Enter an email address"
-
-      fill_in "Name", with: ""
-      fill_in "Email", with: "jane.chair@school.com"
-      click_on "Save and return"
-
-      expect(page).to have_content "Enter a name"
-    end
-
-    scenario "validates the email format" do
-      fill_in "Name", with: "Jane Chair"
-      fill_in "Email", with: "jane.chair"
-      click_on "Save and return"
-
-      expect(page).to have_content "Enter a valid email"
-    end
-
-    scenario "creates a new contact as the chair of governors" do
-      fill_in "Name", with: "Jane Chair"
-      fill_in "Email", with: "jane.chair@school.com"
-      fill_in "Phone", with: "01234 567879"
-      click_on "Save and return"
-      click_on "External contacts"
-
-      expect(page).to have_content "Chair of governors"
-      expect(page).to have_content "Jane Chair"
-      expect(page).to have_content "jane.chair@school.com"
-      expect(page).to have_content "01234 567879"
-      expect(page).to have_content project.establishment.name
-    end
-
-    scenario "updates an existing chair of governors contact" do
-      chair_of_governors = create(:project_contact, project: project)
-      project.update(chair_of_governors_contact: chair_of_governors)
-
-      visit project_tasks_path(project)
-      click_on "Add chair of governors' contact details"
-
-      expect(page).to have_field "Name", with: chair_of_governors.name
-      expect(page).to have_field "Email", with: chair_of_governors.email
-      expect(page).to have_field "Phone", with: chair_of_governors.phone
-
-      fill_in "Name", with: "Jane Chair"
-      fill_in "Email", with: "jane.chair@school.com"
-      fill_in "Phone", with: "01234 567879"
-      click_on "Save and return"
-      click_on "External contacts"
-
-      expect(page).to have_content "Chair of governors"
-      expect(page).to have_content "Jane Chair"
-      expect(page).to have_content "jane.chair@school.com"
-      expect(page).to have_content "01234 567879"
-      expect(page).to have_content project.establishment.name
     end
   end
 
