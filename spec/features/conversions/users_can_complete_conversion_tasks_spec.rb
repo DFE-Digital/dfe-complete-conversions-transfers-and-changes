@@ -31,6 +31,7 @@ RSpec.feature "Users can complete conversion tasks" do
     sponsored_support_grant
     conditions_met
     confirm_headteacher_contact
+    confirm_chair_of_governors_contact
     main_contact
     proposed_capacity_of_the_academy
     receive_grant_payment_certificate

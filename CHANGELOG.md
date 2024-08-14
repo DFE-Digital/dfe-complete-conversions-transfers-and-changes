@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   works the same as for conversions.
 - the confirmed headteacher contact details are now included in exports where
   needed.
+- a new task 'confirm the chair of governors' task has been added to conversion
+  projects, users must supply and indicate which contact fills this role.
 
 ## [Release-82][release-82]
 
