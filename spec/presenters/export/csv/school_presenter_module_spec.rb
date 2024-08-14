@@ -105,6 +105,26 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     end
   end
 
+  describe "headteacher contact" do
+    context "when the headteacher contact is confirmed" do
+      it "shows the contact details" do
+        KeyContacts.new(project: project, headteacher: contact)
+
+        expect(subject.headteacher_contact_name).to eql "Jo Example"
+        expect(subject.headteacher_contact_role).to eql "CEO of Learning"
+        expect(subject.headteacher_contact_email).to eql "jo@example.com"
+      end
+    end
+
+    context "when the headteacher contact is not confirmed" do
+      it "shows nothing" do
+        expect(subject.headteacher_contact_name).to be_nil
+        expect(subject.headteacher_contact_role).to be_nil
+        expect(subject.headteacher_contact_email).to be_nil
+      end
+    end
+  end
+
   def known_establishment
     double(
       Api::AcademiesApi::Establishment,

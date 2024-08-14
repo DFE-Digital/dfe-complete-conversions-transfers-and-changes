@@ -49,6 +49,9 @@ class Export::Conversions::AllDataCsvExportService < Export::CsvExportService
     assigned_to_name
     team_managing_the_project
     main_contact_name
+    headteacher_contact_name
+    headteacher_contact_role
+    headteacher_contact_email
     local_authority_contact_name
     local_authority_contact_email
     incoming_trust_main_contact_name

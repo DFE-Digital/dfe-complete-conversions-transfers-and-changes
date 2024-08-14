@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   also have to add it
 - transfer project also have a new 'confirm the headteacher contact' task that
   works the same as for conversions.
+- the confirmed headteacher contact details are now included in exports where
+  needed.
 
 ## [Release-82][release-82]
 

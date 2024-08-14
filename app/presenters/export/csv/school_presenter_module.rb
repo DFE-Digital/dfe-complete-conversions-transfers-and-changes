@@ -108,6 +108,24 @@ module Export::Csv::SchoolPresenterModule
     school_or_academy_contact&.title
   end
 
+  def headteacher_contact_name
+    return unless @project.key_contacts&.headteacher.present?
+
+    @project.key_contacts.headteacher.name
+  end
+
+  def headteacher_contact_role
+    return unless @project.key_contacts&.headteacher.present?
+
+    @project.key_contacts.headteacher.title
+  end
+
+  def headteacher_contact_email
+    return unless @project.key_contacts&.headteacher.present?
+
+    @project.key_contacts.headteacher.email
+  end
+
   private def school_or_academy_contact
     @contacts_fetcher.school_or_academy_contact
   end
