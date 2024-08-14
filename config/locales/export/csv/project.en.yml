@@ -137,6 +137,9 @@ en:
           school_main_contact_email: School contact email
           school_main_contact_name: School contact name
           school_main_contact_role: School contact role
+          headteacher_contact_name: Headteacher name
+          headteacher_contact_role: Headteacher role
+          headteacher_contact_email: Headteacher email
           other_contact_name: Other contact name
           other_contact_email: Other contact email
           other_contact_role: Other contact role

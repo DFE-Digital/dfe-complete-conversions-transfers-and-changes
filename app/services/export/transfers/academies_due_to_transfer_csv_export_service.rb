@@ -27,6 +27,9 @@ class Export::Transfers::AcademiesDueToTransferCsvExportService < Export::CsvExp
     main_contact_name
     main_contact_email
     main_contact_title
+    headteacher_contact_name
+    headteacher_contact_role
+    headteacher_contact_email
   ]
 
   def initialize(projects)
