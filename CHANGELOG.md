@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - a new 'confirm the incoming trust CEO contact' task has been added to
   conversion projects, users need to choose the appropriate contact from those
   available to the project, they may also have to add it
+- a new 'confirm the incoming trust CEO contact' task has been added to transfer
+  projects, users need to choose the appropriate contact from those available to
+  the project, they may also have to add it
 
 ## [Release-82][release-82]
 

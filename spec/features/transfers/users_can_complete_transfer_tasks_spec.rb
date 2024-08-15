@@ -37,6 +37,7 @@ RSpec.feature "Users can complete transfer tasks" do
     stakeholder_kick_off
     conditions_met
     confirm_headteacher_contact
+    confirm_incoming_trust_ceo_contact
     main_contact
     bank_details_changing
     check_and_confirm_financial_information
