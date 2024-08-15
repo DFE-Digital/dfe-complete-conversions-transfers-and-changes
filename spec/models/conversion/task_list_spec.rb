@@ -15,6 +15,7 @@ RSpec.describe Conversion::TaskList do
         :academy_details,
         :confirm_headteacher_contact,
         :confirm_chair_of_governors_contact,
+        :confirm_incoming_trust_ceo_contact,
         :main_contact,
         :proposed_capacity_of_the_academy,
         :land_questionnaire,
@@ -60,6 +61,7 @@ RSpec.describe Conversion::TaskList do
               Conversion::Task::AcademyDetailsTaskForm,
               Conversion::Task::ConfirmHeadteacherContactTaskForm,
               Conversion::Task::ConfirmChairOfGovernorsContactTaskForm,
+              Conversion::Task::ConfirmIncomingTrustCeoContactTaskForm,
               Conversion::Task::MainContactTaskForm,
               Conversion::Task::ProposedCapacityOfTheAcademyTaskForm
             ]
@@ -122,7 +124,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 32
+      expect(task_list.tasks.count).to eql 33
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
     end
