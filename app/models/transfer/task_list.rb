@@ -8,6 +8,7 @@ class Transfer::TaskList < ::BaseTaskList
           Transfer::Task::StakeholderKickOffTaskForm,
           Transfer::Task::ConfirmHeadteacherContactTaskForm,
           Transfer::Task::ConfirmIncomingTrustCeoContactTaskForm,
+          Transfer::Task::ConfirmOutgoingTrustCeoContactTaskForm,
           Transfer::Task::MainContactTaskForm,
           Transfer::Task::RequestNewUrnAndRecordTaskForm,
           Transfer::Task::SponsoredSupportGrantTaskForm,

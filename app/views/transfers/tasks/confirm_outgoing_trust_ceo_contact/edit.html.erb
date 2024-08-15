@@ -1,0 +1,53 @@
+<% content_for :pre_content_nav do %>
+  <% render partial: "shared/back_link", locals: {href: project_tasks_path(@project)} %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("transfer.task.confirm_outgoing_trust_ceo_contact.title")) %>
+<% end %>
+
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l"><%= @project.establishment.name %></span>
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+      <%= t("transfer.task.confirm_outgoing_trust_ceo_contact.title") %>
+    </h1>
+
+    <div class="app-task-hint">
+      <%= t("transfer.task.confirm_outgoing_trust_ceo_contact.hint.html", contacts_path: project_contacts_path(@project)) %>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <% if @project.contacts.outgoing_trust.empty? %>
+
+      <h2 class="govuk-heading-l"><%= t("transfer.task.confirm_outgoing_trust_ceo_contact.no_contacts.title") %></h2>
+      <%= govuk_inset_text(text: t("transfer.task.confirm_outgoing_trust_ceo_contact.no_contacts.hint.html")) %>
+      <%= link_to "Add a contact", new_project_contact_path(@project), class: "govuk-button", data: {module: "govuk-button"}, draggable: "false" %>
+
+    <% else %>
+
+      <%= form_for @task, url: project_edit_task_path(@project, @task.class.identifier), method: :put do |form| %>
+        <%= form.govuk_error_summary %>
+
+        <%= form.govuk_collection_radio_buttons :outgoing_trust_ceo_contact_id,
+              @project.contacts.outgoing_trust,
+              :id,
+              :name,
+              :email_and_phone,
+              legend: {text: t("transfer.task.confirm_outgoing_trust_ceo_contact.choose_a_contact.title"), size: "l"},
+              hint: {text: t("transfer.task.confirm_outgoing_trust_ceo_contact.choose_a_contact.hint.html")},
+              form_group: {id: "who-is-the-outgoing-trust-ceo"} %>
+
+        <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "shared/tasks/task_notes" %>
+  </div>
+</div>
