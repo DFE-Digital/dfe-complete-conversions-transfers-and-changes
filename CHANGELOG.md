@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - a new 'confirm the outgoing trust CEO contact' task has been added to transfer
   projects, users need to choose the appropriate contact from those available to
   the project, they may also have to add it
+- the confirmed outgoing trust CEO contact details are now included in the
+  export where appropriate.
 
 ## [Release-82][release-82]
 

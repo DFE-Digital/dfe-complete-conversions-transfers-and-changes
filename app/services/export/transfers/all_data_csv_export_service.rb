@@ -64,6 +64,9 @@ class Export::Transfers::AllDataCsvExportService < Export::CsvExportService
     incoming_trust_ceo_contact_name
     incoming_trust_ceo_contact_role
     incoming_trust_ceo_contact_email
+    outgoing_trust_ceo_contact_name
+    outgoing_trust_ceo_contact_role
+    outgoing_trust_ceo_contact_email
     solicitor_contact_name
     solicitor_contact_email
     diocese_contact_name

@@ -100,6 +100,9 @@ en:
           outgoing_trust_address_postcode: Outgoing trust address postcode
           outgoing_trust_main_contact_name: Outgoing trust main contact name
           outgoing_trust_main_contact_email: Outgoing trust main contact email
+          outgoing_trust_ceo_contact_name: Outgoing trust CEO name
+          outgoing_trust_ceo_contact_role: Outgoing trust CEO role
+          outgoing_trust_ceo_contact_email: Outgoing trust CEO email
           incoming_trust_ukprn: Incoming trust UKPRN
           inadequate_ofsted: Transfer due to inadequate
           financial_safeguarding_governance_issues: Transfer due to financial, safeguarding or governance

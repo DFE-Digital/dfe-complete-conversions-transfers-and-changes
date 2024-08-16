@@ -71,6 +71,24 @@ module Export::Csv::OutgoingTrustPresenterModule
     @project.outgoing_trust_sharepoint_link
   end
 
+  def outgoing_trust_ceo_contact_name
+    return unless @project.key_contacts&.outgoing_trust_ceo.present?
+
+    @project.key_contacts.outgoing_trust_ceo.name
+  end
+
+  def outgoing_trust_ceo_contact_role
+    return unless @project.key_contacts&.outgoing_trust_ceo.present?
+
+    @project.key_contacts.outgoing_trust_ceo.title
+  end
+
+  def outgoing_trust_ceo_contact_email
+    return unless @project.key_contacts&.outgoing_trust_ceo.present?
+
+    @project.key_contacts.outgoing_trust_ceo.email
+  end
+
   private def outgoing_trust_contact
     @contacts_fetcher.outgoing_trust_contact
   end
