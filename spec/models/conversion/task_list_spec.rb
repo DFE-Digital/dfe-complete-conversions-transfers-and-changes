@@ -14,8 +14,8 @@ RSpec.describe Conversion::TaskList do
         :sponsored_support_grant,
         :academy_details,
         :confirm_headteacher_contact,
+        :confirm_chair_of_governors_contact,
         :main_contact,
-        :chair_of_governors_contact,
         :proposed_capacity_of_the_academy,
         :land_questionnaire,
         :land_registry,
@@ -59,8 +59,8 @@ RSpec.describe Conversion::TaskList do
               Conversion::Task::SponsoredSupportGrantTaskForm,
               Conversion::Task::AcademyDetailsTaskForm,
               Conversion::Task::ConfirmHeadteacherContactTaskForm,
+              Conversion::Task::ConfirmChairOfGovernorsContactTaskForm,
               Conversion::Task::MainContactTaskForm,
-              Conversion::Task::ChairOfGovernorsContactTaskForm,
               Conversion::Task::ProposedCapacityOfTheAcademyTaskForm
             ]
           },
