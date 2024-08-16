@@ -9,6 +9,7 @@ RSpec.describe Transfer::TaskList do
         :handover,
         :stakeholder_kick_off,
         :confirm_headteacher_contact,
+        :confirm_incoming_trust_ceo_contact,
         :main_contact,
         :request_new_urn_and_record,
         :sponsored_support_grant,
@@ -54,7 +55,7 @@ RSpec.describe Transfer::TaskList do
       project = create(:transfer_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 26
+      expect(task_list.tasks.count).to eql 27
       expect(task_list.tasks.first).to be_a Transfer::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Transfer::Task::DeclarationOfExpenditureCertificateTaskForm
     end

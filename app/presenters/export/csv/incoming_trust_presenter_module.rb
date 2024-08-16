@@ -71,6 +71,24 @@ module Export::Csv::IncomingTrustPresenterModule
     incoming_trust_contact&.email
   end
 
+  def incoming_trust_ceo_contact_name
+    return unless @project.key_contacts&.incoming_trust_ceo.present?
+
+    @project.key_contacts.incoming_trust_ceo.name
+  end
+
+  def incoming_trust_ceo_contact_role
+    return unless @project.key_contacts&.incoming_trust_ceo.present?
+
+    @project.key_contacts.incoming_trust_ceo.title
+  end
+
+  def incoming_trust_ceo_contact_email
+    return unless @project.key_contacts&.incoming_trust_ceo.present?
+
+    @project.key_contacts.incoming_trust_ceo.email
+  end
+
   def incoming_trust_sharepoint_link
     return unless @project.incoming_trust_sharepoint_link.present?
 

@@ -83,6 +83,27 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
     expect(subject.incoming_trust_sharepoint_link).to eql "https://educationgovuk-my.sharepoint.com/incoming-trust-folder"
   end
 
+  describe "incoming trust ceo contact" do
+    context "when there is a confirmed contact" do
+      let(:contact) { create(:project_contact) }
+
+      it "shows the correct details" do
+        KeyContacts.new(project: project, incoming_trust_ceo: contact)
+
+        expect(subject.incoming_trust_ceo_contact_name).to eql contact.name
+        expect(subject.incoming_trust_ceo_contact_role).to eql contact.title
+        expect(subject.incoming_trust_ceo_contact_email).to eql contact.email
+      end
+    end
+    context "when there is no confirmed contact" do
+      it "shows nothing" do
+        expect(subject.incoming_trust_ceo_contact_name).to be_nil
+        expect(subject.incoming_trust_ceo_contact_role).to be_nil
+        expect(subject.incoming_trust_ceo_contact_email).to be_nil
+      end
+    end
+  end
+
   def known_trust
     double(
       Api::AcademiesApi::Trust,

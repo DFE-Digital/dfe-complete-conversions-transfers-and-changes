@@ -13,6 +13,7 @@ class Conversion::TaskList < ::BaseTaskList
           Conversion::Task::AcademyDetailsTaskForm,
           Conversion::Task::ConfirmHeadteacherContactTaskForm,
           Conversion::Task::ConfirmChairOfGovernorsContactTaskForm,
+          Conversion::Task::ConfirmIncomingTrustCeoContactTaskForm,
           Conversion::Task::MainContactTaskForm,
           Conversion::Task::ProposedCapacityOfTheAcademyTaskForm
         ]

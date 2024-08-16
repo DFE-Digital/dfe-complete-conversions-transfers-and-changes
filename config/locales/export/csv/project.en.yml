@@ -53,6 +53,9 @@ en:
           incoming_trust_main_contact_name: Incoming trust main contact name
           incoming_trust_main_contact_email: Incoming trust main contact email
           incoming_trust_main_contact_role: Incoming trust main contact role
+          incoming_trust_ceo_contact_name: Incoming trust CEO name
+          incoming_trust_ceo_contact_role: Incoming trust CEO role
+          incoming_trust_ceo_contact_email: Incoming trust CEO email
           incoming_trust_sharepoint_link: Incoming trust sharepoint link
           incoming_trust_address_1: Incoming trust address 1
           incoming_trust_address_2: Incoming trust address 2
