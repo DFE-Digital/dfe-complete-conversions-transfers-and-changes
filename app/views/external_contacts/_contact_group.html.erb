@@ -1,4 +1,4 @@
-<h3 class="govuk-heading-m"><%= t("contact.index.category_heading", category_name: category.humanize) %></h3>
+<h3 class="govuk-heading-m"><%= category_header(category, @project) %></h3>
 
 <% contacts.each do |contact| %>
 
