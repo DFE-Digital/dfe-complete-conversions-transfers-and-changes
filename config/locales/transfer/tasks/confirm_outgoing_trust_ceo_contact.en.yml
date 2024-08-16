@@ -1,0 +1,20 @@
+en:
+  transfer:
+    task:
+      confirm_outgoing_trust_ceo_contact:
+        title: Confirm the outgoing trust CEO’s details
+        hint:
+          html:
+            <p>Check the contact details are correct, <a href="%{contacts_path}">edit incorrect contact
+            details and add missing contacts</a>. You may need to contact the person
+            who previously worked on the project to verify this.</p>
+        no_contacts:
+          title: Who is the outgoing trust CEO?
+          hint:
+            html: <p>No contacts have been added to the project.</p>
+        choose_a_contact:
+          title: Who is the outgoing trust CEO?
+          hint:
+            html:
+              <p>Choose the relevant person from the list of contacts. You may need to add a new contact if the person you are looking for is not in the list.</p>
+              <p>Their job title may be slightly different to the role described here. Choose the person whose role most closely matches the outgoing trust CEO.</p>

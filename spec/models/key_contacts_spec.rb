@@ -10,6 +10,7 @@ RSpec.describe KeyContacts do
     it { is_expected.to belong_to(:headteacher).optional(true) }
     it { is_expected.to belong_to(:chair_of_governors).optional(true) }
     it { is_expected.to belong_to(:incoming_trust_ceo).optional(true) }
+    it { is_expected.to belong_to(:outgoing_trust_ceo).optional(true) }
   end
 
   describe "headteacher" do
@@ -69,6 +70,26 @@ RSpec.describe KeyContacts do
       key_contacts = described_class.create!(project: project, incoming_trust_ceo: contact)
 
       expect(key_contacts.incoming_trust_ceo).to be contact
+    end
+  end
+
+  describe "outgoing trust ceo" do
+    it "can be a project contact" do
+      contact = create(:project_contact)
+
+      project = create(:transfer_project)
+      key_contacts = described_class.create!(project: project, outgoing_trust_ceo: contact)
+
+      expect(key_contacts.outgoing_trust_ceo).to be contact
+    end
+
+    it "can be an establishment contact" do
+      contact = create(:establishment_contact)
+
+      project = create(:transfer_project)
+      key_contacts = described_class.create!(project: project, outgoing_trust_ceo: contact)
+
+      expect(key_contacts.outgoing_trust_ceo).to be contact
     end
   end
 end

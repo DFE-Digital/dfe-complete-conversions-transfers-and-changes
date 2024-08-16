@@ -48,6 +48,27 @@ RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
     expect(subject.outgoing_trust_sharepoint_link).to eql "https://educationgovuk-my.sharepoint.com/outgoing-trust-folder"
   end
 
+  describe "outgoing trust CEO contact" do
+    context "when there is a contact" do
+      it "presents the contact details" do
+        contact = create(:project_contact)
+        KeyContacts.new(project: project, outgoing_trust_ceo: contact)
+
+        expect(subject.outgoing_trust_ceo_contact_name).to eql "Jo Example"
+        expect(subject.outgoing_trust_ceo_contact_role).to eql "CEO of Learning"
+        expect(subject.outgoing_trust_ceo_contact_email).to eql "jo@example.com"
+      end
+    end
+
+    context "when there is no contact" do
+      it "presents nothing" do
+        expect(subject.outgoing_trust_ceo_contact_name).to be_nil
+        expect(subject.outgoing_trust_ceo_contact_role).to be_nil
+        expect(subject.outgoing_trust_ceo_contact_email).to be_nil
+      end
+    end
+  end
+
   def known_trust
     double(
       Api::AcademiesApi::Trust,
