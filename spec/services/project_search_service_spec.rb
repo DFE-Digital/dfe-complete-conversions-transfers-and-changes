@@ -101,6 +101,17 @@ RSpec.describe ProjectSearchService do
         end
       end
     end
+
+    context "when the match is a deleted project" do
+      it "does not include the match" do
+        create(:conversion_project, :deleted, urn: 100000)
+
+        service = described_class.new
+        result = service.search("100000")
+
+        expect(result.count).to be_zero
+      end
+    end
   end
 
   describe "#search_by_urns" do
@@ -154,6 +165,20 @@ RSpec.describe ProjectSearchService do
           expect(result).not_to include(not_matching_project)
         end
       end
+
+      it "does not include deleted projects" do
+        matching_project = create(:conversion_project, urn: 100000)
+        deleted_matching_project = create(:transfer_project, :deleted, urn: 999999)
+
+        service = described_class.new
+        result = service.search_by_urns(["100000", "999999"])
+
+        expect(result.count).to eql 1
+
+        expect(result).to include(matching_project)
+
+        expect(result).not_to include(deleted_matching_project)
+      end
     end
   end
 
@@ -190,6 +215,15 @@ RSpec.describe ProjectSearchService do
         expect(result.count).to be_zero
       end
     end
+
+    it "does not include deleted projects" do
+      create(:conversion_project, :deleted, incoming_trust_ukprn: 12345678)
+
+      service = described_class.new
+      result = service.search_by_ukprn("12345678")
+
+      expect(result.count).to be_zero
+    end
   end
 
   describe "#search_by_words" do
@@ -220,6 +254,16 @@ RSpec.describe ProjectSearchService do
         expect(result.count).to be_zero
       end
     end
+
+    it "does not include deleted projects" do
+      create(:gias_establishment, urn: 123456, name: "Matching establishment")
+      create(:conversion_project, :deleted, urn: "123456")
+
+      service = described_class.new
+      result = service.search_by_words("Matching establishment")
+
+      expect(result.count).to be_zero
+    end
   end
 
   describe "#search_by_establishment_number" do
@@ -246,6 +290,16 @@ RSpec.describe ProjectSearchService do
 
         expect(result.count).to be_zero
       end
+    end
+
+    it "does not include deleted projects" do
+      create(:gias_establishment, urn: 123456, establishment_number: 1234)
+      create(:conversion_project, :deleted, urn: "123456")
+
+      service = described_class.new
+      result = service.search_by_establishment_number("1234")
+
+      expect(result.count).to be_zero
     end
   end
 end
