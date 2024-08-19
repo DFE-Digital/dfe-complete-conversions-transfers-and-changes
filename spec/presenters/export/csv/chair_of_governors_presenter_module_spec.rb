@@ -14,6 +14,7 @@ RSpec.describe Export::Csv::ChairOfGovernorsPresenterModule do
       presenter = Export::Csv::ProjectPresenter.new(project)
 
       expect(presenter.chair_of_governors_name).to eq contact.name
+      expect(presenter.chair_of_governors_role).to eq contact.title
       expect(presenter.chair_of_governors_email).to eq contact.email
     end
   end
@@ -25,6 +26,7 @@ RSpec.describe Export::Csv::ChairOfGovernorsPresenterModule do
       presenter = Export::Csv::ProjectPresenter.new(project)
 
       expect(presenter.chair_of_governors_name).to be_nil
+      expect(presenter.chair_of_governors_role).to be_nil
       expect(presenter.chair_of_governors_name).to be_nil
     end
   end
@@ -37,6 +39,7 @@ RSpec.describe Export::Csv::ChairOfGovernorsPresenterModule do
       presenter = Export::Csv::ProjectPresenter.new(project)
 
       expect(presenter.chair_of_governors_name).to be_nil
+      expect(presenter.chair_of_governors_role).to be_nil
       expect(presenter.chair_of_governors_name).to be_nil
     end
   end

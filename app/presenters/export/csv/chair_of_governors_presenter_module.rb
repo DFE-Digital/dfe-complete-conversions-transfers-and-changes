@@ -5,6 +5,12 @@ module Export::Csv::ChairOfGovernorsPresenterModule
     @project.key_contacts.chair_of_governors.name
   end
 
+  def chair_of_governors_role
+    return unless @project.key_contacts&.chair_of_governors.present?
+
+    @project.key_contacts.chair_of_governors.title
+  end
+
   def chair_of_governors_email
     return unless @project.key_contacts&.chair_of_governors.present?
 
