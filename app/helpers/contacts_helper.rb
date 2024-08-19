@@ -17,4 +17,9 @@ module ContactsHelper
       I18n.t("contact.index.category_heading", category_name: category.humanize)
     end
   end
+
+  def has_primary_contact?(category)
+    return true if %w[school_or_academy incoming_trust outgoing_trust local_authority].include?(category)
+    false
+  end
 end

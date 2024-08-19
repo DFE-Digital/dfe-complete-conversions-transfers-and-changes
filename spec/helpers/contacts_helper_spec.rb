@@ -66,4 +66,19 @@ RSpec.describe ContactsHelper, type: :helper do
       expect(helper.category_header(category, project)).to eq("Diocese contacts")
     end
   end
+
+  describe "#has_primary_contact?" do
+    it "returns true for the categories that have a primary contact" do
+      expect(helper.has_primary_contact?("school_or_academy")).to be true
+      expect(helper.has_primary_contact?("local_authority")).to be true
+      expect(helper.has_primary_contact?("incoming_trust")).to be true
+      expect(helper.has_primary_contact?("outgoing_trust")).to be true
+    end
+
+    it "returns false for other categories" do
+      expect(helper.has_primary_contact?("other")).to be false
+      expect(helper.has_primary_contact?("diocese")).to be false
+      expect(helper.has_primary_contact?("solicitor")).to be false
+    end
+  end
 end
