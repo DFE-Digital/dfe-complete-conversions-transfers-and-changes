@@ -64,12 +64,16 @@ RSpec.describe ExternalContactsController, type: :request do
     let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:mock_contact) { build(:project_contact) }
-    let(:new_contact_name) { "Josephine Bloggs" }
-    let(:new_contact_title) { "Headteacher" }
+    let(:contact_type) { "headteacher" }
 
     subject(:perform_request) do
-      post project_contacts_path(project_id), params: {contact_create_project_contact_form: {name: new_contact_name, title: new_contact_title, category: "school_or_academy"}}
+      post project_contacts_path(project_id), params: {new_conversion_contact_form: {contact_type: contact_type}}
       response
+    end
+
+    it "renders the Headteacher page" do
+      expect(subject).to have_http_status :success
+      expect(subject.body).to include "Check the contact details you have for the headteacher against GIAS (Get information about schools). You can edit these details later if you need to."
     end
 
     context "when the Project is not found" do
@@ -78,24 +82,11 @@ RSpec.describe ExternalContactsController, type: :request do
       it { expect { perform_request }.to raise_error(ActiveRecord::RecordNotFound) }
     end
 
-    context "when the contact is invalid" do
-      before do
-        allow(Contact).to receive(:new).and_return(mock_contact)
-        allow(mock_contact).to receive(:valid?).and_return false
-      end
+    context "when the contact type is not recognised" do
+      let(:contact_type) { "government" }
 
-      it "renders the new template" do
-        expect(perform_request).to render_template :new
-      end
-    end
-
-    context "when the contact is valid" do
-      it "saves the contact and redirects to the index view with a success message" do
-        expect(subject).to redirect_to(project_contacts_path(project))
-        expect(request.flash[:notice]).to eq(I18n.t("contact.create.success"))
-
-        expect(Contact.count).to be 1
-        expect(Contact.last.name).to eq(new_contact_name)
+      it "returns not found" do
+        expect(subject).to have_http_status :not_found
       end
     end
   end

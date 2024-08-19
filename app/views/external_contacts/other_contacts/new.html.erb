@@ -1,21 +1,21 @@
 <% content_for :pre_content_nav do %>
-  <% render partial: "shared/back_link", locals: {href: project_contacts_path(@project)} %>
+<% render partial: "shared/back_link", locals: {href: project_contacts_path(@project)} %>
 <% end %>
 
 <% content_for :page_title do %>
-  <%= page_title(t("contact.edit.title")) %>
+  <%= page_title(t("contact.new.title")) %>
 <% end %>
 
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-full">
-    <span class="govuk-caption-l"><%= t("contact.edit.title") %></span>
+    <span class="govuk-caption-l"><%= t("helpers.label.new_contact_form.subtitle") %></span>
     <h1 class="govuk-heading-l"><%= t("helpers.label.new_contact_form.enter_contact_details") %></h1>
   </div>
 </div>
 
 <div class="govuk-grid-row govuk-body">
   <div class="govuk-grid-column-two-thirds">
-    <%= form_for @contact, url: project_contact_path(@project), method: :put do |form| %>
+    <%= form_for @contact, url: project_external_contacts_other_contact_path(@project, @contact) do |form| %>
       <%= form.govuk_error_summary %>
 
       <%= form.govuk_text_field :name, label: {text: t("helpers.label.new_contact_form.name"), size: "m"} %>
@@ -23,7 +23,7 @@
       <%= form.govuk_email_field :email, hint: {text: t("helpers.hint.new_contact_form.email")}, label: {text: t("helpers.label.new_contact_form.email"), size: "m"} %>
       <%= form.govuk_phone_field :phone, width: 10, label: {text: t("helpers.label.new_contact_form.phone"), size: "m"} %>
 
-      <%= render partial: "external_contacts/other_contacts/organisation_name_radio_buttons", locals: {form: form} %>
+     <%= render partial: "external_contacts/other_contacts/organisation_name_radio_buttons", locals: {form: form} %>
 
       <%= form.govuk_collection_radio_buttons :primary_contact_for_category,
             @contact.yes_no_responses,
@@ -33,8 +33,7 @@
             hint: {text: t("helpers.hint.new_contact_form.primary_contact_for_category")},
             form_group: {id: "primary-contact-for-category"} %>
 
-      <%= form.govuk_submit t("contact.edit.save_contact_button") do %>
-        <%= govuk_button_link_to "Delete", project_contact_delete_path(@project, @existing_contact), warning: true %>
+      <%= form.govuk_submit "Save and continue" do %>
         <%= govuk_link_to "Cancel", project_contacts_path(@project) %>
       <% end %>
     <% end %>

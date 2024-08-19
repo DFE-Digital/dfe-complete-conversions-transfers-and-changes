@@ -61,13 +61,54 @@ en:
         email: Email
         phone: Phone
         primary_contact_for_category: Primary contact
+      new_contact_form:
+        contact_type: Who do you want to add as a contact?
+        subtitle: Add a contact
+        enter_contact_details: Enter contact details
+        category: Which organisation is the contact for?
+        enter_organisation: Enter the organisation this contact is for
+        title: Role
+        name: Full name
+        organisation_name: Organisation
+        email: Email
+        phone: Phone
+        primary_contact_for_category: Is this person the primary project contact for this organisation?
     hint:
       contact_create_project_contact_form:
         primary_contact_for_category: The primary contact for this category, this is not the overall contact for the project itself.
-
+      new_contact_form:
+        contact_type_html:
+            <p>The person's job title may be different to the options in this list. Choose the role that is most similar.</p>
+            <p>For example, if the person's job title is principal or head teacher choose headteacher.</p>
+        email: This must be the person's work email address, or address at the school, academy or trust their role is relevant to.
+        primary_contact_for_category: A primary project contact is the person you most often to get in touch with first if you have any questions about the project.
+        incoming_trust_ceo:
+          hint: Check the contact details you have for the chair of governors against GIAS (Get information about schools). You can edit these details later if you need to.
+          guidance_link: What to do if the incoming trust CEO contact details are different
+          guidance: Check which contact is correct with the trust and ask that they update GIAS if necessary. This will help to make sure they get their funding and legal paperwork at the right time.
+        outgoing_trust_ceo:
+          hint: Check the contact details you have for the outgoing trust CEO against GIAS (Get information about schools). You can edit these details later if you need to.
+          guidance_link: What to do if the outgoing trust CEO contact details are different
+          guidance: Check which contact is correct with the trust and ask that they update GIAS if necessary. This will help to make sure they get their funding and legal paperwork at the right time.
+        headteacher:
+          hint: Check the contact details you have for the headteacher against GIAS (Get information about schools). You can edit these details later if you need to.
+          guidance_link: What to do if the headteacher contact details are different
+          guidance: Check which contact is correct with the school and ask that they update GIAS if necessary. This will help to make sure they get their funding and legal paperwork at the right time.
+        chair_of_governors:
+          hint: Check the contact details you have for the chair of governors against GIAS (Get information about schools). You can edit these details later if you need to.
+          guidance_link: What to do if the chair of governors contact details are different
+          guidance: Check which contact is correct with the school and ask that they update GIAS if necessary. This will help to make sure they get their funding and legal paperwork at the right time.
+    contact_types:
+      other: Someone else
+      headteacher: Headteacher
+      incoming_trust_ceo: Incoming trust CEO (Chief executive officer)
+      outgoing_trust_ceo: Outgoing trust CEO (Chief executive officer)
+      chair_of_governors: Chair of governors
   errors:
     attributes:
       category:
         blank: Choose a category
       primary_contact_for_category:
         category: Only the incoming trust, outgoing trust and school or academy categories can have a primary contact
+      base:
+        wrong_project_type_for_category: The selected category type is not supported by this project type

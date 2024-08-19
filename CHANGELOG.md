@@ -37,6 +37,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - the search results no longer include 'deleted' projects.
 
+### Changed
+
+- Users are now steered to create contacts with specific job titles, e.g.
+  Headteacher or CEO
+
 ## [Release-82][release-82]
 
 ### Added

@@ -49,7 +49,7 @@ class Contact::CreateProjectContactForm
     @contact.assign_attributes(category: category,
       name: name,
       title: title,
-      organisation_name: organisation_name,
+      organisation_name: choose_organisation_name,
       email: email,
       phone: phone,
       project_id: @project.id)
@@ -63,6 +63,25 @@ class Contact::CreateProjectContactForm
     else
       errors.merge!(@contact.errors)
       nil
+    end
+  end
+
+  def yes_no_responses
+    [OpenStruct.new(id: true, name: I18n.t("yes")), OpenStruct.new(id: false, name: I18n.t("no"))]
+  end
+
+  private def choose_organisation_name
+    return organisation_name unless organisation_name.blank?
+
+    case category
+    when "school_or_academy"
+      @project.establishment.name
+    when "incoming_trust"
+      @project.incoming_trust.name
+    when "outgoing_trust"
+      @project.outgoing_trust&.name
+    when "local_authority"
+      @project.local_authority&.name
     end
   end
 
