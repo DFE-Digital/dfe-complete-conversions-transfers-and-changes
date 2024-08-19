@@ -31,6 +31,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the confirmed outgoing trust CEO contact details are now included in the
   export where appropriate.
 
+### Fixed
+
+- the search results no longer include 'deleted' projects.
+
 ## [Release-82][release-82]
 
 ### Added
