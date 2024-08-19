@@ -3,19 +3,19 @@
 # ------------------------------------------------------------------------------
 FROM ruby:3.1.6-bookworm AS base
 
-ENV USER rails
-ENV UID 1000
-ENV GID 1000
+ENV USER=rails
+ENV UID=1000
+ENV GID=1000
 
 # setup env
-ENV APP_ROOT /srv/
-ENV APP_HOME ${APP_ROOT}app
-ENV DEPS_HOME /deps
+ENV APP_ROOT=/srv/
+ENV APP_HOME=${APP_ROOT}app
+ENV DEPS_HOME=/deps
 
 # RAILS_ENV defaults to production
 ARG RAILS_ENV
-ENV RAILS_ENV ${RAILS_ENV:-production}
-ENV NODE_ENV ${RAILS_ENV:-production}
+ENV RAILS_ENV=${RAILS_ENV:-production}
+ENV NODE_ENV=${RAILS_ENV:-production}
 
 # Set up non-root user for running the service
 RUN groupadd --system --gid ${UID} ${USER} && \
@@ -23,7 +23,7 @@ RUN groupadd --system --gid ${UID} ${USER} && \
 
 # Install basics
 #
-RUN apt-get update && apt-get install --no-install-recommends -y build-essential libpq-dev ca-certificates curl gnupg
+RUN apt-get update && apt-get install --no-install-recommends -y build-essential ca-certificates curl gnupg libpq-dev
 
 # Setup Node installation
 # https://github.com/nodesource/distributions#installation-instructions
@@ -94,7 +94,7 @@ RUN chown -R ${UID}:${GID} ${DEPS_HOME}
 USER ${UID}:${GID}
 
 # Install Ruby dependencies
-ENV BUNDLE_GEM_GROUPS ${RAILS_ENV}
+ENV BUNDLE_GEM_GROUPS=${RAILS_ENV}
 
 COPY Gemfile ${DEPS_HOME}/Gemfile
 COPY Gemfile.lock ${DEPS_HOME}/Gemfile.lock
@@ -189,8 +189,8 @@ RUN \
 ARG CURRENT_GIT_SHA
 ARG TIME_OF_BUILD
 
-ENV CURRENT_GIT_SHA ${CURRENT_GIT_SHA}
-ENV TIME_OF_BUILD ${TIME_OF_BUILD}
+ENV CURRENT_GIT_SHA=${CURRENT_GIT_SHA}
+ENV TIME_OF_BUILD=${TIME_OF_BUILD}
 
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
