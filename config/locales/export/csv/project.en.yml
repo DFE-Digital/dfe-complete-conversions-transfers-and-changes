@@ -64,6 +64,7 @@ en:
           incoming_trust_address_county: Incoming trust address county
           incoming_trust_address_postcode: Incoming trust address postcode
           chair_of_governors_name: Chair of governors name
+          chair_of_governors_role: Chair of governors role
           chair_of_governors_email: Chair of governors email
           local_authority_code: Local authority code
           local_authority_name: Local authority

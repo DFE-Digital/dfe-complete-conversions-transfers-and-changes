@@ -30,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the project, they may also have to add it
 - the confirmed outgoing trust CEO contact details are now included in the
   export where appropriate.
+- the confirmed chair of governors contact role is included in appropriate
+  exports.
 
 ### Fixed
 
