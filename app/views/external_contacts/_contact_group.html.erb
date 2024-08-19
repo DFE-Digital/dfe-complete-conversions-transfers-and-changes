@@ -5,7 +5,7 @@
   <div id="academyDetails" class="govuk-summary-card">
     <div class="govuk-summary-card__title-wrapper">
       <h3 class="govuk-summary-card__title">
-        <%= contact.name %>
+        <%= contact.title %>
       </h3>
       <% if contact.editable? %>
         <ul class="govuk-summary-card__actions">
@@ -19,16 +19,14 @@
     <div class="govuk-summary-card__content">
       <%= govuk_summary_list do |summary_list|
             summary_list.with_row do |row|
-              row.with_key { t("contact.details.title") }
-              row.with_value { contact.title }
-            end
-            summary_list.with_row do |row|
               row.with_key { t("contact.details.name") }
               row.with_value { contact.name }
             end
-            summary_list.with_row do |row|
-              row.with_key { t("contact.details.organisation_name") }
-              row.with_value { contact.organisation_name }
+            if contact.category.eql?("other") && contact.organisation_name
+              summary_list.with_row do |row|
+                row.with_key { t("contact.details.organisation_name") }
+                row.with_value { contact.organisation_name }
+              end
             end
             if contact.email.present?
               summary_list.with_row do |row|
@@ -48,30 +46,10 @@
                 row.with_value { t("yes") }
               end
             end
-            if contact.is_a?(Contact::Project)
-              if contact.establishment_main_contact
-                summary_list.with_row do |row|
-                  row.with_key { t("contact.details.establishment_main_contact") }
-                  row.with_value { t("yes") }
-                end
-              end
-              if contact.incoming_trust_main_contact
-                summary_list.with_row do |row|
-                  row.with_key { t("contact.details.incoming_trust_main_contact") }
-                  row.with_value { t("yes") }
-                end
-              end
-              if contact.outgoing_trust_main_contact
-                summary_list.with_row do |row|
-                  row.with_key { t("contact.details.outgoing_trust_main_contact") }
-                  row.with_value { t("yes") }
-                end
-              end
-              if contact.local_authority_main_contact
-                summary_list.with_row do |row|
-                  row.with_key { t("contact.details.local_authority_main_contact") }
-                  row.with_value { t("yes") }
-                end
+            if contact.is_a?(Contact::Project) && has_primary_contact?(category)
+              summary_list.with_row do |row|
+                row.with_key { t("contact.details.primary_contact") }
+                row.with_value { primary_contact_at_organisation(contact, category) }
               end
             end
           end %>

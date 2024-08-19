@@ -28,7 +28,6 @@ RSpec.feature "Users can manage contacts" do
     create(:project_contact, category: :other, project: project)
     create(:project_contact, category: :school_or_academy, project: project)
     create(:project_contact, category: :incoming_trust, project: project)
-    create(:project_contact, category: :outgoing_trust, project: project)
     create(:project_contact, category: :solicitor, project: project)
     create(:project_contact, category: :diocese, project: project)
     create(:project_contact, category: :local_authority, project: project)
@@ -37,18 +36,12 @@ RSpec.feature "Users can manage contacts" do
 
     order_categories = page.find_all("h3.govuk-heading-m")
 
-    %i[
-      school_or_academy
-      incoming_trust
-      outgoing_trust
-      local_authority
-      solicitor
-      diocese
-      other
-    ].each_with_index do |category, index|
-      expect(order_categories[index].text)
-        .to eql I18n.t("contact.index.category_heading", category_name: category.to_s.humanize)
-    end
+    expect(order_categories[0].text).to eql(I18n.t("contact.index.category_heading", category_name: project.establishment.name))
+    expect(order_categories[1].text).to eql(I18n.t("contact.index.category_heading", category_name: project.incoming_trust.name))
+    expect(order_categories[2].text).to eql(I18n.t("contact.index.category_heading", category_name: project.local_authority.name))
+    expect(order_categories[3].text).to eql("Solicitor contacts")
+    expect(order_categories[4].text).to eql("Diocese contacts")
+    expect(order_categories[5].text).to eql("Other contacts")
   end
 
   context "adding a new headteacher" do
@@ -66,12 +59,11 @@ RSpec.feature "Users can manage contacts" do
 
       click_on "Save and continue"
 
-      expect(page).to have_content("School or academy contacts")
+      expect(page).to have_content("#{project.establishment.name} contacts")
 
       expect_page_to_have_contact(
         name: "Jane Headteacher",
         title: "Headteacher",
-        organisation_name: project.establishment.name.to_s,
         email: "some@example.com",
         phone: "01632 960456"
       )
@@ -93,8 +85,8 @@ RSpec.feature "Users can manage contacts" do
 
       click_on "Save and continue"
 
-      expect(page).to have_content("School or academy contacts")
-      expect(page).to have_content(I18n.t("contact.details.establishment_main_contact"))
+      expect(page).to have_content("#{project.establishment.name} contacts")
+      expect(page).to have_content(I18n.t("contact.details.primary_contact"))
     end
   end
 
@@ -113,12 +105,11 @@ RSpec.feature "Users can manage contacts" do
 
       click_on "Save and continue"
 
-      expect(page).to have_content("Incoming trust contacts")
+      expect(page).to have_content("#{project.incoming_trust.name} contacts")
 
       expect_page_to_have_contact(
         name: "Jane Finance",
         title: "CEO",
-        organisation_name: project.incoming_trust.name.to_s,
         email: "some@example.com",
         phone: "01632 960456"
       )
@@ -142,12 +133,11 @@ RSpec.feature "Users can manage contacts" do
 
       click_on "Save and continue"
 
-      expect(page).to have_content("Outgoing trust contacts")
+      expect(page).to have_content("#{project.outgoing_trust.name} contacts")
 
       expect_page_to_have_contact(
         name: "Bob Finance",
         title: "CEO",
-        organisation_name: project.outgoing_trust.name.to_s,
         email: "some@example.com",
         phone: "01632 960456"
       )
@@ -169,8 +159,8 @@ RSpec.feature "Users can manage contacts" do
 
       click_on "Save and continue"
 
-      expect(page).to have_content("Outgoing trust contacts")
-      expect(page).to have_content(I18n.t("contact.details.outgoing_trust_main_contact"))
+      expect(page).to have_content("#{project.outgoing_trust.name} contacts")
+      expect(page).to have_content(I18n.t("contact.details.primary_contact"))
     end
   end
 
@@ -189,7 +179,7 @@ RSpec.feature "Users can manage contacts" do
 
       click_on "Save and continue"
 
-      expect(page).to have_content("School or academy contacts")
+      expect(page).to have_content("#{project.establishment.name} contacts")
 
       expect_page_to_have_contact(
         name: "Susan Chair",
