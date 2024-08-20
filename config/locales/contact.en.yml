@@ -18,10 +18,7 @@ en:
       edit_link: Change
       funding_agreement_letters: This person will receive the funding agreement letters.
       main_contact: Project main contact
-      establishment_main_contact: Primary contact for school or academy?
-      incoming_trust_main_contact: Primary contact for incoming trust?
-      outgoing_trust_main_contact: Primary contact for outgoing trust?
-      local_authority_main_contact: Primary contact for local authority?
+      primary_contact: Primary contact at organisation?
     new:
       title: Add contact
       save_contact_button: Add contact
