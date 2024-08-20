@@ -81,4 +81,41 @@ RSpec.describe ContactsHelper, type: :helper do
       expect(helper.has_primary_contact?("solicitor")).to be false
     end
   end
+
+  describe "#primary_contact_at_organisation" do
+    before { mock_successful_api_response_to_create_any_project }
+
+    it "returns nothing for contacts which are not Contact::Project type" do
+      expect(helper.primary_contact_at_organisation(build(:director_of_child_services), "local_authority")).to be_nil
+    end
+
+    it "returns 'no' for categories that do not have a primary contact type" do
+      expect(helper.primary_contact_at_organisation(build(:project_contact), "other")).to eq("No")
+    end
+
+    it "returns 'yes' when contact is the primary contact for that category" do
+      project = build(:conversion_project)
+      school_contact = create(:project_contact, project: project)
+      trust_contact = create(:project_contact, project: project)
+      local_authority_contact = create(:project_contact, project: project)
+      project.establishment_main_contact = school_contact
+      project.incoming_trust_main_contact = trust_contact
+      project.local_authority_main_contact = local_authority_contact
+
+      expect(helper.primary_contact_at_organisation(school_contact, "school_or_academy")).to eq("Yes")
+      expect(helper.primary_contact_at_organisation(trust_contact, "incoming_trust")).to eq("Yes")
+      expect(helper.primary_contact_at_organisation(local_authority_contact, "local_authority")).to eq("Yes")
+    end
+
+    it "returns 'no' when contact is not the primary contact for that category" do
+      project = build(:conversion_project)
+      school_contact = create(:project_contact, project: project)
+      trust_contact = create(:project_contact, project: project)
+      local_authority_contact = create(:project_contact, project: project)
+
+      expect(helper.primary_contact_at_organisation(school_contact, "school_or_academy")).to eq("No")
+      expect(helper.primary_contact_at_organisation(trust_contact, "incoming_trust")).to eq("No")
+      expect(helper.primary_contact_at_organisation(local_authority_contact, "local_authority")).to eq("No")
+    end
+  end
 end
