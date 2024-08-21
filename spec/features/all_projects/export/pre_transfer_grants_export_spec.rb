@@ -5,7 +5,6 @@ RSpec.feature "Pre transfer grants export" do
     user = create(:user, :service_support)
     sign_in_with_user(user)
     mock_all_academies_api_responses
-    mock_successful_member_details
     create(:conversion_project, conversion_date: Date.new(2024, 6, 1))
   end
 

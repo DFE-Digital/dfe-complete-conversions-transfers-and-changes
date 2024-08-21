@@ -7,7 +7,7 @@ The application consumes the follow API:
 
 ## The Academies API
 
-The Academies API is an DfE internal API.
+The Academies API is a DfE internal API.
 
 The application uses it as a stand in for GIAS data as the
 [GIAS API](https://dfe-developerhub.education.gov.uk/apis/GIASApi_V1) is not fit
@@ -34,23 +34,23 @@ stored in an environment variable (`ACADEMIES_API_KEY`) along with the API host.
 For more details on the API visit
 [the repository](https://github.com/DFE-Digital/academies-api)
 
-## The Members API
+## The Persons API
 
-The members API is a 'An API which retrieves Members data' from the UK
-Parliament.
+The Persons API is a DfE internal API, and is part of the Academies API.
 
-The application uses it to match an establishment with and MP. The details of
-which are then exported as part of the funding agreement letters data.
+The API is not used in production as the production API is not yet available,
+once it is deployed we will use it to provide the contact details for the member
+of parliament.
 
-We model a simple wrapper around the API that makes the necessary calls to get
-from a constituency to the contact details for an MP.
+Two environment variables are required:
 
-There is the possibility that a one to one match will not be made and either 0
-or > 1 results are found, we believe this is caused be the GIAS constituency not
-aligning to the data model on the API. In this cases we return nothing so the
-issue can be resolve post data export.
+- `PERSONS_API_HOST`
+- `PERSONS_API_KEY`
 
-The Members API is public and requires no authentication.
+as both are different to the Academies API.
 
-For more details on the API visit the
-[UK Parliament Developer Hub](https://developer.parliament.uk/)
+The data exposed on the API is managed centrally.
+
+For more details on this API:
+
+https://github.com/DFE-Digital/academies-api/tree/main/PersonsApi

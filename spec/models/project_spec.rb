@@ -361,75 +361,33 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#member_of_parliament" do
+  describe "#member_of_parliament", skip: "Waiting for production Persons API" do
     it "returns the details of the MP for the projects establishment constituency" do
-      skip "The Parliamentary Members API is not currently efficient enough to use"
-      mock_successful_member_details
-
+      mock_all_academies_api_responses
       project = build(:conversion_project)
-      allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+      mock_successful_persons_api_client
 
-      member_of_parliament = project.member_of_parliament
-
-      expect(member_of_parliament.name).to eql "Member Parliament"
-      expect(member_of_parliament.email).to eql "member.parliament@parliament.uk"
-      expect(member_of_parliament.address.postcode).to eql "SW1A 0AA"
+      expect(project.member_of_parliament).to be_a Api::Persons::MemberDetails
+      expect(project.member_of_parliament.name).to eql "First Last"
     end
 
     it "only goes to the API once per instance of Project" do
-      skip "The Parliamentary Members API is not currently efficient enough to use"
-      mock_api_client = mock_successful_member_details
-
+      mock_all_academies_api_responses
       project = build(:conversion_project)
-      allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+      client = mock_successful_persons_api
 
       project.member_of_parliament
       project.member_of_parliament
 
-      expect(mock_api_client).to have_received(:member_for_constituency).exactly(1).time
+      expect(client).to have_received(:member_for_constituency).once
     end
 
-    it "returns nil when the API returns nothing" do
-      mock_nil_member_for_constituency_response
-
+    it "returns nil when the API returns an error" do
+      mock_all_academies_api_responses
       project = build(:conversion_project)
-      allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
+      mock_failed_persons_api_client
 
-      member_of_parliament = project.member_of_parliament
-
-      expect(member_of_parliament).to be nil
-    end
-
-    it "sends Applications Insights an event when the API call fails" do
-      skip "The Parliamentary Members API is not currently efficient enough to use"
-      ClimateControl.modify(APPLICATION_INSIGHTS_KEY: "fake-application-insights-key") do
-        telemetry_client = double(ApplicationInsights::TelemetryClient, track_event: true, flush: true)
-        allow(ApplicationInsights::TelemetryClient).to receive(:new).and_return(telemetry_client)
-
-        mock_nil_member_for_constituency_response
-
-        project = build(:conversion_project)
-        allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
-        project.member_of_parliament
-
-        expect(telemetry_client).to have_received(:track_event)
-      end
-    end
-
-    it "returns nil when there is an error from the Members API" do
-      mock_members_api_unavailable_response
-
-      project = build(:conversion_project)
-      allow(project).to receive(:establishment).and_return(build(:academies_api_establishment))
-      member_of_parliament = project.member_of_parliament
-
-      expect(member_of_parliament).to be_nil
-    end
-
-    it "returns nil for member_of_parliament due to the Parliamentary Members API not being useable" do
-      project = build(:conversion_project)
-      member_of_parliament = project.member_of_parliament
-      expect(member_of_parliament).to be_nil
+      expect(project.member_of_parliament).to be_nil
     end
   end
 

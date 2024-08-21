@@ -6,22 +6,25 @@
 
 <%= render partial: "shared/projects/sub_navigation" %>
 
+<h2 class="govuk-heading-l"><%= t("member_of_parliament.show.title") %></h2>
+
+<% if @member.present? %>
 <div id="projectMemberOfParliament">
-  <h2 class="govuk-heading-l"><%= t("member_of_parliament.show.title") %></h2>
   <%= govuk_summary_list do |summary_list|
         summary_list.with_row do |row|
           row.with_key { t("member_of_parliament.show.rows.full_title") }
-          row.with_value { @member_name.object.name_full_title }
+          row.with_value { @member.name }
         end
         summary_list.with_row do |row|
           row.with_key { t("member_of_parliament.show.rows.email") }
-          row.with_value { mail_to(@member_email, @member_email) }
+          row.with_value { mail_to(@member.email, @member.email) }
         end
-        if @parliamentary_office
-          summary_list.with_row do |row|
-            row.with_key { @parliamentary_office.type }
-            row.with_value { address_markup(@parliamentary_office.address) }
-          end
+        summary_list.with_row do |row|
+          row.with_key { t("member_of_parliament.show.rows.address") }
+          row.with_value { address_markup(@member.address) }
         end
       end %>
+<% else %>
+  <%= govuk_inset_text(text: "MP Could not be found on the DfE Persons API for constituency '#{@project.establishment.parliamentary_constituency}'.") %>
+<% end %>
 </div>

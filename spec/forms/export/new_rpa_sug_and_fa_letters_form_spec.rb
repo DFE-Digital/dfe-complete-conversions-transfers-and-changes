@@ -50,6 +50,7 @@ RSpec.describe Export::NewRpaSugAndFaLettersForm, type: :model do
     describe "includes the right projects" do
       before do
         mock_all_academies_api_responses
+        mock_successful_persons_api_client
       end
 
       let(:from_date) { Date.new(2024, 1, 1) }

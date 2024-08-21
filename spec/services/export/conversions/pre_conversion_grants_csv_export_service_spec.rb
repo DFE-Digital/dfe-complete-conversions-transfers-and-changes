@@ -4,7 +4,6 @@ RSpec.describe Export::Conversions::PreConversionGrantsCsvExportService do
   describe "#call" do
     before do
       mock_successful_api_response_to_create_any_project
-      mock_successful_member_details
     end
 
     it "returns a csv with headers and values" do
