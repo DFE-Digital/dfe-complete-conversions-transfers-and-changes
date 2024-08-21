@@ -4,6 +4,7 @@ en:
       external_contacts: External contacts
       internal_contacts: Internal contacts
       category_heading: "%{category_name} contacts"
+      parliamentary_contacts_heading: Parliamentary contacts
       add_contact_button: Add contact
       no_contacts_yet: There are not any contacts for this project yet.
       external_contacts_hint:
@@ -101,6 +102,7 @@ en:
       incoming_trust_ceo: Incoming trust CEO (Chief executive officer)
       outgoing_trust_ceo: Outgoing trust CEO (Chief executive officer)
       chair_of_governors: Chair of governors
+      member_of_parliament: Member of Parliament
   errors:
     attributes:
       category:
