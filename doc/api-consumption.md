@@ -7,7 +7,7 @@ The application consumes the follow API:
 
 ## The Academies API
 
-The Academies API is an DfE internal API.
+The Academies API is a DfE internal API.
 
 The application uses it as a stand in for GIAS data as the
 [GIAS API](https://dfe-developerhub.education.gov.uk/apis/GIASApi_V1) is not fit
@@ -33,3 +33,24 @@ stored in an environment variable (`ACADEMIES_API_KEY`) along with the API host.
 
 For more details on the API visit
 [the repository](https://github.com/DFE-Digital/academies-api)
+
+## The Persons API
+
+The Persons API is a DfE internal API, and is part of the Academies API.
+
+The API is not used in production as the production API is not yet available,
+once it is deployed we will use it to provide the contact details for the member
+of parliament.
+
+Two environment variables are required:
+
+- `PERSONS_API_HOST`
+- `PERSONS_API_KEY`
+
+as both are different to the Academies API.
+
+The data exposed on the API is managed centrally.
+
+For more details on this API:
+
+https://github.com/DFE-Digital/academies-api/tree/main/PersonsApi
