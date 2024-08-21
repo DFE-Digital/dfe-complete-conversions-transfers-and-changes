@@ -4,7 +4,6 @@ RSpec.describe Export::Transfers::AllDataCsvExportService do
   describe "#call" do
     before do
       mock_all_academies_api_responses
-      mock_successful_member_details
     end
 
     it "returns a csv with headers and values" do
