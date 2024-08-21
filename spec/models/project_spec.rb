@@ -1,8 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Project, type: :model do
-  include PersonsApiHelpers
-
   describe "Columns" do
     it { is_expected.to have_db_column(:urn).of_type :integer }
     it { is_expected.to have_db_column(:incoming_trust_ukprn).of_type :integer }

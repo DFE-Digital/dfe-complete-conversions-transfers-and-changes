@@ -1,8 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Api::Persons::Client do
-  include PersonsApiHelpers
-
   it "uses the environment variables to build the connection" do
     ClimateControl.modify(
       PERSONS_API_HOST: "https://test.persons.api",
