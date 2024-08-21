@@ -105,6 +105,18 @@ RSpec.describe Contact::CreateProjectContactForm do
       expect(contact.category).to eq("other")
       expect(contact.organisation_name).to be_nil
     end
+
+    it "does not allow an outgoing trust contact to be created for a Conversion project" do
+      contact = Contact::Project.new
+      contact_form = Contact::CreateProjectContactForm.new(contact: contact, project: project)
+      contact_form.name = "Adifferent Name"
+      contact_form.email = "a.name@domain.com"
+      contact_form.title = "Role"
+      contact_form.category = "outgoing_trust"
+
+      expect(contact_form.valid?).to be false
+      expect(contact_form.errors[:category]).to include("The Outgoing trust category is only for Transfer projects")
+    end
   end
 
   describe "existing contact" do
@@ -171,7 +183,9 @@ RSpec.describe Contact::CreateProjectContactForm do
           end
         end
 
-        context "and the category is outgoing trust" do
+        context "and the category is outgoing trust (and the project is a transfer project)" do
+          let(:project) { create(:transfer_project) }
+
           it "is valid" do
             contact_form.category = "outgoing_trust"
 
@@ -335,8 +349,9 @@ RSpec.describe Contact::CreateProjectContactForm do
           end
         end
 
-        context "and the contact is for the outgoing trust category" do
+        context "and the contact is for the outgoing trust category (and the project is a transfer project)" do
           let(:contact) { create(:project_contact, project: project, category: "outgoing_trust") }
+          let(:project) { create(:transfer_project) }
 
           it "can be unset" do
             project.update!(outgoing_trust_main_contact_id: contact.id)

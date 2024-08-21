@@ -105,6 +105,7 @@ en:
     attributes:
       category:
         blank: Choose a category
+        outgoing_trust_for_transfer_only: The Outgoing trust category is only for Transfer projects
       primary_contact_for_category:
         category: Only the incoming trust, outgoing trust and school or academy categories can have a primary contact
       base:

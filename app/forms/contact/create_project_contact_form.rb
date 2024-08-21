@@ -26,6 +26,7 @@ class Contact::CreateProjectContactForm
     :phone
 
   validate :category_with_primary_contact
+  validate :outgoing_trust_for_transfer_only
 
   def initialize(contact:, project:, args: {})
     @project = project
@@ -89,6 +90,12 @@ class Contact::CreateProjectContactForm
     return unless primary_contact_for_category
 
     errors.add(:primary_contact_for_category, :category) unless CATEGORIES_WITH_PRIMARY_CONTACT.include?(category)
+  end
+
+  private def outgoing_trust_for_transfer_only
+    return if @project.is_a?(Transfer::Project)
+
+    errors.add(:category, :outgoing_trust_for_transfer_only) if category.eql?("outgoing_trust")
   end
 
   private def is_primary_contact_for_category?
