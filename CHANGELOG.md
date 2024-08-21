@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-83][release-83]
+
 ### Added
 
 - a new 'confirm the headteacher contact' task has been added, users need to
@@ -2152,7 +2154,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-82...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-83...HEAD
+[release-83]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-82...release-83
 [release-82]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-81...release-82
 [release-81]:
