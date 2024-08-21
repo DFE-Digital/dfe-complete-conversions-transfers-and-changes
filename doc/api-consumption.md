@@ -33,24 +33,3 @@ stored in an environment variable (`ACADEMIES_API_KEY`) along with the API host.
 
 For more details on the API visit
 [the repository](https://github.com/DFE-Digital/academies-api)
-
-## The Members API
-
-The members API is a 'An API which retrieves Members data' from the UK
-Parliament.
-
-The application uses it to match an establishment with and MP. The details of
-which are then exported as part of the funding agreement letters data.
-
-We model a simple wrapper around the API that makes the necessary calls to get
-from a constituency to the contact details for an MP.
-
-There is the possibility that a one to one match will not be made and either 0
-or > 1 results are found, we believe this is caused be the GIAS constituency not
-aligning to the data model on the API. In this cases we return nothing so the
-issue can be resolve post data export.
-
-The Members API is public and requires no authentication.
-
-For more details on the API visit the
-[UK Parliament Developer Hub](https://developer.parliament.uk/)

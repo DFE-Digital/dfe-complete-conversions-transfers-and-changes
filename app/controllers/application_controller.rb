@@ -26,8 +26,4 @@ class ApplicationController < ActionController::Base
   private def academies_api_unauthorised_error
     render "pages/academies_api_client_unauthorised", status: 401
   end
-
-  private def members_api_client_error
-    render "pages/members_api_client_error", status: 500
-  end
 end
