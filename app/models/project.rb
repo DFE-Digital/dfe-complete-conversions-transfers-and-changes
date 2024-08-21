@@ -112,7 +112,10 @@ class Project < ApplicationRecord
   end
 
   def member_of_parliament
+    # until the Persons API is available in production, we have to return nil
+    # call `fetch_member_of_parliament` when the API goes live.
     nil
+    # @member_of_parliament ||= fetch_member_of_parliament
   end
 
   def unassigned_to_user?
@@ -153,9 +156,10 @@ class Project < ApplicationRecord
     notes.find_by(task_identifier: :handover)
   end
 
+  # exclude for test coverage until the Person API is in production
   # :nocov:
   private def fetch_member_of_parliament
-    result = Api::MembersApi::Client.new.member_for_constituency(establishment.parliamentary_constituency)
+    result = Api::Persons::Client.new.member_for_constituency(establishment.parliamentary_constituency)
 
     if result.error.present?
       track_event(result.error.message)
