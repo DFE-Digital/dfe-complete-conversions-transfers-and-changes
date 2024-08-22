@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_15_142453) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_22_074901) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -328,7 +328,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_142453) do
     t.uuid "outgoing_trust_main_contact_id"
     t.string "new_trust_reference_number"
     t.string "new_trust_name"
-    t.uuid "chair_of_governors_contact_id"
     t.integer "state", default: 0, null: false
     t.integer "prepare_id"
     t.uuid "local_authority_main_contact_id"
