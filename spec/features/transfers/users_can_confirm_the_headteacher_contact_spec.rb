@@ -51,4 +51,25 @@ RSpec.feature "Users can confirm the headteacher contact" do
       end
     end
   end
+
+  context "when there are contacts imported from GIAS" do
+    let!(:contact) { create(:establishment_contact, establishment_urn: project.urn) }
+
+    scenario "they can choose the contact" do
+      visit project_path(project)
+      click_link "Confirm the headteacher’s details"
+
+      expect(page).to have_content contact.name
+      expect(page).to have_content contact.email
+      expect(page).to have_content contact.phone
+
+      choose contact.name
+
+      click_button "Save and return"
+
+      within ".app-task-list li:nth-of-type(1) li:nth-of-type(3)" do
+        expect(page).to have_content "Completed"
+      end
+    end
+  end
 end

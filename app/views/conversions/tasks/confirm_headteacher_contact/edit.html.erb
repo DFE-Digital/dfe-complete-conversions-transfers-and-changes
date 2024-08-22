@@ -22,7 +22,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <% if @project.contacts.school_or_academy.empty? %>
+    <% if @task.selectable_contacts.empty? %>
 
       <h2 class="govuk-heading-l"><%= t("conversion.task.confirm_headteacher_contact.no_contacts.title") %></h2>
       <%= govuk_inset_text(text: t("conversion.task.confirm_headteacher_contact.no_contacts.hint.html")) %>
@@ -34,7 +34,7 @@
         <%= form.govuk_error_summary %>
 
         <%= form.govuk_collection_radio_buttons :headteacher_contact_id,
-              @project.contacts.school_or_academy,
+              @task.selectable_contacts,
               :id,
               :name,
               :email_and_phone,

@@ -15,6 +15,12 @@ class Transfer::Task::ConfirmHeadteacherContactTaskForm < BaseTaskForm
     @key_contacts.update!(headteacher_id: headteacher_contact_id)
   end
 
+  def selectable_contacts
+    project_contacts = @project.contacts.school_or_academy.to_a
+    project_contacts << Contact::Establishment.find_by(establishment_urn: @project.urn)
+    project_contacts.compact
+  end
+
   private def completed?
     @key_contacts.headteacher.present?
   end

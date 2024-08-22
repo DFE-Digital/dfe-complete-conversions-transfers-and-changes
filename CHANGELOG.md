@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - changing 'convesion grant' references to 'conversion support grant' to match
   Apply and Prepare
+- The GIAS-imported Headteacher data is now selectable in the "Choose the
+  Headteacher" task
 
 ## [Release-83][release-83]
 
