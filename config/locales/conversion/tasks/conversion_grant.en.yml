@@ -2,8 +2,8 @@ en:
   conversion:
     task:
       conversion_grant:
-        title:  Process conversion grant
-        guidance_link: How to process a conversion grant
+        title:  Process conversion support grant
+        guidance_link: How to process a conversion support grant
         guidance:
           html:
             <p>Check the grant claim form is ready, the school or trust has a vendor account and send the correct information to the Grant Payments team.</p>
@@ -17,7 +17,7 @@ en:
           guidance_link: How to set up a vendor account
           guidance:
             html:
-              <p>The school or trust receiving the conversion grant must have a vendor account.</p>
+              <p>The school or trust receiving the conversion support grant must have a vendor account.</p>
               <p>Schools and trusts can <a href="https://www.gov.uk/guidance/provide-information-about-your-banking-and-payments-to-dfe" class="govuk-link" target="_blank">set up a vendor account (opens in new tab)</a> when they provide information about their banking and payments to Department for Education.</p>
               <p>Share the link with them so they can register if needed.</p>
               <p>It can take 15 to 20 days for an account to be created.</p>
@@ -45,7 +45,7 @@ en:
               <p>The subject line of the email must include the:</p>
               <ul>
                 <li>region the school is in</li>
-                <li>grant type (converter grant)</li>
+                <li>grant type</li>
                 <li>school's name</li>
               </ul>
               <p>The content of the email must include the:</p>
