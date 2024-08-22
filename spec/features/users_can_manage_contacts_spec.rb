@@ -252,6 +252,18 @@ RSpec.feature "Users can manage contacts" do
     expect(page).to have_content(I18n.t("contact.details.main_contact"))
   end
 
+  scenario "if a project has a member of parliament, the MP is shown" do
+    member_details = Api::Persons::MemberDetails.new(first_name: "Robert", last_name: "Minister", email: "ministerr@parliament.gov.uk")
+
+    allow_any_instance_of(Project).to receive(:member_of_parliament).and_return(member_details)
+
+    visit project_contacts_path(project)
+
+    expect(page).to have_content("Parliamentary contacts")
+    expect(page).to have_content(member_details.name)
+    expect(page).to have_content(member_details.email)
+  end
+
   private def expect_page_to_have_contact(name:, title:, organisation_name: nil, email: nil, phone: nil)
     expect(page).to have_content(name)
     expect(page).to have_content(organisation_name) if organisation_name
