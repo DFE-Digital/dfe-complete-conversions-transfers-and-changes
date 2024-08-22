@@ -3,8 +3,6 @@ class Conversion::Project < Project
     ProjectPolicy
   end
 
-  has_one :chair_of_governors, class_name: "Contact::Project", inverse_of: :project
-
   attr_writer :academy
 
   alias_attribute :conversion_date, :significant_date

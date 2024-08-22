@@ -3,12 +3,6 @@ require "rails_helper"
 RSpec.describe Conversion::Project do
   before { mock_successful_api_response_to_create_any_project }
 
-  describe "associations" do
-    describe "chair of governors" do
-      it { is_expected.to belong_to(:chair_of_governors_contact).optional(true) }
-    end
-  end
-
   describe "validations" do
     describe "academy urn" do
       context "when there is no academy urn" do

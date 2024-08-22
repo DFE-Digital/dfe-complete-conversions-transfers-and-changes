@@ -22,7 +22,6 @@ class Project < ApplicationRecord
   belongs_to :incoming_trust_main_contact, inverse_of: :main_contact_for_incoming_trust, dependent: :destroy, class_name: "Contact", optional: true
   belongs_to :outgoing_trust_main_contact, inverse_of: :main_contact_for_outgoing_trust, dependent: :destroy, class_name: "Contact", optional: true
   belongs_to :local_authority_main_contact, inverse_of: :main_contact_for_local_authority, dependent: :destroy, class_name: "Contact", optional: true
-  belongs_to :chair_of_governors_contact, inverse_of: :contact_for_chair_of_governors, dependent: :destroy, class_name: "Contact::Project", optional: true
 
   belongs_to :group, inverse_of: :projects, class_name: "ProjectGroup", optional: true
 
