@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - changing 'convesion grant' references to 'conversion support grant' to match
   Apply and Prepare
+- Headteacher contacts imported from GIAS are transformed into Project contacts
+  and behave like other Project contacts
 
 ## [Release-83][release-83]
 
