@@ -14,9 +14,6 @@ class ContactsFetcherService
 
     all_contacts << @director_of_child_services unless @director_of_child_services.nil?
 
-    establishment_contacts = @establishment_contacts
-    all_contacts << establishment_contacts unless establishment_contacts.nil?
-
     all_contacts.sort_by(&:name)
   end
 

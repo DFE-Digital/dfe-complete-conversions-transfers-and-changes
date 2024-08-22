@@ -30,14 +30,11 @@ RSpec.describe ContactsFetcherService do
       director_of_child_services_contact = create(:director_of_child_services, name: "Bob Brown")
       allow(project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
 
-      establishment_contact = create(:establishment_contact, establishment_urn: project.urn, name: "Chloe Christian")
-
       result = described_class.new(project).all_project_contacts
 
-      expect(result.count).to eql(3)
+      expect(result.count).to eql(2)
       expect(result.first).to eq(project_contact)
       expect(result[1]).to eq(director_of_child_services_contact)
-      expect(result.last).to eq(establishment_contact)
     end
 
     it "returns an empty array when there are no contacts" do
@@ -53,14 +50,11 @@ RSpec.describe ContactsFetcherService do
       director_of_child_services_contact = create(:director_of_child_services)
       allow(project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
 
-      establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
-
       result = described_class.new(project).all_project_contacts_grouped
 
       expect(result.count).to eql(2)
-      expect(result["school_or_academy"].count).to eql(2)
+      expect(result["school_or_academy"].count).to eql(1)
       expect(result["school_or_academy"]).to include(project_contact)
-      expect(result["school_or_academy"]).to include(establishment_contact)
       expect(result["local_authority"]).to include(director_of_child_services_contact)
     end
 
@@ -78,19 +72,7 @@ RSpec.describe ContactsFetcherService do
         end
       end
 
-      context "and there is an establishment contact" do
-        it "returns the establishment contact" do
-          project = create(:transfer_project)
-          establishment_contact = create(:establishment_contact, establishment_urn: project.urn)
-
-          result = described_class.new(project).all_project_contacts_grouped
-
-          expect(result.values.flatten.count).to eql(1)
-          expect(result.values.flatten.first).to eq(establishment_contact)
-        end
-      end
-
-      context "and there is not a director of child services or an establishment contact" do
+      context "and there is not a director of child services" do
         it "returns empty" do
           project = create(:transfer_project)
           allow(project).to receive(:director_of_child_services).and_return(nil)
@@ -116,14 +98,6 @@ RSpec.describe ContactsFetcherService do
 
     context "when there is NOT an establishment_main_contact_id" do
       before { allow(project).to receive(:establishment_main_contact_id).and_return(nil) }
-
-      context "and there is an establishment contact (type = Contact::Establishment)" do
-        let!(:establishment_contact) { create(:establishment_contact, establishment_urn: project.urn) }
-
-        it "returns the establishment contact" do
-          expect(described_class.new(project).school_or_academy_contact).to eq(establishment_contact)
-        end
-      end
 
       it "returns the next matching contact" do
         expect(described_class.new(project).school_or_academy_contact).to eq(contact)
