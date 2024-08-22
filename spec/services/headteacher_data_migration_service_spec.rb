@@ -34,6 +34,38 @@ RSpec.describe HeadteacherDataMigrationService do
 
       expect(last_project_contact.name).to eql last_establishment_contact.name
     end
+
+    it "maintains the project main contact association on the project if there is one" do
+      project = create(:conversion_project)
+      establishment_contact = create(
+        :establishment_contact,
+        name: "Mr Contact",
+        email: "m.contact@establishment.ac.uk",
+        establishment_urn: project.urn
+      )
+      project.update!(main_contact_id: establishment_contact.id)
+
+      expect { described_class.new.migrate! }.to change { Contact::Project.count }.by(1)
+
+      new_project_contact = Contact::Project.find_by(email: "m.contact@establishment.ac.uk")
+      expect(project.reload.main_contact_id).to eq(new_project_contact.id)
+    end
+
+    it "maintains the establishment main contact association on the project if there is one" do
+      project = create(:conversion_project)
+      establishment_contact = create(
+        :establishment_contact,
+        name: "Mr Contact",
+        email: "m.contact@establishment.ac.uk",
+        establishment_urn: project.urn
+      )
+      project.update!(establishment_main_contact_id: establishment_contact.id)
+
+      expect { described_class.new.migrate! }.to change { Contact::Project.count }.by(1)
+
+      new_project_contact = Contact::Project.find_by(email: "m.contact@establishment.ac.uk")
+      expect(project.reload.establishment_main_contact_id).to eq(new_project_contact.id)
+    end
   end
 
   context "when there are no establishment contacts for a project" do
