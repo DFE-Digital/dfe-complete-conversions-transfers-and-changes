@@ -42,7 +42,7 @@ en:
   phase_banner:
     phase: Beta
     phase_notice:
-      html: This is a new service – your <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-SZtRygfwTNOqcfRq-MXpv9UOTIyQlNYR0hJT1Q0TUFVSlJGVFhES01LVC4u" class="govuk-link">feedback</a> will help us improve it.
+      html: This is a new service – your <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-SZtRygfwTNOqcfRq-MXpv9UOTIyQlNYR0hJT1Q0TUFVSlJGVFhES01LVC4u" class="govuk-link" target="_blank">feedback</a> will help us improve it.
   sign_in:
     button: Sign in with your DfE Microsoft account
     message:
