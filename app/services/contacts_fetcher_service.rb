@@ -29,7 +29,7 @@ class ContactsFetcherService
     if @project.establishment_main_contact_id.present?
       @all_contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
     else
-      @all_contacts["school_or_academy"].in_order_of(:type, %w[Contact::Establishment Contact::Project]).first
+      @all_contacts["school_or_academy"].first
     end
   end
 

@@ -97,14 +97,6 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
     expect(subject.school_main_contact_role).to eq("CEO of Learning")
   end
 
-  context "when the school main contact is a Contact::Establishment" do
-    let(:contact) { create(:establishment_contact, email: "headteacher@school.com", establishment_urn: project.urn) }
-
-    it "presents the school main contact email" do
-      expect(subject.school_main_contact_email).to eq("headteacher@school.com")
-    end
-  end
-
   describe "headteacher contact" do
     context "when the headteacher contact is confirmed" do
       it "shows the contact details" do

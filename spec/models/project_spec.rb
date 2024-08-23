@@ -838,17 +838,16 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#all_contacts" do
-    it "returns all contacts, including director of child services and any establishment contacts" do
+    it "returns all contacts, including director of child services" do
       mock_successful_api_responses(urn: any_args, ukprn: any_args)
       project = build(:conversion_project)
       create(:project_contact, project: project)
-      create(:establishment_contact, establishment_urn: project.urn)
 
       director_of_child_services_contact = create(:director_of_child_services)
       allow(project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
 
       result = project.all_contacts
-      expect(result.count).to eql(3)
+      expect(result.count).to eql(2)
     end
   end
 
