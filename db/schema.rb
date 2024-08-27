@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_22_074901) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_22_104104) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -118,9 +118,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_074901) do
     t.boolean "tenancy_at_will_email_signed"
     t.boolean "tenancy_at_will_receive_signed"
     t.boolean "tenancy_at_will_save_signed"
-    t.boolean "commercial_transfer_agreement_email_signed"
-    t.boolean "commercial_transfer_agreement_receive_signed"
-    t.boolean "commercial_transfer_agreement_save_signed"
     t.boolean "share_information_email"
     t.boolean "redact_and_send_send_solicitors"
     t.boolean "articles_of_association_not_applicable"
@@ -158,6 +155,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_074901) do
     t.date "confirm_date_academy_opened_date_opened"
     t.string "risk_protection_arrangement_reason"
     t.boolean "articles_of_association_sent"
+    t.boolean "commercial_transfer_agreement_agreed", default: false
+    t.boolean "commercial_transfer_agreement_signed", default: false
+    t.boolean "commercial_transfer_agreement_questions_received", default: false
+    t.boolean "commercial_transfer_agreement_questions_checked", default: false
+    t.boolean "commercial_transfer_agreement_saved", default: false
   end
 
   create_table "dao_revocation_reasons", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

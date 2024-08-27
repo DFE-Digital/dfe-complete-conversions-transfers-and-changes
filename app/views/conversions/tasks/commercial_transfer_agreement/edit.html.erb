@@ -14,9 +14,11 @@
       <%= form.govuk_error_summary %>
 
       <div class="govuk-form-group">
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :email_signed)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :receive_signed)) %>
-        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :agreed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :signed)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :questions_received)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :questions_checked)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :saved)) %>
       </div>
 
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>

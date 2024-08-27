@@ -5,10 +5,18 @@ en:
         title: Commercial transfer agreement
         hint:
           html: <p>The commercial transfer agreement is essential for all conversion projects.</p>
+        guidance_link: How to check and assure the commercial transfer agreeement
+        guidance:
+          html:
+            <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvewp00030/SitePages/3-Conversion%20Process/Commercial%20Transfer%20Agreement%20(CTA)/Commercial%20Transfer%20Agreement.aspx" target="_blank">read guidance about how use check and assure the agreement (opens in new tab)</a> on SharePoint.</p>
 
-        email_signed:
-          title: Email the solicitors to ask if all relevant parties have agreed and signed the commercial transfer agreement
-        receive_signed:
-          title: Receive email from the solicitors confirming all relevant parties have agreed and signed the commercial transfer agreement
-        save_signed:
+        agreed:
+          title: Confirm commercial transfer agreement is agreed
+        signed:
+          title: Confirm commercial transfer agreement is signed
+        questions_received:
+          title: Receive solicitor responses to assurance questions
+        questions_checked:
+          title: Check solicitor responses to assurance questions
+        saved:
           title: Save a copy of the confirmation email in the school's SharePoint folder

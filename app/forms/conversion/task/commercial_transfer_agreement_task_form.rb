@@ -1,5 +1,7 @@
 class Conversion::Task::CommercialTransferAgreementTaskForm < BaseTaskForm
-  attribute :email_signed, :boolean
-  attribute :receive_signed, :boolean
-  attribute :save_signed, :boolean
+  attribute :agreed, :boolean
+  attribute :signed, :boolean
+  attribute :questions_received, :boolean
+  attribute :questions_checked, :boolean
+  attribute :saved, :boolean
 end
