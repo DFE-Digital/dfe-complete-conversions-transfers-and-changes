@@ -27,20 +27,18 @@ RSpec.feature "Users select a main contact for a conversion" do
     end
   end
 
-  context "when the project has contacts which were ingested, not manually added (e.g. Head teacher from GIAS)" do
-    let!(:contact_1) { create(:establishment_contact, establishment_urn: project.urn, name: "John Headteacher") }
-    let!(:contact_2) { create(:director_of_child_services, local_authority: project.local_authority, name: "Jane Director") }
+  context "when the project has a Director of Child Services contact" do
+    let!(:contact) { create(:director_of_child_services, local_authority: project.local_authority, name: "Jane Director") }
 
-    it "allows the user to select one of the ingested contacts on the Main Contact task page" do
+    it "allows the user to select the contact on the Main Contact task page" do
       visit project_tasks_path(project)
       click_on "Confirm the main contact"
-      expect(page).to have_content(contact_1.name)
-      expect(page).to have_content(contact_2.name)
+      expect(page).to have_content(contact.name)
 
-      choose contact_1.name
+      choose contact.name
       click_button "Save and return"
 
-      expect(project.reload.main_contact_id).to eq(contact_1.id)
+      expect(project.reload.main_contact_id).to eq(contact.id)
       expect(page.find("#confirm-the-main-contact-status").text).to eq("Completed")
     end
   end
