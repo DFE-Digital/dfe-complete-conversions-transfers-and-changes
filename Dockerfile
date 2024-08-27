@@ -147,6 +147,7 @@ RUN mkdir -p ${APP_HOME}/log
 RUN mkdir -p ${APP_HOME}/tmp
 RUN mkdir -p ${APP_HOME}/coverage
 
+COPY .erb-lint* ${APP_HOME}/
 COPY .irbrc ${APP_HOME}/.irbrc
 COPY config.ru ${APP_HOME}/config.ru
 COPY Rakefile ${APP_HOME}/Rakefile
