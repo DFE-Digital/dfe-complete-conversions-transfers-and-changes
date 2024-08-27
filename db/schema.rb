@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_22_104104) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_27_092019) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -472,6 +472,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_104104) do
     t.boolean "conditions_met_baseline_sheet_approved"
     t.boolean "form_m_not_applicable"
     t.boolean "articles_of_association_sent"
+    t.boolean "commercial_transfer_agreement_questions_received", default: false
+    t.boolean "commercial_transfer_agreement_questions_checked", default: false
   end
 
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
