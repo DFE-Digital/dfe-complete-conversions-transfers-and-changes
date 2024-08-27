@@ -21,13 +21,16 @@ class HeadteacherDataMigrationService
 
       if contacts_to_copy.present?
         contacts_to_copy.each do |contact|
+          next if Contact::Project.find_by(email: contact.email)
+
           puts "Copying contact #{contact.id}"
+          organisation_name = contact.establishment&.name
           new_contact = Contact::Project.create(
             name: contact.name,
             title: contact.title,
             email: contact.email,
             phone: contact.phone,
-            organisation_name: project.establishment.name,
+            organisation_name: organisation_name,
             category: :school_or_academy,
             project: project
           )
