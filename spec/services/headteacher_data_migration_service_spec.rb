@@ -18,6 +18,7 @@ RSpec.describe HeadteacherDataMigrationService do
         email: "l.contact@establishment.ac.uk",
         establishment_urn: project.urn
       )
+      _gias_establishment = create(:gias_establishment, name: "Caludon Castle School", urn: project.urn)
 
       expect { described_class.new.migrate! }.to change { Contact::Project.count }.by(2)
 
@@ -35,6 +36,21 @@ RSpec.describe HeadteacherDataMigrationService do
       expect(last_project_contact.name).to eql last_establishment_contact.name
     end
 
+    it "does not fail if there is no GIAS Establishment associated with the contact" do
+      project = create(:conversion_project)
+      _establishment_contact = create(
+        :establishment_contact,
+        name: "Mr Contact",
+        email: "m.contact@establishment.ac.uk",
+        establishment_urn: project.urn
+      )
+
+      expect { described_class.new.migrate! }.to change { Contact::Project.count }.by(1)
+
+      new_project_contact = Contact::Project.find_by(email: "m.contact@establishment.ac.uk")
+      expect(new_project_contact.organisation_name).to be_nil
+    end
+
     it "maintains the project main contact association on the project if there is one" do
       project = create(:conversion_project)
       establishment_contact = create(
@@ -43,6 +59,8 @@ RSpec.describe HeadteacherDataMigrationService do
         email: "m.contact@establishment.ac.uk",
         establishment_urn: project.urn
       )
+      _gias_establishment = create(:gias_establishment, name: "Caludon Castle School", urn: project.urn)
+
       project.update!(main_contact_id: establishment_contact.id)
 
       expect { described_class.new.migrate! }.to change { Contact::Project.count }.by(1)
@@ -59,12 +77,30 @@ RSpec.describe HeadteacherDataMigrationService do
         email: "m.contact@establishment.ac.uk",
         establishment_urn: project.urn
       )
+      _gias_establishment = create(:gias_establishment, name: "Caludon Castle School", urn: project.urn)
+
       project.update!(establishment_main_contact_id: establishment_contact.id)
 
       expect { described_class.new.migrate! }.to change { Contact::Project.count }.by(1)
 
       new_project_contact = Contact::Project.find_by(email: "m.contact@establishment.ac.uk")
       expect(project.reload.establishment_main_contact_id).to eq(new_project_contact.id)
+    end
+
+    it "does not try to create a new Contact::Project if there is already one associated with the project with the same email" do
+      project = create(:conversion_project)
+      _establishment_contact = create(
+        :establishment_contact,
+        email: "m.contact@establishment.ac.uk",
+        establishment_urn: project.urn
+      )
+      _existing_contact = create(
+        :project_contact,
+        email: "m.contact@establishment.ac.uk",
+        project: project
+      )
+
+      expect { described_class.new.migrate! }.to change { Contact::Project.count }.by(0)
     end
   end
 
