@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
-## Changed
+## [Release-84][release-84]
 
-- changing 'convesion grant' references to 'conversion support grant' to match
+### Changed
+
+- changing 'conversion grant' references to 'conversion support grant' to match
   Apply and Prepare
 - Headteacher contacts imported from GIAS are transformed into Project contacts
   and behave like other Project contacts
@@ -2161,7 +2163,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-83...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-84...HEAD
+[release-84]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-83...release-84
 [release-83]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-82...release-83
 [release-82]:
