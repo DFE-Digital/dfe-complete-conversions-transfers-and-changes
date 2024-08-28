@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - the actions for the 'Commercial transfer agreement' task for transfer
   projects.
 
+### Added
+
+- Add a new "Data consumers" team which will eventually replace the ESFA and
+  AOPU teams
+
 ## [Release-84][release-84]
 
 ### Changed
