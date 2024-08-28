@@ -13,6 +13,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   to confirm additional actions after this change.
 - the actions for the 'Commercial transfer agreement' task for transfer
   projects.
+- notes added during a change of significant date, including during the
+  stakeholder kick off task now only appear under the date history tab of a
+  project and not the project notes tab.
 
 ## [Release-84][release-84]
 

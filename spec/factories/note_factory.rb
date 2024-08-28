@@ -14,5 +14,10 @@ FactoryBot.define do
       notable { association :date_history_reason }
       body { "This is the reason the conversion date has changed" }
     end
+
+    trait :for_dao_revocation_reason do
+      notable { association :dao_revocation_reason }
+      body { "The DAO has been revoked" }
+    end
   end
 end

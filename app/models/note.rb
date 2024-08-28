@@ -8,7 +8,11 @@ class Note < ApplicationRecord
 
   default_scope { order(created_at: "desc") }
 
-  scope :project_level_notes, ->(project) { where(task_identifier: nil).and(where(project: project)) }
+  scope :project_level_notes, ->(project) {
+    where(project: project)
+      .where(notable_type: nil).where(task_identifier: nil)
+      .or(where.not(notable_type: "SignificantDateHistoryReason"))
+  }
 
   # When no value is provided, Rails will store an empty string. Instead, we want to ensure
   # these are stored as NULL, so that we aren't mixing blanks and NULLs.

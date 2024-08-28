@@ -35,14 +35,27 @@ RSpec.describe Note, type: :model do
     end
 
     describe "project_level_notes" do
-      let!(:project_level_note) { create(:note) }
-      let!(:task_level_note) { create(:note, task_identifier: "handover") }
+      let!(:project) { create(:conversion_project) }
+      let!(:project_level_note) { create(:note, project: project) }
+      let!(:task_level_note) { create(:note, task_identifier: "handover", project: project) }
+      let!(:significant_date_note) { create(:note, :for_significant_date_history_reason, project: project) }
+      let!(:dao_revocation_note) { create(:note, :for_dao_revocation_reason, project: project) }
 
-      subject { Note.project_level_notes(project_level_note.project) }
+      subject { Note.project_level_notes(project) }
 
-      it "returns only project level notes" do
+      it "does not include task level notes" do
         expect(subject).to include project_level_note
         expect(subject).not_to include task_level_note
+      end
+
+      it "does not include significant date history notes" do
+        expect(subject).to include project_level_note
+        expect(subject).not_to include significant_date_note
+      end
+
+      it "does include dao revocation notes" do
+        expect(subject).to include project_level_note
+        expect(subject).to include dao_revocation_note
       end
     end
   end
