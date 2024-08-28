@@ -34,6 +34,18 @@ RSpec.feature "Export users can see the exports landing page" do
     expect(page).to have_content("pre-transfer grants for academies joining a different trust")
   end
 
+  scenario "a data consumers user can see the exports landing page" do
+    user = create(:user, team: :data_consumers)
+
+    sign_in_with_user(user)
+    click_on "Exports"
+
+    expect(page).to have_content("funding agreement letter contacts, RPA and start-up grants")
+    expect(page).to have_content("pre-opening grants for schools becoming academies")
+    expect(page).to have_content("academies due to transfer in a date range")
+    expect(page).to have_content("pre-transfer grants for academies joining a different trust")
+  end
+
   scenario "a business support user can see the exports landing page" do
     user = create(:user, team: :business_support)
 

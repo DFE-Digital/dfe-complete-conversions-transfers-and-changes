@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Users can view projects by month" do
   context "a data user (who can export)" do
-    let(:user) { create(:user, team: "education_and_skills_funding_agency") }
+    let(:user) { create(:user, team: "data_consumers") }
 
     scenario "the user sees the date range option in the By Month view" do
       sign_in_with_user(user)
