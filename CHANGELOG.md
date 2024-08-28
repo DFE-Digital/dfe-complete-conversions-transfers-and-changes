@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- the actions for the 'Commercial transfer agreement' task for conversion
+  projects, any completed actions will be migrated over, users may be required
+  to confirm additional actions after this change.
+- the actions for the 'Commercial transfer agreement' task for transfer
+  projects.
+
 ## [Release-84][release-84]
 
 ### Changed
