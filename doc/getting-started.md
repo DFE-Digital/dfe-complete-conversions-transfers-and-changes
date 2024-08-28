@@ -15,7 +15,7 @@ Make sure you can run appropriate versions in you development environment.
 ## Setup Microsoft SQL Server environment
 
 As we run Microsoft SQL Server, we have to run it inside a container. To make
-this as simple as we can we use docker-compose to launch an appropriate
+this as simple as we can we use docker compose to launch an appropriate
 instance.
 
 1. Duplicate `.env.database.example` as `.env.database` and set:
