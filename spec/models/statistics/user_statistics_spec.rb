@@ -18,6 +18,7 @@ RSpec.describe Statistics::UserStatistics, type: :model do
       expect(subject.users_count_per_team).to eq({
         academies_operational_practice_unit: 0,
         business_support: 0,
+        data_consumers: 0,
         east_midlands: 0,
         east_of_england: 0,
         education_and_skills_funding_agency: 1,
