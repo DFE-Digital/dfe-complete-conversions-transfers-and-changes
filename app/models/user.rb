@@ -2,7 +2,7 @@ class User < ApplicationRecord
   include Teamable
   before_save :apply_roles_based_on_team
 
-  serialize :active_directory_user_group_ids, Array
+  serialize :active_directory_user_group_ids, type: Array, coder: YAML
 
   has_many :projects, foreign_key: "caseworker"
   has_many :notes

@@ -26,13 +26,6 @@ module DfeCompleteConversionsTransfersAndChanges
     config.load_defaults 7.1
 
     ###
-    # new Rails 7.1 default override
-    #
-    # Recommended action: set any serialized attributes to `coder: YAML` and remove this
-    #
-    Rails.application.config.active_record.default_column_serializer = YAML
-
-    ###
     # Change the format of the cache entry.
     #
     # Changing this default means that all new cache entries added to the cache
