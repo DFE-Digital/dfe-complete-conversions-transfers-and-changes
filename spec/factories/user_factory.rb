@@ -9,7 +9,7 @@ FactoryBot.define do
     manage_user_accounts { false }
     manage_local_authorities { false }
     manage_conversion_urns { false }
-    team { "academies_operational_practice_unit" }
+    team { "data_consumers" }
 
     trait :caseworker do
       email { "caseworker-#{SecureRandom.uuid}@education.gov.uk" }

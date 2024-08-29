@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe All::ByMonth::Transfers::ProjectsController, type: :request do
-  let(:user) { create(:user, team: "education_and_skills_funding_agency") }
+  let(:user) { create(:user, team: "data_consumers") }
 
   before do
     mock_all_academies_api_responses

@@ -25,7 +25,7 @@ RSpec.describe User do
     let!(:regional_delivery_officer_team_lead) { create(:regional_delivery_officer_user, manage_team: true, email: "rdo.lead@education.gov.uk") }
     let!(:regional_delivery_officer) { create(:regional_delivery_officer_user, first_name: "Zavier") }
     let!(:regional_delivery_officer_2) { create(:regional_delivery_officer_user, first_name: "Adam", email: "aaron-rdo@education.gov.uk") }
-    let!(:user_without_role) { create(:user, assign_to_project: false, manage_team: false, add_new_project: false, team: "education_and_skills_funding_agency") }
+    let!(:user_without_role) { create(:user, assign_to_project: false, manage_team: false, add_new_project: false, team: "data_consumers") }
 
     describe "order_by_first_name" do
       it "orders by first_name" do
@@ -259,7 +259,7 @@ RSpec.describe User do
     it "returns the correct team options for a user" do
       options = described_class.new.team_options
 
-      expect(options.count).to eql 15
+      expect(options.count).to eql 13
       expect(options.first.id).to eql "london"
       expect(options.first.name).to eql "London"
       expect(options.last.id).to eql "data_consumers"
@@ -289,7 +289,7 @@ RSpec.describe User do
     end
 
     it "returns false when the user has no set role" do
-      user = build(:user, team: "education_and_skills_funding_agency")
+      user = build(:user, team: "data_consumers")
 
       expect(user.has_role?).to be false
     end
@@ -311,7 +311,7 @@ RSpec.describe User do
     end
 
     it "has the expected enum values" do
-      expect(User.teams.count).to eq(15)
+      expect(User.teams.count).to eq(13)
     end
   end
 
