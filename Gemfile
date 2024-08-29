@@ -44,7 +44,7 @@ gem "govuk-components", "~> 4.1", ">= 4.1.1"
 gem "govuk_design_system_formbuilder", "~> 4.1", ">= 4.1.1"
 
 # Use govuk_markdown to transform Markdown into GOV.UK Frontend-compliant HTML
-gem "govuk_markdown"
+gem "govuk_markdown", "~>2"
 
 gem "faraday"
 
