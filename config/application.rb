@@ -23,7 +23,35 @@ Bundler.require(*Rails.groups)
 module DfeCompleteConversionsTransfersAndChanges
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
+
+    ###
+    # Change the format of the cache entry.
+    #
+    # Changing this default means that all new cache entries added to the cache
+    # will have a different format that is not supported by Rails 7.0
+    # applications.
+    #
+    config.active_support.cache_format_version = 7.1
+
+    ###
+    # new Rails 7.1 default override
+    #
+    # Whether a `transaction` block is committed or rolled back when exited via `return`, `break` or `throw`.
+    #
+    # Recommended action: fix any transaction blocks to work with this set to true and then remove this
+    #
+    config.active_record.commit_transaction_on_non_local_return = false
+
+    # This will reduce the size of the load path, making `require` faster if you don't use bootsnap, or reduce the size
+    # of the bootsnap cache if you use it.
+    #
+    config.add_autoload_paths_to_load_path = false
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w[assets tasks generators])
 
     # Configuration for the application, engines, and railties goes here.
     #
