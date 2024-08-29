@@ -30,7 +30,7 @@ code straight forward for those that would like to use them.
 - [User accounts](/doc/user-accounts.md)
 - [Task lists and tasks](/doc/task-lists-and-tasks.md)
 - [Importing GIAS data](/doc/import-gias-data.md)
-- [Event logging](/doc/event-logging.md")
+- [Event logging](/doc/event-logging.md)
 - [API Consumption](/doc/api-consumption.md)
 - [Microsoft SQL Server](/doc/microsoft-sql-server.md)
 - [Automated accessibility checks](/doc/accessibility-tests.md)
