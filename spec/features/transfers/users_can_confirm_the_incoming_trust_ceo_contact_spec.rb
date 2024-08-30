@@ -46,7 +46,8 @@ RSpec.feature "Users can confirm the incoming trust CEO contact" do
 
       click_button "Save and return"
 
-      within ".app-task-list li:nth-of-type(1) li:nth-of-type(5)" do
+      row = page.find(".app-task-list li:nth-of-type(1) li", text: "Confirm the incoming trust CEO’s details")
+      within row do
         expect(page).to have_content "Completed"
       end
     end
