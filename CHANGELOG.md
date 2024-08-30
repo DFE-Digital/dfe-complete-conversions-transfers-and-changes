@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-85][release-85]
+
 ### Changed
 
 - the actions for the 'Commercial transfer agreement' task for conversion
@@ -2179,7 +2181,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-84...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-85...HEAD
+[release-85]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-84...release-85
 [release-84]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-83...release-84
 [release-83]:
