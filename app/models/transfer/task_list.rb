@@ -6,6 +6,7 @@ class Transfer::TaskList < ::BaseTaskList
         tasks: [
           Transfer::Task::HandoverTaskForm,
           Transfer::Task::StakeholderKickOffTaskForm,
+          Transfer::Task::RpaPolicyTaskForm,
           Transfer::Task::ConfirmHeadteacherContactTaskForm,
           Transfer::Task::ConfirmIncomingTrustCeoContactTaskForm,
           Transfer::Task::ConfirmOutgoingTrustCeoContactTaskForm,
@@ -35,7 +36,6 @@ class Transfer::TaskList < ::BaseTaskList
       {
         identifier: :get_ready_for_opening,
         tasks: [
-          Transfer::Task::RpaPolicyTaskForm,
           Transfer::Task::BankDetailsChangingTaskForm,
           Transfer::Task::ConfirmIncomingTrustHasCompletedAllActionsTaskForm,
           Transfer::Task::ConditionsMetTaskForm

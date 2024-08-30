@@ -46,7 +46,7 @@ RSpec.feature "Users can confirm the headteacher contact" do
 
       click_button "Save and return"
 
-      within ".app-task-list li:nth-of-type(1) li:nth-of-type(8)" do
+      within ".app-task-list li:nth-of-type(1) li:nth-of-type(9)" do
         expect(page).to have_content "Completed"
       end
     end

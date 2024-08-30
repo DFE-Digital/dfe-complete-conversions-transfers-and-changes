@@ -46,7 +46,7 @@ RSpec.feature "Users can confirm the chair of governors contact" do
 
       click_button "Save and return"
 
-      within ".app-task-list li:nth-of-type(1) li:nth-of-type(9)" do
+      within ".app-task-list li:nth-of-type(1) li:nth-of-type(10)" do
         expect(page).to have_content "Completed"
       end
     end

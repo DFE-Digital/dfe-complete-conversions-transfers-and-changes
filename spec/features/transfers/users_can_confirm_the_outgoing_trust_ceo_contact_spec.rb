@@ -46,7 +46,7 @@ RSpec.feature "Users can confirm the outgoing trust CEO contact" do
 
       click_button "Save and return"
 
-      within ".app-task-list li:nth-of-type(1) li:nth-of-type(5)" do
+      within ".app-task-list li:nth-of-type(1) li:nth-of-type(6)" do
         expect(page).to have_content "Completed"
       end
     end

@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - notes added during a change of significant date, including during the
   stakeholder kick off task now only appear under the date history tab of a
   project and not the project notes tab.
+- Move the Risk Protection Arrangement task to the first tasklist section
 
 ### Added
 
