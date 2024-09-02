@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Data users can view projects over a range of dates" do
-  let(:user) { create(:user, team: "education_and_skills_funding_agency") }
+  let(:user) { create(:user, team: "data_consumers") }
 
   context "Conversions" do
     scenario "A data user sees the current month by default" do

@@ -11,17 +11,15 @@ RSpec.describe Statistics::UserStatistics, type: :model do
       create(:user, email: "user4@education.gov.uk", team: "service_support")
       create(:user, email: "user5@education.gov.uk", team: "north_east")
       create(:user, email: "user6@education.gov.uk", team: "north_east")
-      create(:user, email: "user7@education.gov.uk", team: "education_and_skills_funding_agency")
+      create(:user, email: "user7@education.gov.uk", team: "data_consumers")
       create(:user, email: "user8@education.gov.uk", team: "west_midlands")
       create(:user, email: "user9@education.gov.uk", team: "yorkshire_and_the_humber")
 
       expect(subject.users_count_per_team).to eq({
-        academies_operational_practice_unit: 0,
         business_support: 0,
-        data_consumers: 0,
+        data_consumers: 1,
         east_midlands: 0,
         east_of_england: 0,
-        education_and_skills_funding_agency: 1,
         london: 1,
         north_east: 2,
         north_west: 0,

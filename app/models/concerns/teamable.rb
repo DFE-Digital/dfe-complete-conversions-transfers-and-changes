@@ -16,8 +16,6 @@ module Teamable
   USER_TEAMS = REGIONAL_TEAMS.merge({
     regional_casework_services: "regional_casework_services",
     service_support: "service_support",
-    academies_operational_practice_unit: "academies_operational_practice_unit",
-    education_and_skills_funding_agency: "education_and_skills_funding_agency",
     business_support: "business_support",
     data_consumers: "data_consumers"
   })
