@@ -33,10 +33,6 @@ class TasksController < ApplicationController
     end
   end
 
-  private def find_project
-    @project = Project.find(params[:project_id])
-  end
-
   private def find_tasks_data
     @tasks_data = @project.tasks_data
   end
