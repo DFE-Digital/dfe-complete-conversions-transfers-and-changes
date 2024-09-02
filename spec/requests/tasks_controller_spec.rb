@@ -71,6 +71,17 @@ RSpec.describe TasksController do
     end
   end
 
+  context "when the task identifier is not valid" do
+    it "renders a not found error" do
+      mock_successful_api_response_to_create_any_project
+      project = create(:conversion_project, assigned_to: user)
+
+      get project_edit_task_path(project, :not_a_task)
+
+      expect(response).to have_http_status :not_found
+    end
+  end
+
   describe "side navigation" do
     before do
       mock_all_academies_api_responses
