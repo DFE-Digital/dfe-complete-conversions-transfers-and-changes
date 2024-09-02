@@ -6,6 +6,7 @@ class Conversion::TaskList < ::BaseTaskList
         tasks: [
           Conversion::Task::HandoverTaskForm,
           Conversion::Task::StakeholderKickOffTaskForm,
+          Conversion::Task::RiskProtectionArrangementTaskForm,
           Conversion::Task::CheckAccuracyOfHigherNeedsTaskForm,
           Conversion::Task::CompleteNotificationOfChangeTaskForm,
           Conversion::Task::ConversionGrantTaskForm,
@@ -39,7 +40,6 @@ class Conversion::TaskList < ::BaseTaskList
       {
         identifier: :get_ready_for_opening,
         tasks: [
-          Conversion::Task::RiskProtectionArrangementTaskForm,
           Conversion::Task::SingleWorksheetTaskForm,
           Conversion::Task::SchoolCompletedTaskForm,
           Conversion::Task::ConditionsMetTaskForm,

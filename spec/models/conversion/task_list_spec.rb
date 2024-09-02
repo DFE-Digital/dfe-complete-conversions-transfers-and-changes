@@ -8,6 +8,7 @@ RSpec.describe Conversion::TaskList do
       converison_task_list_identifiers = [
         :handover,
         :stakeholder_kick_off,
+        :risk_protection_arrangement,
         :check_accuracy_of_higher_needs,
         :complete_notification_of_change,
         :conversion_grant,
@@ -31,7 +32,6 @@ RSpec.describe Conversion::TaskList do
         :subleases,
         :tenancy_at_will,
         :commercial_transfer_agreement,
-        :risk_protection_arrangement,
         :single_worksheet,
         :school_completed,
         :conditions_met,
@@ -54,6 +54,7 @@ RSpec.describe Conversion::TaskList do
             tasks: [
               Conversion::Task::HandoverTaskForm,
               Conversion::Task::StakeholderKickOffTaskForm,
+              Conversion::Task::RiskProtectionArrangementTaskForm,
               Conversion::Task::CheckAccuracyOfHigherNeedsTaskForm,
               Conversion::Task::CompleteNotificationOfChangeTaskForm,
               Conversion::Task::ConversionGrantTaskForm,
@@ -88,7 +89,6 @@ RSpec.describe Conversion::TaskList do
           {
             identifier: :get_ready_for_opening,
             tasks: [
-              Conversion::Task::RiskProtectionArrangementTaskForm,
               Conversion::Task::SingleWorksheetTaskForm,
               Conversion::Task::SchoolCompletedTaskForm,
               Conversion::Task::ConditionsMetTaskForm,

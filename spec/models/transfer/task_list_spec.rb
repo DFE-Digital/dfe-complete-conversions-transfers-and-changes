@@ -8,6 +8,7 @@ RSpec.describe Transfer::TaskList do
       transfer_task_list_identifiers = [
         :handover,
         :stakeholder_kick_off,
+        :rpa_policy,
         :confirm_headteacher_contact,
         :confirm_incoming_trust_ceo_contact,
         :confirm_outgoing_trust_ceo_contact,
@@ -27,7 +28,6 @@ RSpec.describe Transfer::TaskList do
         :deed_termination_church_agreement,
         :commercial_transfer_agreement,
         :closure_or_transfer_declaration,
-        :rpa_policy,
         :bank_details_changing,
         :confirm_incoming_trust_has_completed_all_actions,
         :conditions_met,
