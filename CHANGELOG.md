@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- unknown task identifier paths now show a 'page not found' error.
+
 ## [Release-85][release-85]
 
 ### Changed

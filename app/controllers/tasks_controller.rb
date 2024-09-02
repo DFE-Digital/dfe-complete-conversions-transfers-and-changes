@@ -4,6 +4,10 @@ class TasksController < ApplicationController
   before_action :find_tasks_data
   before_action :find_task, :find_task_notes, except: :index
 
+  class TaskKlassNotFoundError < StandardError; end
+
+  rescue_from TaskKlassNotFoundError, with: :not_found_error
+
   def index
     case @project.type
     when "Conversion::Project"
@@ -38,7 +42,10 @@ class TasksController < ApplicationController
   end
 
   private def find_task
-    @task = klass_from_path.new(@tasks_data, current_user)
+    task_klass = klass_from_path
+    raise TaskKlassNotFoundError.new(task_identifier) unless task_klass
+
+    @task = task_klass.new(@tasks_data, current_user)
   end
 
   private def task_params
@@ -55,6 +62,8 @@ class TasksController < ApplicationController
 
   private def klass_from_path
     "#{project_type}::Task::#{task_klass_identifier}TaskForm".constantize
+  rescue NameError
+    nil
   end
 
   private def task_view
