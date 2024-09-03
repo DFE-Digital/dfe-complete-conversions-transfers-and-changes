@@ -3,7 +3,7 @@ class Conversion::Task::ProposedCapacityOfTheAcademyTaskForm < BaseOptionalTaskF
   attribute :seven_to_eleven_years, :string
   attribute :twelve_or_above_years, :string
 
-  validates :reception_to_six_years, presence: true, numericality: {only_numeric: true}, unless: :not_applicable?
-  validates :seven_to_eleven_years, presence: true, numericality: {only_numeric: true}, unless: :not_applicable?
-  validates :twelve_or_above_years, presence: true, numericality: {only_numeric: true}, unless: :not_applicable?
+  validates :reception_to_six_years, presence: true, numericality: true, unless: :not_applicable?
+  validates :seven_to_eleven_years, presence: true, numericality: true, unless: :not_applicable?
+  validates :twelve_or_above_years, presence: true, numericality: true, unless: :not_applicable?
 end
