@@ -24,7 +24,7 @@ class All::Export::BySignificantDate::Conversions::AllData::ProjectsController <
   end
 
   private def create_csv
-    projects = ByMonthProjectFetcherService.new.conversion_projects_by_date_range(@from_date.to_s, @to_date.to_s)
+    projects = ByMonthProjectFetcherService.new.conversion_projects_by_date_range(@from_date, @to_date)
     Export::Conversions::AllDataCsvExportService.new(projects).call
   end
 end

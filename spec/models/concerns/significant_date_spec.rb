@@ -137,7 +137,7 @@ RSpec.describe SignificantDate do
         other_project = create(:conversion_project, significant_date: october, significant_date_provisional: false)
         create(:date_history, project: other_project, previous_date: october, revised_date: october)
 
-        scoped_projects = Project.significant_date_in_range("2023-1-1", "2023-3-1")
+        scoped_projects = Project.significant_date_in_range(Date.parse("2023-1-1"), Date.parse("2023-3-1"))
 
         expect(scoped_projects).to include(matching_project_1, matching_project_2, matching_project_3)
       end

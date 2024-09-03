@@ -36,7 +36,7 @@ RSpec.describe ByMonthProjectFetcherService do
           assigned_to: nil
         )
 
-        result = described_class.new.conversion_projects_by_date_range("2023-1-1", "2023-1-1")
+        result = described_class.new.conversion_projects_by_date_range(Date.parse("2023-1-1"), Date.parse("2023-1-1"))
 
         expect(result).to be_empty
       end
@@ -57,7 +57,7 @@ RSpec.describe ByMonthProjectFetcherService do
         create(:date_history, project: project_2, previous_date: february, revised_date: march)
         create(:date_history, project: project_3, previous_date: march, revised_date: march)
 
-        result = described_class.new.conversion_projects_by_date_range("2023-1-1", "2023-3-1")
+        result = described_class.new.conversion_projects_by_date_range(Date.parse("2023-1-1"), Date.parse("2023-3-1"))
         expect(result).to eq([project_1, project_2, project_3])
         expect(result).not_to include(unconfirmed_project)
         expect(result).not_to include(completed_project)
@@ -91,7 +91,7 @@ RSpec.describe ByMonthProjectFetcherService do
           assigned_to: nil
         )
 
-        result = described_class.new.transfer_projects_by_date_range("2023-1-1", "2023-1-1")
+        result = described_class.new.transfer_projects_by_date_range(Date.parse("2023-1-1"), Date.parse("2023-1-1"))
 
         expect(result).to be_empty
       end
@@ -112,7 +112,7 @@ RSpec.describe ByMonthProjectFetcherService do
         unconfirmed_project = create(:transfer_project, significant_date_provisional: true, significant_date: january)
         completed_project = create(:transfer_project, :completed, significant_date: january)
 
-        result = described_class.new.transfer_projects_by_date_range("2023-1-1", "2023-3-1")
+        result = described_class.new.transfer_projects_by_date_range(Date.parse("2023-1-1"), Date.parse("2023-3-1"))
         expect(result).to eq([project_1, project_2, project_3])
         expect(result).not_to include(unconfirmed_project)
         expect(result).not_to include(completed_project)

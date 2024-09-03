@@ -6,7 +6,7 @@ class All::Export::BySignificantDate::Transfers::AllData::ProjectsController < A
 
     return redirect_if_dates_incorrect if @to_date < @from_date
 
-    projects = ByMonthProjectFetcherService.new.transfer_projects_by_date_range(@from_date.to_s, @to_date.to_s)
+    projects = ByMonthProjectFetcherService.new.transfer_projects_by_date_range(@from_date, @to_date)
     csv = Export::Transfers::AllDataCsvExportService.new(projects).call
 
     send_data csv, filename: "#{@from_date}-#{@to_date}_academies_due_to_transfer.csv", type: :csv, disposition: "attachment"
@@ -15,7 +15,7 @@ class All::Export::BySignificantDate::Transfers::AllData::ProjectsController < A
   def single_month_csv
     authorize Project, :index?
 
-    projects = ByMonthProjectFetcherService.new.transfer_projects_by_date_range(@from_date.to_s, @to_date.to_s)
+    projects = ByMonthProjectFetcherService.new.transfer_projects_by_date_range(@from_date, @to_date)
     csv = Export::Transfers::AllDataCsvExportService.new(projects).call
 
     send_data csv, filename: "#{@from_date.month}-#{@from_date.year}_academies_due_to_transfer.csv", type: :csv, disposition: "attachment"
