@@ -712,7 +712,7 @@ RSpec.describe Project, type: :model do
         project_two = create(:conversion_project, advisory_board_date: Date.parse("2023-2-20"))
         project_three = create(:conversion_project, advisory_board_date: Date.parse("2023-5-12"))
 
-        scoped_projects = Project.advisory_board_date_in_range("2023-1-1", "2023-3-31")
+        scoped_projects = Project.advisory_board_date_in_range(Date.parse("2023-1-1"), Date.parse("2023-3-31"))
 
         expect(scoped_projects).to include(project_one, project_two)
         expect(scoped_projects).to_not include(project_three)

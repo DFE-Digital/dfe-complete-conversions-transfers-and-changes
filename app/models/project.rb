@@ -68,9 +68,7 @@ class Project < ApplicationRecord
 
   scope :filtered_by_advisory_board_date, ->(month, year) { where("MONTH(advisory_board_date) = ?", month).and(where("YEAR(advisory_board_date) = ?", year)) }
   scope :advisory_board_date_in_range, ->(from_date, to_date) {
-    where("advisory_board_date >= ?", Date.parse(from_date).at_beginning_of_month)
-      .and(where("advisory_board_date <= ?", Date.parse(to_date).at_end_of_month))
-      .order(:advisory_board_date)
+    where(advisory_board_date: from_date.at_beginning_of_month..to_date.at_end_of_month).order(:advisory_board_date)
   }
 
   scope :not_form_a_mat, -> { where.not(incoming_trust_ukprn: nil) }
