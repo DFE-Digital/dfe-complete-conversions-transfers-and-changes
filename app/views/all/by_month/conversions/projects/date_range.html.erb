@@ -3,16 +3,16 @@
 <% end %>
 
 <% content_for :page_title do %>
-  <%= page_title(t("project.date_range.page_title", date_from: Date.parse(@from_date).to_fs(:govuk_month), date_to: Date.parse(@to_date).to_fs(:govuk_month))) %>
+  <%= page_title(t("project.date_range.page_title", date_from: @from_date.to_fs(:govuk_month), date_to: @to_date.to_fs(:govuk_month))) %>
 <% end %>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <span class="govuk-caption-l"><%= t("project.date_range.subtitle") %></span>
     <h1 class="govuk-heading-l">
-      <%= t("project.date_range.title", date_from: Date.parse(@from_date).to_fs(:govuk_month), date_to: Date.parse(@to_date).to_fs(:govuk_month)) %>
+      <%= t("project.date_range.title", date_from: @from_date.to_fs(:govuk_month), date_to: @to_date.to_fs(:govuk_month)) %>
     </h1>
-    <%= t("project.date_range.body_html", csv_link: date_range_csv_all_export_by_significant_date_conversions_all_data_projects_path(@from_month, @from_year, @to_month, @to_year)) %>
+    <%= t("project.date_range.body_html", csv_link: date_range_csv_all_export_by_significant_date_conversions_all_data_projects_path(@from_date.month, @from_date.year, @to_date.month, @to_date.year)) %>
 
     <%= render partial: "shared/date_range", locals: {from_date: @from_date, to_date: @to_date, action: date_range_select_all_by_month_conversions_projects_path} %>
 
@@ -20,10 +20,10 @@
       <ul class="moj-sub-navigation__list">
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("project.date_range.tabs.conversions"),
-                       path: "/projects/all/by-month/conversions/from/#{@from_month}/#{@from_year}/to/#{@to_month}/#{@to_year}"} %>
+                       path: "/projects/all/by-month/conversions/from/#{@from_date.month}/#{@from_date.year}/to/#{@to_date.month}/#{@to_date.year}"} %>
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("project.date_range.tabs.transfers"),
-                       path: "/projects/all/by-month/transfers/from/#{@from_month}/#{@from_year}/to/#{@to_month}/#{@to_year}"} %>
+                       path: "/projects/all/by-month/transfers/from/#{@from_date.month}/#{@from_date.year}/to/#{@to_date.month}/#{@to_date.year}"} %>
       </ul>
     </nav>
 

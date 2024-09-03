@@ -3,25 +3,25 @@
 <% end %>
 
 <% content_for :page_title do %>
-  <%= page_title(t("project.single_month.page_title", date: Date.parse(@date).to_fs(:govuk_month))) %>
+  <%= page_title(t("project.single_month.page_title", date: @from_date.to_fs(:govuk_month))) %>
 <% end %>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <span class="govuk-caption-l"><%= t("project.single_month.subtitle") %></span>
     <h1 class="govuk-heading-l">
-      <%= t("project.single_month.title", date: Date.parse(@date).to_fs(:govuk_month)) %>
+      <%= t("project.single_month.title", date: @from_date.to_fs(:govuk_month)) %>
     </h1>
-    <%= t("project.single_month.body_html", csv_link: single_month_csv_all_export_by_significant_date_conversions_all_data_projects_path(@month, @year)) %>
+    <%= t("project.single_month.body_html", csv_link: single_month_csv_all_export_by_significant_date_conversions_all_data_projects_path(@from_date.month, @from_date.year)) %>
 
     <nav class="moj-sub-navigation" aria-label="Project index sub-navigation">
       <ul class="moj-sub-navigation__list">
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("project.single_month.tabs.conversions"),
-                       path: "/projects/all/by-month/conversions/#{@month}/#{@year}"} %>
+                       path: "/projects/all/by-month/conversions/#{@from_date.month}/#{@from_date.year}"} %>
         <%= render partial: "shared/sub_navigation_item",
               locals: {name: t("project.single_month.tabs.transfers"),
-                       path: "/projects/all/by-month/transfers/#{@month}/#{@year}"} %>
+                       path: "/projects/all/by-month/transfers/#{@from_date.month}/#{@from_date.year}"} %>
       </ul>
     </nav>
 
