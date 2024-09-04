@@ -312,6 +312,23 @@ RSpec.feature "Users can complete conversion tasks" do
     end
   end
 
+  describe "the proposed academy capacity task" do
+    let(:project) { create(:conversion_project, assigned_to: user) }
+
+    scenario "they provide the figures" do
+      visit project_tasks_path(project)
+      click_on "Confirm the proposed capacity of the academy"
+      fill_in "What is the proposed capacity for pupils in reception to year 6?", with: "100"
+      fill_in "What is the proposed capacity for pupils in years 7 to 11?", with: "200"
+      fill_in "What is the proposed capacity for students in year 12 or above?", with: "300"
+      click_on I18n.t("task_list.continue_button.text")
+
+      expect(project.reload.tasks_data.proposed_capacity_of_the_academy_reception_to_six_years).to eql "100"
+      expect(project.reload.tasks_data.proposed_capacity_of_the_academy_seven_to_eleven_years).to eql "200"
+      expect(project.reload.tasks_data.proposed_capacity_of_the_academy_twelve_or_above_years).to eql "300"
+    end
+  end
+
   mandatory_tasks.each do |task|
     scenario "a user can complete the actions on the mandatory #{I18n.t("conversion.task.#{task}.title")} task" do
       click_on I18n.t("conversion.task.#{task}.title")
