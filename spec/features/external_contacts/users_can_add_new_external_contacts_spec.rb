@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.feature "Users can add new external contacts" do
   before do
     mock_successful_api_response_to_create_any_project
+    mock_successful_persons_api_client
     sign_in_with_user(user)
   end
 

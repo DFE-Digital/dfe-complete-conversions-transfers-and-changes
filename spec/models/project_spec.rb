@@ -361,7 +361,7 @@ RSpec.describe Project, type: :model do
     end
   end
 
-  describe "#member_of_parliament", skip: "Waiting for production Persons API" do
+  describe "#member_of_parliament" do
     it "returns the details of the MP for the projects establishment constituency" do
       mock_all_academies_api_responses
       project = build(:conversion_project)
@@ -374,7 +374,7 @@ RSpec.describe Project, type: :model do
     it "only goes to the API once per instance of Project" do
       mock_all_academies_api_responses
       project = build(:conversion_project)
-      client = mock_successful_persons_api
+      client = mock_successful_persons_api_client
 
       project.member_of_parliament
       project.member_of_parliament

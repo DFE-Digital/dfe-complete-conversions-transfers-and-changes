@@ -8,6 +8,7 @@ RSpec.feature "Test contacts accessibility", driver: :headless_firefox, accessib
   before do
     sign_in_with_user(user)
     mock_all_academies_api_responses
+    mock_successful_persons_api_client
   end
 
   scenario "show contacts page" do

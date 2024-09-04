@@ -6,6 +6,7 @@ RSpec.describe ExternalContactsController, type: :request do
   before do
     sign_in_with(user)
     mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_successful_persons_api_client
   end
 
   describe "#index" do

@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- the Member of parliament for a school is now included in the RPA, SUG and FA
+  letters export when one can be found via the new Persons API.
+
 ## [Release-86][release-86]
 
 ### Fixed

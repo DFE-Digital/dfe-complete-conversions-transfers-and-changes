@@ -10,7 +10,7 @@ RSpec.describe MemberOfParliamentController, type: :request do
   let(:project) { create(:conversion_project, assigned_to: user) }
 
   describe "#show" do
-    context "when the Member of Parliament is found", skip: "Waiting for Persons API" do
+    context "when the Member of Parliament is found" do
       before do
         test_successful_persons_api_call
       end

@@ -56,6 +56,8 @@ RSpec.feature "Users can view a transfer" do
   end
 
   scenario "they can view the external contacts" do
+    mock_successful_persons_api_client
+
     visit project_contacts_path(transfer_project)
 
     expect(page).to have_content(transfer_project.urn)
