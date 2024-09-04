@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-86][release-86]
+
 ### Fixed
 
 - unknown task identifier paths now show a 'page not found' error.
@@ -2188,7 +2190,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-85...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-86...HEAD
+[release-86]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-85...release-86
 [release-85]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-84...release-85
 [release-84]:
