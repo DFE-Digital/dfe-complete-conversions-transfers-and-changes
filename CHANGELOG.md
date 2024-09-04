@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-87][release-87]
+
 ### Changed
 
 - the Member of parliament for a school is now included in the RPA, SUG and FA
@@ -2195,7 +2197,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-86...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-87...HEAD
+[release-87]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-86...release-87
 [release-86]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-85...release-86
 [release-85]:
