@@ -137,6 +137,8 @@ RSpec.feature "Users can complete conversion tasks" do
 
     context "when the project has no contacts" do
       it "directs the user to add contacts" do
+        mock_successful_persons_api_client
+
         visit project_tasks_path(project)
         click_on "Confirm the main contact"
 

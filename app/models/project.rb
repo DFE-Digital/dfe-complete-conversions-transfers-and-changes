@@ -111,10 +111,7 @@ class Project < ApplicationRecord
   end
 
   def member_of_parliament
-    # until the Persons API is available in production, we have to return nil
-    # call `fetch_member_of_parliament` when the API goes live.
-    nil
-    # @member_of_parliament ||= fetch_member_of_parliament
+    @member_of_parliament ||= fetch_member_of_parliament
   end
 
   def unassigned_to_user?

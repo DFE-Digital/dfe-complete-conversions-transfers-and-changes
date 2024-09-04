@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Export::Csv::MpPresenterModule, skip: "Waiting for Person API" do
+RSpec.describe Export::Csv::MpPresenterModule do
   before do
     mock_all_academies_api_responses
     allow(project.establishment).to receive(:parliamentary_constituency).and_return("Constituency Name")

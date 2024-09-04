@@ -6,6 +6,7 @@ RSpec.feature "Users select a main contact for a conversion" do
 
   before do
     mock_successful_api_responses(urn: any_args, ukprn: any_args)
+    mock_successful_persons_api_client
     sign_in_with_user(user)
   end
 

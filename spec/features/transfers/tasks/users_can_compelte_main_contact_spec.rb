@@ -5,6 +5,7 @@ RSpec.feature "Users can complete the main contact task" do
 
   before do
     mock_all_academies_api_responses
+    mock_successful_persons_api_client
     sign_in_with_user(user)
     visit project_tasks_path(project)
   end
