@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - unknown task identifier paths now show a 'page not found' error.
+- the conversion project 'Confirm the proposed capacity of the academy' is now
+  fixed and accepting values.
 
 ## [Release-85][release-85]
 
