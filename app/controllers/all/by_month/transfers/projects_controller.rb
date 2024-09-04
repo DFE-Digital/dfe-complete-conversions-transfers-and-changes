@@ -1,20 +1,12 @@
 class All::ByMonth::Transfers::ProjectsController < ApplicationController
   def date_range
     authorize Project, :index?
+    @from_date = Date.new(from_year.to_i, from_month.to_i).at_beginning_of_month
+    @to_date = Date.new(to_year.to_i, to_month.to_i).at_end_of_month
 
-    from_date = Date.new(from_year.to_i, from_month.to_i).at_beginning_of_month
-    to_date = Date.new(to_year.to_i, to_month.to_i).at_end_of_month
+    return redirect_if_dates_incorrect if @to_date < @from_date
 
-    return redirect_if_dates_incorrect if to_date < from_date
-
-    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.transfer_projects_by_date_range(from_date, to_date))
-
-    @from_date = "#{from_year}-#{from_month}-1"
-    @to_date = "#{to_year}-#{to_month}-1"
-    @from_month = from_month
-    @from_year = from_year
-    @to_month = to_month
-    @to_year = to_year
+    get_projects_for_date_range
   end
 
   def date_range_select
@@ -47,13 +39,14 @@ class All::ByMonth::Transfers::ProjectsController < ApplicationController
   def single_month
     authorize Project, :index?
 
-    date = Date.new(year.to_i, month.to_i).at_beginning_of_month
+    @from_date = Date.new(year.to_i, month.to_i).at_beginning_of_month
+    @to_date = @from_date
 
-    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.transfer_projects_by_date_range(date, date))
+    get_projects_for_date_range
+  end
 
-    @month = month
-    @year = year
-    @date = "#{year}-#{month}-1"
+  private def get_projects_for_date_range
+    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.transfer_projects_by_date_range(@from_date, @to_date))
   end
 
   private def redirect_if_dates_incorrect
