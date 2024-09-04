@@ -2,23 +2,24 @@
   <%= form_tag(action, method: :post) do %>
     <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s"><%= t("project.date_range.date_form.label") %></legend>
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="from_date"><%= t("project.date_range.date_form.from") %></label>
-        <select class="govuk-select" id="from_date" name="from_date">
-          <% (Date.new(2022, 1, 1)..Date.new(2026, 12, 1)).map { |d| [d.year, d.month, 1] }.uniq.each do |date| %>
-            <% date_str = date.join("-") %>
-            <option value="<%= date_str %>" <% if date_str == from_date %> selected="selected"<% end %>><%= Date.parse(date_str).to_fs(:govuk_short_month) %></option>
-          <% end %>
-        </select>
-        <label class="govuk-label" for="to_date"><%= t("project.date_range.date_form.to") %></label>
-        <select class="govuk-select" id="to_date" name="to_date">
-          <% (Date.new(2022, 1, 1)..Date.new(2026, 12, 1)).map { |d| [d.year, d.month, 1] }.uniq.each do |date| %>
-            <% date_str = date.join("-") %>
-            <option value="<%= date_str %>" <% if date_str == to_date %> selected="selected"<% end %>><%= Date.parse(date_str).to_fs(:govuk_short_month) %></option>
-          <% end %>
-        </select>
-        <button type="submit" class="govuk-button" data-module="govuk-button"><%= t("project.date_range.date_form.apply") %></button>
-      </div>
+
+        <div class="govuk-form-group">
+          <%= label_tag :from_date, t("project.date_range.date_form.from"), class: "govuk-label" %>
+          <%= select_tag :from_date,
+                options_from_collection_for_select(export_from_date_range, :id, :name, @from_date.to_s),
+                class: "govuk-select" %>
+        </div>
+
+        <div class="govuk-form-group">
+          <%= label_tag :to_date, t("project.date_range.date_form.to"), class: "govuk-label" %>
+          <%= select_tag :to_date,
+                options_from_collection_for_select(export_to_date_range, :id, :name, @to_date.to_s),
+                class: "govuk-select" %>
+        </div>
+
+        <div class="govuk-form-group">
+          <button type="submit" class="govuk-button" data-module="govuk-button"><%= t("project.date_range.date_form.apply") %></button>
+        </div>
     </fieldset>
   <% end %>
 </div>

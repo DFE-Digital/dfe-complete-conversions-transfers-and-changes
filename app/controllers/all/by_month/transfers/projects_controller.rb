@@ -17,7 +17,7 @@ class All::ByMonth::Transfers::ProjectsController < ApplicationController
     from_year, from_month = from_date.split("-")
     to_year, to_month = to_date.split("-")
 
-    redirect_to action: "date_range", from_month: from_month, from_year: from_year, to_month: to_month, to_year: to_year
+    redirect_to action: "date_range", from_month: from_month.to_i, from_year: from_year, to_month: to_month.to_i, to_year: to_year
   end
 
   def date_range_this_month
@@ -27,7 +27,7 @@ class All::ByMonth::Transfers::ProjectsController < ApplicationController
     from_year = Date.today.year
     to_month = Date.today.month
     to_year = Date.today.year
-    redirect_to action: "date_range", from_month: from_month, from_year: from_year, to_month: to_month, to_year: to_year
+    redirect_to action: "date_range", from_month: from_month.to_i, from_year: from_year, to_month: to_month.to_i, to_year: to_year
   end
 
   def next_month
