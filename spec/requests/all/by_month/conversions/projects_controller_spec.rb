@@ -11,13 +11,9 @@ RSpec.describe All::ByMonth::Conversions::ProjectsController, type: :request do
   describe "#date_range_this_month" do
     it "redirects to the current month and year" do
       get date_range_this_month_all_by_month_conversions_projects_path
-      follow_redirect!
 
       expect(response).to have_http_status(:success)
-      expect(request.params.fetch(:from_month)).to eq Date.today.month.to_s
-      expect(request.params.fetch(:from_year)).to eq Date.today.year.to_s
-      expect(request.params.fetch(:to_month)).to eq Date.today.month.to_s
-      expect(request.params.fetch(:to_year)).to eq Date.today.year.to_s
+      expect(response.body).to include Date.today.to_fs(:govuk_month)
     end
   end
 
@@ -40,7 +36,6 @@ RSpec.describe All::ByMonth::Conversions::ProjectsController, type: :request do
       it "redirect to the current month with an information message" do
         get "/projects/all/by-month/conversions/from/10/2023/to/3/2023"
         follow_redirect!
-        follow_redirect! # This redirects twice
 
         expect(response.body).to include("The 'from' date cannot be after the 'to' date")
       end
