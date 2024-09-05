@@ -65,13 +65,6 @@ class Export::Conversions::AllDataCsvExportService < Export::CsvExportService
     solicitor_contact_email
     diocese_contact_name
     diocese_contact_email
-    mp_name
-    mp_constituency
-    mp_email
-    mp_address_1
-    mp_address_2
-    mp_address_3
-    mp_address_postcode
     director_of_child_services_name
     director_of_child_services_email
     director_of_child_services_role
