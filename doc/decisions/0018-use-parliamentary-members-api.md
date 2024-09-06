@@ -4,7 +4,8 @@ Date: 2023-04-20
 
 ## Status
 
-Accepted
+Superceded by
+[27. Use the Persons API to fetch MP details](0027-use-the-persons-api-to-fetch-mp-details.md)
 
 ## Context
 
