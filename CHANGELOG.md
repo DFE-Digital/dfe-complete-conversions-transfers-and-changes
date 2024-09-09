@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - MP details are no longer included in the Conversions "By month" exports
+- The "Suggest a change" link in the footer links to the correct form
 
 ## [Release-87][release-87]
 
