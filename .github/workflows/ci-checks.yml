@@ -208,7 +208,7 @@ jobs:
           docker save -o vuln-image.tar ${{ steps.build.outputs.imageid }}
       -
         name: Scan Docker image for CVEs
-        uses: aquasecurity/trivy-action@0.20.0
+        uses: aquasecurity/trivy-action@0.24.0
         with:
           input: /github/workspace/vuln-image.tar
           format: 'sarif'
