@@ -11,6 +11,7 @@ RSpec.describe Api::AcademiesApi::Client do
       expect(client_connection.scheme).to eql "https"
       expect(client_connection.host).to eql "test.academies.api"
       expect(client_connection.headers["ApiKey"]).to eql "api-key"
+      expect(client_connection.headers["User-Agent"]).to eql "Complete/1.0"
       expect(client_connection.options[:timeout]).to eql Api::AcademiesApi::Client::ACADEMIES_API_TIMEOUT
     end
   end

@@ -84,7 +84,8 @@ class Api::Persons::Client
     Faraday.new(
       url: ENV["PERSONS_API_HOST"],
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "User-Agent": Rails.application.config.dfe_user_agent
       }
     )
   end
