@@ -73,6 +73,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Corrected the Edit link for Sharepoint links on Conversions, it was pointing
   to the Transfers edit page
 
+### Added
+
+- The headteacher contact selected in the 'Confirm the headteacher’s details'
+  task is now included in the RPA, SUG and FA letters export. The contacts role
+  will always be exported as 'Headteacher'.
+
 ## [Release-88][release-88]
 
 ### Changed
