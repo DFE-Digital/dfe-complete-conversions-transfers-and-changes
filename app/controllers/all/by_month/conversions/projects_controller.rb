@@ -1,58 +1,62 @@
 class All::ByMonth::Conversions::ProjectsController < ApplicationController
   def date_range
     authorize Project, :index?
+    @from_date = Date.new(from_year.to_i, from_month.to_i).at_beginning_of_month
+    @to_date = Date.new(to_year.to_i, to_month.to_i).at_end_of_month
 
-    @from_date = "#{from_year}-#{from_month}-1"
-    @to_date = "#{to_year}-#{to_month}-1"
-    return redirect_if_dates_incorrect if Date.parse(@to_date) < Date.parse(@from_date)
+    redirect_if_dates_incorrect if @to_date < @from_date
 
-    @from_month = from_month
-    @from_year = from_year
-    @to_month = to_month
-    @to_year = to_year
-
-    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.conversion_projects_by_date_range(@from_date, @to_date))
+    get_projects_for_date_range
   end
 
   def date_range_select
     authorize Project, :index?
+    @from_date = Date.parse(from_date).at_beginning_of_month
+    @to_date = Date.parse(to_date).at_end_of_month
 
-    return redirect_if_dates_incorrect if Date.parse(to_date) < Date.parse(from_date)
+    return redirect_if_dates_incorrect if @to_date < @from_date
 
-    from_year, from_month = from_date.split("-")
-    to_year, to_month = to_date.split("-")
+    get_projects_for_date_range
 
-    redirect_to action: "date_range", from_month: from_month, from_year: from_year, to_month: to_month, to_year: to_year
+    render :date_range
   end
 
   def date_range_this_month
     authorize Project, :index?
 
-    from_month = Date.today.month
-    from_year = Date.today.year
-    to_month = Date.today.month
-    to_year = Date.today.year
-    redirect_to action: "date_range", from_month: from_month, from_year: from_year, to_month: to_month, to_year: to_year
-  end
+    @from_date = Date.today.at_beginning_of_month
+    @to_date = Date.today.at_end_of_month
 
-  def next_month
-    authorize Project, :index?
+    get_projects_for_date_range
 
-    redirect_to action: "single_month", month: (Date.today + 1.month).month, year: (Date.today + 1.month).year
+    render :date_range
   end
 
   def single_month
     authorize Project, :index?
 
-    @month = month
-    @year = year
-    @date = "#{year}-#{month}-1"
+    @from_date = Date.new(year.to_i, month.to_i).at_beginning_of_month
+    @to_date = @from_date
 
-    @pager, @projects = pagy_array(ByMonthProjectFetcherService.new.conversion_projects_by_date_range(@date, @date))
+    get_projects_for_date_range
+  end
+
+  def next_month
+    authorize Project, :index?
+
+    redirect_to action: "single_month",
+      month: (Date.today + 1.month).month, year: (Date.today + 1.month).year
+  end
+
+  private def get_projects_for_date_range
+    @pager, @projects = pagy_array(
+      ByMonthProjectFetcherService.new.conversion_projects_by_date_range(@from_date, @to_date)
+    )
   end
 
   private def redirect_if_dates_incorrect
-    redirect_to date_range_this_month_all_by_month_conversions_projects_path, alert: I18n.t("project.date_range.date_form.from_date_before_to_date")
+    redirect_to date_range_this_month_all_by_month_conversions_projects_path,
+      alert: I18n.t("project.date_range.date_form.from_date_before_to_date")
   end
 
   private def from_month

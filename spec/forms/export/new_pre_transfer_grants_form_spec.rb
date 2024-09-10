@@ -30,7 +30,7 @@ RSpec.describe Export::NewPreTransferGrantsForm, type: :model do
 
       expect(Project).to have_received(:not_deleted)
       expect(Project).to have_received(:transfers)
-      expect(Project).to have_received(:advisory_board_date_in_range).with(from_date.to_s, to_date.to_s)
+      expect(Project).to have_received(:advisory_board_date_in_range).with(from_date, to_date)
     end
 
     it "uses the appropriate csv export service" do

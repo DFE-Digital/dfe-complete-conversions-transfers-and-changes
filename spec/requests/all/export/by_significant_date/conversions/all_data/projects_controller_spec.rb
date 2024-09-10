@@ -13,7 +13,7 @@ RSpec.describe All::Export::BySignificantDate::Conversions::AllData::ProjectsCon
       get "/projects/all/export/by-significant-date/conversions/all-data/from/4/2024/to/3/2024/csv"
 
       follow_redirect!
-      follow_redirect!
+
       expect(response.body).to include("The 'from' date cannot be after the 'to' date")
     end
   end
