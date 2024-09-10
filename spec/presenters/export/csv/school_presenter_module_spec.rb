@@ -103,7 +103,7 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
         KeyContacts.new(project: project, headteacher: contact)
 
         expect(subject.headteacher_contact_name).to eql "Jo Example"
-        expect(subject.headteacher_contact_role).to eql "CEO of Learning"
+        expect(subject.headteacher_contact_role).to eql "Headteacher"
         expect(subject.headteacher_contact_email).to eql "jo@example.com"
       end
     end
