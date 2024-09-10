@@ -110,7 +110,8 @@ class Api::AcademiesApi::Client
       },
       headers: {
         "Content-Type": "application/json",
-        ApiKey: ENV["ACADEMIES_API_KEY"]
+        ApiKey: ENV["ACADEMIES_API_KEY"],
+        "User-Agent": "Complete/1.0"
       }
     )
   end
