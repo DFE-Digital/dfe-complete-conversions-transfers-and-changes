@@ -20,6 +20,7 @@ module "azure_container_apps_hosting" {
   container_command                      = local.container_command
   container_secret_environment_variables = local.container_secret_environment_variables
   container_scale_http_concurrency       = local.container_scale_http_concurrency
+  container_min_replicas                 = local.container_min_replicas
 
   enable_worker_container       = local.enable_worker_container
   worker_container_command      = local.worker_container_command
