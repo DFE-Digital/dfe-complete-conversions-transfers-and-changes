@@ -35,7 +35,7 @@ RSpec.feature "Users can view static pages" do
     visit page_path(id: "academies_api_client_timeout")
 
     expect(page).to have_current_path("/academies_api_client_timeout")
-    expect(page).to have_content("Sorry, there was a problem")
+    expect(page).to have_content("Sorry, the Academies API timed out")
   end
 
   scenario "can see the `API unauthorised` error page" do
