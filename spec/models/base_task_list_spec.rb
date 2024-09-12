@@ -7,10 +7,10 @@ RSpec.describe BaseTaskList do
       project = create(:conversion_project)
       user = create(:user)
 
-      expect { BaseTaskLisSubClasssTestClass.new(project, user) }.to raise_error(NotImplementedError)
+      expect { BaseTaskLisSubClassTestClass.new(project, user) }.to raise_error(NotImplementedError)
     end
   end
 end
 
-class BaseTaskLisSubClasssTestClass < BaseTaskList
+class BaseTaskLisSubClassTestClass < BaseTaskList
 end
