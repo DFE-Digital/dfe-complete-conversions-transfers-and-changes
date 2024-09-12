@@ -35,16 +35,4 @@ class Transfer::Task::DeclarationOfExpenditureCertificateTaskForm < BaseOptional
     errors.merge!(@date_param_errors)
     errors.empty?
   end
-
-  def save
-    if valid?
-      @tasks_data.assign_attributes(
-        declaration_of_expenditure_certificate_date_received: date_received,
-        declaration_of_expenditure_certificate_not_applicable: not_applicable,
-        declaration_of_expenditure_certificate_correct: correct,
-        declaration_of_expenditure_certificate_saved: saved
-      )
-      @tasks_data.save!
-    end
-  end
 end
