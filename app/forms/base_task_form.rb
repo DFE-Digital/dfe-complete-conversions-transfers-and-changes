@@ -1,6 +1,9 @@
 class BaseTaskForm
   include ActiveModel::Model
   include ActiveModel::Attributes
+  extend ActiveModel::Callbacks
+
+  define_model_callbacks :save
 
   def self.identifier
     name.split("::").last.underscore.delete_suffix("_task_form")
@@ -13,8 +16,10 @@ class BaseTaskForm
   end
 
   def save
-    @tasks_data.assign_attributes prefixed_attributes
-    @tasks_data.save!
+    run_callbacks :save do
+      @tasks_data.assign_attributes prefixed_attributes
+      @tasks_data.save!
+    end
   end
 
   def identifier
