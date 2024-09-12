@@ -239,6 +239,12 @@ variable "worker_container_max_replicas" {
   default     = 1
 }
 
+variable "container_min_replicas" {
+  description = "Container min replicas"
+  type        = number
+  default     = 1
+}
+
 variable "enable_cdn_frontdoor" {
   description = "Enable Azure CDN FrontDoor. This will use the Container Apps endpoint as the origin."
   type        = bool

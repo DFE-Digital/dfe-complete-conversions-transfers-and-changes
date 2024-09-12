@@ -57,6 +57,7 @@ locals {
   monitor_email_receivers                         = var.monitor_email_receivers
   enable_container_health_probe                   = var.enable_container_health_probe
   container_health_probe_protocol                 = var.container_health_probe_protocol
+  container_min_replicas                          = var.container_min_replicas
   monitor_endpoint_healthcheck                    = var.monitor_endpoint_healthcheck
   existing_logic_app_workflow                     = var.existing_logic_app_workflow
   existing_network_watcher_name                   = var.existing_network_watcher_name
