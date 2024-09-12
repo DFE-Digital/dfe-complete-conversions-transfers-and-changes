@@ -49,15 +49,15 @@ en:
           empty: There are no in-progress projects for this user
     team:
       in_progress:
-        title: In progress
+        title: Your team projects in progress
       new:
-        title: New
+        title: Your team new projects
       completed:
-        title: Completed
+        title: Your team completed projects
       unassigned:
-        title: Unassigned
+        title: Your team unassigned projects
       users:
-        title: By user
+        title: Your team projects by user
       handed_over:
         title: Handed over
     regional:
