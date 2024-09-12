@@ -25,6 +25,7 @@ class ExportPolicy
     return true if @user.data_consumers_team?
     return true if @user.business_support_team?
     return true if @user.service_support_team?
+    return true if @user.manage_team?
 
     false
   end

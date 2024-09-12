@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The incoming trust CEO contact selected in the 'Confirm the incoming trust
   CEO’s details' task is now included in the RPA, SUG and FA letters export. The
   contacts role will always be exported as 'CEO'.
+- Team lead users can now use the all projects and by month exports.
 
 ## [Release-88][release-88]
 
