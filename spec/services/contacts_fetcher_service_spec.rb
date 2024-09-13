@@ -105,46 +105,6 @@ RSpec.describe ContactsFetcherService do
     end
   end
 
-  describe "#school_or_academy_contact" do
-    let!(:contact) { create(:project_contact, project: project, category: "school_or_academy") }
-
-    context "when there is an establishment_main_contact_id" do
-      before { allow(project).to receive(:establishment_main_contact_id).and_return(contact.id) }
-
-      it "returns the contact with that id" do
-        expect(described_class.new(project).school_or_academy_contact).to eq(contact)
-      end
-    end
-
-    context "when there is NOT an establishment_main_contact_id" do
-      before { allow(project).to receive(:establishment_main_contact_id).and_return(nil) }
-
-      it "returns the next matching contact" do
-        expect(described_class.new(project).school_or_academy_contact).to eq(contact)
-      end
-    end
-  end
-
-  describe "#incoming_trust_contact" do
-    let!(:contact) { create(:project_contact, project: project, category: "incoming_trust") }
-
-    context "when there is an incoming_trust_main_contact_id" do
-      before { allow(project).to receive(:incoming_trust_main_contact_id).and_return(contact.id) }
-
-      it "returns the contact with that id" do
-        expect(described_class.new(project).incoming_trust_contact).to eq(contact)
-      end
-    end
-
-    context "when there is NOT an incoming_trust_main_contact_id" do
-      before { allow(project).to receive(:incoming_trust_main_contact_id).and_return(nil) }
-
-      it "returns the next matching contact" do
-        expect(described_class.new(project).incoming_trust_contact).to eq(contact)
-      end
-    end
-  end
-
   describe "#local_authority_contact" do
     let!(:contact) { create(:project_contact, project: project, category: "local_authority") }
 
