@@ -5,7 +5,7 @@ en:
         title: Confirm this transfer has authority to proceed
         hint:
           html:
-            The deadline for getting authority to proceed is in the email you got from AOPU (Academy Operational Practice Unit). The project must have authority to proceed by the deadline or the academy will not transfer on %{transfer_date}.
+            The deadline for getting authority to proceed is in the email you got from SOPU (Schools Operational Practice Unit). The project must have authority to proceed by the deadline or the academy will not transfer on %{transfer_date}.
         guidance_link: How to check the transfer has authority to proceed
         guidance:
           html:
@@ -30,7 +30,7 @@ en:
           hint:
             html:
               <p>This will change the transfer's status on the By Month project list.</p>
-              <p>AOPU and ESFA (Education and Skills Funding Agency) use it to prepare and send the GAG (general annual grant) funding.</p>
+              <p>SOPU and ESFA (Education and Skills Funding Agency) use it to prepare and send the GAG (general annual grant) funding.</p>
           guidance_link: What to do if the transfer does not have authority to proceed
           guidance:
             html:

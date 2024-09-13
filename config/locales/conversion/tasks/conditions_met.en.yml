@@ -5,7 +5,7 @@ en:
         title: Confirm all conditions have been met
         hint:
           html:
-            "The deadline for meeting all conditions is in the email you got from the AOPU (Academies Operational Practice Unit) team. All conditions must be met before the deadline or the school will not be able to convert on %{date}."
+            "The deadline for meeting all conditions is in the email you got from the SOPU (Schools Operational Practice Unit) team. All conditions must be met before the deadline or the school will not be able to convert on %{date}."
         guidance_link: How to check all conditions have been met
         guidance:
           html:
@@ -20,7 +20,7 @@ en:
           title: Confirm all conditions are met
           hint:
             html:
-              <p>This will change the conversion's status on the "By month" project list. AOPU use that list to prepare funding agreement letters.</p>
+              <p>This will change the conversion's status on the "By month" project list. SOPU use that list to prepare funding agreement letters.</p>
           guidance_link: What to do if conditions are not met
           guidance:
             html:
