@@ -50,9 +50,9 @@ en:
           incoming_trust_identifier: Incoming trust group identifier
           incoming_trust_companies_house_number: Incoming trust companies house number
           incoming_trust_name: Incoming trust name
-          incoming_trust_main_contact_name: Incoming trust main contact name
-          incoming_trust_main_contact_email: Incoming trust main contact email
-          incoming_trust_main_contact_role: Incoming trust main contact role
+          incoming_trust_main_contact_name: Primary contact for incoming trust name
+          incoming_trust_main_contact_email: Primary contact for incoming trust email
+          incoming_trust_main_contact_role: Primary contact for incoming trust role
           incoming_trust_ceo_contact_name: Incoming trust CEO name
           incoming_trust_ceo_contact_role: Incoming trust CEO role
           incoming_trust_ceo_contact_email: Incoming trust CEO email
