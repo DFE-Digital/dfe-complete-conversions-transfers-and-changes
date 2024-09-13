@@ -7,7 +7,7 @@ RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
 
   before do
     mock_successful_api_response_to_create_any_project
-    allow(project).to receive(:outgoing_trust_main_contact_id).and_return(outgoing_trust_main_contact.id)
+    project.outgoing_trust_main_contact = outgoing_trust_main_contact
     allow(project).to receive(:outgoing_trust).and_return(known_trust)
   end
 
@@ -25,6 +25,10 @@ RSpec.describe Export::Csv::OutgoingTrustPresenterModule do
 
   it "presents the main contact name" do
     expect(subject.outgoing_trust_main_contact_name).to eql "Jo Example"
+  end
+
+  it "presents the main contact role" do
+    expect(subject.outgoing_trust_main_contact_role).to eql "CEO of Learning"
   end
 
   it "presents the main contact email" do

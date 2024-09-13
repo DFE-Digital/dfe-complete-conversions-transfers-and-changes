@@ -23,16 +23,6 @@ class ContactsFetcherService
     all_project_contacts.sort_by(&:name).group_by(&:category)
   end
 
-  def outgoing_trust_contact
-    return if @all_contacts["outgoing_trust"].nil?
-
-    if @project.outgoing_trust_main_contact_id.present?
-      @all_contacts["outgoing_trust"].find { |c| c.id == @project.outgoing_trust_main_contact_id }
-    else
-      @all_contacts["outgoing_trust"].first
-    end
-  end
-
   def local_authority_contact
     return if @all_contacts["local_authority"].nil?
 

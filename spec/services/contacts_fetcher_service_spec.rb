@@ -85,26 +85,6 @@ RSpec.describe ContactsFetcherService do
     end
   end
 
-  describe "#outgoing_trust_contact" do
-    let!(:contact) { create(:project_contact, project: project, category: "outgoing_trust") }
-
-    context "when there is an outgoing_trust_main_contact_id" do
-      before { allow(project).to receive(:outgoing_trust_main_contact_id).and_return(contact.id) }
-
-      it "returns the contact with that id" do
-        expect(described_class.new(project).outgoing_trust_contact).to eq(contact)
-      end
-    end
-
-    context "when there is NOT an outgoing_trust_main_contact_id" do
-      before { allow(project).to receive(:outgoing_trust_main_contact_id).and_return(nil) }
-
-      it "returns the next matching contact" do
-        expect(described_class.new(project).outgoing_trust_contact).to eq(contact)
-      end
-    end
-  end
-
   describe "#local_authority_contact" do
     let!(:contact) { create(:project_contact, project: project, category: "local_authority") }
 
