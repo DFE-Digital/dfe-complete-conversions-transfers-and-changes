@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - New DfE font and header have been applied to the application.
 - The links in the footer have been updated to the latest versions.
 
+### Fixed
+
+- The primary contact for school in the export no longer uses the first contact
+  if one is not set.
+- The primary contact for the school is now labelled in the export.
+
 ## [Release-91][release-91]
 
 ### Added
