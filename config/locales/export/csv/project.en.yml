@@ -99,8 +99,9 @@ en:
           outgoing_trust_address_town: Outgoing trust address town
           outgoing_trust_address_county: Outgoing trust address county
           outgoing_trust_address_postcode: Outgoing trust address postcode
-          outgoing_trust_main_contact_name: Outgoing trust main contact name
-          outgoing_trust_main_contact_email: Outgoing trust main contact email
+          outgoing_trust_main_contact_name: Primary contact for outgoing trust name
+          outgoing_trust_main_contact_role: Primary contact for outgoing trust title
+          outgoing_trust_main_contact_email: Primary contact for outgoing trust email
           outgoing_trust_ceo_contact_name: Outgoing trust CEO name
           outgoing_trust_ceo_contact_role: Outgoing trust CEO role
           outgoing_trust_ceo_contact_email: Outgoing trust CEO email
