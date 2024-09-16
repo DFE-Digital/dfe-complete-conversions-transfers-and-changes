@@ -41,7 +41,7 @@ RSpec.feature "Viewing regional casework services projects" do
 
         click_on "Your team projects"
 
-        expect(page.find("h1")).to have_content("Unassigned")
+        expect(page.find("h1")).to have_content("Your team unassigned projects")
       end
     end
 
@@ -59,7 +59,7 @@ RSpec.feature "Viewing regional casework services projects" do
 
         click_on "Your team projects"
 
-        expect(page.find("h1")).to have_content("In progress")
+        expect(page.find("h1")).to have_content("Your team projects in progress")
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.feature "Viewing regional casework services projects" do
 
         click_on "Your team projects"
 
-        expect(page.find("h1")).to have_content("In progress")
+        expect(page.find("h1")).to have_content("Your team projects in progress")
       end
     end
   end
