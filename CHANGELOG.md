@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Requests to the Academies API now includes a User-Agent HTTP Header
 - AOPU becomes SOPU
 
+### Added
+
+- The headteacher contact selected in the 'Confirm the headteacher’s details'
+  task is now included in the RPA, SUG and FA letters export. The contacts role
+  will always be exported as 'Headteacher'.
+
 ## [Release-88][release-88]
 
 ### Changed
