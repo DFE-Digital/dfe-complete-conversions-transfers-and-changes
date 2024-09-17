@@ -6,6 +6,12 @@
 # Makes no assumptions about how you manage Ruby and Node, you need to bring your
 # own.
 #
+BUNDLER_VERSION=""
+
+if [ -n "$BUNDLER_VERSION" ];
+then
+  BUNDLER_VERSION="_${BUNDLER_VERSION}_"
+fi
 
 # We assume you have Homebrew installed
 if ! command -v brew > /dev/null; then
@@ -18,7 +24,7 @@ echo "==> Installing dependencies with Homebrew..."
 brew bundle install --verbose --no-lock
 
 echo "==> Installing Ruby gems"
-bundle install
+bundle $BUNDLER_VERSION install
 
 echo "==> Installing Node modules"
 yarn install
