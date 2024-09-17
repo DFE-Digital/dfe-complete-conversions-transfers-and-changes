@@ -43,6 +43,9 @@ class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExpor
     incoming_trust_address_town
     incoming_trust_address_county
     incoming_trust_address_postcode
+    incoming_trust_ceo_contact_name
+    incoming_trust_ceo_contact_role
+    incoming_trust_ceo_contact_email
     incoming_trust_main_contact_name
     incoming_trust_main_contact_role
     incoming_trust_main_contact_email
