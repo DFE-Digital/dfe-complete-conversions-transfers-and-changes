@@ -75,6 +75,23 @@ RSpec.describe Conversion::Task::ArticlesOfAssociationTaskForm do
 
         expect(task_form.status).to eql :not_applicable
       end
+
+      it "resets all other attributes" do
+        task_data = Conversion::TasksData.new
+        task_form = described_class.new(task_data, user)
+
+        task_form.received = true
+
+        task_form.save
+
+        expect(task_data.articles_of_association_received).to be true
+
+        task_form.not_applicable = true
+
+        task_form.save
+
+        expect(task_data.articles_of_association_received).to be nil
+      end
     end
 
     context "when the task has all completed actions" do
