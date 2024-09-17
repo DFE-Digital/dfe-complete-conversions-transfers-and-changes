@@ -60,6 +60,7 @@ class Export::Transfers::AllDataCsvExportService < Export::CsvExportService
     incoming_trust_main_contact_name
     incoming_trust_main_contact_email
     outgoing_trust_main_contact_name
+    outgoing_trust_main_contact_role
     outgoing_trust_main_contact_email
     incoming_trust_ceo_contact_name
     incoming_trust_ceo_contact_role

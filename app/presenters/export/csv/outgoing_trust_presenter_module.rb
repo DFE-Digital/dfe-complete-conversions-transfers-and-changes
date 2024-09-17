@@ -18,11 +18,15 @@ module Export::Csv::OutgoingTrustPresenterModule
   end
 
   def outgoing_trust_main_contact_name
-    outgoing_trust_contact&.name
+    @project.outgoing_trust_main_contact&.name
+  end
+
+  def outgoing_trust_main_contact_role
+    @project.outgoing_trust_main_contact&.title
   end
 
   def outgoing_trust_main_contact_email
-    outgoing_trust_contact&.email
+    @project.outgoing_trust_main_contact&.email
   end
 
   def outgoing_trust_identifier
@@ -87,9 +91,5 @@ module Export::Csv::OutgoingTrustPresenterModule
     return unless @project.key_contacts&.outgoing_trust_ceo.present?
 
     @project.key_contacts.outgoing_trust_ceo.email
-  end
-
-  private def outgoing_trust_contact
-    @contacts_fetcher.outgoing_trust_contact
   end
 end
