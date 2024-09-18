@@ -92,7 +92,8 @@ class Project < ApplicationRecord
     active: 0,
     completed: 1,
     deleted: 2,
-    dao_revoked: 3
+    dao_revoked: 3,
+    inactive: 4
   }
 
   def establishment
