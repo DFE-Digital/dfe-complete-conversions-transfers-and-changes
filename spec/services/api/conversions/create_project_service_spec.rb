@@ -210,7 +210,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
       it "returns an error" do
         expect { described_class.new(params).call }
           .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
-            "Project could not be created via API, urn: 123456")
+            "Conversion project could not be created via API, urn: 123456")
       end
     end
   end

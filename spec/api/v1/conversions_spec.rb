@@ -126,7 +126,7 @@ RSpec.describe V1::Conversions do
               as: :json,
               headers: {Apikey: "testkey"}
 
-            expect(response.body).to eq({error: "Project could not be created via API, urn: 123456"}.to_json)
+            expect(response.body).to eq({error: "Conversion project could not be created via API, urn: 123456"}.to_json)
             expect(response.status).to eq(500)
           end
         end
