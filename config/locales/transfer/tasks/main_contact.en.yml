@@ -7,8 +7,8 @@ en:
           title: Add contacts
           hint:
             html:
-              <p>This is the person who will get important documents during the transfer. They will most likely be from the academy or incoming trust.<p>
-              <p>It is not necessarily the person you contact most throughout the project.</p>
+              <p>This is your first point of contact if you have any questions about the project. You may know them as the external project lead.</p>
+              <p>They might be from the school, trust, local authority, diocese or they could be a consultant.</p>
           add_contacts_guidance_html:
             <p>No contacts have been added to this project.</p>
             <p>You must <a href="%{add_contact_link}">add a contact</a> before you can confirm the main contact.</p>
@@ -16,6 +16,6 @@ en:
           title: Choose a contact
           hint:
             html:
-              <p>This is the person who will get important documents during the transfer. They will most likely be from the academy or incoming trust.<p>
-              <p>It is not necessarily the person you contact most throughout the project.</p>
+              <p>This is your first point of contact if you have any questions about the project. You may know them as the external project lead.</p>
+              <p>They might be from the school, trust, local authority, diocese or they could be a consultant.</p>
               <p>You must <a href="%{add_contact_link}">add a new contact</a> first if they are not already in the list of contacts.</p>
