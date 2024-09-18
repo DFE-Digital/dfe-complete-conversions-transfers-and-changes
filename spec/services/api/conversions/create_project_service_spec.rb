@@ -272,4 +272,29 @@ RSpec.describe Api::Conversions::CreateProjectService do
       end
     end
   end
+
+  context "when the parameters are invalid" do
+    let(:params) {
+      {
+        urn: 1234567890,
+        new_trust_reference_number: "12345",
+        new_trust_name: "The New Trust",
+        advisory_board_date: "2024-1-1",
+        advisory_board_conditions: "Some conditions",
+        provisional_conversion_date: "2025-1-1",
+        directive_academy_order: true,
+        created_by_email: "bob@education.gov.uk",
+        created_by_first_name: "Bob",
+        created_by_last_name: "Teacher",
+        prepare_id: 123456
+      }
+    }
+
+    it "does not attempt to find or create a user" do
+      allow(User).to receive(:find_or_create_by).and_call_original
+
+      expect { described_class.new(params).call }.to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError)
+      expect(User).not_to have_received(:find_or_create_by)
+    end
+  end
 end

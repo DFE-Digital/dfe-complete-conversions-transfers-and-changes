@@ -9,9 +9,9 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
   attribute :new_trust_name, :string
 
   def call
-    user = find_or_create_user
-
     if valid?
+      user = find_or_create_user
+
       tasks_data = Transfer::TasksData.new(
         inadequate_ofsted: inadequate_ofsted,
         financial_safeguarding_governance_issues: financial_safeguarding_governance_issues,

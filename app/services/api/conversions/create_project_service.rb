@@ -2,9 +2,9 @@ class Api::Conversions::CreateProjectService < Api::BaseCreateProjectService
   attribute :provisional_conversion_date
 
   def call
-    user = find_or_create_user
-
     if valid?
+      user = find_or_create_user
+
       tasks_data = Conversion::TasksData.new
 
       project = Conversion::Project.new(

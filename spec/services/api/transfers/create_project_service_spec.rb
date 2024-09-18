@@ -174,4 +174,16 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       expect(subject.new_trust_name).to eql "A new trust"
     end
   end
+
+  context "when the parameters are invalid" do
+    it "does not attempt to find or create a user" do
+      params = valid_transfer_parameters
+      params[:urn] = 1234567890
+
+      allow(User).to receive(:find_or_create_by).and_call_original
+
+      expect { described_class.new(params).call }.to raise_error(Api::Transfers::CreateProjectService::ProjectCreationError)
+      expect(User).not_to have_received(:find_or_create_by)
+    end
+  end
 end
