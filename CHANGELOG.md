@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The primary contact for school in the export no longer uses the first contact
   if one is not set.
 - The primary contact for the school is now labelled in the export.
+- The content on the main contact task has been updated for accuracy on both
+  conversions and transfers.
 
 ### Added
 
