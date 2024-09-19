@@ -38,16 +38,17 @@ For more details on the API visit
 
 The Persons API is a DfE internal API, and is part of the Academies API.
 
-The API is not used in production as the production API is not yet available,
-once it is deployed we will use it to provide the contact details for the member
-of parliament.
-
-Two environment variables are required:
+The following environment variables are required:
 
 - `PERSONS_API_HOST`
-- `PERSONS_API_KEY`
+- `PERSONS_API_AUTH_HOST`
+- `PERSONS_API_AUTH_SECRET`
+- `PERSONS_API_AUTH_ID`
+- `PERSONS_API_AUTH_DIRECTORY_ID`
+- `PERSONS_API_AUTH_SCOPE`
 
-as both are different to the Academies API.
+The authentication and data API live on different hosts, with authentication
+handled by an Azure Identity Platform instance.
 
 The data exposed on the API is managed centrally.
 

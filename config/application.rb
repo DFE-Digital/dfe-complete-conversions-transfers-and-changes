@@ -78,5 +78,8 @@ module DfeCompleteConversionsTransfersAndChanges
     config.action_dispatch.default_headers["X-Frame-Options"] = "DENY"
     # set the HSTS header
     config.action_dispatch.default_headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
+
+    # set the user agent string to API calls we make
+    config.dfe_user_agent = "Complete/1.0"
   end
 end
