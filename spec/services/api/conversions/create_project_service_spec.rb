@@ -49,6 +49,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect(result.prepare_id).to eq(123456)
       end
+
+      it "sets the initial state to be 'inactive'" do
+        result = described_class.new(params).call
+
+        expect(result.state).to eq("inactive")
+      end
     end
 
     context "when the params contain details for an unknown user" do
