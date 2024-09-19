@@ -469,12 +469,14 @@ RSpec.describe Project, type: :model do
         completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
         completed_project_2 = create(:conversion_project, completed_at: Date.today - 6.months, state: 1)
         in_progress_project = create(:conversion_project, completed_at: nil, state: 0)
+        inactive_project = create(:conversion_project, state: 4)
 
         projects = Project.completed
 
         expect(projects).to include(completed_project_1, completed_project_2)
 
         expect(projects).to_not include(in_progress_project)
+        expect(projects).to_not include(inactive_project)
       end
     end
 
@@ -502,11 +504,13 @@ RSpec.describe Project, type: :model do
         completed_project = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
         in_progress_project_1 = create(:conversion_project, completed_at: nil, state: 0)
         in_progress_project_2 = create(:conversion_project, completed_at: nil, state: 0)
+        inactive_project = create(:conversion_project, state: 4)
 
         projects = Project.active
 
         expect(projects).to include(in_progress_project_1, in_progress_project_2)
         expect(projects).to_not include(completed_project)
+        expect(projects).to_not include(inactive_project)
       end
     end
 
@@ -530,11 +534,13 @@ RSpec.describe Project, type: :model do
         completed_project = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
         open_project_1 = create(:conversion_project, completed_at: nil, state: 0)
         open_project_2 = create(:conversion_project, completed_at: nil, state: 0)
+        inactive_project = create(:conversion_project, state: 4)
 
         projects = Project.in_progress
 
         expect(projects).to include(open_project_1, open_project_2)
         expect(projects).to_not include(completed_project)
+        expect(projects).to_not include(inactive_project)
       end
 
       it "does not include unassigned projects" do
