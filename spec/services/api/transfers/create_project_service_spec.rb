@@ -69,6 +69,10 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
     expect(subject.prepare_id).to eq(123456)
   end
 
+  it "sets the initial state to be 'inactive'" do
+    expect(subject.state).to eq("inactive")
+  end
+
   context "when a user exists with the same email address" do
     it "assigns that user to the project and does not create another" do
       existing_user = create(

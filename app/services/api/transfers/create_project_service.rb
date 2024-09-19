@@ -31,7 +31,8 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
         region: establishment.region_code,
         new_trust_reference_number: new_trust_reference_number,
         new_trust_name: new_trust_name,
-        prepare_id: prepare_id
+        prepare_id: prepare_id,
+        state: :inactive
       )
 
       if project.save(validate: false)
