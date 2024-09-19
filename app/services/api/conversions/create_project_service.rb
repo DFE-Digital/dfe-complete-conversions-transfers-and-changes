@@ -46,7 +46,8 @@ class Api::Conversions::CreateProjectService
         regional_delivery_officer_id: user.id,
         tasks_data: tasks_data,
         region: establishment.region_code,
-        prepare_id: prepare_id
+        prepare_id: prepare_id,
+        state: :inactive
       )
 
       if project.save(validate: false)
