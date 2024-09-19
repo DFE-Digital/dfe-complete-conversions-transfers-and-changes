@@ -151,8 +151,6 @@ class Project < ApplicationRecord
     notes.find_by(task_identifier: :handover)
   end
 
-  # exclude for test coverage until the Person API is in production
-  # :nocov:
   private def fetch_member_of_parliament
     result = Api::Persons::Client.new.member_for_constituency(establishment.parliamentary_constituency)
 
@@ -162,7 +160,6 @@ class Project < ApplicationRecord
       result.object
     end
   end
-  # :nocov:
 
   private def fetch_establishment(urn)
     result = Api::AcademiesApi::Client.new.get_establishment(urn)
