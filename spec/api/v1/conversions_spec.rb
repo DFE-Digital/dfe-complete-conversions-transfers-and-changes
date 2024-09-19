@@ -173,7 +173,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."}.to_json)
-            expect(response.status).to eq(500)
+            expect(response.status).to eq(400)
           end
         end
 
@@ -270,7 +270,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "New trust reference number The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234"}.to_json)
-            expect(response.status).to eq(500)
+            expect(response.status).to eq(400)
           end
         end
       end

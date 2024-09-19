@@ -23,7 +23,9 @@ class V1::Transfers < Grape::API
         requires :incoming_trust_ukprn, type: Integer
       end
 
-      desc "Create a transfer project"
+      desc "Create a transfer project" do
+        failure [{code: 400, message: "Bad request"}]
+      end
       post "/" do
         project_params = declared(params)
 
@@ -32,7 +34,7 @@ class V1::Transfers < Grape::API
 
         {transfer_project_id: project.id}
       rescue Api::Transfers::CreateProjectService::ValidationError => e
-        error!(e.message)
+        error!(e.message, 400)
       rescue Api::Transfers::CreateProjectService::CreationError => e
         error!(e.message)
       end
@@ -43,7 +45,9 @@ class V1::Transfers < Grape::API
           requires :new_trust_name, type: String
         end
 
-        desc "Create a form a MAT conversion project"
+        desc "Create a form a MAT transfer project" do
+          failure [{code: 400, message: "Bad request"}]
+        end
         post "/" do
           project_params = declared(params)
 
@@ -52,7 +56,7 @@ class V1::Transfers < Grape::API
 
           {transfer_project_id: project.id}
         rescue Api::Transfers::CreateProjectService::ValidationError => e
-          error!(e.message)
+          error!(e.message, 400)
         rescue Api::Transfers::CreateProjectService::CreationError => e
           error!(e.message)
         end
