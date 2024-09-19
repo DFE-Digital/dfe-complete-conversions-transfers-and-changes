@@ -126,7 +126,7 @@ RSpec.describe V1::Conversions do
               as: :json,
               headers: {Apikey: "testkey"}
 
-            expect(response.body).to eq({error: "Project could not be created via API, urn: 123456"}.to_json)
+            expect(response.body).to eq({error: "Conversion project could not be created via API, urn: 123456"}.to_json)
             expect(response.status).to eq(500)
           end
         end
@@ -173,7 +173,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."}.to_json)
-            expect(response.status).to eq(500)
+            expect(response.status).to eq(400)
           end
         end
 
@@ -270,7 +270,7 @@ RSpec.describe V1::Conversions do
               headers: {Apikey: "testkey"}
 
             expect(response.body).to eq({error: "New trust reference number The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234"}.to_json)
-            expect(response.status).to eq(500)
+            expect(response.status).to eq(400)
           end
         end
       end
@@ -279,6 +279,34 @@ RSpec.describe V1::Conversions do
         it "returns an error" do
           post "/api/v1/projects/conversions/form-a-mat", headers: {Apikey: "testkey"}
           expect(response.body).to include("urn is missing, advisory_board_date is missing, advisory_board_conditions is missing")
+        end
+      end
+
+      context "but project creation fails" do
+        before do
+          allow_any_instance_of(Conversion::Project).to receive(:save).and_return(nil)
+        end
+
+        it "returns an error" do
+          post "/api/v1/projects/conversions/form-a-mat",
+            params: {
+              urn: 123456,
+              new_trust_reference_number: "TR12345",
+              new_trust_name: "A new trust",
+              advisory_board_date: "2024-1-1",
+              advisory_board_conditions: "Some conditions",
+              provisional_conversion_date: "2025-1-1",
+              directive_academy_order: true,
+              created_by_email: regional_delivery_officer.email,
+              created_by_first_name: regional_delivery_officer.first_name,
+              created_by_last_name: regional_delivery_officer.last_name,
+              prepare_id: 12345
+            },
+            as: :json,
+            headers: {Apikey: "testkey"}
+
+          expect(response.body).to eq({error: "Conversion project could not be created via API, urn: 123456"}.to_json)
+          expect(response.status).to eq(500)
         end
       end
 
