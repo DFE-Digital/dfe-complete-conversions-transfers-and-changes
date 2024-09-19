@@ -260,6 +260,22 @@ RSpec.describe V1::Transfers do
           expect(response.status).to eq(400)
         end
       end
+
+      context "but project creation fails" do
+        before do
+          allow_any_instance_of(Transfer::Project).to receive(:save).and_return(nil)
+        end
+
+        it "returns an error" do
+          post "/api/v1/projects/transfers/form-a-mat",
+            params: valid_form_a_mat_transfer_parameters,
+            as: :json,
+            headers: {Apikey: "testkey"}
+
+          expect(response.body).to eq({error: "Transfer project could not be created via API, urn: 123456"}.to_json)
+          expect(response.status).to eq(500)
+        end
+      end
     end
   end
 end

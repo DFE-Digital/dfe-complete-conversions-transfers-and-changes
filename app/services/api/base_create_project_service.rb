@@ -3,7 +3,9 @@ class Api::BaseCreateProjectService
   include ActiveModel::Attributes
   include ActiveRecord::AttributeAssignment
 
-  class ProjectCreationError < StandardError; end
+  class CreationError < StandardError; end
+
+  class ValidationError < StandardError; end
 
   attribute :urn
   attribute :incoming_trust_ukprn
@@ -35,12 +37,12 @@ class Api::BaseCreateProjectService
     end
     user
   rescue ActiveRecord::RecordInvalid
-    raise ProjectCreationError.new("Failed to save user during API project creation, urn: #{urn}")
+    raise CreationError.new("Failed to save user during API project creation, urn: #{urn}")
   end
 
   private def establishment
     result = Api::AcademiesApi::Client.new.get_establishment(urn)
-    raise ProjectCreationError.new("Failed to fetch establishment from Academies API during project creation, urn: #{urn}") if result.error.present?
+    raise CreationError.new("Failed to fetch establishment from Academies API during project creation, urn: #{urn}") if result.error.present?
 
     result.object
   end

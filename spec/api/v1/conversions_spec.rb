@@ -282,6 +282,34 @@ RSpec.describe V1::Conversions do
         end
       end
 
+      context "but project creation fails" do
+        before do
+          allow_any_instance_of(Conversion::Project).to receive(:save).and_return(nil)
+        end
+
+        it "returns an error" do
+          post "/api/v1/projects/conversions/form-a-mat",
+            params: {
+              urn: 123456,
+              new_trust_reference_number: "TR12345",
+              new_trust_name: "A new trust",
+              advisory_board_date: "2024-1-1",
+              advisory_board_conditions: "Some conditions",
+              provisional_conversion_date: "2025-1-1",
+              directive_academy_order: true,
+              created_by_email: regional_delivery_officer.email,
+              created_by_first_name: regional_delivery_officer.first_name,
+              created_by_last_name: regional_delivery_officer.last_name,
+              prepare_id: 12345
+            },
+            as: :json,
+            headers: {Apikey: "testkey"}
+
+          expect(response.body).to eq({error: "Conversion project could not be created via API, urn: 123456"}.to_json)
+          expect(response.status).to eq(500)
+        end
+      end
+
       context "when the 'regular' conversion parameters are posted to the Form a MAT endpoint" do
         it "returns an error" do
           post "/api/v1/projects/conversions/form-a-mat",

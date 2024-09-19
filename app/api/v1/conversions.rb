@@ -29,7 +29,9 @@ class V1::Conversions < Grape::API
         project = service.call
 
         {conversion_project_id: project.id}
-      rescue Api::Conversions::CreateProjectService::ProjectCreationError => e
+      rescue Api::Conversions::CreateProjectService::ValidationError => e
+        error!(e.message)
+      rescue Api::Conversions::CreateProjectService::CreationError => e
         error!(e.message)
       end
 
@@ -47,7 +49,9 @@ class V1::Conversions < Grape::API
           project = service.call
 
           {conversion_project_id: project.id}
-        rescue Api::Conversions::CreateProjectService::ProjectCreationError => e
+        rescue Api::Conversions::CreateProjectService::ValidationError => e
+          error!(e.message)
+        rescue Api::Conversions::CreateProjectService::CreationError => e
           error!(e.message)
         end
       end

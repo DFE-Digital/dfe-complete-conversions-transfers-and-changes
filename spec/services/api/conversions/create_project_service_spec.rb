@@ -108,7 +108,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       it "returns an error" do
         expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          .to raise_error(Api::Conversions::CreateProjectService::CreationError,
             "Failed to save user during API project creation, urn: 123456")
       end
     end
@@ -131,7 +131,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       it "returns validation errors" do
         expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
             "Urn URN must be 6 digits long. For example, 123456. Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678.")
       end
     end
@@ -153,7 +153,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       it "returns validation errors" do
         expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
             "Prepare You must supply a Prepare ID when creating a project via the API")
       end
     end
@@ -181,7 +181,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       it "returns an error" do
         expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          .to raise_error(Api::Conversions::CreateProjectService::CreationError,
             "Failed to fetch establishment from Academies API during project creation, urn: 123456")
       end
     end
@@ -209,7 +209,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       it "returns an error" do
         expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          .to raise_error(Api::Conversions::CreateProjectService::CreationError,
             "Conversion project could not be created via API, urn: 123456")
       end
     end
@@ -267,8 +267,37 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       it "returns validation errors" do
         expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError,
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
             "New trust reference number The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234")
+      end
+    end
+
+    context "when the project cannot be saved" do
+      before do
+        allow_any_instance_of(Conversion::Project).to receive(:save).and_return(nil)
+      end
+
+      let(:user) { create(:regional_casework_services_user) }
+      let(:params) {
+        {
+          urn: 123456,
+          new_trust_reference_number: "TR12345",
+          new_trust_name: "The New Trust",
+          advisory_board_date: "2024-1-1",
+          advisory_board_conditions: "Some conditions",
+          provisional_conversion_date: "2025-1-1",
+          directive_academy_order: true,
+          created_by_email: "bob@education.gov.uk",
+          created_by_first_name: "Bob",
+          created_by_last_name: "Teacher",
+          prepare_id: 123456
+        }
+      }
+
+      it "raises an error" do
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::CreationError,
+            "Conversion project could not be created via API, urn: 123456")
       end
     end
   end
@@ -293,7 +322,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
     it "does not attempt to find or create a user" do
       allow(User).to receive(:find_or_create_by).and_call_original
 
-      expect { described_class.new(params).call }.to raise_error(Api::Conversions::CreateProjectService::ProjectCreationError)
+      expect { described_class.new(params).call }.to raise_error(Api::Conversions::CreateProjectService::ValidationError)
       expect(User).not_to have_received(:find_or_create_by)
     end
   end

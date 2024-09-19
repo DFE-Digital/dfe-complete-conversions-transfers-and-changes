@@ -91,7 +91,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       params[:created_by_email] = "invalid@example.com"
 
       expect { described_class.new(params).call }
-        .to raise_error(Api::Transfers::CreateProjectService::ProjectCreationError)
+        .to raise_error(Api::Transfers::CreateProjectService::CreationError)
     end
   end
 
@@ -102,7 +102,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
       expect { described_class.new(params).call }
         .to raise_error(
-          Api::Transfers::CreateProjectService::ProjectCreationError,
+          Api::Transfers::CreateProjectService::ValidationError,
           "Urn URN must be 6 digits long. For example, 123456."
         )
     end
@@ -115,7 +115,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
       expect { described_class.new(params).call }
         .to raise_error(
-          Api::Transfers::CreateProjectService::ProjectCreationError,
+          Api::Transfers::CreateProjectService::ValidationError,
           "Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."
         )
     end
@@ -128,7 +128,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
       expect { described_class.new(params).call }
         .to raise_error(
-          Api::Transfers::CreateProjectService::ProjectCreationError,
+          Api::Transfers::CreateProjectService::ValidationError,
           "Prepare You must supply a Prepare ID when creating a project via the API"
         )
     end
@@ -145,7 +145,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
       expect { described_class.new(params).call }
         .to raise_error(
-          Api::Transfers::CreateProjectService::ProjectCreationError,
+          Api::Transfers::CreateProjectService::CreationError,
           "Failed to fetch establishment from Academies API during project creation, urn: 123456"
         )
     end
@@ -162,7 +162,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
       expect { described_class.new(params).call }
         .to raise_error(
-          Api::Transfers::CreateProjectService::ProjectCreationError,
+          Api::Transfers::CreateProjectService::CreationError,
           "Transfer project could not be created via API, urn: 123456"
         )
     end
@@ -173,6 +173,22 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       expect(subject.new_trust_reference_number).to eql "TR12345"
       expect(subject.new_trust_name).to eql "A new trust"
     end
+
+    context "and the project cannot be saved" do
+      before do
+        allow_any_instance_of(Transfer::Project).to receive(:save).and_return(nil)
+      end
+
+      it "returns an error" do
+        params = valid_transfer_parameters
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::CreationError,
+            "Transfer project could not be created via API, urn: 123456"
+          )
+      end
+    end
   end
 
   context "when the parameters are invalid" do
@@ -182,7 +198,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
       allow(User).to receive(:find_or_create_by).and_call_original
 
-      expect { described_class.new(params).call }.to raise_error(Api::Transfers::CreateProjectService::ProjectCreationError)
+      expect { described_class.new(params).call }.to raise_error(Api::Transfers::CreateProjectService::ValidationError)
       expect(User).not_to have_received(:find_or_create_by)
     end
   end
