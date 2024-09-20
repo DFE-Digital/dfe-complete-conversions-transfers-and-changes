@@ -35,7 +35,7 @@
               summary_list.with_row do |row|
                 row.with_key { t("project_information.show.academy_details.rows.sharepoint_folder") }
                 row.with_value { safe_link_to(t("project_information.show.academy_details.values.sharepoint_folder"), project.establishment_sharepoint_link) }
-                row.with_action(text: "Change", href: transfers_edit_path(@project, anchor: "sharepoint-folder-links"), visually_hidden_text: "edit sharepoint folder link")
+                row.with_action(text: "Change", href: conversions_edit_path(@project, anchor: "sharepoint-folder-links"), visually_hidden_text: "edit sharepoint folder link")
               end
             end %>
 
