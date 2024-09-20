@@ -97,15 +97,15 @@ module Export::Csv::SchoolPresenterModule
   alias_method :school_sharepoint_link_with_academy_label, :school_sharepoint_folder
 
   def school_main_contact_name
-    @project.establishment_main_contact&.name
+    school_or_academy_contact&.name
   end
 
   def school_main_contact_email
-    @project.establishment_main_contact&.email
+    school_or_academy_contact&.email
   end
 
   def school_main_contact_role
-    @project.establishment_main_contact&.title
+    school_or_academy_contact&.title
   end
 
   def headteacher_contact_name
@@ -125,5 +125,9 @@ module Export::Csv::SchoolPresenterModule
     return unless @project.key_contacts&.headteacher.present?
 
     @project.key_contacts.headteacher.email
+  end
+
+  private def school_or_academy_contact
+    @contacts_fetcher.school_or_academy_contact
   end
 end

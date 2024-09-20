@@ -23,6 +23,16 @@ class ContactsFetcherService
     all_project_contacts.sort_by(&:name).group_by(&:category)
   end
 
+  def school_or_academy_contact
+    return if @all_contacts["school_or_academy"].nil?
+
+    if @project.establishment_main_contact_id.present?
+      @all_contacts["school_or_academy"].find { |c| c.id == @project.establishment_main_contact_id }
+    else
+      @all_contacts["school_or_academy"].first
+    end
+  end
+
   def local_authority_contact
     return if @all_contacts["local_authority"].nil?
 

@@ -8,7 +8,7 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
 
   before do
     mock_successful_api_response_to_create_any_project
-    project.establishment_main_contact = contact
+    allow(project).to receive(:establishment_main_contact_id).and_return(contact.id)
     allow(project).to receive(:director_of_child_services).and_return(director_of_child_services)
   end
 

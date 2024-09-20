@@ -142,9 +142,9 @@ en:
           conversion_type: Conversion type
           transfer_type: Transfer type
           esfa_notes: ESFA notes
-          school_main_contact_email: Primary contact for school email
-          school_main_contact_name: Primary contact for school name
-          school_main_contact_role: Primary contact for school role
+          school_main_contact_email: School contact email
+          school_main_contact_name: School contact name
+          school_main_contact_role: School contact role
           headteacher_contact_name: Headteacher name
           headteacher_contact_role: Headteacher role
           headteacher_contact_email: Headteacher email
