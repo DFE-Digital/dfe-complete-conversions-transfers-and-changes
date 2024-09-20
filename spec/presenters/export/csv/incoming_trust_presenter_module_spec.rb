@@ -7,7 +7,7 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
 
   before do
     mock_successful_api_response_to_create_any_project
-    project.incoming_trust_main_contact = incoming_trust_main_contact
+    allow(project).to receive(:incoming_trust_main_contact_id).and_return(incoming_trust_main_contact.id)
   end
 
   it "presents the identifier" do

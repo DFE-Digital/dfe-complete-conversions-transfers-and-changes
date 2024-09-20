@@ -22,9 +22,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   CEO’s details' task is now included in the RPA, SUG and FA letters export. The
   contacts role will always be exported as 'CEO'.
 - Team lead users can now use the all projects and by month exports.
-- The primary contact for the incoming trust in the export no longer uses the
-  first contact if one is not set.
-- The primary contact for the incoming trust is now labelled in the export.
 - The primary contact for the outgoing trust in the export no longer uses the
   first contact if one is not set.
 - The primary contact for the outgoing trust is now labelled in the export.
