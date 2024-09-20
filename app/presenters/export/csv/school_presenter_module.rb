@@ -115,10 +115,9 @@ module Export::Csv::SchoolPresenterModule
   end
 
   def headteacher_contact_role
-    # when exported this is ALWAYS 'headteacher'
     return unless @project.key_contacts&.headteacher.present?
 
-    "Headteacher"
+    @project.key_contacts.headteacher.title
   end
 
   def headteacher_contact_email
