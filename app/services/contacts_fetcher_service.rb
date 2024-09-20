@@ -53,7 +53,6 @@ class ContactsFetcherService
     end
   end
 
-
   def local_authority_contact
     return if @all_contacts["local_authority"].nil?
 

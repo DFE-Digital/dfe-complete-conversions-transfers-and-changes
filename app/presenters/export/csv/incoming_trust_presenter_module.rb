@@ -78,10 +78,9 @@ module Export::Csv::IncomingTrustPresenterModule
   end
 
   def incoming_trust_ceo_contact_role
-    # when exported this is ALWAYS 'CEO'
     return unless @project.key_contacts&.incoming_trust_ceo.present?
 
-    "CEO"
+    @project.key_contacts.incoming_trust_ceo.title
   end
 
   def incoming_trust_ceo_contact_email
