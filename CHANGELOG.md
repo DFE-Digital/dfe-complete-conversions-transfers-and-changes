@@ -32,6 +32,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   first contact if one is not set.
 - The primary contact for the outgoing trust is now labelled in the export.
 
+### Fixed
+
+- Corrected the Edit link for Sharepoint links on Conversions, it was pointing
+  to the Transfers edit page
+
 ## [Release-88][release-88]
 
 ### Changed
