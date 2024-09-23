@@ -60,15 +60,15 @@ module Export::Csv::IncomingTrustPresenterModule
   end
 
   def incoming_trust_main_contact_name
-    @project.incoming_trust_main_contact&.name
+    incoming_trust_contact&.name
   end
 
   def incoming_trust_main_contact_role
-    @project.incoming_trust_main_contact&.title
+    incoming_trust_contact&.title
   end
 
   def incoming_trust_main_contact_email
-    @project.incoming_trust_main_contact&.email
+    incoming_trust_contact&.email
   end
 
   def incoming_trust_ceo_contact_name
@@ -78,10 +78,9 @@ module Export::Csv::IncomingTrustPresenterModule
   end
 
   def incoming_trust_ceo_contact_role
-    # when exported this is ALWAYS 'CEO'
     return unless @project.key_contacts&.incoming_trust_ceo.present?
 
-    "CEO"
+    @project.key_contacts.incoming_trust_ceo.title
   end
 
   def incoming_trust_ceo_contact_email
@@ -94,5 +93,9 @@ module Export::Csv::IncomingTrustPresenterModule
     return unless @project.incoming_trust_sharepoint_link.present?
 
     @project.incoming_trust_sharepoint_link
+  end
+
+  private def incoming_trust_contact
+    @contacts_fetcher.incoming_trust_contact
   end
 end

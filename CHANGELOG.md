@@ -10,27 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Requests to the Academies API now includes a User-Agent HTTP Header
 - AOPU becomes SOPU
-- The primary contact for school in the export no longer uses the first contact
-  if one is not set.
-- The primary contact for the school is now labelled in the export.
 - The content on the main contact task has been updated for accuracy on both
   conversions and transfers.
 
 ### Added
 
-- The headteacher contact selected in the 'Confirm the headteacher’s details'
-  task is now included in the RPA, SUG and FA letters export. The contacts role
-  will always be exported as 'Headteacher'.
-- The incoming trust CEO contact selected in the 'Confirm the incoming trust
-  CEO’s details' task is now included in the RPA, SUG and FA letters export. The
-  contacts role will always be exported as 'CEO'.
 - Team lead users can now use the all projects and by month exports.
-- The primary contact for the incoming trust in the export no longer uses the
-  first contact if one is not set.
-- The primary contact for the incoming trust is now labelled in the export.
-- The primary contact for the outgoing trust in the export no longer uses the
-  first contact if one is not set.
-- The primary contact for the outgoing trust is now labelled in the export.
 
 ### Fixed
 
