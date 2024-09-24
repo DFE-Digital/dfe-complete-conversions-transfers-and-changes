@@ -207,6 +207,21 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
     end
   end
 
+  describe "form a MAT projects" do
+    it "creates a new form a MAT project" do
+      params = valid_transfer_parameters
+      params[:incoming_trust_ukprn] = nil
+
+      subject = described_class.new(params).call
+      expect(subject).to be_a Transfer::Project
+      expect(subject.persisted?).to be true
+
+      expect(subject.urn).to eql 123456
+      expect(subject.transfer_date).to eql Date.new(2025, 1, 1)
+      expect(subject.form_a_mat?).to be true
+    end
+  end
+
   describe "groups" do
     context "when there is a group id" do
       context "when the group does not exist" do
