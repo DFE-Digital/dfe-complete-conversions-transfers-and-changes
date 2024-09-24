@@ -21,6 +21,8 @@ class Api::BaseCreateProjectService
   attribute :prepare_id
 
   validates :urn, presence: true, urn: true
+  validates_with UrnUniqueForApiValidator
+
   validates :incoming_trust_ukprn, ukprn: true, if: -> { incoming_trust_ukprn.present? }
   validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
   validates :new_trust_name, presence: true, if: -> { new_trust_reference_number.present? }

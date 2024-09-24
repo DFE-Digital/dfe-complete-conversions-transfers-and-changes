@@ -268,4 +268,18 @@ RSpec.describe Api::Conversions::CreateProjectService do
       end
     end
   end
+
+  describe "validations" do
+    context "when there is a in progress conversion project with the same URN" do
+      it "raises an error" do
+        create(:conversion_project, urn: 123456)
+
+        expect { described_class.new(valid_parameters).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "Urn There is already an in-progress project with this URN"
+          )
+      end
+    end
+  end
 end
