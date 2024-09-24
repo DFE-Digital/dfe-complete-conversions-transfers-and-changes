@@ -206,4 +206,64 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       expect(User).not_to have_received(:find_or_create_by)
     end
   end
+
+  describe "groups" do
+    context "when there is a group id" do
+      context "when the group does not exist" do
+        it "creates the group and adds the project" do
+          params = valid_transfer_parameters
+          params[:group_id] = "GRP_00000001"
+
+          subject = described_class.new(params).call
+
+          expect(subject.group).to be_present
+          expect(subject.group.group_identifier).to eql "GRP_00000001"
+          expect(ProjectGroup.count).to be 1
+        end
+      end
+
+      context "but the id is not valid" do
+        it "is invalid" do
+          params = valid_transfer_parameters
+          params[:group_id] = "G0001"
+
+          subject = described_class.new(params)
+
+          expect(subject).to be_invalid
+        end
+      end
+
+      context "when the group already exists" do
+        it "adds the project without creating a new group" do
+          ProjectGroup.create(
+            group_identifier: "GRP_00000002",
+            trust_ukprn: 10066123
+          )
+          params = valid_transfer_parameters
+          params[:group_id] = "GRP_00000002"
+
+          subject = described_class.new(params).call
+
+          expect(subject.group).to be_present
+          expect(subject.group.group_identifier).to eql "GRP_00000002"
+          expect(ProjectGroup.count).to be 1
+        end
+
+        context "but the incoming trust UKPRN does not match the others in the group" do
+          it "is invalid" do
+            ProjectGroup.create(
+              group_identifier: "GRP_00000002",
+              trust_ukprn: 10000000
+            )
+            params = valid_transfer_parameters
+            params[:group_id] = "GRP_00000002"
+
+            subject = described_class.new(params)
+
+            expect(subject).to be_invalid
+          end
+        end
+      end
+    end
+  end
 end

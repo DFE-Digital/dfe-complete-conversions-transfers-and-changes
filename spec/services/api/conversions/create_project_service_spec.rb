@@ -5,6 +5,21 @@ RSpec.describe Api::Conversions::CreateProjectService do
     mock_successful_api_response_to_create_any_project
   end
 
+  def valid_parameters
+    {
+      urn: 123456,
+      incoming_trust_ukprn: 10066123,
+      advisory_board_date: "2024-1-1",
+      advisory_board_conditions: "Some conditions",
+      provisional_conversion_date: "2025-1-1",
+      directive_academy_order: true,
+      created_by_email: "test.user@education.gov.uk",
+      created_by_first_name: "Test",
+      created_by_last_name: "User",
+      prepare_id: 123456
+    }
+  end
+
   context "a 'regular' Conversion project" do
     context "when the params contain details for an existing user" do
       let(:user) { create(:regional_casework_services_user) }
@@ -324,6 +339,66 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
       expect { described_class.new(params).call }.to raise_error(Api::Conversions::CreateProjectService::ValidationError)
       expect(User).not_to have_received(:find_or_create_by)
+    end
+  end
+
+  describe "groups" do
+    context "when there is a group id" do
+      context "when the group does not exist" do
+        it "creates the group and adds the project" do
+          params = valid_parameters
+          params[:group_id] = "GRP_00000001"
+
+          subject = described_class.new(params).call
+
+          expect(subject.group).to be_present
+          expect(subject.group.group_identifier).to eql "GRP_00000001"
+          expect(ProjectGroup.count).to be 1
+        end
+      end
+
+      context "but the id is not valid" do
+        it "is invalid" do
+          params = valid_parameters
+          params[:group_id] = "G0001"
+
+          subject = described_class.new(params)
+
+          expect(subject).to be_invalid
+        end
+      end
+
+      context "when the group already exists" do
+        it "adds the project without creating a new group" do
+          ProjectGroup.create(
+            group_identifier: "GRP_00000002",
+            trust_ukprn: 10066123
+          )
+          params = valid_parameters
+          params[:group_id] = "GRP_00000002"
+
+          subject = described_class.new(params).call
+
+          expect(subject.group).to be_present
+          expect(subject.group.group_identifier).to eql "GRP_00000002"
+          expect(ProjectGroup.count).to be 1
+        end
+
+        context "but the incoming trust UKPRN does not match the others in the group" do
+          it "is invalid" do
+            ProjectGroup.create(
+              group_identifier: "GRP_00000002",
+              trust_ukprn: 10000000
+            )
+            params = valid_parameters
+            params[:group_id] = "GRP_00000002"
+
+            subject = described_class.new(params)
+
+            expect(subject).to be_invalid
+          end
+        end
+      end
     end
   end
 end

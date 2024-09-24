@@ -14,6 +14,7 @@ class V1::Conversions < Grape::API
       requires :created_by_first_name, type: String
       requires :created_by_last_name, type: String
       requires :prepare_id, type: Integer
+      optional :group_id, type: String
     end
 
     resource :conversions do

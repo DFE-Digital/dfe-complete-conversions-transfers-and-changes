@@ -17,6 +17,7 @@ class Api::BaseCreateProjectService
   attribute :created_by_last_name
   attribute :new_trust_reference_number
   attribute :new_trust_name
+  attribute :group_id
   attribute :prepare_id
 
   validates :urn, presence: true, urn: true
@@ -25,8 +26,19 @@ class Api::BaseCreateProjectService
   validates :new_trust_name, presence: true, if: -> { new_trust_reference_number.present? }
   validates :prepare_id, presence: true
 
+  validates_with GroupIdValidator
+
   def initialize(project_params)
     super
+  end
+
+  private def group
+    return nil unless group_id.present?
+
+    ProjectGroup.find_or_create_by(
+      group_identifier: group_id,
+      trust_ukprn: incoming_trust_ukprn
+    )
   end
 
   private def find_or_create_user
