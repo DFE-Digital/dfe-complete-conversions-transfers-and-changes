@@ -7,7 +7,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
     let(:establishment) { build(:academies_api_establishment) }
     before do
       mock_academies_api_establishment_success(urn: 123456)
-      mock_successful_api_trust_response(ukprn: 10061021)
+      mock_academies_api_trust_success(ukprn: 10061021)
 
       ActiveJob::Base.queue_adapter = :test
       ActiveJob::Base.queue_adapter.enqueued_jobs.clear
@@ -584,7 +584,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
 
     before do
       mock_academies_api_establishment_success(urn: 123456)
-      mock_successful_api_trust_response(ukprn: 10061021)
+      mock_academies_api_trust_success(ukprn: 10061021)
     end
 
     context "when the form is valid" do

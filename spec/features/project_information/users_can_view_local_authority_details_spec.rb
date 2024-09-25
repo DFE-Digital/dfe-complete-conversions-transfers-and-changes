@@ -23,7 +23,7 @@ RSpec.feature "Users can view local authority details" do
     let(:local_authority) { nil }
 
     before do
-      mock_successful_api_trust_response(ukprn: any_args)
+      mock_academies_api_trust_success(ukprn: any_args)
 
       establishment = build(:academies_api_establishment)
       fake_result = Api::AcademiesApi::Client::Result.new(establishment, nil)

@@ -29,51 +29,22 @@ module AcademiesApiHelpers
 
   def mock_successful_api_response_to_create_any_project
     mock_academies_api_establishment_success(urn: any_args)
-    mock_successful_api_trust_response(ukprn: any_args)
+    mock_academies_api_trust_success(ukprn: any_args)
   end
 
   def mock_successful_api_responses(urn:, ukprn:)
     mock_academies_api_establishment_success(urn:)
-    mock_successful_api_trust_response(ukprn:)
-  end
-
-  def mock_successful_api_trust_response(ukprn:, trust: nil)
-    trust = build(:academies_api_trust) if trust.nil?
-
-    fake_result = Api::AcademiesApi::Client::Result.new(trust, nil)
-    test_client = Api::AcademiesApi::Client.new
-
-    allow(test_client).to receive(:get_trust).with(ukprn).and_return(fake_result)
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
-
-    test_client
+    mock_academies_api_trust_success(ukprn:)
   end
 
   def mock_timeout_api_responses(urn:, ukprn:)
     mock_academies_api_establishment_error(urn:)
-    mock_timeout_api_trust_response(ukprn:)
-  end
-
-  def mock_trust_not_found(ukprn:)
-    mock_client = Api::AcademiesApi::Client.new
-    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
-    allow(mock_client).to receive(:get_trust).with(ukprn).and_return(not_found_result)
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
-  end
-
-  def mock_timeout_api_trust_response(ukprn:)
-    test_client = Api::AcademiesApi::Client.new
-
-    allow(test_client).to receive(:get_trust).with(ukprn).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new))
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+    mock_academies_api_trust_error(ukprn:)
   end
 
   def mock_unauthorised_api_responses(urn:, ukprn:)
-    test_client = Api::AcademiesApi::Client.new
-
-    allow(test_client).to receive(:get_trust).with(ukprn).and_raise(Api::AcademiesApi::Client::UnauthorisedError)
-    allow(test_client).to receive(:get_establishment).with(urn).and_raise(Api::AcademiesApi::Client::UnauthorisedError)
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+    mock_academies_api_establishment_unauthorised(urn: urn)
+    mock_academies_api_trust_unauthorised(ukprn: ukprn)
   end
 
   def mock_api_for_editing
@@ -159,5 +130,46 @@ module AcademiesApiHelpers
     allow(test_client).to receive(:get_establishment).with(urn).and_return(result)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
     test_client
+  end
+
+  # Trust endpoints
+  #
+  # Individual response for getting a trust
+  #
+  # Success
+  def mock_academies_api_trust_success(ukprn:, trust: nil)
+    trust = build(:academies_api_trust) if trust.nil?
+
+    fake_result = Api::AcademiesApi::Client::Result.new(trust, nil)
+    test_client = Api::AcademiesApi::Client.new
+
+    allow(test_client).to receive(:get_trust).with(ukprn).and_return(fake_result)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+
+    test_client
+  end
+
+  # Not found
+  def mock_academies_api_trust_not_found(ukprn:)
+    mock_client = Api::AcademiesApi::Client.new
+    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
+    allow(mock_client).to receive(:get_trust).with(ukprn).and_return(not_found_result)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
+  end
+
+  # Unauthorised
+  def mock_academies_api_trust_unauthorised(ukprn:)
+    test_client = Api::AcademiesApi::Client.new
+
+    allow(test_client).to receive(:get_trust).with(ukprn).and_raise(Api::AcademiesApi::Client::UnauthorisedError)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+  end
+
+  # Error
+  def mock_academies_api_trust_error(ukprn:)
+    test_client = Api::AcademiesApi::Client.new
+
+    allow(test_client).to receive(:get_trust).with(ukprn).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new))
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 end

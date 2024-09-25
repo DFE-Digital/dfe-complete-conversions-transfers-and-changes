@@ -224,7 +224,7 @@ RSpec.describe Project, type: :model do
     context "when the API returns a successful response" do
       before do
         mock_academies_api_establishment_success(urn: urn, establishment: establishment)
-        mock_successful_api_trust_response(ukprn: 10061021)
+        mock_academies_api_trust_success(ukprn: 10061021)
       end
 
       it "retreives establishment data from the Academies API" do
@@ -291,7 +291,7 @@ RSpec.describe Project, type: :model do
       subject { described_class.new(incoming_trust_ukprn: ukprn) }
 
       context "when the API returns a successful response" do
-        before { mock_successful_api_trust_response(ukprn: ukprn, trust: trust) }
+        before { mock_academies_api_trust_success(ukprn: ukprn, trust: trust) }
 
         it "retreives conversion_project data from the Academies API" do
           expect(subject.incoming_trust).to eq trust
@@ -766,7 +766,7 @@ RSpec.describe Project, type: :model do
 
     before do
       mock_academies_api_establishment_success(urn: urn)
-      mock_successful_api_trust_response(ukprn: 10061021)
+      mock_academies_api_trust_success(ukprn: 10061021)
       allow_any_instance_of(Api::AcademiesApi::Establishment).to receive(:local_authority).and_return(local_authority)
     end
 

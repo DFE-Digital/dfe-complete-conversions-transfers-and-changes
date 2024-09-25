@@ -52,7 +52,7 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
       end
 
       it "the trust must exist" do
-        mock_trust_not_found(ukprn: 12345678)
+        mock_academies_api_trust_not_found(ukprn: 12345678)
 
         updated_params = {outgoing_trust_ukprn: "12345678"}
 
@@ -85,7 +85,7 @@ RSpec.describe Transfer::EditProjectForm, type: :model do
       end
 
       it "the trust must exist" do
-        mock_trust_not_found(ukprn: 12345678)
+        mock_academies_api_trust_not_found(ukprn: 12345678)
 
         updated_params = {incoming_trust_ukprn: "12345678"}
 

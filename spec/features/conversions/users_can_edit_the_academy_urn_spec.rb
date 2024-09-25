@@ -82,7 +82,7 @@ RSpec.feature "Users can edit the Academy URN" do
 
   context "when the Academy URN is not found" do
     before do
-      mock_successful_api_trust_response(ukprn: any_args)
+      mock_academies_api_trust_success(ukprn: any_args)
       mock_academies_api_establishment_success(urn: 111111)
     end
 
