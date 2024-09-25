@@ -21,6 +21,7 @@ class Api::BaseCreateProjectService
   attribute :prepare_id
 
   validates :urn, presence: true, urn: true
+  validate :establishment_exists, if: -> { urn.present? }
   validates_with UrnUniqueForApiValidator
 
   validates :incoming_trust_ukprn, ukprn: true, if: -> { incoming_trust_ukprn.present? }
@@ -31,6 +32,7 @@ class Api::BaseCreateProjectService
   validates_with GroupIdValidator
 
   def initialize(project_params)
+    @establishment = nil
     super
   end
 
@@ -54,10 +56,23 @@ class Api::BaseCreateProjectService
     raise CreationError.new("Failed to save user during API project creation, urn: #{urn}")
   end
 
-  private def establishment
-    result = Api::AcademiesApi::Client.new.get_establishment(urn)
-    raise CreationError.new("Failed to fetch establishment from Academies API during project creation, urn: #{urn}") if result.error.present?
+  private def establishment_exists
+    errors.add(:urn, :no_establishment_found) unless establishment
+  end
 
-    result.object
+  private def establishment
+    @establishment ||= fetch_establishment
+  end
+
+  private def fetch_establishment
+    result = Api::AcademiesApi::Client.new.get_establishment(urn)
+
+    if result.object.present?
+      @establishment = result.object
+    elsif result.error.is_a?(Api::AcademiesApi::Client::NotFoundError)
+      raise ValidationError.new("An establishment with URN: #{urn} could not be found on the Academies API")
+    else
+      raise CreationError.new("Failed to fetch establishment with URN: #{urn} on Academies API")
+    end
   end
 end

@@ -189,8 +189,8 @@ RSpec.describe V1::Transfers do
               as: :json,
               headers: {Apikey: "testkey"}
 
-            expect(response.body).to eq({error: "Failed to fetch establishment from Academies API during project creation, urn: 123456"}.to_json)
-            expect(response.status).to eq(500)
+            expect(response.body).to eq({error: "An establishment with URN: 123456 could not be found on the Academies API"}.to_json)
+            expect(response.status).to eq(400)
           end
         end
       end
