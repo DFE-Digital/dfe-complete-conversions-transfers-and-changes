@@ -16,11 +16,11 @@ class Api::AcademiesApi::Client
   end
 
   def get_establishment(urn)
-    response = fetch_establishments([urn])
+    response = fetch_establishment(urn)
 
     case response.status
     when 200
-      Result.new(Api::AcademiesApi::Establishment.new.from_hash(single_establishment_from_bulk(response)), nil)
+      Result.new(Api::AcademiesApi::Establishment.new.from_hash(JSON.parse(response.body)), nil)
     when 401
       raise Api::AcademiesApi::Client::UnauthorisedError.new("Problems connecting to the Academies API")
     when 404
@@ -41,19 +41,17 @@ class Api::AcademiesApi::Client
       Result.new(establishments, nil)
     when 401
       raise Api::AcademiesApi::Client::UnauthorisedError.new("Problems connecting to the Academies API")
-    when 404
-      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_establishments.errors.not_found", urns:)))
     else
       Result.new(nil, Error.new(I18n.t("academies_api.get_establishments.errors.other", urns:)))
     end
   end
 
   def get_trust(ukprn)
-    response = fetch_trusts([ukprn])
+    response = fetch_trust(ukprn)
 
     case response.status
     when 200
-      Result.new(Api::AcademiesApi::Trust.new.from_hash(single_trust_from_bulk(response)), nil)
+      Result.new(Api::AcademiesApi::Trust.new.from_hash(JSON.parse(response.body)), nil)
     when 404
       Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     else
@@ -70,11 +68,17 @@ class Api::AcademiesApi::Client
         Api::AcademiesApi::Trust.new.from_hash(trust)
       end
       Result.new(trusts, nil)
-    when 404
-      Result.new(nil, NotFoundError.new(I18n.t("academies_api.get_trusts.errors.not_found", ukprns:)))
     else
       Result.new(nil, Error.new(I18n.t("academies_api.get_trusts.errors.other", ukprns:)))
     end
+  end
+
+  private def fetch_establishment(urn)
+    Rails.logger.info("Academies API: fetching establishment: #{urn}")
+
+    @connection.get("/v4/establishment/urn/#{urn}")
+  rescue Faraday::Error => error
+    raise Error.new(error)
   end
 
   private def fetch_establishments(urns)
@@ -85,20 +89,20 @@ class Api::AcademiesApi::Client
     raise Error.new(error)
   end
 
+  private def fetch_trust(ukprn)
+    Rails.logger.info("Academies API: fetching trust: #{ukprn}")
+
+    @connection.get("/v4/trust/#{ukprn}")
+  rescue Faraday::Error => error
+    raise Error.new(error)
+  end
+
   private def fetch_trusts(ukprns)
     Rails.logger.info("Academies API: fetching trusts: #{ukprns}")
 
     @connection.get("/v4/trusts/bulk", {ukprns: ukprns})
   rescue Faraday::Error => error
     raise Error.new(error)
-  end
-
-  private def single_establishment_from_bulk(response)
-    JSON.parse(response.body)[0]
-  end
-
-  private def single_trust_from_bulk(response)
-    JSON.parse(response.body)[0]
   end
 
   private def default_connection
