@@ -1,14 +1,5 @@
 module AcademiesApiHelpers
-  def mock_successful_api_calls(establishment:, trust:)
-    fake_client = double(Api::AcademiesApi::Client,
-      get_establishments: Api::AcademiesApi::Client::Result.new([establishment], nil),
-      get_establishment: Api::AcademiesApi::Client::Result.new(establishment, nil),
-      get_trusts: Api::AcademiesApi::Client::Result.new([trust], nil),
-      get_trust: Api::AcademiesApi::Client::Result.new(trust, nil))
-
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(fake_client)
-  end
-
+  # Successful API calls for single and multiple establishments and trusts
   def mock_all_academies_api_responses
     establishment = build(:academies_api_establishment)
     trust = build(:academies_api_trust)
@@ -16,27 +7,30 @@ module AcademiesApiHelpers
     establishments = build_list(:academies_api_establishment, 3)
     trusts = build_list(:academies_api_trust, 3)
 
-    fake_client = double(Api::AcademiesApi::Client,
+    test_client = double(Api::AcademiesApi::Client,
       get_establishments: Api::AcademiesApi::Client::Result.new(establishments, nil),
       get_establishment: Api::AcademiesApi::Client::Result.new(establishment, nil),
       get_trusts: Api::AcademiesApi::Client::Result.new(trusts, nil),
       get_trust: Api::AcademiesApi::Client::Result.new(trust, nil))
 
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(fake_client)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
 
-    fake_client
+    test_client
   end
 
-  def mock_successful_api_response_to_create_any_project
-    mock_academies_api_establishment_success(urn: any_args)
-    mock_academies_api_trust_success(ukprn: any_args)
-  end
-
+  # Successful API calls for the supplied URN and UKPRN
   def mock_successful_api_responses(urn:, ukprn:)
     mock_academies_api_establishment_success(urn:)
     mock_academies_api_trust_success(ukprn:)
   end
 
+  # Successful API calls for any URN and UKPRN
+  def mock_successful_api_response_to_create_any_project
+    mock_academies_api_establishment_success(urn: any_args)
+    mock_academies_api_trust_success(ukprn: any_args)
+  end
+
+  # Successful API calls for editing a projects URN and UKPRN
   def mock_api_for_editing
     establishment = build(:academies_api_establishment)
     local_authority = build(:local_authority)
