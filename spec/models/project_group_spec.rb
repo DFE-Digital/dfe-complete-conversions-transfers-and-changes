@@ -25,7 +25,7 @@ RSpec.describe ProjectGroup, type: :model do
 
       mock_academies_api_trust_not_found(ukprn: subject.trust_ukprn)
 
-      expect(subject.trust.original_name).to eql "Could not find trust for UKPRN 1234567"
+      expect(subject.trust.original_name).to eql "Test Academies API not found error"
     end
 
     it "only calls the API once" do

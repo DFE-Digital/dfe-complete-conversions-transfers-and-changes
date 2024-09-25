@@ -25,6 +25,8 @@ class Api::BaseCreateProjectService
   validates_with UrnUniqueForApiValidator
 
   validates :incoming_trust_ukprn, ukprn: true, if: -> { incoming_trust_ukprn.present? }
+  validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
+
   validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
   validates :new_trust_name, presence: true, if: -> { new_trust_reference_number.present? }
   validates :prepare_id, presence: true
@@ -33,6 +35,7 @@ class Api::BaseCreateProjectService
 
   def initialize(project_params)
     @establishment = nil
+    @trust = nil
     super
   end
 
@@ -60,8 +63,16 @@ class Api::BaseCreateProjectService
     errors.add(:urn, :no_establishment_found) unless establishment
   end
 
+  private def trust_exists
+    errors.add(:incoming_trust_ukprn, :no_trust_found) unless trust
+  end
+
   private def establishment
     @establishment ||= fetch_establishment
+  end
+
+  private def trust
+    @trust ||= fetch_trust
   end
 
   private def fetch_establishment
@@ -73,6 +84,18 @@ class Api::BaseCreateProjectService
       raise ValidationError.new("An establishment with URN: #{urn} could not be found on the Academies API")
     else
       raise CreationError.new("Failed to fetch establishment with URN: #{urn} on Academies API")
+    end
+  end
+
+  private def fetch_trust
+    result = Api::AcademiesApi::Client.new.get_trust(incoming_trust_ukprn)
+
+    if result.object.present?
+      @trust = result.object
+    elsif result.error.is_a?(Api::AcademiesApi::Client::NotFoundError)
+      raise ValidationError.new("A trust with UKPRN: #{incoming_trust_ukprn} could not be found on the Academies API")
+    else
+      raise CreationError.new("Failed to fetch trust with UKPRN: #{incoming_trust_ukprn} on Academies API")
     end
   end
 end

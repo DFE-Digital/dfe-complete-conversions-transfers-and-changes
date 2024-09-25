@@ -198,6 +198,18 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       end
     end
 
+    context "when the trust for the incoming trust UKPRN cannot be found" do
+      before { mock_academies_api_trust_not_found(ukprn: 10066123) }
+
+      it "raises an error" do
+        expect { described_class.new(valid_parameters).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "A trust with UKPRN: 10066123 could not be found on the Academies API"
+          )
+      end
+    end
+
     context "when the Prepare ID is missing" do
       it "raises an error" do
         params = valid_parameters
@@ -255,7 +267,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
         mock_academies_api_establishment_error(urn: 123456)
       end
 
-      it "returns an error" do
+      it "raises an error" do
         params = valid_parameters
         params[:urn] = 123456
 
@@ -263,6 +275,20 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
           .to raise_error(
             Api::Transfers::CreateProjectService::CreationError,
             "Failed to fetch establishment with URN: 123456 on Academies API"
+          )
+      end
+    end
+
+    context "when the Academies API returns an error on fetching the incoming trust" do
+      before do
+        mock_academies_api_trust_error(ukprn: 10066123)
+      end
+
+      it "raises an error" do
+        expect { described_class.new(valid_parameters).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::CreationError,
+            "Failed to fetch trust with UKPRN: 10066123 on Academies API"
           )
       end
     end

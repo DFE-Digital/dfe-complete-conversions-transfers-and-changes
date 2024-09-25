@@ -136,7 +136,10 @@ module AcademiesApiHelpers
   # Not found
   def mock_academies_api_trust_not_found(ukprn:)
     mock_client = Api::AcademiesApi::Client.new
-    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
+    not_found_result = Api::AcademiesApi::Client::Result.new(
+      nil,
+      Api::AcademiesApi::Client::NotFoundError.new("Test Academies API not found error")
+    )
     allow(mock_client).to receive(:get_trust).with(ukprn).and_return(not_found_result)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
   end
@@ -145,7 +148,8 @@ module AcademiesApiHelpers
   def mock_academies_api_trust_unauthorised(ukprn:)
     test_client = Api::AcademiesApi::Client.new
 
-    allow(test_client).to receive(:get_trust).with(ukprn).and_raise(Api::AcademiesApi::Client::UnauthorisedError)
+    allow(test_client).to receive(:get_trust).with(ukprn)
+      .and_raise(Api::AcademiesApi::Client::UnauthorisedError.new("Test Academies API unauthorised error"))
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 
@@ -153,7 +157,10 @@ module AcademiesApiHelpers
   def mock_academies_api_trust_error(ukprn:)
     test_client = Api::AcademiesApi::Client.new
 
-    allow(test_client).to receive(:get_trust).with(ukprn).and_return(Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new))
+    allow(test_client).to receive(:get_trust).with(ukprn).and_return(Api::AcademiesApi::Client::Result.new(
+      nil,
+      Api::AcademiesApi::Client::Error.new("Test Academies API error")
+    ))
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 end
