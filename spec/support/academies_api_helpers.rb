@@ -28,25 +28,13 @@ module AcademiesApiHelpers
   end
 
   def mock_successful_api_response_to_create_any_project
-    mock_successful_api_establishment_response(urn: any_args)
+    mock_academies_api_establishment_success(urn: any_args)
     mock_successful_api_trust_response(ukprn: any_args)
   end
 
   def mock_successful_api_responses(urn:, ukprn:)
-    mock_successful_api_establishment_response(urn:)
+    mock_academies_api_establishment_success(urn:)
     mock_successful_api_trust_response(ukprn:)
-  end
-
-  def mock_successful_api_establishment_response(urn:, establishment: nil)
-    establishment = build(:academies_api_establishment) if establishment.nil?
-    local_authority = build(:local_authority)
-
-    fake_result = Api::AcademiesApi::Client::Result.new(establishment, nil)
-    test_client = Api::AcademiesApi::Client.new
-
-    allow(establishment).to receive(:local_authority).and_return(local_authority)
-    allow(test_client).to receive(:get_establishment).with(urn).and_return(fake_result)
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 
   def mock_successful_api_trust_response(ukprn:, trust: nil)
@@ -62,15 +50,8 @@ module AcademiesApiHelpers
   end
 
   def mock_timeout_api_responses(urn:, ukprn:)
-    mock_timeout_api_establishment_response(urn:)
+    mock_academies_api_establishment_error(urn:)
     mock_timeout_api_trust_response(ukprn:)
-  end
-
-  def mock_establishment_not_found(urn:)
-    mock_client = Api::AcademiesApi::Client.new
-    not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError)
-    allow(mock_client).to receive(:get_establishment).with(urn).and_return(not_found_result)
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
   end
 
   def mock_trust_not_found(ukprn:)
@@ -78,13 +59,6 @@ module AcademiesApiHelpers
     not_found_result = Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new(I18n.t("academies_api.get_trust.errors.not_found", ukprn: ukprn)))
     allow(mock_client).to receive(:get_trust).with(ukprn).and_return(not_found_result)
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(mock_client)
-  end
-
-  def mock_timeout_api_establishment_response(urn:)
-    test_client = Api::AcademiesApi::Client.new
-
-    allow(test_client).to receive(:get_establishment).with(urn).and_raise(Api::AcademiesApi::Client::Error)
-    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
   end
 
   def mock_timeout_api_trust_response(ukprn:)
@@ -131,5 +105,59 @@ module AcademiesApiHelpers
     allow(test_client).to receive(:get_trust).with(10064639).and_return(mock_after_outgoing_trust)
 
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+  end
+
+  # Establishment endpoint
+  #
+  # Individual response for the getting an establishment
+  #
+  # Success
+  def mock_academies_api_establishment_success(urn:, establishment: nil)
+    establishment = build(:academies_api_establishment) if establishment.nil?
+    local_authority = build(:local_authority)
+
+    test_client = Api::AcademiesApi::Client.new
+    result = Api::AcademiesApi::Client::Result.new(establishment, nil)
+
+    allow(establishment).to receive(:local_authority).and_return(local_authority)
+    allow(test_client).to receive(:get_establishment).with(urn).and_return(result)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+    test_client
+  end
+
+  # Not found
+  def mock_academies_api_establishment_not_found(urn:)
+    test_client = Api::AcademiesApi::Client.new
+    result = Api::AcademiesApi::Client::Result.new(
+      nil,
+      Api::AcademiesApi::Client::NotFoundError.new("Test Academies API not found error")
+    )
+
+    allow(test_client).to receive(:get_establishment).with(urn).and_return(result)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+    test_client
+  end
+
+  # Unauthorised
+  def mock_academies_api_establishment_unauthorised(urn:)
+    test_client = Api::AcademiesApi::Client.new
+
+    allow(test_client).to receive(:get_establishment).with(urn)
+      .and_raise(Api::AcademiesApi::Client::UnauthorisedError.new("Test Academies API unauthorised error"))
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+    test_client
+  end
+
+  # Error
+  def mock_academies_api_establishment_error(urn:)
+    test_client = Api::AcademiesApi::Client.new
+    result = Api::AcademiesApi::Client::Result.new(
+      nil,
+      Api::AcademiesApi::Client::Error.new("Test Academies API error")
+    )
+
+    allow(test_client).to receive(:get_establishment).with(urn).and_return(result)
+    allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+    test_client
   end
 end

@@ -223,7 +223,7 @@ RSpec.describe Project, type: :model do
 
     context "when the API returns a successful response" do
       before do
-        mock_successful_api_establishment_response(urn: urn, establishment:)
+        mock_academies_api_establishment_success(urn: urn, establishment: establishment)
         mock_successful_api_trust_response(ukprn: 10061021)
       end
 
@@ -765,7 +765,7 @@ RSpec.describe Project, type: :model do
     let(:local_authority) { create(:local_authority) }
 
     before do
-      mock_successful_api_establishment_response(urn: urn, establishment:)
+      mock_academies_api_establishment_success(urn: urn)
       mock_successful_api_trust_response(ukprn: 10061021)
       allow_any_instance_of(Api::AcademiesApi::Establishment).to receive(:local_authority).and_return(local_authority)
     end

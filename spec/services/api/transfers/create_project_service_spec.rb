@@ -140,7 +140,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
   context "when the Academies API returns an error on fetching the establishment" do
     before do
-      mock_establishment_not_found(urn: 123456)
+      mock_academies_api_establishment_not_found(urn: 123456)
     end
 
     it "returns an error" do
