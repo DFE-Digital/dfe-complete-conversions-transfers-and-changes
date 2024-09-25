@@ -37,16 +37,6 @@ module AcademiesApiHelpers
     mock_academies_api_trust_success(ukprn:)
   end
 
-  def mock_timeout_api_responses(urn:, ukprn:)
-    mock_academies_api_establishment_error(urn:)
-    mock_academies_api_trust_error(ukprn:)
-  end
-
-  def mock_unauthorised_api_responses(urn:, ukprn:)
-    mock_academies_api_establishment_unauthorised(urn: urn)
-    mock_academies_api_trust_unauthorised(ukprn: ukprn)
-  end
-
   def mock_api_for_editing
     establishment = build(:academies_api_establishment)
     local_authority = build(:local_authority)

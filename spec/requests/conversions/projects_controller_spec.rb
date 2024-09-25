@@ -10,7 +10,10 @@ RSpec.describe Conversions::ProjectsController do
 
   describe "academies API behaviour" do
     context "when the API times out" do
-      before { mock_timeout_api_responses(urn: 123456, ukprn: 10061021) }
+      before do
+        mock_academies_api_establishment_error(urn: 123456)
+        mock_academies_api_trust_error(ukprn: 10061021)
+      end
 
       it "renders the API time out page" do
         post conversions_path, params: {conversion_create_project_form: {urn: "123456"}}
@@ -20,7 +23,10 @@ RSpec.describe Conversions::ProjectsController do
     end
 
     context "when the API is not authenticated" do
-      before { mock_unauthorised_api_responses(urn: 123456, ukprn: 10061021) }
+      before do
+        mock_academies_api_establishment_unauthorised(urn: 123456)
+        mock_academies_api_trust_unauthorised(ukprn: 10061021)
+      end
 
       it "renders the API not authorised page" do
         post conversions_path, params: {conversion_create_project_form: {urn: "123456"}}
