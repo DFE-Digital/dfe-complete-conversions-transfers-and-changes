@@ -51,14 +51,14 @@ RSpec.feature "Users can view external contacts" do
   end
 
   scenario "if a project has a member of parliament, the MP is shown" do
-    member_details = Api::Persons::MemberDetails.new({firstName: "Robert", lastName: "Minister", email: "ministerr@parliament.gov.uk"}.with_indifferent_access)
+    member_details = Api::Persons::MemberDetails.new({firstName: "Robert", lastName: "Minister", displayNameWithTitle: "The Right Honourable Firstname Lastname", email: "ministerr@parliament.gov.uk"}.with_indifferent_access)
 
     allow_any_instance_of(Project).to receive(:member_of_parliament).and_return(member_details)
 
     visit project_contacts_path(project)
 
     expect(page).to have_content("Parliamentary contacts")
-    expect(page).to have_content("Robert Minister")
+    expect(page).to have_content("The Right Honourable Firstname Lastname")
     expect(page).to have_content("ministerr@parliament.gov.uk")
   end
 end

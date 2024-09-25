@@ -5,10 +5,11 @@ class Api::Persons::MemberDetails
     @first_name = args["firstName"]
     @last_name = args["lastName"]
     @email = args["email"]
+    @name_with_title = args["displayNameWithTitle"]
   end
 
   def name
-    "#{@first_name} #{@last_name}"
+    @name_with_title
   end
 
   # In the application context, all MPs have this address

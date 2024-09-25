@@ -368,7 +368,7 @@ RSpec.describe Project, type: :model do
       mock_successful_persons_api_client
 
       expect(project.member_of_parliament).to be_a Api::Persons::MemberDetails
-      expect(project.member_of_parliament.name).to eql "First Last"
+      expect(project.member_of_parliament.name).to eql "The Right Honourable Firstname Lastname"
     end
 
     it "only goes to the API once per instance of Project" do

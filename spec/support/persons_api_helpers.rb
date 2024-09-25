@@ -18,6 +18,7 @@ module PersonsApiHelpers
           [200, nil, {
             firstName: "First",
             lastName: "Last",
+            displayNameWithTitle: "The Right Honourable Firstname Lastname",
             email: "lastf@parliament.gov.uk"
           }.to_json]
         end
@@ -47,7 +48,7 @@ module PersonsApiHelpers
 
   def mock_successful_persons_api_client
     member = Api::Persons::MemberDetails.new(
-      {firstName: "First", lastName: "Last", email: "lastf@parliament.gov.uk"}.with_indifferent_access
+      {firstName: "First", lastName: "Last", displayNameWithTitle: "The Right Honourable Firstname Lastname", email: "lastf@parliament.gov.uk"}.with_indifferent_access
     )
     result = Api::Persons::Client::Result.new(member, nil)
     client = Api::Persons::Client.new

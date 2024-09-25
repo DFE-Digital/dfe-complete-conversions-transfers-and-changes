@@ -16,7 +16,7 @@ RSpec.describe Export::Csv::MpPresenterModule do
     before { mock_successful_persons_api_client }
 
     it "presents the name" do
-      expect(subject.mp_name).to eql "First Last"
+      expect(subject.mp_name).to eql "The Right Honourable Firstname Lastname"
     end
 
     it "presents the email" do
