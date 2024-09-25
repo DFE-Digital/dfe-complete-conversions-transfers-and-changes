@@ -14,6 +14,7 @@ class V1::Transfers < Grape::API
       requires :created_by_last_name, type: String
       requires :inadequate_ofsted, type: Boolean
       requires :financial_safeguarding_governance_issues, type: Boolean
+      requires :outgoing_trust_ukprn, type: Integer
       requires :outgoing_trust_to_close, type: Boolean
       requires :prepare_id, type: Integer
       optional :group_id, type: String
