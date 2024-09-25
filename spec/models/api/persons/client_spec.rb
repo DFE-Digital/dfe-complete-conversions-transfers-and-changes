@@ -28,7 +28,7 @@ RSpec.describe Api::Persons::Client do
 
           member = result.object
 
-          expect(member.name).to eql "First Last"
+          expect(member.name).to eql "The Right Honourable Firstname Lastname"
           expect(member.email).to eql "lastf@parliament.gov.uk"
         end
       end
@@ -87,7 +87,7 @@ RSpec.describe Api::Persons::Client do
 
         expect(Rails.cache).to have_received(:write).once
 
-        expect(member.name).to eql "First Last"
+        expect(member.name).to eql "The Right Honourable Firstname Lastname"
         expect(member.email).to eql "lastf@parliament.gov.uk"
       end
     end

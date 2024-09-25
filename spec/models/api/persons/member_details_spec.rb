@@ -5,13 +5,14 @@ RSpec.describe Api::Persons::MemberDetails do
     described_class.new({
       firstName: "First",
       lastName: "Last",
-      email: "lastf@parliament.gov.uk"
+      email: "lastf@parliament.gov.uk",
+      displayNameWithTitle: "The Right Honourable Firstname Lastname"
     }.with_indifferent_access)
   end
 
   describe "#name" do
     it "returns the full name of the member of parliament" do
-      expect(member.name).to eql "First Last"
+      expect(member.name).to eql "The Right Honourable Firstname Lastname"
     end
   end
 

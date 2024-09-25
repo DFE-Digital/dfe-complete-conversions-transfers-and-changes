@@ -18,7 +18,7 @@ RSpec.describe MemberOfParliamentController, type: :request do
       it "includes the members details" do
         get project_mp_path(project)
 
-        expect(response.body).to include("First Last")
+        expect(response.body).to include("The Right Honourable Firstname Lastname")
         expect(response.body).to include("lastf@parliament.gov.uk")
       end
     end
@@ -43,6 +43,7 @@ def test_successful_persons_api_call
   member = Api::Persons::MemberDetails.new({
     firstName: "First",
     lastName: "Last",
+    displayNameWithTitle: "The Right Honourable Firstname Lastname",
     email: "lastf@parliament.gov.uk"
   }.with_indifferent_access)
 
