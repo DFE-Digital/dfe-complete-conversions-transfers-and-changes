@@ -7,6 +7,7 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
   attribute :outgoing_trust_to_close, :boolean
   attribute :new_trust_reference_number, :string
   attribute :new_trust_name, :string
+  attribute :group_id, :string
 
   def call
     if valid?
@@ -32,7 +33,8 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
         new_trust_reference_number: new_trust_reference_number,
         new_trust_name: new_trust_name,
         prepare_id: prepare_id,
-        state: :inactive
+        state: :inactive,
+        group: group
       )
 
       if project.save(validate: false)

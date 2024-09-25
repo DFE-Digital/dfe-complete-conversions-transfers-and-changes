@@ -20,6 +20,7 @@ class Api::Conversions::CreateProjectService < Api::BaseCreateProjectService
         tasks_data: tasks_data,
         region: establishment.region_code,
         prepare_id: prepare_id,
+        group: group,
         state: :inactive
       )
 

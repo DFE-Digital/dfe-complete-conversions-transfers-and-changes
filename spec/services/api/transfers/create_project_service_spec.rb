@@ -206,4 +206,79 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       expect(User).not_to have_received(:find_or_create_by)
     end
   end
+
+  describe "form a MAT projects" do
+    it "creates a new form a MAT project" do
+      params = valid_transfer_parameters
+      params[:incoming_trust_ukprn] = nil
+
+      subject = described_class.new(params).call
+      expect(subject).to be_a Transfer::Project
+      expect(subject.persisted?).to be true
+
+      expect(subject.urn).to eql 123456
+      expect(subject.transfer_date).to eql Date.new(2025, 1, 1)
+      expect(subject.form_a_mat?).to be true
+    end
+  end
+
+  describe "groups" do
+    context "when there is a group id" do
+      context "when the group does not exist" do
+        it "creates the group and adds the project" do
+          params = valid_transfer_parameters
+          params[:group_id] = "GRP_00000001"
+
+          subject = described_class.new(params).call
+
+          expect(subject.group).to be_present
+          expect(subject.group.group_identifier).to eql "GRP_00000001"
+          expect(ProjectGroup.count).to be 1
+        end
+      end
+
+      context "but the id is not valid" do
+        it "is invalid" do
+          params = valid_transfer_parameters
+          params[:group_id] = "G0001"
+
+          subject = described_class.new(params)
+
+          expect(subject).to be_invalid
+        end
+      end
+
+      context "when the group already exists" do
+        it "adds the project without creating a new group" do
+          ProjectGroup.create(
+            group_identifier: "GRP_00000002",
+            trust_ukprn: 10066123
+          )
+          params = valid_transfer_parameters
+          params[:group_id] = "GRP_00000002"
+
+          subject = described_class.new(params).call
+
+          expect(subject.group).to be_present
+          expect(subject.group.group_identifier).to eql "GRP_00000002"
+          expect(ProjectGroup.count).to be 1
+        end
+
+        context "but the incoming trust UKPRN does not match the others in the group" do
+          it "is invalid" do
+            ProjectGroup.create(
+              group_identifier: "GRP_00000002",
+              trust_ukprn: 10000000
+            )
+            params = valid_transfer_parameters
+            params[:group_id] = "GRP_00000002"
+
+            subject = described_class.new(params)
+
+            expect(subject).to be_invalid
+          end
+        end
+      end
+    end
+  end
 end
