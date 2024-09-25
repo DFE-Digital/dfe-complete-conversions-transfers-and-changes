@@ -118,7 +118,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
       let(:user) { create(:regional_casework_services_user) }
 
       before do
-        mock_establishment_not_found(urn: 123456)
+        mock_academies_api_establishment_not_found(urn: 123456)
       end
 
       it "returns an error" do

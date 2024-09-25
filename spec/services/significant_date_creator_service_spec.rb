@@ -5,7 +5,7 @@ RSpec.describe SignificantDateCreatorService do
   let(:reasons) { [{type: :legacy_reason, note_text: "This is my note body."}] }
 
   before do
-    mock_successful_api_calls(establishment: any_args, trust: any_args)
+    mock_successful_api_response_to_create_any_project
   end
 
   describe "#update!" do

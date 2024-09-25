@@ -372,7 +372,7 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
 
       it "is invalid" do
         form = build(:create_transfer_project_form)
-        mock_establishment_not_found(urn: form.urn)
+        mock_academies_api_establishment_not_found(urn: form.urn)
 
         expect(form).to be_invalid
       end
@@ -419,7 +419,7 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     context "when no trust with that UKPRN exists in the API" do
       it "is invalid" do
         form = build(:create_transfer_project_form)
-        mock_trust_not_found(ukprn: form.incoming_trust_ukprn)
+        mock_academies_api_trust_not_found(ukprn: form.incoming_trust_ukprn)
 
         expect(form).to be_invalid(:existing_trust)
       end
@@ -434,7 +434,7 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     context "when no trust with that UKPRN exists in the API" do
       it "is invalid" do
         form = build(:create_transfer_project_form)
-        mock_trust_not_found(ukprn: form.outgoing_trust_ukprn)
+        mock_academies_api_trust_not_found(ukprn: form.outgoing_trust_ukprn)
 
         expect(form).to be_invalid
       end
@@ -489,8 +489,8 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     let(:establishment) { build(:academies_api_establishment) }
 
     before do
-      mock_successful_api_establishment_response(urn: 123456, establishment:)
-      mock_successful_api_trust_response(ukprn: 10061021)
+      mock_academies_api_establishment_success(urn: 123456)
+      mock_academies_api_trust_success(ukprn: 10061021)
     end
 
     context "when the form is valid" do

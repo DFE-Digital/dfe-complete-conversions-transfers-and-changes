@@ -150,7 +150,7 @@ RSpec.describe Conversion::Project do
 
     it "returns nil when the urn cannot be found" do
       mock_successful_api_response_to_create_any_project
-      mock_establishment_not_found(urn: 999999)
+      mock_academies_api_establishment_not_found(urn: 999999)
 
       project = build(:conversion_project, academy_urn: 999999)
 

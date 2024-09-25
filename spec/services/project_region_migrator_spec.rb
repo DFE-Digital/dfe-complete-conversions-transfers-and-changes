@@ -2,10 +2,7 @@ require "rails_helper"
 
 RSpec.describe ProjectRegionMigrator do
   before do
-    establishment = build(:academies_api_establishment)
-    trust = build(:academies_api_trust)
-
-    mock_successful_api_calls(establishment: establishment, trust: trust)
+    mock_successful_api_response_to_create_any_project
   end
 
   describe "#migrate_up!" do

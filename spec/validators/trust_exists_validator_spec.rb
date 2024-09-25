@@ -7,7 +7,7 @@ RSpec.describe TrustExistsValidator do
 
   context "when the trust exists" do
     it "is valid" do
-      mock_successful_api_trust_response(ukprn: 12345678)
+      mock_academies_api_trust_success(ukprn: 12345678)
       subject.ukprn_value = 12345678
 
       expect(subject).to be_valid
@@ -16,7 +16,7 @@ RSpec.describe TrustExistsValidator do
 
   context "when the trust does not exist" do
     it "is invalid and adds an error" do
-      mock_trust_not_found(ukprn: 12345678)
+      mock_academies_api_trust_not_found(ukprn: 12345678)
       subject.ukprn_value = 12345678
 
       expect(subject).to be_invalid
@@ -26,7 +26,7 @@ RSpec.describe TrustExistsValidator do
 
   context "when the ukprn is a string" do
     it "casts to an integer and tries" do
-      mock_successful_api_trust_response(ukprn: 12345678)
+      mock_academies_api_trust_success(ukprn: 12345678)
       subject.ukprn_value = "12345678"
 
       expect(subject).to be_valid
