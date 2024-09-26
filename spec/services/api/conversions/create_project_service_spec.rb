@@ -69,7 +69,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
       params[:created_by_email] = "invalid@example.com"
 
       expect { described_class.new(params).call }
-        .to raise_error(Api::Conversions::CreateProjectService::CreationError)
+        .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
     end
   end
 
@@ -315,6 +315,21 @@ RSpec.describe Api::Conversions::CreateProjectService do
         expect { described_class.new(params).call }
           .to raise_error(Api::Conversions::CreateProjectService::CreationError,
             "Conversion project could not be created via API, urn: 123456")
+      end
+    end
+
+    context "when the user cannot be saved" do
+      before do
+        allow(User).to receive(:find_or_create_by).and_raise(ActiveRecord::RecordInvalid)
+      end
+
+      it "raises an error" do
+        params = valid_parameters
+        params[:incoming_trust_ukprn] = nil
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::CreationError,
+            "Failed to save user during API project creation, urn: 123456")
       end
     end
   end

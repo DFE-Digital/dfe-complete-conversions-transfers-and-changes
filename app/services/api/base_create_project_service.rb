@@ -34,6 +34,9 @@ class Api::BaseCreateProjectService
   validates :new_trust_name, presence: true, if: -> { new_trust_reference_number.present? }
   validates :prepare_id, presence: true
 
+  validates :created_by_email, format: {with: /\A\S+@education.gov.uk\z/i}
+  validates :created_by_email, format: {with: URI::MailTo::EMAIL_REGEXP}
+
   validates_with GroupIdValidator
 
   def initialize(project_params)
