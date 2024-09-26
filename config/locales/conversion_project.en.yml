@@ -132,5 +132,6 @@ en:
         blank: Enter a month and year for the provisional conversion date, like 9 2023
         invalid: Enter a month and year for the provisional conversion date, like 9 2023
         must_be_in_the_future: Provisional conversion date must be in the future
+        must_be_first_of_the_month: must be on the first of the month
       academy_urn:
         matching_school_urn: Academy URN cannot be the same as the school URN

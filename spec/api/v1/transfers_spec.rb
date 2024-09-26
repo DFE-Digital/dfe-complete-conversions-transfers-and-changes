@@ -13,7 +13,7 @@ RSpec.describe V1::Transfers do
       created_by_last_name: regional_delivery_officer.last_name,
       inadequate_ofsted: true,
       financial_safeguarding_governance_issues: true,
-      outgoing_trust_ukprn: 567890,
+      outgoing_trust_ukprn: 12348765,
       outgoing_trust_to_close: true,
       prepare_id: 12345
     }
@@ -31,7 +31,7 @@ RSpec.describe V1::Transfers do
       created_by_last_name: regional_delivery_officer.last_name,
       inadequate_ofsted: true,
       financial_safeguarding_governance_issues: true,
-      outgoing_trust_ukprn: 567890,
+      outgoing_trust_ukprn: 12348765,
       outgoing_trust_to_close: true,
       prepare_id: 12345,
       new_trust_reference_number: "TR12345",
@@ -189,8 +189,8 @@ RSpec.describe V1::Transfers do
               as: :json,
               headers: {Apikey: "testkey"}
 
-            expect(response.body).to eq({error: "Failed to fetch establishment from Academies API during project creation, urn: 123456"}.to_json)
-            expect(response.status).to eq(500)
+            expect(response.body).to eq({error: "An establishment with URN: 123456 could not be found on the Academies API"}.to_json)
+            expect(response.status).to eq(400)
           end
         end
       end

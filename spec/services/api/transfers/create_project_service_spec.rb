@@ -1,33 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Api::Transfers::CreateProjectService, type: :model do
-  def valid_transfer_parameters
-    {
-      urn: 123456,
-      incoming_trust_ukprn: 10066123,
-      outgoing_trust_ukprn: 10010324,
-      advisory_board_date: "2024-1-1",
-      advisory_board_conditions: "Some conditions",
-      provisional_transfer_date: "2025-1-1",
-      directive_academy_order: true,
-      created_by_email: "test.user@education.gov.uk",
-      created_by_first_name: "Test",
-      created_by_last_name: "User",
-      two_requires_improvement: true,
-      prepare_id: 123456,
-      inadequate_ofsted: true,
-      financial_safeguarding_governance_issues: true,
-      outgoing_trust_to_close: true,
-      new_trust_reference_number: "TR12345",
-      new_trust_name: "A new trust"
-    }
-  end
-
   before do
     mock_successful_api_response_to_create_any_project
   end
 
-  subject { described_class.new(valid_transfer_parameters).call }
+  subject { described_class.new(valid_parameters).call }
 
   it "creates a new project" do
     expect(subject).to be_a Transfer::Project
@@ -91,7 +69,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
   context "when the user's email is not valid i.e. not @education.gov.uk" do
     it "raises an error" do
-      params = valid_transfer_parameters
+      params = valid_parameters
       params[:created_by_email] = "invalid@example.com"
 
       expect { described_class.new(params).call }
@@ -99,76 +77,18 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
     end
   end
 
-  context "when the URN is not invalid" do
-    it "raises an error" do
-      params = valid_transfer_parameters
-      params[:urn] = 123
-
-      expect { described_class.new(params).call }
-        .to raise_error(
-          Api::Transfers::CreateProjectService::ValidationError,
-          "Urn URN must be 6 digits long. For example, 123456."
-        )
-    end
-  end
-
-  context "when the incoming trust UKPRN is invalid" do
-    it "raises an error" do
-      params = valid_transfer_parameters
-      params[:incoming_trust_ukprn] = 87654321
-
-      expect { described_class.new(params).call }
-        .to raise_error(
-          Api::Transfers::CreateProjectService::ValidationError,
-          "Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."
-        )
-    end
-  end
-
-  context "when the Prepare ID is missing" do
-    it "raises an error" do
-      params = valid_transfer_parameters
-      params[:prepare_id] = nil
-
-      expect { described_class.new(params).call }
-        .to raise_error(
-          Api::Transfers::CreateProjectService::ValidationError,
-          "Prepare You must supply a Prepare ID when creating a project via the API"
-        )
-    end
-  end
-
-  context "when the Academies API returns an error on fetching the establishment" do
-    before do
-      mock_academies_api_establishment_not_found(urn: 123456)
+  describe "a Form a MAT Conversion project" do
+    it "saves the new trust details" do
+      expect(subject.new_trust_reference_number).to eql "TR12345"
+      expect(subject.new_trust_name).to eql "A new trust"
     end
 
-    it "returns an error" do
-      params = valid_transfer_parameters
-      params[:urn] = 123456
+    it "the project is a Form a MAT project" do
+      params = valid_parameters
+      params[:incoming_trust_ukprn] = nil
+      result = described_class.new(params).call
 
-      expect { described_class.new(params).call }
-        .to raise_error(
-          Api::Transfers::CreateProjectService::CreationError,
-          "Failed to fetch establishment from Academies API during project creation, urn: 123456"
-        )
-    end
-  end
-
-  context "when the project save fails for an unknown reason" do
-    before do
-      allow_any_instance_of(Transfer::Project).to receive(:save).and_return(nil)
-    end
-
-    it "returns an error" do
-      params = valid_transfer_parameters
-      params[:urn] = 123456
-
-      expect { described_class.new(params).call }
-        .to raise_error(
-          Api::Transfers::CreateProjectService::CreationError,
-          "Transfer project could not be created via API, urn: 123456"
-        )
+      expect(result.form_a_mat?).to be true
     end
   end
 
@@ -177,56 +97,13 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       expect(subject.new_trust_reference_number).to eql "TR12345"
       expect(subject.new_trust_name).to eql "A new trust"
     end
-
-    context "and the project cannot be saved" do
-      before do
-        allow_any_instance_of(Transfer::Project).to receive(:save).and_return(nil)
-      end
-
-      it "returns an error" do
-        params = valid_transfer_parameters
-
-        expect { described_class.new(params).call }
-          .to raise_error(
-            Api::Transfers::CreateProjectService::CreationError,
-            "Transfer project could not be created via API, urn: 123456"
-          )
-      end
-    end
-  end
-
-  context "when the parameters are invalid" do
-    it "does not attempt to find or create a user" do
-      params = valid_transfer_parameters
-      params[:urn] = 1234567890
-
-      allow(User).to receive(:find_or_create_by).and_call_original
-
-      expect { described_class.new(params).call }.to raise_error(Api::Transfers::CreateProjectService::ValidationError)
-      expect(User).not_to have_received(:find_or_create_by)
-    end
-  end
-
-  describe "form a MAT projects" do
-    it "creates a new form a MAT project" do
-      params = valid_transfer_parameters
-      params[:incoming_trust_ukprn] = nil
-
-      subject = described_class.new(params).call
-      expect(subject).to be_a Transfer::Project
-      expect(subject.persisted?).to be true
-
-      expect(subject.urn).to eql 123456
-      expect(subject.transfer_date).to eql Date.new(2025, 1, 1)
-      expect(subject.form_a_mat?).to be true
-    end
   end
 
   describe "groups" do
     context "when there is a group id" do
       context "when the group does not exist" do
         it "creates the group and adds the project" do
-          params = valid_transfer_parameters
+          params = valid_parameters
           params[:group_id] = "GRP_00000001"
 
           subject = described_class.new(params).call
@@ -239,7 +116,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
 
       context "but the id is not valid" do
         it "is invalid" do
-          params = valid_transfer_parameters
+          params = valid_parameters
           params[:group_id] = "G0001"
 
           subject = described_class.new(params)
@@ -254,7 +131,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
             group_identifier: "GRP_00000002",
             trust_ukprn: 10066123
           )
-          params = valid_transfer_parameters
+          params = valid_parameters
           params[:group_id] = "GRP_00000002"
 
           subject = described_class.new(params).call
@@ -270,7 +147,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
               group_identifier: "GRP_00000002",
               trust_ukprn: 10000000
             )
-            params = valid_transfer_parameters
+            params = valid_parameters
             params[:group_id] = "GRP_00000002"
 
             subject = described_class.new(params)
@@ -280,5 +157,229 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
         end
       end
     end
+  end
+
+  describe "validations" do
+    context "when the URN is invalid" do
+      it "raises an error" do
+        params = valid_parameters
+        params[:urn] = 123
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "Urn URN must be 6 digits long. For example, 123456."
+          )
+      end
+    end
+
+    context "when the establishment for the URN cannot be found" do
+      before { mock_academies_api_establishment_not_found(urn: 123456) }
+
+      it "raises an error" do
+        expect { described_class.new(valid_parameters).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "An establishment with URN: 123456 could not be found on the Academies API"
+          )
+      end
+    end
+
+    context "when the incoming trust UKPRN is invalid" do
+      it "raises an error" do
+        params = valid_parameters
+        params[:incoming_trust_ukprn] = 87654321
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."
+          )
+      end
+    end
+
+    context "when the trust for the incoming trust UKPRN cannot be found" do
+      before { mock_academies_api_trust_not_found(ukprn: 10066123) }
+
+      it "raises an error" do
+        expect { described_class.new(valid_parameters).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "A trust with UKPRN: 10066123 could not be found on the Academies API"
+          )
+      end
+    end
+
+    context "when the outgoing trust UKPRN is invalid" do
+      it "raises an error" do
+        params = valid_parameters
+        params[:outgoing_trust_ukprn] = 87654321
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "Outgoing trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."
+          )
+      end
+    end
+
+    context "when the trust for the outgoing trust UKPRN cannot be found" do
+      before { mock_academies_api_trust_not_found(ukprn: 12345678) }
+
+      it "raises an error" do
+        params = valid_parameters
+        params[:outgoing_trust_ukprn] = 12345678
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "A trust with UKPRN: 12345678 could not be found on the Academies API"
+          )
+      end
+    end
+
+    context "when the Prepare ID is missing" do
+      it "raises an error" do
+        params = valid_parameters
+        params[:prepare_id] = nil
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "Prepare You must supply a Prepare ID when creating a project via the API"
+          )
+      end
+    end
+
+    context "when there is a in progress transfer project with the same URN" do
+      it "raises an error" do
+        create(:transfer_project, urn: 123456)
+
+        expect { described_class.new(valid_parameters).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "Urn There is already an in-progress project with this URN"
+          )
+      end
+    end
+
+    context "when the parameters are invalid" do
+      it "does not attempt to find or create a user" do
+        allow(User).to receive(:find_or_create_by).and_call_original
+        params = valid_parameters
+        params[:incoming_trust_ukprn] = nil
+        params[:urn] = 1234
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(User).not_to have_received(:find_or_create_by)
+      end
+    end
+
+    context "when the new Trust Reference Number is not valid" do
+      it "returns validation errors" do
+        params = valid_parameters
+        params[:incoming_trust_ukprn] = nil
+        params[:new_trust_reference_number] = "12345"
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
+            "New trust reference number The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234")
+      end
+    end
+
+    context "when the advisory board date is in the future" do
+      it "raises a validation error" do
+        params = valid_parameters
+        params[:advisory_board_date] = Date.today + 2.years
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
+            "Advisory board date The advisory board date must be in the past")
+      end
+    end
+
+    context "when the provisional transfer date is not on the 1st" do
+      it "raises a validation error" do
+        params = valid_parameters
+        params[:provisional_transfer_date] = "2024-1-2"
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
+            "Provisional transfer date must be on the first of the month")
+      end
+    end
+  end
+
+  describe "errors" do
+    context "when the Academies API returns an error on fetching the establishment" do
+      before do
+        mock_academies_api_establishment_error(urn: 123456)
+      end
+
+      it "raises an error" do
+        params = valid_parameters
+        params[:urn] = 123456
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::CreationError,
+            "Failed to fetch establishment with URN: 123456 on Academies API"
+          )
+      end
+    end
+
+    context "when the Academies API returns an error on fetching the incoming trust" do
+      before do
+        mock_academies_api_trust_error(ukprn: 10066123)
+      end
+
+      it "raises an error" do
+        expect { described_class.new(valid_parameters).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::CreationError,
+            "Failed to fetch trust with UKPRN: 10066123 on Academies API"
+          )
+      end
+    end
+
+    context "when the project save fails for an unknown reason" do
+      before do
+        allow_any_instance_of(Transfer::Project).to receive(:save).and_return(nil)
+      end
+
+      it "raises an error" do
+        params = valid_parameters
+        params[:urn] = 123456
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::CreationError,
+            "Transfer project could not be created via API, urn: 123456"
+          )
+      end
+    end
+  end
+
+  def valid_parameters
+    {
+      urn: 123456,
+      incoming_trust_ukprn: 10066123,
+      outgoing_trust_ukprn: 10010324,
+      advisory_board_date: "2024-1-1",
+      advisory_board_conditions: "Some conditions",
+      provisional_transfer_date: "2025-1-1",
+      directive_academy_order: true,
+      created_by_email: "test.user@education.gov.uk",
+      created_by_first_name: "Test",
+      created_by_last_name: "User",
+      two_requires_improvement: true,
+      prepare_id: 123456,
+      inadequate_ofsted: true,
+      financial_safeguarding_governance_issues: true,
+      outgoing_trust_to_close: true,
+      new_trust_reference_number: "TR12345",
+      new_trust_name: "A new trust"
+    }
   end
 end

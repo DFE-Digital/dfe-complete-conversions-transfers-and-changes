@@ -179,7 +179,7 @@ RSpec.describe V1::Conversions do
 
         context "but the Academies API is not responding" do
           before do
-            mock_academies_api_establishment_not_found(urn: 121813)
+            mock_academies_api_establishment_error(urn: 121813)
           end
 
           it "returns an error" do
@@ -199,7 +199,7 @@ RSpec.describe V1::Conversions do
               as: :json,
               headers: {Apikey: "testkey"}
 
-            expect(response.body).to eq({error: "Failed to fetch establishment from Academies API during project creation, urn: 121813"}.to_json)
+            expect(response.body).to eq({error: "Failed to fetch establishment with URN: 121813 on Academies API"}.to_json)
             expect(response.status).to eq(500)
           end
         end
