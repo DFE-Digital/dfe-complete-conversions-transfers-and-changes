@@ -259,6 +259,17 @@ RSpec.describe Api::Conversions::CreateProjectService do
             "Advisory board date The advisory board date must be in the past")
       end
     end
+
+    context "when the provisional conversion date is not on the 1st" do
+      it "raises a validation error" do
+        params = valid_parameters
+        params[:provisional_conversion_date] = "2024-1-2"
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
+            "Provisional conversion date must be on the first of the month")
+      end
+    end
   end
 
   describe "errors" do
