@@ -1,5 +1,5 @@
 class Api::Conversions::CreateProjectService < Api::BaseCreateProjectService
-  attribute :provisional_conversion_date
+  attribute :provisional_conversion_date, :date
 
   def call
     if valid?

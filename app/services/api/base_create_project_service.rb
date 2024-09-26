@@ -7,18 +7,18 @@ class Api::BaseCreateProjectService
 
   class ValidationError < StandardError; end
 
-  attribute :urn
-  attribute :incoming_trust_ukprn
+  attribute :urn, :integer
+  attribute :incoming_trust_ukprn, :integer
   attribute :advisory_board_date, :date
-  attribute :advisory_board_conditions
-  attribute :directive_academy_order
-  attribute :created_by_email
-  attribute :created_by_first_name
-  attribute :created_by_last_name
-  attribute :new_trust_reference_number
-  attribute :new_trust_name
-  attribute :group_id
-  attribute :prepare_id
+  attribute :advisory_board_conditions, :string
+  attribute :directive_academy_order, :boolean
+  attribute :created_by_email, :string
+  attribute :created_by_first_name, :string
+  attribute :created_by_last_name, :string
+  attribute :new_trust_reference_number, :string
+  attribute :new_trust_name, :string
+  attribute :group_id, :string
+  attribute :prepare_id, :integer
 
   validates :urn, presence: true, urn: true
   validate :establishment_exists, if: -> { urn.present? }
