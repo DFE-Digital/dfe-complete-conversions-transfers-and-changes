@@ -25,7 +25,7 @@
               multiple: false,
               label: {text: t("helpers.label.dao_revocation_stepped_form.reason_safeguarding_addressed")} do %>
               <%= form.govuk_text_area :reason_safeguarding_addressed_note %>
-            <% end %>
+        <% end %>
 
         <%= form.govuk_check_box :reason_school_closed,
               1,
@@ -33,6 +33,14 @@
               multiple: false,
               label: {text: t("helpers.label.dao_revocation_stepped_form.reason_school_closed")} do %>
               <%= form.govuk_text_area :reason_school_closed_note %>
+        <% end %>
+
+        <%= form.govuk_check_box :reason_change_to_policy,
+              1,
+              0,
+              multiple: false,
+              label: {text: t("helpers.label.dao_revocation_stepped_form.reason_change_to_policy")} do %>
+          <%= form.govuk_text_area :reason_change_to_policy_note %>
         <% end %>
 
       <% end %>

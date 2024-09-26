@@ -72,6 +72,7 @@ en:
             reason_school_closed: School closed or closing
             reason_school_rating_improved: School rated good or outstanding
             reason_safeguarding_addressed: Safeguarding concerns addressed
+            reason_change_to_policy: Change to government policy
         change:
           reasons: Change
           minister_name: Change
@@ -103,9 +104,11 @@ en:
         reason_school_closed: School closed or closing
         reason_school_rating_improved: School rated good or outstanding
         reason_safeguarding_addressed: Safeguarding concerns addressed
-        reason_school_closed_note: Details
-        reason_school_rating_improved_note: Details
-        reason_safeguarding_addressed_note: Details
+        reason_change_to_policy: Change to government policy
+        reason_school_closed_note: Give reasons
+        reason_school_rating_improved_note: Give reasons
+        reason_safeguarding_addressed_note: Give reasons
+        reason_change_to_policy_note: Give reasons
         minister_name: Minister’s name
     hint:
       dao_revocation_stepped_form:

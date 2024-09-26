@@ -16,6 +16,8 @@ class DaoRevocationSteppedForm
   attribute :reason_school_rating_improved_note, :string
   attribute :reason_safeguarding_addressed, :boolean
   attribute :reason_safeguarding_addressed_note, :string
+  attribute :reason_change_to_policy, :boolean
+  attribute :reason_change_to_policy_note, :string
   attribute :minister_name, :string
   attribute :date_of_decision, :date
 
@@ -35,6 +37,10 @@ class DaoRevocationSteppedForm
   validates :reason_safeguarding_addressed_note,
     presence: {message: I18n.t("errors.attributes.base.blank")},
     if: -> { reason_safeguarding_addressed.present? },
+    on: :reasons
+  validates :reason_change_to_policy_note,
+    presence: {message: I18n.t("errors.attributes.base.blank")},
+    if: -> { reason_change_to_policy.present? },
     on: :reasons
 
   validates :minister_name, presence: true, on: :minister
@@ -70,6 +76,7 @@ class DaoRevocationSteppedForm
     reasons << :reason_school_closed if reason_school_closed
     reasons << :reason_school_rating_improved if reason_school_rating_improved
     reasons << :reason_safeguarding_addressed if reason_safeguarding_addressed
+    reasons << :reason_change_to_policy if reason_change_to_policy
 
     reasons
   end
@@ -79,7 +86,7 @@ class DaoRevocationSteppedForm
   end
 
   def checkable?
-    (reason_school_closed.present? || reason_school_rating_improved.present? || reason_safeguarding_addressed.present?) &&
+    (reason_school_closed.present? || reason_school_rating_improved.present? || reason_safeguarding_addressed.present? || reason_change_to_policy.present?) &&
       minister_name.present? && date_of_decision.present?
   end
 
@@ -88,9 +95,11 @@ class DaoRevocationSteppedForm
       reason_school_closed: reason_school_closed.to_s,
       reason_school_rating_improved: reason_school_rating_improved.to_s,
       reason_safeguarding_addressed: reason_safeguarding_addressed.to_s,
+      reason_change_to_policy: reason_change_to_policy.to_s,
       reason_school_closed_note: reason_school_closed_note.to_s,
       reason_school_rating_improved_note: reason_school_rating_improved_note.to_s,
       reason_safeguarding_addressed_note: reason_safeguarding_addressed_note.to_s,
+      reason_change_to_policy_note: reason_change_to_policy_note.to_s,
       minister_name: minister_name,
       date_of_decision: date_of_decision.to_s
     }
