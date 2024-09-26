@@ -31,7 +31,8 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
       form = described_class.new(
         reason_school_closed: false,
         reason_school_rating_improved: false,
-        reason_safeguarding_addressed: false
+        reason_safeguarding_addressed: false,
+        reason_change_to_policy: false
       )
 
       expect(form).to be_invalid(:reasons)
@@ -197,7 +198,8 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
       form = described_class.new(
         reason_school_closed: true,
         reason_school_rating_improved: false,
-        reason_safeguarding_addressed: true
+        reason_safeguarding_addressed: true,
+        reason_change_to_policy: false
       )
 
       expect(form.reasons).to eql [:reason_school_closed, :reason_safeguarding_addressed]
@@ -209,7 +211,8 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
       form = described_class.new(
         reason_school_closed: false,
         reason_school_rating_improved: false,
-        reason_safeguarding_addressed: false
+        reason_safeguarding_addressed: false,
+        reason_change_to_policy: false
       )
 
       expect(form.reasons_empty?).to be true
@@ -219,7 +222,8 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
       form = described_class.new(
         reason_school_closed: false,
         reason_school_rating_improved: true,
-        reason_safeguarding_addressed: false
+        reason_safeguarding_addressed: false,
+        reason_change_to_policy: false
       )
 
       expect(form.reasons_empty?).to be false
@@ -258,9 +262,11 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
         reason_school_closed: true,
         reason_school_rating_improved: false,
         reason_safeguarding_addressed: true,
+        reason_change_to_policy: false,
         reason_school_closed_note: "The reason the school is closing.",
         reason_school_rating_improved_note: "The school rating improved because.",
         reason_safeguarding_addressed_note: "The safeguarding concern has been addresses like this.",
+        reason_change_to_policy_note: "",
         minister_name: "Minister Name",
         date_of_decision: Date.today
       )
@@ -269,9 +275,11 @@ RSpec.describe DaoRevocationSteppedForm, type: :model do
         reason_school_closed: "true",
         reason_school_rating_improved: "false",
         reason_safeguarding_addressed: "true",
+        reason_change_to_policy: "false",
         reason_school_closed_note: "The reason the school is closing.",
         reason_school_rating_improved_note: "The school rating improved because.",
         reason_safeguarding_addressed_note: "The safeguarding concern has been addresses like this.",
+        reason_change_to_policy_note: "",
         minister_name: "Minister Name",
         date_of_decision: Date.today.to_s
       })

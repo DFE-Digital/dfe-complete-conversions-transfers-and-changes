@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The MP's name is now their full name with title (e.g. The Right Honourable)
 
+### Added
+
+- Add new "Change to government policy" DAO revocation reason
+
 ## [Release-89][release-89]
 
 ### Changed
