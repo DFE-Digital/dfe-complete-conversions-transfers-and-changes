@@ -51,6 +51,19 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
     expect(subject.state).to eq("inactive")
   end
 
+  context "when a user with the same email address does not exist" do
+    it "creates the user and assigns it to the project" do
+      expect { subject.regional_delivery_officer }.to change { User.count }.by(1)
+
+      new_user = subject.regional_delivery_officer
+
+      expect(new_user.email).to eql("test.user@education.gov.uk")
+      expect(new_user.first_name).to eql("Test")
+      expect(new_user.last_name).to eql("User")
+      expect(new_user.team).to eql("west_midlands")
+    end
+  end
+
   context "when a user exists with the same email address" do
     it "assigns that user to the project and does not create another" do
       existing_user = create(
@@ -73,7 +86,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       params[:created_by_email] = "invalid@example.com"
 
       expect { described_class.new(params).call }
-        .to raise_error(Api::Transfers::CreateProjectService::CreationError)
+        .to raise_error(Api::Transfers::CreateProjectService::ValidationError)
     end
   end
 
@@ -357,6 +370,21 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
             Api::Transfers::CreateProjectService::CreationError,
             "Transfer project could not be created via API, urn: 123456"
           )
+      end
+    end
+
+    context "when the user cannot be saved" do
+      before do
+        allow_any_instance_of(User).to receive(:save).and_return(nil)
+      end
+
+      it "raises an error" do
+        params = valid_parameters
+        params[:incoming_trust_ukprn] = nil
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Transfers::CreateProjectService::CreationError,
+            "Failed to save user during API project creation, urn: 123456")
       end
     end
   end

@@ -149,8 +149,8 @@ RSpec.describe V1::Conversions do
               as: :json,
               headers: {Apikey: "testkey"}
 
-            expect(response.body).to eq({error: "Failed to save user during API project creation, urn: 121813"}.to_json)
-            expect(response.status).to eq(500)
+            expect(response.body).to eq({error: "Created by email is invalid"}.to_json)
+            expect(response.status).to eq(400)
           end
         end
 
