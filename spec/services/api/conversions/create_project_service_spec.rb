@@ -149,7 +149,7 @@ RSpec.describe Api::Conversions::CreateProjectService do
   end
 
   describe "validations" do
-    context "when the URN is not invalid" do
+    context "when the URN is invalid" do
       it "raises an error" do
         params = valid_parameters
         params[:urn] = 123
