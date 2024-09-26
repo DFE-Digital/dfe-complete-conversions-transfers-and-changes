@@ -30,12 +30,12 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
 
     check "School closed or closing"
     within "#dao-revocation-stepped-form-reason-school-closed-1-conditional" do
-      fill_in "Details", with: "Details of school closing."
+      fill_in "Give reasons", with: "Details of school closing."
     end
 
     check "Safeguarding concerns addressed"
     within "#dao-revocation-stepped-form-reason-safeguarding-addressed-1-conditional" do
-      fill_in "Details", with: "Details of safeguarding concerns addressed."
+      fill_in "Give reasons", with: "Details of safeguarding concerns addressed."
     end
 
     click_button "Continue"
@@ -78,12 +78,12 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
 
     check "School closed or closing"
     within "#dao-revocation-stepped-form-reason-school-closed-1-conditional" do
-      fill_in "Details", with: "Details of school closing."
+      fill_in "Give reasons", with: "Details of school closing."
     end
 
     check "Safeguarding concerns addressed"
     within "#dao-revocation-stepped-form-reason-safeguarding-addressed-1-conditional" do
-      fill_in "Details", with: "Details of safeguarding concerns addressed."
+      fill_in "Give reasons", with: "Details of safeguarding concerns addressed."
     end
 
     click_button "Continue"
@@ -157,12 +157,12 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
 
     check "School closed or closing"
     within "#dao-revocation-stepped-form-reason-school-closed-1-conditional" do
-      fill_in "Details", with: "Details of school closing."
+      fill_in "Give reasons", with: "Details of school closing."
     end
 
     check "Safeguarding concerns addressed"
     within "#dao-revocation-stepped-form-reason-safeguarding-addressed-1-conditional" do
-      fill_in "Details", with: "Details of safeguarding concerns addressed."
+      fill_in "Give reasons", with: "Details of safeguarding concerns addressed."
     end
 
     click_button "Continue"
