@@ -86,6 +86,11 @@ RSpec.feature "Users record the revocation of a DAO from a project" do
       fill_in "Give reasons", with: "Details of safeguarding concerns addressed."
     end
 
+    check "Change to government policy"
+    within "#dao-revocation-stepped-form-reason-change-to-policy-1-conditional" do
+      fill_in "Give reasons", with: "There was a change in government policy."
+    end
+
     click_button "Continue"
 
     expect(page).to have_content "Minister’s name"
