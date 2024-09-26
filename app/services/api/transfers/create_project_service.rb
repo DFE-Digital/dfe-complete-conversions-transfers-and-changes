@@ -6,6 +6,14 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
   attribute :financial_safeguarding_governance_issues, :boolean
   attribute :outgoing_trust_to_close, :boolean
 
+  validates :outgoing_trust_ukprn, ukprn: true, if: -> { outgoing_trust_ukprn.present? }
+  validate :outgoing_trust_exists, if: -> { outgoing_trust_ukprn.present? }
+
+  def initialize(project_params)
+    @outgoing_trust = nil
+    super
+  end
+
   def call
     if valid?
       user = find_or_create_user
@@ -42,5 +50,13 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
     else
       raise ValidationError.new(errors.full_messages.join(" "))
     end
+  end
+
+  private def outgoing_trust_exists
+    errors.add(:outgoing_trust_ukprn, :no_trust_found) unless outgoing_trust
+  end
+
+  private def outgoing_trust
+    @outgoing_trust ||= fetch_trust(outgoing_trust_ukprn)
   end
 end

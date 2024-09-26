@@ -210,6 +210,34 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       end
     end
 
+    context "when the outgoing trust UKPRN is invalid" do
+      it "raises an error" do
+        params = valid_parameters
+        params[:outgoing_trust_ukprn] = 87654321
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "Outgoing trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."
+          )
+      end
+    end
+
+    context "when the trust for the outgoing trust UKPRN cannot be found" do
+      before { mock_academies_api_trust_not_found(ukprn: 12345678) }
+
+      it "raises an error" do
+        params = valid_parameters
+        params[:outgoing_trust_ukprn] = 12345678
+
+        expect { described_class.new(params).call }
+          .to raise_error(
+            Api::Transfers::CreateProjectService::ValidationError,
+            "A trust with UKPRN: 12345678 could not be found on the Academies API"
+          )
+      end
+    end
+
     context "when the Prepare ID is missing" do
       it "raises an error" do
         params = valid_parameters

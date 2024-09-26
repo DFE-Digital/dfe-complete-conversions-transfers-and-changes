@@ -25,7 +25,7 @@ class Api::BaseCreateProjectService
   validates_with UrnUniqueForApiValidator
 
   validates :incoming_trust_ukprn, ukprn: true, if: -> { incoming_trust_ukprn.present? }
-  validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
+  validate :incoming_trust_exists, if: -> { incoming_trust_ukprn.present? }
 
   validates :advisory_board_date, presence: true
   validates :advisory_board_date, date_in_the_past: true
@@ -38,7 +38,7 @@ class Api::BaseCreateProjectService
 
   def initialize(project_params)
     @establishment = nil
-    @trust = nil
+    @incoming_trust = nil
     super
   end
 
@@ -66,16 +66,16 @@ class Api::BaseCreateProjectService
     errors.add(:urn, :no_establishment_found) unless establishment
   end
 
-  private def trust_exists
-    errors.add(:incoming_trust_ukprn, :no_trust_found) unless trust
+  private def incoming_trust_exists
+    errors.add(:incoming_trust_ukprn, :no_trust_found) unless incoming_trust
   end
 
   private def establishment
     @establishment ||= fetch_establishment
   end
 
-  private def trust
-    @trust ||= fetch_trust
+  private def incoming_trust
+    @incoming_trust ||= fetch_trust(incoming_trust_ukprn)
   end
 
   private def fetch_establishment
@@ -90,15 +90,15 @@ class Api::BaseCreateProjectService
     end
   end
 
-  private def fetch_trust
-    result = Api::AcademiesApi::Client.new.get_trust(incoming_trust_ukprn)
+  private def fetch_trust(ukprn)
+    result = Api::AcademiesApi::Client.new.get_trust(ukprn)
 
     if result.object.present?
-      @trust = result.object
+      result.object
     elsif result.error.is_a?(Api::AcademiesApi::Client::NotFoundError)
-      raise ValidationError.new("A trust with UKPRN: #{incoming_trust_ukprn} could not be found on the Academies API")
+      raise ValidationError.new("A trust with UKPRN: #{ukprn} could not be found on the Academies API")
     else
-      raise CreationError.new("Failed to fetch trust with UKPRN: #{incoming_trust_ukprn} on Academies API")
+      raise CreationError.new("Failed to fetch trust with UKPRN: #{ukprn} on Academies API")
     end
   end
 end

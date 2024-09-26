@@ -13,7 +13,7 @@ RSpec.describe V1::Transfers do
       created_by_last_name: regional_delivery_officer.last_name,
       inadequate_ofsted: true,
       financial_safeguarding_governance_issues: true,
-      outgoing_trust_ukprn: 567890,
+      outgoing_trust_ukprn: 12348765,
       outgoing_trust_to_close: true,
       prepare_id: 12345
     }
@@ -31,7 +31,7 @@ RSpec.describe V1::Transfers do
       created_by_last_name: regional_delivery_officer.last_name,
       inadequate_ofsted: true,
       financial_safeguarding_governance_issues: true,
-      outgoing_trust_ukprn: 567890,
+      outgoing_trust_ukprn: 12348765,
       outgoing_trust_to_close: true,
       prepare_id: 12345,
       new_trust_reference_number: "TR12345",
