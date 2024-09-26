@@ -5,9 +5,6 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
   attribute :inadequate_ofsted, :boolean
   attribute :financial_safeguarding_governance_issues, :boolean
   attribute :outgoing_trust_to_close, :boolean
-  attribute :new_trust_reference_number, :string
-  attribute :new_trust_name, :string
-  attribute :group_id, :string
 
   def call
     if valid?
