@@ -9,7 +9,7 @@ class Api::BaseCreateProjectService
 
   attribute :urn
   attribute :incoming_trust_ukprn
-  attribute :advisory_board_date
+  attribute :advisory_board_date, :date
   attribute :advisory_board_conditions
   attribute :directive_academy_order
   attribute :created_by_email
@@ -26,6 +26,9 @@ class Api::BaseCreateProjectService
 
   validates :incoming_trust_ukprn, ukprn: true, if: -> { incoming_trust_ukprn.present? }
   validate :trust_exists, if: -> { incoming_trust_ukprn.present? }
+
+  validates :advisory_board_date, presence: true
+  validates :advisory_board_date, date_in_the_past: true
 
   validates :new_trust_reference_number, trust_reference_number: true, if: -> { new_trust_reference_number.present? }
   validates :new_trust_name, presence: true, if: -> { new_trust_reference_number.present? }

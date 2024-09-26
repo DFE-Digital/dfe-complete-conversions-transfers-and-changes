@@ -259,6 +259,17 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
             "New trust reference number The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234")
       end
     end
+
+    context "when the advisory board date is in the future" do
+      it "raises a validation error" do
+        params = valid_parameters
+        params[:advisory_board_date] = Date.today + 2.years
+
+        expect { described_class.new(params).call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
+            "Advisory board date The advisory board date must be in the past")
+      end
+    end
   end
 
   describe "errors" do
