@@ -108,7 +108,9 @@ RSpec.describe V1::Conversions do
           as: :json,
           headers: {Apikey: "testkey"}
 
-        expect(response.body).to eq({error: "Created by email is invalid"}.to_json)
+        expect(response.body).to include("validation_errors")
+        expect(response.body).to include("created_by_email")
+        expect(response.body).to include("is invalid")
         expect(response.status).to eq(400)
       end
     end
@@ -184,7 +186,9 @@ RSpec.describe V1::Conversions do
           as: :json,
           headers: {Apikey: "testkey"}
 
-        expect(response.body).to eq({error: "Created by email is invalid"}.to_json)
+        expect(response.body).to include("validation_errors")
+        expect(response.body).to include("created_by_email")
+        expect(response.body).to include("is invalid")
         expect(response.status).to eq(400)
       end
     end

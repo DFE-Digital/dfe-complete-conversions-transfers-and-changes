@@ -33,7 +33,7 @@ class Api::Conversions::CreateProjectService < Api::BaseCreateProjectService
         raise CreationError.new("Conversion project could not be created via API, urn: #{urn}")
       end
     else
-      raise ValidationError.new(errors.full_messages.join(" "))
+      raise ValidationError.new("Validation error", errors)
     end
   end
 end

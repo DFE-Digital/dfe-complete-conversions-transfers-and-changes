@@ -5,7 +5,14 @@ class Api::BaseCreateProjectService
 
   class CreationError < StandardError; end
 
-  class ValidationError < StandardError; end
+  class ValidationError < StandardError
+    attr_reader :validation_errors
+
+    def initialize(message, validation_errors)
+      super(message)
+      @validation_errors = validation_errors.messages
+    end
+  end
 
   attribute :urn, :integer
   attribute :incoming_trust_ukprn, :integer
