@@ -5,8 +5,6 @@ class Api::AcademiesApi::Client
 
   class NotFoundError < StandardError; end
 
-  class MultipleResultsError < StandardError; end
-
   class UnauthorisedError < StandardError; end
 
   attr_reader :connection
