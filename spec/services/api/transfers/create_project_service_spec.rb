@@ -193,7 +193,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
         expect { described_class.new(valid_parameters).call }
           .to raise_error(
             Api::Transfers::CreateProjectService::ValidationError,
-            "An establishment with URN: 123456 could not be found on the Academies API"
+            "Urn There's no school or academy with that URN. Check the number you entered is correct."
           )
       end
     end
@@ -218,7 +218,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
         expect { described_class.new(valid_parameters).call }
           .to raise_error(
             Api::Transfers::CreateProjectService::ValidationError,
-            "A trust with UKPRN: 10066123 could not be found on the Academies API"
+            "Incoming trust ukprn There's no trust with that UKPRN. Check the number you entered is correct."
           )
       end
     end
@@ -246,7 +246,7 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
         expect { described_class.new(params).call }
           .to raise_error(
             Api::Transfers::CreateProjectService::ValidationError,
-            "A trust with UKPRN: 12345678 could not be found on the Academies API"
+            "Outgoing trust ukprn There's no trust with that UKPRN. Check the number you entered is correct."
           )
       end
     end
