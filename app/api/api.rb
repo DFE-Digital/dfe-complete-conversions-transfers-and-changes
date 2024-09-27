@@ -14,7 +14,7 @@ class Api < Grape::API
     },
     mount_path: "/swagger",
     host: proc { |request| request.host_with_port.to_s },
-    version: "0.0.1", # the semversion of the API
+    doc_version: "1.0.0-alpha", # the semversion of the API, this is the 'version' key
     security_definitions: {
       api_key: {
         type: "apiKey",
