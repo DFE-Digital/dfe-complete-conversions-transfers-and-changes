@@ -397,7 +397,6 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       advisory_board_date: "2024-1-1",
       advisory_board_conditions: "Some conditions",
       provisional_transfer_date: "2025-1-1",
-      directive_academy_order: true,
       created_by_email: "test.user@education.gov.uk",
       created_by_first_name: "Test",
       created_by_last_name: "User",

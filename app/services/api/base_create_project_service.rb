@@ -11,7 +11,6 @@ class Api::BaseCreateProjectService
   attribute :incoming_trust_ukprn, :integer
   attribute :advisory_board_date, :date
   attribute :advisory_board_conditions, :string
-  attribute :directive_academy_order, :boolean
   attribute :created_by_email, :string
   attribute :created_by_first_name, :string
   attribute :created_by_last_name, :string
