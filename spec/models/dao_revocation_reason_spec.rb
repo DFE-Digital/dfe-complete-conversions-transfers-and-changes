@@ -7,7 +7,8 @@ RSpec.describe DaoRevocationReason do
         .with_values(
           reason_school_closed: "school_closed",
           reason_school_rating_improved: "school_rating_improved",
-          reason_safeguarding_addressed: "safeguarding_addressed"
+          reason_safeguarding_addressed: "safeguarding_addressed",
+          reason_change_to_policy: "change_to_policy"
         )
         .backed_by_column_of_type(:string)
     end
