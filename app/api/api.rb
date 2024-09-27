@@ -24,5 +24,10 @@ class Api < Grape::API
       }
     },
     consumes: ["application/json"],
-    produces: ["application/json"]
+    produces: ["application/json"],
+    tags: [
+      {name: "conversions", description: "Conversion projects"},
+      {name: "transfers", description: "Transfer projects"},
+      {name: "miscellaneous", description: "Miscellaneous"}
+    ]
 end

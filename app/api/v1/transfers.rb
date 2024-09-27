@@ -28,6 +28,7 @@ class V1::Transfers < Grape::API
       desc "Create a transfer project" do
         failure [{code: 400, message: "Bad request"}]
         nickname "Transfer project"
+        tags ["transfers"]
       end
       post "/" do
         project_params = declared(params)
@@ -51,6 +52,7 @@ class V1::Transfers < Grape::API
         desc "Create a form a MAT transfer project" do
           failure [{code: 400, message: "Bad request"}]
           nickname "Form a multi academy trust transfer project"
+          tags ["transfers"]
         end
         post "/" do
           project_params = declared(params)
