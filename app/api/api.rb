@@ -12,7 +12,6 @@ class Api < Grape::API
       contact_name: "Service Support",
       contact_email: "regionalservices.rg@education.gov.uk"
     },
-    base_path: "/api",
     mount_path: "/swagger",
     host: proc { |request| request.host_with_port.to_s },
     version: "0.0.1", # the semversion of the API
