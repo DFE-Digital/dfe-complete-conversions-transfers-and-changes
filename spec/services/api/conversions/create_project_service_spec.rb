@@ -167,11 +167,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
         params = valid_parameters
         params[:urn] = 123
 
-        expect { described_class.new(params).call }
-          .to raise_error(
-            Api::Conversions::CreateProjectService::ValidationError,
-            "Urn URN must be 6 digits long. For example, 123456."
-          )
+        subject = described_class.new(params)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("urn")
+        expect(subject.errors.to_json).to include("6 digits long")
       end
     end
 
@@ -179,11 +180,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
       before { mock_academies_api_establishment_not_found(urn: 123456) }
 
       it "raises an error" do
-        expect { described_class.new(valid_parameters).call }
-          .to raise_error(
-            Api::Conversions::CreateProjectService::ValidationError,
-            "An establishment with URN: 123456 could not be found on the Academies API"
-          )
+        subject = described_class.new(valid_parameters)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("urn")
+        expect(subject.errors.to_json).to include("no school or academy with that URN")
       end
     end
 
@@ -192,11 +194,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
         params = valid_parameters
         params[:incoming_trust_ukprn] = 87654321
 
-        expect { described_class.new(params).call }
-          .to raise_error(
-            Api::Conversions::CreateProjectService::ValidationError,
-            "Incoming trust ukprn UKPRN must be 8 digits long and start with a 1. For example, 12345678."
-          )
+        subject = described_class.new(params)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("incoming_trust_ukprn")
+        expect(subject.errors.to_json).to include("8 digits long")
       end
     end
 
@@ -204,11 +207,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
       before { mock_academies_api_trust_not_found(ukprn: 10066123) }
 
       it "raises an error" do
-        expect { described_class.new(valid_parameters).call }
-          .to raise_error(
-            Api::Conversions::CreateProjectService::ValidationError,
-            "A trust with UKPRN: 10066123 could not be found on the Academies API"
-          )
+        subject = described_class.new(valid_parameters)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("incoming_trust_ukprn")
+        expect(subject.errors.to_json).to include("no trust with that UKPRN")
       end
     end
 
@@ -217,23 +221,25 @@ RSpec.describe Api::Conversions::CreateProjectService do
         params = valid_parameters
         params[:prepare_id] = nil
 
-        expect { described_class.new(params).call }
-          .to raise_error(
-            Api::Conversions::CreateProjectService::ValidationError,
-            "Prepare You must supply a Prepare ID when creating a project via the API"
-          )
+        subject = described_class.new(params)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("prepare_id")
+        expect(subject.errors.to_json).to include("You must supply a Prepare ID")
       end
     end
 
-    context "when there is a in progress transfer project with the same URN" do
+    context "when there is a in progress conversion project with the same URN" do
       it "raises an error" do
         create(:conversion_project, urn: 123456)
 
-        expect { described_class.new(valid_parameters).call }
-          .to raise_error(
-            Api::Transfers::CreateProjectService::ValidationError,
-            "Urn There is already an in-progress project with this URN"
-          )
+        subject = described_class.new(valid_parameters)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("urn")
+        expect(subject.errors.to_json).to include("already an in-progress project")
       end
     end
 
@@ -256,9 +262,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
         params[:incoming_trust_ukprn] = nil
         params[:new_trust_reference_number] = "12345"
 
-        expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
-            "New trust reference number The Trust reference number must be 'TR' followed by 5 numbers, e.g. TR01234")
+        subject = described_class.new(params)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("new_trust_reference_number")
+        expect(subject.errors.to_json).to include("followed by 5 numbers")
       end
     end
 
@@ -267,9 +276,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
         params = valid_parameters
         params[:advisory_board_date] = Date.today + 2.years
 
-        expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
-            "Advisory board date The advisory board date must be in the past")
+        result = described_class.new(params)
+
+        expect { result.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(result.errors.to_json).to include("advisory_board_date")
+        expect(result.errors.to_json).to include("must be in the past")
       end
     end
 
@@ -278,9 +290,12 @@ RSpec.describe Api::Conversions::CreateProjectService do
         params = valid_parameters
         params[:provisional_conversion_date] = "2024-1-2"
 
-        expect { described_class.new(params).call }
-          .to raise_error(Api::Conversions::CreateProjectService::ValidationError,
-            "Provisional conversion date must be on the first of the month")
+        subject = described_class.new(params)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.to_json).to include("provisional_conversion_date")
+        expect(subject.errors.to_json).to include("the first of the month")
       end
     end
   end

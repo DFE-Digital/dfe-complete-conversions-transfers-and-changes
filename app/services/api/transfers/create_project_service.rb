@@ -50,7 +50,7 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
         raise CreationError.new("Transfer project could not be created via API, urn: #{urn}")
       end
     else
-      raise ValidationError.new(errors.full_messages.join(" "))
+      raise ValidationError.new("Validation error", errors)
     end
   end
 

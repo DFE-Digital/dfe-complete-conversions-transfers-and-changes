@@ -5,7 +5,14 @@ class Api::BaseCreateProjectService
 
   class CreationError < StandardError; end
 
-  class ValidationError < StandardError; end
+  class ValidationError < StandardError
+    attr_reader :validation_errors
+
+    def initialize(message, validation_errors)
+      super(message)
+      @validation_errors = validation_errors.messages
+    end
+  end
 
   attribute :urn, :integer
   attribute :incoming_trust_ukprn, :integer
@@ -96,7 +103,7 @@ class Api::BaseCreateProjectService
     if result.object.present?
       @establishment = result.object
     elsif result.error.is_a?(Api::AcademiesApi::Client::NotFoundError)
-      raise ValidationError.new("An establishment with URN: #{urn} could not be found on the Academies API")
+      nil
     else
       raise CreationError.new("Failed to fetch establishment with URN: #{urn} on Academies API")
     end
@@ -108,7 +115,7 @@ class Api::BaseCreateProjectService
     if result.object.present?
       result.object
     elsif result.error.is_a?(Api::AcademiesApi::Client::NotFoundError)
-      raise ValidationError.new("A trust with UKPRN: #{ukprn} could not be found on the Academies API")
+      nil
     else
       raise CreationError.new("Failed to fetch trust with UKPRN: #{ukprn} on Academies API")
     end

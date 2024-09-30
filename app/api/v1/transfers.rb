@@ -38,7 +38,7 @@ class V1::Transfers < Grape::API
 
         {transfer_project_id: project.id}
       rescue Api::Transfers::CreateProjectService::ValidationError => e
-        error!(e.message, 400)
+        error!({validation_errors: e.validation_errors}, 400)
       rescue Api::Transfers::CreateProjectService::CreationError => e
         error!(e.message)
       end
@@ -62,7 +62,7 @@ class V1::Transfers < Grape::API
 
           {transfer_project_id: project.id}
         rescue Api::Transfers::CreateProjectService::ValidationError => e
-          error!(e.message, 400)
+          error!({validation_errors: e.validation_errors}, 400)
         rescue Api::Transfers::CreateProjectService::CreationError => e
           error!(e.message)
         end

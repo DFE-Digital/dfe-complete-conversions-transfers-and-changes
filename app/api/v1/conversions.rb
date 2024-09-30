@@ -35,7 +35,7 @@ class V1::Conversions < Grape::API
 
         {conversion_project_id: project.id}
       rescue Api::Conversions::CreateProjectService::ValidationError => e
-        error!(e.message, 400)
+        error!({validation_errors: e.validation_errors}, 400)
       rescue Api::Conversions::CreateProjectService::CreationError => e
         error!(e.message)
       end
@@ -59,7 +59,7 @@ class V1::Conversions < Grape::API
 
           {conversion_project_id: project.id}
         rescue Api::Conversions::CreateProjectService::ValidationError => e
-          error!(e.message, 400)
+          error!({validation_errors: e.validation_errors}, 400)
         rescue Api::Conversions::CreateProjectService::CreationError => e
           error!(e.message)
         end
