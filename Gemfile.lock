@@ -199,7 +199,7 @@ GEM
       mustermann-grape (~> 1.1.0)
       rack (>= 2)
       zeitwerk
-    grape-swagger (2.1.0)
+    grape-swagger (2.1.1)
       grape (>= 1.7, < 3.0)
       rack-test (~> 2)
     hashdiff (1.1.0)
@@ -247,7 +247,7 @@ GEM
     minitest (5.25.1)
     msgpack (1.7.2)
     multi_xml (0.6.0)
-    mustermann (3.0.0)
+    mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
     mustermann-grape (1.1.0)
       mustermann (>= 1.0.0)
