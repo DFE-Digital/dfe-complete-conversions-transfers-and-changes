@@ -58,6 +58,7 @@ RSpec.describe Export::NewPreTransferGrantsForm, type: :model do
       let!(:active_project) { create(:transfer_project, :active, advisory_board_date: Date.new(2024, 2, 1)) }
       let!(:completed_project) { create(:transfer_project, :completed, advisory_board_date: Date.new(2024, 1, 1)) }
       let!(:deleted_project) { create(:transfer_project, :deleted, advisory_board_date: Date.new(2024, 2, 1)) }
+      let!(:inactive_project) { create(:transfer_project, :inactive, advisory_board_date: Date.new(2024, 2, 1)) }
 
       subject { described_class.new(from_date: from_date, to_date: to_date).export }
 
@@ -71,6 +72,10 @@ RSpec.describe Export::NewPreTransferGrantsForm, type: :model do
 
       it "does not include deleted projects" do
         expect(subject).not_to include deleted_project.id.to_s
+      end
+
+      it "does not include inactive projects" do
+        expect(subject).not_to include inactive_project.id.to_s
       end
     end
   end

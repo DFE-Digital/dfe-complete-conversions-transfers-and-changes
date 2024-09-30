@@ -56,6 +56,7 @@ RSpec.describe Export::NewAcademiesDueToTransferForm, type: :model do
       let!(:active_project) { create(:transfer_project, :active, transfer_date: Date.new(2024, 2, 1), urn: 111111) }
       let!(:completed_project) { create(:transfer_project, :completed, transfer_date: Date.new(2024, 2, 1), urn: 222222) }
       let!(:deleted_project) { create(:transfer_project, :deleted, transfer_date: Date.new(2024, 2, 1), urn: 333333) }
+      let!(:inactive_project) { create(:transfer_project, :inactive, transfer_date: Date.new(2024, 2, 1), urn: 444444) }
 
       subject { described_class.new(from_date: from_date, to_date: to_date).export }
 
@@ -69,6 +70,10 @@ RSpec.describe Export::NewAcademiesDueToTransferForm, type: :model do
 
       it "does not include deleted projects" do
         expect(subject).not_to include deleted_project.urn.to_s
+      end
+
+      it "does not include inactive projects" do
+        expect(subject).not_to include inactive_project.urn.to_s
       end
     end
   end
