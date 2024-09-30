@@ -10,6 +10,10 @@ class ProjectPolicy
     true
   end
 
+  def handover?
+    @user.is_regional_delivery_officer?
+  end
+
   def show?
     return false if @project.deleted?
 
