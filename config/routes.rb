@@ -143,6 +143,9 @@ Rails.application.routes.draw do
   resources :projects, only: %i[index] do
     collection do
       namespace :all do
+        namespace :handover do
+          get "/", to: "projects#index"
+        end
         namespace :in_progress, path: "in-progress" do
           get "all", to: "projects#all_index"
           get "conversions", to: "projects#conversions_index"
