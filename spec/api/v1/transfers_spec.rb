@@ -44,7 +44,7 @@ RSpec.describe V1::Transfers do
         expect(response.status).to eq(405)
       end
 
-      it "returns Not Allowed for fotm a MAT transfers" do
+      it "returns Not Allowed for form a MAT transfers" do
         get "/api/v1/projects/transfers/form-a-mat", headers: {Apikey: "testkey"}
         expect(response.body).to eq({error: "405 Not Allowed"}.to_json)
         expect(response.status).to eq(405)
