@@ -194,6 +194,7 @@ en:
         added_by: Added by
         conversion_date: Conversion date
         advisory_board_date: Advisory board date
+        add_handover_details: Add handover details
         provisional_conversion_or_transfer_date: Provisional conversion or transfer date
         conversion_or_transfer_date: Conversion or transfer date
         created_at: Created at date
@@ -252,6 +253,7 @@ en:
         export_link: Export
         export_link_title_conversions_html: Download the funding export for %{date} conversions
         conversion_project_count_html: "%{count} <span class='govuk-visually-hidden'>school(s) converting in %{date}</span>"
+        add_handover_details: Add handover details
       empty:
         projects: There are no projects
       in_progress:

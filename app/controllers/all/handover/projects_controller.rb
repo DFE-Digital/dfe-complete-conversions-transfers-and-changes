@@ -8,4 +8,17 @@ class All::Handover::ProjectsController < ApplicationController
     @pager, @projects = pagy(Project.inactive.ordered_by_significant_date)
     AcademiesApiPreFetcherService.new.call!(@projects)
   end
+
+  def check
+    authorize Project, :handover?
+
+    @project = Project.find(params[:id])
+
+    case @project.type
+    when "Conversion::Project"
+      render "all/handover/projects/conversion/check"
+    when "Transfer::Project"
+      render "all/handover/projects/transfer/check"
+    end
+  end
 end
