@@ -112,6 +112,17 @@ RSpec.describe ProjectSearchService do
         expect(result.count).to be_zero
       end
     end
+
+    context "when the match is an inactive project" do
+      it "does not include the match" do
+        create(:conversion_project, :inactive, urn: 100000)
+
+        service = described_class.new
+        result = service.search("100000")
+
+        expect(result.count).to be_zero
+      end
+    end
   end
 
   describe "#search_by_urns" do
@@ -166,9 +177,10 @@ RSpec.describe ProjectSearchService do
         end
       end
 
-      it "does not include deleted projects" do
+      it "does not include deleted or inactive projects" do
         matching_project = create(:conversion_project, urn: 100000)
         deleted_matching_project = create(:transfer_project, :deleted, urn: 999999)
+        inactive_matching_project = create(:transfer_project, :inactive, urn: 999999)
 
         service = described_class.new
         result = service.search_by_urns(["100000", "999999"])
@@ -177,7 +189,7 @@ RSpec.describe ProjectSearchService do
 
         expect(result).to include(matching_project)
 
-        expect(result).not_to include(deleted_matching_project)
+        expect(result).not_to include(deleted_matching_project, inactive_matching_project)
       end
     end
   end
@@ -216,8 +228,9 @@ RSpec.describe ProjectSearchService do
       end
     end
 
-    it "does not include deleted projects" do
+    it "does not include deleted or inactive projects" do
       create(:conversion_project, :deleted, incoming_trust_ukprn: 12345678)
+      create(:conversion_project, :inactive, incoming_trust_ukprn: 12345678)
 
       service = described_class.new
       result = service.search_by_ukprn("12345678")
@@ -255,9 +268,10 @@ RSpec.describe ProjectSearchService do
       end
     end
 
-    it "does not include deleted projects" do
+    it "does not include deleted or inactive projects" do
       create(:gias_establishment, urn: 123456, name: "Matching establishment")
       create(:conversion_project, :deleted, urn: "123456")
+      create(:conversion_project, :inactive, urn: "123456")
 
       service = described_class.new
       result = service.search_by_words("Matching establishment")
@@ -292,9 +306,10 @@ RSpec.describe ProjectSearchService do
       end
     end
 
-    it "does not include deleted projects" do
+    it "does not include deleted or inactive projects" do
       create(:gias_establishment, urn: 123456, establishment_number: 1234)
       create(:conversion_project, :deleted, urn: "123456")
+      create(:conversion_project, :inactive, urn: "123456")
 
       service = described_class.new
       result = service.search_by_establishment_number("1234")
