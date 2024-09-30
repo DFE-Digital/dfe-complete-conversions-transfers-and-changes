@@ -12,10 +12,9 @@ class Api < Grape::API
       contact_name: "Service Support",
       contact_email: "regionalservices.rg@education.gov.uk"
     },
-    base_path: "/api",
     mount_path: "/swagger",
     host: proc { |request| request.host_with_port.to_s },
-    version: "0.0.1", # the semversion of the API
+    doc_version: "1.0.0-alpha", # the semversion of the API, this is the 'version' key
     security_definitions: {
       api_key: {
         type: "apiKey",
@@ -24,5 +23,10 @@ class Api < Grape::API
       }
     },
     consumes: ["application/json"],
-    produces: ["application/json"]
+    produces: ["application/json"],
+    tags: [
+      {name: "conversions", description: "Conversion projects"},
+      {name: "transfers", description: "Transfer projects"},
+      {name: "miscellaneous", description: "Miscellaneous"}
+    ]
 end

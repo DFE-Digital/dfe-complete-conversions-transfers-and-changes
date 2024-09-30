@@ -25,6 +25,7 @@ class V1::Conversions < Grape::API
       desc "Create a conversion project" do
         failure [{code: 400, message: "Bad request"}]
         nickname "Conversion project"
+        tags ["conversions"]
       end
       post "/" do
         project_params = declared(params)
@@ -48,6 +49,7 @@ class V1::Conversions < Grape::API
         desc "Create a form a MAT conversion project" do
           failure [{code: 400, message: "Bad request"}]
           nickname "Form a multi academy trust conversion project"
+          tags ["conversions"]
         end
         post "/" do
           project_params = declared(params)
