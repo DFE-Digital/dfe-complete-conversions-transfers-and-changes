@@ -25,6 +25,10 @@ FactoryBot.define do
       state { 2 }
     end
 
+    trait :inactive do
+      state { 4 }
+    end
+
     trait :form_a_mat do
       incoming_trust_ukprn { nil }
       new_trust_name { "The New Trust" }

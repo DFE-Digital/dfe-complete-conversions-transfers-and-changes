@@ -12,12 +12,12 @@ class ProjectSearchService
   end
 
   def search_by_urns(urns)
-    Project.not_deleted.where(urn: urns).includes(:assigned_to)
+    Project.not_deleted.not_inactive.where(urn: urns).includes(:assigned_to)
   end
 
   def search_by_ukprn(ukprn)
-    Project.not_deleted.where("incoming_trust_ukprn = ?", ukprn)
-      .or(Project.not_deleted.where("outgoing_trust_ukprn = ?", ukprn)).includes(:assigned_to)
+    Project.not_deleted.not_inactive.where("incoming_trust_ukprn = ?", ukprn)
+      .or(Project.not_deleted.not_inactive.where("outgoing_trust_ukprn = ?", ukprn)).includes(:assigned_to)
   end
 
   def search_by_words(query)

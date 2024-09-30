@@ -48,5 +48,9 @@ FactoryBot.define do
       new_trust_name { "The New Trust" }
       new_trust_reference_number { "TR12345" }
     end
+
+    trait :inactive do
+      state { 4 }
+    end
   end
 end
