@@ -26,6 +26,7 @@ RSpec.feature "Viewing all projects a user has added" do
     let!(:in_progress_project) { create(:conversion_project, urn: 115652, regional_delivery_officer: user) }
     let!(:sponsored_in_progress_project) { create(:conversion_project, urn: 112209, directive_academy_order: true, regional_delivery_officer: user) }
     let!(:voluntary_in_progress_project) { create(:conversion_project, urn: 103835, directive_academy_order: false, regional_delivery_officer: user) }
+    let!(:inactive_project) { create(:conversion_project, :inactive, urn: 187356, regional_delivery_officer: user) }
     let!(:other_project) { create(:conversion_project) }
 
     scenario "they can view all in progress projects that they added" do
@@ -43,6 +44,7 @@ RSpec.feature "Viewing all projects a user has added" do
         expect(page).to have_content(voluntary_in_progress_project.urn)
 
         expect(page).not_to have_content(completed_project.urn)
+        expect(page).not_to have_content(inactive_project.urn)
         expect(page).not_to have_content(other_project.urn)
       end
     end
