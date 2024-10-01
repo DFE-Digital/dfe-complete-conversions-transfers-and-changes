@@ -1,0 +1,42 @@
+    <%= govuk_summary_list(actions: false, html_attributes: {id: "project-summary", class: "dfe-summary-list--project-summary"}) do |summary_list|
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.type") }
+            row.with_value { t("project.handover.check.summary.values.project_type.#{project.type_locale}") }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.academy_name") }
+            row.with_value { project.establishment.name }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.urn") }
+            row.with_value { project.urn.to_s }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.incoming_trust.name") }
+            row.with_value { project.incoming_trust.name }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.incoming_trust.ukprn") }
+            row.with_value { project.incoming_trust.ukprn }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.outgoing_trust.name") }
+            row.with_value { project.outgoing_trust.name }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.outgoing_trust.ukprn") }
+            row.with_value { project.outgoing_trust.ukprn }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.advisory_board_date") }
+            row.with_value { project.advisory_board_date.to_fs(:govuk) }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.provisional_transfer_date") }
+            row.with_value { project.transfer_date.to_fs(:govuk) }
+          end
+          summary_list.with_row do |row|
+            row.with_key { t("project.handover.check.summary.regional_delivery_officer") }
+            row.with_value { project.regional_delivery_officer.full_name }
+          end
+        end %>

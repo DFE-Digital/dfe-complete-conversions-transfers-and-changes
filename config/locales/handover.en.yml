@@ -1,0 +1,29 @@
+en:
+  project:
+    handover:
+      check:
+        title: Check you have the right project
+        cancel: Choose a different project
+        summary:
+          type: Type of project
+          school_name: School name
+          academy_name: Academy name
+          urn: URN
+          incoming_trust:
+            name: Incoming trust name
+            ukprn: Incoming trust UKPRN
+          outgoing_trust:
+            name: Outgoing trust name
+            ukprn: Outgoing trust UKPRN
+          advisory_board_date: Advisory board date
+          provisional_conversion_date: Provisional conversion date
+          provisional_transfer_date: Provisional transfer date
+          directive_academy_order: Type of academy order
+          regional_delivery_officer: Assigned to in Prepare
+          values:
+            project_type:
+              conversion_project: Conversion project
+              transfer_project: Transfer project
+            directive_academy_order:
+              "true": "DAO (Directive academy order)"
+              "false": "AO (Academy order)"
