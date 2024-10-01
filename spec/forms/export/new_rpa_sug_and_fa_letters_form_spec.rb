@@ -60,6 +60,7 @@ RSpec.describe Export::NewRpaSugAndFaLettersForm, type: :model do
       let!(:completed_project) { create(:conversion_project, :completed, conversion_date: Date.new(2024, 1, 1), urn: 222222) }
       let!(:dao_revoked_project) { create(:conversion_project, :dao_revoked, conversion_date: Date.new(2024, 1, 1), urn: 333333) }
       let!(:deleted_project) { create(:conversion_project, :deleted, conversion_date: Date.new(2024, 2, 1), urn: 444444) }
+      let!(:inactive_project) { create(:conversion_project, :inactive, conversion_date: Date.new(2024, 2, 1), urn: 555555) }
 
       subject { described_class.new(from_date: from_date, to_date: to_date).export }
 
@@ -77,6 +78,10 @@ RSpec.describe Export::NewRpaSugAndFaLettersForm, type: :model do
 
       it "does not include deleted projects" do
         expect(subject).not_to include deleted_project.urn.to_s
+      end
+
+      it "does not include inactive projects" do
+        expect(subject).not_to include inactive_project.urn.to_s
       end
     end
   end
