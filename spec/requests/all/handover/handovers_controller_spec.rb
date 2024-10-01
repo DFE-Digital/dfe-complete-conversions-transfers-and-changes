@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe All::Handover::ProjectsController, type: :request do
+RSpec.describe All::Handover::HandoversController, type: :request do
   before do
     user = create(:regional_delivery_officer_user)
     sign_in_with(user)
