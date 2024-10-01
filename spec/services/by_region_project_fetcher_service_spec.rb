@@ -55,11 +55,12 @@ RSpec.describe ByRegionProjectFetcherService do
       expect(described_class.new.regional_casework_services_projects(user.team)).to match_array []
     end
 
-    it "does not include completed, deleted or dao_revoked projects" do
+    it "does not include completed, deleted, inactive or dao_revoked projects" do
       user = create(:user, team: "london")
       _completed_project = create(:conversion_project, :completed, region: "london", team: "regional_casework_services")
       _deleted_project = create(:conversion_project, :deleted, region: "north_west", team: "regional_casework_services")
       _dao_revoked_project = create(:conversion_project, :dao_revoked, region: "north_west", team: "regional_casework_services")
+      _inactive_project = create(:conversion_project, :inactive, region: "north_west", team: "regional_casework_services")
 
       expect(described_class.new.regional_casework_services_projects(user.team)).to match_array []
     end
