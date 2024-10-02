@@ -25,5 +25,15 @@ if (addedByTarget) {
   )
 }
 
+const handoverByTarget = document.getElementById('handover-assign-form-group')
+if (handoverByTarget) {
+  const autocomplete = new UserAutocomplete()
+  autocomplete.init(
+    handoverByTarget.id,
+    'new_handover_stepped_form[email]',
+    'Who will complete this project?'
+  )
+}
+
 // set the js-enabled class on the body if JS is enabled
 document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled')
