@@ -35,6 +35,8 @@ en:
   support_email_subject: "Complete conversions, transfers and changes: support query"
   "yes": "Yes"
   "no": "No"
+  "true": "Yes"
+  "false": "No"
   cancel: Cancel
   edit: Edit
   delete: Delete
