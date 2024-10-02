@@ -1,0 +1,21 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_with model: @form, url: assign_all_handover_projects_path(@project) do |form| %>
+
+      <%= form.govuk_error_summary %>
+
+      <%= form.govuk_collection_radio_buttons :team, @form.class.list_of_teams, :id, :name %>
+
+      <%= form.govuk_text_field :email, label: {size: "m"}, width: 20 %>
+
+      <%= form.hidden_field :assigned_to_regional_caseworker_team %>
+      <%= form.hidden_field :handover_note_body %>
+      <%= form.hidden_field :establishment_sharepoint_link %>
+      <%= form.hidden_field :incoming_trust_sharepoint_link %>
+      <%= form.hidden_field :outgoing_trust_sharepoint_link %>
+      <%= form.hidden_field :two_requires_improvement %>
+
+      <%= form.govuk_submit(t("confirm")) %>
+    <% end %>
+  </div>
+</div>

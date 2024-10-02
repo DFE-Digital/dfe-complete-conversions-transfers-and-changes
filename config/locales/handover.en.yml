@@ -28,3 +28,31 @@ en:
             directive_academy_order:
               "true": "DAO (Directive academy order)"
               "false": "AO (Academy order)"
+      new:
+        title: Add handover details
+  helpers:
+    legend:
+      new_handover_stepped_form:
+        assigned_to_regional_caseworker_team: Will RCS (Regional Casework Services) manage this project next?
+        team: Which region will complete this project?
+    label:
+      new_handover_stepped_form:
+        establishment_sharepoint_link: School SharePoint link
+        incoming_trust_sharepoint_link: Incoming trust SharePoint link
+        outgoing_trust_sharepoint_link: Outgoing trust SharePoint link
+        email: Who will complete this project?
+    hint:
+      new_handover_stepped_form:
+        establishment_sharepoint_link_html:
+          <p>If the school applied to convert, you must save the application form in the Schools' SharePoint folder.</p>
+          <p>You must also save the academy order and advisory board template. Do this whether the school applied to convert or not.</p>
+        incoming_trust_sharepoint_link_html:
+          <p>Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.</p>
+        outgoing_trust_sharepoint_link_html:
+          <p>Provide a link to the SharePoint folder for the outgoing trust. This is where you save all the relevant trust documents.</p>
+        email: Enter the name or @education.gov.uk email address of the person who will work on this project next.
+  activemodel:
+    errors:
+      models:
+        new_handover_stepped_form:
+          email_does_not_exist: Email address could not be found
