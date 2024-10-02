@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Do not show deleted projects in the "Added by you" page
+
 ## [Release-90][release-90]
 
 ### Changed
