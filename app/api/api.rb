@@ -18,10 +18,15 @@ class Api < Grape::API
     security_definitions: {
       api_key: {
         type: "apiKey",
-        name: "Apikey",
+        name: "ApiKey",
         in: "header"
       }
     },
+    security: [
+      {
+        api_key: []
+      }
+    ],
     consumes: ["application/json"],
     produces: ["application/json"],
     tags: [
