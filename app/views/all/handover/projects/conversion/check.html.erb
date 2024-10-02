@@ -33,14 +33,27 @@
             row.with_key { t("project.handover.check.summary.form_a_mat") }
             row.with_value { t(@project.form_a_mat?) }
           end
-          summary_list.with_row do |row|
-            row.with_key { t("project.handover.check.summary.incoming_trust.name") }
-            row.with_value { @project.incoming_trust.name }
+
+          if @project.form_a_mat?
+            summary_list.with_row do |row|
+              row.with_key { t("project.handover.check.summary.new_trust.name") }
+              row.with_value { @project.new_trust_name }
+            end
+            summary_list.with_row do |row|
+              row.with_key { t("project.handover.check.summary.new_trust.reference") }
+              row.with_value { @project.new_trust_reference_number }
+            end
+          else
+            summary_list.with_row do |row|
+              row.with_key { t("project.handover.check.summary.incoming_trust.name") }
+              row.with_value { @project.incoming_trust.name }
+            end
+            summary_list.with_row do |row|
+              row.with_key { t("project.handover.check.summary.incoming_trust.ukprn") }
+              row.with_value { @project.incoming_trust.ukprn }
+            end
           end
-          summary_list.with_row do |row|
-            row.with_key { t("project.handover.check.summary.incoming_trust.ukprn") }
-            row.with_value { @project.incoming_trust.ukprn }
-          end
+
           summary_list.with_row do |row|
             row.with_key { t("project.handover.check.summary.advisory_board_date") }
             row.with_value { @project.advisory_board_date.to_fs(:govuk) }
