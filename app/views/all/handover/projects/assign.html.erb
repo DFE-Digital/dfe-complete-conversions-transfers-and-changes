@@ -4,9 +4,13 @@
 
       <%= form.govuk_error_summary %>
 
-      <%= form.govuk_collection_radio_buttons :team, @form.class.list_of_teams, :id, :name %>
+      <div class="govuk-form-group">
+        <%= form.govuk_collection_radio_buttons :team, @form.class.list_of_teams, :id, :name %>
+      </div>
 
-      <%= form.govuk_text_field :email, label: {size: "m"}, width: 20 %>
+      <div id="handover-assign-form-group">
+        <%= form.govuk_text_field :email, label: {size: "m"}, width: 20 %>
+      </div>
 
       <%= form.hidden_field :assigned_to_regional_caseworker_team %>
       <%= form.hidden_field :handover_note_body %>

@@ -33,6 +33,10 @@ Capybara.register_driver :headless_firefox do |app|
   Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
+Capybara.configure do |config|
+  config.automatic_label_click = true
+end
+
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
