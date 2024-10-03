@@ -55,6 +55,18 @@ RSpec.describe Gias::Establishment do
       establishment = build(:gias_establishment, urn: 123456, local_authority_code: 123, establishment_number: 456)
       expect(establishment.dfe_number).to eq("123/456")
     end
+
+    it "returns nil when the codes are missing" do
+      establishment = build(:gias_establishment, urn: 123456, local_authority_code: nil, establishment_number: nil)
+      expect(establishment.dfe_number).to be_nil
+    end
+  end
+
+  describe "laestab" do
+    it "returns the local authority code and establishment number, formatted as a dfe_number" do
+      establishment = build(:gias_establishment, urn: 123456, local_authority_code: 123, establishment_number: 456)
+      expect(establishment.laestab).to eq("123/456")
+    end
   end
 
   describe "local_authority" do
