@@ -145,7 +145,10 @@ Rails.application.routes.draw do
       namespace :all do
         namespace :handover do
           get "/", to: "projects#index"
-          get "/:id/check", to: "projects#check", as: :check
+          get "/:project_id/check", to: "handovers#check", as: :check
+          get "/:project_id/new", to: "handovers#new", as: :new
+          post "/:project_id/new", to: "handovers#create"
+          post "/:project_id/assign", to: "handovers#assign", as: :assign
         end
         namespace :in_progress, path: "in-progress" do
           get "all", to: "projects#all_index"

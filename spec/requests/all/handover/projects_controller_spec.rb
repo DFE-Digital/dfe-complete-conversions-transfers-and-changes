@@ -7,24 +7,27 @@ RSpec.describe All::Handover::ProjectsController, type: :request do
     mock_all_academies_api_responses
   end
 
-  describe "#check" do
-    context "when the project is a conversion" do
-      let!(:project) { create(:conversion_project) }
+  describe "#index" do
+    context "when there are no projects to hand over" do
+      it "shows a helpful message" do
+        get "/projects/all/handover/"
 
-      it "renders the correct template" do
-        get "/projects/all/handover/#{project.id}/check"
-
-        expect(response).to render_template("all/handover/projects/conversion/check")
+        expect(response.body).to include("There are no projects to handover")
       end
     end
 
-    context "when the project is a transfer" do
-      let!(:project) { create(:transfer_project) }
+    context "when there are projects" do
+      let!(:project) { create(:transfer_project, :inactive, urn: 123456) }
+      let!(:project) { create(:conversion_project, :inactive, urn: 165432) }
 
-      it "renders the correct template" do
-        get "/projects/all/handover/#{project.id}/check"
+      it "shows a table of the projects" do
+        create(:transfer_project, :inactive, urn: 123456)
+        create(:conversion_project, :inactive, urn: 165432)
 
-        expect(response).to render_template("all/handover/projects/transfer/check")
+        get "/projects/all/handover/"
+
+        expect(response.body).to include "123456"
+        expect(response.body).to include "165432"
       end
     end
   end

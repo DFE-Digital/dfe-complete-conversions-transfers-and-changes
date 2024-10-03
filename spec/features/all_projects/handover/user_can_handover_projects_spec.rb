@@ -21,7 +21,7 @@ RSpec.feature "Users can handover projects" do
       click_link "Add handover details"
 
       expect(page).to have_content("Check you have the right project")
-      expect(page).to have_content("Conversion project")
+      expect(page).to have_content("Conversion")
       expect(page).to have_content(conversion_project.urn)
 
       click_link "Choose a different project"
@@ -46,7 +46,7 @@ RSpec.feature "Users can handover projects" do
       click_link "Add handover details"
 
       expect(page).to have_content("Check you have the right project")
-      expect(page).to have_content("Transfer project")
+      expect(page).to have_content("Transfer")
       expect(page).to have_content(transfer_project.urn)
 
       click_link "Choose a different project"

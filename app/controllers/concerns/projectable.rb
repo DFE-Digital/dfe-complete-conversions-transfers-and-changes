@@ -6,6 +6,8 @@ module Projectable
   end
 
   private def find_project
+    raise ActiveRecord::RecordNotFound unless valid_uuid?
+
     @project = Project.find(params[:project_id])
   end
 
@@ -18,5 +20,9 @@ module Projectable
     when "Transfer::Project"
       append_view_path "app/views/transfers"
     end
+  end
+
+  private def valid_uuid?
+    /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i.match(params[:project_id])
   end
 end

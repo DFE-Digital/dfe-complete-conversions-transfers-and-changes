@@ -28,6 +28,7 @@ class NewHandoverSteppedForm
   validates :email, presence: true, on: :assign
   validates :email, format: {with: /\A\S+@education.gov.uk\z/i}, if: -> { email.present? }
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, if: -> { email.present? }
+  validate :email_exists, on: :assign, if: -> { email.present? }
 
   def self.list_of_teams
     regional_teams.sort.map do |team|
@@ -57,10 +58,14 @@ class NewHandoverSteppedForm
     create_handover_note!
   end
 
+  private def email_exists
+    errors.add(:email, :email_does_not_exist) unless assigned_user_id
+  end
+
   private def assigned_user_id
     return unless email
 
-    User.find_by_email(email).id
+    User.find_by_email(email)&.id
   end
 
   private def create_handover_note!

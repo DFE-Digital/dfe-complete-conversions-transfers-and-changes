@@ -256,6 +256,7 @@ en:
         add_handover_details: Add handover details
       empty:
         projects: There are no projects
+        handover: There are no projects to handover
       in_progress:
         empty: There are no projects in progress.
         conversions:

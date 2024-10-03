@@ -128,7 +128,9 @@ RSpec.describe NewHandoverSteppedForm, type: :model do
 
     context "in the assign validation context" do
       context "for a conversion project" do
-        let(:regional_delivery_officer) { create(:regional_delivery_officer_user) }
+        let(:regional_delivery_officer) {
+          create(:regional_delivery_officer_user, email: "test.user@education.gov.uk")
+        }
         let(:project) { create(:conversion_project) }
         let(:params) { valid_conversion_attributes }
         subject { described_class.new(project, regional_delivery_officer, params) }
@@ -181,11 +183,19 @@ RSpec.describe NewHandoverSteppedForm, type: :model do
 
             expect(subject).to be_invalid(:assign)
           end
+
+          it "must have a user with the email address" do
+            params[:email] = "no.account@education.gov.uk"
+
+            expect(subject).to be_invalid(:assign)
+          end
         end
       end
 
       context "for a transfer project" do
-        let(:regional_delivery_officer) { create(:regional_delivery_officer_user) }
+        let(:regional_delivery_officer) {
+          create(:regional_delivery_officer_user, email: "test.user@education.gov.uk")
+        }
         let(:project) { create(:transfer_project) }
         let(:params) { valid_transfer_attributes }
         subject { described_class.new(project, regional_delivery_officer, params) }

@@ -5,9 +5,10 @@ en:
         title: Check you have the right project
         cancel: Choose a different project
         summary:
-          type: Type of project
+          type: Project type
           school_name: School name
           academy_name: Academy name
+          form_a_mat: Form a MAT?
           urn: URN
           incoming_trust:
             name: Incoming trust name
@@ -22,8 +23,36 @@ en:
           regional_delivery_officer: Assigned to in Prepare
           values:
             project_type:
-              conversion_project: Conversion project
-              transfer_project: Transfer project
+              conversion_project: Conversion
+              transfer_project: Transfer
             directive_academy_order:
               "true": "DAO (Directive academy order)"
               "false": "AO (Academy order)"
+      new:
+        title: Add handover details
+  helpers:
+    legend:
+      new_handover_stepped_form:
+        assigned_to_regional_caseworker_team: Will RCS (Regional Casework Services) manage this project next?
+        team: Which region will complete this project?
+    label:
+      new_handover_stepped_form:
+        establishment_sharepoint_link: School SharePoint link
+        incoming_trust_sharepoint_link: Incoming trust SharePoint link
+        outgoing_trust_sharepoint_link: Outgoing trust SharePoint link
+        email: Who will complete this project?
+    hint:
+      new_handover_stepped_form:
+        establishment_sharepoint_link_html:
+          <p>If the school applied to convert, you must save the application form in the Schools' SharePoint folder.</p>
+          <p>You must also save the academy order and advisory board template. Do this whether the school applied to convert or not.</p>
+        incoming_trust_sharepoint_link_html:
+          <p>Provide a link to the SharePoint folder for the incoming trust. This is where you save all the relevant trust documents.</p>
+        outgoing_trust_sharepoint_link_html:
+          <p>Provide a link to the SharePoint folder for the outgoing trust. This is where you save all the relevant trust documents.</p>
+        email: Enter the name or @education.gov.uk email address of the person who will work on this project next.
+  activemodel:
+    errors:
+      models:
+        new_handover_stepped_form:
+          email_does_not_exist: Email address could not be found
