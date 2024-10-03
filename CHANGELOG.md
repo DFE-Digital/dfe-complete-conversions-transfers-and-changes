@@ -15,6 +15,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Transfer projects added automatically now show up in the All Projects >
   handover section for triage and assignment by Regional Delivery Officers.
 
+### Changed
+
+- The 'export' menu items for Service Support users has moved to the All project
+  section in-line with all other users.
+
 ### Fixed
 
 - Do not show deleted projects in the "Added by you" page

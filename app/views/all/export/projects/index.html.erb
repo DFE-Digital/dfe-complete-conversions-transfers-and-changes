@@ -1,9 +1,5 @@
 <% content_for :primary_navigation do %>
-  <% if policy(:export).service_support? %>
-    <%= render partial: "shared/navigation/service_support_primary_navigation" %>
-  <% else %>
     <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
-  <% end %>
 <% end %>
 
 <% content_for :page_title do %>

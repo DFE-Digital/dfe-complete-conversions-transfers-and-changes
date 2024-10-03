@@ -29,10 +29,4 @@ class ExportPolicy
 
     false
   end
-
-  def service_support?
-    return true if @user.service_support_team?
-
-    false
-  end
 end
