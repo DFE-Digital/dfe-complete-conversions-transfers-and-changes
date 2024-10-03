@@ -30,5 +30,16 @@ RSpec.describe All::Handover::ProjectsController, type: :request do
         expect(response.body).to include "165432"
       end
     end
+
+    context "when the user is not a regional delivery officer" do
+      it "does not show the handover navigation item" do
+        user = create(:regional_casework_services_user)
+        sign_in_with(user)
+
+        get "/projects/all"
+
+        expect(response.body).not_to include(all_handover_projects_path)
+      end
+    end
   end
 end

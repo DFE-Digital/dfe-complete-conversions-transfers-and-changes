@@ -8,6 +8,10 @@
 
         <ul class="moj-primary-navigation__list">
 
+          <% if policy(:project).handover? %>
+            <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.handover"), path: all_handover_projects_path, namespace: "/projects/all/handover"} %>
+          <% end %>
+
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.in_progress"), path: all_all_in_progress_projects_path, namespace: "/projects/all/in-progress"} %>
 
           <% if policy(:export).index? %>

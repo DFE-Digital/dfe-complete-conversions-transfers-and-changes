@@ -142,6 +142,7 @@ en:
       service_support: Service support
     primary:
       all_projects:
+        handover: Handover
         in_progress: In progress
         by_month: By month
         by_trust: By trust
