@@ -16,6 +16,9 @@ en:
           outgoing_trust:
             name: Outgoing trust name
             ukprn: Outgoing trust UKPRN
+          new_trust:
+            name: New trust
+            reference: Trust reference number
           advisory_board_date: Advisory board date
           provisional_conversion_date: Provisional conversion date
           provisional_transfer_date: Provisional transfer date
