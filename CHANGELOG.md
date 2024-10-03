@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The LAESTAB, also known as the DfE number is now shown on the new academy
   details once available.
+- Conversion projects added automatically now show up in the All Projects >
+  handover section for triage and assignment by Regional Delivery Officers.
+- Transfer projects added automatically now show up in the All Projects >
+  handover section for triage and assignment by Regional Delivery Officers.
 
 ### Fixed
 
