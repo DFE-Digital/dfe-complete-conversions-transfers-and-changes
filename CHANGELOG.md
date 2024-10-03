@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- The LAESTAB, also known as the DfE number is now shown on the new academy
+  details once available.
+
 ### Fixed
 
 - Do not show deleted projects in the "Added by you" page

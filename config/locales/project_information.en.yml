@@ -82,6 +82,7 @@ en:
           it can take one day for the data to be syncronised
         rows:
           urn: Academy URN (unique reference number)
+          laestab: LAESTAB (DfE number)
           academy_name: Name
           address: Address
           school_type: Type

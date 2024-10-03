@@ -26,8 +26,11 @@ class Gias::Establishment < ApplicationRecord
   end
 
   def dfe_number
+    return unless local_authority_code.present? && establishment_number.present?
+
     "#{local_authority_code}/#{establishment_number}"
   end
+  alias_method :laestab, :dfe_number
 
   def has_diocese?
     diocese_code != DIOCESE_NOT_APPLICABLE_CODE
