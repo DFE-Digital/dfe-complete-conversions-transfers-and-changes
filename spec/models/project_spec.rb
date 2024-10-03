@@ -680,9 +680,11 @@ RSpec.describe Project, type: :model do
         user = create(:user)
         added_project = create(:conversion_project, regional_delivery_officer: user)
         other_project = create(:conversion_project)
+        deleted_project = create(:conversion_project, :deleted, regional_delivery_officer: user)
 
         expect(Project.added_by(user)).to include(added_project)
         expect(Project.added_by(user)).to_not include(other_project)
+        expect(Project.added_by(user)).to_not include(deleted_project)
       end
     end
 

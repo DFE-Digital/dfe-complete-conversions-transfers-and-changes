@@ -58,7 +58,7 @@ class Project < ApplicationRecord
 
   scope :assigned_to, ->(user) { where(assigned_to_id: user.id) }
   scope :assigned_to_users, ->(users) { where(assigned_to_id: [users]) }
-  scope :added_by, ->(user) { where(regional_delivery_officer: user) }
+  scope :added_by, ->(user) { where(regional_delivery_officer: user).and(where.not(state: 2)) }
 
   scope :ordered_by_created_at_date, -> { order(created_at: :desc) }
 
