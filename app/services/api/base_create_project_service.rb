@@ -10,7 +10,7 @@ class Api::BaseCreateProjectService
 
     def initialize(message, validation_errors)
       super(message)
-      @validation_errors = validation_errors.messages
+      @validation_errors = validation_errors.details
     end
   end
 
