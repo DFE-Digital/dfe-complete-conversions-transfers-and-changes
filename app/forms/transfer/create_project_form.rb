@@ -94,4 +94,8 @@ class Transfer::CreateProjectForm < CreateProjectForm
   rescue Api::AcademiesApi::Client::NotFoundError
     errors.add(:outgoing_trust_ukprn, :no_trust_found)
   end
+
+  private def urn_unique_for_in_progress_transfers
+    errors.add(:urn, :duplicate) if Transfer::Project.where(urn: urn, state: [:inactive, :active]).any?
+  end
 end

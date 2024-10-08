@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - The 'export' menu items for Service Support users has moved to the All project
   section in-line with all other users.
+- You can no longer add a new project if it has already been added automatically
+  and is awaiting handover.
 
 ### Fixed
 

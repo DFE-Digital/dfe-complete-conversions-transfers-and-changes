@@ -71,8 +71,4 @@ class CreateProjectForm
 
     result.object
   end
-
-  private def urn_unique_for_in_progress_transfers
-    errors.add(:urn, :duplicate) if Transfer::Project.active.where(urn: urn).any?
-  end
 end

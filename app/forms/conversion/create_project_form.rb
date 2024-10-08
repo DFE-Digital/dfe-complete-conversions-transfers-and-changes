@@ -33,7 +33,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
   end
 
   private def urn_unique_for_in_progress_conversions
-    errors.add(:urn, :duplicate) if Conversion::Project.active.where(urn: urn).any?
+    errors.add(:urn, :duplicate) if Conversion::Project.where(urn: urn, state: [:inactive, :active]).any?
   end
 
   def save(context = nil)

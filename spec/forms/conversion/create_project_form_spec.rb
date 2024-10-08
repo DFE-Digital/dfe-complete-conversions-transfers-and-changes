@@ -515,9 +515,20 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
       end
     end
 
-    context "when there is another in-progress project with the same urn" do
+    context "when there is another active project with the same urn" do
       it "is invalid" do
-        _project_with_urn = create(:conversion_project, urn: 121813)
+        _project_with_urn = create(:conversion_project, urn: 121813, state: :active)
+        form = build(form_factory.to_sym)
+
+        form.urn = 121813
+        expect(form).to be_invalid
+        expect(form.errors.messages[:urn]).to include I18n.t("errors.attributes.urn.duplicate")
+      end
+    end
+
+    context "when there is another inactive project with the same urn" do
+      it "is invalid" do
+        _project_with_urn = create(:conversion_project, urn: 121813, state: :inactive)
         form = build(form_factory.to_sym)
 
         form.urn = 121813
