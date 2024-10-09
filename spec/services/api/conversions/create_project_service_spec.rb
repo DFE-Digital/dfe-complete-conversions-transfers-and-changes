@@ -171,8 +171,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { subject.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(subject.errors.to_json).to include("urn")
-        expect(subject.errors.to_json).to include("6 digits long")
+        expect(subject.errors.details.to_json).to include("urn")
+        expect(subject.errors.details.to_json).to include("invalid_urn")
       end
     end
 
@@ -184,8 +184,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { subject.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(subject.errors.to_json).to include("urn")
-        expect(subject.errors.to_json).to include("no school or academy with that URN")
+        expect(subject.errors.details.to_json).to include("urn")
+        expect(subject.errors.details.to_json).to include("no_establishment_found")
       end
     end
 
@@ -198,8 +198,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { subject.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(subject.errors.to_json).to include("incoming_trust_ukprn")
-        expect(subject.errors.to_json).to include("8 digits long")
+        expect(subject.errors.details.to_json).to include("incoming_trust_ukprn")
+        expect(subject.errors.details.to_json).to include("must_be_correct_format")
       end
     end
 
@@ -211,8 +211,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { subject.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(subject.errors.to_json).to include("incoming_trust_ukprn")
-        expect(subject.errors.to_json).to include("no trust with that UKPRN")
+        expect(subject.errors.details.to_json).to include("incoming_trust_ukprn")
+        expect(subject.errors.details.to_json).to include("no_trust_found")
       end
     end
 
@@ -225,8 +225,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { subject.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(subject.errors.to_json).to include("prepare_id")
-        expect(subject.errors.to_json).to include("You must supply a Prepare ID")
+        expect(subject.errors.details.to_json).to include("prepare_id")
+        expect(subject.errors.details.to_json).to include("blank")
       end
     end
 
@@ -238,8 +238,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { subject.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(subject.errors.to_json).to include("urn")
-        expect(subject.errors.to_json).to include("already an in-progress project")
+        expect(subject.errors.details.to_json).to include("urn")
+        expect(subject.errors.details.to_json).to include("duplicate")
       end
     end
 
@@ -266,8 +266,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { subject.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(subject.errors.to_json).to include("new_trust_reference_number")
-        expect(subject.errors.to_json).to include("followed by 5 numbers")
+        expect(subject.errors.details.to_json).to include("new_trust_reference_number")
+        expect(subject.errors.details.to_json).to include("invalid_trust_reference_number")
       end
     end
 
@@ -294,8 +294,8 @@ RSpec.describe Api::Conversions::CreateProjectService do
 
         expect { result.call }
           .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
-        expect(result.errors.to_json).to include("advisory_board_date")
-        expect(result.errors.to_json).to include("must be in the past")
+        expect(result.errors.details.to_json).to include("advisory_board_date")
+        expect(result.errors.details.to_json).to include("must_be_in_the_past")
       end
     end
 
