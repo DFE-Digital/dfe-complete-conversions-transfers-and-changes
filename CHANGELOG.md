@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-91][release-91]
+
 ### Added
 
 - The LAESTAB, also known as the DfE number is now shown on the new academy
@@ -2252,7 +2254,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-90...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-91...HEAD
+[release-91]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-90...release-91
 [release-90]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-89...release-90
 [release-89]:
