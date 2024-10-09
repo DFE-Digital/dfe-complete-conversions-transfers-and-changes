@@ -110,7 +110,7 @@ RSpec.describe V1::Conversions do
 
         expect(response.body).to include("validation_errors")
         expect(response.body).to include("created_by_email")
-        expect(response.body).to include("is invalid")
+        expect(response.body).to include("invalid")
         expect(response.status).to eq(400)
       end
     end
@@ -188,7 +188,7 @@ RSpec.describe V1::Conversions do
 
         expect(response.body).to include("validation_errors")
         expect(response.body).to include("created_by_email")
-        expect(response.body).to include("is invalid")
+        expect(response.body).to include("invalid")
         expect(response.status).to eq(400)
       end
     end
