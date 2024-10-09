@@ -8,6 +8,8 @@ RSpec.feature "Users can view a list of handover projects" do
   end
 
   scenario "as a table" do
+    pending("Prepare application sending approved projects to us")
+
     conversion_project = create(:conversion_project, state: :inactive, urn: 123456, conversion_date: Date.new(2024, 2, 1))
     transfer_project = create(:transfer_project, state: :inactive, urn: 165432, transfer_date: Date.new(2024, 1, 1))
 
