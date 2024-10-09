@@ -309,6 +309,20 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
       end
     end
 
+    context "when the advisory board date is missing" do
+      it "raises a validation error" do
+        params = valid_parameters
+        params[:advisory_board_date] = ""
+
+        result = described_class.new(params)
+
+        expect { result.call }
+          .to raise_error(Api::Transfers::CreateProjectService::ValidationError)
+        expect(result.errors.details.to_json).to include("advisory_board_date")
+        expect(result.errors.details.to_json).to include("blank")
+      end
+    end
+
     context "when the advisory board date is in the future" do
       it "raises a validation error" do
         params = valid_parameters
@@ -348,6 +362,24 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
           .to raise_error(Api::Transfers::CreateProjectService::ValidationError)
         expect(subject.errors.to_json).to include("provisional_transfer_date")
         expect(subject.errors.to_json).to include("the first of the month")
+      end
+    end
+
+    context "when the created by details are missing" do
+      it "raises a validation error" do
+        params = valid_parameters
+        params[:created_by_email] = ""
+        params[:created_by_first_name] = ""
+        params[:created_by_last_name] = ""
+
+        subject = described_class.new(params)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.details.to_json).to include("created_by_email")
+        expect(subject.errors.details.to_json).to include("created_by_first_name")
+        expect(subject.errors.details.to_json).to include("created_by_last_name")
+        expect(subject.errors.details.to_json).to include("invalid")
       end
     end
   end
