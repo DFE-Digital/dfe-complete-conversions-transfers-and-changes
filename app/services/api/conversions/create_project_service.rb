@@ -2,7 +2,7 @@ class Api::Conversions::CreateProjectService < Api::BaseCreateProjectService
   attribute :provisional_conversion_date, :date
   attribute :directive_academy_order, :boolean
 
-  validates :provisional_conversion_date, first_day_of_month: true
+  validates :provisional_conversion_date, presence: true, first_day_of_month: true
 
   def call
     if valid?

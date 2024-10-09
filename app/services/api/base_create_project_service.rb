@@ -42,6 +42,8 @@ class Api::BaseCreateProjectService
 
   validates :created_by_email, format: {with: /\A\S+@education.gov.uk\z/i}
   validates :created_by_email, format: {with: URI::MailTo::EMAIL_REGEXP}
+  validates :created_by_first_name, presence: true
+  validates :created_by_last_name, presence: true
 
   validates_with GroupIdValidator
 
