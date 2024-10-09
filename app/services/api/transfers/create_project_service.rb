@@ -6,7 +6,7 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
   attribute :financial_safeguarding_governance_issues, :boolean
   attribute :outgoing_trust_to_close, :boolean
 
-  validates :provisional_transfer_date, first_day_of_month: true
+  validates :provisional_transfer_date, presence: true, first_day_of_month: true
 
   validates :outgoing_trust_ukprn, ukprn: true, if: -> { outgoing_trust_ukprn.present? }
   validate :outgoing_trust_exists, if: -> { outgoing_trust_ukprn.present? }

@@ -285,6 +285,20 @@ RSpec.describe Api::Conversions::CreateProjectService do
       end
     end
 
+    context "when the provisional conversion date is empty" do
+      it "raises a validation error" do
+        params = valid_parameters
+        params[:provisional_conversion_date] = ""
+
+        subject = described_class.new(params)
+
+        expect { subject.call }
+          .to raise_error(Api::Conversions::CreateProjectService::ValidationError)
+        expect(subject.errors.details.to_json).to include("provisional_conversion_date")
+        expect(subject.errors.details.to_json).to include("blank")
+      end
+    end
+
     context "when the provisional conversion date is not on the 1st" do
       it "raises a validation error" do
         params = valid_parameters
