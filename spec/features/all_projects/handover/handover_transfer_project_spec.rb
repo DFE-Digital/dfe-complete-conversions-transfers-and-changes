@@ -9,7 +9,6 @@ RSpec.feature "Handover a transfer project" do
 
   scenario "to the Regional team" do
     prepare_user = create(:user, email: "prepare.user@education.gov.uk", first_name: "Prepare", last_name: "User", team: "east_midlands")
-    complete_user = create(:user, email: "complete.user@education.gov.uk", first_name: "Complete", last_name: "User", team: :north_west)
     project = create(:transfer_project, :inactive, regional_delivery_officer: prepare_user)
 
     visit all_handover_projects_path
@@ -28,16 +27,9 @@ RSpec.feature "Handover a transfer project" do
     within "#assigned-to-regional-caseworker-team" do
       choose "No"
     end
-    fill_in "Handover comments", with: "Test handover comments.\n\nThese are the handover comments for tests."
     fill_in "School SharePoint link", with: "https://educationgovuk.sharepoint.com/establishment"
     fill_in "Incoming trust SharePoint link", with: "https://educationgovuk.sharepoint.com/incoming-trust"
     fill_in "Outgoing trust SharePoint link", with: "https://educationgovuk.sharepoint.com/outgoing-trust"
-    click_button "Confirm"
-
-    expect(page).to have_content("Which region will complete this project?")
-
-    choose "North West"
-    fill_in "Who will complete this project?", with: complete_user.email
     click_button "Confirm"
 
     expect(page).to have_content("Project assigned")
