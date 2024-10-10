@@ -19,7 +19,7 @@ class All::Handover::HandoversController < ApplicationController
   def new
     authorize Project, :handover?
 
-    @form = NewHandoverSteppedForm.new(@project, @current_user)
+    @form = NewHandoverForm.new(@project, @current_user)
 
     render new_template_path
   end
@@ -33,21 +33,11 @@ class All::Handover::HandoversController < ApplicationController
         @form.save
         render "all/handover/projects/assigned_regional_casework_services"
       when false
-        render "all/handover/projects/assign"
+        @form.save
+        render "all/handover/projects/assigned_region"
       end
     else
       render new_template_path
-    end
-  end
-
-  def assign
-    authorize Project, :handover?
-
-    if @form.valid?(:assign)
-      @form.save
-      render "all/handover/projects/assigned_region"
-    else
-      render "all/handover/projects/assign"
     end
   end
 
@@ -61,19 +51,17 @@ class All::Handover::HandoversController < ApplicationController
   end
 
   private def set_form
-    @form = NewHandoverSteppedForm.new(@project, @current_user, handover_params)
+    @form = NewHandoverForm.new(@project, @current_user, handover_params)
   end
 
   private def handover_params
-    params.require(:new_handover_stepped_form).permit(
+    params.require(:new_handover_form).permit(
       :assigned_to_regional_caseworker_team,
       :handover_note_body,
       :establishment_sharepoint_link,
       :incoming_trust_sharepoint_link,
       :outgoing_trust_sharepoint_link,
-      :two_requires_improvement,
-      :email,
-      :team
+      :two_requires_improvement
     )
   end
 end

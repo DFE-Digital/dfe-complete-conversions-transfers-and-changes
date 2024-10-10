@@ -50,45 +50,28 @@ RSpec.describe All::Handover::HandoversController, type: :request do
     end
   end
 
-  describe "#assign" do
-    context "when the form is invalid" do
-      let!(:project) { create(:conversion_project) }
-
-      it "renders the form with errors" do
-        post "/projects/all/handover/#{project.id}/assign", params: invalid_params
-
-        expect(response).to render_template("all/handover/projects/assign")
-        expect(response.body).to include("There is a problem")
-      end
-    end
-  end
-
   def valid_params
     {
-      new_handover_stepped_form: {
+      new_handover_form: {
         assigned_to_regional_caseworker_team: false,
         handover_note_body: "Handover note.",
         establishment_sharepoint_link: "https://educationgovuk.sharepoint.com/establishment",
         incoming_trust_sharepoint_link: "https://educationgovuk.sharepoint.com/incoming-trust",
         outgoing_trust_sharepoint_link: "https://educationgovuk.sharepoint.com/outgoing-trust",
-        two_requires_improvement: true,
-        email: "test.user@education.gov.uk",
-        team: :west_midlands
+        two_requires_improvement: true
       }
     }
   end
 
   def invalid_params
     {
-      new_handover_stepped_form: {
+      new_handover_form: {
         assigned_to_regional_caseworker_team: nil,
         handover_note_body: nil,
         establishment_sharepoint_link: nil,
         incoming_trust_sharepoint_link: nil,
         outgoing_trust_sharepoint_link: nil,
-        two_requires_improvement: nil,
-        email: nil,
-        team: nil
+        two_requires_improvement: nil
       }
     }
   end
