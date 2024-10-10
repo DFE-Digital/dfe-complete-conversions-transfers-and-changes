@@ -1,3 +1,9 @@
+// Import DfE Frontend early so it gets overidden
+@import "dfefrontend";
+
+// get the Inter font
+@import url("https://rsms.me/inter/inter.css");
+
 $govuk-font-url-function: "font-url";
 $govuk-image-url-function: "image-url";
 $govuk-global-styles: true;
@@ -6,16 +12,14 @@ $govuk-global-styles: true;
 $govuk-page-width: 1200px;
 $moj-page-width: $govuk-page-width;
 
-// do not user GDS Transport
-$govuk-font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
-  Cantarell, "Helvetica Neue", sans-serif;
+// Use the DfE font 'Inter', do not user GDS Transport
+$govuk-font-family: "Inter", sans-serif;
 
 $dfe-blue: #003a69;
 
 @import "govuk-frontend/govuk/all";
 @import "accessible-autocomplete/src/autocomplete";
 
-@import "dfefrontend";
 
 @import "@ministryofjustice/frontend/moj/settings/all";
 @import "@ministryofjustice/frontend/moj/helpers/all";

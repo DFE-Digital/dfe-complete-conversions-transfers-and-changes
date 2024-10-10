@@ -7,6 +7,10 @@
 Rails.application.configure do
   config.content_security_policy do |policy|
     policy.default_src :self
+    policy.style_src :self,
+      "https://rsms.me/inter/inter.css"
+    policy.font_src :self,
+      "https://rsms.me"
     policy.script_src :self,
       "www.googletagmanager.com"
     policy.img_src :self,
