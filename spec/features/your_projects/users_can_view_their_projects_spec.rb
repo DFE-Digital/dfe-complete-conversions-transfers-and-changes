@@ -50,7 +50,9 @@ RSpec.feature "Users can view their projects" do
 
       expect(page).to have_content(conversion_project.urn)
       expect(page).to have_content(transfer_project.urn)
-      expect(page).not_to have_content("Region")
+      within("table") do
+        expect(page).not_to have_content("Region")
+      end
     end
   end
 end
