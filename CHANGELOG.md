@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- New DfE font and header have been applied to the application.
+
 ## [Release-91][release-91]
 
 ### Added
