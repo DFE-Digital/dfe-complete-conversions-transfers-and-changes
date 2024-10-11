@@ -58,10 +58,6 @@ Rails.application.routes.draw do
     get "internal-contacts", to: "internal_contacts#index"
   end
 
-  concern :memberable do
-    get "mp", to: "member_of_parliament#show"
-  end
-
   concern :significant_date_historyable do
     resource :date_history, path: "date-history", only: %i[new create], controller: :date_history
     get "date-history", to: "date_history#index"
@@ -104,7 +100,6 @@ Rails.application.routes.draw do
         completable
         internal_contactable
         significant_date_historyable
-        memberable
         academy_urn_updateable
         dao_revokable
       ]
