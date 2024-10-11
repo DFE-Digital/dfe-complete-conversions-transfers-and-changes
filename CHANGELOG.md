@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - New DfE font and header have been applied to the application.
+- The links in the footer have been updated to the latest versions.
 
 ## [Release-91][release-91]
 
