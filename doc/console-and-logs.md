@@ -93,17 +93,11 @@ Logs are in an SQL like database, you can manipulate them however you choose, as
 a starter:
 
 ```
-ContainerAppConsoleLogs_CL
-| project TimeGenerated, Log_s, RevisionName_s
-| where RevisionName_s == "<revision name>" and Log_s !has "INFO"
+ContainerAppConsoleLogs
+| project TimeGenerated, Log, RevisionName
 | order by TimeGenerated
 ```
 
-This snippet will get you all the logs that are not 'INFO' for the specified
-time period.
-
-The `<revision name>` is the name of the revision you wish to search, this would
-usually be the current revusion found in the _Revisions_ link under
-_Applicaiton_ and looks like `s184d01-comp-complete-app--1j9hcz0`.
+This snippet will get you all the logs for the specified time period.
 
 You can save queries for frequent use.
