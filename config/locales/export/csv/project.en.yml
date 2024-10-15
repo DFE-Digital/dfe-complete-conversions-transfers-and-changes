@@ -50,9 +50,9 @@ en:
           incoming_trust_identifier: Incoming trust group identifier
           incoming_trust_companies_house_number: Incoming trust companies house number
           incoming_trust_name: Incoming trust name
-          incoming_trust_main_contact_name: Incoming trust main contact name
-          incoming_trust_main_contact_email: Incoming trust main contact email
-          incoming_trust_main_contact_role: Incoming trust main contact role
+          incoming_trust_main_contact_name: Primary contact for incoming trust name
+          incoming_trust_main_contact_email: Primary contact for incoming trust email
+          incoming_trust_main_contact_role: Primary contact for incoming trust role
           incoming_trust_ceo_contact_name: Incoming trust CEO name
           incoming_trust_ceo_contact_role: Incoming trust CEO role
           incoming_trust_ceo_contact_email: Incoming trust CEO email
@@ -99,8 +99,9 @@ en:
           outgoing_trust_address_town: Outgoing trust address town
           outgoing_trust_address_county: Outgoing trust address county
           outgoing_trust_address_postcode: Outgoing trust address postcode
-          outgoing_trust_main_contact_name: Outgoing trust main contact name
-          outgoing_trust_main_contact_email: Outgoing trust main contact email
+          outgoing_trust_main_contact_name: Primary contact for outgoing trust name
+          outgoing_trust_main_contact_role: Primary contact for outgoing trust title
+          outgoing_trust_main_contact_email: Primary contact for outgoing trust email
           outgoing_trust_ceo_contact_name: Outgoing trust CEO name
           outgoing_trust_ceo_contact_role: Outgoing trust CEO role
           outgoing_trust_ceo_contact_email: Outgoing trust CEO email
@@ -141,9 +142,9 @@ en:
           conversion_type: Conversion type
           transfer_type: Transfer type
           esfa_notes: ESFA notes
-          school_main_contact_email: School contact email
-          school_main_contact_name: School contact name
-          school_main_contact_role: School contact role
+          school_main_contact_email: Primary contact for school email
+          school_main_contact_name: Primary contact for school name
+          school_main_contact_role: Primary contact for school role
           headteacher_contact_name: Headteacher name
           headteacher_contact_role: Headteacher role
           headteacher_contact_email: Headteacher email

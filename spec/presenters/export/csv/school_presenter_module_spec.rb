@@ -8,7 +8,7 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
 
   before do
     mock_successful_api_response_to_create_any_project
-    allow(project).to receive(:establishment_main_contact_id).and_return(contact.id)
+    project.establishment_main_contact = contact
     allow(project).to receive(:director_of_child_services).and_return(director_of_child_services)
   end
 
@@ -103,7 +103,7 @@ RSpec.describe Export::Csv::SchoolPresenterModule do
         KeyContacts.new(project: project, headteacher: contact)
 
         expect(subject.headteacher_contact_name).to eql "Jo Example"
-        expect(subject.headteacher_contact_role).to eql "CEO of Learning"
+        expect(subject.headteacher_contact_role).to eql "Headteacher"
         expect(subject.headteacher_contact_email).to eql "jo@example.com"
       end
     end

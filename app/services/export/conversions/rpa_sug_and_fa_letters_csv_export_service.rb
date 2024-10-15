@@ -14,6 +14,9 @@ class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExpor
     school_main_contact_name
     school_main_contact_role
     school_main_contact_email
+    headteacher_contact_name
+    headteacher_contact_role
+    headteacher_contact_email
     chair_of_governors_name
     chair_of_governors_role
     chair_of_governors_email
@@ -40,6 +43,9 @@ class Export::Conversions::RpaSugAndFaLettersCsvExportService < Export::CsvExpor
     incoming_trust_address_town
     incoming_trust_address_county
     incoming_trust_address_postcode
+    incoming_trust_ceo_contact_name
+    incoming_trust_ceo_contact_role
+    incoming_trust_ceo_contact_email
     incoming_trust_main_contact_name
     incoming_trust_main_contact_role
     incoming_trust_main_contact_email

@@ -7,7 +7,7 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
 
   before do
     mock_successful_api_response_to_create_any_project
-    allow(project).to receive(:incoming_trust_main_contact_id).and_return(incoming_trust_main_contact.id)
+    project.incoming_trust_main_contact = incoming_trust_main_contact
   end
 
   it "presents the identifier" do
@@ -91,7 +91,7 @@ RSpec.describe Export::Csv::IncomingTrustPresenterModule do
         KeyContacts.new(project: project, incoming_trust_ceo: contact)
 
         expect(subject.incoming_trust_ceo_contact_name).to eql contact.name
-        expect(subject.incoming_trust_ceo_contact_role).to eql "CEO of Learning"
+        expect(subject.incoming_trust_ceo_contact_role).to eql "CEO"
         expect(subject.incoming_trust_ceo_contact_email).to eql contact.email
       end
     end
