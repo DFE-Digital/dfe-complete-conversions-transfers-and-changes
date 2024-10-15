@@ -1,3 +1,4 @@
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :azure_activedirectory_v2,
     {
@@ -8,6 +9,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
         redirect_uri: ENV["AZURE_REDIRECT_URI"]
       }
     }
+  provider :developer if ENV["CODESPACES"] && Rails.env.development?
 end
 
 OmniAuth.config.logger = Rails.logger

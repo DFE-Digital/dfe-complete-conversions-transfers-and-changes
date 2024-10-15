@@ -1,0 +1,39 @@
+name: dfe-complete
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    networks:
+      - dev
+    command: sleep infinity
+  redis:
+    container_name: dfe-complete-redis-backing-service
+    image: redis:6
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    networks:
+      - dev
+  db:
+    container_name: dfe-complete-sql-backing-service
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - 1433:1433
+    volumes:
+      - sql-server-data:/var/opt/mssql
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  sql-server-data:
+  redis-data:
