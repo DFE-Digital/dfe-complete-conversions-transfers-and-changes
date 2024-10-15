@@ -1,0 +1,28 @@
+name: dfe-complete
+services:
+  db:
+    container_name: dfe-complete-sql-backing-service
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    env_file: .env.database
+    ports:
+      - 1433:1433
+    volumes:
+      - sql-server-data:/var/opt/mssql
+    networks:
+      - dev
+  redis:
+    container_name: dfe-complete-redis-backing-service
+    image: redis:6
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  sql-server-data:
+  redis-data:
