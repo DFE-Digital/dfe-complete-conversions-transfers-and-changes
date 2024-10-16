@@ -128,6 +128,9 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
 
       fill_in "Assign to", with: user.email
 
+      # give the autocomplete time to load
+      sleep(0.5)
+
       within(autocomplete_first_suggestion) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
       end
@@ -156,6 +159,9 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
       end
 
       fill_in "Assign to", with: user.email
+
+      # give the autocomplete time to load
+      sleep(0.5)
 
       within(autocomplete_first_suggestion) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
