@@ -101,11 +101,11 @@ COPY Gemfile.lock ${DEPS_HOME}/Gemfile.lock
 
 # We pin versions because Docker will cache this layer anyway, the only way to update
 # is to modify these versions
-RUN gem update --system 3.3.26
-RUN gem install bundler --version 2.3.23
-RUN bundle config set frozen "true"
-RUN bundle config set no-cache "true"
-RUN bundle config set with "${BUNDLE_GEM_GROUPS}"
+RUN gem update --system 3.3.26 && \
+  gem install bundler --version 2.3.23 && \
+  bundle config set frozen "true" && \
+  bundle config set no-cache "true" && \
+  bundle config set with "${BUNDLE_GEM_GROUPS}";
 RUN \
     if [ "${RAILS_ENV}" = "production" ]; then \
         bundle config set without "linting"; \
@@ -143,9 +143,7 @@ COPY --from=dependencies ${DEPS_HOME}/node_modules ${APP_HOME}/node_modules
 # End
 
 # Copy app code (sorted by vague frequency of change for caching)
-RUN mkdir -p ${APP_HOME}/log
-RUN mkdir -p ${APP_HOME}/tmp
-RUN mkdir -p ${APP_HOME}/coverage
+RUN mkdir -p ${APP_HOME}/log ${APP_HOME}/tmp ${APP_HOME}/coverage
 
 COPY .erb-lint* ${APP_HOME}/
 COPY .irbrc ${APP_HOME}/.irbrc
