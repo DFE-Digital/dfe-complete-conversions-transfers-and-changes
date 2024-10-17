@@ -13,6 +13,12 @@
   <%= form_tag("/auth/azure_activedirectory_v2", method: "post") do %>
     <%= button_tag(t("sign_in.button", type: :submit), class: "govuk-button") %>
   <% end %>
+  <% if Rails.env.development? && ENV["CODESPACES"] %>
+    <%= form_tag("/auth/developer", method: "post") do %>
+      <%= button_tag("Developer login", class: "govuk-button") %>
+    <% end %>
+  <% end %>
+
   <h2 class="govuk-heading-m">Register for access</h2>
   <p class="govuk-body">If you do not have access you can <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-X7F89QcWu5CjlJXwF0TVktUMEpZSU5aTEVYVlIyRE1JSjdMREtIVDhWQiQlQCN0PWcu" class="govuk-link" rel="noreferrer noopener" target="_blank">sign up to use Complete conversions, transfers and changes (opens in new tab)</a>.</p>
   <p class="govuk-body">To register, you’ll need to provide your:</p>

@@ -64,4 +64,16 @@ Rails.application.configure do
   config.action_mailer.notify_settings = {
     api_key: ENV["GOV_NOTIFY_API_KEY"]
   }
+
+  # Extra Github Codespaces config
+  if ENV["CODESPACES"]
+    # add the code spaces host to the app hosts
+    config.hosts << ENV["CODESPACE_NAME"] + "-3000.app.github.dev"
+
+    # overide the omniauth callback, we cannot actually use this, but it is required to start the app
+    ENV["AZURE_REDIRECT_URI"] = "https://" + ENV["CODESPACE_NAME"] + "-3000.app.github.dev/auth/azure_activedirectory_v2/callback"
+
+    # disable CSRF as we cannot rely on the host being 'localhost'
+    config.action_controller.forgery_protection_origin_check = false
+  end
 end
