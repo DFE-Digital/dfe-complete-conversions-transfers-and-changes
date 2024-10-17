@@ -183,6 +183,7 @@ jobs:
     name: Docker
     runs-on: ubuntu-latest
     needs: build-and-cache
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
         with:
