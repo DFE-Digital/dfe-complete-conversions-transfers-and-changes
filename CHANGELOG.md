@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release 92][release-92]
+
 ### Changed
 
 - New DfE font and header have been applied to the application.
@@ -2280,7 +2282,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-91...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-92...HEAD
+[release-92]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-91...release-92
 [release-91]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-90...release-91
 [release-90]:
