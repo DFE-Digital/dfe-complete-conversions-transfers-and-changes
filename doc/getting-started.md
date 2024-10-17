@@ -1,5 +1,11 @@
 # Getting started
 
+## Codespaces
+
+If you are not a developer, or you are using a Windows machine,
+we recommend running this application using Github Codespaces.
+See [Running with Codespaces](/doc/running-with-codespaces.md).
+
 ## Getting the basics
 
 This is a Rails application, you will need access to:
