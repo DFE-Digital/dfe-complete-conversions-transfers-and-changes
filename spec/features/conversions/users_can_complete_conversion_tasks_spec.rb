@@ -163,7 +163,7 @@ RSpec.feature "Users can complete conversion tasks" do
     end
 
     scenario "the response can be church or trust" do
-      choose "Yes, joining church or trust RPA"
+      choose "Yes, joining church RPA"
       click_on I18n.t("task_list.continue_button.text")
 
       expect(project.reload.tasks_data.risk_protection_arrangement_option).to eq "church_or_trust"

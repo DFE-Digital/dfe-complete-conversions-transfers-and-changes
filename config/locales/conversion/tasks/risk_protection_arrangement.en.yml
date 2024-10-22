@@ -14,7 +14,7 @@ en:
                   standard RPA unless they say otherwise.</p>
           responses:
             standard: Yes, joining standard RPA
-            church_or_trust: Yes, joining church or trust RPA
+            church_or_trust: Yes, joining church RPA
             commercial:
               option: No, buying commercial insurance
               hint_html:
