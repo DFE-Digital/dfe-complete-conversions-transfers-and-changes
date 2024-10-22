@@ -35,6 +35,7 @@ RSpec.describe Note, type: :model do
     end
 
     describe "project_level_notes" do
+      let!(:other_project) { create(:conversion_project) }
       let!(:project) { create(:conversion_project) }
       let!(:project_level_note) { create(:note, project: project) }
       let!(:task_level_note) { create(:note, task_identifier: "handover", project: project) }
@@ -56,6 +57,12 @@ RSpec.describe Note, type: :model do
       it "does include dao revocation notes" do
         expect(subject).to include project_level_note
         expect(subject).to include dao_revocation_note
+      end
+
+      it "only include notes for the correct project" do
+        subject = Note.project_level_notes(other_project)
+
+        expect(subject).not_to include dao_revocation_note
       end
     end
   end

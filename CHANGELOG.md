@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - removed trust from the RPA radio button options text for conversions
 
+### Fixed
+
+- The note added during DAO revocation only appears on the associated project
+  notes, instead of all projects.
+
 ## [Release 92][release-92]
 
 ### Changed
