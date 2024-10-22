@@ -18,6 +18,9 @@ RSpec.feature "Service support users can upload GIAS data" do
   end
 
   scenario "a service support user can successfully upload GIAS data for ingestion" do
+    # we don't want to actually save the file
+    allow_any_instance_of(ServiceSupport::Upload::Gias::UploadEstablishmentsForm).to receive(:save).and_return(true)
+
     visit service_support_upload_gias_establishments_new_path
 
     attach_file(I18n.t("service_support.import.gias_establishments.upload_form.label"), Rails.root + "spec/fixtures/files/gias_establishment_data_good.csv")
