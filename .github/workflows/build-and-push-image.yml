@@ -41,9 +41,13 @@ jobs:
           echo "date=${TIME}" >> $GITHUB_OUTPUT
 
   deploy-image:
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
     name: Deploy '${{ needs.set-env.outputs.branch }}' to ${{ needs.set-env.outputs.environment }}
     needs: [ set-env ]
-    uses: DFE-Digital/deploy-azure-container-apps-action/.github/workflows/build-push-deploy.yml@v2.5.0
+    uses: DFE-Digital/deploy-azure-container-apps-action/.github/workflows/build-push-deploy.yml@v3.0.0
     strategy:
       matrix:
         suffix: [
@@ -52,9 +56,11 @@ jobs:
         ]
         include:
           - suffix: ""
-            aca_credential_secret_name: "AZURE_ACA_CREDENTIALS"
+            aca_name: "ACA_CONTAINERAPP_NAME"
+            aca_client_id: "ACA_CLIENT_ID"
           - suffix: "-worker"
-            aca_credential_secret_name: "AZURE_ACA_WORKER_CREDENTIALS"
+            aca_name: "ACA_CONTAINERAPP_WORKER_NAME"
+            aca_client_id: "ACA_WORKER_CLIENT_ID"
 
     with:
       docker-image-name: 'complete-app'
@@ -66,8 +72,10 @@ jobs:
         TIME_OF_BUILD="${{ needs.set-env.outputs.date }}"
       annotate-release: ${{ matrix.suffix == '' }}
     secrets:
-      azure-acr-credentials: ${{ secrets.ACR_CREDENTIALS }}
+      azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+      azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      azure-acr-client-id: ${{ secrets.ACR_CLIENT_ID }}
       azure-acr-name: ${{ secrets.ACR_NAME }}
-      azure-aca-credentials: ${{ secrets[matrix.aca_credential_secret_name] }}
-      azure-aca-name: ${{ secrets.AZURE_ACA_NAME }}${{ matrix.suffix }}
-      azure-aca-resource-group: ${{ secrets.AZURE_ACA_RESOURCE_GROUP }}
+      azure-aca-client-id: ${{ secrets[matrix.aca_client_id] }}
+      azure-aca-name: ${{ secrets[matrix.aca_name] }}
+      azure-aca-resource-group: ${{ secrets.ACA_RESOURCE_GROUP }}
