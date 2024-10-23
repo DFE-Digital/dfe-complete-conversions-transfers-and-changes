@@ -56,9 +56,11 @@ jobs:
         ]
         include:
           - suffix: ""
-            aca_credential_secret_name: "AZURE_ACA_CREDENTIALS"
+            aca_name: "ACA_CONTAINERAPP_NAME"
+            aca_client_id: "ACA_CLIENT_ID"
           - suffix: "-worker"
-            aca_credential_secret_name: "AZURE_ACA_WORKER_CREDENTIALS"
+            aca_name: "ACA_CONTAINERAPP_WORKER_NAME"
+            aca_client_id: "ACA_WORKER_CLIENT_ID"
 
     with:
       docker-image-name: 'complete-app'
@@ -74,6 +76,6 @@ jobs:
       azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       azure-acr-client-id: ${{ secrets.ACR_CLIENT_ID }}
       azure-acr-name: ${{ secrets.ACR_NAME }}
-      azure-aca-client-id: ${{ secrets.ACA_CLIENT_ID }}
-      azure-aca-name: ${{ secrets.ACA_CONTAINERAPP_NAME }}
+      azure-aca-client-id: ${{ secrets[matrix.aca_client_id] }}
+      azure-aca-name: ${{ secrets[matrix.aca_name] }}
       azure-aca-resource-group: ${{ secrets.ACA_RESOURCE_GROUP }}
