@@ -9,7 +9,7 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
   after do
     sign_out
     # we need to wait after signing out otherwise we get flaking sessions
-    sleep(0.4)
+    sleep(0.5)
   end
 
   let(:project) { create(:conversion_project, assigned_to: user) }
