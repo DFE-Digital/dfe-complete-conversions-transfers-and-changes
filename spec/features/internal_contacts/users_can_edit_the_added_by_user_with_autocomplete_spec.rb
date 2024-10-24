@@ -9,7 +9,7 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
   after do
     sign_out
     # we need to wait after signing out otherwise we get flaking sessions
-    sleep(0.2)
+    sleep(0.5)
   end
 
   let(:project) { create(:conversion_project, regional_delivery_officer: user) }
@@ -104,7 +104,7 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
 
       fill_in "Added by", with: user.first_name
       # we wait to give the autcomplete time to render
-      sleep(0.05)
+      sleep(0.5)
 
       within(autocomplete_first_suggestion(page)) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
@@ -120,7 +120,7 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
 
       fill_in "Added by", with: user.last_name
       # we wait to give the autcomplete time to render
-      sleep(0.05)
+      sleep(0.5)
 
       within(autocomplete_first_suggestion(page)) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
@@ -136,7 +136,7 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
 
       fill_in "Added by", with: user.email
       # we wait to give the autcomplete time to render
-      sleep(0.05)
+      sleep(0.5)
 
       within(autocomplete_first_suggestion(page)) do
         expect(page).to have_content("#{user.first_name} #{user.last_name} (#{user.email})")
@@ -152,7 +152,7 @@ RSpec.feature "Users change the assigned user", driver: :headless_firefox do
 
       fill_in "Added by", with: "Jane"
       # we wait to give the autcomplete time to render
-      sleep(0.05)
+      sleep(0.5)
 
       autocomplete_no_results = page.find("li.autocomplete__option--no-results")
 
