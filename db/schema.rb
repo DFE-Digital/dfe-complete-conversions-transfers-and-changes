@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_27_092019) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_29_114243) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,9 +95,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_27_092019) do
     t.boolean "direction_to_transfer_cleared"
     t.boolean "direction_to_transfer_signed"
     t.boolean "direction_to_transfer_saved"
-    t.boolean "single_worksheet_complete"
-    t.boolean "single_worksheet_approve"
-    t.boolean "single_worksheet_send"
     t.boolean "school_completed_emailed"
     t.boolean "school_completed_saved"
     t.boolean "redact_and_send_redact"

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Remove the single worksheet task from Conversion projects
+
 ## [Release-95][release-95]
 
 ### Added
