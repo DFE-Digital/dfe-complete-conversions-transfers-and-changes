@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Enable the "Handover" section to show projects sent over from Prepare
+
 ## [Release-93][release-93]
 
 ### Changed
