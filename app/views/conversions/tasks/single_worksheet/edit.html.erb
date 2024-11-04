@@ -1,0 +1,29 @@
+<%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
+
+<% content_for :pre_content_nav do %>
+  <% render partial: "conversions/tasks/shared/back_link", locals: {project_id: @project.id} %>
+<% end %>
+
+<% content_for :page_title do %>
+  <%= page_title(t("conversion.task.single_worksheet.title")) %>
+<% end %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= form_for @task, url: project_edit_task_path(@project, @task.class.identifier), method: :put do |form| %>
+      <%= form.govuk_error_summary %>
+
+      <div class="govuk-form-group">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :complete)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :approve)) %>
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :send)) %>
+      </div>
+
+      <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
+    <% end %>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <%= render partial: "shared/tasks/task_notes" %>
+  </div>
+</div>

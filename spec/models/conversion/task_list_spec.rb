@@ -32,6 +32,7 @@ RSpec.describe Conversion::TaskList do
         :subleases,
         :tenancy_at_will,
         :commercial_transfer_agreement,
+        :single_worksheet,
         :school_completed,
         :conditions_met,
         :share_information,
@@ -88,6 +89,7 @@ RSpec.describe Conversion::TaskList do
           {
             identifier: :get_ready_for_opening,
             tasks: [
+              Conversion::Task::SingleWorksheetTaskForm,
               Conversion::Task::SchoolCompletedTaskForm,
               Conversion::Task::ConditionsMetTaskForm,
               Conversion::Task::ShareInformationTaskForm
@@ -122,7 +124,7 @@ RSpec.describe Conversion::TaskList do
       project = create(:conversion_project)
       task_list = described_class.new(project, user)
 
-      expect(task_list.tasks.count).to eql 32
+      expect(task_list.tasks.count).to eql 33
       expect(task_list.tasks.first).to be_a Conversion::Task::HandoverTaskForm
       expect(task_list.tasks.last).to be_a Conversion::Task::ReceiveGrantPaymentCertificateTaskForm
     end

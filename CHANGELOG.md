@@ -10,10 +10,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Enable the "Handover" section to show projects sent over from Prepare
 
-### Changed
-
-- Remove the single worksheet task from Conversion projects
-
 ## [Release-93][release-93]
 
 ### Changed
