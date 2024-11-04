@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-94][release-94]
+
 ### Added
 
 - Enable the "Handover" section to show projects sent over from Prepare
@@ -2297,7 +2299,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-93...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-94...HEAD
+[release-94]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-93...release-94
 [release-93]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-92...release-93
 [release-92]:
