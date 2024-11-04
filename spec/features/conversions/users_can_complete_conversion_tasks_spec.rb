@@ -15,7 +15,7 @@ RSpec.feature "Users can complete conversion tasks" do
     commercial_transfer_agreement
     land_questionnaire land_registry
     redact_and_send
-    school_completed share_information
+    school_completed share_information single_worksheet
     supplemental_funding_agreement
   ]
 
