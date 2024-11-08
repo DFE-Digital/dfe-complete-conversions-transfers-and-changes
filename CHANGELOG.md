@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Added
+
+- Service support users can see the "Handover" tab & view projects handed over
+  from Prepare
+
 ## [Release-94][release-94]
 
 ### Added
