@@ -11,7 +11,7 @@ class ProjectPolicy
   end
 
   def handover?
-    @user.is_regional_delivery_officer?
+    @user.is_regional_delivery_officer? || @user.is_service_support?
   end
 
   def show?

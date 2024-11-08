@@ -179,9 +179,12 @@ RSpec.describe ProjectPolicy do
       expect(subject).to permit(build(:regional_delivery_officer_user))
     end
 
-    it "denies access if the user is not a regional delivery officer" do
+    it "grants access if the user is a service support user" do
+      expect(subject).to permit(build(:regional_delivery_officer_user))
+    end
+
+    it "denies access if the user is not a regional delivery officer or service support user" do
       expect(subject).not_to permit(build(:regional_casework_services_user))
-      expect(subject).not_to permit(build(:service_support_user))
       expect(subject).not_to permit(build(:inactive_user))
     end
   end
