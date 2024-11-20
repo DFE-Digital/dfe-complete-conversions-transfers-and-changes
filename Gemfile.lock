@@ -138,7 +138,6 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.5.1)
-    diffy (3.4.2)
     docile (1.4.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -509,7 +508,6 @@ DEPENDENCIES
   capybara
   climate_control
   debug
-  diffy
   dotenv-rails
   erb_lint
   factory_bot_rails
