@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_29_114243) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_21_125140) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -454,7 +454,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_29_114243) do
     t.boolean "inadequate_ofsted", default: false
     t.boolean "financial_safeguarding_governance_issues", default: false
     t.boolean "outgoing_trust_to_close", default: false
-    t.boolean "bank_details_changing_yes_no", default: false
+    t.boolean "bank_details_changing_yes_no"
     t.boolean "check_and_confirm_financial_information_not_applicable"
     t.string "check_and_confirm_financial_information_academy_surplus_deficit"
     t.string "check_and_confirm_financial_information_trust_surplus_deficit"

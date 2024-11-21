@@ -10,6 +10,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Update accessibility statement for November 2024
 
+### Fixed
+
+- The "Confirm if the bank details for the general annual grant payment need to
+  change" task now shows its Not Started/Completed status correctly.
+
 ## [Release-96][release-96]
 
 ### Changed
