@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-96][release-96]
+
 ### Changed
 
 - Remove the single worksheet task from Conversion projects
@@ -2310,7 +2312,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-95...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-96...HEAD
+[release-96]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-95...release-96
 [release-95]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-94...release-95
 [release-94]:
