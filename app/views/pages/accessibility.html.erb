@@ -12,7 +12,7 @@
       For example, that means you should be able to:</p>
     <ul>
       <li>change colours, contrast levels and fonts</li>
-      <li>zoom in up to 300% without the text spilling off the screen</li>
+      <li>zoom in up to 400% without the text spilling off the screen</li>
       <li>navigate most of the website using just a keyboard</li>
       <li>navigate most of the website using speech recognition software</li>
       <li>listen to most of the website using a screen reader (including the
@@ -23,71 +23,106 @@
     <p class="govuk-body"><a href="https://mcmw.abilitynet.org.uk/" target="_blank" rel="noopener noreferrer">
       AbilityNet (opens in new tab)</a> has advice on making your device
       easier to use if you have a disability.
-    <h2 class="govuk-heading-l">How accessible this website is</h2>
-    <p class="govuk-body">This website is partially compliant with the
-      Web Content Accessibility Guidelines version 2.1 AA standard, due
-      to the following non-compliance:</p>
+    <h2 class="govuk-heading-l">Feedback and contact information</h2>
+    <p class="govuk-body">
+      If you need information on this website in a different format like accessible PDF,
+      large print, easy read, audio recording or braille:
+    </p>
+    <ul class="govuk-list">
+      <li>email <%= support_email %></li>
+      <li>call <a href="tel:0370 000 2288">0370 000 2288</a></li>
+    </ul>
+    <p class="govuk-body">
+      We'll consider your request and get back to you in 2 working days.
+    </p>
+    <h2 class="govuk-heading-l">Reporting accessibility problems with this website</h2>
+    <p class="govuk-body">
+      We're always looking to improve the accessibility of this website. If you find any
+      problems not listed on this page or think we're not meeting accessibility requirements,
+      contact us using the details provided above.
+    </p>
+    <h2 class="govuk-heading-l">Enforcement procedure</h2>
+    <p class="govuk-body">
+      The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public
+      Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018
+      (the 'accessibility regulations'). If you're not happy with how we respond to your
+      complaint, <a href="https://www.equalityadvisoryservice.com/" target="_blank">contact
+      the Equality Advisory and Support Service (opens in a new tab)</a>.
+    </p>
+    <h2 class="govuk-heading-l">Technical information about this website's accessibility</h2>
+    <p class="govuk-body">
+      The Department for Education is committed to making its websites accessible, in accordance
+      with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility
+      Regulations 2018.
+    </p>
+    <h2 class="govuk-heading-l">Compliance status</h2>
+    <p class="govuk-body">
+      This website is partially compliant with the WCAG (Web Content Accessibility Guidelines)
+      version 2.1AA standard, due to the following non-compliances and the following exemptions.
+    </p>
+    <h2 class="govuk-heading-l">Non-accessible content</h2>
+    <p class="govuk-body">
+      The content is non-accessible for the following reasons:
+    </p>
+    <h3 class="govuk-heading-m">Non-compliance with the accessibility regulations</h3>
     <ul>
-        <li>
-          <p class="govuk-body">Some links are coded to visually appear as
-            buttons so they may not have the expected behaviour for keyboard
-            only users. A work around is to try the interacting with them as if
-            they were links.</p>
-        </li>
-        <li>
-          <p class="govuk-body">Some buttons are coded to visually appear as
-            links so they may not have the expected behaviour for keyboard
-            only users. A work around is to try the interacting with them as if
-            they were buttons.</p>
-        </li>
-        <li>
-          <p class="govuk-body">Abbreviations of Church of England, such as C of 
-          E, in school names appear as "cofe". This appears as one word to sighted 
-          users and assistive technology like screen readers. That means screen 
-          readers may announce what should say C of E as a single word. This is due 
-          to a known issue in the Get Information About Schools service. That 
-          team will resolve it.</p>
+      <li>
+        <p class="govuk-body">
+          information and relationships that are implied by visual formatting may not be read out
+          correctly by some screen readers. This fails WCAG 2.1 AA success criteria 1.3.1 (Info
+          and Relationships)
+        </p>
+      </li>
+      <li>
+        <p class="govuk-body">
+          some pages have identical page titles making it difficult for users to orient
+          themselves without reading the page content. This fails WCAG 2.1 AA success criteria
+          2.4.2 (Page Titles)
+        </p>
+      </li>
+      <li>
+        <p class="govuk-body">
+          on some pages the order of the error summaries does not match the order on the page.
+          This fails WCAG 2.1 AA success criteria 2.4.3 (Focus Order)
+        </p>
+      </li>
+      <li>
+        <p class="govuk-body">
+          some link text does not help users understand the purpose of the link.
+          This fails WCAG 2.1 AA success criteria 2.4.4 (Link Purpose, In Context)
+        </p>
+      </li>
+      <li>
+        <p class="govuk-body">
+          some links of the same type are labelled differently.
+          This fails WCAG 2.1 AA success criteria 3.2.4 (Consistent Identification)
+        </p>
+      </li>
+      <li>
+        <p class="govuk-body">
+          some error summaries do not include guidance on how to properly complete the field.
+          This fails WCAG 2.1 AA success criteria 3.3.1 (Error Identification)
+        </p>
       </li>
     </ul>
-    <h2 class="govuk-heading-l">What to do if you can not access parts of this
-      website</h2>
-    <p class="govuk-body">If you need information on this website in a differnt
-      format or cannot use the serivce, email the <%= t("service_name") %> team
-      at <%= support_email %>.
-      </p>
-    <p class="govuk-body">We'll consider your request and get back to you within
-      20 working days.</p>
-    <h2 class="govuk-heading-l">Reporting accessibility problems with this
-      website</h2>
-    <p class="govuk-body">We're always looking to improve the accessibility of
-      this website. If you find any problems not listed on this page or think
-      we're not meeting accessibility requirements, email the <%= t("service_name") %>
-      team at <%= support_email %>.
-      </p>
-    <h2 class="govuk-heading-l">Enforcement procedure</h2>
-    <p class="govuk-body">The Equality and Human Rights Commission is
-      responsible for enforcing the Public Sector Bodies (Websites and Mobile
-      Applications) (No. 2) Accessibility Regulations 2018 (the 'accessibility
-      regulations'). If you're not happy with how we respond to your complaint,
-      <a rel="noopener noreferrer" href="https://www.equalityadvisoryservice.com/" target="_blank">
-      contact the Equality Advisory and Support Service</a>.</p>
-    <h2 class="govuk-heading-l">Technical information about this website's
-      accessibility</h2>
-    <p class="govuk-body">The Department for Education is committed to making
-      its websites accessible, in accordance with the Public Sector Bodies
-      (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.</p>
     <h2 class="govuk-heading-l">What we're doing to improve accessibility</h2>
-    <p class="govuk-body">We have a plan to fix the current accessibility
-      issues. We will also schedule regular accessibility audits as we continue
-      to expand the website and its functionality.</p>
-    <p class="govuk-body">Future audits will cover untested and the most
-      frequently used pages.</p>
+    <p class="govuk-body">
+      We are looking into the non-compliances mentioned previously and aim to resolve these in
+      a future iteration of the website.
+    </p>
     <h2 class="govuk-heading-l">Preparation of this accessibility statement</h2>
-    <p class="govuk-body">This statement was prepared on 3 November 2022. It was
-      last reviewed on 8 August 2023.</p>
-    <p class="govuk-body">This website was last tested on 1 November 2022. The
-      test was carried out by a Senior Accessibility Specialist Advisor at DfE.</p>
-    <p class="govuk-body">They tested the most frequently used pages within the
-      website.</p>
+    <p class="govuk-body">
+      This statement was prepared on 3 November 2022. It was last reviewed on 19 November 2024.
+    </p>
+    <p class="govuk-body">
+      This website was last tested in August 2023. The test was carried out by
+      <a href="https://nexerdigital.com/" target="_blank">Nexer Digital Ltd (opens in a new tab)</a>.
+    </p>
+    <p class="govuk-body">
+      They tested the most frequently used pages within the website.
+    </p>
+    <p class="govuk-body">
+      Accessibility statement version: 2.0.0
+    </p>
   </div>
 </div>
