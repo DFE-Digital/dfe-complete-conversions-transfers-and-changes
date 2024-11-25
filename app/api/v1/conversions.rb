@@ -5,7 +5,7 @@ class V1::Conversions < Grape::API
 
   resource :projects do
     params do
-      requires :urn, type: Integer, documentation: {example: "123456"}
+      requires :urn, type: Integer, documentation: {example: "123456"}, regexp: /\d{6}/
       requires :advisory_board_date, type: Date
       requires :advisory_board_conditions, type: String
       requires :provisional_conversion_date, type: Date, documentation: {example: (Date.today.at_beginning_of_month - 1.month).to_s}
@@ -19,7 +19,7 @@ class V1::Conversions < Grape::API
 
     resource :conversions do
       params do
-        requires :incoming_trust_ukprn, type: Integer, documentation: {example: "12345678"}
+        requires :incoming_trust_ukprn, type: Integer, documentation: {example: "12345678"}, regexp: /\d{8}/
       end
 
       desc "Create a conversion project" do

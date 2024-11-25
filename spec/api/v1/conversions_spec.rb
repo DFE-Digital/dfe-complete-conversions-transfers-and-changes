@@ -113,6 +113,22 @@ RSpec.describe V1::Conversions do
         expect(response.body).to include("invalid")
         expect(response.status).to eq(400)
       end
+
+      it "rejects URNs and UKPRNs which are too short" do
+        params = valid_conversion_parameters
+        params[:incoming_trust_ukprn] = 0
+        params[:urn] = 0
+
+        post "/api/v1/projects/conversions",
+          params: params,
+          as: :json,
+          headers: {Apikey: "testkey"}
+
+        expect(response.body).to include("urn is invalid")
+        expect(response.body).to include("incoming_trust_ukprn is invalid")
+        expect(response.body).to include("invalid")
+        expect(response.status).to eq(400)
+      end
     end
 
     context "when there is an error" do
