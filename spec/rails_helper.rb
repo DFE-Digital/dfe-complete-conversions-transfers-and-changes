@@ -35,6 +35,7 @@ end
 
 Capybara.configure do |config|
   config.automatic_label_click = true
+  config.asset_host = "http://localhost:3000"
 end
 
 # Checks for pending migrations and applies them before tests are run.
