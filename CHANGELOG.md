@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-97][release-97]
+
 ### Changed
 
 - Update accessibility statement for November 2024
@@ -2321,7 +2323,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-96...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-97...HEAD
+[release-97]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-96...release-97
 [release-96]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-95...release-96
 [release-95]:
