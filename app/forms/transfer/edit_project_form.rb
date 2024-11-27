@@ -47,8 +47,6 @@ class Transfer::EditProjectForm < EditProjectForm
 
     return false unless valid?
 
-    assigned_to = assigned_to_regional_caseworker_team ? nil : project.assigned_to
-    assigned_at = assigned_to_regional_caseworker_team ? nil : project.assigned_at
     team = assigned_to_regional_caseworker_team ? "regional_casework_services" : project.team
 
     project.assign_attributes(
@@ -61,8 +59,8 @@ class Transfer::EditProjectForm < EditProjectForm
       advisory_board_conditions: advisory_board_conditions,
       two_requires_improvement: two_requires_improvement,
       team: team,
-      assigned_to: assigned_to,
-      assigned_at: assigned_at
+      assigned_to: project.assigned_to,
+      assigned_at: project.assigned_at
     )
 
     project.tasks_data.assign_attributes(

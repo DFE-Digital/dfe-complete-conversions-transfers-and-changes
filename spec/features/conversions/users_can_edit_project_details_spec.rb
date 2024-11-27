@@ -196,11 +196,12 @@ RSpec.feature "Users can edit conversion project details" do
       expect(page).to have_content("Yes")
     end
 
-    expect(project.reload.assigned_to).to be_nil
+    # the assigned individual remains unchanged, only the assigned team changes
+    expect(project.reload.assigned_to).to eq(user)
+    expect(page).to_not have_content "Not assigned to project"
+
     expect(project.team).to eql("regional_casework_services")
     expect(project.notes.find_by(task_identifier: :handover).body).to eq("Handover reasons go here")
-
-    expect(page).to have_content "Not assigned to project"
   end
 
   scenario "they can change and unset the group reference number" do
