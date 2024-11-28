@@ -206,7 +206,7 @@ jobs:
       -
         name: Generate tarball from image
         run: |
-          docker save -o vuln-image.tar ${{ steps.build.outputs.imageid }}
+          docker save -o ./vuln-image.tar ${{ steps.build.outputs.imageid }}
       - ## To avoid the trivy-db becoming outdated, we save the cache for one day
         name: Get TrivyDB data
         id: date
@@ -223,7 +223,7 @@ jobs:
         name: Scan Docker image for CVEs
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          input: /github/workspace/vuln-image.tar
+          input: ./vuln-image.tar
           format: 'sarif'
           output: 'trivy-results.sarif'
           limit-severities-for-sarif: true
