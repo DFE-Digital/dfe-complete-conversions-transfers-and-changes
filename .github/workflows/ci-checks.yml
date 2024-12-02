@@ -178,7 +178,7 @@ jobs:
           path: /tmp
       -
         name: Scan Docker image for CVEs
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.29.0
         with:
           input: /tmp/base.tar
           format: 'sarif'
