@@ -179,6 +179,14 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
           .to(have_been_enqueued.on_queue("default")
                                 .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
       end
+
+      it "does not unassign the project's assigned user" do
+        updated_params = {assigned_to_regional_caseworker_team: "true"}
+
+        subject.update(updated_params)
+
+        expect(project.reload.assigned_to).to eq(user)
+      end
     end
 
     describe "the group reference number" do
