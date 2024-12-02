@@ -105,7 +105,7 @@ GEM
       smart_properties
     bigdecimal (3.1.8)
     bindex (0.8.1)
-    bootsnap (1.17.1)
+    bootsnap (1.18.4)
       msgpack (~> 1.2)
     brakeman (6.1.2)
       racc
@@ -247,7 +247,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.25.1)
-    msgpack (1.7.2)
+    msgpack (1.7.5)
     multi_xml (0.6.0)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
