@@ -25,7 +25,7 @@ jobs:
           file: ./Dockerfile
           build-args: RAILS_ENV=test
           push: false
-          tags: complete-app:latest
+          tags: complete-app:ci
           cache-from: type=gha
           cache-to: type=gha,mode=min
           outputs: type=docker,dest=/tmp/base.tar
@@ -55,7 +55,7 @@ jobs:
       -
         name: Run linters and formaters
         run: |
-          docker run --rm complete-app:latest /bin/bash -c "bin/standardrb -f simple && bin/erblint --lint-all \
+          docker run --rm complete-app:ci /bin/bash -c "bin/standardrb -f simple && bin/erblint --lint-all \
           && yarn run lint:format && yarn run lint:js"
 
   static-analysis:
@@ -77,7 +77,7 @@ jobs:
       -
         name: Run Brakeman
         run: |
-          docker run --rm complete-app:latest /bin/bash -c "bin/brakeman"
+          docker run --rm complete-app:ci /bin/bash -c "bin/brakeman"
 
   specs:
     name: Specs and coverage
