@@ -2,7 +2,7 @@
 
 # script/lint_and_format:
 #
-# Runs all erblint, standardrb, prettier and eslint
+# Runs all erb_lint, standardrb, prettier and eslint
 #
 # When AUTO_FIX is set, fixing will take place if available
 #
@@ -17,9 +17,9 @@ if [ -n "$AUTO_FIX" ]; then
   bin/standardrb -f simple --fix
   echo "==> finished Standardrb"
 
-  echo "==> running erblint"
-  bin/erblint --lint-all --autocorrect
-  echo "==> finished erblint"
+  echo "==> running erb_lint"
+  bin/erb_lint --lint-all --autocorrect
+  echo "==> finished erb_lint"
 
   echo "==> running Prettier"
   yarn run lint:format:fix
@@ -36,9 +36,9 @@ else
   bin/standardrb -f simple
   echo "==> finished Standardrb"
 
-  echo "==> running erblint"
-  bin/erblint --lint-all
-  echo "==> finished erblint"
+  echo "==> running erb_lint"
+  bin/erb_lint --lint-all
+  echo "==> finished erb_lint"
 
   echo "==> running Prettier"
   yarn run lint:format

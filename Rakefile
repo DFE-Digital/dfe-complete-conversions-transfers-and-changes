@@ -8,5 +8,5 @@ Rails.application.load_tasks
 
 if defined?(RSpec::Rails)
   Rake::Task[:default].clear
-  task default: %i[standard erblint spec]
+  task default: %i[standard erb_lint spec]
 end
