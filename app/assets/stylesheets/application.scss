@@ -110,3 +110,8 @@ address.govuk-address {
 
 // force skip link to be underline
 .govuk-skip-link { text-decoration: underline !important; }
+
+// force header and DfE navigation links to always be white
+a.dfe-header__link--service, a.dfe-header__navigation-link {
+  color: #ffffff;
+}

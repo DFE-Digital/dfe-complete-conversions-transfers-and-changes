@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - No longer unassign project on update when team is RCS.
+- Header and DfE Navigation links are now always white, instead of being blue
+  when in the "unvisited" state.
 
 ## [Release-97][release-97]
 
