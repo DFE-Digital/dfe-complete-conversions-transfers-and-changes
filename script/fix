@@ -2,7 +2,7 @@
 
 # script/fix:
 #
-# Runs all erblint, standardrb, prettier and eslint with fixing enabled
+# Runs all erb_lint, standardrb, prettier and eslint with fixing enabled
 
 echo "==> Ensuring auto fixing is enabled"
 

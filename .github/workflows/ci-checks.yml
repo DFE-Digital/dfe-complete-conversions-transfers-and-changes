@@ -55,7 +55,7 @@ jobs:
       -
         name: Run linters and formaters
         run: |
-          docker run --rm complete-app:ci /bin/bash -c "bin/standardrb -f simple && bin/erblint --lint-all \
+          docker run --rm complete-app:ci /bin/bash -c "bin/standardrb -f simple && bin/erb_lint --lint-all \
           && yarn run lint:format && yarn run lint:js"
 
   static-analysis:
