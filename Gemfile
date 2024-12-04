@@ -76,6 +76,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "rails-controller-testing"
+  gem "rails-erd"
 end
 
 group :test do
