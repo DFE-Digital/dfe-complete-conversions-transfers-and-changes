@@ -26,9 +26,5 @@ module Teamable
     def regional_teams
       REGIONAL_TEAMS.values
     end
-
-    def user_teams
-      USER_TEAMS.values
-    end
   end
 end

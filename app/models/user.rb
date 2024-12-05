@@ -71,8 +71,7 @@ class User < ApplicationRecord
   end
 
   def team_options
-    team_struct = Struct.new(:id, :name)
-    User.user_teams.map { |team| team_struct.new(team, I18n.t("user.teams.#{team}")) }
+    User.teams.keys.map { |team| OpenStruct.new(id: team, name: I18n.t("user.teams.#{team}")) }
   end
 
   private def apply_roles_based_on_team
