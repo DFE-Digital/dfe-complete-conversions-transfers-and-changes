@@ -6,8 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
-## [Release-98][release-98]
-
 ### Fixed
 
 - No longer unassign project on update when team is RCS.
@@ -2331,9 +2329,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-98...HEAD
-[release-98]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-97...release-98
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-97...HEAD
 [release-97]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-96...release-97
 [release-96]:
