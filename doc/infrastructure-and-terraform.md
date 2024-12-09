@@ -6,6 +6,17 @@ directory.
 
 Read the [In-depth Terraform documentation](/terraform/README.md)
 
+## Linting Terraform documentation
+
+Occasionally, a PR might fail CI on Github at the Terraform / Validate
+step. To lint the Terraform documentation and get this check passing:
+
+1. Install terraform-docs `brew install terraform-docs`
+1. Switch onto the failing branch (usually a Renovate branch)
+1. `cd` into the terraform directory in the repo
+1. Run `terrform-docs .`
+1. Commit the changes on the branch
+
 ## Tfvar files
 
 We use `tfvar` files to store the secrets and settings used to manage our
