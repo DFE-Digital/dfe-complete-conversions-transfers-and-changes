@@ -1,14 +1,30 @@
-name: dfe-complete
 services:
-  devcontainer:
+  app:
+    hostname: devcontainer
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ../..:/workspaces:cached
-    networks:
-      - dev
     command: sleep infinity
+    user: complete
+    volumes:
+      - ..:/workspace:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/workspace/node_modules
+      - tmp:/workspace/tmp
+    working_dir: /workspace
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    tty: true
+    stdin_open: true
+    environment:
+      DATABASE_USER: sa
+      DATABASE_PASSWORD: P@ssw0rd
+      DATABASE_HOST: db
+      ACCEPT_EULA: Y
+
   redis:
     container_name: dfe-complete-redis-backing-service
     image: redis:6
@@ -16,24 +32,20 @@ services:
       - 6379:6379
     volumes:
       - redis-data:/data
-    networks:
-      - dev
+
   db:
     container_name: dfe-complete-sql-backing-service
     image: mcr.microsoft.com/azure-sql-edge:latest
-    environment:
-      ACCEPT_EULA: Y
-      MSSQL_SA_PASSWORD: ${DATABASE_PASSWORD}
+    env_file: .env.database
     ports:
       - 1433:1433
     volumes:
       - sql-server-data:/var/opt/mssql
-    networks:
-      - dev
-
-networks:
-  dev:
 
 volumes:
   sql-server-data:
   redis-data:
+  bundle:
+  node_modules:
+  # Tempfile directory is IO-heavy and we don't need to have its contents replicated on host
+  tmp:
