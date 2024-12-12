@@ -2,13 +2,9 @@ name: CI Checks
 
 on:
   pull_request:
-    paths:
-      - '!terraform/'
   push:
     branches:
       - main
-    paths:
-      - '!terraform/'
 
 jobs:
   build:
