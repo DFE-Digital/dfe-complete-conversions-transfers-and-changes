@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Return 'Healthy' or 'Unhealthy' string from /healthcheck endpoint to conform
+  to convention in RSD programme.
+
 ## [Release-98][release-98]
 
 ### Fixed
