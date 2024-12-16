@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Return 'Healthy' or 'Unhealthy' string from /healthcheck endpoint to conform
   to convention in RSD programme.
+- Remove the "Upload GIAS Establishments data" area from Service support view
 
 ## [Release-98][release-98]
 

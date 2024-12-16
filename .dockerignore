@@ -94,10 +94,3 @@
 
 ### Allow local authority seeds
 !db/seeds/local_authorities.csv
-
-# Allow GIAS Establishment & Group fixture files
-!/spec/fixtures/files/gias_establishment_data_bad.csv
-!/spec/fixtures/files/gias_establishment_data_good.csv
-!/spec/fixtures/files/gias_establishment_data_empty.csv
-!/spec/fixtures/files/gias_establishment_data_good_with_bad_row.csv
-!/spec/fixtures/files/gias_groups_data_good.csv
