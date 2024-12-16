@@ -3,8 +3,8 @@
 ## Codespaces
 
 If you are not a developer, or you are using a Windows machine,
-we recommend running this application using Github Codespaces.
-See [Running with Codespaces](/doc/running-with-codespaces.md).
+we recommend running this application with [Dev Containers](/doc/devcontainers.md) or
+using Github Codespaces see ([Running with Codespaces](/doc/running-with-codespaces.md)).
 
 ## Getting the basics
 

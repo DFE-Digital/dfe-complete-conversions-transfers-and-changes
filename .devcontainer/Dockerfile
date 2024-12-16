@@ -1,7 +1,14 @@
+
+
 # Base devcontainer image
 #
 # https://github.com/devcontainers/images/tree/main/src/ruby
 FROM mcr.microsoft.com/devcontainers/ruby:3.3
+
+ARG USERNAME=complete
+ARG USER_UID=1001
+ARG USER_GID=$USER_UID
+ENV NODE_MAJOR=18
 
 # Install build dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y build-essential ca-certificates curl gnupg libpq-dev firefox-esr
@@ -11,7 +18,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y build-essential
 #
 # depends on ca-certificates, curl and gnupg
 #
-ENV NODE_MAJOR=18
+
 
 RUN mkdir -p /etc/apt/keyrings/ && curl --tlsv1.2 -sSf "https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key" \
   | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
@@ -25,6 +32,17 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN curl --proto "=https" --tlsv1.2 -sSf "https://dl.yarnpkg.com/debian/pubkey.gpg" | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install --no-install-recommends -y nodejs yarn
+
+RUN echo "USER_GID: `$USER_GID`"
+RUN echo "USERNAME: `$USERNAME`"
+RUN echo "USER_ID: `$USER_ID`"
+
+# Set up unprivileged local user
+RUN groupadd --gid $USER_GID $USERNAME 
+RUN groupadd bundler 
+RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME --shell /bin/bash --groups bundler 
+RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME 
+RUN chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Install FreeTDS
 # https://github.com/rails-sqlserver/tiny_tds#install
@@ -52,3 +70,8 @@ RUN \
     tar -xvzf "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
     rm "geckodriver-v${geckodriver_version}-linux64.tar.gz" && \
     chmod +x geckodriver && mv geckodriver* /usr/local/bin;
+
+# Set unprivileged user as default user
+USER $USERNAME
+
+ENV DEVCONTAINER=true
