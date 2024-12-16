@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe V1::Healthcheck do
   context "when the db connection is up" do
-    before { allow(ActiveRecord::Base).to receive(:connected?).and_return(true) }
+    before { allow(Ops::DbAvailability).to receive(:db_available?).and_return(true) }
 
     it "returns 'Healthy'" do
       get "/api/v1/healthcheck"
@@ -11,7 +11,7 @@ RSpec.describe V1::Healthcheck do
   end
 
   context "when the db connection is NOT up" do
-    before { allow(ActiveRecord::Base).to receive(:connected?).and_return(false) }
+    before { allow(Ops::DbAvailability).to receive(:db_available?).and_return(false) }
 
     it "returns 'Unhealthy'" do
       get "/api/v1/healthcheck"

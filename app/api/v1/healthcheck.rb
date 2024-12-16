@@ -7,8 +7,9 @@ class V1::Healthcheck < Grape::API
 
   get :healthcheck do
     content_type "text/plain"
-    body "Healthy" if ActiveRecord::Base.connected?
 
-    "Unhealthy"
+    return body "Healthy" if Ops::DbAvailability.db_available?
+
+    body "Unhealthy"
   end
 end
