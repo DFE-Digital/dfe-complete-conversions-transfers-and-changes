@@ -2,6 +2,8 @@ class HealthcheckController < ApplicationController
   skip_before_action :redirect_unauthenticated_user
 
   def check
-    render json: {status: "OK"}, status: :ok
+    return render plain: "Healthy" if ActiveRecord::Base.connected?
+
+    render plain: "Unhealthy"
   end
 end
