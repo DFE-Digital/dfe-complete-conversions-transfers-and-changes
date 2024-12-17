@@ -71,4 +71,5 @@ locals {
   health_insights_api_ipv4_allow_list             = var.health_insights_api_ipv4_allow_list
   enable_cdn_frontdoor_vdp_redirects              = var.enable_cdn_frontdoor_vdp_redirects
   cdn_frontdoor_vdp_destination_hostname          = var.cdn_frontdoor_vdp_destination_hostname
+  custom_container_apps                           = var.custom_container_apps
 }
