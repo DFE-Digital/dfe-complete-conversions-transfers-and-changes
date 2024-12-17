@@ -25,6 +25,8 @@ module "azure_container_apps_hosting" {
   health_insights_api_cors_origins       = local.health_insights_api_cors_origins
   health_insights_api_ipv4_allow_list    = local.health_insights_api_ipv4_allow_list
 
+  custom_container_apps = local.custom_container_apps
+
   enable_worker_container       = local.enable_worker_container
   worker_container_command      = local.worker_container_command
   worker_container_max_replicas = local.worker_container_max_replicas
