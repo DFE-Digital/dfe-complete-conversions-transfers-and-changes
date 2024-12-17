@@ -50,7 +50,6 @@ class Project < ApplicationRecord
 
   scope :assigned, -> { where.not(assigned_to: nil) }
   scope :assigned_to_caseworker, ->(user) { where(assigned_to: user).or(where(caseworker: user)) }
-  scope :assigned_to_regional_delivery_officer, ->(user) { where(assigned_to: user).or(where(regional_delivery_officer: user)) }
 
   scope :unassigned_to_user, -> { where assigned_to: nil }
   scope :assigned_to_regional_caseworker_team, -> { where(team: "regional_casework_services") }
