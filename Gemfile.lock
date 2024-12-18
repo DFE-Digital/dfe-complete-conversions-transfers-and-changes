@@ -95,7 +95,9 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    backport (1.2.0)
     base64 (0.2.0)
+    benchmark (0.4.0)
     better_html (2.1.1)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -164,6 +166,7 @@ GEM
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
     dumb_delegator (1.0.0)
+    e2mmap (0.1.0)
     erb_lint (0.7.0)
       activesupport
       better_html (>= 2.0.1)
@@ -212,6 +215,7 @@ GEM
     high_voltage (4.0.0)
     html-attributes-utils (1.0.2)
       activesupport (>= 6.1.4.4)
+    htmlbeautifier (1.4.3)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -219,11 +223,16 @@ GEM
     irb (1.10.1)
       rdoc
       reline (>= 0.3.8)
+    jaro_winkler (1.6.0)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
     json (2.9.0)
     jwt (2.8.1)
       base64
+    kramdown (2.5.1)
+      rexml (>= 3.3.9)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     language_server-protocol (3.17.0.3)
     launchy (3.0.1)
       addressable (~> 2.8)
@@ -368,12 +377,15 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
+    rbs (2.8.4)
     rdoc (6.3.4.1)
     redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.9.3)
     reline (0.4.3)
       io-console (~> 0.5)
+    reverse_markdown (2.1.1)
+      nokogiri
     rexml (3.3.9)
     rspec-core (3.12.3)
       rspec-support (~> 3.12.0)
@@ -445,6 +457,22 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
+    solargraph (0.50.0)
+      backport (~> 1.2)
+      benchmark
+      bundler (~> 2.0)
+      diff-lcs (~> 1.4)
+      e2mmap
+      jaro_winkler (~> 1.5)
+      kramdown (~> 2.3)
+      kramdown-parser-gfm (~> 1.1)
+      parser (~> 3.0)
+      rbs (~> 2.0)
+      reverse_markdown (~> 2.0)
+      rubocop (~> 1.38)
+      thor (~> 1.0)
+      tilt (~> 2.0)
+      yard (~> 0.9, >= 0.9.24)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -500,6 +528,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yard (0.9.37)
     zeitwerk (2.6.18)
 
 PLATFORMS
@@ -534,6 +563,7 @@ DEPENDENCIES
   grape (~> 2.0)
   grape-swagger (~> 2.1)
   high_voltage
+  htmlbeautifier
   jsbundling-rails (~> 1.3)
   launchy (~> 3.0)
   mail-notify
@@ -555,6 +585,7 @@ DEPENDENCIES
   shoulda-matchers (~> 6.0)
   sidekiq (< 7.0)
   simplecov (~> 0.22.0)
+  solargraph
   sprockets-rails
   standard
   tzinfo-data
