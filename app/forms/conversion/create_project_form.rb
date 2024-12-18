@@ -51,6 +51,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
       conversion_date: provisional_conversion_date,
       advisory_board_date: advisory_board_date,
       regional_delivery_officer_id: user.id,
+      creator_id: user.id,
       team: team,
       assigned_to: assigned_to,
       assigned_at: assigned_at,

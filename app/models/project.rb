@@ -39,8 +39,14 @@ class Project < ApplicationRecord
   validate :establishment_exists, if: -> { urn.present? }
 
   belongs_to :caseworker, class_name: "User", optional: true
-  belongs_to :regional_delivery_officer, class_name: "User", optional: true
   belongs_to :assigned_to, class_name: "User", optional: true
+
+  # Project#regional_delivery_officer is deprecated, in favour of Project#creator
+  #   as RCSs can also create transfers and conversions.
+  #   We'll leave the projects.regional_delivery_officer_id FK initially
+  #   and remove it in an additional PR / Deployment
+  belongs_to :creator, class_name: "User", optional: true
+  belongs_to :regional_delivery_officer, class_name: "User", optional: true
 
   scope :conversions, -> { where(type: "Conversion::Project") }
   scope :transfers, -> { where(type: "Transfer::Project") }

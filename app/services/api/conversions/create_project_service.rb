@@ -20,6 +20,7 @@ class Api::Conversions::CreateProjectService < Api::BaseCreateProjectService
         advisory_board_conditions: advisory_board_conditions,
         directive_academy_order: directive_academy_order,
         regional_delivery_officer_id: user.id,
+        creator_id: user.id,
         tasks_data: tasks_data,
         region: establishment.region_code,
         prepare_id: prepare_id,
