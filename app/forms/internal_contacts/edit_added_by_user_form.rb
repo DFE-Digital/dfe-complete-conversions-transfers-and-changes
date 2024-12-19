@@ -24,7 +24,7 @@ class InternalContacts::EditAddedByUserForm
 
   def update
     if valid?
-      project.update(regional_delivery_officer: user)
+      project.update(regional_delivery_officer: user, creator: user)
     else
       false
     end

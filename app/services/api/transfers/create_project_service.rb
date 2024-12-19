@@ -35,6 +35,7 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
         transfer_date: provisional_transfer_date,
         two_requires_improvement: two_requires_improvement,
         regional_delivery_officer_id: user.id,
+        creator_id: user.id,
         tasks_data: tasks_data,
         region: establishment.region_code,
         new_trust_reference_number: new_trust_reference_number,

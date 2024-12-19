@@ -50,6 +50,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       transfer_date: provisional_transfer_date,
       two_requires_improvement: two_requires_improvement,
       regional_delivery_officer_id: user.id,
+      creator_id: user.id,
       team: user.team,
       assigned_to: user,
       assigned_at: DateTime.now,
