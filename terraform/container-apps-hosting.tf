@@ -27,6 +27,10 @@ module "azure_container_apps_hosting" {
 
   custom_container_apps = local.custom_container_apps
 
+  enable_app_configuration      = local.enable_app_configuration
+  app_configuration_sku         = local.app_configuration_sku
+  app_configuration_assign_role = local.app_configuration_assign_role
+
   enable_worker_container       = local.enable_worker_container
   worker_container_command      = local.worker_container_command
   worker_container_max_replicas = local.worker_container_max_replicas

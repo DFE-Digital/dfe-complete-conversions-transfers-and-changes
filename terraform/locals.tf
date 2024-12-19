@@ -72,4 +72,7 @@ locals {
   enable_cdn_frontdoor_vdp_redirects              = var.enable_cdn_frontdoor_vdp_redirects
   cdn_frontdoor_vdp_destination_hostname          = var.cdn_frontdoor_vdp_destination_hostname
   custom_container_apps                           = var.custom_container_apps
+  enable_app_configuration                        = var.enable_app_configuration
+  app_configuration_sku                           = var.app_configuration_sku
+  app_configuration_assign_role                   = false
 }
