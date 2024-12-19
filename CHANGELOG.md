@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-99][release-99]
+
 ### Changed
 
 - Return 'Healthy' or 'Unhealthy' string from /healthcheck endpoint to conform
@@ -2337,7 +2339,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-98...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-99...HEAD
+[release-99]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-98...release-99
 [release-98]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-97...release-98
 [release-97]:
