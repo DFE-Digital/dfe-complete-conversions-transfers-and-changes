@@ -482,7 +482,10 @@ RSpec.describe Project, type: :model do
     end
 
     describe "ordered_by_completed_date scope" do
-      before { mock_successful_api_responses(urn: any_args, ukprn: any_args) }
+      before {
+        Project.destroy_all
+        mock_successful_api_responses(urn: any_args, ukprn: any_args)
+      }
 
       it "only returns completed projects (state 1) ordered by completed date" do
         completed_project_1 = create(:conversion_project, completed_at: Date.today - 1.year, state: 1)
