@@ -162,6 +162,41 @@ RSpec.describe Project, type: :model do
       it { is_expected.to allow_value(123456).for(:urn) }
       it { is_expected.not_to allow_values(12345, 1234567).for(:urn) }
 
+      describe "enforcing the uniqueness of the URN for active projects (index_projects_on_urn_and_state)" do
+        before do
+          mock_successful_api_responses(urn: any_args, ukprn: any_args)
+          Project.destroy_all
+        end
+
+        context "when an _active_ project exists with a given URN" do
+          before do
+            FactoryBot.create(:transfer_project, urn: 222222, state: :active)
+          end
+
+          it "is NOT possible to create another _active_ project with that URN" do
+            expect {
+              FactoryBot.create(:transfer_project, urn: 222222, state: :active)
+            }.to raise_error(ActiveRecord::StatementInvalid, /TinyTds::Error/)
+          end
+        end
+
+        context "when _completed_, _deleted_ or _dao-revoked_ projects exists with a given URN" do
+          before do
+            FactoryBot.create(:transfer_project, urn: 111111, state: :completed)
+            FactoryBot.create(:transfer_project, urn: 222222, state: :deleted)
+            FactoryBot.create(:transfer_project, urn: 333333, state: :dao_revoked)
+          end
+
+          it "IS possible to create another _active_ project with that URN" do
+            aggregate_failures do
+              expect(FactoryBot.create(:transfer_project, urn: 111111, state: :active).urn).to eq(111111)
+              expect(FactoryBot.create(:transfer_project, urn: 222222, state: :active).urn).to eq(222222)
+              expect(FactoryBot.create(:transfer_project, urn: 333333, state: :active).urn).to eq(333333)
+            end
+          end
+        end
+      end
+
       context "when no establishment with that URN exists in the API and the URN is present" do
         let(:no_establishment_found_result) do
           Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("Could not find establishment with URN: 12345"))
