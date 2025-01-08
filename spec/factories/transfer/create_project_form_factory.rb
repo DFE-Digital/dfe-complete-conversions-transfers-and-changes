@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :create_transfer_project_form, class: "Transfer::CreateProjectForm" do
-    urn { 123456 }
+    urn { rand(111111..999999) }
     incoming_trust_ukprn { 10061021 }
     outgoing_trust_ukprn { 10066123 }
     advisory_board_date { {3 => 1, 2 => 10, 1 => 2022} }

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :conversion_project, class: "Conversion::Project" do
     type { "Conversion::Project" }
-    urn { 123456 }
+    urn { rand(111111..999999) }
     incoming_trust_ukprn { 10061021 }
     conversion_date { (Date.today + 2.years).at_beginning_of_month }
     advisory_board_date { (Date.today - 2.weeks) }
