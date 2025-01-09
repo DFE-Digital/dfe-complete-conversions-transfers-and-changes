@@ -18,6 +18,11 @@ RSpec.describe User do
   end
 
   describe "scopes" do
+    before {
+      Project.destroy_all
+      User.destroy_all
+    }
+
     let!(:caseworker) { create(:regional_casework_services_user) }
     let!(:caseworker_2) { create(:regional_casework_services_user, first_name: "Aaron", email: "aaron-caseworker@education.gov.uk") }
     let!(:team_leader) { create(:regional_casework_services_team_lead_user, first_name: "Zoe") }

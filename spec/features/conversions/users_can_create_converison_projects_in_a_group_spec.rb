@@ -6,6 +6,7 @@ RSpec.feature "Users can create new conversion projects in a group" do
   let(:ukprn) { 10061021 }
 
   before do
+    Project.destroy_all
     sign_in_with_user(regional_delivery_officer)
   end
 

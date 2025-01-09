@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe All::Handover::ProjectsController, type: :request do
   before do
+    Project.destroy_all
     user = create(:regional_delivery_officer_user)
     sign_in_with(user)
     mock_all_academies_api_responses
@@ -17,13 +18,12 @@ RSpec.describe All::Handover::ProjectsController, type: :request do
     end
 
     context "when there are projects" do
-      let!(:project) { create(:transfer_project, :inactive, urn: 123456) }
-      let!(:project) { create(:conversion_project, :inactive, urn: 165432) }
-
-      it "shows a table of the projects" do
+      before do
         create(:transfer_project, :inactive, urn: 123456)
         create(:conversion_project, :inactive, urn: 165432)
+      end
 
+      it "shows a table of the projects" do
         get "/projects/all/handover/"
 
         expect(response.body).to include "123456"

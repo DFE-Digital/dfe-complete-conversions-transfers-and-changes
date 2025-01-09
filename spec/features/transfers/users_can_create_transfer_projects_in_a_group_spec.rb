@@ -7,6 +7,7 @@ RSpec.feature "Users can create new transfer projects in a group" do
   let(:outgoing_ukprn) { 10090252 }
 
   before do
+    Project.destroy_all
     sign_in_with_user(regional_delivery_officer)
   end
 

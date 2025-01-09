@@ -52,7 +52,7 @@ module AcademiesApiHelpers
 
     test_client = Api::AcademiesApi::Client.new
 
-    allow(test_client).to receive(:get_establishment).with(123456).and_return(mock_establishment)
+    allow(test_client).to receive(:get_establishment).and_return(mock_establishment)
     allow(test_client).to receive(:get_trust).with(10059151).and_return(mock_before_incoming_trust)
     allow(test_client).to receive(:get_trust).with(10058882).and_return(mock_after_incoming_trust)
 
@@ -68,7 +68,7 @@ module AcademiesApiHelpers
   #
   # Success
   def mock_academies_api_establishment_success(urn:, establishment: nil)
-    establishment = build(:academies_api_establishment) if establishment.nil?
+    establishment = build(:academies_api_establishment, urn: urn.to_s) if establishment.nil?
     local_authority = build(:local_authority)
 
     test_client = Api::AcademiesApi::Client.new

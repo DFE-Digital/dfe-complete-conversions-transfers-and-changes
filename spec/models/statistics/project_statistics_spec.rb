@@ -6,6 +6,7 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
 
   describe "all projects" do
     before do
+      Project.destroy_all
       create_list(:conversion_project, 2, assigned_to: nil)
       create(:conversion_project)
       create(:conversion_project, :completed, completed_at: Date.today)
@@ -207,6 +208,7 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
 
   describe "projects per region" do
     before do
+      Project.destroy_all
       create(:conversion_project, region: :london, completed_at: nil)
       create(:conversion_project, :completed, region: :london, completed_at: Date.today + 2.years)
       create(:conversion_project, region: :south_east)
@@ -270,6 +272,8 @@ RSpec.describe Statistics::ProjectStatistics, type: :model do
   end
 
   describe "new projects this month" do
+    before { Project.destroy_all }
+
     it "returns a count of projects created in the current month" do
       create(:conversion_project, created_at: Time.now.beginning_of_month)
       create(:conversion_project, created_at: Time.now.beginning_of_month + 1.day)

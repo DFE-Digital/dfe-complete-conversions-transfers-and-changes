@@ -5,7 +5,7 @@ RSpec.feature "Users can view a project" do
   let(:project) { create(:conversion_project, caseworker: user) }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_successful_api_responses(urn: any_args, ukprn: 10061021)
     sign_in_with_user(user)
   end
 

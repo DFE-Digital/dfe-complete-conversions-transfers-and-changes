@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.describe V1::Transfers do
-  before { mock_successful_api_response_to_create_any_project }
+  before {
+    Project.destroy_all
+    mock_successful_api_response_to_create_any_project
+  }
 
   describe "authorisation" do
     context "when there is no api key in the header" do

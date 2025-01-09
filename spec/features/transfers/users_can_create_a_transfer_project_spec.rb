@@ -5,6 +5,7 @@ RSpec.feature "Users can create new transfer projects" do
 
   context "single transferer projects" do
     before do
+      Project.destroy_all
       sign_in_with_user(regional_delivery_officer)
       visit transfers_new_path
     end
@@ -52,6 +53,7 @@ RSpec.feature "Users can create new transfer projects" do
 
   context "form a MAT transfer projects" do
     before do
+      Project.destroy_all
       sign_in_with_user(regional_delivery_officer)
       visit transfers_new_mat_path
     end

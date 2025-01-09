@@ -130,7 +130,7 @@ RSpec.describe ProjectSearchService do
       context "when a match is found" do
         it "returns an array with the matches" do
           matching_project = create(:conversion_project, urn: 100000)
-          another_matching_project = create(:transfer_project, urn: 100000)
+          another_matching_project = create(:transfer_project, urn: 100000, state: :completed)
           not_matching_project = create(:conversion_project, urn: 123456)
 
           service = described_class.new
@@ -148,7 +148,7 @@ RSpec.describe ProjectSearchService do
       context "when a match is not found" do
         it "returns an empty result" do
           create(:conversion_project, urn: 100000)
-          create(:transfer_project, urn: 100000)
+          create(:transfer_project, urn: 100000, state: :completed)
 
           service = described_class.new
           result = service.search_by_urns("123456")

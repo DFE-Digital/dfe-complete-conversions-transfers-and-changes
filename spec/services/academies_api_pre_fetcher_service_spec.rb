@@ -1,24 +1,25 @@
 require "rails_helper"
 
 RSpec.describe AcademiesApiPreFetcherService do
+  before { Project.destroy_all }
+
   it "prefetches Academies API data in batches of 20 and populates projects" do
     api_client = mock_academies_api_client_get_establishments_and_trusts
 
     25.times do
-      create(:conversion_project, urn: 123456, incoming_trust_ukprn: 10010010)
+      create(:conversion_project, incoming_trust_ukprn: 10010010)
     end
 
     projects = Project.all
 
     AcademiesApiPreFetcherService.new.call!(projects)
 
-    expect(projects.last.establishment).not_to be_nil
-    expect(projects.last.incoming_trust).not_to be_nil
-
     expect(api_client).to have_received(:get_establishments).exactly(2).times
     expect(api_client).to have_received(:get_trusts).exactly(2).times
 
     expect(api_client).to have_received(:get_establishment).exactly(25).times
+    expect(projects.last.establishment).not_to be_nil
+    expect(projects.last.incoming_trust).not_to be_nil
   end
 
   it "handles eager loading" do
@@ -38,7 +39,7 @@ RSpec.describe AcademiesApiPreFetcherService do
     mock_academies_api_client_get_establishments_and_trusts_failure
 
     10.times do
-      create(:conversion_project, urn: 123456, incoming_trust_ukprn: 10010010)
+      create(:conversion_project, incoming_trust_ukprn: 10010010)
     end
 
     projects = Project.all
@@ -56,7 +57,7 @@ RSpec.describe AcademiesApiPreFetcherService do
       allow(api_client).to receive(:get_establishments).and_return(Api::AcademiesApi::Client::Result.new([establishment], nil))
 
       10.times do
-        create(:conversion_project, urn: 123456, incoming_trust_ukprn: 10010010)
+        create(:conversion_project, incoming_trust_ukprn: 10010010)
       end
 
       projects = Project.all

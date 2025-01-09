@@ -4,6 +4,8 @@ RSpec.feature "Users can manage user accounts" do
   let(:user) { create(:user, :service_support, first_name: "Service", last_name: "Support", email: "service.support@education.gov.uk") }
 
   before do
+    Project.destroy_all
+    User.destroy_all
     sign_in_with_user(user)
   end
 

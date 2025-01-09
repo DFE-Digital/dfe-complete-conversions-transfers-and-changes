@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Handover a transfer project" do
   before do
+    Project.destroy_all
     application_user = create(:regional_delivery_officer_user)
     sign_in_with_user(application_user)
     mock_all_academies_api_responses

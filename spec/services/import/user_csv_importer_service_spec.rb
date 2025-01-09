@@ -11,7 +11,11 @@ RSpec.describe Import::UserCsvImporterService do
     CSV
   end
 
-  before { allow(File).to receive(:open).and_return(users_csv) }
+  before {
+    Project.destroy_all
+    User.destroy_all
+    allow(File).to receive(:open).and_return(users_csv)
+  }
 
   describe "#call" do
     let(:existing_user_email) { "jane.doe@education.gov.uk" }

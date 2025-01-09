@@ -93,6 +93,8 @@ RSpec.describe SignificantDate do
     end
 
     describe ".ordered_by_significant_date" do
+      before { Project.destroy_all }
+
       it "shows the project that will convert earliest first" do
         last_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 3.years)
         middle_project = create(:conversion_project, conversion_date: Date.today.beginning_of_month + 2.years)

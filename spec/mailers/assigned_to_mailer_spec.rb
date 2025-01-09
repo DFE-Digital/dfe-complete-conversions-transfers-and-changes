@@ -9,7 +9,7 @@ RSpec.describe AssignedToMailer do
 
     subject(:send_mail) { described_class.assigned_notification(caseworker, project).deliver_now }
 
-    before { mock_successful_api_responses(urn: 123456, ukprn: 10061021) }
+    before { mock_successful_api_responses(urn: any_args, ukprn: 10061021) }
 
     it "sends an email with the correct personalisation" do
       expect_any_instance_of(Mail::Notify::Mailer)
