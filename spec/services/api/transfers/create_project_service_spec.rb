@@ -83,10 +83,12 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
         last_name: "Last",
         team: :london
       )
+      initial_count = User.count
+
       user = subject.regional_delivery_officer
 
       expect(user).to eql existing_user
-      expect(User.count).to be 1
+      expect(User.count).to eq(initial_count)
     end
   end
 

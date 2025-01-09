@@ -29,9 +29,9 @@ RSpec.feature "Viewing assigned projects" do
   end
 
   context "when there are projects" do
-    let!(:in_progress_assigned_project) { create(:conversion_project, urn: 103835, assigned_to: user, conversion_date: (Date.today + 1.month).at_beginning_of_month) }
-    let!(:in_progress_assigned_project_next_year) { create(:conversion_project, urn: 103835, assigned_to: user, conversion_date: (Date.today + 1.year).at_beginning_of_month) }
-    let!(:completed_assigned_project) { create(:conversion_project, :completed, urn: 114067, assigned_to: user, completed_at: Date.yesterday) }
+    let!(:in_progress_assigned_project) { create(:conversion_project, assigned_to: user, conversion_date: (Date.today + 1.month).at_beginning_of_month) }
+    let!(:in_progress_assigned_project_next_year) { create(:conversion_project, assigned_to: user, conversion_date: (Date.today + 1.year).at_beginning_of_month) }
+    let!(:completed_assigned_project) { create(:conversion_project, :completed, assigned_to: user, completed_at: Date.yesterday) }
 
     context "when signed in as a Regional caseworker" do
       let(:user) { create(:regional_casework_services_user) }

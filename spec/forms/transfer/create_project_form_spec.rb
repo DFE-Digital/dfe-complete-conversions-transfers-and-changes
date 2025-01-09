@@ -517,6 +517,9 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     let(:establishment) { build(:academies_api_establishment) }
 
     before do
+      Note.destroy_all
+      Transfer::TasksData.destroy_all
+
       mock_academies_api_establishment_success(urn: 123456)
       mock_academies_api_trust_success(ukprn: 10061021)
     end

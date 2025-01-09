@@ -3,6 +3,10 @@ require "rails_helper"
 RSpec.describe Statistics::UserStatistics, type: :model do
   subject { Statistics::UserStatistics.new }
 
+  before do
+    User.destroy_all
+  end
+
   describe "#users_count_per_team" do
     it "returns counts of users per team" do
       create(:user, email: "user1@education.gov.uk", team: "london")

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ApplicationMailer do
-  before { mock_successful_api_responses(urn: 123456, ukprn: 10061021) }
+  before { mock_successful_api_responses(urn: any_args, ukprn: 10061021) }
 
   describe "#url_to_project" do
     it "returns the correct url" do

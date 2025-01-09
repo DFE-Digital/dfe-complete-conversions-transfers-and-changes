@@ -88,7 +88,7 @@ RSpec.describe ByTrustProjectFetcherService do
 
   describe "form a multi academy trust projects" do
     it "includes a form a MAT trust with the correct counts and details" do
-      mock_academies_api_establishment_success(urn: 123456)
+      mock_academies_api_establishment_success(urn: any_args)
 
       create(:transfer_project, :active, incoming_trust_ukprn: nil, new_trust_reference_number: "TR12345", new_trust_name: "BRAND NEW TRUST")
       create(:conversion_project, :active, incoming_trust_ukprn: nil, new_trust_reference_number: "TR12345", new_trust_name: "BRAND NEW TRUST")

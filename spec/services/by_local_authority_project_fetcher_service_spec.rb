@@ -2,30 +2,54 @@ require "rails_helper"
 
 RSpec.describe ByLocalAuthorityProjectFetcherService do
   before do
-    establishment = build(:academies_api_establishment, local_authority_code: "909", urn: 121813)
-    another_establishment = build(:academies_api_establishment, local_authority_code: "213", urn: 121102)
-    yet_another_establishment = build(:academies_api_establishment, local_authority_code: "926", urn: 121583)
+    cumbria_establishment = build(:academies_api_establishment, local_authority_code: "909", urn: 121813)
+    cumbria_establishment2 = build(:academies_api_establishment, local_authority_code: "909", urn: 222222)
+    cumbria_establishment3 = build(:academies_api_establishment, local_authority_code: "909", urn: 333333)
+    westminster_establishment = build(:academies_api_establishment, local_authority_code: "213", urn: 121102)
+    norfolk_establishment = build(:academies_api_establishment, local_authority_code: "926", urn: 121583)
 
     fake_client = double(Api::AcademiesApi::Client,
       get_trust: Api::AcademiesApi::Client::Result.new(double, nil))
 
     allow(Api::AcademiesApi::Client).to receive(:new).and_return(fake_client)
-    allow(fake_client).to receive(:get_establishment).with(establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(establishment, nil))
-    allow(fake_client).to receive(:get_establishment).with(another_establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(another_establishment, nil))
-    allow(fake_client).to receive(:get_establishment).with(yet_another_establishment.urn).and_return(Api::AcademiesApi::Client::Result.new(yet_another_establishment, nil))
-    allow(fake_client).to receive(:get_establishments).with(any_args).and_return(Api::AcademiesApi::Client::Result.new([establishment, another_establishment, establishment, yet_another_establishment], nil))
-    allow(fake_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([double("Trust", ukprn: 10010010)], nil))
+
+    allow(fake_client).to receive(:get_establishment).with(cumbria_establishment.urn)
+      .and_return(Api::AcademiesApi::Client::Result.new(cumbria_establishment, nil))
+
+    allow(fake_client).to receive(:get_establishment).with(cumbria_establishment2.urn)
+      .and_return(Api::AcademiesApi::Client::Result.new(cumbria_establishment2, nil))
+
+    allow(fake_client).to receive(:get_establishment).with(cumbria_establishment3.urn)
+      .and_return(Api::AcademiesApi::Client::Result.new(cumbria_establishment3, nil))
+
+    allow(fake_client).to receive(:get_establishment).with(westminster_establishment.urn)
+      .and_return(Api::AcademiesApi::Client::Result.new(westminster_establishment, nil))
+
+    allow(fake_client).to receive(:get_establishment).with(norfolk_establishment.urn)
+      .and_return(Api::AcademiesApi::Client::Result.new(norfolk_establishment, nil))
+
+    allow(fake_client).to receive(:get_establishments).with(any_args)
+      .and_return(Api::AcademiesApi::Client::Result.new([
+        cumbria_establishment,
+        cumbria_establishment2,
+        cumbria_establishment3,
+        westminster_establishment,
+        norfolk_establishment
+      ], nil))
+
+    allow(fake_client).to receive(:get_trusts)
+      .and_return(Api::AcademiesApi::Client::Result.new([double("Trust", ukprn: 10010010)], nil))
 
     cumbria = create(:local_authority, code: "909", name: "Cumbria County Council")
     westminster = create(:local_authority, code: "213", name: "Westminster City Council")
     norfolk = create(:local_authority, code: "926", name: "Norfolk County Council")
 
-    create(:conversion_project, local_authority: cumbria, urn: establishment.urn, conversion_date: Date.new(2024, 1, 1))
-    create(:conversion_project, local_authority: westminster, urn: another_establishment.urn)
-    create(:conversion_project, local_authority: cumbria, urn: establishment.urn, conversion_date: Date.new(2024, 2, 1))
+    create(:conversion_project, local_authority: cumbria, urn: cumbria_establishment.urn, conversion_date: Date.new(2024, 1, 1))
+    create(:conversion_project, local_authority: westminster, urn: westminster_establishment.urn)
+    create(:conversion_project, local_authority: cumbria, urn: cumbria_establishment2.urn, conversion_date: Date.new(2024, 2, 1))
 
-    create(:transfer_project, local_authority: cumbria, urn: establishment.urn, transfer_date: Date.new(2024, 3, 1))
-    create(:transfer_project, local_authority: norfolk, urn: yet_another_establishment.urn)
+    create(:transfer_project, local_authority: cumbria, urn: cumbria_establishment3.urn, transfer_date: Date.new(2024, 3, 1))
+    create(:transfer_project, local_authority: norfolk, urn: norfolk_establishment.urn)
   end
 
   describe "#local_authorities_with_projects" do

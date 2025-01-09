@@ -9,7 +9,7 @@ RSpec.feature "Users can create and view and delete conversion notes" do
   let(:task) { Conversion::Task::ArticlesOfAssociationTaskForm.new(project.tasks_data, user) }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_successful_api_responses(urn: any_args, ukprn: 10061021)
     sign_in_with_user(user)
 
     travel_to Date.yesterday do

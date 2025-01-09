@@ -166,7 +166,6 @@ RSpec.describe Project, type: :model do
       describe "enforcing the uniqueness of the URN (db trigger EnforceUniquenessOfProjectUrn)" do
         before do
           mock_successful_api_responses(urn: any_args, ukprn: any_args)
-          Project.destroy_all
         end
 
         context "when an _inactive_ project exists with a given URN" do
@@ -207,6 +206,8 @@ RSpec.describe Project, type: :model do
 
         context "when _completed_, _deleted_ or _dao-revoked_ projects exists with a given URN" do
           before do
+            Project.destroy_all
+            expect(Project.count).to be_zero
             FactoryBot.create(:transfer_project, urn: 111111, state: :completed)
             FactoryBot.create(:transfer_project, urn: 222222, state: :deleted)
             FactoryBot.create(:transfer_project, urn: 333333, state: :dao_revoked)
