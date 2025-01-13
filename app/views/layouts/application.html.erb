@@ -7,57 +7,43 @@
     <meta name="theme-color" content="#0b0c0c">
     <%= tag :meta, name: "application-insights-connection", content: ENV["ApplicationInsights__ConnectionString"] if enable_application_insights? %>
     <%= tag :meta, name: "google-tag-manager-connection", content: ENV["GOOGLE_TAG_MANAGER_ID"] if enable_google_tag_manager? %>
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="<%= asset_url("govuk-frontend/govuk/assets/images/favicon.ico") %>" type="image/x-icon">
     <link rel="mask-icon" href="<%= image_url("govuk-frontend/govuk/assets/images/govuk-mask-icon.svg") %>" color="#0b0c0c">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= image_url("govuk-frontend/govuk/assets/images/govuk-apple-touch-icon-180x180.png") %>">
     <link rel="apple-touch-icon" sizes="167x167" href="<%= image_url("govuk-frontend/govuk/assets/images/govuk-apple-touch-icon-167x167.png") %>">
     <link rel="apple-touch-icon" sizes="152x152" href="<%= image_url("govuk-frontend/govuk/assets/images/govuk-apple-touch-icon-152x152.png") %>">
     <link rel="apple-touch-icon" href="<%= image_url("govuk-frontend/govuk/assets/images/govuk-apple-touch-icon.png") %>">
-
     <meta property="og:image" content="<%= image_url("govuk-frontend/govuk/assets/images/govuk-opengraph-image.png") %>">
-
     <%= stylesheet_link_tag "application" %>
-
     <%= javascript_include_tag "application-insights" if enable_application_insights? %>
     <%= javascript_include_tag "google-tag-manager" if enable_google_tag_manager? %>
     <%= javascript_include_tag "govuk-frontend/govuk/all" %>
     <%= javascript_include_tag "dfefrontend" %>
     <%= javascript_include_tag "application", defer: true %>
-
   </head>
-
   <body class="govuk-template__body ">
+    <%= hidden_field_tag("current-user", nil, {"data-identifier" => @current_user_identifier}) %>
     <%= render partial: "shared/environment_banner" %>
-
     <%= render partial: "cookies/banner" unless optional_cookies_set? %>
-
     <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
-
     <%= render partial: "shared/dfe_header" %>
-
     <div class="govuk-width-container " aria-label="phase banner" role="complementary">
       <%= govuk_phase_banner(
             tag: {text: t("phase_banner.phase")},
             text: t("phase_banner.phase_notice.html")
           ) %>
     </div>
-
     <%= yield :primary_navigation %>
-
     <div class="govuk-width-container ">
       <%= yield :pre_content_nav %>
       <main class="govuk-main-wrapper app-content" id="main-content" role="main">
         <%= render partial: "/shared/information_banner" if ENV["SHOW_INFORMATION_BANNER"].eql?("true") %>
         <%= render(NotificationBanner.new(flashes: flash)) %>
-
         <%= yield %>
       </main>
     </div>
-
     <%= render partial: "shared/dfe_footer" %>
   </body>
   <%= yield :footer_post_js %>
