@@ -10,7 +10,8 @@ const clickPluginConfig = {
 
 const appInsights = new ApplicationInsights({
   config: {
-    connectionString: applicationInsightsConnectionString
+    connectionString: applicationInsightsConnectionString,
+    autoTrackPageVisitTime: true
   },
   extensions: [clickPluginInstance],
   extensionConfig: {
