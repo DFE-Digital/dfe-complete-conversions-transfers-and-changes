@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-100][release-100]
+
+### Changed
+
+- Track "time on page" with AppInsights `PageVisitTime` custom metric
+- Track users with AppInsights "authenticated user context"
+
 ## [Release-99][release-99]
 
 ### Changed
@@ -2339,7 +2346,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-99...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-100...HEAD
+[release-100]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-99...release-100
 [release-99]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-98...release-99
 [release-98]:
