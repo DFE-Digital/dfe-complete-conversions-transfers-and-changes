@@ -107,6 +107,6 @@ Rails.application.configure do
     # send task intrumentation
     config.middleware.use ApplicationInsights::Rack::TrackRequest, key, 500, 60
     # send unhandled exceptions
-    ApplicationInsights::UnhandledException.collect(key)
+    # ApplicationInsights::UnhandledException.collect(key)
   end
 end

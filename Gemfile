@@ -53,6 +53,7 @@ gem "uk_postcode", "~> 2.1.0"
 
 # application insights
 gem "application_insights"
+gem "exception_notification" # custom handler to include operation_id for appinsights
 
 gem "sidekiq", "< 7.0"
 
