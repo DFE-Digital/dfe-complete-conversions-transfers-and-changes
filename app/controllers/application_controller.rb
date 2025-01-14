@@ -10,8 +10,14 @@ class ApplicationController < ActionController::Base
   rescue_from Api::AcademiesApi::Client::Error, with: :academies_api_client_error
   rescue_from Api::AcademiesApi::Client::UnauthorisedError, with: :academies_api_unauthorised_error
 
+  before_action :current_user_identifier
+
   def not_found_error
     render "pages/page_not_found", status: :not_found
+  end
+
+  def current_user_identifier
+    @current_user_identifier = current_user ? current_user.email : "Anonymous"
   end
 
   private def user_not_authorized
