@@ -327,7 +327,7 @@ Rails.application.routes.draw do
   post "cookies", to: "cookies#update"
 
   get "healthcheck" => "healthcheck#check"
-  get "test-error" => "test_error#create"
+  get "test-error" => "test_error#create", :as => :test_error
 
   # High voltage configuration for static pages. Matches routes from the root of the domain. Uses
   # HighVoltage::Constraints::RootRoute to validate that the view exists.
