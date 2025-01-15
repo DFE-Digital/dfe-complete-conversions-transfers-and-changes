@@ -53,6 +53,8 @@ gem "uk_postcode", "~> 2.1.0"
 
 # application insights
 gem "application_insights"
+gem "exception_notification" # manually notify in Slack (Operation Id missing in AppInsights)
+gem "slack-notifier"
 
 gem "sidekiq", "< 7.0"
 
