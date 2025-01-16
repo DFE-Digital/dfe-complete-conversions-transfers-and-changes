@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from Api::AcademiesApi::Client::Error, with: :academies_api_client_error
   rescue_from Api::AcademiesApi::Client::UnauthorisedError, with: :academies_api_unauthorised_error
+  rescue_from ActionController::InvalidAuthenticityToken, with: :reset_user_session
 
   before_action :current_user_identifier
   before_action :set_notification
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def current_user_identifier
     @current_user_identifier = current_user ? current_user.email : "Anonymous"
+  end
+
+  private def reset_user_session
+    redirect_to sign_out_path
   end
 
   private def set_notification
