@@ -16,4 +16,14 @@ RSpec.describe "Error handling", type: :request do
       end
     end
   end
+
+  context "when a very long path is supplied in an attack" do
+    it "is handled without an Errno::ENAMETOOLONG error" do
+      very_long_path = "/%2525c0%2525ae%2525c0%2525ae%2525c0%2525af%2525c0%2525ae%2525c0%2525ae%2525c0%2525af%2525c0%2525ae%2525c0%2525ae%2525c0%2525af%2525c0%2525ae%2525c0%2525ae%2525c0%2525af%2525c0%2525ae%2525c0%2525ae%2525c0%2525af%2525c0%2525ae%2525c0%2525ae%2525c0%2525af%2525c0%2525ae%2525c0%2525ae%2525c0%2525af%2525c0%2525ae%2525c0%2525ae%2525c0%2525af/etc/passwd"
+
+      get very_long_path
+
+      expect(response).to redirect_to(sign_in_path)
+    end
+  end
 end

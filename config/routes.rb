@@ -1,3 +1,17 @@
+class StaticPages
+  def self.names
+    %W[
+      academies_api_client_timeout
+      academies_api_client_unauthorised
+      accessibility
+      internal_server_error
+      maintenance
+      page_not_found
+      privacy
+    ]
+  end
+end
+
 VALID_UUID_REGEX = /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/i
 MONTH_1_12_REGEX = /(?:1[0-2]|[1-9])/
 YEAR_2000_2499_REGEX = /(?:(?:20|21|23|24)[0-9]{2})/
@@ -329,9 +343,10 @@ Rails.application.routes.draw do
   get "healthcheck" => "healthcheck#check"
   get "test-error" => "test_error#create", :as => :test_error
 
-  # High voltage configuration for static pages. Matches routes from the root of the domain. Uses
-  # HighVoltage::Constraints::RootRoute to validate that the view exists.
-  get "/*id" => "pages#show", :as => :page, :format => false, :constraints => HighVoltage::Constraints::RootRoute.new
+  get "*id" => "pages#show", :as => :page, :format => false,
+    :constraints => lambda { |request|
+                      StaticPages.names.include?(request.filtered_parameters[:id])
+                    }
 
   match "*unmatched", to: "application#not_found_error", via: :all
 end
