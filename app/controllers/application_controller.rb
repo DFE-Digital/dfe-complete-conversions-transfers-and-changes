@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   rescue_from Api::AcademiesApi::Client::UnauthorisedError, with: :academies_api_unauthorised_error
 
   before_action :current_user_identifier
+  before_action :set_notification
 
   def not_found_error
     render "pages/page_not_found", status: :not_found
@@ -18,6 +19,18 @@ class ApplicationController < ActionController::Base
 
   def current_user_identifier
     @current_user_identifier = current_user ? current_user.email : "Anonymous"
+  end
+
+  private def set_notification
+    request.env["exception_notifier.exception_data"] = {
+      "timestamp" => Time.current.to_s,
+      "user_environment" => user_environment,
+      "current_user" => current_user_identifier
+    }
+  end
+
+  private def user_environment
+    ENV["USER_ENV"] || Rails.env
   end
 
   private def user_not_authorized
