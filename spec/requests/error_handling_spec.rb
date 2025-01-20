@@ -26,4 +26,14 @@ RSpec.describe "Error handling", type: :request do
       expect(response).to redirect_to(sign_in_path)
     end
   end
+
+  context "when the hex code '%ff' (�) is received" do
+    it "is handled without an ActionController::BadRequest error" do
+      hex_code = "/%ff"
+
+      get hex_code
+
+      expect(response).to redirect_to(sign_in_path)
+    end
+  end
 end
