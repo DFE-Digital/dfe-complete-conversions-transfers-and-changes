@@ -14,7 +14,7 @@ class ProjectGroupsController < ApplicationController
 
     @project_group = ProjectGroup.find(params[:id])
 
-    projects = @project_group.projects
+    projects = @project_group.projects.includes([:local_authority])
     AcademiesApiPreFetcherService.new.call!(projects)
 
     @grouped_projects = projects.sort_by { |project| project.establishment.name }

@@ -772,7 +772,7 @@ RSpec.describe Project, type: :model do
       allow_any_instance_of(Api::AcademiesApi::Establishment).to receive(:local_authority).and_return(local_authority)
     end
 
-    subject { described_class.new(urn: urn) }
+    subject { described_class.new(urn: urn, local_authority: local_authority) }
 
     context "when there is a director of child services" do
       let!(:director) { create(:director_of_child_services, local_authority: local_authority) }
@@ -883,30 +883,6 @@ RSpec.describe Project, type: :model do
       _other_note = create(:note, task_identifier: :stakeholder_kick_off, body: "Another body", user: build(:user), project: project)
 
       expect(project.handover_note).to eq(handover_note)
-    end
-  end
-
-  describe "delegation" do
-    it "delegates local_authority to establishment" do
-      local_authotity = double(code: 100)
-      establishment = double
-      project = build(:conversion_project)
-      allow(establishment).to receive(:local_authority).and_return(local_authotity)
-      allow(project).to receive(:establishment).and_return(establishment)
-
-      expect(project.local_authority.code).to eql 100
-    end
-
-    it "delegates director_of_child_services to local_authority" do
-      director_of_child_services = double(email: "director.child@domain.com")
-      local_authotity = double
-      establishment = double
-      project = build(:conversion_project)
-      allow(local_authotity).to receive(:director_of_child_services).and_return(director_of_child_services)
-      allow(establishment).to receive(:local_authority).and_return(local_authotity)
-      allow(project).to receive(:establishment).and_return(establishment)
-
-      expect(project.director_of_child_services.email).to eql "director.child@domain.com"
     end
   end
 

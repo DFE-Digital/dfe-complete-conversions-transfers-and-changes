@@ -47,6 +47,7 @@ RSpec.describe ContactsHelper, type: :helper do
     end
 
     it "includes the local authority name when the category is 'local_authority'" do
+      allow(project).to receive(:local_authority).and_return(build(:local_authority))
       category = "local_authority"
       expect(helper.category_header(category, project)).to eq("#{project.local_authority.name} contacts")
     end
