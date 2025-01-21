@@ -81,7 +81,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
 
     context "and the establishment has a diocese" do
       it "sets the church supplemental agreement task to not applicable" do
-        local_authority = instance_double(LocalAuthority, id: "f0e04a51-3711-4d58-942a-dcb84938c818")
+        local_authority = LocalAuthority.new(id: "f0e04a51-3711-4d58-942a-dcb84938c818")
         establishment = build(:academies_api_establishment, diocese_code: "0000")
         allow(establishment).to receive(:local_authority).and_return(local_authority)
         result = Api::AcademiesApi::Client::Result.new(establishment, nil)
@@ -593,13 +593,10 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
     end
   end
 
-  describe "#local_authority_id" do
-    before do
-      local_authority = instance_double(
-        LocalAuthority,
-        id: "f0e04a51-3711-4d58-942a-dcb84938c818"
-      )
+  describe "#local_authority" do
+    let(:local_authority) { create(:local_authority) }
 
+    before do
       establishment = instance_double(
         Api::AcademiesApi::Establishment,
         local_authority: local_authority,
@@ -609,9 +606,9 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
       mock_all_academies_api_responses(establishment: establishment)
     end
 
-    it "sets the #local_authority_id code from the establishment" do
+    it "sets the #local_authority from the establishment" do
       project = build(:create_transfer_project_form).save
-      expect(project.local_authority_id).to eq("f0e04a51-3711-4d58-942a-dcb84938c818")
+      expect(project.local_authority).to eq(local_authority)
     end
   end
 
