@@ -1,7 +1,20 @@
 require "rails_helper"
 
 RSpec.describe Transfer::CreateProjectForm, type: :model do
-  before { mock_all_academies_api_responses }
+  before do
+    local_authority = instance_double(
+      LocalAuthority,
+      id: "f0e04a51-3711-4d58-942a-dcb84938c818"
+    )
+
+    establishment = instance_double(
+      Api::AcademiesApi::Establishment,
+      local_authority: local_authority,
+      region_code: "F"
+    )
+
+    mock_all_academies_api_responses(establishment: establishment)
+  end
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
@@ -464,6 +477,28 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     it "sets the region code from the establishment" do
       project = build(:create_transfer_project_form).save
       expect(project.region).to eq("west_midlands")
+    end
+  end
+
+  describe "#local_authority_id" do
+    before do
+      local_authority = instance_double(
+        LocalAuthority,
+        id: "f0e04a51-3711-4d58-942a-dcb84938c818"
+      )
+
+      establishment = instance_double(
+        Api::AcademiesApi::Establishment,
+        local_authority: local_authority,
+        region_code: "E"
+      )
+
+      mock_all_academies_api_responses(establishment: establishment)
+    end
+
+    it "sets the #local_authority_id code from the establishment" do
+      project = build(:create_transfer_project_form).save
+      expect(project.local_authority_id).to eq("f0e04a51-3711-4d58-942a-dcb84938c818")
     end
   end
 

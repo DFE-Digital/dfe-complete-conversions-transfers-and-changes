@@ -55,6 +55,10 @@ class CreateProjectForm
     @region = establishment.region_code
   end
 
+  def local_authority
+    @local_authority = establishment.local_authority
+  end
+
   private def establishment
     @establishment || fetch_establishment(urn)
   end
