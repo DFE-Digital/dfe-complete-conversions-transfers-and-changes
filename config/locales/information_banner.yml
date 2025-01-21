@@ -1,8 +1,8 @@
 en:
   information_banner:
-    title: Scheduled maintenance, 5pm on 5 April
+    title: Maintenance due 2pm until 6pm on Friday 24 January 2025
     body:
       html:
-        <p class="govuk-body">We will carry out maintenance on Complete from 5pm to 6pm on Friday 5 April 2024.</p>
-        <p class="govuk-body">Project changes will not be saved during the maintenance.</p>
-        <p class="govuk-body">Make sure you save your changes before the work starts.</p>
+        <p class="govuk-body">We will carry out maintenance on Complete from 2pm to 6pm on Friday 24 January 2025</p>
+        <p class="govuk-body">Project changes may not be saved during this time</p>
+        <p class="govuk-body">Make sure you save your changes before 2pm on Friday</p>
