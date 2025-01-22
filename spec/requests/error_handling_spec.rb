@@ -36,4 +36,14 @@ RSpec.describe "Error handling", type: :request do
       expect(response).to redirect_to(sign_in_path)
     end
   end
+
+  context "when an invalid query string is received" do
+    it "is handled without an ActionController::BadRequest error" do
+      invalid_query_string = "x=&x%5B%5D=a"
+
+      get "/users/sign_in?#{invalid_query_string}"
+
+      expect(response).to redirect_to(sign_in_path)
+    end
+  end
 end

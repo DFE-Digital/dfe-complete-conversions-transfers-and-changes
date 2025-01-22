@@ -16,6 +16,7 @@ require "action_view/railtie"
 # require "action_cable/engine"
 # require "rails/test_unit/railtie"
 require_relative "../lib/middleware/handle_bad_encoding"
+require_relative "../lib/middleware/handle_bad_query"
 
 require "govuk/components"
 
@@ -57,6 +58,7 @@ module DfeCompleteConversionsTransfersAndChanges
     config.autoload_lib(ignore: %w[assets tasks generators middleware])
 
     config.middleware.insert_before Rack::Runtime, HandleBadEncoding
+    config.middleware.insert_before Rack::Runtime, HandleBadQuery
 
     # Configuration for the application, engines, and railties goes here.
     #
