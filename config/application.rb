@@ -15,6 +15,8 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 # require "action_cable/engine"
 # require "rails/test_unit/railtie"
+require_relative "../lib/middleware/handle_bad_encoding"
+require_relative "../lib/middleware/handle_bad_query"
 
 require "govuk/components"
 
@@ -53,7 +55,10 @@ module DfeCompleteConversionsTransfersAndChanges
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks generators])
+    config.autoload_lib(ignore: %w[assets tasks generators middleware])
+
+    config.middleware.insert_before Rack::Runtime, HandleBadEncoding
+    config.middleware.insert_before Rack::Runtime, HandleBadQuery
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -62,8 +62,6 @@ gem "pagy"
 
 gem "mail-notify"
 
-gem "high_voltage"
-
 gem "nokogiri"
 
 gem "grape", "~> 2.0"
