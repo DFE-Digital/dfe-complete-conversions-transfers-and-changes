@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe Transfers::ProjectsController do
   let(:user) { create(:user, :caseworker) }
+  let(:academies_api_timeout_error) { Api::AcademiesApi::Client::Error.new("Test Academies API timeout error") }
 
   before do
     mock_all_academies_api_responses
@@ -11,14 +12,22 @@ RSpec.describe Transfers::ProjectsController do
   describe "academies API behaviour" do
     context "when the API times out" do
       before do
-        mock_academies_api_establishment_error(urn: 123456)
+        mock_academies_api_establishment_error(urn: 123456, error: academies_api_timeout_error)
         mock_academies_api_trust_error(ukprn: 10061021)
+        allow(ExceptionNotifier).to receive(:notify_exception)
       end
 
       it "renders the API time out page" do
         post transfers_path, params: {transfer_create_project_form: {urn: "123456"}}
 
         expect(response).to render_template("pages/academies_api_client_timeout")
+      end
+
+      it "sends an exception notification to our Slack channel" do
+        post conversions_path, params: {conversion_create_project_form: {urn: "123456"}}
+
+        expect(ExceptionNotifier).to have_received(:notify_exception)
+          .with(academies_api_timeout_error)
       end
     end
 

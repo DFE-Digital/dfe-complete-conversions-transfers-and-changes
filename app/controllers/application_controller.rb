@@ -43,7 +43,8 @@ class ApplicationController < ActionController::Base
     redirect_back(fallback_location: root_path)
   end
 
-  private def academies_api_client_error
+  private def academies_api_client_error(exception)
+    ExceptionNotifier.notify_exception(exception)
     render "pages/academies_api_client_timeout", status: 500
   end
 
