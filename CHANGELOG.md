@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-101][release-101]
+
+### Changed
+
+- Update information banner for upgrade of Jan 24 2025
+
+### Fixed
+
+- Alert on unhandled exceptions using Slack notification
+- Handle some common exceptions gracefully
+
 ## [Release-100][release-100]
 
 ### Changed
@@ -2346,7 +2357,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-100...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-101...HEAD
+[release-101]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-100...release-101
 [release-100]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-99...release-100
 [release-99]:
