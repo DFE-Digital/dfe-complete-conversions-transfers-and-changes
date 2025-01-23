@@ -1,6 +1,11 @@
 class Ops::DbAvailability
   def self.db_available?
-    return true if User.first && ActiveRecord::Base.connected?
+    begin
+      return true if User.first && ActiveRecord::Base.connected?
+    rescue ActiveRecord::ConnectionNotEstablished
+      return false
+    end
+
     false
   end
 end

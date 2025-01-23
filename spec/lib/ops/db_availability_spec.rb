@@ -10,6 +10,17 @@ RSpec.describe "check DB availability" do
       end
     end
 
+    context "when the connection is cold and throws ActiveRecord::ConnectionNotEstablished" do
+      before do
+        create(:user)
+        allow(ActiveRecord::Base).to receive(:connected?).and_raise(ActiveRecord::ConnectionNotEstablished)
+      end
+
+      it "returns false " do
+        expect(Ops::DbAvailability.db_available?).to be false
+      end
+    end
+
     context "when the DB is not available" do
       before do
         allow(ActiveRecord::Base).to receive(:connected?).and_return(false)
