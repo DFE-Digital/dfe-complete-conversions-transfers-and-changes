@@ -248,6 +248,7 @@ variable "container_min_replicas" {
 variable "enable_cdn_frontdoor" {
   description = "Enable Azure CDN FrontDoor. This will use the Container Apps endpoint as the origin."
   type        = bool
+  default     = false
 }
 
 variable "enable_dns_zone" {
@@ -293,6 +294,17 @@ variable "dns_mx_records" {
           exchange : string
         })
       )
+    })
+  )
+  default = {}
+}
+
+variable "dns_alias_records" {
+  description = "DNS ALIAS records to add to the DNS Zone"
+  type = map(
+    object({
+      ttl : optional(number, 300),
+      target_resource_id : string
     })
   )
   default = {}
@@ -351,6 +363,7 @@ variable "existing_logic_app_workflow" {
 variable "cdn_frontdoor_enable_rate_limiting" {
   description = "Enable CDN Front Door Rate Limiting. This will create a WAF policy, and CDN security policy. For pricing reasons, there will only be one WAF policy created."
   type        = bool
+  default     = false
 }
 
 variable "cdn_frontdoor_rate_limiting_duration_in_minutes" {
@@ -375,6 +388,7 @@ variable "cdn_frontdoor_origin_host_header_override" {
 variable "cdn_frontdoor_rate_limiting_threshold" {
   description = "Maximum number of concurrent requests before Rate Limiting policy is applied"
   type        = number
+  default     = 200
 }
 
 variable "container_apps_allow_ips_inbound" {
@@ -456,7 +470,7 @@ variable "health_insights_api_ipv4_allow_list" {
 variable "enable_cdn_frontdoor_vdp_redirects" {
   description = "Deploy redirects for security.txt and thanks.txt to an external Vulnerability Disclosure Program service"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "cdn_frontdoor_vdp_destination_hostname" {
@@ -521,4 +535,10 @@ variable "custom_container_apps" {
     max_replicas = number
   }))
   default = {}
+}
+
+variable "monitor_http_availability_fqdn" {
+  description = "Specify a FQDN to monitor for HTTP Availability. Leave unset to dynamically calculate the correct FQDN"
+  type        = string
+  default     = ""
 }

@@ -1,5 +1,5 @@
 module "azure_container_apps_hosting" {
-  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.16.3"
+  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.16.6"
 
   environment    = local.environment
   project_name   = local.project_name
@@ -69,12 +69,14 @@ module "azure_container_apps_hosting" {
   dns_ns_records       = local.dns_ns_records
   dns_txt_records      = local.dns_txt_records
   dns_mx_records       = local.dns_mx_records
+  dns_alias_records    = local.dns_alias_records
 
   enable_monitoring               = local.enable_monitoring
   monitor_email_receivers         = local.monitor_email_receivers
   enable_container_health_probe   = local.enable_container_health_probe
   container_health_probe_protocol = local.container_health_probe_protocol
   monitor_endpoint_healthcheck    = local.monitor_endpoint_healthcheck
+  monitor_http_availability_fqdn  = local.monitor_http_availability_fqdn
 
   existing_logic_app_workflow                  = local.existing_logic_app_workflow
   existing_network_watcher_name                = local.existing_network_watcher_name

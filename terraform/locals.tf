@@ -51,6 +51,7 @@ locals {
   dns_ns_records                                  = var.dns_ns_records
   dns_txt_records                                 = var.dns_txt_records
   dns_mx_records                                  = var.dns_mx_records
+  dns_alias_records                               = var.dns_alias_records
   key_vault_access_ipv4                           = var.key_vault_access_ipv4
   tfvars_filename                                 = var.tfvars_filename
   enable_monitoring                               = var.enable_monitoring
@@ -72,4 +73,5 @@ locals {
   enable_cdn_frontdoor_vdp_redirects              = var.enable_cdn_frontdoor_vdp_redirects
   cdn_frontdoor_vdp_destination_hostname          = var.cdn_frontdoor_vdp_destination_hostname
   custom_container_apps                           = var.custom_container_apps
+  monitor_http_availability_fqdn                  = var.monitor_http_availability_fqdn
 }
