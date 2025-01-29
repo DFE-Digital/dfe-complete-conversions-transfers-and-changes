@@ -104,11 +104,11 @@ module AcademiesApiHelpers
   end
 
   # Error
-  def mock_academies_api_establishment_error(urn:)
+  def mock_academies_api_establishment_error(urn:, error: nil)
     test_client = Api::AcademiesApi::Client.new
     result = Api::AcademiesApi::Client::Result.new(
       nil,
-      Api::AcademiesApi::Client::Error.new("Test Academies API error")
+      error || Api::AcademiesApi::Client::Error.new("Test Academies API error")
     )
 
     allow(test_client).to receive(:get_establishment).with(urn).and_return(result)
