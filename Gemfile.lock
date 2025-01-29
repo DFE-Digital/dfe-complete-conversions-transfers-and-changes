@@ -215,7 +215,7 @@ GEM
       mustermann-grape (~> 1.1.0)
       rack (>= 2)
       zeitwerk
-    grape-swagger (2.1.1)
+    grape-swagger (2.1.2)
       grape (>= 1.7, < 3.0)
       rack-test (~> 2)
     hashdiff (1.1.0)
