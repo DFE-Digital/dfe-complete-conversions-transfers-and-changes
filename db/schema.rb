@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_21_125140) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_17_170822) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -331,8 +331,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_125140) do
     t.integer "prepare_id"
     t.uuid "local_authority_main_contact_id"
     t.uuid "group_id"
+    t.uuid "creator_id"
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
+    t.index ["creator_id"], name: "index_projects_on_creator_id"
     t.index ["incoming_trust_ukprn"], name: "index_projects_on_incoming_trust_ukprn"
     t.index ["outgoing_trust_ukprn"], name: "index_projects_on_outgoing_trust_ukprn"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
@@ -498,5 +500,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_125140) do
   add_foreign_key "notes", "users"
   add_foreign_key "projects", "users", column: "assigned_to_id"
   add_foreign_key "projects", "users", column: "caseworker_id"
+  add_foreign_key "projects", "users", column: "creator_id"
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
 end
