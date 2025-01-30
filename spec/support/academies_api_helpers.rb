@@ -1,7 +1,7 @@
 module AcademiesApiHelpers
   # Successful API calls for single and multiple establishments and trusts
-  def mock_all_academies_api_responses
-    establishment = build(:academies_api_establishment)
+  def mock_all_academies_api_responses(establishment: nil)
+    establishment ||= build(:academies_api_establishment)
     trust = build(:academies_api_trust)
 
     establishments = build_list(:academies_api_establishment, 3)

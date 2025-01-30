@@ -1,7 +1,17 @@
 require "rails_helper"
 
 RSpec.describe Transfer::CreateProjectForm, type: :model do
-  before { mock_all_academies_api_responses }
+  let(:local_authority) { create(:local_authority) }
+
+  before do
+    establishment = instance_double(
+      Api::AcademiesApi::Establishment,
+      local_authority: local_authority,
+      region_code: "F"
+    )
+
+    mock_all_academies_api_responses(establishment: establishment)
+  end
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:establishment_sharepoint_link) }
@@ -464,6 +474,13 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
     it "sets the region code from the establishment" do
       project = build(:create_transfer_project_form).save
       expect(project.region).to eq("west_midlands")
+    end
+  end
+
+  describe "#local_authority" do
+    it "sets the #local_authority from the establishment" do
+      project = build(:create_transfer_project_form).save
+      expect(project.local_authority).to eq(local_authority)
     end
   end
 
