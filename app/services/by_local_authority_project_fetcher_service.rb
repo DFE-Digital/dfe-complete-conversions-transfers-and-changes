@@ -1,6 +1,6 @@
 class ByLocalAuthorityProjectFetcherService
   def local_authorities_with_projects
-    projects = grouped_projects
+    projects = projects_by_local_authority
 
     if projects
       local_authorities = LocalAuthority.where(code: projects.keys)
@@ -13,6 +13,10 @@ class ByLocalAuthorityProjectFetcherService
     local_authority_projects(LocalAuthority.find_by!(code: local_authority_code)).includes(:assigned_to)
   end
 
+  private def projects_by_local_authority
+    all_projects.group_by { |p| p.establishment.local_authority_code }
+  end
+
   private def local_authority_projects(local_authority)
     unless @local_authority_projects
       @local_authority_projects = Project.active.by_local_authority(local_authority).ordered_by_significant_date
@@ -22,12 +26,13 @@ class ByLocalAuthorityProjectFetcherService
     @local_authority_projects
   end
 
-  private def grouped_projects
-    Project
-      .active
-      .ordered_by_significant_date
-      .includes(:local_authority)
-      .group_by { |p| p.local_authority.code }
+  private def all_projects
+    unless @all_projects
+      @all_projects = Project.active.ordered_by_significant_date
+      AcademiesApiPreFetcherService.new.call!(@all_projects)
+    end
+
+    @all_projects
   end
 
   private def build_local_authorities_objects(local_authorities, projects)

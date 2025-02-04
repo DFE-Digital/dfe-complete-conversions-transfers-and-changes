@@ -61,6 +61,19 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
 
       expect(described_class.new.local_authorities_with_projects).to eql []
     end
+
+    it "only fetches projects and related data once" do
+      spy = AcademiesApiPreFetcherService.new
+      allow(AcademiesApiPreFetcherService).to receive(:new).and_return(spy)
+      allow(spy).to receive(:call!).and_call_original
+
+      result = described_class.new
+
+      result.local_authorities_with_projects
+      result.local_authorities_with_projects
+
+      expect(spy).to have_received(:call!).once
+    end
   end
 
   describe "#projects_for_local_authority" do
