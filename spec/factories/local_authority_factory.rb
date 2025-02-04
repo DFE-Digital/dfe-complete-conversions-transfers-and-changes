@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :local_authority do
     name { "Cumbria County Council" }
-    code { rand(202..941).to_s }
+    code { 100 }
     address_1 { "Cumbria House" }
     address_2 { "117 Botchergate" }
     address_3 { nil }

@@ -15,7 +15,6 @@ FactoryBot.define do
     team { Project.teams["london"] }
     all_conditions_met { nil }
     state { 0 }
-    local_authority { LocalAuthority.first || create(:local_authority) }
 
     trait :completed do
       state { 1 }

@@ -54,7 +54,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
       assigned_to: user,
       assigned_at: DateTime.now,
       region: region,
-      local_authority: local_authority,
+      local_authority_id: local_authority.id,
       tasks_data: Transfer::TasksData.new,
       new_trust_reference_number: new_trust_reference_number,
       new_trust_name: new_trust_name

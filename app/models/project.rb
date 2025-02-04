@@ -7,6 +7,8 @@ class Project < ApplicationRecord
   attr_writer :establishment, :incoming_trust, :member_of_parliament
 
   delegated_type :tasks_data, types: %w[Conversion::TasksData, Transfer::TasksData], dependent: :destroy
+  delegate :local_authority_code, to: :establishment
+  delegate :local_authority, to: :establishment
   delegate :director_of_child_services, to: :local_authority
 
   has_many :notes, dependent: :destroy
@@ -20,8 +22,6 @@ class Project < ApplicationRecord
   belongs_to :incoming_trust_main_contact, inverse_of: :main_contact_for_incoming_trust, dependent: :destroy, class_name: "Contact", optional: true
   belongs_to :outgoing_trust_main_contact, inverse_of: :main_contact_for_outgoing_trust, dependent: :destroy, class_name: "Contact", optional: true
   belongs_to :local_authority_main_contact, inverse_of: :main_contact_for_local_authority, dependent: :destroy, class_name: "Contact", optional: true
-
-  belongs_to :local_authority, optional: true
 
   belongs_to :group, inverse_of: :projects, class_name: "ProjectGroup", optional: true
 
@@ -63,7 +63,6 @@ class Project < ApplicationRecord
   scope :ordered_by_created_at_date, -> { order(created_at: :desc) }
 
   scope :by_region, ->(region) { where(region: region) }
-  scope :by_local_authority, ->(local_authority) { where(local_authority: local_authority) }
 
   scope :by_trust_ukprn, ->(ukprn) { where(incoming_trust_ukprn: ukprn) }
 
@@ -119,6 +118,7 @@ class Project < ApplicationRecord
   end
 
   def director_of_child_services
+    local_authority = establishment.local_authority
     local_authority&.director_of_child_services
   end
 
