@@ -13,7 +13,12 @@ RSpec.feature "Users can create new form a MAT conversion projects" do
     let(:new_trust_name) { "The New Trust" }
     let(:two_weeks_ago) { Date.today - 2.weeks }
 
-    before { mock_all_academies_api_responses }
+    before {
+      local_authority = LocalAuthority.new(id: "f0e04a51-3711-4d58-942a-dcb84938c818")
+      establishment = build(:academies_api_establishment, diocese_code: "0000")
+      allow(establishment).to receive(:local_authority).and_return(local_authority)
+      mock_all_academies_api_responses(establishment: establishment)
+    }
 
     scenario "a new project is created" do
       visit new_project_path
