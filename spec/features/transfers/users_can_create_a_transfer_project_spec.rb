@@ -15,7 +15,12 @@ RSpec.feature "Users can create new transfer projects" do
       let(:outgoing_ukprn) { 10090252 }
       let(:new_trust_reference_number) { nil }
 
-      before { mock_all_academies_api_responses }
+      before {
+        local_authority = LocalAuthority.new(id: "f0e04a51-3711-4d58-942a-dcb84938c818")
+        establishment = build(:academies_api_establishment, diocese_code: "0000")
+        allow(establishment).to receive(:local_authority).and_return(local_authority)
+        mock_all_academies_api_responses(establishment: establishment)
+      }
 
       scenario "a new project is created" do
         visit new_project_path
@@ -56,7 +61,12 @@ RSpec.feature "Users can create new transfer projects" do
       let(:outgoing_ukprn) { 10090252 }
       let(:incoming_ukprn) { nil }
 
-      before { mock_all_academies_api_responses }
+      before {
+        local_authority = LocalAuthority.new(id: "f0e04a51-3711-4d58-942a-dcb84938c818")
+        establishment = build(:academies_api_establishment, diocese_code: "0000")
+        allow(establishment).to receive(:local_authority).and_return(local_authority)
+        mock_all_academies_api_responses(establishment: establishment)
+      }
 
       scenario "a new project is created" do
         visit new_project_path

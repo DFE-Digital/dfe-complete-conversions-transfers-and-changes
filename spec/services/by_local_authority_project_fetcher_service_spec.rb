@@ -16,16 +16,16 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
     allow(fake_client).to receive(:get_establishments).with(any_args).and_return(Api::AcademiesApi::Client::Result.new([establishment, another_establishment, establishment, yet_another_establishment], nil))
     allow(fake_client).to receive(:get_trusts).and_return(Api::AcademiesApi::Client::Result.new([double("Trust", ukprn: 10010010)], nil))
 
-    cumbria = create(:local_authority, code: "909", name: "Cumbria County Council")
-    westminster = create(:local_authority, code: "213", name: "Westminster City Council")
-    norfolk = create(:local_authority, code: "926", name: "Norfolk County Council")
+    create(:local_authority, code: "909", name: "Cumbria County Council")
+    create(:local_authority, code: "213", name: "Westminster City Council")
+    create(:local_authority, code: "926", name: "Norfolk County Council")
 
-    create(:conversion_project, local_authority: cumbria, urn: establishment.urn, conversion_date: Date.new(2024, 1, 1))
-    create(:conversion_project, local_authority: westminster, urn: another_establishment.urn)
-    create(:conversion_project, local_authority: cumbria, urn: establishment.urn, conversion_date: Date.new(2024, 2, 1))
+    create(:conversion_project, urn: establishment.urn, conversion_date: Date.new(2024, 1, 1))
+    create(:conversion_project, urn: another_establishment.urn)
+    create(:conversion_project, urn: establishment.urn, conversion_date: Date.new(2024, 2, 1))
 
-    create(:transfer_project, local_authority: cumbria, urn: establishment.urn, transfer_date: Date.new(2024, 3, 1))
-    create(:transfer_project, local_authority: norfolk, urn: yet_another_establishment.urn)
+    create(:transfer_project, urn: establishment.urn, transfer_date: Date.new(2024, 3, 1))
+    create(:transfer_project, urn: yet_another_establishment.urn)
   end
 
   describe "#local_authorities_with_projects" do
@@ -61,6 +61,19 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
 
       expect(described_class.new.local_authorities_with_projects).to eql []
     end
+
+    it "only fetches projects and related data once" do
+      spy = AcademiesApiPreFetcherService.new
+      allow(AcademiesApiPreFetcherService).to receive(:new).and_return(spy)
+      allow(spy).to receive(:call!).and_call_original
+
+      result = described_class.new
+
+      result.local_authorities_with_projects
+      result.local_authorities_with_projects
+
+      expect(spy).to have_received(:call!).once
+    end
   end
 
   describe "#projects_for_local_authority" do
@@ -72,9 +85,8 @@ RSpec.describe ByLocalAuthorityProjectFetcherService do
       expect(projects_for_local_authority.last.transfer_date).to eql Date.new(2024, 3, 1)
     end
 
-    it "returns an empty AR relation when there are no projects for the supplied local authority code" do
-      unused_local_authority = create(:local_authority)
-      expect(described_class.new.projects_for_local_authority(unused_local_authority.code)).to be_empty
+    it "returns an empty array when there are no projects for the supplied local authority code" do
+      expect(described_class.new.projects_for_local_authority("101")).to eql []
     end
 
     it "only fetches project and related date once" do

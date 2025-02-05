@@ -16,7 +16,6 @@ FactoryBot.define do
     outgoing_trust_ukprn { 10059062 }
     two_requires_improvement { false }
     state { 0 }
-    local_authority { LocalAuthority.first || create(:local_authority) }
 
     trait :completed do
       state { 1 }
