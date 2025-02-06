@@ -57,7 +57,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
       directive_academy_order: directive_academy_order,
       two_requires_improvement: two_requires_improvement,
       region: region,
-      local_authority_id: local_authority.id,
+      local_authority: local_authority,
       tasks_data: new_tasks_data,
       new_trust_reference_number: new_trust_reference_number,
       new_trust_name: new_trust_name
