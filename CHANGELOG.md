@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-103][release-103]
+
+### Fixed
+
+- Use new local authority information to improve performance of "local
+  authority" pages
+
 ## [Release-102][release-102]
 
 ### Changed
@@ -2367,7 +2374,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-102...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-103...HEAD
+[release-103]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-102...release-103
 [release-102]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-101...release-102
 [release-101]:
