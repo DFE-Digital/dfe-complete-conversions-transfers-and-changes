@@ -86,7 +86,7 @@ RSpec.describe ProjectSearchService do
       context "a too-short number" do
         it "returns an empty result" do
           service = described_class.new
-          result = service.search("1")
+          result = service.search("1234")
 
           expect(result.count).to be_zero
         end
@@ -126,6 +126,20 @@ RSpec.describe ProjectSearchService do
   end
 
   describe "#search_by_urns" do
+    context "when more than 25 urns are given" do
+      before do
+        results = double(count: 101, empty?: false)
+        allow(Gias::Establishment).to receive(:where).and_return(results)
+      end
+
+      it "raises a SearchError to avoid attempting to process excessive results" do
+        service = described_class.new
+        expect { service.search("abcd") }.to raise_error(
+          ProjectSearchService::SearchError, /too many results/i
+        )
+      end
+    end
+
     context "when one urn is passed" do
       context "when a match is found" do
         it "returns an array with the matches" do
@@ -240,6 +254,15 @@ RSpec.describe ProjectSearchService do
   end
 
   describe "#search_by_words" do
+    context "when the string given is less than 3 characters" do
+      it "raises a SearchError to avoid returning an excessive number of results" do
+        service = described_class.new
+        expect { service.search("the") }.to raise_error(
+          ProjectSearchService::SearchError, /search term too short/i
+        )
+      end
+    end
+
     context "when matches are found" do
       it "returns an array with the matches" do
         _matching_establishment_1 = create(:gias_establishment, name: "St Albans Primary", urn: 100000)
