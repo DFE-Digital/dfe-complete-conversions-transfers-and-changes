@@ -14,10 +14,12 @@ RSpec.describe Transfers::ProjectsController do
 
   describe "academies API behaviour" do
     context "when the API times out" do
+      let(:notification) { instance_double(Ops::ErrorNotification, handled: true) }
+
       before do
         mock_academies_api_establishment_error(urn: 123456, error: academies_api_timeout_error)
         mock_academies_api_trust_error(ukprn: 10061021)
-        allow(ExceptionNotifier).to receive(:notify_exception)
+        allow(Ops::ErrorNotification).to receive(:new).and_return(notification)
       end
 
       it "renders the API time out page" do
@@ -26,11 +28,16 @@ RSpec.describe Transfers::ProjectsController do
         expect(response).to render_template("pages/academies_api_client_timeout")
       end
 
-      it "sends an exception notification to our Slack channel" do
+      it "sends an error notification (to our Slack channel)" do
         post conversions_path, params: {conversion_create_project_form: {urn: "123456"}}
+        error_message = "#{academies_api_timeout_error.message} -> rescued with pages/academies_api_client_timeout"
 
-        expect(ExceptionNotifier).to have_received(:notify_exception)
-          .with(academies_api_timeout_error)
+        expect(notification).to have_received(:handled)
+          .with(
+            message: error_message,
+            user: user.email,
+            path: conversions_path
+          )
       end
     end
 

@@ -44,7 +44,13 @@ class ApplicationController < ActionController::Base
   end
 
   private def academies_api_client_error(exception)
-    ExceptionNotifier.notify_exception(exception)
+    error_message = "#{exception.message} -> rescued with pages/academies_api_client_timeout"
+    Ops::ErrorNotification.new.handled(
+      message: error_message,
+      user: current_user_identifier,
+      path: request.path
+    )
+
     render "pages/academies_api_client_timeout", status: 500
   end
 
