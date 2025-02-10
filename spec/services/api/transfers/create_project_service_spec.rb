@@ -1,8 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Api::Transfers::CreateProjectService, type: :model do
+  let(:local_authority) { create(:local_authority) }
+
   before do
-    mock_successful_api_response_to_create_any_project
+    establishment = build(:academies_api_establishment)
+    mock_successful_api_response_to_create_any_project(
+      establishment: establishment,
+      local_authority: local_authority
+    )
   end
 
   subject { described_class.new(valid_parameters).call }
