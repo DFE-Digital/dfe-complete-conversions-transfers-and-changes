@@ -43,6 +43,10 @@ RSpec.describe Api::Transfers::CreateProjectService, type: :model do
     expect(subject.region).to eql "west_midlands"
   end
 
+  it "sets the project local authority from the establishment local authority" do
+    expect(subject.local_authority).to eql local_authority
+  end
+
   it "creates the user in the same regional team as the project establishment" do
     user = subject.regional_delivery_officer
 
