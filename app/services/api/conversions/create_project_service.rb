@@ -22,6 +22,7 @@ class Api::Conversions::CreateProjectService < Api::BaseCreateProjectService
         regional_delivery_officer_id: user.id,
         tasks_data: tasks_data,
         region: establishment.region_code,
+        local_authority: establishment.local_authority,
         prepare_id: prepare_id,
         group: group,
         state: :inactive
