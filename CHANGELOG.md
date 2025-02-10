@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-104][release-104]
+
+### Changed
+
+- Use a new less alarming "error notification" for exceptions which are handled
+
 ## [Release-103][release-103]
 
 ### Fixed
@@ -2374,7 +2380,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-103...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-104...HEAD
+[release-104]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-103...release-104
 [release-103]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-102...release-103
 [release-102]:
