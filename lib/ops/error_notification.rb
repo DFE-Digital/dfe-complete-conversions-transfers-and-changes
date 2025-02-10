@@ -1,5 +1,7 @@
 class Ops::ErrorNotification
   def initialize
+    return unless Rails.env.production?
+
     @notifier = Slack::Notifier.new(
       ENV.fetch("SLACK_EXCEPTION_NOTIFICATIONS_URL"),
       {
@@ -10,6 +12,8 @@ class Ops::ErrorNotification
   end
 
   def handled(message:, user:, path:)
+    return unless Rails.env.production?
+
     blocks = ExceptionNotifierConfig.blocks
 
     secondary_blocks = [{

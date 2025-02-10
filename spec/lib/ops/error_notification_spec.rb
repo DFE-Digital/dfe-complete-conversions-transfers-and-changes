@@ -4,6 +4,7 @@ RSpec.describe Ops::ErrorNotification do
   let(:slack_notifier) { instance_double(Slack::Notifier, post: true) }
 
   before do
+    allow(Rails.env).to receive(:production?).and_return(true)
     allow(Slack::Notifier).to receive(:new).and_return(slack_notifier)
   end
 
@@ -18,6 +19,18 @@ RSpec.describe Ops::ErrorNotification do
           username: "error notifier"
         }
       )
+    end
+
+    context "when the Rails env is NOT production" do
+      before do
+        allow(Rails.env).to receive(:production?).and_return(false)
+      end
+
+      it "does not set up a Slack::Notifier" do
+        Ops::ErrorNotification.new
+
+        expect(Slack::Notifier).not_to have_received(:new)
+      end
     end
   end
 
@@ -82,6 +95,19 @@ RSpec.describe Ops::ErrorNotification do
           )
         })
       )
+    end
+
+    context "when the Rails env is NOT production" do
+      before do
+        allow(Rails.env).to receive(:production?).and_return(false)
+      end
+
+      it "does not set up a Slack::Notifier or attempt to post a message" do
+        error_notification.handled(message: message, user: user, path: path)
+
+        expect(Slack::Notifier).not_to have_received(:new)
+        expect(slack_notifier).not_to have_received(:post)
+      end
     end
   end
 end
