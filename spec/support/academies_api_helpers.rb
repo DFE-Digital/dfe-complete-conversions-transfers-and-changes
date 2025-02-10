@@ -25,8 +25,12 @@ module AcademiesApiHelpers
   end
 
   # Successful API calls for any URN and UKPRN
-  def mock_successful_api_response_to_create_any_project
-    mock_academies_api_establishment_success(urn: any_args)
+  def mock_successful_api_response_to_create_any_project(establishment: nil, local_authority: nil)
+    mock_academies_api_establishment_success(
+      urn: any_args,
+      establishment: establishment,
+      local_authority: local_authority
+    )
     mock_academies_api_trust_success(ukprn: any_args)
   end
 
@@ -67,9 +71,9 @@ module AcademiesApiHelpers
   # Individual response for the getting an establishment
   #
   # Success
-  def mock_academies_api_establishment_success(urn:, establishment: nil)
+  def mock_academies_api_establishment_success(urn:, establishment: nil, local_authority: nil)
     establishment = build(:academies_api_establishment) if establishment.nil?
-    local_authority = build(:local_authority)
+    local_authority ||= build(:local_authority)
 
     test_client = Api::AcademiesApi::Client.new
     result = Api::AcademiesApi::Client::Result.new(establishment, nil)
