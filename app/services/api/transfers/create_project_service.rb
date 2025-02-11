@@ -37,6 +37,7 @@ class Api::Transfers::CreateProjectService < Api::BaseCreateProjectService
         regional_delivery_officer_id: user.id,
         tasks_data: tasks_data,
         region: establishment.region_code,
+        local_authority: establishment.local_authority,
         new_trust_reference_number: new_trust_reference_number,
         new_trust_name: new_trust_name,
         prepare_id: prepare_id,
