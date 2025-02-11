@@ -81,9 +81,8 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
 
     context "and the establishment has a diocese" do
       it "sets the church supplemental agreement task to not applicable" do
-        local_authority = LocalAuthority.new(id: "f0e04a51-3711-4d58-942a-dcb84938c818")
         establishment = build(:academies_api_establishment, diocese_code: "0000")
-        allow(establishment).to receive(:local_authority).and_return(local_authority)
+        allow(establishment).to receive(:local_authority).and_return(create(:local_authority))
         result = Api::AcademiesApi::Client::Result.new(establishment, nil)
         allow_any_instance_of(Api::AcademiesApi::Client).to receive(:get_establishment).with(123456).and_return(result)
 
@@ -603,7 +602,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         region_code: "E"
       )
 
-      mock_all_academies_api_responses(establishment: establishment)
+      mock_all_academies_api_responses(establishment: establishment, local_authority: local_authority)
     end
 
     it "sets the #local_authority from the establishment" do

@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe Conversions::ProjectsController do
   let(:user) { create(:user, :caseworker) }
   let(:academies_api_timeout_error) { Api::AcademiesApi::Client::Error.new("Test Academies API timeout error") }
+  let(:local_authority) { create(:local_authority) }
 
   before do
-    local_authority = LocalAuthority.new(id: "f0e04a51-3711-4d58-942a-dcb84938c818")
     establishment = build(:academies_api_establishment, diocese_code: "0000")
     allow(establishment).to receive(:local_authority).and_return(local_authority)
     mock_all_academies_api_responses(establishment: establishment)
