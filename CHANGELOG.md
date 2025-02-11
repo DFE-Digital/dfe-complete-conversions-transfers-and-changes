@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-105][release-105]
+
+### Fixed
+
+- Set local authority on projects created programmatically by "Prepare" service.
+
 ## [Release-104][release-104]
 
 ### Changed
@@ -2380,7 +2386,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-104...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-105...HEAD
+[release-105]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-104...release-105
 [release-104]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-103...release-104
 [release-103]:
