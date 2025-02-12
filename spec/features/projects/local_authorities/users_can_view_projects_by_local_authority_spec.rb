@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Users can view a list of local authorities that have projectss" do
+RSpec.feature "Users can view a list of local authorities that have projects" do
   before do
     sign_in_with_user(user)
     mock_all_academies_api_responses
@@ -20,7 +20,7 @@ RSpec.feature "Users can view a list of local authorities that have projectss" d
     scenario "they see the trust listed and a link" do
       establishment = build(:academies_api_establishment, urn: 123456, local_authority_code: "100")
       local_authority = create(:local_authority, code: "100")
-      create(:conversion_project, urn: 123456)
+      create(:conversion_project, urn: 123456, local_authority: local_authority)
       allow_any_instance_of(Project).to receive(:establishment).and_return(establishment)
 
       visit all_local_authorities_projects_path

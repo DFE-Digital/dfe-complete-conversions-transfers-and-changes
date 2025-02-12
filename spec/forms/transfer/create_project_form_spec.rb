@@ -10,7 +10,7 @@ RSpec.describe Transfer::CreateProjectForm, type: :model do
       region_code: "F"
     )
 
-    mock_all_academies_api_responses(establishment: establishment)
+    mock_all_academies_api_responses(establishment: establishment, local_authority: local_authority)
   end
 
   describe "validations" do

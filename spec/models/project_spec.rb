@@ -31,6 +31,7 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:notes).dependent(:destroy) }
     it { is_expected.to belong_to(:caseworker).required(false) }
     it { is_expected.to belong_to(:assigned_to).required(false) }
+    it { is_expected.to belong_to(:local_authority).required(true) }
     it { is_expected.to belong_to(:tasks_data).required(true) }
     it { is_expected.to belong_to(:main_contact).optional(true) }
     it { is_expected.to belong_to(:establishment_main_contact).optional(true) }

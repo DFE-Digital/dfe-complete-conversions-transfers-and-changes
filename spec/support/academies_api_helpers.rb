@@ -1,7 +1,9 @@
 module AcademiesApiHelpers
   # Successful API calls for single and multiple establishments and trusts
-  def mock_all_academies_api_responses(establishment: nil)
+  def mock_all_academies_api_responses(establishment: nil, local_authority: nil)
     establishment ||= build(:academies_api_establishment)
+    local_authority ||= create(:local_authority)
+    allow(establishment).to receive(:local_authority).and_return(local_authority)
     trust = build(:academies_api_trust)
 
     establishments = build_list(:academies_api_establishment, 3)
@@ -37,7 +39,7 @@ module AcademiesApiHelpers
   # Successful API calls for editing a projects URN and UKPRN
   def mock_api_for_editing
     establishment = build(:academies_api_establishment)
-    local_authority = build(:local_authority)
+    local_authority = create(:local_authority)
     allow(establishment).to receive(:local_authority).and_return(local_authority)
 
     mock_establishment = Api::AcademiesApi::Client::Result.new(establishment, nil)
@@ -73,7 +75,7 @@ module AcademiesApiHelpers
   # Success
   def mock_academies_api_establishment_success(urn:, establishment: nil, local_authority: nil)
     establishment = build(:academies_api_establishment) if establishment.nil?
-    local_authority ||= build(:local_authority)
+    local_authority ||= create(:local_authority)
 
     test_client = Api::AcademiesApi::Client.new
     result = Api::AcademiesApi::Client::Result.new(establishment, nil)
