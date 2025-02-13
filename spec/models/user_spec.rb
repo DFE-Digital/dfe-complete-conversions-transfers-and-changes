@@ -291,6 +291,17 @@ RSpec.describe User do
             expect(user.read_attribute(:add_new_project)).to be true
           end
         end
+
+        context "when the user has the assign_to_project capability" do
+          before do
+            user.capabilities << Capability.assign_to_project
+            user.save
+          end
+
+          it "sets the User#assign_to_project attribute" do
+            expect(user.assign_to_project).to be true
+          end
+        end
       end
     end
   end

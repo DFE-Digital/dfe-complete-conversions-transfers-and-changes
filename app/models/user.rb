@@ -80,7 +80,8 @@ class User < ApplicationRecord
 
   private def apply_roles_based_on_team
     assign_attributes(
-      assign_to_project: is_regional_caseworker? || is_regional_delivery_officer?,
+      assign_to_project: is_regional_caseworker? || is_regional_delivery_officer? ||
+        UserCapability.has_capability?(user: self, capability_name: :assign_to_project),
       manage_user_accounts: apply_service_support_role?,
       manage_conversion_urns: apply_service_support_role?,
       manage_local_authorities: apply_service_support_role?,
