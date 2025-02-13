@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :projects, foreign_key: "caseworker"
   has_many :notes
+  has_many :user_capabilities
+  has_many :capabilities, through: :user_capabilities
 
   scope :order_by_first_name, -> { order(first_name: :asc) }
 

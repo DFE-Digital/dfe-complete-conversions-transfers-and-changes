@@ -17,6 +17,10 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:latest_session).of_type :datetime }
   end
 
+  describe "associations" do
+    it { is_expected.to have_many(:capabilities) }
+  end
+
   describe "scopes" do
     let!(:caseworker) { create(:regional_casework_services_user) }
     let!(:caseworker_2) { create(:regional_casework_services_user, first_name: "Aaron", email: "aaron-caseworker@education.gov.uk") }
