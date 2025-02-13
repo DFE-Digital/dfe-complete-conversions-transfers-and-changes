@@ -69,7 +69,9 @@ class User < ApplicationRecord
 
   # Override the db column temporarily while we test adding Transfers
   def add_new_project
-    is_regional_caseworker? || is_regional_delivery_officer?
+    is_regional_caseworker? ||
+      is_regional_delivery_officer? ||
+      UserCapability.has_capability?(user: self, capability_name: :add_new_project)
   end
 
   def team_options
@@ -82,7 +84,8 @@ class User < ApplicationRecord
       manage_user_accounts: apply_service_support_role?,
       manage_conversion_urns: apply_service_support_role?,
       manage_local_authorities: apply_service_support_role?,
-      add_new_project: is_regional_delivery_officer?,
+      add_new_project: is_regional_delivery_officer? ||
+        UserCapability.has_capability?(user: self, capability_name: :add_new_project),
       manage_team: apply_team_lead_role? ||
         UserCapability.has_capability?(user: self, capability_name: :manage_team)
     )

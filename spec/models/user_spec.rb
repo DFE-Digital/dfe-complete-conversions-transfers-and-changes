@@ -276,6 +276,21 @@ RSpec.describe User do
             expect(user.manage_team).to be true
           end
         end
+
+        context "when the user has the add_new_project capability" do
+          before do
+            user.capabilities << Capability.add_new_project
+            user.save
+          end
+
+          it "sets the User#add_new_project method (overrides the db attribute)" do
+            expect(user.add_new_project).to be true
+          end
+
+          it "sets the User#add_new_project attribute" do
+            expect(user.read_attribute(:add_new_project)).to be true
+          end
+        end
       end
     end
   end
