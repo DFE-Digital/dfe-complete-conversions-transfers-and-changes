@@ -256,6 +256,27 @@ RSpec.describe User do
           expect(user.manage_team).to be false
         end
       end
+
+      describe "when overriding with user capabilities" do
+        let(:user) { create(:user) }
+
+        before do
+          expect(user.manage_team).to be false
+          expect(user.add_new_project).to be false
+          expect(user.assign_to_project).to be false
+        end
+
+        context "when the user has the manage_team capability" do
+          before do
+            user.capabilities << Capability.manage_team
+            user.save
+          end
+
+          it "sets the User#manage_team attribute" do
+            expect(user.manage_team).to be true
+          end
+        end
+      end
     end
   end
 

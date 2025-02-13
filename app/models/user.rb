@@ -83,7 +83,8 @@ class User < ApplicationRecord
       manage_conversion_urns: apply_service_support_role?,
       manage_local_authorities: apply_service_support_role?,
       add_new_project: is_regional_delivery_officer?,
-      manage_team: apply_team_lead_role?
+      manage_team: apply_team_lead_role? ||
+        UserCapability.has_capability?(user: self, capability_name: :manage_team)
     )
   end
 
