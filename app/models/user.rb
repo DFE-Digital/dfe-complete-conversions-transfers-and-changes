@@ -80,16 +80,19 @@ class User < ApplicationRecord
 
   private def apply_roles_based_on_team
     assign_attributes(
-      assign_to_project: is_regional_caseworker? || is_regional_delivery_officer? ||
-        UserCapability.has_capability?(user: self, capability_name: :assign_to_project),
+      assign_to_project: allowing_override_for(:assign_to_project) { is_regional_caseworker? || is_regional_delivery_officer? },
       manage_user_accounts: apply_service_support_role?,
       manage_conversion_urns: apply_service_support_role?,
       manage_local_authorities: apply_service_support_role?,
-      add_new_project: is_regional_delivery_officer? ||
-        UserCapability.has_capability?(user: self, capability_name: :add_new_project),
-      manage_team: apply_team_lead_role? ||
-        UserCapability.has_capability?(user: self, capability_name: :manage_team)
+      add_new_project: allowing_override_for(:add_new_project) { is_regional_delivery_officer? },
+      manage_team: allowing_override_for(:manage_team) { apply_team_lead_role? }
     )
+  end
+
+  private def allowing_override_for(capability_name)
+    return true if UserCapability.has_capability?(user: self, capability_name: capability_name)
+
+    yield
   end
 
   private def apply_service_support_role?
