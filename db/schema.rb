@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_11_093654) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_13_131024) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_key", null: false
     t.datetime "expires_at", null: false
     t.string "description"
+  end
+
+  create_table "capabilities", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_capabilities_on_name", unique: true
   end
 
   create_table "contacts", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
@@ -475,6 +483,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_11_093654) do
     t.boolean "commercial_transfer_agreement_questions_checked", default: false
   end
 
+  create_table "user_capabilities", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "capability_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["capability_id"], name: "index_user_capabilities_on_capability_id"
+    t.index ["user_id"], name: "index_user_capabilities_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -502,4 +519,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_11_093654) do
   add_foreign_key "projects", "users", column: "assigned_to_id"
   add_foreign_key "projects", "users", column: "caseworker_id"
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
+  add_foreign_key "user_capabilities", "capabilities"
+  add_foreign_key "user_capabilities", "users"
 end
