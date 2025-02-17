@@ -17,6 +17,10 @@ RSpec.describe User do
     it { is_expected.to have_db_column(:latest_session).of_type :datetime }
   end
 
+  describe "associations" do
+    it { is_expected.to have_many(:capabilities) }
+  end
+
   describe "scopes" do
     let!(:caseworker) { create(:regional_casework_services_user) }
     let!(:caseworker_2) { create(:regional_casework_services_user, first_name: "Aaron", email: "aaron-caseworker@education.gov.uk") }
@@ -250,6 +254,53 @@ RSpec.describe User do
           user = described_class.create!(user_attributes)
 
           expect(user.manage_team).to be false
+        end
+      end
+
+      describe "when overriding with user capabilities" do
+        let(:user) { create(:user) }
+
+        before do
+          expect(user.manage_team).to be false
+          expect(user.add_new_project).to be false
+          expect(user.assign_to_project).to be false
+        end
+
+        context "when the user has the manage_team capability" do
+          before do
+            user.capabilities << Capability.manage_team
+            user.save
+          end
+
+          it "sets the User#manage_team attribute" do
+            expect(user.manage_team).to be true
+          end
+        end
+
+        context "when the user has the add_new_project capability" do
+          before do
+            user.capabilities << Capability.add_new_project
+            user.save
+          end
+
+          it "sets the User#add_new_project method (overrides the db attribute)" do
+            expect(user.add_new_project).to be true
+          end
+
+          it "sets the User#add_new_project attribute" do
+            expect(user.read_attribute(:add_new_project)).to be true
+          end
+        end
+
+        context "when the user has the assign_to_project capability" do
+          before do
+            user.capabilities << Capability.assign_to_project
+            user.save
+          end
+
+          it "sets the User#assign_to_project attribute" do
+            expect(user.assign_to_project).to be true
+          end
         end
       end
     end

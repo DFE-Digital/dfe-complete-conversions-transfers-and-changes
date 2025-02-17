@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :projects, foreign_key: "caseworker"
   has_many :notes
+  has_many :user_capabilities
+  has_many :capabilities, through: :user_capabilities
 
   scope :order_by_first_name, -> { order(first_name: :asc) }
 
@@ -67,7 +69,9 @@ class User < ApplicationRecord
 
   # Override the db column temporarily while we test adding Transfers
   def add_new_project
-    is_regional_caseworker? || is_regional_delivery_officer?
+    is_regional_caseworker? ||
+      is_regional_delivery_officer? ||
+      UserCapability.has_capability?(user: self, capability_name: :add_new_project)
   end
 
   def team_options
@@ -76,13 +80,19 @@ class User < ApplicationRecord
 
   private def apply_roles_based_on_team
     assign_attributes(
-      assign_to_project: is_regional_caseworker? || is_regional_delivery_officer?,
+      assign_to_project: allowing_override_for(:assign_to_project) { is_regional_caseworker? || is_regional_delivery_officer? },
       manage_user_accounts: apply_service_support_role?,
       manage_conversion_urns: apply_service_support_role?,
       manage_local_authorities: apply_service_support_role?,
-      add_new_project: is_regional_delivery_officer?,
-      manage_team: apply_team_lead_role?
+      add_new_project: allowing_override_for(:add_new_project) { is_regional_delivery_officer? },
+      manage_team: allowing_override_for(:manage_team) { apply_team_lead_role? }
     )
+  end
+
+  private def allowing_override_for(capability_name)
+    return true if UserCapability.has_capability?(user: self, capability_name: capability_name)
+
+    yield
   end
 
   private def apply_service_support_role?
