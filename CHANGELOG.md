@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-106][release-106]
+
+### Changed
+
+- Over-ride a user's role attributes with 'Capabilities'
+
 ## [Release-105][release-105]
 
 ### Fixed
@@ -2386,7 +2392,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-105...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-106...HEAD
+[release-106]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-105...release-106
 [release-105]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-104...release-105
 [release-104]:
