@@ -63,6 +63,20 @@ RSpec.feature "Users can view their projects" do
         visit "/"
         expect(page).to_not have_link("Your project")
       end
+
+      context "when they have an overriding 'add_new_project' _capability_" do
+        before {
+          user.capabilities << Capability.add_new_project
+          user.save # perform the on_save callbacks
+          expect(user.add_new_project).to be true
+          expect(user.reload.manage_team).to be true
+        }
+
+        it "they can access the 'Your projects' section" do
+          visit in_progress_your_projects_path
+          expect(page).to have_link("Your project")
+        end
+      end
     end
   end
 
