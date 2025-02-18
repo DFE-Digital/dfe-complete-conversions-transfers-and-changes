@@ -340,7 +340,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_20_121430) do
     t.integer "prepare_id"
     t.uuid "local_authority_main_contact_id"
     t.uuid "group_id"
-    t.uuid "local_authority_id"
+    t.uuid "local_authority_id", null: false
     t.index ["assigned_to_id"], name: "index_projects_on_assigned_to_id"
     t.index ["caseworker_id"], name: "index_projects_on_caseworker_id"
     t.index ["incoming_trust_ukprn"], name: "index_projects_on_incoming_trust_ukprn"
