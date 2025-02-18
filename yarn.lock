@@ -178,40 +178,40 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-2.0.3.tgz#4a2868d75d6d6963e423bcf90b7fd1be343409d3"
   integrity sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==
 
-"@microsoft/applicationinsights-analytics-js@3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-analytics-js/-/applicationinsights-analytics-js-3.3.4.tgz#15cd40a589745a8da9cdac05901eecc5ef640802"
-  integrity sha512-RxxyiIgt3TJ/tvLhg1wth1862wrPmru6dBS7vyThFEUkCZ/AYqEAzdH1JiixgTL/e72NesqmgKcvUUPv9kl9rg==
+"@microsoft/applicationinsights-analytics-js@3.3.5":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-analytics-js/-/applicationinsights-analytics-js-3.3.5.tgz#aef98f02e989d8f658f4f0457f64562e7ed413fd"
+  integrity sha512-79EfjQpch2x/B6Ae9dKQixwewWkPSR5vF3KtiJtTZV5udQdlgrcVZgtk3RlqdSaWEMC/xcwBXl7bCiKntd+v/g==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.3.4"
-    "@microsoft/applicationinsights-core-js" "3.3.4"
+    "@microsoft/applicationinsights-common" "3.3.5"
+    "@microsoft/applicationinsights-core-js" "3.3.5"
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
-"@microsoft/applicationinsights-cfgsync-js@3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-cfgsync-js/-/applicationinsights-cfgsync-js-3.3.4.tgz#4fd32c9fede703a6332ca82ed2cce359cbc5a8b7"
-  integrity sha512-Q5aLy6e6dFf4zr+FJdO46dOfHIvRgt/6QG1lJNC9tiuyjWYOKBkOSTop/5+2vvFK5IY4p3g0mxJOSeoHsr8RQQ==
+"@microsoft/applicationinsights-cfgsync-js@3.3.5":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-cfgsync-js/-/applicationinsights-cfgsync-js-3.3.5.tgz#b3defb9eb8ffe6a2b4d52e967401acb24bb9323f"
+  integrity sha512-18Kct8zgtKq6Vyl1uzGQlAHFZ2D5bJWvGsDkC4OsEduqAHRfA5mfizvtmHJoTTHgTg9mPvdTLDcSpuntndEu4g==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.3.4"
-    "@microsoft/applicationinsights-core-js" "3.3.4"
+    "@microsoft/applicationinsights-common" "3.3.5"
+    "@microsoft/applicationinsights-core-js" "3.3.5"
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
+    "@nevware21/ts-async" ">= 0.5.4 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
-"@microsoft/applicationinsights-channel-js@3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-channel-js/-/applicationinsights-channel-js-3.3.4.tgz#142f74932d3848e11237ff1c4f484c0ad3da4a15"
-  integrity sha512-Z4nrxYwGKP9iyrYtm7iPQXVOFy4FsEsX0nDKkAi96Qpgw+vEh6NH4ORxMMuES0EollBQ3faJyvYCwckuCVIj0g==
+"@microsoft/applicationinsights-channel-js@3.3.5":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-channel-js/-/applicationinsights-channel-js-3.3.5.tgz#9c4711bdb73c78637356363a0c8e8adb3efb61cf"
+  integrity sha512-q9iE5alabgddwnxIDxgYLwC/3OMjYNOPk87p3jY+KxO0UmJGhiv7C1uI62zpx4AHBGT2+q6pMbIZdgld9TmMrw==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.3.4"
-    "@microsoft/applicationinsights-core-js" "3.3.4"
+    "@microsoft/applicationinsights-common" "3.3.5"
+    "@microsoft/applicationinsights-core-js" "3.3.5"
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
+    "@nevware21/ts-async" ">= 0.5.4 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
 "@microsoft/applicationinsights-clickanalytics-js@^3.2.1":
   version "3.3.5"
@@ -225,16 +225,6 @@
     "@microsoft/dynamicproto-js" "^2.0.3"
     "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
-"@microsoft/applicationinsights-common@3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-common/-/applicationinsights-common-3.3.4.tgz#4934dba60e6cc4cda04c69804215d5b7707059b9"
-  integrity sha512-4ms16MlIvcP4WiUPqopifNxcWCcrXQJ2ADAK/75uok2mNQe6ZNRsqb/P+pvhUxc8A5HRlvoXPP1ptDSN5Girgw==
-  dependencies:
-    "@microsoft/applicationinsights-core-js" "3.3.4"
-    "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
-
 "@microsoft/applicationinsights-common@3.3.5":
   version "3.3.5"
   resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-common/-/applicationinsights-common-3.3.5.tgz#a83b4a5a5fb81656f6384a9cd10e60a9dad7d20a"
@@ -244,16 +234,6 @@
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
     "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
-
-"@microsoft/applicationinsights-core-js@3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-core-js/-/applicationinsights-core-js-3.3.4.tgz#af9c2b53086478a0539ff0b46a9f68199f919ac2"
-  integrity sha512-MummANF0mgKIkdvVvfmHQTBliK114IZLRhTL0X0Ep+zjDwWMHqYZgew0nlFKAl6ggu42abPZFK5afpE7qjtYJA==
-  dependencies:
-    "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
 "@microsoft/applicationinsights-core-js@3.3.5":
   version "3.3.5"
@@ -265,28 +245,17 @@
     "@nevware21/ts-async" ">= 0.5.4 < 2.x"
     "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
-"@microsoft/applicationinsights-dependencies-js@3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-dependencies-js/-/applicationinsights-dependencies-js-3.3.4.tgz#88e8cc45254434aa315da4595182e611c550f29d"
-  integrity sha512-RBEFs78v1Zl+9I85nUyw2KdXUKnjxDvdMC0Ul86v7i9ApFrrPJTJ0AVS8h+ydxtJcO2f2nHUEbtVWCf1ixRHiQ==
+"@microsoft/applicationinsights-dependencies-js@3.3.5":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-dependencies-js/-/applicationinsights-dependencies-js-3.3.5.tgz#2cf3a2c118b8b3317f22a3331ef5b6de0feb7421"
+  integrity sha512-6yCrMUjgzzGHelj4UcEftFelcBUoEXmmLP7cuur/+MgfULiNUNbhIcyM0NzehbzDU2h51mQmMapwdw6R7goKFQ==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.3.4"
-    "@microsoft/applicationinsights-core-js" "3.3.4"
+    "@microsoft/applicationinsights-common" "3.3.5"
+    "@microsoft/applicationinsights-core-js" "3.3.5"
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
-
-"@microsoft/applicationinsights-properties-js@3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-properties-js/-/applicationinsights-properties-js-3.3.4.tgz#d6f2ffe0c93d21f1cd39d0ef4fe6146534dde0b1"
-  integrity sha512-iI26hM34ysqxVmdOxVetBeoinPoBnNxSb0/c3A+zbY9iCelvf7HF4tn1Qf+sS9Jqn1Z1XjzzKvan8k82+cK+XA==
-  dependencies:
-    "@microsoft/applicationinsights-common" "3.3.4"
-    "@microsoft/applicationinsights-core-js" "3.3.4"
-    "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
+    "@nevware21/ts-async" ">= 0.5.4 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
 "@microsoft/applicationinsights-properties-js@3.3.5":
   version "3.3.5"
@@ -307,21 +276,21 @@
     "@nevware21/ts-utils" ">= 0.9.4 < 2.x"
 
 "@microsoft/applicationinsights-web@^3.2.1":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-web/-/applicationinsights-web-3.3.4.tgz#1e080cd404c906b2b37b4731c62efef19e086978"
-  integrity sha512-aZdGnI0fby/OoRNIKkYC9xqNjqFJyb7fKiYtIejCGbE/i2sClnHq7tnwiTk1UKBy9oflwryoFFNs0MM6PDBuMA==
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-web/-/applicationinsights-web-3.3.5.tgz#452fc0c67278727d978a41b91097c20dc9ac7a85"
+  integrity sha512-lf1eqFXDL1m7ObychpecTChiUXtMltTxekETJjp05nK8X618mmfcnTCdJgWSvmAG2m09GNz6Wd26omJlNknSdQ==
   dependencies:
-    "@microsoft/applicationinsights-analytics-js" "3.3.4"
-    "@microsoft/applicationinsights-cfgsync-js" "3.3.4"
-    "@microsoft/applicationinsights-channel-js" "3.3.4"
-    "@microsoft/applicationinsights-common" "3.3.4"
-    "@microsoft/applicationinsights-core-js" "3.3.4"
-    "@microsoft/applicationinsights-dependencies-js" "3.3.4"
-    "@microsoft/applicationinsights-properties-js" "3.3.4"
+    "@microsoft/applicationinsights-analytics-js" "3.3.5"
+    "@microsoft/applicationinsights-cfgsync-js" "3.3.5"
+    "@microsoft/applicationinsights-channel-js" "3.3.5"
+    "@microsoft/applicationinsights-common" "3.3.5"
+    "@microsoft/applicationinsights-core-js" "3.3.5"
+    "@microsoft/applicationinsights-dependencies-js" "3.3.5"
+    "@microsoft/applicationinsights-properties-js" "3.3.5"
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
-    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
+    "@nevware21/ts-async" ">= 0.5.4 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
 "@microsoft/dynamicproto-js@^2.0.3":
   version "2.0.3"
@@ -338,13 +307,6 @@
     govuk-frontend "^3.0.0 || ^4.0.0"
     moment "^2.27.0"
 
-"@nevware21/ts-async@>= 0.5.2 < 2.x":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@nevware21/ts-async/-/ts-async-0.5.3.tgz#47c04351458b040457977fb4b75c43c27fba3283"
-  integrity sha512-UsF7eerLsVfid7iV1oXF80qXBwHNBeqSqfh/nPZgirRU1MACmSsj83EZKS2ViFHVfSGG6WIuXMGBP6KciXfYhA==
-  dependencies:
-    "@nevware21/ts-utils" ">= 0.11.5 < 2.x"
-
 "@nevware21/ts-async@>= 0.5.4 < 2.x":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@nevware21/ts-async/-/ts-async-0.5.4.tgz#52f8449dd0b3b16aa317a18b4662f6fb13a135f1"
@@ -353,14 +315,9 @@
     "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
 "@nevware21/ts-utils@>= 0.10.4 < 2.x", "@nevware21/ts-utils@>= 0.11.6 < 2.x", "@nevware21/ts-utils@>= 0.9.4 < 2.x":
-  version "0.11.6"
-  resolved "https://registry.yarnpkg.com/@nevware21/ts-utils/-/ts-utils-0.11.6.tgz#49f43d0c488fcf127ef4bdd1356637092ed0c7e2"
-  integrity sha512-OUUJTh3fnaUSzg9DEHgv3d7jC+DnPL65mIO7RaR+jWve7+MmcgIvF79gY97DPQ4frH+IpNR78YAYd/dW4gK3kg==
-
-"@nevware21/ts-utils@>= 0.11.3 < 2.x", "@nevware21/ts-utils@>= 0.11.5 < 2.x":
-  version "0.11.5"
-  resolved "https://registry.yarnpkg.com/@nevware21/ts-utils/-/ts-utils-0.11.5.tgz#b900f5d04e657a96e096a58dad6e0b7aed273efb"
-  integrity sha512-7nIzWKR50mf3htOg53kwPLqD5iJaRfVyBvb1NJhlIncyP1WzK8vAQbU9rqIsRtv7td1CnqspdP6IWNEjOjaeug==
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/@nevware21/ts-utils/-/ts-utils-0.11.7.tgz#d7e67f8bafd4d81e9bec9599800a15fd08467055"
+  integrity sha512-QLtlUe2GYXIz34uYW0t+BNFaGgeOk9hDWhNcYqduByH+F8LESpzpQQDAjJcbwVuvKaHl0jidaE2imMcMMf+VkA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
