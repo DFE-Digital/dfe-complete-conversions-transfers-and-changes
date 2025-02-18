@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Api::AcademiesApi::Client::NotFoundError, with: :urn_not_found
   rescue_from Api::AcademiesApi::Client::Error, with: :academies_api_client_error
   rescue_from Api::AcademiesApi::Client::UnauthorisedError, with: :academies_api_unauthorised_error
   rescue_from ActionController::InvalidAuthenticityToken, with: :reset_user_session
@@ -52,6 +53,17 @@ class ApplicationController < ActionController::Base
     )
 
     render "pages/academies_api_client_timeout", status: 500
+  end
+
+  private def urn_not_found(exception)
+    error_message = "#{exception.message} -> rescued with pages/internal_server_error"
+    Ops::ErrorNotification.new.handled(
+      message: error_message,
+      user: current_user_identifier,
+      path: request.path
+    )
+
+    render "pages/internal_server_error", status: 500
   end
 
   private def academies_api_unauthorised_error

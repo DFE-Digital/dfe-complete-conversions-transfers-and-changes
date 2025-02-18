@@ -131,8 +131,8 @@ en:
       email_help: Email the support team at %{email} if the web address is correct or you clicked a link or button.
     internal_server_error:
       title: Sorry, there is a problem with the service
-      body_text: The service has an internal server error. Refresh the page and if the problem continues, try again later.
-      email_help: Email the support team at %{email} if the problem still occurs.
+      body_text: The service has an internal server error. The error has been logged and will be investigated.
+      email_help: Email the support team at %{email} if you need assistance.
   navigation:
     header:
       your_projects: Your projects
