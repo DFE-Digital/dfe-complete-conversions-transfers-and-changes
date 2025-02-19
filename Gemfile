@@ -52,7 +52,9 @@ gem "faraday"
 gem "uk_postcode", "~> 2.1.0"
 
 # application insights
-gem "application_insights"
+gem "application_insights",
+  git: "https://github.com/dxw/ApplicationInsights-Ruby",
+  branch: "fix/correct-pattern-match-for-exception-handling"
 gem "exception_notification" # manually notify in Slack (Operation Id missing in AppInsights)
 gem "slack-notifier"
 

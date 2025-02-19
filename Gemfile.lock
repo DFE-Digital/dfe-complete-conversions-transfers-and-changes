@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/dxw/ApplicationInsights-Ruby
+  revision: 51cb59a34e3e36ff406f9ec3c8332fb2a2ff89c5
+  branch: fix/correct-pattern-match-for-exception-handling
+  specs:
+    application_insights (0.5.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -83,7 +90,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
-    application_insights (0.5.6)
     ast (2.4.2)
     axe-core-api (4.10.2)
       dumb_delegator
@@ -285,7 +291,6 @@ GEM
     net-protocol (0.2.2)
       timeout
     net-smtp (0.5.0)
-      net-protocol
     nio4r (2.7.4)
     nokogiri (1.18.2-aarch64-linux-gnu)
       racc (~> 1.4)
@@ -565,7 +570,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-sqlserver-adapter
-  application_insights
+  application_insights!
   axe-core-rspec
   bootsnap
   brakeman
