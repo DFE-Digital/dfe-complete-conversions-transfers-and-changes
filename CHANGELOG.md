@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-107][release-107]
+
+### Fixed
+
+- Use fork of application insights to fix exception handling
+
 ## [Release-106][release-106]
 
 ### Changed
@@ -2392,7 +2398,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-106...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-107...HEAD
+[release-107]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-106...release-107
 [release-106]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-105...release-106
 [release-105]:
