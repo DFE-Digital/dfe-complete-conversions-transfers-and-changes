@@ -8,8 +8,12 @@ en:
         guidance_link: Update the grant assurance spreadsheet
         guidance:
           html:
-            <p>Regional Casework Services team members must <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&action=default&mobileredirect=true" target="_blank">update the support grant assurance report spreadsheet (opens in new tab)</a>.</p> 
+            <p>Regional Casework Services team members must <a href="https://educationgovuk.sharepoint.com/:x:/r/sites/ServiceDeliveryDirectorate/_layouts/15/Doc.aspx?sourcedoc=%7BDC55D68D-3415-4923-A502-44B49DB05C0E%7D&file=Support%20Grant%20Certificate%20Assurance%20Report%20-%20RCS.xlsx&action=default&mobileredirect=true" target="_blank">update the support grant assurance report spreadsheet (opens in new tab)</a>.</p>
             <p>Do not update this grant assurance report spreadsheet if you work in a team in one of the Regions.</p>
+        not_applicable:
+          title: Not applicable
+          hint:
+            html: <p>No grant was received</p>
         check_certificate:
           title: Check the declaration of expenditure certificate is correct
           hint:

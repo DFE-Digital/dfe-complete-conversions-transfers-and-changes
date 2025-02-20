@@ -254,6 +254,44 @@ RSpec.feature "Users can complete conversion tasks" do
       click_on "Receive declaration of expenditure certificate"
     end
 
+    context "when 'not applicable' IS selected" do
+      before do
+        page.find_all(".govuk-checkboxes__input")
+          .find { |cb| cb["id"].match(/not_applicable/) }
+          .click
+      end
+
+      scenario "the 'not applicable' answer is saved" do
+        click_on I18n.t("task_list.continue_button.text")
+
+        expect(project.reload.tasks_data.receive_grant_payment_certificate_not_applicable)
+          .to be true
+      end
+
+      scenario "other values which are supplied are discarded" do
+        fill_in "Day", with: "1"
+        fill_in "Month", with: "1"
+        fill_in "Year", with: "2024"
+
+        page.find_all(".govuk-checkboxes__input")
+          .reject { |cb| cb["id"].match(/not_applicable/) }
+          .each { |checkbox| checkbox.click }
+
+        click_on I18n.t("task_list.continue_button.text")
+
+        aggregate_failures do
+          expect(project.reload.tasks_data.receive_grant_payment_certificate_date_received)
+            .to be_nil
+
+          expect(project.reload.tasks_data.receive_grant_payment_certificate_save_certificate)
+            .to be_nil
+
+          expect(project.reload.tasks_data.receive_grant_payment_certificate_check_certificate)
+            .to be_nil
+        end
+      end
+    end
+
     context "when 'not applicable' is NOT selected" do
       before do
         page.find_all(".govuk-checkboxes__input")

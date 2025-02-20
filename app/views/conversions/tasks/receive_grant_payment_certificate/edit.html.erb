@@ -1,19 +1,18 @@
 <%= render(TaskList::TaskHeaderComponent.new(project: @project, task: @task)) %>
-
 <% content_for :pre_content_nav do %>
   <% render partial: "conversions/tasks/shared/back_link", locals: {project_id: @project.id} %>
 <% end %>
-
 <% content_for :page_title do %>
   <%= page_title(t("conversion.task.receive_grant_payment_certificate.title")) %>
 <% end %>
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= form_for @task, url: project_edit_task_path(@project, @task.class.identifier), method: :put do |form| %>
       <%= form.govuk_error_summary %>
-
-      <div class="govuk-form-group">
+      <div class="govuk-form-group govuk-!-margin-bottom-9">
+        <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :not_applicable)) %>
+      </div>
+      <div class="govuk-form-group govuk-!-margin-bottom-9">
         <% if @project.tasks_data.receive_grant_payment_certificate_date_received.nil? %>
           <%= form.govuk_date_field :date_received,
                 legend: {text: t("conversion.task.receive_grant_payment_certificate.date_received.title"), size: "s"} do %>
@@ -24,18 +23,14 @@
             <p><%= t("conversion.task.receive_grant_payment_certificate.date_received.received_info.html", date: @project.tasks_data.receive_grant_payment_certificate_date_received.to_fs(:govuk)) %></p>
           </div>
         <% end %>
-
       </div>
-
       <div class="govuk-form-group">
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :check_certificate)) %>
         <%= render(TaskList::CheckBoxActionComponent.new(task: @task, attribute: :save_certificate)) %>
       </div>
-
       <%= form.govuk_submit t("task_list.continue_button.text") if policy(@tasks_data).update? %>
     <% end %>
   </div>
-
   <div class="govuk-grid-column-one-third">
     <%= render partial: "shared/tasks/task_notes" %>
   </div>
