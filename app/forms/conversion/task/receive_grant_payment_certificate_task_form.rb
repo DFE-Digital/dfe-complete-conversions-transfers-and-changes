@@ -4,6 +4,7 @@ class Conversion::Task::ReceiveGrantPaymentCertificateTaskForm < BaseTaskForm
   attribute :check_certificate, :boolean
   attribute :save_certificate, :boolean
   attribute :date_received, :date
+  attribute :not_applicable
 
   def initialize(tasks_data, user)
     @date_param_errors = ActiveModel::Errors.new(self)
@@ -34,11 +35,26 @@ class Conversion::Task::ReceiveGrantPaymentCertificateTaskForm < BaseTaskForm
   end
 
   def save
+    if not_applicable
+      assign_not_applicable_response
+    else
+      assign_applicable_responses
+    end
+
+    @tasks_data.save!
+  end
+
+  private def assign_applicable_responses
     @tasks_data.assign_attributes(
       receive_grant_payment_certificate_date_received: date_received,
       receive_grant_payment_certificate_check_certificate: check_certificate,
       receive_grant_payment_certificate_save_certificate: save_certificate
     )
-    @tasks_data.save!
+  end
+
+  private def assign_not_applicable_response
+    @tasks_data.assign_attributes(
+      receive_grant_payment_certificate_not_applicable: not_applicable
+    )
   end
 end
