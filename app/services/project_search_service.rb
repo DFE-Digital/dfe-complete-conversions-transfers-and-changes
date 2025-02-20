@@ -1,4 +1,6 @@
 class ProjectSearchService
+  class SearchError < RuntimeError; end
+
   def search(query)
     if urn_pattern(query)
       search_by_urns(query)
@@ -21,8 +23,12 @@ class ProjectSearchService
   end
 
   def search_by_words(query)
+    raise SearchError.new("Search term too short") if query.length <= 3
+
     establishment_results = search_establishments_by_name(query)
+
     return [] if establishment_results.empty?
+    raise SearchError.new("Too many results") if establishment_results.count > 100
 
     urns = establishment_results.pluck(:urn)
     search_by_urns(urns)

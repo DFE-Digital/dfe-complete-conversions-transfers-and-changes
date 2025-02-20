@@ -7,6 +7,8 @@ class SearchController < ApplicationController
     @query = query
     @count = @results.count
     @pager, @results = pagy_array(@results)
+  rescue ProjectSearchService::SearchError => error
+    render "pages/search_error", locals: {error_message: error.message}
   end
 
   def user
