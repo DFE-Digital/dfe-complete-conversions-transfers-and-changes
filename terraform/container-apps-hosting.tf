@@ -1,5 +1,5 @@
 module "azure_container_apps_hosting" {
-  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.16.6"
+  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.17.1"
 
   environment    = local.environment
   project_name   = local.project_name
@@ -85,4 +85,6 @@ module "azure_container_apps_hosting" {
   enable_container_app_file_share       = local.enable_container_app_file_share
   storage_account_ipv4_allow_list       = local.storage_account_ipv4_allow_list
   storage_account_public_access_enabled = local.storage_account_public_access_enabled
+
+  enable_monitoring_traces = local.enable_monitoring_traces
 }
