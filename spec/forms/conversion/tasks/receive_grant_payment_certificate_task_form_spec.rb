@@ -159,24 +159,64 @@ RSpec.describe Conversion::Task::ReceiveGrantPaymentCertificateTaskForm do
   end
 
   describe "#save" do
-    context "when the date is a valid date" do
-      it "sets date_received to the supplied date" do
+    context "when 'not applicable' is NOT selected" do
+      context "when the date is a valid date" do
+        it "sets date_received to the supplied date" do
+          attributes = valid_attributes
+          attributes["date_received(3i)"] = "1"
+          attributes["date_received(2i)"] = "1"
+          attributes["date_received(1i)"] = "2024"
+
+          form.assign_attributes(attributes)
+          form.valid?
+          form.save
+
+          expect(project.tasks_data.receive_grant_payment_certificate_date_received).to eq(Date.new(2024, 1, 1))
+        end
+      end
+
+      context "when form is invalid" do
+        it "shows a helpful message" do
+          attributes = valid_attributes
+          attributes["date_received(3i)"] = "32"
+          attributes["date_received(2i)"] = "1"
+          attributes["date_received(1i)"] = "2024"
+
+          form.assign_attributes(attributes)
+          form.valid?
+          form.save
+
+          expect(form.errors.messages_for(:date_received)).to include("Enter a valid date, like 1 1 2025")
+        end
+      end
+    end
+
+    context "when 'not applicable' IS selected" do
+      it "does not set any of the applicable attributes" do
         attributes = valid_attributes
+        attributes["not_applicable"] = "1"
+
         attributes["date_received(3i)"] = "1"
         attributes["date_received(2i)"] = "1"
         attributes["date_received(1i)"] = "2024"
+        attributes["check_certificate"] = "1"
+        attributes["save_certificate"] = "1"
 
         form.assign_attributes(attributes)
         form.valid?
         form.save
 
-        expect(project.tasks_data.receive_grant_payment_certificate_date_received).to eq(Date.new(2024, 1, 1))
+        aggregate_failures do
+          expect(project.tasks_data.receive_grant_payment_certificate_date_received).to be_nil
+          expect(project.tasks_data.receive_grant_payment_certificate_check_certificate).to be_nil
+          expect(project.tasks_data.receive_grant_payment_certificate_save_certificate).to be_nil
+        end
       end
-    end
 
-    context "when form is invalid" do
-      it "shows a helpful message" do
+      it "sets the n/a attribute" do
         attributes = valid_attributes
+        attributes["not_applicable"] = "1"
+
         attributes["date_received(3i)"] = "32"
         attributes["date_received(2i)"] = "1"
         attributes["date_received(1i)"] = "2024"
@@ -185,7 +225,58 @@ RSpec.describe Conversion::Task::ReceiveGrantPaymentCertificateTaskForm do
         form.valid?
         form.save
 
-        expect(form.errors.messages_for(:date_received)).to include("Enter a valid date, like 1 1 2025")
+        expect(project.tasks_data.receive_grant_payment_certificate_not_applicable).to be true
+      end
+    end
+  end
+
+  describe "#status" do
+    context "when 'n/a' is selected" do
+      before do
+        form.assign_attributes({
+          not_applicable: true
+        }.with_indifferent_access)
+      end
+
+      it "is 'not_applicable'" do
+        expect(form.status).to eq(:not_applicable)
+      end
+    end
+
+    context "when 'n/a' is NOT selected" do
+      context "and all the other values are supplied" do
+        before do
+          form.assign_attributes(
+            {
+              "date_received(3i)": "27",
+              "date_received(2i)": "10",
+              "date_received(1i)": "2024",
+              check_certificate: "1",
+              save_certificate: "1"
+            }.with_indifferent_access
+          )
+        end
+
+        it "is 'completed'" do
+          expect(form.status).to eq(:completed)
+        end
+      end
+
+      context "and all the other values are NOT yet supplied" do
+        before do
+          form.assign_attributes(
+            {
+              "date_received(3i)": "27",
+              "date_received(2i)": "10",
+              "date_received(1i)": "2024",
+              check_certificate: "1"
+            }.with_indifferent_access
+          )
+        end
+
+        it "is 'in_progress" do
+          expect(form.status).to eq(:in_progress)
+        end
       end
     end
   end
