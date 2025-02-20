@@ -229,4 +229,55 @@ RSpec.describe Conversion::Task::ReceiveGrantPaymentCertificateTaskForm do
       end
     end
   end
+
+  describe "#status" do
+    context "when 'n/a' is selected" do
+      before do
+        form.assign_attributes({
+          not_applicable: true
+        }.with_indifferent_access)
+      end
+
+      it "is 'not_applicable'" do
+        expect(form.status).to eq(:not_applicable)
+      end
+    end
+
+    context "when 'n/a' is NOT selected" do
+      context "and all the other values are supplied" do
+        before do
+          form.assign_attributes(
+            {
+              "date_received(3i)": "27",
+              "date_received(2i)": "10",
+              "date_received(1i)": "2024",
+              check_certificate: "1",
+              save_certificate: "1"
+            }.with_indifferent_access
+          )
+        end
+
+        it "is 'completed'" do
+          expect(form.status).to eq(:completed)
+        end
+      end
+
+      context "and all the other values are NOT yet supplied" do
+        before do
+          form.assign_attributes(
+            {
+              "date_received(3i)": "27",
+              "date_received(2i)": "10",
+              "date_received(1i)": "2024",
+              check_certificate: "1"
+            }.with_indifferent_access
+          )
+        end
+
+        it "is 'in_progress" do
+          expect(form.status).to eq(:in_progress)
+        end
+      end
+    end
+  end
 end
