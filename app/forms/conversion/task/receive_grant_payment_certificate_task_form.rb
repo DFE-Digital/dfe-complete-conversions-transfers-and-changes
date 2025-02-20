@@ -1,4 +1,4 @@
-class Conversion::Task::ReceiveGrantPaymentCertificateTaskForm < BaseTaskForm
+class Conversion::Task::ReceiveGrantPaymentCertificateTaskForm < BaseOptionalTaskForm
   include ActiveRecord::AttributeAssignment
 
   attribute :check_certificate, :boolean
