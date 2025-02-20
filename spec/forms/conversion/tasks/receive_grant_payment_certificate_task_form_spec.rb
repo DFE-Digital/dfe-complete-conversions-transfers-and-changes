@@ -159,24 +159,64 @@ RSpec.describe Conversion::Task::ReceiveGrantPaymentCertificateTaskForm do
   end
 
   describe "#save" do
-    context "when the date is a valid date" do
-      it "sets date_received to the supplied date" do
+    context "when 'not applicable' is NOT selected" do
+      context "when the date is a valid date" do
+        it "sets date_received to the supplied date" do
+          attributes = valid_attributes
+          attributes["date_received(3i)"] = "1"
+          attributes["date_received(2i)"] = "1"
+          attributes["date_received(1i)"] = "2024"
+
+          form.assign_attributes(attributes)
+          form.valid?
+          form.save
+
+          expect(project.tasks_data.receive_grant_payment_certificate_date_received).to eq(Date.new(2024, 1, 1))
+        end
+      end
+
+      context "when form is invalid" do
+        it "shows a helpful message" do
+          attributes = valid_attributes
+          attributes["date_received(3i)"] = "32"
+          attributes["date_received(2i)"] = "1"
+          attributes["date_received(1i)"] = "2024"
+
+          form.assign_attributes(attributes)
+          form.valid?
+          form.save
+
+          expect(form.errors.messages_for(:date_received)).to include("Enter a valid date, like 1 1 2025")
+        end
+      end
+    end
+
+    context "when 'not applicable' IS selected" do
+      it "does not set any of the applicable attributes" do
         attributes = valid_attributes
+        attributes["not_applicable"] = "1"
+
         attributes["date_received(3i)"] = "1"
         attributes["date_received(2i)"] = "1"
         attributes["date_received(1i)"] = "2024"
+        attributes["check_certificate"] = "1"
+        attributes["save_certificate"] = "1"
 
         form.assign_attributes(attributes)
         form.valid?
         form.save
 
-        expect(project.tasks_data.receive_grant_payment_certificate_date_received).to eq(Date.new(2024, 1, 1))
+        aggregate_failures do
+          expect(project.tasks_data.receive_grant_payment_certificate_date_received).to be_nil
+          expect(project.tasks_data.receive_grant_payment_certificate_check_certificate).to be_nil
+          expect(project.tasks_data.receive_grant_payment_certificate_save_certificate).to be_nil
+        end
       end
-    end
 
-    context "when form is invalid" do
-      it "shows a helpful message" do
+      it "sets the n/a attribute" do
         attributes = valid_attributes
+        attributes["not_applicable"] = "1"
+
         attributes["date_received(3i)"] = "32"
         attributes["date_received(2i)"] = "1"
         attributes["date_received(1i)"] = "2024"
@@ -185,7 +225,7 @@ RSpec.describe Conversion::Task::ReceiveGrantPaymentCertificateTaskForm do
         form.valid?
         form.save
 
-        expect(form.errors.messages_for(:date_received)).to include("Enter a valid date, like 1 1 2025")
+        expect(project.tasks_data.receive_grant_payment_certificate_not_applicable).to be true
       end
     end
   end
