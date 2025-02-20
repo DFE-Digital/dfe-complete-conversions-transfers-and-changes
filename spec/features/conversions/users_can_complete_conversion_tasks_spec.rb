@@ -249,30 +249,39 @@ RSpec.feature "Users can complete conversion tasks" do
 
   describe "the receive grant payment certificate task" do
     let(:project) { create(:conversion_project, assigned_to: user) }
-
-    context "when the task does not have a date" do
-      scenario "they can add a date" do
-        visit project_tasks_path(project)
-        click_on "Receive declaration of expenditure certificate"
-        page.find_all(".govuk-checkboxes__input").each { |checkbox| checkbox.click }
-        fill_in "Day", with: "1"
-        fill_in "Month", with: "1"
-        fill_in "Year", with: "2024"
-        click_on I18n.t("task_list.continue_button.text")
-
-        expect(project.reload.tasks_data.receive_grant_payment_certificate_date_received).to eq Date.new(2024, 1, 1)
-      end
+    before do
+      visit project_tasks_path(project)
+      click_on "Receive declaration of expenditure certificate"
     end
 
-    context "when the task has a date" do
-      let(:tasks_data) { create(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1)) }
-      let(:project) { create(:conversion_project, assigned_to: user, tasks_data: tasks_data) }
+    context "when 'not applicable' is NOT selected" do
+      before do
+        page.find_all(".govuk-checkboxes__input")
+          .reject { |cb| cb["id"].match(/not_applicable/) }
+          .each { |checkbox| checkbox.click }
+      end
 
-      scenario "they see the date on the page but cannot add a new one" do
-        visit project_tasks_path(project)
-        click_on "Receive declaration of expenditure certificate"
-        expect(page).to have_content("DfE received the declaration of expenditure certificate on 1 January 2024.")
-        expect(page).to_not have_content("Enter the date you received the declaration of expenditure certificate")
+      context "when the task does not have a date" do
+        scenario "they can add a date" do
+          fill_in "Day", with: "1"
+          fill_in "Month", with: "1"
+          fill_in "Year", with: "2024"
+          click_on I18n.t("task_list.continue_button.text")
+
+          expect(project.reload.tasks_data.receive_grant_payment_certificate_date_received).to eq Date.new(2024, 1, 1)
+        end
+      end
+
+      context "when the task has a date" do
+        let(:tasks_data) { create(:conversion_tasks_data, receive_grant_payment_certificate_date_received: Date.new(2024, 1, 1)) }
+        let(:project) { create(:conversion_project, assigned_to: user, tasks_data: tasks_data) }
+
+        scenario "they see the date on the page but cannot add a new one" do
+          visit project_tasks_path(project)
+          click_on "Receive declaration of expenditure certificate"
+          expect(page).to have_content("DfE received the declaration of expenditure certificate on 1 January 2024.")
+          expect(page).to_not have_content("Enter the date you received the declaration of expenditure certificate")
+        end
       end
     end
   end
