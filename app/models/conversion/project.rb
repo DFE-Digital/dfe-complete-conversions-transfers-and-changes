@@ -22,7 +22,6 @@ class Conversion::Project < Project
   MANDATORY_CONDITIONS = [
     :all_conditions_met?,
     :confirmed_date_and_in_the_past?,
-    :grant_payment_certificate_received?,
     :date_academy_opened_present?
   ]
 

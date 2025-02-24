@@ -201,8 +201,10 @@ RSpec.describe Conversion::Project do
 
       allow(project).to receive(:confirmed_date_and_in_the_past?).and_return(true)
       allow(project).to receive(:all_conditions_met?).and_return(true)
-      allow(project).to receive(:grant_payment_certificate_received?).and_return(true)
       allow(project).to receive(:date_academy_opened_present?).and_return(true)
+
+      # confirming receipt of the grant payment certification is no longer required
+      allow(project).to receive(:grant_payment_certificate_received?).and_return(false)
     end
 
     it "returns true when all the mandatory conditions are completed" do
@@ -221,10 +223,10 @@ RSpec.describe Conversion::Project do
       expect(project.completable?).to eq false
     end
 
-    it "returns false the grant payment certificate task is incomplete" do
+    it "returns true if the grant payment certificate task is unconfirmed (no longer mandatory)" do
       allow(project).to receive(:grant_payment_certificate_received?).and_return(false)
 
-      expect(project.completable?).to eq false
+      expect(project.completable?).to eq true
     end
 
     it "returns false the date the academy opened task is incomplete" do
