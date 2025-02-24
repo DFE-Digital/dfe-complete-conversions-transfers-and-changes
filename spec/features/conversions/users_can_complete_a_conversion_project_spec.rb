@@ -64,7 +64,9 @@ RSpec.feature "Users can complete a conversion project" do
       expect(page).to have_content("The conversion date has been confirmed and is in the past")
       expect(page).to have_content("The confirm all conditions have been met task is completed")
       expect(page).to have_content("The confirm the date the academy opened task is completed")
-      expect(page).to have_content("receive declaration of expenditure certificate task")
+
+      # this is no longer required
+      expect(page).to_not have_content("receive declaration of expenditure certificate task")
 
       expect(project.reload.completed_at).to be_nil
     end
