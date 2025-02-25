@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- The "Receive declaration of expenditure certificate" task can now be marked as
+  "Not applicable" and the conversion project can be "completed" in this state.
+  This reflects the fact that voluntary conversion grants were discontinued in
+  Dec 2024.
+
 ## [Release-107][release-107]
 
 ### Fixed
