@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/dxw/ApplicationInsights-Ruby
-  revision: 51cb59a34e3e36ff406f9ec3c8332fb2a2ff89c5
-  branch: fix/correct-pattern-match-for-exception-handling
+  revision: 8131f8e66092ede1adc84db6cd2231c14163c0b4
+  tag: fix-exception-handling
   specs:
     application_insights (0.5.7)
 
@@ -291,6 +291,7 @@ GEM
     net-protocol (0.2.2)
       timeout
     net-smtp (0.5.0)
+      net-protocol
     nio4r (2.7.4)
     nokogiri (1.18.2-aarch64-linux-gnu)
       racc (~> 1.4)
