@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Find a project to be handed over by URN, if there are too many to show on a
+  single page.
+
 ## [Release-108][release-108]
 
 ### Changed
