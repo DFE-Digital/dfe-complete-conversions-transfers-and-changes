@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-108][release-108]
+
 ### Changed
 
 - The "Receive declaration of expenditure certificate" task can now be marked as
@@ -2405,7 +2407,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-107...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-108...HEAD
+[release-108]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-107...release-108
 [release-107]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-106...release-107
 [release-106]:
