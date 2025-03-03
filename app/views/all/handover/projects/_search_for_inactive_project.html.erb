@@ -1,0 +1,12 @@
+<div class="govuk-inset-text">
+  <div class="dfe-body__search">
+    <div>
+      <%= form_with(method: :get, url: search_all_handover_projects_path) do |form| %>
+        <%= form.govuk_text_field(:urn_query, label: {text: t("search_for_inactive_projects.label")}, inputmode: "numeric", placeholder: t("search_for_inactive_projects.placeholder"), width: 10, autocomplete: "off") %>
+        <button class="govuk-button" type="submit">
+          <%= t("search.search") %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>

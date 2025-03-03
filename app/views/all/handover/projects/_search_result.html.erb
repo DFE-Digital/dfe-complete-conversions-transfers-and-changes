@@ -1,0 +1,31 @@
+<h1 class="govuk-heading-m govuk-!-margin-top-5 govuk-!-margin-bottom-5">
+  A project to be handed over with URN
+  <%= @search_result.urn %>
+  was found
+</h1>
+<table class="govuk-table" name="projects_table" aria-label="Projects table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_name") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.school_urn") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.incoming_trust") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.provisional_conversion_or_transfer_date") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.advisory_board_date") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.summary.type.title") %></th>
+      <th class="govuk-table__header" scope="col"><%= t("project.table.headers.add_handover_details") %></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__header govuk-table__cell"><%= project.establishment.name %></td>
+      <td class="govuk-table__cell"><%= project.urn %></td>
+      <td class="govuk-table__cell"><%= project.incoming_trust.name %></td>
+      <td class="govuk-table__cell"><%= project.significant_date.to_formatted_s(:significant_date) %></td>
+      <td class="govuk-table__cell"><%= project.advisory_board_date.to_fs(:govuk) %></td>
+      <td class="govuk-table__cell"><%= t("project.table.body.type_name.#{project.type_locale}") %></td>
+      <td class="govuk-table__cell">
+        <%= link_to t("project.table.body.add_handover_details"), check_all_handover_projects_path(project) %>
+      </td>
+    </tr>
+  </tbody>
+</table>

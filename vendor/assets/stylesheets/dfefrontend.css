@@ -1770,6 +1770,10 @@ p,
   }
 }
 
+.dfe-body__search label {
+  padding-bottom: 1em;
+}
+
 @media (max-width: 40.0525em) {
   .dfe-search__close {
     background-color: transparent;

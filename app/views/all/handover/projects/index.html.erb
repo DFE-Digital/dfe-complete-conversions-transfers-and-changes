@@ -1,22 +1,22 @@
 <% content_for :primary_navigation do %>
   <%= render partial: "shared/navigation/all_projects_primary_navigation" %>
 <% end %>
-
 <% content_for :page_title do %>
   <%= page_title(t("project.all.handover.title")) %>
 <% end %>
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl">
       <%= t("project.all.handover.title") %>
     </h1>
+    <%= render partial: "search_for_inactive_project" if @enable_search %>
     <%= t("project.all.handover.body_html") %>
   </div>
 </div>
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <%= render partial: "handover_table", locals: {projects: @projects, pager: @pager} %>
+    <%= render partial: "search_result", locals: {project: @search_result} if @search_result %>
+    <%= render partial: "failed_search", locals: {urn: @failed_search_urn} if @failed_search_urn %>
+    <%= render partial: "handover_table", locals: {projects: @projects, pager: @pager} if @projects %>
   </div>
 </div>
