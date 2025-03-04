@@ -154,6 +154,7 @@ Rails.application.routes.draw do
       namespace :all do
         namespace :handover do
           get "/", to: "projects#index"
+          get "/search", to: "projects#search", as: :search
           get "/:project_id/check", to: "handovers#check", as: :check
           get "/:project_id/new", to: "handovers#new", as: :new
           post "/:project_id/new", to: "handovers#create"

@@ -7,6 +7,20 @@ RSpec.describe All::Handover::ProjectsController, type: :request do
     mock_all_academies_api_responses
   end
 
+  describe "#search" do
+    let(:active_record_relation) { double("active record relation", find_by: nil) }
+
+    before do
+      allow(Project).to receive(:inactive).and_return(active_record_relation)
+    end
+
+    it "attempts to find an inactive project for the given URN" do
+      get "/projects/all/handover/search", params: {urn_query: "123456"}
+
+      expect(Project.inactive).to have_received(:find_by).with(urn: "123456")
+    end
+  end
+
   describe "#index" do
     context "when there are no projects to hand over" do
       it "shows a helpful message" do

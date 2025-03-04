@@ -20,3 +20,7 @@ en:
         <li>searching for something less specific</li>
         </ul>
     enter_search_term: Please enter a search term
+
+  search_for_inactive_projects:
+    label: "Search for project to be handed over:"
+    placeholder: Search by URN
