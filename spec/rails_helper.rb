@@ -96,6 +96,11 @@ RSpec.configure do |config|
     OmniAuth.config.mock_auth[:azure_activedirectory_v2] = nil
   end
 
+  config.before(:each) do
+    Project.destroy_all
+    LocalAuthority.destroy_all
+  end
+
   config.before(:suite) do
     Rails.application.load_tasks
   end
