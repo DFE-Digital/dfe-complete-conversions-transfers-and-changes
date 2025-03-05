@@ -34,29 +34,9 @@ en:
               <p>Check it's complete and save it in the school's SharePoint folder.</p>
 
         send_information:
-          title: Send the grant information to the payments team
+          title: Send the grant information and vendor account details to the payments team
           hint:
-            html: <p>Send them the application to convert, academy order and grant claim form.</p>
-          guidance_link: Guidance on what information to send
-          guidance:
-            html:
-              <p>You'll find the academy order, application to convert and grant claim form in the school's SharePoint folder.</p>
-              <p>You should send the documents to the Grant Payments team by email at <a href="mailto:grantpaymentandrecoveries.regionsgroup@education.gov.uk" target="_blank">grantpaymentandrecoveries.regionsgroup@education.gov.uk</a>.</p>
-              <p>The subject line of the email must include the:</p>
-              <ul>
-                <li>region the school is in</li>
-                <li>grant type</li>
-                <li>school's name</li>
-              </ul>
-              <p>The content of the email must include the:</p>
-              <ul>
-                <li>type of grant needed</li>
-                <li>amount of money the school is eligible for</li>
-                <li>school's name</li>
-                <li>trust it's joining</li>
-                <li>provisional conversion date</li>
-              </ul>
-              <p>It's helpful to include the school or trust's vendor account number too. The Grant Payments team will need this to be able to send the money to whoever will receive it.</p>
+            html: <p>Guidance on <a href="https://educationgovuk.sharepoint.com.mcas.ms/:p:/r/sites/lvewp00030/_layouts/15/Doc.aspx?sourcedoc=%7B4EEF7EC7-808E-4620-B1BC-BFF6DA4D3408%7D&file=How%20to%20request%20payment%20(Pre-Opening%20and%20Transfer).pptx&action=edit&mobileredirect=true" target="_blank">what information is required by the grant payments team (opens in new tab)</a> is on Sharepoint</p>
 
         share_payment_date:
           title: Tell the school or trust the grant information has been sent
