@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- "By month" view now makes clear its default to "Conversions.
+
 ## [Release-109][release-109]
 
 ### Changed
