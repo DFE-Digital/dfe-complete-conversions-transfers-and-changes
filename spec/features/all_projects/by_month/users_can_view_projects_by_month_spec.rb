@@ -10,6 +10,14 @@ RSpec.feature "Users can view projects by month" do
       expect(page).to have_content("Date range")
     end
 
+    scenario "the 'Conversions' tab is selected by default" do
+      sign_in_with_user(user)
+      click_on "By month"
+      within("nav[aria-label='Project index sub-navigation']") do
+        expect(page).to have_css("a[aria-current='page']", text: "Conversions")
+      end
+    end
+
     scenario "the user can download a CSV of conversion projects" do
       sign_in_with_user(user)
       click_on "By month"
