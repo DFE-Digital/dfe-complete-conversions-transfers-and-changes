@@ -2,15 +2,15 @@ require "rails_helper"
 
 RSpec.describe ExternalContactsController, type: :request do
   let(:user) { create(:user, :caseworker) }
+  let(:project) { create(:conversion_project) }
 
   before do
     sign_in_with(user)
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_successful_api_responses(urn: any_args, ukprn: 10061021)
     mock_successful_persons_api_client
   end
 
   describe "#index" do
-    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -30,7 +30,6 @@ RSpec.describe ExternalContactsController, type: :request do
 
     context "when the project has a director of child services" do
       it "includes the director of child services in the response" do
-        project = create(:conversion_project)
         director_of_child_services_contact = create(:director_of_child_services)
         allow_any_instance_of(Project).to receive(:director_of_child_services).and_return(director_of_child_services_contact)
 
@@ -42,7 +41,6 @@ RSpec.describe ExternalContactsController, type: :request do
   end
 
   describe "#new" do
-    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
 
     subject(:perform_request) do
@@ -62,7 +60,6 @@ RSpec.describe ExternalContactsController, type: :request do
   end
 
   describe "#create" do
-    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:mock_contact) { build(:project_contact) }
     let(:contact_type) { "headteacher" }
@@ -93,7 +90,6 @@ RSpec.describe ExternalContactsController, type: :request do
   end
 
   describe "#edit" do
-    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:project_contact, project: project) }
     let(:contact_id) { contact.id }
@@ -121,7 +117,6 @@ RSpec.describe ExternalContactsController, type: :request do
   end
 
   describe "#update" do
-    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:project_contact, project: project) }
     let(:contact_id) { contact.id }
@@ -169,7 +164,6 @@ RSpec.describe ExternalContactsController, type: :request do
   end
 
   describe "#destroy" do
-    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:project_contact) }
     let(:contact_id) { contact.id }
@@ -188,7 +182,6 @@ RSpec.describe ExternalContactsController, type: :request do
   end
 
   describe "#confirm_destroy" do
-    let(:project) { create(:conversion_project) }
     let(:project_id) { project.id }
     let(:contact) { create(:project_contact) }
     let(:contact_id) { contact.id }

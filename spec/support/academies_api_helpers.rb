@@ -21,8 +21,8 @@ module AcademiesApiHelpers
   end
 
   # Successful API calls for the supplied URN and UKPRN
-  def mock_successful_api_responses(urn:, ukprn:)
-    mock_academies_api_establishment_success(urn:)
+  def mock_successful_api_responses(urn:, ukprn:, establishment: nil)
+    mock_academies_api_establishment_success(urn: urn, establishment: establishment)
     mock_academies_api_trust_success(ukprn:)
   end
 
@@ -58,7 +58,7 @@ module AcademiesApiHelpers
 
     test_client = Api::AcademiesApi::Client.new
 
-    allow(test_client).to receive(:get_establishment).with(123456).and_return(mock_establishment)
+    allow(test_client).to receive(:get_establishment).and_return(mock_establishment)
     allow(test_client).to receive(:get_trust).with(10059151).and_return(mock_before_incoming_trust)
     allow(test_client).to receive(:get_trust).with(10058882).and_return(mock_after_incoming_trust)
 

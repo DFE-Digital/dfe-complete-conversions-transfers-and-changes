@@ -24,6 +24,9 @@ require "govuk/components"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+adapter = ActiveRecord::ConnectionAdapters::SQLServerAdapter
+adapter.exclude_output_inserted_table_names["projects"] = "uniqueidentifier"
+
 module DfeCompleteConversionsTransfersAndChanges
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

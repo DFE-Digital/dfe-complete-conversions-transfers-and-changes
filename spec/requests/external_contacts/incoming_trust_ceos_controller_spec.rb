@@ -5,7 +5,7 @@ RSpec.describe ExternalContacts::IncomingTrustCeosController, type: :request do
 
   before do
     sign_in_with(user)
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_successful_api_responses(urn: any_args, ukprn: 10061021)
   end
 
   describe "#create" do

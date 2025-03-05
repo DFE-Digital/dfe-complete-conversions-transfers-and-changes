@@ -41,6 +41,8 @@
 **/*.db*
 **/*.dump*
 **/*.sql*
+# Allow trigger definitions
+!/db/triggers/*.sql*
 **/*.sqlite3*
 ### Environment variables
 **/.env

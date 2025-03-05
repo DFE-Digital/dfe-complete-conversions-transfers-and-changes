@@ -6,7 +6,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
   context "when the project is successfully created" do
     let(:establishment) { build(:academies_api_establishment) }
     before do
-      mock_academies_api_establishment_success(urn: 123456)
+      mock_academies_api_establishment_success(urn: any_args)
       mock_academies_api_trust_success(ukprn: 10061021)
 
       ActiveJob::Base.queue_adapter = :test
@@ -84,8 +84,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         establishment = build(:academies_api_establishment, diocese_code: "0000")
         allow(establishment).to receive(:local_authority).and_return(create(:local_authority))
         result = Api::AcademiesApi::Client::Result.new(establishment, nil)
-        allow_any_instance_of(Api::AcademiesApi::Client).to receive(:get_establishment).with(123456).and_return(result)
-
+        allow_any_instance_of(Api::AcademiesApi::Client).to receive(:get_establishment).and_return(result)
         project = build(:create_project_form).save
 
         expect(project.tasks_data.church_supplemental_agreement_not_applicable).to be true
@@ -615,7 +614,7 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
     let(:establishment) { build(:academies_api_establishment) }
 
     before do
-      mock_academies_api_establishment_success(urn: 123456)
+      mock_academies_api_establishment_success(urn: any_args)
       mock_academies_api_trust_success(ukprn: 10061021)
     end
 

@@ -8,13 +8,13 @@ RSpec.describe ByUserProjectFetcherService do
     another_user = create(:user, first_name: "B", last_name: "User", email: "b.user@education.gov.uk", team: :north_west)
     yet_another_user = create(:user, first_name: "C", last_name: "User", email: "c.user@education.gov.uk", team: :service_support)
 
-    create(:conversion_project, urn: 121813, assigned_to: user)
-    create(:conversion_project, urn: 121102, assigned_to: user)
-    create(:conversion_project, urn: 117574, assigned_to: another_user)
-    create(:conversion_project, urn: 121583, assigned_to: nil)
-    create(:conversion_project, urn: 121583, assigned_to: yet_another_user)
-    create(:transfer_project, urn: 101133, assigned_to: user)
-    create(:transfer_project, urn: 112209, assigned_to: yet_another_user)
+    create(:conversion_project, assigned_to: user)
+    create(:conversion_project, assigned_to: user)
+    create(:conversion_project, assigned_to: another_user)
+    create(:conversion_project, assigned_to: nil)
+    create(:conversion_project, assigned_to: yet_another_user)
+    create(:transfer_project, assigned_to: user)
+    create(:transfer_project, assigned_to: yet_another_user)
 
     result = described_class.new.call
 

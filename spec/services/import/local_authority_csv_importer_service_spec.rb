@@ -14,7 +14,9 @@ RSpec.describe Import::LocalAuthorityCsvImporterService do
     CSV
   end
 
-  before { allow(File).to receive(:open).with(csv_path, any_args).and_return(csv) }
+  before {
+    allow(File).to receive(:open).with(csv_path, any_args).and_return(csv)
+  }
 
   describe "#call" do
     it "upserts local authorities from the provided CSV" do

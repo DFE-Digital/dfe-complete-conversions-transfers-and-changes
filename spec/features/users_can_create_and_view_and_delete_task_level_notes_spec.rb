@@ -9,7 +9,7 @@ RSpec.feature "Users can create and view task level notes" do
   let(:note_body) { "Just had a very interesting phone call with the headteacher about land law" }
 
   before do
-    mock_successful_api_responses(urn: 123456, ukprn: 10061021)
+    mock_successful_api_responses(urn: any_args, ukprn: 10061021)
     sign_in_with_user(user)
 
     travel_to Date.yesterday do
