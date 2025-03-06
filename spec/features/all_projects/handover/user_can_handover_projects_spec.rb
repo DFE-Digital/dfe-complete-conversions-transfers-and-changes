@@ -4,10 +4,72 @@ RSpec.feature "Users can handover projects" do
   before do
     user = create(:regional_delivery_officer_user)
     sign_in_with_user(user)
-    mock_all_academies_api_responses
+  end
+
+  context "when the project is missing its #incoming_trust_ukprn" do
+    def mock_trust_not_found_at_academies_api
+      establishment = build(:academies_api_establishment)
+      local_authority = create(:local_authority)
+      allow(establishment).to receive(:local_authority).and_return(local_authority)
+
+      establishments = build_list(:academies_api_establishment, 3)
+      trusts = build_list(:academies_api_trust, 3)
+
+      test_client = double(Api::AcademiesApi::Client,
+        get_establishments: Api::AcademiesApi::Client::Result.new(establishments, nil),
+        get_establishment: Api::AcademiesApi::Client::Result.new(establishment, nil),
+        get_trusts: Api::AcademiesApi::Client::Result.new(trusts, nil),
+        get_trust: Api::AcademiesApi::Client::Result.new(nil, Api::AcademiesApi::Client::NotFoundError.new("Test Academies API not found error")))
+
+      allow(Api::AcademiesApi::Client).to receive(:new).and_return(test_client)
+    end
+
+    def confirm_that_this_is_the_correct_project
+      click_link "Add handover details"
+      click_link "Confirm"
+    end
+
+    def add_details_and_attempt_handover
+      within "#assigned-to-regional-caseworker-team" do
+        choose "No"
+      end
+      fill_in "School SharePoint link", with: "https://educationgovuk.sharepoint.com/establishment"
+      fill_in "Incoming trust SharePoint link", with: "https://educationgovuk.sharepoint.com/incoming-trust"
+      within "#two-requires-improvement" do
+        choose "No"
+      end
+      click_button "Confirm"
+    end
+
+    before do
+      mock_trust_not_found_at_academies_api
+    end
+
+    let!(:conversion_project) {
+      build(
+        :conversion_project,
+        state: :inactive,
+        urn: 123456,
+        incoming_trust_ukprn: nil,
+        new_trust_name: "can't find UKPRN",
+        conversion_date: Date.new(2024, 2, 1)
+      ).tap { |p| p.save(validate: false) }
+    }
+    scenario "they see an error message explaining that the UKPRN must be added in Prepare" do
+      visit all_handover_projects_path
+      confirm_that_this_is_the_correct_project
+      add_details_and_attempt_handover
+
+      expect(page).to have_content(
+        "This project is missing its incoming trust UKPRN so can not be handed over. " \
+        "Service support must delete this project and add the UKPRN in Prepare."
+      )
+    end
   end
 
   context "when the project is a conversion" do
+    before { mock_all_academies_api_responses }
+
     let!(:conversion_project) {
       create(
         :conversion_project,
@@ -59,6 +121,8 @@ RSpec.feature "Users can handover projects" do
   end
 
   context "when the project is a transfer" do
+    before { mock_all_academies_api_responses }
+
     let!(:transfer_project) {
       create(
         :transfer_project,
