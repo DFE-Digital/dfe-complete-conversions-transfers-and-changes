@@ -15,7 +15,8 @@
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.in_progress"), path: all_all_in_progress_projects_path, namespace: "/projects/all/in-progress"} %>
 
           <% if policy(:export).index? %>
-            <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_month"), path: date_range_this_month_all_by_month_conversions_projects_path, namespace: "/projects/all/by-month"} %>
+            <% month = Date.today.month; year = Date.today.year %>
+            <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_month"), path: date_range_all_by_month_conversions_projects_path(from_month: month, from_year: year, to_month: month, to_year: year), namespace: "/projects/all/by-month"} %>
           <% else %>
             <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_month"), path: next_month_all_by_month_conversions_projects_path, namespace: "/projects/all/by-month"} %>
           <% end %>
