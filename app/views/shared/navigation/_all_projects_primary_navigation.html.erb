@@ -1,45 +1,27 @@
 <div class="moj-primary-navigation">
-
   <div class="moj-primary-navigation__container">
-
     <div class="moj-primary-navigation__nav">
-
       <nav class="moj-primary-navigation" aria-label="Primary navigation">
-
         <ul class="moj-primary-navigation__list">
-
           <% if policy(:project).handover? %>
             <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.handover"), path: all_handover_projects_path, namespace: "/projects/all/handover"} %>
           <% end %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.in_progress"), path: all_all_in_progress_projects_path, namespace: "/projects/all/in-progress"} %>
-
           <% if policy(:export).index? %>
             <% month = Date.today.month; year = Date.today.year %>
             <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_month"), path: date_range_all_by_month_conversions_projects_path(from_month: month, from_year: year, to_month: month, to_year: year), namespace: "/projects/all/by-month"} %>
           <% else %>
             <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_month"), path: next_month_all_by_month_conversions_projects_path, namespace: "/projects/all/by-month"} %>
           <% end %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_region"), path: all_regions_projects_path, namespace: "/projects/all/regions"} %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_user"), path: all_users_projects_path, namespace: "/projects/all/users"} %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_trust"), path: all_trusts_projects_path, namespace: "/projects/all/trusts"} %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.by_local_authority"), path: all_local_authorities_projects_path, namespace: "/projects/all/local-authorities"} %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.completed"), path: all_completed_projects_path, namespace: "/projects/all/completed"} %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.statistics"), path: all_statistics_projects_path, namespace: "/projects/all/statistics"} %>
-
           <%= render partial: "shared/navigation/primary_navigation_item", locals: {name: t("navigation.primary.all_projects.exports"), path: all_export_projects_path, namespace: "/projects/all/export"} if policy(:export).index? %>
-
         </ul>
-
       </nav>
-
     </div>
   </div>
-
 </div>
