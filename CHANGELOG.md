@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Find a project to be handed over by URN, if there are too many to show on a
   single page.
+- The build and push image configuration now uses composite actions instead of
+  workflows.
 
 ## [Release-108][release-108]
 
