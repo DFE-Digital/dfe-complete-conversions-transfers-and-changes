@@ -73,7 +73,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID || '' }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID || '' }}
+          AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION_ID || '' }}
           AZURE_ACR_CLIENT_ID: ${{ secrets.ACR_CLIENT_ID || '' }}
 
   deploy:
@@ -109,5 +109,5 @@ jobs:
           azure-aca-resource-group: ${{ secrets.ACA_RESOURCE_GROUP }}
         env:
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID || '' }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID || '' }}
+          AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION_ID || '' }}
           AZURE_ACA_CLIENT_ID: ${{ secrets.ACA_CLIENT_ID || '' }}
