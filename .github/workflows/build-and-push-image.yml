@@ -55,7 +55,7 @@ jobs:
       id-token: write
 
     steps:  
-      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/build.yml@v5.0.0
+      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/build@v5.0.0
         with:
           image-name: ${{ needs.set-env.outputs.image-name }}
           build-args: |
@@ -63,7 +63,7 @@ jobs:
             CURRENT_GIT_SHA="${{ needs.set-env.outputs.checked-out-sha }}"
             TIME_OF_BUILD="${{ needs.set-env.outputs.date }}"
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/import.yml@v5.0.0
+      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/import@v5.0.0
         with: 
           image-name: ${{ needs.set-env.outputs.image-name }}
           azure-acr-name: ${{ secrets.ACR_NAME }}
@@ -97,7 +97,7 @@ jobs:
             aca_name: "ACA_CONTAINERAPP_WORKER_NAME"
             aca_client_id: "ACA_WORKER_CLIENT_ID"
     steps:
-      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/deploy.yml@v5.0.0
+      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/deploy@v5.0.0
         with:
           image-name: ${{ needs.set-env.outputs.image-name }}
           annotate-release: ${{ matrix.container_app == 'web' }}
