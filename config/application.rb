@@ -76,7 +76,11 @@ module DfeCompleteConversionsTransfersAndChanges
     config.support_email = "regionalservices.rg@education.gov.uk"
 
     # setup Redis cache in all environments
-    config.cache_store = :redis_cache_store, {url: ENV["REDIS_URL"]}
+    config.cache_store = :redis_cache_store, {url: ENV.fetch("REDIS_URL"),
+                                              connect_timeout: 10,    # Defaults to 1 second
+                                              read_timeout: 0.5,      # Defaults to 1 second
+                                              write_timeout: 1,       # Defaults to 1 second
+                                              reconnect_attempts: 2}  # Defaults to 1
 
     # use the cookies for the session and set the name of the cookie
     config.session_store :cookie_store, key: "SESSION"
