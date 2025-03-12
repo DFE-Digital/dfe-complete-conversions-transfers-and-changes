@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## Fixed
+
+- Handle validation error when attempting to hand over a project missing its
+  incoming trust UKPRN
+
 ## [Release-109][release-109]
 
 ### Changed

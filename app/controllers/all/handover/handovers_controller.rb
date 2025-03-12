@@ -27,6 +27,8 @@ class All::Handover::HandoversController < ApplicationController
   def create
     authorize Project, :handover?
 
+    return redirect_to_project if @project.incoming_trust_ukprn.blank?
+
     if @form.valid?
       case @form.assigned_to_regional_caseworker_team
       when true
@@ -39,6 +41,14 @@ class All::Handover::HandoversController < ApplicationController
     else
       render new_template_path
     end
+  end
+
+  private def redirect_to_project
+    flash[:error] = "This project is missing its incoming trust UKPRN so can not be handed over. " \
+      "Service support must delete this project and add the UKPRN in Prepare. " \
+      "The project can then be reimported to Complete."
+
+    redirect_to project_path(@project)
   end
 
   private def new_template_path
