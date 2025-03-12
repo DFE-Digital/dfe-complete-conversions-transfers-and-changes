@@ -6,11 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-110][release-110]
+
 ## Fixed
 
 - Handle validation error when attempting to hand over a project missing its
   incoming trust UKPRN
 - "By month" view now makes clear its default to "Conversions.
+
+## Changed
+
+- The build and push image configuration now uses composite actions instead of
+  workflows.
 
 ## [Release-109][release-109]
 
@@ -18,8 +25,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Find a project to be handed over by URN, if there are too many to show on a
   single page.
-- The build and push image configuration now uses composite actions instead of
-  workflows.
 
 ## [Release-108][release-108]
 
@@ -2422,7 +2427,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-109...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-110...HEAD
+[release-110]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-109...release-110
 [release-109]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-108...release-109
 [release-108]:
