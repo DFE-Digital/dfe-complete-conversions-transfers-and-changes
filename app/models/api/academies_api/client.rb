@@ -9,8 +9,11 @@ class Api::AcademiesApi::Client
 
   attr_reader :connection
 
-  def initialize(connection: nil)
+  def initialize(connection: nil, cached_connection: nil)
     @connection = connection || default_connection
+    @cached_connection = cached_connection || Api::AcademiesApi::CachedConnection.new(
+      api_connection: @connection
+    )
   end
 
   def get_establishment(urn)
@@ -73,8 +76,7 @@ class Api::AcademiesApi::Client
 
   private def fetch_establishment(urn)
     Rails.logger.info("Academies API: fetching establishment: #{urn}")
-
-    @connection.get("/v4/establishment/urn/#{urn}")
+    @cached_connection.fetch(path: "/v4/establishment/urn/#{urn}")
   rescue Faraday::Error => error
     raise Error.new(error)
   end
@@ -82,7 +84,7 @@ class Api::AcademiesApi::Client
   private def fetch_establishments(urns)
     Rails.logger.info("Academies API: fetching establishments: #{urns}")
 
-    @connection.get("/v4/establishments/bulk", {request: urns})
+    @cached_connection.fetch(path: "/v4/establishments/bulk", params: {request: urns})
   rescue Faraday::Error => error
     raise Error.new(error)
   end
@@ -90,7 +92,7 @@ class Api::AcademiesApi::Client
   private def fetch_trust(ukprn)
     Rails.logger.info("Academies API: fetching trust: #{ukprn}")
 
-    @connection.get("/v4/trust/#{ukprn}")
+    @cached_connection.fetch(path: "/v4/trust/#{ukprn}")
   rescue Faraday::Error => error
     raise Error.new(error)
   end
@@ -98,7 +100,7 @@ class Api::AcademiesApi::Client
   private def fetch_trusts(ukprns)
     Rails.logger.info("Academies API: fetching trusts: #{ukprns}")
 
-    @connection.get("/v4/trusts/bulk", {ukprns: ukprns})
+    @cached_connection.fetch(path: "/v4/trusts/bulk", params: {ukprns: ukprns})
   rescue Faraday::Error => error
     raise Error.new(error)
   end
