@@ -16,6 +16,47 @@ RSpec.describe Api::AcademiesApi::Client do
     end
   end
 
+  describe "endpoints" do
+    let(:response) { double("response", status: double) }
+    let(:connection) { double("faraday connection", get: response) }
+    let(:client) { described_class.new(connection: connection) }
+
+    describe "get_establishment" do
+      it "calls the v4 establishment endpoint" do
+        client.get_establishment(123456)
+
+        expected_url = "/v4/establishment/urn/123456"
+        expect(connection).to have_received(:get).with(expected_url)
+      end
+    end
+
+    describe "get_establishments" do
+      it "calls the v4 establishments bulk endpoint" do
+        client.get_establishments([123456, 333333])
+
+        expected_url = "/v4/establishments/bulk"
+        expect(connection).to have_received(:get).with(expected_url, {request: [123456, 333333]})
+      end
+    end
+
+    describe "get_trust" do
+      it "calls the v4 trust endpoint" do
+        client.get_trust(12345678)
+
+        expected_url = "/v4/trust/12345678"
+        expect(connection).to have_received(:get).with(expected_url)
+      end
+    end
+
+    describe "get_trusts" do
+      it "calls the v4 trusts bulk endpoint" do
+        client.get_trusts([12345678, 33333333])
+
+        expected_url = "/v4/trusts/bulk"
+        expect(connection).to have_received(:get).with(expected_url, {ukprns: [12345678, 33333333]})
+      end
+    end
+  end
   describe "#get_establishment" do
     let(:urn) { 123456 }
     let(:client) { described_class.new(connection: fake_successful_establishment_connection(fake_response)) }
