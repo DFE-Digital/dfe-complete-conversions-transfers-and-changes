@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Allow handover of (Form a MAT) projects with a TRN instead of incoming trust
   UKPRN.
+- Ensure that we don't send the "New project to assign" email on update if the
+  project is already assigned to a caseworker.
+- Send the "New project to assign" email when a project created by Prepare is
+  handed over.
 
 ## [Release-110][release-110]
 
