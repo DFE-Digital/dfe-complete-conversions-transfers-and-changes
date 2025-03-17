@@ -33,6 +33,7 @@ class All::Handover::HandoversController < ApplicationController
       case @form.assigned_to_regional_caseworker_team
       when true
         @form.save
+        notify_team_leaders(@project)
         render "all/handover/projects/assigned_regional_casework_services"
       when false
         @form.save
@@ -75,5 +76,11 @@ class All::Handover::HandoversController < ApplicationController
       :outgoing_trust_sharepoint_link,
       :two_requires_improvement
     )
+  end
+
+  private def notify_team_leaders(project)
+    User.team_leaders.each do |team_leader|
+      TeamLeaderMailer.new_conversion_project_created(team_leader, project).deliver_later if team_leader.active
+    end
   end
 end

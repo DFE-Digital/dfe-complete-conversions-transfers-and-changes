@@ -38,6 +38,45 @@ RSpec.describe All::Handover::HandoversController, type: :request do
   end
 
   describe "#create" do
+    describe "sending 'new project to assign' email" do
+      let!(:project) { create(:conversion_project) }
+      let!(:team_leader) { create(:user, :team_leader) }
+
+      let(:base_params) do
+        {
+          handover_note_body: "notes",
+          establishment_sharepoint_link: "https://educationgovuk-my.sharepoint.com/FOO.txt",
+          incoming_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/FOO.txt",
+          outgoing_trust_sharepoint_link: "https://educationgovuk-my.sharepoint.com/FOO.txt",
+          two_requires_improvement: false
+        }
+      end
+
+      context "when the project is assigned to the RCS team" do
+        let(:params) { base_params.merge(assigned_to_regional_caseworker_team: true) }
+
+        it "sends the 'new project to assign' email to the RCS team leaders" do
+          post "/projects/all/handover/#{project.id}/new", params: {new_handover_form: params}
+
+          expect(ActionMailer::MailDeliveryJob)
+            .to(have_been_enqueued.on_queue("default")
+                                      .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
+        end
+      end
+
+      context "when the project is NOT assigned to the RCS team" do
+        let(:params) { base_params.merge(assigned_to_regional_caseworker_team: false) }
+
+        it "does NOT send the 'new project to assign' email" do
+          post "/projects/all/handover/#{project.id}/new", params: {new_handover_form: params}
+
+          expect(ActionMailer::MailDeliveryJob)
+            .not_to(have_been_enqueued.on_queue("default")
+                                      .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
+        end
+      end
+    end
+
     context "when the form is invalid" do
       let!(:project) { create(:conversion_project) }
 
