@@ -57,6 +57,7 @@ RSpec.describe Api::AcademiesApi::Client do
       end
     end
   end
+
   describe "#get_establishment" do
     let(:urn) { 123456 }
     let(:client) { described_class.new(connection: fake_successful_establishment_connection(fake_response)) }
