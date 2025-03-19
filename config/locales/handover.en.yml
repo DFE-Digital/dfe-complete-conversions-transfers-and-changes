@@ -33,6 +33,14 @@ en:
               "false": "AO (Academy order)"
       new:
         title: Add handover details
+      create:
+        error:
+          missing_required_ukprn_html:
+            <h3 class="govuk-notification-banner__heading">This project is missing its incoming trust UKPRN so can not be handed over.</h3>
+
+            <p>If the project is part of a Form a MAT project and no UKPRN exists you must add a Trust reference number (TRN) instead of the incoming trust UKPRN.</p>
+
+            <p>Service support must delete this project and fix up the project in Prepare. The project can then be reimported to Complete.</p>
   helpers:
     legend:
       new_handover_form:

@@ -51,6 +51,7 @@ RSpec.feature "Users can handover projects" do
         state: :inactive,
         urn: 123456,
         incoming_trust_ukprn: nil,
+        new_trust_reference_number: nil,
         new_trust_name: "can't find UKPRN",
         conversion_date: Date.new(2024, 2, 1)
       ).tap { |p| p.save(validate: false) }
@@ -61,9 +62,41 @@ RSpec.feature "Users can handover projects" do
       add_details_and_attempt_handover
 
       expect(page).to have_content(
-        "This project is missing its incoming trust UKPRN so can not be handed over. " \
-        "Service support must delete this project and add the UKPRN in Prepare."
+        "This project is missing its incoming trust UKPRN so can not be handed over." \
       )
+      expect(page).to have_content(
+        "Service support must delete this project and fix up the project in Prepare."
+      )
+      expect(page).to have_content(
+        "If the project is part of a Form a MAT project and no UKPRN exists you must " \
+        "add a Trust reference number (TRN) instead of the incoming trust UKPRN."
+      )
+    end
+
+    context "when 'Form a MAT', missing UKPRN (but has new_trust_reference_number)" do
+      let!(:conversion_project) {
+        build(
+          :conversion_project,
+          state: :inactive,
+          urn: 123456,
+          incoming_trust_ukprn: nil,
+          new_trust_reference_number: "TR01234",
+          new_trust_name: "can't find UKPRN",
+          conversion_date: Date.new(2024, 2, 1)
+        ).tap { |p| p.save(validate: false) }
+      }
+      scenario "they see NO error" do
+        visit all_handover_projects_path
+        confirm_that_this_is_the_correct_project
+        add_details_and_attempt_handover
+
+        expect(page).not_to have_content(
+          "This project is missing its incoming trust UKPRN so can not be handed over."
+        )
+        expect(page).to have_content(
+          "Project assigned"
+        )
+      end
     end
   end
 
