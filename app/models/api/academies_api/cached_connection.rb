@@ -9,9 +9,12 @@ class Api::AcademiesApi::CachedConnection
     @cache_keyer = cache_keyer
     @cache = cache
     @logger = logger
+    @active = ENV.fetch("ACADEMIES_API_CACHE").try(:downcase) == "active"
   end
 
   def fetch(path:, params: nil)
+    return fresh_value_for(path, params) unless @active
+
     key = @cache_keyer.for_path(path: path, params: params)
     hit = @cache.read(key)
     log_hit_or_miss(hit, key, path, params)
