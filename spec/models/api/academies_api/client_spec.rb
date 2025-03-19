@@ -22,17 +22,17 @@ RSpec.describe Api::AcademiesApi::Client do
     end
   end
 
-  describe "endpoints" do
+  describe "endpoints requested from the cached connection" do
     let(:response) { double("response", status: double) }
-    let(:connection) { double("faraday connection", get: response) }
-    let(:client) { described_class.new(connection: connection) }
+    let(:cached_connection) { double("cached connection", fetch: response) }
+    let(:client) { described_class.new(cached_connection: cached_connection) }
 
     describe "get_establishment" do
       it "calls the v4 establishment endpoint" do
         client.get_establishment(123456)
 
         expected_url = "/v4/establishment/urn/123456"
-        expect(connection).to have_received(:get).with(expected_url)
+        expect(cached_connection).to have_received(:fetch).with(path: expected_url)
       end
     end
 
@@ -41,7 +41,10 @@ RSpec.describe Api::AcademiesApi::Client do
         client.get_establishments([123456, 333333])
 
         expected_url = "/v4/establishments/bulk"
-        expect(connection).to have_received(:get).with(expected_url, {request: [123456, 333333]})
+        expect(cached_connection).to have_received(:fetch).with(
+          path: expected_url,
+          params: {request: [123456, 333333]}
+        )
       end
     end
 
@@ -50,7 +53,7 @@ RSpec.describe Api::AcademiesApi::Client do
         client.get_trust(12345678)
 
         expected_url = "/v4/trust/12345678"
-        expect(connection).to have_received(:get).with(expected_url)
+        expect(cached_connection).to have_received(:fetch).with(path: expected_url)
       end
     end
 
@@ -59,7 +62,10 @@ RSpec.describe Api::AcademiesApi::Client do
         client.get_trusts([12345678, 33333333])
 
         expected_url = "/v4/trusts/bulk"
-        expect(connection).to have_received(:get).with(expected_url, {ukprns: [12345678, 33333333]})
+        expect(cached_connection).to have_received(:fetch).with(
+          path: expected_url,
+          params: {ukprns: [12345678, 33333333]}
+        )
       end
     end
   end

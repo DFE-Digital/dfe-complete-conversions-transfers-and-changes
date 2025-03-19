@@ -9,7 +9,7 @@ class Api::AcademiesApi::Client
 
   attr_reader :connection
 
-  def initialize(connection: nil, cached_connection: nil)
+  def initialize(cached_connection: nil)
     @connection = connection || default_connection
     @cached_connection = cached_connection || Api::AcademiesApi::CachedConnection.new(
       api_connection: @connection
