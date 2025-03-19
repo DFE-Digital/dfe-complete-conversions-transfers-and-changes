@@ -1,6 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Api::AcademiesApi::Client do
+  around do |example|
+    ClimateControl.modify ACADEMIES_API_CACHE: "false" do
+      example.run
+    end
+  end
+
   it "uses the environment variables to build the connection" do
     ClimateControl.modify(
       ACADEMIES_API_HOST: "https://test.academies.api",
