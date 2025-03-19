@@ -72,7 +72,14 @@ RSpec.describe Api::AcademiesApi::Client do
 
   describe "#get_establishment" do
     let(:urn) { 123456 }
-    let(:client) { described_class.new(connection: fake_successful_establishment_connection(fake_response)) }
+
+    let(:client) do
+      described_class.new(
+        cached_connection: Api::AcademiesApi::CachedConnection.new(
+          api_connection: fake_successful_establishment_connection(fake_response)
+        )
+      )
+    end
 
     subject { client.get_establishment(urn) }
 
@@ -106,7 +113,13 @@ RSpec.describe Api::AcademiesApi::Client do
     end
 
     context "when the connection fails" do
-      let(:client) { described_class.new(connection: fake_failed_establishment_connection) }
+      let(:client) do
+        described_class.new(
+          cached_connection: Api::AcademiesApi::CachedConnection.new(
+            api_connection: fake_failed_establishment_connection
+          )
+        )
+      end
 
       it "raises an Error" do
         expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
@@ -145,7 +158,13 @@ RSpec.describe Api::AcademiesApi::Client do
   describe "#get_establishments" do
     let(:urn) { 123456 }
     let(:urns) { [urn] }
-    let(:client) { described_class.new(connection: fake_successful_establishments_connection(fake_response)) }
+    let(:client) do
+      described_class.new(
+        cached_connection: Api::AcademiesApi::CachedConnection.new(
+          api_connection: fake_successful_establishments_connection(fake_response)
+        )
+      )
+    end
 
     subject { client.get_establishments(urns) }
 
@@ -178,7 +197,13 @@ RSpec.describe Api::AcademiesApi::Client do
     end
 
     context "when the connection fails" do
-      let(:client) { described_class.new(connection: fake_failed_establishments_connection) }
+      let(:client) do
+        described_class.new(
+          cached_connection: Api::AcademiesApi::CachedConnection.new(
+            api_connection: fake_failed_establishments_connection
+          )
+        )
+      end
 
       it "raises an Error" do
         expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
@@ -216,7 +241,13 @@ RSpec.describe Api::AcademiesApi::Client do
 
   describe "#get_trust" do
     let(:ukprn) { 12345678 }
-    let(:client) { described_class.new(connection: fake_successful_trust_connection(fake_response)) }
+    let(:client) do
+      described_class.new(
+        cached_connection: Api::AcademiesApi::CachedConnection.new(
+          api_connection: fake_successful_trust_connection(fake_response)
+        )
+      )
+    end
 
     subject { client.get_trust(ukprn) }
 
@@ -254,7 +285,13 @@ RSpec.describe Api::AcademiesApi::Client do
     end
 
     context "when the connection fails" do
-      let(:client) { described_class.new(connection: fake_failed_trust_connection) }
+      let(:client) do
+        described_class.new(
+          cached_connection: Api::AcademiesApi::CachedConnection.new(
+            api_connection: fake_failed_trust_connection
+          )
+        )
+      end
 
       it "raises an Error" do
         expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
@@ -285,7 +322,13 @@ RSpec.describe Api::AcademiesApi::Client do
   describe "#get_trusts" do
     let(:ukprn) { 12345678 }
     let(:ukprns) { [ukprn] }
-    let(:client) { described_class.new(connection: fake_successful_trusts_connection(fake_response)) }
+    let(:client) do
+      described_class.new(
+        cached_connection: Api::AcademiesApi::CachedConnection.new(
+          api_connection: fake_successful_trusts_connection(fake_response)
+        )
+      )
+    end
 
     subject { client.get_trusts(ukprns) }
 
@@ -322,7 +365,13 @@ RSpec.describe Api::AcademiesApi::Client do
     end
 
     context "when the connection fails" do
-      let(:client) { described_class.new(connection: fake_failed_trusts_connection) }
+      let(:client) do
+        described_class.new(
+          cached_connection: Api::AcademiesApi::CachedConnection.new(
+            api_connection: fake_failed_trusts_connection
+          )
+        )
+      end
 
       it "raises an Error" do
         expect { subject }.to raise_error(Api::AcademiesApi::Client::Error)
