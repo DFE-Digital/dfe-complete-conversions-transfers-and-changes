@@ -168,16 +168,40 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
     end
 
     describe "hand over to RCS team" do
-      it "emails the RCS team leaders if the field is updated" do
-        team_leader = create(:user, :team_leader)
+      context "when assigned to RCS team but NOT assigned to caseworker" do
+        before do
+          allow(project).to receive(:assigned_to).and_return(nil)
+        end
 
-        updated_params = {assigned_to_regional_caseworker_team: "true", handover_note_body: "Some notes"}
+        it "emails the RCS team leaders" do
+          team_leader = create(:user, :team_leader)
 
-        subject.update(updated_params)
+          updated_params = {assigned_to_regional_caseworker_team: "true", handover_note_body: "Some notes"}
 
-        expect(ActionMailer::MailDeliveryJob)
-          .to(have_been_enqueued.on_queue("default")
-                                .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
+          subject.update(updated_params)
+
+          expect(ActionMailer::MailDeliveryJob)
+            .to(have_been_enqueued.on_queue("default")
+                                  .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
+        end
+      end
+
+      context "when assigned to RCS team and already assigned to caseworker" do
+        before do
+          allow(project).to receive(:assigned_to).and_return(build(:user))
+        end
+
+        it "does NOT send the 'new project created' email" do
+          team_leader = create(:user, :team_leader)
+
+          updated_params = {assigned_to_regional_caseworker_team: "true", handover_note_body: "Some notes"}
+
+          subject.update(updated_params)
+
+          expect(ActionMailer::MailDeliveryJob)
+            .not_to(have_been_enqueued.on_queue("default")
+                                  .with("TeamLeaderMailer", "new_conversion_project_created", "deliver_now", args: [team_leader, project]))
+        end
       end
 
       it "does not unassign the project's assigned user" do

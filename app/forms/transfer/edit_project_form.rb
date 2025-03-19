@@ -75,9 +75,13 @@ class Transfer::EditProjectForm < EditProjectForm
       project.save!
       project.tasks_data.save!
       update_handover_note if handover_note_body.present?
-      notify_team_leaders(project) if assigned_to_regional_caseworker_team
+      notify_team_leaders(project) if assigned_to_regional_caseworker_team && unassigned?
     end
 
     project
+  end
+
+  private def unassigned?
+    project.assigned_to.blank?
   end
 end
