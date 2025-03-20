@@ -113,5 +113,45 @@ RSpec.describe Api::AcademiesApi::CachedConnection do
 
       expect(faraday_connection).to have_received(:get).with("/v4/establishments/bulk", {request: [123456, 333333]})
     end
+
+    context "when caching is disabled" do
+      around do |example|
+        ClimateControl.modify ACADEMIES_API_CACHE: "disabled" do
+          example.run
+        end
+      end
+
+      before do
+        allow(faraday_connection).to receive(:get).and_return({urn: 666666})
+      end
+
+      it "does NOT obtain the cache key from the CacheKeyer" do
+        cached_connection.fetch(path: "/v4/establishment/urn/123456", params: {request: [123456, 333333]})
+
+        expect(cache_keyer).not_to have_received(:for_path)
+      end
+
+      it "does NOT attempt to retrieve a cached value" do
+        cached_connection.fetch(path: "/v4/establishment/urn/123456")
+
+        expect(cache).not_to have_received(:read)
+      end
+
+      it "does NOT log anything" do
+        cached_connection.fetch(path: "/v4/establishment/urn/123456", params: {request: [123456, 333333]})
+
+        expect(logger).not_to have_received(:info)
+      end
+
+      it "makes a get request to the Faraday HTTP connection (caching to follow)" do
+        cached_connection.fetch(path: "/v4/establishment/urn/123456")
+
+        expect(faraday_connection).to have_received(:get).with("/v4/establishment/urn/123456")
+      end
+
+      it "returns the value retrieved from the Academies API" do
+        expect(cached_connection.fetch(path: "/v4/establishment/urn/123456")).to eq({urn: 666666})
+      end
+    end
   end
 end
