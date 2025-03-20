@@ -153,5 +153,26 @@ RSpec.describe Api::AcademiesApi::CachedConnection do
         expect(cached_connection.fetch(path: "/v4/establishment/urn/123456")).to eq({urn: 666666})
       end
     end
+
+    context "when the env var for toggling the cache is missing" do
+      before do
+        ENV.delete("ACADEMIES_API_CACHE")
+        allow(faraday_connection).to receive(:get).and_return({urn: 666666})
+      end
+
+      it "does not cause an error" do
+        expect { cached_connection.fetch(path: "/v4/establishment/urn/123456") }.not_to raise_error
+      end
+
+      it "makes a get request to the Faraday HTTP connection (caching to follow)" do
+        cached_connection.fetch(path: "/v4/establishment/urn/123456")
+
+        expect(faraday_connection).to have_received(:get).with("/v4/establishment/urn/123456")
+      end
+
+      it "returns the value retrieved from the Academies API" do
+        expect(cached_connection.fetch(path: "/v4/establishment/urn/123456")).to eq({urn: 666666})
+      end
+    end
   end
 end
