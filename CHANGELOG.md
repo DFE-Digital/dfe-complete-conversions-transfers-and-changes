@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Fixed
+
+- Link to accessible guidance on URN Transfers on Sharepoint from "Request new
+  URN and record" task
+
 ## [Release-111][release-111]
 
 ## Fixed
