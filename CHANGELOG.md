@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-112][release-112]]
+
 ### Fixed
 
 - Link to accessible guidance on URN Transfers on Sharepoint from "Request new
@@ -2444,7 +2446,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-111...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-112...HEAD
+[release-112]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-111...release-112
 [release-111]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-110...release-111
 [release-110]:
