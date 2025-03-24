@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
-## [Release-112][release-112]]
+### Changed
+
+- Add caching to Academies API responses to improve performance.
+
+## [Release-112][release-112]
 
 ### Fixed
 
