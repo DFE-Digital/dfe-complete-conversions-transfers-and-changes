@@ -20,9 +20,20 @@ services:
     networks:
       - dev
 
+  redis-insight:
+    container_name: dfe-complete-redis-insight
+    image: redis/redisinsight:latest
+    ports:
+      - 5540:5540
+    volumes:
+      - redisinsight:/data
+    networks:
+      - dev
+
 networks:
   dev:
 
 volumes:
   sql-server-data:
   redis-data:
+  redisinsight:
