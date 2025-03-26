@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-113][release-113]
+
 ### Changed
 
 - Add caching to Academies API responses to improve performance.
@@ -2450,7 +2452,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-112...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-113...HEAD
+[release-113]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-112...release-113
 [release-112]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-111...release-112
 [release-111]:
