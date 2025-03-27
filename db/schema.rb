@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_20_121430) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_27_163619) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -321,7 +321,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_20_121430) do
     t.date "significant_date"
     t.boolean "significant_date_provisional", default: true
     t.boolean "directive_academy_order", default: false
-    t.string "region"
+    t.string "region", null: false
     t.integer "academy_urn"
     t.uuid "tasks_data_id"
     t.string "tasks_data_type"
@@ -346,6 +346,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_20_121430) do
     t.index ["incoming_trust_ukprn"], name: "index_projects_on_incoming_trust_ukprn"
     t.index ["local_authority_id"], name: "index_projects_on_local_authority_id"
     t.index ["outgoing_trust_ukprn"], name: "index_projects_on_outgoing_trust_ukprn"
+    t.index ["region"], name: "index_projects_on_region"
     t.index ["regional_delivery_officer_id"], name: "index_projects_on_regional_delivery_officer_id"
     t.index ["tasks_data_id"], name: "index_projects_on_tasks_data_id"
     t.index ["tasks_data_type"], name: "index_projects_on_tasks_data_type"

@@ -182,6 +182,20 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "#region" do
+      it { is_expected.to validate_presence_of(:region) }
+
+      context "when validation is bypassed" do
+        let(:project) { build(:transfer_project, region: nil) }
+
+        it "is enforced by the db" do
+          expect {
+            project.save(validate: false)
+          }.to raise_error(ActiveRecord::NotNullViolation)
+        end
+      end
+    end
+
     describe "#incoming_trust_ukprn" do
       context "when the project does not have a new_trust_reference_number" do
         it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }

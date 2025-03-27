@@ -27,6 +27,7 @@ class Project < ApplicationRecord
 
   validates :urn, presence: true
   validates :urn, urn: true
+  validates :region, presence: true
   validates :incoming_trust_ukprn, presence: true, unless: -> { new_trust_reference_number.present? }
   validates :incoming_trust_ukprn, ukprn: true, unless: -> { new_trust_reference_number.present? }
   validates :advisory_board_date, presence: true
