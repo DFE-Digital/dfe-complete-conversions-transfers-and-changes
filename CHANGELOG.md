@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Handle pagination errors gracefully.
 
+### Changed
+
+- Enforce presence of the project's regional delivery officer.
+
 ## [Release-114][release-114]
 
 ### Changed
