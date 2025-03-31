@@ -202,6 +202,16 @@ RSpec.describe Project, type: :model do
         project.valid?
         expect(project.errors).to include(:regional_delivery_officer)
       end
+
+      context "when validation is bypassed" do
+        let(:project) { build(:transfer_project, regional_delivery_officer: nil) }
+
+        it "is enforced by the db" do
+          expect {
+            project.save(validate: false)
+          }.to raise_error(ActiveRecord::NotNullViolation)
+        end
+      end
     end
 
     describe "#incoming_trust_ukprn" do
