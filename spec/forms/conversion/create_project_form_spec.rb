@@ -681,10 +681,10 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
 
         context "when the group exists" do
           it "makes the association to the project" do
-            group = create(:project_group, group_identifier: "GRP_12345678", trust_ukprn: 1234567)
+            group = create(:project_group, group_identifier: "GRP_12345678", trust_ukprn: 12345678)
             form = build(
               :create_conversion_project_form,
-              incoming_trust_ukprn: 1234567,
+              incoming_trust_ukprn: 12345678,
               group_id: "GRP_12345678"
             )
 
