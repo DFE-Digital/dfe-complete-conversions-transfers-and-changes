@@ -46,4 +46,14 @@ RSpec.describe "Error handling", type: :request do
       expect(response).to redirect_to(sign_in_path)
     end
   end
+
+  context "when a page number which is out of range is requested" do
+    before { sign_in_with(create(:user)) }
+
+    it "is handled as '404 Not Found' without a Pagy::OverflowError" do
+      get "/projects/all/trusts?page=999"
+
+      expect(response).to render_template("pages/page_not_found", status: :not_found)
+    end
+  end
 end
