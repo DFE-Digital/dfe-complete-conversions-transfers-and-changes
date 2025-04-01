@@ -73,7 +73,7 @@ class Conversion::CreateProjectForm < CreateProjectForm
         )
       end
 
-      @project.save
+      @project.save!
 
       @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
       notify_team_leaders(@project) if assigned_to_regional_caseworker_team
