@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from Api::AcademiesApi::Client::Error, with: :academies_api_client_error
   rescue_from Api::AcademiesApi::Client::UnauthorisedError, with: :academies_api_unauthorised_error
   rescue_from ActionController::InvalidAuthenticityToken, with: :reset_user_session
+  rescue_from Pagy::OverflowError, with: :not_found_error
 
   before_action :current_user_identifier
   before_action :set_notification
