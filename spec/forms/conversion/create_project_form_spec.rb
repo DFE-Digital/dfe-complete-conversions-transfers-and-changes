@@ -704,6 +704,82 @@ RSpec.describe Conversion::CreateProjectForm, type: :model do
         expect(build(form_factory.to_sym, urn: nil).save).to be_nil
       end
     end
+
+    describe "the db transaction around #save" do
+      # Because we're interested in the rolling back or not of database inserts
+      # we'll assert on the presence/absence of db entries rather than describing
+      # the messages sent
+
+      let(:form) do
+        build(
+          :create_project_form,
+          handover_note_body: "Some important words", # triggers note creation
+          assigned_to_regional_caseworker_team: true
+        )
+      end
+
+      let(:project) { build(:conversion_project) }
+
+      before do
+        create(:user, :team_leader) # triggers notification
+        allow(Project).to receive(:new).and_return(project)
+      end
+
+      context "when the project CAN'T be saved but would otherwise trigger the dependent actions" do
+        before { allow(project).to receive(:valid?).and_return(false) }
+
+        # we rescue the RecordInvalid error -- as we are interested in what does
+        # or doesn't come next...
+
+        it "does not create a note" do
+          expect {
+            begin
+              form.save
+            rescue ActiveRecord::RecordInvalid
+              nil
+            end
+          }.to change(Note, :count).by(0)
+        end
+
+        it "does not notify team leaders" do
+          begin
+            form.save
+          rescue ActiveRecord::RecordInvalid
+            nil
+          end
+
+          expect(ActionMailer::MailDeliveryJob)
+            .not_to(have_been_enqueued)
+        end
+
+        it "does not record an entry in the event log" do
+          expect {
+            begin
+              form.save
+            rescue ActiveRecord::RecordInvalid
+              nil
+            end
+          }.to change(Event, :count).by(0)
+        end
+      end
+
+      context "when the project CAN be saved and will trigger dependent actions" do
+        it "creates a note" do
+          expect { form.save }.to change(Note, :count).by(1)
+        end
+
+        it "notifies team leaders" do
+          form.save
+
+          expect(ActionMailer::MailDeliveryJob)
+            .to(have_been_enqueued)
+        end
+
+        it "records an entry in the event log" do
+          expect { form.save }.to change(Event, :count).by(1)
+        end
+      end
+    end
   end
 
   def valid_attributes
