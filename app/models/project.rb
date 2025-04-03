@@ -40,7 +40,7 @@ class Project < ApplicationRecord
   validate :establishment_exists, if: -> { urn.present? }
 
   belongs_to :caseworker, class_name: "User", optional: true
-  belongs_to :regional_delivery_officer, class_name: "User", optional: true
+  belongs_to :regional_delivery_officer, class_name: "User", optional: false
   belongs_to :assigned_to, class_name: "User", optional: true
 
   scope :conversions, -> { where(type: "Conversion::Project") }
