@@ -85,6 +85,9 @@ module DfeCompleteConversionsTransfersAndChanges
     # use the cookies for the session and set the name of the cookie
     config.session_store :cookie_store, key: "SESSION"
 
+    # distinguish this service from the .NET version, during "dual-running"
+    config.action_dispatch.default_headers["X-Backend-Origin"] = "ruby"
+
     # set the X-Frame-Options header
     config.action_dispatch.default_headers["X-Frame-Options"] = "DENY"
     # set the HSTS header
