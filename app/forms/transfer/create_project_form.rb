@@ -70,7 +70,7 @@ class Transfer::CreateProjectForm < CreateProjectForm
         )
       end
 
-      @project.save
+      @project.save!
       @note = Note.create(body: handover_note_body, project: @project, user: user, task_identifier: :handover) if handover_note_body
       @project.tasks_data.update!(
         inadequate_ofsted: inadequate_ofsted,

@@ -12,9 +12,7 @@ class InternalContacts::EditAddedByUserForm
   validate :user_is_assignable
 
   def self.new_from_project(project)
-    user_email = project.regional_delivery_officer_id.present? ? project.regional_delivery_officer.email : nil
-
-    new({email: user_email, project: project})
+    new({email: project.regional_delivery_officer.email, project: project})
   end
 
   def initialize(attrs = {})

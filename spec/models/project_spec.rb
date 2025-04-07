@@ -196,6 +196,24 @@ RSpec.describe Project, type: :model do
       end
     end
 
+    describe "#regional_delivery_officer association" do
+      it "enforces the presence of the ActiveRecord association" do
+        project = build(:transfer_project, regional_delivery_officer: nil)
+        project.valid?
+        expect(project.errors).to include(:regional_delivery_officer)
+      end
+
+      context "when validation is bypassed" do
+        let(:project) { build(:transfer_project, regional_delivery_officer: nil) }
+
+        it "is enforced by the db" do
+          expect {
+            project.save(validate: false)
+          }.to raise_error(ActiveRecord::NotNullViolation)
+        end
+      end
+    end
+
     describe "#incoming_trust_ukprn" do
       context "when the project does not have a new_trust_reference_number" do
         it { is_expected.to validate_presence_of(:incoming_trust_ukprn) }
