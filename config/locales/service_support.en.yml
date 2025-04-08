@@ -9,6 +9,8 @@ en:
         upload_form:
           label: GIAS Establishments data
           hint: This file must be the unmodified CSV file downloaded from Get Information About Schools
+    dotnet_rerouting_rules:
+      title: .NET re-routing rules
     sub_navigation:
       without_urn: URNs to create
       with_urn: URNs added

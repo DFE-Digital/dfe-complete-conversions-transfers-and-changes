@@ -296,6 +296,8 @@ Rails.application.routes.draw do
   end
 
   namespace :service_support, path: "service-support" do
+    resource :dotnet_rerouting_rules
+
     namespace :upload do
       namespace :gias do
         get "establishments/new", to: "establishments#new"
