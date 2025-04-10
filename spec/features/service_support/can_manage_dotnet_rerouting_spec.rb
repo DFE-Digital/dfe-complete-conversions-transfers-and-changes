@@ -33,7 +33,7 @@ RSpec.feature "Service support users can manage dotnet rerouting on Front Door" 
     stub_request(:post, "https://login.microsoftonline.com/AZURE_INFRA_TENANT_ID/oauth2/v2.0/token")
       .to_return(status: 200, body: auth_response, headers: {})
 
-    stub_request(:get, "https://management.azure.com/subscriptions/AZURE_INFRA_SUBSCRIPTION_ID/resourceGroups/AZURE_FRONT_DOOR_RESOURCE_GROUP_NAME/providers/Microsoft.Cdn/profiles/AZURE_FRONT_DOOR_PROFILE_NAME/ruleSets/AZURE_FRONT_DOOR_RULE_SET_NAME/rules?api-version=2023-05-01")
+    stub_request(:get, "https://management.azure.com/subscriptions/AZURE_INFRA_SUBSCRIPTION_ID/resourceGroups/AZURE_FRONT_DOOR_RESOURCE_GROUP_NAME/providers/Microsoft.Cdn/profiles/AZURE_FRONT_DOOR_PROFILE_NAME/ruleSets/AZURE_FRONT_DOOR_RULE_SET_NAME/rules/rerouteorigin?api-version=2023-05-01")
       .to_return(status: 200, body: rules_response, headers: {})
   end
 
@@ -79,31 +79,27 @@ RSpec.feature "Service support users can manage dotnet rerouting on Front Door" 
   def rules_response
     <<~JSON
       {
-        "value": [
-          {
-            "name": "rerouteorigin",
-            "properties": {
-              "ruleSetName": "completedotnetreroute",
-              "conditions": [
-                {
-                  "name": "UrlPath",
-                  "parameters": {
-                    "typeName": "DeliveryRuleUrlPathMatchConditionParameters",
-                    "operator": "BeginsWith",
-                    "negateCondition": false,
-                    "matchValues": [
-                      "projects/conversions/",
-                      "dist",
-                      "signin-oidc",
-                      "netassets"
-                    ],
-                    "transforms": []
-                  }
-                }
-              ]
+        "name": "rerouteorigin",
+        "properties": {
+          "ruleSetName": "completedotnetreroute",
+          "conditions": [
+            {
+              "name": "UrlPath",
+              "parameters": {
+                "typeName": "DeliveryRuleUrlPathMatchConditionParameters",
+                "operator": "BeginsWith",
+                "negateCondition": false,
+                "matchValues": [
+                  "projects/conversions/",
+                  "dist",
+                  "signin-oidc",
+                  "netassets"
+                ],
+                "transforms": []
+              }
             }
-          }
-        ]
+          ]
+        }
       }
     JSON
   end
