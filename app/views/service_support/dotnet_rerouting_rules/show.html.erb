@@ -6,12 +6,12 @@
 <% end %>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Rerouting patterns</h1>
+    <h2 class="govuk-heading-l">Rerouting patterns</h2>
     <p class="govuk-body">
       The following patterns are defined for rerouting to the .NET version of the service:
     </p>
 
-    <table class="govuk-table">
+    <table class="govuk-table rerouting-patterns">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Pattern</th>
@@ -19,8 +19,28 @@
       </thead>
       <tbody class="govuk-table__body">
         <% @patterns.each do |pattern| %>
-          <tr class="govuk-table__row">
+          <tr class="govuk-table__row rerouting-pattern">
             <td class="govuk-table__cell"><%= pattern %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Application routes</h2>
+    <p class="govuk-body">
+      The effect of these patterns on the application's routes is shown:
+    </p>
+
+    <table class="govuk-table app-routes">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Route</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <% @routes.each do |route| %>
+          <tr class="govuk-table__row app-route <%= route.match? ? 'rerouting-match' : '' %>">
+            <td class="govuk-table__cell"><%= route.route %></td>
           </tr>
         <% end %>
       </tbody>
