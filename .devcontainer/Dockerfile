@@ -38,10 +38,10 @@ RUN echo "USERNAME: `$USERNAME`"
 RUN echo "USER_ID: `$USER_ID`"
 
 # Set up unprivileged local user
-RUN groupadd --gid $USER_GID $USERNAME 
-RUN groupadd bundler 
-RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME --shell /bin/bash --groups bundler 
-RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME 
+RUN groupadd --gid $USER_GID $USERNAME
+RUN groupadd bundler
+RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME --shell /bin/bash --groups bundler
+RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
 RUN chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Install FreeTDS
