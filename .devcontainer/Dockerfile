@@ -3,7 +3,7 @@
 # Base devcontainer image
 #
 # https://github.com/devcontainers/images/tree/main/src/ruby
-FROM mcr.microsoft.com/devcontainers/ruby:3.3
+FROM mcr.microsoft.com/devcontainers/ruby:3.4-bookworm
 
 ARG USERNAME=complete
 ARG USER_UID=1001
