@@ -13,9 +13,30 @@ class Api::Azure::DotnetReroutingRulesClient
     JSON.parse(response.body)
   end
 
+  def experimental_get_with_managed_identity
+    options = {
+      tenant_id: ENV.fetch("AZURE_FRONT_DOOR_TENANT_ID"),
+      client_id: ENV.fetch("AZURE_FRONT_DOOR_CLIENT_ID"),
+      client_secret: ENV.fetch("AZURE_FRONT_DOOR_CLIENT_SECRET"),
+      subscription_id: ENV.fetch("AZURE_FRONT_DOOR_SUBSCRIPTION_ID")
+    }
+
+    provider = MsRestAzure::MSITokenProvider.new(50342, settings, {client_id: options[:client_id]})
+    credentials = MsRest::TokenCredentials.new(provider)
+    client = Azure::Resources::Profiles::Latest::Mgmt::Client.new(options.merge(credentials: credentials))
+
+    request = MsRest::HttpOperationRequest.new(
+      "https://management.azure.com",
+      resource_path,
+      "get"
+    )
+
+    client.get_async_common(request)
+  end
+
   private def resource_path
     [
-      "/subscriptions/#{ENV.fetch("AZURE_INFRA_SUBSCRIPTION_ID")}",
+      "/subscriptions/#{ENV.fetch("AZURE_FRONT_DOOR_SUBSCRIPTION_ID")}",
       "resourceGroups/#{ENV.fetch("AZURE_FRONT_DOOR_RESOURCE_GROUP_NAME")}",
       "providers/Microsoft.Cdn",
       "profiles/#{ENV.fetch("AZURE_FRONT_DOOR_PROFILE_NAME")}",
