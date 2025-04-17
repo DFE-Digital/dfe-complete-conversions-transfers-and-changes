@@ -67,7 +67,7 @@ en:
     legend:
       user:
         team: User team
-        team_leader: Team lead
+        manage_team: Team lead or team manager
         active: Active user
     label:
       user:
