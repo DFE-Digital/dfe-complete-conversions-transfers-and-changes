@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 - Handle pagination errors gracefully.
+- Allow 'manage team' user attribute to be set by service support
 
 ### Changed
 
