@@ -67,7 +67,7 @@ en:
     legend:
       user:
         team: User team
-        team_leader: Team lead
+        manage_team: Team lead or team manager
         active: Active user
     label:
       user:
@@ -80,8 +80,10 @@ en:
       user:
         email: "@education.gov.uk email addresses only"
         team: All users must belong in one of the following teams. Sub-teams within these are not required.
-        team_lead:
-          html: <p>If the user is a lead or manager within the team, check this box.</p>
+        manage_team_attribute:
+          html: <p>If the user is a lead or manager within the team, check this box.
+                However, note that this will only be applied for RDOs and RCS team members.
+                If the user is a member of a different team they will need to have a user-specific "Manage Team Capability" set. Raise a support ticket to request this.</p>
         active:
           html:
             <p>Inactive users cannot access the application and will not show up in list of users.</p>

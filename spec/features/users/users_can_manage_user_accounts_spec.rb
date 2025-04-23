@@ -66,6 +66,26 @@ RSpec.feature "Users can manage user accounts" do
     expect(existing_user.reload.team).to eql "north_east"
   end
 
+  scenario "existing users can have the 'manage_team' property set" do
+    existing_user = create(:user, :regional_delivery_officer, team: "london", manage_team: false)
+
+    visit edit_service_support_user_path(existing_user)
+
+    choose "North East"
+    check "User is a team lead or manager"
+    and_i_see_guidance_on_setting_manage_team_attribute
+    click_on "Save user"
+
+    expect(existing_user.reload.manage_team).to be true
+  end
+
+  def and_i_see_guidance_on_setting_manage_team_attribute
+    expect(page).to have_content("note that this will only be applied for RDOs and RCS team members")
+    expect(page).to have_content(
+      "If the user is a member of a different team they will need to have a user-specific \"Manage Team Capability\" set"
+    )
+  end
+
   scenario "exisiting users cannot be made invalid" do
     existing_user = create(:user, :regional_delivery_officer, team: "london")
 

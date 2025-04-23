@@ -19,9 +19,9 @@
       <div class="govuk-form-group">
         <%= form.govuk_collection_radio_buttons :team, @user.team_options, :id, :name %>
 
-        <%= form.govuk_check_boxes_fieldset :team_leader, multiple: false, legend: {size: "s"}  do %>
-          <%= t("helpers.hint.user.team_lead.html") %>
-          <%= form.govuk_check_box :team_leader, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.user.team_lead")} %>
+        <%= form.govuk_check_boxes_fieldset :manage_team, multiple: false, legend: {size: "s"} do %>
+          <%= t("helpers.hint.user.manage_team_attribute.html") %>
+          <%= form.govuk_check_box :manage_team, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.user.team_lead")} %>
         <% end %>
 
         <%= form.govuk_check_boxes_fieldset :active, multiple: false, legend: {size: "s"}  do %>
