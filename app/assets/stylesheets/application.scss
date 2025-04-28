@@ -115,3 +115,7 @@ address.govuk-address {
 a.dfe-header__link--service, a.dfe-header__navigation-link {
   color: #ffffff;
 }
+
+.rerouting-match {
+  color: govuk-colour("red");
+}

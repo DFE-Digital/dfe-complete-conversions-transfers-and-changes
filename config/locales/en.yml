@@ -172,4 +172,5 @@ en:
         conversion_urns: Conversion URNs
         local_authorities: Local authorities
         users: Users
+        dotnet_rerouting_rules: .NET re-routing rules
         upload_gias_data: Upload GIAS data
