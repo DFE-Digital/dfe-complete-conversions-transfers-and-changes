@@ -22,4 +22,11 @@ class Capability < ApplicationRecord
       description: "Capabilities dependent on the User#assign_to_project attribute"
     )
   end
+
+  def self.devops
+    find_or_create_by(
+      name: :devops,
+      description: "Perform DevOps activities"
+    )
+  end
 end
