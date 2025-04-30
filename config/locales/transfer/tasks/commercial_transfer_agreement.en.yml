@@ -10,7 +10,7 @@ en:
         guidance_link: How to check and assure the commercial transfer agreeement
         guidance:
           html:
-            <p>You can <a href="https://educationgovuk.sharepoint.com/sites/lvewp00030/SitePages/3-Conversion%20Process/Commercial%20Transfer%20Agreement%20(CTA)/Commercial%20Transfer%20Agreement.aspx" target="_blank">read guidance about how use check and assure the agreement (opens in new tab)</a> on SharePoint.</p>
+            <p>You can <a href="https://educationgovuk.sharepoint.com/:u:/r/sites/lvewp00030/SitePages/Commercial%20Transfer%20Agreement.aspx" target="_blank">read guidance about how use check and assure the agreement (opens in new tab)</a> on SharePoint.</p>
 
         confirm_agreed:
           title: Confirm commercial transfer agreement is agreed
