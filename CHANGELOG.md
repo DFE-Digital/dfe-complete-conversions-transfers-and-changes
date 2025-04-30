@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Service support can view re-routing rules for "dual-running" of service with
   the new .NET version
 
+### Fixed
+
+- Link to guidance on Commercial Transfer Agreement fixed
+
 ## [Release-115][release-115]
 
 ### Fixed
