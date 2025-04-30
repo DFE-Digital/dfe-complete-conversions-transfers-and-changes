@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-116][release-116]
+
 ### Changed
 
 - Service support can view re-routing rules for "dual-running" of service with
@@ -2478,7 +2480,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-115...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-116...HEAD
+[release-116]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-115...release-116
 [release-115]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-114...release-115
 [release-114]:
