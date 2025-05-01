@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+### Changed
+
+- Service support can now manage a user's "capabilities"
+
 ## [Release-116][release-116]
 
 ### Changed
