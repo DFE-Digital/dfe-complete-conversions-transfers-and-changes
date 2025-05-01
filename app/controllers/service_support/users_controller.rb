@@ -45,6 +45,7 @@ class ServiceSupport::UsersController < ApplicationController
     @user.assign_attributes(user_params)
     if @user.valid?
       @user.save!
+      assign_capabilities
       redirect_to service_support_users_path, notice: I18n.t("user.edit.success", email: @user.email)
     else
       render :edit
@@ -67,6 +68,14 @@ class ServiceSupport::UsersController < ApplicationController
     else
       render :set_team
     end
+  end
+
+  private def assign_capabilities
+    desired_capabilities = params[:user][:capabilities].map do |name|
+      Capability.find_by(name: name)
+    end.compact
+
+    @user.capabilities = desired_capabilities
   end
 
   private def user_params

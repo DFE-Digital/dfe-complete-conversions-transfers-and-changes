@@ -29,4 +29,13 @@ class Capability < ApplicationRecord
       description: "Perform DevOps activities"
     )
   end
+
+  def self.all_capabilities
+    [
+      add_new_project,
+      assign_to_project,
+      manage_team,
+      devops
+    ]
+  end
 end

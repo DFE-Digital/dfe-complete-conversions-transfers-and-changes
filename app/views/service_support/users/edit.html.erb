@@ -24,6 +24,14 @@
           <%= form.govuk_check_box :manage_team, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.user.team_lead")} %>
         <% end %>
 
+        <%= form.govuk_check_boxes_fieldset :capabilities, legend: {size: "s"}, class: "capabilities" do %>
+          <p class="hint">Does the user need any special capabilities?</p>
+          <%= govuk_inset_text(text: "Use with caution. Capabilities override team-based permissions.") %>
+          <% Capability.all_capabilities.each do |capability| %>
+            <%= form.govuk_check_box :capabilities, capability.name, multiple: true, hint: {text: capability.description}, label: {text: capability.name}, checked: @user.capabilities.include?(capability) %>
+          <% end %>
+        <% end %>
+
         <%= form.govuk_check_boxes_fieldset :active, multiple: false, legend: {size: "s"}  do %>
           <%= t("helpers.hint.user.active.html") %>
           <%= form.govuk_check_box :active, 1, 0, multiple: false, link_errors: true, label: {text: t("helpers.label.user.active")} %>
