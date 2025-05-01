@@ -55,7 +55,7 @@ jobs:
       id-token: write
 
     steps:  
-      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/build@v5.1.0
+      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/build@v5.2.0
         with:
           image-name: ${{ needs.set-env.outputs.image-name }}
           build-args: |
@@ -63,7 +63,7 @@ jobs:
             CURRENT_GIT_SHA="${{ needs.set-env.outputs.checked-out-sha }}"
             TIME_OF_BUILD="${{ needs.set-env.outputs.date }}"
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/import@v5.1.0
+      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/import@v5.2.0
         with: 
           image-name: ${{ needs.set-env.outputs.image-name }}
           azure-acr-name: ${{ secrets.ACR_NAME }}
@@ -100,7 +100,7 @@ jobs:
       - id: annotate
         run: echo "ANNOTATE_RELEASE=${{ matrix.container_app == 'web' && 'yes' || 'no' }}" >> $GITHUB_ENV
 
-      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/deploy@v5.1.0
+      - uses: DFE-Digital/deploy-azure-container-apps-action/.github/actions/deploy@v5.2.0
         with:
           image-name: ${{ needs.set-env.outputs.image-name }}
           annotate-release: ${{ env.ANNOTATE_RELEASE }}
