@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_31_144723) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_08_082822) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -281,9 +281,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_31_144723) do
   end
 
   create_table "notes", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
-    t.text "body"
-    t.uuid "project_id"
-    t.uuid "user_id"
+    t.text "body", null: false
+    t.uuid "project_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "task_identifier"

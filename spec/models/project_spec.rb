@@ -911,9 +911,10 @@ RSpec.describe Project, type: :model do
   describe "#handover_note" do
     it "returns the associated Note with the `handover` task identifier" do
       mock_successful_api_responses(urn: any_args, ukprn: any_args)
-      project = build(:conversion_project)
-      handover_note = create(:note, task_identifier: :handover, body: "Handover body", user: build(:user), project: project)
-      _other_note = create(:note, task_identifier: :stakeholder_kick_off, body: "Another body", user: build(:user), project: project)
+      project = create(:conversion_project)
+      user = create(:user)
+      handover_note = create(:note, task_identifier: :handover, body: "Handover body", user: user, project: project)
+      _other_note = create(:note, task_identifier: :stakeholder_kick_off, body: "Another body", user: user, project: project)
 
       expect(project.handover_note).to eq(handover_note)
     end
