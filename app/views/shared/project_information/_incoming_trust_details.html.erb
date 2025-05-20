@@ -33,6 +33,11 @@
               end
             }
           end
+          summary_list.with_row(classes: "trn") do |row|
+            row.with_key { "New trust reference number (TRN)" }
+            row.with_value { project.new_trust_reference_number }
+            row.with_action(text: "Change", href: conversions_edit_path(project, anchor: "new_trust_reference_number"), visually_hidden_text: "TRN")
+          end
           summary_list.with_row do |row|
             row.with_key { t("project_information.show.incoming_trust_details.rows.address") }
             row.with_value { address_markup(incoming_trust.address) }

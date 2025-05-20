@@ -8,6 +8,7 @@ class EditProjectForm
   attribute :establishment_sharepoint_link, :string
   attribute :incoming_trust_sharepoint_link, :string
   attribute :incoming_trust_ukprn, :integer
+  attribute :new_trust_reference_number, :string
   attribute :advisory_board_date, :date
   attribute :advisory_board_conditions, :string
   attribute :two_requires_improvement, :boolean
