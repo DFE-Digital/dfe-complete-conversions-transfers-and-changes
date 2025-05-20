@@ -42,6 +42,29 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
         expect(subject.update(updated_params)).to be false
         expect(project.incoming_trust_ukprn).to eql 10061021
       end
+
+      context "when there is no #new_trust_reference_number" do
+        before do
+          subject.incoming_trust_ukprn = nil
+          subject.new_trust_reference_number = nil
+          subject.valid?
+        end
+
+        it "enforces the presence of the #incoming_trust_ukprn" do
+          expect(subject.errors).to include(:incoming_trust_ukprn)
+        end
+      end
+
+      context "when there IS a #new_trust_reference_number" do
+        before do
+          subject.incoming_trust_ukprn = nil
+          subject.new_trust_reference_number = "TR54321"
+          subject.valid?
+        end
+        it "does NOT enforce the presence of the #incoming_trust_ukprn" do
+          expect(subject.errors).not_to include(:incoming_trust_ukprn)
+        end
+      end
     end
 
     describe "the advisory board date" do

@@ -18,7 +18,7 @@ class EditProjectForm
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
 
-  validates :incoming_trust_ukprn, presence: true, ukprn: true
+  validates :incoming_trust_ukprn, presence: true, ukprn: true, unless: -> { new_trust_reference_number.present? }
   validates :incoming_trust_ukprn, trust_exists: true, if: -> { incoming_trust_ukprn.present? }
 
   validates :advisory_board_date, presence: true
