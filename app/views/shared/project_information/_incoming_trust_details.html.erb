@@ -37,7 +37,7 @@
             row.with_key { t("project_information.show.incoming_trust_details.rows.address") }
             row.with_value { address_markup(incoming_trust.address) }
           end
-          summary_list.with_row do |row|
+          summary_list.with_row(classes: "sharepoint-link") do |row|
             row.with_key { t("project_information.show.incoming_trust_details.rows.sharepoint_folder") }
             row.with_value { safe_link_to(t("project_information.show.incoming_trust_details.values.sharepoint_folder"), project.incoming_trust_sharepoint_link) }
             if project.type == "Conversion::Project"

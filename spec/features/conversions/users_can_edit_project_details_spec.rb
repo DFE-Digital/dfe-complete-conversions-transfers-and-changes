@@ -89,7 +89,7 @@ RSpec.feature "Users can edit conversion project details" do
   scenario "they can change the sharepoint link for an incoming trust" do
     visit project_information_path(project)
 
-    row = find("#incomingTrustDetails .govuk-summary-list__row:nth-child(6)")
+    row = find("#incomingTrustDetails .sharepoint-link")
 
     within(row) do
       click_link "Change"
