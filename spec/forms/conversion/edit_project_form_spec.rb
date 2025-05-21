@@ -59,10 +59,30 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
         before do
           subject.incoming_trust_ukprn = nil
           subject.new_trust_reference_number = "TR54321"
+          subject.new_trust_name = "A New Trust"
           subject.valid?
         end
+
         it "does NOT enforce the presence of the #incoming_trust_ukprn" do
           expect(subject.errors).not_to include(:incoming_trust_ukprn)
+        end
+
+        context "and that TRN is already in use" do
+          before do
+            FactoryBot.create(
+              :form_a_mat_conversion_project,
+              new_trust_name: "A DIFFERENT TRUST",
+              new_trust_reference_number: "TR54321",
+              local_authority: FactoryBot.create(:local_authority)
+            )
+
+            subject.valid?
+          end
+
+          it "ensures that that the new_trust_name matches" do
+            expect(subject.errors.map(&:full_message).join)
+              .to match(/A trust with this TRN already exists/)
+          end
         end
       end
     end

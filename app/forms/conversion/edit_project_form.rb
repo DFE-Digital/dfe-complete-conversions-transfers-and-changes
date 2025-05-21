@@ -3,6 +3,8 @@ class Conversion::EditProjectForm < EditProjectForm
 
   validates :directive_academy_order, inclusion: {in: [true, false]}
 
+  validates_with FormAMultiAcademyTrustNameValidator
+
   def self.new_from_project(project, user)
     new(
       project: project,
@@ -10,6 +12,7 @@ class Conversion::EditProjectForm < EditProjectForm
       incoming_trust_sharepoint_link: project.incoming_trust_sharepoint_link,
       incoming_trust_ukprn: project.incoming_trust_ukprn,
       new_trust_reference_number: project.new_trust_reference_number,
+      new_trust_name: project.new_trust_name,
       group_id: project.group&.group_identifier,
       advisory_board_date: project.advisory_board_date,
       advisory_board_conditions: project.advisory_board_conditions,
