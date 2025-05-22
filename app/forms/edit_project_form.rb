@@ -8,6 +8,8 @@ class EditProjectForm
   attribute :establishment_sharepoint_link, :string
   attribute :incoming_trust_sharepoint_link, :string
   attribute :incoming_trust_ukprn, :integer
+  attribute :new_trust_reference_number, :string
+  attribute :new_trust_name, :string
   attribute :advisory_board_date, :date
   attribute :advisory_board_conditions, :string
   attribute :two_requires_improvement, :boolean
@@ -18,7 +20,7 @@ class EditProjectForm
   validates :establishment_sharepoint_link, presence: true, sharepoint_url: true
   validates :incoming_trust_sharepoint_link, presence: true, sharepoint_url: true
 
-  validates :incoming_trust_ukprn, presence: true, ukprn: true
+  validates :incoming_trust_ukprn, presence: true, ukprn: true, unless: -> { new_trust_reference_number.present? }
   validates :incoming_trust_ukprn, trust_exists: true, if: -> { incoming_trust_ukprn.present? }
 
   validates :advisory_board_date, presence: true
