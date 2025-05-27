@@ -31,6 +31,9 @@ module "azure_container_apps_hosting" {
   worker_container_command      = local.worker_container_command
   worker_container_max_replicas = local.worker_container_max_replicas
 
+  enable_init_container  = local.enable_init_container
+  init_container_command = local.init_container_command
+
   enable_event_hub                          = local.enable_event_hub
   enable_logstash_consumer                  = local.enable_logstash_consumer
   eventhub_export_log_analytics_table_names = local.eventhub_export_log_analytics_table_names
