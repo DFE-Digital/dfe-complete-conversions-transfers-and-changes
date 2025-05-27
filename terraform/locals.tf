@@ -20,6 +20,8 @@ locals {
   enable_worker_container                         = var.enable_worker_container
   worker_container_command                        = var.worker_container_command
   worker_container_max_replicas                   = var.worker_container_max_replicas
+  enable_init_container                           = var.enable_init_container
+  init_container_command                          = var.init_container_command
   enable_mssql_database                           = var.enable_mssql_database
   mssql_server_admin_password                     = var.mssql_server_admin_password
   mssql_azuread_admin_username                    = var.mssql_azuread_admin_username

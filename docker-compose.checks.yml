@@ -1,7 +1,7 @@
 services:
   test:
     image: complete-app:ci
-    command: bin/rspec
+    command: [ "/bin/bash", "-c", "./init-docker-entrypoint.sh && ./bin/rspec" ]
     ports:
       - "3000:3000"
     depends_on:
