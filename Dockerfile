@@ -191,12 +191,12 @@ ARG TIME_OF_BUILD
 ENV CURRENT_GIT_SHA=${CURRENT_GIT_SHA}
 ENV TIME_OF_BUILD=${TIME_OF_BUILD}
 
-COPY ./docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
+COPY ./docker/*.sh ${APP_HOME}/
 
 # Run and own only the runtime files as a non-root user for security
-RUN chown -R ${UID}:${GID} ${APP_ROOT}
+RUN chmod +x ${APP_HOME}/*-docker-entrypoint.sh && \
+    chown -R ${UID}:${GID} ${APP_ROOT}
+
 USER ${UID}:${GID}
 
 EXPOSE 3000
