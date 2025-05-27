@@ -109,7 +109,7 @@ jobs:
         name: Run RSpec and Simplecov
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
-            run --name complete-app test /bin/bash -c "bin/rails spec"
+            run --name complete-app test /bin/bash -c "./init-docker-entrypoint.sh && ./bin/rails spec"
       -
         name: Grab coverage report from container
         run:
@@ -147,7 +147,7 @@ jobs:
         name: Run RSpec Accessibility checks
         run: |
           docker compose -p complete-app -f docker-compose.checks.yml \
-          run -e NO_COVERAGE=true --rm test /bin/bash -c "bin/rails javascript:build && bin/rspec --tag accessibility"
+          run -e NO_COVERAGE=true --rm test /bin/bash -c "./init-docker-entrypoint.sh && bin/rails javascript:build && bin/rspec --tag accessibility"
       -
         name: Shutdown containers
         run: docker compose -p complete-app down && docker compose -p complete-app rm
