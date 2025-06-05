@@ -4,7 +4,6 @@ class Conversion::Task::ReceiveGrantPaymentCertificateTaskForm < BaseOptionalTas
   attribute :check_certificate, :boolean
   attribute :save_certificate, :boolean
   attribute :date_received, :date
-  attribute :not_applicable
 
   def initialize(tasks_data, user)
     @date_param_errors = ActiveModel::Errors.new(self)
