@@ -1,8 +1,8 @@
 en:
   information_banner:
-    title: Maintenance due 2pm until 6pm on Friday 24 January 2025
+    title: Maintenance due 4pm until 6pm on Monday 9 June 2025
     body:
       html:
-        <p class="govuk-body">We will carry out maintenance on Complete from 2pm to 6pm on Friday 24 January 2025</p>
-        <p class="govuk-body">Project changes may not be saved during this time</p>
-        <p class="govuk-body">Make sure you save your changes before 2pm on Friday</p>
+        <p class="govuk-body">We will carry out essential maintenance on Complete from 4pm until 6pm on Monday 9 June 2025</p>
+        <p class="govuk-body">The service will be unavailable during this time</p>
+        <p class="govuk-body">Make sure you save your changes before 2pm on Monday</p>
