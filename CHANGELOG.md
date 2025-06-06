@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Service support can now manage a user's "capabilities"
+- Service support can edit the TRN of a Form a MAT project
 
 ## [Release-116][release-116]
 
