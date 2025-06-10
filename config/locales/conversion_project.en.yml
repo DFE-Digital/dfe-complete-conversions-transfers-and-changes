@@ -65,6 +65,7 @@ en:
     label:
       conversion_edit_project_form:
         incoming_trust_ukprn: Incoming trust UKPRN (UK Provider Reference Number)
+        new_trust_reference_number: Trust reference number (TRN)
         group_id: Group reference number
       conversion_create_project_form:
         urn: School URN (Unique Reference Number)

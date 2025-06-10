@@ -16,6 +16,8 @@ class Transfer::EditProjectForm < EditProjectForm
 
   validates :outgoing_trust_to_close, inclusion: {in: [true, false], message: I18n.t("errors.transfer_project.attributes.outgoing_trust_to_close.inclusion")}
 
+  validates_with FormAMultiAcademyTrustNameValidator
+
   def self.new_from_project(project, user)
     new(
       project: project,
@@ -24,6 +26,8 @@ class Transfer::EditProjectForm < EditProjectForm
       outgoing_trust_sharepoint_link: project.outgoing_trust_sharepoint_link,
       outgoing_trust_ukprn: project.outgoing_trust_ukprn,
       incoming_trust_ukprn: project.incoming_trust_ukprn,
+      new_trust_reference_number: project.new_trust_reference_number,
+      new_trust_name: project.new_trust_name,
       group_id: project.group&.group_identifier,
       advisory_board_date: project.advisory_board_date,
       advisory_board_conditions: project.advisory_board_conditions,
@@ -55,6 +59,7 @@ class Transfer::EditProjectForm < EditProjectForm
       outgoing_trust_sharepoint_link: outgoing_trust_sharepoint_link,
       outgoing_trust_ukprn: outgoing_trust_ukprn,
       incoming_trust_ukprn: incoming_trust_ukprn,
+      new_trust_reference_number: new_trust_reference_number,
       advisory_board_date: advisory_board_date,
       advisory_board_conditions: advisory_board_conditions,
       two_requires_improvement: two_requires_improvement,

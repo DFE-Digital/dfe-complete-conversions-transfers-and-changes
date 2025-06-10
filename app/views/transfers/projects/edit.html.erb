@@ -11,6 +11,10 @@
         <%= form.govuk_text_field :incoming_trust_ukprn, label: {size: "m", text: t("helpers.label.transfer_project.incoming_trust_ukprn")}, hint: {text: t("helpers.hint.transfer_project.incoming_trust_ukprn").html_safe}, width: 10, autocomplete: :off %>
       </div>
 
+      <div class="govuk-form-group" id="new_trust_reference_number">
+        <%= form.govuk_text_field :new_trust_reference_number, label: {size: "m"}, width: 10, autocomplete: :off %>
+      </div>
+
       <div class="govuk-form-group" id="group-reference-number">
         <%= form.govuk_text_field :group_id, label: {size: "m"}, width: 10, autocomplete: :off %>
       </div>
