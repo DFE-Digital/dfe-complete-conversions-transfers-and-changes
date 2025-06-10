@@ -8,7 +8,7 @@
     "build": "esbuild app/javascript/*.js --bundle --sourcemap --format=esm --platform=browser --target=chrome61,edge79,firefox60,safari11 --outdir=app/assets/builds --public-path=/assets"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.25.0",
     "prettier": "^3.0.2",
     "standard": "^17.1.0"
   },
