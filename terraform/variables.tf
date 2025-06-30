@@ -548,3 +548,15 @@ variable "enable_monitoring_traces" {
   type        = bool
   default     = true
 }
+
+variable "enable_init_container" {
+  description = "Deploy an Init Container. Init containers run before the primary app container and are used to perform initialization tasks such as downloading data or preparing the environment"
+  type        = bool
+  default     = false
+}
+
+variable "init_container_command" {
+  description = "Container command for the Init Container"
+  type        = list(any)
+  default     = []
+}

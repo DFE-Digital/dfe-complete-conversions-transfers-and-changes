@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased][unreleased]
 
+## [Release-117.1][release-117.1]
+
+### Changed
+
+- Hotfix: Updated maintenance banner message
+
+## [Release-117][release-117]
+
 ### Changed
 
 - Service support can now manage a user's "capabilities"
@@ -2485,7 +2493,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   project's team leader
 
 [unreleased]:
-  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-116...HEAD
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-117.1...HEAD
+[release-117.1]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-117...release-117.1
+[release-117]:
+  https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-116...release-117
 [release-116]:
   https://github.com/DFE-Digital/dfe-complete-conversions-transfers-and-changes/compare/release-115...release-116
 [release-115]:
