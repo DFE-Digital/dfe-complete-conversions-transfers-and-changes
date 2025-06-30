@@ -42,6 +42,49 @@ RSpec.describe Conversion::EditProjectForm, type: :model do
         expect(subject.update(updated_params)).to be false
         expect(project.incoming_trust_ukprn).to eql 10061021
       end
+
+      context "when there is no #new_trust_reference_number" do
+        before do
+          subject.incoming_trust_ukprn = nil
+          subject.new_trust_reference_number = nil
+          subject.valid?
+        end
+
+        it "enforces the presence of the #incoming_trust_ukprn" do
+          expect(subject.errors).to include(:incoming_trust_ukprn)
+        end
+      end
+
+      context "when there IS a #new_trust_reference_number" do
+        before do
+          subject.incoming_trust_ukprn = nil
+          subject.new_trust_reference_number = "TR54321"
+          subject.new_trust_name = "A New Trust"
+          subject.valid?
+        end
+
+        it "does NOT enforce the presence of the #incoming_trust_ukprn" do
+          expect(subject.errors).not_to include(:incoming_trust_ukprn)
+        end
+
+        context "and that TRN is already in use" do
+          before do
+            FactoryBot.create(
+              :form_a_mat_conversion_project,
+              new_trust_name: "A DIFFERENT TRUST",
+              new_trust_reference_number: "TR54321",
+              local_authority: FactoryBot.create(:local_authority)
+            )
+
+            subject.valid?
+          end
+
+          it "ensures that that the new_trust_name matches" do
+            expect(subject.errors.map(&:full_message).join)
+              .to match(/A trust with this TRN already exists/)
+          end
+        end
+      end
     end
 
     describe "the advisory board date" do

@@ -48,6 +48,7 @@ en:
         new_trust_name: Trust name
         group_id: Group reference number
       transfer_edit_project_form:
+        new_trust_reference_number: Trust reference number (TRN)
         group_id: Group reference number
     legend:
       transfer_project:
