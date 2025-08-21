@@ -232,17 +232,13 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml logs -f js
 # Rebuild assets manually
 docker compose -f docker-compose.yml -f docker-compose.dev.yml exec js yarn build
 
-# Force polling (if file changes missed on Windows)
-docker compose -f docker-compose.yml -f docker-compose.dev.yml exec js bash -lc "FORCE_POLLING=1 yarn build --watch"
-```
-
-**Enable polling globally:**
-```powershell
-# Set environment variable
+# Enable polling for file changes (Windows)
+# Option A: Set globally and restart watcher service
 $env:FORCE_POLLING = "1"
-
-# Restart services
 docker compose -f docker-compose.yml -f docker-compose.dev.yml restart js
+
+# Option B: One-off watch with polling
+docker compose -f docker-compose.yml -f docker-compose.dev.yml exec js bash -lc "FORCE_POLLING=1 yarn build --watch"
 ```
 
 ### Redis Insight
@@ -284,13 +280,7 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml exec redis redis-
 git config core.autocrlf input
 ```
 
-**File watching issues:**
-If file changes aren't detected:
-```powershell
-# Enable polling for specific services
-$env:FORCE_POLLING = "1"
-docker compose -f docker-compose.yml -f docker-compose.dev.yml restart js
-```
+
 
 **Antivirus exclusions:**
 Add these paths to antivirus exclusions for better performance:
@@ -386,27 +376,48 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml logs --tail=100 -
 docker compose -f docker-compose.yml -f docker-compose.dev.yml exec app bash
 ```
 
-### Alternative: Dev Containers
+### Alternative: Dev Containers (VS Code / Cursor)
 
-For a fully integrated development experience, this project includes `.devcontainer/` configuration.
+Use the provided Dev Container to develop entirely inside Docker while editing in VS Code/Cursor. This reuses the existing Compose setup.
+
+**What it uses:**
+- `.devcontainer/devcontainer.json` references `docker-compose.yml` and `docker-compose.dev.yml`
+- Targets the `app` service and also starts `js`, `sidekiq`, `db`, `redis`, and `redis-insight`
+- Workspace inside container: `/srv/app`
+- Remote user: `rails`
+- Forwarded ports: `3000` (Rails), `5540` (Redis Insight), `6379` (Redis), `1433` (SQL Server)
 
 **Quick start:**
-1. Open project in VS Code
-2. Install "Dev Containers" extension
+1. Install the "Dev Containers" extension
+2. Open the project folder
 3. Press `Ctrl+Shift+P` → "Dev Containers: Reopen in Container"
-4. Wait for container build (5-10 minutes first time)
+4. Wait for build on first run (5–10 minutes)
 
-**Benefits:**
-- Pre-configured environment with all tools
-- Integrated terminal, debugging, and extensions
-- No local Docker Compose commands needed
-- Consistent across all developers
+After it starts, the Rails app is available at `http://localhost:3000` and Redis Insight at `http://localhost:5540`.
 
-**Choose your workflow:**
-- **Docker Compose** (this guide): More control, manual setup
-- **Dev Containers**: Automated, VS Code integrated
+**Run commands inside the Dev Container:**
+Open a terminal in VS Code (inside the container) and run, for example:
+```powershell
+# Rails console
+bin/rails console
 
-See [`doc/devcontainers.md`](./devcontainers.md) for detailed Dev Container instructions.
+# Run migrations
+bin/rails db:migrate
+
+# Run tests
+bin/rspec
+```
+
+**Attach to an already-running container (optional):**
+If your Compose stack is already up and you wish to avoid rebuilding:
+1. `Ctrl+Shift+P` → "Dev Containers: Attach to Running Container..."
+2. Select `dfe-complete-app-1`
+3. The workspace root inside will be `/srv/app`
+
+**Notes and tips:**
+- Dependency volumes (`bundle`, `node_modules`, `tmp`, `log`) are managed by Compose and persist between sessions
+- To rebuild images after dependency changes, use the standard Compose commands from your host or the container terminal
+- If file changes aren’t detected on Windows, set `FORCE_POLLING=1` and restart the `js` service
 
 ---
 
