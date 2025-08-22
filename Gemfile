@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.4.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1"
+gem 'rails', '~> 7.1', '>= 7.1.6' # Example: use the latest compatible version
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -109,6 +109,10 @@ group :development do
   # gem "spring"
 
   gem "htmlbeautifier"
+  
+  # Ruby LSP for better IDE support
+  gem "ruby-lsp", require: false
+  gem "ruby-lsp-rails", require: false
 end
 
 gem "jsbundling-rails", "~> 1.3"
