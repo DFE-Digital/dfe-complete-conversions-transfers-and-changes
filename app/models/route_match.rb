@@ -7,6 +7,11 @@ class RouteMatch
   attr_reader :route
 
   def match?
-    @matching_patterns.any? { |pattern| route.match?(pattern) }
+    # Flatten and compact the patterns to ensure we have a simple array of strings
+    flattened_patterns = @matching_patterns.flatten.compact.select { |p| p.is_a?(String) }
+    
+    flattened_patterns.any? do |pattern|
+      route.match?(Regexp.new(Regexp.escape(pattern)))
+    end
   end
 end
