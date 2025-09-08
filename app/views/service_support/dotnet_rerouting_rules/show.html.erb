@@ -10,6 +10,17 @@
     <p class="govuk-body">
       The following patterns are defined for rerouting to the .NET version of the service:
     </p>
+    
+    <% if @patterns.empty? %>
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          No patterns found. Check the logs for debugging information.
+        </strong>
+      </div>
+    <% end %>
+    
     <table class="govuk-table rerouting-patterns">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
