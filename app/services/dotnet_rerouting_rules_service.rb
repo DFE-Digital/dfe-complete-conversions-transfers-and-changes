@@ -58,7 +58,7 @@ class DotnetReroutingRulesService
     dotnet_rules = rules.select do |rule|
       rule_name = rule.dig('name') || ''
       Rails.logger.info "Checking rule: #{rule_name}"
-      rule_name.to_s.downcase.include?('reroutingdotnet')
+      rule_name.to_s.downcase.include?('completedotnetreroute')
     end
     
     Rails.logger.info "Found #{dotnet_rules.length} .NET rerouting rules"
