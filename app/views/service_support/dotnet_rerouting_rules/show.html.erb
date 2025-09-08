@@ -16,8 +16,14 @@
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
           <span class="govuk-warning-text__assistive">Warning</span>
-          No patterns found. Check the logs for debugging information.
+          No patterns found. This is likely due to insufficient Azure permissions. 
+          Check that the service principal has 'Microsoft.Cdn/profiles/ruleSets/rules/read' permission.
         </strong>
+      </div>
+    <% elsif Rails.env.development? && @patterns.include?("groups/*") %>
+      <div class="govuk-inset-text">
+        <strong>Development Mode:</strong> Using sample patterns for testing. 
+        In production, patterns are fetched from Azure Front Door.
       </div>
     <% end %>
     

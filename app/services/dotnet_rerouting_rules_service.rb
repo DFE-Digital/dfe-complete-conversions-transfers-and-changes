@@ -9,7 +9,15 @@ class DotnetReroutingRulesService
       patterns
     rescue Api::Azure::DotnetReroutingRulesClient::Error => e
       Rails.logger.error "Failed to fetch Azure Front Door rules: #{e.message}"
-      []
+      Rails.logger.error "This is likely due to insufficient permissions. Check Azure RBAC settings."
+      
+      # Fallback for development - return sample patterns
+      if Rails.env.development?
+        Rails.logger.info "Using development fallback patterns"
+        ["groups/*", "projects/conversions/", "dist", "signin-oidc", "netassets"]
+      else
+        []
+      end
     rescue Api::Azure::DotnetReroutingRulesClient::AuthError => e
       Rails.logger.error "Authentication failed for Azure Front Door: #{e.message}"
       []

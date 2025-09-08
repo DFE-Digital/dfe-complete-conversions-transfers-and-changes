@@ -52,7 +52,7 @@ class Api::Azure::DotnetReroutingRulesClient
       "providers/Microsoft.Cdn",
       "profiles/#{ENV.fetch("AZURE_FRONT_DOOR_PROFILE_NAME")}",
       "ruleSets/#{ENV.fetch("AZURE_FRONT_DOOR_RULE_SET_NAME")}",
-      "rules?api-version=2024-02-01"
+      "rules?api-version=2023-05-01"
     ].join("/")
   end
 
