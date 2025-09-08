@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.4.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1"
+gem 'rails', '~> 7.1', '>= 7.1.6' # Example: use the latest compatible version
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -46,7 +46,8 @@ gem "govuk_design_system_formbuilder", "~> 4.1", ">= 4.1.1"
 # Use govuk_markdown to transform Markdown into GOV.UK Frontend-compliant HTML
 gem "govuk_markdown", "~>2"
 
-gem "faraday"
+gem "faraday", "~> 2.0"
+gem "faraday-retry", "~> 2.0"
 
 # postcode validator
 gem "uk_postcode", "~> 2.1.0"
@@ -109,6 +110,10 @@ group :development do
   # gem "spring"
 
   gem "htmlbeautifier"
+  
+  # Ruby LSP for better IDE support
+  gem "ruby-lsp", require: false
+  gem "ruby-lsp-rails", require: false
 end
 
 gem "jsbundling-rails", "~> 1.3"
