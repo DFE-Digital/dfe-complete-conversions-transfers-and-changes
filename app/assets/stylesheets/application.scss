@@ -118,4 +118,6 @@ a.dfe-header__link--service, a.dfe-header__navigation-link {
 
 .rerouting-match {
   color: govuk-colour("red");
+  background-color: govuk-colour("red", $legacy: "lighten-20");
+  font-weight: bold;
 }
