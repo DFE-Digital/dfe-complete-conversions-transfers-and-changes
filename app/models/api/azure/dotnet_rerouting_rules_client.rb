@@ -85,11 +85,13 @@ class Api::Azure::DotnetReroutingRulesClient
   end
 
   private def refresh_token
-    @token = if client_credentials_available?
-               client_credentials_token
-             else
-               managed_identity_token
-             end
+    # @token = if client_credentials_available?
+    #            client_credentials_token
+    #          else
+    #            managed_identity_token
+    #          end
+    @token = managed_identity_token
+
     @token_expires_at = Time.now + 3600 # Assume 1 hour expiry
   end
 
