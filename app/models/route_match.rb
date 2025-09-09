@@ -23,11 +23,8 @@ class RouteMatch
   def highlighted_route
     return route unless match?
     
-    highlighted = route.dup
-    matched_segments.each do |segment|
-      highlighted.gsub!(segment, "<span class='pattern-match'>#{segment}</span>")
-    end
-    highlighted.html_safe
+    # Highlight the entire route in red when it matches
+    "<span class='pattern-match'>#{route}</span>".html_safe
   end
 
   private
@@ -65,22 +62,31 @@ class RouteMatch
   end
 
   def glob_match?(path, pattern)
-    # Convert glob pattern to regex
-    # * matches any characters except /
-    # ** matches any characters including /
-    # ? matches single character except /
-    regex_pattern = pattern
-      .gsub(/\*\*/, '.*')  # ** matches any characters including /
-      .gsub(/\*/, '[^/]*') # * matches any characters except /
-      .gsub(/\?/, '[^/]')  # ? matches single character except /
-    
-    # Add anchors to match the entire path
-    regex_pattern = "\\A#{regex_pattern}\\z"
-    
-    Rails.logger.debug "Converting pattern '#{pattern}' to regex: '#{regex_pattern}'"
-    
-    result = path.match?(Regexp.new(regex_pattern))
-    Rails.logger.debug "Regex '#{regex_pattern}' matches path '#{path}': #{result}"
-    result
+    # Handle different pattern types
+    if pattern.include?('*') || pattern.include?('?')
+      # Convert glob pattern to regex
+      # * matches any characters except /
+      # ** matches any characters including /
+      # ? matches single character except /
+      regex_pattern = pattern
+        .gsub(/\*\*/, '.*')  # ** matches any characters including /
+        .gsub(/\*/, '[^/]*') # * matches any characters except /
+        .gsub(/\?/, '[^/]')  # ? matches single character except /
+      
+      # Add anchors to match the entire path
+      regex_pattern = "\\A#{regex_pattern}\\z"
+      
+      Rails.logger.debug "Converting pattern '#{pattern}' to regex: '#{regex_pattern}'"
+      
+      result = path.match?(Regexp.new(regex_pattern))
+      Rails.logger.debug "Regex '#{regex_pattern}' matches path '#{path}': #{result}"
+      result
+    else
+      # For exact patterns, check if the path starts with the pattern
+      # This matches Azure Front Door's "BeginsWith" behavior
+      result = path.start_with?(pattern)
+      Rails.logger.debug "Pattern '#{pattern}' begins with path '#{path}': #{result}"
+      result
+    end
   end
 end
