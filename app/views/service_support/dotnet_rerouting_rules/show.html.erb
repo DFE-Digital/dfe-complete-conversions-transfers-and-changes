@@ -54,7 +54,18 @@
       <tbody class="govuk-table__body">
         <% @routes.each do |route| %>
           <tr class="govuk-table__row app-route">
-            <td class="govuk-table__cell"><%= route.highlighted_route %></td>
+            <td class="govuk-table__cell">
+              <%= route.highlighted_route %>
+              <% if Rails.env.development? %>
+                <small style="color: #666;">
+                  <% if route.match? %>
+                    (matches: <%= route.matching_pattern %>)
+                  <% else %>
+                    (no match)
+                  <% end %>
+                </small>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
