@@ -17,7 +17,6 @@
         <strong class="govuk-warning-text__text">
           <span class="govuk-warning-text__assistive">Warning</span>
           No patterns found. This is likely due to insufficient Azure permissions. 
-          Check that the service principal has 'Microsoft.Cdn/profiles/ruleSets/rules/read' permission.
         </strong>
       </div>
     <% elsif Rails.env.development? && @patterns.include?("groups/*") %>
@@ -31,12 +30,27 @@
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Pattern</th>
+          <th scope="col" class="govuk-table__header">Type</th>
+          <th scope="col" class="govuk-table__header">Matches</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
         <% @patterns.each do |pattern| %>
+          <% matching_routes = @routes.select { |route| route.matching_pattern == pattern } %>
           <tr class="govuk-table__row rerouting-pattern">
-            <td class="govuk-table__cell"><%= pattern %></td>
+            <td class="govuk-table__cell">
+              <code class="pattern-code"><%= pattern %></code>
+            </td>
+            <td class="govuk-table__cell">
+              <span class="govuk-tag <%= pattern.include?('*') || pattern.include?('?') ? 'govuk-tag--blue' : 'govuk-tag--green' %>">
+                <%= pattern.include?('*') || pattern.include?('?') ? 'Wildcard' : 'Exact' %>
+              </span>
+            </td>
+            <td class="govuk-table__cell">
+              <span class="govuk-tag govuk-tag--grey">
+                <%= matching_routes.count %> route<%= 's' if matching_routes.count != 1 %>
+              </span>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -49,12 +63,34 @@
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Route</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header">Matched Pattern</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
         <% @routes.each do |route| %>
           <tr class="govuk-table__row app-route <%= route.match? ? 'rerouting-match' : '' %>">
-            <td class="govuk-table__cell"><%= route.route %></td>
+            <td class="govuk-table__cell">
+              <% if route.match? %>
+                <%= route.highlighted_route %>
+              <% else %>
+                <code><%= route.route %></code>
+              <% end %>
+            </td>
+            <td class="govuk-table__cell">
+              <% if route.match? %>
+                <span class="govuk-tag govuk-tag--red">Rerouted</span>
+              <% else %>
+                <span class="govuk-tag govuk-tag--grey">Normal</span>
+              <% end %>
+            </td>
+            <td class="govuk-table__cell">
+              <% if route.match? %>
+                <code class="matched-pattern"><%= route.matching_pattern %></code>
+              <% else %>
+                <span class="govuk-body-s">—</span>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
