@@ -122,42 +122,11 @@ a.dfe-header__link--service, a.dfe-header__navigation-link {
   font-weight: bold;
 }
 
-// Pattern matching highlighting styles
+// Pattern matching highlighting styles - red highlighting for matched segments
 .pattern-match {
   background-color: govuk-colour("red");
   color: white;
   padding: 2px 4px;
   border-radius: 3px;
   font-weight: bold;
-  font-family: monospace;
-}
-
-.pattern-code {
-  background-color: govuk-colour("light-grey");
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-family: monospace;
-  font-size: 0.9em;
-}
-
-.matched-pattern {
-  background-color: govuk-colour("light-blue");
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-family: monospace;
-  font-size: 0.9em;
-  color: govuk-colour("dark-blue");
-}
-
-// Enhanced table styling for rerouting rules
-.rerouting-patterns,
-.app-routes {
-  .govuk-table__cell {
-    vertical-align: middle;
-  }
-  
-  .rerouting-match {
-    background-color: govuk-colour("red", $legacy: "lighten-20");
-    border-left: 4px solid govuk-colour("red");
-  }
 }
