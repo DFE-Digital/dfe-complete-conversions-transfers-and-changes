@@ -45,10 +45,14 @@ class RouteMatch
   private
 
   def glob_match?(path, pattern)
-    # Check if pattern contains wildcards
-    has_wildcards = pattern.include?('*') || pattern.include?('?')
-    
-    if has_wildcards
+    # Check if pattern is a regex (starts with ^)
+    if pattern.start_with?('^')
+      # This is a regex pattern - use it directly
+      Rails.logger.debug "Using regex pattern '#{pattern}' for path '#{path}'"
+      result = path.match?(Regexp.new(pattern))
+      Rails.logger.debug "Regex '#{pattern}' matches path '#{path}': #{result}"
+      result
+    elsif pattern.include?('*') || pattern.include?('?')
       # Convert glob pattern to regex for wildcard patterns
       # * matches any characters except /
       # ** matches any characters including /
@@ -66,11 +70,17 @@ class RouteMatch
       result = path.match?(Regexp.new(regex_pattern))
       Rails.logger.debug "Regex '#{regex_pattern}' matches path '#{path}': #{result}"
       result
+    elsif pattern.end_with?('/')
+      # Pattern ends with / - this is a BeginsWith operator pattern
+      # e.g., 'projects/conversions/' matches '/projects/conversions/anything'
+      result = path.start_with?("/#{pattern}") || path.start_with?(pattern)
+      Rails.logger.debug "BeginsWith pattern '#{pattern}' matches path '#{path}': #{result}"
+      result
     else
-      # For exact patterns, use "begins with" matching
-      # e.g., 'projects/all/export' matches '/projects/all/export', '/projects/all/export/123', etc.
-      result = path.start_with?("/#{pattern}") || path == "/#{pattern}" || path == pattern
-      Rails.logger.debug "Exact pattern '#{pattern}' begins-with matches path '#{path}': #{result}"
+      # For exact patterns, match exactly only
+      # e.g., 'projects/all/export' matches only '/projects/all/export' exactly
+      result = path == "/#{pattern}" || path == pattern
+      Rails.logger.debug "Exact pattern '#{pattern}' matches path '#{path}' exactly: #{result}"
       result
     end
   end
