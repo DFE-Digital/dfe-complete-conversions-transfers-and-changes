@@ -52,35 +52,41 @@ class RouteMatch
       result = path.match?(Regexp.new(pattern))
       Rails.logger.debug "Regex '#{pattern}' matches path '#{path}': #{result}"
       result
-    elsif pattern.include?('*') || pattern.include?('?')
+    elsif pattern.include?('*')
+      # This is a RegEx operator pattern with wildcards
       # Convert glob pattern to regex for wildcard patterns
       # * matches any characters except /
       # ** matches any characters including /
-      # ? matches single character except /
       regex_pattern = pattern
         .gsub(/\*\*/, '.*')  # ** matches any characters including /
         .gsub(/\*/, '[^/]*') # * matches any characters except /
-        .gsub(/\?/, '[^/]')  # ? matches single character except /
       
       # Add anchors to match the entire path
       regex_pattern = "\\A#{regex_pattern}\\z"
       
-      Rails.logger.debug "Converting wildcard pattern '#{pattern}' to regex: '#{regex_pattern}'"
+      Rails.logger.debug "Converting RegEx pattern '#{pattern}' to regex: '#{regex_pattern}'"
       
       result = path.match?(Regexp.new(regex_pattern))
       Rails.logger.debug "Regex '#{regex_pattern}' matches path '#{path}': #{result}"
       result
-    elsif pattern.end_with?('/')
-      # Pattern ends with / - this is a BeginsWith operator pattern
-      # e.g., 'projects/conversions/' matches '/projects/conversions/anything'
-      result = path.start_with?("/#{pattern}") || path.start_with?(pattern)
+    elsif pattern.end_with?('/*')
+      # Pattern ends with /* - this is a BeginsWith operator pattern
+      # e.g., '/projects/team/*' matches '/projects/team/anything'
+      base_pattern = pattern.chomp('/*')
+      result = path.start_with?(base_pattern) && path != base_pattern
+      Rails.logger.debug "BeginsWith pattern '#{pattern}' (base: '#{base_pattern}') matches path '#{path}': #{result}"
+      result
+    elsif pattern == '/groups' || pattern == '/search' || pattern == '/cookies' || pattern == '/accessibility' || pattern == '/privacy' || pattern == '/access-denied'
+      # These are BeginsWith patterns that don't end with /*
+      # They match the exact path and any sub-paths
+      result = path == pattern || path.start_with?("#{pattern}/")
       Rails.logger.debug "BeginsWith pattern '#{pattern}' matches path '#{path}': #{result}"
       result
     else
-      # For exact patterns, match exactly only
-      # e.g., 'projects/all/export' matches only '/projects/all/export' exactly
-      result = path == "/#{pattern}" || path == pattern
-      Rails.logger.debug "Exact pattern '#{pattern}' matches path '#{path}' exactly: #{result}"
+      # For Equal operator patterns, match exactly only
+      # e.g., '/projects/all/export' matches only '/projects/all/export' exactly
+      result = path == pattern
+      Rails.logger.debug "Equal pattern '#{pattern}' matches path '#{path}' exactly: #{result}"
       result
     end
   end
