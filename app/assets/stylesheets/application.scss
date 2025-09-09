@@ -121,3 +121,11 @@ a.dfe-header__link--service, a.dfe-header__navigation-link {
   background-color: govuk-colour("red", $legacy: "lighten-20");
   font-weight: bold;
 }
+
+.pattern-match {
+  background-color: govuk-colour("red");
+  color: govuk-colour("white");
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: bold;
+}

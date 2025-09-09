@@ -53,8 +53,8 @@
       </thead>
       <tbody class="govuk-table__body">
         <% @routes.each do |route| %>
-          <tr class="govuk-table__row app-route <%= route.match? ? 'rerouting-match' : '' %>">
-            <td class="govuk-table__cell"><%= route.route %></td>
+          <tr class="govuk-table__row app-route">
+            <td class="govuk-table__cell"><%= route.highlighted_route %></td>
           </tr>
         <% end %>
       </tbody>
