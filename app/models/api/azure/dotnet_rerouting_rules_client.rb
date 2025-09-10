@@ -85,11 +85,9 @@ class Api::Azure::DotnetReroutingRulesClient
   end
 
   private def refresh_token
-    @token = if client_credentials_available?
-               client_credentials_token
-             else
-               managed_identity_token
-             end
+    @token = managed_identity_token
+    # Uncomment below to enable client credentials flow for local development
+    # @token = client_credentials_token
 
     @token_expires_at = Time.now + 3600 # Assume 1 hour expiry
   end
@@ -121,13 +119,7 @@ class Api::Azure::DotnetReroutingRulesClient
 
     token_response.fetch("access_token")
   end
-
-  private def client_credentials_available?
-    ENV["AZURE_TENANT_ID"].present? &&
-      ENV["AZURE_APPLICATION_CLIENT_ID"].present? &&
-      ENV["AZURE_APPLICATION_CLIENT_SECRET"].present?
-  end
-
+  
   private def client_credentials_token
     token_url = "https://login.microsoftonline.com/#{ENV.fetch("AZURE_TENANT_ID")}/oauth2/v2.0/token"
 
