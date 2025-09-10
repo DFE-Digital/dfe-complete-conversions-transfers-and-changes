@@ -39,12 +39,7 @@ services:
     depends_on:
       - db
       - redis
-    command: >-
-      bash -lc "\
-        until ruby -e 'begin; require \"tiny_tds\"; TinyTds::Client.new username: ENV[\"DATABASE_USER\"], password: ENV[\"DATABASE_PASSWORD\"], host: ENV[\"DATABASE_HOST\"], port: 1433, database: \"master\"; rescue; exit 1; end' >/dev/null 2>&1; do \
-          echo Waiting for SQL Server...; sleep 2; \
-        done; \
-        rm -f tmp/pids/server.pid && bin/rails db:prepare && bin/rails server -b 0.0.0.0 -p 3000"
+    command: ["bash", "-lc", "until ruby -e 'begin; require \"tiny_tds\"; TinyTds::Client.new username: ENV[\"DATABASE_USER\"], password: ENV[\"DATABASE_PASSWORD\"], host: ENV[\"DATABASE_HOST\"], port: 1433, database: \"master\"; rescue; exit 1; end' >/dev/null 2>&1; do echo Waiting for SQL Server...; sleep 2; done; rm -f tmp/pids/server.pid && bin/rails db:prepare && bin/rails server -b 0.0.0.0 -p 3000"]
     tty: true
     stdin_open: true
     networks:
@@ -81,11 +76,7 @@ services:
       - node_modules:/srv/app/node_modules
       - tmp:/srv/app/tmp
       - log:/srv/app/log
-    command:
-      - bash
-      - -lc
-      - >-
-        until ruby -e 'begin; require "tiny_tds"; TinyTds::Client.new username: ENV["DATABASE_USER"], password: ENV["DATABASE_PASSWORD"], host: ENV["DATABASE_HOST"], port: 1433, database: "master"; rescue; exit 1; end' >/dev/null 2>&1; do echo Waiting for SQL Server...; sleep 2; done; bundle exec sidekiq
+    command: ["bash", "-lc", "until ruby -e 'begin; require \"tiny_tds\"; TinyTds::Client.new username: ENV[\"DATABASE_USER\"], password: ENV[\"DATABASE_PASSWORD\"], host: ENV[\"DATABASE_HOST\"], port: 1433, database: \"master\"; rescue; exit 1; end' >/dev/null 2>&1; do echo Waiting for SQL Server...; sleep 2; done; bundle exec sidekiq"]
     tty: true
     stdin_open: true
     networks:
