@@ -46,13 +46,23 @@ class RouteMatch
   private
 
   def glob_match?(path, pattern)
+    # Normalize path to always start with /
+    normalized_path = path.start_with?('/') ? path : "/#{path}"
+    
     # Check if pattern is a regex (starts with ^)
     if pattern.start_with?('^')
       # This is a regex pattern - use it directly
-      Rails.logger.debug "Using regex pattern '#{pattern}' for path '#{path}'"
-      result = path.match?(Regexp.new(pattern))
-      Rails.logger.debug "Regex '#{pattern}' matches path '#{path}': #{result}"
-      result
+      # For regex patterns, we test against the path without the leading /
+      test_path = normalized_path.sub(/^\//, '')
+      Rails.logger.debug "Using regex pattern '#{pattern}' for path '#{test_path}'"
+      begin
+        result = test_path.match?(Regexp.new(pattern))
+        Rails.logger.debug "Regex '#{pattern}' matches path '#{test_path}': #{result}"
+        result
+      rescue RegexpError => e
+        Rails.logger.error "Invalid regex pattern '#{pattern}': #{e.message}"
+        false
+      end
     elsif pattern.include?('*')
       # This is a wildcard pattern - convert to regex
       # * matches any characters except /
@@ -66,27 +76,33 @@ class RouteMatch
       
       Rails.logger.debug "Converting wildcard pattern '#{pattern}' to regex: '#{regex_pattern}'"
       
-      result = path.match?(Regexp.new(regex_pattern))
-      Rails.logger.debug "Regex '#{regex_pattern}' matches path '#{path}': #{result}"
-      result
+      begin
+        result = normalized_path.sub(/^\//, '').match?(Regexp.new(regex_pattern))
+        Rails.logger.debug "Regex '#{regex_pattern}' matches path '#{normalized_path}': #{result}"
+        result
+      rescue RegexpError => e
+        Rails.logger.error "Invalid wildcard pattern '#{pattern}': #{e.message}"
+        false
+      end
     elsif pattern.end_with?('/')
       # Pattern ends with / - this is a BeginsWith operator pattern
       # e.g., 'projects/conversions/' matches '/projects/conversions/anything'
-      result = path.start_with?("/#{pattern}") || path.start_with?(pattern)
-      Rails.logger.debug "BeginsWith pattern '#{pattern}' matches path '#{path}': #{result}"
-      result
-    elsif pattern.end_with?('/*')
-      # Pattern ends with /* - this is a BeginsWith operator pattern
-      # e.g., 'groups/*' matches '/groups/anything'
-      base_pattern = pattern.chomp('/*')
-      result = path.start_with?("/#{base_pattern}") || path.start_with?(base_pattern)
-      Rails.logger.debug "BeginsWith pattern '#{pattern}' (base: '#{base_pattern}') matches path '#{path}': #{result}"
+      normalized_pattern = "/#{pattern}"
+      result = normalized_path.start_with?(normalized_pattern)
+      Rails.logger.debug "BeginsWith pattern '#{pattern}' matches path '#{normalized_path}': #{result}"
       result
     else
-      # For exact patterns, match exactly only
-      # e.g., 'dist' matches only '/dist' exactly
-      result = path == "/#{pattern}" || path == pattern
-      Rails.logger.debug "Exact pattern '#{pattern}' matches path '#{path}' exactly: #{result}"
+      # Default: treat as "begins with" for most patterns (like Azure CDN BeginsWith operator)
+      # This handles patterns like 'projects/team', 'dist', 'signin-oidc', etc.
+      # They should match any route that begins with that pattern
+      normalized_pattern = "/#{pattern}"
+      
+      # Check both exact match and begins with
+      exact_match = normalized_path == normalized_pattern
+      begins_with_match = normalized_path.start_with?(normalized_pattern + '/') || normalized_path.start_with?(normalized_pattern + '?')
+      
+      result = exact_match || begins_with_match
+      Rails.logger.debug "Pattern '#{pattern}' matches path '#{normalized_path}': #{result} (exact: #{exact_match}, begins_with: #{begins_with_match})"
       result
     end
   end

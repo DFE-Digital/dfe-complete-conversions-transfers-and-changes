@@ -14,7 +14,35 @@ class DotnetReroutingRulesService
       # Fallback for development - return sample patterns
       if Rails.env.development?
         Rails.logger.info "Using development fallback patterns"
-        ["groups/*", "projects/conversions/", "dist", "signin-oidc", "netassets"]
+        [
+          "projects/team",
+          "projects/yours",
+          "dist",
+          "signin-oidc",
+          "netassets",
+          "accessibility",
+          "cookies",
+          "access-denied",
+          "privacy",
+          "^search(?:/user)?(?:\\?[^/#]*)?$",
+          "projects/all/by-month",
+          "projects/all/completed",
+          "projects/all/in-progress",
+          "projects/all/local-authorities",
+          "projects/all/regions",
+          "projects/all/trusts",
+          "projects/all/users",
+          "projects/all/statistics",
+          "projects/all/handover",
+          "projects/service-support/with-academy-urn",
+          "projects/service-support/without-academy-urn",
+          "service-support/local-authorities",
+          "projects/all/export",
+          "projects/all/reports",
+          "groups",
+          "^projects/[^/]+/academy-urn$",
+          "^projects/[^/]+/(?:(?:internal-contacts|notes)(?:/.*)?|tasks)$"
+        ]
       else
         []
       end

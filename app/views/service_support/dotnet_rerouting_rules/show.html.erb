@@ -20,7 +20,7 @@
           Check that the service principal has 'Microsoft.Cdn/profiles/ruleSets/rules/read' permission.
         </strong>
       </div>
-    <% elsif Rails.env.development? && @patterns.include?("groups/*") %>
+    <% elsif Rails.env.development? && @patterns.include?("projects/team") %>
       <div class="govuk-inset-text">
         <strong>Development Mode:</strong> Using sample patterns for testing. 
         In production, patterns are fetched from Azure Front Door.
