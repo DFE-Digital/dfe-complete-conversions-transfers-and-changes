@@ -6,5 +6,10 @@ class ServiceSupport::DotnetReroutingRulesController < ApplicationController
 
     @patterns = DotnetReroutingRulesService.new.fetch
     @routes = RoutesPatternMatcherService.new(patterns: @patterns).call
+    
+    # Debug information
+    Rails.logger.info "Controller: Found #{@patterns.length} patterns: #{@patterns.inspect}"
+    Rails.logger.info "Controller: Found #{@routes.length} routes"
+    Rails.logger.info "Controller: Routes with matches: #{@routes.select(&:match?).map(&:route).inspect}"
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_08_082822) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_05_122750) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -166,6 +166,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_08_082822) do
     t.boolean "commercial_transfer_agreement_questions_checked", default: false
     t.boolean "commercial_transfer_agreement_saved", default: false
     t.boolean "receive_grant_payment_certificate_not_applicable"
+    t.boolean "declaration_of_expenditure_certificate_not_applicable", default: false
+    t.date "declaration_of_expenditure_certificate_date_received"
+    t.boolean "declaration_of_expenditure_certificate_correct", default: false
+    t.boolean "declaration_of_expenditure_certificate_saved", default: false
   end
 
   create_table "dao_revocation_reasons", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|

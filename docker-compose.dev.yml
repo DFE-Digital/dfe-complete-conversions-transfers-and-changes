@@ -1,0 +1,112 @@
+## Development compose overlay
+#
+# Use with:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+#
+# Windows performance considerations:
+#  - Bind mount only source code
+#  - Use named volumes for bundle, node_modules, tmp, log (heavy I/O)
+#  - Avoid recompiling gems unnecessarily
+
+services:
+  app:
+    build:
+      context: .
+      target: application
+      args:
+        RAILS_ENV: development
+    image: complete-app:dev
+    environment:
+      RAILS_ENV: development
+      NODE_ENV: development
+      DATABASE_HOST: db
+      DATABASE_USER: ${DATABASE_USER:-sa}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-Str0ngP@ss!}
+      REDIS_URL: redis://redis:6379
+      RUBY_DEBUG_OPEN: ${RUBY_DEBUG_OPEN:-false}
+      FORCE_POLLING: ${FORCE_POLLING:-0}
+    env_file:
+      - .env.development
+      - .env.development.local
+    volumes:
+      - .:/srv/app:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/srv/app/node_modules
+      - tmp:/srv/app/tmp
+      - log:/srv/app/log
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    command: ["bash", "-lc", "until ruby -e 'begin; require \"tiny_tds\"; TinyTds::Client.new username: ENV[\"DATABASE_USER\"], password: ENV[\"DATABASE_PASSWORD\"], host: ENV[\"DATABASE_HOST\"], port: 1433, database: \"master\"; rescue; exit 1; end' >/dev/null 2>&1; do echo Waiting for SQL Server...; sleep 2; done; rm -f tmp/pids/server.pid && bin/rails db:prepare && bin/rails server -b 0.0.0.0 -p 3000"]
+    tty: true
+    stdin_open: true
+    networks:
+      - dev
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:3000/healthcheck || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  sidekiq:
+    image: complete-app:dev
+    build:
+      context: .
+      target: application
+      args:
+        RAILS_ENV: development
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: db
+      DATABASE_USER: ${DATABASE_USER:-sa}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-Str0ngP@ss!}
+      REDIS_URL: redis://redis:6379
+    env_file:
+      - .env.development
+      - .env.development.local
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/srv/app:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/srv/app/node_modules
+      - tmp:/srv/app/tmp
+      - log:/srv/app/log
+    command: ["bash", "-lc", "until ruby -e 'begin; require \"tiny_tds\"; TinyTds::Client.new username: ENV[\"DATABASE_USER\"], password: ENV[\"DATABASE_PASSWORD\"], host: ENV[\"DATABASE_HOST\"], port: 1433, database: \"master\"; rescue; exit 1; end' >/dev/null 2>&1; do echo Waiting for SQL Server...; sleep 2; done; bundle exec sidekiq"]
+    tty: true
+    stdin_open: true
+    networks:
+      - dev
+
+  js:
+    image: complete-app:dev
+    build:
+      context: .
+      target: application
+      args:
+        RAILS_ENV: development
+    environment:
+      RAILS_ENV: development
+      NODE_ENV: development
+      FORCE_POLLING: ${FORCE_POLLING:-0}
+    depends_on:
+      - app
+    volumes:
+      - .:/srv/app:cached
+      - node_modules:/srv/app/node_modules
+      - tmp:/srv/app/tmp
+    command: bash -lc "yarn build --watch"
+    tty: true
+    stdin_open: true
+    networks:
+      - dev
+
+volumes:
+  bundle:
+  node_modules:
+  tmp:
+  log:

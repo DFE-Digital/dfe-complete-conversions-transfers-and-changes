@@ -1,143 +1,29 @@
-{ 
-  "name": "DfE Complete",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspace",
-  "remoteEnv": {
-    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
-  },
-  "forwardPorts": [
-    3000, 
-    1433, 
-    6379
+{
+  "name": "DFE Complete Rails (compose)",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "../docker-compose.dev.yml"
   ],
-  "postCreateCommand": "/bin/bash .devcontainer/post_create.sh",
-  "remoteUser": "complete",
-  
+  "service": "app",
+  "runServices": ["app", "js", "sidekiq", "db", "redis", "redis-insight"],
+  "workspaceFolder": "/srv/app",
+  "remoteUser": "rails",
+  "overrideCommand": false,
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [3000, 5540, 6379, 1433],
+  "portsAttributes": {
+    "3000": { "label": "Rails", "onAutoForward": "notify" },
+    "5540": { "label": "Redis Insight", "onAutoForward": "silent" },
+    "6379": { "label": "Redis", "onAutoForward": "silent" },
+    "1433": { "label": "SQL Server", "onAutoForward": "silent" }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
-        "42crunch.vscode-openapi",
-        "aki77.rails-db-schema",
-        "aki77.rails-i18n",
-        "aki77.rails-routes",
-        "aliariff.auto-add-brackets",
-        "aliariff.vscode-erb-beautify",
-        "angus-mcritchie.quote-swapper",
-        "aravindkumar.gherkin-indent",
-        "bierner.markdown-mermaid",
-        "blodwynn.featurehighlight",
-        "castwide.solargraph", // solargraph
-        "christian-kohler.path-intellisense",
-        "craigthomas.supersharp",
-        "davidpallinder.rails-test-runner",
-        "dbaeumer.vscode-eslint",
-        "derivitec-ltd.vscode-dotnet-adapter",
-        "dkundel.vscode-new-file",
-        "doggy8088.netcore-snippets",
-        "donjayamanne.git-extension-pack",
-        "eamodio.gitlens",
-        "editorconfig.editorconfig",
-        "esbenp.prettier-vscode",
-        "github.vscode-github-actions",
-        "gruntfuggly.todo-tree",
-        "hbenl.vscode-test-explorer",
-        "hookyqr.beautify",
-        "jebbs.plantuml",
-        "jemmyw.rails-fast-nav",
-        "josephwoodward.vscodeilviewer",
-        "k--kato.docomment",
-        "kaiwood.endwise",
-        "karunamurti.rspec-snippets",
-        "KoichiSasada.vscode-rdbg", // Ruby Debug see below
-        "LoranKloeze.ruby-rubocop-revived",
-        "masonliu.exercism",
-        "mechatroner.rainbow-csv",
-        "mikestead.dotenv",
-        "misogi.ruby-rubocop", // Rubocop
-        "mohsen1.prettify-json",
-        "ms-azuretools.vscode-docker",
-        "ms-mssql.data-workspace-vscode",
-        "ms-mssql.mssql",
-        "ms-mssql.sql-bindings-vscode",
-        "ms-mssql.sql-database-projects-vscode",
-        "ms-vscode-remote.remote-containers",
-        "ms-vscode-remote.remote-ssh-edit",
-        "ms-vscode-remote.remote-ssh",
-        "ms-vscode-remote.remote-wsl",
-        "ms-vscode-remote.vscode-remote-extensionpack",
-        "ms-vscode.remote-explorer",
-        "ms-vscode.remote-server",
-        "ms-vscode.sublime-keybindings",
-        "ms-vscode.test-adapter-converter",
-        "mtxr.sqltools-driver-pg",
-        "mtxr.sqltools",
-        "orepor.color-tabs-vscode-ext",
-        "patbenatar.advanced-new-file",
-        "pflannery.vscode-versionlens",
-        "qufiwefefwoyn.kanagawa",
-        "quicktype.quicktype",
-        "rebornix.Ruby", // Ruby syntax highlighting, etc.
-        "redhat.vscode-yaml",
-        "ronnidc.nunjucks",
-        "rvest.vs-code-prettier-eslint",
-        "salbert.copy-text",
-        "salbert.online-help",
-        "Shopify.ruby-extensions-pack",
-        "sianglim.slim",
-        "sleistner.vscode-fileutils",
-        "sporto.rails-go-to-spec",
-        "stripe.endsmart",
-        "testdouble.vscode-standard-ruby",
-        "tintoy.msbuild-project-tools",
-        "vortizhe.simple-ruby-erb",
-        "waderyan.gitblame",
-        "yzhang.markdown-all-in-one"
-      ],
-      "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash",
-        // Get highlighting for local env files
-        "files.associations": {
-          ".env.development": "env",
-          ".env.development.local": "env",
-          ".env.local": "env",
-          ".env.test": "env",
-          ".env.test.local": "env",
-          ".env.database": "env"
-        },
-        "rails.viewFileExtension": "html.erb",
-        "railsRoutes.railsCommand": "bin/rails",
-        "railsTestRunner.rspecCommand": "bin/rspec",
-        // Set up Ruby extension
-        // "ruby.format": "rubocop",
-        // "ruby.lint": {
-        //   "rubocop": {
-        //     "useBundler": false,
-        //     "forceExclusion": true
-        //   }
-        // },
-        // "ruby.useLanguageServer": true,
-        "msql.connections": [
-          {
-            "name": "Rails Development Database",
-            "server": "db,1433",
-            "authenticationType": "SqlLogin",
-            "savePassword": true,
-            "database": "sip_development",
-            "user": "sa",
-            "password": "P@ssw0rd"
-          },
-          {
-            "name": "Rails Test Database",
-            "server": "db,1433",
-            "authenticationType": "SqlLogin",
-            "savePassword": true,
-            "database": "sip_test",
-            "username": "sa",
-            "password": "P@ssw0rd"
-          }
-        ]
-      }
+        "Shopify.ruby-lsp",
+        "rubocop.vscode-rubocop",
+        "bung87.rails"
+      ]
     }
   }
 }

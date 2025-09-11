@@ -42,7 +42,8 @@ code straight forward for those that would like to use them.
 - [Developer scripts](/doc/developer-scripts.md)
 - [GOV.UK Notify](/doc/govuk-notify.md)
 - [Information banner](/doc/information-banner.md)
-- [Redis](/doc/redis.md")
+- [Redis](/doc/redis.md)
+- [Running with Docker (local dev)](/doc/running-with-docker.md)
 
 ## Errors and monitoring
 
