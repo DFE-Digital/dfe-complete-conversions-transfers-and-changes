@@ -92,18 +92,32 @@ class RouteMatch
       Rails.logger.debug "BeginsWith pattern '#{pattern}' matches path '#{normalized_path}': #{result}"
       result
     else
-      # Default: treat as "begins with" for most patterns (like Azure CDN BeginsWith operator)
-      # This handles patterns like 'projects/team', 'dist', 'signin-oidc', etc.
-      # They should match any route that begins with that pattern
+      # Check if this pattern should use exact matching
+      exact_only_patterns = [
+        'projects/all/export',
+        'projects/all/reports'
+      ]
+      
       normalized_pattern = "/#{pattern}"
       
-      # Check both exact match and begins with
-      exact_match = normalized_path == normalized_pattern
-      begins_with_match = normalized_path.start_with?(normalized_pattern + '/') || normalized_path.start_with?(normalized_pattern + '?')
-      
-      result = exact_match || begins_with_match
-      Rails.logger.debug "Pattern '#{pattern}' matches path '#{normalized_path}': #{result} (exact: #{exact_match}, begins_with: #{begins_with_match})"
-      result
+      if exact_only_patterns.include?(pattern)
+        # Use exact matching only for specific patterns
+        result = normalized_path == normalized_pattern
+        Rails.logger.debug "Exact-only pattern '#{pattern}' matches path '#{normalized_path}': #{result}"
+        result
+      else
+        # Default: treat as "begins with" for most patterns (like Azure CDN BeginsWith operator)
+        # This handles patterns like 'projects/team', 'dist', 'signin-oidc', etc.
+        # They should match any route that begins with that pattern
+        
+        # Check both exact match and begins with
+        exact_match = normalized_path == normalized_pattern
+        begins_with_match = normalized_path.start_with?(normalized_pattern + '/') || normalized_path.start_with?(normalized_pattern + '?')
+        
+        result = exact_match || begins_with_match
+        Rails.logger.debug "Pattern '#{pattern}' matches path '#{normalized_path}': #{result} (exact: #{exact_match}, begins_with: #{begins_with_match})"
+        result
+      end
     end
   end
 end
