@@ -82,4 +82,9 @@ class NotesController < ApplicationController
   private def note_params
     params.require(:note).permit(:body, :task_identifier)
   end
+
+  # Suppress flash banners on task notes pages to avoid cross-app TmpData confusion
+  def suppress_flash_banner?
+    true
+  end
 end
