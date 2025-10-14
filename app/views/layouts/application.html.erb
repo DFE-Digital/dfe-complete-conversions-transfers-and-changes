@@ -40,7 +40,7 @@
       <%= yield :pre_content_nav %>
       <main class="govuk-main-wrapper app-content" id="main-content" role="main">
         <%= render partial: "/shared/information_banner" if ENV["SHOW_INFORMATION_BANNER"].eql?("true") %>
-        <%= render(NotificationBanner.new(flashes: flash)) %>
+        <%= render(NotificationBanner.new(flashes: flash)) unless suppress_flash_banner? %>
         <%= yield %>
       </main>
     </div>

@@ -77,4 +77,9 @@ class TasksController < ApplicationController
   private def task_klass_identifier
     task_identifier.underscore.camelize
   end
+
+  # Suppress flash banners on task list and task pages to avoid cross-app TmpData confusion
+  def suppress_flash_banner?
+    true
+  end
 end

@@ -58,4 +58,10 @@ class ApplicationController < ActionController::Base
   private def academies_api_unauthorised_error
     render "pages/academies_api_client_unauthorised", status: 401
   end
+
+  # Override this method in controllers where flash banners should not be displayed
+  def suppress_flash_banner?
+    false
+  end
+  helper_method :suppress_flash_banner?
 end

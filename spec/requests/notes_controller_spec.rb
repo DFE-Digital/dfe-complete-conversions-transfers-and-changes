@@ -89,6 +89,16 @@ RSpec.describe NotesController, type: :request do
         expect(Note.count).to be 1
         expect(Note.last.body).to eq(new_note_body)
       end
+
+      it "sets flash notice but suppresses banner rendering on project notes page" do
+        subject
+        follow_redirect!
+
+        # Flash should still be set in the session
+        expect(request.flash[:notice]).to eq(I18n.t("note.create.success"))
+        # But banner should not be rendered in HTML response
+        expect(response.body).not_to include("govuk-notification-banner")
+      end
     end
   end
 
