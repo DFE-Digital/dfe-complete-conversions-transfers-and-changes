@@ -31,6 +31,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: {case_sensitive: false}
   validates :email, format: {with: /\A\S+@education.gov.uk\z/i}
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
+  validate :active_directory_user_id_unique_for_active_users, if: -> { active_directory_user_id.present? && active }
 
   enum :team, USER_TEAMS, suffix: true
 
@@ -105,5 +106,16 @@ class User < ApplicationRecord
 
   private def can_be_team_lead?
     is_regional_delivery_officer? || team == "regional_casework_services"
+  end
+
+  private def active_directory_user_id_unique_for_active_users
+    duplicate = User.active
+      .where(active_directory_user_id: active_directory_user_id)
+      .where.not(id: id)
+      .exists?
+
+    if duplicate
+      errors.add(:active_directory_user_id, "already exists for another active user")
+    end
   end
 end

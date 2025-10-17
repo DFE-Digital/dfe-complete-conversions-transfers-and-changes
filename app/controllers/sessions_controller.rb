@@ -13,6 +13,9 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       return redirect_inactive_user if inactive_user?
+      
+      # Check if it's a duplicate ADID issue
+      return redirect_duplicate_user if duplicate_adid_detected?
 
       redirect_unknown_user
     end
@@ -28,7 +31,24 @@ class SessionsController < ApplicationController
   end
 
   private def registered_user
-    @registered_user ||= User.active.find_by(email: authenticated_user_email_address)
+    # First try to find by ADID (source of truth)
+    if active_directory_user_id.present?
+      @users_by_adid = User.active.where(active_directory_user_id: active_directory_user_id)
+      
+      if @users_by_adid.count > 1
+        # Multiple users with same ADID - this is a data problem
+        Rails.logger.error("[SessionsController] Duplicate ADID detected: #{active_directory_user_id}")
+        notify_ops_of_duplicate_adid(@users_by_adid)
+        return nil # Will trigger duplicate user flow
+      elsif @users_by_adid.count == 1
+        # Found user by ADID - this handles email renames correctly
+        Rails.logger.info("[SessionsController] User resolved by ADID: #{@users_by_adid.first.id}")
+        return @users_by_adid.first
+      end
+    end
+    
+    # Fallback to email if no ADID match
+    User.active.find_by(email: authenticated_user_email_address)
   end
 
   private def inactive_user?
@@ -78,5 +98,29 @@ class SessionsController < ApplicationController
 
   private def redirect_inactive_user
     redirect_to sign_in_path, notice: I18n.t("inactive_user.message", email_address: authenticated_user_email_address)
+  end
+
+  private def duplicate_adid_detected?
+    active_directory_user_id.present? && @users_by_adid&.count && @users_by_adid.count > 1
+  end
+
+  private def redirect_duplicate_user
+    redirect_to sign_in_path, alert: I18n.t("duplicate_user.message")
+  end
+
+  private def notify_ops_of_duplicate_adid(users)
+    user_details = users.map { |u| "ID: #{u.id}, Email: #{u.email}, Created: #{u.created_at}" }.join("; ")
+    
+    Ops::ErrorNotification.new.handled(
+      message: "Duplicate active_directory_user_id detected during login",
+      user: authenticated_user_email_address,
+      path: "SessionsController",
+      metadata: {
+        active_directory_user_id: active_directory_user_id,
+        duplicate_users: user_details
+      }
+    )
+  rescue => e
+    Rails.logger.error("[SessionsController] Failed to send ops notification: #{e.message}")
   end
 end

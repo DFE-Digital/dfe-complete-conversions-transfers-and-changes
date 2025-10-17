@@ -59,6 +59,8 @@ en:
     message: The email address %{email_address} is not registered to use this service.
   inactive_user:
     message: The email address %{email_address} is inactive, if you believe this is in error, contact support.
+  duplicate_user:
+    message: Account configuration error detected. Please contact support to resolve this issue.
   unauthorised_action:
     message: You are not authorised to perform this action.
   project_list:

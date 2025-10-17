@@ -140,6 +140,67 @@ RSpec.describe User do
         expect(new_user).to be_invalid
       end
     end
+
+    describe "#active_directory_user_id" do
+      context "when active" do
+        it "must be unique among active users" do
+          create(:user, email: "user1@education.gov.uk", active_directory_user_id: "adid-123")
+          duplicate_user = build(:user, email: "user2@education.gov.uk", active_directory_user_id: "adid-123")
+
+          expect(duplicate_user).to be_invalid
+          expect(duplicate_user.errors[:active_directory_user_id]).to include("already exists for another active user")
+        end
+
+        it "allows nil active_directory_user_id" do
+          create(:user, email: "user1@education.gov.uk", active_directory_user_id: nil)
+          user_without_adid = build(:user, email: "user2@education.gov.uk", active_directory_user_id: nil)
+
+          expect(user_without_adid).to be_valid
+        end
+
+        it "allows blank active_directory_user_id" do
+          create(:user, email: "user1@education.gov.uk", active_directory_user_id: "")
+          user_without_adid = build(:user, email: "user2@education.gov.uk", active_directory_user_id: "")
+
+          expect(user_without_adid).to be_valid
+        end
+      end
+
+      context "when inactive" do
+        it "allows duplicate active_directory_user_id with inactive users" do
+          create(:inactive_user, email: "inactive@education.gov.uk", active_directory_user_id: "adid-123")
+          active_user = build(:user, email: "active@education.gov.uk", active_directory_user_id: "adid-123")
+
+          expect(active_user).to be_valid
+        end
+
+        it "allows duplicate active_directory_user_id among inactive users" do
+          create(:inactive_user, email: "inactive1@education.gov.uk", active_directory_user_id: "adid-123")
+          another_inactive_user = build(:inactive_user, email: "inactive2@education.gov.uk", active_directory_user_id: "adid-123")
+
+          expect(another_inactive_user).to be_valid
+        end
+      end
+
+      context "when updating existing user" do
+        it "does not flag itself as duplicate" do
+          user = create(:user, email: "user@education.gov.uk", active_directory_user_id: "adid-123")
+          user.first_name = "Updated"
+
+          expect(user).to be_valid
+        end
+
+        it "prevents changing to another active user's ADID" do
+          create(:user, email: "user1@education.gov.uk", active_directory_user_id: "adid-123")
+          user2 = create(:user, email: "user2@education.gov.uk", active_directory_user_id: "adid-456")
+
+          user2.active_directory_user_id = "adid-123"
+
+          expect(user2).to be_invalid
+          expect(user2.errors[:active_directory_user_id]).to include("already exists for another active user")
+        end
+      end
+    end
   end
 
   describe "callbacks" do
