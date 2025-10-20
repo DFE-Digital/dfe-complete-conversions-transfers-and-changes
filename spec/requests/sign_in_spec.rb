@@ -85,4 +85,74 @@ RSpec.describe "Sign in" do
       expect(flash.notice).to include(inactive_user.email)
     end
   end
+
+  context "when user is resolved by ADID" do
+    it "logs in user even if email has changed" do
+      # User created with original email and ADID
+      user = create(:user, email: "original@education.gov.uk", active_directory_user_id: "test-user-id")
+
+      # Azure sends new email but same ADID (email was renamed)
+      mock_successful_authentication("renamed@education.gov.uk")
+
+      get "/auth/azure_activedirectory_v2/callback"
+
+      # Should login successfully using ADID match
+      expect(session[:user_id]).to eq(user.id)
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "updates group IDs on login" do
+      user = create(:user, active_directory_user_id: "test-user-id")
+      new_groups = ["group-1", "group-2"]
+
+      mock_successful_authentication(user.email, new_groups)
+
+      get "/auth/azure_activedirectory_v2/callback"
+
+      expect(user.reload.active_directory_user_group_ids).to eq(new_groups)
+    end
+  end
+
+  context "when multiple active users have the same ADID" do
+    it "rejects login and shows duplicate user message" do
+      create(:user, email: "user1@education.gov.uk", active_directory_user_id: "duplicate-adid")
+      create(:user, :caseworker, active_directory_user_id: "duplicate-adid")
+
+      OmniAuth.config.mock_auth[:azure_activedirectory_v2] = OmniAuth::AuthHash.new({
+        info: {email: "user1@education.gov.uk"},
+        uid: "duplicate-adid",
+        extra: {raw_info: {groups: []}}
+      })
+      OmniAuth.config.test_mode = true
+
+      get "/auth/azure_activedirectory_v2/callback"
+
+      expect(request).to redirect_to(sign_in_path)
+      expect(flash.alert).to eq(I18n.t("duplicate_user.message"))
+      expect(session[:user_id]).to be_nil
+    end
+  end
+
+  context "when no ADID match, fallback to email" do
+    it "finds user by email when ADID has no match" do
+      user = create(:user, email: "user@education.gov.uk", active_directory_user_id: nil)
+
+      mock_successful_authentication(user.email)
+
+      get "/auth/azure_activedirectory_v2/callback"
+
+      expect(session[:user_id]).to eq(user.id)
+      expect(response).to redirect_to(root_path)
+    end
+
+    it "assigns ADID to user found by email" do
+      user = create(:user, email: "user@education.gov.uk", active_directory_user_id: nil)
+
+      mock_successful_authentication(user.email)
+
+      get "/auth/azure_activedirectory_v2/callback"
+
+      expect(user.reload.active_directory_user_id).to eq("test-user-id")
+    end
+  end
 end
