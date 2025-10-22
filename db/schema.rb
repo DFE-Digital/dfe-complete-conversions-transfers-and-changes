@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_16_145838) do
+ActiveRecord::Schema[7.2].define(version: 2025_10_22_161124) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -515,8 +515,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_16_145838) do
     t.boolean "manage_conversion_urns", default: false
     t.boolean "manage_local_authorities", default: false
     t.datetime "latest_session"
+    t.string "entra_user_object_id"
     t.index ["active_directory_user_id"], name: "UX_users_active_directory_user_id_unique_if_not_null", unique: true, where: "([active_directory_user_id] IS NOT NULL)"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["entra_user_object_id"], name: "UQ_users_entra_user_object_id", unique: true, where: "([entra_user_object_id] IS NOT NULL)"
   end
 
   add_foreign_key "contacts", "projects"
