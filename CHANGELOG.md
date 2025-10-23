@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased][unreleased]
 
 ### Fixed
+
+- Add a new column to the Users table entra_user_object_id
+
 - Implement ADID-first login resolution with email fallback to prevent duplicates
 
 ## [Release-117.1][release-117.1]
