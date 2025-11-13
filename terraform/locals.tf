@@ -17,6 +17,7 @@ locals {
   enable_container_app_file_share                 = var.enable_container_app_file_share
   storage_account_ipv4_allow_list                 = var.storage_account_ipv4_allow_list
   storage_account_public_access_enabled           = var.storage_account_public_access_enabled
+  storage_subnet_cidr                             = var.storage_subnet_cidr
   enable_worker_container                         = var.enable_worker_container
   worker_container_command                        = var.worker_container_command
   worker_container_max_replicas                   = var.worker_container_max_replicas
@@ -31,9 +32,11 @@ locals {
   mssql_server_public_access_enabled              = var.mssql_server_public_access_enabled
   mssql_managed_identity_assign_role              = var.mssql_managed_identity_assign_role
   mssql_sku_name                                  = var.mssql_sku_name
+  mssql_private_endpoint_subnet_cidr              = var.mssql_private_endpoint_subnet_cidr
   enable_redis_cache                              = var.enable_redis_cache
   redis_config                                    = var.redis_config
   redis_cache_sku                                 = var.redis_cache_sku
+  redis_cache_subnet_cidr                         = var.redis_cache_subnet_cidr
   enable_cdn_frontdoor                            = var.enable_cdn_frontdoor
   enable_event_hub                                = var.enable_event_hub
   enable_logstash_consumer                        = var.enable_logstash_consumer

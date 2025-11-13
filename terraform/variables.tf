@@ -108,6 +108,12 @@ variable "storage_account_public_access_enabled" {
   default     = false
 }
 
+variable "storage_subnet_cidr" {
+  description = "Specify a subnet prefix to use for the storage subnet"
+  type        = string
+  default     = ""
+}
+
 variable "image_name" {
   description = "Image name"
   type        = string
@@ -183,6 +189,12 @@ variable "mssql_sku_name" {
   default     = "Basic"
 }
 
+variable "mssql_private_endpoint_subnet_cidr" {
+  description = "Specify a subnet prefix to use for the mssql_private_endpoint subnet"
+  type        = string
+  default     = ""
+}
+
 variable "enable_redis_cache" {
   description = "Set to true to create a Redis Cache"
   type        = bool
@@ -203,6 +215,12 @@ variable "redis_cache_sku" {
   description = "Redis Cache SKU"
   type        = string
   default     = "Basic"
+}
+
+variable "redis_cache_subnet_cidr" {
+  description = "Specify a subnet prefix to use for the redis_cache subnet"
+  type        = string
+  default     = ""
 }
 
 variable "enable_event_hub" {
