@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Implement ADID-first login resolution with email fallback to prevent duplicates
 
+- Add foreign key constraint to prevent deletion of users when they have related significant_date_histories records
+
 ## [Release-117.1][release-117.1]
 
 ### Changed
