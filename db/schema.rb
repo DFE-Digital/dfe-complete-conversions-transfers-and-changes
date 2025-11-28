@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_22_161124) do
+ActiveRecord::Schema[7.2].define(version: 2025_11_27_162420) do
   create_table "api_keys", id: :uuid, default: -> { "newid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -528,6 +528,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_22_161124) do
   add_foreign_key "projects", "users", column: "assigned_to_id"
   add_foreign_key "projects", "users", column: "caseworker_id"
   add_foreign_key "projects", "users", column: "regional_delivery_officer_id"
+  add_foreign_key "significant_date_histories", "users", name: "fk_significant_date_histories_user_id"
   add_foreign_key "user_capabilities", "capabilities"
   add_foreign_key "user_capabilities", "users"
 end
