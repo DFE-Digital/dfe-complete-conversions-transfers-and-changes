@@ -1,5 +1,5 @@
 module "azure_container_apps_hosting" {
-  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v1.19.1"
+  source = "github.com/DFE-Digital/terraform-azurerm-container-apps-hosting?ref=v2.6.1"
 
   environment    = local.environment
   project_name   = local.project_name
@@ -47,10 +47,12 @@ module "azure_container_apps_hosting" {
   mssql_server_public_access_enabled = local.mssql_server_public_access_enabled
   mssql_managed_identity_assign_role = local.mssql_managed_identity_assign_role
   mssql_sku_name                     = local.mssql_sku_name
+  mssql_private_endpoint_subnet_cidr = local.mssql_private_endpoint_subnet_cidr
 
-  enable_redis_cache = local.enable_redis_cache
-  redis_config       = local.redis_config
-  redis_cache_sku    = local.redis_cache_sku
+  enable_redis_cache      = local.enable_redis_cache
+  redis_config            = local.redis_config
+  redis_cache_sku         = local.redis_cache_sku
+  redis_cache_subnet_cidr = local.redis_cache_subnet_cidr
 
   enable_cdn_frontdoor                            = local.enable_cdn_frontdoor
   enable_cdn_frontdoor_health_probe               = local.enable_cdn_frontdoor_health_probe
@@ -88,6 +90,7 @@ module "azure_container_apps_hosting" {
   enable_container_app_file_share       = local.enable_container_app_file_share
   storage_account_ipv4_allow_list       = local.storage_account_ipv4_allow_list
   storage_account_public_access_enabled = local.storage_account_public_access_enabled
+  storage_subnet_cidr                   = local.storage_subnet_cidr
 
   enable_monitoring_traces = local.enable_monitoring_traces
 }
