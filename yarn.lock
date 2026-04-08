@@ -214,16 +214,15 @@
     "@nevware21/ts-utils" ">= 0.11.8 < 2.x"
 
 "@microsoft/applicationinsights-clickanalytics-js@^3.2.1":
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-clickanalytics-js/-/applicationinsights-clickanalytics-js-3.3.8.tgz#74c839d9533dcddcb2af50cbcef840348420847f"
-  integrity sha512-0GZOCcavobOZ1pXdGtF9c4oLw6CprcIgSLFuFx5FmJ/iWztVX9NoGw4fD8pBVvfyeINYgEvcKLSoxi37E3tlAQ==
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-clickanalytics-js/-/applicationinsights-clickanalytics-js-3.4.1.tgz#952937f3991c8e939e1b3f9551b2883282c09677"
+  integrity sha512-pReWe5CWjHYImqSuoNtefiMVlYV3ggKmahsQgenNXx3hlXDpRxXV4oosdQTidsfJhXvX1t8mZMQD2ouwofWn/A==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.3.8"
-    "@microsoft/applicationinsights-core-js" "3.3.8"
-    "@microsoft/applicationinsights-properties-js" "3.3.8"
+    "@microsoft/applicationinsights-core-js" "3.4.1"
+    "@microsoft/applicationinsights-properties-js" "3.4.1"
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
-    "@nevware21/ts-utils" ">= 0.11.8 < 2.x"
+    "@nevware21/ts-utils" ">= 0.12.6 < 2.x"
 
 "@microsoft/applicationinsights-common@3.3.8":
   version "3.3.8"
@@ -244,6 +243,16 @@
     "@microsoft/dynamicproto-js" "^2.0.3"
     "@nevware21/ts-async" ">= 0.5.4 < 2.x"
     "@nevware21/ts-utils" ">= 0.11.8 < 2.x"
+
+"@microsoft/applicationinsights-core-js@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-core-js/-/applicationinsights-core-js-3.4.1.tgz#a52459d35f2f74344d86429e1672bf92fe2a58fc"
+  integrity sha512-eXIHZ1+nvBiJgVpufBiTP801Vtr5FEwjWZioUsb44NC/z/UcsZh2MDJ1mBpjaDO73LVYUw/ZZmDCCo6Pg/61kA==
+  dependencies:
+    "@microsoft/applicationinsights-shims" "3.0.1"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-async" ">= 0.5.5 < 2.x"
+    "@nevware21/ts-utils" ">= 0.12.6 < 2.x"
 
 "@microsoft/applicationinsights-dependencies-js@3.3.8":
   version "3.3.8"
@@ -267,6 +276,16 @@
     "@microsoft/applicationinsights-shims" "3.0.1"
     "@microsoft/dynamicproto-js" "^2.0.3"
     "@nevware21/ts-utils" ">= 0.11.8 < 2.x"
+
+"@microsoft/applicationinsights-properties-js@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-properties-js/-/applicationinsights-properties-js-3.4.1.tgz#dfcb328f0d661c5031de50db43425704ebecd605"
+  integrity sha512-s2cUuknjazaoCbh9i6ljymeZqeQqpyAE8v2ZUxCkAwRuxbonAvZWQtEr4QQmEHWJIdbWgn0Ge+OOlMtMkh+Ixg==
+  dependencies:
+    "@microsoft/applicationinsights-core-js" "3.4.1"
+    "@microsoft/applicationinsights-shims" "3.0.1"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-utils" ">= 0.12.6 < 2.x"
 
 "@microsoft/applicationinsights-shims@3.0.1":
   version "3.0.1"
@@ -314,7 +333,19 @@
   dependencies:
     "@nevware21/ts-utils" ">= 0.11.6 < 2.x"
 
-"@nevware21/ts-utils@>= 0.10.4 < 2.x", "@nevware21/ts-utils@>= 0.11.6 < 2.x", "@nevware21/ts-utils@>= 0.11.8 < 2.x", "@nevware21/ts-utils@>= 0.9.4 < 2.x":
+"@nevware21/ts-async@>= 0.5.5 < 2.x":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@nevware21/ts-async/-/ts-async-0.5.5.tgz#509648e3c3c3aa9ab613c00c71eee4fe9bd8a3c3"
+  integrity sha512-vwqaL05iJPjLeh5igPi8MeeAu10i+Aq7xko1fbo9F5Si6MnVN5505qaV7AhSdk5MCBJVT/UYMk3kgInNjDb4Ig==
+  dependencies:
+    "@nevware21/ts-utils" ">= 0.12.2 < 2.x"
+
+"@nevware21/ts-utils@>= 0.10.4 < 2.x", "@nevware21/ts-utils@>= 0.12.2 < 2.x", "@nevware21/ts-utils@>= 0.12.6 < 2.x", "@nevware21/ts-utils@>= 0.9.4 < 2.x":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@nevware21/ts-utils/-/ts-utils-0.13.0.tgz#0b1699597f736d162221c1922172924b38cef54c"
+  integrity sha512-F3mD+DsUn9OiZmZc5tg0oKqrJCtiCstwx+wE+DNzFYh2cCRUuzTYdK9zGGP/au2BWvbOQ6Tqlbjr2+dT1P3AlQ==
+
+"@nevware21/ts-utils@>= 0.11.6 < 2.x", "@nevware21/ts-utils@>= 0.11.8 < 2.x":
   version "0.12.5"
   resolved "https://registry.yarnpkg.com/@nevware21/ts-utils/-/ts-utils-0.12.5.tgz#fe33c10d11ae8b724ccaaa31d2d0109d18601da6"
   integrity sha512-JPQZWPKQJjj7kAftdEZL0XDFfbMgXCGiUAZe0d7EhLC3QlXTlZdSckGqqRIQ2QNl0VTEZyZUvRBw6Ednw089Fw==
